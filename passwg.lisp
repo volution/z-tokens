@@ -40,14 +40,18 @@
 (pg-insert groups '(s "`~!@#$%^&*()[{]}'\",<.>/?=+-_\\|;:"))
 (pg-insert groups '(_ " " ))
 
+(set 'template '(c v c v _ c v c v _ c v c v _ c v c v))
 ;(set 'template '(c v c v _ d d s _ c v c v _ d d s _ c v c v _ d d s _ c v c v _ d d s _ c v c v _ d d s _ c v c v _ d d s))
 ;(set 'template '(c v c v _ d d s _ c v c v _ d d s _ c v c v _ d d s))
-(set 'template '(c v c v c v c v))
+;(set 'template '(c v c v c v c v))
 ;(set 'template '(c v c v _ c v c v _ c v c v _ d d d d))
+;(set 'template '(c v c v c v c v))
 
 
 (set '*random-state* (make-random-state t))
 
 (dotimes (i 1000)
-	(princ (pg-generate groups template))
-	(princ #\nl))
+	(let ((p (pg-generate groups template)))
+		(format t "~a~&" p)
+		;(format t "<a href=\"http://google.com/search?hl=en&q=~a\">~a</a><br/>~&" p p)
+	))
