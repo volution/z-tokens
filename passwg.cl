@@ -43,9 +43,8 @@
 (set 'template '(c v c v _ c v c v _ c v c v _ c v c v))
 ;(set 'template '(c v c v _ d d s _ c v c v _ d d s _ c v c v _ d d s _ c v c v _ d d s _ c v c v _ d d s _ c v c v _ d d s))
 ;(set 'template '(c v c v _ d d s _ c v c v _ d d s _ c v c v _ d d s))
-;(set 'template '(c v c v c v c v))
 ;(set 'template '(c v c v _ c v c v _ c v c v _ d d d d))
-;(set 'template '(c v c v c v c v))
+;(set 'template '(c v c v _ c v c v))
 
 
 (set '*random-state* (make-random-state t))
