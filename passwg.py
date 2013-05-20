@@ -1,5 +1,6 @@
 
 import math
+import os
 import random
 import sys
 
@@ -22,79 +23,77 @@ glyphs = {
 			'lLd' : 'aeioubcdfghjklmnpqrstvwxyzAEIOUBCDFGHJKLMNPQRSTVWXYZ0123456789',
 			'*' : 'aeioubcdfghjklmnpqrstvwxyzAEIOUBCDFGHJKLMNPQRSTVWXYZ0123456789`~!@#$%^&*()[{]}\'\",<.>/?=+-_\\|;:',
 			'#' : '123456',
-			'-' : '-',
-			':' : ':',
 		}
 
 patterns = {
 			'p-aa-1' : [
 					'c', 'v', 'c', 'v'],
 			'p-aa-2' : [
-					'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v'],
+					'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v'],
 			'p-aa-3' : [
-					'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v'],
+					'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v'],
 			'p-aa-4' : [
-				'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v'],
+				'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v'],
 			'p-aa-5' : [
-				'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '',
+				'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-',
 				'c', 'v', 'c', 'v'],
 			'p-aa-6' : [
-				'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '',
-				'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v'],
+				'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-',
+				'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v'],
 			'p-aa-7' : [
-				'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '',
-				'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v'],
+				'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-',
+				'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v'],
 			'p-aa-8' : [
-				'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '',
-				'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v'],
+				'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-',
+				'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v'],
 			
 			'p-ab-1' : [
 				'cC', 'vV', 'cC', 'vV'],
 			'p-ab-2' : [
-				'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV'],
+				'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV'],
 			'p-ab-3' : [
-				'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV'],
+				'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV'],
 			'p-ab-4' : [
-				'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV'],
+				'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV'],
 			'p-ab-5' : [
-				'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '',
+				'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-',
 				'cC', 'vV', 'cC', 'vV'],
 			'p-ab-6' : [
-				'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '',
-				'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV'],
+				'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-',
+				'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV'],
 			'p-ab-6' : [
-				'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '',
-				'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV'],
+				'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-',
+				'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV'],
 			'p-ab-8' : [
-				'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '',
-				'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV'],
+				'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-',
+				'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV'],
 			
 			'p-ba-3+1' : [
-				'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '', 'c', 'v', 'c', 'v', '', 'd', 'd', 'd', 'd'],
+				'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-', 'c', 'v', 'c', 'v', '-', 'd', 'd', 'd', 'd'],
 			'p-bb-3+1' : [
-				'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '', 'cC', 'vV', 'cC', 'vV', '', 'd', 'd', 'd', 'd'],
+				'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-', 'cC', 'vV', 'cC', 'vV', '-', 'd', 'd', 'd', 'd'],
 			
 			'p-ca-3*2' : [
-				'c', 'v', 'c', 'v', '', 'd', 'd', 's', '', 'c', 'v', 'c', 'v', '', 'd', 'd', 's', '',
-				'c', 'v', 'c', 'v', '', 'd', 'd', 's'],
+				'c', 'v', 'c', 'v', '-', 'd', 'd', 's', '-', 'c', 'v', 'c', 'v', '-', 'd', 'd', 's', '-',
+				'c', 'v', 'c', 'v', '-', 'd', 'd', 's'],
 			'p-ca-4*2' : [
-				'c', 'v', 'c', 'v', '', 'd', 'd', 's', '', 'c', 'v', 'c', 'v', '', 'd', 'd', 's', '',
-				'c', 'v', 'c', 'v', '', 'd', 'd', 's', '', 'c', 'v', 'c', 'v', '', 'd', 'd', 's'],
+				'c', 'v', 'c', 'v', '-', 'd', 'd', 's', '-', 'c', 'v', 'c', 'v', '-', 'd', 'd', 's', '-',
+				'c', 'v', 'c', 'v', '-', 'd', 'd', 's', '-', 'c', 'v', 'c', 'v', '-', 'd', 'd', 's'],
 			'p-cb-3*2' : [
-				'cC', 'vV', 'cC', 'vV', '', 'd', 'd', 's', '', 'cC', 'vV', 'cC', 'vV', '', 'd', 'd', 's', '',
-				'cC', 'vV', 'cC', 'vV', '', 'd', 'd', 's'],
+				'cC', 'vV', 'cC', 'vV', '-', 'd', 'd', 's', '-', 'cC', 'vV', 'cC', 'vV', '-', 'd', 'd', 's', '-',
+				'cC', 'vV', 'cC', 'vV', '-', 'd', 'd', 's'],
 			'p-cb-4*2' : [
-				'cC', 'vV', 'cC', 'vV', '', 'd', 'd', 's', '', 'cC', 'vV', 'cC', 'vV', '', 'd', 'd', 's', '',
-				'cC', 'vV', 'cC', 'vV', '', 'd', 'd', 's', '', 'cC', 'vV', 'cC', 'vV', '', 'd', 'd', 's'],
+				'cC', 'vV', 'cC', 'vV', '-', 'd', 'd', 's', '-', 'cC', 'vV', 'cC', 'vV', '-', 'd', 'd', 's', '-',
+				'cC', 'vV', 'cC', 'vV', '-', 'd', 'd', 's', '-', 'cC', 'vV', 'cC', 'vV', '-', 'd', 'd', 's'],
 			
 			'n-04' : [
 				'd', 'd', 'd', 'd'],
 			'n-08' : [
-				'd', 'd', 'd', 'd', '', 'd', 'd', 'd', 'd'],
+				'd', 'd', 'd', 'd', '-', 'd', 'd', 'd', 'd'],
 			'n-12' : [
-				'd', 'd', 'd', 'd', '', 'd', 'd', 'd', 'd', '', 'd', 'd', 'd', 'd'],
+				'd', 'd', 'd', 'd', '-', 'd', 'd', 'd', 'd', '-', 'd', 'd', 'd', 'd'],
 			'n-16' : [
-				'd', 'd', 'd', 'd', '', 'd', 'd', 'd', 'd', '', 'd', 'd', 'd', 'd', '', 'd', 'd', 'd', 'd'],
+				'd', 'd', 'd', 'd', '-', 'd', 'd', 'd', 'd', '-', 'd', 'd', 'd', 'd', '-', 'd', 'd', 'd', 'd'],
 			
 			'r-04' : [
 				'*', '*', '*', '*'],
@@ -113,8 +112,8 @@ patterns = {
 				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd'],
 			
 			'mac' : [
-				'hd', 'hd', ':', 'hd', 'hd', ':', 'hd', 'hd', ':',
-				'hd', 'hd', ':', 'hd', 'hd', ':', 'hd', 'hd'],
+				'hd', 'hd', '-', 'hd', 'hd', '-', 'hd', 'hd', '-',
+				'hd', 'hd', '-', 'hd', 'hd', '-', 'hd', 'hd'],
 			
 			'x-016' : [
 				'hd', 'hd', 'hd', 'hd'],
@@ -126,53 +125,104 @@ patterns = {
 				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd'],
 			
 			'x-128' : [
-				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
 				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd'],
 			
 			'x-192' : [
-				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '',
-				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
 				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd'],
 			
 			'x-256' : [
-				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '',
-				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '',
-				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
 				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd'],
 			
 			'x-384' : [
-				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '',
-				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '',
-				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '',
-				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '',
-				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
 				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd'],
 			
 			'x-512' : [
-				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '',
-				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '',
-				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '',
-				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '',
-				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '',
-				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '',
-				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
 				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd'],
 			
 			#'d-1' : [
 			#	'#', '#', '#', '#', '#'],
 			#'d-2' : [
-			#	'#', '#', '#', '#', '#', '',
+			#	'#', '#', '#', '#', '#', '-',
 			#	'#', '#', '#', '#', '#'],
 		}
 
+breaks = {
+			'p-aa-1' : '-',
+			'p-aa-2' : '-',
+			'p-aa-3' : '-',
+			'p-aa-4' : '-',
+			'p-aa-5' : '-',
+			'p-aa-6' : '-',
+			'p-aa-7' : '-',
+			'p-aa-8' : '-',
+			
+			'p-ab-1' : '-',
+			'p-ab-2' : '-',
+			'p-ab-3' : '-',
+			'p-ab-4' : '-',
+			'p-ab-5' : '-',
+			'p-ab-6' : '-',
+			'p-ab-6' : '-',
+			'p-ab-8' : '-',
+			
+			'p-ba-3+1' : '-',
+			'p-bb-3+1' : '-',
+			
+			'p-ca-3*2' : ' ',
+			'p-ca-4*2' : ' ',
+			'p-cb-3*2' : ' ',
+			'p-cb-4*2' : ' ',
+			
+			'n-04' : '-',
+			'n-08' : '-',
+			'n-12' : '-',
+			'n-16' : '-',
+			
+			'r-04' : ' ',
+			'r-08' : ' ',
+			'r-16' : ' ',
+			'r-32' : ' ',
+			
+			'uuid' : '-',
+			
+			'mac' : ':',
+			
+			'x-016' : '',
+			'x-032' : '',
+			'x-064' : '',
+			'x-128' : '',
+			'x-192' : '',
+			'x-256' : '',
+			'x-384' : '',
+			'x-512' : '',
+}
 
-def generate (pattern) :
-	pattern = patterns[pattern]
+
+def generate (pattern_id) :
+	pattern = patterns[pattern_id]
 	generator = random.SystemRandom ()
 	password = []
 	for group in pattern :
-		if group == '' :
-			password.append (' ')
+		if group == '-' :
+			password.append (os.environ.get ('PASSWG_GROUP_BREAK', breaks[pattern_id]))
 		else :
 			group = glyphs[group]
 			glyph = random.choice (group)
@@ -196,7 +246,7 @@ if __name__ == '__main__' :
 			length = 0
 			strength = 1.0
 			for group in pattern :
-				if group != '' :
+				if group != '-' :
 					group = glyphs[group]
 					length += 1
 					strength *= len (group)
