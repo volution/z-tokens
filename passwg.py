@@ -124,14 +124,29 @@ patterns = {
 			'x-064' : [
 				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd'],
 			
+			'x-096' : [
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd'],
+			
 			'x-128' : [
 				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
 				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd'],
+			
+			'x-160' : [
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd'],
 			
 			'x-192' : [
 				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
 				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
 				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd'],
+			
+			'x-224' : [
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
+				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd'],
 			
 			'x-256' : [
 				'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', 'hd', '-',
@@ -208,8 +223,11 @@ breaks = {
 			'x-016' : '',
 			'x-032' : '',
 			'x-064' : '',
+			'x-096' : '',
 			'x-128' : '',
+			'x-160' : '',
 			'x-192' : '',
+			'x-224' : '',
 			'x-256' : '',
 			'x-384' : '',
 			'x-512' : '',
