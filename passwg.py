@@ -243,7 +243,7 @@ def generate (pattern_id) :
 			password.append (os.environ.get ('PASSWG_GROUP_BREAK', breaks[pattern_id]))
 		else :
 			group = glyphs[group]
-			glyph = random.choice (group)
+			glyph = generator.choice (group)
 			password.append (glyph)
 	password = ''.join (password)
 	return password
