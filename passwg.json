@@ -17,7 +17,10 @@
 		"Ld" : "AEIOUBCDFGHJKLMNPQRSTVWXYZ0123456789",
 		"lLd" : "aeioubcdfghjklmnpqrstvwxyzAEIOUBCDFGHJKLMNPQRSTVWXYZ0123456789",
 		"*" : "aeioubcdfghjklmnpqrstvwxyzAEIOUBCDFGHJKLMNPQRSTVWXYZ0123456789`~!@#$%^&*()[{]}'\",<.>/?=+-_\\|;:",
-		"#" : "123456"
+		"#" : "123456",
+		"ip-byte" : {"type" : "range", "min" : 0, "max" : 255},
+		"ip-port-a" : {"type" : "range", "min" : 49152, "max" : 53248},
+		"ip-port-b" : {"type" : "range", "min" : 49152, "max" : 65536}
 	},
 	
 	"patterns" : {
@@ -350,7 +353,21 @@
 			"#", "#", "#", "#", "-",
 			"#", "#", "#", "#", "-",
 			"#", "#", "#", "#", "-",
-			"#", "#", "#", "#"]
+			"#", "#", "#", "#"],
+		
+		"ip-address-1" : [
+			"ip-byte"],
+		"ip-address-2" : [
+			"ip-byte", "-", "ip-byte"],
+		"ip-address-3" : [
+			"ip-byte", "-", "ip-byte", "-", "ip-byte"],
+		"ip-address-4" : [
+			"ip-byte", "-", "ip-byte", "-", "ip-byte", "-", "ip-byte"],
+		
+		"ip-port-a" : [
+			"ip-port-a"],
+		"ip-port-b" : [
+			"ip-port-b"]
 	},
 	
 	"breaks" : {
@@ -429,6 +446,11 @@
 		"d-28" : "-",
 		"d-32" : "-",
 		"d-48" : "-",
-		"d-64" : "-"
+		"d-64" : "-",
+		
+		"ip-address-1" : ".",
+		"ip-address-2" : ".",
+		"ip-address-3" : ".",
+		"ip-address-4" : "."
 	}
 }

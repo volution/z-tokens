@@ -19,11 +19,22 @@ def generate (schema, pattern_id) :
 		if group == '-' :
 			password.append (os.environ.get ('PASSWG_GROUP_BREAK', schema["breaks"][pattern_id]))
 		else :
-			group = schema["glyphs"][group]
+			group = group_generator (schema["glyphs"][group])
 			glyph = generator.choice (group)
 			password.append (glyph)
-	password = ''.join (password)
+	password = ''.join ([str (password) for password in password])
 	return password
+
+def group_generator (group) :
+	if isinstance (group, basestring) :
+		return group
+	elif isinstance (group, list) :
+		return group
+	elif isinstance (group, dict) :
+		if group["type"] == "range" :
+			return range (group["min"], group["max"] + 1)
+	else :
+		raise Exception ()
 
 
 if __name__ == '__main__' :
@@ -44,7 +55,7 @@ if __name__ == '__main__' :
 			strength = 1.0
 			for group in pattern :
 				if group != '-' :
-					group = schema["glyphs"][group]
+					group = group_generator (schema["glyphs"][group])
 					length += 1
 					strength *= len (group)
 			strength = math.log (strength, 2)
@@ -58,17 +69,20 @@ if __name__ == '__main__' :
 			example = generate (schema, identifier)
 			#if len (example) > 40 :
 			#	example = example[:36] + ' ...'
-			print "| %-8s | %6.1f bits | %3d len | %-40s | %-40s" % (identifier, strength, length, pattern, example)
+			print "| %-16s | %6.1f bits | %5d len | %-40s | %-40s" % (identifier, strength, length, pattern, example)
 		
 	elif command == 'glyphs' :
 		identifiers = schema["glyphs"].keys ()
 		identifiers.sort ()
 		for identifier in identifiers :
-			group = schema["glyphs"][identifier]
+			group = group_generator (schema["glyphs"][identifier])
 			length = len (group)
 			strength = length
 			strength = math.log (strength, 2)
-			print "| %4s | %2.1f bits | %2d len | %s" % (identifier, strength, length, group)
+			example = str (group)
+			if len (example) > 40 :
+				example = example[:36] + ' ...'
+			print "| %-16s | %4.1f bits | %5d len | %s" % (identifier, strength, length, example)
 		
 	elif command in schema["patterns"] :
 		for i in xrange (16) :
