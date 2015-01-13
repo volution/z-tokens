@@ -32,7 +32,7 @@ def group_generator (group) :
 		return group
 	elif isinstance (group, dict) :
 		if group["type"] == "range" :
-			return range (group["min"], group["max"] + 1)
+			return xrange (group["min"], group["max"] + 1)
 	else :
 		raise Exception ()
 

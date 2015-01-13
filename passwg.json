@@ -20,7 +20,9 @@
 		"#" : "123456",
 		"ip-byte" : {"type" : "range", "min" : 0, "max" : 255},
 		"ip-port-a" : {"type" : "range", "min" : 49152, "max" : 53248},
-		"ip-port-b" : {"type" : "range", "min" : 49152, "max" : 65536}
+		"ip-port-b" : {"type" : "range", "min" : 49152, "max" : 65536},
+		"n-8" : {"type" : "range", "min" : 0, "max" : 255},
+		"n-16" : {"type" : "range", "min" : 0, "max" : 65536}
 	},
 	
 	"patterns" : {
