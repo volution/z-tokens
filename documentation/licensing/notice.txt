@@ -1,0 +1,91 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+#########################################################################
+
+
+  Copyright (C) 2014 Ciprian Dorin Craciun
+
+      ciprian@volution.ro
+        ciprian.craciun@gmail.com
+        ccraciun@info.uvt.ro
+
+      https://volution.ro/ciprian
+        https://sites.google.com/site/cipriancraciun
+        https://web.info.uvt.ro/~ccraciun
+        https://gitorious.org/~ciprian.craciun
+        https://github.com/cipriancraciun
+        https://bitbucket.org/cipriancraciun
+
+      openpgp4fpr:58fc2194fcc2478399cb220c5a974037a6fd8839
+
+
+    ------------------------------------------------------------
+
+
+  License for the sources: GPL, version 3 or later
+      (GNU General Public License)
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as
+published by the Free Software Foundation, either version 3
+of the License, or (at your option) any later version.
+
+** This program is distributed in the hope that it will be useful, **
+** but WITHOUT ANY WARRANTY; without even the implied warranty of  **
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the   **
+** GNU General Public License for more details.                    **
+
+A copy of the license is included with the documentation folder,
+or you could look at https://www.gnu.org/licenses for the content:
+
+  https://www.gnu.org/licenses/gpl-3.0.txt
+
+
+    ------------------------------------------------------------
+
+
+  License for the documentation: FDL, version 1.3 or later
+      (GNU Free Documentation License)
+
+Permission is granted to copy, distribute and/or modify these documents
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+Texts.
+
+A copy of the license is included with the documentation folder,
+or you could look at https://www.gnu.org/licenses for the content:
+
+  https://gnu.org/licenses/fdl-1.3.txt
+
+
+    ------------------------------------------------------------
+
+
+  Notes (with purely informative status)
+
+
+There could exist source or documentation files distributed within this
+repository or archive that are either copyrighted or licensed under
+different terms than described herein; however these files are easily,
+and clearly, identifiable either by placing a notice text at the beginning
+of the file, or by placing a similar notice file inside the folder
+containing them.
+
+
+If someone requires the sources and/or documentation to be released
+under a different license, please send an email to the authors,
+stating the licensing requirements, accompanied with the reasons
+and other details; then, depending on the situation, the authors might
+release the sources and/or documentation under a different license.
+
+
+######## cc55b4d039ccf8b0673c2a7e04a9c283 ###############################
+
+-----BEGIN PGP SIGNATURE-----
+
+iF4EAREIAAYFAlSVV3oACgkQWpdAN6b9iDky5wEAgrd9wI4nUgzqypwAABvOswTN
+CkK9S3zOvrEHx/0LQiAA/A4hnaMme6Bm5A026EdgRuU16Io0doUVctcdbW3qu+uv
+=v1fk
+-----END PGP SIGNATURE-----
