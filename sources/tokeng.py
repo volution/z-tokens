@@ -71,6 +71,11 @@ def display_token (stream, token, separator) :
 
 
 def display_patterns (stream) :
+	trim_pattern = True
+	trim_pattern_length = 20
+	trim_token = True
+	trim_token_length = 40
+	show_pattern = False
 	identifiers = schema["patterns"].keys ()
 	identifiers.sort ()
 	for identifier in identifiers :
@@ -88,16 +93,21 @@ def display_patterns (stream) :
 		else :
 			year = -1
 		pattern = " ".join (pattern)
-		if len (pattern) > 40 :
-			pattern = pattern[:36] + " ..."
-		example = generate_token (schema, identifier, True)
-		#if len (example) > 40 :
-		#	example = example[:36] + " ..."
-		line = "| %-16s | %6.1f bits | %5d len | %-40s | %-40s\n" % (identifier, strength, length, pattern, example)
+		if trim_pattern and len (pattern) > trim_pattern_length :
+			pattern = pattern[:(trim_pattern_length - 4)] + " ..."
+		token = generate_token (schema, identifier, True)
+		if trim_token and len (token) > trim_token_length :
+			token = token[:(trim_token_length - 4)] + " ..."
+		if show_pattern :
+			line = "| %-16s | %3d (%5.1f bits) | %-20s | %s\n" % (identifier, length, strength, pattern, token)
+		else :
+			line = "| %-16s | %3d (%5.1f bits) | %s\n" % (identifier, length, strength, token)
 		stream.write (line)
 
 
 def display_glyphs (stream) :
+	trim_example = True
+	trim_example_length = 40
 	identifiers = schema["glyphs"].keys ()
 	identifiers.sort ()
 	for identifier in identifiers :
@@ -106,9 +116,9 @@ def display_glyphs (stream) :
 		strength = length
 		strength = math.log (strength, 2)
 		example = str (group)
-		if len (example) > 40 :
-			example = example[:36] + " ..."
-		line = "| %-16s | %4.1f bits | %5d len | %s\n" % (identifier, strength, length, example)
+		if trim_example and len (example) > trim_example_length :
+			example = example[:(trim_example_length - 4)] + " ..."
+		line = "| %-16s | %5d (%5.1f bits) | %s\n" % (identifier, length, strength, example)
 		stream.write (line)
 
 
