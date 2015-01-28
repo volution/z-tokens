@@ -123,11 +123,45 @@ def display_glyphs (stream) :
 
 
 def display_help (stream) :
-	print >> stream, "tokeng generate [ <pattern> [ <count> [ <break> [ <separator> ]]]]"
-	print >> stream, "tokeng one [ <pattern> ]"
-	print >> stream, "tokeng patterns"
-	print >> stream, "tokeng glyphs"
-	print >> stream, "tokeng help"
+	print >> stream, r"""`tokeng` (Token Generator) [https://github.com/cipriancraciun/token-generator]`
+
+tokeng generate [ <pattern> [ <count> [ <group> [ <separator> ]]]]
+
+  Generates a couple of tokens (given by `<count>`), where:
+  * characters are grouped (for easy reading) if `<group>` is `t` (the default);
+  * characters are not grouped (ready for copy-paste) if `<group>` is `f`;
+  * tokens are separated by `<separator>` (new-line by default);
+
+  tokeng generate p-aa-4 10
+  tokeng generate p-aa-4 10 f
+  tokeng generate p-aa-4 10 t
+  tokeng generate p-aa-4 10 f '  '
+
+tokeng one [ <pattern> ]
+
+  Generates a single token of the given pattern, ready to be copy-pasted.
+
+  tokeng one x-128
+
+tokeng one-n [ <pattern> ]
+
+  Generates a single token of the given pattern, without printing a new-line at the end.
+
+  This invocation could be used as part of a shell pipeline like:
+      tokeng one-n x-128 | xclip -i
+
+tokeng patterns
+
+  Displays the list of available patterns, the columns being:
+  * the identifier (to be used for the `generate` or `one` commands);
+  * the character length (without character grouping);
+  * the token "security" bits (i.e. the number of possible combinations is 2 raised at this number);
+  * an example of the resulting token (with character grouping);
+
+tokeng glyphs
+
+  Displays the list of available glyphs.
+"""
 
 
 def load_schema () :
@@ -182,8 +216,8 @@ if __name__ == "__main__" :
 		display_token (sys.stdout, token, None)
 		
 	elif command in schema["patterns"] and len (arguments) == 0 :
-		tokens = generate_tokens (schema, command, True, default_pattern_count)
-		display_tokens (sys.stdout, tokens, default_token_separator)
+		tokens = generate_token (schema, command, False)
+		display_token (sys.stdout, tokens, default_token_separator)
 		
 	elif command == "patterns" and len (arguments) == 0 :
 		display_patterns (sys.stdout)
