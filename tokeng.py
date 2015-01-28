@@ -113,15 +113,15 @@ def display_glyphs (stream) :
 
 
 def display_help (stream) :
-	print >> stream, "passwg generate [ <pattern> [ <count> [ <break> [ <separator> ]]]]"
-	print >> stream, "passwg one [ <pattern> ]"
-	print >> stream, "passwg patterns"
-	print >> stream, "passwg glyphs"
-	print >> stream, "passwg help"
+	print >> stream, "tokeng generate [ <pattern> [ <count> [ <break> [ <separator> ]]]]"
+	print >> stream, "tokeng one [ <pattern> ]"
+	print >> stream, "tokeng patterns"
+	print >> stream, "tokeng glyphs"
+	print >> stream, "tokeng help"
 
 
 def load_schema () :
-	with open (os.path.join (os.path.dirname (__file__), "passwg.json")) as stream :
+	with open (os.path.join (os.path.dirname (__file__), "tokeng.json")) as stream :
 		return json.load (stream)
 
 
