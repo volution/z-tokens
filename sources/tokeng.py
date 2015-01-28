@@ -133,7 +133,7 @@ if __name__ == "__main__" :
 	default_token_separator = "\n"
 	
 	if len (sys.argv) == 1 :
-		command = "generate"
+		command = "one"
 		arguments = []
 	elif len (sys.argv) >= 1 :
 		command = sys.argv[1]
@@ -162,6 +162,11 @@ if __name__ == "__main__" :
 		display_tokens (sys.stdout, tokens, token_separator)
 		
 	elif command == "one" and len (arguments) <= 1 :
+		pattern_identifier = arguments[0] if len (arguments) >= 1 else default_pattern_identifier
+		token = generate_token (schema, pattern_identifier, False)
+		display_token (sys.stdout, token, default_token_separator)
+		
+	elif command == "one-n" and len (arguments) <= 1 :
 		pattern_identifier = arguments[0] if len (arguments) >= 1 else default_pattern_identifier
 		token = generate_token (schema, pattern_identifier, False)
 		display_token (sys.stdout, token, None)
