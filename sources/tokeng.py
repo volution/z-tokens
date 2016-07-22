@@ -17,6 +17,11 @@ def generate_token (schema, pattern_identifier, pattern_break) :
 	for pattern_group in pattern_groups :
 		if pattern_group == "-" :
 			token_glyphs.append (pattern_break)
+		elif pattern_group.startswith (":") :
+			token_glyphs.append (pattern_group[1:])
+		elif pattern_group.startswith ("!") :
+			for token in generate_token (schema, pattern_group[1:], pattern_break) :
+				token_glyphs.append (token)
 		else :
 			token_group = generate_group (schema, pattern_identifier, pattern_group)
 			token_glyph = generate_glyph (token_group)
