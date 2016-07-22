@@ -11,6 +11,8 @@ generator = random.SystemRandom ()
 
 
 def generate_token (schema, pattern_identifier, pattern_break) :
+	while pattern_identifier in schema["aliases"] :
+		pattern_identifier = schema["aliases"][pattern_identifier]
 	pattern_groups = generate_groups (schema, pattern_identifier)
 	pattern_break = generate_break (schema, pattern_identifier, pattern_break)
 	token_glyphs = []
@@ -221,7 +223,7 @@ if __name__ == "__main__" :
 		token = generate_token (schema, pattern_identifier, False)
 		display_token (sys.stdout, token, None)
 		
-	elif command in schema["patterns"] and len (arguments) == 0 :
+	elif (command in schema["patterns"] or command in schema["aliases"]) and len (arguments) == 0 :
 		tokens = generate_token (schema, command, False)
 		display_token (sys.stdout, tokens, default_token_separator)
 		

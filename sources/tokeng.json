@@ -25,6 +25,11 @@
 		"n-16" : {"type" : "range", "min" : 0, "max" : 65536}
 	},
 	
+	"aliases" : {
+		"password" : "p-aa-4",
+		"ip-127" : "ip-address-127"
+	},
+	
 	"patterns" : {
 		
 		"p-aa-1" : [
@@ -376,6 +381,8 @@
 			"ip-byte", "-", "ip-byte", "-", "ip-byte"],
 		"ip-address-4" : [
 			"ip-byte", "-", "ip-byte", "-", "ip-byte", "-", "ip-byte"],
+		"ip-address-127" : [
+			":127", "-", "!ip-address-3"],
 		
 		"ip-port-a" : [
 			"ip-port-a"],
@@ -475,6 +482,9 @@
 		"ip-address-3*" : true,
 		"ip-address-4" : ".",
 		"ip-address-4*" : true,
+		
+		"ip-address-127" : ".",
+		"ip-address-127*" : true,
 		
 		"ip-port-a" : "",
 		"ip-port-b" : ""
