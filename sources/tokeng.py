@@ -46,6 +46,7 @@ def generate_group (schema, pattern_identifier, pattern_group) :
 
 
 def generate_break (schema, pattern_identifier, pattern_break) :
+	pattern_break = schema["breaks"].get (pattern_identifier + "*", pattern_break)
 	if pattern_break is True :
 		return schema["breaks"][pattern_identifier]
 	elif pattern_break is False :

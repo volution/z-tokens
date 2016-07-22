@@ -438,8 +438,10 @@
 		"r-64" : " ",
 		
 		"uuid" : "-",
+		"uuid*" : true,
 		
 		"mac" : ":",
+		"mac*" : true,
 		
 		"x-008" : "",
 		"x-016" : "",
@@ -466,9 +468,14 @@
 		"d-64" : "-",
 		
 		"ip-address-1" : ".",
+		"ip-address-1*" : true,
 		"ip-address-2" : ".",
+		"ip-address-2*" : true,
 		"ip-address-3" : ".",
+		"ip-address-3*" : true,
 		"ip-address-4" : ".",
+		"ip-address-4*" : true,
+		
 		"ip-port-a" : "",
 		"ip-port-b" : ""
 	}
