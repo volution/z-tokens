@@ -91,7 +91,14 @@ def display_patterns (stream) :
 		length = 0
 		strength = 1.0
 		for group in pattern :
-			if group != "-" :
+			if group == "-" :
+				pass
+			elif group.startswith (":") :
+				pass
+			elif group.startswith ("!") :
+				# FIXME:  Should compute recursive pattern strength!
+				pass
+			else :
 				group = generate_group (schema, identifier, group)
 				length += 1
 				strength *= len (group)
