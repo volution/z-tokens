@@ -138,7 +138,7 @@ def display_glyphs (stream) :
 
 
 def display_help (stream) :
-	print >> stream, r"""`tokeng` (Token Generator) [https://github.com/cipriancraciun/token-generator]`
+	print >> stream, r"""`tokeng` (Token Generator) [https://github.com/cipriancraciun/token-generator]
 
 tokeng generate [ <pattern> [ <count> [ <group> [ <separator> ]]]]
 
