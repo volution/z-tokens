@@ -204,14 +204,6 @@
 			"hd", "hd", "hd", "hd", "-",
 			"hd", "hd", "hd", "hd", "hd", "hd", "hd", "hd", "hd", "hd", "hd", "hd"],
 		
-		"mac" : [
-			"hd", "hd", "-", "hd", "hd", "-", "hd", "hd", "-",
-			"hd", "hd", "-", "hd", "hd", "-", "hd", "hd"],
-		
-		"mac-xen" : [
-			":00", "-", ":50", "-", ":56", "-",
-			"hd", "hd", "-", "hd", "hd", "-", "hd", "hd"],
-		
 		"x-008" : [
 			"hd", "hd"],
 		
@@ -391,7 +383,11 @@
 		"ip-port-a" : [
 			"ip-port-a"],
 		"ip-port-b" : [
-			"ip-port-b"]
+			"ip-port-b"],
+		
+		"mac" : [
+			":02", "-", "hd", "hd", "-", "hd", "hd", "-",
+			"hd", "hd", "-", "hd", "hd", "-", "hd", "hd"]
 	},
 	
 	"breaks" : {
@@ -453,8 +449,6 @@
 		
 		"mac" : ":",
 		"mac*" : true,
-		"mac-xen" : ":",
-		"mac-xen*" : true,
 		
 		"x-008" : "",
 		"x-016" : "",
