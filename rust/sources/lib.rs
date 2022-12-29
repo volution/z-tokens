@@ -8,6 +8,7 @@ pub mod tool;
 pub mod generator;
 pub mod output;
 pub mod memory;
+pub mod patterns;
 
 
 pub(crate) mod prelude;

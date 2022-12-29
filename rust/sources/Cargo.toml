@@ -21,6 +21,7 @@ autobenches = false
 vrl-errors = { version = "*", default-features = false, features = [] }
 vrl-preludes = { version = "*", default-features = false, features = [] }
 vrl-random = { version = "*", default-features = false, features = [] }
+paste = { version = "*", default-features = false, features = [] }
 
 
 
