@@ -10,38 +10,34 @@ pub mod glyphs {
 	use super::*;
 	
 	macro_rules! define_set {
-		( $_pattern : ident, [ $( $_char : expr, )* ] ) => {
+		( $_visibility : vis $_pattern : ident, [ $( $_char : expr, )* ] ) => {
 			::paste::paste! {
 				$(
 					static [< _ $_pattern __ $_char __TEXT >] : &Text = & Text::Char ($_char);
 					static [< _ $_pattern __ $_char __GLYPH >] : &Glyph = & Glyph::Text (Rb::new_static ( [< _ $_pattern __ $_char __TEXT >] ));
 				)*
 				
-				pub static [< $_pattern _ SET >] : &[Rb<Glyph>] = &[ $(
+				#[ doc = ::std::concat! ( "Glyph character set for `", $( $_char ),*, "`." ) ]
+				$_visibility static [< $_pattern _ SET >] : &[Rb<Glyph>] = &[ $(
 						Rb::new_static ( [< _ $_pattern __ $_char __GLYPH >] ),
 					)* ];
 				
-				pub static [< $_pattern _ GLYPH >] : &GlyphPattern = & GlyphPattern::Set (RbList::from_static ( [< $_pattern _ SET >] ));
+				$_visibility static [< $_pattern _ GLYPH >] : &GlyphPattern = & GlyphPattern::Set (RbList::from_static ( [< $_pattern _ SET >] ));
 				
-				pub static [< $_pattern _ ATOM >] : &AtomPattern = & AtomPattern::Glyph (Rb::new_static ( [< $_pattern _ GLYPH >] ));
-				pub static [< $_pattern _ TOKEN >] : &TokenPattern = & TokenPattern::Atom (Rb::new_static ( [< $_pattern _ ATOM >] ));
+				$_visibility static [< $_pattern _ ATOM >] : &AtomPattern = & AtomPattern::Glyph (Rb::new_static ( [< $_pattern _ GLYPH >] ));
+				
+				$_visibility static [< $_pattern _ TOKEN >] : &TokenPattern = & TokenPattern::Atom (Rb::new_static ( [< $_pattern _ ATOM >] ));
 			}
-		}
+		};
 	}
 	
-	define_set! (DIGIT, [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ]);
+	define_set! (pub DIGIT, [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ]);
 	
-	define_set! (VOWEL_LOWER, [ 'a', 'e', 'i', 'o', 'u', ]);
+	define_set! (pub VOWEL_LOWER, [ 'a', 'e', 'i', 'o', 'u', ]);
+	define_set! (pub VOWEL_UPPER, [ 'A', 'B', 'I', 'O', 'U', ]);
 	
-	define_set! (CONSONANT_LOWER, [ 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', ]);
-}
-
-
-
-
-pub mod atoms {
-	
-	use super::*;
+	define_set! (pub CONSONANT_LOWER, [ 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', ]);
+	define_set! (pub CONSONANT_UPPER, [ 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z', ]);
 }
 
 
@@ -51,24 +47,44 @@ pub mod tokens {
 	
 	use super::*;
 	
+	macro_rules! define_sequence {
+		( $_visibility : vis $_pattern : ident, [ $( $_element : expr, )* ] ) => {
+			::paste::paste! {
+				static [< _ $_pattern __SEQUENCE >] : &[Rb<TokenPattern>] = &[ $(
+						Rb::new_static ($_element),
+					)* ];
+				$_visibility static [< $_pattern >] : &TokenPattern = &TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern __SEQUENCE >] ));
+			}
+		};
+	}
+	
+	macro_rules! define_repeat {
+		( $_visibility : vis $_pattern : ident, $_element : expr, default ) => {
+			define_repeat! ($_visibility $_pattern, $_element, [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, ]);
+		};
+		( $_visibility : vis $_pattern : ident, $_element : expr, [ $( $_count : expr, )* ] ) => {
+			::paste::paste! {
+				$(
+					$_visibility static [< $_pattern _ $_count >] : &TokenPattern = & TokenPattern::Repeat (Rb::new_static ($_element), $_count);
+				)*
+			}
+		};
+	}
+	
 	pub static EMPTY : &TokenPattern = & TokenPattern::Empty;
 	
-	static CONSONANT_VOWEL_LOWER_SYLLABLE_SEQUENCE : &[Rb<TokenPattern>] = &[
-			Rb::new_static (glyphs::CONSONANT_LOWER_TOKEN),
-			Rb::new_static (glyphs::VOWEL_LOWER_TOKEN),
-		];
-	pub static CONSONANT_VOWEL_LOWER_SYLLABLE : &TokenPattern = & TokenPattern::Sequence (RbList::from_static (CONSONANT_VOWEL_LOWER_SYLLABLE_SEQUENCE));
-	pub static CONSONANT_VOWEL_LOWER_2 : &TokenPattern = & TokenPattern::Repeat (Rb::new_static (CONSONANT_VOWEL_LOWER_SYLLABLE), 2);
-	pub static CONSONANT_VOWEL_LOWER_4 : &TokenPattern = & TokenPattern::Repeat (Rb::new_static (CONSONANT_VOWEL_LOWER_SYLLABLE), 4);
-	pub static CONSONANT_VOWEL_LOWER_8 : &TokenPattern = & TokenPattern::Repeat (Rb::new_static (CONSONANT_VOWEL_LOWER_SYLLABLE), 8);
+	define_sequence! (pub CONSONANT_VOWEL_LOWER_SYLLABLE, [
+			glyphs::CONSONANT_LOWER_TOKEN,
+			glyphs::VOWEL_LOWER_TOKEN,
+		]);
+	define_sequence! (pub CONSONANT_VOWEL_UPPER_SYLLABLE, [
+			glyphs::CONSONANT_UPPER_TOKEN,
+			glyphs::VOWEL_UPPER_TOKEN,
+		]);
 	
-	pub static DIGITS_2 : &TokenPattern = & TokenPattern::Repeat (Rb::new_static (glyphs::DIGIT_TOKEN), 2);
-	pub static DIGITS_4 : &TokenPattern = & TokenPattern::Repeat (Rb::new_static (glyphs::DIGIT_TOKEN), 4);
-	pub static DIGITS_6 : &TokenPattern = & TokenPattern::Repeat (Rb::new_static (glyphs::DIGIT_TOKEN), 6);
-	pub static DIGITS_8 : &TokenPattern = & TokenPattern::Repeat (Rb::new_static (glyphs::DIGIT_TOKEN), 8);
-	pub static DIGITS_10 : &TokenPattern = & TokenPattern::Repeat (Rb::new_static (glyphs::DIGIT_TOKEN), 10);
-	pub static DIGITS_12 : &TokenPattern = & TokenPattern::Repeat (Rb::new_static (glyphs::DIGIT_TOKEN), 12);
-	pub static DIGITS_14 : &TokenPattern = & TokenPattern::Repeat (Rb::new_static (glyphs::DIGIT_TOKEN), 14);
-	pub static DIGITS_16 : &TokenPattern = & TokenPattern::Repeat (Rb::new_static (glyphs::DIGIT_TOKEN), 16);
+	define_repeat! (pub CONSONANT_VOWEL_LOWER, CONSONANT_VOWEL_LOWER_SYLLABLE, default);
+	define_repeat! (pub CONSONANT_VOWEL_UPPER, CONSONANT_VOWEL_UPPER_SYLLABLE, default);
+	
+	define_repeat! (pub DIGITS, glyphs::DIGIT_TOKEN, default);
 }
 
