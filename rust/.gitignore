@@ -1,0 +1,14 @@
+
+.*
+!.gitignore
+!.z-run
+
+/target
+
+*~
+*#
+*.bak
+
+*.log
+*.tmp
+
