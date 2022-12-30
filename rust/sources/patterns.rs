@@ -68,11 +68,38 @@ pub mod glyphs {
 	
 	
 	
-	define_set! (pub VOWEL_LOWER, [ 'a', 'e', 'i', 'o', 'u', ]);
-	define_set! (pub VOWEL_UPPER, [ 'A', 'B', 'I', 'O', 'U', ]);
+	define_set! (pub VOWEL_LOWER, [
+			'a', 'e', 'i', 'o', 'u',
+		]);
+	define_set! (pub VOWEL_UPPER, [
+			'A', 'B', 'I', 'O', 'U',
+		]);
+	define_set! (pub VOWEL_MIXED, [
+			'a', 'e', 'i', 'o', 'u',
+			'A', 'B', 'I', 'O', 'U',
+		]);
 	
-	define_set! (pub CONSONANT_LOWER, [ 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', ]);
-	define_set! (pub CONSONANT_UPPER, [ 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z', ]);
+	define_set! (pub CONSONANT_LOWER, [
+			'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z',
+		]);
+	define_set! (pub CONSONANT_UPPER, [
+			'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z',
+		]);
+	define_set! (pub CONSONANT_MIXED, [
+			'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z',
+			'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z',
+		]);
+	
+	define_set! (pub LETTER_LOWER, [
+			'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+		]);
+	define_set! (pub LETTER_UPPER, [
+			'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+		]);
+	define_set! (pub LETTER_MIXED, [
+			'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+			'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+		]);
 }
 
 
@@ -139,30 +166,42 @@ pub mod tokens {
 	
 	
 	
-	define_sequence! (pub CONSONANT_VOWEL_LOWER_SYLLABLE, "cvl-syllable", [
+	define_sequence! (pub CONSONANT_VOWEL_LOWER_SYLLABLE, "cv-lower-syllable", [
 			glyphs::CONSONANT_LOWER_TOKEN,
 			glyphs::VOWEL_LOWER_TOKEN,
 			glyphs::CONSONANT_LOWER_TOKEN,
 			glyphs::VOWEL_LOWER_TOKEN,
 		], Rb::new_static (separators::NONE_PATTERN));
 	
-	define_sequence! (pub CONSONANT_VOWEL_UPPER_SYLLABLE, "cvu-syllable", [
+	define_sequence! (pub CONSONANT_VOWEL_UPPER_SYLLABLE, "cv-upper-syllable", [
 			glyphs::CONSONANT_UPPER_TOKEN,
 			glyphs::VOWEL_UPPER_TOKEN,
 			glyphs::CONSONANT_UPPER_TOKEN,
 			glyphs::VOWEL_UPPER_TOKEN,
 		], Rb::new_static (separators::NONE_PATTERN));
 	
-	define_repeat! (pub CONSONANT_VOWEL_LOWER, "cvl", CONSONANT_VOWEL_LOWER_SYLLABLE, Rb::new_static (separators::SPACE_MANDATORY_INFIX_PATTERN), (8 : 1));
-	define_repeat! (pub CONSONANT_VOWEL_UPPER, "cvu", CONSONANT_VOWEL_UPPER_SYLLABLE, Rb::new_static (separators::SPACE_MANDATORY_INFIX_PATTERN), (8 : 1));
+	define_sequence! (pub CONSONANT_VOWEL_MIXED_SYLLABLE, "cv-mixed-syllable", [
+			glyphs::CONSONANT_MIXED_TOKEN,
+			glyphs::VOWEL_MIXED_TOKEN,
+			glyphs::CONSONANT_MIXED_TOKEN,
+			glyphs::VOWEL_MIXED_TOKEN,
+		], Rb::new_static (separators::NONE_PATTERN));
+	
+	define_repeat! (pub CONSONANT_VOWEL_LOWER, "cv-lower", CONSONANT_VOWEL_LOWER_SYLLABLE, Rb::new_static (separators::SPACE_MANDATORY_INFIX_PATTERN), (8 : 1));
+	define_repeat! (pub CONSONANT_VOWEL_UPPER, "cv-upper", CONSONANT_VOWEL_UPPER_SYLLABLE, Rb::new_static (separators::SPACE_MANDATORY_INFIX_PATTERN), (8 : 1));
+	define_repeat! (pub CONSONANT_VOWEL_MIXED, "cv-mixed", CONSONANT_VOWEL_MIXED_SYLLABLE, Rb::new_static (separators::SPACE_MANDATORY_INFIX_PATTERN), (8 : 1));
+	
+	
+	
+	
+	define_repeat! (pub LETTER_LOWER, "letters-lower", glyphs::LETTER_LOWER_TOKEN, Rb::new_static (separators::SPACE_MANDATORY_INFIX_EACH_4_PATTERN), (64 : 4));
+	define_repeat! (pub LETTER_UPPER, "letters-upper", glyphs::LETTER_UPPER_TOKEN, Rb::new_static (separators::SPACE_MANDATORY_INFIX_EACH_4_PATTERN), (64 : 4));
+	define_repeat! (pub LETTER_MIXED, "letters-mixed", glyphs::LETTER_MIXED_TOKEN, Rb::new_static (separators::SPACE_MANDATORY_INFIX_EACH_4_PATTERN), (64 : 4));
 	
 	
 	
 	
 	pub static ALL : &[&[Rb<TokenPattern>]] = &[
-			
-			CONSONANT_VOWEL_LOWER_ALL,
-			CONSONANT_VOWEL_UPPER_ALL,
 			
 			DIGITS_BASE2_ALL,
 			DIGITS_BASE8_ALL,
@@ -171,6 +210,14 @@ pub mod tokens {
 			DIGITS_BASE32_HEX_ALL,
 			DIGITS_BASE32_RFC4648_ALL,
 			DIGITS_Z85_ALL,
+			
+			CONSONANT_VOWEL_LOWER_ALL,
+			CONSONANT_VOWEL_UPPER_ALL,
+			CONSONANT_VOWEL_MIXED_ALL,
+			
+			LETTER_LOWER_ALL,
+			LETTER_UPPER_ALL,
+			LETTER_MIXED_ALL,
 		];
 }
 
