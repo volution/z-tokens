@@ -6,6 +6,7 @@
 pub mod model;
 pub mod tool;
 pub mod generator;
+pub mod randomizer;
 pub mod entropy;
 pub mod output;
 pub mod memory;

@@ -10,11 +10,11 @@ define_error! (pub GeneratorError, result : GeneratorResult);
 
 
 
-pub fn generate_token (_pattern : impl AsRef<TokenPattern>) -> GeneratorResult<Token> {
+pub fn generate_token (_pattern : impl AsRef<TokenPattern>, _randomizer : &mut impl Randomizer) -> GeneratorResult<Token> {
 	
 	let mut _collector = Vec::new ();
 	
-	generate_token_push (_pattern, &mut _collector) ?;
+	generate_token_push (_pattern, _randomizer, &mut _collector) ?;
 	
 	let _token = Token {
 			atoms : RbList::from_vec_rb (_collector),
@@ -24,15 +24,15 @@ pub fn generate_token (_pattern : impl AsRef<TokenPattern>) -> GeneratorResult<T
 }
 
 
-pub fn generate_token_push (_pattern : impl AsRef<TokenPattern>, _collector : &mut Vec<Rb<Atom>>) -> GeneratorResult {
+pub fn generate_token_push (_pattern : impl AsRef<TokenPattern>, _randomizer : &mut impl Randomizer, _collector : &mut Vec<Rb<Atom>>) -> GeneratorResult {
 	let _pattern = _pattern.as_ref ();
 	match _pattern {
 		
 		TokenPattern::Named (_identifier, _pattern) =>
-			generate_token_push (_pattern, _collector),
+			generate_token_push (_pattern, _randomizer, _collector),
 		
 		TokenPattern::Atom (_pattern) => {
-			let _atom = generate_atom (_pattern) ?;
+			let _atom = generate_atom (_pattern, _randomizer) ?;
 			_collector.push (_atom);
 			Ok (())
 		}
@@ -40,12 +40,12 @@ pub fn generate_token_push (_pattern : impl AsRef<TokenPattern>, _collector : &m
 		TokenPattern::Sequence (_patterns, _separator) => {
 			let _count = _patterns.len ();
 			for (_index, _pattern) in _patterns.iter () .enumerate () {
-				let (_before, _after) = generate_separator (_separator, _index, _count) ?;
+				let (_before, _after) = generate_separator (_separator, _index, _count, _randomizer) ?;
 				if let Some (_separator) = _before {
 					let _atom = Rb::new (Atom::Separator (_separator));
 					_collector.push (_atom);
 				}
-				generate_token_push (_pattern, _collector) ?;
+				generate_token_push (_pattern, _randomizer, _collector) ?;
 				if let Some (_separator) = _after {
 					let _atom = Rb::new (Atom::Separator (_separator));
 					_collector.push (_atom);
@@ -57,12 +57,12 @@ pub fn generate_token_push (_pattern : impl AsRef<TokenPattern>, _collector : &m
 		TokenPattern::Repeat (_pattern, _separator, _count) => {
 			let _count = *_count;
 			for _index in 0 .. _count {
-				let (_before, _after) = generate_separator (_separator, _index, _count) ?;
+				let (_before, _after) = generate_separator (_separator, _index, _count, _randomizer) ?;
 				if let Some (_separator) = _before {
 					let _atom = Rb::new (Atom::Separator (_separator));
 					_collector.push (_atom);
 				}
-				generate_token_push (_pattern, _collector) ?;
+				generate_token_push (_pattern, _randomizer, _collector) ?;
 				if let Some (_separator) = _after {
 					let _atom = Rb::new (Atom::Separator (_separator));
 					_collector.push (_atom);
@@ -79,7 +79,7 @@ pub fn generate_token_push (_pattern : impl AsRef<TokenPattern>, _collector : &m
 
 
 
-pub fn generate_separator (_pattern : impl AsRef<SeparatorPattern>, _index : usize, _count : usize) -> GeneratorResult<(Option<Rb<Separator>>, Option<Rb<Separator>>)> {
+pub fn generate_separator (_pattern : impl AsRef<SeparatorPattern>, _index : usize, _count : usize, _randomizer : &mut impl Randomizer) -> GeneratorResult<(Option<Rb<Separator>>, Option<Rb<Separator>>)> {
 	assert! (_count > 0);
 	assert! (_index < _count);
 	let _pattern = _pattern.as_ref ();
@@ -124,7 +124,7 @@ pub fn generate_separator (_pattern : impl AsRef<SeparatorPattern>, _index : usi
 
 
 
-pub fn generate_atom (_pattern : impl AsRef<AtomPattern>) -> GeneratorResult<Rb<Atom>> {
+pub fn generate_atom (_pattern : impl AsRef<AtomPattern>, _randomizer : &mut impl Randomizer) -> GeneratorResult<Rb<Atom>> {
 	let _pattern = _pattern.as_ref ();
 	match _pattern {
 		
@@ -139,7 +139,7 @@ pub fn generate_atom (_pattern : impl AsRef<AtomPattern>) -> GeneratorResult<Rb<
 		}
 		
 		AtomPattern::Glyph (_pattern) => {
-			let _glyph = generate_glyph (_pattern) ?;
+			let _glyph = generate_glyph (_pattern, _randomizer) ?;
 			Ok (Rb::new (Atom::Glyph (_glyph)))
 		}
 	}
@@ -148,12 +148,12 @@ pub fn generate_atom (_pattern : impl AsRef<AtomPattern>) -> GeneratorResult<Rb<
 
 
 
-pub fn generate_glyph (_pattern : impl AsRef<GlyphPattern>) -> GeneratorResult<Rb<Glyph>> {
+pub fn generate_glyph (_pattern : impl AsRef<GlyphPattern>, _randomizer : &mut impl Randomizer) -> GeneratorResult<Rb<Glyph>> {
 	let _pattern = _pattern.as_ref ();
 	match _pattern {
 		GlyphPattern::Set (_patterns) => {
 			let _count = _patterns.len ();
-			let _index = random_usize_range (.. _count);
+			let _index = _randomizer.choose (_count) .else_wrap (0x5079d3d3) ?;
 			let _glyph = _patterns[_index] .clone ();
 			Ok (_glyph)
 		}
