@@ -195,11 +195,11 @@ pub mod glyphs {
 		]);
 	
 	define_set! (pub PROQUINT_CONSONANT_UPPER, [
-			'b', 'd', 'f', 'g', 'h', 'j', 'k', 'l',
-			'm', 'n', 'p', 'r', 's', 't', 'v', 'z',
+			'B', 'D', 'F', 'G', 'H', 'J', 'K', 'L',
+			'M', 'N', 'P', 'R', 'S', 'T', 'V', 'Z',
 		]);
 	define_set! (pub PROQUINT_VOWEL_UPPER, [
-			'a', 'i', 'o', 'u',
+			'A', 'I', 'O', 'U',
 		]);
 }
 
@@ -267,7 +267,7 @@ pub mod tokens {
 	
 	define_repeat! (pub DIGITS_BASE58, "digits-base58", glyphs::DIGIT_BASE58_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (64 : 8));
 	
-	define_repeat! (pub DIGITS_BECH32, "digits-bech32", glyphs::DIGIT_BECH32_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_5_PATTERN), (65 : 5));
+	define_repeat! (pub DIGITS_BECH32, "digits-bech32", glyphs::DIGIT_BECH32_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (65 : 4));
 	
 	define_repeat! (pub DIGITS_Z85, "digits-z85", glyphs::DIGIT_Z85_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_5_PATTERN), (65 : 5));
 	
