@@ -26,6 +26,8 @@ pub fn output_atom (_atom : impl AsRef<Atom>, _stream : impl Write) -> OutputRes
 	match _atom {
 		Atom::Separator (_separator) =>
 			output_separator (_separator, _stream),
+		Atom::Constant (_text) =>
+			output_text (_text, _stream),
 		Atom::Glyph (_glyph) =>
 			output_glyph (_glyph, _stream),
 	}

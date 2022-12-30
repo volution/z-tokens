@@ -12,6 +12,7 @@ pub struct Token {
 
 pub enum Atom {
 	Separator (Rb<Separator>),
+	Constant (Rb<Text>),
 	Glyph (Rb<Glyph>),
 }
 
@@ -39,6 +40,7 @@ pub enum TokenPattern {
 
 pub enum AtomPattern {
 	Separator (Rb<Separator>),
+	Constant (Rb<Text>),
 	Glyph (Rb<GlyphPattern>),
 }
 

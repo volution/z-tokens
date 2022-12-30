@@ -65,6 +65,11 @@ pub fn generate_atom (_pattern : impl AsRef<AtomPattern>) -> GeneratorResult<Rb<
 			Ok (Rb::new (Atom::Separator (_separator)))
 		}
 		
+		AtomPattern::Constant (_text) => {
+			let _text = _text.clone ();
+			Ok (Rb::new (Atom::Constant (_text)))
+		}
+		
 		AtomPattern::Glyph (_pattern) => {
 			let _glyph = generate_glyph (_pattern) ?;
 			Ok (Rb::new (Atom::Glyph (_glyph)))
