@@ -25,7 +25,7 @@ pub fn main () -> MainResult {
 		}
 		
 		let _entropy = entropy_token (&_pattern) .else_wrap (0x6374858a) ?;
-		let _bits = _entropy.bits ();
+		let (_bits, _bits_exact) = _entropy.bits_exact ();
 		
 		if _bits > 256.0 {
 			continue;
@@ -38,7 +38,12 @@ pub fn main () -> MainResult {
 			continue;
 		}
 		
-		writeln! (&mut _stream, "|  {:20}  |  {:6.1} bits  ||  {}", _identifier, _bits, _string) .else_wrap (0xd141c5ef) ?;
+		if _bits_exact {
+			writeln! (&mut _stream, "|  {:22}  |  {:4.0}   bits  ||  {}", _identifier, _bits, _string) .else_wrap (0xd141c5ef) ?;
+		} else {
+			let _display_bits = (_bits * 10.0) .floor () / 10.0;
+			writeln! (&mut _stream, "|  {:22}  |  {:6.1} bits  ||  {}", _identifier, _display_bits, _string) .else_wrap (0xd141c5ef) ?;
+		}
 	}
 	
 	Ok (())

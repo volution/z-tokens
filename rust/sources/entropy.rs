@@ -3,6 +3,16 @@
 use crate::prelude::*;
 
 
+use ::num_bigint::{
+		BigUint,
+	};
+
+use ::num_traits::{
+		Zero as _,
+		ToPrimitive as _,
+	};
+
+
 
 
 define_error! (pub EntroyError, result : EntropyResult);
@@ -11,8 +21,7 @@ define_error! (pub EntroyError, result : EntropyResult);
 
 
 pub struct Entropy {
-	accumulator_log2 : f64,
-	accumulator : u128,
+	accumulator : BigUint,
 }
 
 
@@ -20,47 +29,49 @@ impl Entropy {
 	
 	pub fn none () -> Self {
 		Self {
-				accumulator_log2 : 0.0,
-				accumulator : 0,
+				accumulator : BigUint::zero (),
 			}
 	}
 	
 	pub fn for_choice (_count : usize) -> Self {
 		Self {
-				accumulator_log2 : 0.0,
-				accumulator : _count as u128,
+				accumulator : BigUint::from (_count),
 			}
 	}
 	
 	pub fn multiply (&mut self, _other : &Entropy) -> EntropyResult {
-		if (self.accumulator_log2 != 0.0) || (_other.accumulator_log2 != 0.0) {
-			self.accumulator_log2 = self.bits () + _other.bits ();
-			self.accumulator = 0;
+		if self.accumulator.is_zero () {
+			self.accumulator = _other.accumulator.clone ();
+		} else if _other.accumulator.is_zero () {
+			// NOP
 		} else {
-			assert! (self.accumulator_log2 == 0.0);
-			assert! (_other.accumulator_log2 == 0.0);
-			if self.accumulator == 0 {
-				self.accumulator = _other.accumulator;
-			} else if _other.accumulator == 0 {
-				// NOP
-			} else if (self.accumulator < (u64::MAX as u128)) && (_other.accumulator < (u64::MAX as u128)) {
-				self.accumulator *= _other.accumulator;
-			} else {
-				self.accumulator_log2 = self.bits () + _other.bits ();
-				self.accumulator = 0;
-			}
+			self.accumulator *= &_other.accumulator;
 		}
 		Ok (())
 	}
 	
 	pub fn bits (&self) -> f64 {
-		if self.accumulator != 0 {
-			assert! (self.accumulator_log2 == 0.0);
-			(self.accumulator as f64) .log2 ()
-		} else {
-			assert! (self.accumulator == 0);
-			self.accumulator_log2
+		self.accumulator.to_f64 () .else_panic (0xf18aae78) .log2 ()
+	}
+	
+	pub fn bits_exact (&self) -> (f64, bool) {
+		let _bits = self.accumulator.bits ();
+		let mut _exact = true;
+		for _bit in 0 .. (_bits - 1) {
+			if self.accumulator.bit (_bit) {
+				_exact = false;
+				break;
+			}
 		}
+		if _exact {
+			((_bits - 1) as f64, true)
+		} else {
+			(self.bits (), false)
+		}
+	}
+	
+	pub(crate) fn accumulator (&self) -> Option<u128> {
+		self.accumulator.to_u128 ()
 	}
 }
 

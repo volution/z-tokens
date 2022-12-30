@@ -21,7 +21,9 @@ autobenches = false
 vrl-errors = { version = "*", default-features = false, features = [] }
 vrl-preludes = { version = "*", default-features = false, features = [] }
 vrl-random = { version = "*", default-features = false, features = [] }
-rand = { version = "*", default-features = false, features = ["std", "std_rng", "getrandom", "small_rng"], optional = false }
+rand = { version = "*", default-features = false, features = ["std", "std_rng", "getrandom", "small_rng"] }
+num-bigint = { version = "*", default-features = false, features = ["std"] }
+num-traits = { version = "*", default-features = false, features = ["std"] }
 paste = { version = "*", default-features = false, features = [] }
 
 
