@@ -10,6 +10,19 @@ define_error! (pub OutputError, result : OutputResult);
 
 
 
+pub fn output_token_to_string (_token : impl AsRef<Token>) -> OutputResult<String> {
+	
+	let mut _buffer = Vec::with_capacity (1024);
+	
+	output_token (_token, &mut _buffer) ?;
+	
+	let _string = String::from_utf8 (_buffer) .else_wrap (0xb126b3c8) ?;
+	
+	Ok (_string)
+}
+
+
+
 pub fn output_token (_token : impl AsRef<Token>, mut _stream : impl Write) -> OutputResult {
 	let _token = _token.as_ref ();
 	for _atom in _token.atoms.iter () {
@@ -69,7 +82,7 @@ pub fn output_text (_text : impl AsRef<Text>, mut _stream : impl Write) -> Outpu
 	match _text {
 		Text::Char (_char) =>
 			write! (_stream, "{}", _char),
-		Text::Static (_string) =>
+		Text::Str (_string) =>
 			write! (_stream, "{}", _string),
 		Text::String (_string) =>
 			write! (_stream, "{}", _string),

@@ -65,8 +65,8 @@ pub enum GlyphPattern {
 
 pub enum Text {
 	Char (char),
+	Str (&'static str),
 	String (String),
-	Static (&'static str),
 }
 
 

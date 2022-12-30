@@ -17,12 +17,20 @@ pub fn main () -> MainResult {
 	for _pattern in patterns::all_token_patterns () .into_iter () {
 		let &(ref _identifier, ref _pattern) = _pattern.as_ref ();
 		
-		let _token = generate_token (&_pattern) .else_wrap (0xef0a3430) ?;
 		let _entropy = entropy_token (&_pattern) .else_wrap (0x6374858a) ?;
+		let _bits = _entropy.bits ();
 		
-		write! (&mut _stream, "|  {:25}  |  {:6.1} bits  ||  ", _identifier, _entropy.bits ()) .else_wrap (0xd141c5ef) ?;
-		output_token (&_token, &mut _stream) .else_wrap (0xdef2b059) ?;
-		writeln! (&mut _stream) .else_wrap (0x339d5a87) ?;
+		let _token = generate_token (&_pattern) .else_wrap (0xef0a3430) ?;
+		let _string = output_token_to_string (&_token) .else_wrap (0x36471fa6) ?;
+		
+		if _bits > 256.0 {
+			continue;
+		}
+		if _string.len () > 128 {
+			continue;
+		}
+		
+		writeln! (&mut _stream, "|  {:20}  |  {:6.1} bits  ||  {}", _identifier, _bits, _string) .else_wrap (0xd141c5ef) ?;
 	}
 	
 	Ok (())
