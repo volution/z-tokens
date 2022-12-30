@@ -40,19 +40,80 @@ pub mod glyphs {
 	define_set! (pub DIGIT_BASE2, [ '0', '1', ]);
 	define_set! (pub DIGIT_BASE8, [ '0', '1', '2', '3', '4', '5', '6', '7', ]);
 	define_set! (pub DIGIT_BASE10, [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ]);
-	define_set! (pub DIGIT_BASE16, [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', ]);
+	
+	define_set! (pub DIGIT_BASE16, [
+			'0', '1', '2', '3', '4', '5', '6', '7',
+			'8', '9', 'a', 'b', 'c', 'd', 'e', 'f',
+		]);
 	
 	define_set! (pub DIGIT_BASE32_HEX, [
-			'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f',
-			'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+			'0', '1', '2', '3', '4', '5', '6', '7',
+			'8', '9', 'a', 'b', 'c', 'd', 'e', 'f',
+			'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+			'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
 		]);
-	define_set! (pub DIGIT_BASE32_RFC4648, [
+	
+	
+	
+	
+	// NOTE:  => https://www.ietf.org/rfc/rfc4648.html
+	// NOTE:  #>  python -c 'print (", ".join ([ repr(c) for c in r""" abcdefgh ijklmnop qrstuvw xyz234567 """ if c != " " ]))'
+	define_set! (pub DIGIT_BASE32_RFC, [
 			'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
 			'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
 			'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
 			'y', 'z', '2', '3', '4', '5', '6', '7',
 		]);
 	
+	// NOTE:   => https://www.ietf.org/rfc/rfc4648.html
+	// NOTE:  #>  python -c 'print (", ".join ([ repr(c) for c in r""" ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 +/ """ if c != " " ]))'
+	define_set! (pub DIGIT_BASE64_RFC, [
+			'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+			'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+			'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
+			'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
+			'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+			'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+			'w', 'x', 'y', 'z', '0', '1', '2', '3',
+			'4', '5', '6', '7', '8', '9', C2B, C2F,
+		]);
+	
+	// NOTE:  #>  python -c 'print (", ".join ([ repr(c) for c in r""" ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 -_ """ if c != " " ]))'
+	define_set! (pub DIGIT_BASE64_URL, [
+			'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+			'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+			'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
+			'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
+			'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+			'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+			'w', 'x', 'y', 'z', '0', '1', '2', '3',
+			'4', '5', '6', '7', '8', '9', C2D, C5F,
+		]);
+	
+	
+	
+	
+	// NOTE:  =>  https://en.bitcoinwiki.org/wiki/Base58
+	// NOTE:  #>  python -c 'print (", ".join ([ repr(c) for c in r""" 123456789 ABCDEFGH JKLMN PQRSTUVWXYZ abcdefghijk mnopqrstuvwxyz """ if c != " " ]))'
+	define_set! (pub DIGIT_BASE58, [
+			'1', '2', '3', '4', '5', '6', '7', '8', '9',
+			'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+			'J', 'K', 'L', 'M', 'N',
+			'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+			'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
+			'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+		]);
+	
+	// NOTE:  =>  https://en.bitcoin.it/wiki/BIP_0173
+	// NOTE:  #>  python -c 'print (", ".join ([ repr(c) for c in r""" qpzry9x8 gf2tvdw0 s3jn54kh ce6mua7l """ if c != " " ]))'
+	define_set! (pub DIGIT_BECH32, [
+			'q', 'p', 'z', 'r', 'y', '9', 'x', '8',
+			'g', 'f', '2', 't', 'v', 'd', 'w', '0',
+			's', '3', 'j', 'n', '5', '4', 'k', 'h',
+			'c', 'e', '6', 'm', 'u', 'a', '7', 'l',
+		]);
+	
+	// NOTE:  => https://rfc.zeromq.org/spec/32/
 	define_set! (pub DIGIT_Z85, [
 			'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 			'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
@@ -79,6 +140,7 @@ pub mod glyphs {
 			'A', 'B', 'I', 'O', 'U',
 		]);
 	
+	
 	define_set! (pub CONSONANT_LOWER, [
 			'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z',
 		]);
@@ -90,6 +152,7 @@ pub mod glyphs {
 			'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z',
 		]);
 	
+	
 	define_set! (pub LETTER_LOWER, [
 			'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 		]);
@@ -100,6 +163,9 @@ pub mod glyphs {
 			'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 			'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
 		]);
+	
+	
+	
 	
 	// NOTE:  #>  python -c 'print (", ".join ([ "C%0X" % ord (c) for c in r"""!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~""" ]))'
 	define_set! (pub ASCII_SPECIAL, [
@@ -168,17 +234,24 @@ pub mod tokens {
 	
 	
 	
-	define_repeat! (pub DIGITS_BASE10, "digits-b10", glyphs::DIGIT_BASE10_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (64 : 4));
+	define_repeat! (pub DIGITS_BASE10, "digits-base10", glyphs::DIGIT_BASE10_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (64 : 4));
 	
-	define_repeat! (pub DIGITS_BASE2, "digits-b2", glyphs::DIGIT_BASE2_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (64 : 8));
-	define_repeat! (pub DIGITS_BASE8, "digits-b8", glyphs::DIGIT_BASE8_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (64 : 8));
+	define_repeat! (pub DIGITS_BASE2, "digits-base2", glyphs::DIGIT_BASE2_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (64 : 8));
+	define_repeat! (pub DIGITS_BASE8, "digits-base8", glyphs::DIGIT_BASE8_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (64 : 8));
 	
-	define_repeat! (pub DIGITS_BASE16, "digits-b16", glyphs::DIGIT_BASE16_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (64 : 4));
+	define_repeat! (pub DIGITS_BASE16, "digits-base16", glyphs::DIGIT_BASE16_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (64 : 4));
 	
-	define_repeat! (pub DIGITS_BASE32_HEX, "digits-b32-hex", glyphs::DIGIT_BASE32_HEX_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (64 : 8));
-	define_repeat! (pub DIGITS_BASE32_RFC4648, "digits-b32-rfc4648", glyphs::DIGIT_BASE32_RFC4648_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (64 : 8));
+	define_repeat! (pub DIGITS_BASE32_HEX, "digits-base32-hex", glyphs::DIGIT_BASE32_HEX_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (64 : 8));
+	define_repeat! (pub DIGITS_BASE32_RFC, "digits-base32-rfc", glyphs::DIGIT_BASE32_RFC_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (64 : 8));
 	
-	define_repeat! (pub DIGITS_Z85, "digits-Z85", glyphs::DIGIT_Z85_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_5_PATTERN), (65 : 5));
+	define_repeat! (pub DIGITS_BASE64_URL, "digits-base64-url", glyphs::DIGIT_BASE64_URL_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (64 : 8));
+	define_repeat! (pub DIGITS_BASE64_RFC, "digits-base64-rfc", glyphs::DIGIT_BASE64_RFC_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (64 : 8));
+	
+	define_repeat! (pub DIGITS_BASE58, "digits-base58", glyphs::DIGIT_BASE58_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (64 : 8));
+	
+	define_repeat! (pub DIGITS_BECH32, "digits-bech32", glyphs::DIGIT_BECH32_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_5_PATTERN), (65 : 5));
+	
+	define_repeat! (pub DIGITS_Z85, "digits-z85", glyphs::DIGIT_Z85_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_5_PATTERN), (65 : 5));
 	
 	
 	
@@ -230,7 +303,11 @@ pub mod tokens {
 			DIGITS_BASE10_ALL,
 			DIGITS_BASE16_ALL,
 			DIGITS_BASE32_HEX_ALL,
-			DIGITS_BASE32_RFC4648_ALL,
+			DIGITS_BASE32_RFC_ALL,
+			DIGITS_BASE64_URL_ALL,
+			DIGITS_BASE64_RFC_ALL,
+			DIGITS_BASE58_ALL,
+			DIGITS_BECH32_ALL,
 			DIGITS_Z85_ALL,
 			
 			CONSONANT_VOWEL_LOWER_ALL,
