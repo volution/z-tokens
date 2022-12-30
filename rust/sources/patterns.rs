@@ -5,6 +5,25 @@ use crate::prelude::*;
 
 
 
+pub(crate) mod macros {
+	
+	// NOTE:  #> python -c $'print ("macro_rules! __count_list {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( %d, %d )" % (n, e) + "=> { [ " + ", ".join (["%d" % c for c in range (0, n + 1, e) if c != 0]) + ", ] };")\nprint ("}")' >| ./sources/patterns_count_list.in
+	include! ("./patterns_count_list.in");
+	
+	// NOTE:  #> python -c $'print ("macro_rules! __count_call_each {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( [ %d : %d ] => $c:ident! ( $($p:tt)* ) )" % (n, e) + "=> {\\n" + "\\n".join (["\t$c! ( $($p)* %d );" % c for c in range (0, n + 1, e) if c != 0]) + "\\n};")\nprint ("}")' >| ./sources/patterns_count_call_each.in
+	include! ("./patterns_count_call_each.in");
+	
+	// NOTE:  #> python -c $'print ("macro_rules! __count_call_with {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( [ %d : %d ] => $c:ident! ( $($p:tt)* ) )" % (n, e) + "=> { $c! ( $($p)* [ " + ", ".join (["%d" % c for c in range (0, n + 1, e) if c != 0]) + ", ] ); };")\nprint ("}")' >| ./sources/patterns_count_call_with.in
+	include! ("./patterns_count_call_with.in");
+	
+	pub(crate) use __count_list;
+	pub(crate) use __count_call_each;
+	pub(crate) use __count_call_with;
+}
+
+
+
+
 pub mod glyphs {
 	
 	use super::*;
@@ -81,7 +100,7 @@ pub mod tokens {
 	use super::*;
 	
 	macro_rules! define_sequence {
-		( $_visibility : vis $_pattern : ident, $_identifier : expr, [ $( $_element : expr, )* ], $_separator : expr ) => {
+		( $_visibility : vis $_pattern : ident, $_identifier : literal, [ $( $_element : expr, )* ], $_separator : expr ) => {
 			::paste::paste! {
 				static [< _ $_pattern __SEQUENCE >] : &[Rb<TokenPattern>] = &[ $(
 						Rb::new_static ($_element),
@@ -93,28 +112,12 @@ pub mod tokens {
 	}
 	
 	macro_rules! define_repeat {
-		( $_visibility : vis $_pattern : ident, $_identifier : expr, $_element : expr, $_separator : expr, 4 ) => {
-			define_repeat! ($_visibility $_pattern, $_identifier, $_element, $_separator, [ 1, 2, 3, 4, ]);
+		
+		( $_visibility : vis $_pattern : ident, $_identifier : literal, $_element : expr, $_separator : expr, ( $_length : tt : $_each : tt ) ) => {
+			macros::__count_call_with! ( [ $_length : $_each ] => define_repeat! ($_visibility $_pattern, $_identifier, $_element, $_separator, ));
 		};
-		( $_visibility : vis $_pattern : ident, $_identifier : expr, $_element : expr, $_separator : expr, 8 ) => {
-			define_repeat! ($_visibility $_pattern, $_identifier, $_element, $_separator, [ 1, 2, 3, 4, 5, 6, 7, 8, ]);
-		};
-		( $_visibility : vis $_pattern : ident, $_identifier : expr, $_element : expr, $_separator : expr, 16 ) => {
-			define_repeat! ($_visibility $_pattern, $_identifier, $_element, $_separator, [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, ]);
-		};
-		( $_visibility : vis $_pattern : ident, $_identifier : expr, $_element : expr, $_separator : expr, 32 ) => {
-			define_repeat! ($_visibility $_pattern, $_identifier, $_element, $_separator, [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, ]);
-		};
-		( $_visibility : vis $_pattern : ident, $_identifier : expr, $_element : expr, $_separator : expr, 64 ) => {
-			define_repeat! ($_visibility $_pattern, $_identifier, $_element, $_separator, [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, ]);
-		};
-		( $_visibility : vis $_pattern : ident, $_identifier : expr, $_element : expr, $_separator : expr, 128 ) => {
-			define_repeat! ($_visibility $_pattern, $_identifier, $_element, $_separator, [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, ]);
-		};
-		( $_visibility : vis $_pattern : ident, $_identifier : expr, $_element : expr, $_separator : expr, 256 ) => {
-			define_repeat! ($_visibility $_pattern, $_identifier, $_element, $_separator, [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, ]);
-		};
-		( $_visibility : vis $_pattern : ident, $_identifier : expr, $_element : expr, $_separator : expr, [ $( $_count : expr, )* ] ) => {
+		
+		( $_visibility : vis $_pattern : ident, $_identifier : literal, $_element : expr, $_separator : expr, [ $( $_count : literal, )* ] ) => {
 			::paste::paste! {
 				$(
 					static [< _ $_pattern _ $_count __NO_NAME >] : &TokenPattern = & TokenPattern::Repeat (Rb::new_static ($_element), $_separator, $_count);
@@ -130,13 +133,17 @@ pub mod tokens {
 	
 	
 	
-	define_repeat! (pub DIGITS_BASE2, "digits-b2", glyphs::DIGIT_BASE2_TOKEN, None, 256);
-	define_repeat! (pub DIGITS_BASE8, "digits-b8", glyphs::DIGIT_BASE8_TOKEN, None, 128);
-	define_repeat! (pub DIGITS_BASE10, "digits-b10", glyphs::DIGIT_BASE10_TOKEN, None, 64);
-	define_repeat! (pub DIGITS_BASE16, "digits-b16", glyphs::DIGIT_BASE16_TOKEN, None, 64);
-	define_repeat! (pub DIGITS_BASE32_HEX, "digits-b32hex", glyphs::DIGIT_BASE32_HEX_TOKEN, None, 64);
-	define_repeat! (pub DIGITS_BASE32_RFC4648, "digits-b32rfc4648", glyphs::DIGIT_BASE32_RFC4648_TOKEN, None, 64);
-	define_repeat! (pub DIGITS_Z85, "digits-Z85", glyphs::DIGIT_Z85_TOKEN, None, 64);
+	define_repeat! (pub DIGITS_BASE10, "digits-b10", glyphs::DIGIT_BASE10_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (64 : 4));
+	
+	define_repeat! (pub DIGITS_BASE2, "digits-b2", glyphs::DIGIT_BASE2_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (64 : 8));
+	define_repeat! (pub DIGITS_BASE8, "digits-b8", glyphs::DIGIT_BASE8_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (64 : 8));
+	
+	define_repeat! (pub DIGITS_BASE16, "digits-b16", glyphs::DIGIT_BASE16_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (64 : 4));
+	
+	define_repeat! (pub DIGITS_BASE32_HEX, "digits-b32-hex", glyphs::DIGIT_BASE32_HEX_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (64 : 8));
+	define_repeat! (pub DIGITS_BASE32_RFC4648, "digits-b32-rfc4648", glyphs::DIGIT_BASE32_RFC4648_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (64 : 8));
+	
+	define_repeat! (pub DIGITS_Z85, "digits-Z85", glyphs::DIGIT_Z85_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_5_PATTERN), (65 : 5));
 	
 	
 	
@@ -146,17 +153,17 @@ pub mod tokens {
 			glyphs::VOWEL_LOWER_TOKEN,
 			glyphs::CONSONANT_LOWER_TOKEN,
 			glyphs::VOWEL_LOWER_TOKEN,
-		], Some (Rb::new_static (separators::SPACE_OPTIONAL)));
+		], Rb::new_static (separators::NONE_PATTERN));
 	
 	define_sequence! (pub CONSONANT_VOWEL_UPPER_SYLLABLE, "cvu-syllable", [
 			glyphs::CONSONANT_UPPER_TOKEN,
 			glyphs::VOWEL_UPPER_TOKEN,
 			glyphs::CONSONANT_UPPER_TOKEN,
 			glyphs::VOWEL_UPPER_TOKEN,
-		], Some (Rb::new_static (separators::SPACE_OPTIONAL)));
+		], Rb::new_static (separators::NONE_PATTERN));
 	
-	define_repeat! (pub CONSONANT_VOWEL_LOWER, "cvl-token", CONSONANT_VOWEL_LOWER_SYLLABLE, Some (Rb::new_static (separators::SPACE_MANDATORY)), 16);
-	define_repeat! (pub CONSONANT_VOWEL_UPPER, "cvu-token", CONSONANT_VOWEL_UPPER_SYLLABLE, Some (Rb::new_static (separators::SPACE_MANDATORY)), 16);
+	define_repeat! (pub CONSONANT_VOWEL_LOWER, "cvl", CONSONANT_VOWEL_LOWER_SYLLABLE, Rb::new_static (separators::SPACE_MANDATORY_INFIX_PATTERN), (8 : 1));
+	define_repeat! (pub CONSONANT_VOWEL_UPPER, "cvu", CONSONANT_VOWEL_UPPER_SYLLABLE, Rb::new_static (separators::SPACE_MANDATORY_INFIX_PATTERN), (8 : 1));
 	
 	
 	
@@ -184,13 +191,21 @@ pub mod separators {
 	use super::*;
 	
 	macro_rules! define_separator {
-		( $_visibility : vis $_pattern : ident, $_text : expr ) => {
+		( $_visibility : vis $_pattern : ident, $_text : expr, [ $( $_infix_each : literal, )* ] ) => {
 			::paste::paste! {
 				
 				static [< _ $_pattern _TEXT >] : &Text = & Text::Static ($_text);
 				
-				$_visibility static [< $_pattern _MANDATORY >] : &Separator = & Separator::Mandatory (Rb::new_static ( [< _ $_pattern _TEXT >] ));
-				$_visibility static [< $_pattern _OPTIONAL >] : &Separator = & Separator::Optional (Rb::new_static ( [< _ $_pattern _TEXT >] ));
+				$_visibility static [< $_pattern _MANDATORY_SEPARATOR >] : &Separator = & Separator::Mandatory (Rb::new_static ( [< _ $_pattern _TEXT >] ));
+				$_visibility static [< $_pattern _OPTIONAL_SEPARATOR >] : &Separator = & Separator::Optional (Rb::new_static ( [< _ $_pattern _TEXT >] ));
+				
+				$_visibility static [< $_pattern _MANDATORY_INFIX_PATTERN >] : &SeparatorPattern = & SeparatorPattern::Infix (Rb::new_static ( [< $_pattern _MANDATORY_SEPARATOR >] ));
+				$_visibility static [< $_pattern _OPTIONAL_INFIX_PATTERN >] : &SeparatorPattern = & SeparatorPattern::Infix (Rb::new_static ( [< $_pattern _OPTIONAL_SEPARATOR >] ));
+				
+				$(
+					$_visibility static [< $_pattern _MANDATORY_INFIX_EACH_ $_infix_each _PATTERN >] : &SeparatorPattern = & SeparatorPattern::InfixEach (Rb::new_static ( [< $_pattern _MANDATORY_SEPARATOR >] ), $_infix_each);
+					$_visibility static [< $_pattern _OPTIONAL_INFIX_EACH_ $_infix_each _PATTERN >] : &SeparatorPattern = & SeparatorPattern::InfixEach (Rb::new_static ( [< $_pattern _OPTIONAL_SEPARATOR >] ), $_infix_each);
+				)*
 			}
 		};
 	}
@@ -198,7 +213,12 @@ pub mod separators {
 	
 	
 	
-	define_separator! (pub SPACE, " ");
+	pub static NONE_PATTERN : &SeparatorPattern = & SeparatorPattern::None;
+	
+	
+	define_separator! (pub SPACE, " ", [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, ]);
+	define_separator! (pub DOT, ".", [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, ]);
+	define_separator! (pub HYPHEN, "-", [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, ]);
 }
 
 
@@ -325,4 +345,5 @@ pub mod ascii {
 	pub const C7D : char = '}';
 	pub const C7E : char = '~';
 }
+
 

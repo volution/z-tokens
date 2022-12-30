@@ -38,33 +38,35 @@ pub fn generate_token_push (_pattern : impl AsRef<TokenPattern>, _collector : &m
 		}
 		
 		TokenPattern::Sequence (_patterns, _separator) => {
-			let mut _is_first = true;
-			for _pattern in _patterns.iter () {
-				if ! _is_first {
-					if let Some (_separator) = _separator {
-						let _separator = _separator.clone ();
-						let _atom = Rb::new (Atom::Separator (_separator));
-						_collector.push (_atom);
-					}
+			let _count = _patterns.len ();
+			for (_index, _pattern) in _patterns.iter () .enumerate () {
+				let (_before, _after) = generate_separator (_separator, _index, _count) ?;
+				if let Some (_separator) = _before {
+					let _atom = Rb::new (Atom::Separator (_separator));
+					_collector.push (_atom);
 				}
 				generate_token_push (_pattern, _collector) ?;
-				_is_first = false;
+				if let Some (_separator) = _after {
+					let _atom = Rb::new (Atom::Separator (_separator));
+					_collector.push (_atom);
+				}
 			}
 			Ok (())
 		}
 		
 		TokenPattern::Repeat (_pattern, _separator, _count) => {
-			let mut _is_first = true;
-			for _index in 0 .. *_count {
-				if ! _is_first {
-					if let Some (_separator) = _separator {
-						let _separator = _separator.clone ();
-						let _atom = Rb::new (Atom::Separator (_separator));
-						_collector.push (_atom);
-					}
+			let _count = *_count;
+			for _index in 0 .. _count {
+				let (_before, _after) = generate_separator (_separator, _index, _count) ?;
+				if let Some (_separator) = _before {
+					let _atom = Rb::new (Atom::Separator (_separator));
+					_collector.push (_atom);
 				}
 				generate_token_push (_pattern, _collector) ?;
-				_is_first = false;
+				if let Some (_separator) = _after {
+					let _atom = Rb::new (Atom::Separator (_separator));
+					_collector.push (_atom);
+				}
 			}
 			Ok (())
 		}
@@ -72,6 +74,51 @@ pub fn generate_token_push (_pattern : impl AsRef<TokenPattern>, _collector : &m
 		TokenPattern::Empty =>
 			Ok (()),
 	}
+}
+
+
+
+
+pub fn generate_separator (_pattern : impl AsRef<SeparatorPattern>, _index : usize, _count : usize) -> GeneratorResult<(Option<Rb<Separator>>, Option<Rb<Separator>>)> {
+	assert! (_count > 0);
+	assert! (_index < _count);
+	let _pattern = _pattern.as_ref ();
+	let _separators = match _pattern {
+		
+		SeparatorPattern::None =>
+			(None, None),
+		
+		SeparatorPattern::Prefix (_prefix) =>
+			(
+				if _index == 0 { Some (_prefix.clone ()) } else { None },
+				None,
+			),
+		
+		SeparatorPattern::Suffix (_suffix) =>
+			(
+				None,
+				if _index == (_count - 1) { Some (_suffix.clone ()) } else { None },
+			),
+		
+		SeparatorPattern::Bracket (_prefix, _suffix) =>
+			(
+				if _index == 0 { Some (_prefix.clone ()) } else { None },
+				if _index == (_count - 1) { Some (_suffix.clone ()) } else { None },
+			),
+		
+		SeparatorPattern::Infix (_separator) =>
+			(
+				if (_index > 0) { Some (_separator.clone ()) } else { None },
+				None,
+			),
+		
+		SeparatorPattern::InfixEach (_separator, _each) =>
+			(
+				if (_index > 0) && ((_index % _each) == 0) { Some (_separator.clone ()) } else { None },
+				None,
+			),
+	};
+	Ok (_separators)
 }
 
 
