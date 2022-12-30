@@ -100,6 +100,23 @@ pub mod glyphs {
 			'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 			'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
 		]);
+	
+	// NOTE:  #>  python -c 'print (", ".join ([ "C%0X" % ord (c) for c in r"""!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~""" ]))'
+	define_set! (pub ASCII_SPECIAL, [
+			C21, C22, C23, C24, C25, C26, C27, C28, C29, C2A, C2B, C2C, C2D, C2E, C2F, C3A, C3B, C3C, C3D, C3E, C3F, C40, C5B, C5C, C5D, C5E, C5F, C60, C7B, C7C, C7D, C7E,
+		]);
+	
+	// NOTE:  #>  python -c 'print ("".join ([ chr(c) for c in range (33, 127) ]))'
+	// NOTE:  #>  python -c 'print (", ".join ([ "C%0X" % ord (c) for c in r"""!"#$%&'\''()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~""" ]))'
+	define_set! (pub ASCII_PRINTABLE, [
+			     C21, C22, C23, C24, C25, C26, C27, C28, C29, C2A, C2B, C2C, C2D, C2E, C2F,
+			C30, C31, C32, C33, C34, C35, C36, C37, C38, C39, C3A, C3B, C3C, C3D, C3E, C3F,
+			C40, C41, C42, C43, C44, C45, C46, C47, C48, C49, C4A, C4B, C4C, C4D, C4E, C4F,
+			C50, C51, C52, C53, C54, C55, C56, C57, C58, C59, C5A, C5B, C5C, C5D, C5E, C5F,
+			C60, C61, C62, C63, C64, C65, C66, C67, C68, C69, C6A, C6B, C6C, C6D, C6E, C6F,
+			C70, C71, C72, C73, C74, C75, C76, C77, C78, C79, C7A, C7B, C7C, C7D, C7E,
+		]);
+	
 }
 
 
@@ -194,9 +211,14 @@ pub mod tokens {
 	
 	
 	
-	define_repeat! (pub LETTER_LOWER, "letters-lower", glyphs::LETTER_LOWER_TOKEN, Rb::new_static (separators::SPACE_MANDATORY_INFIX_EACH_4_PATTERN), (64 : 4));
-	define_repeat! (pub LETTER_UPPER, "letters-upper", glyphs::LETTER_UPPER_TOKEN, Rb::new_static (separators::SPACE_MANDATORY_INFIX_EACH_4_PATTERN), (64 : 4));
-	define_repeat! (pub LETTER_MIXED, "letters-mixed", glyphs::LETTER_MIXED_TOKEN, Rb::new_static (separators::SPACE_MANDATORY_INFIX_EACH_4_PATTERN), (64 : 4));
+	define_repeat! (pub LETTER_LOWER, "ascii-lower", glyphs::LETTER_LOWER_TOKEN, Rb::new_static (separators::SPACE_MANDATORY_INFIX_EACH_4_PATTERN), (64 : 4));
+	define_repeat! (pub LETTER_UPPER, "ascii-upper", glyphs::LETTER_UPPER_TOKEN, Rb::new_static (separators::SPACE_MANDATORY_INFIX_EACH_4_PATTERN), (64 : 4));
+	define_repeat! (pub LETTER_MIXED, "ascii-mixed", glyphs::LETTER_MIXED_TOKEN, Rb::new_static (separators::SPACE_MANDATORY_INFIX_EACH_4_PATTERN), (64 : 4));
+	
+	
+	
+	
+	define_repeat! (pub ASCII_PRINTABLE, "ascii-any", glyphs::ASCII_PRINTABLE_TOKEN, Rb::new_static (separators::SPACE_MANDATORY_INFIX_EACH_4_PATTERN), (64 : 4));
 	
 	
 	
@@ -218,6 +240,8 @@ pub mod tokens {
 			LETTER_LOWER_ALL,
 			LETTER_UPPER_ALL,
 			LETTER_MIXED_ALL,
+			
+			ASCII_PRINTABLE_ALL,
 		];
 }
 
@@ -395,13 +419,13 @@ pub mod ascii {
 
 pub(crate) mod macros {
 	
-	// NOTE:  #> python -c $'print ("macro_rules! __count_list {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( %d, %d )" % (n, e) + "=> { [ " + ", ".join (["%d" % c for c in range (0, n + 1, e) if c != 0]) + ", ] };")\nprint ("}")' >| ./sources/patterns_count_list.in
+	// NOTE:  #>  python -c $'print ("macro_rules! __count_list {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( %d, %d )" % (n, e) + "=> { [ " + ", ".join (["%d" % c for c in range (0, n + 1, e) if c != 0]) + ", ] };")\nprint ("}")' >| ./sources/patterns_count_list.in
 	include! ("./patterns_count_list.in");
 	
-	// NOTE:  #> python -c $'print ("macro_rules! __count_call_each {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( [ %d : %d ] => $c:ident! ( $($p:tt)* ) )" % (n, e) + "=> {\\n" + "\\n".join (["\t$c! ( $($p)* %d );" % c for c in range (0, n + 1, e) if c != 0]) + "\\n};")\nprint ("}")' >| ./sources/patterns_count_call_each.in
+	// NOTE:  #>  python -c $'print ("macro_rules! __count_call_each {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( [ %d : %d ] => $c:ident! ( $($p:tt)* ) )" % (n, e) + "=> {\\n" + "\\n".join (["\t$c! ( $($p)* %d );" % c for c in range (0, n + 1, e) if c != 0]) + "\\n};")\nprint ("}")' >| ./sources/patterns_count_call_each.in
 	include! ("./patterns_count_call_each.in");
 	
-	// NOTE:  #> python -c $'print ("macro_rules! __count_call_with {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( [ %d : %d ] => $c:ident! ( $($p:tt)* ) )" % (n, e) + "=> { $c! ( $($p)* [ " + ", ".join (["%d" % c for c in range (0, n + 1, e) if c != 0]) + ", ] ); };")\nprint ("}")' >| ./sources/patterns_count_call_with.in
+	// NOTE:  #>  python -c $'print ("macro_rules! __count_call_with {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( [ %d : %d ] => $c:ident! ( $($p:tt)* ) )" % (n, e) + "=> { $c! ( $($p)* [ " + ", ".join (["%d" % c for c in range (0, n + 1, e) if c != 0]) + ", ] ); };")\nprint ("}")' >| ./sources/patterns_count_call_with.in
 	include! ("./patterns_count_call_with.in");
 	
 	pub(crate) use __count_list;
