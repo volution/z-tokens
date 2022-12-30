@@ -33,8 +33,8 @@ pub enum Separator {
 pub enum TokenPattern {
 	Named (&'static str, Rb<TokenPattern>),
 	Atom (Rb<AtomPattern>),
-	Sequence (RbList<TokenPattern>),
-	Repeat (Rb<TokenPattern>, usize),
+	Sequence (RbList<TokenPattern>, Option<Rb<Separator>>),
+	Repeat (Rb<TokenPattern>, Option<Rb<Separator>>, usize),
 	Empty,
 }
 

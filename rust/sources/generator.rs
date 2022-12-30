@@ -37,16 +37,34 @@ pub fn generate_token_push (_pattern : impl AsRef<TokenPattern>, _collector : &m
 			Ok (())
 		}
 		
-		TokenPattern::Sequence (_patterns) => {
+		TokenPattern::Sequence (_patterns, _separator) => {
+			let mut _is_first = true;
 			for _pattern in _patterns.iter () {
+				if ! _is_first {
+					if let Some (_separator) = _separator {
+						let _separator = _separator.clone ();
+						let _atom = Rb::new (Atom::Separator (_separator));
+						_collector.push (_atom);
+					}
+				}
 				generate_token_push (_pattern, _collector) ?;
+				_is_first = false;
 			}
 			Ok (())
 		}
 		
-		TokenPattern::Repeat (_pattern, _count) => {
+		TokenPattern::Repeat (_pattern, _separator, _count) => {
+			let mut _is_first = true;
 			for _index in 0 .. *_count {
-				generate_token_push (_pattern, _collector) ?
+				if ! _is_first {
+					if let Some (_separator) = _separator {
+						let _separator = _separator.clone ();
+						let _atom = Rb::new (Atom::Separator (_separator));
+						_collector.push (_atom);
+					}
+				}
+				generate_token_push (_pattern, _collector) ?;
+				_is_first = false;
 			}
 			Ok (())
 		}

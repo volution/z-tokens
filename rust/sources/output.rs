@@ -42,7 +42,11 @@ pub fn output_separator (_separator : impl AsRef<Separator>, _stream : impl Writ
 		Separator::Mandatory (_text) =>
 			output_text (_text, _stream),
 		Separator::Optional (_text) =>
-			output_text (_text, _stream),
+			if false {
+				output_text (_text, _stream)
+			} else {
+				Ok (())
+			},
 	}
 }
 
