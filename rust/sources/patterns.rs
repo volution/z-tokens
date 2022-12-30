@@ -5,47 +5,30 @@ use crate::prelude::*;
 
 
 
-pub(crate) mod macros {
-	
-	// NOTE:  #> python -c $'print ("macro_rules! __count_list {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( %d, %d )" % (n, e) + "=> { [ " + ", ".join (["%d" % c for c in range (0, n + 1, e) if c != 0]) + ", ] };")\nprint ("}")' >| ./sources/patterns_count_list.in
-	include! ("./patterns_count_list.in");
-	
-	// NOTE:  #> python -c $'print ("macro_rules! __count_call_each {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( [ %d : %d ] => $c:ident! ( $($p:tt)* ) )" % (n, e) + "=> {\\n" + "\\n".join (["\t$c! ( $($p)* %d );" % c for c in range (0, n + 1, e) if c != 0]) + "\\n};")\nprint ("}")' >| ./sources/patterns_count_call_each.in
-	include! ("./patterns_count_call_each.in");
-	
-	// NOTE:  #> python -c $'print ("macro_rules! __count_call_with {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( [ %d : %d ] => $c:ident! ( $($p:tt)* ) )" % (n, e) + "=> { $c! ( $($p)* [ " + ", ".join (["%d" % c for c in range (0, n + 1, e) if c != 0]) + ", ] ); };")\nprint ("}")' >| ./sources/patterns_count_call_with.in
-	include! ("./patterns_count_call_with.in");
-	
-	pub(crate) use __count_list;
-	pub(crate) use __count_call_each;
-	pub(crate) use __count_call_with;
-}
-
-
-
-
 pub mod glyphs {
 	
 	use super::*;
 	use super::ascii::*;
 	
+	
+	
+	
 	macro_rules! define_set {
 		( $_visibility : vis $_pattern : ident, [ $( $_char : expr, )* ] ) => {
 			::paste::paste! {
+				
 				$(
 					static [< _ $_pattern __ $_char __TEXT >] : &Text = & Text::Char ($_char);
 					static [< _ $_pattern __ $_char __GLYPH >] : &Glyph = & Glyph::Text (Rb::new_static ( [< _ $_pattern __ $_char __TEXT >] ));
 				)*
 				
-				#[ doc = concat! ( "Glyph character set for `", $( stringify! ($_char) ),*, "`." ) ]
+				#[ doc = concat! ( "Glyph character set for ", $( "`", stringify! ($_char), "` " ),*, "." ) ]
 				$_visibility static [< $_pattern _SET >] : &[Rb<Glyph>] = &[ $(
 						Rb::new_static ( [< _ $_pattern __ $_char __GLYPH >] ),
 					)* ];
 				
 				$_visibility static [< $_pattern _GLYPH >] : &GlyphPattern = & GlyphPattern::Set (RbList::from_static ( [< $_pattern _SET >] ));
-				
 				$_visibility static [< $_pattern _ATOM >] : &AtomPattern = & AtomPattern::Glyph (Rb::new_static ( [< $_pattern _GLYPH >] ));
-				
 				$_visibility static [< $_pattern _TOKEN >] : &TokenPattern = & TokenPattern::Atom (Rb::new_static ( [< $_pattern _ATOM >] ));
 			}
 		};
@@ -99,17 +82,23 @@ pub mod tokens {
 	
 	use super::*;
 	
+	
+	
+	
 	macro_rules! define_sequence {
 		( $_visibility : vis $_pattern : ident, $_identifier : literal, [ $( $_element : expr, )* ], $_separator : expr ) => {
 			::paste::paste! {
+				
 				static [< _ $_pattern __SEQUENCE >] : &[Rb<TokenPattern>] = &[ $(
 						Rb::new_static ($_element),
 					)* ];
+				
 				static [< _ $_pattern __NO_NAME >] : &TokenPattern = & TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern __SEQUENCE >] ), $_separator);
 				$_visibility static [< $_pattern >] : &TokenPattern = & TokenPattern::Named ($_identifier, Rb::new_static ( [< _ $_pattern __NO_NAME >] ));
 			}
 		};
 	}
+	
 	
 	macro_rules! define_repeat {
 		
@@ -119,10 +108,12 @@ pub mod tokens {
 		
 		( $_visibility : vis $_pattern : ident, $_identifier : literal, $_element : expr, $_separator : expr, [ $( $_count : literal, )* ] ) => {
 			::paste::paste! {
+				
 				$(
 					static [< _ $_pattern _ $_count __NO_NAME >] : &TokenPattern = & TokenPattern::Repeat (Rb::new_static ($_element), $_separator, $_count);
 					$_visibility static [< $_pattern _ $_count >] : &TokenPattern = & TokenPattern::Named (concat! ($_identifier, "-", $_count), Rb::new_static ( [< _ $_pattern _ $_count __NO_NAME >] ));
 				)*
+				
 				$_visibility static [< $_pattern _ALL >] : &[Rb<TokenPattern>] = &[ $(
 						Rb::new_static ( [< $_pattern _ $_count >] ),
 					)* ];
@@ -190,8 +181,14 @@ pub mod separators {
 	
 	use super::*;
 	
+	
+	
+	
 	macro_rules! define_separator {
-		( $_visibility : vis $_pattern : ident, $_text : expr, [ $( $_infix_each : literal, )* ] ) => {
+		( $_visibility : vis $_pattern : ident, $_text : expr, infix, ( $_length : tt : $_each : tt ) ) => {
+			macros::__count_call_with! ( [ $_length : $_each ] => define_separator! ($_visibility $_pattern, $_text, infix, ));
+		};
+		( $_visibility : vis $_pattern : ident, $_text : expr, infix, [ $( $_infix_each : literal, )* ] ) => {
 			::paste::paste! {
 				
 				static [< _ $_pattern _TEXT >] : &Text = & Text::Static ($_text);
@@ -216,9 +213,9 @@ pub mod separators {
 	pub static NONE_PATTERN : &SeparatorPattern = & SeparatorPattern::None;
 	
 	
-	define_separator! (pub SPACE, " ", [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, ]);
-	define_separator! (pub DOT, ".", [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, ]);
-	define_separator! (pub HYPHEN, "-", [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, ]);
+	define_separator! (pub SPACE, " ", infix, ( 16 : 1 ));
+	define_separator! (pub DOT, ".", infix, ( 16 : 1 ));
+	define_separator! (pub HYPHEN, "-", infix, ( 16 : 1 ));
 }
 
 
@@ -346,4 +343,22 @@ pub mod ascii {
 	pub const C7E : char = '~';
 }
 
+
+
+
+pub(crate) mod macros {
+	
+	// NOTE:  #> python -c $'print ("macro_rules! __count_list {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( %d, %d )" % (n, e) + "=> { [ " + ", ".join (["%d" % c for c in range (0, n + 1, e) if c != 0]) + ", ] };")\nprint ("}")' >| ./sources/patterns_count_list.in
+	include! ("./patterns_count_list.in");
+	
+	// NOTE:  #> python -c $'print ("macro_rules! __count_call_each {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( [ %d : %d ] => $c:ident! ( $($p:tt)* ) )" % (n, e) + "=> {\\n" + "\\n".join (["\t$c! ( $($p)* %d );" % c for c in range (0, n + 1, e) if c != 0]) + "\\n};")\nprint ("}")' >| ./sources/patterns_count_call_each.in
+	include! ("./patterns_count_call_each.in");
+	
+	// NOTE:  #> python -c $'print ("macro_rules! __count_call_with {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( [ %d : %d ] => $c:ident! ( $($p:tt)* ) )" % (n, e) + "=> { $c! ( $($p)* [ " + ", ".join (["%d" % c for c in range (0, n + 1, e) if c != 0]) + ", ] ); };")\nprint ("}")' >| ./sources/patterns_count_call_with.in
+	include! ("./patterns_count_call_with.in");
+	
+	pub(crate) use __count_list;
+	pub(crate) use __count_call_each;
+	pub(crate) use __count_call_with;
+}
 

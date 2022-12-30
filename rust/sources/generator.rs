@@ -108,7 +108,7 @@ pub fn generate_separator (_pattern : impl AsRef<SeparatorPattern>, _index : usi
 		
 		SeparatorPattern::Infix (_separator) =>
 			(
-				if (_index > 0) { Some (_separator.clone ()) } else { None },
+				if _index > 0 { Some (_separator.clone ()) } else { None },
 				None,
 			),
 		
