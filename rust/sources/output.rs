@@ -66,11 +66,22 @@ pub fn output_separator (_separator : impl AsRef<Separator>, _stream : impl Writ
 
 
 
-pub fn output_glyph (_glyph : impl AsRef<Glyph>, _stream : impl Write) -> OutputResult {
+pub fn output_glyph (_glyph : impl AsRef<Glyph>, mut _stream : impl Write) -> OutputResult {
 	let _glyph = _glyph.as_ref ();
 	match _glyph {
 		Glyph::Text (_text) =>
 			output_text (_text, _stream),
+		Glyph::Integer (_value, _format) =>
+			match *_format {
+				IntegerFormat::Decimal =>
+					write! (_stream, "{0:}", *_value) .else_wrap (0x6d36e225),
+				IntegerFormat::DecimalPadded (_width) =>
+					write! (_stream, "{0:1$}", *_value, _width) .else_wrap (0x6044048b),
+				IntegerFormat::Hex =>
+					write! (_stream, "{0:x}", *_value) .else_wrap (0xe1154407),
+				IntegerFormat::HexPadded (_width) =>
+					write! (_stream, "{0:1$x}", *_value, _width) .else_wrap (0x33322c70),
+			}
 	}
 }
 

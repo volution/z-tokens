@@ -43,7 +43,7 @@ impl Entropy {
 				self.accumulator = _other.accumulator;
 			} else if _other.accumulator == 0 {
 				// NOP
-			} else if (self.accumulator < u64::MAX as u128) && (_other.accumulator < u64::MAX as u128) {
+			} else if (self.accumulator < (u64::MAX as u128)) && (_other.accumulator < (u64::MAX as u128)) {
 				self.accumulator *= _other.accumulator;
 			} else {
 				self.accumulator_log2 = self.bits () + _other.bits ();
@@ -56,7 +56,7 @@ impl Entropy {
 	pub fn bits (&self) -> f64 {
 		if self.accumulator != 0 {
 			assert! (self.accumulator_log2 == 0.0);
-			(self.accumulator as f64).log2 ()
+			(self.accumulator as f64) .log2 ()
 		} else {
 			assert! (self.accumulator == 0);
 			self.accumulator_log2
@@ -134,8 +134,21 @@ pub fn entropy_atom (_pattern : impl AsRef<AtomPattern>) -> EntropyResult<Entrop
 pub fn entropy_glyph (_pattern : impl AsRef<GlyphPattern>) -> EntropyResult<Entropy> {
 	let _pattern = _pattern.as_ref ();
 	match _pattern {
+		
 		GlyphPattern::Set (_patterns) =>
 			Ok (Entropy::for_choice (_patterns.len ())),
+		
+		GlyphPattern::Integer (_lower, _upper, _format) => {
+			let (_lower, _upper) = (*_lower, *_upper);
+			if _lower > _upper {
+				fail! (0xb6347bbc);
+			}
+			let _delta = u128::abs_diff (_lower, _upper) + 1;
+			if _delta > (usize::MAX as u128) {
+				fail! (0x2a1640d7);
+			}
+			Ok (Entropy::for_choice (_delta as usize))
+		}
 	}
 }
 

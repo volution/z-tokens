@@ -151,10 +151,27 @@ pub fn generate_atom (_pattern : impl AsRef<AtomPattern>, _randomizer : &mut imp
 pub fn generate_glyph (_pattern : impl AsRef<GlyphPattern>, _randomizer : &mut impl Randomizer) -> GeneratorResult<Rb<Glyph>> {
 	let _pattern = _pattern.as_ref ();
 	match _pattern {
+		
 		GlyphPattern::Set (_patterns) => {
 			let _count = _patterns.len ();
 			let _index = _randomizer.choose (_count) .else_wrap (0x5079d3d3) ?;
 			let _glyph = _patterns[_index] .clone ();
+			Ok (_glyph)
+		}
+		
+		GlyphPattern::Integer (_lower, _upper, _format) => {
+			let (_lower, _upper) = (*_lower, *_upper);
+			if _lower > _upper {
+				fail! (0xb8a08c0e);
+			}
+			let _delta = (_upper - _lower) + 1;
+			if _delta > (usize::MAX as u128) {
+				fail! (0x4cc61b73);
+			}
+			let _index = _randomizer.choose (_delta as usize) .else_wrap (0x5079d3d3) ?;
+			let _value = _lower + (_index as u128);
+			let _glyph = Glyph::Integer (_value, *_format);
+			let _glyph = Rb::new (_glyph);
 			Ok (_glyph)
 		}
 	}

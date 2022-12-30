@@ -36,6 +36,17 @@ pub mod glyphs {
 		};
 	}
 	
+	macro_rules! define_integer {
+		( $_visibility : vis $_pattern : ident, ( $_lower : tt ..= $_upper : tt ), $_format : expr ) => {
+			::paste::paste! {
+				
+				$_visibility static [< $_pattern _GLYPH >] : &GlyphPattern = & GlyphPattern::Integer ($_lower, $_upper, $_format);
+				$_visibility static [< $_pattern _ATOM >] : &AtomPattern = & AtomPattern::Glyph (Rb::new_static ( [< $_pattern _GLYPH >] ));
+				$_visibility static [< $_pattern _TOKEN >] : &TokenPattern = & TokenPattern::Atom (Rb::new_static ( [< $_pattern _ATOM >] ));
+			}
+		};
+	}
+	
 	
 	
 	
@@ -248,6 +259,17 @@ pub mod glyphs {
 			BW1793, BW1794, BW1795, BW1796, BW1797, BW1798, BW1799, BW1800, BW1801, BW1802, BW1803, BW1804, BW1805, BW1806, BW1807, BW1808, BW1809, BW1810, BW1811, BW1812, BW1813, BW1814, BW1815, BW1816, BW1817, BW1818, BW1819, BW1820, BW1821, BW1822, BW1823, BW1824, BW1825, BW1826, BW1827, BW1828, BW1829, BW1830, BW1831, BW1832, BW1833, BW1834, BW1835, BW1836, BW1837, BW1838, BW1839, BW1840, BW1841, BW1842, BW1843, BW1844, BW1845, BW1846, BW1847, BW1848, BW1849, BW1850, BW1851, BW1852, BW1853, BW1854, BW1855, BW1856, BW1857, BW1858, BW1859, BW1860, BW1861, BW1862, BW1863, BW1864, BW1865, BW1866, BW1867, BW1868, BW1869, BW1870, BW1871, BW1872, BW1873, BW1874, BW1875, BW1876, BW1877, BW1878, BW1879, BW1880, BW1881, BW1882, BW1883, BW1884, BW1885, BW1886, BW1887, BW1888, BW1889, BW1890, BW1891, BW1892, BW1893, BW1894, BW1895, BW1896, BW1897, BW1898, BW1899, BW1900, BW1901, BW1902, BW1903, BW1904, BW1905, BW1906, BW1907, BW1908, BW1909, BW1910, BW1911, BW1912, BW1913, BW1914, BW1915, BW1916, BW1917, BW1918, BW1919, BW1920,
 			BW1921, BW1922, BW1923, BW1924, BW1925, BW1926, BW1927, BW1928, BW1929, BW1930, BW1931, BW1932, BW1933, BW1934, BW1935, BW1936, BW1937, BW1938, BW1939, BW1940, BW1941, BW1942, BW1943, BW1944, BW1945, BW1946, BW1947, BW1948, BW1949, BW1950, BW1951, BW1952, BW1953, BW1954, BW1955, BW1956, BW1957, BW1958, BW1959, BW1960, BW1961, BW1962, BW1963, BW1964, BW1965, BW1966, BW1967, BW1968, BW1969, BW1970, BW1971, BW1972, BW1973, BW1974, BW1975, BW1976, BW1977, BW1978, BW1979, BW1980, BW1981, BW1982, BW1983, BW1984, BW1985, BW1986, BW1987, BW1988, BW1989, BW1990, BW1991, BW1992, BW1993, BW1994, BW1995, BW1996, BW1997, BW1998, BW1999, BW2000, BW2001, BW2002, BW2003, BW2004, BW2005, BW2006, BW2007, BW2008, BW2009, BW2010, BW2011, BW2012, BW2013, BW2014, BW2015, BW2016, BW2017, BW2018, BW2019, BW2020, BW2021, BW2022, BW2023, BW2024, BW2025, BW2026, BW2027, BW2028, BW2029, BW2030, BW2031, BW2032, BW2033, BW2034, BW2035, BW2036, BW2037, BW2038, BW2039, BW2040, BW2041, BW2042, BW2043, BW2044, BW2045, BW2046, BW2047, BW2048,
 		]);
+	
+	
+	
+	
+	define_integer! (pub INTEGER_0_255, (0 ..= 255), IntegerFormat::Decimal);
+	define_integer! (pub INTEGER_2_253, (2 ..= 253), IntegerFormat::Decimal);
+	
+	define_integer! (pub INTEGER_0_31, (0 ..= 31), IntegerFormat::Decimal);
+	define_integer! (pub INTEGER_1_30, (1 ..= 30), IntegerFormat::Decimal);
+	
+	define_integer! (pub INTEGER_8B_HEX, (0 ..= 255), IntegerFormat::HexPadded (2));
 }
 
 
@@ -292,6 +314,19 @@ pub mod tokens {
 				$_visibility static [< $_pattern _ALL >] : &[Rb<TokenPattern>] = &[ $(
 						Rb::new_static ( [< $_pattern _ $_count >] ),
 					)* ];
+			}
+		};
+	}
+	
+	
+	macro_rules! define_constant {
+		( $_visibility : vis $_constant : ident, $_variant : ident, $_text : expr ) => {
+			::paste::paste! {
+				
+				static [< _ $_constant _TEXT >] : &Text = & Text::$_variant ($_text);
+				
+				$_visibility static [< $_constant _ATOM >] : &AtomPattern = & AtomPattern::Constant (Rb::new_static ( [< _ $_constant _TEXT >] ));
+				$_visibility static [< $_constant _TOKEN >] : &TokenPattern = & TokenPattern::Atom (Rb::new_static ( [< $_constant _ATOM >] ));
 			}
 		};
 	}
@@ -403,6 +438,61 @@ pub mod tokens {
 	
 	
 	
+	define_constant! (IP_127_PREFIX, Str, "127");
+	define_constant! (IP_10_PREFIX, Str, "10");
+	define_constant! (IP_172_PREFIX, Str, "172");
+	define_constant! (IP_192_A_PREFIX, Str, "192");
+	define_constant! (IP_192_B_PREFIX, Str, "168");
+	define_constant! (IP_MAC_PREFIX, Str, "02");
+	
+	define_sequence! (pub IP_127, "ip-127", [
+			IP_127_PREFIX_TOKEN,
+			glyphs::INTEGER_2_253_TOKEN,
+			glyphs::INTEGER_2_253_TOKEN,
+			glyphs::INTEGER_2_253_TOKEN,
+		], Rb::new_static (separators::DOT_MANDATORY_INFIX_PATTERN));
+	
+	define_sequence! (pub IP_10, "ip-10", [
+			IP_10_PREFIX_TOKEN,
+			glyphs::INTEGER_2_253_TOKEN,
+			glyphs::INTEGER_2_253_TOKEN,
+			glyphs::INTEGER_2_253_TOKEN,
+		], Rb::new_static (separators::DOT_MANDATORY_INFIX_PATTERN));
+	
+	define_sequence! (pub IP_172, "ip-172", [
+			IP_172_PREFIX_TOKEN,
+			glyphs::INTEGER_1_30_TOKEN,
+			glyphs::INTEGER_2_253_TOKEN,
+			glyphs::INTEGER_2_253_TOKEN,
+		], Rb::new_static (separators::DOT_MANDATORY_INFIX_PATTERN));
+	
+	define_sequence! (pub IP_192, "ip-192", [
+			IP_192_A_PREFIX_TOKEN,
+			IP_192_B_PREFIX_TOKEN,
+			glyphs::INTEGER_2_253_TOKEN,
+			glyphs::INTEGER_2_253_TOKEN,
+		], Rb::new_static (separators::DOT_MANDATORY_INFIX_PATTERN));
+	
+	define_sequence! (pub IP_MAC, "ip-mac", [
+			IP_MAC_PREFIX_TOKEN,
+			glyphs::INTEGER_8B_HEX_TOKEN,
+			glyphs::INTEGER_8B_HEX_TOKEN,
+			glyphs::INTEGER_8B_HEX_TOKEN,
+			glyphs::INTEGER_8B_HEX_TOKEN,
+			glyphs::INTEGER_8B_HEX_TOKEN,
+		], Rb::new_static (separators::COLON_MANDATORY_INFIX_PATTERN));
+	
+	pub static IP_ALL : &[Rb<TokenPattern>] = &[
+			Rb::new_static (IP_127),
+			Rb::new_static (IP_10),
+			Rb::new_static (IP_172),
+			Rb::new_static (IP_192),
+			Rb::new_static (IP_MAC),
+		];
+	
+	
+	
+	
 	pub static ALL : &[&[Rb<TokenPattern>]] = &[
 			
 			DIGITS_BASE2_ALL,
@@ -433,6 +523,8 @@ pub mod tokens {
 			
 			MNEMONIC_ALL,
 			BIP0039_ALL,
+			
+			IP_ALL,
 			
 		];
 }
@@ -479,6 +571,7 @@ pub mod separators {
 	define_separator! (pub SPACE, Char, ' ', infix, ( 16 : 1 ));
 	define_separator! (pub DOT, Char, '.', infix, ( 16 : 1 ));
 	define_separator! (pub HYPHEN, Char, '-', infix, ( 16 : 1 ));
+	define_separator! (pub COLON, Char, ':', infix, ( 16 : 1 ));
 	
 	define_separator! (pub SPACE_HYPHEN_SPACE, Str, " - ", infix, ( 16 : 1 ));
 }
