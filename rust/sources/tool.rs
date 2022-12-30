@@ -12,13 +12,17 @@ define_error! (pub MainError, result : MainResult);
 
 pub fn main () -> MainResult {
 	
-	// let _pattern = TokenPattern::Empty;
-	// let _pattern = patterns::tokens::DIGITS_16;
-	let _pattern = patterns::tokens::CONSONANT_VOWEL_LOWER_16;
+	let mut _stream = BufWriter::with_capacity (1024 * 1024, stdout_locked ());
 	
-	let _token = generate_token (&_pattern) .else_wrap (0xef0a3430) ?;
-	
-	output_token (&_token, io::stdout () .lock ()) .else_wrap (0xdef2b059) ?;
+	for _pattern in patterns::all_token_patterns () .into_iter () {
+		let &(ref _identifier, ref _pattern) = _pattern.as_ref ();
+		
+		let _token = generate_token (&_pattern) .else_wrap (0xef0a3430) ?;
+		
+		write! (&mut _stream, "{} => ", _identifier) .else_wrap (0xd141c5ef) ?;
+		output_token (&_token, &mut _stream) .else_wrap (0xdef2b059) ?;
+		writeln! (&mut _stream) .else_wrap (0x339d5a87) ?;
+	}
 	
 	Ok (())
 }

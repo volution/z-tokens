@@ -69,11 +69,13 @@ pub mod tokens {
 					static [< _ $_pattern _ $_count __NO_NAME >] : &TokenPattern = & TokenPattern::Repeat (Rb::new_static ($_element), $_count);
 					$_visibility static [< $_pattern _ $_count >] : &TokenPattern = & TokenPattern::Named (::std::concat! ($_identifier, "-", $_count), Rb::new_static ( [< _ $_pattern _ $_count __NO_NAME >] ));
 				)*
+				$_visibility static [< $_pattern _ALL >] : &[Rb<TokenPattern>] = &[ $(
+						Rb::new_static ( [< $_pattern _ $_count >] ),
+					)* ];
 			}
 		};
 	}
 	
-	pub static EMPTY : &TokenPattern = & TokenPattern::Empty;
 	
 	define_sequence! (pub CONSONANT_VOWEL_LOWER_SYLLABLE, "cvl-syllable", [
 			glyphs::CONSONANT_LOWER_TOKEN,
@@ -88,5 +90,35 @@ pub mod tokens {
 	define_repeat! (pub CONSONANT_VOWEL_UPPER, "cvu-token", CONSONANT_VOWEL_UPPER_SYLLABLE, default);
 	
 	define_repeat! (pub DIGITS, "digits", glyphs::DIGIT_TOKEN, default);
+	
+	
+	
+	
+	pub static ALL : &[&[Rb<TokenPattern>]] = &[
+			CONSONANT_VOWEL_LOWER_ALL,
+			CONSONANT_VOWEL_UPPER_ALL,
+			DIGITS_ALL,
+		];
+}
+
+
+
+
+pub fn all_token_patterns () -> RbList<(String, Rb<TokenPattern>)> {
+	
+	let mut _collector = Vec::with_capacity (1024);
+	
+	for _patterns in tokens::ALL.iter () {
+		for _pattern in _patterns.iter () {
+			match _pattern.as_ref () {
+				TokenPattern::Named (_identifier, _) =>
+					_collector.push ((String::from (*_identifier), _pattern.clone ())),
+				_ =>
+					panic! (0xcb0098dd),
+			}
+		}
+	}
+	
+	RbList::from_vec (_collector)
 }
 
