@@ -28,6 +28,9 @@ pub fn generate_token_push (_pattern : impl AsRef<TokenPattern>, _collector : &m
 	let _pattern = _pattern.as_ref ();
 	match _pattern {
 		
+		TokenPattern::Named (_identifier, _pattern) =>
+			generate_token_push (_pattern, _collector),
+		
 		TokenPattern::Atom (_pattern) => {
 			let _atom = generate_atom (_pattern) ?;
 			_collector.push (_atom);

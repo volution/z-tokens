@@ -48,24 +48,26 @@ pub mod tokens {
 	use super::*;
 	
 	macro_rules! define_sequence {
-		( $_visibility : vis $_pattern : ident, [ $( $_element : expr, )* ] ) => {
+		( $_visibility : vis $_pattern : ident, $_identifier : expr, [ $( $_element : expr, )* ] ) => {
 			::paste::paste! {
 				static [< _ $_pattern __SEQUENCE >] : &[Rb<TokenPattern>] = &[ $(
 						Rb::new_static ($_element),
 					)* ];
-				$_visibility static [< $_pattern >] : &TokenPattern = &TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern __SEQUENCE >] ));
+				static [< _ $_pattern __NO_NAME >] : &TokenPattern = & TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern __SEQUENCE >] ));
+				$_visibility static [< $_pattern >] : &TokenPattern = & TokenPattern::Named ($_identifier, Rb::new_static ( [< _ $_pattern __NO_NAME >] ));
 			}
 		};
 	}
 	
 	macro_rules! define_repeat {
-		( $_visibility : vis $_pattern : ident, $_element : expr, default ) => {
-			define_repeat! ($_visibility $_pattern, $_element, [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, ]);
+		( $_visibility : vis $_pattern : ident, $_identifier : expr, $_element : expr, default ) => {
+			define_repeat! ($_visibility $_pattern, $_identifier, $_element, [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, ]);
 		};
-		( $_visibility : vis $_pattern : ident, $_element : expr, [ $( $_count : expr, )* ] ) => {
+		( $_visibility : vis $_pattern : ident, $_identifier : expr, $_element : expr, [ $( $_count : expr, )* ] ) => {
 			::paste::paste! {
 				$(
-					$_visibility static [< $_pattern _ $_count >] : &TokenPattern = & TokenPattern::Repeat (Rb::new_static ($_element), $_count);
+					static [< _ $_pattern _ $_count __NO_NAME >] : &TokenPattern = & TokenPattern::Repeat (Rb::new_static ($_element), $_count);
+					$_visibility static [< $_pattern _ $_count >] : &TokenPattern = & TokenPattern::Named (::std::concat! ($_identifier, "-", $_count), Rb::new_static ( [< _ $_pattern _ $_count __NO_NAME >] ));
 				)*
 			}
 		};
@@ -73,18 +75,18 @@ pub mod tokens {
 	
 	pub static EMPTY : &TokenPattern = & TokenPattern::Empty;
 	
-	define_sequence! (pub CONSONANT_VOWEL_LOWER_SYLLABLE, [
+	define_sequence! (pub CONSONANT_VOWEL_LOWER_SYLLABLE, "cvl-syllable", [
 			glyphs::CONSONANT_LOWER_TOKEN,
 			glyphs::VOWEL_LOWER_TOKEN,
 		]);
-	define_sequence! (pub CONSONANT_VOWEL_UPPER_SYLLABLE, [
+	define_sequence! (pub CONSONANT_VOWEL_UPPER_SYLLABLE, "cvu-syllable", [
 			glyphs::CONSONANT_UPPER_TOKEN,
 			glyphs::VOWEL_UPPER_TOKEN,
 		]);
 	
-	define_repeat! (pub CONSONANT_VOWEL_LOWER, CONSONANT_VOWEL_LOWER_SYLLABLE, default);
-	define_repeat! (pub CONSONANT_VOWEL_UPPER, CONSONANT_VOWEL_UPPER_SYLLABLE, default);
+	define_repeat! (pub CONSONANT_VOWEL_LOWER, "cvl-token", CONSONANT_VOWEL_LOWER_SYLLABLE, default);
+	define_repeat! (pub CONSONANT_VOWEL_UPPER, "cvu-token", CONSONANT_VOWEL_UPPER_SYLLABLE, default);
 	
-	define_repeat! (pub DIGITS, glyphs::DIGIT_TOKEN, default);
+	define_repeat! (pub DIGITS, "digits", glyphs::DIGIT_TOKEN, default);
 }
 
