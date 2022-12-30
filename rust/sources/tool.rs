@@ -20,7 +20,7 @@ pub fn main () -> MainResult {
 	for _pattern in patterns::all_token_patterns () .into_iter () {
 		let &(ref _identifier, ref _pattern) = _pattern.as_ref ();
 		
-		if _identifier.contains ("-upper-") {
+		if _identifier.contains ("-upper-") || _identifier.contains ("-upper:") {
 			continue;
 		}
 		

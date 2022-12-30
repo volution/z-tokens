@@ -308,7 +308,7 @@ pub mod tokens {
 				
 				$(
 					static [< _ $_pattern _ $_count __NO_NAME >] : &TokenPattern = & TokenPattern::Repeat (Rb::new_static ($_element), $_separator, $_count);
-					$_visibility static [< $_pattern _ $_count >] : &TokenPattern = & TokenPattern::Named (concat! ($_identifier, "-", $_count), Rb::new_static ( [< _ $_pattern _ $_count __NO_NAME >] ));
+					$_visibility static [< $_pattern _ $_count >] : &TokenPattern = & TokenPattern::Named (concat! ($_identifier, ":", $_count), Rb::new_static ( [< _ $_pattern _ $_count __NO_NAME >] ));
 				)*
 				
 				$_visibility static [< $_pattern _ALL >] : &[Rb<TokenPattern>] = &[ $(
