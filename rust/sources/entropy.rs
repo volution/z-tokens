@@ -23,6 +23,7 @@ define_error! (pub EntroyError, result : EntropyResult);
 
 pub struct Entropy {
 	accumulator : BigUint,
+	accumulator_log2 : f64,
 }
 
 
@@ -31,40 +32,74 @@ impl Entropy {
 	pub fn none () -> Self {
 		Self {
 				accumulator : BigUint::zero (),
+				accumulator_log2 : 0.0,
 			}
 	}
 	
 	pub fn for_choice (_count : usize) -> Self {
+		if _count == 0 {
+			return Self::none ();
+		}
 		Self {
 				accumulator : BigUint::from (_count),
+				accumulator_log2 : (_count as f64) .log2 (),
 			}
 	}
 	
 	pub fn for_choice_repeat (_count : usize, _repeats : usize) -> Self {
 		if (_count == 0) || (_repeats == 0) {
-			return Self::none ()
+			return Self::none ();
+		}
+		if _repeats == 1 {
+			return Self::for_choice (_count);
 		}
 		Self {
 				accumulator : BigUint::from (_count) .pow (_repeats),
+				accumulator_log2 : ((_count as f64) * (_repeats as f64)) .log2 (),
 			}
 	}
 	
 	pub fn multiply (&mut self, _other : &Entropy) -> EntropyResult {
 		if self.accumulator.is_zero () {
 			self.accumulator = _other.accumulator.clone ();
+			self.accumulator_log2 = _other.accumulator_log2;
 		} else if _other.accumulator.is_zero () {
 			// NOP
 		} else {
 			self.accumulator *= &_other.accumulator;
+			self.accumulator_log2 += _other.accumulator_log2;
 		}
 		Ok (())
 	}
 	
 	pub fn bits (&self) -> f64 {
-		self.accumulator.to_f64 () .else_panic (0xf18aae78) .log2 ()
+		if self.accumulator.is_zero () {
+			return 0.0;
+		}
+		let _value = self.accumulator.to_f64 ();
+		let _bits = if let Some (_value) = _value {
+				if _value.is_finite () {
+					Some (_value.log2 ())
+				} else {
+					None
+				}
+			} else {
+				None
+			};
+		let _bits = if let Some (_bits) = _bits {
+				_bits
+			} else {
+				self.accumulator_log2
+			};
+		assert! (! _bits.is_nan ());
+		assert! (_bits.is_finite ());
+		_bits
 	}
 	
 	pub fn bits_exact (&self) -> (f64, bool) {
+		if self.accumulator.is_zero () {
+			return (0.0, true);
+		}
 		let _bits = self.accumulator.bits ();
 		let mut _exact = true;
 		for _bit in 0 .. (_bits - 1) {
@@ -78,10 +113,6 @@ impl Entropy {
 		} else {
 			(self.bits (), false)
 		}
-	}
-	
-	pub(crate) fn accumulator (&self) -> Option<u128> {
-		self.accumulator.to_u128 ()
 	}
 }
 

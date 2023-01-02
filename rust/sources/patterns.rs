@@ -296,7 +296,7 @@ pub mod glyphs {
 	
 	
 	
-	define_bytes! (pub BYTES_HEX, BytesFormat::Hex, ( 256 : 1 ));
+	define_bytes! (pub BYTES_HEX, BytesFormat::Hex, ( 512 : 4 ));
 }
 
 
@@ -385,17 +385,17 @@ pub mod tokens {
 	define_repeat! (pub DIGITS_BASE10, "digits-base10", glyphs::DIGIT_BASE10_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
 	
 	define_repeat! (pub DIGITS_BASE2, "digits-base2", glyphs::DIGIT_BASE2_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (256 : 8));
-	define_repeat! (pub DIGITS_BASE8, "digits-base8", glyphs::DIGIT_BASE8_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (256 : 8));
+	define_repeat! (pub DIGITS_BASE8, "digits-base8", glyphs::DIGIT_BASE8_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
 	
 	define_repeat! (pub DIGITS_BASE16, "digits-base16", glyphs::DIGIT_BASE16_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
 	
-	define_repeat! (pub DIGITS_BASE32_HEX, "digits-base32-hex", glyphs::DIGIT_BASE32_HEX_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (256 : 8));
-	define_repeat! (pub DIGITS_BASE32_RFC, "digits-base32-rfc", glyphs::DIGIT_BASE32_RFC_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (256 : 8));
+	define_repeat! (pub DIGITS_BASE32_HEX, "digits-base32-hex", glyphs::DIGIT_BASE32_HEX_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
+	define_repeat! (pub DIGITS_BASE32_RFC, "digits-base32-rfc", glyphs::DIGIT_BASE32_RFC_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
 	
-	define_repeat! (pub DIGITS_BASE64_URL, "digits-base64-url", glyphs::DIGIT_BASE64_URL_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (256 : 8));
-	define_repeat! (pub DIGITS_BASE64_RFC, "digits-base64-rfc", glyphs::DIGIT_BASE64_RFC_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (256 : 8));
+	define_repeat! (pub DIGITS_BASE64_URL, "digits-base64-url", glyphs::DIGIT_BASE64_URL_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
+	define_repeat! (pub DIGITS_BASE64_RFC, "digits-base64-rfc", glyphs::DIGIT_BASE64_RFC_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
 	
-	define_repeat! (pub DIGITS_BASE58, "digits-base58", glyphs::DIGIT_BASE58_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (256 : 8));
+	define_repeat! (pub DIGITS_BASE58, "digits-base58", glyphs::DIGIT_BASE58_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
 	
 	define_repeat! (pub DIGITS_BECH32, "digits-bech32", glyphs::DIGIT_BECH32_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
 	
@@ -556,7 +556,7 @@ pub mod tokens {
 	
 	
 	
-	define_bytes! (pub BYTES_HEX, "bytes", BYTES_HEX, ( 256 : 1 ));
+	define_bytes! (pub BYTES_HEX, "bytes-hex", BYTES_HEX, ( 512 : 4 ));
 	
 	
 	
