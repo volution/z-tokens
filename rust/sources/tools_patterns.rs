@@ -13,6 +13,8 @@ pub fn main (_arguments : Vec<String>) -> MainResult {
 	
 	let mut _randomizer_flags = RandomizerFlags::new () .else_wrap (0x839efea4) ?;
 	
+	let _output_options = OutputOptions::default ();
+	
 	{
 		let mut _parser = ArgParser::new ();
 		_randomizer_flags.parser (&mut _parser) .else_wrap (0x7a560f7c) ?;
@@ -39,7 +41,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult {
 		}
 		
 		let _token = generate_token (&_pattern, _randomizer) .else_wrap (0xef0a3430) ?;
-		let _string = output_token_to_string (&_token) .else_wrap (0x36471fa6) ?;
+		let _string = output_token_to_string (&_token, &_output_options) .else_wrap (0x36471fa6) ?;
 		
 		if _string.len () > 128 {
 			continue;
@@ -52,6 +54,8 @@ pub fn main (_arguments : Vec<String>) -> MainResult {
 			writeln! (&mut _stream, "|  {:22}  |  {:6.1} bits  ||  {}", _identifier, _display_bits, _string) .else_wrap (0xd141c5ef) ?;
 		}
 	}
+	
+	_stream.into_inner () .else_replace (0xb10d6da8) ?;
 	
 	Ok (())
 }

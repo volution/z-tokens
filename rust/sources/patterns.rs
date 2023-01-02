@@ -404,12 +404,12 @@ pub mod tokens {
 	
 	
 	
-	define_repeat! (pub ASCII_LETTER_LOWER, "ascii-lower", glyphs::ASCII_LETTER_LOWER_TOKEN, Rb::new_static (separators::SPACE_MANDATORY_INFIX_EACH_4_PATTERN), (256 : 4));
-	define_repeat! (pub ASCII_LETTER_UPPER, "ascii-upper", glyphs::ASCII_LETTER_UPPER_TOKEN, Rb::new_static (separators::SPACE_MANDATORY_INFIX_EACH_4_PATTERN), (256 : 4));
-	define_repeat! (pub ASCII_LETTER_MIXED, "ascii-mixed", glyphs::ASCII_LETTER_MIXED_TOKEN, Rb::new_static (separators::SPACE_MANDATORY_INFIX_EACH_4_PATTERN), (256 : 4));
+	define_repeat! (pub ASCII_LETTER_LOWER, "ascii-lower", glyphs::ASCII_LETTER_LOWER_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
+	define_repeat! (pub ASCII_LETTER_UPPER, "ascii-upper", glyphs::ASCII_LETTER_UPPER_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
+	define_repeat! (pub ASCII_LETTER_MIXED, "ascii-mixed", glyphs::ASCII_LETTER_MIXED_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
 	
-	define_repeat! (pub ASCII_SYMBOLS, "ascii-symbols", glyphs::ASCII_SYMBOL_TOKEN, Rb::new_static (separators::SPACE_MANDATORY_INFIX_EACH_4_PATTERN), (256 : 4));
-	define_repeat! (pub ASCII_PRINTABLE, "ascii-any", glyphs::ASCII_PRINTABLE_TOKEN, Rb::new_static (separators::SPACE_MANDATORY_INFIX_EACH_4_PATTERN), (256 : 4));
+	define_repeat! (pub ASCII_SYMBOLS, "ascii-symbols", glyphs::ASCII_SYMBOL_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
+	define_repeat! (pub ASCII_PRINTABLE, "ascii-any", glyphs::ASCII_PRINTABLE_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
 	
 	
 	
@@ -435,9 +435,9 @@ pub mod tokens {
 			glyphs::ASCII_VOWEL_MIXED_TOKEN,
 		], Rb::new_static (separators::NONE_PATTERN));
 	
-	define_repeat! (pub ASCII_CONSONANT_VOWEL_LOWER, "cv-lower", ASCII_CONSONANT_VOWEL_LOWER_WORD, Rb::new_static (separators::SPACE_MANDATORY_INFIX_PATTERN), (64 : 1));
-	define_repeat! (pub ASCII_CONSONANT_VOWEL_UPPER, "cv-upper", ASCII_CONSONANT_VOWEL_UPPER_WORD, Rb::new_static (separators::SPACE_MANDATORY_INFIX_PATTERN), (64 : 1));
-	define_repeat! (pub ASCII_CONSONANT_VOWEL_MIXED, "cv-mixed", ASCII_CONSONANT_VOWEL_MIXED_WORD, Rb::new_static (separators::SPACE_MANDATORY_INFIX_PATTERN), (64 : 1));
+	define_repeat! (pub ASCII_CONSONANT_VOWEL_LOWER, "cv-lower", ASCII_CONSONANT_VOWEL_LOWER_WORD, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN), (64 : 1));
+	define_repeat! (pub ASCII_CONSONANT_VOWEL_UPPER, "cv-upper", ASCII_CONSONANT_VOWEL_UPPER_WORD, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN), (64 : 1));
+	define_repeat! (pub ASCII_CONSONANT_VOWEL_MIXED, "cv-mixed", ASCII_CONSONANT_VOWEL_MIXED_WORD, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN), (64 : 1));
 	
 	
 	
@@ -667,6 +667,25 @@ pub fn all_token_patterns () -> RbList<(String, Rb<TokenPattern>)> {
 	}
 	
 	RbList::from_vec (_collector)
+}
+
+
+pub fn get_token_pattern (_identifier : &str) -> Option<Rb<TokenPattern>> {
+	
+	for _patterns in tokens::ALL.iter () {
+		for _pattern in _patterns.iter () {
+			match _pattern.as_ref () {
+				TokenPattern::Named (_identifier_0, _) =>
+					if *_identifier_0 == _identifier {
+						return Some (_pattern.clone ());
+					}
+				_ =>
+					(),
+			}
+		}
+	}
+	
+	None
 }
 
 

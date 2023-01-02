@@ -5,10 +5,11 @@ use crate::prelude::*;
 
 pub(crate) use ::argparse::{
 		ArgumentParser as ArgParser,
-	};
-
-use ::argparse::{
+		Store as ArgStore,
+		StoreTrue as ArgStoreTrue,
+		StoreFalse as ArgStoreFalse,
 		StoreConst as ArgStoreConst,
+		StoreOption as ArgStoreOption,
 	};
 
 
@@ -45,8 +46,8 @@ impl RandomizerFlags {
 	pub fn parser <'a> (&'a mut self, _parser : &mut ArgParser<'a>) -> FlagsResult {
 		
 		_parser.refer (&mut self.source)
-				.add_option (&["--random-os"], ArgStoreConst (RandomizerSource::Os), "")
-				.add_option (&["--random-testing"], ArgStoreConst (RandomizerSource::Testing), "");
+				.add_option (&["--random-os"], ArgStoreConst (RandomizerSource::Os), "(use OS secure random generator)")
+				.add_option (&["--random-testing"], ArgStoreConst (RandomizerSource::Testing), "!!! UNSAFE !!!");
 		
 		Ok (())
 	}

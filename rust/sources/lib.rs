@@ -13,6 +13,7 @@ pub mod patterns;
 
 
 pub mod tools;
+pub mod tools_generate;
 pub mod tools_patterns;
 pub mod tools_flags;
 

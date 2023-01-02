@@ -4,6 +4,7 @@ use crate::prelude::*;
 
 
 use crate::{
+		tools_generate::main as main_generate,
 		tools_patterns::main as main_patterns,
 	};
 
@@ -48,8 +49,12 @@ pub fn main () -> MainResult {
 		&[] =>
 			fail! (0xdcd5c356),
 		&["patterns"] => {
-			_arguments.insert (0, String::from ("<patterns>"));
+			_arguments.insert (0, String::from ("patterns"));
 			main_patterns (_arguments)
+		}
+		&["generate"] => {
+			_arguments.insert (0, String::from ("generate"));
+			main_generate (_arguments)
 		}
 		_ =>
 			fail! (0x8e2b991f),
