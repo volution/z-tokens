@@ -49,11 +49,11 @@ pub fn main () -> MainResult {
 		&[] =>
 			fail! (0xdcd5c356),
 		&["patterns"] => {
-			_arguments.insert (0, String::from ("patterns"));
+			_arguments.insert (0, String::from ("tokens patterns"));
 			main_patterns (_arguments)
 		}
 		&["generate"] => {
-			_arguments.insert (0, String::from ("generate"));
+			_arguments.insert (0, String::from ("tokens generate"));
 			main_generate (_arguments)
 		}
 		_ =>
