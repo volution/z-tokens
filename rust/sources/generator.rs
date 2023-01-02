@@ -29,7 +29,7 @@ pub struct GenerateAccumulator {
 
 
 
-pub fn generate_token (_pattern : impl AsRef<TokenPattern>, _randomizer : &mut impl Randomizer) -> GeneratorResult<Token> {
+pub fn generate_token (_pattern : impl AsRef<TokenPattern>, _randomizer : &mut (impl Randomizer + ?Sized)) -> GeneratorResult<Token> {
 	
 	let mut _accumulator = GenerateAccumulator {
 			atoms : Vec::with_capacity (128),
@@ -49,7 +49,7 @@ pub fn generate_token (_pattern : impl AsRef<TokenPattern>, _randomizer : &mut i
 }
 
 
-pub fn generate_token_push (_pattern : impl AsRef<TokenPattern>, _randomizer : &mut impl Randomizer, _accumulator : &mut GenerateAccumulator) -> GeneratorResult {
+pub fn generate_token_push (_pattern : impl AsRef<TokenPattern>, _randomizer : &mut (impl Randomizer + ?Sized), _accumulator : &mut GenerateAccumulator) -> GeneratorResult {
 	let _pattern = _pattern.as_ref ();
 	match _pattern {
 		
@@ -146,7 +146,7 @@ pub fn generate_separator (_pattern : impl AsRef<SeparatorPattern>, _index : usi
 
 
 
-pub fn generate_atom_push (_pattern : impl AsRef<AtomPattern>, _randomizer : &mut impl Randomizer, _accumulator : &mut GenerateAccumulator) -> GeneratorResult {
+pub fn generate_atom_push (_pattern : impl AsRef<AtomPattern>, _randomizer : &mut (impl Randomizer + ?Sized), _accumulator : &mut GenerateAccumulator) -> GeneratorResult {
 	let _pattern = _pattern.as_ref ();
 	match _pattern {
 		
@@ -172,7 +172,7 @@ pub fn generate_atom_push (_pattern : impl AsRef<AtomPattern>, _randomizer : &mu
 
 
 
-pub fn generate_glyph_push (_pattern : impl AsRef<GlyphPattern>, _randomizer : &mut impl Randomizer, _accumulator : &mut GenerateAccumulator) -> GeneratorResult {
+pub fn generate_glyph_push (_pattern : impl AsRef<GlyphPattern>, _randomizer : &mut (impl Randomizer + ?Sized), _accumulator : &mut GenerateAccumulator) -> GeneratorResult {
 	let _pattern = _pattern.as_ref ();
 	let (_glyph, _count, _index) = match _pattern {
 		

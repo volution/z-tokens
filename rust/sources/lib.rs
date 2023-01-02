@@ -4,7 +4,6 @@
 
 
 pub mod model;
-pub mod tool;
 pub mod generator;
 pub mod randomizer;
 pub mod entropy;
@@ -13,9 +12,14 @@ pub mod memory;
 pub mod patterns;
 
 
+pub mod tools;
+pub mod tools_patterns;
+pub mod tools_flags;
+
+
 pub(crate) mod prelude;
 
 
-pub use tool::{ main, MainResult, };
+pub use tools::{ main, MainResult, };
 
 

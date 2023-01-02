@@ -2,18 +2,25 @@
 
 use crate::prelude::*;
 
-
-
-
-define_error! (pub MainError, result : MainResult);
+use crate::tools::*;
+use crate::tools_flags::*;
 
 
 
 
-pub fn main () -> MainResult {
+pub fn main (_arguments : Vec<String>) -> MainResult {
 	
-	// let mut _randomizer = RngRandomizer::from_os () .else_wrap (0xa8d84147) ?;
-	let mut _randomizer = RngRandomizer::for_testing () .else_wrap (0x341026da) ?;
+	
+	let mut _randomizer_flags = RandomizerFlags::new () .else_wrap (0x839efea4) ?;
+	
+	{
+		let mut _parser = ArgParser::new ();
+		_randomizer_flags.parser (&mut _parser) .else_wrap (0x7a560f7c) ?;
+		_parser.parse (_arguments, &mut stdout_locked (), &mut stderr_locked ()) .else_replace (0x06626616) ?;
+	}
+	
+	let mut _randomizer = _randomizer_flags.build () .else_wrap (0xa43471c4) ?;
+	let _randomizer = _randomizer.deref_mut ();
 	
 	let mut _stream = BufWriter::with_capacity (1024 * 1024, stdout_locked ());
 	
@@ -31,7 +38,7 @@ pub fn main () -> MainResult {
 			continue;
 		}
 		
-		let _token = generate_token (&_pattern, &mut _randomizer) .else_wrap (0xef0a3430) ?;
+		let _token = generate_token (&_pattern, _randomizer) .else_wrap (0xef0a3430) ?;
 		let _string = output_token_to_string (&_token) .else_wrap (0x36471fa6) ?;
 		
 		if _string.len () > 128 {
