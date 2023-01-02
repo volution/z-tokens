@@ -119,11 +119,12 @@ pub fn main (_arguments : Vec<String>) -> MainResult {
 		
 		let _token = generate_token (&_pattern, _randomizer) .else_wrap (0xef0a3430) ?;
 		let _string = output_token_to_string (&_token, &_output_options) .else_wrap (0x36471fa6) ?;
+		let _string_length = _string.len ();
 		
-		if _string.len () < _length_minimum {
+		if _string_length < _length_minimum {
 			continue;
 		}
-		if _string.len () > _length_maximum {
+		if _string_length > _length_maximum {
 			continue;
 		}
 		
@@ -189,11 +190,21 @@ pub fn main (_arguments : Vec<String>) -> MainResult {
 			continue;
 		}
 		
+		let _display_string_max = 80;
+		let _display_string = if (_string_length <= _display_string_max) {
+				_string
+			} else {
+				let mut _buffer = String::with_capacity (_display_string_max + 10);
+				_buffer.push_str (&_string[0 .. _display_string_max]);
+				_buffer.push_str (" [...]");
+				_buffer
+			};
+		
 		if _bits_exact {
-			writeln! (&mut _stream, "|  {:22}  |  {:4.0}   bits  ||  {}", _identifier, _bits, _string) .else_wrap (0xd141c5ef) ?;
+			writeln! (&mut _stream, "| {:22} | b {:4.0}   | c {:3} ||  {}", _identifier, _bits, _string_length, _display_string) .else_wrap (0xd141c5ef) ?;
 		} else {
 			let _display_bits = (_bits * 10.0) .floor () / 10.0;
-			writeln! (&mut _stream, "|  {:22}  |  {:6.1} bits  ||  {}", _identifier, _display_bits, _string) .else_wrap (0xd141c5ef) ?;
+			writeln! (&mut _stream, "| {:22} | b {:6.1} | c {:3} ||  {}", _identifier, _display_bits, _string_length, _display_string) .else_wrap (0xd141c5ef) ?;
 		}
 	}
 	
