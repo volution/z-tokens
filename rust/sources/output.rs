@@ -76,11 +76,11 @@ pub fn output_glyph (_glyph : impl AsRef<Glyph>, mut _stream : impl Write) -> Ou
 				IntegerFormat::Decimal =>
 					write! (_stream, "{0:}", *_value) .else_wrap (0x6d36e225),
 				IntegerFormat::DecimalPadded (_width) =>
-					write! (_stream, "{0:1$}", *_value, _width) .else_wrap (0x6044048b),
+					write! (_stream, "{0:01$}", *_value, _width) .else_wrap (0x6044048b),
 				IntegerFormat::Hex =>
 					write! (_stream, "{0:x}", *_value) .else_wrap (0xe1154407),
 				IntegerFormat::HexPadded (_width) =>
-					write! (_stream, "{0:1$x}", *_value, _width) .else_wrap (0x33322c70),
+					write! (_stream, "{0:01$x}", *_value, _width) .else_wrap (0x33322c70),
 			}
 	}
 }
