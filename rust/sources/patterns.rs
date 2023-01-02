@@ -270,6 +270,12 @@ pub mod glyphs {
 	define_integer! (pub INTEGER_1_30, (1 ..= 30), IntegerFormat::Decimal);
 	
 	define_integer! (pub INTEGER_8B_HEX, (0 ..= 255), IntegerFormat::HexPadded (2));
+	
+	define_integer! (pub UUID_ANY_FIELD_1, (0 ..= ((1 << 32) - 1)), IntegerFormat::HexPadded (8));
+	define_integer! (pub UUID_ANY_FIELD_2, (0 ..= ((1 << 16) - 1)), IntegerFormat::HexPadded (4));
+	define_integer! (pub UUID_ANY_FIELD_5, (0 ..= ((1 << 48) - 1)), IntegerFormat::HexPadded (12));
+	define_integer! (pub UUID_V4_FIELD_3, (((0b0100 << 12) + 0) ..= ((0b0100 << 12) + (1 << 12) - 1)), IntegerFormat::HexPadded (4));
+	define_integer! (pub UUID_V4_FIELD_4, (((0b10 << 14) + 0) ..= ((0b10 << 14) + (1 << 14) - 1)), IntegerFormat::HexPadded (4));
 }
 
 
@@ -438,6 +444,21 @@ pub mod tokens {
 	
 	
 	
+	define_sequence! (pub UUID_V4, "uuid-v4", [
+			glyphs::UUID_ANY_FIELD_1_TOKEN,
+			glyphs::UUID_ANY_FIELD_2_TOKEN,
+			glyphs::UUID_V4_FIELD_3_TOKEN,
+			glyphs::UUID_V4_FIELD_4_TOKEN,
+			glyphs::UUID_ANY_FIELD_5_TOKEN,
+		], Rb::new_static (separators::HYPHEN_MANDATORY_INFIX_PATTERN));
+	
+	pub static UUID_ALL : &[Rb<TokenPattern>] = &[
+			Rb::new_static (UUID_V4),
+		];
+	
+	
+	
+	
 	define_constant! (IP_127_PREFIX, Str, "127");
 	define_constant! (IP_10_PREFIX, Str, "10");
 	define_constant! (IP_172_PREFIX, Str, "172");
@@ -523,6 +544,8 @@ pub mod tokens {
 			
 			MNEMONIC_ALL,
 			BIP0039_ALL,
+			
+			UUID_ALL,
 			
 			IP_ALL,
 			
