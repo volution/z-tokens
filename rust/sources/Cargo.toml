@@ -25,6 +25,7 @@ rand = { version = "*", default-features = false, features = ["std", "std_rng", 
 num-bigint = { version = "*", default-features = false, features = ["std"] }
 num-traits = { version = "*", default-features = false, features = ["std"] }
 paste = { version = "*", default-features = false, features = [] }
+argparse = { version = "*", default-features = false, features = [] }
 
 
 
