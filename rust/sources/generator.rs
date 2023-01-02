@@ -199,13 +199,31 @@ pub fn generate_glyph_push (_pattern : impl AsRef<GlyphPattern>, _randomizer : &
 			let _glyph = Rb::new (_glyph);
 			(_glyph, _delta, _index)
 		}
+		
+		GlyphPattern::Bytes (_size, _format) => {
+			let _size = *_size;
+			let mut _bytes = vec! [0; _size];
+			_randomizer.bytes (&mut _bytes) .else_wrap (0x6f1ec700) ?;
+			for _byte in _bytes.iter () {
+				_accumulator.value <<= 8;
+				_accumulator.value += *_byte;
+			}
+			let _bytes = Bytes::Boxed (_bytes.into_boxed_slice ());
+			let _glyph = Glyph::Bytes (Rb::new (_bytes), *_format);
+			let _glyph = Rb::new (_glyph);
+			(_glyph, 0, 0)
+		}
 	};
 	
 	let _atom = Rb::new (Atom::Glyph (_glyph));
 	_accumulator.atoms.push (_atom);
 	
-	_accumulator.value *= _count;
-	_accumulator.value += _index;
+	if _count > 1 {
+		_accumulator.value *= _count;
+	}
+	if _index > 0 {
+		_accumulator.value += _index;
+	}
 	
 	Ok (())
 }

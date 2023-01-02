@@ -47,6 +47,22 @@ pub mod glyphs {
 		};
 	}
 	
+	macro_rules! define_bytes {
+		( $_visibility : vis $_pattern : ident, $_format : expr, ( $_length : tt : $_each : tt ) ) => {
+			macros::__count_call_with! ( [ $_length : $_each ] => define_bytes! ($_visibility $_pattern, $_format, ));
+		};
+		( $_visibility : vis $_pattern : ident, $_format : expr, [ $( $_count : literal, )* ] ) => {
+			::paste::paste! {
+				
+				$(
+					$_visibility static [< $_pattern _ $_count _GLYPH >] : &GlyphPattern = & GlyphPattern::Bytes ($_count, $_format);
+					$_visibility static [< $_pattern _ $_count _ATOM >] : &AtomPattern = & AtomPattern::Glyph (Rb::new_static ( [< $_pattern _ $_count _GLYPH >] ));
+					$_visibility static [< $_pattern _ $_count _TOKEN >] : &TokenPattern = & TokenPattern::Atom (Rb::new_static ( [< $_pattern _ $_count _ATOM >] ));
+				)*
+			}
+		};
+	}
+	
 	
 	
 	
@@ -276,6 +292,11 @@ pub mod glyphs {
 	define_integer! (pub UUID_ANY_FIELD_5, (0 ..= ((1 << 48) - 1)), IntegerFormat::HexPadded (12));
 	define_integer! (pub UUID_V4_FIELD_3, (((0b0100 << 12) + 0) ..= ((0b0100 << 12) + (1 << 12) - 1)), IntegerFormat::HexPadded (4));
 	define_integer! (pub UUID_V4_FIELD_4, (((0b10 << 14) + 0) ..= ((0b10 << 14) + (1 << 14) - 1)), IntegerFormat::HexPadded (4));
+	
+	
+	
+	
+	define_bytes! (pub BYTES_HEX, BytesFormat::Hex, ( 256 : 1 ));
 }
 
 
@@ -315,6 +336,27 @@ pub mod tokens {
 				$(
 					static [< _ $_pattern _ $_count __NO_NAME >] : &TokenPattern = & TokenPattern::Repeat (Rb::new_static ($_element), $_separator, $_count);
 					$_visibility static [< $_pattern _ $_count >] : &TokenPattern = & TokenPattern::Named (concat! ($_identifier, ":", $_count), Rb::new_static ( [< _ $_pattern _ $_count __NO_NAME >] ));
+				)*
+				
+				$_visibility static [< $_pattern _ALL >] : &[Rb<TokenPattern>] = &[ $(
+						Rb::new_static ( [< $_pattern _ $_count >] ),
+					)* ];
+			}
+		};
+	}
+	
+	
+	macro_rules! define_bytes {
+		
+		( $_visibility : vis $_pattern : ident, $_identifier : literal, $_glyph : ident, ( $_length : tt : $_each : tt ) ) => {
+			macros::__count_call_with! ( [ $_length : $_each ] => define_bytes! ($_visibility $_pattern, $_identifier, $_glyph, ));
+		};
+		
+		( $_visibility : vis $_pattern : ident, $_identifier : literal, $_glyph : ident, [ $( $_count : literal, )* ] ) => {
+			::paste::paste! {
+				
+				$(
+					$_visibility static [< $_pattern _ $_count >] : &TokenPattern = & TokenPattern::Named (concat! ($_identifier, ":", $_count), Rb::new_static ( glyphs::[< $_glyph _ $_count _TOKEN >] ));
 				)*
 				
 				$_visibility static [< $_pattern _ALL >] : &[Rb<TokenPattern>] = &[ $(
@@ -514,6 +556,11 @@ pub mod tokens {
 	
 	
 	
+	define_bytes! (pub BYTES_HEX, "bytes", BYTES_HEX, ( 256 : 1 ));
+	
+	
+	
+	
 	pub static ALL : &[&[Rb<TokenPattern>]] = &[
 			
 			DIGITS_BASE2_ALL,
@@ -548,6 +595,8 @@ pub mod tokens {
 			UUID_ALL,
 			
 			IP_ALL,
+			
+			BYTES_HEX_ALL,
 			
 		];
 }

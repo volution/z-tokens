@@ -10,6 +10,7 @@ use ::num_bigint::{
 use ::num_traits::{
 		Zero as _,
 		ToPrimitive as _,
+		Pow as _,
 	};
 
 
@@ -36,6 +37,15 @@ impl Entropy {
 	pub fn for_choice (_count : usize) -> Self {
 		Self {
 				accumulator : BigUint::from (_count),
+			}
+	}
+	
+	pub fn for_choice_repeat (_count : usize, _repeats : usize) -> Self {
+		if (_count == 0) || (_repeats == 0) {
+			return Self::none ()
+		}
+		Self {
+				accumulator : BigUint::from (_count) .pow (_repeats),
 			}
 	}
 	
@@ -160,6 +170,9 @@ pub fn entropy_glyph (_pattern : impl AsRef<GlyphPattern>) -> EntropyResult<Entr
 			}
 			Ok (Entropy::for_choice (_delta as usize))
 		}
+		
+		GlyphPattern::Bytes (_size, _format) =>
+			Ok (Entropy::for_choice_repeat (256, *_size)),
 	}
 }
 

@@ -20,6 +20,7 @@ pub enum Atom {
 pub enum Glyph {
 	Text (Rb<Text>),
 	Integer (u128, IntegerFormat),
+	Bytes (Rb<Bytes>, BytesFormat),
 }
 
 
@@ -60,6 +61,7 @@ pub enum AtomPattern {
 pub enum GlyphPattern {
 	Set (RbList<Glyph>),
 	Integer (u128, u128, IntegerFormat),
+	Bytes (usize, BytesFormat),
 }
 
 
@@ -72,6 +74,12 @@ pub enum Text {
 }
 
 
+pub enum Bytes {
+	Static (&'static [u8]),
+	Boxed (Box<[u8]>),
+}
+
+
 #[ derive (Copy, Clone) ]
 pub enum IntegerFormat {
 	Decimal,
@@ -80,4 +88,9 @@ pub enum IntegerFormat {
 	HexPadded (usize),
 }
 
+
+#[ derive (Copy, Clone) ]
+pub enum BytesFormat {
+	Hex,
+}
 

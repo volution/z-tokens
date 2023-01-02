@@ -27,6 +27,8 @@ define_error! (pub RandomError, result : RandomResult);
 pub trait Randomizer {
 	
 	fn choose (&mut self, _count : usize) -> RandomResult<usize>;
+	
+	fn bytes (&mut self, _buffer : &mut [u8]) -> RandomResult;
 }
 
 
@@ -41,6 +43,10 @@ impl <Core : RngCore> Randomizer for RngRandomizer<Core> {
 	
 	fn choose (&mut self, _count : usize) -> RandomResult<usize> {
 		Ok (random_usize_range_from (.. _count, &mut self.rng))
+	}
+	
+	fn bytes (&mut self, _buffer : &mut [u8]) -> RandomResult {
+		self.rng.try_fill_bytes (_buffer) .else_wrap (0xbee63cdc)
 	}
 }
 
