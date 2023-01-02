@@ -118,7 +118,7 @@
 	_docs="${_scratch}/target/doc"
 	test -d "${_docs}"
 	
-	_index="${_docs}/token_generator/index.html"
+	_index="${_docs}/tokens/index.html"
 	test -f "${_index}"
 	
 	exec -- x-www "guest:rust--${__CARGO_LOCAL__IDENTIFIER}" open "file://$( exec -- readlink -e -- "${_index}" )"
