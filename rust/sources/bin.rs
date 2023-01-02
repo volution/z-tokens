@@ -1,7 +1,7 @@
 
 
-pub fn main () -> ::token_generator::MainResult {
-	::token_generator::main ()
+pub fn main () -> ::tokens::MainResult {
+	::tokens::main ()
 }
 
 

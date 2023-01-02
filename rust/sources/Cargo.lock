@@ -110,7 +110,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "token-generator"
+name = "tokens"
 version = "0.1.0"
 dependencies = [
  "argparse",

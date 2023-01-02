@@ -23,7 +23,7 @@ define_error! (pub GeneratorError, result : GeneratorResult);
 
 pub struct GenerateAccumulator {
 	pub atoms : Vec<Rb<Atom>>,
-	pub value : BigUint,
+	pub value : Option<BigUint>,
 }
 
 
@@ -33,13 +33,10 @@ pub fn generate_token (_pattern : impl AsRef<TokenPattern>, _randomizer : &mut (
 	
 	let mut _accumulator = GenerateAccumulator {
 			atoms : Vec::with_capacity (128),
-			value : BigUint::one (),
+			value : None,
 		};
 	
 	generate_token_push (_pattern, _randomizer, &mut _accumulator) ?;
-	
-//	::std::eprintln! ("{:b}", _accumulator.value);
-//	::std::eprintln! ("{:x}", _accumulator.value);
 	
 	let _token = Token {
 			atoms : RbList::from_vec_rb (_accumulator.atoms),
@@ -204,9 +201,11 @@ pub fn generate_glyph_push (_pattern : impl AsRef<GlyphPattern>, _randomizer : &
 			let _size = *_size;
 			let mut _bytes = vec! [0; _size];
 			_randomizer.bytes (&mut _bytes) .else_wrap (0x6f1ec700) ?;
-			for _byte in _bytes.iter () {
-				_accumulator.value <<= 8;
-				_accumulator.value += *_byte;
+			if let Some (_accumulator_value) = &mut _accumulator.value {
+				for _byte in _bytes.iter () {
+					*_accumulator_value <<= 8;
+					*_accumulator_value += *_byte;
+				}
 			}
 			let _bytes = Bytes::Boxed (_bytes.into_boxed_slice ());
 			let _glyph = Glyph::Bytes (Rb::new (_bytes), *_format);
@@ -218,11 +217,13 @@ pub fn generate_glyph_push (_pattern : impl AsRef<GlyphPattern>, _randomizer : &
 	let _atom = Rb::new (Atom::Glyph (_glyph));
 	_accumulator.atoms.push (_atom);
 	
-	if _count > 1 {
-		_accumulator.value *= _count;
-	}
-	if _index > 0 {
-		_accumulator.value += _index;
+	if let Some (_accumulator_value) = &mut _accumulator.value {
+		if _count > 1 {
+			*_accumulator_value *= _count;
+		}
+		if _index > 0 {
+			*_accumulator_value += _index;
+		}
 	}
 	
 	Ok (())
