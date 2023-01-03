@@ -16,7 +16,7 @@ define_error! (pub MainError, result : MainResult);
 
 
 
-pub fn main () -> MainResult {
+pub fn main () -> MainResult<ExitCode> {
 	
 	let mut _arguments_os : Vec<_> = env::args_os () .collect ();
 	if _arguments_os.is_empty () {
@@ -45,20 +45,46 @@ pub fn main () -> MainResult {
 		}
 	}
 	
-	match _commands.iter () .map (String::as_str) .collect::<Vec<_>> () .as_slice () {
-		&[] =>
-			fail! (0xdcd5c356),
-		&["patterns"] => {
+	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _commands_refs = _commands_refs.as_slice ();
+	let _arguments_refs = _arguments.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _arguments_refs = _arguments_refs.as_slice ();
+	
+	match (_commands_refs, _arguments_refs) {
+		
+		(&["help"], _) | (&["h"], _) |
+		(&[], &["--help"]) | (&[], &["-h"]) => {
+			let mut _stdout = stdout_locked ();
+			_stdout.write (MAIN_DOC.as_bytes ()) .else_wrap (0x1741e3c0) ?;
+			Ok (ExitCode::SUCCESS)
+		}
+		
+		(&[], _) => {
+			let mut _stderr = stderr_locked ();
+			writeln! (_stderr, "[ee] [427cd93b]  expected command and arguments;  see `z-tokens help`;  aborting!") .else_wrap (0xf3c17b50) ?;
+			Ok (ExitCode::SUCCESS)
+		}
+		
+		(&["patterns"], _) | (&["p"], _) => {
 			_arguments.insert (0, String::from ("tokens patterns"));
 			main_patterns (_arguments)
 		}
-		&["generate"] => {
+		
+		(&["generate"], _) | (&["g"], _) => {
 			_arguments.insert (0, String::from ("tokens generate"));
 			main_generate (_arguments)
 		}
-		_ =>
-			fail! (0x8e2b991f),
+		
+		_ => {
+			let mut _stderr = stderr_locked ();
+			writeln! (_stderr, "[ee] [37d61e27]  invalid command;  see `z-tokens help`;  aborting!") .else_wrap (0x03f719cd) ?;
+			Ok (ExitCode::FAILURE)
+		}
 	}
 }
 
+
+
+
+static MAIN_DOC : &'static str = include_str! ("./tools_manuals/main--help.txt");
 

@@ -1,0 +1,18 @@
+||------------------------------------------------------------------------------
+||------------------------------------------------------------------------------
+||   z-tokens -- Random tokens generation and related tools
+
+
+--------------------------------------------------------------------------------
+---- How to invoke the tools
+
+>> z-tokens help
+>> z-tokens patterns --help
+>> z-tokens generate --help
+
+
+||   z-tokens
+||       code & issues at <https://github.com/volution/token-generator>
+||       Ciprian Dorin Craciun, <https://volution.ro/ciprian>
+||------------------------------------------------------------------------------
+||------------------------------------------------------------------------------

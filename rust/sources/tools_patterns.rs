@@ -8,7 +8,7 @@ use crate::tools_flags::*;
 
 
 
-pub fn main (_arguments : Vec<String>) -> MainResult {
+pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	
 	let mut _output_flags = OutputFlags::new () .else_wrap (0x9b1b7b70) ?;
@@ -76,7 +76,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult {
 		_randomizer_flags.parser (&mut _parser) .else_wrap (0x7a560f7c) ?;
 		
 		if execute_parser (_parser, _arguments) .else_wrap (0xf1ae4cdd) ? {
-			return Ok (())
+			return Ok (ExitCode::SUCCESS);
 		}
 	}
 	
@@ -218,7 +218,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult {
 	
 	_stream.into_inner () .else_replace (0xb10d6da8) ?;
 	
-	Ok (())
+	Ok (ExitCode::SUCCESS)
 }
 
 

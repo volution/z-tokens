@@ -22,3 +22,6 @@ pub(crate) use crate::memory::*;
 pub(crate) use crate::patterns;
 
 
+pub(crate) use ::std::process::ExitCode;
+
+
