@@ -63,6 +63,17 @@ pub mod glyphs {
 		};
 	}
 	
+	macro_rules! define_timestamp {
+		( $_visibility : vis $_pattern : ident, $_format : expr ) => {
+			::paste::paste! {
+				
+				$_visibility static [< $_pattern _GLYPH >] : &GlyphPattern = & GlyphPattern::Timestamp ($_format);
+				$_visibility static [< $_pattern _ATOM >] : &AtomPattern = & AtomPattern::Glyph (Rb::new_static ( [< $_pattern _GLYPH >] ));
+				$_visibility static [< $_pattern _TOKEN >] : &TokenPattern = & TokenPattern::Atom (Rb::new_static ( [< $_pattern _ATOM >] ));
+			}
+		};
+	}
+	
 	
 	
 	
@@ -296,7 +307,24 @@ pub mod glyphs {
 	
 	
 	
-	define_bytes! (pub BYTES_HEX, BytesFormat::Hex, ( 512 : 4 ));
+	define_bytes! (pub BYTES_HEX, BytesFormat::Hex, ( 512 : 1 ));
+	
+	
+	
+	
+	// NOTE:  => https://docs.rs/chrono/latest/chrono/format/strftime/
+	define_timestamp! (pub TIMESTAMP_YEAR, TimestampFormat::Strftime ("%Y", true));
+	define_timestamp! (pub TIMESTAMP_MONTH, TimestampFormat::Strftime ("%m", true));
+	define_timestamp! (pub TIMESTAMP_DAY, TimestampFormat::Strftime ("%d", true));
+	define_timestamp! (pub TIMESTAMP_ISO_DATE, TimestampFormat::Strftime ("%Y-%m-%d", true));
+	define_timestamp! (pub TIMESTAMP_ISO_TIME, TimestampFormat::Strftime ("%H-%M-%S", true));
+	define_timestamp! (pub TIMESTAMP_ISO_DATETIME, TimestampFormat::Strftime ("%Y-%m-%d-%H-%M-%S", true));
+	define_timestamp! (pub TIMESTAMP_SECONDS_DEC, TimestampFormat::Decimal (0, 1_000_000_000, 0, 0));
+	define_timestamp! (pub TIMESTAMP_SECONDS_HEX, TimestampFormat::Hex (0, 1_000_000_000, 0, 10));
+	define_timestamp! (pub TIMESTAMP_NANOSECONDS_DEC, TimestampFormat::Decimal (0, 0, 0, 0));
+	define_timestamp! (pub TIMESTAMP_NANOSECONDS_HEX, TimestampFormat::Hex (0, 0, 0, 18));
+	define_timestamp! (pub TIMESTAMP_FLAKE_SECONDS_DEC, TimestampFormat::Decimal (946684800 * 1_000_000_000, 1_000_000_000, 0, 0));
+	define_timestamp! (pub TIMESTAMP_FLAKE_SECONDS_HEX, TimestampFormat::Hex (946684800 * 1_000_000_000, 1_000_000_000, 0, 8));
 }
 
 
@@ -364,6 +392,16 @@ pub mod tokens {
 					)* ];
 			}
 		};
+	}
+	
+	
+	macro_rules! define_named {
+		( $_visibility : vis $_pattern : ident, $_identifier : literal, $_wrapped : expr ) => {
+			::paste::paste! {
+				
+				$_visibility static $_pattern : &TokenPattern = & TokenPattern::Named ($_identifier, Rb::new_static ( $_wrapped ));
+			}
+		}
 	}
 	
 	
@@ -643,6 +681,42 @@ pub mod tokens {
 	
 	
 	
+	define_named! (pub TIMESTAMP_ISO_DATETIME, "timestamp-iso", glyphs::TIMESTAMP_ISO_DATETIME_TOKEN);
+	define_named! (pub TIMESTAMP_SECONDS_DEC, "timestamp-sec", glyphs::TIMESTAMP_SECONDS_DEC_TOKEN);
+	define_named! (pub TIMESTAMP_SECONDS_HEX, "timestamp-sec-hex", glyphs::TIMESTAMP_SECONDS_HEX_TOKEN);
+	define_named! (pub TIMESTAMP_NANOSECONDS_DEC, "timestamp-nano", glyphs::TIMESTAMP_NANOSECONDS_DEC_TOKEN);
+	define_named! (pub TIMESTAMP_NANOSECONDS_HEX, "timestamp-nano-hex", glyphs::TIMESTAMP_NANOSECONDS_HEX_TOKEN);
+	define_named! (pub TIMESTAMP_FLAKE_SECONDS_DEC, "timestamp-flake", glyphs::TIMESTAMP_FLAKE_SECONDS_DEC_TOKEN);
+	define_named! (pub TIMESTAMP_FLAKE_SECONDS_HEX, "timestamp-flake-hex", glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN);
+	
+	define_sequence! (pub FLAKE_SECONDS_4, "flake:4", [ glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN, glyphs::BYTES_HEX_4_TOKEN, ], Rb::new_static (separators::HYPHEN_OPTIONAL_INFIX_PATTERN));
+	define_sequence! (pub FLAKE_SECONDS_6, "flake:6", [ glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN, glyphs::BYTES_HEX_6_TOKEN, ], Rb::new_static (separators::HYPHEN_OPTIONAL_INFIX_PATTERN));
+	define_sequence! (pub FLAKE_SECONDS_8, "flake:8", [ glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN, glyphs::BYTES_HEX_8_TOKEN, ], Rb::new_static (separators::HYPHEN_OPTIONAL_INFIX_PATTERN));
+	define_sequence! (pub FLAKE_SECONDS_10, "flake:10", [ glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN, glyphs::BYTES_HEX_10_TOKEN, ], Rb::new_static (separators::HYPHEN_OPTIONAL_INFIX_PATTERN));
+	define_sequence! (pub FLAKE_SECONDS_12, "flake:12", [ glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN, glyphs::BYTES_HEX_12_TOKEN, ], Rb::new_static (separators::HYPHEN_OPTIONAL_INFIX_PATTERN));
+	define_sequence! (pub FLAKE_SECONDS_14, "flake:14", [ glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN, glyphs::BYTES_HEX_14_TOKEN, ], Rb::new_static (separators::HYPHEN_OPTIONAL_INFIX_PATTERN));
+	define_sequence! (pub FLAKE_SECONDS_16, "flake:16", [ glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN, glyphs::BYTES_HEX_16_TOKEN, ], Rb::new_static (separators::HYPHEN_OPTIONAL_INFIX_PATTERN));
+	
+	pub static TIMESTAMP_ALL : &[Rb<TokenPattern>] = &[
+			Rb::new_static (TIMESTAMP_ISO_DATETIME),
+			Rb::new_static (TIMESTAMP_SECONDS_DEC),
+			Rb::new_static (TIMESTAMP_SECONDS_HEX),
+			Rb::new_static (TIMESTAMP_NANOSECONDS_DEC),
+			Rb::new_static (TIMESTAMP_NANOSECONDS_HEX),
+			Rb::new_static (TIMESTAMP_FLAKE_SECONDS_DEC),
+			Rb::new_static (TIMESTAMP_FLAKE_SECONDS_HEX),
+			Rb::new_static (FLAKE_SECONDS_4),
+			Rb::new_static (FLAKE_SECONDS_6),
+			Rb::new_static (FLAKE_SECONDS_8),
+			Rb::new_static (FLAKE_SECONDS_10),
+			Rb::new_static (FLAKE_SECONDS_12),
+			Rb::new_static (FLAKE_SECONDS_14),
+			Rb::new_static (FLAKE_SECONDS_16),
+		];
+	
+	
+	
+	
 	pub static ALL : &[&[Rb<TokenPattern>]] = &[
 			
 			DIGITS_BASE2_ALL,
@@ -680,6 +754,8 @@ pub mod tokens {
 			IP_ALL,
 			
 			BYTES_HEX_ALL,
+			
+			TIMESTAMP_ALL,
 			
 		];
 }

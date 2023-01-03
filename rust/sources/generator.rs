@@ -212,6 +212,13 @@ pub fn generate_glyph_push (_pattern : impl AsRef<GlyphPattern>, _randomizer : &
 			let _glyph = Rb::new (_glyph);
 			(_glyph, 0, 0)
 		}
+		
+		GlyphPattern::Timestamp (_format) => {
+			let _timestamp = _randomizer.timestamp () .else_wrap (0x94acb952) ?;
+			let _glyph = Glyph::Timestamp (_timestamp, *_format);
+			let _glyph = Rb::new (_glyph);
+			(_glyph, 0, 0)
+		}
 	};
 	
 	let _atom = Rb::new (Atom::Glyph (_glyph));

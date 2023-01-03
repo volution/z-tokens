@@ -204,6 +204,9 @@ pub fn entropy_glyph (_pattern : impl AsRef<GlyphPattern>) -> EntropyResult<Entr
 		
 		GlyphPattern::Bytes (_size, _format) =>
 			Ok (Entropy::for_choice_repeat (256, *_size)),
+		
+		GlyphPattern::Timestamp (_) =>
+			Ok (Entropy::none ()),
 	}
 }
 

@@ -21,6 +21,7 @@ pub enum Glyph {
 	Text (Rb<Text>),
 	Integer (u128, IntegerFormat),
 	Bytes (Rb<Bytes>, BytesFormat),
+	Timestamp (u128, TimestampFormat),
 }
 
 
@@ -62,6 +63,7 @@ pub enum GlyphPattern {
 	Set (RbList<Glyph>),
 	Integer (u128, u128, IntegerFormat),
 	Bytes (usize, BytesFormat),
+	Timestamp (TimestampFormat),
 }
 
 
@@ -92,5 +94,13 @@ pub enum IntegerFormat {
 #[ derive (Copy, Clone) ]
 pub enum BytesFormat {
 	Hex,
+}
+
+
+#[ derive (Copy, Clone) ]
+pub enum TimestampFormat {
+	Decimal (u128, u128, u128, usize),
+	Hex (u128, u128, u128, usize),
+	Strftime (&'static str, bool),
 }
 

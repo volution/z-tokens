@@ -26,6 +26,7 @@ num-bigint = { version = "*", default-features = false, features = ["std"] }
 num-traits = { version = "*", default-features = false, features = ["std"] }
 paste = { version = "*", default-features = false, features = [] }
 argparse = { version = "*", default-features = false, features = [] }
+chrono = { version = "*", default-features = false, features = ["alloc", "clock"] }
 
 
 

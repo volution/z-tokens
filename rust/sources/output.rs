@@ -2,6 +2,8 @@
 
 use crate::prelude::*;
 
+use ::chrono;
+
 
 
 
@@ -97,6 +99,8 @@ pub fn output_glyph (_glyph : impl AsRef<Glyph>, _stream : impl Write, _options 
 			output_integer (_value, _format, _stream, _options),
 		Glyph::Bytes (_bytes, _format) =>
 			output_bytes (_bytes, _format, _stream, _options),
+		Glyph::Timestamp (_timestamp, _format) =>
+			output_timestamp (_timestamp, _format, _stream, _options),
 	}
 }
 
@@ -116,6 +120,8 @@ pub fn output_text (_text : impl AsRef<Text>, mut _stream : impl Write, _options
 }
 
 
+
+
 pub fn output_integer (_value : &u128, _format : &IntegerFormat, mut _stream : impl Write, _options : &OutputOptions) -> OutputResult {
 	match _format {
 		& IntegerFormat::Decimal =>
@@ -128,6 +134,8 @@ pub fn output_integer (_value : &u128, _format : &IntegerFormat, mut _stream : i
 			write! (_stream, "{0:01$x}", _value, _width) .else_wrap (0x33322c70),
 	}
 }
+
+
 
 
 pub fn output_bytes (_bytes : &Bytes, _format : &BytesFormat, _stream : impl Write, _options : &OutputOptions) -> OutputResult {
@@ -148,6 +156,50 @@ fn output_bytes_0 (_bytes : &[u8], _format : &BytesFormat, mut _stream : impl Wr
 			}
 			Ok (())
 		}
+	}
+}
+
+
+
+
+pub fn output_timestamp (_timestamp : &u128, _format : &TimestampFormat, mut _stream : impl Write, _options : &OutputOptions) -> OutputResult {
+	match _format {
+		& TimestampFormat::Decimal (_offset, _divider, _modulo, _width) |
+		& TimestampFormat::Hex (_offset, _divider, _modulo, _width) => {
+				let mut _value = *_timestamp;
+				if _value < _offset {
+					fail! (0xde3a226d);
+				}
+				_value -= _offset;
+				if _divider > 1 {
+					_value /= _divider;
+				}
+				if _modulo >= 1 {
+					_value %= _modulo;
+				}
+				match _format {
+					& TimestampFormat::Decimal (_, _, _, _) =>
+						write! (_stream, "{0:01$}", _value, _width) .else_wrap (0x2682e627),
+					& TimestampFormat::Hex (_, _, _, _) =>
+						write! (_stream, "{0:01$x}", _value, _width) .else_wrap (0x7878e45b),
+					_ =>
+						panic! (unreachable, 0xe743229c),
+				}
+			}
+		& TimestampFormat::Strftime (_format, _utc) => {
+				let _seconds = _timestamp / 1_000_000_000;
+				let _subsec_nanoseconds = (_timestamp % 1_000_000_000) as u32;
+				if _seconds >= (i64::MAX as u128) {
+					fail! (0xfd667988);
+				}
+				let _time = chrono::NaiveDateTime::from_timestamp_opt (_seconds as i64, _subsec_nanoseconds) .else_wrap (0xdcc5d13b) ?;
+				let _time = if _utc {
+						_time
+					} else {
+						fail! (0x11f95f0e);
+					};
+				write! (_stream, "{}", _time.format (_format)) .else_wrap (0x35328385)
+			}
 	}
 }
 
