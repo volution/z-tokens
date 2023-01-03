@@ -59,6 +59,13 @@ pub fn main () -> MainResult<ExitCode> {
 			Ok (ExitCode::SUCCESS)
 		}
 		
+		(&["version"], _) | (&["v"], _) |
+		(&[], &["--version"]) | (&[], &["-v"]) => {
+			let mut _stdout = stdout_locked ();
+			_stdout.write (MAIN_VERSION.as_bytes ()) .else_wrap (0x51f29851) ?;
+			Ok (ExitCode::SUCCESS)
+		}
+		
 		(&[], _) => {
 			let mut _stderr = stderr_locked ();
 			writeln! (_stderr, "[ee] [427cd93b]  expected command and arguments;  see `z-tokens help`;  aborting!") .else_wrap (0xf3c17b50) ?;
@@ -87,4 +94,6 @@ pub fn main () -> MainResult<ExitCode> {
 
 
 static MAIN_DOC : &'static str = include_str! ("./tools_manuals/main--help.txt");
+
+static MAIN_VERSION : &'static str = include_str! ("./tools_build/version.txt");
 

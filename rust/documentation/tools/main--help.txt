@@ -6,9 +6,11 @@
 --------------------------------------------------------------------------------
 ---- How to invoke the tools
 
->> z-tokens help
 >> z-tokens patterns --help
 >> z-tokens generate --help
+
+>> z-tokens help
+>> z-tokens version
 
 
 ||   z-tokens
