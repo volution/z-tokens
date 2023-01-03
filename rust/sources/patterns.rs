@@ -144,6 +144,14 @@ pub mod glyphs {
 			'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 		]);
 	
+	// NOTE:  =>  https://en.wikipedia.org/wiki/Base62
+	// NOTE:  #>  python -c 'print (", ".join ([ repr(c) for c in r""" 0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz """ if c != " " ]))'
+	define_set! (pub DIGIT_BASE62, Char, [
+			'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+			'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+			'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+		]);
+	
 	// NOTE:  =>  https://en.bitcoin.it/wiki/BIP_0173
 	// NOTE:  #>  python -c 'print (", ".join ([ repr(c) for c in r""" qpzry9x8 gf2tvdw0 s3jn54kh ce6mua7l """ if c != " " ]))'
 	define_set! (pub DIGIT_BECH32, Char, [
@@ -434,6 +442,7 @@ pub mod tokens {
 	define_repeat! (pub DIGITS_BASE64_RFC, "digits-base64-rfc", glyphs::DIGIT_BASE64_RFC_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
 	
 	define_repeat! (pub DIGITS_BASE58, "digits-base58", glyphs::DIGIT_BASE58_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
+	define_repeat! (pub DIGITS_BASE62, "digits-base62", glyphs::DIGIT_BASE62_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
 	
 	define_repeat! (pub DIGITS_BECH32, "digits-bech32", glyphs::DIGIT_BECH32_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
 	
@@ -728,6 +737,7 @@ pub mod tokens {
 			DIGITS_BASE64_URL_ALL,
 			DIGITS_BASE64_RFC_ALL,
 			DIGITS_BASE58_ALL,
+			DIGITS_BASE62_ALL,
 			DIGITS_BECH32_ALL,
 			DIGITS_Z85_ALL,
 			
