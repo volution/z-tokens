@@ -1,7 +1,7 @@
 
 
-pub fn main () -> ::tokens::MainResult<::std::process::ExitCode> {
-	match ::tokens::main () {
+pub fn main () -> ::z_tokens::MainResult<::std::process::ExitCode> {
+	match ::z_tokens::main () {
 		Ok (_code) =>
 			Ok (_code),
 		Err (_error) => {

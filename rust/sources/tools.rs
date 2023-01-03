@@ -73,12 +73,12 @@ pub fn main () -> MainResult<ExitCode> {
 		}
 		
 		(&["patterns"], _) | (&["p"], _) => {
-			_arguments.insert (0, String::from ("tokens patterns"));
+			_arguments.insert (0, String::from ("z-tokens patterns"));
 			main_patterns (_arguments)
 		}
 		
 		(&["generate"], _) | (&["g"], _) => {
-			_arguments.insert (0, String::from ("tokens generate"));
+			_arguments.insert (0, String::from ("z-tokens generate"));
 			main_generate (_arguments)
 		}
 		

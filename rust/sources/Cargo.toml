@@ -1,12 +1,12 @@
 
 [package]
 
-name = "tokens"
+name = "z-tokens"
 version = "0.1.0"
 publish = false
 
 edition = "2021"
-rust-version = "1.65"
+rust-version = "1.66"
 resolver = "2"
 
 autobins = false
@@ -32,11 +32,11 @@ chrono = { version = "*", default-features = false, features = ["alloc", "clock"
 
 
 [[bin]]
-name = "tokens"
+name = "z-tokens"
 path = "./bin.rs"
 
 [lib]
-name = "tokens"
+name = "z_tokens"
 path = "./lib.rs"
 
 
