@@ -86,6 +86,8 @@ pub fn main (_arguments : Vec<String>) -> MainResult {
 	
 	let mut _stream = BufWriter::with_capacity (1024 * 1024, stdout_locked ());
 	
+	_randomizer.reset ();
+	
 	for _index in 0 .. _token_count {
 		
 		if (_group_size > 0) && (_index > 0) && ((_index % _group_size) == 0) {
@@ -102,6 +104,8 @@ pub fn main (_arguments : Vec<String>) -> MainResult {
 		if ! _token_separator.is_empty () {
 			_stream.write (_token_separator.as_bytes ()) .else_wrap (0xdd5337ae) ?;
 		}
+		
+		_randomizer.advance ();
 	}
 	
 	_stream.into_inner () .else_replace (0x96af9244) ?;

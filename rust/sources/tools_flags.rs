@@ -53,9 +53,9 @@ impl RandomizerFlags {
 	pub fn build (&self) -> FlagsResult<Box<dyn Randomizer>> {
 		let _randomizer : Box<dyn Randomizer> = match self.source {
 			RandomizerSource::Os =>
-				Box::new (RngRandomizer::from_os () .else_wrap (0x893f3ab5) ?),
+				Box::new (OsRandomizer::from_os () .else_wrap (0x893f3ab5) ?),
 			RandomizerSource::Testing =>
-				Box::new (RngRandomizer::for_testing () .else_wrap (0x07578413) ?),
+				Box::new (SeedRandomizer::for_testing () .else_wrap (0x07578413) ?),
 		};
 		Ok (_randomizer)
 	}

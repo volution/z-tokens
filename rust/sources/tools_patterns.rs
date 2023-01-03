@@ -90,7 +90,11 @@ pub fn main (_arguments : Vec<String>) -> MainResult {
 	let _entropy_minimum = _entropy_minimum.unwrap_or (0);
 	let _entropy_maximum = _entropy_maximum.unwrap_or (usize::MAX);
 	let _length_minimum = _length_minimum.unwrap_or (0);
-	let _length_maximum = _length_maximum.unwrap_or (usize::MAX);
+	let _length_maximum = if true {
+			_length_maximum.unwrap_or (40)
+		} else {
+			_length_maximum.unwrap_or (usize::MAX)
+		};
 	let _classify_chars =
 			_has_all.is_some () ||
 			_has_letters.is_some () ||
@@ -107,6 +111,8 @@ pub fn main (_arguments : Vec<String>) -> MainResult {
 	for _pattern in patterns::all_token_patterns () .into_iter () {
 		let &(ref _identifier, ref _pattern) = _pattern.as_ref ();
 		
+		_randomizer.reset ();
+		
 		let _entropy = entropy_token (&_pattern) .else_wrap (0x6374858a) ?;
 		let (_bits, _bits_exact) = _entropy.bits_exact ();
 		
@@ -118,6 +124,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult {
 		}
 		
 		let _token = generate_token (&_pattern, _randomizer) .else_wrap (0xef0a3430) ?;
+		_randomizer.advance ();
 		let _string = output_token_to_string (&_token, &_output_options) .else_wrap (0x36471fa6) ?;
 		let _string_length = _string.len ();
 		
@@ -141,6 +148,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult {
 						_string
 					} else {
 						let _token = generate_token (&_pattern, _randomizer) .else_wrap (0xa4cd2699) ?;
+						_randomizer.advance ();
 						let _string = output_token_to_string (&_token, &_output_options) .else_wrap (0xde6323af) ?;
 						Cow::Owned (_string)
 					};
