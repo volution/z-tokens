@@ -44,9 +44,13 @@ path = "./lib.rs"
 
 [patch.crates-io]
 
-vrl-errors = { path = "../.dependencies/volution-rust-libraries/errors" }
-vrl-preludes = { path = "../.dependencies/volution-rust-libraries/preludes" }
-vrl-random = { path = "../.dependencies/volution-rust-libraries/random" }
+# vrl-errors = { path = "../.dependencies/volution-rust-libraries/errors" }
+# vrl-preludes = { path = "../.dependencies/volution-rust-libraries/preludes" }
+# vrl-random = { path = "../.dependencies/volution-rust-libraries/random" }
+
+vrl-errors = { git = "https://github.com/volution/volution-rust-libraries", branch = "development" }
+vrl-preludes = { git = "https://github.com/volution/volution-rust-libraries", branch = "development" }
+vrl-random = { git = "https://github.com/volution/volution-rust-libraries", branch = "development" }
 
 
 

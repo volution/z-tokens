@@ -333,6 +333,7 @@ checksum = "c0edd1e5b14653f783770bce4a4dabb4a5108a5370a5f5d8cfe8710c361f6c8b"
 [[package]]
 name = "vrl-errors"
 version = "0.1.0"
+source = "git+https://github.com/volution/volution-rust-libraries?branch=development#986d5ca711ef747697f55c98b1352ac047739899"
 dependencies = [
  "vrl-preludes",
 ]
@@ -340,10 +341,12 @@ dependencies = [
 [[package]]
 name = "vrl-preludes"
 version = "0.1.0"
+source = "git+https://github.com/volution/volution-rust-libraries?branch=development#986d5ca711ef747697f55c98b1352ac047739899"
 
 [[package]]
 name = "vrl-random"
 version = "0.1.0"
+source = "git+https://github.com/volution/volution-rust-libraries?branch=development#986d5ca711ef747697f55c98b1352ac047739899"
 dependencies = [
  "paste",
  "rand",
