@@ -116,9 +116,11 @@ That being said, just run the following and start experimenting with the command
 
 Get some help:
 ~~~~
-z-tokens -h
-z-tokens generate -h
-z-tokens patterns -h
+z-tokens --help
+z-tokens generate --help
+z-tokens patterns --help
+
+z-tokens --readme
 ~~~~
 
 For how to install see the [dedicated section](#install).
@@ -150,14 +152,7 @@ z-tokens generate -p cv-lower:4 -c 10
 ~~~~
 cama nera zoju liye
 yuxe nefi qahi lasa
-nemi koho cuho ciwo
-neqi vejo zuso kuvu
-cixi muve nefo tipi
-mose fafu gudu wizo
-sale xoyo wuro quye
-kome qide yuyo gumi
-bepe domo sota xuci
-yiqo kewo himu tebe
+....
 ~~~~
 
 Generate a few consonant-vowel passwords,
@@ -167,6 +162,11 @@ and output for copy-pasting
 z-tokens g -C
 z-tokens generate -C
 z-tokens generate -p cv-lower:4 -C
+~~~~
+~~~~
+nawerukuhefapeqo
+sedeyigeziweguke
+...
 ~~~~
 
 Generate one UUIDv4 token,
@@ -243,16 +243,95 @@ Show all supported patterns identifiers:
 ~~~~
 z-tokens patterns -i
 ~~~~
+~~~~
+ascii-any:...
+ascii-lower:...
+ascii-mixed:...
+ascii-symbols:...
+ascii-upper:...
+bip0039:...
+bytes-hex:...
+cv-lower:...
+cv-mixed:...
+cv-plus-a:...
+cv-plus-b:...
+cv-upper:...
+digits-base10:...
+digits-base16:...
+digits-base2:...
+digits-base32-hex:...
+digits-base32-rfc:...
+digits-base58:...
+digits-base62:...
+digits-base64-rfc:...
+digits-base64-url:...
+digits-base8:...
+digits-bech32:...
+digits-z85:...
+flake:...
+ip-10
+ip-127
+ip-172
+ip-192
+ip-mac
+mnemonic:...
+proquint-lower:...
+proquint-upper:...
+timestamp-flake
+timestamp-flake-hex
+timestamp-iso
+timestamp-nano
+timestamp-nano-hex
+timestamp-sec
+timestamp-sec-hex
+uuid-v4
+~~~~
 
 Show only patterns that have between 64 and 90 bits of entropy:
 ~~~~
 z-tokens patterns -b 64 -B 90
 ~~~~
+~~~~
+| digits-base10:20       | b   66.4 | c   24 ||  2758 1500 2319 7289 8940
+| digits-base16:16       | b   64   | c   19 ||  ade3 89cc cf11 e4cf
+| digits-base32-hex:16   | b   80   | c   19 ||  sb4s tdsf q03n ilch
+| digits-base32-rfc:16   | b   80   | c   19 ||  n2wq ywp7 xtzm czek
+| digits-base64-url:12   | b   72   | c   14 ||  g39Z R23E YWuZ
+| digits-base64-rfc:12   | b   72   | c   14 ||  qrSq ob8i g0k9
+| digits-base58:12       | b   70.2 | c   14 ||  95Mj J1Gz B4mN
+| digits-base62:12       | b   71.4 | c   14 ||  PjrY r72V Rd9d
+| digits-bech32:16       | b   80   | c   19 ||  466t tfkc l5j5 dglf
+| digits-z85:10          | b   64.0 | c   11 ||  !}%Zj ORCTi
+| ascii-lower:16         | b   75.2 | c   19 ||  gwwt uauq jncs spst
+| ascii-mixed:12         | b   68.4 | c   14 ||  lAWG DjSY XVyr
+| ascii-symbols:16       | b   80   | c   19 ||  #^=* ){}~ =@>' @||%
+| ascii-any:12           | b   78.6 | c   14 ||  :3'x muf[ EUcN
+| cv-lower:5             | b   67.1 | c   24 ||  qexa veba puda wipu sifi
+| cv-mixed:4             | b   69.7 | c   19 ||  Dine VAHa GiXU yeGa
+| cv-plus-a:5            | b   67.0 | c   24 ||  tixu vaja xude galu GB84
+| cv-plus-b:5            | b   68.7 | c   24 ||  tuli qako yije ruho KI0,
+| proquint-lower:4       | b   64   | c   23 ||  sulob zamid hovih vivan
+| proquint-upper:4       | b   64   | c   23 ||  LORAM DOTUM FOTIP MINOB
+| mnemonic:2             | b   64.0 | c   44 ||  solid eternal sister - gentle develop degree
+| bip0039:2              | b   66   | c   44 ||  excite evolve original - young assist appear
+| bytes-hex:8            | b   64   | c   16 ||  6651a55b755ba064
+| flake:8                | b   64   | c   25 ||  2b4843fc-9c99f0591adf920e
+| flake:10               | b   80   | c   29 ||  2b4843fc-f2e970dad2642c8ad9f6
+...
+~~~~
 
 Show only patterns that have all types of characters
 (lower and upper letters, digits, and symbols):
 ~~~~
-z-tokens patterns -D
+z-tokens patterns -A
+~~~~
+~~~~
+| digits-base64-url:8    | b   48   | c    9 ||  PXWc wBR8
+| digits-base64-rfc:8    | b   48   | c    9 ||  w780 qZrO
+| digits-z85:5           | b   32.0 | c    5 ||  a$d0#
+| ascii-any:8            | b   52.4 | c    9 ||  ?Q-L uJ!8
+| cv-plus-b:3            | b   28.4 | c    9 ||  buto GI6!
+...
 ~~~~
 
 
