@@ -1,0 +1,52 @@
+#!/dev/null
+
+
+
+
+::// cargo / debug / ...
+::// cargo / release / ...
+
+
+
+
+<< cargo / debug / check
+	exec -- "${ZRUN}" ':: cargo / exec' check "${@}"
+!!
+
+<< cargo / release / check
+	exec -- "${ZRUN}" ':: cargo / exec' check --release "${@}"
+!!
+
+
+
+
+<< cargo / debug / build
+	exec -- "${ZRUN}" ':: cargo / exec' build "${@}"
+!!
+
+<< cargo / release / build
+	exec -- "${ZRUN}" ':: cargo / exec' build --release "${@}"
+!!
+
+
+
+
+<< cargo / debug / run
+	exec -- "${ZRUN}" ':: cargo / exec' run "${@}"
+!!
+
+<< cargo / release / run
+	exec -- "${ZRUN}" ':: cargo / exec' run --release "${@}"
+!!
+
+
+
+
+<< cargo / debug / check / watch
+	exec -- "${ZRUN}" ':: watchexec / exec' ':: cargo / exec' check "${@}"
+!!
+
+<< cargo / debug / run / watch
+	exec -- "${ZRUN}" ':: watchexec / exec' ':: cargo / exec' run "${@}"
+!!
+

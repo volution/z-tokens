@@ -10,31 +10,31 @@
 
 << documentation / readme / open / html / firefox
 	test "${#}" -eq 0
-	"${ZRUN[@]}" ':: documentation / readme / render / html'
+	"${ZRUN}" ':: documentation / readme / render / html'
 	exec -- x-www firefox-guest:z-run open file:"$( exec -- readlink -e -- ./documentation/readme/readme.html )"
 !!
 
 << documentation / readme / open / html / chromium
 	test "${#}" -eq 0
-	"${ZRUN[@]}" ':: documentation / readme / render / html'
+	"${ZRUN}" ':: documentation / readme / render / html'
 	exec -- x-www chromium-guest:z-run open file:"$( exec -- readlink -e -- ./documentation/readme/readme.html )"
 !!
 
 << documentation / readme / open / html / webview
 	test "${#}" -eq 0
-	"${ZRUN[@]}" ':: documentation / readme / render / html'
+	"${ZRUN}" ':: documentation / readme / render / html'
 	exec -- x-www webview open file:"$( exec -- readlink -e -- ./documentation/readme/readme.html )"
 !!
 
 << documentation / readme / open / html / links
 	test "${#}" -eq 0
-	"${ZRUN[@]}" ':: documentation / readme / render / html'
+	"${ZRUN}" ':: documentation / readme / render / html'
 	exec -- links file:"$( exec -- readlink -e -- ./documentation/readme/readme.html )"
 !!
 
 << documentation / readme / open / text
 	test "${#}" -eq 0
-	"${ZRUN[@]}" ':: documentation / readme / render / text'
+	"${ZRUN}" ':: documentation / readme / render / text'
 	exec -- less -- ./documentation/readme/readme.txt
 !!
 
@@ -46,20 +46,20 @@
 			--watch=./documentation/readme/readme.md \
 			--no-shell \
 			-- \
-			"${ZRUN[@]}" ':: documentation / readme / render' "${@}" \
+			"${ZRUN}" ':: documentation / readme / render' "${@}" \
 	#
 !!
 
 
 << documentation / readme / render
-	"${ZRUN[@]}" ':: documentation / readme / render / html' "${@}"
-	"${ZRUN[@]}" ':: documentation / readme / render / text' "${@}"
+	"${ZRUN}" ':: documentation / readme / render / html' "${@}"
+	"${ZRUN}" ':: documentation / readme / render / text' "${@}"
 !!
 
 
 << documentation / readme / render / forced
-	"${ZRUN[@]}" ':: documentation / readme / render / html / forced' "${@}"
-	"${ZRUN[@]}" ':: documentation / readme / render / text / forced' "${@}"
+	"${ZRUN}" ':: documentation / readme / render / html / forced' "${@}"
+	"${ZRUN}" ':: documentation / readme / render / text / forced' "${@}"
 !!
 
 
@@ -69,7 +69,7 @@
 		exit -- 0
 	fi
 	printf -- '[ii]  rendering `readme.html`...\n' >&2
-	exec -- "${ZRUN[@]}" ':: documentation / readme / render / html / forced' "${@}"
+	exec -- "${ZRUN}" ':: documentation / readme / render / html / forced' "${@}"
 !!
 
 
@@ -79,7 +79,7 @@
 		exit -- 0
 	fi
 	printf -- '[ii]  rendering `readme.txt`...\n' >&2
-	exec -- "${ZRUN[@]}" ':: documentation / readme / render / text / forced' "${@}"
+	exec -- "${ZRUN}" ':: documentation / readme / render / text / forced' "${@}"
 !!
 
 

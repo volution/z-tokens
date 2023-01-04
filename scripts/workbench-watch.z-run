@@ -1,0 +1,49 @@
+#!/dev/null
+
+
+
+
+--<< watchexec / exec
+	
+	test "${#}" -ge 1
+	
+	_watchexec_arguments=(
+			
+			--watch ./sources
+			--debounce 250
+			--on-busy-update queue
+			
+			--shell none
+			--no-environment
+			
+			--no-default-ignore
+			--no-global-ignore
+			--no-project-ignore
+			--no-vcs-ignore
+			
+		)
+	
+	exec -- \
+	watchexec \
+			"${_watchexec_arguments[@]}" -- \
+	"${ZRUN}" ':: watchexec / exec / delegate' "${@}" \
+	#
+!!
+
+
+
+
+--<< watchexec / exec / delegate
+	
+	test "${#}" -ge 1
+	
+	printf -- '[--]\n\n' >&2
+	
+	if "${ZRUN}" "${@}" ; then
+		printf -- '\n' >&2
+	else
+		printf -- '\n[ee]  failed!\n' >&2
+	fi
+	printf -- '[--]\n' >&2
+!!
+

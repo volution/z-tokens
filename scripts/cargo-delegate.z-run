@@ -1,0 +1,160 @@
+#!/dev/null
+
+
+
+
+--<< cargo / exec
+	
+	_switch=remote
+	
+	case "${_switch}" in
+		( local )
+			exec -- "${ZRUN}" ':: cargo / exec / local' "${@}"
+		;;
+		( remote )
+			exec -- "${ZRUN}" ':: cargo / exec / remote' "${@}"
+		;;
+		( * )
+			false -- '[1a224da4]'
+		;;
+	esac
+!!
+
+
+
+
+--<< cargo / exec / local
+	
+	test -d "${__CARGO_LOCAL__SCRATCH}"
+	_scratch="${__CARGO_LOCAL__SCRATCH}/${__CARGO_LOCAL__IDENTIFIER}"
+	_executable="${__CARGO_LOCAL__EXECUTABLE}"
+	
+	if test ! -d "${_scratch}" ; then
+		mkdir -m 00700 -- "${_scratch}"
+		mkdir -m 00700 -- "${_scratch}/target"
+		ln -s -T -- "$( exec -- readlink -e -- ./sources )" "${_scratch}/sources"
+	fi
+	
+	exec -- "${ZRUN}" ':: cargo / exec / any / delegate' \
+			"${_scratch}" "${_executable}" \
+			"${@}" \
+	#
+!!
+
+
+
+
+--<< cargo / exec / remote / delegate
+	
+	test -d "${__CARGO_REMOTE__SCRATCH}"
+	_scratch="${__CARGO_REMOTE__SCRATCH}/${__CARGO_REMOTE__IDENTIFIER}"
+	_executable="${__CARGO_REMOTE__EXECUTABLE}"
+	
+	exec -- "${ZRUN}" ':: cargo / exec / any / delegate' \
+			"${_scratch}" "${_executable}" \
+			"${@}" \
+	#
+!!
+
+
+
+
+--<< cargo / exec / any / delegate
+	
+	test "${#}" -ge 3
+	_scratch="${1}"
+	_executable="${2}"
+	_tool="${3}"
+	shift -- 3
+	
+	test -d "${_scratch}"
+	
+	test -f "${_executable}"
+	test -x "${_executable}"
+	
+	_cargo_toolchain=stable
+	
+	_rust_flags=()
+	
+	case "${_tool}" in
+		
+		( check )
+		;;
+		
+		( build | run )
+			_rust_flags+=(
+					
+					-C target-feature=-crt-static
+					-C relocation-model=pic
+					-C rpath=no
+					
+					-C linker=clang
+					-C link-arg=-fuse-ld=lld
+				#!	-C link-arg=-fuse-ld=mold
+					-C link-arg=-Wl,--compress-debug-sections=none
+					
+					-C link-self-contained=no
+					-C prefer-dynamic=no
+					-C force-frame-pointers=yes
+					
+				)
+		;;
+		
+		( doc )
+			_rust_flags+=(
+					-A warnings
+				)
+		;;
+		
+		( metadata )
+		;;
+		( update | vendor )
+		;;
+		
+		( cyclonedx | tree )
+		;;
+		
+		( * )
+			printf -- '[ee]  invalid tool `%s`;  aborting!\n' "${_tool}" >&2
+			exit -- 1
+		;;
+	esac
+	
+	if test -n "${__CARGO_HOME:-}" ; then
+		_cargo_home="${__CARGO_HOME}"
+	else
+		_cargo_home="${HOME}/.cargo"
+	fi
+	_cargo_home="$( exec -- readlink -e -- "${_cargo_home}" )"
+	
+	_cargo_environment=(
+			
+			CARGO_HOME="${_cargo_home}"
+			CARGO_TARGET_DIR="${_scratch}/target"
+			CARGO_BUILD_RUSTFLAGS="${_rust_flags[*]}"
+			
+			PATH="${PATH}"
+			USER="${USER}"
+			HOME="${HOME}"
+			TMPDIR="${TMPDIR}"
+			TERM="${TERM}"
+			
+			LANG=C.UTF-8
+			LC_ALL=C.UTF-8
+			
+		)
+	
+	renice -n 19 -p "${$}" > /dev/null
+	
+	cd -- "${_scratch}/sources"
+	
+	exec -- \
+		env -i "${_cargo_environment[@]}" \
+		nodaemon \
+	"${_executable}" \
+			"+${_cargo_toolchain}" \
+			"${_tool}" \
+			"${@}" \
+	#
+!!
+

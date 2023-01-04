@@ -3,25 +3,25 @@
 
 
 
-::// sbom / ...
+::// documentation / sbom / ...
 
 
 
 
-<< sbom / generate
+<< documentation / sbom / generate
 	test "${#}" -eq 0
 	
-	"${ZRUN[@]}" ':: sbom / generate / cyclonedx'
-	"${ZRUN[@]}" ':: sbom / generate / documentation'
+	"${ZRUN}" ':: documentation / sbom / generate / cyclonedx'
+	"${ZRUN}" ':: documentation / sbom / generate / documentation'
 !!
 
 
 
 
-<< sbom / generate / cyclonedx
+<< documentation / sbom / generate / cyclonedx
 	test "${#}" -eq 0
 	
-	"${ZRUN[@]}" ':: cargo / exec / local' cyclonedx --all --format json
+	"${ZRUN}" ':: cargo / exec / local' cyclonedx --all --format json
 	
 	mv -T -- ./sources/bom.json ./documentation/sbom/cyclonedx.json
 !!
@@ -29,7 +29,7 @@
 
 
 
-<< sbom / generate / documentation
+<< documentation / sbom / generate / documentation
 	test "${#}" -eq 0
 	
 	jq \

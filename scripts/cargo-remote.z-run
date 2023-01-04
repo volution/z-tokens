@@ -1,0 +1,91 @@
+#!/dev/null
+
+
+
+
+--<< cargo / exec / remote
+	
+	"${ZRUN}" \
+			--ssh \
+			--ssh-target="${__CARGO_REMOTE__SSH_TARGET}" \
+			--ssh-workspace=/var/lib/empty \
+			':: cargo / exec / remote / prepare' \
+	#
+	
+	"${ZRUN}" \
+			':: cargo / exec / remote / synchronize / push' \
+	#
+	
+	exec -- "${ZRUN}" \
+			--ssh \
+			--ssh-target="${__CARGO_REMOTE__SSH_TARGET}" \
+			--ssh-workspace=/var/lib/empty \
+			':: cargo / exec / remote / delegate' \
+			"${@}" \
+	#
+!!
+
+
+
+
+--<< cargo / exec / remote / prepare
+	
+	test "${#}" -eq 0
+	
+	test -d "${__CARGO_REMOTE__SCRATCH}"
+	_scratch="${__CARGO_REMOTE__SCRATCH}/${__CARGO_REMOTE__IDENTIFIER}"
+	
+	if test ! -d "${_scratch}" ; then
+		mkdir -m 00700 -- "${_scratch}"
+		mkdir -m 00700 -- "${_scratch}/sources"
+		mkdir -m 00700 -- "${_scratch}/target"
+		mkdir -m 00700 -- "${_scratch}/.dependencies"
+	fi
+!!
+
+
+
+
+--<< cargo / exec / remote / synchronize / push
+	
+	test "${#}" -eq 0
+	
+	_scratch="${__CARGO_REMOTE__SCRATCH}/${__CARGO_REMOTE__IDENTIFIER}"
+	
+	_local_sources=./sources
+	_remote_sources="${_scratch}/sources"
+	
+	_local_dependencies=./.dependencies
+	_remote_dependencies="${_scratch}/.dependencies"
+	
+	_rsync_arguments=(
+			
+			--recursive
+			--checksum --checksum-choice md5
+			--times --perms
+			--chmod D00500,F00400
+		#	--itemize-changes
+			--copy-unsafe-links
+			
+			--exclude '.git'
+			--exclude 'target'
+			
+		)
+	
+	rsync \
+			--delete \
+			"${_rsync_arguments[@]}" \
+			-- \
+			"${_local_sources}/" \
+			"${__CARGO_REMOTE__SSH_TARGET}:${_remote_sources}/" \
+	#
+	
+	rsync \
+			--delete \
+			"${_rsync_arguments[@]}" \
+			-- \
+			"${_local_dependencies}/" \
+			"${__CARGO_REMOTE__SSH_TARGET}:${_remote_dependencies}/" \
+	#
+!!
+
