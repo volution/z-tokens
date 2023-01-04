@@ -866,19 +866,19 @@ pub mod consts {
 	
 	pub mod ascii {
 		// NOTE:  python -c 'for c in range (32, 127) : print ("pub const C%02X : char = %r;" % (c, chr(c)))'
-		include! ("./patterns_consts_ascii.in");
+		include! ("./_generated/patterns_consts_ascii.in");
 	}
 	
 	pub mod mnemonic {
 		// NOTE:  => https://github.com/singpolyma/mnemonicode
 		// NOTE:  => https://github.com/mbrubeck/rust-mnemonic
-		include! ("./patterns_consts_mnemonic.in");
+		include! ("./_generated/patterns_consts_mnemonic.in");
 	}
 	
 	pub mod bip0039 {
 		// NOTE:  => https://en.bitcoin.it/wiki/BIP_0039
 		// NOTE:  => https://github.com/maciejhirsz/tiny-bip39
-		include! ("./patterns_consts_bip0039.in");
+		include! ("./_generated/patterns_consts_bip0039.in");
 	}
 }
 
@@ -889,14 +889,14 @@ pub(crate) mod macros {
 	
 	#![ allow (unused_imports) ]
 	
-	// NOTE:  #>  python -c $'print ("macro_rules! __count_list {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( %d, %d )" % (n, e) + "=> { [ " + ", ".join (["%d" % c for c in range (0, n + 1, e) if c != 0]) + ", ] };")\nprint ("}")' >| ./sources/patterns_count_list.in
-	include! ("./patterns_count_list.in");
+	// NOTE:  #>  python -c $'print ("macro_rules! __count_list {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( %d, %d )" % (n, e) + "=> { [ " + ", ".join (["%d" % c for c in range (0, n + 1, e) if c != 0]) + ", ] };")\nprint ("}")' >| ./sources/_generated/patterns_count_list.in
+	include! ("./_generated/patterns_count_list.in");
 	
-	// NOTE:  #>  python -c $'print ("macro_rules! __count_call_each {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( [ %d : %d ] => $c:ident! ( $($p:tt)* ) )" % (n, e) + "=> {\\n" + "\\n".join (["\t$c! ( $($p)* %d );" % c for c in range (0, n + 1, e) if c != 0]) + "\\n};")\nprint ("}")' >| ./sources/patterns_count_call_each.in
-	include! ("./patterns_count_call_each.in");
+	// NOTE:  #>  python -c $'print ("macro_rules! __count_call_each {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( [ %d : %d ] => $c:ident! ( $($p:tt)* ) )" % (n, e) + "=> {\\n" + "\\n".join (["\t$c! ( $($p)* %d );" % c for c in range (0, n + 1, e) if c != 0]) + "\\n};")\nprint ("}")' >| ./sources/_generated/patterns_count_call_each.in
+	include! ("./_generated/patterns_count_call_each.in");
 	
-	// NOTE:  #>  python -c $'print ("macro_rules! __count_call_with {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( [ %d : %d ] => $c:ident! ( $($p:tt)* ) )" % (n, e) + "=> { $c! ( $($p)* [ " + ", ".join (["%d" % c for c in range (0, n + 1, e) if c != 0]) + ", ] ); };")\nprint ("}")' >| ./sources/patterns_count_call_with.in
-	include! ("./patterns_count_call_with.in");
+	// NOTE:  #>  python -c $'print ("macro_rules! __count_call_with {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( [ %d : %d ] => $c:ident! ( $($p:tt)* ) )" % (n, e) + "=> { $c! ( $($p)* [ " + ", ".join (["%d" % c for c in range (0, n + 1, e) if c != 0]) + ", ] ); };")\nprint ("}")' >| ./sources/_generated/patterns_count_call_with.in
+	include! ("./_generated/patterns_count_call_with.in");
 	
 	pub(crate) use __count_list;
 	pub(crate) use __count_call_each;

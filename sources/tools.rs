@@ -121,20 +121,20 @@ fn print_and_exit (_chunks : &[&str], _success : bool) -> MainResult<ExitCode> {
 
 
 
-static HELP_MAIN_TEXT : &'static str = include_str! ("./.embedded/manuals/main--help.txt");
+static HELP_MAIN_TEXT : &'static str = include_str! ("./_embedded/manuals/main--help.txt");
 
-static HELP_HEADER_TEXT : &'static str = include_str! ("./.embedded/manuals/help--header.txt");
-static HELP_FOOTER_TEXT : &'static str = include_str! ("./.embedded/manuals/help--footer.txt");
-
-
-static README_TEXT : &'static str = include_str! ("./.embedded/readme/readme.txt");
-static README_HTML : &'static str = include_str! ("./.embedded/readme/readme.html");
+static HELP_HEADER_TEXT : &'static str = include_str! ("./_embedded/manuals/help--header.txt");
+static HELP_FOOTER_TEXT : &'static str = include_str! ("./_embedded/manuals/help--footer.txt");
 
 
-static SBOM_TEXT : &'static str = include_str! ("./.embedded/sbom/sbom.txt");
-static SBOM_HTML : &'static str = include_str! ("./.embedded/sbom/sbom.html");
-static SBOM_JSON : &'static str = include_str! ("./.embedded/sbom/sbom.json");
+static README_TEXT : &'static str = include_str! ("./_embedded/readme/readme.txt");
+static README_HTML : &'static str = include_str! ("./_embedded/readme/readme.html");
 
 
-static BUILD_VERSION : &'static str = include_str! ("./.embedded/build/version.txt");
+static SBOM_TEXT : &'static str = include_str! ("./_embedded/sbom/sbom.txt");
+static SBOM_HTML : &'static str = include_str! ("./_embedded/sbom/sbom.html");
+static SBOM_JSON : &'static str = include_str! ("./_embedded/sbom/sbom.json");
+
+
+static BUILD_VERSION : &'static str = include_str! ("./_embedded/build/version.txt");
 
