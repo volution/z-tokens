@@ -33,8 +33,20 @@
 
 
 
+<< cargo / dependencies / show / outdated
+	exec -- "${ZRUN}" ':: cargo / exec / local' outdated --aggresssive "${@}"
+!!
+
+
+<< cargo / dependencies / show / licenses
+	exec -- "${ZRUN}" ':: cargo / exec / local' license --all-features --do-not-bundle "${@}"
+!!
+
+
+
+
 << cargo / dependencies / show / tree
-	exec -- "${ZRUN}" ':: cargo / exec' tree \
+	exec -- "${ZRUN}" ':: cargo / exec / local' tree \
 			--all-features \
 			--format '{p}' \
 			--prefix indent \
@@ -45,21 +57,10 @@
 
 
 << cargo / dependencies / show / list
-	exec -- "${ZRUN}" ':: cargo / exec' tree \
+	exec -- "${ZRUN}" ':: cargo / exec / local' tree \
 			--all-features \
 			--format ' | {p}' \
 			--prefix depth \
-			--frozen \
-			"${@}" \
-	#
-!!
-
-
-<< cargo / dependencies / show / licenses
-	exec -- "${ZRUN}" ':: cargo / exec' tree \
-			--all-features \
-			--format '{l} | {p}' \
-			--prefix none \
 			--frozen \
 			"${@}" \
 	#

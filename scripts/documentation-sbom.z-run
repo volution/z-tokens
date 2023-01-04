@@ -61,10 +61,10 @@
 						| join (" | ")
 						| (
 							({
-								"ring" : "ISC AND MIT AND OpenSSL",
+				##				"ring" : "ISC AND MIT AND OpenSSL",
 							}[$component.name])
 							// ({
-								"MIT/Apache-2.0" : "MIT OR Apache-2.0",
+				##				"MIT/Apache-2.0" : "MIT OR Apache-2.0",
 								"" : "{unknown}",
 							}[.])
 							// .

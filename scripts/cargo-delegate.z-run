@@ -111,7 +111,7 @@
 		( update | fetch | vendor )
 		;;
 		
-		( cyclonedx | tree )
+		( tree | outdated | license | cyclonedx )
 		;;
 		
 		( * )
