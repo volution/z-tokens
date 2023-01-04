@@ -371,6 +371,7 @@
 
 
 && _/readme.z-run
+&& _/sbom.z-run
 
 
 &&?? _/.local.z-run
