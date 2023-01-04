@@ -1,0 +1,28 @@
+
+
+---- How to invoke the tools
+
+>> z-tokens --version
+
+>> z-tokens patterns --help
+>> z-tokens generate --help
+
+
+---- How to get help
+
+>> z-tokens --help
+>> z-tokens --help-text
+
+>> z-tokens --readme
+>> z-tokens --readme-text
+>> z-tokens --readme-html
+
+
+---- Open source
+
+>> z-tokens --sbom
+>> z-tokens --sbom-text
+>> z-tokens --sbom-html
+>> z-tokens --sbom-json
+
+
