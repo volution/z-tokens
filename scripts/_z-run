@@ -1,7 +1,20 @@
 #!/dev/null
 
 
+
+
 ::// *
+
+::// cargo / debug / ...
+::// cargo / release / ...
+::// cargo / dependencies / ...
+::// cargo / documentation / ...
+
+::// sources / ...
+
+::// documentation / ...
+
+
 
 
 && _/cargo-build.z-run
@@ -11,6 +24,8 @@
 
 && _/cargo-delegate.z-run
 && _/cargo-remote.z-run
+
+&& _/sources-grep.z-run
 
 && _/workbench-watch.z-run
 

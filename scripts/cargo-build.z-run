@@ -3,50 +3,44 @@
 
 
 
-::// cargo / debug / ...
-::// cargo / release / ...
-
-
-
-
 << cargo / debug / check
-	exec -- "${ZRUN}" ':: cargo / exec' check "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec' check --frozen "${@}"
 !!
 
 << cargo / release / check
-	exec -- "${ZRUN}" ':: cargo / exec' check --release "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec' check --release --frozen "${@}"
 !!
 
 
 
 
 << cargo / debug / build
-	exec -- "${ZRUN}" ':: cargo / exec' build "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec' build --frozen "${@}"
 !!
 
 << cargo / release / build
-	exec -- "${ZRUN}" ':: cargo / exec' build --release "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec' build --release --frozen "${@}"
 !!
 
 
 
 
 << cargo / debug / run
-	exec -- "${ZRUN}" ':: cargo / exec' run "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec' run --frozen "${@}"
 !!
 
 << cargo / release / run
-	exec -- "${ZRUN}" ':: cargo / exec' run --release "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec' run --release --frozen "${@}"
 !!
 
 
 
 
 << cargo / debug / check / watch
-	exec -- "${ZRUN}" ':: watchexec / exec' ':: cargo / exec' check "${@}"
+	exec -- "${ZRUN}" ':: watchexec / exec' ':: cargo / exec' check --frozen "${@}"
 !!
 
 << cargo / debug / run / watch
-	exec -- "${ZRUN}" ':: watchexec / exec' ':: cargo / exec' run "${@}"
+	exec -- "${ZRUN}" ':: watchexec / exec' ':: cargo / exec' run --frozen "${@}"
 !!
 

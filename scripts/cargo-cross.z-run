@@ -26,7 +26,7 @@
 	
 	for _target in "${_targets[@]}" ; do
 		printf -- '[ii]  checking for target `%s`...\n' "${_target}" >&2
-		"${ZRUN}" ':: cargo / debug / check' --target "${_target}" "${@}"
+		"${ZRUN}" ':: cargo / debug / check' --target "${_target}" --frozen "${@}"
 	done
 !!
 

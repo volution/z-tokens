@@ -108,7 +108,7 @@
 		
 		( metadata )
 		;;
-		( update | vendor )
+		( update | fetch | vendor )
 		;;
 		
 		( cyclonedx | tree )

@@ -3,13 +3,8 @@
 
 
 
-::// cargo / documentation / ...
-
-
-
-
 << cargo / documentation / build / exports
-	exec -- "${ZRUN}" ':: cargo / exec' doc --lib --all-features "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec' doc --lib --all-features --frozen "${@}"
 !!
 
 
@@ -25,7 +20,7 @@
 			;;
 		esac
 	done
-	exec -- "${ZRUN}" ':: cargo / exec' doc --lib --document-private-items "${_arguments[@]}" "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec' doc --lib --document-private-items --frozen "${_arguments[@]}" "${@}"
 !!
 
 

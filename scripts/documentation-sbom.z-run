@@ -3,11 +3,6 @@
 
 
 
-::// documentation / sbom / ...
-
-
-
-
 << documentation / sbom / generate
 	test "${#}" -eq 0
 	

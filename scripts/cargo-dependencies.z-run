@@ -3,11 +3,6 @@
 
 
 
-::// cargo / dependencies / ...
-
-
-
-
 << cargo / dependencies / update / conservative
 	exec -- "${ZRUN}" ':: cargo / exec / local' update --package z-tokens "${@}"
 !!
@@ -18,14 +13,55 @@
 !!
 
 
+<< cargo / dependencies / fetch
+	exec -- "${ZRUN}" ':: cargo / exec' fetch --frozen "${@}"
+!!
+
+
 << cargo / dependencies / vendor
 	test "${#}" -eq 0
 	exec -- "${ZRUN}" ':: cargo / exec / local' vendor \
 			--respect-source-config \
 			--versioned-dirs \
 			--verbose \
+			--frozen \
 			-- \
 			"$( exec -- readlink -e -- ./vendor )" \
+	#
+!!
+
+
+
+
+<< cargo / dependencies / show / tree
+	exec -- "${ZRUN}" ':: cargo / exec' tree \
+			--all-features \
+			--format '{p}' \
+			--prefix indent \
+			--frozen \
+			"${@}" \
+	#
+!!
+
+
+<< cargo / dependencies / show / list
+	exec -- "${ZRUN}" ':: cargo / exec' tree \
+			--all-features \
+			--format ' | {p}' \
+			--prefix depth \
+			--frozen \
+			"${@}" \
+	#
+!!
+
+
+<< cargo / dependencies / show / licenses
+	exec -- "${ZRUN}" ':: cargo / exec' tree \
+			--all-features \
+			--format '{l} | {p}' \
+			--prefix none \
+			--frozen \
+			"${@}" \
 	#
 !!
 
@@ -36,22 +72,18 @@
 	test "${#}" -eq 0
 	(
 		
-		"${ZRUN}" ':: cargo / exec / local' tree --all-features --edges normal --no-dedupe --format '{p}' --prefix none \
+		"${ZRUN}" ':: cargo / exec / local' tree --all-features --edges normal --no-dedupe --format '{p}' --prefix none --frozen \
 		| cut -f 1,2 -d ' ' \
-		| sort -u \
-		| sort -u -s -k 1,1 -t ' ' \
 		| sed -r -e 's#^([^ ]+) v([^ ]+)$#\1:\2#' \
 		#
 		
-		"${ZRUN}" ':: cargo / exec / local' metadata --format-version 1 --no-deps \
+		"${ZRUN}" ':: cargo / exec / local' metadata --format-version 1 --no-deps --frozen \
 		| jq -r '.workspace_members[]' \
-		| sort -u \
-		| sort -u -s -k 1,1 -t ' ' \
 		| sed -r -e 's#^([^ ]+) ([^ ]+) \([^ ]+\)$#\1:\2#' \
 		#
 		
 	) \
-	| sort -u \
+	| sort -u -s -k 1,1 -t ' ' \
 	#
 !!
 

@@ -3,11 +3,6 @@
 
 
 
-++::// documentation / readme / ...
-
-
-
-
 << documentation / readme / open / html / firefox
 	test "${#}" -eq 0
 	"${ZRUN}" ':: documentation / readme / render / html'
