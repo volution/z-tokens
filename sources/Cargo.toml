@@ -68,7 +68,7 @@ debug = 2
 debug-assertions = true
 overflow-checks = true
 panic = "unwind"
-split-debuginfo = "unpacked"
+#! split-debuginfo = "unpacked"
 
 [profile.test]
 incremental = true
@@ -78,7 +78,7 @@ lto = "off"
 debug = 2
 debug-assertions = true
 overflow-checks = true
-split-debuginfo = "unpacked"
+#! split-debuginfo = "unpacked"
 
 [profile.release]
 incremental = false
@@ -99,7 +99,7 @@ lto = "fat"
 debug = 1
 debug-assertions = false
 overflow-checks = true
-split-debuginfo = "unpacked"
+#! split-debuginfo = "unpacked"
 
 
 [profile.dev.package."*"]
@@ -109,7 +109,7 @@ opt-level = 3
 debug = 2
 debug-assertions = true
 overflow-checks = true
-split-debuginfo = "unpacked"
+#! split-debuginfo = "unpacked"
 
 
 [profile.dev.build-override]
@@ -119,7 +119,7 @@ opt-level = 3
 debug = 2
 debug-assertions = true
 overflow-checks = true
-split-debuginfo = "unpacked"
+#! split-debuginfo = "unpacked"
 
 
 [profile.release.build-override]
@@ -129,5 +129,5 @@ opt-level = 3
 debug = 1
 debug-assertions = false
 overflow-checks = true
-split-debuginfo = "unpacked"
+#! split-debuginfo = "unpacked"
 
