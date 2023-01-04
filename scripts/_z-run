@@ -53,20 +53,13 @@
 
 
 
-<< cargo / update
-	exec -- "${ZRUN}" ':: cargo / exec / local' update "${@}"
-!!
-
-
-
-
 << cargo / doc / build / exports
 	exec -- "${ZRUN}" ':: cargo / exec' doc --lib --all-features "${@}"
 !!
 
 << cargo / doc / build / internals
 	readarray -t -d $'\n' -- _packages \
-		< <( exec -- "${ZRUN}" ':: cargo / doc / packages' ) \
+		< <( exec -- "${ZRUN}" ':: cargo / dependencies / list' ) \
 	#
 	_arguments=()
 	for _package in "${_packages[@]}" ; do
@@ -77,22 +70,6 @@
 		esac
 	done
 	exec -- "${ZRUN}" ':: cargo / exec' doc --lib --document-private-items "${_arguments[@]}" "${@}"
-!!
-
---<< cargo / doc / packages
-	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / exec' tree --all-features --edges normal --no-dedupe --format '{p}' --prefix none \
-	| cut -f 1,2 -d ' ' \
-	| sort -u \
-	| sort -u -s -k 1,1 -t ' ' \
-	| sed -r -e 's#^([^ ]+) v([^ ]+)$#\1:\2#' \
-	#
-	"${ZRUN}" ':: cargo / exec' metadata --format-version 1 --no-deps \
-	| jq -r '.workspace_members[]' \
-	| sort -u \
-	| sort -u -s -k 1,1 -t ' ' \
-	| sed -r -e 's#^([^ ]+) ([^ ]+) \([^ ]+\)$#\1:\2#' \
-	#
 !!
 
 
@@ -227,6 +204,8 @@
 		
 		( metadata )
 		;;
+		( update | vendor )
+		;;
 		
 		( cyclonedx | tree )
 		;;
@@ -237,8 +216,16 @@
 		;;
 	esac
 	
+	if test -n "${__CARGO_HOME:-}" ; then
+		_cargo_home="${__CARGO_HOME}"
+	else
+		_cargo_home="${HOME}/.cargo"
+	fi
+	_cargo_home="$( exec -- readlink -e -- "${_cargo_home}" )"
+	
 	_cargo_environment=(
 			
+			CARGO_HOME="${_cargo_home}"
 			CARGO_TARGET_DIR="${_scratch}/target"
 			CARGO_BUILD_RUSTFLAGS="${_rust_flags[*]}"
 			
@@ -401,6 +388,7 @@
 
 
 && _/cargo-cross.z-run
+&& _/cargo-dependencies.z-run
 
 && _/readme.z-run
 && _/sbom.z-run

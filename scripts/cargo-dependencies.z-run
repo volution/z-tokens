@@ -1,0 +1,57 @@
+#!/dev/null
+
+
+
+
+::// cargo / dependencies / ...
+
+
+
+
+<< cargo / dependencies / update / conservative
+	exec -- "${ZRUN}" ':: cargo / exec / local' update --package z-tokens "${@}"
+!!
+
+
+<< cargo / dependencies / update / aggressive
+	exec -- "${ZRUN}" ':: cargo / exec / local' update --package z-tokens --aggressive "${@}"
+!!
+
+
+<< cargo / dependencies / vendor
+	test "${#}" -eq 0
+	exec -- "${ZRUN}" ':: cargo / exec / local' vendor \
+			--respect-source-config \
+			--versioned-dirs \
+			--verbose \
+			-- \
+			"$( exec -- readlink -e -- ./vendor )" \
+	#
+!!
+
+
+
+
+<< cargo / dependencies / list
+	test "${#}" -eq 0
+	(
+		
+		"${ZRUN}" ':: cargo / exec / local' tree --all-features --edges normal --no-dedupe --format '{p}' --prefix none \
+		| cut -f 1,2 -d ' ' \
+		| sort -u \
+		| sort -u -s -k 1,1 -t ' ' \
+		| sed -r -e 's#^([^ ]+) v([^ ]+)$#\1:\2#' \
+		#
+		
+		"${ZRUN}" ':: cargo / exec / local' metadata --format-version 1 --no-deps \
+		| jq -r '.workspace_members[]' \
+		| sort -u \
+		| sort -u -s -k 1,1 -t ' ' \
+		| sed -r -e 's#^([^ ]+) ([^ ]+) \([^ ]+\)$#\1:\2#' \
+		#
+		
+	) \
+	| sort -u \
+	#
+!!
+
