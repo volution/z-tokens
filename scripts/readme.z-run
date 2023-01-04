@@ -170,6 +170,14 @@
 	)"
 	
 	_html="$(
+			exec -- sed -r \
+					-e 's#\./documentation/assets/github-banner\.png#https://github.com/volution/z-tokens/raw/development/documentation/assets/github-banner.png#g' \
+					-e 's#href="\./#href="https://github.com/volution/z-tokens/tree/development/#g' \
+				<<<"${_html}" \
+			#
+		)"
+	
+	_html="$(
 			exec -- minify \
 					--type html \
 					--html-keep-document-tags \
