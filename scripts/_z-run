@@ -198,9 +198,6 @@
 	case "${_tool}" in
 		
 		( check )
-			_rust_flags+=(
-				#!	-A warnings
-				)
 		;;
 		
 		( build | run )
@@ -218,8 +215,6 @@
 					-C link-self-contained=no
 					-C prefer-dynamic=no
 					-C force-frame-pointers=yes
-					
-					-A warnings
 					
 				)
 		;;
