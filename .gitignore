@@ -4,6 +4,8 @@
 !.github
 !.z-run
 
+!/sources/.embedded
+
 /target
 
 *~

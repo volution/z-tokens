@@ -1,0 +1,7 @@
+
+
+||   z-tokens
+||       code & issues at <https://github.com/volution/token-generator>
+||       Ciprian Dorin Craciun, <https://volution.ro/ciprian>
+||------------------------------------------------------------------------------
+||------------------------------------------------------------------------------
