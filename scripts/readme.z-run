@@ -103,7 +103,7 @@
 	_html_css="$(
 			exec -- curl \
 					-s -S -f \
-					-- https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.css \
+					-- https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.css \
 			#
 		)"
 	test -n "${_html_css}"
@@ -121,6 +121,7 @@
 		<title>z-run</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="color-scheme" content="dark" />
 		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg data-name='Layer 2'%3E%3Cg data-name='file-text'%3E%3Crect width='24' height='24' opacity='0'/%3E%3Cpath d='M15 16H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2z'/%3E%3Cpath d='M9 14h3a1 1 0 0 0 0-2H9a1 1 0 0 0 0 2z'/%3E%3Cpath d='M19.74 8.33l-5.44-6a1 1 0 0 0-.74-.33h-7A2.53 2.53 0 0 0 4 4.5v15A2.53 2.53 0 0 0 6.56 22h10.88A2.53 2.53 0 0 0 20 19.5V9a1 1 0 0 0-.26-.67zM14 5l2.74 3h-2a.79.79 0 0 1-.74-.85zm3.44 15H6.56a.53.53 0 0 1-.56-.5v-15a.53.53 0 0 1 .56-.5H12v3.15A2.79 2.79 0 0 0 14.71 10H18v9.5a.53.53 0 0 1-.56.5z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E" />
 		<style>${_html_css}</style>
 		<style>
@@ -136,18 +137,11 @@
 				max-width : 980px;
 				margin : 0px auto;
 				padding : 45px;
-				background : hsl(0, 0%, 100%);
 			}
 			@media (max-width: 800px) {
 				.markdown-body {
 					padding : 15px;
 				}
-			}
-			.markdown-body {
-				filter: invert(1);
-			}
-			.markdown-body img {
-				filter: invert(1);
 			}
 		</style>
 		<script>
