@@ -76,7 +76,6 @@
 			;;
 		esac
 	done
-	set -x
 	exec -- "${ZRUN}" ':: cargo / exec' doc --lib --document-private-items "${_arguments[@]}" "${@}"
 !!
 
@@ -181,37 +180,72 @@
 
 --<< cargo / exec / any / delegate
 	
-	test "${#}" -ge 2
+	test "${#}" -ge 3
 	_scratch="${1}"
 	_executable="${2}"
-	shift -- 2
+	_tool="${3}"
+	shift -- 3
 	
 	test -d "${_scratch}"
 	
 	test -f "${_executable}"
 	test -x "${_executable}"
 	
-	_rust_flags=(
-			
-			-C target-feature=-crt-static
-			-C relocation-model=pic
-			
-			-C linker=clang
-			-C link-arg=-fuse-ld=mold
-			
-			-C force-frame-pointers=yes
-			
-			# NOTE:  For some reason on 1.65+ the compiler complains about something...
-			-A warnings
-			
-		)
+	_cargo_toolchain=stable
+	
+	_rust_flags=()
+	
+	case "${_tool}" in
+		
+		( check )
+			_rust_flags+=(
+				#!	-A warnings
+				)
+		;;
+		
+		( build | run )
+			_rust_flags+=(
+					
+					-C target-feature=-crt-static
+					-C relocation-model=pic
+					-C rpath=no
+					
+					-C linker=clang
+					-C link-arg=-fuse-ld=lld
+				#!	-C link-arg=-fuse-ld=mold
+					-C link-arg=-Wl,--compress-debug-sections=none
+					
+					-C link-self-contained=no
+					-C prefer-dynamic=no
+					-C force-frame-pointers=yes
+					
+					-A warnings
+					
+				)
+		;;
+		
+		( doc )
+			_rust_flags+=(
+					-A warnings
+				)
+		;;
+		
+		( metadata )
+		;;
+		
+		( cyclonedx | tree )
+		;;
+		
+		( * )
+			printf -- '[ee]  invalid tool `%s`;  aborting!\n' "${_tool}" >&2
+			exit -- 1
+		;;
+	esac
 	
 	_cargo_environment=(
 			
 			CARGO_TARGET_DIR="${_scratch}/target"
 			CARGO_BUILD_RUSTFLAGS="${_rust_flags[*]}"
-			
-		#?	RUSTC_BOOTSTRAP=1
 			
 			PATH="${PATH}"
 			USER="${USER}"
@@ -232,7 +266,8 @@
 		env -i "${_cargo_environment[@]}" \
 		nodaemon \
 	"${_executable}" \
-			+stable \
+			"+${_cargo_toolchain}" \
+			"${_tool}" \
 			"${@}" \
 	#
 !!
@@ -369,6 +404,8 @@
 
 
 
+
+&& _/cargo-cross.z-run
 
 && _/readme.z-run
 && _/sbom.z-run
