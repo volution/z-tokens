@@ -51,7 +51,72 @@ TBD
 
 Installation
 
+At the moment, due to the Rust cross-compilation hurdles, one can install
+z-tokens by building it with cargo, or downloading the already built Linux or
+OSX binaries.
+
 TBD
+
+Building from sources
+
+At the moment z-tokens requires at least Rust 1.63 or later.
+
+Use the latest development branch:
+
+cargo install --bins --git https://github.com/volution/z-tokens --force
+
+Use a particular tag:
+
+cargo install --bins --tag v0.3.1 --git https://github.com/volution/z-tokens --force
+
+It should build at least on the following platforms:
+
+  * Linux: x86_64-unknown-linux-gnu, x86_64-unknown-linux-musl;
+  * OSX: x86_64-apple-darwin, aarch64-apple-darwin;
+  * Android: x86_64-linux-android, aarch64-linux-android;
+  * FreeBSD: only x86_64-unknown-freebsd;
+  * OpenBSD: not tested, but I don't see why it shouldn't build;
+  * Windows: x86_64-pc-windows-msvc, aarch64-pc-windows-msvc;
+
+The build status was assessed by running cargo check --target ....
+
+Downloading pre-built binaries
+
+  * download the executable and (optiotal) signature (replace linux with darwin
+    (for OSX), freebsd or openbsd, and use x86_64 or aarch64 matching your
+    processor):
+
+curl -s -L -f -S \
+    -o /tmp/z-tokens \
+    https://github.com/volution/z-tokens/releases/download/v0.3.1/z-tokens--linux--x86_64--v0.3.1
+
+curl -s -L -f -S \
+    -o /tmp/z-tokens.asc \
+    https://github.com/volution/z-tokens/releases/download/v0.3.1/z-tokens--linux--x86_64--v0.3.1.asc
+
+  * (optional) import my PGP key:
+
+curl -s -f -S https://github.com/cipriancraciun.gpg | gpg2 --import
+
+  * (optional) verify the executable:
+
+gpg --verify /tmp/z-tokens.asc /tmp/z-tokens
+
+  * check that the key is 58FC 2194 FCC2 4783 99CB 220C 5A97 4037 A6FD 8839;
+
+  * change the executable permissions:
+
+chmod a=rx /tmp/z-tokens
+
+  * copy the executable on the $PATH:
+
+sudo cp /tmp/z-tokens /usr/local/bin/z-tokens
+
+  * check that it works:
+
+z-tokens --version
+
+0.3.1
 
 -------------------------------------------------------------------------------
 

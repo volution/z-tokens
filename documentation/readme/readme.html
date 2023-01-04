@@ -2,7 +2,25 @@
 (If there is need for documentation, besides the frugally <code>-h</code> for each command, I have failed in one of the mandatory requirements, that of being "simple to use".)</p><p>For how to download and install it see the <a href=#install>dedicated section</a>.</p><p>Get some help:</p><pre><code>z-tokens -h
 z-tokens generate -h
 z-tokens patterns -h
-</code></pre><hr><h2><span id=examples>Examples</span></h2><p><strong>TBD</strong></p><hr><h2><span id=install>Installation</span></h2><p><strong>TBD</strong></p><hr><h2><span id=license>Notice (copyright and licensing)</span></h2><h3>Notice -- short version</h3><p>The code is licensed under GPL 3 or later.</p><h3>Notice -- long version</h3><p>For details about the copyright and licensing, please consult the <a href=./documentation/licensing/notice.txt><code>notice.txt</code></a> file in the <a href=./documentation/licensing><code>documentation/licensing</code></a> folder.</p><p>If someone requires the sources and/or documentation to be released
+</code></pre><hr><h2><span id=examples>Examples</span></h2><p><strong>TBD</strong></p><hr><h2><span id=install>Installation</span></h2><p>At the moment, due to the Rust cross-compilation hurdles,
+one can install <code>z-tokens</code> by building it with <code>cargo</code>,
+or downloading the already built Linux or OSX binaries.</p><p><strong>TBD</strong></p><h3>Building from sources</h3><p>At the moment <code>z-tokens</code> requires at least Rust 1.63 or later.</p><p>Use the latest development branch:</p><pre><code>cargo install --bins --git https://github.com/volution/z-tokens --force
+</code></pre><p>Use a particular tag:</p><pre><code>cargo install --bins --tag v0.3.1 --git https://github.com/volution/z-tokens --force
+</code></pre><p>It should build at least on the following platforms:</p><ul><li>Linux: <code>x86_64-unknown-linux-gnu</code>, <code>x86_64-unknown-linux-musl</code>;</li><li>OSX: <code>x86_64-apple-darwin</code>, <code>aarch64-apple-darwin</code>;</li><li>Android: <code>x86_64-linux-android</code>, <code>aarch64-linux-android</code>;</li><li>FreeBSD: only <code>x86_64-unknown-freebsd</code>;</li><li>OpenBSD: not tested, but I don't see why it shouldn't build;</li><li>Windows: <code>x86_64-pc-windows-msvc</code>, <code>aarch64-pc-windows-msvc</code>;</li></ul><p>The build status was assessed by running <code>cargo check --target ...</code>.</p><h3>Downloading pre-built binaries</h3><ul><li>download the executable and (optiotal) signature
+(replace <code>linux</code> with <code>darwin</code> (for OSX), <code>freebsd</code> or <code>openbsd</code>,
+and use <code>x86_64</code> or <code>aarch64</code> matching your processor):</li></ul><pre><code>curl -s -L -f -S \
+    -o /tmp/z-tokens \
+    https://github.com/volution/z-tokens/releases/download/v0.3.1/z-tokens--linux--x86_64--v0.3.1
+</code></pre><pre><code>curl -s -L -f -S \
+    -o /tmp/z-tokens.asc \
+    https://github.com/volution/z-tokens/releases/download/v0.3.1/z-tokens--linux--x86_64--v0.3.1.asc
+</code></pre><ul><li>(optional) import my PGP key:</li></ul><pre><code>curl -s -f -S https://github.com/cipriancraciun.gpg | gpg2 --import
+</code></pre><ul><li>(optional) verify the executable:</li></ul><pre><code>gpg --verify /tmp/z-tokens.asc /tmp/z-tokens
+</code></pre><ul><li><p><strong>check that the key is <code>58FC 2194 FCC2 4783 99CB 220C 5A97 4037 A6FD 8839</code></strong>;</p></li><li><p>change the executable permissions:</p></li></ul><pre><code>chmod a=rx /tmp/z-tokens
+</code></pre><ul><li>copy the executable on the <code>$PATH</code>:</li></ul><pre><code>sudo cp /tmp/z-tokens /usr/local/bin/z-tokens
+</code></pre><ul><li>check that it works:</li></ul><pre><code>z-tokens --version
+</code></pre><pre><code>0.3.1
+</code></pre><hr><h2><span id=license>Notice (copyright and licensing)</span></h2><h3>Notice -- short version</h3><p>The code is licensed under GPL 3 or later.</p><h3>Notice -- long version</h3><p>For details about the copyright and licensing, please consult the <a href=./documentation/licensing/notice.txt><code>notice.txt</code></a> file in the <a href=./documentation/licensing><code>documentation/licensing</code></a> folder.</p><p>If someone requires the sources and/or documentation to be released
 under a different license, please send an email to the authors,
 stating the licensing requirements, accompanied by the reasons
 and other details; then, depending on the situation, the authors might
