@@ -223,7 +223,7 @@
 			-o indent_incr=4 \
 			-o display_link_number=false \
 		<<< "${_html_body}" \
-	| tail -n +6 \
+	| tail -n +4 \
 		>| ./documentation/readme/readme.txt.tmp \
 	#
 	
