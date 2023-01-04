@@ -5,14 +5,12 @@ use crate::prelude::*;
 
 use ::rand::{
 		
-		self as rand,
-		
 		RngCore,
-		CryptoRng,
 		SeedableRng,
 		
 		rngs::OsRng,
 		rngs::StdRng,
+		
 		
 	};
 

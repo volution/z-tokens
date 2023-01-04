@@ -121,7 +121,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	for _pattern in patterns::all_token_patterns () .into_iter () {
 		let &(ref _identifier, ref _pattern) = _pattern.as_ref ();
 		
-		_randomizer.reset ();
+		_randomizer.reset () .else_wrap (0xb2fb5275) ?;
 		
 		let _entropy = entropy_token (&_pattern) .else_wrap (0x6374858a) ?;
 		let (_bits, _bits_exact) = _entropy.bits_exact ();
@@ -134,7 +134,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		}
 		
 		let _token = generate_token (&_pattern, _randomizer) .else_wrap (0xef0a3430) ?;
-		_randomizer.advance ();
+		_randomizer.advance () .else_wrap (0x1307c15b) ?;
 		let _string = output_token_to_string (&_token, &_output_options) .else_wrap (0x36471fa6) ?;
 		let _string_length = _string.len ();
 		
@@ -158,7 +158,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 						_string
 					} else {
 						let _token = generate_token (&_pattern, _randomizer) .else_wrap (0xa4cd2699) ?;
-						_randomizer.advance ();
+						_randomizer.advance () .else_wrap (0xbd368c66) ?;
 						let _string = output_token_to_string (&_token, &_output_options) .else_wrap (0xde6323af) ?;
 						Cow::Owned (_string)
 					};
@@ -226,7 +226,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		}
 	}
 	
-	_stream.into_inner () .else_replace (0xb10d6da8) ?;
+	drop (_stream.into_inner () .else_replace (0xb10d6da8) ?);
 	
 	Ok (ExitCode::SUCCESS)
 }

@@ -86,7 +86,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _stream = BufWriter::with_capacity (1024 * 1024, stdout_locked ());
 	
-	_randomizer.reset ();
+	_randomizer.reset () .else_wrap (0x3e9a73ab) ?;
 	
 	for _index in 0 .. _token_count {
 		
@@ -105,10 +105,10 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			_stream.write (_token_separator.as_bytes ()) .else_wrap (0xdd5337ae) ?;
 		}
 		
-		_randomizer.advance ();
+		_randomizer.advance () .else_wrap (0x39297684) ?;
 	}
 	
-	_stream.into_inner () .else_replace (0x96af9244) ?;
+	drop (_stream.into_inner () .else_replace (0x96af9244) ?);
 	
 	Ok (ExitCode::SUCCESS)
 }

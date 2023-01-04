@@ -20,7 +20,9 @@ pub mod glyphs {
 			::paste::paste! {
 				
 				$(
+					#[ allow (non_upper_case_globals) ]
 					static [< _ $_pattern __ $_char __TEXT >] : &Text = & Text::$_variant ($_char);
+					#[ allow (non_upper_case_globals) ]
 					static [< _ $_pattern __ $_char __GLYPH >] : &Glyph = & Glyph::Text (Rb::new_static ( [< _ $_pattern __ $_char __TEXT >] ));
 				)*
 				
@@ -884,6 +886,8 @@ pub mod consts {
 
 
 pub(crate) mod macros {
+	
+	#![ allow (unused_imports) ]
 	
 	// NOTE:  #>  python -c $'print ("macro_rules! __count_list {")\nfor n in range (1, 512 + 1) :\n  for e in range (1, 16 + 1) :\n    if e <= n : print ("( %d, %d )" % (n, e) + "=> { [ " + ", ".join (["%d" % c for c in range (0, n + 1, e) if c != 0]) + ", ] };")\nprint ("}")' >| ./sources/patterns_count_list.in
 	include! ("./patterns_count_list.in");

@@ -109,7 +109,7 @@ fn print_and_exit (_chunks : &[&str], _success : bool) -> MainResult<ExitCode> {
 		_stream.write (_chunk.as_bytes ()) .else_wrap (0x4c5c446d) ?;
 	}
 	
-	_stream.into_inner () .else_replace (0xbbc5724c) ?;
+	drop (_stream.into_inner () .else_replace (0xbbc5724c) ?);
 	
 	if _success {
 		Ok (ExitCode::SUCCESS)

@@ -3,6 +3,7 @@
 use crate::prelude::*;
 
 
+#[ allow (unused_imports) ]
 pub(crate) use ::argparse::{
 		ArgumentParser as ArgParser,
 		Store as ArgStore,

@@ -3,6 +3,16 @@
 #![ no_implicit_prelude ]
 
 
+#![ allow (unused_parens) ]
+
+
+
+
+pub use tools::{ main, MainResult, };
+
+
+
+
 pub mod model;
 pub mod generator;
 pub mod randomizer;
@@ -19,8 +29,5 @@ pub mod tools_flags;
 
 
 pub(crate) mod prelude;
-
-
-pub use tools::{ main, MainResult, };
 
 
