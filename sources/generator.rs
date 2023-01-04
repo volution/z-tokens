@@ -169,7 +169,7 @@ pub fn generate_glyph_push (_pattern : impl AsRef<GlyphPattern>, _randomizer : &
 		
 		GlyphPattern::Set (_patterns) => {
 			let _count = _patterns.len ();
-			let _index = _randomizer.choose (_count) .else_wrap (0x5079d3d3) ?;
+			let _index = _randomizer.choose (_count) .else_wrap (0x80578f69) ?;
 			let _glyph = _patterns[_index] .clone ();
 			(_glyph, _count, _index)
 		}

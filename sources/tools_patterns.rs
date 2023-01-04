@@ -219,7 +219,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			};
 		
 		if _bits_exact {
-			writeln! (&mut _stream, "| {:22} | b {:4.0}   | c {:4} ||  {}", _identifier, _bits, _string_length, _display_string) .else_wrap (0xd141c5ef) ?;
+			writeln! (&mut _stream, "| {:22} | b {:4.0}   | c {:4} ||  {}", _identifier, _bits, _string_length, _display_string) .else_wrap (0x737c2a4f) ?;
 		} else {
 			let _display_bits = (_bits * 10.0) .floor () / 10.0;
 			writeln! (&mut _stream, "| {:22} | b {:6.1} | c {:4} ||  {}", _identifier, _display_bits, _string_length, _display_string) .else_wrap (0xd141c5ef) ?;
