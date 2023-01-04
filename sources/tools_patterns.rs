@@ -86,15 +86,22 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let _output_options = _output_flags.build () .else_wrap (0x3c0d75d6) ?;
 	
+	
+	
+	
 	let _identifiers_only = _identifiers_only.unwrap_or (false);
+	
+	let _length_maximum = if (! _identifiers_only) && _entropy_minimum.is_none () && _entropy_maximum.is_none () && _length_minimum.is_none () && _length_minimum.is_none () {
+			Some (40)
+		} else {
+			_length_maximum
+		};
+	
 	let _entropy_minimum = _entropy_minimum.unwrap_or (0);
 	let _entropy_maximum = _entropy_maximum.unwrap_or (usize::MAX);
 	let _length_minimum = _length_minimum.unwrap_or (0);
-	let _length_maximum = if true {
-			_length_maximum.unwrap_or (40)
-		} else {
-			_length_maximum.unwrap_or (usize::MAX)
-		};
+	let _length_maximum = _length_maximum.unwrap_or (usize::MAX);
+	
 	let _classify_chars =
 			_has_all.is_some () ||
 			_has_letters.is_some () ||
@@ -102,6 +109,9 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			_has_letters_lower.is_some () ||
 			_has_digits.is_some () ||
 			_has_symbols.is_some ();
+	
+	
+	
 	
 	let mut _randomizer = _randomizer_flags.build () .else_wrap (0xa43471c4) ?;
 	let _randomizer = _randomizer.deref_mut ();
