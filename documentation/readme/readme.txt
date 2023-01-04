@@ -1,17 +1,48 @@
 
-    Table of contents:
+z-tokens -- Random tokens generation and related tools
 
       + about; status;
       + documentation; examples;
       + install;
       + licensing; SBOM;
-      + chat on Discord, discuss on GitHub, or email author
+      + chat on Discord; discuss on GitHub; email author;
+      + source code at https://github.com/volution/z-tokens
 
 -------------------------------------------------------------------------------
 
 About
 
-TBD
+    Welcome to the z-tokens project, available at https://github.com/volution/
+    z-tokens.
+
+As the title says, z-tokens is a Rust-based tool for generating tokens
+(especially passwords and other entropy-sensitive tokens) and other related
+utilities. (Although, at the moment it can only generate tokens.)
+
+This project is at its third iteration, and has its roots in a 2008 CommonLisp
+script that had the same purpose, and follows the second Python-based
+iteration. (Although the Rust-based implementation is quite more complex than
+the previous iterations.)
+
+Needless to say, I've used this tool for the last 10+ years for all my password
+generation, thus I find it critical for my own use-cases. I just hope others
+also find some use in it.
+
+In terms of types of generated tokens, here are a few of them:
+
+  * passwords -- from easily pronounceable (see the cv-lower:* and
+    proquint-lower:* ones) complete random ASCII dumps;
+  * pins -- numeric tokens with various levels of entropy (see the
+    digits-base10:* ones);
+  * raw tokens -- in various encodings (such as base64, base32, z85, bech32,
+    etc.); (please note that such tokens just use the encoding character set,
+    and don't necessarily decode correctly in one of those encodings;)
+  * IP and MAC addresses;
+  * UUIDv4;
+  * timestamps in various representations; (not for security purposes, as they
+    have almost 0 entropy;)
+  * time sorted tokens with various levels of entropy (see the flake:* ones);
+  * seed phrases (see the mnemonic:* or bip0039:* ones);
 
 -------------------------------------------------------------------------------
 
@@ -19,41 +50,42 @@ Status
 
 The Rust code is quite fresh and thus not thoroughly tested and reviewed.
 
-However, it relies only on solid Rust libraries (like rand) and it doesn't do
-much (like touching the file-system or talking to the network), thus it
-shouldn't break anything.
+However, it relies on solid Rust libraries (like rand) and it doesn't do much
+(like touching the file-system or talking to the network), thus it shouldn't
+break anything.
 
-The only critical code at the moment -- which could have major security
-implications by weakening the generated tokens -- is the random token
+The only critical code at the moment, --- which could have major security
+implications by weakening the generated tokens --- is the random token
 generation, especially the selection from the pattern character sets. Although
-I haven't thoroughly reviewed this, it's quite simple and just delegates to the
-rand library for the actual random number handling.
+I haven't thoroughly reviewed this, it's simple and just delegates to the rand
+library for the actual random number handling.
 
-The generated patterns should provide the stated entropy bits , as per z-tokens
+The generated patterns should provide the stated entropy bits, as per z-tokens
 patterns, because these values are computed based on the actual patterns. Thus
 even if I missed a character in a given pattern character set, if your token
-matches your entropy requirements it should be safe enough (provided the random
-selection doesn't have issues).
+matches your entropy requirements, then it should be safe enough (provided the
+random selection doesn't have issues).
 
 -------------------------------------------------------------------------------
 
 Documentation
 
-Besides what is available by running z-tokens help and this readme (especially
-the examples section) there is no other documentation at the moment.
+Besides what is available by running z-tokens help and this document
+(especially the examples section) there is no other documentation at the
+moment.
 
 That being said, just run the following and start experimenting with the
 commands. (If there is need for documentation, besides the frugally -h for each
 command, I have failed in one of the mandatory requirements, that of being
 "simple to use".)
 
-For how to download and install it see the dedicated section.
-
 Get some help:
 
 z-tokens -h
 z-tokens generate -h
 z-tokens patterns -h
+
+For how to install see the dedicated section.
 
 -------------------------------------------------------------------------------
 
@@ -105,7 +137,7 @@ format:
   * the c column shows the token length with spaces or separators (or without
     mandatory separators if -C is used);
   * the last column is an example of such a token; you can safely use it, with
-    or without spaces or separators as required (although without is suggesed,
+    or without spaces or separators as required (although without is suggested,
     unless these separators are mandatory);
 
 Show a selection of supported patterns (mainly those up to 40 characters in
@@ -201,7 +233,7 @@ The build status was assessed by running cargo check --target ....
 
 Downloading pre-built binaries
 
-  * download the executable and (optiotal) signature (replace linux with darwin
+  * download the executable and (optional) signature (replace linux with darwin
     (for OSX), freebsd or openbsd, and use x86_64 or aarch64 matching your
     processor):
 
@@ -251,7 +283,7 @@ For details about the copyright and licensing, please consult the notice.txt
 file in the documentation/licensing folder.
 
 If someone requires the sources and/or documentation to be released under a
-different license, please send an email to the authors, stating the licensing
+different license, please email the authors, stating the licensing
 requirements, accompanied by the reasons and other details; then, depending on
 the situation, the authors might release the sources and/or documentation under
 a different license.
