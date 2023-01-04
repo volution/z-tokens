@@ -91,10 +91,10 @@ pub fn main () -> MainResult<ExitCode> {
 			print_and_exit (&[SBOM_JSON], true),
 		
 		(&[], _) =>
-			print_and_exit (&["[ee] [427cd93b]  expected command and arguments;  see `z-tokens help`;  aborting!"], false),
+			print_and_exit (&["[ee] [427cd93b]  expected command and arguments;  see `z-tokens help`;  aborting!", "\n"], false),
 		
 		_ =>
-			print_and_exit (&["[ee] [37d61e27]  invalid command;  see `z-tokens help`;  aborting!"], false),
+			print_and_exit (&["[ee] [37d61e27]  invalid command;  see `z-tokens help`;  aborting!", "\n"], false),
 	}
 }
 
