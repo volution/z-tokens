@@ -1,0 +1,233 @@
+#!/dev/null
+
+
+
+
+++::// documentation / readme / ...
+
+
+
+
+<< documentation / readme / open / html / firefox
+	test "${#}" -eq 0
+	"${ZRUN[@]}" ':: documentation / readme / render / html'
+	exec -- x-www firefox-guest:z-run open file:"$( exec -- readlink -e -- ./documentation/readme/readme.html )"
+!!
+
+<< documentation / readme / open / html / chromium
+	test "${#}" -eq 0
+	"${ZRUN[@]}" ':: documentation / readme / render / html'
+	exec -- x-www chromium-guest:z-run open file:"$( exec -- readlink -e -- ./documentation/readme/readme.html )"
+!!
+
+<< documentation / readme / open / html / webview
+	test "${#}" -eq 0
+	"${ZRUN[@]}" ':: documentation / readme / render / html'
+	exec -- x-www webview open file:"$( exec -- readlink -e -- ./documentation/readme/readme.html )"
+!!
+
+<< documentation / readme / open / html / links
+	test "${#}" -eq 0
+	"${ZRUN[@]}" ':: documentation / readme / render / html'
+	exec -- links file:"$( exec -- readlink -e -- ./documentation/readme/readme.html )"
+!!
+
+<< documentation / readme / open / text
+	test "${#}" -eq 0
+	"${ZRUN[@]}" ':: documentation / readme / render / text'
+	exec -- less -- ./documentation/readme/readme.txt
+!!
+
+
+
+
+<< documentation / readme / render / watch
+	exec -- watchexec \
+			--watch=./documentation/readme/readme.md \
+			--no-shell \
+			-- \
+			"${ZRUN[@]}" ':: documentation / readme / render' "${@}" \
+	#
+!!
+
+
+<< documentation / readme / render
+	"${ZRUN[@]}" ':: documentation / readme / render / html' "${@}"
+	"${ZRUN[@]}" ':: documentation / readme / render / text' "${@}"
+!!
+
+
+<< documentation / readme / render / forced
+	"${ZRUN[@]}" ':: documentation / readme / render / html / forced' "${@}"
+	"${ZRUN[@]}" ':: documentation / readme / render / text / forced' "${@}"
+!!
+
+
+<< documentation / readme / render / html
+	if test ./documentation/readme/readme.md -ot ./documentation/readme/readme.html ; then
+		printf -- '[ii]  skipping rendering `readme.html`!\n' >&2
+		exit -- 0
+	fi
+	printf -- '[ii]  rendering `readme.html`...\n' >&2
+	exec -- "${ZRUN[@]}" ':: documentation / readme / render / html / forced' "${@}"
+!!
+
+
+<< documentation / readme / render / text
+	if test ./documentation/readme/readme.md -ot ./documentation/readme/readme.txt ; then
+		printf -- '[ii]  skipping rendering `readme.txt`!\n' >&2
+		exit -- 0
+	fi
+	printf -- '[ii]  rendering `readme.txt`...\n' >&2
+	exec -- "${ZRUN[@]}" ':: documentation / readme / render / text / forced' "${@}"
+!!
+
+
+
+
+<< documentation / readme / render / html / forced
+	
+	test "${#}" -eq 0
+	
+	_html_body="$(
+			exec -- cmark-gfm \
+					--to html \
+					--extension autolink \
+					--validate-utf8 \
+					--unsafe \
+				< ./documentation/readme/readme.md \
+			#
+		)"
+	test -n "${_html_body}"
+	
+	_html_css="$(
+			exec -- curl \
+					-s -S -f \
+					-- https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.css \
+			#
+		)"
+	test -n "${_html_css}"
+	_html_css="$(
+			exec -- minify --type css \
+				<<< "${_html_css}" \
+			#
+		)"
+	test -n "${_html_css}"
+	
+	_html="$( exec -- cat << EOS
+	<!doctype html>
+	<html>
+	<head>
+		<title>z-run</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg data-name='Layer 2'%3E%3Cg data-name='file-text'%3E%3Crect width='24' height='24' opacity='0'/%3E%3Cpath d='M15 16H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2z'/%3E%3Cpath d='M9 14h3a1 1 0 0 0 0-2H9a1 1 0 0 0 0 2z'/%3E%3Cpath d='M19.74 8.33l-5.44-6a1 1 0 0 0-.74-.33h-7A2.53 2.53 0 0 0 4 4.5v15A2.53 2.53 0 0 0 6.56 22h10.88A2.53 2.53 0 0 0 20 19.5V9a1 1 0 0 0-.26-.67zM14 5l2.74 3h-2a.79.79 0 0 1-.74-.85zm3.44 15H6.56a.53.53 0 0 1-.56-.5v-15a.53.53 0 0 1 .56-.5H12v3.15A2.79 2.79 0 0 0 14.71 10H18v9.5a.53.53 0 0 1-.56.5z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E" />
+		<style>${_html_css}</style>
+		<style>
+			html:root, body {
+				margin : 0px;
+				padding : 0px;
+				-webkit-text-size-adjust : 100%;
+				background : rgb(34, 39, 46);
+			}
+			.markdown-body {
+				box-sizing : border-box;
+				min-width : 200px;
+				max-width : 980px;
+				margin : 0px auto;
+				padding : 45px;
+				background : hsl(0, 0%, 100%);
+			}
+			@media (max-width: 800px) {
+				.markdown-body {
+					padding : 15px;
+				}
+			}
+			.markdown-body {
+				filter: invert(1);
+			}
+			.markdown-body img {
+				filter: invert(1);
+			}
+		</style>
+		<script>
+			(function () {
+				"use strict";
+				function _reload () {
+					if (window.location.search != "?reload") {
+						return;
+					}
+					if (window.history.scrollRestoration !== undefined) {
+						window.history.scrollRestoration = "auto";
+					}
+					window.history.go ();
+				}
+				window.setTimeout (_reload, 1000);
+			} ());
+		</script>
+	</head>
+	<body>
+	<main class="markdown-body">
+	${_html_body}
+	</main>
+	</body>
+	</html>
+	EOS
+	)"
+	
+	_html="$(
+			exec -- minify \
+					--type html \
+					--html-keep-document-tags \
+					--html-keep-end-tags \
+				<<<"${_html}" \
+			#
+		)"
+	
+	printf -- '%s' "${_html}" \
+		>| ./documentation/readme/readme.html.tmp \
+	#
+	
+	mv -T -- \
+			./documentation/readme/readme.html.tmp \
+			./documentation/readme/readme.html \
+	#
+!!
+
+
+<< documentation / readme / render / text / forced
+	
+	test "${#}" -eq 0
+	
+	_html_body="$(
+			exec -- cmark-gfm \
+					--to html \
+					--extension autolink \
+					--validate-utf8 \
+					--unsafe \
+				< ./documentation/readme/readme.md \
+			#
+		)"
+	test -n "${_html_body}"
+	
+	w3m \
+			-dump \
+			-T text/html \
+			-cols 80 \
+			-no-graph \
+			-I utf-8 \
+			-O utf-8 \
+			-o tabstop=4 \
+			-o indent_incr=4 \
+			-o display_link_number=false \
+		<<< "${_html_body}" \
+	| tail -n +6 \
+		>| ./documentation/readme/readme.txt.tmp \
+	#
+	
+	mv -T -- \
+			./documentation/readme/readme.txt.tmp \
+			./documentation/readme/readme.txt \
+	#
+!!
+

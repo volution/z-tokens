@@ -370,6 +370,9 @@
 
 
 
+&& _/readme.z-run
+
+
 &&?? _/.local.z-run
 &&?? ../.git/.local.z-run
 
