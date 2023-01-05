@@ -74,7 +74,7 @@ pub fn main () -> MainResult<ExitCode> {
 		
 		(&["version"], _) | (&["v"], _) |
 		(&[], &["--version"]) | (&[], &["-v"]) =>
-			print_and_exit (&[BUILD_VERSION], true),
+			print_version_and_exit (true),
 		
 		(&[], &["--readme"]) |
 		(&[], &["--readme-text"]) =>
@@ -90,6 +90,11 @@ pub fn main () -> MainResult<ExitCode> {
 		(&[], &["--sbom-json"]) =>
 			print_and_exit (&[SBOM_JSON], true),
 		
+		(&[], &["--sources-md5"]) =>
+			dump_and_exit (BUILD_SOURCES_MD5.as_bytes (), true),
+		(&[], &["--sources-cpio"]) =>
+			dump_and_exit (BUILD_SOURCES_CPIO_GZ, true),
+		
 		(&[], _) =>
 			print_and_exit (&["[ee] [427cd93b]  expected command and arguments;  see `z-tokens help`;  aborting!", "\n"], false),
 		
@@ -101,12 +106,80 @@ pub fn main () -> MainResult<ExitCode> {
 
 
 
-fn print_and_exit (_chunks : &[&str], _success : bool) -> MainResult<ExitCode> {
+fn print_version_and_exit (_succeed : bool) -> MainResult<ExitCode> {
 	
-	let mut _stream = BufWriter::with_capacity (1024 * 1024, stdout_locked ());
+	let _executable_name = "z-tokens";
+	
+	let _executable = match env::current_exe () {
+			Ok (_executable) =>
+				_executable,
+			Err (_error) => {
+				::std::eprintln! ("[ee] [51d238d5]  unexpected error encountered;  ignoring!  //  {}", _error);
+				PathBuf::from ("<unknown>")
+			}
+		};
+	
+	let _executable0 = match env::args_os () .into_iter () .next () {
+			Some (_argument) =>
+				PathBuf::from (_argument),
+			None => {
+				::std::eprintln! ("[ee] [8102483f]  unexpected error encountered;  ignoring!");
+				PathBuf::from ("<unknown>")
+			}
+		};
+	
+	let _build_version = BUILD_VERSION.trim_matches ('\n');
+	let _build_number = BUILD_NUMBER.trim_matches ('\n');
+	let _build_timestamp = BUILD_TIMESTAMP.trim_matches ('\n');
+	let _build_git_hash = BUILD_GIT_HASH.trim_matches ('\n');
+	let _build_sources_hash = BUILD_SOURCES_HASH.trim_matches ('\n');
+	
+	let _uname = match ::platform_info::PlatformInfo::new () {
+			Ok (_uname) =>
+				Some (_uname),
+			Err (_error) => {
+				::std::eprintln! ("[ee] [0fcf6fae]  unexpected error encountered;  ignoring!  //  {}", _error);
+				None
+			}
+		};
+	let (_uname_node, _uname_system, _uname_release, _uname_machine) = if let Some (_uname) = &_uname {
+			use ::platform_info::Uname as _;
+			(_uname.nodename (), _uname.sysname (), _uname.release (), _uname.machine ())
+		} else {
+			("{unknown}".into (), "{unknown}".into (), "{unknown}".into (), "{unknown}".into ())
+		};
+	
+	print_and_exit (&[
+			
+			& format! ("* tool          : {}\n", _executable_name),
+			& format! ("* version       : {}\n", _build_version),
+			& if _executable0 == _executable {
+				format! ("* executable    : {}\n", _executable.display ())
+			} else {
+				format! ("* executable    : {}\n", _executable.display ()) + &
+				format! ("* executable-0  : {}\n", _executable0.display ())
+			},
+			& format! ("* build target  : {}\n", BUILD_TARGET_TYPE),
+			& format! ("* build number  : {}, {}\n", _build_number, _build_timestamp),
+			& format! ("* code & issues : {}\n", PROJECT_URL),
+			& format! ("* sources git   : {}\n", _build_git_hash),
+			& format! ("* sources hash  : {}\n", _build_sources_hash),
+			& format! ("* uname node    : {}\n", _uname_node),
+			& format! ("* uname system  : {}, {}, {}\n", _uname_system, _uname_release, _uname_machine),
+		//	& format! ("* uname hash    : {}\n", _uname_fingerprint),
+			
+		], _succeed)
+}
+
+
+
+
+fn print_and_exit (_chunks : &[impl AsRef<str>], _success : bool) -> MainResult<ExitCode> {
+	
+	let mut _stream = BufWriter::with_capacity (16 * 1024, stdout_locked ());
 	
 	for _chunk in _chunks {
-		_stream.write (_chunk.as_bytes ()) .else_wrap (0x4c5c446d) ?;
+		_stream.write (_chunk.as_ref () .as_bytes ()) .else_wrap (0x4c5c446d) ?;
 	}
 	
 	drop (_stream.into_inner () .else_replace (0xbbc5724c) ?);
@@ -119,6 +192,29 @@ fn print_and_exit (_chunks : &[&str], _success : bool) -> MainResult<ExitCode> {
 }
 
 
+fn dump_and_exit (_data : &[u8], _success : bool) -> MainResult<ExitCode> {
+	
+	let mut _stream = stdout_locked ();
+	
+	_stream.write (_data) .else_wrap (0xfbf75f69) ?;
+	
+	drop (_stream);
+	
+	if _success {
+		Ok (ExitCode::SUCCESS)
+	} else {
+		Ok (ExitCode::FAILURE)
+	}
+}
+
+
+
+
+static PROJECT_URL : &'static str = "https://github.com/volution/z-tokens";
+
+
+static README_TEXT : &'static str = include_str! ("./_embedded/readme/readme.txt");
+static README_HTML : &'static str = include_str! ("./_embedded/readme/readme.html");
 
 
 static HELP_MAIN_TEXT : &'static str = include_str! ("./_embedded/help/main.txt");
@@ -127,14 +223,19 @@ static HELP_HEADER_TEXT : &'static str = include_str! ("./_embedded/help/_header
 static HELP_FOOTER_TEXT : &'static str = include_str! ("./_embedded/help/_footer.txt");
 
 
-static README_TEXT : &'static str = include_str! ("./_embedded/readme/readme.txt");
-static README_HTML : &'static str = include_str! ("./_embedded/readme/readme.html");
-
-
 static SBOM_TEXT : &'static str = include_str! ("./_embedded/sbom/sbom.txt");
 static SBOM_HTML : &'static str = include_str! ("./_embedded/sbom/sbom.html");
 static SBOM_JSON : &'static str = include_str! ("./_embedded/sbom/sbom.json");
 
 
 static BUILD_VERSION : &'static str = include_str! ("./_embedded/build/version.txt");
+static BUILD_NUMBER : &'static str = include_str! ("./_embedded/build/number.txt");
+static BUILD_TIMESTAMP : &'static str = include_str! ("./_embedded/build/timestamp.txt");
+
+static BUILD_SOURCES_HASH : &'static str = include_str! ("./_embedded/build/sources.hash");
+static BUILD_SOURCES_MD5 : &'static str = include_str! ("./_embedded/build/sources.md5");
+static BUILD_SOURCES_CPIO_GZ : &'static [u8] = include_bytes! ("./_embedded/build/sources.cpio.gz");
+
+static BUILD_GIT_HASH : &'static str = if let Some (_value) = ::std::option_env! ("__META__BUILD_GIT_HASH") { _value } else { "{unknown-bgh}" };
+static BUILD_TARGET_TYPE : &'static str = if let Some (_value) = ::std::option_env! ("__META__BUILD_TARGET_TYPE") { _value } else { "{unknown-btt}" };
 
