@@ -154,6 +154,11 @@
 	
 	"${ZRUN[@]}" ':: sources / embedded / prepare'
 	
+	_outputs="$( exec -- "${ZRUN}" ':: workbench / outputs' )"
+	
+	test -d "${_outputs}"
+	test -d "${_outputs}/markers"
+	
 	if test -s ./sources/_embedded/build/sources.cpio.gz ; then
 		rm -- ./sources/_embedded/build/sources.cpio.gz
 	fi
