@@ -268,11 +268,6 @@
 
 << deploy / release
 	
-	if test -z "${__SOURCES__PREPARED:-}" ; then
-		"${ZRUN}" ':: sources / embedded / bundle'
-		export -- __SOURCES__PREPARED=true
-	fi
-	
 	if test "${#}" -ge 1 ; then
 		_main_0="${1}"
 		shift -- 1
@@ -291,6 +286,11 @@
 	
 	if test "${__DEPLOY_NORELEASE:-}" == true ; then
 		exit -- 0
+	fi
+	
+	if test -z "${__SOURCES__PREPARED:-}" ; then
+		"${ZRUN}" ':: sources / embedded / bundle'
+		export -- __SOURCES__PREPARED=true
 	fi
 	
 	readarray -t -- _mains < <( exec -- "${ZRUN}" ':: deploy / list / main' )
