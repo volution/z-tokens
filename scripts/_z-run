@@ -11,13 +11,13 @@
 ::// cargo / documentation / ...
 
 ::// sources / ...
-
 ::// documentation / ...
 
 
 
 
 && _/cargo-build.z-run
+&& _/cargo-tools.z-run
 && _/cargo-cross.z-run
 && _/cargo-documentation.z-run
 && _/cargo-dependencies.z-run
@@ -25,14 +25,21 @@
 && _/cargo-delegate.z-run
 && _/cargo-remote.z-run
 
+&& _/sources-embedded.z-run
 && _/sources-grep.z-run
 
 && _/workbench-watch.z-run
 
+&& _/documentation-all.z-run
 && _/documentation-readme.z-run
 && _/documentation-sbom.z-run
+
+&& _/deploy.z-run
+
+
 
 
 &&?? _/.local.z-run
 &&?? ../.git/.local.z-run
+
 

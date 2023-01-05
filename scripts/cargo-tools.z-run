@@ -1,0 +1,131 @@
+#!/dev/null
+
+
+
+
+--<< cargo / tool / collect
+	
+	_type=debug
+	_target=native
+	_scratch=''
+	_outputs=''
+	_cross=false
+	_bins=all
+	
+	while test "${#}" -ge 1 ; do
+		case "${1}" in
+			( --release )
+				_type=release
+				shift -- 1
+			;;
+			( --target )
+				test "${#}" -ge 2
+				_target="${2}"
+				shift -- 2
+			;;
+			( --cross )
+				test "${#}" -ge 2
+				_cross="${2}"
+				shift -- 2
+			;;
+			( --scratch )
+				test "${#}" -ge 2
+				_scratch="${2}"
+				shift -- 2
+			;;
+			( --bins )
+				test "${#}" -ge 2
+				_bins="${2}"
+				shift -- 2
+			;;
+			( * )
+				false
+			;;
+		esac
+	done
+	test "${#}" -eq 0
+	
+	case "${_bins}" in
+		( all )
+			_bins=(
+					z-tokens
+				)
+		;;
+		( * )
+			_bins=(
+					"${_bins}"
+				)
+		;;
+	esac
+	
+	test -n "${_scratch}"
+	
+	if test -z "${_outputs}" ; then
+		_outputs="${__OUTPUTS}"
+		if test ! -e "${_outputs}" ; then
+			if test ! -e "${_scratch}/outputs" ; then
+				mkdir -- "${_scratch}/outputs"
+			fi
+			ln -s -T -- "${_scratch}/outputs" "${_outputs}"
+		fi
+		test -d "${_outputs}"
+		_outputs="${_outputs}/binaries"
+		if test ! -d "${_outputs}" ; then
+			mkdir -- "${_outputs}"
+		fi
+	fi
+	test -d "${_outputs}"
+	
+	_builds="${_scratch}"
+	test -d "${_builds}"
+	
+	if test "${_cross}" == false ; then
+		_builds="${_builds}/target"
+		test -d "${_builds}"
+	else
+		_builds="${_builds}/cross/target"
+		test -d "${_builds}"
+	fi
+	
+	if test "${_target}" != native ; then
+		_builds="${_builds}/${_target}"
+		test -d "${_builds}"
+	fi
+	
+	_builds="${_builds}/${_type}"
+	test -d "${_builds}"
+	
+	case "${_target}" in
+		( native ) _arch='native' ;;
+		( x86_64-* ) _arch='x86_64' ;;
+		( aarch64-* ) _arch='aarch64' ;;
+		( * ) false ;;
+	esac
+	_variant=''
+	case "${_target}" in
+		( native ) _os="${ZRUN_OS}" ;;
+		( *-unknown-linux-gnu ) _os=linux ;;
+		( *-unknown-linux-musl ) _os=linux ; _variant=static ;;
+		( *-apple-darwin ) _os=darwin ;;
+		( *-unknown-freebsd ) _os=freebsd ;;
+		( *-unknown-openbsd ) _os=openbsd ;;
+		( *-linux-android ) _os=android ;;
+		( * ) false ;;
+	esac
+	
+	for _bin in "${_bins[@]}" ; do
+		
+	#	printf -- '[ii]  collecting `%s` (`%s` / `%s` / `%s` / `%s` / `%s`)...\n' "${_bin}" "${_os}" "${_arch}" "${_variant:-default}" "${_type}" "${_target}" >&2
+		test -f "${_builds}/${_bin}"
+		
+		if test -n "${_variant}" ; then
+			_output="${_outputs}/${_bin}--${_type}--${_os}--${_arch}--${_variant}"
+		else
+			_output="${_outputs}/${_bin}--${_type}--${_os}--${_arch}"
+		fi
+		
+		rsync -i -a --chmod F0755 -- "${_builds}/${_bin}" "${_output}"
+		
+	done
+!!
+

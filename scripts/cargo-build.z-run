@@ -36,6 +36,19 @@
 
 
 
+<< cargo / debug / collect
+	export -- __CARGO__SWITCH_0=local-remote
+	exec -- "${ZRUN}" ':: cargo / exec' collect "${@}"
+!!
+
+<< cargo / release / collect
+	export -- __CARGO__SWITCH_0=local-remote
+	exec -- "${ZRUN}" ':: cargo / exec' collect --release "${@}"
+!!
+
+
+
+
 << cargo / debug / check / watch
 	exec -- "${ZRUN}" ':: watchexec / exec' ':: cargo / exec' check "${@}"
 !!

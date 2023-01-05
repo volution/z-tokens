@@ -1,0 +1,13 @@
+#!/dev/null
+
+
+
+
+<< documentation / all / render
+	test "${#}" -eq 0
+!!
+
+<< documentation / all / render / forced
+	test "${#}" -eq 0
+!!
+

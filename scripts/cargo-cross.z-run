@@ -11,6 +11,16 @@
 !!
 
 
+<< cargo / release / check / cross / all
+	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
+			check-targets \
+			':: cargo / release / check' "${@}" \
+	#
+!!
+
+
+
+
 << cargo / debug / build / cross / all
 	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
 			build-targets \
@@ -19,9 +29,43 @@
 !!
 
 
+<< cargo / release / build / cross / all
+	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
+			build-targets \
+			':: cargo / release / build' "${@}" \
+	#
+!!
+
+
+
+
+<< cargo / debug / collect / cross / all
+	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
+			no-fetch \
+			build-targets \
+			':: cargo / debug / collect' "${@}" \
+	#
+!!
+
+
+<< cargo / release / collect / cross / all
+	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
+			no-fetch \
+			build-targets \
+			':: cargo / release / collect' "${@}" \
+	#
+!!
+
+
 
 
 --<< cargo / cross / exec / all
+	
+	_fetch=true
+	if test "${#}" -ge 1 -a "${1}" == no-fetch ; then
+		_fetch=false
+		shift -- 1
+	fi
 	
 	test "${#}" -ge 2
 	_targets="${1}"
@@ -30,10 +74,12 @@
 	
 	readarray -t -- _targets < <( exec -- "${ZRUN}" ':: cargo / cross / exec / targets' "${_targets}" )
 	
-	export -- __CARGO_CROSS=true
+	export -- __CARGO__CROSS=true
 	
-	printf -- '[ii]  fetching dependencies...\n' >&2
-	"${ZRUN}" ':: cargo / dependencies / fetch'
+	if test "${_fetch}" == true ; then
+		printf -- '[ii]  fetching dependencies...\n' >&2
+		"${ZRUN}" ':: cargo / dependencies / fetch'
+	fi
 	
 	for _target in "${_targets[@]}" ; do
 		printf -- '[ii]  executing for target `%s`...\n' "${_target}" >&2

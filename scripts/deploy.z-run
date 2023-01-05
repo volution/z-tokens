@@ -1,0 +1,336 @@
+#!/dev/null
+
+
+
+
+::// deploy / ...
+
+
+
+
+--:: deploy / rsync / * / linux / x86_64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' linux--x86_64 "${@}"
+--:: deploy / rsync / * / linux / aarch64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' linux--aarch64 "${@}"
+
+--:: deploy / rsync / * / linux / x86_64--static :: exec -- "${ZRUN}" ':: deploy / rsync / *' linux--x86_64--static "${@}"
+--:: deploy / rsync / * / linux / aarch64--static :: exec -- "${ZRUN}" ':: deploy / rsync / *' linux--aarch64--static "${@}"
+
+--:: deploy / rsync / * / darwin / x86_64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' darwin--x86_64 "${@}"
+--:: deploy / rsync / * / darwin / aarch64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' darwin--aarch64 "${@}"
+--:: deploy / rsync / * / freebsd / x86_64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' freebsd--x86_64 "${@}"
+--:: deploy / rsync / * / freebsd / aarch64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' freebsd--aarch64 "${@}"
+--:: deploy / rsync / * / openbsd / x86_64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' openbsd--x86_64 "${@}"
+--:: deploy / rsync / * / openbsd / aarch64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' openbsd--aarch64 "${@}"
+--:: deploy / rsync / * / android / x86_64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' android--x86_64 "${@}"
+--:: deploy / rsync / * / android / aarch64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' android--aarch64 "${@}"
+
+
+
+
+<<.. deploy / list / variant
+	linux--x86_64
+	linux--aarch64
+	linux--x86_64--static
+	linux--aarch64--static
+	darwin--x86_64
+	darwin--aarch64
+	android--x86_64
+	android--aarch64
+!!
+
+
+<<.. deploy / list / main
+	z-tokens
+!!
+
+
+
+
+--<< deploy / rsync / *
+	
+	test "${#}" -eq 3 ; _variant="${1}" ; _main="${2}" ; _destination="${3}" ; shift -- 3
+	
+	_outputs="${__OUTPUTS}"
+	test -d "${_outputs}"
+	
+	"${ZRUN}" ':: deploy / release' "${_main}" "${_variant}"
+	
+	_source="${_outputs}/binaries/${_main}--release--${_variant}"
+	printf -- '[ii]  deploying `%s` for `%s` to `%s`...\n' "${_main}" "${_variant}" "${_destination}" >&2
+	exec -- rsync -i -t -p --chmod=0555 -- "${_source}" "${_destination}"
+!!
+
+
+
+
+<< deploy / publish / no-github
+	export -- __DEPLOY_NOGITHUB=true
+	exec -- "${ZRUN}" ':: deploy / publish' "${@}"
+!!
+
+
+
+
+<< deploy / publish
+	
+	
+	if test "${#}" -eq 0 ; then
+		_main_0=all
+	else
+		_main_0="${1}"
+		shift -- 1
+	fi
+	
+	if test "${#}" -ge 1 ; then
+		_variant_0="${1}"
+		shift -- 1
+	else
+		_variant_0=all
+	fi
+	
+	test "${#}" -eq 0
+	
+	
+	_outputs="${__OUTPUTS}"
+	test -d "${_outputs}"
+	
+	_publish="${__PUBLISH}"
+	test -d "${_publish}"
+	
+	
+	"${ZRUN}" ':: documentation / all / render / forced'
+	"${ZRUN}" ':: sources / embedded / bundle'
+	
+	
+	if test "${__DEPLOY_NOGITHUB:-}" == true ; then
+		_github_publish=false
+	else
+		_github_publish=true
+	fi
+	
+	readarray -t -- _mains < <( exec -- "${ZRUN}" ':: deploy / list / main' )
+	readarray -t -- _variants < <( exec -- "${ZRUN}" ':: deploy / list / variant' )
+	
+	_build_version="$( exec -- cat -- ./sources/_embedded/build/version.txt )"
+	case "${_build_version}" in
+		( 0.0.0 | *.0 )
+			_build_release=false
+			_build_suffix='--preview'
+		;;
+		( * )
+			_build_release=true
+			_build_suffix=''
+		;;
+	esac
+	
+	
+	if test "${_build_release}" == true ; then
+		for _main in "${_mains[@]}" ; do
+			if test "${_main_0}" != all -a "${_main_0}" != "${_main}" ; then continue ; fi
+			for _variant in "${_variants[@]}" ; do
+				if test "${_variant_0}" != all -a "${_variant_0}" != "${_variant}" ; then continue ; fi
+				
+				if test -e "${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}" ; then
+					printf -- '[ee]  release already exists for `%s` for `%s`!\n' "${_main}" "${_variant}" >&2
+					exit -- 1
+				fi
+				
+			done
+		done
+	fi
+	
+	
+	if test "${_github_publish}" == true ; then
+		if ! git diff --quiet ; then
+			printf -- '[ee]  dirty repository (before build);  aborting!\n' >&2
+			exit -- 1
+		fi
+		if ! git diff --cached --quiet ; then
+			printf -- '[ee]  dirty repository (before build);  aborting!\n' >&2
+			exit -- 1
+		fi
+	fi
+	
+	
+	printf -- '[--]\n' >&2
+	printf -- '[ii]  releasing `%s` for `%s` for `%s`...\n' "${_main_0}" "${_variant_0}" "${_build_version}${_build_suffix}" >&2
+	printf -- '[--]\n' >&2
+	
+	"${ZRUN}" ':: deploy / release' "${_main_0}" "${_variant_0}"
+	
+	printf -- '[--]\n' >&2
+	
+	
+	if test "${_github_publish}" == true ; then
+		
+		printf -- '[--]\n' >&2
+		printf -- '[ii]  tagging and pushing for `%s` (on GitHub)...\n' "${_build_version}${_build_suffix}" >&2
+		
+		if ! git diff --quiet ; then
+			printf -- '[ee]  dirty repository (after build);  aborting!\n' >&2
+			exit -- 1
+		fi
+		if ! git diff --cached --quiet ; then
+			printf -- '[ee]  dirty repository (after build);  aborting!\n' >&2
+			exit -- 1
+		fi
+		
+		if test "${_build_release}" == true ; then
+			git tag --sign -m "[release]  Release \`v${_build_version}\`." -- "v${_build_version}" HEAD
+		else
+			git tag --sign -m "[preview]  Preview \`v${_build_version}\`." --force -- preview HEAD
+		fi
+		
+		"${ZRUN}" ':: github / push'
+		
+		printf -- '[--]\n' >&2
+	fi
+	
+	
+	printf -- '[--]\n' >&2
+	printf -- '[ii]  publishing `%s` for `%s` for `%s`...\n' "${_main_0}" "${_variant_0}" "${_build_version}${_build_suffix}" >&2
+	printf -- '[--]\n' >&2
+	
+	for _main in "${_mains[@]}" ; do
+		if test "${_main_0}" != all -a "${_main_0}" != "${_main}" ; then continue ; fi
+		for _variant in "${_variants[@]}" ; do
+			if test "${_variant_0}" != all -a "${_variant_0}" != "${_variant}" ; then continue ; fi
+			
+			printf -- '[ii]  publishing `%s` for `%s` for `%s`...\n' "${_main}" "${_variant}" "${_build_version}${_build_suffix}" >&2
+			
+			rsync -i -t -p --chmod=0555 -- \
+					"${_outputs}/binaries/${_main}--release--${_variant}" \
+					"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}" \
+			#
+			
+			if test -e "${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" ; then
+				if ! \
+						gpg --verify -- \
+								"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" \
+								"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}" \
+							< /dev/null > /dev/null 2> /dev/null \
+				; then
+					rm -- "${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc"
+				fi
+			fi
+			
+			if test ! -e "${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" ; then
+				printf -- '[--]\n' >&2
+				for _retry in 1 2 3 4 ; do
+					if \
+							gpg --sign --detach-sign --armor \
+									--default-key 58FC2194FCC2478399CB220C5A974037A6FD8839 \
+									--output "${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" \
+									-- "${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}" \
+					; then break ; fi
+				done
+				printf -- '[--]\n' >&2
+			fi
+			
+			gpg --verify -- \
+					"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" \
+					"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}" \
+				< /dev/null > /dev/null 2> /dev/null \
+			#
+			
+			if test "${_build_release}" == true ; then
+				ln -s -T -f -- "./${_main}--${_variant}--v${_build_version}${_build_suffix}" "${_publish}/${_variant}/${_main}${_build_suffix}"
+				ln -s -T -f -- "./${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" "${_publish}/${_variant}/${_main}${_build_suffix}.asc"
+			fi
+			
+		done
+	done
+	
+	printf -- '[--]\n' >&2
+	
+	
+	if test "${_github_publish}" == true ; then
+		
+		printf -- '[--]\n' >&2
+		printf -- '[ii]  publishing `%s` for `%s` for `%s` (on GitHub)...\n' "${_main_0}" "${_variant_0}" "${_build_version}${_build_suffix}" >&2
+		printf -- '[--]\n' >&2
+		
+		for _main in "${_mains[@]}" ; do
+			if test "${_main_0}" != all -a "${_main_0}" != "${_main}" ; then continue ; fi
+			for _variant in "${_variants[@]}" ; do
+				if test "${_variant_0}" != all -a "${_variant_0}" != "${_variant}" ; then continue ; fi
+				
+				printf -- '[ii]  publishing `%s` for `%s` for `%s` (on GitHub)...\n' "${_main}" "${_variant}" "${_build_version}${_build_suffix}" >&2
+				
+				if test "${_build_release}" == true ; then
+					gh release upload --clobber -- "v${_build_version}" \
+							"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}" \
+							"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" \
+					#
+				else
+					gh release upload --clobber -- preview \
+							"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}" \
+							"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" \
+					#
+				fi
+				
+			done
+		done
+		
+		printf -- '[--]\n' >&2
+	fi
+!!
+
+
+
+
+<< deploy / release
+	
+	if test "${#}" -ge 1 ; then
+		_main_0="${1}"
+		shift -- 1
+	else
+		_main_0=all
+	fi
+	
+	if test "${#}" -ge 1 ; then
+		_variant_0="${1}"
+		shift -- 1
+	else
+		_variant_0='all'
+	fi
+	
+	test "${#}" -eq 0
+	
+	if test "${__DEPLOY_NORELEASE:-}" == true ; then
+		exit -- 0
+	fi
+	
+	readarray -t -- _mains < <( exec -- "${ZRUN}" ':: deploy / list / main' )
+	readarray -t -- _variants < <( exec -- "${ZRUN}" ':: deploy / list / variant' )
+	
+	for _main in "${_mains[@]}" ; do
+		if test "${_main_0}" != all -a "${_main_0}" != "${_main}" ; then continue ; fi
+		for _variant in "${_variants[@]}" ; do
+			if test "${_variant_0}" != all -a "${_variant_0}" != "${_variant}" ; then continue ; fi
+			
+			case "${_variant}" in
+				( linux--x86_64 ) _target=x86_64-unknown-linux-gnu ;;
+				( linux--aarch64 ) _target=aarch64-unknown-linux-gnu ;;
+				( linux--x86_64--static ) _target=x86_64-unknown-linux-musl ;;
+				( linux--aarch64--static ) _target=aarch64-unknown-linux-musl ;;
+				( darwin--x86_64 ) _target=x86_64-apple-darwin ;;
+				( darwin--aarch64 ) _target=aarch64-apple-darwin ;;
+				( freebsd--x86_64 ) _target=x86_64-unknown-freebsd ;;
+				( freebsd--aarch64 ) _target=aarch64-unknown-freebsd ;;
+				( openbsd--x86_64 ) _target=x86_64-unknown-openbsd ;;
+				( openbsd--aarch64 ) _target=aarch64-unknown-openbsd ;;
+				( android--x86_64 ) _target=x86_64-linux-android ;;
+				( android--aarch64 ) _target=aarch64-linux-android ;;
+				( * ) false -- eec080ef ;;
+			esac
+			
+			printf -- '[ii]  releasing `%s` for `%s` / `%s`...\n' "${_main}" "${_variant}" "${_target}" >&2
+			
+			export -- __CARGO__CROSS=true
+			"${ZRUN}" ':: cargo / release / build' --target "${_target}" --quiet
+			"${ZRUN}" ':: cargo / release / collect' --target "${_target}"
+			
+		done
+	done
+!!
+

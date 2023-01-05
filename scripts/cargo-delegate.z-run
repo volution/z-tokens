@@ -5,13 +5,27 @@
 
 --<< cargo / exec
 	
-	_switch=remote
+	_switch="${__CARGO__SWITCH}"
 	
 	case "${_switch}" in
 		( local )
+			case "${__CARGO__SWITCH_0:-local}" in
+				( local ) ;;
+				( local-remote ) ;;
+				( remote ) false -- a6339595 ;;
+				( * ) false -- 347ba846 ;;
+			esac
 			exec -- "${ZRUN}" ':: cargo / exec / local' "${@}"
 		;;
 		( remote )
+			case "${__CARGO__SWITCH_0:-remote}" in
+				( remote ) ;;
+				( local-remote )
+					exec -- "${ZRUN}" ':: cargo / exec / local-remote' "${@}"
+				;;
+				( local ) false -- fbb55b95 ;;
+				( * ) false -- 3e4e954f ;;
+			esac
 			exec -- "${ZRUN}" ':: cargo / exec / remote' "${@}"
 		;;
 		( * )
@@ -59,6 +73,13 @@
 
 
 
+--<< cargo / exec / local-remote
+	exec -- "${ZRUN}" ':: cargo / exec / remote / delegate' "${@}"
+!!
+
+
+
+
 --<< cargo / exec / any / delegate
 	
 	test "${#}" -ge 3
@@ -75,7 +96,7 @@
 	_toolchain=stable
 	
 	_cross=false
-	if test "${__CARGO_CROSS:-false}" == true ; then
+	if test "${__CARGO__CROSS:-false}" == true ; then
 		_cross=true
 	fi
 	if test "${_tool}" == cross ; then
@@ -109,21 +130,28 @@
 						-C relocation-model=pic
 						-C rpath=no
 						
+					#~	-C target-feature=+crt-static
+					#~	-C relocation-model=static
+						
+						-C target-cpu=native
+						
 						-C linker=clang
 						-C link-arg=-fuse-ld=lld
-					#!	-C link-arg=-fuse-ld=mold
+					#~	-C link-arg=-fuse-ld=mold
 						-C link-arg=-Wl,--compress-debug-sections=none
+					#~	-C link-arg=-Wl,--compress-debug-sections=zstd
+					#~	-C link-arg=-Wl,--compress-debug-sections=zlib
 						
 						-C link-self-contained=no
 						-C prefer-dynamic=no
-						-C force-frame-pointers=yes
+						-C force-frame-pointers=no
 						
 					)
 			else
 				_rust_flags+=(
 						
 						-C prefer-dynamic=no
-						-C force-frame-pointers=yes
+						-C force-frame-pointers=no
 						
 					)
 				
@@ -158,9 +186,22 @@
 		( tree | outdated | license | cyclonedx )
 		;;
 		
+		( collect )
+		;;
+		
 		( * )
 			printf -- '[ee]  invalid tool `%s`;  aborting!\n' "${_tool}" >&2
 			exit -- 1
+		;;
+	esac
+	
+	case "${_tool}" in
+		( collect )
+			exec -- "${ZRUN}" ':: cargo / tool / collect' \
+					--scratch "${_scratch}" \
+					--cross "${_cross}" \
+					"${@}" \
+			#
 		;;
 	esac
 	
@@ -185,8 +226,8 @@
 	_tool="${4}"
 	shift -- 4
 	
-	if test -n "${__CARGO_HOME:-}" ; then
-		_cargo_home="${__CARGO_HOME}"
+	if test -n "${__CARGO__HOME:-}" ; then
+		_cargo_home="${__CARGO__HOME}"
 	else
 		_cargo_home="${HOME}/.cargo"
 	fi

@@ -20,7 +20,7 @@
 			--ssh \
 			--ssh-target="${__CARGO_REMOTE__SSH_TARGET}" \
 			--ssh-workspace=/var/lib/empty \
-			--ssh-export=__CARGO_CROSS \
+			--ssh-export=__CARGO__CROSS \
 			':: cargo / exec / remote / delegate' \
 			"${@}" \
 	#

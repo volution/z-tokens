@@ -1,0 +1,9 @@
+#!/dev/null
+
+
+
+
+<< sources / embedded / bundle
+	test "${#}" -eq 0
+!!
+
