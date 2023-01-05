@@ -121,10 +121,10 @@ fn print_and_exit (_chunks : &[&str], _success : bool) -> MainResult<ExitCode> {
 
 
 
-static HELP_MAIN_TEXT : &'static str = include_str! ("./_embedded/manuals/main--help.txt");
+static HELP_MAIN_TEXT : &'static str = include_str! ("./_embedded/help/main.txt");
 
-static HELP_HEADER_TEXT : &'static str = include_str! ("./_embedded/manuals/help--header.txt");
-static HELP_FOOTER_TEXT : &'static str = include_str! ("./_embedded/manuals/help--footer.txt");
+static HELP_HEADER_TEXT : &'static str = include_str! ("./_embedded/help/_header.txt");
+static HELP_FOOTER_TEXT : &'static str = include_str! ("./_embedded/help/_footer.txt");
 
 
 static README_TEXT : &'static str = include_str! ("./_embedded/readme/readme.txt");
