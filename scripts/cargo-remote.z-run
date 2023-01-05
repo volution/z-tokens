@@ -20,6 +20,7 @@
 			--ssh \
 			--ssh-target="${__CARGO_REMOTE__SSH_TARGET}" \
 			--ssh-workspace=/var/lib/empty \
+			--ssh-export=__CARGO_CROSS \
 			':: cargo / exec / remote / delegate' \
 			"${@}" \
 	#
@@ -63,7 +64,7 @@
 			--recursive
 			--checksum --checksum-choice md5
 			--times --perms
-			--chmod D00500,F00400
+			--chmod D00555,F00444
 		#	--itemize-changes
 			--copy-unsafe-links
 			

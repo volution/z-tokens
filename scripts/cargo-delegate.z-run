@@ -72,43 +72,87 @@
 	test -f "${_executable}"
 	test -x "${_executable}"
 	
-	_cargo_toolchain=stable
+	_toolchain=stable
 	
+	_cross=false
+	if test "${__CARGO_CROSS:-false}" == true ; then
+		_cross=true
+	fi
+	if test "${_tool}" == cross ; then
+		_cross=true
+		test "${#}" -ge 1
+		_tool="${1}"
+		shift -- 1
+	fi
+	
+	_cargo_flags=()
 	_rust_flags=()
 	
 	case "${_tool}" in
 		
 		( check )
-		;;
-		
-		( build | run )
-			_rust_flags+=(
-					
-					-C target-feature=-crt-static
-					-C relocation-model=pic
-					-C rpath=no
-					
-					-C linker=clang
-					-C link-arg=-fuse-ld=lld
-				#!	-C link-arg=-fuse-ld=mold
-					-C link-arg=-Wl,--compress-debug-sections=none
-					
-					-C link-self-contained=no
-					-C prefer-dynamic=no
-					-C force-frame-pointers=yes
-					
+			_cargo_flags+=(
+					--frozen
+					--offline
 				)
 		;;
 		
+		( build | run )
+			_cargo_flags+=(
+					--frozen
+					--offline
+				)
+			if test "${_cross}" == false ; then
+				_rust_flags+=(
+						
+						-C target-feature=-crt-static
+						-C relocation-model=pic
+						-C rpath=no
+						
+						-C linker=clang
+						-C link-arg=-fuse-ld=lld
+					#!	-C link-arg=-fuse-ld=mold
+						-C link-arg=-Wl,--compress-debug-sections=none
+						
+						-C link-self-contained=no
+						-C prefer-dynamic=no
+						-C force-frame-pointers=yes
+						
+					)
+			else
+				_rust_flags+=(
+						
+						-C prefer-dynamic=no
+						-C force-frame-pointers=yes
+						
+					)
+				
+			fi
+		;;
+		
 		( doc )
+			_cargo_flags+=(
+					--frozen
+					--offline
+				)
 			_rust_flags+=(
 					-A warnings
 				)
 		;;
 		
 		( metadata )
+			_cargo_flags+=(
+					--frozen
+					--offline
+				)
 		;;
-		( update | fetch | vendor )
+		
+		( update )
+		;;
+		( fetch | vendor )
+			_cargo_flags+=(
+					--locked
+				)
 		;;
 		
 		( tree | outdated | license | cyclonedx )
@@ -120,6 +164,27 @@
 		;;
 	esac
 	
+	export -- __RUST_FLAGS="${_rust_flags[*]}"
+	
+	if test "${_cross}" == false ; then
+		exec -- "${ZRUN}" ':: cargo / exec / any / native' "${_scratch}" "${_executable}" "${_toolchain}" "${_tool}" "${_cargo_flags[@]}" "${@}"
+	else
+		exec -- "${ZRUN}" ':: cargo / exec / any / podman' "${_scratch}" "${_toolchain}" "${_tool}" "${_cargo_flags[@]}" "${@}"
+	fi
+!!
+
+
+
+
+--<< cargo / exec / any / native
+	
+	test "${#}" -ge 4
+	_scratch="${1}"
+	_executable="${2}"
+	_toolchain="${3}"
+	_tool="${4}"
+	shift -- 4
+	
 	if test -n "${__CARGO_HOME:-}" ; then
 		_cargo_home="${__CARGO_HOME}"
 	else
@@ -127,11 +192,11 @@
 	fi
 	_cargo_home="$( exec -- readlink -e -- "${_cargo_home}" )"
 	
-	_cargo_environment=(
+	_environment=(
 			
 			CARGO_HOME="${_cargo_home}"
 			CARGO_TARGET_DIR="${_scratch}/target"
-			CARGO_BUILD_RUSTFLAGS="${_rust_flags[*]}"
+			CARGO_BUILD_RUSTFLAGS="${__RUST_FLAGS:-}"
 			
 			PATH="${PATH}"
 			USER="${USER}"
@@ -144,15 +209,82 @@
 			
 		)
 	
-	renice -n 19 -p "${$}" > /dev/null
-	
 	cd -- "${_scratch}/sources"
 	
 	exec -- \
-		env -i "${_cargo_environment[@]}" \
+	\
 		nodaemon \
+		nice -n 19 -- \
+	\
+		env -i "${_environment[@]}" \
 	"${_executable}" \
-			"+${_cargo_toolchain}" \
+			"+${_toolchain}" \
+			"${_tool}" \
+			"${@}" \
+	#
+!!
+
+
+
+
+--<< cargo / exec / any / podman
+	
+	test "${#}" -ge 3
+	_scratch="${1}"
+	_toolchain="${2}"
+	_tool="${3}"
+	shift -- 3
+	
+	_executable=/opt/cargo/bin/cargo
+	
+	_environment=(
+			
+			CARGO_TARGET_DIR="/rust/target"
+			CARGO_BUILD_RUSTFLAGS="${__RUST_FLAGS:-}"
+			
+		)
+	
+	test -d "${_scratch}"
+	test -d "${_scratch}/sources"
+	
+	if test ! -e "${_scratch}/cross" ; then
+		mkdir -- "${_scratch}/cross"
+		mkdir -- "${_scratch}/cross/target"
+		mkdir -- "${_scratch}/cross/registry"
+		mkdir -- "${_scratch}/cross/registry/git"
+		mkdir -- "${_scratch}/cross/tmp"
+	fi
+	
+	test -d "${_scratch}/cross/target"
+	test -d "${_scratch}/cross/registry"
+	test -d "${_scratch}/cross/registry/git"
+	
+	exec -- \
+	\
+		systemd-run --user --pty --wait --collect --quiet -- \
+	\
+		nodaemon \
+		nice -n 19 -- \
+	\
+		podman container run \
+			--interactive \
+			--tty \
+			--init \
+			--workdir /rust/sources \
+			--volume "${_scratch}/sources":/rust/sources:ro \
+			--volume "${_scratch}/cross/target":/rust/target:rw \
+			--volume "${_scratch}/cross/registry":/rust/registry:rw \
+			--env TERM \
+			--network host \
+			--storage-opt overlay.mount_program=/usr/bin/fuse-overlayfs \
+			--events-backend none \
+			--log-driver none \
+			-- \
+			localhost/rust-cross:latest \
+	\
+		env "${_environment[@]}" \
+	"${_executable}" \
+			"+${_toolchain}" \
 			"${_tool}" \
 			"${@}" \
 	#

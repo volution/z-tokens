@@ -14,7 +14,7 @@
 
 
 << cargo / dependencies / fetch
-	exec -- "${ZRUN}" ':: cargo / exec' fetch --frozen "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec' fetch "${@}"
 !!
 
 
@@ -24,7 +24,6 @@
 			--respect-source-config \
 			--versioned-dirs \
 			--verbose \
-			--frozen \
 			-- \
 			"$( exec -- readlink -e -- ./vendor )" \
 	#
@@ -50,7 +49,6 @@
 			--all-features \
 			--format '{p}' \
 			--prefix indent \
-			--frozen \
 			"${@}" \
 	#
 !!
@@ -61,7 +59,6 @@
 			--all-features \
 			--format ' | {p}' \
 			--prefix depth \
-			--frozen \
 			"${@}" \
 	#
 !!
@@ -73,12 +70,12 @@
 	test "${#}" -eq 0
 	(
 		
-		"${ZRUN}" ':: cargo / exec / local' tree --all-features --edges normal --no-dedupe --format '{p}' --prefix none --frozen \
+		"${ZRUN}" ':: cargo / exec / local' tree --all-features --edges normal --no-dedupe --format '{p}' --prefix none \
 		| cut -f 1,2 -d ' ' \
 		| sed -r -e 's#^([^ ]+) v([^ ]+)$#\1:\2#' \
 		#
 		
-		"${ZRUN}" ':: cargo / exec / local' metadata --format-version 1 --no-deps --frozen \
+		"${ZRUN}" ':: cargo / exec / local' metadata --format-version 1 --no-deps \
 		| jq -r '.workspace_members[]' \
 		| sed -r -e 's#^([^ ]+) ([^ ]+) \([^ ]+\)$#\1:\2#' \
 		#

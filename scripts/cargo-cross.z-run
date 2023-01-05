@@ -4,29 +4,92 @@
 
 
 << cargo / debug / check / cross / all
+	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
+			check-targets \
+			':: cargo / debug / check' "${@}" \
+	#
+!!
+
+
+<< cargo / debug / build / cross / all
+	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
+			build-targets \
+			':: cargo / debug / build' "${@}" \
+	#
+!!
+
+
+
+
+--<< cargo / cross / exec / all
 	
-	_targets=(
-			
-			x86_64-unknown-linux-gnu
-			x86_64-unknown-linux-musl
-			x86_64-unknown-freebsd
-		#!	x86_64-unknown-openbsd
-			x86_64-apple-darwin
-			
-			aarch64-unknown-linux-gnu
-			aarch64-unknown-linux-musl
-		#!	aarch64-unknown-freebsd
-		#!	aarch64-unknown-openbsd
-			aarch64-apple-darwin
-			
-			x86_64-linux-android
-			aarch64-linux-android
-			
-		)
+	test "${#}" -ge 2
+	_targets="${1}"
+	_delegate="${2}"
+	shift -- 2
+	
+	readarray -t -- _targets < <( exec -- "${ZRUN}" ':: cargo / cross / exec / targets' "${_targets}" )
+	
+	export -- __CARGO_CROSS=true
+	
+	printf -- '[ii]  fetching dependencies...\n' >&2
+	"${ZRUN}" ':: cargo / dependencies / fetch'
 	
 	for _target in "${_targets[@]}" ; do
-		printf -- '[ii]  checking for target `%s`...\n' "${_target}" >&2
-		"${ZRUN}" ':: cargo / debug / check' --target "${_target}" --frozen "${@}"
+		printf -- '[ii]  executing for target `%s`...\n' "${_target}" >&2
+		"${ZRUN}" "${_delegate}" --target "${_target}" "${@}"
 	done
+!!
+
+
+--<< cargo / cross / exec / targets
+	test "${#}" -eq 1
+	
+	_targets=()
+	case "${1}" in
+		
+		( all-targets | check-targets | build-targets | release-targets )
+			_targets+=(
+					
+					x86_64-unknown-linux-gnu
+					aarch64-unknown-linux-gnu
+					
+					x86_64-unknown-linux-musl
+					aarch64-unknown-linux-musl
+					
+					x86_64-apple-darwin
+					aarch64-apple-darwin
+					
+					x86_64-linux-android
+					aarch64-linux-android
+					
+				)
+		;;&
+		
+		( all-targets | check-targets )
+			_targets+=(
+					
+					x86_64-unknown-freebsd
+				#!	aarch64-unknown-freebsd
+					
+				#!	x86_64-unknown-openbsd
+				#!	aarch64-unknown-openbsd
+					
+					x86_64-pc-windows-msvc
+					aarch64-pc-windows-msvc
+					
+				)
+		;;&
+		
+		( all-targets | check-targets | build-targets | release-targets )
+		;;
+		
+		( * )
+			false -- 426bb017
+		;;
+		
+	esac
+	
+	printf -- '%s\n' "${_targets[@]}"
 !!
 
