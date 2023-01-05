@@ -35,6 +35,7 @@
 && _/documentation-sbom.z-run
 
 && _/deploy.z-run
+&& _/generate.z-run
 
 
 

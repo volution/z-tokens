@@ -1,0 +1,30 @@
+#!/dev/null
+
+
+
+
+<<== _ / generate
+	
+	test "${#}" -eq 0
+	
+	readarray -t -- _mains < <( exec -- "${ZRUN}" ':: deploy / list / main' )
+	readarray -t -- _variants < <( exec -- "${ZRUN}" ':: deploy / list / variant' )
+	
+	for _main in "${_mains[@]}" ; do
+		
+		
+		printf -- ':: deploy / publish / %s / all :: exec -- "${ZRUN}" ":: deploy / publish" %q "${@}"\n' "${_main}" "${_main}"
+		printf -- ':: deploy / publish / %s / all / no-github :: exec -- "${ZRUN}" ":: deploy / publish / no-github" %q "${@}"\n' "${_main}" "${_main}"
+		
+		printf -- ':: deploy / release / %s / all :: exec -- "${ZRUN}" ":: deploy / release" %q %q "${@}"\n' "${_main}" all "${_main}"
+		
+		
+		for _variant in "${_variants[@]}" ; do
+			printf -- ':: deploy / rsync / %s / %s :: exec -- "${ZRUN}" ":: deploy / rsync / *" %q %q "${@}"\n' "${_main}" "${_variant}" "${_main}" "${_variant}"
+			printf -- ':: deploy / release / %s / %s :: exec -- "${ZRUN}" ":: deploy / release" %q %q "${@}"\n' "${_main}" "${_variant}" "${_main}" "${_variant}"
+		done
+		
+		
+	done
+!!
+

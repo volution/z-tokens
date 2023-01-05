@@ -8,25 +8,7 @@
 
 
 
---:: deploy / rsync / * / linux / x86_64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' linux--x86_64 "${@}"
---:: deploy / rsync / * / linux / aarch64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' linux--aarch64 "${@}"
-
---:: deploy / rsync / * / linux / x86_64--static :: exec -- "${ZRUN}" ':: deploy / rsync / *' linux--x86_64--static "${@}"
---:: deploy / rsync / * / linux / aarch64--static :: exec -- "${ZRUN}" ':: deploy / rsync / *' linux--aarch64--static "${@}"
-
---:: deploy / rsync / * / darwin / x86_64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' darwin--x86_64 "${@}"
---:: deploy / rsync / * / darwin / aarch64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' darwin--aarch64 "${@}"
---:: deploy / rsync / * / freebsd / x86_64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' freebsd--x86_64 "${@}"
---:: deploy / rsync / * / freebsd / aarch64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' freebsd--aarch64 "${@}"
---:: deploy / rsync / * / openbsd / x86_64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' openbsd--x86_64 "${@}"
---:: deploy / rsync / * / openbsd / aarch64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' openbsd--aarch64 "${@}"
---:: deploy / rsync / * / android / x86_64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' android--x86_64 "${@}"
---:: deploy / rsync / * / android / aarch64 :: exec -- "${ZRUN}" ':: deploy / rsync / *' android--aarch64 "${@}"
-
-
-
-
-<<.. deploy / list / variant
+--<<.. deploy / list / variant
 	linux--x86_64
 	linux--aarch64
 	linux--x86_64--static
@@ -38,7 +20,7 @@
 !!
 
 
-<<.. deploy / list / main
+--<<.. deploy / list / main
 	z-tokens
 !!
 
@@ -47,23 +29,28 @@
 
 --<< deploy / rsync / *
 	
-	test "${#}" -eq 3 ; _variant="${1}" ; _main="${2}" ; _destination="${3}" ; shift -- 3
+	test "${#}" -eq 3 ; _main="${1}" ; _variant="${2}" ; _destination="${3}" ; shift -- 3
+	
+	"${ZRUN}" ':: deploy / release' "${_main}" "${_variant}"
 	
 	_outputs="${__OUTPUTS}"
 	test -d "${_outputs}"
 	
-	"${ZRUN}" ':: deploy / release' "${_main}" "${_variant}"
+	_output="${_outputs}/binaries/${_main}--release--${_variant}"
+	test -f "${_output}"
 	
-	_source="${_outputs}/binaries/${_main}--release--${_variant}"
 	printf -- '[ii]  deploying `%s` for `%s` to `%s`...\n' "${_main}" "${_variant}" "${_destination}" >&2
-	exec -- rsync -i -t -p --chmod=0555 -- "${_source}" "${_destination}"
+	
+	exec -- rsync -i -t -p --chmod=0555 -- "${_output}" "${_destination}"
 !!
 
 
 
 
 << deploy / publish / no-github
+	
 	export -- __DEPLOY_NOGITHUB=true
+	
 	exec -- "${ZRUN}" ':: deploy / publish' "${@}"
 !!
 
