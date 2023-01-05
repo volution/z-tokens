@@ -3,7 +3,186 @@
 
 
 
-<< sources / embedded / bundle
+<< sources / embedded / prepare
+	
 	test "${#}" -eq 0
+	
+	"${ZRUN[@]}" ':: sources / embedded / readme'
+	"${ZRUN[@]}" ':: sources / embedded / help'
+	"${ZRUN[@]}" ':: sources / embedded / manuals'
+	"${ZRUN[@]}" ':: sources / embedded / sbom'
+	"${ZRUN[@]}" ':: sources / embedded / hash'
+!!
+
+
+
+
+<< sources / embedded / readme
+	
+	test "${#}" -eq 0
+	
+	if ! cmp -s -- ./documentation/readme/readme.txt ./sources/_embedded/readme/readme.txt ; then
+		cp -T -- ./documentation/readme/readme.txt ./sources/_embedded/readme/readme.txt
+	fi
+	
+	if ! cmp -s -- ./documentation/readme/readme.html ./sources/_embedded/readme/readme.html ; then
+		cp -T -- ./documentation/readme/readme.html ./sources/_embedded/readme/readme.html
+	fi
+!!
+
+
+<< sources / embedded / help
+	
+	test "${#}" -eq 0
+	
+	if ! cmp -s -- ./documentation/help/main.txt ./sources/_embedded/help/main.txt ; then
+		cp -T -- ./documentation/help/main.txt ./sources/_embedded/help/main.txt
+	fi
+!!
+
+
+<< sources / embedded / manuals
+	
+	test "${#}" -eq 0
+!!
+
+
+<< sources / embedded / sbom
+	
+	test "${#}" -eq 0
+	
+	if ! cmp -s -- ./documentation/sbom/sbom.txt ./sources/_embedded/sbom/sbom.txt ; then
+		cp -T -- ./documentation/sbom/sbom.txt ./sources/_embedded/sbom/sbom.txt
+	fi
+	
+	if ! cmp -s -- ./documentation/sbom/sbom.html ./sources/_embedded/sbom/sbom.html ; then
+		cp -T -- ./documentation/sbom/sbom.html ./sources/_embedded/sbom/sbom.html
+	fi
+	
+	if ! cmp -s -- ./documentation/sbom/sbom.json ./sources/_embedded/sbom/sbom.json ; then
+		cp -T -- ./documentation/sbom/sbom.json ./sources/_embedded/sbom/sbom.json
+	fi
+!!
+
+
+
+
+<< sources / embedded / hash
+	
+	test "${#}" -eq 0
+	
+	_outputs="$( exec -- "${ZRUN}" ':: workbench / outputs' )"
+	
+	test -d "${_outputs}"
+	test -d "${_outputs}/markers"
+	
+	if test -e ./.git ; then
+		_git_hash="$( exec -- git rev-parse HEAD )"
+		if ! git diff --quiet || ! git diff --quiet --cached ; then
+			_git_hash+="-uncommitted"
+		fi
+	else
+		_git_hash='unknown'
+	fi
+	
+	if test ! -e ./sources/_embedded/build/sources.cpio.gz ; then
+		touch -- ./sources/_embedded/build/sources.cpio.gz
+	fi
+	if test -s ./sources/_embedded/build/sources.cpio.gz ; then
+		rm -- ./sources/_embedded/build/sources.cpio.gz
+		touch -- ./sources/_embedded/build/sources.cpio.gz
+	fi
+	
+	execline-cd ./sources \
+	find . \
+			-type f \
+			-not -path './_embedded/build/*' \
+			-printf '%P\0' \
+	| LC_ALL=C sort -z \
+		>| "${_outputs}/markers/build-sources.list.tmp" \
+	#
+	
+	execline-cd ./sources \
+	xargs -0 -I {} -- md5sum -b -z -- {} \
+		< "${_outputs}/markers/build-sources.list.tmp" \
+	| tr '\0' '\n' \
+		>| "${_outputs}/markers/build-sources.md5.tmp" \
+	#
+	
+	md5sum -b \
+		< "${_outputs}/markers/build-sources.md5.tmp" \
+	| cut -f 1 -d ' ' \
+		>| "${_outputs}/markers/build-sources.hash.tmp" \
+	#
+	
+	if ! cmp -s -- "${_outputs}/markers/build-sources.hash.tmp" ./sources/_embedded/build/sources.hash ; then
+		
+		_build_number="$( exec -- cat -- ./sources/_embedded/build/number.txt )"
+		_build_number="$(( _build_number + 1 ))"
+		_build_timestamp="$( exec -- date -- '+%Y-%m-%d-%H-%M-%S' )"
+		
+		printf -- '[ii]  incremented build number to `%d`;\n' "${_build_number}" >&2
+		
+		printf -- '%d\n' "${_build_number}" >| ./sources/_embedded/build/number.txt.tmp
+		printf -- '%s\n' "${_build_timestamp}" >| ./sources/_embedded/build/timestamp.txt.tmp
+		
+		mv -T -- ./sources/_embedded/build/number.txt.tmp ./sources/_embedded/build/number.txt
+		mv -T -- ./sources/_embedded/build/timestamp.txt.tmp ./sources/_embedded/build/timestamp.txt
+		
+		mv -T -- "${_outputs}/markers/build-sources.list.tmp" "${_outputs}/markers/build-sources.list"
+		
+		mv -T -- "${_outputs}/markers/build-sources.md5.tmp" "./sources/_embedded/build/sources.md5"
+		mv -T -- "${_outputs}/markers/build-sources.hash.tmp" "./sources/_embedded/build/sources.hash"
+		
+	else
+		
+		rm -- "${_outputs}/markers/build-sources.list.tmp"
+		rm -- "${_outputs}/markers/build-sources.md5.tmp"
+		rm -- "${_outputs}/markers/build-sources.hash.tmp"
+	fi
+	
+	printf -- '%s\n' "${_git_hash}" >| "${_outputs}/markers/build-git-hash.txt.tmp"
+	mv -T -- "${_outputs}/markers/build-git-hash.txt.tmp" "${_outputs}/markers/build-git-hash.txt"
+!!
+
+
+
+
+<< sources / embedded / bundle
+	
+	test "${#}" -eq 0
+	
+	"${ZRUN[@]}" ':: sources / embedded / prepare'
+	
+	if test -s ./sources/_embedded/build/sources.cpio.gz ; then
+		rm -- ./sources/_embedded/build/sources.cpio.gz
+	fi
+	touch --reference ./sources/_embedded/build/timestamp.txt -- ./sources/_embedded/build/sources.cpio.gz
+	
+	execline-cd ./sources \
+	find . \
+			-type f \
+			-print0 \
+	| LC_ALL=C sort -z \
+	| execline-cd ./sources \
+	cpio \
+			--create \
+			--format newc \
+			--no-absolute-filenames \
+			--quiet \
+			--warning all \
+			--owner +65534:+65534 \
+			--ignore-devno \
+			--renumber-inodes \
+			--block-size 1 \
+			--null \
+	| gzip \
+			--best \
+			--rsyncable \
+			--no-name \
+		>| "${_outputs}/sources.cpio.gz.tmp" \
+	#
+	
+	mv -T -- "${_outputs}/sources.cpio.gz.tmp" "./sources/_embedded/build/sources.cpio.gz"
 !!
 

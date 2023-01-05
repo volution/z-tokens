@@ -33,7 +33,7 @@
 	
 	"${ZRUN}" ':: deploy / release' "${_main}" "${_variant}"
 	
-	_outputs="${__OUTPUTS}"
+	_outputs="$( exec -- "${ZRUN}" ':: workbench / outputs' )"
 	test -d "${_outputs}"
 	
 	_output="${_outputs}/binaries/${_main}--release--${_variant}"
@@ -77,7 +77,7 @@
 	test "${#}" -eq 0
 	
 	
-	_outputs="${__OUTPUTS}"
+	_outputs="$( exec -- "${ZRUN}" ':: workbench / outputs' )"
 	test -d "${_outputs}"
 	
 	_publish="${__PUBLISH}"

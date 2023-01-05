@@ -21,6 +21,9 @@
 			--ssh-target="${__CARGO_REMOTE__SSH_TARGET}" \
 			--ssh-workspace=/var/lib/empty \
 			--ssh-export=__CARGO__CROSS \
+			--ssh-export=__META__BUILD_SOURCES_HASH \
+			--ssh-export=__META__BUILD_GIT_HASH \
+			--ssh-export=__META__BUILD_TARGET_TYPE \
 			':: cargo / exec / remote / delegate' \
 			"${@}" \
 	#

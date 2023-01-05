@@ -15,10 +15,12 @@
 
 
 << cargo / debug / build
+	export -- __META__BUILD_TARGET_TYPE=debug
 	exec -- "${ZRUN}" ':: cargo / exec' build "${@}"
 !!
 
 << cargo / release / build
+	export -- __META__BUILD_TARGET_TYPE=release
 	exec -- "${ZRUN}" ':: cargo / exec' build --release "${@}"
 !!
 
@@ -26,10 +28,12 @@
 
 
 << cargo / debug / run
+	export -- __META__BUILD_TARGET_TYPE=debug
 	exec -- "${ZRUN}" ':: cargo / exec' run "${@}"
 !!
 
 << cargo / release / run
+	export -- __META__BUILD_TARGET_TYPE=release
 	exec -- "${ZRUN}" ':: cargo / exec' run --release "${@}"
 !!
 
@@ -54,6 +58,7 @@
 !!
 
 << cargo / debug / run / watch
+	export -- __META__BUILD_TARGET_TYPE=debug
 	exec -- "${ZRUN}" ':: watchexec / exec' ':: cargo / exec' run "${@}"
 !!
 

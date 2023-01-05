@@ -7,13 +7,18 @@
 	
 	test "${#}" -ge 1
 	
+	_sources="$( exec -- readlink -e -- ./sources )"
+	
 	_watchexec_arguments=(
 			
-			--watch ./sources
-			--debounce 250
-			--on-busy-update queue
+			--watch "${_sources}"
 			
-			--shell none
+			--ignore "sources/_embedded/build/*"
+			
+			--debounce=250
+			--on-busy-update=queue
+			
+			--shell=none
 			--no-environment
 			
 			--no-default-ignore
@@ -45,5 +50,31 @@
 		printf -- '\n[ee]  failed!\n' >&2
 	fi
 	printf -- '[--]\n' >&2
+!!
+
+
+
+
+<< workbench / outputs
+	
+	_scratch="${__CARGO_LOCAL__SCRATCH}"
+	_outputs="${__OUTPUTS}"
+	
+	if test ! -e "${_outputs}" ; then
+		if test ! -e "${_scratch}/outputs" ; then
+			mkdir -- "${_scratch}/outputs"
+		fi
+		ln -s -T -- "${_scratch}/outputs" "${_outputs}"
+	fi
+	
+	test -d "${_outputs}"
+	
+	for _folder in binaries markers ; do
+		if test ! -d "${_outputs}/${_folder}" ; then
+			mkdir -- "${_outputs}/${_folder}"
+		fi
+	done
+	
+	printf -- '%s\n' "${_outputs}"
 !!
 

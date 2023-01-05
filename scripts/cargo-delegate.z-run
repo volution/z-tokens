@@ -7,6 +7,12 @@
 	
 	_switch="${__CARGO__SWITCH}"
 	
+	"${ZRUN}" ':: sources / embedded / prepare'
+	
+	export -- __META__BUILD_SOURCES_HASH="$( < ./sources/_embedded/build/sources.hash )"
+	export -- __META__BUILD_GIT_HASH="$( < "${__OUTPUTS}/markers/build-git-hash.txt" )"
+	export -- __META__BUILD_TARGET_TYPE="${__META__BUILD_TARGET_TYPE:-[unknown-btt]}"
+	
 	case "${_switch}" in
 		( local )
 			case "${__CARGO__SWITCH_0:-local}" in
@@ -154,7 +160,6 @@
 						-C force-frame-pointers=no
 						
 					)
-				
 			fi
 		;;
 		
@@ -196,6 +201,7 @@
 	esac
 	
 	case "${_tool}" in
+		
 		( collect )
 			exec -- "${ZRUN}" ':: cargo / tool / collect' \
 					--scratch "${_scratch}" \
@@ -205,12 +211,21 @@
 		;;
 	esac
 	
-	export -- __RUST_FLAGS="${_rust_flags[*]}"
+	_rust_flags+=(
+			-C metadata="${__META__BUILD_GIT_HASH}-${__META__BUILD_TARGET_TYPE}"
+		)
+	
+	export -- __CARGO__RUST_FLAGS="${_rust_flags[*]}"
+	
+	_tool_arguments=(
+			"${_cargo_flags[@]}"
+			"${@}"
+		)
 	
 	if test "${_cross}" == false ; then
-		exec -- "${ZRUN}" ':: cargo / exec / any / native' "${_scratch}" "${_executable}" "${_toolchain}" "${_tool}" "${_cargo_flags[@]}" "${@}"
+		exec -- "${ZRUN}" ':: cargo / exec / any / native' "${_scratch}" "${_executable}" "${_toolchain}" "${_tool}" "${_tool_arguments[@]}"
 	else
-		exec -- "${ZRUN}" ':: cargo / exec / any / podman' "${_scratch}" "${_toolchain}" "${_tool}" "${_cargo_flags[@]}" "${@}"
+		exec -- "${ZRUN}" ':: cargo / exec / any / podman' "${_scratch}" "${_toolchain}" "${_tool}" "${_tool_arguments[@]}"
 	fi
 !!
 
@@ -237,7 +252,11 @@
 			
 			CARGO_HOME="${_cargo_home}"
 			CARGO_TARGET_DIR="${_scratch}/target"
-			CARGO_BUILD_RUSTFLAGS="${__RUST_FLAGS:-}"
+			CARGO_BUILD_RUSTFLAGS="${__CARGO__RUST_FLAGS}"
+			
+			__META__BUILD_SOURCES_HASH="${__META__BUILD_SOURCES_HASH}"
+			__META__BUILD_GIT_HASH="${__META__BUILD_GIT_HASH}"
+			__META__BUILD_TARGET_TYPE="${__META__BUILD_TARGET_TYPE}"
 			
 			PATH="${PATH}"
 			USER="${USER}"
@@ -281,7 +300,11 @@
 	_environment=(
 			
 			CARGO_TARGET_DIR="/rust/target"
-			CARGO_BUILD_RUSTFLAGS="${__RUST_FLAGS:-}"
+			CARGO_BUILD_RUSTFLAGS="${__CARGO__RUST_FLAGS:?}"
+			
+			__META__BUILD_SOURCES_HASH="${__META__BUILD_SOURCES_HASH}"
+			__META__BUILD_GIT_HASH="${__META__BUILD_GIT_HASH}"
+			__META__BUILD_TARGET_TYPE="${__META__BUILD_TARGET_TYPE}"
 			
 		)
 	
