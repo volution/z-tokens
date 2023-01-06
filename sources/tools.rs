@@ -65,6 +65,10 @@ pub fn main () -> MainResult<ExitCode> {
 			_arguments.insert (0, String::from ("z-tokens generate"));
 			_arguments.insert (1, String::from ("--token-pattern"));
 			_arguments.insert (2, String::from (_pattern));
+			_arguments.insert (3, String::from ("--token-count"));
+			_arguments.insert (4, String::from ("1"));
+			_arguments.insert (5, String::from ("--compact"));
+			_arguments.insert (6, String::from ("true"));
 			main_generate (_arguments)
 		}
 		
