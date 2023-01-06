@@ -133,7 +133,7 @@ pub fn entropy_token_push (_pattern : impl AsRef<TokenPattern>, _collector : &mu
 	let _pattern = _pattern.as_ref ();
 	match _pattern {
 		
-		TokenPattern::Named (_identifier, _pattern) =>
+		TokenPattern::Named (_identifier, _, _pattern) =>
 			entropy_token_push (_pattern, _collector),
 		
 		TokenPattern::Atom (_pattern) => {

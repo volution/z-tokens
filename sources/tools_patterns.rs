@@ -110,6 +110,8 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			_has_digits.is_some () ||
 			_has_symbols.is_some ();
 	
+	let _display_aliases = false;
+	
 	
 	
 	
@@ -120,6 +122,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	for _pattern in patterns::all_token_patterns () .into_iter () {
 		let &(ref _identifier, ref _pattern) = _pattern.as_ref ();
+		let _pattern = _pattern.as_ref ();
 		
 		_randomizer.reset () .else_wrap (0xb2fb5275) ?;
 		
@@ -223,6 +226,18 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		} else {
 			let _display_bits = (_bits * 10.0) .floor () / 10.0;
 			writeln! (&mut _stream, "| {:22} | b {:6.1} | c {:4} ||  {}", _identifier, _display_bits, _string_length, _display_string) .else_wrap (0xd141c5ef) ?;
+		}
+		
+		if _display_aliases {
+			if let TokenPattern::Named (_, _aliases, _) = _pattern {
+				if ! _aliases.is_empty () {
+					write! (&mut _stream, "^") .else_wrap (0x4b3973c7) ?;
+					for _alias in *_aliases {
+						write! (&mut _stream, " {}", _alias) .else_wrap (0x7275b085) ?;
+					}
+					writeln! (&mut _stream) .else_wrap (0x8dfe1e4d) ?;
+				}
+			}
 		}
 	}
 	

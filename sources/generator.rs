@@ -44,7 +44,7 @@ pub fn generate_token_push (_pattern : impl AsRef<TokenPattern>, _randomizer : &
 	let _pattern = _pattern.as_ref ();
 	match _pattern {
 		
-		TokenPattern::Named (_identifier, _pattern) =>
+		TokenPattern::Named (_identifier, _, _pattern) =>
 			generate_token_push (_pattern, _randomizer, _accumulator),
 		
 		TokenPattern::Atom (_pattern) =>
