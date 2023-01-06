@@ -115,7 +115,20 @@
 			_output="${_outputs}/${_bin}--${_type}--${_os}--${_arch}"
 		fi
 		
-		rsync -i -a --chmod F0755 -- "${_builds}/${_bin}" "${_output}"
+		if true ; then
+			rsync -i -a --chmod F0755 -- \
+					"${_builds}/${_bin}" \
+					"${_output}" \
+			#
+		else
+			strip \
+					--strip-all \
+					--enable-deterministic-archives \
+					-o "${_output}" \
+					-- \
+					"${_builds}/${_bin}" \
+			#
+		fi
 		
 	done
 !!
