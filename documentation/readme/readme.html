@@ -29,37 +29,35 @@ if your token matches your entropy requirements, then it should be safe enough
 and this document (especially the <a href=#examples>examples section</a>)
 there is no other documentation at the moment.</p><p>That being said, just run the following and start experimenting with the commands.
 (If there is need for documentation, besides the frugally <code>-h</code> for each command, I have failed in one of the mandatory requirements, that of being "simple to use".)</p><p>Get some help:</p><pre><code>z-tokens --help
+
 z-tokens generate --help
 z-tokens patterns --help
 
 z-tokens --readme
 </code></pre><p>For how to install see the <a href=#install>dedicated section</a>.</p><hr><h2><span id=examples>Examples</span></h2><h3>How to generate passwords and other tokens</h3><p>Generate a few consonant-vowel passwords,
 and display for transcribing (do not copy-paste the spaces)
-(all the commands are almost equivalent):</p><pre><code>z-tokens g
-z-tokens generate
+(all the commands are almost equivalent):</p><pre><code>z-tokens generate
 z-tokens generate -p cv-4
+z-tokens generate -p cv-lower-4
 z-tokens generate -p cv-lower-4 -c 10
 </code></pre><pre><code>cama nera zoju liye
 yuxe nefi qahi lasa
 ....
 </code></pre><p>Generate a few consonant-vowel passwords,
 and output for copy-pasting
-(again all the commands are equivalent):</p><pre><code>z-tokens g cv-4
-z-tokens generate cv-4
-z-tokens generate cv-lower-4
+(again all the commands are equivalent):</p><pre><code>z-tokens g
+z-tokens g cv-4
+z-tokens g cv-lower-4
+z-tokens g cv-lower-4 -c 1
 
-z-tokens g -C
-z-tokens generate -C
-z-tokens generate -p cv-4 -C
-z-tokens generate -p cv-lower-4 -C -c 10
+z-tokens generate -C -c 1
+z-tokens generate -p cv-4 -C -c 1
+z-tokens generate -p cv-lower-4 -C -c 1
 </code></pre><pre><code>nawerukuhefapeqo
-sedeyigeziweguke
-...
 </code></pre><p>Generate one UUIDv4 token,
 and pipe it to another process:</p><pre><code>z-tokens g uuid-v4 | clipboard copy
-z-tokens generate uuid-v4 | clipboard copy
 z-tokens generate -p uuid-v4 -C -c 1 | clipboard copy
-</code></pre><h3>How to list available patters</h3><p>The <code>z-tokens patterns</code> command usually outputs a table with the following format:</p><ul><li>the first column is the pattern identifier (to be used with <code>z-tokens generate -p {pattern}</code>);</li><li>the <code>b</code> column shows the bits of entropy a given token pattern has;
+</code></pre><h3>How to list available patters</h3><p>The <code>z-tokens patterns</code> command usually outputs a table with the following format:</p><ul><li>the first column is the pattern identifier (to be used with <code>z-tokens g {pattern}</code> or <code>z-tokens generate -p {pattern} ...</code>);</li><li>the <code>b</code> column shows the bits of entropy a given token pattern has;
 i.e. the amount of work for brute-force attack;
 if the number doesn't have a <code>.</code> (not even <code>.0</code>) it implies that exact number of bits;</li><li>the <code>c</code> column shows the token length with spaces or separators
 (or without mandatory separators if <code>-C</code> is used);</li><li>the last column is an example of such a token;

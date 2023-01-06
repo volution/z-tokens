@@ -83,6 +83,7 @@ command, I have failed in one of the mandatory requirements, that of being
 Get some help:
 
 z-tokens --help
+
 z-tokens generate --help
 z-tokens patterns --help
 
@@ -99,9 +100,9 @@ How to generate passwords and other tokens
 Generate a few consonant-vowel passwords, and display for transcribing (do not
 copy-paste the spaces) (all the commands are almost equivalent):
 
-z-tokens g
 z-tokens generate
 z-tokens generate -p cv-4
+z-tokens generate -p cv-lower-4
 z-tokens generate -p cv-lower-4 -c 10
 
 cama nera zoju liye
@@ -111,23 +112,20 @@ yuxe nefi qahi lasa
 Generate a few consonant-vowel passwords, and output for copy-pasting (again
 all the commands are equivalent):
 
+z-tokens g
 z-tokens g cv-4
-z-tokens generate cv-4
-z-tokens generate cv-lower-4
+z-tokens g cv-lower-4
+z-tokens g cv-lower-4 -c 1
 
-z-tokens g -C
-z-tokens generate -C
-z-tokens generate -p cv-4 -C
-z-tokens generate -p cv-lower-4 -C -c 10
+z-tokens generate -C -c 1
+z-tokens generate -p cv-4 -C -c 1
+z-tokens generate -p cv-lower-4 -C -c 1
 
 nawerukuhefapeqo
-sedeyigeziweguke
-...
 
 Generate one UUIDv4 token, and pipe it to another process:
 
 z-tokens g uuid-v4 | clipboard copy
-z-tokens generate uuid-v4 | clipboard copy
 z-tokens generate -p uuid-v4 -C -c 1 | clipboard copy
 
 How to list available patters
@@ -135,8 +133,8 @@ How to list available patters
 The z-tokens patterns command usually outputs a table with the following
 format:
 
-  * the first column is the pattern identifier (to be used with z-tokens
-    generate -p {pattern});
+  * the first column is the pattern identifier (to be used with z-tokens g
+    {pattern} or z-tokens generate -p {pattern} ...);
   * the b column shows the bits of entropy a given token pattern has; i.e. the
     amount of work for brute-force attack; if the number doesn't have a . (not
     even .0) it implies that exact number of bits;

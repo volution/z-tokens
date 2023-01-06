@@ -1,5 +1,21 @@
 
 
+---- How to generate passwords
+
+(for quick copy-paste)
+>> z-tokens g
+>> z-tokens g cv-4
+>> z-tokens g r-16
+>> z-tokens g b-16
+>> z-tokens g uuid-v4
+>> z-tokens g ...
+
+(for display and manual transcribing)
+>> z-tokens generate
+>> z-tokens generate -p cv-4
+>> z-tokens generate ...
+
+
 ---- How to invoke the tools
 
 >> z-tokens --version
