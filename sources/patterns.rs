@@ -278,6 +278,29 @@ pub mod glyphs {
 	
 	
 	
+	// NOTE:  =>  https://shorl.com/koremutake.php
+	define_set! (pub KOREMUTAKE_SYLLABLE, Str, [
+			"ba", "be", "bi", "bo", "bu", "by", "da", "de",
+			"di", "do", "du", "dy", "fa", "fe", "fi", "fo",
+			"fu", "fy", "ga", "ge", "gi", "go", "gu", "gy",
+			"ha", "he", "hi", "ho", "hu", "hy", "ja", "je",
+			"ji", "jo", "ju", "jy", "ka", "ke", "ki", "ko",
+			"ku", "ky", "la", "le", "li", "lo", "lu", "ly",
+			"ma", "me", "mi", "mo", "mu", "my", "na", "ne",
+			"ni", "no", "nu", "ny", "pa", "pe", "pi", "po",
+			"pu", "py", "ra", "re", "ri", "ro", "ru", "ry",
+			"sa", "se", "si", "so", "su", "sy", "ta", "te",
+			"ti", "to", "tu", "ty", "va", "ve", "vi", "vo",
+			"vu", "vy", "bra", "bre", "bri", "bro", "bru", "bry",
+			"dra", "dre", "dri", "dro", "dru", "dry", "fra", "fre",
+			"fri", "fro", "fru", "fry", "gra", "gre", "gri", "gro",
+			"gru", "gry", "pra", "pre", "pri", "pro", "pru", "pry",
+			"sta", "ste", "sti", "sto", "stu", "sty", "tra", "tre",
+		]);
+	
+	
+	
+	
 	define_set! (pub MNEMONIC_WORD, Str, [
 			MW0001, MW0002, MW0003, MW0004, MW0005, MW0006, MW0007, MW0008, MW0009, MW0010, MW0011, MW0012, MW0013, MW0014, MW0015, MW0016, MW0017, MW0018, MW0019, MW0020, MW0021, MW0022, MW0023, MW0024, MW0025, MW0026, MW0027, MW0028, MW0029, MW0030, MW0031, MW0032, MW0033, MW0034, MW0035, MW0036, MW0037, MW0038, MW0039, MW0040, MW0041, MW0042, MW0043, MW0044, MW0045, MW0046, MW0047, MW0048, MW0049, MW0050, MW0051, MW0052, MW0053, MW0054, MW0055, MW0056, MW0057, MW0058, MW0059, MW0060, MW0061, MW0062, MW0063, MW0064, MW0065, MW0066, MW0067, MW0068, MW0069, MW0070, MW0071, MW0072, MW0073, MW0074, MW0075, MW0076, MW0077, MW0078, MW0079, MW0080, MW0081, MW0082, MW0083, MW0084, MW0085, MW0086, MW0087, MW0088, MW0089, MW0090, MW0091, MW0092, MW0093, MW0094, MW0095, MW0096, MW0097, MW0098, MW0099, MW0100,
 			MW0101, MW0102, MW0103, MW0104, MW0105, MW0106, MW0107, MW0108, MW0109, MW0110, MW0111, MW0112, MW0113, MW0114, MW0115, MW0116, MW0117, MW0118, MW0119, MW0120, MW0121, MW0122, MW0123, MW0124, MW0125, MW0126, MW0127, MW0128, MW0129, MW0130, MW0131, MW0132, MW0133, MW0134, MW0135, MW0136, MW0137, MW0138, MW0139, MW0140, MW0141, MW0142, MW0143, MW0144, MW0145, MW0146, MW0147, MW0148, MW0149, MW0150, MW0151, MW0152, MW0153, MW0154, MW0155, MW0156, MW0157, MW0158, MW0159, MW0160, MW0161, MW0162, MW0163, MW0164, MW0165, MW0166, MW0167, MW0168, MW0169, MW0170, MW0171, MW0172, MW0173, MW0174, MW0175, MW0176, MW0177, MW0178, MW0179, MW0180, MW0181, MW0182, MW0183, MW0184, MW0185, MW0186, MW0187, MW0188, MW0189, MW0190, MW0191, MW0192, MW0193, MW0194, MW0195, MW0196, MW0197, MW0198, MW0199, MW0200,
@@ -696,6 +719,23 @@ pub mod tokens {
 	
 	
 	
+	define_sequence! (pub KOREMUTAKE_WORD_A, (), [
+			glyphs::KOREMUTAKE_SYLLABLE_TOKEN,
+			glyphs::KOREMUTAKE_SYLLABLE_TOKEN,
+		], separators::NONE_PATTERN);
+	
+	define_sequence! (pub KOREMUTAKE_WORD_B, (), [
+			glyphs::KOREMUTAKE_SYLLABLE_TOKEN,
+			glyphs::KOREMUTAKE_SYLLABLE_TOKEN,
+			glyphs::KOREMUTAKE_SYLLABLE_TOKEN,
+		], separators::NONE_PATTERN);
+	
+	define_repeat! (pub KOREMUTAKE_A, ("koremutake-a"), { KOREMUTAKE_WORD_A => separators::SPACE_OPTIONAL_INFIX_PATTERN }, (64 : 1));
+	define_repeat! (pub KOREMUTAKE_B, ("koremutake-b"), { KOREMUTAKE_WORD_B => separators::SPACE_OPTIONAL_INFIX_PATTERN }, (64 : 1));
+	
+	
+	
+	
 	define_sequence! (pub MNEMONIC_TUPLE, (), [
 			glyphs::MNEMONIC_WORD_TOKEN,
 			glyphs::MNEMONIC_WORD_TOKEN,
@@ -857,6 +897,9 @@ pub mod tokens {
 			
 			PROQUINT_LOWER_ALL,
 			PROQUINT_UPPER_ALL,
+			
+			KOREMUTAKE_A_ALL,
+			KOREMUTAKE_B_ALL,
 			
 			MNEMONIC_ALL,
 			BIP0039_ALL,
