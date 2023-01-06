@@ -486,6 +486,12 @@ pub mod tokens {
 		( $_visibility : vis $_pattern : ident, ( $_identifier : literal ), $_wrapped : expr ) => {
 			define_named! ($_visibility $_pattern, { expr => $_identifier }, $_wrapped);
 		};
+		( $_visibility : vis $_pattern : ident, ( $_identifier : literal, $_alias_1 : literal ), $_wrapped : expr ) => {
+			define_named! ($_visibility $_pattern, { expr => $_identifier, $_alias_1 }, $_wrapped);
+		};
+		( $_visibility : vis $_pattern : ident, ( $_identifier : literal, $_alias_1 : literal, $_alias_2 : literal ), $_wrapped : expr ) => {
+			define_named! ($_visibility $_pattern, { expr => $_identifier, $_alias_1, $_alias_2 }, $_wrapped);
+		};
 		
 		( $_visibility : vis $_pattern : ident, { concat => (), $( $_suffix : literal ),* }, $_wrapped : expr ) => {
 			define_named! ($_visibility $_pattern, (), $_wrapped);
@@ -501,6 +507,14 @@ pub mod tokens {
 				{ expr =>
 					concat! ( $_identifier, $( $_suffix ),* ),
 					concat! ( $_alias_1, $( $_suffix ),* )
+				}, $_wrapped);
+		};
+		( $_visibility : vis $_pattern : ident, { concat => ( $_identifier : literal, $_alias_1 : literal, $_alias_2 : literal ), $( $_suffix : literal ),* }, $_wrapped : expr ) => {
+			define_named! ($_visibility $_pattern,
+				{ expr =>
+					concat! ( $_identifier, $( $_suffix ),* ),
+					concat! ( $_alias_1, $( $_suffix ),* ),
+					concat! ( $_alias_2, $( $_suffix ),* )
 				}, $_wrapped);
 		};
 		
@@ -610,7 +624,7 @@ pub mod tokens {
 			glyphs::ASCII_VOWEL_MIXED_TOKEN,
 		], separators::NONE_PATTERN);
 	
-	define_repeat! (pub ASCII_CONSONANT_VOWEL_LOWER, ("cv-lower", "p-cv"), { ASCII_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN }, (64 : 1));
+	define_repeat! (pub ASCII_CONSONANT_VOWEL_LOWER, ("cv-lower", "cv"), { ASCII_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN }, (64 : 1));
 	define_repeat! (pub ASCII_CONSONANT_VOWEL_UPPER, ("cv-upper"), { ASCII_CONSONANT_VOWEL_UPPER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN }, (64 : 1));
 	define_repeat! (pub ASCII_CONSONANT_VOWEL_MIXED, ("cv-mixed"), { ASCII_CONSONANT_VOWEL_MIXED_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN }, (64 : 1));
 	
@@ -639,19 +653,19 @@ pub mod tokens {
 		], separators::NONE_PATTERN);
 	
 	
-	define_repeat! (pub ASCII_CONSONANT_VOWEL_PLUS_A, ("cv-plus-a", "p-cva"), {
+	define_repeat! (pub ASCII_CONSONANT_VOWEL_PLUS_A, ("cv-plus-a", "cva"), {
 			(),
 			( ASCII_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN ),
 			( separators::SPACE_OPTIONAL_TOKEN, ASCII_CONSONANT_VOWEL_PLUS_A_WORD, )
 		}, ( 16 : 1 ));
 	
-	define_repeat! (pub ASCII_CONSONANT_VOWEL_PLUS_B, ("cv-plus-b", "p-cvb"), {
+	define_repeat! (pub ASCII_CONSONANT_VOWEL_PLUS_B, ("cv-plus-b", "cvb"), {
 			(),
 			( ASCII_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN ),
 			( separators::SPACE_OPTIONAL_TOKEN, ASCII_CONSONANT_VOWEL_PLUS_B_WORD, )
 		}, ( 16 : 1 ));
 	
-	define_repeat! (pub ASCII_CONSONANT_VOWEL_PLUS_C, ("cv-plus-c", "p-cvc"), {
+	define_repeat! (pub ASCII_CONSONANT_VOWEL_PLUS_C, ("cv-plus-c", "cvc"), {
 			(),
 			( ASCII_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN ),
 			( separators::SPACE_OPTIONAL_TOKEN, ASCII_CONSONANT_VOWEL_PLUS_C_WORD, )
@@ -779,8 +793,8 @@ pub mod tokens {
 	
 	
 	
-	define_named! (pub TIMESTAMP_ISO_DATETIME, ("timestamp-iso"), glyphs::TIMESTAMP_ISO_DATETIME_TOKEN);
-	define_named! (pub TIMESTAMP_SECONDS_DEC, ("timestamp-sec"), glyphs::TIMESTAMP_SECONDS_DEC_TOKEN);
+	define_named! (pub TIMESTAMP_ISO_DATETIME, ("timestamp-iso", "date"), glyphs::TIMESTAMP_ISO_DATETIME_TOKEN);
+	define_named! (pub TIMESTAMP_SECONDS_DEC, ("timestamp-sec", "timestamp"), glyphs::TIMESTAMP_SECONDS_DEC_TOKEN);
 	define_named! (pub TIMESTAMP_SECONDS_HEX, ("timestamp-sec-hex"), glyphs::TIMESTAMP_SECONDS_HEX_TOKEN);
 	define_named! (pub TIMESTAMP_NANOSECONDS_DEC, ("timestamp-nano"), glyphs::TIMESTAMP_NANOSECONDS_DEC_TOKEN);
 	define_named! (pub TIMESTAMP_NANOSECONDS_HEX, ("timestamp-nano-hex"), glyphs::TIMESTAMP_NANOSECONDS_HEX_TOKEN);
