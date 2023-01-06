@@ -1,5 +1,5 @@
 ef3a887a3592b1700599f6cd6810b602 *Cargo.lock
-c1fa958f502938c4af264e51c109837b *Cargo.toml
+f947797e3cc389bd93e6b7f55bd10a01 *Cargo.toml
 fd2a6e37b20856e3780e72e9dca4dd78 *_embedded/help/_footer.txt
 cafe6ee12097ee6f81f4a315dec68396 *_embedded/help/_header.txt
 20be1f6e9b9b6e4e2a7c046b9a68be01 *_embedded/help/main.txt
@@ -21,10 +21,10 @@ d50de5c709665ebcc97080895a83c56c *entropy.rs
 3ecb861a6f1bd72e543cc0f2f1fdbbe8 *memory.rs
 4c2f29fc6f015005ccd05376513bedf2 *model.rs
 7bc33f5d28bafa307820fc49acb62dae *output.rs
-52acc61fbdab0d41656e05612449f81e *patterns.rs
+8ae3ee58f7fb5d9309287d7b99d3511a *patterns.rs
 85c41823f2797742095c32d46f786b44 *prelude.rs
 0f4802a4bf0213cfa972df9ea49cca6e *randomizer.rs
-ede3dbdb53af89613d7e137e42f81454 *tools.rs
+bbc1b2731e4ee65368321fd7a6fddcf2 *tools.rs
 eedc40c4a5fca6e26f444e2dd3ee3e05 *tools_flags.rs
 ba993037eb3670d6739a43679ba9224d *tools_generate.rs
 05d70e1241777011846e5fe8ea8b559d *tools_patterns.rs
