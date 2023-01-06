@@ -713,8 +713,8 @@ pub mod tokens {
 			glyphs::PROQUINT_CONSONANT_UPPER_TOKEN,
 		], separators::NONE_PATTERN);
 	
-	define_repeat! (pub PROQUINT_LOWER, ("proquint-lower", "proquint"), { PROQUINT_LOWER_WORD => separators::SPACE_MANDATORY_INFIX_PATTERN }, (64 : 1));
-	define_repeat! (pub PROQUINT_UPPER, ("proquint-upper"), { PROQUINT_UPPER_WORD => separators::SPACE_MANDATORY_INFIX_PATTERN }, (64 : 1));
+	define_repeat! (pub PROQUINT_LOWER, ("proquint-lower", "proquint"), { PROQUINT_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN }, (64 : 1));
+	define_repeat! (pub PROQUINT_UPPER, ("proquint-upper"), { PROQUINT_UPPER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN }, (64 : 1));
 	
 	
 	
