@@ -349,9 +349,9 @@ pub mod glyphs {
 	define_timestamp! (pub TIMESTAMP_YEAR, TimestampFormat::Strftime ("%Y", true));
 	define_timestamp! (pub TIMESTAMP_MONTH, TimestampFormat::Strftime ("%m", true));
 	define_timestamp! (pub TIMESTAMP_DAY, TimestampFormat::Strftime ("%d", true));
-	define_timestamp! (pub TIMESTAMP_ISO_DATE, TimestampFormat::Strftime ("%Y-%m-%d", true));
-	define_timestamp! (pub TIMESTAMP_ISO_TIME, TimestampFormat::Strftime ("%H-%M-%S", true));
-	define_timestamp! (pub TIMESTAMP_ISO_DATETIME, TimestampFormat::Strftime ("%Y-%m-%d-%H-%M-%S", true));
+	define_timestamp! (pub TIMESTAMP_STRING_DATE, TimestampFormat::Strftime ("%Y-%m-%d", true));
+	define_timestamp! (pub TIMESTAMP_STRING_TIME, TimestampFormat::Strftime ("%H-%M-%S", true));
+	define_timestamp! (pub TIMESTAMP_STRING_DATETIME, TimestampFormat::Strftime ("%Y-%m-%d-%H-%M-%S", true));
 	define_timestamp! (pub TIMESTAMP_SECONDS_DEC, TimestampFormat::Decimal (0, 1_000_000_000, 0, 0));
 	define_timestamp! (pub TIMESTAMP_SECONDS_HEX, TimestampFormat::Hex (0, 1_000_000_000, 0, 10));
 	define_timestamp! (pub TIMESTAMP_NANOSECONDS_DEC, TimestampFormat::Decimal (0, 0, 0, 0));
@@ -793,7 +793,9 @@ pub mod tokens {
 	
 	
 	
-	define_named! (pub TIMESTAMP_ISO_DATETIME, ("timestamp-iso", "date"), glyphs::TIMESTAMP_ISO_DATETIME_TOKEN);
+	define_named! (pub TIMESTAMP_STRING_DATETIME, ("timestamp-date-time", "date-time"), glyphs::TIMESTAMP_STRING_DATETIME_TOKEN);
+	define_named! (pub TIMESTAMP_STRING_DATE, ("timestamp-date", "date"), glyphs::TIMESTAMP_STRING_DATE_TOKEN);
+	define_named! (pub TIMESTAMP_STRING_TIME, ("timestamp-time", "time"), glyphs::TIMESTAMP_STRING_TIME_TOKEN);
 	define_named! (pub TIMESTAMP_SECONDS_DEC, ("timestamp-sec", "timestamp"), glyphs::TIMESTAMP_SECONDS_DEC_TOKEN);
 	define_named! (pub TIMESTAMP_SECONDS_HEX, ("timestamp-sec-hex"), glyphs::TIMESTAMP_SECONDS_HEX_TOKEN);
 	define_named! (pub TIMESTAMP_NANOSECONDS_DEC, ("timestamp-nano"), glyphs::TIMESTAMP_NANOSECONDS_DEC_TOKEN);
@@ -802,7 +804,9 @@ pub mod tokens {
 	define_named! (pub TIMESTAMP_FLAKE_SECONDS_HEX, ("timestamp-flake-hex"), glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN);
 	
 	define_all! (pub TIMESTAMP_ALL, [
-			TIMESTAMP_ISO_DATETIME,
+			TIMESTAMP_STRING_DATETIME,
+			TIMESTAMP_STRING_DATE,
+			TIMESTAMP_STRING_TIME,
 			TIMESTAMP_SECONDS_DEC,
 			TIMESTAMP_SECONDS_HEX,
 			TIMESTAMP_NANOSECONDS_DEC,
