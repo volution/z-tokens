@@ -57,18 +57,26 @@ pub fn main () -> MainResult<ExitCode> {
 			main_patterns (_arguments)
 		}
 		
-		(&["generate"], _) | (&["g"], _) => {
+		(&["generate"], _) => {
 			_arguments.insert (0, String::from ("z-tokens generate"));
 			main_generate (_arguments)
 		}
-		(&["generate", _pattern], _) | (&["g", _pattern], _) => {
+		(&["g"], _) => {
 			_arguments.insert (0, String::from ("z-tokens generate"));
-			_arguments.insert (1, String::from ("--token-pattern"));
-			_arguments.insert (2, String::from (_pattern));
+			_arguments.insert (1, String::from ("--compact"));
+			_arguments.insert (2, String::from ("true"));
 			_arguments.insert (3, String::from ("--token-count"));
 			_arguments.insert (4, String::from ("1"));
-			_arguments.insert (5, String::from ("--compact"));
-			_arguments.insert (6, String::from ("true"));
+			main_generate (_arguments)
+		}
+		(&["g", _pattern], _) => {
+			_arguments.insert (0, String::from ("z-tokens generate"));
+			_arguments.insert (1, String::from ("--compact"));
+			_arguments.insert (2, String::from ("true"));
+			_arguments.insert (3, String::from ("--token-count"));
+			_arguments.insert (4, String::from ("1"));
+			_arguments.insert (5, String::from ("--token-pattern"));
+			_arguments.insert (6, String::from (_pattern));
 			main_generate (_arguments)
 		}
 		
