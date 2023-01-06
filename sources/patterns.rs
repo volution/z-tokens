@@ -404,7 +404,7 @@ pub mod tokens {
 			::paste::paste! {
 				
 				$(
-					define_named! ($_visibility [< $_pattern _ $_count >], { concat => $_identifier, ":", $_count },
+					define_named! ($_visibility [< $_pattern _ $_count >], { concat => $_identifier, "-", $_count },
 							& TokenPattern::Repeat (Rb::new_static ($_element), Rb::new_static ($_separator), $_count)
 						);
 				)*
@@ -441,7 +441,7 @@ pub mod tokens {
 					static [< _ $_pattern _ $_count __SEQUENCE >] : &TokenPattern =
 						& TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern _ $_count __SEQUENCE_0 >] ), Rb::new_static (separators::NONE_PATTERN));
 					
-					define_named! ($_visibility [< $_pattern _ $_count >], { concat => $_identifier, ":", $_count },
+					define_named! ($_visibility [< $_pattern _ $_count >], { concat => $_identifier, "-", $_count },
 							[< _ $_pattern _ $_count __SEQUENCE >]
 						);
 				)*
@@ -464,7 +464,7 @@ pub mod tokens {
 			::paste::paste! {
 				
 				$(
-					define_named! ($_visibility [< $_pattern _ $_count >], { concat => $_identifier, ":", $_count },
+					define_named! ($_visibility [< $_pattern _ $_count >], { concat => $_identifier, "-", $_count },
 							glyphs::[< $_glyph _ $_count _TOKEN >]
 						);
 				)*
