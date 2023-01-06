@@ -11,7 +11,7 @@
 		"${ZRUN}" ':: sources / embedded / prepare'
 	fi
 	
-	export -- __META__BUILD_SOURCES_HASH="$( < ./sources/_embedded/build/sources.hash )"
+	export -- __META__BUILD_SOURCES_HASH="$( < ./embedded/build/sources.hash )"
 	export -- __META__BUILD_GIT_HASH="$( < "${__OUTPUTS}/markers/build-git-hash.txt" )"
 	export -- __META__BUILD_TARGET_TYPE="${__META__BUILD_TARGET_TYPE:-[unknown-btt]}"
 	

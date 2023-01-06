@@ -98,7 +98,7 @@
 	readarray -t -- _mains < <( exec -- "${ZRUN}" ':: deploy / list / main' )
 	readarray -t -- _variants < <( exec -- "${ZRUN}" ':: deploy / list / variant' )
 	
-	_build_version="$( exec -- cat -- ./sources/_embedded/build/version.txt )"
+	_build_version="$( exec -- cat -- ./embedded/build/version.txt )"
 	case "${_build_version}" in
 		( 0.0.0 | *.0 )
 			_build_release=false

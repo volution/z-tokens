@@ -21,12 +21,12 @@
 	
 	test "${#}" -eq 0
 	
-	if ! cmp -s -- ./documentation/readme/readme.txt ./sources/_embedded/readme/readme.txt ; then
-		cp -T -- ./documentation/readme/readme.txt ./sources/_embedded/readme/readme.txt
+	if ! cmp -s -- ./documentation/readme/readme.txt ./embedded/readme/readme.txt ; then
+		cp -T -- ./documentation/readme/readme.txt ./embedded/readme/readme.txt
 	fi
 	
-	if ! cmp -s -- ./documentation/readme/readme.html ./sources/_embedded/readme/readme.html ; then
-		cp -T -- ./documentation/readme/readme.html ./sources/_embedded/readme/readme.html
+	if ! cmp -s -- ./documentation/readme/readme.html ./embedded/readme/readme.html ; then
+		cp -T -- ./documentation/readme/readme.html ./embedded/readme/readme.html
 	fi
 !!
 
@@ -35,8 +35,8 @@
 	
 	test "${#}" -eq 0
 	
-	if ! cmp -s -- ./documentation/help/main.txt ./sources/_embedded/help/main.txt ; then
-		cp -T -- ./documentation/help/main.txt ./sources/_embedded/help/main.txt
+	if ! cmp -s -- ./documentation/help/main.txt ./embedded/help/main.txt ; then
+		cp -T -- ./documentation/help/main.txt ./embedded/help/main.txt
 	fi
 !!
 
@@ -51,16 +51,16 @@
 	
 	test "${#}" -eq 0
 	
-	if ! cmp -s -- ./documentation/sbom/sbom.txt ./sources/_embedded/sbom/sbom.txt ; then
-		cp -T -- ./documentation/sbom/sbom.txt ./sources/_embedded/sbom/sbom.txt
+	if ! cmp -s -- ./documentation/sbom/sbom.txt ./embedded/sbom/sbom.txt ; then
+		cp -T -- ./documentation/sbom/sbom.txt ./embedded/sbom/sbom.txt
 	fi
 	
-	if ! cmp -s -- ./documentation/sbom/sbom.html ./sources/_embedded/sbom/sbom.html ; then
-		cp -T -- ./documentation/sbom/sbom.html ./sources/_embedded/sbom/sbom.html
+	if ! cmp -s -- ./documentation/sbom/sbom.html ./embedded/sbom/sbom.html ; then
+		cp -T -- ./documentation/sbom/sbom.html ./embedded/sbom/sbom.html
 	fi
 	
-	if ! cmp -s -- ./documentation/sbom/sbom.json ./sources/_embedded/sbom/sbom.json ; then
-		cp -T -- ./documentation/sbom/sbom.json ./sources/_embedded/sbom/sbom.json
+	if ! cmp -s -- ./documentation/sbom/sbom.json ./embedded/sbom/sbom.json ; then
+		cp -T -- ./documentation/sbom/sbom.json ./embedded/sbom/sbom.json
 	fi
 !!
 
@@ -85,12 +85,12 @@
 		_git_hash='unknown'
 	fi
 	
-	if test ! -e ./sources/_embedded/build/sources.cpio.gz ; then
-		touch -- ./sources/_embedded/build/sources.cpio.gz
+	if test ! -e ./embedded/build/sources.cpio.gz ; then
+		touch -- ./embedded/build/sources.cpio.gz
 	fi
-	if test -s ./sources/_embedded/build/sources.cpio.gz ; then
-		rm -- ./sources/_embedded/build/sources.cpio.gz
-		touch -- ./sources/_embedded/build/sources.cpio.gz
+	if test -s ./embedded/build/sources.cpio.gz ; then
+		rm -- ./embedded/build/sources.cpio.gz
+		touch -- ./embedded/build/sources.cpio.gz
 	fi
 	
 	execline-cd ./sources \
@@ -115,24 +115,24 @@
 		>| "${_outputs}/markers/build-sources.hash.tmp" \
 	#
 	
-	if ! cmp -s -- "${_outputs}/markers/build-sources.hash.tmp" ./sources/_embedded/build/sources.hash ; then
+	if ! cmp -s -- "${_outputs}/markers/build-sources.hash.tmp" ./embedded/build/sources.hash ; then
 		
-		_build_number="$( exec -- cat -- ./sources/_embedded/build/number.txt )"
+		_build_number="$( exec -- cat -- ./embedded/build/number.txt )"
 		_build_number="$(( _build_number + 1 ))"
 		_build_timestamp="$( exec -- date -- '+%Y-%m-%d-%H-%M-%S' )"
 		
 		printf -- '[ii]  incremented build number to `%d`;\n' "${_build_number}" >&2
 		
-		printf -- '%d\n' "${_build_number}" >| ./sources/_embedded/build/number.txt.tmp
-		printf -- '%s\n' "${_build_timestamp}" >| ./sources/_embedded/build/timestamp.txt.tmp
+		printf -- '%d\n' "${_build_number}" >| ./embedded/build/number.txt.tmp
+		printf -- '%s\n' "${_build_timestamp}" >| ./embedded/build/timestamp.txt.tmp
 		
-		mv -T -- ./sources/_embedded/build/number.txt.tmp ./sources/_embedded/build/number.txt
-		mv -T -- ./sources/_embedded/build/timestamp.txt.tmp ./sources/_embedded/build/timestamp.txt
+		mv -T -- ./embedded/build/number.txt.tmp ./embedded/build/number.txt
+		mv -T -- ./embedded/build/timestamp.txt.tmp ./embedded/build/timestamp.txt
 		
 		mv -T -- "${_outputs}/markers/build-sources.list.tmp" "${_outputs}/markers/build-sources.list"
 		
-		mv -T -- "${_outputs}/markers/build-sources.md5.tmp" "./sources/_embedded/build/sources.md5"
-		mv -T -- "${_outputs}/markers/build-sources.hash.tmp" "./sources/_embedded/build/sources.hash"
+		mv -T -- "${_outputs}/markers/build-sources.md5.tmp" "./embedded/build/sources.md5"
+		mv -T -- "${_outputs}/markers/build-sources.hash.tmp" "./embedded/build/sources.hash"
 		
 	else
 		
@@ -159,10 +159,10 @@
 	test -d "${_outputs}"
 	test -d "${_outputs}/markers"
 	
-	if test -s ./sources/_embedded/build/sources.cpio.gz ; then
-		rm -- ./sources/_embedded/build/sources.cpio.gz
+	if test -s ./embedded/build/sources.cpio.gz ; then
+		rm -- ./embedded/build/sources.cpio.gz
 	fi
-	touch --reference ./sources/_embedded/build/timestamp.txt -- ./sources/_embedded/build/sources.cpio.gz
+	touch --reference ./embedded/build/timestamp.txt -- ./embedded/build/sources.cpio.gz
 	
 	execline-cd ./sources \
 	find -L . \
@@ -189,6 +189,6 @@
 		>| "${_outputs}/sources.cpio.gz.tmp" \
 	#
 	
-	mv -T -- "${_outputs}/sources.cpio.gz.tmp" "./sources/_embedded/build/sources.cpio.gz"
+	mv -T -- "${_outputs}/sources.cpio.gz.tmp" "./embedded/build/sources.cpio.gz"
 !!
 

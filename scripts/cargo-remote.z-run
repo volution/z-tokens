@@ -65,11 +65,12 @@
 	_rsync_arguments=(
 			
 			--recursive
+			--copy-unsafe-links
+			
 			--checksum --checksum-choice md5
 			--times --perms
 			--chmod D00555,F00444
-		#	--itemize-changes
-			--copy-unsafe-links
+			--itemize-changes
 			
 			--exclude '.git'
 			--exclude 'target'
@@ -78,6 +79,7 @@
 	
 	rsync \
 			--delete \
+			--copy-links \
 			"${_rsync_arguments[@]}" \
 			-- \
 			"${_local_sources}/" \
