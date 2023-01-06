@@ -25,4 +25,6 @@
 >> z-tokens --sbom-html
 >> z-tokens --sbom-json
 
+>> z-tokens --sources-md5
+>> z-tokens --sources-cpio | gunzip | cpio -i -t
 
