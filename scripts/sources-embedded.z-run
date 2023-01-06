@@ -94,8 +94,8 @@
 	fi
 	
 	execline-cd ./sources \
-	find . \
-			-type f \
+	find -L . \
+			-xtype f \
 			-not -path './_embedded/build/*' \
 			-printf '%P\0' \
 	| LC_ALL=C sort -z \
@@ -165,14 +165,15 @@
 	touch --reference ./sources/_embedded/build/timestamp.txt -- ./sources/_embedded/build/sources.cpio.gz
 	
 	execline-cd ./sources \
-	find . \
-			-type f \
+	find -L . \
+			-xtype f \
 			-print0 \
 	| LC_ALL=C sort -z \
 	| execline-cd ./sources \
 	cpio \
 			--create \
 			--format newc \
+			--dereference \
 			--no-absolute-filenames \
 			--quiet \
 			--warning all \
