@@ -5,7 +5,12 @@ use crate::prelude::*;
 
 
 
+
+
+
+
 pub mod glyphs {
+	
 	
 	use super::*;
 	use super::consts::ascii::*;
@@ -16,6 +21,7 @@ pub mod glyphs {
 	
 	
 	macro_rules! define_set {
+		
 		( $_visibility : vis $_pattern : ident, $_variant : ident, [ $( $_char : expr, )* ] ) => {
 			::paste::paste! {
 				
@@ -38,7 +44,11 @@ pub mod glyphs {
 		};
 	}
 	
+	
+	
+	
 	macro_rules! define_integer {
+		
 		( $_visibility : vis $_pattern : ident, ( $_lower : tt ..= $_upper : tt ), $_format : expr ) => {
 			::paste::paste! {
 				
@@ -49,10 +59,15 @@ pub mod glyphs {
 		};
 	}
 	
+	
+	
+	
 	macro_rules! define_bytes {
+		
 		( $_visibility : vis $_pattern : ident, $_format : expr, ( $_length : tt : $_each : tt ) ) => {
 			macros::__count_call_with! ( [ $_length : $_each ] => define_bytes! ($_visibility $_pattern, $_format, ));
 		};
+		
 		( $_visibility : vis $_pattern : ident, $_format : expr, [ $( $_count : literal, )* ] ) => {
 			::paste::paste! {
 				
@@ -65,7 +80,11 @@ pub mod glyphs {
 		};
 	}
 	
+	
+	
+	
 	macro_rules! define_timestamp {
+		
 		( $_visibility : vis $_pattern : ident, $_format : expr ) => {
 			::paste::paste! {
 				
@@ -75,6 +94,10 @@ pub mod glyphs {
 			}
 		};
 	}
+	
+	
+	
+	
 	
 	
 	
@@ -340,7 +363,12 @@ pub mod glyphs {
 
 
 
+
+
+
+
 pub mod tokens {
+	
 	
 	use super::*;
 	
@@ -348,74 +376,168 @@ pub mod tokens {
 	
 	
 	macro_rules! define_sequence {
-		( $_visibility : vis $_pattern : ident, $_identifier : literal, [ $( $_element : expr, )* ], $_separator : expr ) => {
+		
+		( $_visibility : vis $_pattern : ident, $_identifier : tt, [ $( $_element : expr, )* ], $_separator : expr ) => {
 			::paste::paste! {
 				
-				static [< _ $_pattern __SEQUENCE >] : &[Rb<TokenPattern>] = &[ $(
+				static [< _ $_pattern __SEQUENCE_0 >] : &[Rb<TokenPattern>] = &[ $(
 						Rb::new_static ($_element),
 					)* ];
 				
-				static [< _ $_pattern __NO_NAME >] : &TokenPattern = & TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern __SEQUENCE >] ), $_separator);
-				$_visibility static [< $_pattern >] : &TokenPattern = & TokenPattern::Named ($_identifier, Rb::new_static ( [< _ $_pattern __NO_NAME >] ));
+				define_named! ($_visibility $_pattern, $_identifier,
+						& TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern __SEQUENCE_0 >] ), Rb::new_static ($_separator))
+					);
 			}
 		};
 	}
+	
+	
 	
 	
 	macro_rules! define_repeat {
 		
-		( $_visibility : vis $_pattern : ident, $_identifier : literal, $_element : expr, $_separator : expr, ( $_length : tt : $_each : tt ) ) => {
-			macros::__count_call_with! ( [ $_length : $_each ] => define_repeat! ($_visibility $_pattern, $_identifier, $_element, $_separator, ));
+		( $_visibility : vis $_pattern : ident, $_identifier : tt, $_elements : tt, ( $_length : tt : $_each : tt ) ) => {
+			macros::__count_call_with! ( [ $_length : $_each ] => define_repeat! ($_visibility $_pattern, $_identifier, $_elements, ));
 		};
 		
-		( $_visibility : vis $_pattern : ident, $_identifier : literal, $_element : expr, $_separator : expr, [ $( $_count : literal, )* ] ) => {
+		( $_visibility : vis $_pattern : ident, $_identifier : tt, { $_element : expr => $_separator : expr }, [ $( $_count : literal, )* ] ) => {
 			::paste::paste! {
 				
 				$(
-					static [< _ $_pattern _ $_count __NO_NAME >] : &TokenPattern = & TokenPattern::Repeat (Rb::new_static ($_element), $_separator, $_count);
-					$_visibility static [< $_pattern _ $_count >] : &TokenPattern = & TokenPattern::Named (concat! ($_identifier, ":", $_count), Rb::new_static ( [< _ $_pattern _ $_count __NO_NAME >] ));
+					define_named! ($_visibility [< $_pattern _ $_count >], { concat => $_identifier, ":", $_count },
+							& TokenPattern::Repeat (Rb::new_static ($_element), Rb::new_static ($_separator), $_count)
+						);
 				)*
 				
-				$_visibility static [< $_pattern _ALL >] : &[Rb<TokenPattern>] = &[ $(
-						Rb::new_static ( [< $_pattern _ $_count >] ),
-					)* ];
+				define_all! ($_visibility [< $_pattern _ALL >], [ $( [< $_pattern _ $_count >], )* ]);
+			}
+		};
+		
+		( $_visibility : vis $_pattern : ident, $_identifier : tt, { ( $( $_prefix : expr, )* ), ( $_element : expr => $_separator : expr ), ( $( $_suffix : expr, )* ) }, [ $( $_count : literal, )* ] ) => {
+			::paste::paste! {
+				
+				static [< _ $_pattern __PREFIX_0 >] : &[Rb<TokenPattern>] = &[
+						$( Rb::new_static ($_prefix), )*
+					];
+				static [< _ $_pattern __SUFFIX_0 >] : &[Rb<TokenPattern>] = &[
+						$( Rb::new_static ($_suffix), )*
+					];
+				
+				static [< _ $_pattern __PREFIX >] : &TokenPattern =
+					& TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern __PREFIX_0 >] ), Rb::new_static (separators::NONE_PATTERN));
+				static [< _ $_pattern __SUFFIX >] : &TokenPattern =
+					& TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern __SUFFIX_0 >] ), Rb::new_static (separators::NONE_PATTERN));
+				
+				$(
+					static [< _ $_pattern _ $_count __REPEAT >] : &TokenPattern =
+							& TokenPattern::Repeat (Rb::new_static ($_element), Rb::new_static ($_separator), $_count);
+					
+					static [< _ $_pattern _ $_count __SEQUENCE_0 >] : &[Rb<TokenPattern>] = &[
+							Rb::new_static ([< _ $_pattern __PREFIX >]),
+							Rb::new_static ([< _ $_pattern _ $_count __REPEAT >]),
+							Rb::new_static ([< _ $_pattern __SUFFIX >]),
+						];
+					
+					static [< _ $_pattern _ $_count __SEQUENCE >] : &TokenPattern =
+						& TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern _ $_count __SEQUENCE_0 >] ), Rb::new_static (separators::NONE_PATTERN));
+					
+					define_named! ($_visibility [< $_pattern _ $_count >], { concat => $_identifier, ":", $_count },
+							[< _ $_pattern _ $_count __SEQUENCE >]
+						);
+				)*
+				
+				define_all! ($_visibility [< $_pattern _ALL >], [ $( [< $_pattern _ $_count >], )* ]);
 			}
 		};
 	}
+	
+	
 	
 	
 	macro_rules! define_bytes {
 		
-		( $_visibility : vis $_pattern : ident, $_identifier : literal, $_glyph : ident, ( $_length : tt : $_each : tt ) ) => {
+		( $_visibility : vis $_pattern : ident, $_identifier : tt, $_glyph : ident, ( $_length : tt : $_each : tt ) ) => {
 			macros::__count_call_with! ( [ $_length : $_each ] => define_bytes! ($_visibility $_pattern, $_identifier, $_glyph, ));
 		};
 		
-		( $_visibility : vis $_pattern : ident, $_identifier : literal, $_glyph : ident, [ $( $_count : literal, )* ] ) => {
+		( $_visibility : vis $_pattern : ident, $_identifier : tt, $_glyph : ident, [ $( $_count : literal, )* ] ) => {
 			::paste::paste! {
 				
 				$(
-					$_visibility static [< $_pattern _ $_count >] : &TokenPattern = & TokenPattern::Named (concat! ($_identifier, ":", $_count), Rb::new_static ( glyphs::[< $_glyph _ $_count _TOKEN >] ));
+					define_named! ($_visibility [< $_pattern _ $_count >], { concat => $_identifier, ":", $_count },
+							glyphs::[< $_glyph _ $_count _TOKEN >]
+						);
 				)*
 				
-				$_visibility static [< $_pattern _ALL >] : &[Rb<TokenPattern>] = &[ $(
-						Rb::new_static ( [< $_pattern _ $_count >] ),
-					)* ];
+				define_all! ($_visibility [< $_pattern _ALL >], [ $( [< $_pattern _ $_count >], )* ]);
 			}
 		};
 	}
 	
 	
+	
+	
 	macro_rules! define_named {
-		( $_visibility : vis $_pattern : ident, $_identifier : literal, $_wrapped : expr ) => {
+		
+		( $_visibility : vis $_pattern : ident, (), $_wrapped : expr ) => {
+			$_visibility static $_pattern : &TokenPattern = $_wrapped;
+		};
+		
+		( $_visibility : vis $_pattern : ident, ( $_identifier : literal ), $_wrapped : expr ) => {
+			define_named! ($_visibility $_pattern, { expr => $_identifier }, $_wrapped);
+		};
+		
+		( $_visibility : vis $_pattern : ident, { concat => (), $( $_suffix : literal ),* }, $_wrapped : expr ) => {
+			define_named! ($_visibility $_pattern, (), $_wrapped);
+		};
+		( $_visibility : vis $_pattern : ident, { concat => ( $_identifier : literal ), $( $_suffix : literal ),* }, $_wrapped : expr ) => {
+			define_named! ($_visibility $_pattern,
+				{ expr =>
+					concat! ( $_identifier, $( $_suffix ),* )
+				}, $_wrapped);
+		};
+		( $_visibility : vis $_pattern : ident, { concat => ( $_identifier : literal, $_alias_1 : literal ), $( $_suffix : literal ),* }, $_wrapped : expr ) => {
+			define_named! ($_visibility $_pattern,
+				{ expr =>
+					concat! ( $_identifier, $( $_suffix ),* ),
+					concat! ( $_alias_1, $( $_suffix ),* )
+				}, $_wrapped);
+		};
+		
+		( $_visibility : vis $_pattern : ident, { expr => () }, $_wrapped : expr ) => {
+			define_named! ($_visibility $_pattern, (), $_wrapped);
+		};
+		( $_visibility : vis $_pattern : ident, { expr => $_identifier : expr $( , $_alias : expr )* }, $_wrapped : expr ) => {
 			::paste::paste! {
 				
-				$_visibility static $_pattern : &TokenPattern = & TokenPattern::Named ($_identifier, Rb::new_static ( $_wrapped ));
+				static [< _ $_pattern __NO_NAME >] : &TokenPattern = $_wrapped;
+				$_visibility static $_pattern : &TokenPattern = & TokenPattern::Named ($_identifier, &[ $( $_alias ),* ], Rb::new_static ( [< _ $_pattern __NO_NAME >] ));
 			}
-		}
+		};
 	}
 	
 	
+	
+	
+	macro_rules! define_all {
+		
+		( $_visibility : vis $_all : ident, [ $( $_pattern : expr, )* ] ) => {
+			::paste::paste! {
+				
+				$_visibility static $_all : &[Rb<TokenPattern>] = &[
+						$(
+							Rb::new_static ($_pattern),
+						)*
+					];
+			}
+		};
+	}
+	
+	
+	
+	
 	macro_rules! define_constant {
+		
 		( $_visibility : vis $_constant : ident, $_variant : ident, $_text : expr ) => {
 			::paste::paste! {
 				
@@ -430,204 +552,169 @@ pub mod tokens {
 	
 	
 	
-	define_repeat! (pub DIGITS_BASE10, "digits-base10", glyphs::DIGIT_BASE10_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
-	
-	define_repeat! (pub DIGITS_BASE2, "digits-base2", glyphs::DIGIT_BASE2_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN), (256 : 8));
-	define_repeat! (pub DIGITS_BASE8, "digits-base8", glyphs::DIGIT_BASE8_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
-	
-	define_repeat! (pub DIGITS_BASE16, "digits-base16", glyphs::DIGIT_BASE16_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
-	
-	define_repeat! (pub DIGITS_BASE32_HEX, "digits-base32-hex", glyphs::DIGIT_BASE32_HEX_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
-	define_repeat! (pub DIGITS_BASE32_RFC, "digits-base32-rfc", glyphs::DIGIT_BASE32_RFC_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
-	
-	define_repeat! (pub DIGITS_BASE64_URL, "digits-base64-url", glyphs::DIGIT_BASE64_URL_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
-	define_repeat! (pub DIGITS_BASE64_RFC, "digits-base64-rfc", glyphs::DIGIT_BASE64_RFC_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
-	
-	define_repeat! (pub DIGITS_BASE58, "digits-base58", glyphs::DIGIT_BASE58_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
-	define_repeat! (pub DIGITS_BASE62, "digits-base62", glyphs::DIGIT_BASE62_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
-	
-	define_repeat! (pub DIGITS_BECH32, "digits-bech32", glyphs::DIGIT_BECH32_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
-	
-	define_repeat! (pub DIGITS_Z85, "digits-z85", glyphs::DIGIT_Z85_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_5_PATTERN), (260 : 5));
 	
 	
 	
 	
-	define_repeat! (pub ASCII_LETTER_LOWER, "ascii-lower", glyphs::ASCII_LETTER_LOWER_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
-	define_repeat! (pub ASCII_LETTER_UPPER, "ascii-upper", glyphs::ASCII_LETTER_UPPER_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
-	define_repeat! (pub ASCII_LETTER_MIXED, "ascii-mixed", glyphs::ASCII_LETTER_MIXED_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
+	define_repeat! (pub DIGITS_BASE10, ("digits-base10", "d"), { glyphs::DIGIT_BASE10_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN }, (256 : 4));
 	
-	define_repeat! (pub ASCII_SYMBOLS, "ascii-symbols", glyphs::ASCII_SYMBOL_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
-	define_repeat! (pub ASCII_PRINTABLE, "ascii-any", glyphs::ASCII_PRINTABLE_TOKEN, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN), (256 : 4));
+	define_repeat! (pub DIGITS_BASE2, ("digits-base2"), { glyphs::DIGIT_BASE2_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN }, (256 : 8));
+	define_repeat! (pub DIGITS_BASE8, ("digits-base8"), { glyphs::DIGIT_BASE8_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN }, (256 : 4));
+	
+	define_repeat! (pub DIGITS_BASE16, ("digits-base16", "h"), { glyphs::DIGIT_BASE16_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN }, (256 : 4));
+	
+	define_repeat! (pub DIGITS_BASE32_HEX, ("digits-base32-hex"), { glyphs::DIGIT_BASE32_HEX_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN }, (256 : 4));
+	define_repeat! (pub DIGITS_BASE32_RFC, ("digits-base32-rfc"), { glyphs::DIGIT_BASE32_RFC_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN}, (256 : 4));
+	
+	define_repeat! (pub DIGITS_BASE64_URL, ("digits-base64-url"), { glyphs::DIGIT_BASE64_URL_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN}, (256 : 4));
+	define_repeat! (pub DIGITS_BASE64_RFC, ("digits-base64-rfc"), { glyphs::DIGIT_BASE64_RFC_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN}, (256 : 4));
+	
+	define_repeat! (pub DIGITS_BASE58, ("digits-base58"), { glyphs::DIGIT_BASE58_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN }, (256 : 4));
+	define_repeat! (pub DIGITS_BASE62, ("digits-base62"), { glyphs::DIGIT_BASE62_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN }, (256 : 4));
+	
+	define_repeat! (pub DIGITS_BECH32, ("digits-bech32"), { glyphs::DIGIT_BECH32_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN }, (256 : 4));
+	
+	define_repeat! (pub DIGITS_Z85, ("digits-z85"), { glyphs::DIGIT_Z85_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_5_PATTERN }, (260 : 5));
 	
 	
 	
 	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_LOWER_WORD, "cv-lower-word", [
+	define_repeat! (pub ASCII_LETTER_LOWER, ("ascii-lower"), { glyphs::ASCII_LETTER_LOWER_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN }, (256 : 4));
+	define_repeat! (pub ASCII_LETTER_UPPER, ("ascii-upper"), { glyphs::ASCII_LETTER_UPPER_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN }, (256 : 4));
+	define_repeat! (pub ASCII_LETTER_MIXED, ("ascii-mixed"), { glyphs::ASCII_LETTER_MIXED_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN }, (256 : 4));
+	
+	define_repeat! (pub ASCII_SYMBOLS, ("ascii-symbols"), { glyphs::ASCII_SYMBOL_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN }, (256 : 4));
+	define_repeat! (pub ASCII_PRINTABLE, ("ascii-any", "r"), { glyphs::ASCII_PRINTABLE_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN }, (256 : 4));
+	
+	
+	
+	
+	define_sequence! (pub ASCII_CONSONANT_VOWEL_LOWER_WORD, (), [
 			glyphs::ASCII_CONSONANT_LOWER_TOKEN,
 			glyphs::ASCII_VOWEL_LOWER_TOKEN,
 			glyphs::ASCII_CONSONANT_LOWER_TOKEN,
 			glyphs::ASCII_VOWEL_LOWER_TOKEN,
-		], Rb::new_static (separators::NONE_PATTERN));
+		], separators::NONE_PATTERN);
 	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_UPPER_WORD, "cv-upper-word", [
+	define_sequence! (pub ASCII_CONSONANT_VOWEL_UPPER_WORD, (), [
 			glyphs::ASCII_CONSONANT_UPPER_TOKEN,
 			glyphs::ASCII_VOWEL_UPPER_TOKEN,
 			glyphs::ASCII_CONSONANT_UPPER_TOKEN,
 			glyphs::ASCII_VOWEL_UPPER_TOKEN,
-		], Rb::new_static (separators::NONE_PATTERN));
+		], separators::NONE_PATTERN);
 	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_MIXED_WORD, "cv-mixed-word", [
+	define_sequence! (pub ASCII_CONSONANT_VOWEL_MIXED_WORD, (), [
 			glyphs::ASCII_CONSONANT_MIXED_TOKEN,
 			glyphs::ASCII_VOWEL_MIXED_TOKEN,
 			glyphs::ASCII_CONSONANT_MIXED_TOKEN,
 			glyphs::ASCII_VOWEL_MIXED_TOKEN,
-		], Rb::new_static (separators::NONE_PATTERN));
+		], separators::NONE_PATTERN);
 	
-	define_repeat! (pub ASCII_CONSONANT_VOWEL_LOWER, "cv-lower", ASCII_CONSONANT_VOWEL_LOWER_WORD, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN), (64 : 1));
-	define_repeat! (pub ASCII_CONSONANT_VOWEL_UPPER, "cv-upper", ASCII_CONSONANT_VOWEL_UPPER_WORD, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN), (64 : 1));
-	define_repeat! (pub ASCII_CONSONANT_VOWEL_MIXED, "cv-mixed", ASCII_CONSONANT_VOWEL_MIXED_WORD, Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN), (64 : 1));
-	
-	
+	define_repeat! (pub ASCII_CONSONANT_VOWEL_LOWER, ("cv-lower", "p-cv"), { ASCII_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN }, (64 : 1));
+	define_repeat! (pub ASCII_CONSONANT_VOWEL_UPPER, ("cv-upper"), { ASCII_CONSONANT_VOWEL_UPPER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN }, (64 : 1));
+	define_repeat! (pub ASCII_CONSONANT_VOWEL_MIXED, ("cv-mixed"), { ASCII_CONSONANT_VOWEL_MIXED_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN }, (64 : 1));
 	
 	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_A_WORD, "cv-plus-a-word", [
+	
+	
+	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_A_WORD, (), [
+			glyphs::DIGIT_BASE10_TOKEN,
+			glyphs::DIGIT_BASE10_TOKEN,
+			glyphs::DIGIT_BASE10_TOKEN,
+			glyphs::DIGIT_BASE10_TOKEN,
+		], separators::NONE_PATTERN);
+	
+	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_B_WORD, (), [
 			glyphs::ASCII_CONSONANT_UPPER_TOKEN,
 			glyphs::ASCII_VOWEL_UPPER_TOKEN,
 			glyphs::DIGIT_BASE10_TOKEN,
 			glyphs::DIGIT_BASE10_TOKEN,
-		], Rb::new_static (separators::NONE_PATTERN));
+		], separators::NONE_PATTERN);
 	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_B_WORD, "cv-plus-b-word", [
+	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_C_WORD, (), [
 			glyphs::ASCII_CONSONANT_UPPER_TOKEN,
 			glyphs::ASCII_VOWEL_UPPER_TOKEN,
 			glyphs::DIGIT_BASE10_TOKEN,
 			glyphs::ASCII_SYMBOL_TOKEN,
-		], Rb::new_static (separators::NONE_PATTERN));
+		], separators::NONE_PATTERN);
 	
 	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_A_2, "cv-plus-a:3", [ ASCII_CONSONANT_VOWEL_LOWER_1, ASCII_CONSONANT_VOWEL_PLUS_A_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_B_2, "cv-plus-b:3", [ ASCII_CONSONANT_VOWEL_LOWER_1, ASCII_CONSONANT_VOWEL_PLUS_B_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
+	define_repeat! (pub ASCII_CONSONANT_VOWEL_PLUS_A, ("cv-plus-a", "p-cva"), {
+			(),
+			( ASCII_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN ),
+			( separators::SPACE_OPTIONAL_TOKEN, ASCII_CONSONANT_VOWEL_PLUS_A_WORD, )
+		}, ( 16 : 1 ));
 	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_A_3, "cv-plus-a:3", [ ASCII_CONSONANT_VOWEL_LOWER_2, ASCII_CONSONANT_VOWEL_PLUS_A_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_B_3, "cv-plus-b:3", [ ASCII_CONSONANT_VOWEL_LOWER_2, ASCII_CONSONANT_VOWEL_PLUS_B_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
+	define_repeat! (pub ASCII_CONSONANT_VOWEL_PLUS_B, ("cv-plus-b", "p-cvb"), {
+			(),
+			( ASCII_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN ),
+			( separators::SPACE_OPTIONAL_TOKEN, ASCII_CONSONANT_VOWEL_PLUS_B_WORD, )
+		}, ( 16 : 1 ));
 	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_A_4, "cv-plus-a:4", [ ASCII_CONSONANT_VOWEL_LOWER_3, ASCII_CONSONANT_VOWEL_PLUS_A_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_B_4, "cv-plus-b:4", [ ASCII_CONSONANT_VOWEL_LOWER_3, ASCII_CONSONANT_VOWEL_PLUS_B_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_A_5, "cv-plus-a:5", [ ASCII_CONSONANT_VOWEL_LOWER_4, ASCII_CONSONANT_VOWEL_PLUS_A_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_B_5, "cv-plus-b:5", [ ASCII_CONSONANT_VOWEL_LOWER_4, ASCII_CONSONANT_VOWEL_PLUS_B_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_A_6, "cv-plus-a:6", [ ASCII_CONSONANT_VOWEL_LOWER_5, ASCII_CONSONANT_VOWEL_PLUS_A_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_B_6, "cv-plus-b:6", [ ASCII_CONSONANT_VOWEL_LOWER_5, ASCII_CONSONANT_VOWEL_PLUS_B_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_A_7, "cv-plus-a:7", [ ASCII_CONSONANT_VOWEL_LOWER_6, ASCII_CONSONANT_VOWEL_PLUS_A_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_B_7, "cv-plus-b:7", [ ASCII_CONSONANT_VOWEL_LOWER_6, ASCII_CONSONANT_VOWEL_PLUS_B_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_A_8, "cv-plus-a:8", [ ASCII_CONSONANT_VOWEL_LOWER_7, ASCII_CONSONANT_VOWEL_PLUS_A_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_B_8, "cv-plus-b:8", [ ASCII_CONSONANT_VOWEL_LOWER_7, ASCII_CONSONANT_VOWEL_PLUS_B_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_A_9, "cv-plus-a:9", [ ASCII_CONSONANT_VOWEL_LOWER_8, ASCII_CONSONANT_VOWEL_PLUS_A_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_B_9, "cv-plus-b:9", [ ASCII_CONSONANT_VOWEL_LOWER_8, ASCII_CONSONANT_VOWEL_PLUS_B_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_A_10, "cv-plus-a:10", [ ASCII_CONSONANT_VOWEL_LOWER_9, ASCII_CONSONANT_VOWEL_PLUS_A_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_B_10, "cv-plus-b:10", [ ASCII_CONSONANT_VOWEL_LOWER_9, ASCII_CONSONANT_VOWEL_PLUS_B_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_A_11, "cv-plus-a:11", [ ASCII_CONSONANT_VOWEL_LOWER_10, ASCII_CONSONANT_VOWEL_PLUS_A_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_B_11, "cv-plus-b:11", [ ASCII_CONSONANT_VOWEL_LOWER_10, ASCII_CONSONANT_VOWEL_PLUS_B_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_A_12, "cv-plus-a:12", [ ASCII_CONSONANT_VOWEL_LOWER_11, ASCII_CONSONANT_VOWEL_PLUS_A_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_B_12, "cv-plus-b:12", [ ASCII_CONSONANT_VOWEL_LOWER_11, ASCII_CONSONANT_VOWEL_PLUS_B_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_A_13, "cv-plus-a:13", [ ASCII_CONSONANT_VOWEL_LOWER_12, ASCII_CONSONANT_VOWEL_PLUS_A_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_B_13, "cv-plus-b:13", [ ASCII_CONSONANT_VOWEL_LOWER_12, ASCII_CONSONANT_VOWEL_PLUS_B_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_A_14, "cv-plus-a:14", [ ASCII_CONSONANT_VOWEL_LOWER_13, ASCII_CONSONANT_VOWEL_PLUS_A_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_B_14, "cv-plus-b:14", [ ASCII_CONSONANT_VOWEL_LOWER_13, ASCII_CONSONANT_VOWEL_PLUS_B_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_A_15, "cv-plus-a:15", [ ASCII_CONSONANT_VOWEL_LOWER_14, ASCII_CONSONANT_VOWEL_PLUS_A_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_B_15, "cv-plus-b:15", [ ASCII_CONSONANT_VOWEL_LOWER_14, ASCII_CONSONANT_VOWEL_PLUS_B_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_A_16, "cv-plus-a:16", [ ASCII_CONSONANT_VOWEL_LOWER_15, ASCII_CONSONANT_VOWEL_PLUS_A_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub ASCII_CONSONANT_VOWEL_PLUS_B_16, "cv-plus-b:16", [ ASCII_CONSONANT_VOWEL_LOWER_15, ASCII_CONSONANT_VOWEL_PLUS_B_WORD, ], Rb::new_static (separators::SPACE_OPTIONAL_INFIX_PATTERN));
-	
-	
-	pub static ASCII_CONSONANT_VOWEL_PLUS_ALL : &[Rb<TokenPattern>] = &[
-			Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_A_2), Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_B_2),
-			Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_A_3), Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_B_3),
-			Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_A_4), Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_B_4),
-			Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_A_5), Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_B_5),
-			Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_A_6), Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_B_6),
-			Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_A_7), Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_B_7),
-			Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_A_8), Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_B_8),
-			Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_A_9), Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_B_9),
-			Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_A_10), Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_B_10),
-			Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_A_11), Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_B_11),
-			Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_A_12), Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_B_12),
-			Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_A_13), Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_B_13),
-			Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_A_14), Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_B_14),
-			Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_A_15), Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_B_15),
-			Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_A_16), Rb::new_static (ASCII_CONSONANT_VOWEL_PLUS_B_16),
-		];
+	define_repeat! (pub ASCII_CONSONANT_VOWEL_PLUS_C, ("cv-plus-c", "p-cvc"), {
+			(),
+			( ASCII_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN ),
+			( separators::SPACE_OPTIONAL_TOKEN, ASCII_CONSONANT_VOWEL_PLUS_C_WORD, )
+		}, ( 16 : 1 ));
 	
 	
 	
 	
-	define_sequence! (pub PROQUINT_LOWER_WORD, "proquint-lower-word", [
+	define_sequence! (pub PROQUINT_LOWER_WORD, (), [
 			glyphs::PROQUINT_CONSONANT_LOWER_TOKEN,
 			glyphs::PROQUINT_VOWEL_LOWER_TOKEN,
 			glyphs::PROQUINT_CONSONANT_LOWER_TOKEN,
 			glyphs::PROQUINT_VOWEL_LOWER_TOKEN,
 			glyphs::PROQUINT_CONSONANT_LOWER_TOKEN,
-		], Rb::new_static (separators::NONE_PATTERN));
+		], separators::NONE_PATTERN);
 	
-	define_sequence! (pub PROQUINT_UPPER_WORD, "proquint-upper-word", [
+	define_sequence! (pub PROQUINT_UPPER_WORD, (), [
 			glyphs::PROQUINT_CONSONANT_UPPER_TOKEN,
 			glyphs::PROQUINT_VOWEL_UPPER_TOKEN,
 			glyphs::PROQUINT_CONSONANT_UPPER_TOKEN,
 			glyphs::PROQUINT_VOWEL_UPPER_TOKEN,
 			glyphs::PROQUINT_CONSONANT_UPPER_TOKEN,
-		], Rb::new_static (separators::NONE_PATTERN));
+		], separators::NONE_PATTERN);
 	
-	define_repeat! (pub PROQUINT_LOWER, "proquint-lower", PROQUINT_LOWER_WORD, Rb::new_static (separators::SPACE_MANDATORY_INFIX_PATTERN), (64 : 1));
-	define_repeat! (pub PROQUINT_UPPER, "proquint-upper", PROQUINT_UPPER_WORD, Rb::new_static (separators::SPACE_MANDATORY_INFIX_PATTERN), (64 : 1));
-	
-	
+	define_repeat! (pub PROQUINT_LOWER, ("proquint-lower", "proquint"), { PROQUINT_LOWER_WORD => separators::SPACE_MANDATORY_INFIX_PATTERN }, (64 : 1));
+	define_repeat! (pub PROQUINT_UPPER, ("proquint-upper"), { PROQUINT_UPPER_WORD => separators::SPACE_MANDATORY_INFIX_PATTERN }, (64 : 1));
 	
 	
-	define_sequence! (pub MNEMONIC_TUPLE, "mnemonic-tuple", [
+	
+	
+	define_sequence! (pub MNEMONIC_TUPLE, (), [
 			glyphs::MNEMONIC_WORD_TOKEN,
 			glyphs::MNEMONIC_WORD_TOKEN,
 			glyphs::MNEMONIC_WORD_TOKEN,
-		], Rb::new_static (separators::SPACE_MANDATORY_INFIX_PATTERN));
+		], separators::SPACE_MANDATORY_INFIX_PATTERN);
 	
-	define_repeat! (pub MNEMONIC, "mnemonic", MNEMONIC_TUPLE, Rb::new_static (separators::SPACE_HYPHEN_SPACE_MANDATORY_INFIX_PATTERN), (66 : 1));
-	
-	
+	define_repeat! (pub MNEMONIC, ("mnemonic"), { MNEMONIC_TUPLE => separators::SPACE_HYPHEN_SPACE_MANDATORY_INFIX_PATTERN }, (66 : 1));
 	
 	
-	define_sequence! (pub BIP0039_TUPLE, "bip0039-tuple", [
+	
+	
+	define_sequence! (pub BIP0039_TUPLE, (), [
 			glyphs::BIP0039_WORD_TOKEN,
 			glyphs::BIP0039_WORD_TOKEN,
 			glyphs::BIP0039_WORD_TOKEN,
-		], Rb::new_static (separators::SPACE_MANDATORY_INFIX_PATTERN));
+		], separators::SPACE_MANDATORY_INFIX_PATTERN);
 	
-	define_repeat! (pub BIP0039, "bip0039", BIP0039_TUPLE, Rb::new_static (separators::SPACE_HYPHEN_SPACE_MANDATORY_INFIX_PATTERN), (66 : 1));
-	
-	
+	define_repeat! (pub BIP0039, ("bip0039"), { BIP0039_TUPLE => separators::SPACE_HYPHEN_SPACE_MANDATORY_INFIX_PATTERN }, (66 : 1));
 	
 	
-	define_sequence! (pub UUID_V4, "uuid-v4", [
+	
+	
+	define_sequence! (pub UUID_V4, ("uuid-v4"), [
 			glyphs::UUID_ANY_FIELD_1_TOKEN,
 			glyphs::UUID_ANY_FIELD_2_TOKEN,
 			glyphs::UUID_V4_FIELD_3_TOKEN,
 			glyphs::UUID_V4_FIELD_4_TOKEN,
 			glyphs::UUID_ANY_FIELD_5_TOKEN,
-		], Rb::new_static (separators::HYPHEN_MANDATORY_INFIX_PATTERN));
+		], separators::HYPHEN_MANDATORY_INFIX_PATTERN);
 	
-	pub static UUID_ALL : &[Rb<TokenPattern>] = &[
-			Rb::new_static (UUID_V4),
-		];
+	define_all! (pub UUID_ALL, [
+			UUID_V4,
+		]);
 	
 	
 	
@@ -639,91 +726,83 @@ pub mod tokens {
 	define_constant! (IP_192_B_PREFIX, Str, "168");
 	define_constant! (IP_MAC_PREFIX, Str, "02");
 	
-	define_sequence! (pub IP_127, "ip-127", [
+	define_sequence! (pub IP_127, ("ip-127"), [
 			IP_127_PREFIX_TOKEN,
 			glyphs::INTEGER_2_253_TOKEN,
 			glyphs::INTEGER_2_253_TOKEN,
 			glyphs::INTEGER_2_253_TOKEN,
-		], Rb::new_static (separators::DOT_MANDATORY_INFIX_PATTERN));
+		], separators::DOT_MANDATORY_INFIX_PATTERN);
 	
-	define_sequence! (pub IP_10, "ip-10", [
+	define_sequence! (pub IP_10, ("ip-10"), [
 			IP_10_PREFIX_TOKEN,
 			glyphs::INTEGER_2_253_TOKEN,
 			glyphs::INTEGER_2_253_TOKEN,
 			glyphs::INTEGER_2_253_TOKEN,
-		], Rb::new_static (separators::DOT_MANDATORY_INFIX_PATTERN));
+		], separators::DOT_MANDATORY_INFIX_PATTERN);
 	
-	define_sequence! (pub IP_172, "ip-172", [
+	define_sequence! (pub IP_172, ("ip-172"), [
 			IP_172_PREFIX_TOKEN,
 			glyphs::INTEGER_1_30_TOKEN,
 			glyphs::INTEGER_2_253_TOKEN,
 			glyphs::INTEGER_2_253_TOKEN,
-		], Rb::new_static (separators::DOT_MANDATORY_INFIX_PATTERN));
+		], separators::DOT_MANDATORY_INFIX_PATTERN);
 	
-	define_sequence! (pub IP_192, "ip-192", [
+	define_sequence! (pub IP_192, ("ip-192"), [
 			IP_192_A_PREFIX_TOKEN,
 			IP_192_B_PREFIX_TOKEN,
 			glyphs::INTEGER_2_253_TOKEN,
 			glyphs::INTEGER_2_253_TOKEN,
-		], Rb::new_static (separators::DOT_MANDATORY_INFIX_PATTERN));
+		], separators::DOT_MANDATORY_INFIX_PATTERN);
 	
-	define_sequence! (pub IP_MAC, "ip-mac", [
+	define_sequence! (pub IP_MAC, ("ip-mac"), [
 			IP_MAC_PREFIX_TOKEN,
 			glyphs::INTEGER_8B_HEX_TOKEN,
 			glyphs::INTEGER_8B_HEX_TOKEN,
 			glyphs::INTEGER_8B_HEX_TOKEN,
 			glyphs::INTEGER_8B_HEX_TOKEN,
 			glyphs::INTEGER_8B_HEX_TOKEN,
-		], Rb::new_static (separators::COLON_MANDATORY_INFIX_PATTERN));
+		], separators::COLON_MANDATORY_INFIX_PATTERN);
 	
-	pub static IP_ALL : &[Rb<TokenPattern>] = &[
-			Rb::new_static (IP_127),
-			Rb::new_static (IP_10),
-			Rb::new_static (IP_172),
-			Rb::new_static (IP_192),
-			Rb::new_static (IP_MAC),
-		];
-	
-	
-	
-	
-	define_bytes! (pub BYTES_HEX, "bytes-hex", BYTES_HEX, ( 512 : 4 ));
+	define_all! (pub IP_ALL, [
+			IP_127,
+			IP_10,
+			IP_172,
+			IP_192,
+			IP_MAC,
+		]);
 	
 	
 	
 	
-	define_named! (pub TIMESTAMP_ISO_DATETIME, "timestamp-iso", glyphs::TIMESTAMP_ISO_DATETIME_TOKEN);
-	define_named! (pub TIMESTAMP_SECONDS_DEC, "timestamp-sec", glyphs::TIMESTAMP_SECONDS_DEC_TOKEN);
-	define_named! (pub TIMESTAMP_SECONDS_HEX, "timestamp-sec-hex", glyphs::TIMESTAMP_SECONDS_HEX_TOKEN);
-	define_named! (pub TIMESTAMP_NANOSECONDS_DEC, "timestamp-nano", glyphs::TIMESTAMP_NANOSECONDS_DEC_TOKEN);
-	define_named! (pub TIMESTAMP_NANOSECONDS_HEX, "timestamp-nano-hex", glyphs::TIMESTAMP_NANOSECONDS_HEX_TOKEN);
-	define_named! (pub TIMESTAMP_FLAKE_SECONDS_DEC, "timestamp-flake", glyphs::TIMESTAMP_FLAKE_SECONDS_DEC_TOKEN);
-	define_named! (pub TIMESTAMP_FLAKE_SECONDS_HEX, "timestamp-flake-hex", glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN);
+	define_bytes! (pub BYTES_HEX, ("bytes-hex"), BYTES_HEX, ( 512 : 4 ));
 	
-	define_sequence! (pub FLAKE_SECONDS_4, "flake:4", [ glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN, glyphs::BYTES_HEX_4_TOKEN, ], Rb::new_static (separators::HYPHEN_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub FLAKE_SECONDS_6, "flake:6", [ glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN, glyphs::BYTES_HEX_6_TOKEN, ], Rb::new_static (separators::HYPHEN_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub FLAKE_SECONDS_8, "flake:8", [ glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN, glyphs::BYTES_HEX_8_TOKEN, ], Rb::new_static (separators::HYPHEN_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub FLAKE_SECONDS_10, "flake:10", [ glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN, glyphs::BYTES_HEX_10_TOKEN, ], Rb::new_static (separators::HYPHEN_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub FLAKE_SECONDS_12, "flake:12", [ glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN, glyphs::BYTES_HEX_12_TOKEN, ], Rb::new_static (separators::HYPHEN_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub FLAKE_SECONDS_14, "flake:14", [ glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN, glyphs::BYTES_HEX_14_TOKEN, ], Rb::new_static (separators::HYPHEN_OPTIONAL_INFIX_PATTERN));
-	define_sequence! (pub FLAKE_SECONDS_16, "flake:16", [ glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN, glyphs::BYTES_HEX_16_TOKEN, ], Rb::new_static (separators::HYPHEN_OPTIONAL_INFIX_PATTERN));
 	
-	pub static TIMESTAMP_ALL : &[Rb<TokenPattern>] = &[
-			Rb::new_static (TIMESTAMP_ISO_DATETIME),
-			Rb::new_static (TIMESTAMP_SECONDS_DEC),
-			Rb::new_static (TIMESTAMP_SECONDS_HEX),
-			Rb::new_static (TIMESTAMP_NANOSECONDS_DEC),
-			Rb::new_static (TIMESTAMP_NANOSECONDS_HEX),
-			Rb::new_static (TIMESTAMP_FLAKE_SECONDS_DEC),
-			Rb::new_static (TIMESTAMP_FLAKE_SECONDS_HEX),
-			Rb::new_static (FLAKE_SECONDS_4),
-			Rb::new_static (FLAKE_SECONDS_6),
-			Rb::new_static (FLAKE_SECONDS_8),
-			Rb::new_static (FLAKE_SECONDS_10),
-			Rb::new_static (FLAKE_SECONDS_12),
-			Rb::new_static (FLAKE_SECONDS_14),
-			Rb::new_static (FLAKE_SECONDS_16),
-		];
+	
+	
+	define_named! (pub TIMESTAMP_ISO_DATETIME, ("timestamp-iso"), glyphs::TIMESTAMP_ISO_DATETIME_TOKEN);
+	define_named! (pub TIMESTAMP_SECONDS_DEC, ("timestamp-sec"), glyphs::TIMESTAMP_SECONDS_DEC_TOKEN);
+	define_named! (pub TIMESTAMP_SECONDS_HEX, ("timestamp-sec-hex"), glyphs::TIMESTAMP_SECONDS_HEX_TOKEN);
+	define_named! (pub TIMESTAMP_NANOSECONDS_DEC, ("timestamp-nano"), glyphs::TIMESTAMP_NANOSECONDS_DEC_TOKEN);
+	define_named! (pub TIMESTAMP_NANOSECONDS_HEX, ("timestamp-nano-hex"), glyphs::TIMESTAMP_NANOSECONDS_HEX_TOKEN);
+	define_named! (pub TIMESTAMP_FLAKE_SECONDS_DEC, ("timestamp-flake"), glyphs::TIMESTAMP_FLAKE_SECONDS_DEC_TOKEN);
+	define_named! (pub TIMESTAMP_FLAKE_SECONDS_HEX, ("timestamp-flake-hex"), glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN);
+	
+	define_all! (pub TIMESTAMP_ALL, [
+			TIMESTAMP_ISO_DATETIME,
+			TIMESTAMP_SECONDS_DEC,
+			TIMESTAMP_SECONDS_HEX,
+			TIMESTAMP_NANOSECONDS_DEC,
+			TIMESTAMP_NANOSECONDS_HEX,
+			TIMESTAMP_FLAKE_SECONDS_DEC,
+			TIMESTAMP_FLAKE_SECONDS_HEX,
+		]);
+	
+	
+	define_repeat! (pub FLAKE_SECONDS, ("flake"), {
+			( glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN, separators::HYPHEN_OPTIONAL_TOKEN, ),
+			( glyphs::BYTES_HEX_4_TOKEN => separators::HYPHEN_OPTIONAL_INFIX_PATTERN ),
+			()
+		}, ( 16 : 1 ));
 	
 	
 	
@@ -753,7 +832,10 @@ pub mod tokens {
 			ASCII_CONSONANT_VOWEL_LOWER_ALL,
 			ASCII_CONSONANT_VOWEL_UPPER_ALL,
 			ASCII_CONSONANT_VOWEL_MIXED_ALL,
-			ASCII_CONSONANT_VOWEL_PLUS_ALL,
+			
+			ASCII_CONSONANT_VOWEL_PLUS_A_ALL,
+			ASCII_CONSONANT_VOWEL_PLUS_B_ALL,
+			ASCII_CONSONANT_VOWEL_PLUS_C_ALL,
 			
 			PROQUINT_LOWER_ALL,
 			PROQUINT_UPPER_ALL,
@@ -768,6 +850,7 @@ pub mod tokens {
 			BYTES_HEX_ALL,
 			
 			TIMESTAMP_ALL,
+			FLAKE_SECONDS_ALL,
 			
 		];
 }
@@ -775,7 +858,12 @@ pub mod tokens {
 
 
 
+
+
+
+
 pub mod separators {
+	
 	
 	use super::*;
 	
@@ -783,16 +871,34 @@ pub mod separators {
 	
 	
 	macro_rules! define_separator {
-		( $_visibility : vis $_pattern : ident, $_variant : ident, $_text : expr, infix, ( $_length : tt : $_each : tt ) ) => {
-			macros::__count_call_with! ( [ $_length : $_each ] => define_separator! ($_visibility $_pattern, $_variant, $_text, infix, ));
-		};
-		( $_visibility : vis $_pattern : ident, $_variant : ident, $_text : expr, infix, [ $( $_infix_each : literal, )* ] ) => {
+		
+		( $_visibility : vis $_pattern : ident, separator, $_variant : ident, $_text : expr ) => {
 			::paste::paste! {
 				
 				static [< _ $_pattern _TEXT >] : &Text = & Text::$_variant ($_text);
 				
 				$_visibility static [< $_pattern _MANDATORY_SEPARATOR >] : &Separator = & Separator::Mandatory (Rb::new_static ( [< _ $_pattern _TEXT >] ));
 				$_visibility static [< $_pattern _OPTIONAL_SEPARATOR >] : &Separator = & Separator::Optional (Rb::new_static ( [< _ $_pattern _TEXT >] ));
+			}
+		};
+		
+		( $_visibility : vis $_pattern : ident, atom ) => {
+			::paste::paste! {
+				
+				$_visibility static [< $_pattern _MANDATORY_ATOM >] : &AtomPattern = & AtomPattern::Separator (Rb::new_static ( [< $_pattern _MANDATORY_SEPARATOR >] ));
+				$_visibility static [< $_pattern _OPTIONAL_ATOM >] : &AtomPattern = & AtomPattern::Separator (Rb::new_static ( [< $_pattern _OPTIONAL_SEPARATOR >] ));
+				
+				$_visibility static [< $_pattern _MANDATORY_TOKEN >] : &TokenPattern = & TokenPattern::Atom (Rb::new_static ( [< $_pattern _MANDATORY_ATOM >] ));
+				$_visibility static [< $_pattern _OPTIONAL_TOKEN >] : &TokenPattern = & TokenPattern::Atom (Rb::new_static ( [< $_pattern _OPTIONAL_ATOM >] ));
+			}
+		};
+		
+		( $_visibility : vis $_pattern : ident, infix, ( $_length : tt : $_each : tt ) ) => {
+			macros::__count_call_with! ( [ $_length : $_each ] => define_separator! ($_visibility $_pattern, infix, ));
+		};
+		
+		( $_visibility : vis $_pattern : ident, infix, [ $( $_infix_each : literal, )* ] ) => {
+			::paste::paste! {
 				
 				$_visibility static [< $_pattern _MANDATORY_INFIX_PATTERN >] : &SeparatorPattern = & SeparatorPattern::Infix (Rb::new_static ( [< $_pattern _MANDATORY_SEPARATOR >] ));
 				$_visibility static [< $_pattern _OPTIONAL_INFIX_PATTERN >] : &SeparatorPattern = & SeparatorPattern::Infix (Rb::new_static ( [< $_pattern _OPTIONAL_SEPARATOR >] ));
@@ -811,13 +917,35 @@ pub mod separators {
 	pub static NONE_PATTERN : &SeparatorPattern = & SeparatorPattern::None;
 	
 	
-	define_separator! (pub SPACE, Char, ' ', infix, ( 16 : 1 ));
-	define_separator! (pub DOT, Char, '.', infix, ( 16 : 1 ));
-	define_separator! (pub HYPHEN, Char, '-', infix, ( 16 : 1 ));
-	define_separator! (pub COLON, Char, ':', infix, ( 16 : 1 ));
 	
-	define_separator! (pub SPACE_HYPHEN_SPACE, Str, " - ", infix, ( 16 : 1 ));
+	
+	define_separator! (pub SPACE, separator, Char, ' ');
+	define_separator! (pub DOT, separator, Char, '.');
+	define_separator! (pub HYPHEN, separator, Char, '-');
+	define_separator! (pub COLON, separator, Char, ':');
+	
+	define_separator! (pub SPACE_HYPHEN_SPACE, separator, Str, " - ");
+	
+	
+	define_separator! (pub SPACE, atom);
+	define_separator! (pub DOT, atom);
+	define_separator! (pub HYPHEN, atom);
+	define_separator! (pub COLON, atom);
+	
+	define_separator! (pub SPACE_HYPHEN_SPACE, atom);
+	
+	
+	define_separator! (pub SPACE, infix, ( 16 : 1 ));
+	define_separator! (pub DOT, infix, ( 16 : 1 ));
+	define_separator! (pub HYPHEN, infix, ( 16 : 1 ));
+	define_separator! (pub COLON, infix, ( 16 : 1 ));
+	
+	define_separator! (pub SPACE_HYPHEN_SPACE, infix, ( 16 : 1 ));
 }
+
+
+
+
 
 
 
@@ -829,7 +957,7 @@ pub fn all_token_patterns () -> RbList<(String, Rb<TokenPattern>)> {
 	for _patterns in tokens::ALL.iter () {
 		for _pattern in _patterns.iter () {
 			match _pattern.as_ref () {
-				TokenPattern::Named (_identifier, _) =>
+				TokenPattern::Named (_identifier, _aliases, _) =>
 					_collector.push ((String::from (*_identifier), _pattern.clone ())),
 				_ =>
 					panic! (0xcb0098dd),
@@ -841,15 +969,23 @@ pub fn all_token_patterns () -> RbList<(String, Rb<TokenPattern>)> {
 }
 
 
+
+
 pub fn get_token_pattern (_identifier : &str) -> Option<Rb<TokenPattern>> {
 	
 	for _patterns in tokens::ALL.iter () {
 		for _pattern in _patterns.iter () {
 			match _pattern.as_ref () {
-				TokenPattern::Named (_identifier_0, _) =>
+				TokenPattern::Named (_identifier_0, _aliases_0, _) => {
 					if *_identifier_0 == _identifier {
 						return Some (_pattern.clone ());
 					}
+					for _alias_0 in *_aliases_0 {
+						if *_alias_0 == _identifier {
+							return Some (_pattern.clone ());
+						}
+					}
+				}
 				_ =>
 					(),
 			}
@@ -858,6 +994,10 @@ pub fn get_token_pattern (_identifier : &str) -> Option<Rb<TokenPattern>> {
 	
 	None
 }
+
+
+
+
 
 
 
@@ -885,6 +1025,10 @@ pub mod consts {
 
 
 
+
+
+
+
 pub(crate) mod macros {
 	
 	#![ allow (unused_imports) ]
@@ -902,4 +1046,5 @@ pub(crate) mod macros {
 	pub(crate) use __count_call_each;
 	pub(crate) use __count_call_with;
 }
+
 
