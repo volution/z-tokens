@@ -7,13 +7,15 @@
 	
 	test "${#}" -ge 1
 	
-	_sources="$( exec -- readlink -e -- ./sources )"
+	_workbench="$( exec -- readlink -e -- . )"
 	
 	_watchexec_arguments=(
 			
-			--watch "${_sources}"
+			--watch "${_workbench}"
 			
-			--ignore "sources/_embedded/build/*"
+			--filter "sources/**"
+			--filter "embedded/**"
+			--ignore "embedded/build/*"
 			
 			--debounce=250
 			--on-busy-update=queue
@@ -55,7 +57,7 @@
 
 
 
-<< workbench / outputs
+--<< workbench / outputs
 	
 	_scratch="${__CARGO_LOCAL__SCRATCH}"
 	_outputs="${__OUTPUTS}"
