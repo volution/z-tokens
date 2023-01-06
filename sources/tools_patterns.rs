@@ -15,6 +15,8 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _randomizer_flags = RandomizerFlags::new () .else_wrap (0x839efea4) ?;
 	
 	let mut _identifiers_only : Option<bool> = None;
+	let mut _all : Option<bool> = None;
+	
 	let mut _entropy_minimum : Option<usize> = None;
 	let mut _entropy_maximum : Option<usize> = None;
 	let mut _length_minimum : Option<usize> = None;
@@ -32,6 +34,9 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		_parser.refer (&mut _identifiers_only)
 				.add_option (&["-i", "--identifiers-only"], ArgStoreConst (Some (true)), "(list only identifiers)");
+		
+		_parser.refer (&mut _all)
+				.add_option (&["-a", "--all"], ArgStoreConst (Some (true)), "(list all patterns, including aliases)");
 		
 		_parser.refer (&mut _entropy_minimum)
 				.metavar ("{bits}")
@@ -90,8 +95,9 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	
 	let _identifiers_only = _identifiers_only.unwrap_or (false);
+	let _all = _all.unwrap_or (false);
 	
-	let _length_maximum = if (! _identifiers_only) && _entropy_minimum.is_none () && _entropy_maximum.is_none () && _length_minimum.is_none () && _length_minimum.is_none () {
+	let _length_maximum = if (! _identifiers_only) && (! _all) && _entropy_minimum.is_none () && _entropy_maximum.is_none () && _length_minimum.is_none () && _length_minimum.is_none () {
 			Some (40)
 		} else {
 			_length_maximum
@@ -110,7 +116,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			_has_digits.is_some () ||
 			_has_symbols.is_some ();
 	
-	let _display_aliases = false;
+	let _display_aliases = _all;
 	
 	
 	
@@ -206,8 +212,25 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			}
 		}
 		
+		let _aliases = if let TokenPattern::Named (_, _aliases, _) = _pattern {
+				if ! _aliases.is_empty () {
+					Some (*_aliases)
+				} else {
+					None
+				}
+			} else {
+				None
+			};
+		
 		if _identifiers_only {
 			writeln! (&mut _stream, "{}", _identifier) .else_wrap (0xfcdcb2ff) ?;
+			if let Some (_aliases) = _aliases {
+				if _display_aliases {
+					for _alias in _aliases {
+						writeln! (&mut _stream, "{}", _alias) .else_wrap (0xffe94769) ?;
+					}
+				}
+			}
 			continue;
 		}
 		
@@ -228,15 +251,13 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			writeln! (&mut _stream, "| {:22} | b {:6.1} | c {:4} ||  {}", _identifier, _display_bits, _string_length, _display_string) .else_wrap (0xd141c5ef) ?;
 		}
 		
-		if _display_aliases {
-			if let TokenPattern::Named (_, _aliases, _) = _pattern {
-				if ! _aliases.is_empty () {
-					write! (&mut _stream, "^") .else_wrap (0x4b3973c7) ?;
-					for _alias in *_aliases {
-						write! (&mut _stream, " {}", _alias) .else_wrap (0x7275b085) ?;
-					}
-					writeln! (&mut _stream) .else_wrap (0x8dfe1e4d) ?;
+		if let Some (_aliases) = _aliases {
+			if _display_aliases {
+				write! (&mut _stream, "^") .else_wrap (0x4b3973c7) ?;
+				for _alias in _aliases {
+					write! (&mut _stream, " {}", _alias) .else_wrap (0x7275b085) ?;
 				}
+				writeln! (&mut _stream) .else_wrap (0x8dfe1e4d) ?;
 			}
 		}
 	}
