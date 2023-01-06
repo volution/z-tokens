@@ -61,6 +61,12 @@ pub fn main () -> MainResult<ExitCode> {
 			_arguments.insert (0, String::from ("z-tokens generate"));
 			main_generate (_arguments)
 		}
+		(&["generate", _pattern], _) | (&["g", _pattern], _) => {
+			_arguments.insert (0, String::from ("z-tokens generate"));
+			_arguments.insert (1, String::from ("--token-pattern"));
+			_arguments.insert (2, String::from (_pattern));
+			main_generate (_arguments)
+		}
 		
 		(&["help"], _) | (&["h"], _) |
 		(&[], &["--help"]) | (&[], &["-h"]) |

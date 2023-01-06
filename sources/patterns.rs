@@ -561,7 +561,7 @@ pub mod tokens {
 	define_repeat! (pub DIGITS_BASE2, ("digits-base2"), { glyphs::DIGIT_BASE2_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN }, (256 : 8));
 	define_repeat! (pub DIGITS_BASE8, ("digits-base8"), { glyphs::DIGIT_BASE8_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN }, (256 : 4));
 	
-	define_repeat! (pub DIGITS_BASE16, ("digits-base16", "h"), { glyphs::DIGIT_BASE16_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN }, (256 : 4));
+	define_repeat! (pub DIGITS_BASE16, ("digits-base16", "x"), { glyphs::DIGIT_BASE16_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN }, (256 : 4));
 	
 	define_repeat! (pub DIGITS_BASE32_HEX, ("digits-base32-hex"), { glyphs::DIGIT_BASE32_HEX_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN }, (256 : 4));
 	define_repeat! (pub DIGITS_BASE32_RFC, ("digits-base32-rfc"), { glyphs::DIGIT_BASE32_RFC_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN}, (256 : 4));
@@ -774,7 +774,7 @@ pub mod tokens {
 	
 	
 	
-	define_bytes! (pub BYTES_HEX, ("bytes-hex"), BYTES_HEX, ( 512 : 4 ));
+	define_bytes! (pub BYTES_HEX, ("bytes-hex", "b"), BYTES_HEX, ( 512 : 4 ));
 	
 	
 	
