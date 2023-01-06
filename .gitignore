@@ -4,6 +4,8 @@
 !.github
 !.z-run
 
+/embedded/build/sources.cpio.gz
+
 /target
 
 *~
