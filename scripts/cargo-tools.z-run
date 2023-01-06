@@ -38,6 +38,10 @@
 				_bins="${2}"
 				shift -- 2
 			;;
+			( --features )
+				test "${#}" -ge 2
+				shift -- 2
+			;;
 			( * )
 				false
 			;;

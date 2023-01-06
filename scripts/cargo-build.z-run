@@ -8,7 +8,7 @@
 !!
 
 << cargo / release / check
-	exec -- "${ZRUN}" ':: cargo / exec' check --release "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec' check --release --features release "${@}"
 !!
 
 
@@ -21,7 +21,7 @@
 
 << cargo / release / build
 	export -- __META__BUILD_TARGET_TYPE=release
-	exec -- "${ZRUN}" ':: cargo / exec' build --release "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec' build --release --features release "${@}"
 !!
 
 
@@ -34,7 +34,7 @@
 
 << cargo / release / run
 	export -- __META__BUILD_TARGET_TYPE=release
-	exec -- "${ZRUN}" ':: cargo / exec' run --release "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec' run --release --features release "${@}"
 !!
 
 
@@ -47,7 +47,7 @@
 
 << cargo / release / collect
 	export -- __CARGO__SWITCH_0=local-remote
-	exec -- "${ZRUN}" ':: cargo / exec' collect --release "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec' collect --release --features release "${@}"
 !!
 
 

@@ -252,7 +252,11 @@ static BUILD_TIMESTAMP : &'static str = include_str! ("./_embedded/build/timesta
 
 static BUILD_SOURCES_HASH : &'static str = include_str! ("./_embedded/build/sources.hash");
 static BUILD_SOURCES_MD5 : &'static str = include_str! ("./_embedded/build/sources.md5");
+
+#[ cfg (feature = "embedded-sources") ]
 static BUILD_SOURCES_CPIO_GZ : &'static [u8] = include_bytes! ("./_embedded/build/sources.cpio.gz");
+#[ cfg (not (feature = "embedded-sources")) ]
+static BUILD_SOURCES_CPIO_GZ : &'static [u8] = &[];
 
 static BUILD_GIT_HASH : &'static str = if let Some (_value) = ::std::option_env! ("__META__BUILD_GIT_HASH") { _value } else { "{unknown-bgh}" };
 static BUILD_TARGET_TYPE : &'static str = if let Some (_value) = ::std::option_env! ("__META__BUILD_TARGET_TYPE") { _value } else { "{unknown-btt}" };

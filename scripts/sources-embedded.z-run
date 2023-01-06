@@ -85,10 +85,7 @@
 		_git_hash='unknown'
 	fi
 	
-	if test ! -e ./embedded/build/sources.cpio.gz ; then
-		touch -- ./embedded/build/sources.cpio.gz
-	fi
-	if test -s ./embedded/build/sources.cpio.gz ; then
+	if test -e ./embedded/build/sources.cpio.gz -a -s ./embedded/build/sources.cpio.gz ; then
 		rm -- ./embedded/build/sources.cpio.gz
 		touch -- ./embedded/build/sources.cpio.gz
 	fi
@@ -159,10 +156,9 @@
 	test -d "${_outputs}"
 	test -d "${_outputs}/markers"
 	
-	if test -s ./embedded/build/sources.cpio.gz ; then
+	if test -e ./embedded/build/sources.cpio.gz ; then
 		rm -- ./embedded/build/sources.cpio.gz
 	fi
-	touch --reference ./embedded/build/timestamp.txt -- ./embedded/build/sources.cpio.gz
 	
 	execline-cd ./sources \
 	find -L . \
