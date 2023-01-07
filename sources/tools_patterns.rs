@@ -130,6 +130,12 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		let &(ref _identifier, ref _pattern) = _pattern.as_ref ();
 		let _pattern = _pattern.as_ref ();
 		
+		if ! _all {
+			if _identifier.contains ("-upper-") {
+				continue;
+			}
+		}
+		
 		_randomizer.reset () .else_wrap (0xb2fb5275) ?;
 		
 		let _entropy = entropy_token (&_pattern) .else_wrap (0x6374858a) ?;
