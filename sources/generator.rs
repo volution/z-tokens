@@ -26,7 +26,7 @@ pub struct GenerateAccumulator {
 pub fn generate_token (_pattern : impl AsRef<TokenPattern>, _randomizer : &mut (impl Randomizer + ?Sized)) -> GeneratorResult<Token> {
 	
 	let mut _accumulator = GenerateAccumulator {
-			atoms : Vec::with_capacity (128),
+			atoms : Vec::with_capacity (ATOM_VEC_CAPACITY),
 			value : None,
 		};
 	

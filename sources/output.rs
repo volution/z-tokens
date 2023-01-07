@@ -32,7 +32,7 @@ impl Default for OutputOptions {
 
 pub fn output_token_to_string (_token : impl AsRef<Token>, _options : &OutputOptions) -> OutputResult<String> {
 	
-	let mut _buffer = Vec::with_capacity (1024);
+	let mut _buffer = Vec::with_capacity (TOKEN_STRING_CAPACITY);
 	
 	output_token (_token, &mut _buffer, _options) ?;
 	

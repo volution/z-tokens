@@ -194,7 +194,7 @@ fn print_version_and_exit (_succeed : bool) -> MainResult<ExitCode> {
 
 fn print_and_exit (_chunks : &[impl AsRef<str>], _success : bool) -> MainResult<ExitCode> {
 	
-	let mut _stream = BufWriter::with_capacity (16 * 1024, stdout_locked ());
+	let mut _stream = BufWriter::with_capacity (IO_BUFFER_SIZE, stdout_locked ());
 	
 	for _chunk in _chunks {
 		_stream.write (_chunk.as_ref () .as_bytes ()) .else_wrap (0x4c5c446d) ?;

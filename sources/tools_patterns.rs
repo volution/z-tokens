@@ -8,6 +8,13 @@ use crate::tools_flags::*;
 
 
 
+const DEFAULT_LENGTH_MAXIMUM : usize = 40;
+const DEFAULT_DISPLAY_TRIM : usize = 80;
+const DEFAULT_CLASSIFY_TRIES : usize = 16;
+
+
+
+
 pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	
@@ -127,7 +134,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				&& _length_minimum.is_none ()
 				&& _length_minimum.is_none ()
 		{
-			Some (40)
+			Some (DEFAULT_LENGTH_MAXIMUM)
 		} else {
 			_length_maximum
 		};
@@ -153,7 +160,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _randomizer = _randomizer_flags.build () .else_wrap (0xa43471c4) ?;
 	let _randomizer = _randomizer.deref_mut ();
 	
-	let mut _stream = BufWriter::with_capacity (1024 * 1024, stdout_locked ());
+	let mut _stream = BufWriter::with_capacity (IO_BUFFER_SIZE, stdout_locked ());
 	
 	'_loop : for _pattern in patterns::all_token_patterns () .into_iter () {
 		let &(ref _identifier, ref _pattern) = _pattern.as_ref ();
@@ -226,7 +233,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		if _classify_chars {
 			let mut _string = Some (Cow::Borrowed (&_string));
 			let mut _matched_any = false;
-			for _try in 0 ..= 16 {
+			for _try in 0 ..= DEFAULT_CLASSIFY_TRIES {
 				let mut _letters = 0;
 				let mut _letters_upper = 0;
 				let mut _letters_lower = 0;
@@ -284,7 +291,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			continue '_loop;
 		}
 		
-		let _display_string_max = 80;
+		let _display_string_max = DEFAULT_DISPLAY_TRIM;
 		let _display_string = if (_string_length <= _display_string_max) {
 				_string
 			} else {

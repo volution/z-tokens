@@ -9,6 +9,8 @@ use crate::tools_flags::*;
 
 
 const DEFAULT_PATTERN : &str = "cv-lower:4";
+const DEFAULT_TOKEN_COUNT : usize = 10;
+const DEFAULT_GROUP_SIZE : usize = 10;
 
 
 
@@ -76,9 +78,9 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _output_options = _output_flags.build () .else_wrap (0xd749e3b0) ?;
 	
 	let _pattern = _pattern.unwrap_or (String::from (DEFAULT_PATTERN));
-	let _token_count = _token_count.unwrap_or (10);
+	let _token_count = _token_count.unwrap_or (DEFAULT_TOKEN_COUNT);
 	let _token_separator = _token_separator.unwrap_or (String::from ("\n"));
-	let _group_size = _group_size.unwrap_or (10);
+	let _group_size = _group_size.unwrap_or (DEFAULT_GROUP_SIZE);
 	
 	let _pattern = if let Some (_pattern) = patterns::get_token_pattern (&_pattern) {
 			_pattern
@@ -89,7 +91,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _randomizer = _randomizer_flags.build () .else_wrap (0x8de520fa) ?;
 	let _randomizer = _randomizer.deref_mut ();
 	
-	let mut _stream = BufWriter::with_capacity (1024 * 1024, stdout_locked ());
+	let mut _stream = BufWriter::with_capacity (IO_BUFFER_SIZE, stdout_locked ());
 	
 	_randomizer.reset () .else_wrap (0x3e9a73ab) ?;
 	

@@ -22,7 +22,7 @@ pub mod separators {
 
 pub fn all_token_patterns () -> RbList<(Cow<'static, str>, Rb<TokenPattern>)> {
 	
-	let mut _collector = Vec::with_capacity (1024);
+	let mut _collector = Vec::with_capacity (TOKEN_VEC_CAPACITY);
 	
 	for _patterns in tokens::ALL.iter () {
 		for _pattern in _patterns.iter () {
