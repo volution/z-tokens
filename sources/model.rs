@@ -22,9 +22,9 @@ pub enum Atom {
 #[ cfg_attr (debug_assertions, derive (Debug)) ]
 pub enum Glyph {
 	Text (Rb<Text>),
-	Integer (u128, IntegerFormat),
+	Integer (Rb<u128>, IntegerFormat),
 	Bytes (Rb<Bytes>, BytesFormat),
-	Timestamp (u128, TimestampFormat),
+	Timestamp (Rb<u128>, TimestampFormat),
 }
 
 
