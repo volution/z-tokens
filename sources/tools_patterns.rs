@@ -157,11 +157,15 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	'_loop : for _pattern in patterns::all_token_patterns () .into_iter () {
 		let &(ref _identifier, ref _pattern) = _pattern.as_ref ();
-		let _identifier = _identifier.as_str ();
+		let _identifier = _identifier.as_ref ();
 		let _pattern = _pattern.as_ref ();
 		
-		let _aliases = if let TokenPattern::Named (_, _aliases, _) = _pattern {
-				*_aliases
+		let _aliases = if let TokenPattern::Tagged (_, _tags) = _pattern {
+				if let Some (ref _aliases) = _tags.aliases {
+					_aliases.deref ()
+				} else {
+					&[]
+				}
 			} else {
 				&[]
 			};
@@ -169,7 +173,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		{
 			let mut _skip_any = false;
 			let mut _matched_any = false;
-			for _identifier in Some (_identifier) .iter () .chain (_aliases.iter ()) {
+			for _identifier in Some (Cow::Borrowed (_identifier)) .iter () .cloned () .chain (_aliases.iter () .map (|_alias| _alias.to_string ())) {
 				let mut _skip = false;
 				let mut _matched = true;
 				_skip = _skip || if _skip_upper {
@@ -274,7 +278,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			writeln! (&mut _stream, "{}", _identifier) .else_wrap (0xfcdcb2ff) ?;
 			if _display_aliases && ! _aliases.is_empty () {
 				for _alias in _aliases {
-					writeln! (&mut _stream, "{}", _alias) .else_wrap (0xffe94769) ?;
+					writeln! (&mut _stream, "{}", _alias.as_ref ()) .else_wrap (0xffe94769) ?;
 				}
 			}
 			continue '_loop;
@@ -300,7 +304,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		if _display_aliases && ! _aliases.is_empty () {
 			write! (&mut _stream, "^") .else_wrap (0x4b3973c7) ?;
 			for _alias in _aliases {
-				write! (&mut _stream, " {}", _alias) .else_wrap (0x7275b085) ?;
+				write! (&mut _stream, " {}", _alias.as_ref ()) .else_wrap (0x7275b085) ?;
 			}
 			writeln! (&mut _stream) .else_wrap (0x8dfe1e4d) ?;
 		}

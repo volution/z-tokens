@@ -39,11 +39,18 @@ pub enum Separator {
 
 #[ cfg_attr (debug_assertions, derive (Debug)) ]
 pub enum TokenPattern {
-	Named (&'static str, &'static [&'static str], Rb<TokenPattern>),
+	Tagged (Rb<TokenPattern>, Rb<TokenPatternTags>),
 	Atom (Rb<AtomPattern>),
 	Sequence (RbList<TokenPattern>, Rb<SeparatorPattern>),
 	Repeat (Rb<TokenPattern>, Rb<SeparatorPattern>, usize),
 	Empty,
+}
+
+
+#[ cfg_attr (debug_assertions, derive (Debug)) ]
+pub struct TokenPatternTags {
+	pub identifier : Option<Rb<Text>>,
+	pub aliases : Option<RbList<Text>>,
 }
 
 

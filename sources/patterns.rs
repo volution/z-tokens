@@ -20,17 +20,20 @@ pub mod separators {
 
 
 
-pub fn all_token_patterns () -> RbList<(String, Rb<TokenPattern>)> {
+pub fn all_token_patterns () -> RbList<(Cow<'static, str>, Rb<TokenPattern>)> {
 	
 	let mut _collector = Vec::with_capacity (1024);
 	
 	for _patterns in tokens::ALL.iter () {
 		for _pattern in _patterns.iter () {
 			match _pattern.as_ref () {
-				TokenPattern::Named (_identifier, _aliases, _) =>
-					_collector.push ((String::from (*_identifier), _pattern.clone ())),
+				TokenPattern::Tagged (_, _tags) => {
+					if let Some (ref _identifier) = _tags.identifier {
+						_collector.push ((_identifier.to_string (), _pattern.clone ()));
+					}
+				}
 				_ =>
-					panic! (0xcb0098dd),
+					panic! (unreachable, 0xcb0098dd),
 			}
 		}
 	}
@@ -41,23 +44,27 @@ pub fn all_token_patterns () -> RbList<(String, Rb<TokenPattern>)> {
 
 
 
-pub fn get_token_pattern (_identifier : &str) -> Option<Rb<TokenPattern>> {
+pub fn get_token_pattern (_label : &str) -> Option<Rb<TokenPattern>> {
 	
 	for _patterns in tokens::ALL.iter () {
 		for _pattern in _patterns.iter () {
 			match _pattern.as_ref () {
-				TokenPattern::Named (_identifier_0, _aliases_0, _) => {
-					if *_identifier_0 == _identifier {
-						return Some (_pattern.clone ());
-					}
-					for _alias_0 in *_aliases_0 {
-						if *_alias_0 == _identifier {
+				TokenPattern::Tagged (_pattern, _tags) => {
+					if let Some (ref _identifier) = _tags.identifier {
+						if _identifier.eq (_label) {
 							return Some (_pattern.clone ());
+						}
+					}
+					if let Some (ref _aliases) = _tags.aliases {
+						for _alias in _aliases.iter () {
+							if _alias.eq (_label) {
+								return Some (_pattern.clone ());
+							}
 						}
 					}
 				}
 				_ =>
-					(),
+					panic! (unreachable, 0x978a97f3),
 			}
 		}
 	}

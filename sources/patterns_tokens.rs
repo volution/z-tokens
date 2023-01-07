@@ -156,11 +156,31 @@ macro_rules! define_named {
 	( $_visibility : vis $_pattern : ident, { expr => () }, $_wrapped : expr ) => {
 		define_named! ($_visibility $_pattern, (), $_wrapped);
 	};
-	( $_visibility : vis $_pattern : ident, { expr => $_identifier : expr $( , $_alias : expr )* }, $_wrapped : expr ) => {
+	
+	
+	( $_visibility : vis $_pattern : ident, { expr => $_identifier : expr }, $_wrapped : expr ) => {
 		::paste::paste! {
 			
 			static [< _ $_pattern __NO_NAME >] : &TokenPattern = $_wrapped;
-			$_visibility static $_pattern : &TokenPattern = & TokenPattern::Named ($_identifier, &[ $( $_alias ),* ], Rb::new_static ( [< _ $_pattern __NO_NAME >] ));
+			static [< _ $_pattern __TAGS >] : &TokenPatternTags = & TokenPatternTags {
+					identifier : Some (Rb::new_static (& Text::Str ($_identifier))),
+					aliases : None,
+				};
+			$_visibility static $_pattern : &TokenPattern = & TokenPattern::Tagged (Rb::new_static ( [< _ $_pattern __NO_NAME >] ), Rb::new_static ( [< _ $_pattern __TAGS >] ));
+		}
+	};
+	( $_visibility : vis $_pattern : ident, { expr => $_identifier : expr $( , $_alias : expr )+ }, $_wrapped : expr ) => {
+		::paste::paste! {
+			
+			static [< _ $_pattern __NO_NAME >] : &TokenPattern = $_wrapped;
+			static [< _ $_pattern __ALIASES >] : &[Rb<Text>] = & [ $(
+					Rb::new_static (& Text::Str ($_alias)),
+				)+ ];
+			static [< _ $_pattern __TAGS >] : &TokenPatternTags = & TokenPatternTags {
+					identifier : Some (Rb::new_static (& Text::Str ($_identifier))),
+					aliases : Some (RbList::from_static ( [< _ $_pattern __ALIASES >] )),
+				};
+			$_visibility static $_pattern : &TokenPattern = & TokenPattern::Tagged (Rb::new_static ( [< _ $_pattern __NO_NAME >] ), Rb::new_static ( [< _ $_pattern __TAGS >] ));
 		}
 	};
 }
