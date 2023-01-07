@@ -48,3 +48,20 @@
 	done
 !!
 
+
+
+
+<< sources / grep / constants
+	#! <bash+>
+	Z_expect_no_arguments
+	_patterns=(
+			'(?<=^|[^A-Za-z0-9_:"'\''[])[0-9]{2,}(?=$|[^A-Za-z0-9_"'\''\]])'
+		)
+	readarray -t -- _sources \
+		< <( exec -- find ./sources -xdev -type f -name '*.rs' ) \
+	#
+	for _pattern in "${_patterns[@]}" ; do
+		grep --color -H -n -i -P -e "${_pattern}" -- "${_sources[@]}" || true
+	done
+!!
+

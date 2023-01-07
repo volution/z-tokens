@@ -13,7 +13,6 @@
 	
 	export -- __META__BUILD_SOURCES_HASH="$( < ./embedded/build/sources.hash )"
 	export -- __META__BUILD_GIT_HASH="$( < "${__OUTPUTS}/markers/build-git-hash.txt" )"
-	export -- __META__BUILD_TARGET_TYPE="${__META__BUILD_TARGET_TYPE:-[unknown-btt]}"
 	
 	case "${_switch}" in
 		( local )
@@ -100,6 +99,10 @@
 	
 	test -f "${_executable}"
 	test -x "${_executable}"
+	
+	export -- __META__BUILD_SOURCES_HASH="${__META__BUILD_SOURCES_HASH:-[unknown-bsh]}"
+	export -- __META__BUILD_GIT_HASH="${__META__BUILD_GIT_HASH:-[unknown-bgh]}"
+	export -- __META__BUILD_TARGET_TYPE="${__META__BUILD_TARGET_TYPE:-[unknown-btt]}"
 	
 	_toolchain=stable
 	
@@ -196,6 +199,9 @@
 		( collect )
 		;;
 		
+		( version )
+		;;
+		
 		( * )
 			printf -- '[ee]  invalid tool `%s`;  aborting!\n' "${_tool}" >&2
 			exit -- 1
@@ -256,6 +262,8 @@
 			CARGO_TARGET_DIR="${_scratch}/target"
 			CARGO_BUILD_RUSTFLAGS="${__CARGO__RUST_FLAGS}"
 			
+			RUST_BACKTRACE=full
+			
 			__META__BUILD_SOURCES_HASH="${__META__BUILD_SOURCES_HASH}"
 			__META__BUILD_GIT_HASH="${__META__BUILD_GIT_HASH}"
 			__META__BUILD_TARGET_TYPE="${__META__BUILD_TARGET_TYPE}"
@@ -303,6 +311,8 @@
 			
 			CARGO_TARGET_DIR="/rust/target"
 			CARGO_BUILD_RUSTFLAGS="${__CARGO__RUST_FLAGS:?}"
+			
+			RUST_BACKTRACE=full
 			
 			__META__BUILD_SOURCES_HASH="${__META__BUILD_SOURCES_HASH}"
 			__META__BUILD_GIT_HASH="${__META__BUILD_GIT_HASH}"
