@@ -370,6 +370,17 @@ define_repeat! (pub BIP0039, ("bip0039"), { BIP0039_TUPLE => separators::SPACE_H
 
 
 
+define_sequence! (pub SKEY_TUPLE, (), [
+		glyphs::SKEY_WORD_TOKEN,
+		glyphs::SKEY_WORD_TOKEN,
+		glyphs::SKEY_WORD_TOKEN,
+	], separators::SPACE_MANDATORY_INFIX_PATTERN);
+
+define_repeat! (pub SKEY, ("skey"), { SKEY_TUPLE => separators::SPACE_HYPHEN_SPACE_MANDATORY_INFIX_PATTERN }, (66 : 1));
+
+
+
+
 define_repeat! (pub NATO, ("nato"), { glyphs::NATO_WORD_TOKEN => separators::SPACE_MANDATORY_INFIX_PATTERN }, (64 : 1));
 
 
@@ -520,6 +531,8 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		
 		MNEMONIC_ALL,
 		BIP0039_ALL,
+		SKEY_ALL,
+		
 		NATO_ALL,
 		
 		UUID_ALL,

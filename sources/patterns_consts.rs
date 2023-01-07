@@ -29,3 +29,13 @@ pub mod bip0039 {
 }
 
 
+
+
+pub mod skey {
+	// NOTE:  => https://en.wikipedia.org/wiki/S/KEY
+	// NOTE:  => https://www.ietf.org/rfc/rfc1760.html
+	// NOTE:  => https://www.ietf.org/rfc/rfc2289.html
+	include! ("./_generated/patterns_consts_skey.in");
+}
+
+
