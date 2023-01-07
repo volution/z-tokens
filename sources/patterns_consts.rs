@@ -39,3 +39,26 @@ pub mod skey {
 }
 
 
+
+
+pub mod eff_large {
+	// NOTE:  => https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases
+	// NOTE:  => https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt
+	include! ("./_generated/patterns_consts_eff_large.in");
+}
+
+
+pub mod eff_short {
+	// NOTE:  => https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases
+	// NOTE:  => https://www.eff.org/files/2016/09/08/eff_short_wordlist_1.txt
+	include! ("./_generated/patterns_consts_eff_short.in");
+}
+
+
+pub mod eff_unique {
+	// NOTE:  => https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases
+	// NOTE:  => https://www.eff.org/files/2016/09/08/eff_short_wordlist_2_0.txt
+	include! ("./_generated/patterns_consts_eff_unique.in");
+}
+
+

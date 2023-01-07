@@ -381,6 +381,31 @@ define_repeat! (pub SKEY, ("skey"), { SKEY_TUPLE => separators::SPACE_HYPHEN_SPA
 
 
 
+define_sequence! (pub EFF_LARGE_TUPLE, (), [
+		glyphs::EFF_LARGE_WORD_TOKEN,
+		glyphs::EFF_LARGE_WORD_TOKEN,
+		glyphs::EFF_LARGE_WORD_TOKEN,
+	], separators::SPACE_MANDATORY_INFIX_PATTERN);
+
+define_sequence! (pub EFF_SHORT_TUPLE, (), [
+		glyphs::EFF_SHORT_WORD_TOKEN,
+		glyphs::EFF_SHORT_WORD_TOKEN,
+		glyphs::EFF_SHORT_WORD_TOKEN,
+	], separators::SPACE_MANDATORY_INFIX_PATTERN);
+
+define_sequence! (pub EFF_UNIQUE_TUPLE, (), [
+		glyphs::EFF_UNIQUE_WORD_TOKEN,
+		glyphs::EFF_UNIQUE_WORD_TOKEN,
+		glyphs::EFF_UNIQUE_WORD_TOKEN,
+	], separators::SPACE_MANDATORY_INFIX_PATTERN);
+
+define_repeat! (pub EFF_LARGE, ("eff-large"), { EFF_LARGE_TUPLE => separators::SPACE_HYPHEN_SPACE_MANDATORY_INFIX_PATTERN }, (66 : 1));
+define_repeat! (pub EFF_SHORT, ("eff-short"), { EFF_SHORT_TUPLE => separators::SPACE_HYPHEN_SPACE_MANDATORY_INFIX_PATTERN }, (66 : 1));
+define_repeat! (pub EFF_UNIQUE, ("eff-unique"), { EFF_UNIQUE_TUPLE => separators::SPACE_HYPHEN_SPACE_MANDATORY_INFIX_PATTERN }, (66 : 1));
+
+
+
+
 define_repeat! (pub NATO, ("nato"), { glyphs::NATO_WORD_TOKEN => separators::SPACE_MANDATORY_INFIX_PATTERN }, (64 : 1));
 
 
@@ -532,6 +557,9 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		MNEMONIC_ALL,
 		BIP0039_ALL,
 		SKEY_ALL,
+		EFF_LARGE_ALL,
+		EFF_SHORT_ALL,
+		EFF_UNIQUE_ALL,
 		
 		NATO_ALL,
 		
