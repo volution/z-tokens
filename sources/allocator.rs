@@ -3,17 +3,33 @@
 #![ allow (dead_code) ]
 
 
+
+
 use ::std::alloc;
+use ::std::ptr;
+use ::std::slice;
 
 
 use ::std::prelude::v1::*;
 
 
 use ::std::sync::atomic::{
+		AtomicBool,
 		AtomicUsize,
 		AtomicU64,
 		Ordering,
 	};
+
+
+use ::std::{
+		eprintln,
+		debug_assert,
+	};
+
+
+
+
+use ::memsec;
 
 
 
@@ -25,8 +41,12 @@ pub(crate) static GLOBAL : Allocator = Allocator::new ();
 
 
 
-pub(crate) const DEBUG_MAIN : bool = true;
-const DEBUG_ALLOC : bool = false;
+pub(crate) const DEBUG_MAIN : bool = false;
+pub(crate) const DEBUG_ALLOC : bool = false;
+
+pub(crate) const USE_MALLOC : bool = false;
+pub(crate) const USE_MEMZERO : bool = true;
+pub(crate) const USE_MLOCK : bool = false;
 
 
 
@@ -63,7 +83,7 @@ unsafe impl alloc::GlobalAlloc for Allocator {
 		
 		loop {
 			let _now_current = _previous_current + _amount;
-			let _max_current = _counters.max_current.load (Ordering::SeqCst);
+			let _max_current = _counters.max_current.load (Ordering::Relaxed);
 			if _now_current <= _max_current {
 				break;
 			}
@@ -72,10 +92,38 @@ unsafe impl alloc::GlobalAlloc for Allocator {
 			}
 		}
 		
-		let _pointer = alloc::System.alloc (_layout);
+		let _pointer = if USE_MALLOC {
+				if let Some (mut _memory) = memsec::malloc_sized (_amount) {
+					_memory.as_mut () .as_mut_ptr ()
+				} else {
+					::vrl_errors::panic! (unreachable, 0xa4ef09db);
+				}
+			} else {
+				let _layout = unsafe { alloc::Layout::from_size_align_unchecked (_amount, _align) };
+				alloc::System.alloc (_layout)
+			};
+		
+		if USE_MLOCK {
+			static _PRINTED : AtomicBool = AtomicBool::new (false);
+			static _LOCKED : AtomicUsize = AtomicUsize::new (0);
+			if ! memsec::mlock (_pointer, _amount) {
+				let _locked = _LOCKED.fetch_add (_amount, Ordering::SeqCst);
+				if ! _PRINTED.load (Ordering::Relaxed) && _PRINTED.compare_exchange (false, true, Ordering::SeqCst, Ordering::SeqCst) .is_ok () {
+					eprintln! ("[!!] [cc90c20b]  mlock failed after {} + {} bytes;  ignoring!", _locked, _amount);
+				}
+			}
+		}
+		
+		if USE_MEMZERO {
+			memsec::memzero (_pointer, _amount);
+			#[ cfg (debug_assertions) ]
+			for _offset in 0 .. (_amount as isize) {
+				debug_assert! ((* _pointer.offset (_offset)) == 0b0, "[!!] [0dcda4cc]");
+			}
+		}
 		
 		if DEBUG_ALLOC {
-			::std::eprintln! ("[dd] [e23d67ac]  alloc:    {:016x}  |  {:6} = {:6} : {:2}", _pointer as usize, _amount, _size, _align);
+			eprintln! ("[dd] [e23d67ac]  alloc:    {:016x}  |  {:6} = {:6} : {:2}", _pointer as usize, _amount, _size, _align);
 		}
 		
 		_pointer
@@ -91,10 +139,24 @@ unsafe impl alloc::GlobalAlloc for Allocator {
 		_counters.amount_current.fetch_sub (_amount, Ordering::SeqCst);
 		
 		if DEBUG_ALLOC {
-			::std::eprintln! ("[dd] [18d32fb1]  dealloc:  {:016x}  |  {:6} = {:6} : {:2}", _pointer as usize, _amount, _size, _align);
+			eprintln! ("[dd] [18d32fb1]  dealloc:  {:016x}  |  {:6} = {:6} : {:2}", _pointer as usize, _amount, _size, _align);
 		}
 		
-		alloc::System.dealloc (_pointer, _layout)
+		if USE_MEMZERO {
+			memsec::memzero (_pointer, _amount);
+			#[ cfg (debug_assertions) ]
+			for _offset in 0 .. (_amount as isize) {
+				debug_assert! ((* _pointer.offset (_offset)) == 0b0, "[!!] [0ad521e1]");
+			}
+		}
+		
+		if USE_MALLOC {
+			let _memory = unsafe { ptr::NonNull::new_unchecked (slice::from_raw_parts_mut (_pointer, _amount)) };
+			memsec::free (_memory)
+		} else {
+			let _layout = unsafe { alloc::Layout::from_size_align_unchecked (_amount, _align) };
+			alloc::System.dealloc (_pointer, _layout)
+		}
 	}
 }
 
@@ -136,13 +198,13 @@ impl Allocator {
 		let _max_current = _counters.max_current.load (Ordering::SeqCst);
 		
 		if _count_alloc > 100_000 {
-			::std::eprintln! ("[ii] [b6c41147]  allocations:  {} K allocs / {} K deallocs / {} KiB total / {} KiB current / {} KiB max",
+			eprintln! ("[ii] [b6c41147]  allocations:  {} K allocs / {} K deallocs / {} KiB total / {} KiB current / {} KiB max",
 					_count_alloc / 1000, _count_dealloc / 1000,
 					_amount_total / 1024, _amount_current / 1024,
 					_max_current / 1024,
 				);
 		} else {
-			::std::eprintln! ("[ii] [6178b820]  allocations:  {} allocs / {} deallocs / {} B total / {} B current / {} B max",
+			eprintln! ("[ii] [6178b820]  allocations:  {} allocs / {} deallocs / {} B total / {} B current / {} B max",
 					_count_alloc, _count_dealloc,
 					_amount_total, _amount_current,
 					_max_current,

@@ -53,6 +53,7 @@ paste = { version = "*", default-features = false, features = [] }
 argparse = { version = "*", default-features = false, features = [] }
 chrono = { version = "*", default-features = false, features = ["alloc", "clock"] }
 platform-info = { version = "*", default-features = false, features = [] }
+memsec = { version = "*", default-features = false, features = ["default"] }
 
 
 
