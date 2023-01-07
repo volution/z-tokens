@@ -1,7 +1,7 @@
 
 
 pub fn main () -> ::z_tokens::MainResult<::std::process::ExitCode> {
-	match ::z_tokens::main () {
+	match ::z_tokens::premain () {
 		Ok (_code) =>
 			Ok (_code),
 		Err (_error) => {

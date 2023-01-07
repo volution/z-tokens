@@ -29,10 +29,14 @@ path = "./lib.rs"
 
 
 [features]
-default = []
+default = [
+#	"release",
+]
 release = [
+	"allocator",
 	"embedded-sources",
 ]
+allocator = []
 embedded-sources = []
 
 

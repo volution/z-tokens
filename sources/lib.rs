@@ -8,7 +8,12 @@
 
 
 
-pub use tools::{ main, MainResult, };
+pub use tools::{
+		
+		main,
+		premain,
+		MainResult,
+	};
 
 
 
@@ -36,5 +41,8 @@ pub mod tools_flags;
 
 
 pub(crate) mod prelude;
+
+
+pub(crate) mod allocator;
 
 

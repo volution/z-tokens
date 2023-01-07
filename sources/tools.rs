@@ -8,10 +8,33 @@ use crate::{
 		tools_patterns::main as main_patterns,
 	};
 
+use crate::allocator;
+
 
 
 
 define_error! (pub MainError, result : MainResult);
+
+
+
+
+pub fn premain () -> MainResult<ExitCode> {
+	
+	if allocator::DEBUG_MAIN {
+		allocator::report ();
+	}
+	
+	let _outcome = main ();
+	
+	if allocator::DEBUG_MAIN {
+		allocator::report ();
+//		if _outcome.is_ok () && (crate::allocator::is_empty () == Some (false)) {
+//			::std::eprintln! ("[!!] [6056a3e9]  allocator leaked (before exiting);  ignoring!");
+//		}
+	}
+	
+	_outcome
+}
 
 
 
