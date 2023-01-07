@@ -8,6 +8,11 @@ use crate::tools_flags::*;
 
 
 
+const DEFAULT_PATTERN : &str = "cv-lower:4";
+
+
+
+
 pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	
@@ -70,7 +75,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let _output_options = _output_flags.build () .else_wrap (0xd749e3b0) ?;
 	
-	let _pattern = _pattern.unwrap_or (String::from ("cv-lower-4"));
+	let _pattern = _pattern.unwrap_or (String::from (DEFAULT_PATTERN));
 	let _token_count = _token_count.unwrap_or (10);
 	let _token_separator = _token_separator.unwrap_or (String::from ("\n"));
 	let _group_size = _group_size.unwrap_or (10);
