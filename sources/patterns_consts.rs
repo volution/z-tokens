@@ -41,6 +41,15 @@ pub mod skey {
 
 
 
+pub mod pgp {
+	// NOTE:  => https://en.wikipedia.org/wiki/PGP_word_list
+	include! ("./_generated/patterns_consts_pgp_even.in");
+	include! ("./_generated/patterns_consts_pgp_odd.in");
+}
+
+
+
+
 pub mod eff_large {
 	// NOTE:  => https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases
 	// NOTE:  => https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt

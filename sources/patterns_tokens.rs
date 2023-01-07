@@ -381,6 +381,16 @@ define_repeat! (pub SKEY, ("skey"), { SKEY_TUPLE => separators::SPACE_HYPHEN_SPA
 
 
 
+define_sequence! (pub PGP_TUPLE, (), [
+		glyphs::PGP_EVEN_WORD_TOKEN,
+		glyphs::PGP_ODD_WORD_TOKEN,
+	], separators::SPACE_MANDATORY_INFIX_PATTERN);
+
+define_repeat! (pub PGP, ("pgp"), { PGP_TUPLE => separators::SPACE_HYPHEN_SPACE_MANDATORY_INFIX_PATTERN }, (64 : 1));
+
+
+
+
 define_sequence! (pub EFF_LARGE_TUPLE, (), [
 		glyphs::EFF_LARGE_WORD_TOKEN,
 		glyphs::EFF_LARGE_WORD_TOKEN,
@@ -557,6 +567,7 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		MNEMONIC_ALL,
 		BIP0039_ALL,
 		SKEY_ALL,
+		PGP_ALL,
 		EFF_LARGE_ALL,
 		EFF_SHORT_ALL,
 		EFF_UNIQUE_ALL,
