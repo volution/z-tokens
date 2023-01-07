@@ -5,18 +5,22 @@ use crate::prelude::*;
 
 
 
+#[ cfg_attr (debug_assertions, derive (Debug)) ]
 pub struct Rb <Value : Sized + 'static> (RbRef<Value>);
 
 
+#[ cfg_attr (debug_assertions, derive (Debug)) ]
 pub struct RbList <Value : Sized + 'static> (RbListRef<Value>);
 
 
+#[ cfg_attr (debug_assertions, derive (Debug)) ]
 enum RbRef <Value : Sized + 'static> {
 	Static (&'static Value),
 	Rc (Arc<Value>),
 }
 
 
+#[ cfg_attr (debug_assertions, derive (Debug)) ]
 enum RbListRef <Value : Sized + 'static> {
 	Static (&'static [Rb<Value>]),
 	Rc (Arc<[Rb<Value>]>),

@@ -5,11 +5,13 @@ use crate::prelude::*;
 
 
 
+#[ cfg_attr (debug_assertions, derive (Debug)) ]
 pub struct Token {
 	pub atoms : RbList<Atom>,
 }
 
 
+#[ cfg_attr (debug_assertions, derive (Debug)) ]
 pub enum Atom {
 	Separator (Rb<Separator>),
 	Constant (Rb<Text>),
@@ -17,6 +19,7 @@ pub enum Atom {
 }
 
 
+#[ cfg_attr (debug_assertions, derive (Debug)) ]
 pub enum Glyph {
 	Text (Rb<Text>),
 	Integer (u128, IntegerFormat),
@@ -25,6 +28,7 @@ pub enum Glyph {
 }
 
 
+#[ cfg_attr (debug_assertions, derive (Debug)) ]
 pub enum Separator {
 	Mandatory (Rb<Text>),
 	Optional (Rb<Text>),
@@ -33,6 +37,7 @@ pub enum Separator {
 
 
 
+#[ cfg_attr (debug_assertions, derive (Debug)) ]
 pub enum TokenPattern {
 	Named (&'static str, &'static [&'static str], Rb<TokenPattern>),
 	Atom (Rb<AtomPattern>),
@@ -42,6 +47,7 @@ pub enum TokenPattern {
 }
 
 
+#[ cfg_attr (debug_assertions, derive (Debug)) ]
 pub enum SeparatorPattern {
 	None,
 	Prefix (Rb<Separator>),
@@ -52,6 +58,7 @@ pub enum SeparatorPattern {
 }
 
 
+#[ cfg_attr (debug_assertions, derive (Debug)) ]
 pub enum AtomPattern {
 	Separator (Rb<Separator>),
 	Constant (Rb<Text>),
@@ -59,6 +66,7 @@ pub enum AtomPattern {
 }
 
 
+#[ cfg_attr (debug_assertions, derive (Debug)) ]
 pub enum GlyphPattern {
 	Set (RbList<Glyph>),
 	Integer (u128, u128, IntegerFormat),
@@ -69,6 +77,7 @@ pub enum GlyphPattern {
 
 
 
+#[ cfg_attr (debug_assertions, derive (Debug)) ]
 pub enum Text {
 	Char (char),
 	Str (&'static str),
@@ -76,6 +85,7 @@ pub enum Text {
 }
 
 
+#[ cfg_attr (debug_assertions, derive (Debug)) ]
 pub enum Bytes {
 	Static (&'static [u8]),
 	Boxed (Box<[u8]>),
@@ -83,6 +93,7 @@ pub enum Bytes {
 
 
 #[ derive (Copy, Clone) ]
+#[ cfg_attr (debug_assertions, derive (Debug)) ]
 pub enum IntegerFormat {
 	Decimal,
 	DecimalPadded (usize),
@@ -92,12 +103,14 @@ pub enum IntegerFormat {
 
 
 #[ derive (Copy, Clone) ]
+#[ cfg_attr (debug_assertions, derive (Debug)) ]
 pub enum BytesFormat {
 	Hex,
 }
 
 
 #[ derive (Copy, Clone) ]
+#[ cfg_attr (debug_assertions, derive (Debug)) ]
 pub enum TimestampFormat {
 	Decimal (u128, u128, u128, usize),
 	Hex (u128, u128, u128, usize),
