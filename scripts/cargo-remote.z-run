@@ -70,7 +70,7 @@
 			--checksum --checksum-choice md5
 			--times --perms
 			--chmod D00555,F00444
-			--itemize-changes
+		#	--itemize-changes
 			
 			--exclude '.git'
 			--exclude 'target'
