@@ -117,10 +117,6 @@ unsafe impl alloc::GlobalAlloc for Allocator {
 		
 		if USE_MEMZERO {
 			memsec::memzero (_pointer, _amount);
-			#[ cfg (debug_assertions) ]
-			for _offset in 0 .. (_amount as isize) {
-				debug_assert! ((* _pointer.offset (_offset)) == 0b0, "[!!] [0dcda4cc]");
-			}
 		}
 		
 		if DEBUG_ALLOC {
@@ -145,10 +141,6 @@ unsafe impl alloc::GlobalAlloc for Allocator {
 		
 		if USE_MEMZERO {
 			memsec::memzero (_pointer, _amount);
-			#[ cfg (debug_assertions) ]
-			for _offset in 0 .. (_amount as isize) {
-				debug_assert! ((* _pointer.offset (_offset)) == 0b0, "[!!] [0ad521e1]");
-			}
 		}
 		
 		if USE_MALLOC {

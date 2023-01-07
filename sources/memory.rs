@@ -186,3 +186,53 @@ impl_as_ref! (GlyphPattern);
 impl_as_ref! (Text);
 
 
+
+
+impl <Value> Drop for RbRef<Value> {
+	
+	fn drop (&mut self) -> () {
+		match self {
+			Self::Static (_) => {
+				if crate::allocator::USE_MEMZERO {
+					let _junk_zero = [0 as u8; mem::size_of::<&'static u8> ()];
+					let mut _junk = Self::Static (unsafe { mem::transmute (_junk_zero) });
+					mem::swap (self, &mut _junk);
+					let _pointer = (&mut _junk) as *mut Self as *mut u8;
+					unsafe {
+						::memsec::memzero (_pointer, mem::size_of::<Self> ());
+					}
+					mem::forget (_junk);
+				}
+			}
+			Self::Rc (_) => {
+				// NOP
+			}
+		}
+	}
+}
+
+
+impl <Value> Drop for RbListRef<Value> {
+	
+	fn drop (&mut self) -> () {
+		match self {
+			Self::Static (_reference) => {
+				if crate::allocator::USE_MEMZERO {
+					let _junk_zero = [0 as u8; mem::size_of::<&'static [u8]> ()];
+					let mut _junk = Self::Static (unsafe { mem::transmute (_junk_zero) });
+					mem::swap (self, &mut _junk);
+					let _pointer = (&mut _junk) as *mut Self as *mut u8;
+					unsafe {
+						::memsec::memzero (_pointer, mem::size_of::<Self> ());
+					}
+					mem::forget (_junk);
+				}
+			}
+			Self::Rc (_) => {
+				// NOP
+			}
+		}
+	}
+}
+
+
