@@ -17,6 +17,10 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _identifiers_only : Option<bool> = None;
 	let mut _all : Option<bool> = None;
 	
+	let mut _identifier_prefix : Option<String> = None;
+	let mut _identifier_suffix : Option<String> = None;
+	let mut _identifier_contains : Option<String> = None;
+	
 	let mut _entropy_minimum : Option<usize> = None;
 	let mut _entropy_maximum : Option<usize> = None;
 	let mut _length_minimum : Option<usize> = None;
@@ -37,6 +41,16 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		_parser.refer (&mut _all)
 				.add_option (&["-a", "--all"], ArgStoreConst (Some (true)), "(list all patterns, including aliases)");
+		
+		_parser.refer (&mut _identifier_prefix)
+				.metavar ("{prefix}")
+				.add_option (&["--identifier-prefix"], ArgStoreOption, "(filter if identifier has prefix)");
+		_parser.refer (&mut _identifier_suffix)
+				.metavar ("{suffix}")
+				.add_option (&["--identifier-suffix"], ArgStoreOption, "(filter if identifier has suffix)");
+		_parser.refer (&mut _identifier_contains)
+				.metavar ("{string}")
+				.add_option (&["--identifier-contains"], ArgStoreOption, "(filter if identifier contains string)");
 		
 		_parser.refer (&mut _entropy_minimum)
 				.metavar ("{bits}")
@@ -97,7 +111,22 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _identifiers_only = _identifiers_only.unwrap_or (false);
 	let _all = _all.unwrap_or (false);
 	
-	let _length_maximum = if (! _identifiers_only) && (! _all) && _entropy_minimum.is_none () && _entropy_maximum.is_none () && _length_minimum.is_none () && _length_minimum.is_none () {
+	let _skip_upper =
+			(! _identifiers_only) && (! _all)
+			&& _identifier_prefix.is_none ()
+			&& _identifier_suffix.is_none ()
+			&& _identifier_contains.is_none ();
+	
+	let _length_maximum = if
+				(! _identifiers_only) && (! _all)
+				&& _identifier_prefix.is_none ()
+				&& _identifier_suffix.is_none ()
+				&& _identifier_contains.is_none ()
+				&& _entropy_minimum.is_none ()
+				&& _entropy_maximum.is_none ()
+				&& _length_minimum.is_none ()
+				&& _length_minimum.is_none ()
+		{
 			Some (40)
 		} else {
 			_length_maximum
@@ -126,13 +155,43 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _stream = BufWriter::with_capacity (1024 * 1024, stdout_locked ());
 	
-	for _pattern in patterns::all_token_patterns () .into_iter () {
+	'_loop : for _pattern in patterns::all_token_patterns () .into_iter () {
 		let &(ref _identifier, ref _pattern) = _pattern.as_ref ();
+		let _identifier = _identifier.as_str ();
 		let _pattern = _pattern.as_ref ();
 		
-		if ! _all {
-			if _identifier.contains ("-upper-") {
-				continue;
+		let _aliases = if let TokenPattern::Named (_, _aliases, _) = _pattern {
+				*_aliases
+			} else {
+				&[]
+			};
+		
+		{
+			let mut _skip_any = false;
+			let mut _matched_any = false;
+			for _identifier in Some (_identifier) .iter () .chain (_aliases.iter ()) {
+				let mut _skip = false;
+				let mut _matched = true;
+				_skip = _skip || if _skip_upper {
+						_identifier.contains ("-upper-")
+					} else { false };
+				_matched = _matched && if let Some (ref _string) = _identifier_prefix {
+						_identifier.starts_with (_string)
+					} else { true };
+				_matched = _matched && if let Some (ref _string) = _identifier_suffix {
+						_identifier.ends_with (_string)
+					} else { true };
+				_matched = _matched && if let Some (ref _string) = _identifier_contains {
+						_identifier.contains (_string)
+					} else { true };
+				_skip_any = _skip_any || _skip;
+				_matched_any = _matched_any || _matched;
+				if _skip_any || _matched_any {
+					break;
+				}
+			}
+			if _skip_any || ! _matched_any {
+				continue '_loop;
 			}
 		}
 		
@@ -142,10 +201,10 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		let (_bits, _bits_exact) = _entropy.bits_exact ();
 		
 		if _bits < (_entropy_minimum as f64) {
-			continue;
+			continue '_loop;
 		}
 		if _bits > (_entropy_maximum as f64) {
-			continue;
+			continue '_loop;
 		}
 		
 		let _token = generate_token (&_pattern, _randomizer) .else_wrap (0xef0a3430) ?;
@@ -154,15 +213,15 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		let _string_length = _string.len ();
 		
 		if _string_length < _length_minimum {
-			continue;
+			continue '_loop;
 		}
 		if _string_length > _length_maximum {
-			continue;
+			continue '_loop;
 		}
 		
 		if _classify_chars {
 			let mut _string = Some (Cow::Borrowed (&_string));
-			let mut _satisfied = false;
+			let mut _matched_any = false;
 			for _try in 0 ..= 16 {
 				let mut _letters = 0;
 				let mut _letters_upper = 0;
@@ -195,49 +254,30 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 							(),
 					}
 				}
-				if _letters < usize::max (_has_letters.unwrap_or (0), _has_all.unwrap_or (0)) {
-					continue;
+				let _matched = true
+						&& _letters > usize::max (_has_letters.unwrap_or (0), _has_all.unwrap_or (0))
+						&& _letters_upper > usize::max (_has_letters_upper.unwrap_or (0), _has_all.unwrap_or (0))
+						&& _letters_lower > usize::max (_has_letters_lower.unwrap_or (0), _has_all.unwrap_or (0))
+						&& _digits > usize::max (_has_digits.unwrap_or (0), _has_all.unwrap_or (0))
+						&& _symbols > usize::max (_has_symbols.unwrap_or (0), _has_all.unwrap_or (0));
+				_matched_any = _matched_any || _matched;
+				if _matched_any {
+					break;
 				}
-				if _letters_upper < usize::max (_has_letters_upper.unwrap_or (0), _has_all.unwrap_or (0)) {
-					continue;
-				}
-				if _letters_lower < usize::max (_has_letters_lower.unwrap_or (0), _has_all.unwrap_or (0)) {
-					continue;
-				}
-				if _digits < usize::max (_has_digits.unwrap_or (0), _has_all.unwrap_or (0)) {
-					continue;
-				}
-				if _symbols < usize::max (_has_symbols.unwrap_or (0), _has_all.unwrap_or (0)) {
-					continue;
-				}
-				_satisfied = true;
-				break;
 			}
-			if ! _satisfied {
-				continue;
+			if ! _matched_any {
+				continue '_loop;
 			}
 		}
 		
-		let _aliases = if let TokenPattern::Named (_, _aliases, _) = _pattern {
-				if ! _aliases.is_empty () {
-					Some (*_aliases)
-				} else {
-					None
-				}
-			} else {
-				None
-			};
-		
 		if _identifiers_only {
 			writeln! (&mut _stream, "{}", _identifier) .else_wrap (0xfcdcb2ff) ?;
-			if let Some (_aliases) = _aliases {
-				if _display_aliases {
-					for _alias in _aliases {
-						writeln! (&mut _stream, "{}", _alias) .else_wrap (0xffe94769) ?;
-					}
+			if _display_aliases && ! _aliases.is_empty () {
+				for _alias in _aliases {
+					writeln! (&mut _stream, "{}", _alias) .else_wrap (0xffe94769) ?;
 				}
 			}
-			continue;
+			continue '_loop;
 		}
 		
 		let _display_string_max = 80;
@@ -257,14 +297,12 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			writeln! (&mut _stream, "| {:22} | b {:6.1} | c {:4} ||  {}", _identifier, _display_bits, _string_length, _display_string) .else_wrap (0xd141c5ef) ?;
 		}
 		
-		if let Some (_aliases) = _aliases {
-			if _display_aliases {
-				write! (&mut _stream, "^") .else_wrap (0x4b3973c7) ?;
-				for _alias in _aliases {
-					write! (&mut _stream, " {}", _alias) .else_wrap (0x7275b085) ?;
-				}
-				writeln! (&mut _stream) .else_wrap (0x8dfe1e4d) ?;
+		if _display_aliases && ! _aliases.is_empty () {
+			write! (&mut _stream, "^") .else_wrap (0x4b3973c7) ?;
+			for _alias in _aliases {
+				write! (&mut _stream, " {}", _alias) .else_wrap (0x7275b085) ?;
 			}
+			writeln! (&mut _stream) .else_wrap (0x8dfe1e4d) ?;
 		}
 	}
 	
