@@ -6,30 +6,33 @@ use crate::prelude::*;
 
 
 #[ cfg_attr (debug_assertions, derive (Debug)) ]
-pub struct Rb <Value : Sized + 'static> (RbRef<Value>);
+pub struct Rb <Value : Sized + Sensitive + 'static> (RbRef<Value>);
 
 
 #[ cfg_attr (debug_assertions, derive (Debug)) ]
-pub struct RbList <Value : Sized + 'static> (RbListRef<Value>);
+pub struct RbList <Value : Sized + Sensitive + 'static> (RbListRef<Value>);
 
 
 #[ cfg_attr (debug_assertions, derive (Debug)) ]
-enum RbRef <Value : Sized + 'static> {
+enum RbRef <Value : Sized + Sensitive + 'static> {
 	Static (&'static Value),
 	Rc (Arc<Value>),
 }
 
 
 #[ cfg_attr (debug_assertions, derive (Debug)) ]
-enum RbListRef <Value : Sized + 'static> {
+enum RbListRef <Value : Sized + Sensitive + 'static> {
 	Static (&'static [Rb<Value>]),
 	Rc (Arc<[Rb<Value>]>),
 }
 
 
+pub trait Sensitive {}
 
 
-impl <Value> RbRef<Value> {
+
+
+impl <Value : Sized + Sensitive + 'static> RbRef<Value> {
 	
 	pub fn new (_value : Value) -> Self {
 		RbRef::Rc (Arc::new (_value))
@@ -61,7 +64,7 @@ impl <Value> RbRef<Value> {
 
 
 
-impl <Value> RbListRef<Value> {
+impl <Value : Sized + Sensitive + 'static> RbListRef<Value> {
 	
 	pub fn clone (&self) -> Self {
 		match self {
@@ -85,7 +88,7 @@ impl <Value> RbListRef<Value> {
 
 
 
-impl <Value> Rb<Value> {
+impl <Value : Sized + Sensitive + 'static> Rb<Value> {
 	
 	pub fn new (_value : Value) -> Self {
 		Self (RbRef::new (_value))
@@ -101,7 +104,7 @@ impl <Value> Rb<Value> {
 }
 
 
-impl <Value> Deref for Rb<Value> {
+impl <Value : Sized + Sensitive + 'static> Deref for Rb<Value> {
 	
 	type Target = Value;
 	
@@ -111,7 +114,7 @@ impl <Value> Deref for Rb<Value> {
 }
 
 
-impl <Value> AsRef<Value> for Rb<Value> {
+impl <Value : Sized + Sensitive + 'static> AsRef<Value> for Rb<Value> {
 	
 	fn as_ref (&self) -> &Value {
 		self.deref ()
@@ -121,7 +124,7 @@ impl <Value> AsRef<Value> for Rb<Value> {
 
 
 
-impl <Value> RbList <Value> {
+impl <Value : Sized + Sensitive + 'static> RbList <Value> {
 	
 	pub const fn from_static (_values : &'static [Rb<Value>]) -> Self {
 		Self (RbListRef::Static (_values))
@@ -143,7 +146,7 @@ impl <Value> RbList <Value> {
 }
 
 
-impl <Value> Deref for RbList<Value> {
+impl <Value : Sized + Sensitive + 'static> Deref for RbList<Value> {
 	
 	type Target = [Rb<Value>];
 	
@@ -153,7 +156,7 @@ impl <Value> Deref for RbList<Value> {
 }
 
 
-impl <Value> AsRef<[Rb<Value>]> for RbList<Value> {
+impl <Value : Sized + Sensitive + 'static> AsRef<[Rb<Value>]> for RbList<Value> {
 	
 	fn as_ref (&self) -> &[Rb<Value>] {
 		self.deref ()
@@ -188,7 +191,7 @@ impl_as_ref! (Text);
 
 
 
-impl <Value> Drop for RbRef<Value> {
+impl <Value : Sized + Sensitive + 'static> Drop for RbRef<Value> {
 	
 	fn drop (&mut self) -> () {
 		match self {
@@ -212,7 +215,7 @@ impl <Value> Drop for RbRef<Value> {
 }
 
 
-impl <Value> Drop for RbListRef<Value> {
+impl <Value : Sized + Sensitive + 'static> Drop for RbListRef<Value> {
 	
 	fn drop (&mut self) -> () {
 		match self {
@@ -234,5 +237,35 @@ impl <Value> Drop for RbListRef<Value> {
 		}
 	}
 }
+
+
+
+
+impl <Value : Sized + Sensitive + 'static> Sensitive for Rb<Value> {}
+impl <Value : Sized + Sensitive + 'static> Sensitive for RbList<Value> {}
+
+
+impl <A : Sensitive, B : Sensitive> Sensitive for (A, B) {}
+
+
+impl Sensitive for Token {}
+impl Sensitive for Atom {}
+impl Sensitive for Glyph {}
+impl Sensitive for Separator {}
+
+impl Sensitive for TokenPattern {}
+impl Sensitive for TokenPatternTags {}
+impl Sensitive for SeparatorPattern {}
+impl Sensitive for AtomPattern {}
+impl Sensitive for GlyphPattern {}
+
+
+
+
+// FIXME!
+impl Sensitive for Text {}
+impl Sensitive for Bytes {}
+impl Sensitive for u128 {}
+impl Sensitive for Cow<'static, str> {}
 
 
