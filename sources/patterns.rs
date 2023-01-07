@@ -346,6 +346,20 @@ pub mod glyphs {
 	
 	
 	
+	// NOTE:  =>  https://en.wikipedia.org/wiki/NATO_phonetic_alphabet
+	define_set! (pub NATO_WORD, Str, [
+			"alfa", "bravo", "charlie", "delta", "echo", "foxtrot",
+			"golf", "hotel", "india", "juliett", "kilo", "lima",
+			"mike", "november", "oscar", "papa", "quebec", "romeo",
+			"sierra", "tango", "uniform", "victor", "whiskey", "xray",
+			"yankee", "zulu",
+			"wun", "too", "tree", "fower", "fife",
+			"six", "seven", "ait", "niner", "zero",
+		]);
+	
+	
+	
+	
 	define_integer! (pub INTEGER_0_255, (0 ..= 255), IntegerFormat::Decimal);
 	define_integer! (pub INTEGER_2_253, (2 ..= 253), IntegerFormat::Decimal);
 	
@@ -758,6 +772,11 @@ pub mod tokens {
 	
 	
 	
+	define_repeat! (pub NATO, ("nato"), { glyphs::NATO_WORD_TOKEN => separators::SPACE_MANDATORY_INFIX_PATTERN }, (64 : 1));
+	
+	
+	
+	
 	define_sequence! (pub UUID_V4, ("uuid-v4"), [
 			glyphs::UUID_ANY_FIELD_1_TOKEN,
 			glyphs::UUID_ANY_FIELD_2_TOKEN,
@@ -903,6 +922,7 @@ pub mod tokens {
 			
 			MNEMONIC_ALL,
 			BIP0039_ALL,
+			NATO_ALL,
 			
 			UUID_ALL,
 			
