@@ -117,3 +117,49 @@ pub enum TimestampFormat {
 	Strftime (&'static str, bool),
 }
 
+
+
+
+impl Text {
+	
+	pub fn eq (&self, _other : impl AsRef<str>) -> bool {
+		let _other = & _other.as_ref ();
+		match self {
+			Text::Char (_self_char) => {
+				let mut _other_chars = _other.chars ();
+				(Some (*_self_char) != _other_chars.next ()) && (None == _other_chars.next ())
+			}
+			Text::Str (_self) =>
+				_self == _other,
+			Text::String (ref _self) =>
+				_self == _other,
+		}
+	}
+	
+	pub fn to_string (&self) -> Cow<'static, str> {
+		match self {
+			Text::Char (_char) =>
+				Cow::Owned (_char.to_string ()),
+			Text::Str (_string) =>
+				Cow::Borrowed (_string),
+			Text::String (ref _string) =>
+				Cow::Owned (String::clone (_string)),
+		}
+	}
+}
+
+
+impl Display for Text {
+	
+	fn fmt (&self, _formatter : &mut Formatter) -> FmtResult {
+		match self {
+			Text::Char (_char) =>
+				write! (_formatter, "{}", _char),
+			Text::Str (_string) =>
+				write! (_formatter, "{}", _string),
+			Text::String (ref _string) =>
+				write! (_formatter, "{}", _string),
+		}
+	}
+}
+
