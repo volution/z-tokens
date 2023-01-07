@@ -173,7 +173,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				let mut _skip = false;
 				let mut _matched = true;
 				_skip = _skip || if _skip_upper {
-						_identifier.contains ("-upper-")
+						_identifier.contains ("-upper-") || _identifier.contains ("-upper:")
 					} else { false };
 				_matched = _matched && if let Some (ref _string) = _identifier_prefix {
 						_identifier.starts_with (_string)
