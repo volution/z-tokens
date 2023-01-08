@@ -172,6 +172,8 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _stream = BufWriter::with_capacity (IO_BUFFER_SIZE, stdout_locked ());
 	
+	let mut _selected_count = 0;
+	
 	'_loop : for _pattern in patterns::all_token_patterns () .into_iter () {
 		let &(ref _identifier, ref _pattern) = _pattern.as_ref ();
 		let _identifier = _identifier.as_ref ();
@@ -302,6 +304,8 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			}
 		}
 		
+		_selected_count += 1;
+		
 		if _identifiers_only {
 			writeln! (&mut _stream, "{}", _identifier) .else_wrap (0xfcdcb2ff) ?;
 			if _display_aliases && ! _aliases.is_empty () {
@@ -351,6 +355,11 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	}
 	
 	drop (_stream.into_inner () .else_replace (0xb10d6da8) ?);
+	
+	if _selected_count == 0 {
+		::std::eprintln! ("[ee] [f92050d5]  no patterns selected!");
+		return Ok (ExitCode::FAILURE);
+	}
 	
 	Ok (ExitCode::SUCCESS)
 }
