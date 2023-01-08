@@ -1,0 +1,144 @@
+>>  z-tokens patterns --has-digits --random-testing
+
+| digits-base2:8         | b    8   | c    8 ||  10101000
+| digits-base2:16        | b   16   | c   17 ||  10101000 01001100
+| digits-base2:24        | b   24   | c   26 ||  10101000 01001100 10011100
+| digits-base2:32        | b   32   | c   35 ||  10101000 01001100 10011100 10011110
+| digits-base8:4         | b   12   | c    4 ||  6026
+| digits-base8:8         | b   24   | c    9 ||  6026 6103
+| digits-base8:12        | b   36   | c   14 ||  6026 6103 7414
+| digits-base8:16        | b   48   | c   19 ||  6026 6103 7414 5775
+| digits-base8:20        | b   60   | c   24 ||  6026 6103 7414 5775 0654
+| digits-base8:24        | b   72   | c   29 ||  6026 6103 7414 5775 0654 6142
+| digits-base8:28        | b   84   | c   34 ||  6026 6103 7414 5775 0654 6142 2556
+| digits-base8:32        | b   96   | c   39 ||  6026 6103 7414 5775 0654 6142 2556 2505
+| digits-base10:4        | b   13.2 | c    4 ||  7022
+| digits-base10:8        | b   26.5 | c    9 ||  7022 7110
+| digits-base10:12       | b   39.8 | c   14 ||  7022 7110 4492
+| digits-base10:16       | b   53.1 | c   19 ||  7022 7110 4492 5182
+| digits-base10:20       | b   66.4 | c   24 ||  7022 7110 4492 5182 5629
+| digits-base10:24       | b   79.7 | c   29 ||  7022 7110 4492 5182 5629 0665
+| digits-base10:28       | b   93.0 | c   34 ||  7022 7110 4492 5182 5629 0665 7352
+| digits-base10:32       | b  106.3 | c   39 ||  7022 7110 4492 5182 5629 0665 7352 6062
+| digits-base16:4        | b   16   | c    4 ||  c094
+| digits-base16:8        | b   32   | c    9 ||  c094 c32f
+| digits-base16:12       | b   48   | c   14 ||  c094 c32f 72d3
+| digits-base16:16       | b   64   | c   19 ||  c094 c32f 72d3 8ae1
+| digits-base16:20       | b   80   | c   24 ||  c094 c32f 72d3 8ae1 3011
+| digits-base16:24       | b   96   | c   29 ||  c094 c32f 72d3 8ae1 3011 18c1
+| digits-base16:28       | b  112   | c   34 ||  c094 c32f 72d3 8ae1 3011 18c1 844a
+| digits-base16:32       | b  128   | c   39 ||  c094 c32f 72d3 8ae1 3011 18c1 844a 13a9
+| digits-base32-hex:4    | b   20   | c    4 ||  n8pv
+| digits-base32-hex:8    | b   40   | c    9 ||  n8pv 47gk
+| digits-base32-hex:12   | b   60   | c   14 ||  n8pv 47gk fs2v
+| digits-base32-hex:16   | b   80   | c   19 ||  n8pv 47gk fs2v t02p
+| digits-base32-hex:20   | b  100   | c   24 ||  n8pv 47gk fs2v t02p lobv
+| digits-base32-hex:24   | b  120   | c   29 ||  n8pv 47gk fs2v t02p lobv 88lp
+| digits-base32-hex:28   | b  140   | c   34 ||  n8pv 47gk fs2v t02p lobv 88lp 9k16
+| digits-base32-hex:32   | b  160   | c   39 ||  n8pv 47gk fs2v t02p lobv 88lp 9k16 abka
+| digits-base32-rfc:4    | b   20   | c    4 ||  xiz7
+| digits-base32-rfc:8    | b   40   | c    9 ||  xiz7 ehqu
+| digits-base32-rfc:12   | b   60   | c   14 ||  xiz7 ehqu p4c7
+| digits-base32-rfc:16   | b   80   | c   19 ||  xiz7 ehqu p4c7 5acz
+| digits-base32-rfc:20   | b  100   | c   24 ||  xiz7 ehqu p4c7 5acz vyl7
+| digits-base32-rfc:24   | b  120   | c   29 ||  xiz7 ehqu p4c7 5acz vyl7 iivz
+| digits-base32-rfc:28   | b  140   | c   34 ||  xiz7 ehqu p4c7 5acz vyl7 iivz jubg
+| digits-base32-rfc:32   | b  160   | c   39 ||  xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk
+| digits-base64-url:4    | b   24   | c    4 ||  lx-H
+| digits-base64-url:8    | b   48   | c    9 ||  lx-H Dbd7
+| digits-base64-url:12   | b   72   | c   14 ||  lx-H Dbd7 1Ng4
+| digits-base64-url:16   | b   96   | c   19 ||  lx-H Dbd7 1Ng4 E_rE
+| digits-base64-url:20   | b  120   | c   24 ||  lx-H Dbd7 1Ng4 E_rE nyFF
+| digits-base64-url:24   | b  144   | c   29 ||  lx-H Dbd7 1Ng4 E_rE nyFF hwWh
+| digits-base64-url:28   | b  168   | c   34 ||  lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC
+| digits-base64-url:32   | b  192   | c   39 ||  lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU
+| digits-base64-rfc:4    | b   24   | c    4 ||  lx+H
+| digits-base64-rfc:8    | b   48   | c    9 ||  lx+H Dbd7
+| digits-base64-rfc:12   | b   72   | c   14 ||  lx+H Dbd7 1Ng4
+| digits-base64-rfc:16   | b   96   | c   19 ||  lx+H Dbd7 1Ng4 E/rE
+| digits-base64-rfc:20   | b  120   | c   24 ||  lx+H Dbd7 1Ng4 E/rE nyFF
+| digits-base64-rfc:24   | b  144   | c   29 ||  lx+H Dbd7 1Ng4 E/rE nyFF hwWh
+| digits-base64-rfc:28   | b  168   | c   34 ||  lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC
+| digits-base64-rfc:32   | b  192   | c   39 ||  lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU
+| digits-base58:4        | b   23.4 | c    4 ||  jm2a
+| digits-base58:8        | b   46.8 | c    9 ||  jm2a GmDo
+| digits-base58:12       | b   70.2 | c   14 ||  jm2a GmDo kyz9
+| digits-base58:16       | b   93.7 | c   19 ||  jm2a GmDo kyz9 73RT
+| digits-base58:20       | b  117.1 | c   24 ||  jm2a GmDo kyz9 73RT vEZA
+| digits-base58:24       | b  140.5 | c   29 ||  jm2a GmDo kyz9 73RT vEZA qCWU
+| digits-base58:28       | b  164.0 | c   34 ||  jm2a GmDo kyz9 73RT vEZA qCWU ss4z
+| digits-base58:32       | b  187.4 | c   39 ||  jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg
+| digits-base62:4        | b   23.8 | c    4 ||  jl1a
+| digits-base62:8        | b   47.6 | c    9 ||  jl1a GlDn
+| digits-base62:12       | b   71.4 | c   14 ||  jl1a GlDn kyz8
+| digits-base62:16       | b   95.2 | c   19 ||  jl1a GlDn kyz8 x3QS
+| digits-base62:20       | b  119.0 | c   24 ||  jl1a GlDn kyz8 x3QS vEY9
+| digits-base62:24       | b  142.9 | c   29 ||  jl1a GlDn kyz8 x3QS vEY9 pCVd
+| digits-base62:28       | b  166.7 | c   34 ||  jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z
+| digits-base62:32       | b  190.5 | c   39 ||  jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0
+| digits-bech32:4        | b   20   | c    4 ||  hgel
+| digits-bech32:8        | b   40   | c    9 ||  hgel y8s5
+| digits-bech32:12       | b   60   | c   14 ||  hgel y8s5 0uzl
+| digits-bech32:16       | b   80   | c   19 ||  hgel y8s5 0uzl aqze
+| digits-bech32:20       | b  100   | c   24 ||  hgel y8s5 0uzl aqze 4ctl
+| digits-bech32:24       | b  120   | c   29 ||  hgel y8s5 0uzl aqze 4ctl gg4e
+| digits-bech32:28       | b  140   | c   34 ||  hgel y8s5 0uzl aqze 4ctl gg4e f5px
+| digits-bech32:32       | b  160   | c   39 ||  hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52
+| digits-z85:5           | b   32.0 | c    5 ||  .2Nm+
+| digits-z85:10          | b   64.0 | c   11 ||  .2Nm+ i^%9%
+| digits-z85:15          | b   96.1 | c   17 ||  .2Nm+ i^%9% 4AD]j
+| digits-z85:20          | b  128.1 | c   23 ||  .2Nm+ i^%9% 4AD]j Ld?hS
+| digits-z85:25          | b  160.2 | c   29 ||  .2Nm+ i^%9% 4AD]j Ld?hS >>5i$
+| digits-z85:30          | b  192.2 | c   35 ||  .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU
+| ascii-any:4            | b   26.2 | c    4 ||  ei#9
+| ascii-any:8            | b   52.4 | c    9 ||  ei#9 i5kg
+| ascii-any:12           | b   78.6 | c   14 ||  ei#9 i5kg |~.+
+| ascii-any:16           | b  104.8 | c   19 ||  ei#9 i5kg |~.+ {%IL
+| ascii-any:20           | b  131.0 | c   24 ||  ei#9 i5kg |~.+ {%IL 6U/o
+| ascii-any:24           | b  157.3 | c   29 ||  ei#9 i5kg |~.+ {%IL 6U/o 4PNs
+| ascii-any:28           | b  183.5 | c   34 ||  ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
+| ascii-any:32           | b  209.7 | c   39 ||  ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
+| cv-plus-a:1            | b   26.7 | c    9 ||  taqe 2711
+| cv-plus-a:2            | b   40.1 | c   14 ||  taqe veza 0449
+| cv-plus-a:3            | b   53.5 | c   19 ||  taqe veza zaye 5182
+| cv-plus-a:4            | b   67.0 | c   24 ||  taqe veza zaye fugi 6290
+| cv-plus-a:5            | b   80.4 | c   29 ||  taqe veza zaye fugi rixu 2906
+| cv-plus-a:6            | b   93.8 | c   34 ||  taqe veza zaye fugi rixu cezu 0665
+| cv-plus-a:7            | b  107.2 | c   39 ||  taqe veza zaye fugi rixu cezu saco 6573
+| cv-plus-b:1            | b   26.7 | c    9 ||  taqe VB71
+| cv-plus-b:2            | b   40.2 | c   14 ||  taqe veza ZA44
+| cv-plus-b:3            | b   53.6 | c   19 ||  taqe veza zaye FU25
+| cv-plus-b:4            | b   67.0 | c   24 ||  taqe veza zaye fugi RI29
+| cv-plus-b:5            | b   80.5 | c   29 ||  taqe veza zaye fugi rixu CB90
+| cv-plus-b:6            | b   93.9 | c   34 ||  taqe veza zaye fugi rixu cezu SA66
+| cv-plus-b:7            | b  107.3 | c   39 ||  taqe veza zaye fugi rixu cezu saco VO57
+| cv-plus-c:1            | b   28.4 | c    9 ||  taqe VB7~
+| cv-plus-c:2            | b   41.8 | c   14 ||  taqe veza ZA4(
+| cv-plus-c:3            | b   55.3 | c   19 ||  taqe veza zaye FU2;
+| cv-plus-c:4            | b   68.7 | c   24 ||  taqe veza zaye fugi RI2~
+| cv-plus-c:5            | b   82.1 | c   29 ||  taqe veza zaye fugi rixu CB9!
+| cv-plus-c:6            | b   95.6 | c   34 ||  taqe veza zaye fugi rixu cezu SA6^
+| cv-plus-c:7            | b  109.0 | c   39 ||  taqe veza zaye fugi rixu cezu saco VO5]
+| uuid-v4                | b  122   | c   36 ||  c5a0ef11-f80c-41ce-8329-75e88c63a6e1
+| ip-127                 | b   23.9 | c   13 ||  127.186.196.8
+| ip-10                  | b   23.9 | c   12 ||  10.186.196.8
+| ip-172                 | b   20.8 | c   12 ||  172.22.196.8
+| ip-192                 | b   15.9 | c   15 ||  192.168.186.196
+| ip-mac                 | b   40   | c   17 ||  02:bb:c6:43:cb:f8
+| bytes-hex:4            | b   32   | c    8 ||  7f6f2ccd
+| bytes-hex:8            | b   64   | c   16 ||  7f6f2ccdb23f2abb
+| bytes-hex:12           | b   96   | c   24 ||  7f6f2ccdb23f2abb7b69278e
+| bytes-hex:16           | b  128   | c   32 ||  7f6f2ccdb23f2abb7b69278e947c01c6
+| bytes-hex:20           | b  160   | c   40 ||  7f6f2ccdb23f2abb7b69278e947c01c6160a31cf
+| timestamp-date-time    | b    0   | c   19 ||  2021-12-30-14-15-16
+| timestamp-date         | b    0   | c   10 ||  2021-12-30
+| timestamp-time         | b    0   | c    8 ||  14-15-16
+| timestamp-sec          | b    0   | c   10 ||  1640873716
+| timestamp-sec-hex      | b    0   | c   10 ||  0061cdbef4
+| timestamp-nano         | b    0   | c   19 ||  1640873716789789789
+| timestamp-nano-hex     | b    0   | c   18 ||  0016c58df3a287c45d
+| timestamp-flake        | b    0   | c    9 ||  694188916
+| timestamp-flake-hex    | b    0   | c    8 ||  29607b74
+| flake:1                | b   32   | c   17 ||  29607b74-7f6f2ccd
+| flake:2                | b   64   | c   26 ||  29607b74-7f6f2ccd-b23f2abb
+| flake:3                | b   96   | c   35 ||  29607b74-7f6f2ccd-b23f2abb-7b69278e

@@ -1,0 +1,30 @@
+>>  z-tokens generate --help
+
+Usage:
+  z-tokens generate [OPTIONS]
+
+
+Optional arguments:
+  -h,--help             Show this help message and exit
+  -p,--token-pattern {token-pattern}
+                        (see the `patterns` command for available identifiers)
+  -c,--token-count {token-count}
+                        (generate more than one token)
+  -s,--token-separator {token-separator}
+                        (separator after each token)
+  -n,--token-separator-none
+                        (no separator after each token)
+  -z,--token-separator-null
+                        (`\0` separator after each token)
+  -g,--group-size {group-size}
+                        (output tokens in groups)
+  --group-separator {group-separator}
+                        (separator between each group)
+  -C                    (compact output, skip optional separators and groups)
+  --compact {compact}   
+  --token-skip-mandatory-separators {skip}
+                        (skip token mandatory separators)
+  --token-skip-optional-separators {skip}
+                        (skip token optional separators)
+  --random-os           (use OS secure random generator)
+  --random-testing      (unsafe constant generator)

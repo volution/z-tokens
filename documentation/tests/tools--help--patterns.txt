@@ -1,0 +1,48 @@
+>>  z-tokens patterns --help
+
+Usage:
+  z-tokens patterns [OPTIONS]
+
+
+Optional arguments:
+  -h,--help             Show this help message and exit
+  -i,--identifiers-only (list only identifiers)
+  -a,--all              (list all patterns, including aliases)
+  --identifier-prefix {prefix}
+                        (filter if identifier has prefix)
+  --identifier-suffix {suffix}
+                        (filter if identifier has suffix)
+  --identifier-contains {string}
+                        (filter if identifier contains string)
+  -b,--entropy-min {bits}
+                        (filter by minimum entropy in bits)
+  -B,--entropy-max {bits}
+                        (filter by maximum entropy in bits)
+  -s,--length-min {length}
+                        (filter by minimum output length)
+  -S,--length-max {length}
+                        (filter by maximum output length)
+  -A,--has-all          (require letters, digits and symbols)
+  --all-min {count}     
+  -l,--has-letters      (require letters)
+  --letters-min {count} 
+  -U,--has-letters-upper
+                        (require upper letters)
+  --letters-upper-min {count}
+                        
+  -L,--has-letters-lower
+                        (require lower letters)
+  --letters-lower-min {count}
+                        
+  -D,--has-digits       (require digits)
+  --digits-min {count}  
+  -Y,--has-symbols      (require symbols)
+  --symbols-min {count} 
+  -C                    (compact output, skip optional separators and groups)
+  --compact {compact}   
+  --token-skip-mandatory-separators {skip}
+                        (skip token mandatory separators)
+  --token-skip-optional-separators {skip}
+                        (skip token optional separators)
+  --random-os           (use OS secure random generator)
+  --random-testing      (unsafe constant generator)

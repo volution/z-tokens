@@ -1,0 +1,12 @@
+>>  z-tokens generate --token-pattern digits-base32-hex:32 --compact true --random-testing
+
+n8pv47gkfs2vt02plobv88lp9k16abka
+1teqtosbh39rg639a9von8b9sj6h4qps
+ec8v27slk01liumt4rkfhgi41e3l4m03
+s5dnlhv562m93gfv1f67g6lfvddh8jlf
+k6mk9cq9ldgng811pv738sce8t8hivo6
+1585njnp78r1go4cd0b11470gppphurh
+f5h7ib323946ot8k25eav0pvuak5cvcs
+6mrj9mbtqtlcfnsu16rs055heov339r7
+hh9mbeejutpbru13rkcojvfog6ifp4v8
+0f5esgsm7log5ir7q63gpvhtov4i4bvh

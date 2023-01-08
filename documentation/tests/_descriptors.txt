@@ -1,0 +1,47 @@
+
+
+tools--version :: --version
+tools--help--patterns :: patterns --help
+tools--help--generate :: generate --help
+
+
+
+
+patterns / default :: patterns --random-testing
+patterns / default / all :: patterns --all --random-testing
+patterns / default / compact :: patterns --all --compact true --random-testing
+patterns / default / no-optional-separators :: patterns --all --token-skip-optional-separators true --random-testing
+patterns / default / no-mandatory-separators :: patterns --all --token-skip-mandatory-separators true --token-skip-optional-separators true --random-testing
+
+
+patterns / filter / entropy-min :: patterns --entropy-min 256 --random-testing
+patterns / filter / entropy-max :: patterns --entropy-max 64 --random-testing
+patterns / filter / entropy-range :: patterns --entropy-min 64 --entropy-max 256 --random-testing
+
+patterns / filter / length-min :: patterns --length-min 400 --random-testing
+patterns / filter / length-max :: patterns --length-max 100 --random-testing
+patterns / filter / length-range :: patterns --length-min 100 --length-max 400 --random-testing
+
+patterns / filter / has-all :: patterns --has-all --random-testing
+patterns / filter / has-symbols :: patterns --has-symbols --random-testing
+patterns / filter / has-letters :: patterns --has-letters --random-testing
+patterns / filter / has-digits :: patterns --has-digits --random-testing
+patterns / filter / has-letters-upper :: patterns --has-letters-upper --random-testing
+patterns / filter / has-letters-lower :: patterns --has-letters-lower --random-testing
+
+patterns / identifiers :: patterns --identifiers-only --random-testing
+patterns / identifiers / all :: patterns --identifiers-only --all --random-testing
+
+
+
+
+generate / default :: generate --random-testing
+generate / default / quick :: g --random-testing
+
+
+generate / pattern / default :: generate --token-pattern digits-base32-hex:32 --random-testing
+generate / pattern / compact :: generate --token-pattern digits-base32-hex:32 --compact true --random-testing
+generate / pattern / no-optional-separators :: generate --token-pattern digits-base32-hex:32 --token-skip-optional-separators true --random-testing
+generate / pattern / no-mandatory-separators :: generate --token-pattern mnemonic:4 --token-skip-mandatory-separators true --token-skip-optional-separators true --random-testing
+
+

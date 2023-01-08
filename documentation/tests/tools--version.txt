@@ -1,0 +1,12 @@
+>>  z-tokens --version
+
+* tool          : z-tokens
+* version       : 0.3.0
+* executable    : /usr/local/bin/z-tokens
+* build target  : debug
+* build number  : 10000, 2023-01-01-12-00-00
+* code & issues : https://github.com/volution/z-tokens
+* sources git   : 0000000000000000000000000000000000000000
+* sources hash  : 00000000000000000000000000000000
+* uname node    : linux
+* uname system  : Linux, 5.19.0-default, x86_64
