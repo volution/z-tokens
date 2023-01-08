@@ -35,18 +35,15 @@ impl <Value : Sized + Sensitive + 'static> Sensitive for RbRef<Value> {
 	
 	fn erase (&mut self) -> () {
 		match self {
-			Self::Static (_) => {
-				if crate::allocator::USE_MEMZERO {
-					let _junk_zero = [0 as u8; mem::size_of::<&'static u8> ()];
-					let mut _junk = Self::Static (unsafe { mem::transmute (_junk_zero) });
-					mem::swap (self, &mut _junk);
-					let _pointer = (&mut _junk) as *mut Self as *mut u8;
-					unsafe {
-						::memsec::memzero (_pointer, mem::size_of::<Self> ());
-					}
-					mem::forget (_junk);
+			Self::Static (_) =>
+				unsafe {
+					let _junk_ref = [0u8; mem::size_of::<&'static u8> ()];
+					let mut _junk_self = Self::Static (mem::transmute (_junk_ref));
+					mem::swap (self, &mut _junk_self);
+					let _junk_mem : &mut [u8] = ::std::slice::from_raw_parts_mut (&mut _junk_self as *mut Self as *mut u8, mem::size_of::<Self> ());
+					::zeroize::Zeroize::zeroize (_junk_mem);
+					mem::forget (_junk_self);
 				}
-			}
 			Self::Rc (_rc) =>
 				_rc.erase (),
 		}
@@ -58,16 +55,14 @@ impl <Value : Sized + Sensitive + 'static> Sensitive for RbListRef<Value> {
 	
 	fn erase (&mut self) -> () {
 		match self {
-			Self::Static (_reference) => {
-				if crate::allocator::USE_MEMZERO {
-					let _junk_zero = [0 as u8; mem::size_of::<&'static [u8]> ()];
-					let mut _junk = Self::Static (unsafe { mem::transmute (_junk_zero) });
-					mem::swap (self, &mut _junk);
-					let _pointer = (&mut _junk) as *mut Self as *mut u8;
-					unsafe {
-						::memsec::memzero (_pointer, mem::size_of::<Self> ());
-					}
-					mem::forget (_junk);
+			Self::Static (_) => {
+				unsafe {
+					let _junk_ref = [0u8; mem::size_of::<&'static [u8]> ()];
+					let mut _junk_self = Self::Static (mem::transmute (_junk_ref));
+					mem::swap (self, &mut _junk_self);
+					let _junk_mem : &mut [u8] = ::std::slice::from_raw_parts_mut (&mut _junk_self as *mut Self as *mut u8, mem::size_of::<Self> ());
+					::zeroize::Zeroize::zeroize (_junk_mem);
+					mem::forget (_junk_self);
 				}
 			}
 			Self::Rc (_rc) =>
