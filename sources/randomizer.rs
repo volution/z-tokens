@@ -111,7 +111,7 @@ impl SeedRandomizer {
 	pub fn for_testing_with_seed (_seed : u64) -> RandomResult<Self> {
 		let _delegate = RngRandomizer {
 				rng : StdRng::seed_from_u64 (_seed),
-				timestamp : None,
+				timestamp : Some (1640873716789789789),
 			};
 		let _self = Self {
 				delegate : _delegate,
