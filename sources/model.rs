@@ -51,6 +51,7 @@ pub enum TokenPattern {
 pub struct TokenPatternTags {
 	pub identifier : Option<Rb<Text>>,
 	pub aliases : Option<RbList<Text>>,
+	pub labels : Option<RbList<Text>>,
 }
 
 
