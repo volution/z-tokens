@@ -22,11 +22,12 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _randomizer_flags = RandomizerFlags::new () .else_wrap (0x839efea4) ?;
 	
 	let mut _identifiers_only : Option<bool> = None;
-	let mut _all : Option<bool> = None;
 	
 	let mut _identifier_prefix : Option<String> = None;
 	let mut _identifier_suffix : Option<String> = None;
 	let mut _identifier_contains : Option<String> = None;
+	let mut _has_label : Option<String> = None;
+	let mut _all : Option<bool> = None;
 	
 	let mut _entropy_minimum : Option<usize> = None;
 	let mut _entropy_maximum : Option<usize> = None;
@@ -46,9 +47,6 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		_parser.refer (&mut _identifiers_only)
 				.add_option (&["-i", "--identifiers-only"], ArgStoreConst (Some (true)), "(list only identifiers)");
 		
-		_parser.refer (&mut _all)
-				.add_option (&["-a", "--all"], ArgStoreConst (Some (true)), "(list all patterns, including aliases)");
-		
 		_parser.refer (&mut _identifier_prefix)
 				.metavar ("{prefix}")
 				.add_option (&["--identifier-prefix"], ArgStoreOption, "(filter if identifier has prefix)");
@@ -58,6 +56,12 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		_parser.refer (&mut _identifier_contains)
 				.metavar ("{string}")
 				.add_option (&["--identifier-contains"], ArgStoreOption, "(filter if identifier contains string)");
+		
+		_parser.refer (&mut _has_label)
+				.add_option (&["-f", "--label"], ArgStoreOption, "(filter by label)");
+		
+		_parser.refer (&mut _all)
+				.add_option (&["-a", "--all"], ArgStoreConst (Some (true)), "(list all patterns, including aliases)");
 		
 		_parser.refer (&mut _entropy_minimum)
 				.metavar ("{bits}")
@@ -206,6 +210,19 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				}
 			}
 			if _skip_any || ! _matched_any {
+				continue '_loop;
+			}
+		}
+		
+		if let Some (ref _has_label) = _has_label {
+			let mut _matched_any = false;
+			for _label in _labels {
+				if _label.eq (_has_label) {
+					_matched_any = true;
+					break;
+				}
+			}
+			if !_matched_any {
 				continue '_loop;
 			}
 		}
