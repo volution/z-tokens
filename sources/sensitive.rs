@@ -35,15 +35,8 @@ impl <Value : Sized + Sensitive + 'static> Sensitive for RbRef<Value> {
 	
 	fn erase (&mut self) -> () {
 		match self {
-			Self::Static (_) =>
-				unsafe {
-					let _junk_ref = [0u8; mem::size_of::<&'static u8> ()];
-					let mut _junk_self = Self::Static (mem::transmute (_junk_ref));
-					mem::swap (self, &mut _junk_self);
-					let _junk_mem : &mut [u8] = ::std::slice::from_raw_parts_mut (&mut _junk_self as *mut Self as *mut u8, mem::size_of::<Self> ());
-					::zeroize::Zeroize::zeroize (_junk_mem);
-					mem::forget (_junk_self);
-				}
+			Self::Static (ref mut _ref) =>
+				<&'static Value as Sensitive>::erase (_ref),
 			Self::Rc (_rc) =>
 				_rc.erase (),
 		}
@@ -55,16 +48,8 @@ impl <Value : Sized + Sensitive + 'static> Sensitive for RbListRef<Value> {
 	
 	fn erase (&mut self) -> () {
 		match self {
-			Self::Static (_) => {
-				unsafe {
-					let _junk_ref = [0u8; mem::size_of::<&'static [u8]> ()];
-					let mut _junk_self = Self::Static (mem::transmute (_junk_ref));
-					mem::swap (self, &mut _junk_self);
-					let _junk_mem : &mut [u8] = ::std::slice::from_raw_parts_mut (&mut _junk_self as *mut Self as *mut u8, mem::size_of::<Self> ());
-					::zeroize::Zeroize::zeroize (_junk_mem);
-					mem::forget (_junk_self);
-				}
-			}
+			Self::Static (ref mut _ref) =>
+				<&'static [Rb<Value>] as Sensitive>::erase (_ref),
 			Self::Rc (_rc) =>
 				_rc.erase (),
 		}
@@ -255,8 +240,12 @@ impl_sensitive! ( <{'a}> &'a str => |self| {
 	*self = "";
 });
 
+impl_sensitive! ( <{'a, Value}> &'a Value => |self| {
+	*self = unsafe { mem::transmute ( [0xffu8; mem::size_of::<&'static u8> ()] ) };
+});
+
 impl_sensitive! ( <{'a, Value}> &'a [Value] => |self| {
-	*self = &[];
+	*self = unsafe { mem::transmute ( [0xffu8; mem::size_of::<&'static [u8]> ()] ) };
 });
 
 impl_sensitive! ( <{'a}> Cow<'a, str> => |self| {
