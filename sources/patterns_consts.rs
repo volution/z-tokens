@@ -13,6 +13,7 @@ pub mod ascii {
 
 
 
+#[ cfg (feature = "zt-patterns-mnemonic") ]
 pub mod mnemonic {
 	// NOTE:  => https://github.com/singpolyma/mnemonicode
 	// NOTE:  => https://github.com/mbrubeck/rust-mnemonic
@@ -22,6 +23,7 @@ pub mod mnemonic {
 
 
 
+#[ cfg (feature = "zt-patterns-bip0039") ]
 pub mod bip0039 {
 	// NOTE:  => https://en.bitcoin.it/wiki/BIP_0039
 	// NOTE:  => https://github.com/maciejhirsz/tiny-bip39
@@ -31,6 +33,7 @@ pub mod bip0039 {
 
 
 
+#[ cfg (feature = "zt-patterns-skey") ]
 pub mod skey {
 	// NOTE:  => https://en.wikipedia.org/wiki/S/KEY
 	// NOTE:  => https://www.ietf.org/rfc/rfc1760.html
@@ -41,6 +44,7 @@ pub mod skey {
 
 
 
+#[ cfg (feature = "zt-patterns-pgp") ]
 pub mod pgp {
 	// NOTE:  => https://en.wikipedia.org/wiki/PGP_word_list
 	include! ("./_generated/patterns_consts_pgp_even.in");
@@ -50,6 +54,7 @@ pub mod pgp {
 
 
 
+#[ cfg (feature = "zt-patterns-eff-large") ]
 pub mod eff_large {
 	// NOTE:  => https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases
 	// NOTE:  => https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt
@@ -57,6 +62,7 @@ pub mod eff_large {
 }
 
 
+#[ cfg (feature = "zt-patterns-eff-short") ]
 pub mod eff_short {
 	// NOTE:  => https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases
 	// NOTE:  => https://www.eff.org/files/2016/09/08/eff_short_wordlist_1.txt
@@ -64,6 +70,7 @@ pub mod eff_short {
 }
 
 
+#[ cfg (feature = "zt-patterns-eff-unique") ]
 pub mod eff_unique {
 	// NOTE:  => https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases
 	// NOTE:  => https://www.eff.org/files/2016/09/08/eff_short_wordlist_2_0.txt

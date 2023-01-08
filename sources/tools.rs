@@ -8,6 +8,7 @@ use crate::{
 		tools_patterns::main as main_patterns,
 	};
 
+#[ cfg (feature = "zt-runtime-allocator") ]
 use crate::allocator;
 
 
@@ -20,12 +21,14 @@ define_error! (pub MainError, result : MainResult);
 
 pub fn premain () -> MainResult<ExitCode> {
 	
+	#[ cfg (feature = "zt-runtime-allocator") ]
 	if allocator::DEBUG_REPORT {
 		allocator::report ();
 	}
 	
 	let _outcome = main ();
 	
+	#[ cfg (feature = "zt-runtime-allocator") ]
 	if allocator::DEBUG_REPORT {
 		allocator::report ();
 	}
@@ -100,6 +103,7 @@ pub fn main () -> MainResult<ExitCode> {
 			main_generate (_arguments)
 		}
 		
+		#[ cfg (feature = "zt-embedded-help") ]
 		(&["help"], _) | (&["h"], _) |
 		(&[], &["--help"]) | (&[], &["-h"]) |
 		(&[], &["--help-text"]) =>
@@ -114,22 +118,29 @@ pub fn main () -> MainResult<ExitCode> {
 		(&[], &["--version"]) | (&[], &["-v"]) =>
 			print_version_and_exit (true),
 		
+		#[ cfg (feature = "zt-embedded-readme") ]
 		(&[], &["--readme"]) |
 		(&[], &["--readme-text"]) =>
 			print_and_exit (&[README_TEXT], true),
+		#[ cfg (feature = "zt-embedded-readme") ]
 		(&[], &["--readme-html"]) =>
 			print_and_exit (&[README_HTML], true),
 		
+		#[ cfg (feature = "zt-embedded-sbom") ]
 		(&[], &["--sbom"]) |
 		(&[], &["--sbom-text"]) =>
 			print_and_exit (&[SBOM_TEXT], true),
+		#[ cfg (feature = "zt-embedded-sbom") ]
 		(&[], &["--sbom-html"]) =>
 			print_and_exit (&[SBOM_HTML], true),
+		#[ cfg (feature = "zt-embedded-sbom") ]
 		(&[], &["--sbom-json"]) =>
 			print_and_exit (&[SBOM_JSON], true),
 		
+		#[ cfg (feature = "zt-embedded-sources") ]
 		(&[], &["--sources-md5"]) =>
 			dump_and_exit (BUILD_SOURCES_MD5.as_bytes (), true),
+		#[ cfg (feature = "zt-embedded-sources") ]
 		(&[], &["--sources-cpio"]) =>
 			dump_and_exit (BUILD_SOURCES_CPIO_GZ, true),
 		
@@ -166,10 +177,15 @@ fn print_version_and_exit (_succeed : bool) -> MainResult<ExitCode> {
 			}
 		};
 	
+	#[ cfg (feature = "zt-embedded-build-meta") ]
 	let _build_version = BUILD_VERSION.trim_matches ('\n');
+	#[ cfg (feature = "zt-embedded-build-meta") ]
 	let _build_number = BUILD_NUMBER.trim_matches ('\n');
+	#[ cfg (feature = "zt-embedded-build-meta") ]
 	let _build_timestamp = BUILD_TIMESTAMP.trim_matches ('\n');
+	#[ cfg (feature = "zt-embedded-build-meta") ]
 	let _build_git_hash = BUILD_GIT_HASH.trim_matches ('\n');
+	#[ cfg (feature = "zt-embedded-sources") ]
 	let _build_sources_hash = BUILD_SOURCES_HASH.trim_matches ('\n');
 	
 	let _uname = match ::platform_info::PlatformInfo::new () {
@@ -190,18 +206,29 @@ fn print_version_and_exit (_succeed : bool) -> MainResult<ExitCode> {
 	print_and_exit (&[
 			
 			& format! ("* tool          : {}\n", _executable_name),
+			
+			#[ cfg (feature = "zt-embedded-build-meta") ]
 			& format! ("* version       : {}\n", _build_version),
+			
 			& if _executable0 == _executable {
 				format! ("* executable    : {}\n", _executable.display ())
 			} else {
 				format! ("* executable    : {}\n", _executable.display ()) + &
 				format! ("* executable-0  : {}\n", _executable0.display ())
 			},
+			
+			#[ cfg (feature = "zt-embedded-build-meta") ]
 			& format! ("* build target  : {}\n", BUILD_TARGET_TYPE),
+			#[ cfg (feature = "zt-embedded-build-meta") ]
 			& format! ("* build number  : {}, {}\n", _build_number, _build_timestamp),
+			
 			& format! ("* code & issues : {}\n", PROJECT_URL),
+			
+			#[ cfg (feature = "zt-embedded-build-meta") ]
 			& format! ("* sources git   : {}\n", _build_git_hash),
+			#[ cfg (feature = "zt-embedded-sources") ]
 			& format! ("* sources hash  : {}\n", _build_sources_hash),
+			
 			& format! ("* uname node    : {}\n", _uname_node),
 			& format! ("* uname system  : {}, {}, {}\n", _uname_system, _uname_release, _uname_machine),
 		//	& format! ("* uname hash    : {}\n", _uname_fingerprint),
@@ -212,6 +239,7 @@ fn print_version_and_exit (_succeed : bool) -> MainResult<ExitCode> {
 
 
 
+#[ allow (dead_code) ]
 fn print_and_exit (_chunks : &[impl AsRef<str>], _success : bool) -> MainResult<ExitCode> {
 	
 	let mut _stream = BufWriter::with_capacity (IO_BUFFER_SIZE, stdout_locked ());
@@ -230,6 +258,7 @@ fn print_and_exit (_chunks : &[impl AsRef<str>], _success : bool) -> MainResult<
 }
 
 
+#[ allow (dead_code) ]
 fn dump_and_exit (_data : &[u8], _success : bool) -> MainResult<ExitCode> {
 	
 	let mut _stream = stdout_locked ();
@@ -251,33 +280,46 @@ fn dump_and_exit (_data : &[u8], _success : bool) -> MainResult<ExitCode> {
 static PROJECT_URL : &'static str = "https://github.com/volution/z-tokens";
 
 
+#[ cfg (feature = "zt-embedded-readme") ]
 static README_TEXT : &'static str = include_str! ("./_embedded/readme/readme.txt");
+#[ cfg (feature = "zt-embedded-readme") ]
 static README_HTML : &'static str = include_str! ("./_embedded/readme/readme.html");
 
 
+#[ cfg (feature = "zt-embedded-help") ]
 static HELP_MAIN_TEXT : &'static str = include_str! ("./_embedded/help/main.txt");
 
+#[ cfg (feature = "zt-embedded-help") ]
 static HELP_HEADER_TEXT : &'static str = include_str! ("./_embedded/help/_header.txt");
+#[ cfg (feature = "zt-embedded-help") ]
 static HELP_FOOTER_TEXT : &'static str = include_str! ("./_embedded/help/_footer.txt");
 
 
+#[ cfg (feature = "zt-embedded-sbom") ]
 static SBOM_TEXT : &'static str = include_str! ("./_embedded/sbom/sbom.txt");
+#[ cfg (feature = "zt-embedded-sbom") ]
 static SBOM_HTML : &'static str = include_str! ("./_embedded/sbom/sbom.html");
+#[ cfg (feature = "zt-embedded-sbom") ]
 static SBOM_JSON : &'static str = include_str! ("./_embedded/sbom/sbom.json");
 
 
+#[ cfg (feature = "zt-embedded-build-meta") ]
 static BUILD_VERSION : &'static str = include_str! ("./_embedded/build/version.txt");
+#[ cfg (feature = "zt-embedded-build-meta") ]
 static BUILD_NUMBER : &'static str = include_str! ("./_embedded/build/number.txt");
+#[ cfg (feature = "zt-embedded-build-meta") ]
 static BUILD_TIMESTAMP : &'static str = include_str! ("./_embedded/build/timestamp.txt");
 
+#[ cfg (feature = "zt-embedded-sources") ]
 static BUILD_SOURCES_HASH : &'static str = include_str! ("./_embedded/build/sources.hash");
+#[ cfg (feature = "zt-embedded-sources") ]
 static BUILD_SOURCES_MD5 : &'static str = include_str! ("./_embedded/build/sources.md5");
 
-#[ cfg (feature = "embedded-sources") ]
+#[ cfg (feature = "zt-embedded-sources") ]
 static BUILD_SOURCES_CPIO_GZ : &'static [u8] = include_bytes! ("./_embedded/build/sources.cpio.gz");
-#[ cfg (not (feature = "embedded-sources")) ]
-static BUILD_SOURCES_CPIO_GZ : &'static [u8] = &[];
 
+#[ cfg (feature = "zt-embedded-build-meta") ]
 static BUILD_GIT_HASH : &'static str = if let Some (_value) = ::std::option_env! ("__META__BUILD_GIT_HASH") { _value } else { "{unknown-bgh}" };
+#[ cfg (feature = "zt-embedded-build-meta") ]
 static BUILD_TARGET_TYPE : &'static str = if let Some (_value) = ::std::option_env! ("__META__BUILD_TARGET_TYPE") { _value } else { "{unknown-btt}" };
 

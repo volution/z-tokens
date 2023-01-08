@@ -35,7 +35,6 @@ use ::memsec;
 
 
 
-#[ cfg (feature = "allocator") ]
 #[ global_allocator ]
 pub(crate) static GLOBAL : Allocator = Allocator::new ();
 
@@ -249,21 +248,16 @@ impl Allocator {
 
 
 pub(crate) fn report () -> () {
-	#[ cfg (feature = "allocator") ]
 	GLOBAL.report ();
 }
 
 
 pub(crate) fn reset () -> () {
-	#[ cfg (feature = "allocator") ]
 	GLOBAL.reset ();
 }
 
 
 pub(crate) fn is_empty () -> Option<bool> {
-	#[ cfg (feature = "allocator") ]
 	return Some (GLOBAL.is_empty ());
-	#[ cfg (not (feature = "allocator")) ]
-	return None;
 }
 

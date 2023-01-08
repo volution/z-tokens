@@ -29,15 +29,122 @@ path = "./lib.rs"
 
 
 [features]
+
 default = [
-#	"release",
+	"zt-patterns-all",
+	"zt-embedded-basic",
+	"zt-embedded-readme",
 ]
+
+
+development = [
+	"zt-patterns-basic",
+]
+
 release = [
-	"allocator",
-	"embedded-sources",
+	"zt-patterns-all",
+	"zt-embedded-all",
+	"zt-runtime-allocator",
 ]
-allocator = []
-embedded-sources = []
+
+
+zt-runtime-allocator = []
+
+
+zt-embedded-all = [
+	"zt-embedded-basic",
+	"zt-embedded-readme",
+	"zt-embedded-sbom",
+	"zt-embedded-sources",
+	"zt-embedded-build-meta",
+]
+zt-embedded-basic = [
+	"zt-embedded-help",
+]
+zt-embedded-readme = []
+zt-embedded-help = []
+zt-embedded-sbom = []
+zt-embedded-sources = []
+zt-embedded-build-meta = []
+
+
+zt-patterns-all = [
+	"zt-patterns-basic",
+	"zt-patterns-extra",
+]
+zt-patterns-basic = [
+	"zt-patterns-digits-basic",
+	"zt-patterns-ascii",
+]
+zt-patterns-extra = [
+	"zt-patterns-digits-extra",
+	"zt-patterns-consonant-vowel",
+	"zt-patterns-proquint",
+	"zt-patterns-koremutake",
+	"zt-patterns-mnemonic",
+	"zt-patterns-bip0039",
+	"zt-patterns-skey",
+	"zt-patterns-pgp",
+	"zt-patterns-eff-all",
+	"zt-patterns-nato",
+	"zt-patterns-uuid",
+	"zt-patterns-ip",
+	"zt-patterns-bytes",
+	"zt-patterns-timestamp",
+	"zt-patterns-flake",
+]
+
+zt-patterns-digits-all = [
+	"zt-patterns-digits-basic",
+	"zt-patterns-digits-extra",
+]
+zt-patterns-digits-basic = [
+	"zt-patterns-digits-base10",
+	"zt-patterns-digits-base16",
+]
+zt-patterns-digits-extra = [
+	"zt-patterns-digits-base2",
+	"zt-patterns-digits-base8",
+	"zt-patterns-digits-base32",
+	"zt-patterns-digits-base64",
+	"zt-patterns-digits-base58",
+	"zt-patterns-digits-base62",
+	"zt-patterns-digits-bech32",
+	"zt-patterns-digits-z85",
+]
+zt-patterns-digits-base10 = []
+zt-patterns-digits-base2 = []
+zt-patterns-digits-base8 = []
+zt-patterns-digits-base16 = []
+zt-patterns-digits-base32 = []
+zt-patterns-digits-base64 = []
+zt-patterns-digits-base58 = []
+zt-patterns-digits-base62 = []
+zt-patterns-digits-bech32 = []
+zt-patterns-digits-z85 = []
+
+zt-patterns-ascii = []
+zt-patterns-consonant-vowel = []
+zt-patterns-proquint = []
+zt-patterns-koremutake = []
+zt-patterns-mnemonic = []
+zt-patterns-bip0039 = []
+zt-patterns-skey = []
+zt-patterns-pgp = []
+zt-patterns-eff-all = [
+	"zt-patterns-eff-large",
+	"zt-patterns-eff-short",
+	"zt-patterns-eff-unique",
+]
+zt-patterns-eff-large = []
+zt-patterns-eff-short = []
+zt-patterns-eff-unique = []
+zt-patterns-nato = []
+zt-patterns-uuid = []
+zt-patterns-ip = []
+zt-patterns-bytes = []
+zt-patterns-timestamp = []
+zt-patterns-flake = []
 
 
 

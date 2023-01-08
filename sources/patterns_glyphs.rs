@@ -1,5 +1,11 @@
 
 
+#![ allow (unused_macros) ]
+#![ allow (unused_imports) ]
+
+
+
+
 use crate::prelude::*;
 
 
@@ -7,13 +13,25 @@ use crate::patterns_macros as macros;
 
 
 use crate::patterns_consts::ascii::*;
+
+#[ cfg (feature = "zt-patterns-mnemonic") ]
 use crate::patterns_consts::mnemonic::*;
+#[ cfg (feature = "zt-patterns-bip0039") ]
 use crate::patterns_consts::bip0039::*;
+#[ cfg (feature = "zt-patterns-skey") ]
 use crate::patterns_consts::skey::*;
+#[ cfg (feature = "zt-patterns-pgp") ]
 use crate::patterns_consts::pgp::*;
+#[ cfg (feature = "zt-patterns-eff-large") ]
 use crate::patterns_consts::eff_large::*;
+#[ cfg (feature = "zt-patterns-eff-short") ]
 use crate::patterns_consts::eff_short::*;
+#[ cfg (feature = "zt-patterns-eff-unique") ]
 use crate::patterns_consts::eff_unique::*;
+
+
+
+
 
 
 
@@ -100,15 +118,21 @@ macro_rules! define_timestamp {
 
 
 
-define_set! (pub DIGIT_BASE2, Char, [ '0', '1', ]);
-define_set! (pub DIGIT_BASE8, Char, [ '0', '1', '2', '3', '4', '5', '6', '7', ]);
+#[ cfg (feature = "zt-patterns-digits-base10") ]
 define_set! (pub DIGIT_BASE10, Char, [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ]);
 
+#[ cfg (feature = "zt-patterns-digits-base2") ]
+define_set! (pub DIGIT_BASE2, Char, [ '0', '1', ]);
+#[ cfg (feature = "zt-patterns-digits-base8") ]
+define_set! (pub DIGIT_BASE8, Char, [ '0', '1', '2', '3', '4', '5', '6', '7', ]);
+
+#[ cfg (feature = "zt-patterns-digits-base16") ]
 define_set! (pub DIGIT_BASE16, Char, [
 		'0', '1', '2', '3', '4', '5', '6', '7',
 		'8', '9', 'a', 'b', 'c', 'd', 'e', 'f',
 	]);
 
+#[ cfg (feature = "zt-patterns-digits-base32") ]
 define_set! (pub DIGIT_BASE32_HEX, Char, [
 		'0', '1', '2', '3', '4', '5', '6', '7',
 		'8', '9', 'a', 'b', 'c', 'd', 'e', 'f',
@@ -121,6 +145,7 @@ define_set! (pub DIGIT_BASE32_HEX, Char, [
 
 // NOTE:  =>  https://www.ietf.org/rfc/rfc4648.html
 // NOTE:  #>  python -c 'print (", ".join ([ repr(c) for c in r""" abcdefgh ijklmnop qrstuvw xyz234567 """ if c != " " ]))'
+#[ cfg (feature = "zt-patterns-digits-base32") ]
 define_set! (pub DIGIT_BASE32_RFC, Char, [
 		'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
 		'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
@@ -130,6 +155,7 @@ define_set! (pub DIGIT_BASE32_RFC, Char, [
 
 // NOTE:  =>  https://www.ietf.org/rfc/rfc4648.html
 // NOTE:  #>  python -c 'print (", ".join ([ repr(c) for c in r""" ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 +/ """ if c != " " ]))'
+#[ cfg (feature = "zt-patterns-digits-base64") ]
 define_set! (pub DIGIT_BASE64_RFC, Char, [
 		'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
 		'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
@@ -142,6 +168,7 @@ define_set! (pub DIGIT_BASE64_RFC, Char, [
 	]);
 
 // NOTE:  #>  python -c 'print (", ".join ([ repr(c) for c in r""" ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 -_ """ if c != " " ]))'
+#[ cfg (feature = "zt-patterns-digits-base64") ]
 define_set! (pub DIGIT_BASE64_URL, Char, [
 		'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
 		'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
@@ -158,6 +185,7 @@ define_set! (pub DIGIT_BASE64_URL, Char, [
 
 // NOTE:  =>  https://en.bitcoinwiki.org/wiki/Base58
 // NOTE:  #>  python -c 'print (", ".join ([ repr(c) for c in r""" 123456789 ABCDEFGH JKLMN PQRSTUVWXYZ abcdefghijk mnopqrstuvwxyz """ if c != " " ]))'
+#[ cfg (feature = "zt-patterns-digits-base58") ]
 define_set! (pub DIGIT_BASE58, Char, [
 		'1', '2', '3', '4', '5', '6', '7', '8', '9',
 		'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
@@ -169,6 +197,7 @@ define_set! (pub DIGIT_BASE58, Char, [
 
 // NOTE:  =>  https://en.wikipedia.org/wiki/Base62
 // NOTE:  #>  python -c 'print (", ".join ([ repr(c) for c in r""" 0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz """ if c != " " ]))'
+#[ cfg (feature = "zt-patterns-digits-base62") ]
 define_set! (pub DIGIT_BASE62, Char, [
 		'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 		'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
@@ -177,6 +206,7 @@ define_set! (pub DIGIT_BASE62, Char, [
 
 // NOTE:  =>  https://en.bitcoin.it/wiki/BIP_0173
 // NOTE:  #>  python -c 'print (", ".join ([ repr(c) for c in r""" qpzry9x8 gf2tvdw0 s3jn54kh ce6mua7l """ if c != " " ]))'
+#[ cfg (feature = "zt-patterns-digits-bech32") ]
 define_set! (pub DIGIT_BECH32, Char, [
 		'q', 'p', 'z', 'r', 'y', '9', 'x', '8',
 		'g', 'f', '2', 't', 'v', 'd', 'w', '0',
@@ -185,6 +215,7 @@ define_set! (pub DIGIT_BECH32, Char, [
 	]);
 
 // NOTE:  =>  https://rfc.zeromq.org/spec/32/
+#[ cfg (feature = "zt-patterns-digits-z85") ]
 define_set! (pub DIGIT_Z85, Char, [
 		'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 		'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
@@ -257,18 +288,22 @@ define_set! (pub ASCII_PRINTABLE, Char, [
 
 // NOTE:  =>  https://github.com/dsw/proquint/blob/master/proquint-proposal.txt
 
+#[ cfg (feature = "zt-patterns-proquint") ]
 define_set! (pub PROQUINT_CONSONANT_LOWER, Char, [
 		'b', 'd', 'f', 'g', 'h', 'j', 'k', 'l',
 		'm', 'n', 'p', 'r', 's', 't', 'v', 'z',
 	]);
+#[ cfg (feature = "zt-patterns-proquint") ]
 define_set! (pub PROQUINT_VOWEL_LOWER, Char, [
 		'a', 'i', 'o', 'u',
 	]);
 
+#[ cfg (feature = "zt-patterns-proquint") ]
 define_set! (pub PROQUINT_CONSONANT_UPPER, Char, [
 		'B', 'D', 'F', 'G', 'H', 'J', 'K', 'L',
 		'M', 'N', 'P', 'R', 'S', 'T', 'V', 'Z',
 	]);
+#[ cfg (feature = "zt-patterns-proquint") ]
 define_set! (pub PROQUINT_VOWEL_UPPER, Char, [
 		'A', 'I', 'O', 'U',
 	]);
@@ -277,6 +312,7 @@ define_set! (pub PROQUINT_VOWEL_UPPER, Char, [
 
 
 // NOTE:  =>  https://shorl.com/koremutake.php
+#[ cfg (feature = "zt-patterns-koremutake") ]
 define_set! (pub KOREMUTAKE_SYLLABLE, Str, [
 		"ba", "be", "bi", "bo", "bu", "by", "da", "de",
 		"di", "do", "du", "dy", "fa", "fe", "fi", "fo",
@@ -299,6 +335,7 @@ define_set! (pub KOREMUTAKE_SYLLABLE, Str, [
 
 
 
+#[ cfg (feature = "zt-patterns-mnemonic") ]
 define_set! (pub MNEMONIC_WORD, Str, [
 		MW0001, MW0002, MW0003, MW0004, MW0005, MW0006, MW0007, MW0008, MW0009, MW0010, MW0011, MW0012, MW0013, MW0014, MW0015, MW0016, MW0017, MW0018, MW0019, MW0020, MW0021, MW0022, MW0023, MW0024, MW0025, MW0026, MW0027, MW0028, MW0029, MW0030, MW0031, MW0032, MW0033, MW0034, MW0035, MW0036, MW0037, MW0038, MW0039, MW0040, MW0041, MW0042, MW0043, MW0044, MW0045, MW0046, MW0047, MW0048, MW0049, MW0050, MW0051, MW0052, MW0053, MW0054, MW0055, MW0056, MW0057, MW0058, MW0059, MW0060, MW0061, MW0062, MW0063, MW0064, MW0065, MW0066, MW0067, MW0068, MW0069, MW0070, MW0071, MW0072, MW0073, MW0074, MW0075, MW0076, MW0077, MW0078, MW0079, MW0080, MW0081, MW0082, MW0083, MW0084, MW0085, MW0086, MW0087, MW0088, MW0089, MW0090, MW0091, MW0092, MW0093, MW0094, MW0095, MW0096, MW0097, MW0098, MW0099, MW0100,
 		MW0101, MW0102, MW0103, MW0104, MW0105, MW0106, MW0107, MW0108, MW0109, MW0110, MW0111, MW0112, MW0113, MW0114, MW0115, MW0116, MW0117, MW0118, MW0119, MW0120, MW0121, MW0122, MW0123, MW0124, MW0125, MW0126, MW0127, MW0128, MW0129, MW0130, MW0131, MW0132, MW0133, MW0134, MW0135, MW0136, MW0137, MW0138, MW0139, MW0140, MW0141, MW0142, MW0143, MW0144, MW0145, MW0146, MW0147, MW0148, MW0149, MW0150, MW0151, MW0152, MW0153, MW0154, MW0155, MW0156, MW0157, MW0158, MW0159, MW0160, MW0161, MW0162, MW0163, MW0164, MW0165, MW0166, MW0167, MW0168, MW0169, MW0170, MW0171, MW0172, MW0173, MW0174, MW0175, MW0176, MW0177, MW0178, MW0179, MW0180, MW0181, MW0182, MW0183, MW0184, MW0185, MW0186, MW0187, MW0188, MW0189, MW0190, MW0191, MW0192, MW0193, MW0194, MW0195, MW0196, MW0197, MW0198, MW0199, MW0200,
@@ -322,6 +359,7 @@ define_set! (pub MNEMONIC_WORD, Str, [
 
 
 
+#[ cfg (feature = "zt-patterns-bip0039") ]
 define_set! (pub BIP0039_WORD, Str, [
 		BW0001, BW0002, BW0003, BW0004, BW0005, BW0006, BW0007, BW0008, BW0009, BW0010, BW0011, BW0012, BW0013, BW0014, BW0015, BW0016, BW0017, BW0018, BW0019, BW0020, BW0021, BW0022, BW0023, BW0024, BW0025, BW0026, BW0027, BW0028, BW0029, BW0030, BW0031, BW0032, BW0033, BW0034, BW0035, BW0036, BW0037, BW0038, BW0039, BW0040, BW0041, BW0042, BW0043, BW0044, BW0045, BW0046, BW0047, BW0048, BW0049, BW0050, BW0051, BW0052, BW0053, BW0054, BW0055, BW0056, BW0057, BW0058, BW0059, BW0060, BW0061, BW0062, BW0063, BW0064, BW0065, BW0066, BW0067, BW0068, BW0069, BW0070, BW0071, BW0072, BW0073, BW0074, BW0075, BW0076, BW0077, BW0078, BW0079, BW0080, BW0081, BW0082, BW0083, BW0084, BW0085, BW0086, BW0087, BW0088, BW0089, BW0090, BW0091, BW0092, BW0093, BW0094, BW0095, BW0096, BW0097, BW0098, BW0099, BW0100, BW0101, BW0102, BW0103, BW0104, BW0105, BW0106, BW0107, BW0108, BW0109, BW0110, BW0111, BW0112, BW0113, BW0114, BW0115, BW0116, BW0117, BW0118, BW0119, BW0120, BW0121, BW0122, BW0123, BW0124, BW0125, BW0126, BW0127, BW0128,
 		BW0129, BW0130, BW0131, BW0132, BW0133, BW0134, BW0135, BW0136, BW0137, BW0138, BW0139, BW0140, BW0141, BW0142, BW0143, BW0144, BW0145, BW0146, BW0147, BW0148, BW0149, BW0150, BW0151, BW0152, BW0153, BW0154, BW0155, BW0156, BW0157, BW0158, BW0159, BW0160, BW0161, BW0162, BW0163, BW0164, BW0165, BW0166, BW0167, BW0168, BW0169, BW0170, BW0171, BW0172, BW0173, BW0174, BW0175, BW0176, BW0177, BW0178, BW0179, BW0180, BW0181, BW0182, BW0183, BW0184, BW0185, BW0186, BW0187, BW0188, BW0189, BW0190, BW0191, BW0192, BW0193, BW0194, BW0195, BW0196, BW0197, BW0198, BW0199, BW0200, BW0201, BW0202, BW0203, BW0204, BW0205, BW0206, BW0207, BW0208, BW0209, BW0210, BW0211, BW0212, BW0213, BW0214, BW0215, BW0216, BW0217, BW0218, BW0219, BW0220, BW0221, BW0222, BW0223, BW0224, BW0225, BW0226, BW0227, BW0228, BW0229, BW0230, BW0231, BW0232, BW0233, BW0234, BW0235, BW0236, BW0237, BW0238, BW0239, BW0240, BW0241, BW0242, BW0243, BW0244, BW0245, BW0246, BW0247, BW0248, BW0249, BW0250, BW0251, BW0252, BW0253, BW0254, BW0255, BW0256,
@@ -344,6 +382,7 @@ define_set! (pub BIP0039_WORD, Str, [
 
 
 
+#[ cfg (feature = "zt-patterns-skey") ]
 define_set! (pub SKEY_WORD, Str, [
 		SKW0001, SKW0002, SKW0003, SKW0004, SKW0005, SKW0006, SKW0007, SKW0008, SKW0009, SKW0010, SKW0011, SKW0012, SKW0013, SKW0014, SKW0015, SKW0016, SKW0017, SKW0018, SKW0019, SKW0020, SKW0021, SKW0022, SKW0023, SKW0024, SKW0025, SKW0026, SKW0027, SKW0028, SKW0029, SKW0030, SKW0031, SKW0032, SKW0033, SKW0034, SKW0035, SKW0036, SKW0037, SKW0038, SKW0039, SKW0040, SKW0041, SKW0042, SKW0043, SKW0044, SKW0045, SKW0046, SKW0047, SKW0048, SKW0049, SKW0050, SKW0051, SKW0052, SKW0053, SKW0054, SKW0055, SKW0056, SKW0057, SKW0058, SKW0059, SKW0060, SKW0061, SKW0062, SKW0063, SKW0064, SKW0065, SKW0066, SKW0067, SKW0068, SKW0069, SKW0070, SKW0071, SKW0072, SKW0073, SKW0074, SKW0075, SKW0076, SKW0077, SKW0078, SKW0079, SKW0080, SKW0081, SKW0082, SKW0083, SKW0084, SKW0085, SKW0086, SKW0087, SKW0088, SKW0089, SKW0090, SKW0091, SKW0092, SKW0093, SKW0094, SKW0095, SKW0096, SKW0097, SKW0098, SKW0099, SKW0100, SKW0101, SKW0102, SKW0103, SKW0104, SKW0105, SKW0106, SKW0107, SKW0108, SKW0109, SKW0110, SKW0111, SKW0112, SKW0113, SKW0114, SKW0115, SKW0116, SKW0117, SKW0118, SKW0119, SKW0120, SKW0121, SKW0122, SKW0123, SKW0124, SKW0125, SKW0126, SKW0127, SKW0128,
 		SKW0129, SKW0130, SKW0131, SKW0132, SKW0133, SKW0134, SKW0135, SKW0136, SKW0137, SKW0138, SKW0139, SKW0140, SKW0141, SKW0142, SKW0143, SKW0144, SKW0145, SKW0146, SKW0147, SKW0148, SKW0149, SKW0150, SKW0151, SKW0152, SKW0153, SKW0154, SKW0155, SKW0156, SKW0157, SKW0158, SKW0159, SKW0160, SKW0161, SKW0162, SKW0163, SKW0164, SKW0165, SKW0166, SKW0167, SKW0168, SKW0169, SKW0170, SKW0171, SKW0172, SKW0173, SKW0174, SKW0175, SKW0176, SKW0177, SKW0178, SKW0179, SKW0180, SKW0181, SKW0182, SKW0183, SKW0184, SKW0185, SKW0186, SKW0187, SKW0188, SKW0189, SKW0190, SKW0191, SKW0192, SKW0193, SKW0194, SKW0195, SKW0196, SKW0197, SKW0198, SKW0199, SKW0200, SKW0201, SKW0202, SKW0203, SKW0204, SKW0205, SKW0206, SKW0207, SKW0208, SKW0209, SKW0210, SKW0211, SKW0212, SKW0213, SKW0214, SKW0215, SKW0216, SKW0217, SKW0218, SKW0219, SKW0220, SKW0221, SKW0222, SKW0223, SKW0224, SKW0225, SKW0226, SKW0227, SKW0228, SKW0229, SKW0230, SKW0231, SKW0232, SKW0233, SKW0234, SKW0235, SKW0236, SKW0237, SKW0238, SKW0239, SKW0240, SKW0241, SKW0242, SKW0243, SKW0244, SKW0245, SKW0246, SKW0247, SKW0248, SKW0249, SKW0250, SKW0251, SKW0252, SKW0253, SKW0254, SKW0255, SKW0256,
@@ -366,6 +405,7 @@ define_set! (pub SKEY_WORD, Str, [
 
 
 
+#[ cfg (feature = "zt-patterns-pgp") ]
 define_set! (pub PGP_EVEN_WORD, Str, [
 		PEW001, PEW002, PEW003, PEW004, PEW005, PEW006, PEW007, PEW008, PEW009, PEW010, PEW011, PEW012, PEW013, PEW014, PEW015, PEW016,
 		PEW017, PEW018, PEW019, PEW020, PEW021, PEW022, PEW023, PEW024, PEW025, PEW026, PEW027, PEW028, PEW029, PEW030, PEW031, PEW032,
@@ -385,6 +425,7 @@ define_set! (pub PGP_EVEN_WORD, Str, [
 		PEW241, PEW242, PEW243, PEW244, PEW245, PEW246, PEW247, PEW248, PEW249, PEW250, PEW251, PEW252, PEW253, PEW254, PEW255, PEW256,
 	]);
 
+#[ cfg (feature = "zt-patterns-pgp") ]
 define_set! (pub PGP_ODD_WORD, Str, [
 		POW001, POW002, POW003, POW004, POW005, POW006, POW007, POW008, POW009, POW010, POW011, POW012, POW013, POW014, POW015, POW016,
 		POW017, POW018, POW019, POW020, POW021, POW022, POW023, POW024, POW025, POW026, POW027, POW028, POW029, POW030, POW031, POW032,
@@ -407,6 +448,7 @@ define_set! (pub PGP_ODD_WORD, Str, [
 
 
 
+#[ cfg (feature = "zt-patterns-eff-large") ]
 define_set! (pub EFF_LARGE_WORD, Str, [
 		ELW0001, ELW0002, ELW0003, ELW0004, ELW0005, ELW0006, ELW0007, ELW0008, ELW0009, ELW0010, ELW0011, ELW0012, ELW0013, ELW0014, ELW0015, ELW0016, ELW0017, ELW0018, ELW0019, ELW0020, ELW0021, ELW0022, ELW0023, ELW0024, ELW0025, ELW0026, ELW0027, ELW0028, ELW0029, ELW0030, ELW0031, ELW0032, ELW0033, ELW0034, ELW0035, ELW0036,
 		ELW0037, ELW0038, ELW0039, ELW0040, ELW0041, ELW0042, ELW0043, ELW0044, ELW0045, ELW0046, ELW0047, ELW0048, ELW0049, ELW0050, ELW0051, ELW0052, ELW0053, ELW0054, ELW0055, ELW0056, ELW0057, ELW0058, ELW0059, ELW0060, ELW0061, ELW0062, ELW0063, ELW0064, ELW0065, ELW0066, ELW0067, ELW0068, ELW0069, ELW0070, ELW0071, ELW0072,
@@ -627,6 +669,7 @@ define_set! (pub EFF_LARGE_WORD, Str, [
 	]);
 
 
+#[ cfg (feature = "zt-patterns-eff-short") ]
 define_set! (pub EFF_SHORT_WORD, Str, [
 		ESW0001, ESW0002, ESW0003, ESW0004, ESW0005, ESW0006, ESW0007, ESW0008, ESW0009, ESW0010, ESW0011, ESW0012, ESW0013, ESW0014, ESW0015, ESW0016, ESW0017, ESW0018, ESW0019, ESW0020, ESW0021, ESW0022, ESW0023, ESW0024, ESW0025, ESW0026, ESW0027, ESW0028, ESW0029, ESW0030, ESW0031, ESW0032, ESW0033, ESW0034, ESW0035, ESW0036,
 		ESW0037, ESW0038, ESW0039, ESW0040, ESW0041, ESW0042, ESW0043, ESW0044, ESW0045, ESW0046, ESW0047, ESW0048, ESW0049, ESW0050, ESW0051, ESW0052, ESW0053, ESW0054, ESW0055, ESW0056, ESW0057, ESW0058, ESW0059, ESW0060, ESW0061, ESW0062, ESW0063, ESW0064, ESW0065, ESW0066, ESW0067, ESW0068, ESW0069, ESW0070, ESW0071, ESW0072,
@@ -667,6 +710,7 @@ define_set! (pub EFF_SHORT_WORD, Str, [
 	]);
 
 
+#[ cfg (feature = "zt-patterns-eff-unique") ]
 define_set! (pub EFF_UNIQUE_WORD, Str, [
 		EUW0001, EUW0002, EUW0003, EUW0004, EUW0005, EUW0006, EUW0007, EUW0008, EUW0009, EUW0010, EUW0011, EUW0012, EUW0013, EUW0014, EUW0015, EUW0016, EUW0017, EUW0018, EUW0019, EUW0020, EUW0021, EUW0022, EUW0023, EUW0024, EUW0025, EUW0026, EUW0027, EUW0028, EUW0029, EUW0030, EUW0031, EUW0032, EUW0033, EUW0034, EUW0035, EUW0036,
 		EUW0037, EUW0038, EUW0039, EUW0040, EUW0041, EUW0042, EUW0043, EUW0044, EUW0045, EUW0046, EUW0047, EUW0048, EUW0049, EUW0050, EUW0051, EUW0052, EUW0053, EUW0054, EUW0055, EUW0056, EUW0057, EUW0058, EUW0059, EUW0060, EUW0061, EUW0062, EUW0063, EUW0064, EUW0065, EUW0066, EUW0067, EUW0068, EUW0069, EUW0070, EUW0071, EUW0072,
@@ -710,6 +754,7 @@ define_set! (pub EFF_UNIQUE_WORD, Str, [
 
 
 // NOTE:  =>  https://en.wikipedia.org/wiki/NATO_phonetic_alphabet
+#[ cfg (feature = "zt-patterns-nato") ]
 define_set! (pub NATO_WORD, Str, [
 		"alfa", "bravo", "charlie", "delta", "echo", "foxtrot",
 		"golf", "hotel", "india", "juliett", "kilo", "lima",
@@ -731,32 +776,51 @@ define_integer! (pub INTEGER_1_30, (1 ..= 30), IntegerFormat::Decimal);
 
 define_integer! (pub INTEGER_8B_HEX, (0 ..= 255), IntegerFormat::HexPadded (2));
 
+#[ cfg (feature = "zt-patterns-uuid") ]
 define_integer! (pub UUID_ANY_FIELD_1, (0 ..= ((1 << 32) - 1)), IntegerFormat::HexPadded (8));
+#[ cfg (feature = "zt-patterns-uuid") ]
 define_integer! (pub UUID_ANY_FIELD_2, (0 ..= ((1 << 16) - 1)), IntegerFormat::HexPadded (4));
+#[ cfg (feature = "zt-patterns-uuid") ]
 define_integer! (pub UUID_ANY_FIELD_5, (0 ..= ((1 << 48) - 1)), IntegerFormat::HexPadded (12));
+#[ cfg (feature = "zt-patterns-uuid") ]
 define_integer! (pub UUID_V4_FIELD_3, (((0b0100 << 12) + 0) ..= ((0b0100 << 12) + (1 << 12) - 1)), IntegerFormat::HexPadded (4));
+#[ cfg (feature = "zt-patterns-uuid") ]
 define_integer! (pub UUID_V4_FIELD_4, (((0b10 << 14) + 0) ..= ((0b10 << 14) + (1 << 14) - 1)), IntegerFormat::HexPadded (4));
 
 
 
 
+#[ cfg (feature = "zt-patterns-bytes") ]
 define_bytes! (pub BYTES_HEX, BytesFormat::Hex, ( 512 : 1 ));
 
 
 
 
 // NOTE:  => https://docs.rs/chrono/latest/chrono/format/strftime/
+#[ cfg (feature = "zt-patterns-timestamp") ]
 define_timestamp! (pub TIMESTAMP_YEAR, TimestampFormat::Strftime ("%Y", true));
+#[ cfg (feature = "zt-patterns-timestamp") ]
 define_timestamp! (pub TIMESTAMP_MONTH, TimestampFormat::Strftime ("%m", true));
+#[ cfg (feature = "zt-patterns-timestamp") ]
 define_timestamp! (pub TIMESTAMP_DAY, TimestampFormat::Strftime ("%d", true));
+#[ cfg (feature = "zt-patterns-timestamp") ]
 define_timestamp! (pub TIMESTAMP_STRING_DATE, TimestampFormat::Strftime ("%Y-%m-%d", true));
+#[ cfg (feature = "zt-patterns-timestamp") ]
 define_timestamp! (pub TIMESTAMP_STRING_TIME, TimestampFormat::Strftime ("%H-%M-%S", true));
+#[ cfg (feature = "zt-patterns-timestamp") ]
 define_timestamp! (pub TIMESTAMP_STRING_DATETIME, TimestampFormat::Strftime ("%Y-%m-%d-%H-%M-%S", true));
+#[ cfg (feature = "zt-patterns-timestamp") ]
 define_timestamp! (pub TIMESTAMP_SECONDS_DEC, TimestampFormat::Decimal (0, 1_000_000_000, 0, 0));
+#[ cfg (feature = "zt-patterns-timestamp") ]
 define_timestamp! (pub TIMESTAMP_SECONDS_HEX, TimestampFormat::Hex (0, 1_000_000_000, 0, 10));
+#[ cfg (feature = "zt-patterns-timestamp") ]
 define_timestamp! (pub TIMESTAMP_NANOSECONDS_DEC, TimestampFormat::Decimal (0, 0, 0, 0));
+#[ cfg (feature = "zt-patterns-timestamp") ]
 define_timestamp! (pub TIMESTAMP_NANOSECONDS_HEX, TimestampFormat::Hex (0, 0, 0, 18));
+
+#[ cfg (any (feature = "zt-patterns-timestamp", feature = "zt-patterns-flake")) ]
 define_timestamp! (pub TIMESTAMP_FLAKE_SECONDS_DEC, TimestampFormat::Decimal (946684800 * 1_000_000_000, 1_000_000_000, 0, 0));
+#[ cfg (any (feature = "zt-patterns-timestamp", feature = "zt-patterns-flake")) ]
 define_timestamp! (pub TIMESTAMP_FLAKE_SECONDS_HEX, TimestampFormat::Hex (946684800 * 1_000_000_000, 1_000_000_000, 0, 8));
 
 
