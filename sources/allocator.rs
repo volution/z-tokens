@@ -42,7 +42,7 @@ pub(crate) static GLOBAL : Allocator = Allocator::new ();
 
 
 
-pub(crate) const DEBUG_MAIN : bool = false;
+pub(crate) const DEBUG_REPORT : bool = false;
 pub(crate) const DEBUG_ALLOC : bool = false;
 
 pub(crate) const USE_MALLOC : bool = false;

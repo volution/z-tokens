@@ -20,17 +20,14 @@ define_error! (pub MainError, result : MainResult);
 
 pub fn premain () -> MainResult<ExitCode> {
 	
-	if allocator::DEBUG_MAIN {
+	if allocator::DEBUG_REPORT {
 		allocator::report ();
 	}
 	
 	let _outcome = main ();
 	
-	if allocator::DEBUG_MAIN {
+	if allocator::DEBUG_REPORT {
 		allocator::report ();
-//		if _outcome.is_ok () && (crate::allocator::is_empty () == Some (false)) {
-//			::std::eprintln! ("[!!] [6056a3e9]  allocator leaked (before exiting);  ignoring!");
-//		}
 	}
 	
 	_outcome
