@@ -13,6 +13,7 @@ pub(crate) use crate::randomizer::*;
 pub(crate) use crate::entropy::*;
 pub(crate) use crate::output::*;
 pub(crate) use crate::memory::*;
+pub(crate) use crate::sensitive::*;
 
 pub(crate) use crate::patterns;
 

@@ -6,28 +6,29 @@ use crate::prelude::*;
 
 
 #[ cfg_attr (debug_assertions, derive (Debug)) ]
-pub struct Rb <Value : Sized + Sensitive + 'static> (RbRef<Value>);
+pub struct Rb <Value : Sized + Sensitive + 'static> (pub(crate) RbRef<Value>);
 
 
 #[ cfg_attr (debug_assertions, derive (Debug)) ]
-pub struct RbList <Value : Sized + Sensitive + 'static> (RbListRef<Value>);
+pub struct RbList <Value : Sized + Sensitive + 'static> (pub(crate) RbListRef<Value>);
 
 
 #[ cfg_attr (debug_assertions, derive (Debug)) ]
-enum RbRef <Value : Sized + Sensitive + 'static> {
+pub(crate) enum RbRef <Value : Sized + Sensitive + 'static> {
 	Static (&'static Value),
 	Rc (Arc<Value>),
 }
 
 
 #[ cfg_attr (debug_assertions, derive (Debug)) ]
-enum RbListRef <Value : Sized + Sensitive + 'static> {
+pub(crate) enum RbListRef <Value : Sized + Sensitive + 'static> {
 	Static (&'static [Rb<Value>]),
 	Rc (Arc<[Rb<Value>]>),
 }
 
 
-pub trait Sensitive {}
+
+
 
 
 
@@ -84,6 +85,10 @@ impl <Value : Sized + Sensitive + 'static> RbListRef<Value> {
 		}
 	}
 }
+
+
+
+
 
 
 
@@ -166,9 +171,27 @@ impl <Value : Sized + Sensitive + 'static> AsRef<[Rb<Value>]> for RbList<Value> 
 
 
 
+
+
+
+
 macro_rules! impl_as_ref {
-	( $_type : ident ) => {
-		impl AsRef<$_type> for $_type {
+	( <{ $( $_template_a : tt )* }> $_type : ty where <{ $( $_where : tt )+ }> ) => {
+		impl < $( $_template_a )* > AsRef<Self> for $_type where $( $_where )+ {
+			fn as_ref (&self) -> &Self {
+				self
+			}
+		}
+	};
+	( <{ $( $_template_a : tt )* }> $_type : ty ) => {
+		impl < $( $_template_a )* > AsRef<Self> for $_type {
+			fn as_ref (&self) -> &Self {
+				self
+			}
+		}
+	};
+	( $_type : ty ) => {
+		impl AsRef<Self> for $_type {
 			fn as_ref (&self) -> &Self {
 				self
 			}
@@ -183,89 +206,16 @@ impl_as_ref! (Glyph);
 impl_as_ref! (Separator);
 
 impl_as_ref! (TokenPattern);
+impl_as_ref! (TokenPatternTags);
+impl_as_ref! (SeparatorPattern);
 impl_as_ref! (AtomPattern);
 impl_as_ref! (GlyphPattern);
 
 impl_as_ref! (Text);
+impl_as_ref! (Bytes);
 
-
-
-
-impl <Value : Sized + Sensitive + 'static> Drop for RbRef<Value> {
-	
-	fn drop (&mut self) -> () {
-		match self {
-			Self::Static (_) => {
-				if crate::allocator::USE_MEMZERO {
-					let _junk_zero = [0 as u8; mem::size_of::<&'static u8> ()];
-					let mut _junk = Self::Static (unsafe { mem::transmute (_junk_zero) });
-					mem::swap (self, &mut _junk);
-					let _pointer = (&mut _junk) as *mut Self as *mut u8;
-					unsafe {
-						::memsec::memzero (_pointer, mem::size_of::<Self> ());
-					}
-					mem::forget (_junk);
-				}
-			}
-			Self::Rc (_) => {
-				// NOP
-			}
-		}
-	}
-}
-
-
-impl <Value : Sized + Sensitive + 'static> Drop for RbListRef<Value> {
-	
-	fn drop (&mut self) -> () {
-		match self {
-			Self::Static (_reference) => {
-				if crate::allocator::USE_MEMZERO {
-					let _junk_zero = [0 as u8; mem::size_of::<&'static [u8]> ()];
-					let mut _junk = Self::Static (unsafe { mem::transmute (_junk_zero) });
-					mem::swap (self, &mut _junk);
-					let _pointer = (&mut _junk) as *mut Self as *mut u8;
-					unsafe {
-						::memsec::memzero (_pointer, mem::size_of::<Self> ());
-					}
-					mem::forget (_junk);
-				}
-			}
-			Self::Rc (_) => {
-				// NOP
-			}
-		}
-	}
-}
-
-
-
-
-impl <Value : Sized + Sensitive + 'static> Sensitive for Rb<Value> {}
-impl <Value : Sized + Sensitive + 'static> Sensitive for RbList<Value> {}
-
-
-impl <A : Sensitive, B : Sensitive> Sensitive for (A, B) {}
-
-
-impl Sensitive for Token {}
-impl Sensitive for Atom {}
-impl Sensitive for Glyph {}
-impl Sensitive for Separator {}
-
-impl Sensitive for TokenPattern {}
-impl Sensitive for TokenPatternTags {}
-impl Sensitive for SeparatorPattern {}
-impl Sensitive for AtomPattern {}
-impl Sensitive for GlyphPattern {}
-
-
-
-
-// FIXME!
-impl Sensitive for Text {}
-impl Sensitive for Bytes {}
-impl Sensitive for u128 {}
-impl Sensitive for Cow<'static, str> {}
+impl_as_ref! (IntegerFormat);
+impl_as_ref! (BytesFormat);
+impl_as_ref! (TimestampFormat);
 
 

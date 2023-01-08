@@ -24,6 +24,7 @@ pub mod randomizer;
 pub mod entropy;
 pub mod output;
 pub mod memory;
+pub(crate) mod sensitive;
 
 
 pub mod patterns;
