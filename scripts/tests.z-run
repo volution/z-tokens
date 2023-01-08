@@ -33,8 +33,8 @@
 	done
 	printf -- '<< tests / run / all\n'
 	printf -- '\ttest "${#}" -eq 0\n'
-	printf -- '\t"${ZRUN}" ":: cargo / debug / build"\n'
-	printf -- '\t"${ZRUN}" ":: cargo / debug / collect"\n'
+	printf -- '\t"${ZRUN}" ":: cargo / release / build"\n'
+	printf -- '\t"${ZRUN}" ":: cargo / release / collect"\n'
 	printf -- '\texport -- __TESTS__NO_BUILD=true\n'
 	for _label in "${_labels[@]}" ; do
 		printf -- '\tprintf -- '\''[--]\\n\\n'\'' >&2\n'
@@ -60,15 +60,15 @@
 	test "${#}" -eq 0
 	
 	if test -z "${__TESTS__NO_BUILD:-}" ; then
-		"${ZRUN}" ':: cargo / debug / build'
-		"${ZRUN}" ':: cargo / debug / collect'
+		"${ZRUN}" ':: cargo / release / build'
+		"${ZRUN}" ':: cargo / release / collect'
 	fi
 	
 	_report="./documentation/tests/${_identifier}.txt"
 	_outputs="$( exec -- "${ZRUN}" ':: workbench / outputs' )"
 	_output="${_outputs}/tests/${_identifier}.${$}.tmp"
 	
-	_executable="${_outputs}/binaries/z-tokens--debug--linux--native"
+	_executable="${_outputs}/binaries/z-tokens--release--linux--native"
 	test -f "${_executable}"
 	test -x "${_executable}"
 	
