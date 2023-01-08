@@ -4,11 +4,18 @@
 
 
 << cargo / debug / check
-	exec -- "${ZRUN}" ':: cargo / exec' check "${@}"
+	export -- __META__BUILD_TARGET_TYPE=debug
+	exec -- "${ZRUN}" ':: cargo / exec' check --no-default-features --features development "${@}"
 !!
 
 << cargo / release / check
-	exec -- "${ZRUN}" ':: cargo / exec' check --release --features release "${@}"
+	export -- __META__BUILD_TARGET_TYPE=release
+	exec -- "${ZRUN}" ':: cargo / exec' check --release --no-default-features --features release "${@}"
+!!
+
+<< cargo / release / check / default
+	export -- __META__BUILD_TARGET_TYPE=default
+	exec -- "${ZRUN}" ':: cargo / exec' check --release "${@}"
 !!
 
 
@@ -16,12 +23,17 @@
 
 << cargo / debug / build
 	export -- __META__BUILD_TARGET_TYPE=debug
-	exec -- "${ZRUN}" ':: cargo / exec' build "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec' build --no-default-features --features development "${@}"
 !!
 
 << cargo / release / build
 	export -- __META__BUILD_TARGET_TYPE=release
-	exec -- "${ZRUN}" ':: cargo / exec' build --release --features release "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec' build --release --no-default-features --features release "${@}"
+!!
+
+<< cargo / release / build / default
+	export -- __META__BUILD_TARGET_TYPE=default
+	exec -- "${ZRUN}" ':: cargo / exec' build --release "${@}"
 !!
 
 
@@ -29,12 +41,17 @@
 
 << cargo / debug / run
 	export -- __META__BUILD_TARGET_TYPE=debug
-	exec -- "${ZRUN}" ':: cargo / exec' run "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec' run --no-default-features --features development "${@}"
 !!
 
 << cargo / release / run
 	export -- __META__BUILD_TARGET_TYPE=release
-	exec -- "${ZRUN}" ':: cargo / exec' run --release --features release "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec' run --release --no-default-features --features release "${@}"
+!!
+
+<< cargo / release / run / default
+	export -- __META__BUILD_TARGET_TYPE=default
+	exec -- "${ZRUN}" ':: cargo / exec' run --release "${@}"
 !!
 
 
@@ -54,11 +71,14 @@
 
 
 << cargo / debug / check / watch
-	exec -- "${ZRUN}" ':: watchexec / exec' ':: cargo / exec' check "${@}"
+	exec -- "${ZRUN}" ':: watchexec / exec' ':: cargo / debug / check' "${@}"
 !!
 
 << cargo / debug / run / watch
-	export -- __META__BUILD_TARGET_TYPE=debug
-	exec -- "${ZRUN}" ':: watchexec / exec' ':: cargo / exec' run "${@}"
+	exec -- "${ZRUN}" ':: watchexec / exec' ':: cargo / debug / run' "${@}"
+!!
+
+<< cargo / debug / collect / watch
+	exec -- "${ZRUN}" ':: watchexec / exec' ':: cargo / debug / collect' "${@}"
 !!
 

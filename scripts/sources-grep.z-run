@@ -65,3 +65,29 @@
 	done
 !!
 
+
+
+
+<< sources / grep / features
+	#! <bash+>
+	Z_expect_no_arguments
+	_patterns_1=(
+			'#[!]?\s*\[\s*cfg\s*\([^]]*\)\s*\]'
+		)
+	_patterns_2=(
+			'feature\s*=\s*"[^"]+"'
+		)
+	_patterns_3=(
+			's#^feature\s*=\s*"(.*)"$#\1#'
+		)
+	readarray -t -- _sources \
+		< <( exec -- find ./sources -xdev -type f \( -name '*.rs' -o -name '*.in' \) ) \
+	#
+	grep -h -o -i -P "${_patterns_1[@]/#/-e}" -- "${_sources[@]}" \
+	| sort -u \
+	| grep -o -i -P "${_patterns_2[@]/#/-e}" \
+	| sed -r "${_patterns_3[@]/#/-e}" \
+	| sort -u \
+	#
+!!
+

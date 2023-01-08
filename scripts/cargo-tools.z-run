@@ -42,6 +42,9 @@
 				test "${#}" -ge 2
 				shift -- 2
 			;;
+			( --no-default-features )
+				shift -- 1
+			;;
 			( * )
 				false
 			;;
