@@ -122,7 +122,13 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			(! _identifiers_only) && (! _all)
 			&& _identifier_prefix.is_none ()
 			&& _identifier_suffix.is_none ()
-			&& _identifier_contains.is_none ();
+			&& _identifier_contains.is_none ()
+			&& _has_all.is_none ()
+			&& _has_letters.is_none ()
+			&& _has_letters_upper.is_none ()
+			&& _has_letters_lower.is_none ()
+			&& _has_digits.is_none ()
+			&& _has_symbols.is_none ();
 	
 	let _length_maximum = if
 				(! _identifiers_only) && (! _all)
@@ -266,11 +272,11 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 					}
 				}
 				let _matched = true
-						&& _letters > usize::max (_has_letters.unwrap_or (0), _has_all.unwrap_or (0))
-						&& _letters_upper > usize::max (_has_letters_upper.unwrap_or (0), _has_all.unwrap_or (0))
-						&& _letters_lower > usize::max (_has_letters_lower.unwrap_or (0), _has_all.unwrap_or (0))
-						&& _digits > usize::max (_has_digits.unwrap_or (0), _has_all.unwrap_or (0))
-						&& _symbols > usize::max (_has_symbols.unwrap_or (0), _has_all.unwrap_or (0));
+						&& _letters >= usize::max (_has_letters.unwrap_or (0), _has_all.unwrap_or (0))
+						&& _letters_upper >= usize::max (_has_letters_upper.unwrap_or (0), _has_all.unwrap_or (0))
+						&& _letters_lower >= usize::max (_has_letters_lower.unwrap_or (0), _has_all.unwrap_or (0))
+						&& _digits >= usize::max (_has_digits.unwrap_or (0), _has_all.unwrap_or (0))
+						&& _symbols >= usize::max (_has_symbols.unwrap_or (0), _has_all.unwrap_or (0));
 				_matched_any = _matched_any || _matched;
 				if _matched_any {
 					break;
