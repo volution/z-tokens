@@ -1,0 +1,88 @@
+#!/dev/null
+
+
+
+
+<< tests / run / descriptors
+	test "${#}" -eq 0
+	cat -- ./documentation/tests/_descriptors.txt
+!!
+
+&&__ ./documentation/tests/_descriptors.txt
+
+
+
+
+<<== _ / generate / tests
+	test "${#}" -eq 0
+	readarray -t -- _descriptors \
+		< <( exec -- "${ZRUN}" ':: tests / run / descriptors' ) \
+	#
+	_labels=()
+	for _descriptor in "${_descriptors[@]}" ; do
+		case "${_descriptor}" in
+			( '#'* | '' ) continue ;;
+		esac
+		_label="${_descriptor%% :: *}"
+		_labels+=( "${_label}" )
+		_command="${_descriptor#* :: }"
+		_identifier="${_label}"
+		_identifier="${_identifier// \/ /--}"
+		_identifier="${_identifier// /-}"
+		printf -- ':: tests / run / %s :: test "${#}" -eq 0 ; exec -- "${ZRUN}" ":: tests / run / *" %q %s\n' "${_label}" "${_identifier}" "${_command}"
+	done
+	printf -- '<< tests / run / all\n'
+	printf -- '\ttest "${#}" -eq 0\n'
+	printf -- '\t"${ZRUN}" ":: cargo / debug / build"\n'
+	printf -- '\t"${ZRUN}" ":: cargo / debug / collect"\n'
+	printf -- '\texport -- __TESTS__NO_BUILD=true\n'
+	for _label in "${_labels[@]}" ; do
+		printf -- '\tprintf -- '\''[--]\\n\\n'\'' >&2\n'
+		printf -- '\t${ZRUN} ":: tests / run / "%q\n' "${_label}"
+		printf -- '\tprintf -- '\''\\n[--]\\n'\'' >&2\n'
+	done
+	printf -- '!!\n'
+!!
+
+
+
+
+--<< tests / run / *
+	
+	test "${#}" -ge 1
+	_identifier="${1}"
+	shift -- 1
+	
+	test "${#}" -ge 1
+	_command=( "${@}" )
+	shift -- "${#}"
+	
+	test "${#}" -eq 0
+	
+	if test -z "${__TESTS__NO_BUILD:-}" ; then
+		"${ZRUN}" ':: cargo / debug / build'
+		"${ZRUN}" ':: cargo / debug / collect'
+	fi
+	
+	_report="./documentation/tests/${_identifier}.txt"
+	_outputs="$( exec -- "${ZRUN}" ':: workbench / outputs' )"
+	_output="${_outputs}/tests/${_identifier}.${$}.tmp"
+	
+	_executable="${_outputs}/binaries/z-tokens--debug--linux--native"
+	test -f "${_executable}"
+	test -x "${_executable}"
+	
+	printf -- '[ii]  testing `%s` >> %s\n' "${_identifier}" "${_command[*]@Q}" >&2
+	
+	printf -- '>>  %q' z-tokens > "${_output}"
+	printf -- ' %q' "${_command[@]}" >> "${_output}"
+	printf -- '\n\n' >> "${_output}"
+	"${_executable}" "${_command[@]}" \
+		>> "${_output}" \
+	#
+	
+	mv -T -- "${_output}" "${_report}"
+	
+	head -n 10 -- "${_report}"
+!!
+

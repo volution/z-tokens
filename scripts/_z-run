@@ -12,6 +12,7 @@
 
 ::// sources / ...
 ::// documentation / ...
+::// tests / ...
 
 
 
@@ -33,6 +34,8 @@
 && _/documentation-all.z-run
 && _/documentation-readme.z-run
 && _/documentation-sbom.z-run
+
+&& _/tests.z-run
 
 && _/deploy.z-run
 && _/generate.z-run

@@ -71,7 +71,7 @@
 	
 	test -d "${_outputs}"
 	
-	for _folder in binaries markers ; do
+	for _folder in binaries markers tests ; do
 		if test ! -d "${_outputs}/${_folder}" ; then
 			mkdir -- "${_outputs}/${_folder}"
 		fi
