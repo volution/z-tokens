@@ -368,7 +368,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-ascii") ]
 define_repeat! (
 		pub ASCII_LETTER_UPPER,
-		("ascii-upper", "ascii", "password"),
+		("ascii-upper", "ascii"),
 		("ascii-upper"),
 		{ glyphs::ASCII_LETTER_UPPER_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
 		(256 : 4));
@@ -448,7 +448,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub ASCII_CONSONANT_VOWEL_UPPER,
-		("cv-upper", "cv", "ascii", "password"),
+		("cv-upper", "cv", "ascii"),
 		("cv-upper"),
 		{ ASCII_CONSONANT_VOWEL_UPPER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN },
 		(64 : 1));
@@ -577,7 +577,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-proquint") ]
 define_repeat! (
 		pub PROQUINT_UPPER,
-		("proquint-upper", "proquint", "ascii", "password"),
+		("proquint-upper", "proquint", "ascii"),
 		("proquint-upper"),
 		{ PROQUINT_UPPER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN },
 		(64 : 1));

@@ -38,7 +38,10 @@ pub fn all_token_patterns () -> RbList<(Cow<'static, str>, Rb<TokenPattern>)> {
 		}
 	}
 	
-	_collector.sort_by (|_left, _right| str::cmp (&_left.0, &_right.0));
+	// FIXME!
+	if false {
+		_collector.sort_by (|_left, _right| str::cmp (&_left.0, &_right.0));
+	}
 	
 	debug_assert! (_collector.capacity () <= TOKEN_VEC_CAPACITY, "[!!] [50582974]  {} < {}", _collector.capacity (), TOKEN_VEC_CAPACITY);
 	
