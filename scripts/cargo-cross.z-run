@@ -59,6 +59,14 @@
 
 
 
+<< cargo / dependencies / fetch / cross
+	export -- __CARGO__CROSS=true
+	exec -- "${ZRUN}" ':: cargo / dependencies / fetch' "${@}"
+!!
+
+
+
+
 --<< cargo / cross / exec / all
 	
 	_fetch=true
