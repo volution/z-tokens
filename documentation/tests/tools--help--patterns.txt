@@ -6,14 +6,18 @@ Usage:
 
 Optional arguments:
   -h,--help             Show this help message and exit
+  -a,--all              (select all patterns)
   -i,--identifiers-only (list only identifiers)
-  -a,--all              (list all patterns, including aliases)
+  -X,--show-all         (show all details)
+  --show-aliases        (show aliases)
+  --show-labels         (show labels)
   --identifier-prefix {prefix}
                         (filter if identifier has prefix)
   --identifier-suffix {suffix}
                         (filter if identifier has suffix)
   --identifier-contains {string}
                         (filter if identifier contains string)
+  -f,--label LABEL      (filter by label)
   -b,--entropy-min {bits}
                         (filter by minimum entropy in bits)
   -B,--entropy-max {bits}

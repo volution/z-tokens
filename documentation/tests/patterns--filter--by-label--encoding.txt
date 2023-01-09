@@ -1,0 +1,630 @@
+>>  z-tokens patterns --all --label encoding --random-testing
+
+::  digits-base8:4          :   12  =b :    4 c ::    6026
+::  digits-base8:8          :   24  =b :    9 c ::    6026 6103
+::  digits-base8:12         :   36  =b :   14 c ::    6026 6103 7414
+::  digits-base8:16         :   48  =b :   19 c ::    6026 6103 7414 5775
+::  digits-base8:20         :   60  =b :   24 c ::    6026 6103 7414 5775 0654
+::  digits-base8:24         :   72  =b :   29 c ::    6026 6103 7414 5775 0654 6142
+::  digits-base8:28         :   84  =b :   34 c ::    6026 6103 7414 5775 0654 6142 2556
+::  digits-base8:32         :   96  =b :   39 c ::    6026 6103 7414 5775 0654 6142 2556 2505
+::  digits-base8:36         :  108  =b :   44 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450
+::  digits-base8:40         :  120  =b :   49 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706
+::  digits-base8:44         :  132  =b :   54 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677
+::  digits-base8:48         :  144  =b :   59 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261
+::  digits-base8:52         :  156  =b :   64 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222
+::  digits-base8:56         :  168  =b :   69 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646
+::  digits-base8:60         :  180  =b :   74 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227
+::  digits-base8:64         :  192  =b :   79 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126
+::  digits-base8:68         :  204  =b :   84 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:72         :  216  =b :   89 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:76         :  228  =b :   94 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:80         :  240  =b :   99 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:84         :  252  =b :  104 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:88         :  264  =b :  109 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:92         :  276  =b :  114 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:96         :  288  =b :  119 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:100        :  300  =b :  124 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:104        :  312  =b :  129 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:108        :  324  =b :  134 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:112        :  336  =b :  139 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:116        :  348  =b :  144 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:120        :  360  =b :  149 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:124        :  372  =b :  154 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:128        :  384  =b :  159 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:132        :  396  =b :  164 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:136        :  408  =b :  169 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:140        :  420  =b :  174 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:144        :  432  =b :  179 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:148        :  444  =b :  184 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:152        :  456  =b :  189 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:156        :  468  =b :  194 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:160        :  480  =b :  199 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:164        :  492  =b :  204 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:168        :  504  =b :  209 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:172        :  516  =b :  214 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:176        :  528  =b :  219 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:180        :  540  =b :  224 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:184        :  552  =b :  229 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:188        :  564  =b :  234 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:192        :  576  =b :  239 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:196        :  588  =b :  244 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:200        :  600  =b :  249 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:204        :  612  =b :  254 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:208        :  624  =b :  259 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:212        :  636  =b :  264 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:216        :  648  =b :  269 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:220        :  660  =b :  274 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:224        :  672  =b :  279 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:228        :  684  =b :  284 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:232        :  696  =b :  289 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:236        :  708  =b :  294 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:240        :  720  =b :  299 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:244        :  732  =b :  304 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:248        :  744  =b :  309 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:252        :  756  =b :  314 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:256        :  768  =b :  319 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base16:4         :   16  =b :    4 c ::    c094
+::  digits-base16:8         :   32  =b :    9 c ::    c094 c32f
+::  digits-base16:12        :   48  =b :   14 c ::    c094 c32f 72d3
+::  digits-base16:16        :   64  =b :   19 c ::    c094 c32f 72d3 8ae1
+::  digits-base16:20        :   80  =b :   24 c ::    c094 c32f 72d3 8ae1 3011
+::  digits-base16:24        :   96  =b :   29 c ::    c094 c32f 72d3 8ae1 3011 18c1
+::  digits-base16:28        :  112  =b :   34 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a
+::  digits-base16:32        :  128  =b :   39 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9
+::  digits-base16:36        :  144  =b :   44 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0
+::  digits-base16:40        :  160  =b :   49 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d
+::  digits-base16:44        :  176  =b :   54 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee
+::  digits-base16:48        :  192  =b :   59 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835
+::  digits-base16:52        :  208  =b :   64 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81
+::  digits-base16:56        :  224  =b :   69 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e
+::  digits-base16:60        :  240  =b :   74 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da
+::  digits-base16:64        :  256  =b :   79 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973
+::  digits-base16:68        :  272  =b :   84 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:72        :  288  =b :   89 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:76        :  304  =b :   94 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:80        :  320  =b :   99 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:84        :  336  =b :  104 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:88        :  352  =b :  109 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:92        :  368  =b :  114 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:96        :  384  =b :  119 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:100       :  400  =b :  124 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:104       :  416  =b :  129 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:108       :  432  =b :  134 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:112       :  448  =b :  139 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:116       :  464  =b :  144 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:120       :  480  =b :  149 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:124       :  496  =b :  154 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:128       :  512  =b :  159 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:132       :  528  =b :  164 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:136       :  544  =b :  169 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:140       :  560  =b :  174 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:144       :  576  =b :  179 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:148       :  592  =b :  184 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:152       :  608  =b :  189 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:156       :  624  =b :  194 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:160       :  640  =b :  199 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:164       :  656  =b :  204 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:168       :  672  =b :  209 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:172       :  688  =b :  214 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:176       :  704  =b :  219 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:180       :  720  =b :  224 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:184       :  736  =b :  229 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:188       :  752  =b :  234 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:192       :  768  =b :  239 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:196       :  784  =b :  244 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:200       :  800  =b :  249 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:204       :  816  =b :  254 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:208       :  832  =b :  259 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:212       :  848  =b :  264 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:216       :  864  =b :  269 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:220       :  880  =b :  274 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:224       :  896  =b :  279 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:228       :  912  =b :  284 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:232       :  928  =b :  289 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:236       :  944  =b :  294 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:240       :  960  =b :  299 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:244       :  976  =b :  304 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:248       :  992  =b :  309 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:252       : 1008  =b :  314 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base16:256       : 1024  =b :  319 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973  [...]
+::  digits-base32-hex:4     :   20  =b :    4 c ::    n8pv
+::  digits-base32-hex:8     :   40  =b :    9 c ::    n8pv 47gk
+::  digits-base32-hex:12    :   60  =b :   14 c ::    n8pv 47gk fs2v
+::  digits-base32-hex:16    :   80  =b :   19 c ::    n8pv 47gk fs2v t02p
+::  digits-base32-hex:20    :  100  =b :   24 c ::    n8pv 47gk fs2v t02p lobv
+::  digits-base32-hex:24    :  120  =b :   29 c ::    n8pv 47gk fs2v t02p lobv 88lp
+::  digits-base32-hex:28    :  140  =b :   34 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16
+::  digits-base32-hex:32    :  160  =b :   39 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka
+::  digits-base32-hex:36    :  180  =b :   44 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq
+::  digits-base32-hex:40    :  200  =b :   49 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb
+::  digits-base32-hex:44    :  220  =b :   54 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r
+::  digits-base32-hex:48    :  240  =b :   59 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639
+::  digits-base32-hex:52    :  260  =b :   64 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo
+::  digits-base32-hex:56    :  280  =b :   69 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9
+::  digits-base32-hex:60    :  300  =b :   74 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h
+::  digits-base32-hex:64    :  320  =b :   79 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps
+::  digits-base32-hex:68    :  340  =b :   84 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:72    :  360  =b :   89 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:76    :  380  =b :   94 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:80    :  400  =b :   99 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:84    :  420  =b :  104 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:88    :  440  =b :  109 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:92    :  460  =b :  114 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:96    :  480  =b :  119 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:100   :  500  =b :  124 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:104   :  520  =b :  129 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:108   :  540  =b :  134 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:112   :  560  =b :  139 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:116   :  580  =b :  144 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:120   :  600  =b :  149 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:124   :  620  =b :  154 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:128   :  640  =b :  159 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:132   :  660  =b :  164 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:136   :  680  =b :  169 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:140   :  700  =b :  174 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:144   :  720  =b :  179 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:148   :  740  =b :  184 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:152   :  760  =b :  189 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:156   :  780  =b :  194 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:160   :  800  =b :  199 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:164   :  820  =b :  204 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:168   :  840  =b :  209 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:172   :  860  =b :  214 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:176   :  880  =b :  219 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:180   :  900  =b :  224 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:184   :  920  =b :  229 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:188   :  940  =b :  234 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:192   :  960  =b :  239 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:196   :  980  =b :  244 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:200   : 1000  =b :  249 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:204   : 1020  =b :  254 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:208   : 1040  =b :  259 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:212   : 1060  =b :  264 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:216   : 1080  =b :  269 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:220   : 1100  =b :  274 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:224   : 1120  =b :  279 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:228   : 1140  =b :  284 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:232   : 1160  =b :  289 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:236   : 1180  =b :  294 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:240   : 1200  =b :  299 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:244   : 1220  =b :  304 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:248   : 1240  =b :  309 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:252   : 1260  =b :  314 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-hex:256   : 1280  =b :  319 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639 a9vo n8b9 sj6h 4qps  [...]
+::  digits-base32-rfc:4     :   20  =b :    4 c ::    xiz7
+::  digits-base32-rfc:8     :   40  =b :    9 c ::    xiz7 ehqu
+::  digits-base32-rfc:12    :   60  =b :   14 c ::    xiz7 ehqu p4c7
+::  digits-base32-rfc:16    :   80  =b :   19 c ::    xiz7 ehqu p4c7 5acz
+::  digits-base32-rfc:20    :  100  =b :   24 c ::    xiz7 ehqu p4c7 5acz vyl7
+::  digits-base32-rfc:24    :  120  =b :   29 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz
+::  digits-base32-rfc:28    :  140  =b :   34 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg
+::  digits-base32-rfc:32    :  160  =b :   39 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk
+::  digits-base32-rfc:36    :  180  =b :   44 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2
+::  digits-base32-rfc:40    :  200  =b :   49 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l
+::  digits-base32-rfc:44    :  220  =b :   54 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3
+::  digits-base32-rfc:48    :  240  =b :   59 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj
+::  digits-base32-rfc:52    :  260  =b :   64 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y
+::  digits-base32-rfc:56    :  280  =b :   69 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj
+::  digits-base32-rfc:60    :  300  =b :   74 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr
+::  digits-base32-rfc:64    :  320  =b :   79 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4
+::  digits-base32-rfc:68    :  340  =b :   84 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:72    :  360  =b :   89 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:76    :  380  =b :   94 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:80    :  400  =b :   99 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:84    :  420  =b :  104 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:88    :  440  =b :  109 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:92    :  460  =b :  114 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:96    :  480  =b :  119 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:100   :  500  =b :  124 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:104   :  520  =b :  129 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:108   :  540  =b :  134 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:112   :  560  =b :  139 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:116   :  580  =b :  144 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:120   :  600  =b :  149 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:124   :  620  =b :  154 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:128   :  640  =b :  159 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:132   :  660  =b :  164 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:136   :  680  =b :  169 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:140   :  700  =b :  174 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:144   :  720  =b :  179 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:148   :  740  =b :  184 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:152   :  760  =b :  189 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:156   :  780  =b :  194 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:160   :  800  =b :  199 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:164   :  820  =b :  204 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:168   :  840  =b :  209 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:172   :  860  =b :  214 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:176   :  880  =b :  219 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:180   :  900  =b :  224 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:184   :  920  =b :  229 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:188   :  940  =b :  234 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:192   :  960  =b :  239 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:196   :  980  =b :  244 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:200   : 1000  =b :  249 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:204   : 1020  =b :  254 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:208   : 1040  =b :  259 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:212   : 1060  =b :  264 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:216   : 1080  =b :  269 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:220   : 1100  =b :  274 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:224   : 1120  =b :  279 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:228   : 1140  =b :  284 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:232   : 1160  =b :  289 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:236   : 1180  =b :  294 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:240   : 1200  =b :  299 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:244   : 1220  =b :  304 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:248   : 1240  =b :  309 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:252   : 1260  =b :  314 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base32-rfc:256   : 1280  =b :  319 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj kj7y xilj 4tgr e2z4  [...]
+::  digits-base64-url:4     :   24  =b :    4 c ::    lx-H
+::  digits-base64-url:8     :   48  =b :    9 c ::    lx-H Dbd7
+::  digits-base64-url:12    :   72  =b :   14 c ::    lx-H Dbd7 1Ng4
+::  digits-base64-url:16    :   96  =b :   19 c ::    lx-H Dbd7 1Ng4 E_rE
+::  digits-base64-url:20    :  120  =b :   24 c ::    lx-H Dbd7 1Ng4 E_rE nyFF
+::  digits-base64-url:24    :  144  =b :   29 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh
+::  digits-base64-url:28    :  168  =b :   34 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC
+::  digits-base64-url:32    :  192  =b :   39 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU
+::  digits-base64-url:36    :  216  =b :   44 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc
+::  digits-base64-url:40    :  240  =b :   49 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0
+::  digits-base64-url:44    :  264  =b :   54 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX
+::  digits-base64-url:48    :  288  =b :   59 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS
+::  digits-base64-url:52    :  312  =b :   64 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu
+::  digits-base64-url:56    :  336  =b :   69 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW
+::  digits-base64-url:60    :  360  =b :   74 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI
+::  digits-base64-url:64    :  384  =b :   79 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY
+::  digits-base64-url:68    :  408  =b :   84 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:72    :  432  =b :   89 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:76    :  456  =b :   94 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:80    :  480  =b :   99 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:84    :  504  =b :  104 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:88    :  528  =b :  109 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:92    :  552  =b :  114 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:96    :  576  =b :  119 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:100   :  600  =b :  124 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:104   :  624  =b :  129 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:108   :  648  =b :  134 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:112   :  672  =b :  139 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:116   :  696  =b :  144 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:120   :  720  =b :  149 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:124   :  744  =b :  154 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:128   :  768  =b :  159 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:132   :  792  =b :  164 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:136   :  816  =b :  169 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:140   :  840  =b :  174 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:144   :  864  =b :  179 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:148   :  888  =b :  184 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:152   :  912  =b :  189 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:156   :  936  =b :  194 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:160   :  960  =b :  199 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:164   :  984  =b :  204 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:168   : 1008  =b :  209 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:172   : 1032  =b :  214 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:176   : 1056  =b :  219 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:180   : 1080  =b :  224 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:184   : 1104  =b :  229 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:188   : 1128  =b :  234 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:192   : 1152  =b :  239 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:196   : 1176  =b :  244 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:200   : 1200  =b :  249 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:204   : 1224  =b :  254 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:208   : 1248  =b :  259 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:212   : 1272  =b :  264 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:216   : 1296  =b :  269 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:220   : 1320  =b :  274 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:224   : 1344  =b :  279 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:228   : 1368  =b :  284 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:232   : 1392  =b :  289 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:236   : 1416  =b :  294 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:240   : 1440  =b :  299 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:244   : 1464  =b :  304 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:248   : 1488  =b :  309 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:252   : 1512  =b :  314 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-url:256   : 1536  =b :  319 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0 45SX xLSS hFwu _LQW SmiI y4lY  [...]
+::  digits-base64-rfc:4     :   24  =b :    4 c ::    lx+H
+::  digits-base64-rfc:8     :   48  =b :    9 c ::    lx+H Dbd7
+::  digits-base64-rfc:12    :   72  =b :   14 c ::    lx+H Dbd7 1Ng4
+::  digits-base64-rfc:16    :   96  =b :   19 c ::    lx+H Dbd7 1Ng4 E/rE
+::  digits-base64-rfc:20    :  120  =b :   24 c ::    lx+H Dbd7 1Ng4 E/rE nyFF
+::  digits-base64-rfc:24    :  144  =b :   29 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh
+::  digits-base64-rfc:28    :  168  =b :   34 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC
+::  digits-base64-rfc:32    :  192  =b :   39 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU
+::  digits-base64-rfc:36    :  216  =b :   44 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc
+::  digits-base64-rfc:40    :  240  =b :   49 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0
+::  digits-base64-rfc:44    :  264  =b :   54 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX
+::  digits-base64-rfc:48    :  288  =b :   59 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS
+::  digits-base64-rfc:52    :  312  =b :   64 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu
+::  digits-base64-rfc:56    :  336  =b :   69 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW
+::  digits-base64-rfc:60    :  360  =b :   74 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI
+::  digits-base64-rfc:64    :  384  =b :   79 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY
+::  digits-base64-rfc:68    :  408  =b :   84 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:72    :  432  =b :   89 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:76    :  456  =b :   94 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:80    :  480  =b :   99 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:84    :  504  =b :  104 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:88    :  528  =b :  109 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:92    :  552  =b :  114 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:96    :  576  =b :  119 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:100   :  600  =b :  124 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:104   :  624  =b :  129 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:108   :  648  =b :  134 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:112   :  672  =b :  139 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:116   :  696  =b :  144 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:120   :  720  =b :  149 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:124   :  744  =b :  154 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:128   :  768  =b :  159 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:132   :  792  =b :  164 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:136   :  816  =b :  169 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:140   :  840  =b :  174 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:144   :  864  =b :  179 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:148   :  888  =b :  184 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:152   :  912  =b :  189 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:156   :  936  =b :  194 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:160   :  960  =b :  199 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:164   :  984  =b :  204 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:168   : 1008  =b :  209 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:172   : 1032  =b :  214 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:176   : 1056  =b :  219 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:180   : 1080  =b :  224 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:184   : 1104  =b :  229 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:188   : 1128  =b :  234 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:192   : 1152  =b :  239 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:196   : 1176  =b :  244 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:200   : 1200  =b :  249 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:204   : 1224  =b :  254 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:208   : 1248  =b :  259 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:212   : 1272  =b :  264 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:216   : 1296  =b :  269 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:220   : 1320  =b :  274 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:224   : 1344  =b :  279 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:228   : 1368  =b :  284 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:232   : 1392  =b :  289 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:236   : 1416  =b :  294 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:240   : 1440  =b :  299 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:244   : 1464  =b :  304 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:248   : 1488  =b :  309 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:252   : 1512  =b :  314 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base64-rfc:256   : 1536  =b :  319 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0 45SX xLSS hFwu /LQW SmiI y4lY  [...]
+::  digits-base58:4         :   23.4 b :    4 c ::    jm2a
+::  digits-base58:8         :   46.8 b :    9 c ::    jm2a GmDo
+::  digits-base58:12        :   70.2 b :   14 c ::    jm2a GmDo kyz9
+::  digits-base58:16        :   93.7 b :   19 c ::    jm2a GmDo kyz9 73RT
+::  digits-base58:20        :  117.1 b :   24 c ::    jm2a GmDo kyz9 73RT vEZA
+::  digits-base58:24        :  140.5 b :   29 c ::    jm2a GmDo kyz9 73RT vEZA qCWU
+::  digits-base58:28        :  164.0 b :   34 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z
+::  digits-base58:32        :  187.4 b :   39 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg
+::  digits-base58:36        :  210.8 b :   44 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc
+::  digits-base58:40        :  234.3 b :   49 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55
+::  digits-base58:44        :  257.7 b :   54 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6
+::  digits-base58:48        :  281.1 b :   59 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy
+::  digits-base58:52        :  304.6 b :   64 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf
+::  digits-base58:56        :  328.0 b :   69 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf
+::  digits-base58:60        :  351.4 b :   74 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK
+::  digits-base58:64        :  374.9 b :   79 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2
+::  digits-base58:68        :  398.3 b :   84 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:72        :  421.7 b :   89 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:76        :  445.2 b :   94 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:80        :  468.6 b :   99 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:84        :  492.0 b :  104 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:88        :  515.5 b :  109 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:92        :  538.9 b :  114 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:96        :  562.3 b :  119 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:100       :  585.7 b :  124 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:104       :  609.2 b :  129 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:108       :  632.6 b :  134 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:112       :  656.0 b :  139 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:116       :  679.5 b :  144 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:120       :  702.9 b :  149 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:124       :  726.3 b :  154 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:128       :  749.8 b :  159 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:132       :  773.2 b :  164 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:136       :  796.6 b :  169 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:140       :  820.1 b :  174 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:144       :  843.5 b :  179 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:148       :  866.9 b :  184 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:152       :  890.4 b :  189 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:156       :  913.8 b :  194 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:160       :  937.2 b :  199 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:164       :  960.7 b :  204 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:168       :  984.1 b :  209 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:172       : 1007.5 b :  214 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:176       : 1031.0 b :  219 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:180       : 1054.4 b :  224 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:184       : 1077.8 b :  229 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:188       : 1101.3 b :  234 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:192       : 1124.7 b :  239 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:196       : 1148.1 b :  244 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:200       : 1171.5 b :  249 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:204       : 1195.0 b :  254 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:208       : 1218.4 b :  259 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:212       : 1241.8 b :  264 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:216       : 1265.3 b :  269 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:220       : 1288.7 b :  274 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:224       : 1312.1 b :  279 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:228       : 1335.6 b :  284 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:232       : 1359.0 b :  289 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:236       : 1382.4 b :  294 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:240       : 1405.9 b :  299 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:244       : 1429.3 b :  304 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:248       : 1452.7 b :  309 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:252       : 1476.2 b :  314 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base58:256       : 1499.6 b :  319 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55 Xks6 MBXy GFzf d5Cf aBDK MZd2  [...]
+::  digits-base62:4         :   23.8 b :    4 c ::    jl1a
+::  digits-base62:8         :   47.6 b :    9 c ::    jl1a GlDn
+::  digits-base62:12        :   71.4 b :   14 c ::    jl1a GlDn kyz8
+::  digits-base62:16        :   95.2 b :   19 c ::    jl1a GlDn kyz8 x3QS
+::  digits-base62:20        :  119.0 b :   24 c ::    jl1a GlDn kyz8 x3QS vEY9
+::  digits-base62:24        :  142.9 b :   29 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd
+::  digits-base62:28        :  166.7 b :   34 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z
+::  digits-base62:32        :  190.5 b :   39 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0
+::  digits-base62:36        :  214.3 b :   44 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm
+::  digits-base62:40        :  238.1 b :   49 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W
+::  digits-base62:44        :  261.9 b :   54 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L
+::  digits-base62:48        :  285.8 b :   59 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG
+::  digits-base62:52        :  309.6 b :   64 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff
+::  digits-base62:56        :  333.4 b :   69 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2
+::  digits-base62:60        :  357.2 b :   74 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea
+::  digits-base62:64        :  381.0 b :   79 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL
+::  digits-base62:68        :  404.8 b :   84 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:72        :  428.7 b :   89 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:76        :  452.5 b :   94 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:80        :  476.3 b :   99 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:84        :  500.1 b :  104 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:88        :  523.9 b :  109 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:92        :  547.7 b :  114 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:96        :  571.6 b :  119 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:100       :  595.4 b :  124 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:104       :  619.2 b :  129 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:108       :  643.0 b :  134 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:112       :  666.8 b :  139 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:116       :  690.6 b :  144 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:120       :  714.5 b :  149 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:124       :  738.3 b :  154 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:128       :  762.1 b :  159 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:132       :  785.9 b :  164 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:136       :  809.7 b :  169 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:140       :  833.5 b :  174 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:144       :  857.4 b :  179 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:148       :  881.2 b :  184 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:152       :  905.0 b :  189 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:156       :  928.8 b :  194 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:160       :  952.6 b :  199 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:164       :  976.4 b :  204 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:168       : 1000.3 b :  209 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:172       : 1024.1 b :  214 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:176       : 1047.9 b :  219 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:180       : 1071.7 b :  224 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:184       : 1095.5 b :  229 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:188       : 1119.3 b :  234 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:192       : 1143.2 b :  239 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:196       : 1167.0 b :  244 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:200       : 1190.8 b :  249 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:204       : 1214.6 b :  254 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:208       : 1238.4 b :  259 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:212       : 1262.2 b :  264 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:216       : 1286.1 b :  269 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:220       : 1309.9 b :  274 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:224       : 1333.7 b :  279 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:228       : 1357.5 b :  284 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:232       : 1381.3 b :  289 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:236       : 1405.1 b :  294 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:240       : 1429.0 b :  299 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:244       : 1452.8 b :  304 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:248       : 1476.6 b :  309 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:252       : 1500.4 b :  314 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-base62:256       : 1524.2 b :  319 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W kr5L BWyG Fzff nId2 5Cea BDJL  [...]
+::  digits-bech32:4         :   20  =b :    4 c ::    hgel
+::  digits-bech32:8         :   40  =b :    9 c ::    hgel y8s5
+::  digits-bech32:12        :   60  =b :   14 c ::    hgel y8s5 0uzl
+::  digits-bech32:16        :   80  =b :   19 c ::    hgel y8s5 0uzl aqze
+::  digits-bech32:20        :  100  =b :   24 c ::    hgel y8s5 0uzl aqze 4ctl
+::  digits-bech32:24        :  120  =b :   29 c ::    hgel y8s5 0uzl aqze 4ctl gg4e
+::  digits-bech32:28        :  140  =b :   34 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px
+::  digits-bech32:32        :  160  =b :   39 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52
+::  digits-bech32:36        :  180  =b :   44 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6
+::  digits-bech32:40        :  200  =b :   49 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut
+::  digits-bech32:44        :  220  =b :   54 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm
+::  digits-bech32:48        :  240  =b :   59 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf
+::  digits-bech32:52        :  260  =b :   64 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc
+::  digits-bech32:56        :  280  =b :   69 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf
+::  digits-bech32:60        :  300  =b :   74 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3
+::  digits-bech32:64        :  320  =b :   79 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu
+::  digits-bech32:68        :  340  =b :   84 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:72        :  360  =b :   89 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:76        :  380  =b :   94 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:80        :  400  =b :   99 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:84        :  420  =b :  104 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:88        :  440  =b :  109 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:92        :  460  =b :  114 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:96        :  480  =b :  119 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:100       :  500  =b :  124 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:104       :  520  =b :  129 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:108       :  540  =b :  134 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:112       :  560  =b :  139 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:116       :  580  =b :  144 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:120       :  600  =b :  149 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:124       :  620  =b :  154 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:128       :  640  =b :  159 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:132       :  660  =b :  164 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:136       :  680  =b :  169 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:140       :  700  =b :  174 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:144       :  720  =b :  179 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:148       :  740  =b :  184 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:152       :  760  =b :  189 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:156       :  780  =b :  194 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:160       :  800  =b :  199 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:164       :  820  =b :  204 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:168       :  840  =b :  209 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:172       :  860  =b :  214 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:176       :  880  =b :  219 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:180       :  900  =b :  224 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:184       :  920  =b :  229 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:188       :  940  =b :  234 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:192       :  960  =b :  239 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:196       :  980  =b :  244 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:200       : 1000  =b :  249 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:204       : 1020  =b :  254 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:208       : 1040  =b :  259 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:212       : 1060  =b :  264 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:216       : 1080  =b :  269 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:220       : 1100  =b :  274 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:224       : 1120  =b :  279 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:228       : 1140  =b :  284 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:232       : 1160  =b :  289 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:236       : 1180  =b :  294 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:240       : 1200  =b :  299 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:244       : 1220  =b :  304 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:248       : 1240  =b :  309 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:252       : 1260  =b :  314 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-bech32:256       : 1280  =b :  319 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf 2flc hgtf unx3 y6eu  [...]
+::  digits-z85:5            :   32.0 b :    5 c ::    .2Nm+
+::  digits-z85:10           :   64.0 b :   11 c ::    .2Nm+ i^%9%
+::  digits-z85:15           :   96.1 b :   17 c ::    .2Nm+ i^%9% 4AD]j
+::  digits-z85:20           :  128.1 b :   23 c ::    .2Nm+ i^%9% 4AD]j Ld?hS
+::  digits-z85:25           :  160.2 b :   29 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$
+::  digits-z85:30           :  192.2 b :   35 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU
+::  digits-z85:35           :  224.3 b :   41 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I
+::  digits-z85:40           :  256.3 b :   47 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV
+::  digits-z85:45           :  288.4 b :   53 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi
+::  digits-z85:50           :  320.4 b :   59 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17
+::  digits-z85:55           :  352.5 b :   65 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4!
+::  digits-z85:60           :  384.5 b :   71 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o
+::  digits-z85:65           :  416.6 b :   77 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq>
+::  digits-z85:70           :  448.6 b :   83 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:75           :  480.7 b :   89 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:80           :  512.7 b :   95 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:85           :  544.7 b :  101 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:90           :  576.8 b :  107 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:95           :  608.8 b :  113 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:100          :  640.9 b :  119 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:105          :  672.9 b :  125 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:110          :  705.0 b :  131 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:115          :  737.0 b :  137 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:120          :  769.1 b :  143 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:125          :  801.1 b :  149 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:130          :  833.2 b :  155 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:135          :  865.2 b :  161 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:140          :  897.3 b :  167 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:145          :  929.3 b :  173 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:150          :  961.4 b :  179 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:155          :  993.4 b :  185 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:160          : 1025.5 b :  191 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:165          : 1057.5 b :  197 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:170          : 1089.5 b :  203 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:175          : 1121.6 b :  209 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:180          : 1153.6 b :  215 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:185          : 1185.7 b :  221 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:190          : 1217.7 b :  227 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:195          : 1249.8 b :  233 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:200          : 1281.8 b :  239 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:205          : 1313.9 b :  245 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:210          : 1345.9 b :  251 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:215          : 1378.0 b :  257 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:220          : 1410.0 b :  263 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:225          : 1442.1 b :  269 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:230          : 1474.1 b :  275 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:235          : 1506.2 b :  281 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:240          : 1538.2 b :  287 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:245          : 1570.3 b :  293 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:250          : 1602.3 b :  299 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:255          : 1634.3 b :  305 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]
+::  digits-z85:260          : 1666.4 b :  311 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I $mlUV ^7gNi ruL17 r3B4! /?+9o +9rq> GL [...]

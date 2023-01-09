@@ -2,11 +2,12 @@
 
 * tool          : z-tokens
 * version       : 0.3.0
-* executable    : /usr/local/bin/z-tokens
-* build target  : debug
-* build number  : 10000, 2023-01-01-12-00-00
+* executable    : /mnt/volatile/ciprian/workbench/rust--scratch/xiyipoke--22e460689da4998d008b55c3df890d81--38c4ac07d880655f6386024203125c8eb9692a94586c1d5b514403701419463e/outputs/binaries/z-tokens--release--linux--native
+* executable-0  : /mnt/motirare/ciprian/workbench/miscellaneous/z-tokens/.outputs/binaries/z-tokens--release--linux--native
+* build target  : release
+* build number  : 10830, 2023-01-09-21-27-18
 * code & issues : https://github.com/volution/z-tokens
-* sources git   : 0000000000000000000000000000000000000000
-* sources hash  : 00000000000000000000000000000000
-* uname node    : linux
-* uname system  : Linux, 5.19.0-default, x86_64
+* sources git   : 20309d5b69e130e51027e82897c822ac1c907d60-uncommitted
+* sources hash  : ffca8c697fddc3eb3776d00bf2a44b8c
+* uname node    : xiyipoke
+* uname system  : Linux, 6.0.10-1-default, x86_64

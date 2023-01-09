@@ -1,0 +1,7 @@
+>>  z-tokens patterns --all --label networking --random-testing
+
+::  ip-127                  :   23.9 b :   13 c ::    127.186.196.8
+::  ip-10                   :   23.9 b :   12 c ::    10.186.196.8
+::  ip-172                  :   20.8 b :   12 c ::    172.22.196.8
+::  ip-192                  :   15.9 b :   15 c ::    192.168.186.196
+::  ip-mac                  :   40  =b :   17 c ::    02:bb:c6:43:cb:f8

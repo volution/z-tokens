@@ -1,0 +1,818 @@
+>>  z-tokens patterns --all --label ascii --random-testing
+
+::  ascii-lower:4           :   18.8 b :    4 c ::    tuap
+::  ascii-lower:8           :   37.6 b :    9 c ::    tuap ufut
+::  ascii-lower:12          :   56.4 b :   14 c ::    tuap ufut zdzb
+::  ascii-lower:16          :   75.2 b :   19 c ::    tuap ufut zdzb lyoe
+::  ascii-lower:20          :   94.0 b :   24 c ::    tuap ufut zdzb lyoe vfnq
+::  ascii-lower:24          :  112.8 b :   29 c ::    tuap ufut zdzb lyoe vfnq mwwb
+::  ascii-lower:28          :  131.6 b :   34 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr
+::  ascii-lower:32          :  150.4 b :   39 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu
+::  ascii-lower:36          :  169.2 b :   44 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn
+::  ascii-lower:40          :  188.0 b :   49 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj
+::  ascii-lower:44          :  206.8 b :   54 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz
+::  ascii-lower:48          :  225.6 b :   59 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh
+::  ascii-lower:52          :  244.4 b :   64 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr
+::  ascii-lower:56          :  263.2 b :   69 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij
+::  ascii-lower:60          :  282.0 b :   74 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac
+::  ascii-lower:64          :  300.8 b :   79 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx
+::  ascii-lower:68          :  319.6 b :   84 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:72          :  338.4 b :   89 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:76          :  357.2 b :   94 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:80          :  376.0 b :   99 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:84          :  394.8 b :  104 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:88          :  413.6 b :  109 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:92          :  432.4 b :  114 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:96          :  451.2 b :  119 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:100         :  470.0 b :  124 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:104         :  488.8 b :  129 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:108         :  507.6 b :  134 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:112         :  526.4 b :  139 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:116         :  545.2 b :  144 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:120         :  564.0 b :  149 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:124         :  582.8 b :  154 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:128         :  601.6 b :  159 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:132         :  620.4 b :  164 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:136         :  639.2 b :  169 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:140         :  658.0 b :  174 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:144         :  676.8 b :  179 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:148         :  695.6 b :  184 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:152         :  714.4 b :  189 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:156         :  733.2 b :  194 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:160         :  752.0 b :  199 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:164         :  770.8 b :  204 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:168         :  789.6 b :  209 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:172         :  808.4 b :  214 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:176         :  827.2 b :  219 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:180         :  846.0 b :  224 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:184         :  864.8 b :  229 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:188         :  883.6 b :  234 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:192         :  902.4 b :  239 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:196         :  921.2 b :  244 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:200         :  940.0 b :  249 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:204         :  958.8 b :  254 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:208         :  977.6 b :  259 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:212         :  996.4 b :  264 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:216         : 1015.2 b :  269 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:220         : 1034.0 b :  274 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:224         : 1052.8 b :  279 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:228         : 1071.7 b :  284 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:232         : 1090.5 b :  289 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:236         : 1109.3 b :  294 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:240         : 1128.1 b :  299 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:244         : 1146.9 b :  304 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:248         : 1165.7 b :  309 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:252         : 1184.5 b :  314 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-lower:256         : 1203.3 b :  319 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr pfij oqac igbx  [...]
+::  ascii-upper:4           :   18.8 b :    4 c ::    TUAP
+::  ascii-upper:8           :   37.6 b :    9 c ::    TUAP UFUT
+::  ascii-upper:12          :   56.4 b :   14 c ::    TUAP UFUT ZDZB
+::  ascii-upper:16          :   75.2 b :   19 c ::    TUAP UFUT ZDZB LYOE
+::  ascii-upper:20          :   94.0 b :   24 c ::    TUAP UFUT ZDZB LYOE VFNQ
+::  ascii-upper:24          :  112.8 b :   29 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB
+::  ascii-upper:28          :  131.6 b :   34 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR
+::  ascii-upper:32          :  150.4 b :   39 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU
+::  ascii-upper:36          :  169.2 b :   44 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN
+::  ascii-upper:40          :  188.0 b :   49 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ
+::  ascii-upper:44          :  206.8 b :   54 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ
+::  ascii-upper:48          :  225.6 b :   59 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH
+::  ascii-upper:52          :  244.4 b :   64 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR
+::  ascii-upper:56          :  263.2 b :   69 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ
+::  ascii-upper:60          :  282.0 b :   74 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC
+::  ascii-upper:64          :  300.8 b :   79 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX
+::  ascii-upper:68          :  319.6 b :   84 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:72          :  338.4 b :   89 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:76          :  357.2 b :   94 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:80          :  376.0 b :   99 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:84          :  394.8 b :  104 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:88          :  413.6 b :  109 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:92          :  432.4 b :  114 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:96          :  451.2 b :  119 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:100         :  470.0 b :  124 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:104         :  488.8 b :  129 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:108         :  507.6 b :  134 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:112         :  526.4 b :  139 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:116         :  545.2 b :  144 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:120         :  564.0 b :  149 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:124         :  582.8 b :  154 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:128         :  601.6 b :  159 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:132         :  620.4 b :  164 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:136         :  639.2 b :  169 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:140         :  658.0 b :  174 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:144         :  676.8 b :  179 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:148         :  695.6 b :  184 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:152         :  714.4 b :  189 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:156         :  733.2 b :  194 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:160         :  752.0 b :  199 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:164         :  770.8 b :  204 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:168         :  789.6 b :  209 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:172         :  808.4 b :  214 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:176         :  827.2 b :  219 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:180         :  846.0 b :  224 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:184         :  864.8 b :  229 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:188         :  883.6 b :  234 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:192         :  902.4 b :  239 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:196         :  921.2 b :  244 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:200         :  940.0 b :  249 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:204         :  958.8 b :  254 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:208         :  977.6 b :  259 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:212         :  996.4 b :  264 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:216         : 1015.2 b :  269 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:220         : 1034.0 b :  274 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:224         : 1052.8 b :  279 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:228         : 1071.7 b :  284 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:232         : 1090.5 b :  289 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:236         : 1109.3 b :  294 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:240         : 1128.1 b :  299 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:244         : 1146.9 b :  304 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:248         : 1165.7 b :  309 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:252         : 1184.5 b :  314 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-upper:256         : 1203.3 b :  319 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU RCCN TWCJ NZGZ RRUH QCFR PFIJ OQAC IGBX  [...]
+::  ascii-mixed:4           :   22.8 b :    4 c ::    MObE
+::  ascii-mixed:8           :   45.6 b :    9 c ::    MObE nOlP
+::  ascii-mixed:12          :   68.4 b :   14 c ::    MObE nOlP YZhY
+::  ascii-mixed:16          :   91.2 b :   19 c ::    MObE nOlP YZhY cwWl
+::  ascii-mixed:20          :  114.0 b :   24 c ::    MObE nOlP YZhY cwWl DiRk
+::  ascii-mixed:24          :  136.8 b :   29 c ::    MObE nOlP YZhY cwWl DiRk AHTT
+::  ascii-mixed:28          :  159.6 b :   34 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY
+::  ascii-mixed:32          :  182.4 b :   39 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad
+::  ascii-mixed:36          :  205.2 b :   44 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee
+::  ascii-mixed:40          :  228.0 b :   49 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes
+::  ascii-mixed:44          :  250.8 b :   54 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn
+::  ascii-mixed:48          :  273.6 b :   59 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP
+::  ascii-mixed:52          :  296.4 b :   64 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek
+::  ascii-mixed:56          :  319.2 b :   69 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl
+::  ascii-mixed:60          :  342.0 b :   74 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem
+::  ascii-mixed:64          :  364.8 b :   79 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc
+::  ascii-mixed:68          :  387.6 b :   84 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:72          :  410.4 b :   89 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:76          :  433.2 b :   94 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:80          :  456.0 b :   99 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:84          :  478.8 b :  104 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:88          :  501.6 b :  109 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:92          :  524.4 b :  114 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:96          :  547.2 b :  119 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:100         :  570.0 b :  124 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:104         :  592.8 b :  129 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:108         :  615.6 b :  134 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:112         :  638.4 b :  139 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:116         :  661.2 b :  144 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:120         :  684.0 b :  149 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:124         :  706.8 b :  154 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:128         :  729.6 b :  159 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:132         :  752.4 b :  164 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:136         :  775.2 b :  169 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:140         :  798.0 b :  174 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:144         :  820.8 b :  179 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:148         :  843.6 b :  184 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:152         :  866.4 b :  189 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:156         :  889.2 b :  194 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:160         :  912.0 b :  199 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:164         :  934.8 b :  204 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:168         :  957.6 b :  209 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:172         :  980.4 b :  214 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:176         : 1003.2 b :  219 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:180         : 1026.0 b :  224 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:184         : 1048.8 b :  229 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:188         : 1071.6 b :  234 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:192         : 1094.4 b :  239 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:196         : 1117.2 b :  244 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:200         : 1140.0 b :  249 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:204         : 1162.8 b :  254 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:208         : 1185.6 b :  259 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:212         : 1208.4 b :  264 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:216         : 1231.2 b :  269 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:220         : 1254.0 b :  274 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:224         : 1276.8 b :  279 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:228         : 1299.7 b :  284 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:232         : 1322.5 b :  289 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:236         : 1345.3 b :  294 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:240         : 1368.1 b :  299 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:244         : 1390.9 b :  304 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:248         : 1413.7 b :  309 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:252         : 1436.5 b :  314 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-mixed:256         : 1459.3 b :  319 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn nZIP pbek IEjl qsem cVFc  [...]
+::  ascii-symbols:4         :   20  =b :    4 c ::    \)^~
+::  ascii-symbols:8         :   40  =b :    9 c ::    \)^~ %(;?
+::  ascii-symbols:12        :   60  =b :   14 c ::    \)^~ %(;? :{#~
+::  ascii-symbols:16        :   80  =b :   19 c ::    \)^~ %(;? :{#~ |!#^
+::  ascii-symbols:20        :  100  =b :   24 c ::    \)^~ %(;? :{#~ |!#^ @],~
+::  ascii-symbols:24        :  120  =b :   29 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^
+::  ascii-symbols:28        :  140  =b :   34 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"'
+::  ascii-symbols:32        :  160  =b :   39 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+
+::  ascii-symbols:36        :  180  =b :   44 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_
+::  ascii-symbols:40        :  200  =b :   49 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{,
+::  ascii-symbols:44        :  220  =b :   54 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*`
+::  ascii-symbols:48        :  240  =b :   59 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$*
+::  ascii-symbols:52        :  260  =b :   64 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~]
+::  ascii-symbols:56        :  280  =b :   69 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),*
+::  ascii-symbols:60        :  300  =b :   74 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'<
+::  ascii-symbols:64        :  320  =b :   79 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{
+::  ascii-symbols:68        :  340  =b :   84 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:72        :  360  =b :   89 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:76        :  380  =b :   94 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:80        :  400  =b :   99 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:84        :  420  =b :  104 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:88        :  440  =b :  109 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:92        :  460  =b :  114 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:96        :  480  =b :  119 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:100       :  500  =b :  124 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:104       :  520  =b :  129 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:108       :  540  =b :  134 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:112       :  560  =b :  139 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:116       :  580  =b :  144 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:120       :  600  =b :  149 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:124       :  620  =b :  154 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:128       :  640  =b :  159 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:132       :  660  =b :  164 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:136       :  680  =b :  169 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:140       :  700  =b :  174 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:144       :  720  =b :  179 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:148       :  740  =b :  184 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:152       :  760  =b :  189 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:156       :  780  =b :  194 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:160       :  800  =b :  199 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:164       :  820  =b :  204 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:168       :  840  =b :  209 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:172       :  860  =b :  214 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:176       :  880  =b :  219 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:180       :  900  =b :  224 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:184       :  920  =b :  229 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:188       :  940  =b :  234 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:192       :  960  =b :  239 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:196       :  980  =b :  244 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:200       : 1000  =b :  249 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:204       : 1020  =b :  254 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:208       : 1040  =b :  259 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:212       : 1060  =b :  264 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:216       : 1080  =b :  269 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:220       : 1100  =b :  274 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:224       : 1120  =b :  279 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:228       : 1140  =b :  284 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:232       : 1160  =b :  289 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:236       : 1180  =b :  294 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:240       : 1200  =b :  299 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:244       : 1220  =b :  304 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:248       : 1240  =b :  309 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:252       : 1260  =b :  314 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-symbols:256       : 1280  =b :  319 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$* +*~] \),* {>'< %_^{  [...]
+::  ascii-any:4             :   26.2 b :    4 c ::    ei#9
+::  ascii-any:8             :   52.4 b :    9 c ::    ei#9 i5kg
+::  ascii-any:12            :   78.6 b :   14 c ::    ei#9 i5kg |~.+
+::  ascii-any:16            :  104.8 b :   19 c ::    ei#9 i5kg |~.+ {%IL
+::  ascii-any:20            :  131.0 b :   24 c ::    ei#9 i5kg |~.+ {%IL 6U/o
+::  ascii-any:24            :  157.3 b :   29 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs
+::  ascii-any:28            :  183.5 b :   34 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
+::  ascii-any:32            :  209.7 b :   39 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
+::  ascii-any:36            :  235.9 b :   44 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2
+::  ascii-any:40            :  262.1 b :   49 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_
+::  ascii-any:44            :  288.4 b :   54 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\
+::  ascii-any:48            :  314.6 b :   59 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W
+::  ascii-any:52            :  340.8 b :   64 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU
+::  ascii-any:56            :  367.0 b :   69 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8
+::  ascii-any:60            :  393.2 b :   74 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ
+::  ascii-any:64            :  419.4 b :   79 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp
+::  ascii-any:68            :  445.7 b :   84 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:72            :  471.9 b :   89 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:76            :  498.1 b :   94 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:80            :  524.3 b :   99 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:84            :  550.5 b :  104 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:88            :  576.8 b :  109 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:92            :  603.0 b :  114 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:96            :  629.2 b :  119 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:100           :  655.4 b :  124 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:104           :  681.6 b :  129 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:108           :  707.8 b :  134 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:112           :  734.1 b :  139 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:116           :  760.3 b :  144 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:120           :  786.5 b :  149 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:124           :  812.7 b :  154 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:128           :  838.9 b :  159 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:132           :  865.2 b :  164 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:136           :  891.4 b :  169 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:140           :  917.6 b :  174 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:144           :  943.8 b :  179 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:148           :  970.0 b :  184 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:152           :  996.2 b :  189 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:156           : 1022.5 b :  194 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:160           : 1048.7 b :  199 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:164           : 1074.9 b :  204 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:168           : 1101.1 b :  209 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:172           : 1127.3 b :  214 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:176           : 1153.6 b :  219 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:180           : 1179.8 b :  224 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:184           : 1206.0 b :  229 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:188           : 1232.2 b :  234 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:192           : 1258.4 b :  239 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:196           : 1284.6 b :  244 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:200           : 1310.9 b :  249 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:204           : 1337.1 b :  254 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:208           : 1363.3 b :  259 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:212           : 1389.5 b :  264 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:216           : 1415.7 b :  269 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:220           : 1442.0 b :  274 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:224           : 1468.2 b :  279 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:228           : 1494.4 b :  284 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:232           : 1520.6 b :  289 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:236           : 1546.8 b :  294 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:240           : 1573.1 b :  299 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:244           : 1599.3 b :  304 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:248           : 1625.5 b :  309 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:252           : 1651.7 b :  314 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  ascii-any:256           : 1677.9 b :  319 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2 R8}_ `k<\ $3^W 25BU \"?8 $wJZ %lmp  [...]
+::  cv-lower:1              :   13.4 b :    4 c ::    taqe
+::  cv-lower:2              :   26.8 b :    9 c ::    taqe veza
+::  cv-lower:3              :   40.2 b :   14 c ::    taqe veza zaye
+::  cv-lower:4              :   53.7 b :   19 c ::    taqe veza zaye fugi
+::  cv-lower:5              :   67.1 b :   24 c ::    taqe veza zaye fugi rixu
+::  cv-lower:6              :   80.5 b :   29 c ::    taqe veza zaye fugi rixu cezu
+::  cv-lower:7              :   93.9 b :   34 c ::    taqe veza zaye fugi rixu cezu saco
+::  cv-lower:8              :  107.4 b :   39 c ::    taqe veza zaye fugi rixu cezu saco voxa
+::  cv-lower:9              :  120.8 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa kize
+::  cv-lower:10             :  134.2 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose
+::  cv-lower:11             :  147.7 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago
+::  cv-lower:12             :  161.1 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko
+::  cv-lower:13             :  174.5 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha
+::  cv-lower:14             :  187.9 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu
+::  cv-lower:15             :  201.4 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku
+::  cv-lower:16             :  214.8 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju
+::  cv-lower:17             :  228.2 b :   84 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:18             :  241.7 b :   89 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:19             :  255.1 b :   94 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:20             :  268.5 b :   99 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:21             :  281.9 b :  104 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:22             :  295.4 b :  109 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:23             :  308.8 b :  114 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:24             :  322.2 b :  119 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:25             :  335.7 b :  124 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:26             :  349.1 b :  129 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:27             :  362.5 b :  134 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:28             :  375.9 b :  139 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:29             :  389.4 b :  144 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:30             :  402.8 b :  149 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:31             :  416.2 b :  154 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:32             :  429.7 b :  159 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:33             :  443.1 b :  164 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:34             :  456.5 b :  169 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:35             :  469.9 b :  174 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:36             :  483.4 b :  179 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:37             :  496.8 b :  184 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:38             :  510.2 b :  189 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:39             :  523.7 b :  194 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:40             :  537.1 b :  199 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:41             :  550.5 b :  204 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:42             :  563.9 b :  209 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:43             :  577.4 b :  214 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:44             :  590.8 b :  219 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:45             :  604.2 b :  224 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:46             :  617.7 b :  229 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:47             :  631.1 b :  234 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:48             :  644.5 b :  239 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:49             :  657.9 b :  244 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:50             :  671.4 b :  249 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:51             :  684.8 b :  254 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:52             :  698.2 b :  259 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:53             :  711.7 b :  264 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:54             :  725.1 b :  269 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:55             :  738.5 b :  274 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:56             :  751.9 b :  279 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:57             :  765.4 b :  284 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:58             :  778.8 b :  289 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:59             :  792.2 b :  294 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:60             :  805.7 b :  299 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:61             :  819.1 b :  304 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:62             :  832.5 b :  309 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:63             :  845.9 b :  314 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:64             :  859.4 b :  319 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-upper:1              :   13.4 b :    4 c ::    TAQB
+::  cv-upper:2              :   26.8 b :    9 c ::    TAQB VBZA
+::  cv-upper:3              :   40.2 b :   14 c ::    TAQB VBZA ZAYB
+::  cv-upper:4              :   53.7 b :   19 c ::    TAQB VBZA ZAYB FUGI
+::  cv-upper:5              :   67.1 b :   24 c ::    TAQB VBZA ZAYB FUGI RIXU
+::  cv-upper:6              :   80.5 b :   29 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU
+::  cv-upper:7              :   93.9 b :   34 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO
+::  cv-upper:8              :  107.4 b :   39 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA
+::  cv-upper:9              :  120.8 b :   44 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB
+::  cv-upper:10             :  134.2 b :   49 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB
+::  cv-upper:11             :  147.7 b :   54 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO
+::  cv-upper:12             :  161.1 b :   59 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO
+::  cv-upper:13             :  174.5 b :   64 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA
+::  cv-upper:14             :  187.9 b :   69 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU
+::  cv-upper:15             :  201.4 b :   74 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU
+::  cv-upper:16             :  214.8 b :   79 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU
+::  cv-upper:17             :  228.2 b :   84 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:18             :  241.7 b :   89 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:19             :  255.1 b :   94 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:20             :  268.5 b :   99 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:21             :  281.9 b :  104 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:22             :  295.4 b :  109 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:23             :  308.8 b :  114 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:24             :  322.2 b :  119 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:25             :  335.7 b :  124 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:26             :  349.1 b :  129 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:27             :  362.5 b :  134 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:28             :  375.9 b :  139 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:29             :  389.4 b :  144 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:30             :  402.8 b :  149 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:31             :  416.2 b :  154 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:32             :  429.7 b :  159 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:33             :  443.1 b :  164 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:34             :  456.5 b :  169 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:35             :  469.9 b :  174 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:36             :  483.4 b :  179 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:37             :  496.8 b :  184 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:38             :  510.2 b :  189 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:39             :  523.7 b :  194 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:40             :  537.1 b :  199 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:41             :  550.5 b :  204 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:42             :  563.9 b :  209 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:43             :  577.4 b :  214 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:44             :  590.8 b :  219 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:45             :  604.2 b :  224 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:46             :  617.7 b :  229 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:47             :  631.1 b :  234 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:48             :  644.5 b :  239 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:49             :  657.9 b :  244 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:50             :  671.4 b :  249 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:51             :  684.8 b :  254 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:52             :  698.2 b :  259 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:53             :  711.7 b :  264 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:54             :  725.1 b :  269 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:55             :  738.5 b :  274 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:56             :  751.9 b :  279 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:57             :  765.4 b :  284 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:58             :  778.8 b :  289 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:59             :  792.2 b :  294 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:60             :  805.7 b :  299 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:61             :  819.1 b :  304 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:62             :  832.5 b :  309 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:63             :  845.9 b :  314 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-upper:64             :  859.4 b :  319 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU  [...]
+::  cv-mixed:1              :   17.4 b :    4 c ::    PaFi
+::  cv-mixed:2              :   34.8 b :    9 c ::    PaFi PiQI
+::  cv-mixed:3              :   52.2 b :   14 c ::    PaFi PiQI YayU
+::  cv-mixed:4              :   69.7 b :   19 c ::    PaFi PiQI YayU mAjO
+::  cv-mixed:5              :   87.1 b :   24 c ::    PaFi PiQI YayU mAjO lAzi
+::  cv-mixed:6              :  104.5 b :   29 c ::    PaFi PiQI YayU mAjO lAzi ZUKa
+::  cv-mixed:7              :  121.9 b :   34 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo
+::  cv-mixed:8              :  139.4 b :   39 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB
+::  cv-mixed:9              :  156.8 b :   44 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi
+::  cv-mixed:10             :  174.2 b :   49 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB
+::  cv-mixed:11             :  191.7 b :   54 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona
+::  cv-mixed:12             :  209.1 b :   59 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa
+::  cv-mixed:13             :  226.5 b :   64 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU
+::  cv-mixed:14             :  243.9 b :   69 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA
+::  cv-mixed:15             :  261.4 b :   74 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO
+::  cv-mixed:16             :  278.8 b :   79 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle
+::  cv-mixed:17             :  296.2 b :   84 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:18             :  313.7 b :   89 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:19             :  331.1 b :   94 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:20             :  348.5 b :   99 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:21             :  365.9 b :  104 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:22             :  383.4 b :  109 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:23             :  400.8 b :  114 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:24             :  418.2 b :  119 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:25             :  435.7 b :  124 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:26             :  453.1 b :  129 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:27             :  470.5 b :  134 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:28             :  487.9 b :  139 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:29             :  505.4 b :  144 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:30             :  522.8 b :  149 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:31             :  540.2 b :  154 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:32             :  557.7 b :  159 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:33             :  575.1 b :  164 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:34             :  592.5 b :  169 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:35             :  609.9 b :  174 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:36             :  627.4 b :  179 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:37             :  644.8 b :  184 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:38             :  662.2 b :  189 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:39             :  679.7 b :  194 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:40             :  697.1 b :  199 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:41             :  714.5 b :  204 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:42             :  731.9 b :  209 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:43             :  749.4 b :  214 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:44             :  766.8 b :  219 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:45             :  784.2 b :  224 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:46             :  801.7 b :  229 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:47             :  819.1 b :  234 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:48             :  836.5 b :  239 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:49             :  853.9 b :  244 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:50             :  871.4 b :  249 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:51             :  888.8 b :  254 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:52             :  906.2 b :  259 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:53             :  923.7 b :  264 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:54             :  941.1 b :  269 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:55             :  958.5 b :  274 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:56             :  975.9 b :  279 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:57             :  993.4 b :  284 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:58             : 1010.8 b :  289 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:59             : 1028.2 b :  294 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:60             : 1045.7 b :  299 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:61             : 1063.1 b :  304 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:62             : 1080.5 b :  309 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:63             : 1097.9 b :  314 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-mixed:64             : 1115.4 b :  319 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle  [...]
+::  cv-plus-a:1             :   26.7 b :    9 c ::    taqe 2711
+::  cv-plus-a:2             :   40.1 b :   14 c ::    taqe veza 0449
+::  cv-plus-a:3             :   53.5 b :   19 c ::    taqe veza zaye 5182
+::  cv-plus-a:4             :   67.0 b :   24 c ::    taqe veza zaye fugi 6290
+::  cv-plus-a:5             :   80.4 b :   29 c ::    taqe veza zaye fugi rixu 2906
+::  cv-plus-a:6             :   93.8 b :   34 c ::    taqe veza zaye fugi rixu cezu 0665
+::  cv-plus-a:7             :  107.2 b :   39 c ::    taqe veza zaye fugi rixu cezu saco 6573
+::  cv-plus-a:8             :  120.7 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa 3526
+::  cv-plus-a:9             :  134.1 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize 2606
+::  cv-plus-a:10            :  147.5 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose 6062
+::  cv-plus-a:11            :  161.0 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago 2335
+::  cv-plus-a:12            :  174.4 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko 0320
+::  cv-plus-a:13            :  187.8 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha 9460
+::  cv-plus-a:14            :  201.2 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu 9351
+::  cv-plus-a:15            :  214.7 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku 5138
+::  cv-plus-a:16            :  228.1 b :   84 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-plus-b:1             :   26.7 b :    9 c ::    taqe VB71
+::  cv-plus-b:2             :   40.2 b :   14 c ::    taqe veza ZA44
+::  cv-plus-b:3             :   53.6 b :   19 c ::    taqe veza zaye FU25
+::  cv-plus-b:4             :   67.0 b :   24 c ::    taqe veza zaye fugi RI29
+::  cv-plus-b:5             :   80.5 b :   29 c ::    taqe veza zaye fugi rixu CB90
+::  cv-plus-b:6             :   93.9 b :   34 c ::    taqe veza zaye fugi rixu cezu SA66
+::  cv-plus-b:7             :  107.3 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO57
+::  cv-plus-b:8             :  120.7 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa KI26
+::  cv-plus-b:9             :  134.2 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO60
+::  cv-plus-b:10            :  147.6 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose RA62
+::  cv-plus-b:11            :  161.0 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB33
+::  cv-plus-b:12            :  174.4 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA32
+::  cv-plus-b:13            :  187.9 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI60
+::  cv-plus-b:14            :  201.3 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU35
+::  cv-plus-b:15            :  214.7 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA38
+::  cv-plus-b:16            :  228.2 b :   84 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-plus-c:1             :   28.4 b :    9 c ::    taqe VB7~
+::  cv-plus-c:2             :   41.8 b :   14 c ::    taqe veza ZA4(
+::  cv-plus-c:3             :   55.3 b :   19 c ::    taqe veza zaye FU2;
+::  cv-plus-c:4             :   68.7 b :   24 c ::    taqe veza zaye fugi RI2~
+::  cv-plus-c:5             :   82.1 b :   29 c ::    taqe veza zaye fugi rixu CB9!
+::  cv-plus-c:6             :   95.6 b :   34 c ::    taqe veza zaye fugi rixu cezu SA6^
+::  cv-plus-c:7             :  109.0 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO5]
+::  cv-plus-c:8             :  122.4 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa KI2@
+::  cv-plus-c:9             :  135.8 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO6"
+::  cv-plus-c:10            :  149.3 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose RA6+
+::  cv-plus-c:11            :  162.7 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB3,
+::  cv-plus-c:12            :  176.1 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA3"
+::  cv-plus-c:13            :  189.6 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI6_
+::  cv-plus-c:14            :  203.0 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU3<
+::  cv-plus-c:15            :  216.4 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA3`
+::  cv-plus-c:16            :  229.8 b :   84 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  proquint-lower:1        :   16  =b :    5 c ::    sanis
+::  proquint-lower:2        :   32  =b :   11 c ::    sanis gufaz
+::  proquint-lower:3        :   48  =b :   17 c ::    sanis gufaz lofug
+::  proquint-lower:4        :   64  =b :   23 c ::    sanis gufaz lofug mudad
+::  proquint-lower:5        :   80  =b :   29 c ::    sanis gufaz lofug mudad damud
+::  proquint-lower:6        :   96  =b :   35 c ::    sanis gufaz lofug mudad damud mihup
+::  proquint-lower:7        :  112  =b :   41 c ::    sanis gufaz lofug mudad damud mihup dogip
+::  proquint-lower:8        :  128  =b :   47 c ::    sanis gufaz lofug mudad damud mihup dogip bajal
+::  proquint-lower:9        :  144  =b :   53 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv
+::  proquint-lower:10       :  160  =b :   59 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj
+::  proquint-lower:11       :  176  =b :   65 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod
+::  proquint-lower:12       :  192  =b :   71 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog
+::  proquint-lower:13       :  208  =b :   77 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol
+::  proquint-lower:14       :  224  =b :   83 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:15       :  240  =b :   89 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:16       :  256  =b :   95 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:17       :  272  =b :  101 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:18       :  288  =b :  107 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:19       :  304  =b :  113 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:20       :  320  =b :  119 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:21       :  336  =b :  125 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:22       :  352  =b :  131 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:23       :  368  =b :  137 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:24       :  384  =b :  143 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:25       :  400  =b :  149 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:26       :  416  =b :  155 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:27       :  432  =b :  161 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:28       :  448  =b :  167 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:29       :  464  =b :  173 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:30       :  480  =b :  179 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:31       :  496  =b :  185 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:32       :  512  =b :  191 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:33       :  528  =b :  197 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:34       :  544  =b :  203 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:35       :  560  =b :  209 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:36       :  576  =b :  215 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:37       :  592  =b :  221 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:38       :  608  =b :  227 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:39       :  624  =b :  233 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:40       :  640  =b :  239 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:41       :  656  =b :  245 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:42       :  672  =b :  251 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:43       :  688  =b :  257 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:44       :  704  =b :  263 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:45       :  720  =b :  269 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:46       :  736  =b :  275 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:47       :  752  =b :  281 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:48       :  768  =b :  287 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:49       :  784  =b :  293 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:50       :  800  =b :  299 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:51       :  816  =b :  305 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:52       :  832  =b :  311 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:53       :  848  =b :  317 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:54       :  864  =b :  323 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:55       :  880  =b :  329 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:56       :  896  =b :  335 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:57       :  912  =b :  341 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:58       :  928  =b :  347 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:59       :  944  =b :  353 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:60       :  960  =b :  359 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:61       :  976  =b :  365 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:62       :  992  =b :  371 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:63       : 1008  =b :  377 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:64       : 1024  =b :  383 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-upper:1        :   16  =b :    5 c ::    SANIS
+::  proquint-upper:2        :   32  =b :   11 c ::    SANIS GUFAZ
+::  proquint-upper:3        :   48  =b :   17 c ::    SANIS GUFAZ LOFUG
+::  proquint-upper:4        :   64  =b :   23 c ::    SANIS GUFAZ LOFUG MUDAD
+::  proquint-upper:5        :   80  =b :   29 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD
+::  proquint-upper:6        :   96  =b :   35 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP
+::  proquint-upper:7        :  112  =b :   41 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP
+::  proquint-upper:8        :  128  =b :   47 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL
+::  proquint-upper:9        :  144  =b :   53 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV
+::  proquint-upper:10       :  160  =b :   59 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ
+::  proquint-upper:11       :  176  =b :   65 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD
+::  proquint-upper:12       :  192  =b :   71 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG
+::  proquint-upper:13       :  208  =b :   77 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL
+::  proquint-upper:14       :  224  =b :   83 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:15       :  240  =b :   89 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:16       :  256  =b :   95 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:17       :  272  =b :  101 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:18       :  288  =b :  107 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:19       :  304  =b :  113 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:20       :  320  =b :  119 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:21       :  336  =b :  125 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:22       :  352  =b :  131 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:23       :  368  =b :  137 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:24       :  384  =b :  143 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:25       :  400  =b :  149 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:26       :  416  =b :  155 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:27       :  432  =b :  161 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:28       :  448  =b :  167 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:29       :  464  =b :  173 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:30       :  480  =b :  179 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:31       :  496  =b :  185 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:32       :  512  =b :  191 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:33       :  528  =b :  197 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:34       :  544  =b :  203 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:35       :  560  =b :  209 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:36       :  576  =b :  215 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:37       :  592  =b :  221 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:38       :  608  =b :  227 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:39       :  624  =b :  233 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:40       :  640  =b :  239 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:41       :  656  =b :  245 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:42       :  672  =b :  251 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:43       :  688  =b :  257 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:44       :  704  =b :  263 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:45       :  720  =b :  269 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:46       :  736  =b :  275 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:47       :  752  =b :  281 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:48       :  768  =b :  287 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:49       :  784  =b :  293 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:50       :  800  =b :  299 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:51       :  816  =b :  305 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:52       :  832  =b :  311 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:53       :  848  =b :  317 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:54       :  864  =b :  323 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:55       :  880  =b :  329 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:56       :  896  =b :  335 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:57       :  912  =b :  341 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:58       :  928  =b :  347 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:59       :  944  =b :  353 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:60       :  960  =b :  359 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:61       :  976  =b :  365 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:62       :  992  =b :  371 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:63       : 1008  =b :  377 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:64       : 1024  =b :  383 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  koremutake-a:1          :   14  =b :    5 c ::    drobo
+::  koremutake-a:2          :   28  =b :   11 c ::    drobo stufi
+::  koremutake-a:3          :   42  =b :   17 c ::    drobo stufi stoda
+::  koremutake-a:4          :   56  =b :   23 c ::    drobo stufi stoda napru
+::  koremutake-a:5          :   70  =b :   28 c ::    drobo stufi stoda napru hyhi
+::  koremutake-a:6          :   84  =b :   33 c ::    drobo stufi stoda napru hyhi pupe
+::  koremutake-a:7          :   98  =b :   40 c ::    drobo stufi stoda napru hyhi pupe grugro
+::  koremutake-a:8          :  112  =b :   46 c ::    drobo stufi stoda napru hyhi pupe grugro ditra
+::  koremutake-a:9          :  126  =b :   53 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro
+::  koremutake-a:10         :  140  =b :   58 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve
+::  koremutake-a:11         :  154  =b :   64 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra
+::  koremutake-a:12         :  168  =b :   70 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody
+::  koremutake-a:13         :  182  =b :   76 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji
+::  koremutake-a:14         :  196  =b :   82 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:15         :  210  =b :   88 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:16         :  224  =b :   93 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:17         :  238  =b :   98 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:18         :  252  =b :  103 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:19         :  266  =b :  108 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:20         :  280  =b :  113 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:21         :  294  =b :  119 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:22         :  308  =b :  125 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:23         :  322  =b :  131 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:24         :  336  =b :  137 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:25         :  350  =b :  142 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:26         :  364  =b :  147 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:27         :  378  =b :  152 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:28         :  392  =b :  158 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:29         :  406  =b :  164 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:30         :  420  =b :  170 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:31         :  434  =b :  176 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:32         :  448  =b :  181 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:33         :  462  =b :  187 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:34         :  476  =b :  193 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:35         :  490  =b :  198 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:36         :  504  =b :  203 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:37         :  518  =b :  209 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:38         :  532  =b :  215 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:39         :  546  =b :  220 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:40         :  560  =b :  226 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:41         :  574  =b :  231 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:42         :  588  =b :  236 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:43         :  602  =b :  241 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:44         :  616  =b :  247 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:45         :  630  =b :  252 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:46         :  644  =b :  257 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:47         :  658  =b :  262 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:48         :  672  =b :  267 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:49         :  686  =b :  272 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:50         :  700  =b :  278 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:51         :  714  =b :  285 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:52         :  728  =b :  292 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:53         :  742  =b :  298 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:54         :  756  =b :  304 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:55         :  770  =b :  310 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:56         :  784  =b :  316 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:57         :  798  =b :  321 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:58         :  812  =b :  327 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:59         :  826  =b :  332 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:60         :  840  =b :  337 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:61         :  854  =b :  342 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:62         :  868  =b :  347 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:63         :  882  =b :  352 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:64         :  896  =b :  357 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-b:1          :   21  =b :    8 c ::    drobostu
+::  koremutake-b:2          :   42  =b :   16 c ::    drobostu fistoda
+::  koremutake-b:3          :   63  =b :   24 c ::    drobostu fistoda napruhy
+::  koremutake-b:4          :   84  =b :   31 c ::    drobostu fistoda napruhy hipupe
+::  koremutake-b:5          :  105  =b :   40 c ::    drobostu fistoda napruhy hipupe grugrodi
+::  koremutake-b:6          :  126  =b :   50 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro
+::  koremutake-b:7          :  147  =b :   57 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera
+::  koremutake-b:8          :  168  =b :   66 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody
+::  koremutake-b:9          :  189  =b :   75 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra
+::  koremutake-b:10         :  210  =b :   83 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:11         :  231  =b :   90 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:12         :  252  =b :   97 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:13         :  273  =b :  104 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:14         :  294  =b :  112 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:15         :  315  =b :  121 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:16         :  336  =b :  129 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:17         :  357  =b :  136 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:18         :  378  =b :  143 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:19         :  399  =b :  151 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:20         :  420  =b :  160 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:21         :  441  =b :  168 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:22         :  462  =b :  176 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:23         :  483  =b :  184 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:24         :  504  =b :  191 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:25         :  525  =b :  200 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:26         :  546  =b :  207 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:27         :  567  =b :  215 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:28         :  588  =b :  222 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:29         :  609  =b :  230 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:30         :  630  =b :  237 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:31         :  651  =b :  244 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:32         :  672  =b :  251 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:33         :  693  =b :  258 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:34         :  714  =b :  268 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:35         :  735  =b :  277 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:36         :  756  =b :  286 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:37         :  777  =b :  295 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:38         :  798  =b :  302 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:39         :  819  =b :  310 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:40         :  840  =b :  317 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:41         :  861  =b :  324 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:42         :  882  =b :  331 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:43         :  903  =b :  339 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:44         :  924  =b :  346 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:45         :  945  =b :  353 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:46         :  966  =b :  360 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:47         :  987  =b :  367 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:48         : 1008  =b :  375 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:49         : 1029  =b :  383 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:50         : 1050  =b :  392 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:51         : 1071  =b :  400 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:52         : 1092  =b :  408 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:53         : 1113  =b :  415 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:54         : 1134  =b :  423 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:55         : 1155  =b :  431 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:56         : 1176  =b :  440 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:57         : 1197  =b :  449 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:58         : 1218  =b :  458 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:59         : 1239  =b :  466 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:60         : 1260  =b :  473 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:61         : 1281  =b :  480 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:62         : 1302  =b :  488 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:63         : 1323  =b :  497 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:64         : 1344  =b :  504 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]

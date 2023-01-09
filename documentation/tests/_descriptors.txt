@@ -12,6 +12,7 @@ patterns / default / all :: patterns --all --random-testing
 patterns / default / compact :: patterns --all --compact true --random-testing
 patterns / default / no-optional-separators :: patterns --all --token-skip-optional-separators true --random-testing
 patterns / default / no-mandatory-separators :: patterns --all --token-skip-mandatory-separators true --token-skip-optional-separators true --random-testing
+patterns / default / show-all :: patterns --all --show-all --random-testing
 
 
 patterns / filter / entropy-min :: patterns --entropy-min 256 --random-testing
@@ -29,8 +30,16 @@ patterns / filter / has-digits :: patterns --has-digits --random-testing
 patterns / filter / has-letters-upper :: patterns --has-letters-upper --random-testing
 patterns / filter / has-letters-lower :: patterns --has-letters-lower --random-testing
 
+patterns / filter / by-label / digits :: patterns --all --label digits --random-testing
+patterns / filter / by-label / ascii :: patterns --all --label ascii --random-testing
+patterns / filter / by-label / password :: patterns --all --label password --random-testing
+patterns / filter / by-label / passphrase :: patterns --all --label passphrase --random-testing
+patterns / filter / by-label / encoding :: patterns --all --label encoding --random-testing
+patterns / filter / by-label / networking :: patterns --all --label networking --random-testing
+
 patterns / identifiers :: patterns --identifiers-only --random-testing
 patterns / identifiers / all :: patterns --identifiers-only --all --random-testing
+patterns / identifiers / show-all :: patterns --identifiers-only --all --show-all --random-testing
 
 
 

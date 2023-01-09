@@ -1,372 +1,372 @@
 >>  z-tokens patterns --entropy-min 64 --entropy-max 256 --random-testing
 
-| digits-base2:64        | b   64   | c   71 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011
-| digits-base2:72        | b   72   | c   80 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001
-| digits-base2:80        | b   80   | c   89 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:88        | b   88   | c   98 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:96        | b   96   | c  107 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:104       | b  104   | c  116 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:112       | b  112   | c  125 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:120       | b  120   | c  134 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:128       | b  128   | c  143 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:136       | b  136   | c  152 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:144       | b  144   | c  161 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:152       | b  152   | c  170 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:160       | b  160   | c  179 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:168       | b  168   | c  188 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:176       | b  176   | c  197 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:184       | b  184   | c  206 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:192       | b  192   | c  215 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:200       | b  200   | c  224 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:208       | b  208   | c  233 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:216       | b  216   | c  242 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:224       | b  224   | c  251 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:232       | b  232   | c  260 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:240       | b  240   | c  269 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:248       | b  248   | c  278 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base2:256       | b  256   | c  287 ||  10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
-| digits-base8:24        | b   72   | c   29 ||  6026 6103 7414 5775 0654 6142
-| digits-base8:28        | b   84   | c   34 ||  6026 6103 7414 5775 0654 6142 2556
-| digits-base8:32        | b   96   | c   39 ||  6026 6103 7414 5775 0654 6142 2556 2505
-| digits-base8:36        | b  108   | c   44 ||  6026 6103 7414 5775 0654 6142 2556 2505 1450
-| digits-base8:40        | b  120   | c   49 ||  6026 6103 7414 5775 0654 6142 2556 2505 1450 0706
-| digits-base8:44        | b  132   | c   54 ||  6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677
-| digits-base8:48        | b  144   | c   59 ||  6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261
-| digits-base8:52        | b  156   | c   64 ||  6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222
-| digits-base8:56        | b  168   | c   69 ||  6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646
-| digits-base8:60        | b  180   | c   74 ||  6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227
-| digits-base8:64        | b  192   | c   79 ||  6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126
-| digits-base8:68        | b  204   | c   84 ||  6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
-| digits-base8:72        | b  216   | c   89 ||  6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
-| digits-base8:76        | b  228   | c   94 ||  6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
-| digits-base8:80        | b  240   | c   99 ||  6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
-| digits-base8:84        | b  252   | c  104 ||  6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
-| digits-base10:20       | b   66.4 | c   24 ||  7022 7110 4492 5182 5629
-| digits-base10:24       | b   79.7 | c   29 ||  7022 7110 4492 5182 5629 0665
-| digits-base10:28       | b   93.0 | c   34 ||  7022 7110 4492 5182 5629 0665 7352
-| digits-base10:32       | b  106.3 | c   39 ||  7022 7110 4492 5182 5629 0665 7352 6062
-| digits-base10:36       | b  119.5 | c   44 ||  7022 7110 4492 5182 5629 0665 7352 6062 3356
-| digits-base10:40       | b  132.8 | c   49 ||  7022 7110 4492 5182 5629 0665 7352 6062 3356 0320
-| digits-base10:44       | b  146.1 | c   54 ||  7022 7110 4492 5182 5629 0665 7352 6062 3356 0320 9460
-| digits-base10:48       | b  159.4 | c   59 ||  7022 7110 4492 5182 5629 0665 7352 6062 3356 0320 9460 8889
-| digits-base10:52       | b  172.7 | c   64 ||  7022 7110 4492 5182 5629 0665 7352 6062 3356 0320 9460 8889 3513
-| digits-base10:56       | b  186.0 | c   69 ||  7022 7110 4492 5182 5629 0665 7352 6062 3356 0320 9460 8889 3513 8513
-| digits-base10:60       | b  199.3 | c   74 ||  7022 7110 4492 5182 5629 0665 7352 6062 3356 0320 9460 8889 3513 8513 3855
-| digits-base10:64       | b  212.6 | c   79 ||  7022 7110 4492 5182 5629 0665 7352 6062 3356 0320 9460 8889 3513 8513 3855 7272
-| digits-base10:68       | b  225.8 | c   84 ||  7022 7110 4492 5182 5629 0665 7352 6062 3356 0320 9460 8889 3513 8513 3855 7272  [...]
-| digits-base10:72       | b  239.1 | c   89 ||  7022 7110 4492 5182 5629 0665 7352 6062 3356 0320 9460 8889 3513 8513 3855 7272  [...]
-| digits-base10:76       | b  252.4 | c   94 ||  7022 7110 4492 5182 5629 0665 7352 6062 3356 0320 9460 8889 3513 8513 3855 7272  [...]
-| digits-base16:16       | b   64   | c   19 ||  c094 c32f 72d3 8ae1
-| digits-base16:20       | b   80   | c   24 ||  c094 c32f 72d3 8ae1 3011
-| digits-base16:24       | b   96   | c   29 ||  c094 c32f 72d3 8ae1 3011 18c1
-| digits-base16:28       | b  112   | c   34 ||  c094 c32f 72d3 8ae1 3011 18c1 844a
-| digits-base16:32       | b  128   | c   39 ||  c094 c32f 72d3 8ae1 3011 18c1 844a 13a9
-| digits-base16:36       | b  144   | c   44 ||  c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0
-| digits-base16:40       | b  160   | c   49 ||  c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d
-| digits-base16:44       | b  176   | c   54 ||  c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee
-| digits-base16:48       | b  192   | c   59 ||  c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835
-| digits-base16:52       | b  208   | c   64 ||  c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81
-| digits-base16:56       | b  224   | c   69 ||  c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e
-| digits-base16:60       | b  240   | c   74 ||  c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da
-| digits-base16:64       | b  256   | c   79 ||  c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973
-| digits-base32-hex:16   | b   80   | c   19 ||  n8pv 47gk fs2v t02p
-| digits-base32-hex:20   | b  100   | c   24 ||  n8pv 47gk fs2v t02p lobv
-| digits-base32-hex:24   | b  120   | c   29 ||  n8pv 47gk fs2v t02p lobv 88lp
-| digits-base32-hex:28   | b  140   | c   34 ||  n8pv 47gk fs2v t02p lobv 88lp 9k16
-| digits-base32-hex:32   | b  160   | c   39 ||  n8pv 47gk fs2v t02p lobv 88lp 9k16 abka
-| digits-base32-hex:36   | b  180   | c   44 ||  n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq
-| digits-base32-hex:40   | b  200   | c   49 ||  n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb
-| digits-base32-hex:44   | b  220   | c   54 ||  n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r
-| digits-base32-hex:48   | b  240   | c   59 ||  n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639
-| digits-base32-rfc:16   | b   80   | c   19 ||  xiz7 ehqu p4c7 5acz
-| digits-base32-rfc:20   | b  100   | c   24 ||  xiz7 ehqu p4c7 5acz vyl7
-| digits-base32-rfc:24   | b  120   | c   29 ||  xiz7 ehqu p4c7 5acz vyl7 iivz
-| digits-base32-rfc:28   | b  140   | c   34 ||  xiz7 ehqu p4c7 5acz vyl7 iivz jubg
-| digits-base32-rfc:32   | b  160   | c   39 ||  xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk
-| digits-base32-rfc:36   | b  180   | c   44 ||  xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2
-| digits-base32-rfc:40   | b  200   | c   49 ||  xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l
-| digits-base32-rfc:44   | b  220   | c   54 ||  xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3
-| digits-base32-rfc:48   | b  240   | c   59 ||  xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj
-| digits-base64-url:12   | b   72   | c   14 ||  lx-H Dbd7 1Ng4
-| digits-base64-url:16   | b   96   | c   19 ||  lx-H Dbd7 1Ng4 E_rE
-| digits-base64-url:20   | b  120   | c   24 ||  lx-H Dbd7 1Ng4 E_rE nyFF
-| digits-base64-url:24   | b  144   | c   29 ||  lx-H Dbd7 1Ng4 E_rE nyFF hwWh
-| digits-base64-url:28   | b  168   | c   34 ||  lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC
-| digits-base64-url:32   | b  192   | c   39 ||  lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU
-| digits-base64-url:36   | b  216   | c   44 ||  lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc
-| digits-base64-url:40   | b  240   | c   49 ||  lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0
-| digits-base64-rfc:12   | b   72   | c   14 ||  lx+H Dbd7 1Ng4
-| digits-base64-rfc:16   | b   96   | c   19 ||  lx+H Dbd7 1Ng4 E/rE
-| digits-base64-rfc:20   | b  120   | c   24 ||  lx+H Dbd7 1Ng4 E/rE nyFF
-| digits-base64-rfc:24   | b  144   | c   29 ||  lx+H Dbd7 1Ng4 E/rE nyFF hwWh
-| digits-base64-rfc:28   | b  168   | c   34 ||  lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC
-| digits-base64-rfc:32   | b  192   | c   39 ||  lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU
-| digits-base64-rfc:36   | b  216   | c   44 ||  lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc
-| digits-base64-rfc:40   | b  240   | c   49 ||  lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0
-| digits-base58:12       | b   70.2 | c   14 ||  jm2a GmDo kyz9
-| digits-base58:16       | b   93.7 | c   19 ||  jm2a GmDo kyz9 73RT
-| digits-base58:20       | b  117.1 | c   24 ||  jm2a GmDo kyz9 73RT vEZA
-| digits-base58:24       | b  140.5 | c   29 ||  jm2a GmDo kyz9 73RT vEZA qCWU
-| digits-base58:28       | b  164.0 | c   34 ||  jm2a GmDo kyz9 73RT vEZA qCWU ss4z
-| digits-base58:32       | b  187.4 | c   39 ||  jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg
-| digits-base58:36       | b  210.8 | c   44 ||  jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc
-| digits-base58:40       | b  234.3 | c   49 ||  jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55
-| digits-base62:12       | b   71.4 | c   14 ||  jl1a GlDn kyz8
-| digits-base62:16       | b   95.2 | c   19 ||  jl1a GlDn kyz8 x3QS
-| digits-base62:20       | b  119.0 | c   24 ||  jl1a GlDn kyz8 x3QS vEY9
-| digits-base62:24       | b  142.9 | c   29 ||  jl1a GlDn kyz8 x3QS vEY9 pCVd
-| digits-base62:28       | b  166.7 | c   34 ||  jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z
-| digits-base62:32       | b  190.5 | c   39 ||  jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0
-| digits-base62:36       | b  214.3 | c   44 ||  jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm
-| digits-base62:40       | b  238.1 | c   49 ||  jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W
-| digits-bech32:16       | b   80   | c   19 ||  hgel y8s5 0uzl aqze
-| digits-bech32:20       | b  100   | c   24 ||  hgel y8s5 0uzl aqze 4ctl
-| digits-bech32:24       | b  120   | c   29 ||  hgel y8s5 0uzl aqze 4ctl gg4e
-| digits-bech32:28       | b  140   | c   34 ||  hgel y8s5 0uzl aqze 4ctl gg4e f5px
-| digits-bech32:32       | b  160   | c   39 ||  hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52
-| digits-bech32:36       | b  180   | c   44 ||  hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6
-| digits-bech32:40       | b  200   | c   49 ||  hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut
-| digits-bech32:44       | b  220   | c   54 ||  hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm
-| digits-bech32:48       | b  240   | c   59 ||  hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf
-| digits-z85:10          | b   64.0 | c   11 ||  .2Nm+ i^%9%
-| digits-z85:15          | b   96.1 | c   17 ||  .2Nm+ i^%9% 4AD]j
-| digits-z85:20          | b  128.1 | c   23 ||  .2Nm+ i^%9% 4AD]j Ld?hS
-| digits-z85:25          | b  160.2 | c   29 ||  .2Nm+ i^%9% 4AD]j Ld?hS >>5i$
-| digits-z85:30          | b  192.2 | c   35 ||  .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU
-| digits-z85:35          | b  224.3 | c   41 ||  .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I
-| ascii-lower:16         | b   75.2 | c   19 ||  tuap ufut zdzb lyoe
-| ascii-lower:20         | b   94.0 | c   24 ||  tuap ufut zdzb lyoe vfnq
-| ascii-lower:24         | b  112.8 | c   29 ||  tuap ufut zdzb lyoe vfnq mwwb
-| ascii-lower:28         | b  131.6 | c   34 ||  tuap ufut zdzb lyoe vfnq mwwb zfzr
-| ascii-lower:32         | b  150.4 | c   39 ||  tuap ufut zdzb lyoe vfnq mwwb zfzr abqu
-| ascii-lower:36         | b  169.2 | c   44 ||  tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn
-| ascii-lower:40         | b  188.0 | c   49 ||  tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj
-| ascii-lower:44         | b  206.8 | c   54 ||  tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz
-| ascii-lower:48         | b  225.6 | c   59 ||  tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh
-| ascii-lower:52         | b  244.4 | c   64 ||  tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr
-| ascii-mixed:12         | b   68.4 | c   14 ||  MObE nOlP YZhY
-| ascii-mixed:16         | b   91.2 | c   19 ||  MObE nOlP YZhY cwWl
-| ascii-mixed:20         | b  114.0 | c   24 ||  MObE nOlP YZhY cwWl DiRk
-| ascii-mixed:24         | b  136.8 | c   29 ||  MObE nOlP YZhY cwWl DiRk AHTT
-| ascii-mixed:28         | b  159.6 | c   34 ||  MObE nOlP YZhY cwWl DiRk AHTT dZlY
-| ascii-mixed:32         | b  182.4 | c   39 ||  MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad
-| ascii-mixed:36         | b  205.2 | c   44 ||  MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee
-| ascii-mixed:40         | b  228.0 | c   49 ||  MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes
-| ascii-mixed:44         | b  250.8 | c   54 ||  MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn
-| ascii-symbols:16       | b   80   | c   19 ||  \)^~ %(;? :{#~ |!#^
-| ascii-symbols:20       | b  100   | c   24 ||  \)^~ %(;? :{#~ |!#^ @],~
-| ascii-symbols:24       | b  120   | c   29 ||  \)^~ %(;? :{#~ |!#^ @],~ ))@^
-| ascii-symbols:28       | b  140   | c   34 ||  \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"'
-| ascii-symbols:32       | b  160   | c   39 ||  \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+
-| ascii-symbols:36       | b  180   | c   44 ||  \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_
-| ascii-symbols:40       | b  200   | c   49 ||  \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{,
-| ascii-symbols:44       | b  220   | c   54 ||  \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*`
-| ascii-symbols:48       | b  240   | c   59 ||  \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$*
-| ascii-any:12           | b   78.6 | c   14 ||  ei#9 i5kg |~.+
-| ascii-any:16           | b  104.8 | c   19 ||  ei#9 i5kg |~.+ {%IL
-| ascii-any:20           | b  131.0 | c   24 ||  ei#9 i5kg |~.+ {%IL 6U/o
-| ascii-any:24           | b  157.3 | c   29 ||  ei#9 i5kg |~.+ {%IL 6U/o 4PNs
-| ascii-any:28           | b  183.5 | c   34 ||  ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
-| ascii-any:32           | b  209.7 | c   39 ||  ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
-| ascii-any:36           | b  235.9 | c   44 ||  ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2
-| cv-lower:5             | b   67.1 | c   24 ||  taqe veza zaye fugi rixu
-| cv-lower:6             | b   80.5 | c   29 ||  taqe veza zaye fugi rixu cezu
-| cv-lower:7             | b   93.9 | c   34 ||  taqe veza zaye fugi rixu cezu saco
-| cv-lower:8             | b  107.4 | c   39 ||  taqe veza zaye fugi rixu cezu saco voxa
-| cv-lower:9             | b  120.8 | c   44 ||  taqe veza zaye fugi rixu cezu saco voxa kize
-| cv-lower:10            | b  134.2 | c   49 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose
-| cv-lower:11            | b  147.7 | c   54 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago
-| cv-lower:12            | b  161.1 | c   59 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko
-| cv-lower:13            | b  174.5 | c   64 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha
-| cv-lower:14            | b  187.9 | c   69 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu
-| cv-lower:15            | b  201.4 | c   74 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku
-| cv-lower:16            | b  214.8 | c   79 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju
-| cv-lower:17            | b  228.2 | c   84 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
-| cv-lower:18            | b  241.7 | c   89 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
-| cv-lower:19            | b  255.1 | c   94 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
-| cv-mixed:4             | b   69.7 | c   19 ||  PaFi PiQI YayU mAjO
-| cv-mixed:5             | b   87.1 | c   24 ||  PaFi PiQI YayU mAjO lAzi
-| cv-mixed:6             | b  104.5 | c   29 ||  PaFi PiQI YayU mAjO lAzi ZUKa
-| cv-mixed:7             | b  121.9 | c   34 ||  PaFi PiQI YayU mAjO lAzi ZUKa fANo
-| cv-mixed:8             | b  139.4 | c   39 ||  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB
-| cv-mixed:9             | b  156.8 | c   44 ||  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi
-| cv-mixed:10            | b  174.2 | c   49 ||  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB
-| cv-mixed:11            | b  191.7 | c   54 ||  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona
-| cv-mixed:12            | b  209.1 | c   59 ||  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa
-| cv-mixed:13            | b  226.5 | c   64 ||  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU
-| cv-mixed:14            | b  243.9 | c   69 ||  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA
-| cv-plus-a:4            | b   67.0 | c   24 ||  taqe veza zaye fugi 6290
-| cv-plus-a:5            | b   80.4 | c   29 ||  taqe veza zaye fugi rixu 2906
-| cv-plus-a:6            | b   93.8 | c   34 ||  taqe veza zaye fugi rixu cezu 0665
-| cv-plus-a:7            | b  107.2 | c   39 ||  taqe veza zaye fugi rixu cezu saco 6573
-| cv-plus-a:8            | b  120.7 | c   44 ||  taqe veza zaye fugi rixu cezu saco voxa 3526
-| cv-plus-a:9            | b  134.1 | c   49 ||  taqe veza zaye fugi rixu cezu saco voxa kize 2606
-| cv-plus-a:10           | b  147.5 | c   54 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose 6062
-| cv-plus-a:11           | b  161.0 | c   59 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago 2335
-| cv-plus-a:12           | b  174.4 | c   64 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko 0320
-| cv-plus-a:13           | b  187.8 | c   69 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha 9460
-| cv-plus-a:14           | b  201.2 | c   74 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu 9351
-| cv-plus-a:15           | b  214.7 | c   79 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku 5138
-| cv-plus-a:16           | b  228.1 | c   84 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
-| cv-plus-b:4            | b   67.0 | c   24 ||  taqe veza zaye fugi RI29
-| cv-plus-b:5            | b   80.5 | c   29 ||  taqe veza zaye fugi rixu CB90
-| cv-plus-b:6            | b   93.9 | c   34 ||  taqe veza zaye fugi rixu cezu SA66
-| cv-plus-b:7            | b  107.3 | c   39 ||  taqe veza zaye fugi rixu cezu saco VO57
-| cv-plus-b:8            | b  120.7 | c   44 ||  taqe veza zaye fugi rixu cezu saco voxa KI26
-| cv-plus-b:9            | b  134.2 | c   49 ||  taqe veza zaye fugi rixu cezu saco voxa kize HO60
-| cv-plus-b:10           | b  147.6 | c   54 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose RA62
-| cv-plus-b:11           | b  161.0 | c   59 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB33
-| cv-plus-b:12           | b  174.4 | c   64 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA32
-| cv-plus-b:13           | b  187.9 | c   69 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI60
-| cv-plus-b:14           | b  201.3 | c   74 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU35
-| cv-plus-b:15           | b  214.7 | c   79 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA38
-| cv-plus-b:16           | b  228.2 | c   84 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
-| cv-plus-c:4            | b   68.7 | c   24 ||  taqe veza zaye fugi RI2~
-| cv-plus-c:5            | b   82.1 | c   29 ||  taqe veza zaye fugi rixu CB9!
-| cv-plus-c:6            | b   95.6 | c   34 ||  taqe veza zaye fugi rixu cezu SA6^
-| cv-plus-c:7            | b  109.0 | c   39 ||  taqe veza zaye fugi rixu cezu saco VO5]
-| cv-plus-c:8            | b  122.4 | c   44 ||  taqe veza zaye fugi rixu cezu saco voxa KI2@
-| cv-plus-c:9            | b  135.8 | c   49 ||  taqe veza zaye fugi rixu cezu saco voxa kize HO6"
-| cv-plus-c:10           | b  149.3 | c   54 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose RA6+
-| cv-plus-c:11           | b  162.7 | c   59 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB3,
-| cv-plus-c:12           | b  176.1 | c   64 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA3"
-| cv-plus-c:13           | b  189.6 | c   69 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI6_
-| cv-plus-c:14           | b  203.0 | c   74 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU3<
-| cv-plus-c:15           | b  216.4 | c   79 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA3`
-| cv-plus-c:16           | b  229.8 | c   84 ||  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
-| proquint-lower:4       | b   64   | c   23 ||  sanis gufaz lofug mudad
-| proquint-lower:5       | b   80   | c   29 ||  sanis gufaz lofug mudad damud
-| proquint-lower:6       | b   96   | c   35 ||  sanis gufaz lofug mudad damud mihup
-| proquint-lower:7       | b  112   | c   41 ||  sanis gufaz lofug mudad damud mihup dogip
-| proquint-lower:8       | b  128   | c   47 ||  sanis gufaz lofug mudad damud mihup dogip bajal
-| proquint-lower:9       | b  144   | c   53 ||  sanis gufaz lofug mudad damud mihup dogip bajal tusiv
-| proquint-lower:10      | b  160   | c   59 ||  sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj
-| proquint-lower:11      | b  176   | c   65 ||  sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod
-| proquint-lower:12      | b  192   | c   71 ||  sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog
-| proquint-lower:13      | b  208   | c   77 ||  sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol
-| proquint-lower:14      | b  224   | c   83 ||  sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
-| proquint-lower:15      | b  240   | c   89 ||  sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
-| proquint-lower:16      | b  256   | c   95 ||  sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
-| koremutake-a:5         | b   70   | c   28 ||  drobo stufi stoda napru hyhi
-| koremutake-a:6         | b   84   | c   33 ||  drobo stufi stoda napru hyhi pupe
-| koremutake-a:7         | b   98   | c   40 ||  drobo stufi stoda napru hyhi pupe grugro
-| koremutake-a:8         | b  112   | c   46 ||  drobo stufi stoda napru hyhi pupe grugro ditra
-| koremutake-a:9         | b  126   | c   53 ||  drobo stufi stoda napru hyhi pupe grugro ditra stypro
-| koremutake-a:10        | b  140   | c   58 ||  drobo stufi stoda napru hyhi pupe grugro ditra stypro teve
-| koremutake-a:11        | b  154   | c   64 ||  drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra
-| koremutake-a:12        | b  168   | c   70 ||  drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody
-| koremutake-a:13        | b  182   | c   76 ||  drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji
-| koremutake-a:14        | b  196   | c   82 ||  drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
-| koremutake-a:15        | b  210   | c   88 ||  drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
-| koremutake-a:16        | b  224   | c   93 ||  drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
-| koremutake-a:17        | b  238   | c   98 ||  drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
-| koremutake-a:18        | b  252   | c  103 ||  drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
-| koremutake-b:4         | b   84   | c   31 ||  drobostu fistoda napruhy hipupe
-| koremutake-b:5         | b  105   | c   40 ||  drobostu fistoda napruhy hipupe grugrodi
-| koremutake-b:6         | b  126   | c   50 ||  drobostu fistoda napruhy hipupe grugrodi trastypro
-| koremutake-b:7         | b  147   | c   57 ||  drobostu fistoda napruhy hipupe grugrodi trastypro tevera
-| koremutake-b:8         | b  168   | c   66 ||  drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody
-| koremutake-b:9         | b  189   | c   75 ||  drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra
-| koremutake-b:10        | b  210   | c   83 ||  drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
-| koremutake-b:11        | b  231   | c   90 ||  drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
-| koremutake-b:12        | b  252   | c   97 ||  drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
-| mnemonic:2             | b   64.0 | c   42 ||  arrow arizona mango - archer jacket bundle
-| mnemonic:3             | b   96.0 | c   65 ||  arrow arizona mango - archer jacket bundle - telecom torso domino
-| mnemonic:4             | b  128.0 | c   87 ||  arrow arizona mango - archer jacket bundle - telecom torso domino - cowboy thoma [...]
-| mnemonic:5             | b  160.0 | c  112 ||  arrow arizona mango - archer jacket bundle - telecom torso domino - cowboy thoma [...]
-| mnemonic:6             | b  192.1 | c  137 ||  arrow arizona mango - archer jacket bundle - telecom torso domino - cowboy thoma [...]
-| mnemonic:7             | b  224.1 | c  159 ||  arrow arizona mango - archer jacket bundle - telecom torso domino - cowboy thoma [...]
-| bip0039:2              | b   66   | c   36 ||  robot ship night - shield way yellow
-| bip0039:3              | b   99   | c   59 ||  robot ship night - shield way yellow - casual brother arrow
-| bip0039:4              | b  132   | c   80 ||  robot ship night - shield way yellow - casual brother arrow - invest chief sting
-| bip0039:5              | b  165   | c  101 ||  robot ship night - shield way yellow - casual brother arrow - invest chief sting [...]
-| bip0039:6              | b  198   | c  121 ||  robot ship night - shield way yellow - casual brother arrow - invest chief sting [...]
-| bip0039:7              | b  231   | c  142 ||  robot ship night - shield way yellow - casual brother arrow - invest chief sting [...]
-| skey:2                 | b   66   | c   31 ||  mile noun hear - norm wast yarn
-| skey:3                 | b   99   | c   43 ||  mile noun hear - norm wast yarn - led i cur
-| skey:4                 | b  132   | c   58 ||  mile noun hear - norm wast yarn - led i cur - doug me sale
-| skey:5                 | b  165   | c   75 ||  mile noun hear - norm wast yarn - led i cur - doug me sale - fire jude smug
-| skey:6                 | b  198   | c   91 ||  mile noun hear - norm wast yarn - led i cur - doug me sale - fire jude smug - sl [...]
-| skey:7                 | b  231   | c  107 ||  mile noun hear - norm wast yarn - led i cur - doug me sale - fire jude smug - sl [...]
-| pgp:4                  | b   64   | c   74 ||  shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer
-| pgp:5                  | b   80   | c   93 ||  shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
-| pgp:6                  | b   96   | c  112 ||  shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
-| pgp:7                  | b  112   | c  132 ||  shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
-| pgp:8                  | b  128   | c  146 ||  shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
-| pgp:9                  | b  144   | c  167 ||  shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
-| pgp:10                 | b  160   | c  189 ||  shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
-| pgp:11                 | b  176   | c  210 ||  shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
-| pgp:12                 | b  192   | c  233 ||  shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
-| pgp:13                 | b  208   | c  252 ||  shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
-| pgp:14                 | b  224   | c  271 ||  shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
-| pgp:15                 | b  240   | c  293 ||  shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
-| pgp:16                 | b  256   | c  312 ||  shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
-| eff-large:2            | b   77.5 | c   44 ||  scope slacks patronize - dumpling deny spill
-| eff-large:3            | b  116.3 | c   67 ||  scope slacks patronize - dumpling deny spill - sharpener visa yo-yo
-| eff-large:4            | b  155.0 | c   89 ||  scope slacks patronize - dumpling deny spill - sharpener visa yo-yo - class cart [...]
-| eff-large:5            | b  193.8 | c  118 ||  scope slacks patronize - dumpling deny spill - sharpener visa yo-yo - class cart [...]
-| eff-large:6            | b  232.6 | c  146 ||  scope slacks patronize - dumpling deny spill - sharpener visa yo-yo - class cart [...]
-| eff-short:3            | b   93.0 | c   52 ||  shaft sleep ankle - path sled deaf - shun zero chunk
-| eff-short:4            | b  124.0 | c   72 ||  shaft sleep ankle - path sled deaf - shun zero chunk - candy width baggy
-| eff-short:5            | b  155.0 | c   92 ||  shaft sleep ankle - path sled deaf - shun zero chunk - candy width baggy - decoy [...]
-| eff-short:6            | b  186.1 | c  110 ||  shaft sleep ankle - path sled deaf - shun zero chunk - candy width baggy - decoy [...]
-| eff-short:7            | b  217.1 | c  128 ||  shaft sleep ankle - path sled deaf - shun zero chunk - candy width baggy - decoy [...]
-| eff-short:8            | b  248.1 | c  147 ||  shaft sleep ankle - path sled deaf - shun zero chunk - candy width baggy - decoy [...]
-| eff-unique:3           | b   93.0 | c   73 ||  rekindle satchel agonizing - mule sardine dibs - riskily zirconium carrot
-| eff-unique:4           | b  124.0 | c   98 ||  rekindle satchel agonizing - mule sardine dibs - riskily zirconium carrot - bogu [...]
-| eff-unique:5           | b  155.0 | c  120 ||  rekindle satchel agonizing - mule sardine dibs - riskily zirconium carrot - bogu [...]
-| eff-unique:6           | b  186.1 | c  149 ||  rekindle satchel agonizing - mule sardine dibs - riskily zirconium carrot - bogu [...]
-| eff-unique:7           | b  217.1 | c  174 ||  rekindle satchel agonizing - mule sardine dibs - riskily zirconium carrot - bogu [...]
-| eff-unique:8           | b  248.1 | c  197 ||  rekindle satchel agonizing - mule sardine dibs - riskily zirconium carrot - bogu [...]
-| nato:13                | b   67.2 | c   78 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo
-| nato:14                | b   72.3 | c   82 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:15                | b   77.5 | c   86 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:16                | b   82.7 | c   94 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:17                | b   87.8 | c   99 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:18                | b   93.0 | c  104 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:19                | b   98.2 | c  108 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:20                | b  103.3 | c  115 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:21                | b  108.5 | c  120 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:22                | b  113.7 | c  128 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:23                | b  118.9 | c  136 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:24                | b  124.0 | c  144 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:25                | b  129.2 | c  149 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:26                | b  134.4 | c  155 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:27                | b  139.5 | c  161 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:28                | b  144.7 | c  165 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:29                | b  149.9 | c  169 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:30                | b  155.0 | c  175 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:31                | b  160.2 | c  180 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:32                | b  165.4 | c  188 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:33                | b  170.6 | c  196 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:34                | b  175.7 | c  201 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:35                | b  180.9 | c  208 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:36                | b  186.1 | c  213 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:37                | b  191.2 | c  218 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:38                | b  196.4 | c  224 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:39                | b  201.6 | c  230 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:40                | b  206.7 | c  235 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:41                | b  211.9 | c  243 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:42                | b  217.1 | c  249 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:43                | b  222.3 | c  255 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:44                | b  227.4 | c  260 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:45                | b  232.6 | c  264 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:46                | b  237.8 | c  270 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:47                | b  242.9 | c  276 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:48                | b  248.1 | c  281 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| nato:49                | b  253.3 | c  290 ||  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-| uuid-v4                | b  122   | c   36 ||  c5a0ef11-f80c-41ce-8329-75e88c63a6e1
-| bytes-hex:8            | b   64   | c   16 ||  7f6f2ccdb23f2abb
-| bytes-hex:12           | b   96   | c   24 ||  7f6f2ccdb23f2abb7b69278e
-| bytes-hex:16           | b  128   | c   32 ||  7f6f2ccdb23f2abb7b69278e947c01c6
-| bytes-hex:20           | b  160   | c   40 ||  7f6f2ccdb23f2abb7b69278e947c01c6160a31cf
-| bytes-hex:24           | b  192   | c   48 ||  7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06
-| bytes-hex:28           | b  224   | c   56 ||  7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab
-| bytes-hex:32           | b  256   | c   64 ||  7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95
-| flake:2                | b   64   | c   26 ||  29607b74-7f6f2ccd-b23f2abb
-| flake:3                | b   96   | c   35 ||  29607b74-7f6f2ccd-b23f2abb-7b69278e
-| flake:4                | b  128   | c   44 ||  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6
-| flake:5                | b  160   | c   53 ||  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf
-| flake:6                | b  192   | c   62 ||  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06
-| flake:7                | b  224   | c   71 ||  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab
-| flake:8                | b  256   | c   80 ||  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95
+::  digits-base10:20        :   66.4 b :   24 c ::    7022 7110 4492 5182 5629
+::  digits-base10:24        :   79.7 b :   29 c ::    7022 7110 4492 5182 5629 0665
+::  digits-base10:28        :   93.0 b :   34 c ::    7022 7110 4492 5182 5629 0665 7352
+::  digits-base10:32        :  106.3 b :   39 c ::    7022 7110 4492 5182 5629 0665 7352 6062
+::  digits-base10:36        :  119.5 b :   44 c ::    7022 7110 4492 5182 5629 0665 7352 6062 3356
+::  digits-base10:40        :  132.8 b :   49 c ::    7022 7110 4492 5182 5629 0665 7352 6062 3356 0320
+::  digits-base10:44        :  146.1 b :   54 c ::    7022 7110 4492 5182 5629 0665 7352 6062 3356 0320 9460
+::  digits-base10:48        :  159.4 b :   59 c ::    7022 7110 4492 5182 5629 0665 7352 6062 3356 0320 9460 8889
+::  digits-base10:52        :  172.7 b :   64 c ::    7022 7110 4492 5182 5629 0665 7352 6062 3356 0320 9460 8889 3513
+::  digits-base10:56        :  186.0 b :   69 c ::    7022 7110 4492 5182 5629 0665 7352 6062 3356 0320 9460 8889 3513 8513
+::  digits-base10:60        :  199.3 b :   74 c ::    7022 7110 4492 5182 5629 0665 7352 6062 3356 0320 9460 8889 3513 8513 3855
+::  digits-base10:64        :  212.6 b :   79 c ::    7022 7110 4492 5182 5629 0665 7352 6062 3356 0320 9460 8889 3513 8513 3855 7272
+::  digits-base10:68        :  225.8 b :   84 c ::    7022 7110 4492 5182 5629 0665 7352 6062 3356 0320 9460 8889 3513 8513 3855 7272  [...]
+::  digits-base10:72        :  239.1 b :   89 c ::    7022 7110 4492 5182 5629 0665 7352 6062 3356 0320 9460 8889 3513 8513 3855 7272  [...]
+::  digits-base10:76        :  252.4 b :   94 c ::    7022 7110 4492 5182 5629 0665 7352 6062 3356 0320 9460 8889 3513 8513 3855 7272  [...]
+::  digits-base2:64         :   64  =b :   71 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011
+::  digits-base2:72         :   72  =b :   80 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001
+::  digits-base2:80         :   80  =b :   89 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:88         :   88  =b :   98 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:96         :   96  =b :  107 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:104        :  104  =b :  116 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:112        :  112  =b :  125 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:120        :  120  =b :  134 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:128        :  128  =b :  143 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:136        :  136  =b :  152 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:144        :  144  =b :  161 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:152        :  152  =b :  170 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:160        :  160  =b :  179 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:168        :  168  =b :  188 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:176        :  176  =b :  197 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:184        :  184  =b :  206 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:192        :  192  =b :  215 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:200        :  200  =b :  224 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:208        :  208  =b :  233 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:216        :  216  =b :  242 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:224        :  224  =b :  251 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:232        :  232  =b :  260 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:240        :  240  =b :  269 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:248        :  248  =b :  278 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base2:256        :  256  =b :  287 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base8:24         :   72  =b :   29 c ::    6026 6103 7414 5775 0654 6142
+::  digits-base8:28         :   84  =b :   34 c ::    6026 6103 7414 5775 0654 6142 2556
+::  digits-base8:32         :   96  =b :   39 c ::    6026 6103 7414 5775 0654 6142 2556 2505
+::  digits-base8:36         :  108  =b :   44 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450
+::  digits-base8:40         :  120  =b :   49 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706
+::  digits-base8:44         :  132  =b :   54 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677
+::  digits-base8:48         :  144  =b :   59 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261
+::  digits-base8:52         :  156  =b :   64 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222
+::  digits-base8:56         :  168  =b :   69 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646
+::  digits-base8:60         :  180  =b :   74 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227
+::  digits-base8:64         :  192  =b :   79 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126
+::  digits-base8:68         :  204  =b :   84 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:72         :  216  =b :   89 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:76         :  228  =b :   94 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:80         :  240  =b :   99 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base8:84         :  252  =b :  104 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677 4261 4222 4646 1227 4126  [...]
+::  digits-base16:16        :   64  =b :   19 c ::    c094 c32f 72d3 8ae1
+::  digits-base16:20        :   80  =b :   24 c ::    c094 c32f 72d3 8ae1 3011
+::  digits-base16:24        :   96  =b :   29 c ::    c094 c32f 72d3 8ae1 3011 18c1
+::  digits-base16:28        :  112  =b :   34 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a
+::  digits-base16:32        :  128  =b :   39 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9
+::  digits-base16:36        :  144  =b :   44 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0
+::  digits-base16:40        :  160  =b :   49 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d
+::  digits-base16:44        :  176  =b :   54 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee
+::  digits-base16:48        :  192  =b :   59 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835
+::  digits-base16:52        :  208  =b :   64 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81
+::  digits-base16:56        :  224  =b :   69 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e
+::  digits-base16:60        :  240  =b :   74 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da
+::  digits-base16:64        :  256  =b :   79 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9 35a0 157d dcee c835 dc81 c34e 32da e973
+::  digits-base32-hex:16    :   80  =b :   19 c ::    n8pv 47gk fs2v t02p
+::  digits-base32-hex:20    :  100  =b :   24 c ::    n8pv 47gk fs2v t02p lobv
+::  digits-base32-hex:24    :  120  =b :   29 c ::    n8pv 47gk fs2v t02p lobv 88lp
+::  digits-base32-hex:28    :  140  =b :   34 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16
+::  digits-base32-hex:32    :  160  =b :   39 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka
+::  digits-base32-hex:36    :  180  =b :   44 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq
+::  digits-base32-hex:40    :  200  =b :   49 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb
+::  digits-base32-hex:44    :  220  =b :   54 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r
+::  digits-base32-hex:48    :  240  =b :   59 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka 1teq tosb h39r g639
+::  digits-base32-rfc:16    :   80  =b :   19 c ::    xiz7 ehqu p4c7 5acz
+::  digits-base32-rfc:20    :  100  =b :   24 c ::    xiz7 ehqu p4c7 5acz vyl7
+::  digits-base32-rfc:24    :  120  =b :   29 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz
+::  digits-base32-rfc:28    :  140  =b :   34 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg
+::  digits-base32-rfc:32    :  160  =b :   39 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk
+::  digits-base32-rfc:36    :  180  =b :   44 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2
+::  digits-base32-rfc:40    :  200  =b :   49 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l
+::  digits-base32-rfc:44    :  220  =b :   54 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3
+::  digits-base32-rfc:48    :  240  =b :   59 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk b5o2 5y4l rdj3 qgdj
+::  digits-base64-url:12    :   72  =b :   14 c ::    lx-H Dbd7 1Ng4
+::  digits-base64-url:16    :   96  =b :   19 c ::    lx-H Dbd7 1Ng4 E_rE
+::  digits-base64-url:20    :  120  =b :   24 c ::    lx-H Dbd7 1Ng4 E_rE nyFF
+::  digits-base64-url:24    :  144  =b :   29 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh
+::  digits-base64-url:28    :  168  =b :   34 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC
+::  digits-base64-url:32    :  192  =b :   39 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU
+::  digits-base64-url:36    :  216  =b :   44 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc
+::  digits-base64-url:40    :  240  =b :   49 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU BFCc nDz0
+::  digits-base64-rfc:12    :   72  =b :   14 c ::    lx+H Dbd7 1Ng4
+::  digits-base64-rfc:16    :   96  =b :   19 c ::    lx+H Dbd7 1Ng4 E/rE
+::  digits-base64-rfc:20    :  120  =b :   24 c ::    lx+H Dbd7 1Ng4 E/rE nyFF
+::  digits-base64-rfc:24    :  144  =b :   29 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh
+::  digits-base64-rfc:28    :  168  =b :   34 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC
+::  digits-base64-rfc:32    :  192  =b :   39 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU
+::  digits-base64-rfc:36    :  216  =b :   44 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc
+::  digits-base64-rfc:40    :  240  =b :   49 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU BFCc nDz0
+::  digits-base58:12        :   70.2 b :   14 c ::    jm2a GmDo kyz9
+::  digits-base58:16        :   93.7 b :   19 c ::    jm2a GmDo kyz9 73RT
+::  digits-base58:20        :  117.1 b :   24 c ::    jm2a GmDo kyz9 73RT vEZA
+::  digits-base58:24        :  140.5 b :   29 c ::    jm2a GmDo kyz9 73RT vEZA qCWU
+::  digits-base58:28        :  164.0 b :   34 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z
+::  digits-base58:32        :  187.4 b :   39 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg
+::  digits-base58:36        :  210.8 b :   44 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc
+::  digits-base58:40        :  234.3 b :   49 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg 15cc nf55
+::  digits-base62:12        :   71.4 b :   14 c ::    jl1a GlDn kyz8
+::  digits-base62:16        :   95.2 b :   19 c ::    jl1a GlDn kyz8 x3QS
+::  digits-base62:20        :  119.0 b :   24 c ::    jl1a GlDn kyz8 x3QS vEY9
+::  digits-base62:24        :  142.9 b :   29 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd
+::  digits-base62:28        :  166.7 b :   34 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z
+::  digits-base62:32        :  190.5 b :   39 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0
+::  digits-base62:36        :  214.3 b :   44 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm
+::  digits-base62:40        :  238.1 b :   49 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0 4ccm f55W
+::  digits-bech32:16        :   80  =b :   19 c ::    hgel y8s5 0uzl aqze
+::  digits-bech32:20        :  100  =b :   24 c ::    hgel y8s5 0uzl aqze 4ctl
+::  digits-bech32:24        :  120  =b :   29 c ::    hgel y8s5 0uzl aqze 4ctl gg4e
+::  digits-bech32:28        :  140  =b :   34 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px
+::  digits-bech32:32        :  160  =b :   39 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52
+::  digits-bech32:36        :  180  =b :   44 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6
+::  digits-bech32:40        :  200  =b :   49 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut
+::  digits-bech32:44        :  220  =b :   54 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm
+::  digits-bech32:48        :  240  =b :   59 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52 paw6 acut 3rfm sxrf
+::  digits-z85:10           :   64.0 b :   11 c ::    .2Nm+ i^%9%
+::  digits-z85:15           :   96.1 b :   17 c ::    .2Nm+ i^%9% 4AD]j
+::  digits-z85:20           :  128.1 b :   23 c ::    .2Nm+ i^%9% 4AD]j Ld?hS
+::  digits-z85:25           :  160.2 b :   29 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$
+::  digits-z85:30           :  192.2 b :   35 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU
+::  digits-z85:35           :  224.3 b :   41 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I
+::  ascii-lower:16          :   75.2 b :   19 c ::    tuap ufut zdzb lyoe
+::  ascii-lower:20          :   94.0 b :   24 c ::    tuap ufut zdzb lyoe vfnq
+::  ascii-lower:24          :  112.8 b :   29 c ::    tuap ufut zdzb lyoe vfnq mwwb
+::  ascii-lower:28          :  131.6 b :   34 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr
+::  ascii-lower:32          :  150.4 b :   39 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu
+::  ascii-lower:36          :  169.2 b :   44 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn
+::  ascii-lower:40          :  188.0 b :   49 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj
+::  ascii-lower:44          :  206.8 b :   54 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz
+::  ascii-lower:48          :  225.6 b :   59 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh
+::  ascii-lower:52          :  244.4 b :   64 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu rccn twcj nzgz rruh qcfr
+::  ascii-mixed:12          :   68.4 b :   14 c ::    MObE nOlP YZhY
+::  ascii-mixed:16          :   91.2 b :   19 c ::    MObE nOlP YZhY cwWl
+::  ascii-mixed:20          :  114.0 b :   24 c ::    MObE nOlP YZhY cwWl DiRk
+::  ascii-mixed:24          :  136.8 b :   29 c ::    MObE nOlP YZhY cwWl DiRk AHTT
+::  ascii-mixed:28          :  159.6 b :   34 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY
+::  ascii-mixed:32          :  182.4 b :   39 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad
+::  ascii-mixed:36          :  205.2 b :   44 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee
+::  ascii-mixed:40          :  228.0 b :   49 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes
+::  ascii-mixed:44          :  250.8 b :   54 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad GIee NTes jBYn
+::  ascii-symbols:16        :   80  =b :   19 c ::    \)^~ %(;? :{#~ |!#^
+::  ascii-symbols:20        :  100  =b :   24 c ::    \)^~ %(;? :{#~ |!#^ @],~
+::  ascii-symbols:24        :  120  =b :   29 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^
+::  ascii-symbols:28        :  140  =b :   34 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"'
+::  ascii-symbols:32        :  160  =b :   39 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+
+::  ascii-symbols:36        :  180  =b :   44 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_
+::  ascii-symbols:40        :  200  =b :   49 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{,
+::  ascii-symbols:44        :  220  =b :   54 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*`
+::  ascii-symbols:48        :  240  =b :   59 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+ "|/_ |]{, <$*` ;'$*
+::  ascii-any:12            :   78.6 b :   14 c ::    ei#9 i5kg |~.+
+::  ascii-any:16            :  104.8 b :   19 c ::    ei#9 i5kg |~.+ {%IL
+::  ascii-any:20            :  131.0 b :   24 c ::    ei#9 i5kg |~.+ {%IL 6U/o
+::  ascii-any:24            :  157.3 b :   29 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs
+::  ascii-any:28            :  183.5 b :   34 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
+::  ascii-any:32            :  209.7 b :   39 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
+::  ascii-any:36            :  235.9 b :   44 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_ r)B2
+::  cv-lower:5              :   67.1 b :   24 c ::    taqe veza zaye fugi rixu
+::  cv-lower:6              :   80.5 b :   29 c ::    taqe veza zaye fugi rixu cezu
+::  cv-lower:7              :   93.9 b :   34 c ::    taqe veza zaye fugi rixu cezu saco
+::  cv-lower:8              :  107.4 b :   39 c ::    taqe veza zaye fugi rixu cezu saco voxa
+::  cv-lower:9              :  120.8 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa kize
+::  cv-lower:10             :  134.2 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose
+::  cv-lower:11             :  147.7 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago
+::  cv-lower:12             :  161.1 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko
+::  cv-lower:13             :  174.5 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha
+::  cv-lower:14             :  187.9 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu
+::  cv-lower:15             :  201.4 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku
+::  cv-lower:16             :  214.8 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju
+::  cv-lower:17             :  228.2 b :   84 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:18             :  241.7 b :   89 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-lower:19             :  255.1 b :   94 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-mixed:4              :   69.7 b :   19 c ::    PaFi PiQI YayU mAjO
+::  cv-mixed:5              :   87.1 b :   24 c ::    PaFi PiQI YayU mAjO lAzi
+::  cv-mixed:6              :  104.5 b :   29 c ::    PaFi PiQI YayU mAjO lAzi ZUKa
+::  cv-mixed:7              :  121.9 b :   34 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo
+::  cv-mixed:8              :  139.4 b :   39 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB
+::  cv-mixed:9              :  156.8 b :   44 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi
+::  cv-mixed:10             :  174.2 b :   49 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB
+::  cv-mixed:11             :  191.7 b :   54 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona
+::  cv-mixed:12             :  209.1 b :   59 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa
+::  cv-mixed:13             :  226.5 b :   64 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU
+::  cv-mixed:14             :  243.9 b :   69 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA
+::  cv-plus-a:4             :   67.0 b :   24 c ::    taqe veza zaye fugi 6290
+::  cv-plus-a:5             :   80.4 b :   29 c ::    taqe veza zaye fugi rixu 2906
+::  cv-plus-a:6             :   93.8 b :   34 c ::    taqe veza zaye fugi rixu cezu 0665
+::  cv-plus-a:7             :  107.2 b :   39 c ::    taqe veza zaye fugi rixu cezu saco 6573
+::  cv-plus-a:8             :  120.7 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa 3526
+::  cv-plus-a:9             :  134.1 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize 2606
+::  cv-plus-a:10            :  147.5 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose 6062
+::  cv-plus-a:11            :  161.0 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago 2335
+::  cv-plus-a:12            :  174.4 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko 0320
+::  cv-plus-a:13            :  187.8 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha 9460
+::  cv-plus-a:14            :  201.2 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu 9351
+::  cv-plus-a:15            :  214.7 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku 5138
+::  cv-plus-a:16            :  228.1 b :   84 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-plus-b:4             :   67.0 b :   24 c ::    taqe veza zaye fugi RI29
+::  cv-plus-b:5             :   80.5 b :   29 c ::    taqe veza zaye fugi rixu CB90
+::  cv-plus-b:6             :   93.9 b :   34 c ::    taqe veza zaye fugi rixu cezu SA66
+::  cv-plus-b:7             :  107.3 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO57
+::  cv-plus-b:8             :  120.7 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa KI26
+::  cv-plus-b:9             :  134.2 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO60
+::  cv-plus-b:10            :  147.6 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose RA62
+::  cv-plus-b:11            :  161.0 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB33
+::  cv-plus-b:12            :  174.4 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA32
+::  cv-plus-b:13            :  187.9 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI60
+::  cv-plus-b:14            :  201.3 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU35
+::  cv-plus-b:15            :  214.7 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA38
+::  cv-plus-b:16            :  228.2 b :   84 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-plus-c:4             :   68.7 b :   24 c ::    taqe veza zaye fugi RI2~
+::  cv-plus-c:5             :   82.1 b :   29 c ::    taqe veza zaye fugi rixu CB9!
+::  cv-plus-c:6             :   95.6 b :   34 c ::    taqe veza zaye fugi rixu cezu SA6^
+::  cv-plus-c:7             :  109.0 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO5]
+::  cv-plus-c:8             :  122.4 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa KI2@
+::  cv-plus-c:9             :  135.8 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO6"
+::  cv-plus-c:10            :  149.3 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose RA6+
+::  cv-plus-c:11            :  162.7 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB3,
+::  cv-plus-c:12            :  176.1 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA3"
+::  cv-plus-c:13            :  189.6 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI6_
+::  cv-plus-c:14            :  203.0 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU3<
+::  cv-plus-c:15            :  216.4 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA3`
+::  cv-plus-c:16            :  229.8 b :   84 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  proquint-lower:4        :   64  =b :   23 c ::    sanis gufaz lofug mudad
+::  proquint-lower:5        :   80  =b :   29 c ::    sanis gufaz lofug mudad damud
+::  proquint-lower:6        :   96  =b :   35 c ::    sanis gufaz lofug mudad damud mihup
+::  proquint-lower:7        :  112  =b :   41 c ::    sanis gufaz lofug mudad damud mihup dogip
+::  proquint-lower:8        :  128  =b :   47 c ::    sanis gufaz lofug mudad damud mihup dogip bajal
+::  proquint-lower:9        :  144  =b :   53 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv
+::  proquint-lower:10       :  160  =b :   59 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj
+::  proquint-lower:11       :  176  =b :   65 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod
+::  proquint-lower:12       :  192  =b :   71 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog
+::  proquint-lower:13       :  208  =b :   77 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol
+::  proquint-lower:14       :  224  =b :   83 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:15       :  240  =b :   89 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:16       :  256  =b :   95 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  koremutake-a:5          :   70  =b :   28 c ::    drobo stufi stoda napru hyhi
+::  koremutake-a:6          :   84  =b :   33 c ::    drobo stufi stoda napru hyhi pupe
+::  koremutake-a:7          :   98  =b :   40 c ::    drobo stufi stoda napru hyhi pupe grugro
+::  koremutake-a:8          :  112  =b :   46 c ::    drobo stufi stoda napru hyhi pupe grugro ditra
+::  koremutake-a:9          :  126  =b :   53 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro
+::  koremutake-a:10         :  140  =b :   58 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve
+::  koremutake-a:11         :  154  =b :   64 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra
+::  koremutake-a:12         :  168  =b :   70 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody
+::  koremutake-a:13         :  182  =b :   76 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji
+::  koremutake-a:14         :  196  =b :   82 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:15         :  210  =b :   88 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:16         :  224  =b :   93 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:17         :  238  =b :   98 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:18         :  252  =b :  103 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-b:4          :   84  =b :   31 c ::    drobostu fistoda napruhy hipupe
+::  koremutake-b:5          :  105  =b :   40 c ::    drobostu fistoda napruhy hipupe grugrodi
+::  koremutake-b:6          :  126  =b :   50 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro
+::  koremutake-b:7          :  147  =b :   57 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera
+::  koremutake-b:8          :  168  =b :   66 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody
+::  koremutake-b:9          :  189  =b :   75 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra
+::  koremutake-b:10         :  210  =b :   83 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:11         :  231  =b :   90 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:12         :  252  =b :   97 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  mnemonic:2              :   64.0 b :   42 c ::    arrow arizona mango - archer jacket bundle
+::  mnemonic:3              :   96.0 b :   65 c ::    arrow arizona mango - archer jacket bundle - telecom torso domino
+::  mnemonic:4              :  128.0 b :   87 c ::    arrow arizona mango - archer jacket bundle - telecom torso domino - cowboy thoma [...]
+::  mnemonic:5              :  160.0 b :  112 c ::    arrow arizona mango - archer jacket bundle - telecom torso domino - cowboy thoma [...]
+::  mnemonic:6              :  192.1 b :  137 c ::    arrow arizona mango - archer jacket bundle - telecom torso domino - cowboy thoma [...]
+::  mnemonic:7              :  224.1 b :  159 c ::    arrow arizona mango - archer jacket bundle - telecom torso domino - cowboy thoma [...]
+::  bip0039:2               :   66  =b :   36 c ::    robot ship night - shield way yellow
+::  bip0039:3               :   99  =b :   59 c ::    robot ship night - shield way yellow - casual brother arrow
+::  bip0039:4               :  132  =b :   80 c ::    robot ship night - shield way yellow - casual brother arrow - invest chief sting
+::  bip0039:5               :  165  =b :  101 c ::    robot ship night - shield way yellow - casual brother arrow - invest chief sting [...]
+::  bip0039:6               :  198  =b :  121 c ::    robot ship night - shield way yellow - casual brother arrow - invest chief sting [...]
+::  bip0039:7               :  231  =b :  142 c ::    robot ship night - shield way yellow - casual brother arrow - invest chief sting [...]
+::  skey:2                  :   66  =b :   31 c ::    mile noun hear - norm wast yarn
+::  skey:3                  :   99  =b :   43 c ::    mile noun hear - norm wast yarn - led i cur
+::  skey:4                  :  132  =b :   58 c ::    mile noun hear - norm wast yarn - led i cur - doug me sale
+::  skey:5                  :  165  =b :   75 c ::    mile noun hear - norm wast yarn - led i cur - doug me sale - fire jude smug
+::  skey:6                  :  198  =b :   91 c ::    mile noun hear - norm wast yarn - led i cur - doug me sale - fire jude smug - sl [...]
+::  skey:7                  :  231  =b :  107 c ::    mile noun hear - norm wast yarn - led i cur - doug me sale - fire jude smug - sl [...]
+::  pgp:4                   :   64  =b :   74 c ::    shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer
+::  pgp:5                   :   80  =b :   93 c ::    shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
+::  pgp:6                   :   96  =b :  112 c ::    shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
+::  pgp:7                   :  112  =b :  132 c ::    shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
+::  pgp:8                   :  128  =b :  146 c ::    shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
+::  pgp:9                   :  144  =b :  167 c ::    shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
+::  pgp:10                  :  160  =b :  189 c ::    shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
+::  pgp:11                  :  176  =b :  210 c ::    shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
+::  pgp:12                  :  192  =b :  233 c ::    shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
+::  pgp:13                  :  208  =b :  252 c ::    shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
+::  pgp:14                  :  224  =b :  271 c ::    shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
+::  pgp:15                  :  240  =b :  293 c ::    shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
+::  pgp:16                  :  256  =b :  312 c ::    shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
+::  eff-large:2             :   77.5 b :   44 c ::    scope slacks patronize - dumpling deny spill
+::  eff-large:3             :  116.3 b :   67 c ::    scope slacks patronize - dumpling deny spill - sharpener visa yo-yo
+::  eff-large:4             :  155.0 b :   89 c ::    scope slacks patronize - dumpling deny spill - sharpener visa yo-yo - class cart [...]
+::  eff-large:5             :  193.8 b :  118 c ::    scope slacks patronize - dumpling deny spill - sharpener visa yo-yo - class cart [...]
+::  eff-large:6             :  232.6 b :  146 c ::    scope slacks patronize - dumpling deny spill - sharpener visa yo-yo - class cart [...]
+::  eff-short:3             :   93.0 b :   52 c ::    shaft sleep ankle - path sled deaf - shun zero chunk
+::  eff-short:4             :  124.0 b :   72 c ::    shaft sleep ankle - path sled deaf - shun zero chunk - candy width baggy
+::  eff-short:5             :  155.0 b :   92 c ::    shaft sleep ankle - path sled deaf - shun zero chunk - candy width baggy - decoy [...]
+::  eff-short:6             :  186.1 b :  110 c ::    shaft sleep ankle - path sled deaf - shun zero chunk - candy width baggy - decoy [...]
+::  eff-short:7             :  217.1 b :  128 c ::    shaft sleep ankle - path sled deaf - shun zero chunk - candy width baggy - decoy [...]
+::  eff-short:8             :  248.1 b :  147 c ::    shaft sleep ankle - path sled deaf - shun zero chunk - candy width baggy - decoy [...]
+::  eff-unique:3            :   93.0 b :   73 c ::    rekindle satchel agonizing - mule sardine dibs - riskily zirconium carrot
+::  eff-unique:4            :  124.0 b :   98 c ::    rekindle satchel agonizing - mule sardine dibs - riskily zirconium carrot - bogu [...]
+::  eff-unique:5            :  155.0 b :  120 c ::    rekindle satchel agonizing - mule sardine dibs - riskily zirconium carrot - bogu [...]
+::  eff-unique:6            :  186.1 b :  149 c ::    rekindle satchel agonizing - mule sardine dibs - riskily zirconium carrot - bogu [...]
+::  eff-unique:7            :  217.1 b :  174 c ::    rekindle satchel agonizing - mule sardine dibs - riskily zirconium carrot - bogu [...]
+::  eff-unique:8            :  248.1 b :  197 c ::    rekindle satchel agonizing - mule sardine dibs - riskily zirconium carrot - bogu [...]
+::  nato:13                 :   67.2 b :   78 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo
+::  nato:14                 :   72.3 b :   82 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:15                 :   77.5 b :   86 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:16                 :   82.7 b :   94 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:17                 :   87.8 b :   99 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:18                 :   93.0 b :  104 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:19                 :   98.2 b :  108 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:20                 :  103.3 b :  115 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:21                 :  108.5 b :  120 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:22                 :  113.7 b :  128 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:23                 :  118.9 b :  136 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:24                 :  124.0 b :  144 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:25                 :  129.2 b :  149 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:26                 :  134.4 b :  155 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:27                 :  139.5 b :  161 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:28                 :  144.7 b :  165 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:29                 :  149.9 b :  169 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:30                 :  155.0 b :  175 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:31                 :  160.2 b :  180 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:32                 :  165.4 b :  188 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:33                 :  170.6 b :  196 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:34                 :  175.7 b :  201 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:35                 :  180.9 b :  208 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:36                 :  186.1 b :  213 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:37                 :  191.2 b :  218 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:38                 :  196.4 b :  224 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:39                 :  201.6 b :  230 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:40                 :  206.7 b :  235 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:41                 :  211.9 b :  243 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:42                 :  217.1 b :  249 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:43                 :  222.3 b :  255 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:44                 :  227.4 b :  260 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:45                 :  232.6 b :  264 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:46                 :  237.8 b :  270 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:47                 :  242.9 b :  276 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:48                 :  248.1 b :  281 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:49                 :  253.3 b :  290 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  uuid-v4                 :  122  =b :   36 c ::    c5a0ef11-f80c-41ce-8329-75e88c63a6e1
+::  bytes-hex:8             :   64  =b :   16 c ::    7f6f2ccdb23f2abb
+::  bytes-hex:12            :   96  =b :   24 c ::    7f6f2ccdb23f2abb7b69278e
+::  bytes-hex:16            :  128  =b :   32 c ::    7f6f2ccdb23f2abb7b69278e947c01c6
+::  bytes-hex:20            :  160  =b :   40 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf
+::  bytes-hex:24            :  192  =b :   48 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06
+::  bytes-hex:28            :  224  =b :   56 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab
+::  bytes-hex:32            :  256  =b :   64 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95
+::  flake:2                 :   64  =b :   26 c ::    29607b74-7f6f2ccd-b23f2abb
+::  flake:3                 :   96  =b :   35 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e
+::  flake:4                 :  128  =b :   44 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6
+::  flake:5                 :  160  =b :   53 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf
+::  flake:6                 :  192  =b :   62 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06
+::  flake:7                 :  224  =b :   71 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab
+::  flake:8                 :  256  =b :   80 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95
