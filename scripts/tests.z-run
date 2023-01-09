@@ -31,8 +31,9 @@
 		_identifier="${_identifier// /-}"
 		printf -- ':: tests / run / %s :: test "${#}" -eq 0 ; exec -- "${ZRUN}" ":: tests / run / *" %q %s\n' "${_label}" "${_identifier}" "${_command}"
 	done
-	printf -- '<< tests / run / all\n'
+	printf -- '++<< tests / run / all\n'
 	printf -- '\ttest "${#}" -eq 0\n'
+	printf -- '\t"${ZRUN}" ":: tests / run / clean"\n'
 	printf -- '\t"${ZRUN}" ":: cargo / release / build"\n'
 	printf -- '\t"${ZRUN}" ":: cargo / release / collect"\n'
 	printf -- '\texport -- __TESTS__NO_BUILD=true\n'
@@ -42,6 +43,18 @@
 		printf -- '\tprintf -- '\''\\n[--]\\n'\'' >&2\n'
 	done
 	printf -- '!!\n'
+!!
+
+
+
+
+--<< tests / run / clean
+	
+	test "${#}" -eq 0
+	
+	_reports="./documentation/tests"
+	
+	find "${_reports}/" -xdev -type f -not -name '_*' -not -name '.*' -name '*.txt' -delete
 !!
 
 
