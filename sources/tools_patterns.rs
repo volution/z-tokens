@@ -21,13 +21,17 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _output_flags = OutputFlags::new () .else_wrap (0x9b1b7b70) ?;
 	let mut _randomizer_flags = RandomizerFlags::new () .else_wrap (0x839efea4) ?;
 	
+	let mut _select_all : Option<bool> = None;
 	let mut _identifiers_only : Option<bool> = None;
+	
+	let mut _display_all : Option<bool> = None;
+	let mut _display_aliases : Option<bool> = None;
+	let mut _display_labels : Option<bool> = None;
 	
 	let mut _identifier_prefix : Option<String> = None;
 	let mut _identifier_suffix : Option<String> = None;
 	let mut _identifier_contains : Option<String> = None;
 	let mut _has_label : Option<String> = None;
-	let mut _all : Option<bool> = None;
 	
 	let mut _entropy_minimum : Option<usize> = None;
 	let mut _entropy_maximum : Option<usize> = None;
@@ -44,8 +48,21 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	{
 		let mut _parser = ArgParser::new ();
 		
+		_parser.refer (&mut _select_all)
+				.add_option (&["-a", "--all"], ArgStoreConst (Some (true)), "(select all patterns)");
+		
 		_parser.refer (&mut _identifiers_only)
 				.add_option (&["-i", "--identifiers-only"], ArgStoreConst (Some (true)), "(list only identifiers)");
+		
+		_parser.refer (&mut _display_all)
+				.metavar ("{show}")
+				.add_option (&["-X", "--show-all"], ArgStoreConst (Some (true)), "(show all details)");
+		_parser.refer (&mut _display_aliases)
+				.metavar ("{show}")
+				.add_option (&["--show-aliases"], ArgStoreConst (Some (true)), "(show aliases)");
+		_parser.refer (&mut _display_labels)
+				.metavar ("{show}")
+				.add_option (&["--show-labels"], ArgStoreConst (Some (true)), "(show labels)");
 		
 		_parser.refer (&mut _identifier_prefix)
 				.metavar ("{prefix}")
@@ -59,9 +76,6 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		_parser.refer (&mut _has_label)
 				.add_option (&["-f", "--label"], ArgStoreOption, "(filter by label)");
-		
-		_parser.refer (&mut _all)
-				.add_option (&["-a", "--all"], ArgStoreConst (Some (true)), "(list all patterns, including aliases)");
 		
 		_parser.refer (&mut _entropy_minimum)
 				.metavar ("{bits}")
@@ -119,11 +133,11 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	
 	
+	let _select_all = _select_all.unwrap_or (false);
 	let _identifiers_only = _identifiers_only.unwrap_or (false);
-	let _all = _all.unwrap_or (false);
 	
 	let _skip_upper =
-			(! _identifiers_only) && (! _all)
+			(! _identifiers_only) && (! _select_all)
 			&& _identifier_prefix.is_none ()
 			&& _identifier_suffix.is_none ()
 			&& _identifier_contains.is_none ()
@@ -135,7 +149,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			&& _has_symbols.is_none ();
 	
 	let _length_maximum = if
-				(! _identifiers_only) && (! _all)
+				(! _identifiers_only) && (! _select_all)
 				&& _identifier_prefix.is_none ()
 				&& _identifier_suffix.is_none ()
 				&& _identifier_contains.is_none ()
@@ -162,7 +176,9 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			_has_digits.is_some () ||
 			_has_symbols.is_some ();
 	
-	let _display_aliases = _all;
+	let _display_all = _display_all.unwrap_or (false);
+	let _display_aliases = _display_aliases.unwrap_or (false) || _display_all;
+	let _display_labels = _display_labels.unwrap_or (false) || _display_all;
 	
 	
 	
