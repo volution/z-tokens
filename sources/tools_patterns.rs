@@ -179,6 +179,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _display_all = _display_all.unwrap_or (false);
 	let _display_aliases = _display_aliases.unwrap_or (false) || _display_all;
 	let _display_labels = _display_labels.unwrap_or (false) || _display_all;
+	let _display_cards = _display_aliases || _display_labels;
 	
 	
 	
@@ -334,39 +335,53 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		let _display_string_max = DEFAULT_DISPLAY_TRIM;
 		let _display_string = if (_string_length <= _display_string_max) {
-				_string
+				Cow::Borrowed (&_string)
 			} else {
 				let mut _buffer = String::with_capacity (_display_string_max + 10);
 				_buffer.push_str (&_string[0 .. _display_string_max]);
 				_buffer.push_str (" [...]");
-				_buffer
+				Cow::Owned (_buffer)
 			};
 		
-		if _bits_exact {
-			writeln! (&mut _stream, "| {:22} | b {:4.0}   | c {:4} ||  {}", _identifier, _bits, _string_length, _display_string) .else_wrap (0x737c2a4f) ?;
+		if ! _display_cards {
+			
+			if _bits_exact {
+				writeln! (&mut _stream, "::  {:22}  : {:4.0}  =b : {:4} c ::    {}", _identifier, _bits, _string_length, _display_string) .else_wrap (0x737c2a4f) ?;
+			} else {
+				let _display_bits = (_bits * 10.0) .floor () / 10.0;
+				writeln! (&mut _stream, "::  {:22}  : {:6.1} b : {:4} c ::    {}", _identifier, _display_bits, _string_length, _display_string) .else_wrap (0xd141c5ef) ?;
+			}
+			
 		} else {
-			let _display_bits = (_bits * 10.0) .floor () / 10.0;
-			writeln! (&mut _stream, "| {:22} | b {:6.1} | c {:4} ||  {}", _identifier, _display_bits, _string_length, _display_string) .else_wrap (0xd141c5ef) ?;
-		}
-		
-		if _display_aliases && (! _aliases.is_empty () || ! _labels.is_empty ()) {
-			write! (&mut _stream, "\\__ ") .else_wrap (0x4b3973c7) ?;
-			if ! _aliases.is_empty () {
+			
+			writeln! (&mut _stream, "**  {:30}  ::    {}", _identifier, _string) .else_wrap (0xc6bd1c82) ?;
+			
+			// writeln! (&mut _stream, ">>  {}", _string) .else_wrap (0xe0851dca) ?;
+			
+			if _bits_exact {
+				writeln! (&mut _stream, "\\_  bits:     {}  (exact)", _bits) .else_wrap (0x36fc1a4b) ?;
+			} else {
+				let _display_bits = (_bits * 10000.0) .floor () / 10000.0;
+				writeln! (&mut _stream, "\\_  bits:     {:.4}", _display_bits) .else_wrap (0xf2b57c8b) ?;
+			}
+			writeln! (&mut _stream, "\\_  length:   {}", _string_length) .else_wrap (0x000c5aba) ?;
+			
+			if _display_aliases && ! _aliases.is_empty () {
+				write! (&mut _stream, "\\_  aliases: ") .else_wrap (0x4b3973c7) ?;
 				for _alias in _aliases {
 					write! (&mut _stream, " {}", _alias.as_ref ()) .else_wrap (0x7275b085) ?;
 				}
-			} else {
-				write! (&mut _stream, " (no aliases)") .else_wrap (0xf0b72d32) ?;
+				writeln! (&mut _stream) .else_wrap (0x8dfe1e4d) ?;
 			}
-			write! (&mut _stream, " ~~") .else_wrap (0x5d6b9bb3) ?;
-			if ! _labels.is_empty () {
+			if _display_labels && ! _labels.is_empty () {
+				write! (&mut _stream, "\\_  labels:  ") .else_wrap (0x4a4b1151) ?;
 				for _label in _labels {
 					write! (&mut _stream, " {}", _label.as_ref ()) .else_wrap (0xc3ff5175) ?;
 				}
-			} else {
-				write! (&mut _stream, " (no labels)") .else_wrap (0x4c561520) ?;
+				writeln! (&mut _stream) .else_wrap (0x2314c8ec) ?;
 			}
-			writeln! (&mut _stream) .else_wrap (0x8dfe1e4d) ?;
+			
+			writeln! (&mut _stream) .else_wrap (0xcea13ddc) ?;
 		}
 	}
 	
