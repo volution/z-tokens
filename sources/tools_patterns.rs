@@ -469,7 +469,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			
 		} else {
 			
-			writeln! (&mut _stream, "**  {:30}", _identifier) .else_wrap (0xc6bd1c82) ?;
+			writeln! (&mut _stream, "**  {}", _identifier) .else_wrap (0xc6bd1c82) ?;
 			
 			if _display_examples == 1 {
 				writeln! (&mut _stream, "\\_  example:  {}", _string) .else_wrap (0x6ada645e) ?;
