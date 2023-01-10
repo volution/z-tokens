@@ -11,6 +11,7 @@ pub(crate) use crate::model::*;
 pub(crate) use crate::generator::*;
 pub(crate) use crate::randomizer::*;
 pub(crate) use crate::entropy::*;
+pub(crate) use crate::entropy_estimates::*;
 pub(crate) use crate::output::*;
 pub(crate) use crate::memory::*;
 pub(crate) use crate::sensitive::*;

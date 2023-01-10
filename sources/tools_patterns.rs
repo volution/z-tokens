@@ -27,6 +27,8 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _display_all : Option<bool> = None;
 	let mut _display_aliases : Option<bool> = None;
 	let mut _display_labels : Option<bool> = None;
+	let mut _display_security : Option<bool> = None;
+	let mut _display_bruteforce : Option<bool> = None;
 	
 	let mut _identifier_prefix : Option<String> = None;
 	let mut _identifier_suffix : Option<String> = None;
@@ -63,6 +65,13 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		_parser.refer (&mut _display_labels)
 				.metavar ("{show}")
 				.add_option (&["--show-labels"], ArgStoreConst (Some (true)), "(show labels)");
+		
+		_parser.refer (&mut _display_security)
+				.metavar ("{show}")
+				.add_option (&["--show-security"], ArgStoreConst (Some (true)), "(show security guess-timates)");
+		_parser.refer (&mut _display_bruteforce)
+				.metavar ("{show}")
+				.add_option (&["--show-bruteforce"], ArgStoreConst (Some (true)), "(show bruteforce guess-timates)");
 		
 		_parser.refer (&mut _identifier_prefix)
 				.metavar ("{prefix}")
@@ -179,7 +188,9 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _display_all = _display_all.unwrap_or (false);
 	let _display_aliases = _display_aliases.unwrap_or (false) || _display_all;
 	let _display_labels = _display_labels.unwrap_or (false) || _display_all;
-	let _display_cards = _display_aliases || _display_labels;
+	let _display_security = _display_security.unwrap_or (false) || _display_all;
+	let _display_bruteforce = _display_bruteforce.unwrap_or (false) || _display_all;
+	let _display_cards = _display_aliases || _display_labels || _display_security || _display_bruteforce;
 	
 	
 	
@@ -354,7 +365,8 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			
 		} else {
 			
-			writeln! (&mut _stream, "**  {:30}  ::    {}", _identifier, _string) .else_wrap (0xc6bd1c82) ?;
+			writeln! (&mut _stream, "**  {:30}", _identifier) .else_wrap (0xc6bd1c82) ?;
+			writeln! (&mut _stream, "\\_  example:  {}", _string) .else_wrap (0x6ada645e) ?;
 			
 			// writeln! (&mut _stream, ">>  {}", _string) .else_wrap (0xe0851dca) ?;
 			
@@ -379,6 +391,68 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 					write! (&mut _stream, " {}", _label.as_ref ()) .else_wrap (0xc3ff5175) ?;
 				}
 				writeln! (&mut _stream) .else_wrap (0x2314c8ec) ?;
+			}
+			
+			if _display_security || _display_bruteforce {
+				
+				let _estimates = entropy_estimates (&_entropy) .else_wrap (0xdcca14bf) ?;
+				
+				if _display_security {
+					writeln! (&mut _stream, "\\_  usable for:") .else_wrap (0xb523c114) ?;
+					writeln! (&mut _stream, "    \\_  cryptography         {}      with  {:+8.2}  bits of margin", if _estimates.for_cryptography { "   OK   " } else { "!! NO !!" }, _estimates.for_cryptography_margin_bits) .else_wrap (0x83e2fa56) ?;
+					writeln! (&mut _stream, "    \\_  authentication       {}      with  {:+8.2}  bits of margin", if _estimates.for_authentication { "   OK   " } else { "!! NO !!" }, _estimates.for_authentication_margin_bits) .else_wrap (0x31c4f00d) ?;
+					writeln! (&mut _stream, "    \\_  archival storage     {}      with  {:+8.2}  bits of margin", if _estimates.for_archival { "   OK   " } else { "!! NO !!" }, _estimates.for_archival_margin_bits) .else_wrap (0x0332488c) ?;
+					writeln! (&mut _stream, "    \\_  long term storage    {}      with  {:+8.2}  bits of margin", if _estimates.for_long_term { "   OK   " } else { "!! NO !!" }, _estimates.for_long_term_margin_bits) .else_wrap (0xbebfa304) ?;
+					writeln! (&mut _stream, "    \\_  short term storage   {}      with  {:+8.2}  bits of margin", if _estimates.for_short_term { "   OK   " } else { "!! NO !!" }, _estimates.for_short_term_margin_bits) .else_wrap (0x19d58942) ?;
+				}
+				
+				if _display_bruteforce {
+					writeln! (&mut _stream, "\\_  bruteforce time:") .else_wrap (0xa2206100) ?;
+					for (_algorithm, _hours) in _estimates.bruteforce_hours {
+						if let Some (_hours) = _hours {
+							let (_time_value, _time_unit) = if _hours < (1.0 / 3600.0 / 10.0) {
+								(-1.0, "[0127b098]")
+							} else if _hours < (1.0 / 60.0) {
+								(_hours * 3600.0, "seconds")
+							} else if _hours < 1.0 {
+								(_hours * 60.0, "minutes")
+							} else if _hours < 24.0 {
+								(_hours, "hours")
+							} else if _hours < (24.0 * 30.5) {
+								(_hours / 24.0, "days")
+							} else if _hours < (24.0 * 365.25) {
+								(_hours / 24.0 / 30.5, "months")
+							} else if _hours < (24.0 * 365.25 * 10.0) {
+								(_hours / 24.0 / 365.25, "years")
+							} else if _hours < (24.0 * 365.25 * 100.0) {
+								(_hours / 24.0 / 365.25 / 10.0, "decades")
+							} else if _hours < (24.0 * 365.25 * 1000.0) {
+								(_hours / 24.0 / 365.25 / 100.0, "centuries")
+							} else if _hours < (24.0 * 365.25 * 1000.0 * 1000.0) {
+								(_hours / 24.0 / 365.25 / 1000.0, "millennia")
+							} else if _hours < (24.0 * 365.25 * 1_000_000_000.0) {
+								(_hours / 24.0 / 365.25 / 1_000_000.0, "millions of years")
+							} else if _hours < (24.0 * 365.25 * 1_000_000_000_000.0) {
+								(_hours / 24.0 / 365.25 / 1_000_000_000.0, "billions of years")
+							} else if _hours < (24.0 * 365.25 * 1_000_000_000_000_000.0) {
+								(_hours / 24.0 / 365.25 / 1_000_000_000_000.0, "trillions of years")
+							} else {
+								(-2.0, "[3f7db730]")
+							};
+							if _time_value >= 0.0 {
+								writeln! (&mut _stream, "    \\_  {:20}    --  {:5.1}  {}", _algorithm, _time_value, _time_unit) .else_wrap (0x78e7778c) ?;
+							} else if _time_value == -1.0 {
+								writeln! (&mut _stream, "    \\_  {:20}    --         now", _algorithm) .else_wrap (0x7cef82a9) ?;
+							} else if _time_value == -2.0 {
+								writeln! (&mut _stream, "    \\_  {:20}    --         (more than trillions of years)", _algorithm) .else_wrap (0xbe09b64a) ?;
+							} else {
+								panic! (unreachable, 0x218ff386);
+							}
+						} else {
+							writeln! (&mut _stream, "    \\_  {:20}    --         (such a large number we can't even compute)", _algorithm) .else_wrap (0x0a4d0a2c) ?;
+						};
+					}
+				}
 			}
 			
 			writeln! (&mut _stream) .else_wrap (0xcea13ddc) ?;

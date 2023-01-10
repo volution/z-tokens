@@ -22,6 +22,7 @@ pub mod model;
 pub mod generator;
 pub mod randomizer;
 pub mod entropy;
+pub mod entropy_estimates;
 pub mod output;
 pub mod memory;
 pub(crate) mod sensitive;
