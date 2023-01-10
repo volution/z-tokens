@@ -291,7 +291,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		if let Some (ref _has_identifier) = _has_identifier {
 			let mut _matched_any = false;
-			if ! _identifier.eq (_has_identifier) {
+			if _identifier.eq (_has_identifier) {
 				_matched_any = true;
 			}
 			if !_matched_any {
