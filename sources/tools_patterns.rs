@@ -22,6 +22,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _randomizer_flags = RandomizerFlags::new () .else_wrap (0x839efea4) ?;
 	
 	let mut _select_all : Option<bool> = None;
+	let mut _select_shortest : Option<bool> = None;
 	let mut _identifiers_only : Option<bool> = None;
 	
 	let mut _display_all : Option<bool> = None;
@@ -59,6 +60,8 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		_parser.refer (&mut _select_all)
 				.add_option (&["-a", "--all"], ArgStoreConst (Some (true)), "(select all patterns)");
+		_parser.refer (&mut _select_shortest)
+				.add_option (&["-a", "--shortest"], ArgStoreConst (Some (true)), "(select shortest patterns)");
 		
 		_parser.refer (&mut _identifiers_only)
 				.add_option (&["-i", "--identifiers-only"], ArgStoreConst (Some (true)), "(list only identifiers)");
@@ -171,6 +174,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	
 	let _select_all = _select_all.unwrap_or (false);
+	let _select_shortest = _select_shortest.unwrap_or (false);
 	let _identifiers_only = _identifiers_only.unwrap_or (false);
 	
 	let _skip_upper =
@@ -193,7 +197,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _classify_usage = _for_cryptography || _for_authentication || _for_archival_storage || _for_long_term_storage || _for_short_term_storage;
 	
 	let _length_maximum = if
-				(! _identifiers_only) && (! _select_all)
+				(! _identifiers_only) && (! _select_all) && (! _select_shortest)
 				&& _identifier_prefix.is_none ()
 				&& _identifier_suffix.is_none ()
 				&& _identifier_contains.is_none ()
@@ -238,6 +242,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _stream = BufWriter::with_capacity (IO_BUFFER_SIZE, stdout_locked ());
 	
 	let mut _selected_count = 0;
+	let mut _selected_last : &[Rb<Text>] = &[];
 	
 	'_loop : for _pattern in patterns::all_token_patterns () .into_iter () {
 		let &(ref _identifier, ref _pattern) = _pattern.as_ref ();
@@ -390,7 +395,23 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			None
 		};
 		
+		if _select_shortest {
+			if _selected_last.len () == _labels.len () {
+				let mut _matches = true;
+				for (_left, _right) in iter::zip (_selected_last, _labels) {
+					if ! str::eq (& _left.to_string (), & _right.to_string ()) {
+						_matches = false;
+						break;
+					}
+				}
+				if _matches {
+					continue '_loop;
+				}
+			}
+		}
+		
 		_selected_count += 1;
+		_selected_last = _labels;
 		
 		if _identifiers_only {
 			writeln! (&mut _stream, "{}", _identifier) .else_wrap (0xfcdcb2ff) ?;
