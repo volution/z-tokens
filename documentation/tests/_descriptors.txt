@@ -41,6 +41,7 @@ patterns / filter / label / digits :: patterns --all --label digits --random-tes
 patterns / filter / label / ascii :: patterns --all --label ascii --random-testing
 patterns / filter / label / password :: patterns --all --label password --random-testing
 patterns / filter / label / passphrase :: patterns --all --label passphrase --random-testing
+patterns / filter / label / memorable :: patterns --all --label memorable --random-testing
 patterns / filter / label / encoding :: patterns --all --label encoding --random-testing
 patterns / filter / label / networking :: patterns --all --label networking --random-testing
 
