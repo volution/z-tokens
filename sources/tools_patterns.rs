@@ -469,30 +469,9 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			
 		} else {
 			
-			writeln! (&mut _stream, "**  {}", _identifier) .else_wrap (0xc6bd1c82) ?;
+			writeln! (&mut _stream) .else_wrap (0x28af8876) ?;
 			
-			if _display_examples == 1 {
-				writeln! (&mut _stream, "\\_  example:  {}", _string) .else_wrap (0x6ada645e) ?;
-			} else if _display_examples > 1 {
-				_randomizer.reset () .else_wrap (0x3a3ebd10) ?;
-				writeln! (&mut _stream, "\\_  examples:") .else_wrap (0x69c29df9) ?;
-				for _ in 0 .. _display_examples {
-					let _token = generate_token (&_pattern, _randomizer) .else_wrap (0x00930317) ?;
-					_randomizer.advance () .else_wrap (0xdd4399fd) ?;
-					let _string = output_token_to_string (&_token, &_output_options) .else_wrap (0x6a999483) ?;
-					writeln! (&mut _stream, "    \\_        {}", _string) .else_wrap (0xdd133491) ?;
-				}
-			}
-			
-			// writeln! (&mut _stream, ">>  {}", _string) .else_wrap (0xe0851dca) ?;
-			
-			if _bits_exact {
-				writeln! (&mut _stream, "\\_  bits:     {}  (exact)", _bits) .else_wrap (0x36fc1a4b) ?;
-			} else {
-				let _display_bits = (_bits * 10000.0) .floor () / 10000.0;
-				writeln! (&mut _stream, "\\_  bits:     {:.4}", _display_bits) .else_wrap (0xf2b57c8b) ?;
-			}
-			writeln! (&mut _stream, "\\_  length:   {}", _string_length) .else_wrap (0x000c5aba) ?;
+			writeln! (&mut _stream, "**  ~~~~~~~~  {}", _identifier) .else_wrap (0xc6bd1c82) ?;
 			
 			if _display_aliases && ! _aliases.is_empty () {
 				write! (&mut _stream, "\\_  aliases: ") .else_wrap (0x4b3973c7) ?;
@@ -508,6 +487,14 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				}
 				writeln! (&mut _stream) .else_wrap (0x2314c8ec) ?;
 			}
+			
+			if _bits_exact {
+				writeln! (&mut _stream, "\\_  bits:     {}  (exact)", _bits) .else_wrap (0x36fc1a4b) ?;
+			} else {
+				let _display_bits = (_bits * 10000.0) .floor () / 10000.0;
+				writeln! (&mut _stream, "\\_  bits:     {:.4}", _display_bits) .else_wrap (0xf2b57c8b) ?;
+			}
+			writeln! (&mut _stream, "\\_  length:   {}", _string_length) .else_wrap (0x000c5aba) ?;
 			
 			if _display_security || _display_bruteforce {
 				
@@ -568,6 +555,19 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 							writeln! (&mut _stream, "    \\_  {:20}    --         (such a large number we can't even compute)", _algorithm) .else_wrap (0x0a4d0a2c) ?;
 						};
 					}
+				}
+			}
+			
+			if _display_examples == 1 {
+				writeln! (&mut _stream, "\\_  example:  {}", _string) .else_wrap (0x6ada645e) ?;
+			} else if _display_examples > 1 {
+				_randomizer.reset () .else_wrap (0x3a3ebd10) ?;
+				writeln! (&mut _stream, "\\_  examples:") .else_wrap (0x69c29df9) ?;
+				for _ in 0 .. _display_examples {
+					let _token = generate_token (&_pattern, _randomizer) .else_wrap (0x00930317) ?;
+					_randomizer.advance () .else_wrap (0xdd4399fd) ?;
+					let _string = output_token_to_string (&_token, &_output_options) .else_wrap (0x6a999483) ?;
+					writeln! (&mut _stream, "    \\_        {}", _string) .else_wrap (0xdd133491) ?;
 				}
 			}
 			
