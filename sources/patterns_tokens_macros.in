@@ -1,0 +1,231 @@
+
+
+macro_rules! define_sequence {
+	
+	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, [ $( $_element : expr, )* ], $_separator : expr ) => {
+		::paste::paste! {
+			
+			static [< _ $_pattern __SEQUENCE_0 >] : &[Rb<TokenPattern>] = &[ $(
+					Rb::new_static ($_element),
+				)* ];
+			
+			define_named! ($_visibility $_pattern, $_labels, $_identifier,
+					& TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern __SEQUENCE_0 >] ), Rb::new_static ($_separator))
+				);
+		}
+	};
+}
+
+
+
+
+macro_rules! define_repeat {
+	
+	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, $_elements : tt, ( $_length : tt : $_each : tt ) ) => {
+		macros::__count_call_with! ( [ $_length : $_each ] => define_repeat! ($_visibility $_pattern, $_labels, $_identifier, $_elements, ));
+	};
+	
+	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, { $_element : expr => $_separator : expr }, [ $( $_count : literal, )* ] ) => {
+		::paste::paste! {
+			
+			$(
+				define_named! ($_visibility [< $_pattern _ $_count >], $_labels, { concat => $_identifier, ":", $_count },
+						& TokenPattern::Repeat (Rb::new_static ($_element), Rb::new_static ($_separator), $_count)
+					);
+			)*
+			
+			define_all! ($_visibility [< $_pattern _ALL >], [ $( [< $_pattern _ $_count >], )* ]);
+		}
+	};
+	
+	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, { ( $( $_prefix : expr, )* ), ( $_element : expr => $_separator : expr ), ( $( $_suffix : expr, )* ) }, [ $( $_count : literal, )* ] ) => {
+		::paste::paste! {
+			
+			static [< _ $_pattern __PREFIX_0 >] : &[Rb<TokenPattern>] = &[
+					$( Rb::new_static ($_prefix), )*
+				];
+			static [< _ $_pattern __SUFFIX_0 >] : &[Rb<TokenPattern>] = &[
+					$( Rb::new_static ($_suffix), )*
+				];
+			
+			static [< _ $_pattern __PREFIX >] : &TokenPattern =
+				& TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern __PREFIX_0 >] ), Rb::new_static (separators::NONE_PATTERN));
+			static [< _ $_pattern __SUFFIX >] : &TokenPattern =
+				& TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern __SUFFIX_0 >] ), Rb::new_static (separators::NONE_PATTERN));
+			
+			$(
+				static [< _ $_pattern _ $_count __REPEAT >] : &TokenPattern =
+						& TokenPattern::Repeat (Rb::new_static ($_element), Rb::new_static ($_separator), $_count);
+				
+				static [< _ $_pattern _ $_count __SEQUENCE_0 >] : &[Rb<TokenPattern>] = &[
+						Rb::new_static ([< _ $_pattern __PREFIX >]),
+						Rb::new_static ([< _ $_pattern _ $_count __REPEAT >]),
+						Rb::new_static ([< _ $_pattern __SUFFIX >]),
+					];
+				
+				static [< _ $_pattern _ $_count __SEQUENCE >] : &TokenPattern =
+					& TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern _ $_count __SEQUENCE_0 >] ), Rb::new_static (separators::NONE_PATTERN));
+				
+				define_named! ($_visibility [< $_pattern _ $_count >], $_labels, { concat => $_identifier, ":", $_count },
+						[< _ $_pattern _ $_count __SEQUENCE >]
+					);
+			)*
+			
+			define_all! ($_visibility [< $_pattern _ALL >], [ $( [< $_pattern _ $_count >], )* ]);
+		}
+	};
+}
+
+
+
+
+macro_rules! define_bytes {
+	
+	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, $_glyph : ident, ( $_length : tt : $_each : tt ) ) => {
+		macros::__count_call_with! ( [ $_length : $_each ] => define_bytes! ($_visibility $_pattern, $_labels, $_identifier, $_glyph, ));
+	};
+	
+	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, $_glyph : ident, [ $( $_count : literal, )* ] ) => {
+		::paste::paste! {
+			
+			$(
+				define_named! ($_visibility [< $_pattern _ $_count >], $_labels, { concat => $_identifier, ":", $_count },
+						glyphs::[< $_glyph _ $_count _TOKEN >]
+					);
+			)*
+			
+			define_all! ($_visibility [< $_pattern _ALL >], [ $( [< $_pattern _ $_count >], )* ]);
+		}
+	};
+}
+
+
+
+
+macro_rules! define_named {
+	
+	( $_visibility : vis $_pattern : ident, (), (), $_wrapped : expr ) => {
+		$_visibility static $_pattern : &TokenPattern = $_wrapped;
+	};
+	
+	( $_visibility : vis $_pattern : ident, $_labels : tt, ( $_identifier : literal ), $_wrapped : expr ) => {
+		define_named! ($_visibility $_pattern, $_labels, { expr => $_identifier }, $_wrapped);
+	};
+	( $_visibility : vis $_pattern : ident, $_labels : tt, ( $_identifier : literal, $_alias_1 : literal ), $_wrapped : expr ) => {
+		define_named! ($_visibility $_pattern, $_labels, { expr => $_identifier, $_alias_1 }, $_wrapped);
+	};
+	( $_visibility : vis $_pattern : ident, $_labels : tt, ( $_identifier : literal, $_alias_1 : literal, $_alias_2 : literal ), $_wrapped : expr ) => {
+		define_named! ($_visibility $_pattern, $_labels, { expr => $_identifier, $_alias_1, $_alias_2 }, $_wrapped);
+	};
+	
+	( $_visibility : vis $_pattern : ident, $_labels : tt, { concat => (), $( $_suffix : literal ),* }, $_wrapped : expr ) => {
+		define_named! ($_visibility $_pattern, $_labels, (), $_wrapped);
+	};
+	( $_visibility : vis $_pattern : ident, $_labels : tt, { concat => ( $_identifier : literal ), $( $_suffix : literal ),* }, $_wrapped : expr ) => {
+		define_named! ($_visibility $_pattern, $_labels,
+			{ expr =>
+				concat! ( $_identifier, $( $_suffix ),* )
+			}, $_wrapped);
+	};
+	( $_visibility : vis $_pattern : ident, $_labels : tt, { concat => ( $_identifier : literal, $_alias_1 : literal ), $( $_suffix : literal ),* }, $_wrapped : expr ) => {
+		define_named! ($_visibility $_pattern, $_labels,
+			{ expr =>
+				concat! ( $_identifier, $( $_suffix ),* ),
+				concat! ( $_alias_1, $( $_suffix ),* )
+			}, $_wrapped);
+	};
+	( $_visibility : vis $_pattern : ident, $_labels : tt, { concat => ( $_identifier : literal, $_alias_1 : literal, $_alias_2 : literal ), $( $_suffix : literal ),* }, $_wrapped : expr ) => {
+		define_named! ($_visibility $_pattern, $_labels,
+			{ expr =>
+				concat! ( $_identifier, $( $_suffix ),* ),
+				concat! ( $_alias_1, $( $_suffix ),* ),
+				concat! ( $_alias_2, $( $_suffix ),* )
+			}, $_wrapped);
+	};
+	
+	( $_visibility : vis $_pattern : ident, $_labels : tt, { expr => () }, $_wrapped : expr ) => {
+		define_named! ($_visibility $_pattern, $_labels, (), $_wrapped);
+	};
+	
+	
+	( $_visibility : vis $_pattern : ident, $_labels : tt, { expr => $_identifier : expr }, $_wrapped : expr ) => {
+		::paste::paste! {
+			
+			static [< _ $_pattern __NO_NAME >] : &TokenPattern = $_wrapped;
+			static [< _ $_pattern __TAGS >] : &TokenPatternTags = & TokenPatternTags {
+					identifier : Some (Rb::new_static (& Text::Str ($_identifier))),
+					aliases : None,
+					labels : if [< _ $_pattern __LABELS >] .is_empty () { None } else { Some (RbList::from_static ( [< _ $_pattern __LABELS >] )) },
+				};
+			define_named_family! ($_pattern, $_labels);
+			$_visibility static $_pattern : &TokenPattern = & TokenPattern::Tagged (Rb::new_static ( [< _ $_pattern __NO_NAME >] ), Rb::new_static ( [< _ $_pattern __TAGS >] ));
+		}
+	};
+	( $_visibility : vis $_pattern : ident, $_labels : tt, { expr => $_identifier : expr $( , $_alias : expr )+ }, $_wrapped : expr ) => {
+		::paste::paste! {
+			
+			static [< _ $_pattern __NO_NAME >] : &TokenPattern = $_wrapped;
+			static [< _ $_pattern __ALIASES >] : &[Rb<Text>] = & [ $(
+					Rb::new_static (& Text::Str ($_alias)),
+				)+ ];
+			static [< _ $_pattern __TAGS >] : &TokenPatternTags = & TokenPatternTags {
+					identifier : Some (Rb::new_static (& Text::Str ($_identifier))),
+					aliases : Some (RbList::from_static ( [< _ $_pattern __ALIASES >] )),
+					labels : if [< _ $_pattern __LABELS >] .is_empty () { None } else { Some (RbList::from_static ( [< _ $_pattern __LABELS >] )) },
+				};
+			define_named_family! ($_pattern, $_labels);
+			$_visibility static $_pattern : &TokenPattern = & TokenPattern::Tagged (Rb::new_static ( [< _ $_pattern __NO_NAME >] ), Rb::new_static ( [< _ $_pattern __TAGS >] ));
+		}
+	};
+}
+
+
+macro_rules! define_named_family {
+	( $_pattern : ident, () ) => {
+		::paste::paste! {
+			static [< _ $_pattern __LABELS >] : &[Rb<Text>] = &[];
+		}
+	};
+	( $_pattern : ident, ( $( $_label : literal ),+ ) ) => {
+		::paste::paste! {
+			static [< _ $_pattern __LABELS >] : &[Rb<Text>] = &[ $(
+					Rb::new_static (& Text::Str ($_label)),
+				)+ ];
+		}
+	};
+}
+
+
+
+
+macro_rules! define_all {
+	
+	( $_visibility : vis $_all : ident, [ $( $_pattern : expr, )* ] ) => {
+		::paste::paste! {
+			
+			$_visibility static $_all : &[Rb<TokenPattern>] = &[
+					$(
+						Rb::new_static ($_pattern),
+					)*
+				];
+		}
+	};
+}
+
+
+
+
+macro_rules! define_constant {
+	
+	( $_visibility : vis $_constant : ident, $_variant : ident, $_text : expr ) => {
+		::paste::paste! {
+			
+			static [< _ $_constant _TEXT >] : &Text = & Text::$_variant ($_text);
+			
+			$_visibility static [< $_constant _ATOM >] : &AtomPattern = & AtomPattern::Constant (Rb::new_static ( [< _ $_constant _TEXT >] ));
+			$_visibility static [< $_constant _TOKEN >] : &TokenPattern = & TokenPattern::Atom (Rb::new_static ( [< $_constant _ATOM >] ));
+		}
+	};
+}
+
+

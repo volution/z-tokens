@@ -3,6 +3,9 @@
 use crate::prelude::*;
 
 
+include! ("./sensitive_macros.in");
+
+
 
 
 pub trait Sensitive {
@@ -63,33 +66,6 @@ impl <Value : Sized + Sensitive + 'static> Sensitive for RbListRef<Value> {
 
 
 
-macro_rules! impl_sensitive_drop {
-	( <{ $( $_template_a : tt )* }> $_type : ty where <{ $( $_where : tt )+ }> ) => {
-		impl < $( $_template_a )* > Drop for $_type where $( $_where )+ {
-			fn drop (&mut self) -> () {
-				self.erase ();
-			}
-		}
-	};
-	( <{ $( $_template_a : tt )* }> $_type : ty ) => {
-		impl < $( $_template_a )* > Drop for $_type {
-			fn drop (&mut self) -> () {
-				self.erase ();
-			}
-		}
-	};
-	( $_type : ty ) => {
-		impl Drop for $_type {
-			fn drop (&mut self) -> () {
-				self.erase ();
-			}
-		}
-	};
-}
-
-
-
-
 impl_sensitive_drop! (<{Value}> Rb <Value> where <{ Value : Sized + Sensitive + 'static }>);
 impl_sensitive_drop! (<{Value}> RbRef<Value> where <{ Value : Sized + Sensitive + 'static }>);
 
@@ -103,18 +79,6 @@ impl_sensitive_drop! (<{Value}> RbListRef<Value> where <{ Value : Sized + Sensit
 
 
 
-macro_rules! impl_sensitive_nop {
-	( $_type : ident ) => {
-		impl Sensitive for $_type {
-			fn erase (&mut self) -> () {
-				// NOP
-			}
-		}
-	};
-}
-
-
-
 // NOTE:  Has only public information.
 impl_sensitive_nop! (TokenPattern);
 impl_sensitive_nop! (TokenPatternTags);
@@ -125,33 +89,6 @@ impl_sensitive_nop! (GlyphPattern);
 
 
 
-
-
-
-
-macro_rules! impl_sensitive {
-	( <{ $( $_template_a : tt )* }> $_type : ty where <{ $( $_where : tt )+ }> => |$_self : ident| $_block : block ) => {
-		impl < $( $_template_a )* > Sensitive for $_type where $( $_where )+ {
-			fn erase (&mut $_self) -> () {
-				$_block
-			}
-		}
-	};
-	( <{ $( $_template_a : tt )* }> $_type : ty => |$_self : ident| $_block : block ) => {
-		impl < $( $_template_a )* > Sensitive for $_type {
-			fn erase (&mut $_self) -> () {
-				$_block
-			}
-		}
-	};
-	( $_type : ty => |$_self : ident| $_block : block ) => {
-		impl Sensitive for $_type {
-			fn erase (&mut $_self) -> () {
-				$_block
-			}
-		}
-	};
-}
 
 
 
@@ -260,33 +197,6 @@ impl_sensitive! ( <{'a}> Cow<'a, str> => |self| {
 
 
 
-
-
-
-
-macro_rules! impl_sensitive_zeroize {
-	( <{ $( $_template_a : tt )* }> $_type : ty where <{ $( $_where : tt )+ }> ) => {
-		impl < $( $_template_a )* > Sensitive for $_type where $( $_where )+ {
-			fn erase (&mut self) -> () {
-				::zeroize::Zeroize::zeroize (self);
-			}
-		}
-	};
-	( <{ $( $_template_a : tt )* }> $_type : ty ) => {
-		impl < $( $_template_a )* > Sensitive for $_type {
-			fn erase (&mut self) -> () {
-				::zeroize::Zeroize::zeroize (self);
-			}
-		}
-	};
-	( $_type : ty ) => {
-		impl Sensitive for $_type {
-			fn erase (&mut self) -> () {
-				::zeroize::Zeroize::zeroize (self);
-			}
-		}
-	};
-}
 
 
 

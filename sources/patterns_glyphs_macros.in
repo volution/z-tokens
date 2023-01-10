@@ -1,0 +1,78 @@
+
+
+macro_rules! define_set {
+	
+	( $_visibility : vis $_pattern : ident, $_variant : ident, [ $( $_char : expr, )* ] ) => {
+		::paste::paste! {
+			
+			$(
+				#[ allow (non_upper_case_globals) ]
+				static [< _ $_pattern __ $_char __TEXT >] : &Text = & Text::$_variant ($_char);
+				#[ allow (non_upper_case_globals) ]
+				static [< _ $_pattern __ $_char __GLYPH >] : &Glyph = & Glyph::Text (Rb::new_static ( [< _ $_pattern __ $_char __TEXT >] ));
+			)*
+			
+			#[ doc = concat! ( "Glyph character set for ", $( "`", stringify! ($_char), "` " ),*, "." ) ]
+			$_visibility static [< $_pattern _SET >] : &[Rb<Glyph>] = &[ $(
+					Rb::new_static ( [< _ $_pattern __ $_char __GLYPH >] ),
+				)* ];
+			
+			$_visibility static [< $_pattern _GLYPH >] : &GlyphPattern = & GlyphPattern::Set (RbList::from_static ( [< $_pattern _SET >] ));
+			$_visibility static [< $_pattern _ATOM >] : &AtomPattern = & AtomPattern::Glyph (Rb::new_static ( [< $_pattern _GLYPH >] ));
+			$_visibility static [< $_pattern _TOKEN >] : &TokenPattern = & TokenPattern::Atom (Rb::new_static ( [< $_pattern _ATOM >] ));
+		}
+	};
+}
+
+
+
+
+macro_rules! define_integer {
+	
+	( $_visibility : vis $_pattern : ident, ( $_lower : tt ..= $_upper : tt ), $_format : expr ) => {
+		::paste::paste! {
+			
+			$_visibility static [< $_pattern _GLYPH >] : &GlyphPattern = & GlyphPattern::Integer ($_lower, $_upper, $_format);
+			$_visibility static [< $_pattern _ATOM >] : &AtomPattern = & AtomPattern::Glyph (Rb::new_static ( [< $_pattern _GLYPH >] ));
+			$_visibility static [< $_pattern _TOKEN >] : &TokenPattern = & TokenPattern::Atom (Rb::new_static ( [< $_pattern _ATOM >] ));
+		}
+	};
+}
+
+
+
+
+macro_rules! define_bytes {
+	
+	( $_visibility : vis $_pattern : ident, $_format : expr, ( $_length : tt : $_each : tt ) ) => {
+		macros::__count_call_with! ( [ $_length : $_each ] => define_bytes! ($_visibility $_pattern, $_format, ));
+	};
+	
+	( $_visibility : vis $_pattern : ident, $_format : expr, [ $( $_count : literal, )* ] ) => {
+		::paste::paste! {
+			
+			$(
+				$_visibility static [< $_pattern _ $_count _GLYPH >] : &GlyphPattern = & GlyphPattern::Bytes ($_count, $_format);
+				$_visibility static [< $_pattern _ $_count _ATOM >] : &AtomPattern = & AtomPattern::Glyph (Rb::new_static ( [< $_pattern _ $_count _GLYPH >] ));
+				$_visibility static [< $_pattern _ $_count _TOKEN >] : &TokenPattern = & TokenPattern::Atom (Rb::new_static ( [< $_pattern _ $_count _ATOM >] ));
+			)*
+		}
+	};
+}
+
+
+
+
+macro_rules! define_timestamp {
+	
+	( $_visibility : vis $_pattern : ident, $_format : expr ) => {
+		::paste::paste! {
+			
+			$_visibility static [< $_pattern _GLYPH >] : &GlyphPattern = & GlyphPattern::Timestamp ($_format);
+			$_visibility static [< $_pattern _ATOM >] : &AtomPattern = & AtomPattern::Glyph (Rb::new_static ( [< $_pattern _GLYPH >] ));
+			$_visibility static [< $_pattern _TOKEN >] : &TokenPattern = & TokenPattern::Atom (Rb::new_static ( [< $_pattern _ATOM >] ));
+		}
+	};
+}
+
+
