@@ -35,6 +35,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _identifier_prefix : Option<String> = None;
 	let mut _identifier_suffix : Option<String> = None;
 	let mut _identifier_contains : Option<String> = None;
+	let mut _has_identifier : Option<String> = None;
 	let mut _has_label : Option<String> = None;
 	
 	let mut _entropy_minimum : Option<usize> = None;
@@ -98,6 +99,8 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.metavar ("{string}")
 				.add_option (&["--identifier-contains"], ArgStoreOption, "(filter if identifier contains string)");
 		
+		_parser.refer (&mut _has_identifier)
+				.add_option (&["-p", "--identifier"], ArgStoreOption, "(filter by identifier)");
 		_parser.refer (&mut _has_label)
 				.add_option (&["-f", "--label"], ArgStoreOption, "(filter by label)");
 		
@@ -173,7 +176,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	
 	
-	let _select_all = _select_all.unwrap_or (false);
+	let _select_all = _select_all.unwrap_or (false) || _has_identifier.is_some ();
 	let _select_shortest = _select_shortest.unwrap_or (false);
 	let _identifiers_only = _identifiers_only.unwrap_or (false);
 	
@@ -286,6 +289,23 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			}
 		}
 		
+		if let Some (ref _has_identifier) = _has_identifier {
+			let mut _matched_any = false;
+			if ! _identifier.eq (_has_identifier) {
+				_matched_any = true;
+			}
+			if !_matched_any {
+				for _alias in _aliases {
+					if _alias.eq (_has_identifier) {
+						_matched_any = true;
+						break;
+					}
+				}
+			}
+			if !_matched_any {
+				continue '_loop;
+			}
+		}
 		if let Some (ref _has_label) = _has_label {
 			let mut _matched_any = false;
 			for _label in _labels {
