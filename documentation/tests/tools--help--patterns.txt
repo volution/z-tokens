@@ -11,6 +11,10 @@ Optional arguments:
   -X,--show-all         (show all details)
   --show-aliases        (show aliases)
   --show-labels         (show labels)
+  --show-security       (show security guess-timates)
+  --show-bruteforce     (show bruteforce guess-timates)
+  -e,--show-examples {count}
+                        (show these many examples)
   --identifier-prefix {prefix}
                         (filter if identifier has prefix)
   --identifier-suffix {suffix}

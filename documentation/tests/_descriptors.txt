@@ -12,7 +12,12 @@ patterns / default / all :: patterns --all --random-testing
 patterns / default / compact :: patterns --all --compact true --random-testing
 patterns / default / no-optional-separators :: patterns --all --token-skip-optional-separators true --random-testing
 patterns / default / no-mandatory-separators :: patterns --all --token-skip-mandatory-separators true --token-skip-optional-separators true --random-testing
+patterns / default / show-aliases :: patterns --all --show-aliases --random-testing
+patterns / default / show-labels :: patterns --all --show-labels --random-testing
+patterns / default / show-security :: patterns --all --show-security --random-testing
+patterns / default / show-bruteforce :: patterns --all --show-bruteforce --random-testing
 patterns / default / show-all :: patterns --all --show-all --random-testing
+patterns / default / show-examples :: patterns --all --show-examples 10 --random-testing
 
 
 patterns / filter / entropy-min :: patterns --entropy-min 256 --random-testing
