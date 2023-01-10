@@ -33,7 +33,18 @@
 ::  eff-unique:1            :   31.0 b :   26 c ::    rekindle satchel agonizing
 ::  nato:1                  :    5.1 b :    3 c ::    wun
 ::  ip-127                  :   23.9 b :   13 c ::    127.186.196.8
+::  ip-10                   :   23.9 b :   12 c ::    10.186.196.8
+::  ip-172                  :   20.8 b :   12 c ::    172.22.196.8
+::  ip-192                  :   15.9 b :   15 c ::    192.168.186.196
 ::  ip-mac                  :   40  =b :   17 c ::    02:bb:c6:43:cb:f8
 ::  bytes-hex:4             :   32  =b :    8 c ::    7f6f2ccd
 ::  timestamp-date-time     :    0  =b :   19 c ::    2021-12-30-14-15-16
+::  timestamp-date          :    0  =b :   10 c ::    2021-12-30
+::  timestamp-time          :    0  =b :    8 c ::    14-15-16
+::  timestamp-sec           :    0  =b :   10 c ::    1640873716
+::  timestamp-sec-hex       :    0  =b :   10 c ::    0061cdbef4
+::  timestamp-nano          :    0  =b :   19 c ::    1640873716789789789
+::  timestamp-nano-hex      :    0  =b :   18 c ::    0016c58df3a287c45d
+::  timestamp-flake         :    0  =b :    9 c ::    694188916
+::  timestamp-flake-hex     :    0  =b :    8 c ::    29607b74
 ::  flake:1                 :   32  =b :   17 c ::    29607b74-7f6f2ccd

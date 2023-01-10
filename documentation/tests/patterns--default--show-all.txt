@@ -51972,7 +51972,7 @@
 \_  example:  c5a0ef11-f80c-41ce-8329-75e88c63a6e1
 \_  bits:     122  (exact)
 \_  length:   36
-\_  labels:   uuid password
+\_  labels:   uuid-v4 uuid password
 \_  usable for:
     \_  cryptography         !! NO !!      with     -6.00  bits of margin
     \_  authentication          OK         with    +90.00  bits of margin
@@ -51997,7 +51997,7 @@
 \_  example:  127.186.196.8
 \_  bits:     23.9318
 \_  length:   13
-\_  labels:   ip networking
+\_  labels:   ip-127 ip networking
 \_  usable for:
     \_  cryptography         !! NO !!      with   -104.07  bits of margin
     \_  authentication       !! NO !!      with     -8.07  bits of margin
@@ -52022,7 +52022,7 @@
 \_  example:  10.186.196.8
 \_  bits:     23.9318
 \_  length:   12
-\_  labels:   ip networking
+\_  labels:   ip-10 ip networking
 \_  usable for:
     \_  cryptography         !! NO !!      with   -104.07  bits of margin
     \_  authentication       !! NO !!      with     -8.07  bits of margin
@@ -52047,7 +52047,7 @@
 \_  example:  172.22.196.8
 \_  bits:     20.8614
 \_  length:   12
-\_  labels:   ip networking
+\_  labels:   ip-172 ip networking
 \_  usable for:
     \_  cryptography         !! NO !!      with   -107.14  bits of margin
     \_  authentication       !! NO !!      with    -11.14  bits of margin
@@ -52072,7 +52072,7 @@
 \_  example:  192.168.186.196
 \_  bits:     15.9545
 \_  length:   15
-\_  labels:   ip networking
+\_  labels:   ip-192 ip networking
 \_  usable for:
     \_  cryptography         !! NO !!      with   -112.05  bits of margin
     \_  authentication       !! NO !!      with    -16.05  bits of margin
@@ -52097,7 +52097,7 @@
 \_  example:  02:bb:c6:43:cb:f8
 \_  bits:     40  (exact)
 \_  length:   17
-\_  labels:   networking
+\_  labels:   ip-mac networking
 \_  usable for:
     \_  cryptography         !! NO !!      with    -88.00  bits of margin
     \_  authentication          OK         with     +8.00  bits of margin
@@ -55451,7 +55451,7 @@
 \_  bits:     0  (exact)
 \_  length:   19
 \_  aliases:  date-time
-\_  labels:   timestamp
+\_  labels:   timestamp-date-time timestamp
 \_  usable for:
     \_  cryptography         !! NO !!      with   -128.00  bits of margin
     \_  authentication       !! NO !!      with    -32.00  bits of margin
@@ -55477,7 +55477,7 @@
 \_  bits:     0  (exact)
 \_  length:   10
 \_  aliases:  date
-\_  labels:   timestamp
+\_  labels:   timestamp-date timestamp
 \_  usable for:
     \_  cryptography         !! NO !!      with   -128.00  bits of margin
     \_  authentication       !! NO !!      with    -32.00  bits of margin
@@ -55503,7 +55503,7 @@
 \_  bits:     0  (exact)
 \_  length:   8
 \_  aliases:  time
-\_  labels:   timestamp
+\_  labels:   timestamp-time timestamp
 \_  usable for:
     \_  cryptography         !! NO !!      with   -128.00  bits of margin
     \_  authentication       !! NO !!      with    -32.00  bits of margin
@@ -55529,7 +55529,7 @@
 \_  bits:     0  (exact)
 \_  length:   10
 \_  aliases:  timestamp
-\_  labels:   timestamp
+\_  labels:   timestamp-sec timestamp
 \_  usable for:
     \_  cryptography         !! NO !!      with   -128.00  bits of margin
     \_  authentication       !! NO !!      with    -32.00  bits of margin
@@ -55554,7 +55554,7 @@
 \_  example:  0061cdbef4
 \_  bits:     0  (exact)
 \_  length:   10
-\_  labels:   timestamp
+\_  labels:   timestamp-sec-hex timestamp
 \_  usable for:
     \_  cryptography         !! NO !!      with   -128.00  bits of margin
     \_  authentication       !! NO !!      with    -32.00  bits of margin
@@ -55579,7 +55579,7 @@
 \_  example:  1640873716789789789
 \_  bits:     0  (exact)
 \_  length:   19
-\_  labels:   timestamp
+\_  labels:   timestamp-nano timestamp
 \_  usable for:
     \_  cryptography         !! NO !!      with   -128.00  bits of margin
     \_  authentication       !! NO !!      with    -32.00  bits of margin
@@ -55604,7 +55604,7 @@
 \_  example:  0016c58df3a287c45d
 \_  bits:     0  (exact)
 \_  length:   18
-\_  labels:   timestamp
+\_  labels:   timestamp-nano-hex timestamp
 \_  usable for:
     \_  cryptography         !! NO !!      with   -128.00  bits of margin
     \_  authentication       !! NO !!      with    -32.00  bits of margin
@@ -55629,7 +55629,7 @@
 \_  example:  694188916
 \_  bits:     0  (exact)
 \_  length:   9
-\_  labels:   timestamp
+\_  labels:   timestamp-flake timestamp
 \_  usable for:
     \_  cryptography         !! NO !!      with   -128.00  bits of margin
     \_  authentication       !! NO !!      with    -32.00  bits of margin
@@ -55654,7 +55654,7 @@
 \_  example:  29607b74
 \_  bits:     0  (exact)
 \_  length:   8
-\_  labels:   timestamp
+\_  labels:   timestamp-flake-hex timestamp
 \_  usable for:
     \_  cryptography         !! NO !!      with   -128.00  bits of margin
     \_  authentication       !! NO !!      with    -32.00  bits of margin

@@ -12388,37 +12388,37 @@
 \_  example:  c5a0ef11-f80c-41ce-8329-75e88c63a6e1
 \_  bits:     122  (exact)
 \_  length:   36
-\_  labels:   uuid password
+\_  labels:   uuid-v4 uuid password
 
 **  ip-127                        
 \_  example:  127.186.196.8
 \_  bits:     23.9318
 \_  length:   13
-\_  labels:   ip networking
+\_  labels:   ip-127 ip networking
 
 **  ip-10                         
 \_  example:  10.186.196.8
 \_  bits:     23.9318
 \_  length:   12
-\_  labels:   ip networking
+\_  labels:   ip-10 ip networking
 
 **  ip-172                        
 \_  example:  172.22.196.8
 \_  bits:     20.8614
 \_  length:   12
-\_  labels:   ip networking
+\_  labels:   ip-172 ip networking
 
 **  ip-192                        
 \_  example:  192.168.186.196
 \_  bits:     15.9545
 \_  length:   15
-\_  labels:   ip networking
+\_  labels:   ip-192 ip networking
 
 **  ip-mac                        
 \_  example:  02:bb:c6:43:cb:f8
 \_  bits:     40  (exact)
 \_  length:   17
-\_  labels:   networking
+\_  labels:   ip-mac networking
 
 **  bytes-hex:4                   
 \_  example:  7f6f2ccd
@@ -13192,55 +13192,55 @@
 \_  example:  2021-12-30-14-15-16
 \_  bits:     0  (exact)
 \_  length:   19
-\_  labels:   timestamp
+\_  labels:   timestamp-date-time timestamp
 
 **  timestamp-date                
 \_  example:  2021-12-30
 \_  bits:     0  (exact)
 \_  length:   10
-\_  labels:   timestamp
+\_  labels:   timestamp-date timestamp
 
 **  timestamp-time                
 \_  example:  14-15-16
 \_  bits:     0  (exact)
 \_  length:   8
-\_  labels:   timestamp
+\_  labels:   timestamp-time timestamp
 
 **  timestamp-sec                 
 \_  example:  1640873716
 \_  bits:     0  (exact)
 \_  length:   10
-\_  labels:   timestamp
+\_  labels:   timestamp-sec timestamp
 
 **  timestamp-sec-hex             
 \_  example:  0061cdbef4
 \_  bits:     0  (exact)
 \_  length:   10
-\_  labels:   timestamp
+\_  labels:   timestamp-sec-hex timestamp
 
 **  timestamp-nano                
 \_  example:  1640873716789789789
 \_  bits:     0  (exact)
 \_  length:   19
-\_  labels:   timestamp
+\_  labels:   timestamp-nano timestamp
 
 **  timestamp-nano-hex            
 \_  example:  0016c58df3a287c45d
 \_  bits:     0  (exact)
 \_  length:   18
-\_  labels:   timestamp
+\_  labels:   timestamp-nano-hex timestamp
 
 **  timestamp-flake               
 \_  example:  694188916
 \_  bits:     0  (exact)
 \_  length:   9
-\_  labels:   timestamp
+\_  labels:   timestamp-flake timestamp
 
 **  timestamp-flake-hex           
 \_  example:  29607b74
 \_  bits:     0  (exact)
 \_  length:   8
-\_  labels:   timestamp
+\_  labels:   timestamp-flake-hex timestamp
 
 **  flake:1                       
 \_  example:  29607b74-7f6f2ccd

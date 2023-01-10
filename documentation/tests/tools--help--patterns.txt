@@ -22,6 +22,8 @@ Optional arguments:
                         (filter if identifier has suffix)
   --identifier-contains {string}
                         (filter if identifier contains string)
+  -p,--identifier IDENTIFIER
+                        (filter by identifier)
   -f,--label LABEL      (filter by label)
   -b,--entropy-min {bits}
                         (filter by minimum entropy in bits)
