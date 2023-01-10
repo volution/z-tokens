@@ -21,7 +21,9 @@ patterns / default / show-examples :: patterns --all --show-examples 10 --random
 
 
 patterns / filter / entropy-min :: patterns --entropy-min 256 --random-testing
+patterns / filter / entropy-min / shortest :: patterns --entropy-min 256 --shortest --random-testing
 patterns / filter / entropy-max :: patterns --entropy-max 64 --random-testing
+patterns / filter / entropy-max / shortest :: patterns --entropy-max 64 --shortest --random-testing
 patterns / filter / entropy-range :: patterns --entropy-min 64 --entropy-max 256 --random-testing
 
 patterns / filter / length-min :: patterns --length-min 400 --random-testing
@@ -35,16 +37,29 @@ patterns / filter / has-digits :: patterns --has-digits --random-testing
 patterns / filter / has-letters-upper :: patterns --has-letters-upper --random-testing
 patterns / filter / has-letters-lower :: patterns --has-letters-lower --random-testing
 
-patterns / filter / by-label / digits :: patterns --all --label digits --random-testing
-patterns / filter / by-label / ascii :: patterns --all --label ascii --random-testing
-patterns / filter / by-label / password :: patterns --all --label password --random-testing
-patterns / filter / by-label / passphrase :: patterns --all --label passphrase --random-testing
-patterns / filter / by-label / encoding :: patterns --all --label encoding --random-testing
-patterns / filter / by-label / networking :: patterns --all --label networking --random-testing
+patterns / filter / label / digits :: patterns --all --label digits --random-testing
+patterns / filter / label / ascii :: patterns --all --label ascii --random-testing
+patterns / filter / label / password :: patterns --all --label password --random-testing
+patterns / filter / label / passphrase :: patterns --all --label passphrase --random-testing
+patterns / filter / label / encoding :: patterns --all --label encoding --random-testing
+patterns / filter / label / networking :: patterns --all --label networking --random-testing
+
+patterns / filter / usage / cryptography :: patterns --all --for-cryptography --random-testing
+patterns / filter / usage / cryptography / shortest :: patterns --all --for-cryptography --shortest --random-testing
+patterns / filter / usage / authentication :: patterns --all --for-authentication --random-testing
+patterns / filter / usage / authentication / shortest :: patterns --all --for-authentication --shortest --random-testing
+patterns / filter / usage / archival-storage :: patterns --all --for-archival-storage --random-testing
+patterns / filter / usage / archival-storage / shortest :: patterns --all --for-archival-storage --shortest --random-testing
+patterns / filter / usage / long-term-storage :: patterns --all --for-long-term-storage --random-testing
+patterns / filter / usage / long-term-storage / shortest :: patterns --all --for-long-term-storage --shortest --random-testing
+patterns / filter / usage / short-term-storage :: patterns --all --for-short-term-storage --random-testing
+patterns / filter / usage / short-term-storage / shortest :: patterns --all --for-short-term-storage --shortest --random-testing
 
 patterns / identifiers :: patterns --identifiers-only --random-testing
 patterns / identifiers / all :: patterns --identifiers-only --all --random-testing
+patterns / identifiers / all / shortest :: patterns --identifiers-only --all --shortest --random-testing
 patterns / identifiers / show-all :: patterns --identifiers-only --all --show-all --random-testing
+patterns / identifiers / show-all / shortest :: patterns --identifiers-only --all --show-all --shortest --random-testing
 
 
 

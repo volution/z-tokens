@@ -7,6 +7,7 @@ Usage:
 Optional arguments:
   -h,--help             Show this help message and exit
   -a,--all              (select all patterns)
+  -a,--shortest         (select shortest patterns)
   -i,--identifiers-only (list only identifiers)
   -X,--show-all         (show all details)
   --show-aliases        (show aliases)
@@ -46,6 +47,14 @@ Optional arguments:
   --digits-min {count}  
   -Y,--has-symbols      (require symbols)
   --symbols-min {count} 
+  --for-cryptography    (filter if usable for cryptography)
+  --for-authentication  (filter if usable for authentication)
+  --for-archival-storage
+                        (filter if usable for archival storage)
+  --for-long-term-storage
+                        (filter if usable for long term storage)
+  --for-short-term-storage
+                        (filter if usable for short term storage)
   -C                    (compact output, skip optional separators and groups)
   --compact {compact}   
   --token-skip-mandatory-separators {skip}

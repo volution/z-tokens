@@ -1,0 +1,39 @@
+>>  z-tokens patterns --all --for-cryptography --shortest --random-testing
+
+::  digits-base10:40        :  132.8 b :   49 c ::    7022 7110 4492 5182 5629 0665 7352 6062 3356 0320
+::  digits-base2:128        :  128  =b :  143 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001 [...]
+::  digits-base8:44         :  132  =b :   54 c ::    6026 6103 7414 5775 0654 6142 2556 2505 1450 0706 7677
+::  digits-base16:32        :  128  =b :   39 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9
+::  digits-base32-hex:28    :  140  =b :   34 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16
+::  digits-base32-rfc:28    :  140  =b :   34 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg
+::  digits-base64-url:24    :  144  =b :   29 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh
+::  digits-base64-rfc:24    :  144  =b :   29 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh
+::  digits-base58:24        :  140.5 b :   29 c ::    jm2a GmDo kyz9 73RT vEZA qCWU
+::  digits-base62:24        :  142.9 b :   29 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd
+::  digits-bech32:28        :  140  =b :   34 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px
+::  digits-z85:20           :  128.1 b :   23 c ::    .2Nm+ i^%9% 4AD]j Ld?hS
+::  ascii-lower:28          :  131.6 b :   34 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr
+::  ascii-upper:28          :  131.6 b :   34 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR
+::  ascii-mixed:24          :  136.8 b :   29 c ::    MObE nOlP YZhY cwWl DiRk AHTT
+::  ascii-symbols:28        :  140  =b :   34 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"'
+::  ascii-any:20            :  131.0 b :   24 c ::    ei#9 i5kg |~.+ {%IL 6U/o
+::  cv-lower:10             :  134.2 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose
+::  cv-upper:10             :  134.2 b :   49 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB
+::  cv-mixed:8              :  139.4 b :   39 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB
+::  cv-plus-a:9             :  134.1 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize 2606
+::  cv-plus-b:9             :  134.2 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO60
+::  cv-plus-c:9             :  135.8 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO6"
+::  proquint-lower:8        :  128  =b :   47 c ::    sanis gufaz lofug mudad damud mihup dogip bajal
+::  proquint-upper:8        :  128  =b :   47 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL
+::  koremutake-a:10         :  140  =b :   58 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve
+::  koremutake-b:7          :  147  =b :   57 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera
+::  mnemonic:4              :  128.0 b :   87 c ::    arrow arizona mango - archer jacket bundle - telecom torso domino - cowboy thoma [...]
+::  bip0039:4               :  132  =b :   80 c ::    robot ship night - shield way yellow - casual brother arrow - invest chief sting
+::  skey:4                  :  132  =b :   58 c ::    mile noun hear - norm wast yarn - led i cur - doug me sale
+::  pgp:8                   :  128  =b :  146 c ::    shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
+::  eff-large:4             :  155.0 b :   89 c ::    scope slacks patronize - dumpling deny spill - sharpener visa yo-yo - class cart [...]
+::  eff-short:5             :  155.0 b :   92 c ::    shaft sleep ankle - path sled deaf - shun zero chunk - candy width baggy - decoy [...]
+::  eff-unique:5            :  155.0 b :  120 c ::    rekindle satchel agonizing - mule sardine dibs - riskily zirconium carrot - bogu [...]
+::  nato:25                 :  129.2 b :  149 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  bytes-hex:16            :  128  =b :   32 c ::    7f6f2ccdb23f2abb7b69278e947c01c6
+::  flake:4                 :  128  =b :   44 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6

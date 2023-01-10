@@ -1,0 +1,40 @@
+>>  z-tokens patterns --all --for-short-term-storage --shortest --random-testing
+
+::  digits-base10:24        :   79.7 b :   29 c ::    7022 7110 4492 5182 5629 0665
+::  digits-base2:72         :   72  =b :   80 c ::    10101000 01001100 10011100 10011110 00110011 00001010 01001100 10101011 01100001
+::  digits-base8:24         :   72  =b :   29 c ::    6026 6103 7414 5775 0654 6142
+::  digits-base16:20        :   80  =b :   24 c ::    c094 c32f 72d3 8ae1 3011
+::  digits-base32-hex:16    :   80  =b :   19 c ::    n8pv 47gk fs2v t02p
+::  digits-base32-rfc:16    :   80  =b :   19 c ::    xiz7 ehqu p4c7 5acz
+::  digits-base64-url:12    :   72  =b :   14 c ::    lx-H Dbd7 1Ng4
+::  digits-base64-rfc:12    :   72  =b :   14 c ::    lx+H Dbd7 1Ng4
+::  digits-base58:12        :   70.2 b :   14 c ::    jm2a GmDo kyz9
+::  digits-base62:12        :   71.4 b :   14 c ::    jl1a GlDn kyz8
+::  digits-bech32:16        :   80  =b :   19 c ::    hgel y8s5 0uzl aqze
+::  digits-z85:15           :   96.1 b :   17 c ::    .2Nm+ i^%9% 4AD]j
+::  ascii-lower:16          :   75.2 b :   19 c ::    tuap ufut zdzb lyoe
+::  ascii-upper:16          :   75.2 b :   19 c ::    TUAP UFUT ZDZB LYOE
+::  ascii-mixed:16          :   91.2 b :   19 c ::    MObE nOlP YZhY cwWl
+::  ascii-symbols:16        :   80  =b :   19 c ::    \)^~ %(;? :{#~ |!#^
+::  ascii-any:12            :   78.6 b :   14 c ::    ei#9 i5kg |~.+
+::  cv-lower:6              :   80.5 b :   29 c ::    taqe veza zaye fugi rixu cezu
+::  cv-upper:6              :   80.5 b :   29 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU
+::  cv-mixed:5              :   87.1 b :   24 c ::    PaFi PiQI YayU mAjO lAzi
+::  cv-plus-a:5             :   80.4 b :   29 c ::    taqe veza zaye fugi rixu 2906
+::  cv-plus-b:5             :   80.5 b :   29 c ::    taqe veza zaye fugi rixu CB90
+::  cv-plus-c:5             :   82.1 b :   29 c ::    taqe veza zaye fugi rixu CB9!
+::  proquint-lower:5        :   80  =b :   29 c ::    sanis gufaz lofug mudad damud
+::  proquint-upper:5        :   80  =b :   29 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD
+::  koremutake-a:5          :   70  =b :   28 c ::    drobo stufi stoda napru hyhi
+::  koremutake-b:4          :   84  =b :   31 c ::    drobostu fistoda napruhy hipupe
+::  mnemonic:3              :   96.0 b :   65 c ::    arrow arizona mango - archer jacket bundle - telecom torso domino
+::  bip0039:3               :   99  =b :   59 c ::    robot ship night - shield way yellow - casual brother arrow
+::  skey:3                  :   99  =b :   43 c ::    mile noun hear - norm wast yarn - led i cur
+::  pgp:5                   :   80  =b :   93 c ::    shamrock responsive - crucial revival - vulcan yucatan - cleanup midsummer - cho [...]
+::  eff-large:2             :   77.5 b :   44 c ::    scope slacks patronize - dumpling deny spill
+::  eff-short:3             :   93.0 b :   52 c ::    shaft sleep ankle - path sled deaf - shun zero chunk
+::  eff-unique:3            :   93.0 b :   73 c ::    rekindle satchel agonizing - mule sardine dibs - riskily zirconium carrot
+::  nato:14                 :   72.3 b :   82 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  uuid-v4                 :  122  =b :   36 c ::    c5a0ef11-f80c-41ce-8329-75e88c63a6e1
+::  bytes-hex:12            :   96  =b :   24 c ::    7f6f2ccdb23f2abb7b69278e
+::  flake:3                 :   96  =b :   35 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e

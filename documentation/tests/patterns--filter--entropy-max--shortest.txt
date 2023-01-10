@@ -1,0 +1,39 @@
+>>  z-tokens patterns --entropy-max 64 --shortest --random-testing
+
+::  digits-base10:4         :   13.2 b :    4 c ::    7022
+::  digits-base2:8          :    8  =b :    8 c ::    10101000
+::  digits-base8:4          :   12  =b :    4 c ::    6026
+::  digits-base16:4         :   16  =b :    4 c ::    c094
+::  digits-base32-hex:4     :   20  =b :    4 c ::    n8pv
+::  digits-base32-rfc:4     :   20  =b :    4 c ::    xiz7
+::  digits-base64-url:4     :   24  =b :    4 c ::    lx-H
+::  digits-base64-rfc:4     :   24  =b :    4 c ::    lx+H
+::  digits-base58:4         :   23.4 b :    4 c ::    jm2a
+::  digits-base62:4         :   23.8 b :    4 c ::    jl1a
+::  digits-bech32:4         :   20  =b :    4 c ::    hgel
+::  digits-z85:5            :   32.0 b :    5 c ::    .2Nm+
+::  ascii-lower:4           :   18.8 b :    4 c ::    tuap
+::  ascii-mixed:4           :   22.8 b :    4 c ::    MObE
+::  ascii-symbols:4         :   20  =b :    4 c ::    \)^~
+::  ascii-any:4             :   26.2 b :    4 c ::    ei#9
+::  cv-lower:1              :   13.4 b :    4 c ::    taqe
+::  cv-mixed:1              :   17.4 b :    4 c ::    PaFi
+::  cv-plus-a:1             :   26.7 b :    9 c ::    taqe 2711
+::  cv-plus-b:1             :   26.7 b :    9 c ::    taqe VB71
+::  cv-plus-c:1             :   28.4 b :    9 c ::    taqe VB7~
+::  proquint-lower:1        :   16  =b :    5 c ::    sanis
+::  koremutake-a:1          :   14  =b :    5 c ::    drobo
+::  koremutake-b:1          :   21  =b :    8 c ::    drobostu
+::  mnemonic:1              :   32.0 b :   19 c ::    arrow arizona mango
+::  bip0039:1               :   33  =b :   16 c ::    robot ship night
+::  skey:1                  :   33  =b :   14 c ::    mile noun hear
+::  pgp:1                   :   16  =b :   19 c ::    shamrock responsive
+::  eff-large:1             :   38.7 b :   22 c ::    scope slacks patronize
+::  eff-short:1             :   31.0 b :   17 c ::    shaft sleep ankle
+::  eff-unique:1            :   31.0 b :   26 c ::    rekindle satchel agonizing
+::  nato:1                  :    5.1 b :    3 c ::    wun
+::  ip-127                  :   23.9 b :   13 c ::    127.186.196.8
+::  ip-mac                  :   40  =b :   17 c ::    02:bb:c6:43:cb:f8
+::  bytes-hex:4             :   32  =b :    8 c ::    7f6f2ccd
+::  timestamp-date-time     :    0  =b :   19 c ::    2021-12-30-14-15-16
+::  flake:1                 :   32  =b :   17 c ::    29607b74-7f6f2ccd
