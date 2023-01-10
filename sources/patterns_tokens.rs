@@ -786,7 +786,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-uuid") ]
 define_sequence! (
 		pub UUID_V4,
-		("uuid", "password"),
+		("uuid-v4", "uuid", "password"),
 		("uuid-v4"), [
 			glyphs::UUID_ANY_FIELD_1_TOKEN,
 			glyphs::UUID_ANY_FIELD_2_TOKEN,
@@ -819,7 +819,7 @@ define_constant! (IP_MAC_PREFIX, Str, "02");
 #[ cfg (feature = "zt-patterns-ip") ]
 define_sequence! (
 		pub IP_127,
-		("ip", "networking"),
+		("ip-127", "ip", "networking"),
 		("ip-127"),
 		[
 			IP_127_PREFIX_TOKEN,
@@ -831,7 +831,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-ip") ]
 define_sequence! (
 		pub IP_10,
-		("ip", "networking"),
+		("ip-10", "ip", "networking"),
 		("ip-10"),
 		[
 			IP_10_PREFIX_TOKEN,
@@ -843,7 +843,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-ip") ]
 define_sequence! (
 		pub IP_172,
-		("ip", "networking"),
+		("ip-172", "ip", "networking"),
 		("ip-172"),
 		[
 			IP_172_PREFIX_TOKEN,
@@ -855,7 +855,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-ip") ]
 define_sequence! (
 		pub IP_192,
-		("ip", "networking"),
+		("ip-192", "ip", "networking"),
 		("ip-192"),
 		[
 			IP_192_A_PREFIX_TOKEN,
@@ -867,7 +867,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-ip") ]
 define_sequence! (
 		pub IP_MAC,
-		("networking"),
+		("ip-mac", "networking"),
 		("ip-mac"),
 		[
 			IP_MAC_PREFIX_TOKEN,
@@ -904,49 +904,49 @@ define_bytes! (
 #[ cfg (feature = "zt-patterns-timestamp") ]
 define_named! (
 		pub TIMESTAMP_STRING_DATETIME,
-		("timestamp"),
+		("timestamp-date-time", "timestamp"),
 		("timestamp-date-time", "date-time"),
 		glyphs::TIMESTAMP_STRING_DATETIME_TOKEN);
 
 #[ cfg (feature = "zt-patterns-timestamp") ]
 define_named! (
 		pub TIMESTAMP_STRING_DATE,
-		("timestamp"),
+		("timestamp-date", "timestamp"),
 		("timestamp-date", "date"),
 		glyphs::TIMESTAMP_STRING_DATE_TOKEN);
 
 #[ cfg (feature = "zt-patterns-timestamp") ]
 define_named! (
 		pub TIMESTAMP_STRING_TIME,
-		("timestamp"),
+		("timestamp-time", "timestamp"),
 		("timestamp-time", "time"),
 		glyphs::TIMESTAMP_STRING_TIME_TOKEN);
 
 #[ cfg (feature = "zt-patterns-timestamp") ]
 define_named! (
 		pub TIMESTAMP_SECONDS_DEC,
-		("timestamp"),
+		("timestamp-sec", "timestamp"),
 		("timestamp-sec", "timestamp"),
 		glyphs::TIMESTAMP_SECONDS_DEC_TOKEN);
 
 #[ cfg (feature = "zt-patterns-timestamp") ]
 define_named! (
 		pub TIMESTAMP_SECONDS_HEX,
-		("timestamp"),
+		("timestamp-sec-hex", "timestamp"),
 		("timestamp-sec-hex"),
 		glyphs::TIMESTAMP_SECONDS_HEX_TOKEN);
 
 #[ cfg (feature = "zt-patterns-timestamp") ]
 define_named! (
 		pub TIMESTAMP_NANOSECONDS_DEC,
-		("timestamp"),
+		("timestamp-nano", "timestamp"),
 		("timestamp-nano"),
 		glyphs::TIMESTAMP_NANOSECONDS_DEC_TOKEN);
 
 #[ cfg (feature = "zt-patterns-timestamp") ]
 define_named! (
 		pub TIMESTAMP_NANOSECONDS_HEX,
-		("timestamp"),
+		("timestamp-nano-hex", "timestamp"),
 		("timestamp-nano-hex"),
 		glyphs::TIMESTAMP_NANOSECONDS_HEX_TOKEN);
 
@@ -954,14 +954,14 @@ define_named! (
 #[ cfg (any (feature = "zt-patterns-timestamp", feature = "zt-patterns-flake")) ]
 define_named! (
 		pub TIMESTAMP_FLAKE_SECONDS_DEC,
-		("timestamp"),
+		("timestamp-flake", "timestamp"),
 		("timestamp-flake"),
 		glyphs::TIMESTAMP_FLAKE_SECONDS_DEC_TOKEN);
 
 #[ cfg (any (feature = "zt-patterns-timestamp", feature = "zt-patterns-flake")) ]
 define_named! (
 		pub TIMESTAMP_FLAKE_SECONDS_HEX,
-		("timestamp"),
+		("timestamp-flake-hex", "timestamp"),
 		("timestamp-flake-hex"),
 		glyphs::TIMESTAMP_FLAKE_SECONDS_HEX_TOKEN);
 
