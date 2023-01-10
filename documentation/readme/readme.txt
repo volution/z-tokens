@@ -101,9 +101,9 @@ Generate a few consonant-vowel passwords, and display for transcribing (do not
 copy-paste the spaces) (all the commands are almost equivalent):
 
 z-tokens generate
-z-tokens generate -p cv-4
-z-tokens generate -p cv-lower-4
-z-tokens generate -p cv-lower-4 -c 10
+z-tokens generate -p cv:4
+z-tokens generate -p cv-lower:4
+z-tokens generate -p cv-lower:4 -c 10
 
 cama nera zoju liye
 yuxe nefi qahi lasa
@@ -113,13 +113,13 @@ Generate a few consonant-vowel passwords, and output for copy-pasting (again
 all the commands are equivalent):
 
 z-tokens g
-z-tokens g cv-4
-z-tokens g cv-lower-4
-z-tokens g cv-lower-4 -c 1
+z-tokens g cv:4
+z-tokens g cv-lower:4
+z-tokens g cv-lower:4 -c 1
 
 z-tokens generate -C -c 1
-z-tokens generate -p cv-4 -C -c 1
-z-tokens generate -p cv-lower-4 -C -c 1
+z-tokens generate -p cv:4 -C -c 1
+z-tokens generate -p cv-lower:4 -C -c 1
 
 nawerukuhefapeqo
 
@@ -143,131 +143,98 @@ format:
   * the last column is an example of such a token; you can safely use it, with
     or without spaces or separators as required (although without is suggested,
     unless these separators are mandatory);
-  * lines starting with ^ represent aliases for the previous pattern; (use the
-    -a flag;)
 
 Show a selection of supported patterns (mainly those up to 40 characters in
 length):
 
 z-tokens patterns
 
-| digits-base2-32        | b   32   | c   35 ||  11001111 11000110 00011001 11110101
-| digits-base8-32        | b   96   | c   39 ||  2062 1245 7100 3077 7220 0374 2700 4047
-| digits-base10-32       | b  106.3 | c   39 ||  1100 4027 9449 5896 6024 1449 6501 9290
-| digits-base16-32       | b  128   | c   39 ||  8bae 1f6f 8019 9ba4 8fd9 edcb 7641 c123
-| digits-base32-hex-32   | b  160   | c   39 ||  u5go jm97 n1tl c2gk pnja p3f7 f218 dib2
-| digits-base32-rfc-32   | b  160   | c   39 ||  2fui k5nk hvjh ztey fljp jip7 zrem 7iaz
-| digits-base64-url-32   | b  192   | c   39 ||  j75P GS9I duPu LJF6 LTi8 -vTZ hJYE WyjX
-| digits-base64-rfc-32   | b  192   | c   39 ||  ZUiB zV2q WJ7o c+qL TwwK Cdcf PT/4 cl/G
-| digits-base58-32       | b  187.4 | c   39 ||  qG75 Nqyt ZLy6 NBUp BBSJ QuZr Jmxg REVr
-| digits-base62-32       | b  190.5 | c   39 ||  kUAa cFug EoFD GMRH InRu wBVt iL5J GClu
-| digits-bech32-32       | b  160   | c   39 ||  s9vu 8sne xyuv jv5z azjr ms40 jfv0 zvck
-| digits-z85-30          | b  192.2 | c   35 ||  q7i[@ fqq?b vX=9j 3.Kgq Y3r6& J1uaN
-| ascii-lower-32         | b  150.4 | c   39 ||  kxuv lcbc acjs dcpx uzvx wtyy rnqf kcph
-| ascii-upper-32         | b  150.4 | c   39 ||  HXOK XCOI PBBJ SBMY YTBF RUUG CZGV FUFX
-| ascii-mixed-32         | b  182.4 | c   39 ||  eIQy OLRN Pfkl Oeeu huAI fvAe WfFZ XTJl
-| ascii-symbols-32       | b  160   | c   39 ||  ~,?! &\(@ /.)! +^%< #'.* "\;] {(;_ ~?"&
-| ascii-any-32           | b  209.7 | c   39 ||  4?T. WGBr `|CB NH)z U8j_ [X8W )P@m 5x<_
-| cv-lower-8             | b  107.4 | c   39 ||  fojo sopo zuwu hehi roqo deja hawa hoxe
-| cv-upper-8             | b  107.4 | c   39 ||  YAJO GIWI TIJO CIMB MURU GOLO TBKU NUTI
-| cv-mixed-8             | b  139.4 | c   39 ||  PBxa jAwa memU ceBI PuWu MIbe jaJe tOni
-| cv-plus-a-8            | b  107.3 | c   39 ||  zake giji meko xixi lidu fonu mozo SB19
-| cv-plus-b-8            | b  109.0 | c   39 ||  xaxe vitu jubo saci yire keyo guvo SO8&
-| proquint-lower-6       | b   96   | c   35 ||  pilod kipun zavat nurij hanab jamaz
-| proquint-upper-6       | b   96   | c   35 ||  FIZUK BIKUD GALUT KODID GURID HUSIG
-| mnemonic-2             | b   64.0 | c   40 ||  mayday manager lobby - glass mambo labor
-| bip0039-2              | b   66   | c   34 ||  fatal type latin - meadow base bag
-| uuid-v4                | b  122   | c   36 ||  ea532774-49fa-40fd-b2b4-dddd3868d652
-| ip-127                 | b   23.9 | c   13 ||  127.51.166.43
-| ip-10                  | b   23.9 | c   13 ||  10.103.84.167
-| ip-172                 | b   20.8 | c   13 ||  172.14.184.28
-| ip-192                 | b   15.9 | c   15 ||  192.168.209.137
-| ip-mac                 | b   40   | c   17 ||  02:21:a3:78:e2:d5
-| bytes-hex-16           | b  128   | c   32 ||  e3e1fdd733b2ab69b40574c6ac7d0545
-| timestamp-iso          | b    0   | c   19 ||  2023-01-04-10-19-29
-| timestamp-sec          | b    0   | c   10 ||  1672827569
-| timestamp-sec-hex      | b    0   | c   10 ||  0063b552b1
-| timestamp-nano         | b    0   | c   19 ||  1672827569961180889
-| timestamp-nano-hex     | b    0   | c   18 ||  00173713cfd6042526
-| timestamp-flake        | b    0   | c    9 ||  726142769
-| timestamp-flake-hex    | b    0   | c    8 ||  2b480f31
-| flake-14               | b  112   | c   37 ||  2b480f31-6d13295ff502c28ce8eaf7e4cafb
-
-Show all supported patterns identifiers:
-
-z-tokens patterns -i
-
-ascii-any-...
-ascii-lower-...
-ascii-mixed-...
-ascii-symbols-...
-ascii-upper-...
-bip0039-...
-bytes-hex-...
-cv-lower-...
-cv-mixed-...
-cv-plus-a-...
-cv-plus-b-...
-cv-upper-...
-digits-base10-...
-digits-base16-...
-digits-base2-...
-digits-base32-hex-...
-digits-base32-rfc-...
-digits-base58-...
-digits-base62-...
-digits-base64-rfc-...
-digits-base64-url-...
-digits-base8-...
-digits-bech32-...
-digits-z85-...
-flake-...
-ip-10
-ip-127
-ip-172
-ip-192
-ip-mac
-mnemonic-...
-proquint-lower-...
-proquint-upper-...
-timestamp-flake
-timestamp-flake-hex
-timestamp-iso
-timestamp-nano
-timestamp-nano-hex
-timestamp-sec
-timestamp-sec-hex
-uuid-v4
+::  digits-base10:16        :   53.1 b :   19 c ::    8372 2896 3577 2481
+::  digits-base2:32         :   32  =b :   35 c ::    01000111 00011111 00101001 10111010
+::  digits-base8:16         :   48  =b :   19 c ::    3526 1166 6124 4160
+::  digits-base16:16        :   64  =b :   19 c ::    9c61 b16d 2c15 c6b2
+::  digits-base32-hex:16    :   80  =b :   19 c ::    8nar 036j nhmn 9gut
+::  digits-base32-rfc:16    :   80  =b :   19 c ::    3e35 nxvg tz43 fcyq
+::  digits-base64-url:16    :   96  =b :   19 c ::    JGHe SXmF -633 BstE
+::  digits-base64-rfc:16    :   96  =b :   19 c ::    olRq gBKq TYFk WDPR
+::  digits-base58:16        :   93.7 b :   19 c ::    3e2c nqK7 8XDu EXKW
+::  digits-base62:16        :   95.2 b :   19 c ::    gs7C 0a2p KGjH Zh2G
+::  digits-bech32:16        :   80  =b :   19 c ::    37zs yvvp a3zw fh3s
+::  digits-z85:20           :  128.1 b :   23 c ::    p^6MY i5%$t 98iaN rbDT>
+::  ascii-lower:16          :   75.2 b :   19 c ::    xwsl rvmg couv ksrl
+::  ascii-mixed:16          :   91.2 b :   19 c ::    xwra htbp CTmD fnbs
+::  ascii-symbols:16        :   80  =b :   19 c ::    $[%~ $?~| $:(> ?>~(
+::  ascii-any:16            :  104.8 b :   19 c ::    ts-c ]dwB GCWl VX<~
+::  cv-lower:4              :   53.7 b :   19 c ::    yolu furi qizi poho
+::  cv-mixed:4              :   69.7 b :   19 c ::    nurO qILO pasA humi
+::  cv-plus-a:3             :   53.5 b :   19 c ::    fitu sozu nube 8237
+::  cv-plus-b:3             :   53.6 b :   19 c ::    japa caya dotu JA40
+::  cv-plus-c:3             :   55.3 b :   19 c ::    mote vaco mehi VB4:
+::  proquint-lower:4        :   64  =b :   23 c ::    lahis nipas tikim daboj
+::  koremutake-a:4          :   56  =b :   20 c ::    radry bydy hidy ryla
+::  koremutake-b:4          :   84  =b :   33 c ::    pristyfra lyprevy migruse vigrulo
+::  mnemonic:1              :   32.0 b :   23 c ::    bicycle society giraffe
+::  bip0039:1               :   33  =b :   22 c ::    scrub prosper artefact
+::  skey:1                  :   33  =b :   13 c ::    oat bloc slot
+::  pgp:1                   :   16  =b :   17 c ::    brackish bifocals
+::  eff-large:1             :   38.7 b :   20 c ::    stratus stopped stir
+::  eff-short:1             :   31.0 b :   15 c ::    juror desk undo
+::  eff-unique:1            :   31.0 b :   25 c ::    opossum unroll vulnerable
+::  nato:4                  :   20.6 b :   23 c ::    lima juliett tree oscar
+::  uuid-v4                 :  122  =b :   36 c ::    79817f78-d1e9-4d28-b819-b6de695614dd
+::  ip-127                  :   23.9 b :   14 c ::    127.138.44.178
+::  ip-10                   :   23.9 b :   12 c ::    10.45.220.97
+::  ip-172                  :   20.8 b :   13 c ::    172.6.206.246
+::  ip-192                  :   15.9 b :   14 c ::    192.168.184.54
+::  ip-mac                  :   40  =b :   17 c ::    02:0d:f5:26:2c:bf
+::  bytes-hex:16            :  128  =b :   32 c ::    e19fe700e027493457c6ae2782e183cd
+::  timestamp-date-time     :    0  =b :   19 c ::    2023-01-10-17-40-03
+::  timestamp-date          :    0  =b :   10 c ::    2023-01-10
+::  timestamp-time          :    0  =b :    8 c ::    17-40-03
+::  timestamp-sec           :    0  =b :   10 c ::    1673372403
+::  timestamp-sec-hex       :    0  =b :   10 c ::    0063bda2f3
+::  timestamp-nano          :    0  =b :   19 c ::    1673372403336003058
+::  timestamp-nano-hex      :    0  =b :   18 c ::    0017390355bdc8c512
+::  timestamp-flake         :    0  =b :    9 c ::    726687603
+::  timestamp-flake-hex     :    0  =b :    8 c ::    2b505f73
+::  flake:2                 :   64  =b :   26 c ::    2b505f73-c10e1333-c5c2da57
 
 Show only patterns that have between 64 and 90 bits of entropy:
 
 z-tokens patterns -b 64 -B 90
 
-| digits-base10-20       | b   66.4 | c   24 ||  2758 1500 2319 7289 8940
-| digits-base16-16       | b   64   | c   19 ||  ade3 89cc cf11 e4cf
-| digits-base32-hex-16   | b   80   | c   19 ||  sb4s tdsf q03n ilch
-| digits-base32-rfc-16   | b   80   | c   19 ||  n2wq ywp7 xtzm czek
-| digits-base64-url-12   | b   72   | c   14 ||  g39Z R23E YWuZ
-| digits-base64-rfc-12   | b   72   | c   14 ||  qrSq ob8i g0k9
-| digits-base58-12       | b   70.2 | c   14 ||  95Mj J1Gz B4mN
-| digits-base62-12       | b   71.4 | c   14 ||  PjrY r72V Rd9d
-| digits-bech32-16       | b   80   | c   19 ||  466t tfkc l5j5 dglf
-| digits-z85-10          | b   64.0 | c   11 ||  !}%Zj ORCTi
-| ascii-lower-16         | b   75.2 | c   19 ||  gwwt uauq jncs spst
-| ascii-mixed-12         | b   68.4 | c   14 ||  lAWG DjSY XVyr
-| ascii-symbols-16       | b   80   | c   19 ||  #^=* ){}~ =@>' @||%
-| ascii-any-12           | b   78.6 | c   14 ||  :3'x muf[ EUcN
-| cv-lower-5             | b   67.1 | c   24 ||  qexa veba puda wipu sifi
-| cv-mixed-4             | b   69.7 | c   19 ||  Dine VAHa GiXU yeGa
-| cv-plus-a-5            | b   67.0 | c   24 ||  tixu vaja xude galu GB84
-| cv-plus-b-5            | b   68.7 | c   24 ||  tuli qako yije ruho KI0,
-| proquint-lower-4       | b   64   | c   23 ||  sulob zamid hovih vivan
-| proquint-upper-4       | b   64   | c   23 ||  LORAM DOTUM FOTIP MINOB
-| mnemonic-2             | b   64.0 | c   44 ||  solid eternal sister - gentle develop degree
-| bip0039-2              | b   66   | c   44 ||  excite evolve original - young assist appear
-| bytes-hex-8            | b   64   | c   16 ||  6651a55b755ba064
-| flake-8                | b   64   | c   25 ||  2b4843fc-9c99f0591adf920e
-| flake-10               | b   80   | c   29 ||  2b4843fc-f2e970dad2642c8ad9f6
+::  digits-base10:20        :   66.4 b :   24 c ::    5043 3734 7348 1192 0253
+::  digits-base2:64         :   64  =b :   71 c ::    00011010 10011101 10110010 10001010 11110110 11010111 00111001 00001111
+::  digits-base8:24         :   72  =b :   29 c ::    1450 2511 2733 5136 4335 7161
+::  digits-base16:16        :   64  =b :   19 c ::    3026 b4cb c74a 52a7
+::  digits-base32-hex:16    :   80  =b :   19 c ::    6mfr sfsl t893 hu9f
+::  digits-base32-rfc:16    :   80  =b :   19 c ::    ryqy k7t5 brzq d5jg
+::  digits-base64-url:12    :   72  =b :   14 c ::    RVZx hvs0 pqTb
+::  digits-base64-rfc:12    :   72  =b :   14 c ::    1s2+ ek51 PwjI
+::  digits-base58:12        :   70.2 b :   14 c ::    rTKk 32vP Zsvj
+::  digits-base62:12        :   71.4 b :   14 c ::    bLl7 zLeN xkEo
+::  digits-bech32:16        :   80  =b :   19 c ::    jah6 cmm8 x077 0p00
+::  digits-z85:10           :   64.0 b :   11 c ::    $?#$c KSD}A
+::  ascii-lower:16          :   75.2 b :   19 c ::    dnel jjlq qfgo swar
+::  ascii-mixed:12          :   68.4 b :   14 c ::    dwdF EOUO qouA
+::  ascii-symbols:16        :   80  =b :   19 c ::    "*[~ ](~& ;>*; (}?~
+::  ascii-any:12            :   78.6 b :   14 c ::    :0d~ +`u7 ,8j:
+::  cv-lower:5              :   67.1 b :   24 c ::    ridu suxe cabu liko kulu
+::  cv-mixed:4              :   69.7 b :   19 c ::    febI PAfB CeLo CAnA
+::  cv-plus-a:4             :   67.0 b :   24 c ::    zide qutu ceyi yexo 9743
+::  cv-plus-b:4             :   67.0 b :   24 c ::    nuxo yazo wuwe zoyu MB23
+::  cv-plus-c:4             :   68.7 b :   24 c ::    giyi vika foha haha XB5-
+::  proquint-lower:4        :   64  =b :   23 c ::    digun hotap guhuv ruzal
+::  koremutake-a:5          :   70  =b :   28 c ::    fuke brydru bebe tregra vori
+::  koremutake-b:4          :   84  =b :   31 c ::    pudraky kidruhy bifrufra bipaba
+::  mnemonic:2              :   64.0 b :   41 c ::    maximum donor reflex - sugar bombay point
+::  bip0039:2               :   66  =b :   41 c ::    vendor loan bounce - media fantasy embark
+::  skey:2                  :   66  =b :   30 c ::    coat knit list - tote noah off
+::  pgp:4                   :   64  =b :   67 c ::    endow tobacco - orca pedigree - rematch component - trauma molasses
+::  eff-large:2             :   77.5 b :   49 c ::    slackness kerchief essence - wasting pelt garbage
+::  nato:13                 :   67.2 b :   74 c ::    oscar yankee romeo ait quebec six tango golf wun november foxtrot six zero
+::  bytes-hex:8             :   64  =b :   16 c ::    5fc1daf18c09e040
+::  flake:2                 :   64  =b :   26 c ::    2b50605b-027c20d4-561c870a
 ...
 
 Show only patterns that have all types of characters (lower and upper letters,
@@ -275,12 +242,136 @@ digits, and symbols):
 
 z-tokens patterns -A
 
-| digits-base64-url-8    | b   48   | c    9 ||  PXWc wBR8
-| digits-base64-rfc-8    | b   48   | c    9 ||  w780 qZrO
-| digits-z85-5           | b   32.0 | c    5 ||  a$d0#
-| ascii-any-8            | b   52.4 | c    9 ||  ?Q-L uJ!8
-| cv-plus-b-3            | b   28.4 | c    9 ||  buto GI6!
+::  digits-base64-url:12    :   72  =b :   14 c ::    SJuG nGur T1Bx
+::  digits-base64-rfc:12    :   72  =b :   14 c ::    aWRp lIFz V7vf
+::  digits-z85:10           :   64.0 b :   11 c ::    }P7*O !oB2C
+::  ascii-any:12            :   78.6 b :   14 c ::    xs)7 1W|P qF{l
+::  cv-plus-c:4             :   68.7 b :   24 c ::    waqu nagu bono webo ZO8"
 ...
+
+Show the shortest pattern usable for authentication purposes:
+
+z-tokens patterns --label password --for-authentication --shortest
+
+::  digits-base16:8         :   32  =b :    9 c ::    d9fc a6b1
+::  digits-base32-hex:8     :   40  =b :    9 c ::    eg3s f6ce
+::  digits-base32-rfc:8     :   40  =b :    9 c ::    67sx mkpq
+::  digits-base64-url:8     :   48  =b :    9 c ::    Z8F1 0IXM
+::  digits-base64-rfc:8     :   48  =b :    9 c ::    ijGK r6Tr
+::  digits-base58:8         :   46.8 b :    9 c ::    ZcJ5 3VGy
+::  digits-base62:8         :   47.6 b :    9 c ::    aHnQ wlrn
+::  digits-bech32:8         :   40  =b :    9 c ::    4vjw n404
+::  digits-z85:5            :   32.0 b :    5 c ::    Nm=%t
+::  ascii-lower:8           :   37.6 b :    9 c ::    pmir ijhy
+::  ascii-mixed:8           :   45.6 b :    9 c ::    ZdMZ PBLt
+::  ascii-any:8             :   52.4 b :    9 c ::    G~&A =?3D
+::  cv-lower:3              :   40.2 b :   14 c ::    jizi tulo hehu
+::  cv-mixed:2              :   34.8 b :    9 c ::    WeDo QaHB
+::  cv-plus-a:2             :   40.1 b :   14 c ::    badi yogi 0016
+::  cv-plus-b:2             :   40.2 b :   14 c ::    ruvo qoxa PB87
+::  cv-plus-c:2             :   41.8 b :   14 c ::    xode quxu MU6'
+::  proquint-lower:2        :   32  =b :   11 c ::    baboh nozoz
+::  koremutake-a:3          :   42  =b :   16 c ::    pune fravy prony
+::  koremutake-b:2          :   42  =b :   13 c ::    pynoru gatudy
+::  uuid-v4                 :  122  =b :   36 c ::    898b8295-4709-49cf-9d8b-6170fd5b9e0c
+::  bytes-hex:4             :   32  =b :    8 c ::    2b96ae6c
+
+z-tokens patterns --label passphrase --for-authentication --shortest
+
+::  mnemonic:1              :   32.0 b :   18 c ::    queen detail first
+::  bip0039:1               :   33  =b :   20 c ::    potato injury season
+::  skey:1                  :   33  =b :   14 c ::    hulk noah yang
+::  pgp:2                   :   32  =b :   34 c ::    topmost speculate - acme tolerance
+::  eff-large:1             :   38.7 b :   26 c ::    yearly frivolous schilling
+::  eff-short:2             :   62.0 b :   36 c ::    verse erase given - groom mumbo lazy
+::  eff-unique:2            :   62.0 b :   47 c ::    unknown nectar running - cadillac falcon enzyme
+
+Show all details about a certain pattern:
+
+z-tokens patterns -p cv:6 --show-all
+
+**  cv-lower:6
+\_  example:  wuvo weho lugi ciha dexa hiqi
+\_  bits:     80.5709
+\_  length:   29
+\_  aliases:  cv:6
+\_  labels:   cv-lower cv ascii password
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -47.43  bits of margin
+    \_  authentication          OK         with    +48.57  bits of margin
+    \_  archival storage     !! NO !!      with    -19.72  bits of margin
+    \_  long term storage       OK         with     +3.73  bits of margin
+    \_  short term storage      OK         with    +10.58  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --    2.0  years
+    \_  MD5                     --    3.4  years
+    \_  SHA1                    --    1.1  decades
+    \_  SHA2-256                --    2.6  decades
+    \_  SHA3-256                --    1.1  centuries
+    \_  PBKDF2-HMAC-MD5         --   12.3  millennia
+    \_  PBKDF2-HMAC-SHA1        --   29.8  millennia
+    \_  PBKDF2-HMAC-SHA256      --   64.2  millennia
+    \_  PBKDF2-HMAC-SHA512      --  182.3  millennia
+    \_  scrypt                  --   79.9  millions of years
+    \_  GPG                     --   21.2  millennia
+    \_  AES-128                 --    2.6  decades
+
+Show all supported patterns identifiers:
+
+z-tokens patterns -i
+
+digits-base10:...
+digits-base2:...
+digits-base8:...
+digits-base16:...
+digits-base32-hex:...
+digits-base32-rfc:...
+digits-base64-url:...
+digits-base64-rfc:...
+digits-base58:...
+digits-base62:...
+digits-bech32:...
+digits-z85:...
+ascii-lower:...
+ascii-upper:...
+ascii-mixed:...
+ascii-symbols:...
+ascii-any:...
+cv-lower:...
+cv-upper:...
+cv-mixed:...
+cv-plus-a:...
+cv-plus-b:...
+cv-plus-c:...
+proquint-lower:...
+proquint-upper:...
+koremutake-a:...
+koremutake-b:...
+mnemonic:...
+bip0039:...
+skey:...
+pgp:...
+eff-large:...
+eff-short:...
+eff-unique:...
+nato:...
+uuid-v4
+ip-127
+ip-10
+ip-172
+ip-192
+ip-mac
+bytes-hex:...
+timestamp-date-time
+timestamp-date
+timestamp-time
+timestamp-sec
+timestamp-sec-hex
+timestamp-nano
+timestamp-nano-hex
+timestamp-flake
+timestamp-flake-hex
+flake:...
 
 -------------------------------------------------------------------------------
 

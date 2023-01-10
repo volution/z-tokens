@@ -353,12 +353,11 @@ Show all details about a certain pattern:
 z-tokens patterns -p cv:6 --show-all
 ~~~~
 ~~~~
-**  cv-lower:6
-\_  example:  wuvo weho lugi ciha dexa hiqi
+**  ~~~~~~~~  cv-lower:6
+\_  aliases:  cv:6
+\_  labels:   cv-lower cv ascii password memorable
 \_  bits:     80.5709
 \_  length:   29
-\_  aliases:  cv:6
-\_  labels:   cv-lower cv ascii password
 \_  usable for:
     \_  cryptography         !! NO !!      with    -47.43  bits of margin
     \_  authentication          OK         with    +48.57  bits of margin
@@ -378,6 +377,7 @@ z-tokens patterns -p cv:6 --show-all
     \_  scrypt                  --   79.9  millions of years
     \_  GPG                     --   21.2  millennia
     \_  AES-128                 --    2.6  decades
+\_  example:  fosi suwe pawu mexi tuka kavu
 ~~~~
 
 Show all supported patterns identifiers:
