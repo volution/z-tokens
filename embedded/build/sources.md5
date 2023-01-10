@@ -3,8 +3,8 @@ ae3a499dd72f99667b7ac1803889a077 *Cargo.toml
 fd2a6e37b20856e3780e72e9dca4dd78 *_embedded/help/_footer.txt
 cafe6ee12097ee6f81f4a315dec68396 *_embedded/help/_header.txt
 20be1f6e9b9b6e4e2a7c046b9a68be01 *_embedded/help/main.txt
-3b7ee10f2ee8c5c18030d38cfd51f930 *_embedded/readme/readme.html
-b65a71149750e6a5a192fa0e815cbfa3 *_embedded/readme/readme.txt
+85da0b718cc066b423baf6067cf91a43 *_embedded/readme/readme.html
+406893c8210b4a11ea053d9fb92f2bbe *_embedded/readme/readme.txt
 a4294e529b69e4bed40e7b0380442e14 *_embedded/sbom/sbom.html
 7453ad6946bdbbc449298ef3a37483bf *_embedded/sbom/sbom.json
 07751d1ba94041f019e34df06b398812 *_embedded/sbom/sbom.txt
@@ -23,8 +23,9 @@ ad856a45c3faaac25d8eaa35984faa61 *_generated/patterns_count_list.in
 013d1104f1a45706faa93f3f9509c19a *allocator.rs
 1409f4ab94a18d27665538e11eb5b094 *bin.rs
 c87f847a7d52c74d56badc6db1f33197 *entropy.rs
+fdc7664a463055fa9473f76efe16a4be *entropy_estimates.rs
 f57f975e971a724e822f75ba18e885af *generator.rs
-216ad9e21b1460f75f462a5251c942cf *lib.rs
+b256e625e15dc82e757489442d6394a5 *lib.rs
 af6be2d4092f93db45b7a428a0fb3d7d *memory.rs
 7d3cf9ebc6e19c94b8d342be92dbe262 *model.rs
 237a36b56767bb53ac5f3182f0875b08 *output.rs
@@ -33,11 +34,11 @@ dde519e35eb5288040aa4fd73d16b76e *patterns_consts.rs
 15d6eddc22771f50e41438944f028d8d *patterns_glyphs.rs
 69ceb4bd0403c8fac8c51221013c3264 *patterns_macros.rs
 2a6123201a3690a5f45a83bad401879f *patterns_separators.rs
-103203f5dde2b3e9c5d3f576299056a6 *patterns_tokens.rs
-2c7e949a2f36a8ddea8adbe8de009465 *prelude.rs
+9507ba37eaec30491bbffc0100c5c4be *patterns_tokens.rs
+48a8a0e500cb7cc080d0f36fb55da909 *prelude.rs
 77ebd48d087531d03042f3403bd65b85 *randomizer.rs
 e32af94a5876f2eed8d78fae22cf52ca *sensitive.rs
 36424c1b961e37686e86f46a73f80156 *tools.rs
 eedc40c4a5fca6e26f444e2dd3ee3e05 *tools_flags.rs
 1b40f27adc2044cd9eb587792473602f *tools_generate.rs
-44c6049a06ac68da936d93609ee14712 *tools_patterns.rs
+44055c8a0f4bf0e6854e97d5a8cf687e *tools_patterns.rs
