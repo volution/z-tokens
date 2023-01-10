@@ -21,14 +21,14 @@ patterns / default / show-examples :: patterns --all --show-examples 10 --random
 
 
 patterns / filter / entropy-min :: patterns --entropy-min 256 --random-testing
-patterns / filter / entropy-min / shortest :: patterns --entropy-min 256 --shortest --random-testing
+patterns / filter / entropy-min / shortest :: patterns --entropy-min 128 --shortest --random-testing
 patterns / filter / entropy-max :: patterns --entropy-max 64 --random-testing
 patterns / filter / entropy-max / shortest :: patterns --entropy-max 64 --shortest --random-testing
-patterns / filter / entropy-range :: patterns --entropy-min 64 --entropy-max 256 --random-testing
+patterns / filter / entropy-range :: patterns --entropy-min 64 --entropy-max 128 --random-testing
 
-patterns / filter / length-min :: patterns --length-min 400 --random-testing
-patterns / filter / length-max :: patterns --length-max 100 --random-testing
-patterns / filter / length-range :: patterns --length-min 100 --length-max 400 --random-testing
+patterns / filter / length-min :: patterns --length-min 100 --random-testing
+patterns / filter / length-max :: patterns --length-max 40 --random-testing
+patterns / filter / length-range :: patterns --length-min 40 --length-max 100 --random-testing
 
 patterns / filter / has-all :: patterns --has-all --random-testing
 patterns / filter / has-symbols :: patterns --has-symbols --random-testing

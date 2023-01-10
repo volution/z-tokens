@@ -1,20 +1,36 @@
 >>  z-tokens patterns --has-symbols --random-testing
 
+::  digits-base64-url:2     :   12  =b :    2 c ::    lx
 ::  digits-base64-url:4     :   24  =b :    4 c ::    lx-H
+::  digits-base64-url:6     :   36  =b :    7 c ::    lx-H Db
 ::  digits-base64-url:8     :   48  =b :    9 c ::    lx-H Dbd7
+::  digits-base64-url:10    :   60  =b :   12 c ::    lx-H Dbd7 1N
 ::  digits-base64-url:12    :   72  =b :   14 c ::    lx-H Dbd7 1Ng4
+::  digits-base64-url:14    :   84  =b :   17 c ::    lx-H Dbd7 1Ng4 E_
 ::  digits-base64-url:16    :   96  =b :   19 c ::    lx-H Dbd7 1Ng4 E_rE
+::  digits-base64-url:18    :  108  =b :   22 c ::    lx-H Dbd7 1Ng4 E_rE ny
 ::  digits-base64-url:20    :  120  =b :   24 c ::    lx-H Dbd7 1Ng4 E_rE nyFF
+::  digits-base64-url:22    :  132  =b :   27 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hw
 ::  digits-base64-url:24    :  144  =b :   29 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh
+::  digits-base64-url:26    :  156  =b :   32 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_
 ::  digits-base64-url:28    :  168  =b :   34 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC
+::  digits-base64-url:30    :  180  =b :   37 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FM
 ::  digits-base64-url:32    :  192  =b :   39 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU
+::  digits-base64-rfc:2     :   12  =b :    2 c ::    lx
 ::  digits-base64-rfc:4     :   24  =b :    4 c ::    lx+H
+::  digits-base64-rfc:6     :   36  =b :    7 c ::    lx+H Db
 ::  digits-base64-rfc:8     :   48  =b :    9 c ::    lx+H Dbd7
+::  digits-base64-rfc:10    :   60  =b :   12 c ::    lx+H Dbd7 1N
 ::  digits-base64-rfc:12    :   72  =b :   14 c ::    lx+H Dbd7 1Ng4
+::  digits-base64-rfc:14    :   84  =b :   17 c ::    lx+H Dbd7 1Ng4 E/
 ::  digits-base64-rfc:16    :   96  =b :   19 c ::    lx+H Dbd7 1Ng4 E/rE
+::  digits-base64-rfc:18    :  108  =b :   22 c ::    lx+H Dbd7 1Ng4 E/rE ny
 ::  digits-base64-rfc:20    :  120  =b :   24 c ::    lx+H Dbd7 1Ng4 E/rE nyFF
+::  digits-base64-rfc:22    :  132  =b :   27 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hw
 ::  digits-base64-rfc:24    :  144  =b :   29 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh
+::  digits-base64-rfc:26    :  156  =b :   32 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/
 ::  digits-base64-rfc:28    :  168  =b :   34 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC
+::  digits-base64-rfc:30    :  180  =b :   37 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FM
 ::  digits-base64-rfc:32    :  192  =b :   39 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU
 ::  digits-z85:5            :   32.0 b :    5 c ::    .2Nm+
 ::  digits-z85:10           :   64.0 b :   11 c ::    .2Nm+ i^%9%
@@ -22,21 +38,37 @@
 ::  digits-z85:20           :  128.1 b :   23 c ::    .2Nm+ i^%9% 4AD]j Ld?hS
 ::  digits-z85:25           :  160.2 b :   29 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$
 ::  digits-z85:30           :  192.2 b :   35 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU
+::  ascii-symbols:2         :   10  =b :    2 c ::    \)
 ::  ascii-symbols:4         :   20  =b :    4 c ::    \)^~
+::  ascii-symbols:6         :   30  =b :    7 c ::    \)^~ %(
 ::  ascii-symbols:8         :   40  =b :    9 c ::    \)^~ %(;?
+::  ascii-symbols:10        :   50  =b :   12 c ::    \)^~ %(;? :{
 ::  ascii-symbols:12        :   60  =b :   14 c ::    \)^~ %(;? :{#~
+::  ascii-symbols:14        :   70  =b :   17 c ::    \)^~ %(;? :{#~ |!
 ::  ascii-symbols:16        :   80  =b :   19 c ::    \)^~ %(;? :{#~ |!#^
+::  ascii-symbols:18        :   90  =b :   22 c ::    \)^~ %(;? :{#~ |!#^ @]
 ::  ascii-symbols:20        :  100  =b :   24 c ::    \)^~ %(;? :{#~ |!#^ @],~
+::  ascii-symbols:22        :  110  =b :   27 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))
 ::  ascii-symbols:24        :  120  =b :   29 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^
+::  ascii-symbols:26        :  130  =b :   32 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?
 ::  ascii-symbols:28        :  140  =b :   34 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"'
+::  ascii-symbols:30        :  150  =b :   37 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,
 ::  ascii-symbols:32        :  160  =b :   39 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+
+::  ascii-any:2             :   13.1 b :    2 c ::    ei
 ::  ascii-any:4             :   26.2 b :    4 c ::    ei#9
+::  ascii-any:6             :   39.3 b :    7 c ::    ei#9 i5
 ::  ascii-any:8             :   52.4 b :    9 c ::    ei#9 i5kg
+::  ascii-any:10            :   65.5 b :   12 c ::    ei#9 i5kg |~
 ::  ascii-any:12            :   78.6 b :   14 c ::    ei#9 i5kg |~.+
+::  ascii-any:14            :   91.7 b :   17 c ::    ei#9 i5kg |~.+ {%
 ::  ascii-any:16            :  104.8 b :   19 c ::    ei#9 i5kg |~.+ {%IL
+::  ascii-any:18            :  117.9 b :   22 c ::    ei#9 i5kg |~.+ {%IL 6U
 ::  ascii-any:20            :  131.0 b :   24 c ::    ei#9 i5kg |~.+ {%IL 6U/o
+::  ascii-any:22            :  144.2 b :   27 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4P
 ::  ascii-any:24            :  157.3 b :   29 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs
+::  ascii-any:26            :  170.4 b :   32 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w
 ::  ascii-any:28            :  183.5 b :   34 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
+::  ascii-any:30            :  196.6 b :   37 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[
 ::  ascii-any:32            :  209.7 b :   39 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
 ::  cv-plus-c:1             :   28.4 b :    9 c ::    taqe VB7~
 ::  cv-plus-c:2             :   41.8 b :   14 c ::    taqe veza ZA4(
@@ -45,11 +77,11 @@
 ::  cv-plus-c:5             :   82.1 b :   29 c ::    taqe veza zaye fugi rixu CB9!
 ::  cv-plus-c:6             :   95.6 b :   34 c ::    taqe veza zaye fugi rixu cezu SA6^
 ::  cv-plus-c:7             :  109.0 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO5]
-::  bip0039:2               :   66  =b :   36 c ::    robot ship night - shield way yellow
-::  skey:2                  :   66  =b :   31 c ::    mile noun hear - norm wast yarn
-::  pgp:2                   :   32  =b :   37 c ::    shamrock responsive - crucial revival
-::  eff-large:1             :   38.7 b :   22 c ::    scope slacks patronize
-::  eff-short:2             :   62.0 b :   34 c ::    shaft sleep ankle - path sled deaf
+::  eff-large:1             :   12.9 b :    5 c ::    scope
+::  eff-large:2             :   25.8 b :   12 c ::    scope slacks
+::  eff-large:3             :   38.7 b :   22 c ::    scope slacks patronize
+::  eff-large:4             :   51.6 b :   31 c ::    scope slacks patronize dumpling
+::  eff-large:5             :   64.6 b :   36 c ::    scope slacks patronize dumpling deny
 ::  uuid-v4                 :  122  =b :   36 c ::    c5a0ef11-f80c-41ce-8329-75e88c63a6e1
 ::  ip-127                  :   23.9 b :   13 c ::    127.186.196.8
 ::  ip-10                   :   23.9 b :   12 c ::    10.186.196.8

@@ -1,88 +1,172 @@
 >>  z-tokens patterns --random-testing
 
+::  digits-base10:2         :    6.6 b :    2 c ::    70
 ::  digits-base10:4         :   13.2 b :    4 c ::    7022
+::  digits-base10:6         :   19.9 b :    7 c ::    7022 71
 ::  digits-base10:8         :   26.5 b :    9 c ::    7022 7110
+::  digits-base10:10        :   33.2 b :   12 c ::    7022 7110 44
 ::  digits-base10:12        :   39.8 b :   14 c ::    7022 7110 4492
+::  digits-base10:14        :   46.5 b :   17 c ::    7022 7110 4492 51
 ::  digits-base10:16        :   53.1 b :   19 c ::    7022 7110 4492 5182
+::  digits-base10:18        :   59.7 b :   22 c ::    7022 7110 4492 5182 56
 ::  digits-base10:20        :   66.4 b :   24 c ::    7022 7110 4492 5182 5629
+::  digits-base10:22        :   73.0 b :   27 c ::    7022 7110 4492 5182 5629 06
 ::  digits-base10:24        :   79.7 b :   29 c ::    7022 7110 4492 5182 5629 0665
+::  digits-base10:26        :   86.3 b :   32 c ::    7022 7110 4492 5182 5629 0665 73
 ::  digits-base10:28        :   93.0 b :   34 c ::    7022 7110 4492 5182 5629 0665 7352
+::  digits-base10:30        :   99.6 b :   37 c ::    7022 7110 4492 5182 5629 0665 7352 60
 ::  digits-base10:32        :  106.3 b :   39 c ::    7022 7110 4492 5182 5629 0665 7352 6062
+::  digits-base2:4          :    4  =b :    4 c ::    1010
 ::  digits-base2:8          :    8  =b :    8 c ::    10101000
+::  digits-base2:12         :   12  =b :   13 c ::    10101000 0100
 ::  digits-base2:16         :   16  =b :   17 c ::    10101000 01001100
+::  digits-base2:20         :   20  =b :   22 c ::    10101000 01001100 1001
 ::  digits-base2:24         :   24  =b :   26 c ::    10101000 01001100 10011100
+::  digits-base2:28         :   28  =b :   31 c ::    10101000 01001100 10011100 1001
 ::  digits-base2:32         :   32  =b :   35 c ::    10101000 01001100 10011100 10011110
+::  digits-base8:2          :    6  =b :    2 c ::    60
 ::  digits-base8:4          :   12  =b :    4 c ::    6026
+::  digits-base8:6          :   18  =b :    7 c ::    6026 61
 ::  digits-base8:8          :   24  =b :    9 c ::    6026 6103
+::  digits-base8:10         :   30  =b :   12 c ::    6026 6103 74
 ::  digits-base8:12         :   36  =b :   14 c ::    6026 6103 7414
+::  digits-base8:14         :   42  =b :   17 c ::    6026 6103 7414 57
 ::  digits-base8:16         :   48  =b :   19 c ::    6026 6103 7414 5775
+::  digits-base8:18         :   54  =b :   22 c ::    6026 6103 7414 5775 06
 ::  digits-base8:20         :   60  =b :   24 c ::    6026 6103 7414 5775 0654
+::  digits-base8:22         :   66  =b :   27 c ::    6026 6103 7414 5775 0654 61
 ::  digits-base8:24         :   72  =b :   29 c ::    6026 6103 7414 5775 0654 6142
+::  digits-base8:26         :   78  =b :   32 c ::    6026 6103 7414 5775 0654 6142 25
 ::  digits-base8:28         :   84  =b :   34 c ::    6026 6103 7414 5775 0654 6142 2556
+::  digits-base8:30         :   90  =b :   37 c ::    6026 6103 7414 5775 0654 6142 2556 25
 ::  digits-base8:32         :   96  =b :   39 c ::    6026 6103 7414 5775 0654 6142 2556 2505
+::  digits-base16:2         :    8  =b :    2 c ::    c0
 ::  digits-base16:4         :   16  =b :    4 c ::    c094
+::  digits-base16:6         :   24  =b :    7 c ::    c094 c3
 ::  digits-base16:8         :   32  =b :    9 c ::    c094 c32f
+::  digits-base16:10        :   40  =b :   12 c ::    c094 c32f 72
 ::  digits-base16:12        :   48  =b :   14 c ::    c094 c32f 72d3
+::  digits-base16:14        :   56  =b :   17 c ::    c094 c32f 72d3 8a
 ::  digits-base16:16        :   64  =b :   19 c ::    c094 c32f 72d3 8ae1
+::  digits-base16:18        :   72  =b :   22 c ::    c094 c32f 72d3 8ae1 30
 ::  digits-base16:20        :   80  =b :   24 c ::    c094 c32f 72d3 8ae1 3011
+::  digits-base16:22        :   88  =b :   27 c ::    c094 c32f 72d3 8ae1 3011 18
 ::  digits-base16:24        :   96  =b :   29 c ::    c094 c32f 72d3 8ae1 3011 18c1
+::  digits-base16:26        :  104  =b :   32 c ::    c094 c32f 72d3 8ae1 3011 18c1 84
 ::  digits-base16:28        :  112  =b :   34 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a
+::  digits-base16:30        :  120  =b :   37 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13
 ::  digits-base16:32        :  128  =b :   39 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9
+::  digits-base32-hex:2     :   10  =b :    2 c ::    n8
 ::  digits-base32-hex:4     :   20  =b :    4 c ::    n8pv
+::  digits-base32-hex:6     :   30  =b :    7 c ::    n8pv 47
 ::  digits-base32-hex:8     :   40  =b :    9 c ::    n8pv 47gk
+::  digits-base32-hex:10    :   50  =b :   12 c ::    n8pv 47gk fs
 ::  digits-base32-hex:12    :   60  =b :   14 c ::    n8pv 47gk fs2v
+::  digits-base32-hex:14    :   70  =b :   17 c ::    n8pv 47gk fs2v t0
 ::  digits-base32-hex:16    :   80  =b :   19 c ::    n8pv 47gk fs2v t02p
+::  digits-base32-hex:18    :   90  =b :   22 c ::    n8pv 47gk fs2v t02p lo
 ::  digits-base32-hex:20    :  100  =b :   24 c ::    n8pv 47gk fs2v t02p lobv
+::  digits-base32-hex:22    :  110  =b :   27 c ::    n8pv 47gk fs2v t02p lobv 88
 ::  digits-base32-hex:24    :  120  =b :   29 c ::    n8pv 47gk fs2v t02p lobv 88lp
+::  digits-base32-hex:26    :  130  =b :   32 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k
 ::  digits-base32-hex:28    :  140  =b :   34 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16
+::  digits-base32-hex:30    :  150  =b :   37 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 ab
 ::  digits-base32-hex:32    :  160  =b :   39 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka
+::  digits-base32-rfc:2     :   10  =b :    2 c ::    xi
 ::  digits-base32-rfc:4     :   20  =b :    4 c ::    xiz7
+::  digits-base32-rfc:6     :   30  =b :    7 c ::    xiz7 eh
 ::  digits-base32-rfc:8     :   40  =b :    9 c ::    xiz7 ehqu
+::  digits-base32-rfc:10    :   50  =b :   12 c ::    xiz7 ehqu p4
 ::  digits-base32-rfc:12    :   60  =b :   14 c ::    xiz7 ehqu p4c7
+::  digits-base32-rfc:14    :   70  =b :   17 c ::    xiz7 ehqu p4c7 5a
 ::  digits-base32-rfc:16    :   80  =b :   19 c ::    xiz7 ehqu p4c7 5acz
+::  digits-base32-rfc:18    :   90  =b :   22 c ::    xiz7 ehqu p4c7 5acz vy
 ::  digits-base32-rfc:20    :  100  =b :   24 c ::    xiz7 ehqu p4c7 5acz vyl7
+::  digits-base32-rfc:22    :  110  =b :   27 c ::    xiz7 ehqu p4c7 5acz vyl7 ii
 ::  digits-base32-rfc:24    :  120  =b :   29 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz
+::  digits-base32-rfc:26    :  130  =b :   32 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz ju
 ::  digits-base32-rfc:28    :  140  =b :   34 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg
+::  digits-base32-rfc:30    :  150  =b :   37 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kl
 ::  digits-base32-rfc:32    :  160  =b :   39 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk
+::  digits-base64-url:2     :   12  =b :    2 c ::    lx
 ::  digits-base64-url:4     :   24  =b :    4 c ::    lx-H
+::  digits-base64-url:6     :   36  =b :    7 c ::    lx-H Db
 ::  digits-base64-url:8     :   48  =b :    9 c ::    lx-H Dbd7
+::  digits-base64-url:10    :   60  =b :   12 c ::    lx-H Dbd7 1N
 ::  digits-base64-url:12    :   72  =b :   14 c ::    lx-H Dbd7 1Ng4
+::  digits-base64-url:14    :   84  =b :   17 c ::    lx-H Dbd7 1Ng4 E_
 ::  digits-base64-url:16    :   96  =b :   19 c ::    lx-H Dbd7 1Ng4 E_rE
+::  digits-base64-url:18    :  108  =b :   22 c ::    lx-H Dbd7 1Ng4 E_rE ny
 ::  digits-base64-url:20    :  120  =b :   24 c ::    lx-H Dbd7 1Ng4 E_rE nyFF
+::  digits-base64-url:22    :  132  =b :   27 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hw
 ::  digits-base64-url:24    :  144  =b :   29 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh
+::  digits-base64-url:26    :  156  =b :   32 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_
 ::  digits-base64-url:28    :  168  =b :   34 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC
+::  digits-base64-url:30    :  180  =b :   37 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FM
 ::  digits-base64-url:32    :  192  =b :   39 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU
+::  digits-base64-rfc:2     :   12  =b :    2 c ::    lx
 ::  digits-base64-rfc:4     :   24  =b :    4 c ::    lx+H
+::  digits-base64-rfc:6     :   36  =b :    7 c ::    lx+H Db
 ::  digits-base64-rfc:8     :   48  =b :    9 c ::    lx+H Dbd7
+::  digits-base64-rfc:10    :   60  =b :   12 c ::    lx+H Dbd7 1N
 ::  digits-base64-rfc:12    :   72  =b :   14 c ::    lx+H Dbd7 1Ng4
+::  digits-base64-rfc:14    :   84  =b :   17 c ::    lx+H Dbd7 1Ng4 E/
 ::  digits-base64-rfc:16    :   96  =b :   19 c ::    lx+H Dbd7 1Ng4 E/rE
+::  digits-base64-rfc:18    :  108  =b :   22 c ::    lx+H Dbd7 1Ng4 E/rE ny
 ::  digits-base64-rfc:20    :  120  =b :   24 c ::    lx+H Dbd7 1Ng4 E/rE nyFF
+::  digits-base64-rfc:22    :  132  =b :   27 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hw
 ::  digits-base64-rfc:24    :  144  =b :   29 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh
+::  digits-base64-rfc:26    :  156  =b :   32 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/
 ::  digits-base64-rfc:28    :  168  =b :   34 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC
+::  digits-base64-rfc:30    :  180  =b :   37 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FM
 ::  digits-base64-rfc:32    :  192  =b :   39 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU
+::  digits-base58:2         :   11.7 b :    2 c ::    jm
 ::  digits-base58:4         :   23.4 b :    4 c ::    jm2a
+::  digits-base58:6         :   35.1 b :    7 c ::    jm2a Gm
 ::  digits-base58:8         :   46.8 b :    9 c ::    jm2a GmDo
+::  digits-base58:10        :   58.5 b :   12 c ::    jm2a GmDo ky
 ::  digits-base58:12        :   70.2 b :   14 c ::    jm2a GmDo kyz9
+::  digits-base58:14        :   82.0 b :   17 c ::    jm2a GmDo kyz9 73
 ::  digits-base58:16        :   93.7 b :   19 c ::    jm2a GmDo kyz9 73RT
+::  digits-base58:18        :  105.4 b :   22 c ::    jm2a GmDo kyz9 73RT vE
 ::  digits-base58:20        :  117.1 b :   24 c ::    jm2a GmDo kyz9 73RT vEZA
+::  digits-base58:22        :  128.8 b :   27 c ::    jm2a GmDo kyz9 73RT vEZA qC
 ::  digits-base58:24        :  140.5 b :   29 c ::    jm2a GmDo kyz9 73RT vEZA qCWU
+::  digits-base58:26        :  152.3 b :   32 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss
 ::  digits-base58:28        :  164.0 b :   34 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z
+::  digits-base58:30        :  175.7 b :   37 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dy
 ::  digits-base58:32        :  187.4 b :   39 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg
+::  digits-base62:2         :   11.9 b :    2 c ::    jl
 ::  digits-base62:4         :   23.8 b :    4 c ::    jl1a
+::  digits-base62:6         :   35.7 b :    7 c ::    jl1a Gl
 ::  digits-base62:8         :   47.6 b :    9 c ::    jl1a GlDn
+::  digits-base62:10        :   59.5 b :   12 c ::    jl1a GlDn ky
 ::  digits-base62:12        :   71.4 b :   14 c ::    jl1a GlDn kyz8
+::  digits-base62:14        :   83.3 b :   17 c ::    jl1a GlDn kyz8 x3
 ::  digits-base62:16        :   95.2 b :   19 c ::    jl1a GlDn kyz8 x3QS
+::  digits-base62:18        :  107.1 b :   22 c ::    jl1a GlDn kyz8 x3QS vE
 ::  digits-base62:20        :  119.0 b :   24 c ::    jl1a GlDn kyz8 x3QS vEY9
+::  digits-base62:22        :  130.9 b :   27 c ::    jl1a GlDn kyz8 x3QS vEY9 pC
 ::  digits-base62:24        :  142.9 b :   29 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd
+::  digits-base62:26        :  154.8 b :   32 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts
 ::  digits-base62:28        :  166.7 b :   34 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z
+::  digits-base62:30        :  178.6 b :   37 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dy
 ::  digits-base62:32        :  190.5 b :   39 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0
+::  digits-bech32:2         :   10  =b :    2 c ::    hg
 ::  digits-bech32:4         :   20  =b :    4 c ::    hgel
+::  digits-bech32:6         :   30  =b :    7 c ::    hgel y8
 ::  digits-bech32:8         :   40  =b :    9 c ::    hgel y8s5
+::  digits-bech32:10        :   50  =b :   12 c ::    hgel y8s5 0u
 ::  digits-bech32:12        :   60  =b :   14 c ::    hgel y8s5 0uzl
+::  digits-bech32:14        :   70  =b :   17 c ::    hgel y8s5 0uzl aq
 ::  digits-bech32:16        :   80  =b :   19 c ::    hgel y8s5 0uzl aqze
+::  digits-bech32:18        :   90  =b :   22 c ::    hgel y8s5 0uzl aqze 4c
 ::  digits-bech32:20        :  100  =b :   24 c ::    hgel y8s5 0uzl aqze 4ctl
+::  digits-bech32:22        :  110  =b :   27 c ::    hgel y8s5 0uzl aqze 4ctl gg
 ::  digits-bech32:24        :  120  =b :   29 c ::    hgel y8s5 0uzl aqze 4ctl gg4e
+::  digits-bech32:26        :  130  =b :   32 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5
 ::  digits-bech32:28        :  140  =b :   34 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px
+::  digits-bech32:30        :  150  =b :   37 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t
 ::  digits-bech32:32        :  160  =b :   39 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52
 ::  digits-z85:5            :   32.0 b :    5 c ::    .2Nm+
 ::  digits-z85:10           :   64.0 b :   11 c ::    .2Nm+ i^%9%
@@ -90,37 +174,69 @@
 ::  digits-z85:20           :  128.1 b :   23 c ::    .2Nm+ i^%9% 4AD]j Ld?hS
 ::  digits-z85:25           :  160.2 b :   29 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$
 ::  digits-z85:30           :  192.2 b :   35 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU
+::  ascii-lower:2           :    9.4 b :    2 c ::    tu
 ::  ascii-lower:4           :   18.8 b :    4 c ::    tuap
+::  ascii-lower:6           :   28.2 b :    7 c ::    tuap uf
 ::  ascii-lower:8           :   37.6 b :    9 c ::    tuap ufut
+::  ascii-lower:10          :   47.0 b :   12 c ::    tuap ufut zd
 ::  ascii-lower:12          :   56.4 b :   14 c ::    tuap ufut zdzb
+::  ascii-lower:14          :   65.8 b :   17 c ::    tuap ufut zdzb ly
 ::  ascii-lower:16          :   75.2 b :   19 c ::    tuap ufut zdzb lyoe
+::  ascii-lower:18          :   84.6 b :   22 c ::    tuap ufut zdzb lyoe vf
 ::  ascii-lower:20          :   94.0 b :   24 c ::    tuap ufut zdzb lyoe vfnq
+::  ascii-lower:22          :  103.4 b :   27 c ::    tuap ufut zdzb lyoe vfnq mw
 ::  ascii-lower:24          :  112.8 b :   29 c ::    tuap ufut zdzb lyoe vfnq mwwb
+::  ascii-lower:26          :  122.2 b :   32 c ::    tuap ufut zdzb lyoe vfnq mwwb zf
 ::  ascii-lower:28          :  131.6 b :   34 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr
+::  ascii-lower:30          :  141.0 b :   37 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr ab
 ::  ascii-lower:32          :  150.4 b :   39 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu
+::  ascii-mixed:2           :   11.4 b :    2 c ::    MO
 ::  ascii-mixed:4           :   22.8 b :    4 c ::    MObE
+::  ascii-mixed:6           :   34.2 b :    7 c ::    MObE nO
 ::  ascii-mixed:8           :   45.6 b :    9 c ::    MObE nOlP
+::  ascii-mixed:10          :   57.0 b :   12 c ::    MObE nOlP YZ
 ::  ascii-mixed:12          :   68.4 b :   14 c ::    MObE nOlP YZhY
+::  ascii-mixed:14          :   79.8 b :   17 c ::    MObE nOlP YZhY cw
 ::  ascii-mixed:16          :   91.2 b :   19 c ::    MObE nOlP YZhY cwWl
+::  ascii-mixed:18          :  102.6 b :   22 c ::    MObE nOlP YZhY cwWl Di
 ::  ascii-mixed:20          :  114.0 b :   24 c ::    MObE nOlP YZhY cwWl DiRk
+::  ascii-mixed:22          :  125.4 b :   27 c ::    MObE nOlP YZhY cwWl DiRk AH
 ::  ascii-mixed:24          :  136.8 b :   29 c ::    MObE nOlP YZhY cwWl DiRk AHTT
+::  ascii-mixed:26          :  148.2 b :   32 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZ
 ::  ascii-mixed:28          :  159.6 b :   34 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY
+::  ascii-mixed:30          :  171.0 b :   37 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJ
 ::  ascii-mixed:32          :  182.4 b :   39 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad
+::  ascii-symbols:2         :   10  =b :    2 c ::    \)
 ::  ascii-symbols:4         :   20  =b :    4 c ::    \)^~
+::  ascii-symbols:6         :   30  =b :    7 c ::    \)^~ %(
 ::  ascii-symbols:8         :   40  =b :    9 c ::    \)^~ %(;?
+::  ascii-symbols:10        :   50  =b :   12 c ::    \)^~ %(;? :{
 ::  ascii-symbols:12        :   60  =b :   14 c ::    \)^~ %(;? :{#~
+::  ascii-symbols:14        :   70  =b :   17 c ::    \)^~ %(;? :{#~ |!
 ::  ascii-symbols:16        :   80  =b :   19 c ::    \)^~ %(;? :{#~ |!#^
+::  ascii-symbols:18        :   90  =b :   22 c ::    \)^~ %(;? :{#~ |!#^ @]
 ::  ascii-symbols:20        :  100  =b :   24 c ::    \)^~ %(;? :{#~ |!#^ @],~
+::  ascii-symbols:22        :  110  =b :   27 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))
 ::  ascii-symbols:24        :  120  =b :   29 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^
+::  ascii-symbols:26        :  130  =b :   32 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?
 ::  ascii-symbols:28        :  140  =b :   34 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"'
+::  ascii-symbols:30        :  150  =b :   37 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,
 ::  ascii-symbols:32        :  160  =b :   39 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+
+::  ascii-any:2             :   13.1 b :    2 c ::    ei
 ::  ascii-any:4             :   26.2 b :    4 c ::    ei#9
+::  ascii-any:6             :   39.3 b :    7 c ::    ei#9 i5
 ::  ascii-any:8             :   52.4 b :    9 c ::    ei#9 i5kg
+::  ascii-any:10            :   65.5 b :   12 c ::    ei#9 i5kg |~
 ::  ascii-any:12            :   78.6 b :   14 c ::    ei#9 i5kg |~.+
+::  ascii-any:14            :   91.7 b :   17 c ::    ei#9 i5kg |~.+ {%
 ::  ascii-any:16            :  104.8 b :   19 c ::    ei#9 i5kg |~.+ {%IL
+::  ascii-any:18            :  117.9 b :   22 c ::    ei#9 i5kg |~.+ {%IL 6U
 ::  ascii-any:20            :  131.0 b :   24 c ::    ei#9 i5kg |~.+ {%IL 6U/o
+::  ascii-any:22            :  144.2 b :   27 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4P
 ::  ascii-any:24            :  157.3 b :   29 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs
+::  ascii-any:26            :  170.4 b :   32 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w
 ::  ascii-any:28            :  183.5 b :   34 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
+::  ascii-any:30            :  196.6 b :   37 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[
 ::  ascii-any:32            :  209.7 b :   39 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
 ::  cv-lower:1              :   13.4 b :    4 c ::    taqe
 ::  cv-lower:2              :   26.8 b :    9 c ::    taqe veza
@@ -177,17 +293,46 @@
 ::  koremutake-b:3          :   63  =b :   24 c ::    drobostu fistoda napruhy
 ::  koremutake-b:4          :   84  =b :   31 c ::    drobostu fistoda napruhy hipupe
 ::  koremutake-b:5          :  105  =b :   40 c ::    drobostu fistoda napruhy hipupe grugrodi
-::  mnemonic:1              :   32.0 b :   19 c ::    arrow arizona mango
-::  bip0039:1               :   33  =b :   16 c ::    robot ship night
-::  bip0039:2               :   66  =b :   36 c ::    robot ship night - shield way yellow
-::  skey:1                  :   33  =b :   14 c ::    mile noun hear
-::  skey:2                  :   66  =b :   31 c ::    mile noun hear - norm wast yarn
+::  mnemonic:1              :   10.6 b :    5 c ::    arrow
+::  mnemonic:2              :   21.3 b :   13 c ::    arrow arizona
+::  mnemonic:3              :   32.0 b :   19 c ::    arrow arizona mango
+::  mnemonic:4              :   42.6 b :   26 c ::    arrow arizona mango archer
+::  mnemonic:5              :   53.3 b :   33 c ::    arrow arizona mango archer jacket
+::  mnemonic:6              :   64.0 b :   40 c ::    arrow arizona mango archer jacket bundle
+::  bip0039:1               :   11  =b :    5 c ::    robot
+::  bip0039:2               :   22  =b :   10 c ::    robot ship
+::  bip0039:3               :   33  =b :   16 c ::    robot ship night
+::  bip0039:4               :   44  =b :   23 c ::    robot ship night shield
+::  bip0039:5               :   55  =b :   27 c ::    robot ship night shield way
+::  bip0039:6               :   66  =b :   34 c ::    robot ship night shield way yellow
+::  skey:1                  :   11  =b :    4 c ::    mile
+::  skey:2                  :   22  =b :    9 c ::    mile noun
+::  skey:3                  :   33  =b :   14 c ::    mile noun hear
+::  skey:4                  :   44  =b :   19 c ::    mile noun hear norm
+::  skey:5                  :   55  =b :   24 c ::    mile noun hear norm wast
+::  skey:6                  :   66  =b :   29 c ::    mile noun hear norm wast yarn
+::  skey:7                  :   77  =b :   33 c ::    mile noun hear norm wast yarn led
+::  skey:8                  :   88  =b :   35 c ::    mile noun hear norm wast yarn led i
+::  skey:9                  :   99  =b :   39 c ::    mile noun hear norm wast yarn led i cur
 ::  pgp:1                   :   16  =b :   19 c ::    shamrock responsive
-::  pgp:2                   :   32  =b :   37 c ::    shamrock responsive - crucial revival
-::  eff-large:1             :   38.7 b :   22 c ::    scope slacks patronize
-::  eff-short:1             :   31.0 b :   17 c ::    shaft sleep ankle
-::  eff-short:2             :   62.0 b :   34 c ::    shaft sleep ankle - path sled deaf
-::  eff-unique:1            :   31.0 b :   26 c ::    rekindle satchel agonizing
+::  pgp:2                   :   32  =b :   35 c ::    shamrock responsive crucial revival
+::  eff-large:1             :   12.9 b :    5 c ::    scope
+::  eff-large:2             :   25.8 b :   12 c ::    scope slacks
+::  eff-large:3             :   38.7 b :   22 c ::    scope slacks patronize
+::  eff-large:4             :   51.6 b :   31 c ::    scope slacks patronize dumpling
+::  eff-large:5             :   64.6 b :   36 c ::    scope slacks patronize dumpling deny
+::  eff-short:1             :   10.3 b :    5 c ::    shaft
+::  eff-short:2             :   20.6 b :   11 c ::    shaft sleep
+::  eff-short:3             :   31.0 b :   17 c ::    shaft sleep ankle
+::  eff-short:4             :   41.3 b :   22 c ::    shaft sleep ankle path
+::  eff-short:5             :   51.6 b :   27 c ::    shaft sleep ankle path sled
+::  eff-short:6             :   62.0 b :   32 c ::    shaft sleep ankle path sled deaf
+::  eff-short:7             :   72.3 b :   37 c ::    shaft sleep ankle path sled deaf shun
+::  eff-unique:1            :   10.3 b :    8 c ::    rekindle
+::  eff-unique:2            :   20.6 b :   16 c ::    rekindle satchel
+::  eff-unique:3            :   31.0 b :   26 c ::    rekindle satchel agonizing
+::  eff-unique:4            :   41.3 b :   31 c ::    rekindle satchel agonizing mule
+::  eff-unique:5            :   51.6 b :   39 c ::    rekindle satchel agonizing mule sardine
 ::  nato:1                  :    5.1 b :    3 c ::    wun
 ::  nato:2                  :   10.3 b :   10 c ::    wun victor
 ::  nato:3                  :   15.5 b :   18 c ::    wun victor juliett
@@ -195,17 +340,32 @@
 ::  nato:5                  :   25.8 b :   31 c ::    wun victor juliett foxtrot echo
 ::  nato:6                  :   31.0 b :   36 c ::    wun victor juliett foxtrot echo papa
 ::  nato:7                  :   36.1 b :   40 c ::    wun victor juliett foxtrot echo papa ait
+::  bytes-hex:1             :    8  =b :    2 c ::    7f
+::  bytes-hex:2             :   16  =b :    4 c ::    7f6f
+::  bytes-hex:3             :   24  =b :    6 c ::    7f6f2c
+::  bytes-hex:4             :   32  =b :    8 c ::    7f6f2ccd
+::  bytes-hex:5             :   40  =b :   10 c ::    7f6f2ccdb2
+::  bytes-hex:6             :   48  =b :   12 c ::    7f6f2ccdb23f
+::  bytes-hex:7             :   56  =b :   14 c ::    7f6f2ccdb23f2a
+::  bytes-hex:8             :   64  =b :   16 c ::    7f6f2ccdb23f2abb
+::  bytes-hex:9             :   72  =b :   18 c ::    7f6f2ccdb23f2abb7b
+::  bytes-hex:10            :   80  =b :   20 c ::    7f6f2ccdb23f2abb7b69
+::  bytes-hex:11            :   88  =b :   22 c ::    7f6f2ccdb23f2abb7b6927
+::  bytes-hex:12            :   96  =b :   24 c ::    7f6f2ccdb23f2abb7b69278e
+::  bytes-hex:13            :  104  =b :   26 c ::    7f6f2ccdb23f2abb7b69278e94
+::  bytes-hex:14            :  112  =b :   28 c ::    7f6f2ccdb23f2abb7b69278e947c
+::  bytes-hex:15            :  120  =b :   30 c ::    7f6f2ccdb23f2abb7b69278e947c01
+::  bytes-hex:16            :  128  =b :   32 c ::    7f6f2ccdb23f2abb7b69278e947c01c6
+::  bytes-hex:17            :  136  =b :   34 c ::    7f6f2ccdb23f2abb7b69278e947c01c616
+::  bytes-hex:18            :  144  =b :   36 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a
+::  bytes-hex:19            :  152  =b :   38 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31
+::  bytes-hex:20            :  160  =b :   40 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf
 ::  uuid-v4                 :  122  =b :   36 c ::    c5a0ef11-f80c-41ce-8329-75e88c63a6e1
 ::  ip-127                  :   23.9 b :   13 c ::    127.186.196.8
 ::  ip-10                   :   23.9 b :   12 c ::    10.186.196.8
 ::  ip-172                  :   20.8 b :   12 c ::    172.22.196.8
 ::  ip-192                  :   15.9 b :   15 c ::    192.168.186.196
 ::  ip-mac                  :   40  =b :   17 c ::    02:bb:c6:43:cb:f8
-::  bytes-hex:4             :   32  =b :    8 c ::    7f6f2ccd
-::  bytes-hex:8             :   64  =b :   16 c ::    7f6f2ccdb23f2abb
-::  bytes-hex:12            :   96  =b :   24 c ::    7f6f2ccdb23f2abb7b69278e
-::  bytes-hex:16            :  128  =b :   32 c ::    7f6f2ccdb23f2abb7b69278e947c01c6
-::  bytes-hex:20            :  160  =b :   40 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf
 ::  timestamp-date-time     :    0  =b :   19 c ::    2021-12-30-14-15-16
 ::  timestamp-date          :    0  =b :   10 c ::    2021-12-30
 ::  timestamp-time          :    0  =b :    8 c ::    14-15-16

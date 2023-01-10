@@ -1,18 +1,30 @@
 >>  z-tokens patterns --has-all --random-testing
 
 ::  digits-base64-url:8     :   48  =b :    9 c ::    lx-H Dbd7
+::  digits-base64-url:10    :   60  =b :   12 c ::    lx-H Dbd7 1N
 ::  digits-base64-url:12    :   72  =b :   14 c ::    lx-H Dbd7 1Ng4
+::  digits-base64-url:14    :   84  =b :   17 c ::    lx-H Dbd7 1Ng4 E_
 ::  digits-base64-url:16    :   96  =b :   19 c ::    lx-H Dbd7 1Ng4 E_rE
+::  digits-base64-url:18    :  108  =b :   22 c ::    lx-H Dbd7 1Ng4 E_rE ny
 ::  digits-base64-url:20    :  120  =b :   24 c ::    lx-H Dbd7 1Ng4 E_rE nyFF
+::  digits-base64-url:22    :  132  =b :   27 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hw
 ::  digits-base64-url:24    :  144  =b :   29 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh
+::  digits-base64-url:26    :  156  =b :   32 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_
 ::  digits-base64-url:28    :  168  =b :   34 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC
+::  digits-base64-url:30    :  180  =b :   37 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FM
 ::  digits-base64-url:32    :  192  =b :   39 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU
 ::  digits-base64-rfc:8     :   48  =b :    9 c ::    lx+H Dbd7
+::  digits-base64-rfc:10    :   60  =b :   12 c ::    lx+H Dbd7 1N
 ::  digits-base64-rfc:12    :   72  =b :   14 c ::    lx+H Dbd7 1Ng4
+::  digits-base64-rfc:14    :   84  =b :   17 c ::    lx+H Dbd7 1Ng4 E/
 ::  digits-base64-rfc:16    :   96  =b :   19 c ::    lx+H Dbd7 1Ng4 E/rE
+::  digits-base64-rfc:18    :  108  =b :   22 c ::    lx+H Dbd7 1Ng4 E/rE ny
 ::  digits-base64-rfc:20    :  120  =b :   24 c ::    lx+H Dbd7 1Ng4 E/rE nyFF
+::  digits-base64-rfc:22    :  132  =b :   27 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hw
 ::  digits-base64-rfc:24    :  144  =b :   29 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh
+::  digits-base64-rfc:26    :  156  =b :   32 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/
 ::  digits-base64-rfc:28    :  168  =b :   34 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC
+::  digits-base64-rfc:30    :  180  =b :   37 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FM
 ::  digits-base64-rfc:32    :  192  =b :   39 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU
 ::  digits-z85:5            :   32.0 b :    5 c ::    .2Nm+
 ::  digits-z85:10           :   64.0 b :   11 c ::    .2Nm+ i^%9%
@@ -21,12 +33,19 @@
 ::  digits-z85:25           :  160.2 b :   29 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$
 ::  digits-z85:30           :  192.2 b :   35 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU
 ::  ascii-any:4             :   26.2 b :    4 c ::    ei#9
+::  ascii-any:6             :   39.3 b :    7 c ::    ei#9 i5
 ::  ascii-any:8             :   52.4 b :    9 c ::    ei#9 i5kg
+::  ascii-any:10            :   65.5 b :   12 c ::    ei#9 i5kg |~
 ::  ascii-any:12            :   78.6 b :   14 c ::    ei#9 i5kg |~.+
+::  ascii-any:14            :   91.7 b :   17 c ::    ei#9 i5kg |~.+ {%
 ::  ascii-any:16            :  104.8 b :   19 c ::    ei#9 i5kg |~.+ {%IL
+::  ascii-any:18            :  117.9 b :   22 c ::    ei#9 i5kg |~.+ {%IL 6U
 ::  ascii-any:20            :  131.0 b :   24 c ::    ei#9 i5kg |~.+ {%IL 6U/o
+::  ascii-any:22            :  144.2 b :   27 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4P
 ::  ascii-any:24            :  157.3 b :   29 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs
+::  ascii-any:26            :  170.4 b :   32 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w
 ::  ascii-any:28            :  183.5 b :   34 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
+::  ascii-any:30            :  196.6 b :   37 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[
 ::  ascii-any:32            :  209.7 b :   39 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
 ::  cv-plus-c:1             :   28.4 b :    9 c ::    taqe VB7~
 ::  cv-plus-c:2             :   41.8 b :   14 c ::    taqe veza ZA4(
