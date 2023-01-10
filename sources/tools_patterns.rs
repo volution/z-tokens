@@ -29,6 +29,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _display_labels : Option<bool> = None;
 	let mut _display_security : Option<bool> = None;
 	let mut _display_bruteforce : Option<bool> = None;
+	let mut _display_examples : Option<usize> = None;
 	
 	let mut _identifier_prefix : Option<String> = None;
 	let mut _identifier_suffix : Option<String> = None;
@@ -59,6 +60,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		_parser.refer (&mut _display_all)
 				.metavar ("{show}")
 				.add_option (&["-X", "--show-all"], ArgStoreConst (Some (true)), "(show all details)");
+		
 		_parser.refer (&mut _display_aliases)
 				.metavar ("{show}")
 				.add_option (&["--show-aliases"], ArgStoreConst (Some (true)), "(show aliases)");
@@ -72,6 +74,10 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		_parser.refer (&mut _display_bruteforce)
 				.metavar ("{show}")
 				.add_option (&["--show-bruteforce"], ArgStoreConst (Some (true)), "(show bruteforce guess-timates)");
+		
+		_parser.refer (&mut _display_examples)
+				.metavar ("{count}")
+				.add_option (&["-e", "--show-examples"], ArgStoreOption, "(show these many examples)");
 		
 		_parser.refer (&mut _identifier_prefix)
 				.metavar ("{prefix}")
@@ -190,7 +196,8 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _display_labels = _display_labels.unwrap_or (false) || _display_all;
 	let _display_security = _display_security.unwrap_or (false) || _display_all;
 	let _display_bruteforce = _display_bruteforce.unwrap_or (false) || _display_all;
-	let _display_cards = _display_aliases || _display_labels || _display_security || _display_bruteforce;
+	let _display_examples = _display_examples.unwrap_or (1);
+	let _display_cards = _display_aliases || _display_labels || _display_security || _display_bruteforce || _display_examples >= 2;
 	
 	
 	
@@ -257,8 +264,6 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			}
 		}
 		
-		_randomizer.reset () .else_wrap (0xb2fb5275) ?;
-		
 		let _entropy = entropy_token (&_pattern) .else_wrap (0x6374858a) ?;
 		let (_bits, _bits_exact) = _entropy.bits_exact ();
 		
@@ -269,8 +274,10 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			continue '_loop;
 		}
 		
+		_randomizer.reset () .else_wrap (0xb2fb5275) ?;
 		let _token = generate_token (&_pattern, _randomizer) .else_wrap (0xef0a3430) ?;
 		_randomizer.advance () .else_wrap (0x1307c15b) ?;
+		
 		let _string = output_token_to_string (&_token, &_output_options) .else_wrap (0x36471fa6) ?;
 		let _string_length = _string.len ();
 		
@@ -344,29 +351,46 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			continue '_loop;
 		}
 		
-		let _display_string_max = DEFAULT_DISPLAY_TRIM;
-		let _display_string = if (_string_length <= _display_string_max) {
-				Cow::Borrowed (&_string)
-			} else {
-				let mut _buffer = String::with_capacity (_display_string_max + 10);
-				_buffer.push_str (&_string[0 .. _display_string_max]);
-				_buffer.push_str (" [...]");
-				Cow::Owned (_buffer)
-			};
-		
 		if ! _display_cards {
 			
 			if _bits_exact {
-				writeln! (&mut _stream, "::  {:22}  : {:4.0}  =b : {:4} c ::    {}", _identifier, _bits, _string_length, _display_string) .else_wrap (0x737c2a4f) ?;
+				write! (&mut _stream, "::  {:22}  : {:4.0}  =b : {:4} c ::", _identifier, _bits, _string_length) .else_wrap (0x737c2a4f) ?;
 			} else {
 				let _display_bits = (_bits * 10.0) .floor () / 10.0;
-				writeln! (&mut _stream, "::  {:22}  : {:6.1} b : {:4} c ::    {}", _identifier, _display_bits, _string_length, _display_string) .else_wrap (0xd141c5ef) ?;
+				write! (&mut _stream, "::  {:22}  : {:6.1} b : {:4} c ::", _identifier, _display_bits, _string_length) .else_wrap (0xd141c5ef) ?;
 			}
+			
+			if _display_examples > 0 {
+				let _display_string_max = DEFAULT_DISPLAY_TRIM;
+				let _display_string = if (_string_length <= _display_string_max) {
+						Cow::Borrowed (&_string)
+					} else {
+						let mut _buffer = String::with_capacity (_display_string_max + 10);
+						_buffer.push_str (&_string[0 .. _display_string_max]);
+						_buffer.push_str (" [...]");
+						Cow::Owned (_buffer)
+					};
+				write! (&mut _stream, "    {}", _display_string) .else_wrap (0x71418c89) ?;
+			}
+			
+			writeln! (&mut _stream) .else_wrap (0x3da13144) ?;
 			
 		} else {
 			
 			writeln! (&mut _stream, "**  {:30}", _identifier) .else_wrap (0xc6bd1c82) ?;
-			writeln! (&mut _stream, "\\_  example:  {}", _string) .else_wrap (0x6ada645e) ?;
+			
+			if _display_examples == 1 {
+				writeln! (&mut _stream, "\\_  example:  {}", _string) .else_wrap (0x6ada645e) ?;
+			} else if _display_examples > 1 {
+				_randomizer.reset () .else_wrap (0x3a3ebd10) ?;
+				writeln! (&mut _stream, "\\_  examples:") .else_wrap (0x69c29df9) ?;
+				for _ in 0 .. _display_examples {
+					let _token = generate_token (&_pattern, _randomizer) .else_wrap (0x00930317) ?;
+					_randomizer.advance () .else_wrap (0xdd4399fd) ?;
+					let _string = output_token_to_string (&_token, &_output_options) .else_wrap (0x6a999483) ?;
+					writeln! (&mut _stream, "    \\_        {}", _string) .else_wrap (0xdd133491) ?;
+				}
+			}
 			
 			// writeln! (&mut _stream, ">>  {}", _string) .else_wrap (0xe0851dca) ?;
 			
