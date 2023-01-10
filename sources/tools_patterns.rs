@@ -48,6 +48,12 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _has_digits : Option<usize> = None;
 	let mut _has_symbols : Option<usize> = None;
 	
+	let mut _for_cryptography : Option<bool> = None;
+	let mut _for_authentication : Option<bool> = None;
+	let mut _for_archival_storage : Option<bool> = None;
+	let mut _for_long_term_storage : Option<bool> = None;
+	let mut _for_short_term_storage : Option<bool> = None;
+	
 	{
 		let mut _parser = ArgParser::new ();
 		
@@ -131,6 +137,22 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.add_option (&["-Y", "--has-symbols"], ArgStoreConst (Some (1)), "(require symbols)")
 				.add_option (&["--symbols-min"], ArgStoreOption, "");
 		
+		_parser.refer (&mut _for_cryptography)
+				.metavar ("{usable}")
+				.add_option (&["--for-cryptography"], ArgStoreConst (Some (true)), "(filter if usable for cryptography)");
+		_parser.refer (&mut _for_authentication)
+				.metavar ("{usable}")
+				.add_option (&["--for-authentication"], ArgStoreConst (Some (true)), "(filter if usable for authentication)");
+		_parser.refer (&mut _for_archival_storage)
+				.metavar ("{usable}")
+				.add_option (&["--for-archival-storage"], ArgStoreConst (Some (true)), "(filter if usable for archival storage)");
+		_parser.refer (&mut _for_long_term_storage)
+				.metavar ("{usable}")
+				.add_option (&["--for-long-term-storage"], ArgStoreConst (Some (true)), "(filter if usable for long term storage)");
+		_parser.refer (&mut _for_short_term_storage)
+				.metavar ("{usable}")
+				.add_option (&["--for-short-term-storage"], ArgStoreConst (Some (true)), "(filter if usable for short term storage)");
+		
 		_output_flags.parser (&mut _parser) .else_wrap (0x2dbc1e80) ?;
 		_randomizer_flags.parser (&mut _parser) .else_wrap (0x7a560f7c) ?;
 		
@@ -163,6 +185,13 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			&& _has_digits.is_none ()
 			&& _has_symbols.is_none ();
 	
+	let _for_cryptography = _for_cryptography.unwrap_or (false);
+	let _for_authentication = _for_authentication.unwrap_or (false);
+	let _for_archival_storage = _for_archival_storage.unwrap_or (false);
+	let _for_long_term_storage = _for_long_term_storage.unwrap_or (false);
+	let _for_short_term_storage = _for_short_term_storage.unwrap_or (false);
+	let _classify_usage = _for_cryptography || _for_authentication || _for_archival_storage || _for_long_term_storage || _for_short_term_storage;
+	
 	let _length_maximum = if
 				(! _identifiers_only) && (! _select_all)
 				&& _identifier_prefix.is_none ()
@@ -172,6 +201,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				&& _entropy_maximum.is_none ()
 				&& _length_minimum.is_none ()
 				&& _length_minimum.is_none ()
+				&& (! _classify_usage)
 		{
 			Some (DEFAULT_LENGTH_MAXIMUM)
 		} else {
@@ -339,6 +369,27 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			}
 		}
 		
+		let _estimates = if _classify_usage || _display_security || _display_bruteforce {
+			
+			let _estimates = entropy_estimates (&_entropy) .else_wrap (0xdcca14bf) ?;
+			
+			let _not_usable =
+					(_for_cryptography && !_estimates.for_cryptography) ||
+					(_for_authentication && !_estimates.for_authentication) ||
+					(_for_archival_storage && !_estimates.for_archival) ||
+					(_for_long_term_storage && !_estimates.for_long_term) ||
+					(_for_short_term_storage && !_estimates.for_short_term);
+			
+			if _not_usable {
+				continue '_loop;
+			}
+			
+			Some (_estimates)
+			
+		} else {
+			None
+		};
+		
 		_selected_count += 1;
 		
 		if _identifiers_only {
@@ -419,7 +470,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			
 			if _display_security || _display_bruteforce {
 				
-				let _estimates = entropy_estimates (&_entropy) .else_wrap (0xdcca14bf) ?;
+				let _estimates = _estimates.else_panic (0xcda96bfe);
 				
 				if _display_security {
 					writeln! (&mut _stream, "\\_  usable for:") .else_wrap (0xb523c114) ?;
