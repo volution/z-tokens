@@ -440,7 +440,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub ASCII_CONSONANT_VOWEL_LOWER,
-		("cv-lower", "cv", "ascii", "password"),
+		("cv-lower", "cv", "ascii", "password", "memorable"),
 		("cv-lower", "cv"),
 		{ ASCII_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN },
 		(64 : 1));
@@ -504,7 +504,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub ASCII_CONSONANT_VOWEL_PLUS_A,
-		("cv-plus-a", "cv-plus", "cv", "ascii", "password"),
+		("cv-plus-a", "cv-plus", "cv", "ascii", "password", "memorable"),
 		("cv-plus-a", "cva"),
 		{
 			(),
@@ -516,7 +516,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub ASCII_CONSONANT_VOWEL_PLUS_B,
-		("cv-plus-b", "cv-plus", "cv", "ascii", "password"),
+		("cv-plus-b", "cv-plus", "cv", "ascii", "password", "memorable"),
 		("cv-plus-b", "cvb"),
 		{
 			(),
@@ -528,7 +528,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub ASCII_CONSONANT_VOWEL_PLUS_C,
-		("cv-plus-c", "cv-plus", "cv", "ascii", "password"),
+		("cv-plus-c", "cv-plus", "cv", "ascii", "password", "memorable"),
 		("cv-plus-c", "cvc"),
 		{
 			(),
@@ -569,7 +569,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-proquint") ]
 define_repeat! (
 		pub PROQUINT_LOWER,
-		("proquint-lower", "proquint", "ascii", "password"),
+		("proquint-lower", "proquint", "ascii", "password", "memorable"),
 		("proquint-lower", "proquint"),
 		{ PROQUINT_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN },
 		(64 : 1));
@@ -609,7 +609,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-koremutake") ]
 define_repeat! (
 		pub KOREMUTAKE_A,
-		("koremutake-a", "koremutake", "ascii", "password"),
+		("koremutake-a", "koremutake", "ascii", "password", "memorable"),
 		("koremutake-a"),
 		{ KOREMUTAKE_WORD_A => separators::SPACE_OPTIONAL_INFIX_PATTERN },
 		(64 : 1));
@@ -617,7 +617,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-koremutake") ]
 define_repeat! (
 		pub KOREMUTAKE_B,
-		("koremutake-b", "koremutake", "ascii", "password"),
+		("koremutake-b", "koremutake", "ascii", "password", "memorable"),
 		("koremutake-b"),
 		{ KOREMUTAKE_WORD_B => separators::SPACE_OPTIONAL_INFIX_PATTERN },
 		(64 : 1));
@@ -639,7 +639,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-mnemonic") ]
 define_repeat! (
 		pub MNEMONIC,
-		("mnemonic", "passphrase"),
+		("mnemonic", "passphrase", "memorable"),
 		("mnemonic"),
 		{ MNEMONIC_TUPLE => separators::SPACE_HYPHEN_SPACE_MANDATORY_INFIX_PATTERN },
 		(66 : 1));
@@ -661,7 +661,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-bip0039") ]
 define_repeat! (
 		pub BIP0039,
-		("bip0039", "passphrase"),
+		("bip0039", "passphrase", "memorable"),
 		("bip0039"),
 		{ BIP0039_TUPLE => separators::SPACE_HYPHEN_SPACE_MANDATORY_INFIX_PATTERN },
 		(66 : 1));
@@ -683,7 +683,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-skey") ]
 define_repeat! (
 		pub SKEY,
-		("skey", "passphrase"),
+		("skey", "passphrase", "memorable"),
 		("skey"),
 		{ SKEY_TUPLE => separators::SPACE_HYPHEN_SPACE_MANDATORY_INFIX_PATTERN },
 		(66 : 1));
@@ -704,7 +704,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-pgp") ]
 define_repeat! (
 		pub PGP,
-		("pgp", "passphrase"),
+		("pgp", "passphrase", "memorable"),
 		("pgp"),
 		{ PGP_TUPLE => separators::SPACE_HYPHEN_SPACE_MANDATORY_INFIX_PATTERN },
 		(64 : 1));
@@ -748,7 +748,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-eff-large") ]
 define_repeat! (
 		pub EFF_LARGE,
-		("eff-large", "eff", "passphrase"),
+		("eff-large", "eff", "passphrase", "memorable"),
 		("eff-large"),
 		{ EFF_LARGE_TUPLE => separators::SPACE_HYPHEN_SPACE_MANDATORY_INFIX_PATTERN },
 		(66 : 1));
@@ -756,7 +756,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-eff-short") ]
 define_repeat! (
 		pub EFF_SHORT,
-		("eff-short", "eff", "passphrase"),
+		("eff-short", "eff", "passphrase", "memorable"),
 		("eff-short"),
 		{ EFF_SHORT_TUPLE => separators::SPACE_HYPHEN_SPACE_MANDATORY_INFIX_PATTERN },
 		(66 : 1));
@@ -764,7 +764,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-eff-unique") ]
 define_repeat! (
 		pub EFF_UNIQUE,
-		("eff-unique", "eff", "passphrase"),
+		("eff-unique", "eff", "passphrase", "memorable"),
 		("eff-unique"),
 		{ EFF_UNIQUE_TUPLE => separators::SPACE_HYPHEN_SPACE_MANDATORY_INFIX_PATTERN },
 		(66 : 1));
