@@ -291,42 +291,42 @@ static PROJECT_URL : &'static str = "https://github.com/volution/z-tokens";
 
 
 #[ cfg (feature = "zt-embedded-readme") ]
-static README_TEXT : &'static str = include_str! ("./_embedded/readme/readme.txt");
+static README_TEXT : &'static str = include_str! ("../embedded/readme/readme.txt");
 #[ cfg (feature = "zt-embedded-readme") ]
-static README_HTML : &'static str = include_str! ("./_embedded/readme/readme.html");
+static README_HTML : &'static str = include_str! ("../embedded/readme/readme.html");
 
 
 #[ cfg (feature = "zt-embedded-help") ]
-static HELP_MAIN_TEXT : &'static str = include_str! ("./_embedded/help/main.txt");
+static HELP_MAIN_TEXT : &'static str = include_str! ("../embedded/help/main.txt");
 
 #[ cfg (feature = "zt-embedded-help") ]
-static HELP_HEADER_TEXT : &'static str = include_str! ("./_embedded/help/_header.txt");
+static HELP_HEADER_TEXT : &'static str = include_str! ("../embedded/help/_header.txt");
 #[ cfg (feature = "zt-embedded-help") ]
-static HELP_FOOTER_TEXT : &'static str = include_str! ("./_embedded/help/_footer.txt");
+static HELP_FOOTER_TEXT : &'static str = include_str! ("../embedded/help/_footer.txt");
 
 
 #[ cfg (feature = "zt-embedded-sbom") ]
-static SBOM_TEXT : &'static str = include_str! ("./_embedded/sbom/sbom.txt");
+static SBOM_TEXT : &'static str = include_str! ("../embedded/sbom/sbom.txt");
 #[ cfg (feature = "zt-embedded-sbom") ]
-static SBOM_HTML : &'static str = include_str! ("./_embedded/sbom/sbom.html");
+static SBOM_HTML : &'static str = include_str! ("../embedded/sbom/sbom.html");
 #[ cfg (feature = "zt-embedded-sbom") ]
-static SBOM_JSON : &'static str = include_str! ("./_embedded/sbom/sbom.json");
+static SBOM_JSON : &'static str = include_str! ("../embedded/sbom/sbom.json");
 
 
 #[ cfg (feature = "zt-embedded-build-meta") ]
-static BUILD_VERSION : &'static str = include_str! ("./_embedded/build/version.txt");
+static BUILD_VERSION : &'static str = include_str! ("../embedded/build/version.txt");
 #[ cfg (feature = "zt-embedded-build-meta") ]
-static BUILD_NUMBER : &'static str = include_str! ("./_embedded/build/number.txt");
+static BUILD_NUMBER : &'static str = include_str! ("../embedded/build/number.txt");
 #[ cfg (feature = "zt-embedded-build-meta") ]
-static BUILD_TIMESTAMP : &'static str = include_str! ("./_embedded/build/timestamp.txt");
+static BUILD_TIMESTAMP : &'static str = include_str! ("../embedded/build/timestamp.txt");
 
 #[ cfg (feature = "zt-embedded-sources") ]
-static BUILD_SOURCES_HASH : &'static str = include_str! ("./_embedded/build/sources.hash");
+static BUILD_SOURCES_HASH : &'static str = include_str! ("../embedded/build/sources.hash");
 #[ cfg (feature = "zt-embedded-sources") ]
-static BUILD_SOURCES_MD5 : &'static str = include_str! ("./_embedded/build/sources.md5");
+static BUILD_SOURCES_MD5 : &'static str = include_str! ("../embedded/build/sources.md5");
 
 #[ cfg (feature = "zt-embedded-sources") ]
-static BUILD_SOURCES_CPIO_GZ : &'static [u8] = include_bytes! ("./_embedded/build/sources.cpio.gz");
+static BUILD_SOURCES_CPIO_GZ : &'static [u8] = include_bytes! ("../embedded/build/sources.cpio.gz");
 
 #[ cfg (feature = "zt-embedded-build-meta") ]
 static BUILD_GIT_HASH : &'static str = if let Some (_value) = ::std::option_env! ("__META__BUILD_GIT_HASH") { _value } else { "{unknown-bgh}" };
