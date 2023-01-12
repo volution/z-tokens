@@ -93,7 +93,7 @@
 	execline-cd ./sources \
 	find -L . \
 			-type f \
-			-not -path './_embedded/build/*' \
+			-not -path './embedded/build/*' \
 			-printf '%P\0' \
 	| LC_ALL=C sort -z \
 		>| "${_outputs}/markers/build-sources.list.tmp" \

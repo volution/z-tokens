@@ -84,6 +84,9 @@
 		test -d "${_builds}"
 	fi
 	
+	_builds="${_builds}/${_type}"
+	test -d "${_builds}"
+	
 	if test "${_target}" != native ; then
 		_builds="${_builds}/${_target}"
 		test -d "${_builds}"
