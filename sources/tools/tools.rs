@@ -1,15 +1,25 @@
 
 
-use crate::prelude::*;
+use ::vrl_preludes::std_plus_extras::*;
+
+pub(crate) use ::vrl_errors::*;
 
 
-use crate::{
-		tools_generate::main as main_generate,
-		tools_patterns::main as main_patterns,
+use ::z_tokens_patterns_tool::{
+		
+		generate::main as main_generate,
+		patterns::main as main_patterns,
 	};
 
+
 #[ cfg (feature = "zt-runtime-allocator") ]
-use crate::allocator;
+use ::z_tokens_runtime::allocator;
+
+
+pub(crate) use ::std::process::ExitCode;
+
+
+pub(crate) const IO_BUFFER_SIZE : usize = 4 * 1024;
 
 
 
@@ -77,12 +87,12 @@ pub fn main () -> MainResult<ExitCode> {
 		
 		(&["patterns"], _) | (&["p"], _) => {
 			_arguments.insert (0, String::from ("z-tokens patterns"));
-			main_patterns (_arguments)
+			main_patterns (_arguments) .else_wrap (0x9093f429)
 		}
 		
 		(&["generate"], _) => {
 			_arguments.insert (0, String::from ("z-tokens generate"));
-			main_generate (_arguments)
+			main_generate (_arguments) .else_wrap (0x7565abe0)
 		}
 		(&["g"], _) => {
 			_arguments.insert (0, String::from ("z-tokens generate"));
@@ -90,7 +100,7 @@ pub fn main () -> MainResult<ExitCode> {
 			_arguments.insert (2, String::from ("true"));
 			_arguments.insert (3, String::from ("--token-count"));
 			_arguments.insert (4, String::from ("1"));
-			main_generate (_arguments)
+			main_generate (_arguments) .else_wrap (0x6a8d26ca)
 		}
 		(&["g", _pattern], _) => {
 			_arguments.insert (0, String::from ("z-tokens generate"));
@@ -100,7 +110,7 @@ pub fn main () -> MainResult<ExitCode> {
 			_arguments.insert (4, String::from ("1"));
 			_arguments.insert (5, String::from ("--token-pattern"));
 			_arguments.insert (6, String::from (_pattern));
-			main_generate (_arguments)
+			main_generate (_arguments) .else_wrap (0x284c1286)
 		}
 		
 		#[ cfg (feature = "zt-embedded-help") ]

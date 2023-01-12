@@ -41,7 +41,8 @@ pub(crate) static GLOBAL : Allocator = Allocator::new ();
 
 
 
-pub(crate) const DEBUG_REPORT : bool = false;
+pub const DEBUG_REPORT : bool = false;
+
 pub(crate) const DEBUG_ALLOC : bool = false;
 
 pub(crate) const USE_MALLOC : bool = false;
@@ -247,17 +248,17 @@ impl Allocator {
 
 
 
-pub(crate) fn report () -> () {
+pub fn report () -> () {
 	GLOBAL.report ();
 }
 
 
-pub(crate) fn reset () -> () {
+pub fn reset () -> () {
 	GLOBAL.reset ();
 }
 
 
-pub(crate) fn is_empty () -> Option<bool> {
+pub fn is_empty () -> Option<bool> {
 	return Some (GLOBAL.is_empty ());
 }
 

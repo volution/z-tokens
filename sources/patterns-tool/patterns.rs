@@ -2,9 +2,6 @@
 
 use crate::prelude::*;
 
-use crate::tools::*;
-use crate::tools_flags::*;
-
 
 
 
@@ -247,7 +244,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _selected_count = 0;
 	let mut _selected_last : &[Rb<Text>] = &[];
 	
-	'_loop : for _pattern in patterns::all_token_patterns () .into_iter () {
+	'_loop : for _pattern in all_token_patterns () .into_iter () {
 		let &(ref _identifier, ref _pattern) = _pattern.as_ref ();
 		let _identifier = _identifier.as_ref ();
 		let _pattern = _pattern.as_ref ();
@@ -454,7 +451,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			
 			if _display_examples > 0 {
 				let _display_string_max = DEFAULT_DISPLAY_TRIM;
-				let _display_string = if (_string_length <= _display_string_max) {
+				let _display_string = if _string_length <= _display_string_max {
 						Cow::Borrowed (&_string)
 					} else {
 						let mut _buffer = String::with_capacity (_display_string_max + 10);

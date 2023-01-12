@@ -2,6 +2,7 @@
 
 #![ allow (unused_macros) ]
 #![ allow (unused_imports) ]
+#![ allow (unused_parens) ]
 
 
 

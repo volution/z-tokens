@@ -1,0 +1,149 @@
+
+[package]
+
+name = "z-tokens-patterns"
+version = "0.1.0"
+publish = false
+
+edition = "2021"
+rust-version = "1.63"
+
+autobins = false
+autoexamples = false
+autotests = false
+autobenches = false
+
+workspace = "../workspace"
+
+
+
+
+[lib]
+
+name = "z_tokens_patterns"
+path = "./lib.rs"
+
+
+
+
+[features]
+
+default = [
+	
+	"zt-patterns-all",
+	
+	"z-tokens-runtime/default",
+]
+
+development = [
+	
+	"zt-patterns-all",
+	"zt-patterns-basic",
+	
+	"z-tokens-runtime/development",
+]
+
+release = [
+	
+	"zt-patterns-all",
+	
+	"z-tokens-runtime/release",
+]
+
+
+zt-patterns-all = [
+	"zt-patterns-basic",
+	"zt-patterns-extra",
+]
+zt-patterns-basic = [
+	"zt-patterns-digits-basic",
+	"zt-patterns-ascii",
+]
+zt-patterns-extra = [
+	"zt-patterns-digits-extra",
+	"zt-patterns-consonant-vowel",
+	"zt-patterns-proquint",
+	"zt-patterns-koremutake",
+	"zt-patterns-mnemonic",
+	"zt-patterns-bip0039",
+	"zt-patterns-skey",
+	"zt-patterns-pgp",
+	"zt-patterns-eff-all",
+	"zt-patterns-nato",
+	"zt-patterns-uuid",
+	"zt-patterns-ip",
+	"zt-patterns-bytes",
+	"zt-patterns-timestamp",
+	"zt-patterns-flake",
+]
+
+zt-patterns-digits-all = [
+	"zt-patterns-digits-basic",
+	"zt-patterns-digits-extra",
+]
+zt-patterns-digits-basic = [
+	"zt-patterns-digits-base10",
+	"zt-patterns-digits-base16",
+]
+zt-patterns-digits-extra = [
+	"zt-patterns-digits-base2",
+	"zt-patterns-digits-base8",
+	"zt-patterns-digits-base32",
+	"zt-patterns-digits-base64",
+	"zt-patterns-digits-base58",
+	"zt-patterns-digits-base62",
+	"zt-patterns-digits-bech32",
+	"zt-patterns-digits-z85",
+]
+zt-patterns-digits-base10 = []
+zt-patterns-digits-base2 = []
+zt-patterns-digits-base8 = []
+zt-patterns-digits-base16 = []
+zt-patterns-digits-base32 = []
+zt-patterns-digits-base64 = []
+zt-patterns-digits-base58 = []
+zt-patterns-digits-base62 = []
+zt-patterns-digits-bech32 = []
+zt-patterns-digits-z85 = []
+
+zt-patterns-ascii = []
+zt-patterns-consonant-vowel = []
+zt-patterns-proquint = []
+zt-patterns-koremutake = []
+zt-patterns-mnemonic = []
+zt-patterns-bip0039 = []
+zt-patterns-skey = []
+zt-patterns-pgp = []
+zt-patterns-eff-all = [
+	"zt-patterns-eff-large",
+	"zt-patterns-eff-short",
+	"zt-patterns-eff-unique",
+]
+zt-patterns-eff-large = []
+zt-patterns-eff-short = []
+zt-patterns-eff-unique = []
+zt-patterns-nato = []
+zt-patterns-uuid = []
+zt-patterns-ip = []
+zt-patterns-bytes = []
+zt-patterns-timestamp = []
+zt-patterns-flake = []
+
+
+
+
+[dependencies]
+
+z-tokens-runtime = { path = "../runtime" }
+
+vrl-errors = { version = "*", default-features = false, features = [] }
+vrl-preludes = { version = "*", default-features = false, features = [] }
+vrl-random = { version = "*", default-features = false, features = [] }
+
+rand = { version = "*", default-features = false, features = ["std", "std_rng", "getrandom", "small_rng"] }
+num-bigint = { version = "*", default-features = false, features = ["std"] }
+num-traits = { version = "*", default-features = false, features = ["std"] }
+paste = { version = "*", default-features = false, features = [] }
+chrono = { version = "*", default-features = false, features = ["alloc", "clock"] }
+
+

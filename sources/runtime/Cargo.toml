@@ -1,0 +1,54 @@
+
+
+[package]
+
+name = "z-tokens-runtime"
+version = "0.1.0"
+publish = false
+
+edition = "2021"
+rust-version = "1.63"
+
+autobins = false
+autoexamples = false
+autotests = false
+autobenches = false
+
+workspace = "../workspace"
+
+
+
+
+[lib]
+
+name = "z_tokens_runtime"
+path = "./lib.rs"
+
+
+
+
+[features]
+
+default = []
+
+development = []
+
+release = [
+	"zt-runtime-allocator",
+]
+
+
+zt-runtime-allocator = []
+
+
+
+
+[dependencies]
+
+vrl-errors = { version = "*", default-features = false, features = [] }
+vrl-preludes = { version = "*", default-features = false, features = [] }
+
+memsec = { version = "*", default-features = false, features = ["default"] }
+zeroize = { version = "*", default-features = false, features = ["std", "alloc"] }
+
+

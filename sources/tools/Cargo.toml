@@ -1,0 +1,87 @@
+
+
+[package]
+
+name = "z-tokens-tools"
+version = "0.1.0"
+publish = false
+
+edition = "2021"
+rust-version = "1.63"
+
+autobins = false
+autoexamples = false
+autotests = false
+autobenches = false
+
+workspace = "../workspace"
+
+
+
+
+[lib]
+
+name = "z_tokens_tools"
+path = "./lib.rs"
+
+
+
+
+[features]
+
+default = [
+	
+	"zt-embedded-basic",
+	"zt-embedded-readme",
+	
+	"z-tokens-patterns-tool/default",
+	"z-tokens-runtime/default",
+]
+
+development = [
+	
+	"z-tokens-patterns-tool/development",
+	"z-tokens-runtime/development",
+]
+
+release = [
+	
+	"zt-embedded-all",
+	
+	"z-tokens-patterns-tool/release",
+	"z-tokens-runtime/release",
+]
+
+
+zt-embedded-all = [
+	"zt-embedded-basic",
+	"zt-embedded-readme",
+	"zt-embedded-sbom",
+	"zt-embedded-sources",
+	"zt-embedded-build-meta",
+]
+
+zt-embedded-basic = [
+	"zt-embedded-help",
+]
+
+zt-embedded-readme = []
+zt-embedded-help = []
+zt-embedded-sbom = []
+zt-embedded-sources = []
+zt-embedded-build-meta = []
+
+
+
+
+[dependencies]
+
+z-tokens-patterns-tool = { path = "../patterns-tool" }
+z-tokens-runtime = { path = "../runtime" }
+
+vrl-errors = { version = "*", default-features = false, features = [] }
+vrl-preludes = { version = "*", default-features = false, features = [] }
+
+platform-info = { version = "*", default-features = false, features = [] }
+
+

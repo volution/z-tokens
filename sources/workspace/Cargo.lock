@@ -71,9 +71,9 @@ checksum = "5827cebf4670468b8772dd191856768aedcb1b0278a04f989f7766351917b9dc"
 
 [[package]]
 name = "cxx"
-version = "1.0.85"
+version = "1.0.86"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5add3fc1717409d029b20c5b6903fc0c0b02fa6741d820054f4a2efa5e5816fd"
+checksum = "51d1075c37807dcf850c379432f0df05ba52cc30f279c5cfc43cc221ce7f8579"
 dependencies = [
  "cc",
  "cxxbridge-flags",
@@ -83,9 +83,9 @@ dependencies = [
 
 [[package]]
 name = "cxx-build"
-version = "1.0.85"
+version = "1.0.86"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b4c87959ba14bc6fbc61df77c3fcfe180fc32b93538c4f1031dd802ccb5f2ff0"
+checksum = "5044281f61b27bc598f2f6647d480aed48d2bf52d6eb0b627d84c0361b17aa70"
 dependencies = [
  "cc",
  "codespan-reporting",
@@ -98,15 +98,15 @@ dependencies = [
 
 [[package]]
 name = "cxxbridge-flags"
-version = "1.0.85"
+version = "1.0.86"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "69a3e162fde4e594ed2b07d0f83c6c67b745e7f28ce58c6df5e6b6bef99dfb59"
+checksum = "61b50bc93ba22c27b0d31128d2d130a0a6b3d267ae27ef7e4fae2167dfe8781c"
 
 [[package]]
 name = "cxxbridge-macro"
-version = "1.0.85"
+version = "1.0.86"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3e7e2adeb6a0d4a282e581096b06e1791532b7d576dcde5ccd9382acf55db8e6"
+checksum = "39e61fda7e62115119469c7b3591fd913ecca96fb766cfd3f2e2502ab7bc87a5"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -497,18 +497,54 @@ checksum = "c811ca4a8c853ef420abd8592ba53ddbbac90410fab6903b3e79972a631f7680"
 name = "z-tokens"
 version = "0.1.0"
 dependencies = [
- "argparse",
+ "z-tokens-tools",
+]
+
+[[package]]
+name = "z-tokens-patterns"
+version = "0.1.0"
+dependencies = [
  "chrono",
- "memsec",
  "num-bigint",
  "num-traits",
  "paste",
- "platform-info",
  "rand",
  "vrl-errors",
  "vrl-preludes",
  "vrl-random",
+ "z-tokens-runtime",
+]
+
+[[package]]
+name = "z-tokens-patterns-tool"
+version = "0.1.0"
+dependencies = [
+ "argparse",
+ "vrl-errors",
+ "vrl-preludes",
+ "z-tokens-patterns",
+ "z-tokens-runtime",
+]
+
+[[package]]
+name = "z-tokens-runtime"
+version = "0.1.0"
+dependencies = [
+ "memsec",
+ "vrl-errors",
+ "vrl-preludes",
  "zeroize",
+]
+
+[[package]]
+name = "z-tokens-tools"
+version = "0.1.0"
+dependencies = [
+ "platform-info",
+ "vrl-errors",
+ "vrl-preludes",
+ "z-tokens-patterns-tool",
+ "z-tokens-runtime",
 ]
 
 [[package]]

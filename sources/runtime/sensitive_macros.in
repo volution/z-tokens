@@ -1,5 +1,6 @@
 
 
+#[ allow (unused_macros) ]
 macro_rules! impl_sensitive_drop {
 	( <{ $( $_template_a : tt )* }> $_type : ty where <{ $( $_where : tt )+ }> ) => {
 		impl < $( $_template_a )* > Drop for $_type where $( $_where )+ {
@@ -27,6 +28,7 @@ macro_rules! impl_sensitive_drop {
 
 
 
+#[ allow (unused_macros) ]
 macro_rules! impl_sensitive_nop {
 	( $_type : ident ) => {
 		impl Sensitive for $_type {
@@ -40,6 +42,7 @@ macro_rules! impl_sensitive_nop {
 
 
 
+#[ allow (unused_macros) ]
 macro_rules! impl_sensitive {
 	( <{ $( $_template_a : tt )* }> $_type : ty where <{ $( $_where : tt )+ }> => |$_self : ident| $_block : block ) => {
 		impl < $( $_template_a )* > Sensitive for $_type where $( $_where )+ {
@@ -67,6 +70,7 @@ macro_rules! impl_sensitive {
 
 
 
+#[ allow (unused_macros) ]
 macro_rules! impl_sensitive_zeroize {
 	( <{ $( $_template_a : tt )* }> $_type : ty where <{ $( $_where : tt )+ }> ) => {
 		impl < $( $_template_a )* > Sensitive for $_type where $( $_where )+ {

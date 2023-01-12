@@ -3,6 +3,8 @@
 use crate::prelude::*;
 
 
+
+
 #[ allow (unused_imports) ]
 pub(crate) use ::argparse::{
 		ArgumentParser as ArgParser,
@@ -16,6 +18,7 @@ pub(crate) use ::argparse::{
 
 
 
+define_error! (pub MainError, result : MainResult);
 define_error! (pub FlagsError, result : FlagsResult);
 
 

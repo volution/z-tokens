@@ -2,9 +2,6 @@
 
 use crate::prelude::*;
 
-use crate::tools::*;
-use crate::tools_flags::*;
-
 
 
 
@@ -82,7 +79,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _token_separator = _token_separator.unwrap_or (String::from ("\n"));
 	let _group_size = _group_size.unwrap_or (DEFAULT_GROUP_SIZE);
 	
-	let _pattern = if let Some (_pattern) = patterns::get_token_pattern (&_pattern) {
+	let _pattern = if let Some (_pattern) = get_token_pattern (&_pattern) {
 			_pattern
 		} else {
 			fail! (0x74ca2a5f, "pattern not found");
