@@ -537,6 +537,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "z-tokens-secrets"
+version = "0.1.0"
+dependencies = [
+ "vrl-errors",
+ "vrl-preludes",
+ "z-tokens-runtime",
+]
+
+[[package]]
 name = "z-tokens-tools"
 version = "0.1.0"
 dependencies = [
@@ -545,6 +554,7 @@ dependencies = [
  "vrl-preludes",
  "z-tokens-patterns-tool",
  "z-tokens-runtime",
+ "z-tokens-secrets",
 ]
 
 [[package]]
