@@ -19,6 +19,14 @@
 !!
 
 
+<< cargo / install / check / cross / all
+	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
+			check-targets \
+			':: cargo / install / check' "${@}" \
+	#
+!!
+
+
 
 
 << cargo / debug / build / cross / all
@@ -33,6 +41,14 @@
 	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
 			build-targets \
 			':: cargo / release / build' "${@}" \
+	#
+!!
+
+
+<< cargo / install / build / cross / all
+	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
+			build-targets \
+			':: cargo / install / build' "${@}" \
 	#
 !!
 

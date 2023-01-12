@@ -13,8 +13,8 @@
 	exec -- "${ZRUN}" ':: cargo / exec' check --release --no-default-features --features release "${@}"
 !!
 
-<< cargo / release / check / default
-	export -- __META__BUILD_TARGET_TYPE=default
+<< cargo / install / check
+	export -- __META__BUILD_TARGET_TYPE=cargo-install
 	exec -- "${ZRUN}" ':: cargo / exec' check --release "${@}"
 !!
 
@@ -31,8 +31,8 @@
 	exec -- "${ZRUN}" ':: cargo / exec' build --release --no-default-features --features release "${@}"
 !!
 
-<< cargo / release / build / default
-	export -- __META__BUILD_TARGET_TYPE=default
+<< cargo / install / build
+	export -- __META__BUILD_TARGET_TYPE=cargo-install
 	exec -- "${ZRUN}" ':: cargo / exec' build --release "${@}"
 !!
 
@@ -49,8 +49,8 @@
 	exec -- "${ZRUN}" ':: cargo / exec' run --release --no-default-features --features release "${@}"
 !!
 
-<< cargo / release / run / default
-	export -- __META__BUILD_TARGET_TYPE=default
+<< cargo / install / run
+	export -- __META__BUILD_TARGET_TYPE=cargo-install
 	exec -- "${ZRUN}" ':: cargo / exec' run --release "${@}"
 !!
 
@@ -59,12 +59,12 @@
 
 << cargo / debug / collect
 	export -- __CARGO__SWITCH_0=local-remote
-	exec -- "${ZRUN}" ':: cargo / exec' collect "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec' collect --no-default-features --features development "${@}"
 !!
 
 << cargo / release / collect
 	export -- __CARGO__SWITCH_0=local-remote
-	exec -- "${ZRUN}" ':: cargo / exec' collect --release --features release "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec' collect --release --no-default-features --features release "${@}"
 !!
 
 
