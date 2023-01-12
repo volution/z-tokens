@@ -91,7 +91,7 @@ debug = 1
 debug-assertions = false
 overflow-checks = true
 panic = "abort"
-split-debuginfo = "off"
+#! split-debuginfo = "off"
 
 [profile.bench]
 incremental = false
