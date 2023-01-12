@@ -15,6 +15,39 @@ resolver = "2"
 
 
 
+[workspace.package]
+
+version = "0.1.0"
+publish = false
+
+edition = "2021"
+rust-version = "1.63"
+
+authors = [
+	"Ciprian Dorin Craciun <ciprian@volution.ro>",
+]
+license = " GPL-3.0-or-later"
+
+description = "z-tokens -- random tokens generation and related tools"
+keywords = [
+	"cli",
+	"security",
+	"password",
+	"random",
+]
+categories = [
+	"command-line-utilities",
+	"cryptography",
+	"encoding",
+]
+
+homepage = "https://github.com/volution/z-tokens"
+repository = "https://github.com/volution/z-tokens"
+documentation = "https://github.com/volution/z-tokens"
+
+
+
+
 [patch.crates-io]
 
 # vrl-errors = { path = "../.dependencies/volution-rust-libraries/errors" }
