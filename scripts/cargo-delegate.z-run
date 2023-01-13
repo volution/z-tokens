@@ -120,6 +120,12 @@
 	_cargo_flags=()
 	_rust_flags=()
 	
+	if test -n "${__CARGO__TARGET:-}" ; then
+		_cargo_target="${__CARGO__TARGET}"
+	else
+		_cargo_target=native
+	fi
+	
 	case "${_tool}" in
 		
 		( check )
@@ -224,6 +230,7 @@
 		)
 	
 	export -- __CARGO__RUST_FLAGS="${_rust_flags[*]}"
+	export -- __CARGO__TARGET="${_cargo_target}"
 	
 	_tool_arguments=(
 			"${_cargo_flags[@]}"
@@ -319,8 +326,19 @@
 		_cargo_target_dir_suffix=''
 	fi
 	
+	_path='/usr/local/bin:/usr/bin:/bin'
 	_environment=(
 			
+			USER=rust
+			HOME=/rust/home
+			PATH="${_path}"
+			TMPDIR=/tmp
+			TERM="${TERM}"
+			LC_ALL=C.UTF-8
+			LANG=C.UTF-8
+			
+			RUSTUP_HOME=/opt/rustup
+			CARGO_HOME=/opt/cargo
 			CARGO_TARGET_DIR="/rust/target${_cargo_target_dir_suffix}"
 			CARGO_BUILD_RUSTFLAGS="${__CARGO__RUST_FLAGS:?}"
 			
@@ -331,6 +349,85 @@
 			__META__BUILD_TARGET_TYPE="${__META__BUILD_TARGET_TYPE}"
 			
 		)
+	
+	case "${__CARGO__TARGET}" in
+		( native )
+		;;
+		( x86_64-unknown-linux-gnu )
+			_environment+=(
+					CC=x86_64-linux-gnu-gcc
+					CXX=x86_64-linux-gnu-g++
+					AR=x86_64-linux-gnu-ar
+					CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=x86_64-linux-gnu-gcc
+				)
+		;;
+		( aarch64-unknown-linux-gnu )
+			_environment+=(
+					CC=aarch64-linux-gnu-gcc
+					CXX=aarch64-linux-gnu-g++
+					AR=aarch64-linux-gnu-ar
+					CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-linux-gnu-gcc
+				)
+		;;
+		( x86_64-unknown-linux-musl )
+			_environment+=(
+					PATH="/opt/x86_64-linux-musl/bin:${_path}"
+					CC=x86_64-linux-musl-gcc
+					CXX=x86_64-linux-musl-g++
+					AR=x86_64-linux-musl-ar
+					CARGO_TARGET_X86_64_UNKNOWN_LINUX_MUSL_LINKER=x86_64-linux-musl-gcc
+				)
+		;;
+		( aarch64-unknown-linux-musl )
+			_environment+=(
+					PATH="/opt/aarch64-linux-musl/bin:${_path}"
+					CC=aarch64-linux-musl-gcc
+					CXX=aarch64-linux-musl-g++
+					AR=aarch64-linux-musl-ar
+					CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER=aarch64-linux-musl-gcc
+				)
+		;;
+		( x86_64-linux-android )
+			_environment+=(
+					PATH="/opt/android-ndk/bin:${_path}"
+					CC=x86_64-linux-android21-clang
+					CXX=x86_64-linux-android21-clang++
+					AR=x86_64-linux-gnu-ar
+					CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER=x86_64-linux-android21-clang
+				)
+		;;
+		( aarch64-linux-android )
+			_environment+=(
+					PATH="/opt/android-ndk/bin:${_path}"
+					CC=aarch64-linux-android21-clang
+					CXX=aarch64-linux-android21-clang++
+					AR=aarch64-linux-gnu-ar
+					CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER=aarch64-linux-android21-clang
+				)
+		;;
+		( x86_64-apple-darwin )
+			_environment+=(
+					PATH="/opt/osxcross/bin:${_path}"
+					CC=x86_64-apple-darwin21.4-clang
+					CXX=x86_64-apple-darwin21.4-clang++
+					AR=x86_64-apple-darwin21.4-ar
+					CARGO_TARGET_X86_64_APPLE_DARWIN_LINKER=x86_64-apple-darwin21.4-clang
+				)
+		;;
+		( aarch64-apple-darwin )
+			_environment+=(
+					PATH="/opt/osxcross/bin:${_path}"
+					CC=arm64-apple-darwin21.4-clang
+					CXX=arm64-apple-darwin21.4-clang++
+					AR=arm64-apple-darwin21.4-ar
+					CARGO_TARGET_AARCH64_APPLE_DARWIN_LINKER=arm64-apple-darwin21.4-clang
+				)
+		;;
+		( * )
+			printf -- '[ee]  invalid target `%s`;  aborting!\n' "${__CARGO__TARGET}" >&2
+			exit -- 1
+		;;
+	esac
 	
 	test -d "${_scratch}"
 	test -d "${_scratch}/sources"
@@ -370,7 +467,7 @@
 			-- \
 			localhost/rust-cross:latest \
 	\
-		env "${_environment[@]}" \
+		env -i "${_environment[@]}" \
 	"${_executable}" \
 			"+${_toolchain}" \
 			"${_tool}" \
