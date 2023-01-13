@@ -43,14 +43,18 @@ default = [
 	"zt-embedded-readme",
 	
 	"z-tokens-patterns-tool/default",
-	"z-tokens-secrets/default",
+	"z-tokens-encodings-tool/default",
+	"z-tokens-hashes-tool/default",
+	"z-tokens-secrets-tool/default",
 	"z-tokens-runtime/default",
 ]
 
 development = [
 	
 	"z-tokens-patterns-tool/development",
-	"z-tokens-secrets/development",
+	"z-tokens-encodings-tool/development",
+	"z-tokens-hashes-tool/development",
+	"z-tokens-secrets-tool/development",
 	"z-tokens-runtime/development",
 ]
 
@@ -59,7 +63,9 @@ release = [
 	"zt-embedded-all",
 	
 	"z-tokens-patterns-tool/release",
-	"z-tokens-secrets/release",
+	"z-tokens-encodings-tool/release",
+	"z-tokens-hashes-tool/release",
+	"z-tokens-secrets-tool/release",
 	"z-tokens-runtime/release",
 ]
 
@@ -88,7 +94,9 @@ zt-embedded-build-meta = []
 [dependencies]
 
 z-tokens-patterns-tool = { path = "../patterns-tool" }
-z-tokens-secrets = { path = "../secrets" }
+z-tokens-encodings-tool = { path = "../encodings-tool" }
+z-tokens-hashes-tool = { path = "../hashes-tool" }
+z-tokens-secrets-tool = { path = "../secrets-tool" }
 z-tokens-runtime = { path = "../runtime" }
 
 vrl-errors = { version = "*", default-features = false, features = [] }

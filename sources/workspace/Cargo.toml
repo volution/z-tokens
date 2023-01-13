@@ -6,7 +6,9 @@ members = [
 	"../runtime",
 	"../patterns",
 	"../patterns-tool",
-	"../secrets",
+	"../encodings-tool",
+	"../hashes-tool",
+	"../secrets-tool",
 	"../tools",
 	"..",
 ]

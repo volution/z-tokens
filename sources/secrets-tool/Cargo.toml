@@ -2,7 +2,7 @@
 
 [package]
 
-name = "z-tokens-secrets"
+name = "z-tokens-secrets-tool"
 
 workspace = "../workspace"
 
@@ -29,7 +29,7 @@ documentation.workspace = true
 
 [lib]
 
-name = "z_tokens_secrets"
+name = "z_tokens_secrets_tool"
 path = "./lib.rs"
 
 
@@ -58,5 +58,7 @@ z-tokens-runtime = { path = "../runtime" }
 
 vrl-errors = { version = "*", default-features = false, features = [] }
 vrl-preludes = { version = "*", default-features = false, features = [] }
+
+x25519-dalek = { version = "*", default-features = false, features = ["std", "u64_backend"] }
 
 

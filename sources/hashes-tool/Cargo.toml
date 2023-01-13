@@ -1,0 +1,71 @@
+
+
+[package]
+
+name = "z-tokens-hashes-tool"
+
+workspace = "../workspace"
+
+autobins = false
+autoexamples = false
+autotests = false
+autobenches = false
+
+version.workspace = true
+publish.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+description.workspace = true
+keywords.workspace = true
+categories.workspace = true
+homepage.workspace = true
+repository.workspace = true
+documentation.workspace = true
+
+
+
+
+[lib]
+
+name = "z_tokens_hashes_tool"
+path = "./lib.rs"
+
+
+
+
+[features]
+
+default = [
+	"z-tokens-runtime/default",
+]
+
+development = [
+	"z-tokens-runtime/development",
+]
+
+release = [
+	"z-tokens-runtime/release",
+]
+
+
+
+
+[dependencies]
+
+z-tokens-runtime = { path = "../runtime" }
+
+vrl-errors = { version = "*", default-features = false, features = [] }
+vrl-preludes = { version = "*", default-features = false, features = [] }
+
+blake3 = { version = "*", default-features = false, features = ["std", "digest", "traits-preview"] }
+blake2 = { version = "*", default-features = false, features = ["std"] }
+
+sha3 = { version = "*", default-features = false, features = ["std"] }
+sha2 = { version = "*", default-features = false, features = ["std"] }
+sha1 = { version = "*", default-features = false, features = ["std"] }
+
+md5 = { version = "*", default-features = false, features = [] }
+
+
