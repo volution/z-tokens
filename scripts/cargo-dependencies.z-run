@@ -46,6 +46,7 @@
 
 << cargo / dependencies / show / tree
 	exec -- "${ZRUN}" ':: cargo / exec / local' tree \
+			--workspace \
 			--all-features \
 			--format '{p}' \
 			--prefix indent \
@@ -55,11 +56,34 @@
 
 
 << cargo / dependencies / show / list
-	exec -- "${ZRUN}" ':: cargo / exec / local' tree \
+	"${ZRUN}" ':: cargo / exec / local' tree \
+			--workspace \
 			--all-features \
-			--format ' | {p}' \
+			--format '|{p}|' \
 			--prefix depth \
 			"${@}" \
+	| grep -v -F -x -e '' \
+	| sed -r -e 's#^([^|]*)\|([^| ]*) (v[^| ]*)( \([^| )]*\))?\|([^|]*)$#\1|\2|\3#' \
+	| sort -s -k 1,3 -t '|' \
+	| column -t -s '|' -o ' | ' \
+	#
+!!
+
+
+<< cargo / dependencies / show / features
+	"${ZRUN}" ':: cargo / exec / local' tree \
+			--workspace \
+			--edges normal \
+			--depth 1 \
+			--format '|{p}|{f}|' \
+			--prefix depth \
+			"${@}" \
+	| grep -v -F -x -e '' \
+	| sed -r -e 's#^([^|]*)\|([^| ]*) (v[^| ]*)( \([^| )]*\))?\|([^|]*)\|([^|]*)$#\1|\2|\3|\5#' \
+	| sort -s -k 1,1 -t '|' \
+	| sort -u -s -k 2,3 -t '|' \
+	| sort -s -k 1,3 -t '|' \
+	| column -t -s '|' -o ' | ' \
 	#
 !!
 
@@ -70,7 +94,7 @@
 	test "${#}" -eq 0
 	(
 		
-		"${ZRUN}" ':: cargo / exec / local' tree --all-features --edges normal --no-dedupe --format '{p}' --prefix none \
+		"${ZRUN}" ':: cargo / exec / local' tree --workspace --all-features --edges normal --no-dedupe --format '{p}' --prefix none \
 		| cut -f 1,2 -d ' ' \
 		| sed -r -e 's#^([^ ]+) v([^ ]+)$#\1:\2#' \
 		#
