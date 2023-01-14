@@ -3,6 +3,7 @@
 tools--version :: --version
 tools--help--patterns :: patterns --help
 tools--help--generate :: generate --help
+tools--help--hash :: hash --help
 
 
 
@@ -74,4 +75,32 @@ generate / pattern / compact :: generate --token-pattern digits-base32-hex:32 --
 generate / pattern / no-optional-separators :: generate --token-pattern digits-base32-hex:32 --token-skip-optional-separators true --random-testing
 generate / pattern / no-mandatory-separators :: generate --token-pattern mnemonic:4 --token-skip-mandatory-separators true --token-skip-optional-separators true --random-testing
 
+
+
+
+hash / md5 / default :: hash --md5 --token 1234
+hash / sha1 / default :: hash --sha1 --token 1234
+hash / sha2 / default :: hash --sha2 --token 1234
+hash / sha3 / default :: hash --sha3 --token 1234
+hash / sha3 / size-01 :: hash --sha3 --token 1234 --size 1
+hash / sha3 / size-04 :: hash --sha3 --token 1234 --size 4
+hash / sha3 / size-06 :: hash --sha3 --token 1234 --size 6
+hash / sha3 / size-08 :: hash --sha3 --token 1234 --size 8
+hash / sha3 / size-10 :: hash --sha3 --token 1234 --size 10
+hash / sha3 / size-12 :: hash --sha3 --token 1234 --size 12
+hash / sha3 / size-14 :: hash --sha3 --token 1234 --size 14
+hash / sha3 / size-16 :: hash --sha3 --token 1234 --size 16
+hash / sha3 / size-20 :: hash --sha3 --token 1234 --size 20
+hash / sha3 / size-24 :: hash --sha3 --token 1234 --size 24
+hash / sha3 / size-28 :: hash --sha3 --token 1234 --size 28
+hash / sha3 / size-32 :: hash --sha3 --token 1234 --size 32
+hash / sha3 / size-40 :: hash --sha3 --token 1234 --size 40
+hash / sha3 / size-48 :: hash --sha3 --token 1234 --size 48
+hash / sha3 / size-56 :: hash --sha3 --token 1234 --size 56
+hash / sha3 / size-64 :: hash --sha3 --token 1234 --size 64
+hash / blake2 / default :: hash --blake2 --token 1234
+hash / blake2s / default :: hash --blake2s --token 1234
+hash / blake2b / default :: hash --blake2b --token 1234
+hash / blake3 / default :: hash --blake3 --token 1234
+hash / blake3 / size-128 :: hash --blake3 --token 1234 --size 128
 

@@ -1,0 +1,3 @@
+>>  z-tokens hash --md5 --token 1234
+
+81dc9bdb52d04dc2036dbd8313ed055

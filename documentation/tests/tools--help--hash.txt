@@ -1,0 +1,29 @@
+>>  z-tokens hash --help
+
+Usage:
+  z-tokens hash [OPTIONS]
+
+
+Optional arguments:
+  -h,--help             Show this help message and exit
+  -a,--algorithm {algorithm}
+                        (hashing algorithm)
+  --md5                 (use MD5)
+  --sha1                (use SHA1)
+  --sha2                (use SHA2)
+  --sha3                (use SHA3)
+  --blake2              (use Blake2s or Blake2b)
+  --blake2s             (use Blake2s)
+  --blake2b             (use Blake2b)
+  --blake3              (use Blake3)
+  --git-sha1            (use Git SHA1 flavour)
+  -s,--size {size}      (hash output size in bytes)
+  --8b,--1B             (output 8 bits / 1 byte)
+  --16b,--2B            (output 16 bits / 2 bytes)
+  --32b,--4B            (output 32 bits / 4 bytes)
+  --64b,--8B            (output 64 bits / 8 bytes)
+  --128b,--16B          (output 128 bits / 16 bytes)
+  --256b,--32B          (output 256 bits / 32 bytes)
+  --512b,--64B          (output 512 bits / 64 bytes)
+  -i,--stdin            (read from stdin)
+  -t,--token {input}    (use this argument)
