@@ -17,6 +17,7 @@
 	darwin--aarch64
 	android--x86_64
 	android--aarch64
+	windows--x86_64
 !!
 
 
@@ -314,6 +315,7 @@
 				( openbsd--aarch64 ) _target=aarch64-unknown-openbsd ;;
 				( android--x86_64 ) _target=x86_64-linux-android ;;
 				( android--aarch64 ) _target=aarch64-linux-android ;;
+				( windows--x86_64 ) _target=x86_64-pc-windows-gnu ;;
 				( * ) false -- eec080ef ;;
 			esac
 			

@@ -423,6 +423,14 @@
 					CARGO_TARGET_AARCH64_APPLE_DARWIN_LINKER=arm64-apple-darwin21.4-clang
 				)
 		;;
+		( x86_64-pc-windows-gnu )
+			_environment+=(
+					CC=x86_64-w64-mingw32-gcc
+					CXX=x86_64-w64-mingw32-g++
+					AR=x86_64-w64-mingw32-ar
+					CARGO_TARGET_X86_64_PC_WINDOWS_GNU_LINKER=x86_64-w64-mingw32-gcc
+				)
+		;;
 		( * )
 			printf -- '[ee]  invalid target `%s`;  aborting!\n' "${__CARGO__TARGET}" >&2
 			exit -- 1

@@ -103,6 +103,7 @@
 	esac
 	
 	_variant='default'
+	_bin_suffix=''
 	case "${_target}" in
 		( native ) _os="${ZRUN_OS}" ;;
 		( *-unknown-linux-gnu ) _os=linux ;;
@@ -111,13 +112,14 @@
 		( *-unknown-freebsd ) _os=freebsd ;;
 		( *-unknown-openbsd ) _os=openbsd ;;
 		( *-linux-android ) _os=android ;;
+		( *-pc-windows-gnu ) _os=windows ; _bin_suffix='.exe' ;;
 		( * ) false ;;
 	esac
 	
 	for _bin in "${_bins[@]}" ; do
 		
 	#	printf -- '[ii]  collecting `%s` (`%s` / `%s` / `%s` / `%s` / `%s`)...\n' "${_bin}" "${_os}" "${_arch}" "${_variant}" "${_type}" "${_target}" >&2
-		test -f "${_builds}/${_bin}"
+		test -f "${_builds}/${_bin}${_bin_suffix}"
 		
 		if test "${_variant}" != default ; then
 			_output="${_outputs}/${_bin}--${_type}--${_os}--${_arch}--${_variant}"
@@ -127,7 +129,7 @@
 		
 		if true ; then
 			rsync -i -a --chmod F0755 -- \
-					"${_builds}/${_bin}" \
+					"${_builds}/${_bin}${_bin_suffix}" \
 					"${_output}" \
 			#
 		else
@@ -136,7 +138,7 @@
 					--enable-deterministic-archives \
 					-o "${_output}" \
 					-- \
-					"${_builds}/${_bin}" \
+					"${_builds}/${_bin}${_bin_suffix}" \
 			#
 		fi
 		
