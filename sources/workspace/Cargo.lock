@@ -344,10 +344,13 @@ dependencies = [
 ]
 
 [[package]]
-name = "md5"
-version = "0.7.0"
+name = "md-5"
+version = "0.10.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "490cc448043f947bae3cbee9c203358d62dbee0db12107a74be5c30ccfd09771"
+checksum = "6365506850d44bff6e2fbcb5176cf63650e48bd45ef2fe2665ae1570e0f4b9ca"
+dependencies = [
+ "digest 0.10.6",
+]
 
 [[package]]
 name = "memsec"
@@ -801,7 +804,8 @@ version = "0.1.0"
 dependencies = [
  "blake2",
  "blake3",
- "md5",
+ "digest 0.10.6",
+ "md-5",
  "sha1",
  "sha2",
  "sha3",
@@ -829,7 +833,6 @@ dependencies = [
 name = "z-tokens-patterns-tool"
 version = "0.1.0"
 dependencies = [
- "argparse",
  "vrl-errors",
  "vrl-preludes",
  "z-tokens-patterns",
@@ -840,6 +843,7 @@ dependencies = [
 name = "z-tokens-runtime"
 version = "0.1.0"
 dependencies = [
+ "argparse",
  "memsec",
  "vrl-errors",
  "vrl-preludes",
