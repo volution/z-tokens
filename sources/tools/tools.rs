@@ -5,10 +5,16 @@ use ::vrl_preludes::std_plus_extras::*;
 pub(crate) use ::vrl_errors::*;
 
 
+#[ cfg (feature = "z-tokens-patterns-tool") ]
 use ::z_tokens_patterns_tool::{
 		
 		generate::main as main_generate,
 		patterns::main as main_patterns,
+	};
+
+#[ cfg (feature = "z-tokens-hashes-tool") ]
+use ::z_tokens_hashes_tool::{
+		tool::main as main_hash,
 	};
 
 
@@ -85,15 +91,18 @@ pub fn main () -> MainResult<ExitCode> {
 	
 	match (_commands_refs, _arguments_refs) {
 		
+		#[ cfg (feature = "z-tokens-patterns-tool") ]
 		(&["patterns"], _) | (&["p"], _) => {
 			_arguments.insert (0, String::from ("z-tokens patterns"));
 			main_patterns (_arguments) .else_wrap (0x9093f429)
 		}
 		
+		#[ cfg (feature = "z-tokens-patterns-tool") ]
 		(&["generate"], _) => {
 			_arguments.insert (0, String::from ("z-tokens generate"));
 			main_generate (_arguments) .else_wrap (0x7565abe0)
 		}
+		#[ cfg (feature = "z-tokens-patterns-tool") ]
 		(&["g"], _) => {
 			_arguments.insert (0, String::from ("z-tokens generate"));
 			_arguments.insert (1, String::from ("--compact"));
@@ -102,6 +111,7 @@ pub fn main () -> MainResult<ExitCode> {
 			_arguments.insert (4, String::from ("1"));
 			main_generate (_arguments) .else_wrap (0x6a8d26ca)
 		}
+		#[ cfg (feature = "z-tokens-patterns-tool") ]
 		(&["g", _pattern], _) => {
 			_arguments.insert (0, String::from ("z-tokens generate"));
 			_arguments.insert (1, String::from ("--compact"));
@@ -111,6 +121,12 @@ pub fn main () -> MainResult<ExitCode> {
 			_arguments.insert (5, String::from ("--token-pattern"));
 			_arguments.insert (6, String::from (_pattern));
 			main_generate (_arguments) .else_wrap (0x284c1286)
+		}
+		
+		#[ cfg (feature = "z-tokens-hashes-tool") ]
+		(&["hash"], _) => {
+			_arguments.insert (0, String::from ("z-tokens hash"));
+			main_hash (_arguments) .else_wrap (0xff8dcc61)
 		}
 		
 		#[ cfg (feature = "zt-embedded-help") ]

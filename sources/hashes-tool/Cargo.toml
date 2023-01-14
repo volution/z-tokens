@@ -54,10 +54,12 @@ release = [
 
 [dependencies]
 
-z-tokens-runtime = { path = "../runtime", default-features = false, features = [] }
+z-tokens-runtime = { path = "../runtime", default-features = false, features = ["zt-runtime-flags"] }
 
 vrl-errors = { version = "*", default-features = false, features = [] }
 vrl-preludes = { version = "*", default-features = false, features = [] }
+
+digest = { version = "*", default-features = false, features = ["std", "core-api"] }
 
 blake3 = { version = "*", default-features = false, features = ["std", "digest", "traits-preview"] }
 blake2 = { version = "*", default-features = false, features = ["std"] }
@@ -66,6 +68,6 @@ sha3 = { version = "*", default-features = false, features = ["std"] }
 sha2 = { version = "*", default-features = false, features = ["std"] }
 sha1 = { version = "*", default-features = false, features = ["std"] }
 
-md5 = { version = "*", default-features = false, features = [] }
+md-5 = { version = "*", default-features = false, features = ["std"] }
 
 
