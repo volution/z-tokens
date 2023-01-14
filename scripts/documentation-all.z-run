@@ -5,9 +5,12 @@
 
 << documentation / all / render
 	test "${#}" -eq 0
+	"${ZRUN}" ':: documentation / readme / render'
 !!
+
 
 << documentation / all / render / forced
 	test "${#}" -eq 0
+	"${ZRUN}" ':: documentation / readme / render / forced'
 !!
 
