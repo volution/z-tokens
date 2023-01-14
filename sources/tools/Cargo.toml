@@ -43,9 +43,9 @@ default = [
 	"zt-embedded-readme",
 	
 	"z-tokens-patterns-tool/default",
-	"z-tokens-encodings-tool/default",
-	"z-tokens-hashes-tool/default",
-	"z-tokens-secrets-tool/default",
+#!	"z-tokens-encodings-tool/default",
+#!	"z-tokens-hashes-tool/default",
+#!	"z-tokens-secrets-tool/default",
 	"z-tokens-runtime/default",
 ]
 
@@ -63,9 +63,9 @@ release = [
 	"zt-embedded-all",
 	
 	"z-tokens-patterns-tool/release",
-	"z-tokens-encodings-tool/release",
-	"z-tokens-hashes-tool/release",
-	"z-tokens-secrets-tool/release",
+#!	"z-tokens-encodings-tool/release",
+#!	"z-tokens-hashes-tool/release",
+#!	"z-tokens-secrets-tool/release",
 	"z-tokens-runtime/release",
 ]
 
@@ -93,11 +93,11 @@ zt-embedded-build-meta = []
 
 [dependencies]
 
-z-tokens-patterns-tool = { path = "../patterns-tool" }
-z-tokens-encodings-tool = { path = "../encodings-tool" }
-z-tokens-hashes-tool = { path = "../hashes-tool" }
-z-tokens-secrets-tool = { path = "../secrets-tool" }
-z-tokens-runtime = { path = "../runtime" }
+z-tokens-patterns-tool = { path = "../patterns-tool", optional = true, default-features = false, features = [] }
+z-tokens-encodings-tool = { path = "../encodings-tool", optional = true, default-features = false, features = [] }
+z-tokens-hashes-tool = { path = "../hashes-tool", optional = true, default-features = false, features = [] }
+z-tokens-secrets-tool = { path = "../secrets-tool", optional = true, default-features = false, features = [] }
+z-tokens-runtime = { path = "../runtime", optional = true, default-features = false, features = [] }
 
 vrl-errors = { version = "*", default-features = false, features = [] }
 vrl-preludes = { version = "*", default-features = false, features = [] }

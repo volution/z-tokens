@@ -57,8 +57,8 @@ release = [
 
 [dependencies]
 
-z-tokens-runtime = { path = "../runtime" }
-z-tokens-patterns = { path = "../patterns" }
+z-tokens-runtime = { path = "../runtime", default-features = false, features = [] }
+z-tokens-patterns = { path = "../patterns", default-features = false, features = [] }
 
 vrl-errors = { version = "*", default-features = false, features = [] }
 vrl-preludes = { version = "*", default-features = false, features = [] }
