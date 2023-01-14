@@ -1,5 +1,15 @@
 
 
+---- How to invoke the tools
+
+>> z-tokens patterns --help
+>> z-tokens generate --help
+
+>> z-tokens hash --help
+
+>> z-tokens --version
+
+
 ---- How to generate passwords
 
 (for quick copy-paste)
@@ -14,14 +24,6 @@
 >> z-tokens generate
 >> z-tokens generate -p cv-4
 >> z-tokens generate ...
-
-
----- How to invoke the tools
-
->> z-tokens --version
-
->> z-tokens patterns --help
->> z-tokens generate --help
 
 
 ---- How to get help

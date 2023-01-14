@@ -45,6 +45,16 @@ In terms of types of generated tokens, here are a few of them:
   * time sorted tokens with various levels of entropy (see the flake-* ones);
   * seed phrases (see the mnemonic-* or bip0039-* ones);
 
+Other related tools part of this project are:
+
+  * z-tokens hash -- hash strings, stdin or files with various hashes (SHA1,2,3
+    families, Blake2 and Blake3, MD5, etc.);
+  * z-tokens encode -- (TODO) encode / decode strings, stdin or files to / from
+    various encodings (Base*, Bech32, Z85, etc.);
+  * z-tokens secret -- (TODO) storing, sharing and using security sensitive
+    data in operational and development scripts; (for the gist of the idea see
+    this document;)
+
 -------------------------------------------------------------------------------
 
 Status
@@ -86,6 +96,13 @@ z-tokens --help
 
 z-tokens generate --help
 z-tokens patterns --help
+
+z-tokens hash --help
+
+z-tokens encode --help
+z-tokens decode --help
+
+z-tokens secret --help
 
 z-tokens --readme
 
@@ -290,12 +307,11 @@ Show all details about a certain pattern:
 
 z-tokens patterns -p cv:6 --show-all
 
-**  cv-lower:6
-\_  example:  wuvo weho lugi ciha dexa hiqi
+**  ~~~~~~~~  cv-lower:6
+\_  aliases:  cv:6
+\_  labels:   cv-lower cv ascii password memorable
 \_  bits:     80.5709
 \_  length:   29
-\_  aliases:  cv:6
-\_  labels:   cv-lower cv ascii password
 \_  usable for:
     \_  cryptography         !! NO !!      with    -47.43  bits of margin
     \_  authentication          OK         with    +48.57  bits of margin
@@ -315,6 +331,7 @@ z-tokens patterns -p cv:6 --show-all
     \_  scrypt                  --   79.9  millions of years
     \_  GPG                     --   21.2  millennia
     \_  AES-128                 --    2.6  decades
+\_  example:  fosi suwe pawu mexi tuka kavu
 
 Show all supported patterns identifiers:
 

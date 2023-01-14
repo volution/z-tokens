@@ -15,7 +15,8 @@ I just hope others also find some use in it.</p><p>In terms of types of generate
 complete random ASCII dumps;</li><li>pins -- numeric tokens with various levels of entropy (see the <code>digits-base10-*</code> ones);</li><li>raw tokens -- in various encodings (such as <code>base64</code>, <code>base32</code>, <code>z85</code>, <code>bech32</code>, etc.);
 (please note that such tokens just use the encoding character set,
 and don't necessarily decode correctly in one of those encodings;)</li><li>bytes -- hex encoded random bytes (see <code>bytes-*</code>);</li><li>IP and MAC addresses;</li><li>UUIDv4;</li><li>timestamps in various representations;
-(not for security purposes, as they have almost 0 entropy;)</li><li>time sorted tokens with various levels of entropy (see the <code>flake-*</code> ones);</li><li>seed phrases (see the <code>mnemonic-*</code> or <code>bip0039-*</code> ones);</li></ul><hr><h2><span id=status>Status</span></h2><p><strong>The Rust code is quite fresh and thus not thoroughly tested and reviewed.</strong></p><p>However, it relies on solid Rust libraries (like <code>rand</code>)
+(not for security purposes, as they have almost 0 entropy;)</li><li>time sorted tokens with various levels of entropy (see the <code>flake-*</code> ones);</li><li>seed phrases (see the <code>mnemonic-*</code> or <code>bip0039-*</code> ones);</li></ul><p>Other related tools part of this project are:</p><ul><li><code>z-tokens hash</code> -- hash strings, stdin or files with various hashes (SHA1,2,3 families, Blake2 and Blake3, MD5, etc.);</li><li><code>z-tokens encode</code> -- (TODO) encode / decode strings, stdin or files to / from various encodings (Base*, Bech32, Z85, etc.);</li><li><code>z-tokens secret</code> -- (TODO) storing, sharing and using security sensitive data in operational and development scripts;
+(for the gist of the idea <a href=https://scratchpad.volution.ro/ciprian/992c7f2944456f18cdde77f683f49aa7/e45fc3da.html>see this document</a>;)</li></ul><hr><h2><span id=status>Status</span></h2><p><strong>The Rust code is quite fresh and thus not thoroughly tested and reviewed.</strong></p><p>However, it relies on solid Rust libraries (like <code>rand</code>)
 and it doesn't do much (like touching the file-system or talking to the network),
 thus it shouldn't break anything.</p><p>The only critical code at the moment,
 --- <strong>which could have major security implications</strong> by weakening the generated tokens ---
@@ -32,6 +33,13 @@ there is no other documentation at the moment.</p><p>That being said, just run t
 
 z-tokens generate --help
 z-tokens patterns --help
+
+z-tokens hash --help
+
+z-tokens encode --help
+z-tokens decode --help
+
+z-tokens secret --help
 
 z-tokens --readme
 </code></pre><p>For how to install see the <a href=#install>dedicated section</a>.</p><hr><h2><span id=examples>Examples</span></h2><h3>How to generate passwords and other tokens</h3><p>Generate a few consonant-vowel passwords,
@@ -186,12 +194,11 @@ if the number doesn't have a <code>.</code> (not even <code>.0</code>) it implie
 ::  eff-short:2             :   62.0 b :   36 c ::    verse erase given - groom mumbo lazy
 ::  eff-unique:2            :   62.0 b :   47 c ::    unknown nectar running - cadillac falcon enzyme
 </code></pre><p>Show all details about a certain pattern:</p><pre><code>z-tokens patterns -p cv:6 --show-all
-</code></pre><pre><code>**  cv-lower:6
-\_  example:  wuvo weho lugi ciha dexa hiqi
+</code></pre><pre><code>**  ~~~~~~~~  cv-lower:6
+\_  aliases:  cv:6
+\_  labels:   cv-lower cv ascii password memorable
 \_  bits:     80.5709
 \_  length:   29
-\_  aliases:  cv:6
-\_  labels:   cv-lower cv ascii password
 \_  usable for:
     \_  cryptography         !! NO !!      with    -47.43  bits of margin
     \_  authentication          OK         with    +48.57  bits of margin
@@ -211,6 +218,7 @@ if the number doesn't have a <code>.</code> (not even <code>.0</code>) it implie
     \_  scrypt                  --   79.9  millions of years
     \_  GPG                     --   21.2  millennia
     \_  AES-128                 --    2.6  decades
+\_  example:  fosi suwe pawu mexi tuka kavu
 </code></pre><p>Show all supported patterns identifiers:</p><pre><code>z-tokens patterns -i
 </code></pre><pre><code>digits-base10:...
 digits-base2:...
