@@ -117,16 +117,24 @@
 		shift -- 1
 	fi
 	
+	if test -n "${__CARGO__TARGET:-}" ; then
+		_target="${__CARGO__TARGET}"
+	else
+		_target=native
+	fi
+	
 	_cargo_flags=()
 	_rust_flags=()
 	
-	if test -n "${__CARGO__TARGET:-}" ; then
-		_cargo_target="${__CARGO__TARGET}"
-	else
-		_cargo_target=native
-	fi
-	
 	case "${_tool}" in
+		
+		( check | build | run )
+			if test "${_target}" != native ; then
+				_cargo_flags+=(
+						--target "${_target}"
+					)
+			fi
+		;;&
 		
 		( check )
 			_cargo_flags+=(
@@ -220,6 +228,7 @@
 			exec -- "${ZRUN}" ':: cargo / tool / collect' \
 					--scratch "${_scratch}" \
 					--cross "${_cross}" \
+					--target "${_target}" \
 					"${@}" \
 			#
 		;;
@@ -230,7 +239,7 @@
 		)
 	
 	export -- __CARGO__RUST_FLAGS="${_rust_flags[*]}"
-	export -- __CARGO__TARGET="${_cargo_target}"
+	export -- __CARGO__TARGET="${_target}"
 	
 	_tool_arguments=(
 			"${_cargo_flags[@]}"
@@ -264,15 +273,15 @@
 	_cargo_home="$( exec -- readlink -e -- "${_cargo_home}" )"
 	
 	if test "${__META__BUILD_TARGET_TYPE}" != '[unknown-btt]' ; then
-		_cargo_target_dir_suffix="/${__META__BUILD_TARGET_TYPE}"
+		_cargo_target_subdir="${__META__BUILD_TARGET_TYPE}"
 	else
-		_cargo_target_dir_suffix=''
+		_cargo_target_subdir='unknown'
 	fi
 	
 	_environment=(
 			
 			CARGO_HOME="${_cargo_home}"
-			CARGO_TARGET_DIR="${_scratch}/target${_cargo_target_dir_suffix}"
+			CARGO_TARGET_DIR="${_scratch}/target/${_cargo_target_subdir}/${__CARGO__TARGET}"
 			CARGO_BUILD_RUSTFLAGS="${__CARGO__RUST_FLAGS}"
 			
 			RUST_BACKTRACE=full
@@ -321,9 +330,9 @@
 	_executable=/opt/cargo/bin/cargo
 	
 	if test "${__META__BUILD_TARGET_TYPE}" != '[unknown-btt]' ; then
-		_cargo_target_dir_suffix="/${__META__BUILD_TARGET_TYPE}"
+		_cargo_target_subdir="${__META__BUILD_TARGET_TYPE}"
 	else
-		_cargo_target_dir_suffix=''
+		_cargo_target_subdir='unknown'
 	fi
 	
 	_path='/usr/local/bin:/usr/bin:/bin'
@@ -339,8 +348,8 @@
 			
 			RUSTUP_HOME=/opt/rustup
 			CARGO_HOME=/opt/cargo
-			CARGO_TARGET_DIR="/rust/target${_cargo_target_dir_suffix}"
-			CARGO_BUILD_RUSTFLAGS="${__CARGO__RUST_FLAGS:?}"
+			CARGO_TARGET_DIR="/rust/target/${_cargo_target_subdir}/${__CARGO__TARGET}"
+			CARGO_BUILD_RUSTFLAGS="${__CARGO__RUST_FLAGS}"
 			
 			RUST_BACKTRACE=full
 			

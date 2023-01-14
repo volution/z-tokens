@@ -1,0 +1,55 @@
+#!/dev/null
+
+
+
+
+<< cargo / all / check
+	
+	test "${#}" -eq 0
+	
+	for _type in debug release install ; do
+		
+		printf -- '[--]\n' >&2
+		printf -- '[ii]  checking for `%s`...\n' "${_type}" >&2
+		"${ZRUN}" ":: cargo / ${_type} / check"
+		printf -- '[--]\n' >&2
+		
+		printf -- '[--]\n' >&2
+		printf -- '[ii]  checking for `%s` (cross)...\n' "${_type}" >&2
+		"${ZRUN}" ":: cargo / ${_type} / check / cross / all"
+		printf -- '[--]\n' >&2
+	done
+!!
+
+
+
+
+<< cargo / all / build
+	
+	test "${#}" -eq 0
+	
+	for _type in debug release install ; do
+		
+		printf -- '[--]\n' >&2
+		printf -- '[ii]  building for `%s`...\n' "${_type}" >&2
+		"${ZRUN}" ":: cargo / ${_type} / build"
+		case "${_type}" in
+			( debug | release )
+				"${ZRUN}" ":: cargo / ${_type} / collect"
+			;;
+		esac
+		printf -- '[--]\n' >&2
+		
+		printf -- '[--]\n' >&2
+		printf -- '[ii]  building for `%s` (cross)...\n' "${_type}" >&2
+		"${ZRUN}" ":: cargo / ${_type} / build / cross / all"
+		case "${_type}" in
+			( debug | release )
+				"${ZRUN}" ":: cargo / ${_type} / collect / cross / all"
+			;;
+		esac
+		printf -- '[--]\n' >&2
+	done
+!!
+
+

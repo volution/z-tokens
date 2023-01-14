@@ -105,12 +105,26 @@
 		"${ZRUN}" ':: cargo / dependencies / fetch'
 	fi
 	
+	_failed_targets=()
 	for _target in "${_targets[@]}" ; do
 		printf -- '[ii]  executing for target `%s`...\n' "${_target}" >&2
 		export -- __CARGO__TARGET="${_target}"
-		"${ZRUN}" "${_delegate}" --target "${_target}" "${@}"
+		if ! "${ZRUN}" "${_delegate}" "${@}" ; then
+			printf -- '[ee]  failed for target `%s`...\n' "${_target}" >&2
+			_failed_targets+=( "${_target}" )
+		fi
 	done
+	
+	if test "${#_failed_targets[@]}" -ne 0 ; then
+		printf '[--]\n' >&2
+		for _target in "${_failed_targets[@]}" ; do
+			printf -- '[ee]  failed for target `%s`...\n' "${_target}" >&2
+		done
+		exit -- 1
+	fi
 !!
+
+
 
 
 --<< cargo / cross / exec / targets
@@ -121,6 +135,8 @@
 		
 		( all-targets | check-targets | build-targets | release-targets )
 			_targets+=(
+					
+					native
 					
 					x86_64-unknown-linux-gnu
 					aarch64-unknown-linux-gnu

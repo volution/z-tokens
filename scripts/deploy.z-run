@@ -322,8 +322,9 @@
 			printf -- '[ii]  releasing `%s` for `%s` / `%s`...\n' "${_main}" "${_variant}" "${_target}" >&2
 			
 			export -- __CARGO__CROSS=true
-			"${ZRUN}" ':: cargo / release / build' --target "${_target}" --quiet
-			"${ZRUN}" ':: cargo / release / collect' --target "${_target}"
+			export -- __CARGO__TARGET="${_target}"
+			"${ZRUN}" ':: cargo / release / build' --quiet
+			"${ZRUN}" ':: cargo / release / collect'
 			
 		done
 	done

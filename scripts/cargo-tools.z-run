@@ -6,22 +6,30 @@
 --<< cargo / tool / collect
 	
 	_type=debug
-	_target=native
 	_scratch=''
 	_outputs=''
 	_cross=false
 	_bins=all
 	
+	if test -n "${__CARGO__TARGET:-}" ; then
+		_target="${__CARGO__TARGET}"
+	else
+		_target=native
+	fi
+	
 	while test "${#}" -ge 1 ; do
 		case "${1}" in
+			( --target )
+				test "${#}" -ge 2
+				if test "${_target}" != "${2}" ; then
+					printf -- '[ee]  mismatched target directives;  aborting!\n' >&2
+					exit -- 1
+				fi
+				shift -- 2
+			;;
 			( --release )
 				_type=release
 				shift -- 1
-			;;
-			( --target )
-				test "${#}" -ge 2
-				_target="${2}"
-				shift -- 2
 			;;
 			( --cross )
 				test "${#}" -ge 2
@@ -85,6 +93,9 @@
 	fi
 	
 	_builds="${_builds}/${_type}"
+	test -d "${_builds}"
+	
+	_builds="${_builds}/${_target}"
 	test -d "${_builds}"
 	
 	if test "${_target}" != native ; then

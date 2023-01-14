@@ -5,6 +5,7 @@
 
 ::// *
 
+::// cargo / all / ...
 ::// cargo / debug / ...
 ::// cargo / release / ...
 ::// cargo / dependencies / ...
@@ -17,6 +18,7 @@
 
 
 
+&& _/cargo-all.z-run
 && _/cargo-build.z-run
 && _/cargo-tools.z-run
 && _/cargo-cross.z-run
