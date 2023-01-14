@@ -43,8 +43,8 @@ default = [
 	"zt-embedded-readme",
 	
 	"z-tokens-patterns-tool/default",
+	"z-tokens-hashes-tool/default",
 #!	"z-tokens-encodings-tool/default",
-#!	"z-tokens-hashes-tool/default",
 #!	"z-tokens-secrets-tool/default",
 	"z-tokens-runtime/default",
 ]
@@ -63,8 +63,8 @@ release = [
 	"zt-embedded-all",
 	
 	"z-tokens-patterns-tool/release",
+	"z-tokens-hashes-tool/release",
 #!	"z-tokens-encodings-tool/release",
-#!	"z-tokens-hashes-tool/release",
 #!	"z-tokens-secrets-tool/release",
 	"z-tokens-runtime/release",
 ]

@@ -263,6 +263,7 @@ pub fn reset () -> () {
 pub fn is_empty () -> Option<bool> {
 	#[ cfg (feature = "zt-runtime-allocator") ]
 	return Some (GLOBAL.is_empty ());
+	#[ cfg (not (feature = "zt-runtime-allocator")) ]
 	return None;
 }
 
