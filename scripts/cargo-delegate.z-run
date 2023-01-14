@@ -158,7 +158,10 @@
 					#~	-C target-feature=+crt-static
 					#~	-C relocation-model=static
 						
-						-C target-cpu=native
+					#~	-C target-cpu=native
+					#~	-C target-cpu=core2
+					#~	-C target-cpu=nocona
+						-C target-cpu=x86-64
 						
 						-C linker=clang
 						-C link-arg=-fuse-ld=lld
