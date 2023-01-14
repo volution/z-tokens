@@ -13,6 +13,7 @@ pub(crate) use ::vrl_errors::*;
 pub(crate) use ::z_tokens_runtime::{
 		
 		memory::*,
+		flags::*,
 	};
 
 
@@ -31,9 +32,6 @@ pub(crate) use ::z_tokens_patterns::{
 
 
 pub(crate) use crate::flags::*;
-
-
-pub(crate) use ::std::process::ExitCode;
 
 
 

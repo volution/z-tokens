@@ -5,21 +5,7 @@ use crate::prelude::*;
 
 
 
-#[ allow (unused_imports) ]
-pub(crate) use ::argparse::{
-		ArgumentParser as ArgParser,
-		Store as ArgStore,
-		StoreTrue as ArgStoreTrue,
-		StoreFalse as ArgStoreFalse,
-		StoreConst as ArgStoreConst,
-		StoreOption as ArgStoreOption,
-	};
-
-
-
-
 define_error! (pub MainError, result : MainResult);
-define_error! (pub FlagsError, result : FlagsResult);
 
 
 
@@ -122,18 +108,4 @@ impl OutputFlags {
 	}
 }
 
-
-
-
-pub fn execute_parser (_parser : ArgParser, _arguments : Vec<String>) -> FlagsResult<bool> {
-	
-	match _parser.parse (_arguments, &mut stdout_locked (), &mut stderr_locked ()) {
-		Ok (()) =>
-			Ok (false),
-		Err (0) =>
-			Ok (true),
-		Err (_error) =>
-			fail! (0x0f71ad86),
-	}
-}
 

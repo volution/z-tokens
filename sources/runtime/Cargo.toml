@@ -46,7 +46,13 @@ release = [
 ]
 
 
-zt-runtime-allocator = []
+zt-runtime-allocator = [
+	"memsec",
+]
+
+zt-runtime-flags = [
+	"argparse",
+]
 
 
 
@@ -56,7 +62,10 @@ zt-runtime-allocator = []
 vrl-errors = { version = "*", default-features = false, features = [] }
 vrl-preludes = { version = "*", default-features = false, features = [] }
 
-memsec = { version = "*", default-features = false, features = ["default"] }
 zeroize = { version = "*", default-features = false, features = ["std", "alloc"] }
+
+memsec = { version = "*", optional = true, default-features = false, features = ["default"] }
+
+argparse = { version = "*", optional = true, default-features = false, features = [] }
 
 

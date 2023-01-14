@@ -54,7 +54,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _for_short_term_storage : Option<bool> = None;
 	
 	{
-		let mut _parser = ArgParser::new ();
+		let mut _parser = create_parser () .else_wrap (0x146c4b38) ?;
 		
 		_parser.refer (&mut _select_all)
 				.add_option (&["-a", "--all"], ArgStoreConst (Some (true)), "(select all patterns)");
