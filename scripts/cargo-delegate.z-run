@@ -399,37 +399,37 @@
 		( x86_64-linux-android )
 			_environment+=(
 					PATH="/opt/android-ndk/bin:${_path}"
-					CC=x86_64-linux-android21-clang
-					CXX=x86_64-linux-android21-clang++
+					CC=x86_64-linux-android-clang
+					CXX=x86_64-linux-android-clang++
 					AR=x86_64-linux-gnu-ar
-					CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER=x86_64-linux-android21-clang
+					CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER=x86_64-linux-android-clang
 				)
 		;;
 		( aarch64-linux-android )
 			_environment+=(
 					PATH="/opt/android-ndk/bin:${_path}"
-					CC=aarch64-linux-android21-clang
-					CXX=aarch64-linux-android21-clang++
+					CC=aarch64-linux-android-clang
+					CXX=aarch64-linux-android-clang++
 					AR=aarch64-linux-gnu-ar
-					CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER=aarch64-linux-android21-clang
+					CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER=aarch64-linux-android-clang
 				)
 		;;
 		( x86_64-apple-darwin )
 			_environment+=(
 					PATH="/opt/osxcross/bin:${_path}"
-					CC=x86_64-apple-darwin21.4-clang
-					CXX=x86_64-apple-darwin21.4-clang++
-					AR=x86_64-apple-darwin21.4-ar
-					CARGO_TARGET_X86_64_APPLE_DARWIN_LINKER=x86_64-apple-darwin21.4-clang
+					CC=x86_64-apple-darwin-clang
+					CXX=x86_64-apple-darwin-clang++
+					AR=x86_64-apple-darwin-ar
+					CARGO_TARGET_X86_64_APPLE_DARWIN_LINKER=x86_64-apple-darwin-clang
 				)
 		;;
 		( aarch64-apple-darwin )
 			_environment+=(
 					PATH="/opt/osxcross/bin:${_path}"
-					CC=arm64-apple-darwin21.4-clang
-					CXX=arm64-apple-darwin21.4-clang++
-					AR=arm64-apple-darwin21.4-ar
-					CARGO_TARGET_AARCH64_APPLE_DARWIN_LINKER=arm64-apple-darwin21.4-clang
+					CC=arm64-apple-darwin-clang
+					CXX=arm64-apple-darwin-clang++
+					AR=arm64-apple-darwin-ar
+					CARGO_TARGET_AARCH64_APPLE_DARWIN_LINKER=arm64-apple-darwin-clang
 				)
 		;;
 		( x86_64-pc-windows-gnu )

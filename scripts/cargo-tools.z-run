@@ -139,7 +139,7 @@
 		fi
 		
 		if true ; then
-			rsync -i -a --chmod F0755 -- \
+			rsync -i -c -a --chmod F0755 -- \
 					"${_builds}/${_bin}${_bin_suffix}" \
 					"${_output}" \
 			#
