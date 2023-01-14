@@ -40,6 +40,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.add_option (&["--sha1"], ArgStoreConst (Some (Family::SHA1)), "(use SHA1)")
 				.add_option (&["--sha2"], ArgStoreConst (Some (Family::SHA2)), "(use SHA2)")
 				.add_option (&["--sha3"], ArgStoreConst (Some (Family::SHA3)), "(use SHA3)")
+				.add_option (&["--blake2"], ArgStoreConst (Some (Family::Blake2)), "(use Blake2s or Blake2b)")
 				.add_option (&["--blake2s"], ArgStoreConst (Some (Family::Blake2s)), "(use Blake2s)")
 				.add_option (&["--blake2b"], ArgStoreConst (Some (Family::Blake2b)), "(use Blake2b)")
 				.add_option (&["--blake3"], ArgStoreConst (Some (Family::Blake3)), "(use Blake3)")
