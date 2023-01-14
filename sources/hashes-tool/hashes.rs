@@ -81,12 +81,13 @@ fn hash_fixed <Hasher> (mut _hasher : Hasher, _input : impl Input, _output : &mu
 {
 	hash_update (&mut _hasher, _input) .else_wrap (0x3322631d) ?;
 	
+	let _output_size = _output.len ();
 	let _hash_full = _hasher.finalize_fixed ();
-	if _hash_full.len () != _output.len () {
+	if _hash_full.len () < _output_size {
 		fail! (0x529b2c3f);
 	}
 	
-	_output.copy_from_slice (&_hash_full);
+	_output.copy_from_slice (&_hash_full[0.._output_size]);
 	
 	Ok (())
 }
