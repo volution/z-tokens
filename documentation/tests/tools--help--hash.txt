@@ -17,6 +17,10 @@ Optional arguments:
   --blake2b             (use Blake2b)
   --blake3              (use Blake3)
   --git-sha1            (use Git SHA1 flavour)
+  --argon2              (use one of Argon2 family) !!! EXPERIMENTAL !!!
+  --argon2d             (use Argon2d) !!! EXPERIMENTAL !!!
+  --argon2i             (use Argon2i) !!! EXPERIMENTAL !!!
+  --argon2id            (use Argon2id) !!! EXPERIMENTAL !!!
   -s,--size {size}      (hash output size in bytes)
   --8b,--1B             (output 8 bits / 1 byte)
   --16b,--2B            (output 16 bits / 2 bytes)

@@ -103,4 +103,9 @@ hash / blake2s / default :: hash --blake2s --token 1234
 hash / blake2b / default :: hash --blake2b --token 1234
 hash / blake3 / default :: hash --blake3 --token 1234
 hash / blake3 / size-128 :: hash --blake3 --token 1234 --size 128
+hash / argon2 / default :: hash --argon2 --token 1234
+hash / argon2 / size-16 :: hash --argon2 --token 1234 --size 16
+hash / argon2d / size-16 :: hash --argon2d --token 1234 --size 16
+hash / argon2i / size-16 :: hash --argon2i --token 1234 --size 16
+hash / argon2id / size-16 :: hash --argon2id --token 1234 --size 16
 

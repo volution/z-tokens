@@ -1,0 +1,3 @@
+>>  z-tokens hash --argon2i --token 1234 --size 16
+
+de13806646c9756813e35a126d6ad
