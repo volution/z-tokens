@@ -68,6 +68,13 @@ pub fn hash (_algorithm : Algorithm, _output_size : usize, _input : impl Input) 
 		Algorithm::Blake3 =>
 			hash_extendable (::blake3::Hasher::new (), _input, &mut _output) ?,
 		
+		Algorithm::Argon2d =>
+			hash_argon (::argon2::Algorithm::Argon2d, _input, &mut _output) ?,
+		Algorithm::Argon2i =>
+			hash_argon (::argon2::Algorithm::Argon2i, _input, &mut _output) ?,
+		Algorithm::Argon2id =>
+			hash_argon (::argon2::Algorithm::Argon2id, _input, &mut _output) ?,
+		
 	}
 	
 	Ok (_output)
@@ -107,7 +114,6 @@ fn hash_variable <Hasher> (mut _hasher : Hasher, _input : impl Input, _output : 
 fn hash_extendable <Hasher> (mut _hasher : Hasher, _input : impl Input, _output : &mut [u8]) -> HashResult
 		where Hasher : digest::ExtendableOutput + digest::Update
 {
-	
 	hash_update (&mut _hasher, _input) .else_wrap (0x5df214fb) ?;
 	
 	_hasher.finalize_xof_into (_output);
@@ -119,11 +125,38 @@ fn hash_extendable <Hasher> (mut _hasher : Hasher, _input : impl Input, _output 
 fn hash_update <Hasher> (_hasher : &mut Hasher, mut _input : impl Input) -> HashResult
 		where Hasher : digest::Update
 {
-	
 	while let Some (_data) = _input.input () .else_wrap (0x17507faa) ? {
 		_hasher.update (_data);
 	}
 	
 	Ok (())
 }
+
+
+
+
+fn hash_argon (_algorithm : ::argon2::Algorithm, mut _input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	const M_COST_MAX : u32 = 1024 * 1024;
+	const M_COST_BASE : u32 = 16 * 1024;
+	const T_COST_BASE : u32 = 8;
+	const P_COST : u32 = 1;
+	
+	let _output_size = _output.len ();
+	let _m_cost = u32::min (_output_size as u32 * M_COST_BASE, M_COST_MAX);
+	let _t_cost = u32::max (_output_size as u32 * T_COST_BASE / (M_COST_MAX / M_COST_BASE / 4), T_COST_BASE);
+	
+//	::std::eprintln! ("[dd] [65403625]  output {}, m_cost {}, t_cost {}", _output_size, _m_cost / 1024, _t_cost);
+	
+	let mut _input_hash = vec! [0u8; 64];
+	hash_fixed (::blake2::Blake2b512::new (), _input, &mut _input_hash) ?;
+	
+	let _hasher_parameters = ::argon2::Params::new (_m_cost, _t_cost, P_COST, Some (_output_size)) .else_wrap (0x8acd25cd) ?;
+	let _hasher = ::argon2::Argon2::new (_algorithm, ::argon2::Version::V0x13, _hasher_parameters);
+	
+	_hasher.hash_password_into (&_input_hash, &_input_hash, _output) .else_wrap (0xce42692d) ?;
+	
+	Ok (())
+}
+
 

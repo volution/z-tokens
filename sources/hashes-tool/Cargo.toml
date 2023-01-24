@@ -70,4 +70,6 @@ sha1 = { version = "*", default-features = false, features = ["std"] }
 
 md-5 = { version = "*", default-features = false, features = ["std"] }
 
+argon2 = { version = "*", default-features = false, features = ["std"] }
+
 

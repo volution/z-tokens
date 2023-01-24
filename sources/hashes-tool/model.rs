@@ -31,6 +31,12 @@ pub enum Family {
 	Blake2,
 	Blake2s,
 	Blake2b,
+	
+	Argon2,
+	Argon2d,
+	Argon2i,
+	Argon2id,
+	
 }
 
 
@@ -56,6 +62,11 @@ pub enum Algorithm {
 	Blake2s,
 	Blake2b,
 	Blake3,
+	
+	Argon2d,
+	Argon2i,
+	Argon2id,
+	
 }
 
 
@@ -86,6 +97,10 @@ impl Family {
 			Family::Blake2s => (1, 32, 32),
 			Family::Blake2b => (1, 64, 64),
 			Family::Blake3 => (1, OUTPUT_SIZE_MAX, 256 / 8),
+			Family::Argon2 |
+			Family::Argon2d |
+			Family::Argon2i |
+			Family::Argon2id => (4, OUTPUT_SIZE_MAX, 32),
 		}
 	}
 	
@@ -112,6 +127,11 @@ impl Family {
 			Family::Blake2b if _output_size <= 64 => Ok (Algorithm::Blake2b),
 			
 			Family::Blake3 => Ok (Algorithm::Blake3),
+			
+			Family::Argon2 => Ok (Algorithm::Argon2id),
+			Family::Argon2d => Ok (Algorithm::Argon2d),
+			Family::Argon2i => Ok (Algorithm::Argon2i),
+			Family::Argon2id => Ok (Algorithm::Argon2id),
 			
 			_ =>
 				fail! (0x36b18fd0),
