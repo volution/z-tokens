@@ -17,6 +17,11 @@ use ::z_tokens_hashes_tool::{
 		tool::main as main_hash,
 	};
 
+#[ cfg (feature = "z-tokens-exchange-tool") ]
+use ::z_tokens_exchange_tool::{
+		tool::main_create_keys as main_exchange_create_keys,
+	};
+
 
 #[ cfg (feature = "zt-runtime-allocator") ]
 use ::z_tokens_runtime::allocator;
@@ -127,6 +132,12 @@ pub fn main () -> MainResult<ExitCode> {
 		(&["hash"], _) => {
 			_arguments.insert (0, String::from ("z-tokens hash"));
 			main_hash (_arguments) .else_wrap (0xff8dcc61)
+		}
+		
+		#[ cfg (feature = "z-tokens-exchange-tool") ]
+		(&["exchange", "create-keys"], _) => {
+			_arguments.insert (0, String::from ("z-tokens exchange create-keys"));
+			main_exchange_create_keys (_arguments) .else_wrap (0x0df94b2b)
 		}
 		
 		#[ cfg (feature = "zt-embedded-help") ]
