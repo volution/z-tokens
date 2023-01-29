@@ -72,26 +72,32 @@ macro_rules! impl_sensitive {
 
 #[ allow (unused_macros) ]
 macro_rules! impl_sensitive_zeroize {
-	( <{ $( $_template_a : tt )* }> $_type : ty where <{ $( $_where : tt )+ }> ) => {
-		impl < $( $_template_a )* > Sensitive for $_type where $( $_where )+ {
+	( impl $( $_token : tt )+ ) => {
+		impl $( $_token )+ {
 			fn erase (&mut self) -> () {
 				::zeroize::Zeroize::zeroize (self);
 			}
 		}
+	};
+	( for { $( $_type : ty, )* }) => {
+		$(
+			impl_sensitive_zeroize! (impl Sensitive for $_type);
+		)*
+	};
+	( <{ $( $_template_a : tt )* }> $_type : ty where <{ $( $_where : tt )+ }> ) => {
+		impl_sensitive_zeroize! ( impl < $( $_template_a )* > Sensitive for $_type where $( $_where )+ );
+//		impl_sensitive_zeroize! ( impl < $( $_template_a )* > Sensitive for [$_type] where $( $_where )+ );
+//		impl_sensitive_zeroize! ( impl < const N : usize, $( $_template_a )* > Sensitive for [$_type; N] where $( $_where )+ );
 	};
 	( <{ $( $_template_a : tt )* }> $_type : ty ) => {
-		impl < $( $_template_a )* > Sensitive for $_type {
-			fn erase (&mut self) -> () {
-				::zeroize::Zeroize::zeroize (self);
-			}
-		}
+		impl_sensitive_zeroize! ( impl < $( $_template_a )* > Sensitive for $_type );
+//		impl_sensitive_zeroize! ( impl < $( $_template_a )* > Sensitive for [$_type] );
+//		impl_sensitive_zeroize! ( impl < const N : usize, $( $_template_a )* > Sensitive for [$_type; N] );
 	};
 	( $_type : ty ) => {
-		impl Sensitive for $_type {
-			fn erase (&mut self) -> () {
-				::zeroize::Zeroize::zeroize (self);
-			}
-		}
+		impl_sensitive_zeroize! ( impl Sensitive for $_type );
+//		impl_sensitive_zeroize! ( impl Sensitive for [$_type] );
+//		impl_sensitive_zeroize! ( impl < const N : usize > Sensitive for [$_type; N] );
 	};
 }
 
