@@ -6,9 +6,10 @@ use ::vrl_errors::*;
 
 use ::z_tokens_runtime::{
 		memory::Rb,
-		sensitive::Sensitive,
 		sensitive::SensitiveZeroize,
 		sensitive::SensitiveIgnored,
+		sensitive::zeroize_and_drop,
+		sensitive::Zeroize as _,
 	};
 
 
@@ -26,13 +27,23 @@ define_error! (pub KeyCreateError, result : KeyCreateResult);
 pub struct SenderPrivateKey (Rb<SensitiveZeroize<x25519::StaticSecret>>);
 pub struct SenderPublicKey (Rb<SensitiveIgnored<x25519::PublicKey>>);
 
-pub struct ReceiverPrivateKey (Rb<SensitiveZeroize<x25519::StaticSecret>>);
-pub struct ReceiverPublicKey (Rb<SensitiveIgnored<x25519::PublicKey>>);
+pub struct RecipientPrivateKey (Rb<SensitiveZeroize<x25519::StaticSecret>>);
+pub struct RecipientPublicKey (Rb<SensitiveIgnored<x25519::PublicKey>>);
 
 
 
 
 impl SenderPrivateKey {
+	
+	pub fn decode_and_zeroize (_string : String) -> KeyEncodingResult<Self> {
+		let _outcome = Self::decode (&_string);
+		zeroize_and_drop (_string);
+		_outcome
+	}
+	
+	pub fn decode (_string : &str) -> KeyEncodingResult<Self> {
+		decode_sender_private_key (_string)
+	}
 	
 	pub fn encode (&self) -> KeyEncodingResult<Rb<String>> {
 		encode_sender_private_key (self)
@@ -42,6 +53,16 @@ impl SenderPrivateKey {
 
 impl SenderPublicKey {
 	
+	pub fn decode_and_zeroize (_string : String) -> KeyEncodingResult<Self> {
+		let _outcome = Self::decode (&_string);
+		zeroize_and_drop (_string);
+		_outcome
+	}
+	
+	pub fn decode (_string : &str) -> KeyEncodingResult<Self> {
+		decode_sender_public_key (_string)
+	}
+	
 	pub fn encode (&self) -> KeyEncodingResult<Rb<String>> {
 		encode_sender_public_key (self)
 	}
@@ -50,18 +71,38 @@ impl SenderPublicKey {
 
 
 
-impl ReceiverPrivateKey {
+impl RecipientPrivateKey {
+	
+	pub fn decode_and_zeroize (_string : String) -> KeyEncodingResult<Self> {
+		let _outcome = Self::decode (&_string);
+		zeroize_and_drop (_string);
+		_outcome
+	}
+	
+	pub fn decode (_string : &str) -> KeyEncodingResult<Self> {
+		decode_recipient_private_key (_string)
+	}
 	
 	pub fn encode (&self) -> KeyEncodingResult<Rb<String>> {
-		encode_receiver_private_key (self)
+		encode_recipient_private_key (self)
 	}
 }
 
 
-impl ReceiverPublicKey {
+impl RecipientPublicKey {
+	
+	pub fn decode_and_zeroize (_string : String) -> KeyEncodingResult<Self> {
+		let _outcome = Self::decode (&_string);
+		zeroize_and_drop (_string);
+		_outcome
+	}
+	
+	pub fn decode (_string : &str) -> KeyEncodingResult<Self> {
+		decode_recipient_public_key (_string)
+	}
 	
 	pub fn encode (&self) -> KeyEncodingResult<Rb<String>> {
-		encode_receiver_public_key (self)
+		encode_recipient_public_key (self)
 	}
 }
 
@@ -85,7 +126,7 @@ pub fn decode_sender_private_key (_string : &str) -> KeyEncodingResult<SenderPri
 	let mut _key_data = [0u8; 32];
 	decode_raw (SENDER_PRIVATE_KEY_ENCODED_PREFIX, _string, &mut _key_data) ?;
 	let _key = x25519::StaticSecret::from (_key_data);
-	Sensitive::erase (&mut SensitiveZeroize (_key_data));
+	zeroize_and_drop (_key_data);
 	Ok (SenderPrivateKey (Rb::new (_key.into ())))
 }
 
@@ -94,26 +135,26 @@ pub fn decode_sender_public_key (_string : &str) -> KeyEncodingResult<SenderPubl
 	let mut _key_data = [0u8; 32];
 	decode_raw (SENDER_PUBLIC_KEY_ENCODED_PREFIX, _string, &mut _key_data) ?;
 	let _key = x25519::PublicKey::from (_key_data);
-	Sensitive::erase (&mut SensitiveZeroize (_key_data));
+	_key_data.zeroize ();
 	Ok (SenderPublicKey (Rb::new (_key.into ())))
 }
 
 
-pub fn decode_receiver_private_key (_string : &str) -> KeyEncodingResult<ReceiverPrivateKey> {
+pub fn decode_recipient_private_key (_string : &str) -> KeyEncodingResult<RecipientPrivateKey> {
 	let mut _key_data = [0u8; 32];
 	decode_raw (RECEIVER_PRIVATE_KEY_ENCODED_PREFIX, _string, &mut _key_data) ?;
 	let _key = x25519::StaticSecret::from (_key_data);
-	Sensitive::erase (&mut SensitiveZeroize (_key_data));
-	Ok (ReceiverPrivateKey (Rb::new (_key.into ())))
+	zeroize_and_drop (_key_data);
+	Ok (RecipientPrivateKey (Rb::new (_key.into ())))
 }
 
 
-pub fn decode_receiver_public_key (_string : &str) -> KeyEncodingResult<ReceiverPublicKey> {
+pub fn decode_recipient_public_key (_string : &str) -> KeyEncodingResult<RecipientPublicKey> {
 	let mut _key_data = [0u8; 32];
 	decode_raw (RECEIVER_PUBLIC_KEY_ENCODED_PREFIX, _string, &mut _key_data) ?;
 	let _key = x25519::PublicKey::from (_key_data);
-	Sensitive::erase (&mut SensitiveZeroize (_key_data));
-	Ok (ReceiverPublicKey (Rb::new (_key.into ())))
+	zeroize_and_drop (_key_data);
+	Ok (RecipientPublicKey (Rb::new (_key.into ())))
 }
 
 
@@ -139,8 +180,8 @@ fn decode_raw (_prefix : &str, _encoded : &str, _data : &mut [u8]) -> KeyEncodin
 	_data.copy_from_slice (&_data_actual);
 	
 	let _bech_nibles : Vec<u8> = unsafe { mem::transmute (_bech_nibles) };
-	Sensitive::erase (&mut SensitiveZeroize (_data_actual));
-	Sensitive::erase (&mut SensitiveZeroize (_bech_nibles));
+	zeroize_and_drop (_bech_nibles);
+	zeroize_and_drop (_data_actual);
 	
 	Ok (())
 }
@@ -161,14 +202,14 @@ pub fn encode_sender_public_key (_key : &SenderPublicKey) -> KeyEncodingResult<R
 }
 
 
-pub fn encode_receiver_private_key (_key : &ReceiverPrivateKey) -> KeyEncodingResult<Rb<String>> {
+pub fn encode_recipient_private_key (_key : &RecipientPrivateKey) -> KeyEncodingResult<Rb<String>> {
 	let _key : &x25519::StaticSecret = &_key.0.0;
 	let _bytes : &[u8; 32] = unsafe { mem::transmute (_key) };
 	encode_raw (RECEIVER_PRIVATE_KEY_ENCODED_PREFIX, _bytes)
 }
 
 
-pub fn encode_receiver_public_key (_key : &ReceiverPublicKey) -> KeyEncodingResult<Rb<String>> {
+pub fn encode_recipient_public_key (_key : &RecipientPublicKey) -> KeyEncodingResult<Rb<String>> {
 	let _bytes = _key.0.0.as_bytes ();
 	encode_raw (RECEIVER_PUBLIC_KEY_ENCODED_PREFIX, _bytes)
 }
@@ -189,7 +230,7 @@ fn encode_raw (_prefix : &str, _data : &[u8]) -> KeyEncodingResult<Rb<String>> {
 	::bech32::encode_to_fmt (&mut _bech_string, _prefix, &_bech_nibles, ::bech32::Variant::Bech32m) .else_wrap (0x9ee94010) ? .else_wrap (0x49c6b0af) ?;
 	
 	let _bech_nibles : Vec<u8> = unsafe { mem::transmute (_bech_nibles) };
-	Sensitive::erase (&mut SensitiveZeroize (_bech_nibles));
+	zeroize_and_drop (_bech_nibles);
 	
 	Ok (Rb::new (_bech_string))
 }
@@ -209,10 +250,10 @@ pub fn create_sender_pair () -> KeyCreateResult<(SenderPrivateKey, SenderPublicK
 }
 
 
-pub fn create_receiver_pair () -> KeyCreateResult<(ReceiverPrivateKey, ReceiverPublicKey)> {
+pub fn create_recipient_pair () -> KeyCreateResult<(RecipientPrivateKey, RecipientPublicKey)> {
 	let (_private, _public) = create_x25519_pair_from_random () ?;
-	let _private = ReceiverPrivateKey (Rb::new (_private.into ()));
-	let _public = ReceiverPublicKey (Rb::new (_public.into ()));
+	let _private = RecipientPrivateKey (Rb::new (_private.into ()));
+	let _public = RecipientPublicKey (Rb::new (_public.into ()));
 	Ok ((_private, _public))
 }
 

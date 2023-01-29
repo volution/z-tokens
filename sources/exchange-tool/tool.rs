@@ -6,6 +6,13 @@ use ::z_tokens_runtime::flags::*;
 
 
 use crate::keys::*;
+use crate::crypto::*;
+
+
+use ::z_tokens_runtime::{
+		sensitive::zeroize_and_drop,
+		sensitive::Zeroize as _,
+	};
 
 
 
@@ -23,7 +30,7 @@ const STDOUT_BUFFER_SIZE : usize = 8 * 1024;
 pub fn main_create_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _sender_generate : Option<bool> = None;
-	let mut _receiver_generate : Option<bool> = None;
+	let mut _recipient_generate : Option<bool> = None;
 	let mut _write_comments : Option<bool> = None;
 	
 	{
@@ -34,10 +41,10 @@ pub fn main_create_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.add_option (&["-s"], ArgStoreConst (Some (true)), "(generate sender key pair)")
 				.add_option (&["--sender"], ArgStoreOption, "");
 		
-		_parser.refer (&mut _receiver_generate)
+		_parser.refer (&mut _recipient_generate)
 				.metavar ("{enabled}")
-				.add_option (&["-r"], ArgStoreConst (Some (true)), "(generate receiver key pair)")
-				.add_option (&["--receiver"], ArgStoreOption, "");
+				.add_option (&["-r"], ArgStoreConst (Some (true)), "(generate recipient key pair)")
+				.add_option (&["--recipient"], ArgStoreOption, "");
 		
 		_parser.refer (&mut _write_comments)
 				.metavar ("{enabled}")
@@ -49,9 +56,9 @@ pub fn main_create_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		}
 	}
 	
-	let _any_generate_explicit = _sender_generate.is_some () || _receiver_generate.is_some ();
+	let _any_generate_explicit = _sender_generate.is_some () || _recipient_generate.is_some ();
 	let _sender_generate = _sender_generate.unwrap_or (! _any_generate_explicit);
-	let _receiver_generate = _receiver_generate.unwrap_or (! _any_generate_explicit);
+	let _recipient_generate = _recipient_generate.unwrap_or (! _any_generate_explicit);
 	let _write_comments = _write_comments.unwrap_or (true);
 	
 	let mut _output = BufWriter::with_capacity (STDOUT_BUFFER_SIZE, stdout_locked ());
@@ -74,22 +81,22 @@ pub fn main_create_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		writeln! (&mut _output, "{}", _sender_public.deref ()) .else_wrap (0xd2699fde) ?;
 	}
 	
-	if _receiver_generate {
+	if _recipient_generate {
 		
-		let (_receiver_private, _receiver_public) = create_receiver_pair () .else_wrap (0x32a9769f) ?;
+		let (_recipient_private, _recipient_public) = create_recipient_pair () .else_wrap (0x32a9769f) ?;
 		
-		let _receiver_private = _receiver_private.encode () .else_wrap (0x9845b620) ?;
-		let _receiver_public = _receiver_public.encode () .else_wrap (0x7262954a) ?;
-		
-		if _write_comments {
-			writeln! (&mut _output, "## receiver private key") .else_wrap (0xad864cff) ?;
-		}
-		writeln! (&mut _output, "{}", _receiver_private.deref ()) .else_wrap (0x8f499bee) ?;
+		let _recipient_private = _recipient_private.encode () .else_wrap (0x9845b620) ?;
+		let _recipient_public = _recipient_public.encode () .else_wrap (0x7262954a) ?;
 		
 		if _write_comments {
-			writeln! (&mut _output, "## receiver public key") .else_wrap (0xc7fa9e1b) ?;
+			writeln! (&mut _output, "## recipient private key") .else_wrap (0xad864cff) ?;
 		}
-		writeln! (&mut _output, "{}", _receiver_public.deref ()) .else_wrap (0x71da88be) ?;
+		writeln! (&mut _output, "{}", _recipient_private.deref ()) .else_wrap (0x8f499bee) ?;
+		
+		if _write_comments {
+			writeln! (&mut _output, "## recipient public key") .else_wrap (0xc7fa9e1b) ?;
+		}
+		writeln! (&mut _output, "{}", _recipient_public.deref ()) .else_wrap (0x71da88be) ?;
 	}
 	
 	drop (_output.into_inner () .else_replace (0x8ab3f5e2) ?);
@@ -97,4 +104,91 @@ pub fn main_create_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	Ok (ExitCode::SUCCESS)
 }
 
+
+
+
+pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
+	
+	let mut _sender_private : Option<String> = None;
+	let mut _recipient_public : Option<String> = None;
+	
+	{
+		let mut _parser = create_parser () .else_wrap (0x608139b1) ?;
+		
+		_parser.refer (&mut _sender_private)
+				.metavar ("{sender}")
+				.add_option (&["-s", "--sender"], ArgStoreOption, "(sender private key)");
+		
+		_parser.refer (&mut _recipient_public)
+				.metavar ("{recipient}")
+				.add_option (&["-r", "--recipient"], ArgStoreOption, "(recipient public key)");
+		
+		if execute_parser (_parser, _arguments) .else_wrap (0xe3a49130) ? {
+			return Ok (ExitCode::SUCCESS);
+		}
+	}
+	
+	let _sender_private = _sender_private.else_wrap (0xc9683cf5) ?;
+	let _recipient_public = _recipient_public.else_wrap (0xdb9a095f) ?;
+	
+	let _sender_private = SenderPrivateKey::decode_and_zeroize (_sender_private) .else_wrap (0x750a42c0) ?;
+	let _recipient_public = RecipientPublicKey::decode_and_zeroize (_recipient_public) .else_wrap (0x233175e9) ?;
+	
+	let _decrypted = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) ?;
+	
+	fail! (0x023d2e00);
+}
+
+
+
+
+pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
+	
+	let mut _recipient_private : Option<String> = None;
+	let mut _sender_public : Option<String> = None;
+	
+	{
+		let mut _parser = create_parser () .else_wrap (0x608139b1) ?;
+		
+		_parser.refer (&mut _recipient_private)
+				.metavar ("{sender}")
+				.add_option (&["-r", "--recipient"], ArgStoreOption, "(recipient private key)");
+		
+		_parser.refer (&mut _sender_public)
+				.metavar ("{recipient}")
+				.add_option (&["-s", "--sender"], ArgStoreOption, "(sender public key)");
+		
+		if execute_parser (_parser, _arguments) .else_wrap (0xe3a49130) ? {
+			return Ok (ExitCode::SUCCESS);
+		}
+	}
+	
+	let _recipient_private = _recipient_private.else_wrap (0xc9683cf5) ?;
+	let _sender_public = _sender_public.else_wrap (0xdb9a095f) ?;
+	
+	let _recipient_private = SenderPrivateKey::decode_and_zeroize (_recipient_private) .else_wrap (0xd58c9ad4) ?;
+	let _sender_public = RecipientPublicKey::decode_and_zeroize (_sender_public) .else_wrap (0xbb6f004f) ?;
+	
+	let _encrypted = read_at_most (stdin_locked (), CRYPTO_ENCRYPTED_SIZE_MAX) ?;
+	
+	fail! (0x0b2816d0);
+}
+
+
+
+
+fn read_at_most (mut _stream : impl Read, _limit : usize) -> MainResult<Vec<u8>> {
+	
+	let mut _buffer = Vec::with_capacity (STDOUT_BUFFER_SIZE);
+	
+	// FIXME:  Actually impose limit!
+	_stream.read_to_end (&mut _buffer) .else_wrap (0xb0ef2873) ?;
+	
+	if _buffer.len () > _limit {
+		zeroize_and_drop (_buffer);
+		fail! (0x2d0cf0e1);
+	}
+	
+	Ok (_buffer)
+}
 

@@ -20,6 +20,8 @@ use ::z_tokens_hashes_tool::{
 #[ cfg (feature = "z-tokens-exchange-tool") ]
 use ::z_tokens_exchange_tool::{
 		tool::main_create_keys as main_exchange_create_keys,
+		tool::main_encrypt as main_exchange_encrypt,
+		tool::main_decrypt as main_exchange_decrypt,
 	};
 
 
@@ -138,6 +140,16 @@ pub fn main () -> MainResult<ExitCode> {
 		(&["exchange", "create-keys"], _) => {
 			_arguments.insert (0, String::from ("z-tokens exchange create-keys"));
 			main_exchange_create_keys (_arguments) .else_wrap (0x0df94b2b)
+		}
+		#[ cfg (feature = "z-tokens-exchange-tool") ]
+		(&["exchange", "send"], _) => {
+			_arguments.insert (0, String::from ("z-tokens exchange send"));
+			main_exchange_encrypt (_arguments) .else_wrap (0xef766e05)
+		}
+		#[ cfg (feature = "z-tokens-exchange-tool") ]
+		(&["exchange", "receive"], _) => {
+			_arguments.insert (0, String::from ("z-tokens exchange receive"));
+			main_exchange_decrypt (_arguments) .else_wrap (0xa73d3123)
 		}
 		
 		#[ cfg (feature = "zt-embedded-help") ]
