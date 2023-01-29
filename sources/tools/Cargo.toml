@@ -97,6 +97,7 @@ z-tokens-patterns-tool = { path = "../patterns-tool", optional = true, default-f
 z-tokens-encodings-tool = { path = "../encodings-tool", optional = true, default-features = false, features = [] }
 z-tokens-hashes-tool = { path = "../hashes-tool", optional = true, default-features = false, features = [] }
 z-tokens-secrets-tool = { path = "../secrets-tool", optional = true, default-features = false, features = [] }
+z-tokens-exchange-tool = { path = "../exchange-tool", optional = true, default-features = false, features = [] }
 z-tokens-runtime = { path = "../runtime", optional = true, default-features = false, features = [] }
 
 vrl-errors = { version = "*", default-features = false, features = [] }

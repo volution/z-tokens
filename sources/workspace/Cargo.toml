@@ -9,6 +9,7 @@ members = [
 	"../encodings-tool",
 	"../hashes-tool",
 	"../secrets-tool",
+	"../exchange-tool",
 	"../tools",
 	"..",
 ]
