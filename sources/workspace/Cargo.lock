@@ -868,8 +868,10 @@ dependencies = [
 name = "z-tokens-exchange-tool"
 version = "0.1.0"
 dependencies = [
+ "bech32",
  "blake3",
  "block-padding",
+ "rand",
  "salsa20",
  "vrl-errors",
  "vrl-preludes",

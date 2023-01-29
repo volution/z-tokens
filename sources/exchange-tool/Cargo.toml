@@ -63,5 +63,7 @@ x25519-dalek = { version = "*", default-features = false, features = ["std", "u6
 salsa20 = { version = "*", default-features = false, features = ["std"] }
 blake3 = { version = "*", default-features = false, features = ["std"] }
 block-padding = { version = "*", default-features = false, features = ["std"] }
+bech32 = { version = "*", default-features = false, features = ["std"] }
+rand = { version = "*", default-features = false, features = ["std", "std_rng", "getrandom", "small_rng"] }
 
 
