@@ -65,5 +65,6 @@ blake3 = { version = "*", default-features = false, features = ["std"] }
 block-padding = { version = "*", default-features = false, features = ["std"] }
 bech32 = { version = "*", default-features = false, features = ["std"] }
 rand = { version = "*", default-features = false, features = ["std", "getrandom"] }
+brotli = { version = "*", default-features = false, features = ["std"] }
 
 
