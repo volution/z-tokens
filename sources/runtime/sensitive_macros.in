@@ -75,7 +75,7 @@ macro_rules! impl_sensitive_zeroize {
 	( impl $( $_token : tt )+ ) => {
 		impl $( $_token )+ {
 			fn erase (&mut self) -> () {
-				::zeroize::Zeroize::zeroize (self);
+				$crate::sensitive::Zeroize::zeroize (self);
 			}
 		}
 	};

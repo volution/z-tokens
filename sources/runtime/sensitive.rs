@@ -17,7 +17,10 @@ pub trait Sensitive {
 }
 
 
-pub struct SensitiveZeroize <Value : ?Sized + ::zeroize::Zeroize> (pub Value);
+pub use ::zeroize::Zeroize;
+
+
+pub struct SensitiveZeroize <Value : ?Sized + Zeroize> (pub Value);
 pub struct SensitiveIgnored <Value : ?Sized> (pub Value);
 
 
@@ -27,9 +30,9 @@ pub struct SensitiveIgnored <Value : ?Sized> (pub Value);
 
 
 
-impl <Value : ?Sized + ::zeroize::Zeroize> Sensitive for SensitiveZeroize<Value> {
+impl <Value : ?Sized + Zeroize> Sensitive for SensitiveZeroize<Value> {
 	fn erase (&mut self) -> () {
-		::zeroize::Zeroize::zeroize (&mut self.0);
+		Zeroize::zeroize (&mut self.0);
 	}
 }
 
@@ -41,7 +44,7 @@ impl <Value : ?Sized> Sensitive for SensitiveIgnored<Value> {
 }
 
 
-impl <Value : Sized + ::zeroize::Zeroize> From<Value> for SensitiveZeroize<Value> {
+impl <Value : Sized + Zeroize> From<Value> for SensitiveZeroize<Value> {
 	fn from (_value : Value) -> Self {
 		SensitiveZeroize (_value)
 	}
@@ -174,8 +177,15 @@ impl_sensitive_zeroize! (for { i8, i16, i32, i64, i128, isize, });
 impl_sensitive_zeroize! (char);
 impl_sensitive_zeroize! (String);
 
-// impl_sensitive_zeroize! (impl <V> Sensitive for V where V : ::zeroize::Zeroize);
-impl_sensitive_zeroize! (impl <V> Sensitive for [V] where [V] : ::zeroize::Zeroize);
-impl_sensitive_zeroize! (impl <const N : usize, V> Sensitive for [V; N] where [V; N] : ::zeroize::Zeroize);
+// impl_sensitive_zeroize! (impl <V> Sensitive for V where V : Zeroize);
+impl_sensitive_zeroize! (impl <V> Sensitive for [V] where [V] : Zeroize);
+impl_sensitive_zeroize! (impl <const N : usize, V> Sensitive for [V; N] where [V; N] : Zeroize);
 
+
+
+
+pub fn zeroize_and_drop <Value : Sized + Zeroize> (mut _value : Value) -> () {
+	Zeroize::zeroize (&mut _value);
+	mem::drop (_value);
+}
 
