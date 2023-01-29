@@ -46,6 +46,7 @@ default = [
 	"z-tokens-hashes-tool/default",
 #!	"z-tokens-encodings-tool/default",
 #!	"z-tokens-secrets-tool/default",
+	"z-tokens-exchange-tool/default",
 	"z-tokens-runtime/default",
 ]
 
@@ -55,6 +56,7 @@ development = [
 	"z-tokens-encodings-tool/development",
 	"z-tokens-hashes-tool/development",
 	"z-tokens-secrets-tool/development",
+	"z-tokens-exchange-tool/development",
 	"z-tokens-runtime/development",
 ]
 
@@ -66,6 +68,7 @@ release = [
 	"z-tokens-hashes-tool/release",
 #!	"z-tokens-encodings-tool/release",
 #!	"z-tokens-secrets-tool/release",
+	"z-tokens-exchange-tool/release",
 	"z-tokens-runtime/release",
 ]
 
