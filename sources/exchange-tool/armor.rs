@@ -34,16 +34,16 @@ pub fn armor (_decoded : &[u8], _encoded : &mut Vec<u8>) -> ArmorResult {
 	let mut _compress_buffer = Vec::with_capacity (_compress_capacity);
 	compress (_decoded, &mut _compress_buffer) .else_wrap (0x08e19178) ?;
 	
-	{
-		let mut _buffer = [0u8; 4];
-		encode_u32 (_decoded_len as u32, &mut _buffer);
-		_compress_buffer.extend_from_slice (&_buffer);
-	}
+	encode_u32_push (_decoded_len as u32, &mut _compress_buffer);
 	
 	let _encode_capacity = encode_capacity_max (_compress_buffer.len ()) .else_wrap (0x00bf84c9) ?;
 	
 	let mut _encode_buffer = Vec::with_capacity (_encode_capacity);
 	encode (&_compress_buffer, &mut _encode_buffer) .else_wrap (0x080c7733) ?;
+	
+	if _encode_buffer.len () > ARMOR_ENCODED_SIZE_MAX {
+		fail! (0xb894e943);
+	}
 	
 	// NOTE:  This last step is an overhead, but it ensures an all-or-nothing processing!
 	_encoded.extend_from_slice (&_encode_buffer);
@@ -67,15 +67,7 @@ pub fn dearmor (_encoded : &[u8], _decoded : &mut Vec<u8>) -> ArmorResult {
 	let mut _decode_buffer = Vec::with_capacity (_decode_capacity);
 	decode (_encoded, &mut _decode_buffer) .else_wrap (0x6432ccd9) ?;
 	
-	let mut _decoded_len : usize;
-	{
-		let _decode_len = _decode_buffer.len ();
-		if _decode_len < 4 {
-			fail! (0x5fa037f7);
-		}
-		_decoded_len = decode_u32_slice (&_decode_buffer[_decode_len - 4 ..]) as usize;
-		_decode_buffer.truncate (_decode_len - 4);
-	}
+	let _decoded_len = decode_u32_pop (&mut _decode_buffer) .else_wrap (0xa8d32a02) ? as usize;
 	
 	if _decoded_len > ARMOR_DECODED_SIZE_MAX {
 		fail! (0x433f5bb6);

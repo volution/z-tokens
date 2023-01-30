@@ -217,6 +217,7 @@ pub(crate) fn encode_u32 (_value : u32, _buffer : &mut [u8; 4]) -> () {
 	encode_u32_slice (_value, _buffer.as_mut_slice ())
 }
 
+#[ allow (dead_code) ]
 pub(crate) fn decode_u32 (_buffer : &[u8; 4]) -> u32 {
 	decode_u32_slice (_buffer.as_slice ())
 }
@@ -230,5 +231,22 @@ pub(crate) fn encode_u32_slice (_value : u32, _buffer : &mut [u8]) -> () {
 pub(crate) fn decode_u32_slice (_buffer : &[u8]) -> u32 {
 	use ::byteorder::ByteOrder as _;
 	::byteorder::BigEndian::read_u32 (_buffer)
+}
+
+
+pub(crate) fn encode_u32_push (_value : u32, _buffer : &mut Vec<u8>) -> () {
+	_buffer.push (0); _buffer.push (0); _buffer.push (0); _buffer.push (0);
+	let _buffer_len = _buffer.len ();
+	encode_u32_slice (_value, &mut _buffer[_buffer_len - 4 ..]);
+}
+
+pub(crate) fn decode_u32_pop (_buffer : &mut Vec<u8>) -> Option<u32> {
+	let _buffer_len = _buffer.len ();
+	if _buffer_len < 4 {
+		return None;
+	}
+	let _value = decode_u32_slice (&_buffer[_buffer_len - 4 ..]);
+	_buffer.truncate (_buffer_len - 4);
+	Some (_value)
 }
 

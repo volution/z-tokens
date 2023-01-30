@@ -53,11 +53,7 @@ pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _
 	let mut _compress_buffer = Vec::with_capacity (_compress_capacity);
 	compress (_decrypted, &mut _compress_buffer) .else_wrap (0xa9fadcdc) ?;
 	
-	{
-		let mut _buffer = [0u8; 4];
-		encode_u32 (_decrypted_len as u32, &mut _buffer);
-		_compress_buffer.extend_from_slice (&_buffer);
-	}
+	encode_u32_push (_decrypted_len as u32, &mut _compress_buffer);
 	
 	{
 		let _padding = CRYPTO_ENCRYPTED_PADDING - (_compress_buffer.len () % CRYPTO_ENCRYPTED_PADDING);
@@ -90,6 +86,10 @@ pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _
 	
 	let mut _encode_buffer = Vec::with_capacity (_encode_capacity);
 	encode (&_compress_buffer, &mut _encode_buffer) .else_wrap (0x5bc239f9) ?;
+	
+	if _encode_buffer.len () > CRYPTO_ENCRYPTED_SIZE_MAX {
+		fail! (0x635f1fe4);
+	}
 	
 	// NOTE:  This last step is an overhead, but it ensures an all-or-nothing processing!
 	_encrypted.extend_from_slice (&_encode_buffer);
@@ -167,15 +167,7 @@ pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _
 		_decode_buffer.truncate (_decode_len - (_padding as usize));
 	}
 	
-	let mut _decrypted_len : usize;
-	{
-		let _decode_len = _decode_buffer.len ();
-		if _decode_len < 4 {
-			fail! (0x60af3a4c);
-		}
-		_decrypted_len = decode_u32_slice (&_decode_buffer[_decode_len - 4 ..]) as usize;
-		_decode_buffer.truncate (_decode_len - 4);
-	}
+	let _decrypted_len = decode_u32_pop (&mut _decode_buffer) .else_wrap (0xa8b8f7d8) ? as usize;
 	
 	if _decrypted_len > CRYPTO_DECRYPTED_SIZE_MAX {
 		fail! (0x433f5bb6);
@@ -261,40 +253,6 @@ fn derive_keys (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, 
 			.into ();
 	
 	Ok ((_encryption_key, _encryption_nonce, _authentication_key))
-}
-
-
-
-
-
-
-
-
-fn encrypted_max_len (_decrypted_len : usize) -> CryptoResult<usize> {
-	
-	if _decrypted_len > CRYPTO_DECRYPTED_SIZE_MAX {
-		fail! (0xf486af87);
-	}
-	
-	let _encrypted_len = ((((_decrypted_len + 4) / CRYPTO_ENCRYPTED_PADDING) + 1) * CRYPTO_ENCRYPTED_PADDING) + CRYPTO_ENCRYPTED_OVERHEAD;
-	
-	Ok (_encrypted_len)
-}
-
-
-fn decrypted_max_len (_encrypted_len : usize) -> CryptoResult<usize> {
-	
-	if _encrypted_len > CRYPTO_ENCRYPTED_SIZE_MAX {
-		fail! (0x2f099ff9);
-	}
-	
-	if _encrypted_len < (4 + CRYPTO_ENCRYPTED_PADDING + CRYPTO_ENCRYPTED_OVERHEAD) {
-		fail! (0xafb25d04);
-	}
-	
-	let _decrypted_len = _encrypted_len - (4 + CRYPTO_ENCRYPTED_OVERHEAD + CRYPTO_ENCRYPTED_PADDING);
-	
-	Ok (_decrypted_len)
 }
 
 
