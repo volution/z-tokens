@@ -7,22 +7,18 @@ use ::z_tokens_runtime::flags::*;
 
 use crate::keys::*;
 use crate::crypto::*;
+use crate::armor::*;
+use crate::io::*;
 
 
 use ::z_tokens_runtime::{
 		sensitive::zeroize_and_drop,
-		sensitive::Zeroize as _,
 	};
 
 
 
 
 define_error! (pub MainError, result : MainResult);
-
-
-
-
-const STDOUT_BUFFER_SIZE : usize = 8 * 1024;
 
 
 
@@ -138,7 +134,7 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _sender_private = SenderPrivateKey::decode_and_zeroize (_sender_private) .else_wrap (0x750a42c0) ?;
 	let _recipient_public = RecipientPublicKey::decode_and_zeroize (_recipient_public) .else_wrap (0x233175e9) ?;
 	
-	let _decrypted = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) ?;
+	let _decrypted = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0xb0e8db93) ?;
 	
 	let mut _encrypted = Vec::new ();
 	encrypt (&_sender_private, &_recipient_public, &_decrypted, &mut _encrypted) .else_wrap (0x38d2ce1e) ?;
@@ -183,7 +179,7 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _recipient_private = RecipientPrivateKey::decode_and_zeroize (_recipient_private) .else_wrap (0xd58c9ad4) ?;
 	let _sender_public = SenderPublicKey::decode_and_zeroize (_sender_public) .else_wrap (0xbb6f004f) ?;
 	
-	let _encrypted = read_at_most (stdin_locked (), CRYPTO_ENCRYPTED_SIZE_MAX) ?;
+	let _encrypted = read_at_most (stdin_locked (), CRYPTO_ENCRYPTED_SIZE_MAX) .else_wrap (0xf71cef7e) ?;
 	
 	let mut _decrypted = Vec::new ();
 	decrypt (&_recipient_private, &_sender_public, &_encrypted, &mut _decrypted) .else_wrap (0x95273e1d) ?;
@@ -205,18 +201,57 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 
 
-fn read_at_most (mut _stream : impl Read, _limit : usize) -> MainResult<Vec<u8>> {
+pub fn main_armor (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
-	let mut _buffer = Vec::with_capacity (STDOUT_BUFFER_SIZE);
-	
-	// FIXME:  Actually impose limit!
-	_stream.read_to_end (&mut _buffer) .else_wrap (0xb0ef2873) ?;
-	
-	if _buffer.len () > _limit {
-		zeroize_and_drop (_buffer);
-		fail! (0x2d0cf0e1);
+	{
+		let mut _parser = create_parser () .else_wrap (0x9deb1736) ?;
+		
+		if execute_parser (_parser, _arguments) .else_wrap (0xa38080cc) ? {
+			return Ok (ExitCode::SUCCESS);
+		}
 	}
 	
-	Ok (_buffer)
+	let _decoded = read_at_most (stdin_locked (), ARMOR_DECODED_SIZE_MAX) .else_wrap (0xaf8bf415) ?;
+	
+	let mut _encoded = Vec::new ();
+	armor (&_decoded, &mut _encoded) .else_wrap (0x7f3ed3ae) ?;
+	
+	let mut _stream = stdout_locked ();
+	_stream.write (&_encoded) .else_wrap (0x2d673134) ?;
+	mem::drop (_stream);
+	
+	zeroize_and_drop (_decoded);
+	zeroize_and_drop (_encoded);
+	
+	Ok (ExitCode::SUCCESS)
 }
+
+
+
+
+pub fn main_dearmor (_arguments : Vec<String>) -> MainResult<ExitCode> {
+	
+	{
+		let mut _parser = create_parser () .else_wrap (0xe46fc464) ?;
+		
+		if execute_parser (_parser, _arguments) .else_wrap (0x222a3894) ? {
+			return Ok (ExitCode::SUCCESS);
+		}
+	}
+	
+	let _encoded = read_at_most (stdin_locked (), ARMOR_ENCODED_SIZE_MAX) .else_wrap (0x7657c246) ?;
+	
+	let mut _decoded = Vec::new ();
+	dearmor (&_encoded, &mut _decoded) .else_wrap (0x069245f3) ?;
+	
+	let mut _stream = stdout_locked ();
+	_stream.write (&_decoded) .else_wrap (0x2d7f55d6) ?;
+	mem::drop (_stream);
+	
+	zeroize_and_drop (_encoded);
+	zeroize_and_drop (_decoded);
+	
+	Ok (ExitCode::SUCCESS)
+}
+
 

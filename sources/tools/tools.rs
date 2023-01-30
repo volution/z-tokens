@@ -22,6 +22,8 @@ use ::z_tokens_exchange_tool::{
 		tool::main_keys as main_exchange_keys,
 		tool::main_encrypt as main_exchange_encrypt,
 		tool::main_decrypt as main_exchange_decrypt,
+		tool::main_armor as main_exchange_armor,
+		tool::main_dearmor as main_exchange_dearmor,
 	};
 
 
@@ -143,13 +145,23 @@ pub fn main () -> MainResult<ExitCode> {
 		}
 		#[ cfg (feature = "z-tokens-exchange-tool") ]
 		(&["exchange", "encrypt"], _) => {
-			_arguments.insert (0, String::from ("z-tokens exchange send"));
+			_arguments.insert (0, String::from ("z-tokens exchange encrypt"));
 			main_exchange_encrypt (_arguments) .else_wrap (0xef766e05)
 		}
 		#[ cfg (feature = "z-tokens-exchange-tool") ]
 		(&["exchange", "decrypt"], _) => {
-			_arguments.insert (0, String::from ("z-tokens exchange receive"));
+			_arguments.insert (0, String::from ("z-tokens exchange decrypt"));
 			main_exchange_decrypt (_arguments) .else_wrap (0xa73d3123)
+		}
+		#[ cfg (feature = "z-tokens-exchange-tool") ]
+		(&["exchange", "armor"], _) => {
+			_arguments.insert (0, String::from ("z-tokens exchange armor"));
+			main_exchange_armor (_arguments) .else_wrap (0xcc846bd9)
+		}
+		#[ cfg (feature = "z-tokens-exchange-tool") ]
+		(&["exchange", "dearmor"], _) => {
+			_arguments.insert (0, String::from ("z-tokens exchange dearmor"));
+			main_exchange_dearmor (_arguments) .else_wrap (0x605c4c42)
 		}
 		
 		#[ cfg (feature = "zt-embedded-help") ]

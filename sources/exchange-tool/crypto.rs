@@ -206,38 +206,3 @@ fn decrypted_max_len (_encrypted_len : usize) -> CryptoResult<usize> {
 
 
 
-
-fn compress (_data : &[u8], _buffer : &mut Vec<u8>) -> CompressionResult {
-	
-	_buffer.zeroize ();
-	let _buffer_capacity = _buffer.capacity ();
-	
-	let mut _encoder = ::brotli::CompressorWriter::new (_buffer, BROTLI_BLOCK, BROTLI_Q, BROTLI_LGWIN);
-	_encoder.write_all (_data) .else_wrap (0x7ea342b9) ?;
-	_encoder.flush () .else_wrap (0xb5560900) ?;
-	let _buffer = _encoder.into_inner ();
-	
-	assert! (_buffer.capacity () == _buffer_capacity, "[af54fcfc]");
-	
-	Ok (())
-}
-
-
-fn decompress (_data : &[u8], _buffer : &mut Vec<u8>) -> CompressionResult {
-	
-	_buffer.zeroize ();
-	let _buffer_capacity = _buffer.capacity ();
-	
-	let mut _decoder = ::brotli::Decompressor::new (_data, BROTLI_BLOCK);
-	_decoder.read_to_end (_buffer) .else_wrap (0xf20a0822) ?;
-	
-	assert! (_buffer.capacity () == _buffer_capacity, "[630ddcba]");
-	
-	Ok (())
-}
-
-
-const BROTLI_Q : u32 = 9;
-const BROTLI_LGWIN : u32 = 24;
-const BROTLI_BLOCK : usize = 16 * 1024;
-
