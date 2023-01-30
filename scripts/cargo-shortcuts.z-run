@@ -1,0 +1,49 @@
+#!/dev/null
+
+
+
+
+<< cargo / debug / check / less
+	exec -- "${ZRUN}" ':: less / exec' ':: cargo / debug / check' --color always "${@}"
+!!
+
+<< cargo / debug / build / less
+	exec -- "${ZRUN}" ':: less / exec' ':: cargo / debug / build' --color always "${@}"
+!!
+
+<< cargo / debug / run / less
+	exec -- "${ZRUN}" ':: less / exec' ':: cargo / debug / run' --color always "${@}"
+!!
+
+
+
+
+<< cargo / debug / build & collect
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / debug / build'
+	"${ZRUN}" ':: cargo / debug / collect'
+!!
+
+<< cargo / release / build & collect
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build'
+	"${ZRUN}" ':: cargo / release / collect'
+!!
+
+
+
+
+<< cargo / debug / build & collect & run
+	"${ZRUN}" ':: cargo / debug / build'
+	"${ZRUN}" ':: cargo / debug / collect'
+	exec -- "${__OUTPUTS}/binaries/z-tokens--debug--linux--native" "${@}"
+!!
+
+<< cargo / release / build & collect & run
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build'
+	"${ZRUN}" ':: cargo / release / collect'
+	exec -- "${__OUTPUTS}/binaries/z-tokens--release--linux--native" "${@}"
+!!
+
+

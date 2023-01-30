@@ -25,6 +25,7 @@
 && _/cargo-cross.z-run
 && _/cargo-documentation.z-run
 && _/cargo-dependencies.z-run
+&& _/cargo-shortcuts.z-run
 
 && _/cargo-delegate.z-run
 && _/cargo-remote.z-run
@@ -33,6 +34,7 @@
 && _/sources-grep.z-run
 
 && _/workbench-watch.z-run
+&& _/workbench-tools.z-run
 
 && _/documentation-all.z-run
 && _/documentation-readme.z-run

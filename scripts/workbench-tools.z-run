@@ -1,0 +1,21 @@
+#!/dev/null
+
+
+
+
+--<< less / exec
+	
+	test "${#}" -ge 1
+	
+	test -t 2
+	exec < /dev/null <&2
+	exec > /dev/null >&2
+	
+	exec -- \
+	less -f -- \
+		<( exec -- notty "${ZRUN}" "${@}" < /dev/null 2>&1 ) \
+		< /dev/null \
+	#
+!!
+
+
