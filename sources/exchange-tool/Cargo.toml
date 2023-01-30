@@ -68,5 +68,6 @@ rand = { version = "*", default-features = false, features = ["std", "getrandom"
 brotli = { version = "*", default-features = false, features = ["std"] }
 byteorder = { version = "*", default-features = false, features = [] }
 bs58 = { version = "*", default-features = false, features = ["std"] }
+crc-any = { version = "*", default-features = false, features = [] }
 
 
