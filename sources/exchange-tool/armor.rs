@@ -23,10 +23,12 @@ pub(crate) const ARMOR_DECODED_SIZE_MAX : usize = 128 * 1024 * 1024;
 pub(crate) const ARMOR_ENCODED_SIZE_MAX : usize =
 		(
 			(
-				(ARMOR_DECODED_SIZE_MAX + COMPRESSION_OVERHEAD_MAX + 4)
+				(ARMOR_DECODED_SIZE_MAX + COMPRESSION_OVERHEAD_MAX + 4 + ARMOR_ENCODED_HASH)
 				/ CODING_CHUNK_DECODED_SIZE
 			) + 1
 		) * (CODING_CHUNK_ENCODED_SIZE + 1);
+
+pub(crate) const ARMOR_ENCODED_HASH : usize = CODING_CHUNK_DECODED_SIZE * 2 - 4;
 
 
 
@@ -44,12 +46,16 @@ pub fn armor (_decoded : &[u8], _encoded : &mut Vec<u8>) -> ArmorResult {
 	}
 	
 	let _compress_capacity = compress_capacity_max (_decoded_len) .else_wrap (0xd7e27086) ?;
-	let _compress_capacity = _compress_capacity + 4;
+	let _compress_capacity = _compress_capacity + 4 + ARMOR_ENCODED_HASH;
 	
 	let mut _compress_buffer = Vec::with_capacity (_compress_capacity);
 	compress (_decoded, &mut _compress_buffer) .else_wrap (0x08e19178) ?;
 	
 	encode_u32_push (_decoded_len as u32, &mut _compress_buffer);
+	
+	let _hash = ::blake3::Hasher::new () .update (&_compress_buffer) .finalize ();
+	let _hash = & _hash.as_bytes () [.. ARMOR_ENCODED_HASH];
+	_compress_buffer.extend_from_slice (_hash);
 	
 	let _encode_capacity = encode_capacity_max (_compress_buffer.len ()) .else_wrap (0x00bf84c9) ?;
 	
@@ -80,10 +86,19 @@ pub fn dearmor (_encoded : &[u8], _decoded : &mut Vec<u8>) -> ArmorResult {
 	let mut _decode_buffer = Vec::with_capacity (_decode_capacity);
 	decode (_encoded, &mut _decode_buffer) .else_wrap (0x6432ccd9) ?;
 	
+	let _hash_expected = bytes_pop::<ARMOR_ENCODED_HASH> (&mut _decode_buffer) .else_wrap (0x80825bd8) ?;
+	
+	let _hash_actual = ::blake3::Hasher::new () .update (&_decode_buffer) .finalize ();
+	let _hash_actual = & _hash_actual.as_bytes () [.. ARMOR_ENCODED_HASH];
+	
+	if ! ::constant_time_eq::constant_time_eq (_hash_actual, &_hash_expected) {
+		fail! (0x7c3ab20d);
+	}
+	
 	let _decoded_len = decode_u32_pop (&mut _decode_buffer) .else_wrap (0xa8d32a02) ? as usize;
 	
 	if _decoded_len > ARMOR_DECODED_SIZE_MAX {
-		fail! (0x433f5bb6);
+		fail! (0xd0db488b);
 	}
 	
 	let mut _decompress_buffer = Vec::with_capacity (_decoded_len);
@@ -98,6 +113,5 @@ pub fn dearmor (_encoded : &[u8], _decoded : &mut Vec<u8>) -> ArmorResult {
 	
 	Ok (())
 }
-
 
 
