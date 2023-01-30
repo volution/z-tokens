@@ -42,6 +42,18 @@
 !!
 
 
+<< tests / quick / exchange / armor / empty
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / debug / build & collect'
+	export -- RUST_BACKTRACE=1
+	
+	exec -- "${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
+			exchange armor \
+		<<< '' \
+	#
+!!
+
+
 
 
 
@@ -108,6 +120,20 @@
 				--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
 				--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
 		<<< $'hello world!\n' \
+	#
+!!
+
+
+<< tests / quick / exchange / encrypt / empty
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / debug / build & collect'
+	export -- RUST_BACKTRACE=1
+	
+	exec -- "${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
+			exchange encrypt \
+				--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
+				--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+		<<< '' \
 	#
 !!
 
