@@ -28,6 +28,11 @@ pub const CRYPTO_ENCRYPTED_NONCE : usize = 8;
 pub const CRYPTO_ENCRYPTED_MAC : usize = 8;
 
 
+static CRYPTO_ENCRYPTION_KEY_CONTEXT : &str = "z-tokens exchange encryption key (2023a)";
+static CRYPTO_ENCRYPTION_NONCE_CONTEXT : &str = "z-tokens exchange encryption nonce (2023a)";
+static CRYPTO_AUTHENTICATION_KEY_CONTEXT : &str = "z-tokens exchange authentication key (2023a)";
+
+
 
 
 
@@ -64,15 +69,20 @@ pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _
 		}
 	}
 	
-	let _shared = _sender.0.0.diffie_hellman (&_recipient.0.0);
-	
 	let mut _nonce = [0u8; CRYPTO_ENCRYPTED_NONCE];
 	{
 		use ::rand::RngCore as _;
 		::rand::rngs::OsRng.fill_bytes (&mut _nonce);
 	}
 	
-	apply_salsa20 (&_shared, &_nonce, &mut _compress_buffer) ?;
+	let (_encrypt_key, _encrypt_nonce, _authentication_key) = derive_keys (&_sender.0.0, &_recipient.0.0, &_nonce) ?;
+	
+	apply_encryption (&_encrypt_key, &_encrypt_nonce, &mut _compress_buffer) ?;
+	
+	let mut _mac = [0u8; CRYPTO_ENCRYPTED_MAC];
+	apply_authentication (&_authentication_key, &_compress_buffer, &mut _mac) ?;
+	
+	_compress_buffer.extend_from_slice (&_mac);
 	
 	_compress_buffer.extend_from_slice (&_nonce);
 	
@@ -103,7 +113,6 @@ pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _
 	let mut _decode_buffer = Vec::with_capacity (_decode_capacity);
 	decode (_encrypted, &mut _decode_buffer) .else_wrap (0x10ff413a) ?;
 	
-	
 	let mut _nonce = [0u8; CRYPTO_ENCRYPTED_NONCE];
 	{
 		let _decode_len = _decode_buffer.len ();
@@ -114,9 +123,26 @@ pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _
 		_decode_buffer.truncate (_decode_len - CRYPTO_ENCRYPTED_NONCE);
 	}
 	
-	let _shared = _recipient.0.0.diffie_hellman (&_sender.0.0);
+	let (_encrypt_key, _encrypt_nonce, _authentication_key) = derive_keys (&_recipient.0.0, &_sender.0.0, &_nonce) ?;
 	
-	apply_salsa20 (&_shared, &_nonce, &mut _decode_buffer) ?;
+	let mut _mac_expected = [0u8; CRYPTO_ENCRYPTED_MAC];
+	{
+		let _decode_len = _decode_buffer.len ();
+		if _decode_len < CRYPTO_ENCRYPTED_MAC {
+			fail! (0xb40635e3);
+		}
+		_mac_expected.copy_from_slice (&_decode_buffer[(_decode_len - CRYPTO_ENCRYPTED_MAC) .. _decode_len]);
+		_decode_buffer.truncate (_decode_len - CRYPTO_ENCRYPTED_MAC);
+	}
+	
+	let mut _mac_actual = [0u8; CRYPTO_ENCRYPTED_MAC];
+	apply_authentication (&_authentication_key, &_decode_buffer, &mut _mac_actual) ?;
+	
+	if ! ::constant_time_eq::constant_time_eq (&_mac_actual, &_mac_expected) {
+		fail! (0xad70c84c);
+	}
+	
+	apply_encryption (&_encrypt_key, &_encrypt_nonce, &mut _decode_buffer) ?;
 	
 	{
 		let _decode_len = _decode_buffer.len ();
@@ -167,12 +193,18 @@ pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _
 
 
 
-fn apply_salsa20 (_shared : &x25519::SharedSecret, _nonce : &[u8], _data : &mut [u8]) -> CryptoResult {
+
+
+
+
+fn apply_encryption (_key : &[u8; 32], _nonce : &[u8; 32], _data : &mut [u8]) -> CryptoResult {
 	
 	use ::salsa20::cipher::KeyIvInit as _;
 	use ::salsa20::cipher::StreamCipher as _;
 	
-	let _key = ::salsa20::Key::from_slice (_shared.as_bytes ());
+	let _nonce = &_nonce[0 .. CRYPTO_ENCRYPTED_NONCE];
+	
+	let _key = ::salsa20::Key::from_slice (_key);
 	let _nonce = ::salsa20::Nonce::from_slice (_nonce);
 	
 	let mut _cipher = ::salsa20::Salsa20::new (&_key, &_nonce);
@@ -180,6 +212,55 @@ fn apply_salsa20 (_shared : &x25519::SharedSecret, _nonce : &[u8], _data : &mut 
 	_cipher.try_apply_keystream (_data) .else_wrap (0x9c94d0d5) ?;
 	
 	Ok (())
+}
+
+
+
+
+fn apply_authentication (_key : &[u8; 32], _data : &[u8], _mac : &mut [u8; CRYPTO_ENCRYPTED_MAC]) -> CryptoResult {
+	
+	assert! (_mac.len () == CRYPTO_ENCRYPTED_MAC, "[bbcf8472]");
+	
+	let _hash =
+			::blake3::Hasher::new_keyed (_key)
+			.update (_data)
+			.finalize ();
+	
+	_mac.copy_from_slice (& _hash.as_bytes () [0 .. CRYPTO_ENCRYPTED_MAC]);
+	
+	Ok (())
+}
+
+
+
+
+fn derive_keys (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, _nonce : &[u8; CRYPTO_ENCRYPTED_NONCE]) -> CryptoResult<([u8; 32], [u8; 32], [u8; 32])> {
+	
+	let _shared = x25519::StaticSecret::diffie_hellman (_private, _public);
+	let _shared = _shared.as_bytes ();
+	
+	let _encryption_key =
+			::blake3::Hasher::new_derive_key (CRYPTO_ENCRYPTION_KEY_CONTEXT)
+			.update (_shared)
+			.update (_nonce)
+			.finalize ()
+			.into ();
+	
+	let _encryption_nonce =
+			::blake3::Hasher::new_derive_key (CRYPTO_ENCRYPTION_NONCE_CONTEXT)
+			.update (_shared)
+			.update (_nonce)
+			.finalize ()
+			.into ();
+	
+	let _authentication_key =
+			::blake3::Hasher::new_derive_key (CRYPTO_AUTHENTICATION_KEY_CONTEXT)
+			.update (_shared)
+			.update (_nonce)
+			.finalize ()
+			.into ();
+	
+	Ok ((_encryption_key, _encryption_nonce, _authentication_key))
 }
 
 
