@@ -35,8 +35,8 @@ pub const CRYPTO_ENCRYPTED_SIZE_MAX : usize =
 
 pub const CRYPTO_ENCRYPTED_PADDING : usize = 255;
 pub const CRYPTO_ENCRYPTED_OVERHEAD : usize = CRYPTO_ENCRYPTED_NONCE + CRYPTO_ENCRYPTED_MAC;
-pub const CRYPTO_ENCRYPTED_NONCE : usize = 8;
-pub const CRYPTO_ENCRYPTED_MAC : usize = 8;
+pub const CRYPTO_ENCRYPTED_NONCE : usize = 16;
+pub const CRYPTO_ENCRYPTED_MAC : usize = 16;
 
 
 static CRYPTO_ENCRYPTION_KEY_CONTEXT : &str = "z-tokens exchange encryption key (2023a)";
@@ -160,7 +160,7 @@ fn apply_encryption (_key : &[u8; 32], _nonce : &[u8; 32], _data : &mut [u8]) ->
 	use ::salsa20::cipher::KeyIvInit as _;
 	use ::salsa20::cipher::StreamCipher as _;
 	
-	let _nonce = &_nonce[.. CRYPTO_ENCRYPTED_NONCE];
+	let _nonce = &_nonce[..8];
 	
 	let _key = ::salsa20::Key::from_slice (_key);
 	let _nonce = ::salsa20::Nonce::from_slice (_nonce);
