@@ -68,7 +68,7 @@ pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _
 	
 	padding_push (CRYPTO_ENCRYPTED_PADDING, &mut _compress_buffer);
 	
-	let _nonce = generate_nonce () ?;
+	let mut _nonce = generate_nonce () ?;
 	
 	let (_encrypt_key, _encrypt_nonce, _authentication_key) = derive_keys (&_sender.0.0, &_recipient.0.0, &_nonce) ?;
 	
@@ -77,6 +77,8 @@ pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _
 	let _mac = apply_authentication (&_authentication_key, &_compress_buffer) ?;
 	
 	_compress_buffer.extend_from_slice (&_mac);
+	
+	apply_all_or_nothing_mangling (&mut _nonce, &_compress_buffer) ?;
 	
 	_compress_buffer.extend_from_slice (&_nonce);
 	
@@ -109,7 +111,9 @@ pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _
 	let mut _decode_buffer = Vec::with_capacity (_decode_capacity);
 	decode (_encrypted, &mut _decode_buffer) .else_wrap (0x10ff413a) ?;
 	
-	let _nonce = bytes_pop::<CRYPTO_ENCRYPTED_NONCE> (&mut _decode_buffer) .else_wrap (0x78ed3811) ?;
+	let mut _nonce = bytes_pop::<CRYPTO_ENCRYPTED_NONCE> (&mut _decode_buffer) .else_wrap (0x78ed3811) ?;
+	
+	apply_all_or_nothing_mangling (&mut _nonce, &_decode_buffer) ?;
 	
 	let (_encrypt_key, _encrypt_nonce, _authentication_key) = derive_keys (&_recipient.0.0, &_sender.0.0, &_nonce) ?;
 	
@@ -214,6 +218,25 @@ fn derive_keys (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, 
 			.into ();
 	
 	Ok ((_encryption_key, _encryption_nonce, _authentication_key))
+}
+
+
+
+
+fn apply_all_or_nothing_mangling (_nonce : &mut [u8; CRYPTO_ENCRYPTED_NONCE], _data : &[u8]) -> CryptoResult {
+	
+	let _hash =
+			::blake3::Hasher::new ()
+			.update (_data)
+			.finalize ();
+	
+	let _hash = _hash.as_bytes ();
+	
+	for _index in 0 .. CRYPTO_ENCRYPTED_NONCE {
+		_nonce[_index] ^= _hash[_index];
+	}
+	
+	Ok (())
 }
 
 

@@ -65,8 +65,8 @@ pub fn armor (_decoded : &[u8], _encoded : &mut Vec<u8>) -> ArmorResult {
 	
 	let mut _key = generate_key () ?;
 	
-	apply_all_or_nothing_mangling (&_key, &mut _compress_buffer) ?;
-	apply_all_or_nothing_key (&mut _key, &_compress_buffer) ?;
+	apply_all_or_nothing_encryption (&_key, &mut _compress_buffer) ?;
+	apply_all_or_nothing_mangling (&mut _key, &_compress_buffer) ?;
 	
 	_compress_buffer.extend_from_slice (&_key);
 	
@@ -109,8 +109,8 @@ pub fn dearmor (_encoded : &[u8], _decoded : &mut Vec<u8>) -> ArmorResult {
 	
 	let mut _key = bytes_pop::<ARMOR_ENCODED_KEY> (&mut _decode_buffer) .else_wrap (0xcfdbfbc3) ?;
 	
-	apply_all_or_nothing_key (&mut _key, &_decode_buffer) ?;
-	apply_all_or_nothing_mangling (&_key, &mut _decode_buffer) ?;
+	apply_all_or_nothing_mangling (&mut _key, &_decode_buffer) ?;
+	apply_all_or_nothing_encryption (&_key, &mut _decode_buffer) ?;
 	
 	// NOTE:  unwrapping...
 	
@@ -152,7 +152,7 @@ pub fn dearmor (_encoded : &[u8], _decoded : &mut Vec<u8>) -> ArmorResult {
 
 
 
-fn apply_all_or_nothing_mangling (_key : &[u8; ARMOR_ENCODED_KEY], _data : &mut [u8]) -> ArmorResult {
+fn apply_all_or_nothing_encryption (_key : &[u8; ARMOR_ENCODED_KEY], _data : &mut [u8]) -> ArmorResult {
 	
 	use ::salsa20::cipher::KeyIvInit as _;
 	use ::salsa20::cipher::StreamCipher as _;
@@ -172,7 +172,7 @@ fn apply_all_or_nothing_mangling (_key : &[u8; ARMOR_ENCODED_KEY], _data : &mut 
 }
 
 
-fn apply_all_or_nothing_key (_key : &mut [u8; ARMOR_ENCODED_KEY], _data : &[u8]) -> ArmorResult {
+fn apply_all_or_nothing_mangling (_key : &mut [u8; ARMOR_ENCODED_KEY], _data : &[u8]) -> ArmorResult {
 	
 	let _hash =
 			::blake3::Hasher::new ()
