@@ -38,8 +38,6 @@ const COMPRESSION_BROTLI_BLOCK : usize = 128 * 1024;
 
 pub(crate) fn encode (_decoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResult {
 	
-	// FIXME:  Zeroize!
-	
 	let _buffer_capacity = _buffer.capacity ();
 	
 	let mut _decode_buffer = [0u8; CODING_CHUNK_DECODED_SIZE + 1];
@@ -94,8 +92,6 @@ pub(crate) fn encode (_decoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 
 
 pub(crate) fn decode (_encoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResult {
-	
-	// FIXME:  Zeroize!
 	
 	let _buffer_capacity = _buffer.capacity ();
 	
@@ -156,7 +152,8 @@ pub(crate) fn encode_capacity_max (_decoded_len : usize) -> EncodingResult<usize
 
 pub(crate) fn decode_capacity_max (_encoded_len : usize) -> EncodingResult<usize> {
 	
-	let _chunks = (_encoded_len / (CODING_CHUNK_ENCODED_SIZE + 1)) + 1;
+	// NOTE:  Some tokens are shorter.
+	let _chunks = (_encoded_len / (CODING_CHUNK_ENCODED_SIZE - 1 + 1)) + 1;
 	
 	let _decoded_len = _chunks * CODING_CHUNK_DECODED_SIZE;
 	
@@ -171,8 +168,6 @@ pub(crate) fn decode_capacity_max (_encoded_len : usize) -> EncodingResult<usize
 
 
 pub(crate) fn compress (_data : &[u8], _buffer : &mut Vec<u8>) -> CompressionResult {
-	
-	// FIXME:  Zeroize!
 	
 	let _buffer_capacity = _buffer.capacity ();
 	
@@ -190,8 +185,6 @@ pub(crate) fn compress (_data : &[u8], _buffer : &mut Vec<u8>) -> CompressionRes
 
 
 pub(crate) fn decompress (_data : &[u8], _buffer : &mut Vec<u8>) -> CompressionResult {
-	
-	// FIXME:  Zeroize!
 	
 	let _buffer_capacity = _buffer.capacity ();
 	

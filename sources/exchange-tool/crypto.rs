@@ -5,12 +5,7 @@ use ::vrl_errors::*;
 
 
 use crate::keys::*;
-
-
-use ::z_tokens_runtime::{
-		sensitive::zeroize_and_drop,
-		sensitive::Zeroize as _,
-	};
+use crate::coding::*;
 
 
 use ::x25519_dalek as x25519;
@@ -20,18 +15,15 @@ use ::x25519_dalek as x25519;
 
 define_error! (pub CryptoError, result : CryptoResult);
 
-define_error! (CompressionError, result : CompressionResult);
 
 
-
-
-pub const CRYPTO_PADDING : usize = 256;
-pub const CRYPTO_OVERHEAD : usize = 64 + 4;
 
 pub const CRYPTO_DECRYPTED_SIZE_MAX : usize = 128 * 1024 * 1024;
-pub const CRYPTO_ENCRYPTED_SIZE_MAX : usize = CRYPTO_DECRYPTED_SIZE_MAX + CRYPTO_PADDING + CRYPTO_OVERHEAD;
+pub const CRYPTO_ENCRYPTED_SIZE_MAX : usize = CRYPTO_DECRYPTED_SIZE_MAX + 4 + CRYPTO_ENCRYPTED_PADDING + CRYPTO_ENCRYPTED_OVERHEAD;
 
-pub(crate) const CRYPTO_NAMESPACE : &[u8] = b"f6eee60c50cdf7d06d97e65f739f0086913c7f36fa7e86bd4962aa17ed3f0f37";
+
+pub const CRYPTO_ENCRYPTED_PADDING : usize = 256;
+pub const CRYPTO_ENCRYPTED_OVERHEAD : usize = 64;
 
 
 
@@ -42,53 +34,45 @@ pub(crate) const CRYPTO_NAMESPACE : &[u8] = b"f6eee60c50cdf7d06d97e65f739f008691
 
 pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _decrypted : &[u8], _encrypted : &mut Vec<u8>) -> CryptoResult {
 	
-	// FIXME:  On `Err` things aren't zeroized!
+	let _decrypted_len = _decrypted.len ();
 	
-	let _encrypt_max_len = encrypted_max_len (_decrypted.len ()) ?;
+	if _decrypted_len > CRYPTO_DECRYPTED_SIZE_MAX {
+		fail! (0x83d6c657);
+	}
 	
-	let mut _compress_buffer = Vec::with_capacity (_decrypted.len () + BROTLI_BLOCK);
+	let _compress_capacity = compress_capacity_max (_decrypted_len) .else_wrap (0x4198ca8b) ?;
+	let _compress_capacity = _compress_capacity + 4 + CRYPTO_ENCRYPTED_PADDING + CRYPTO_ENCRYPTED_OVERHEAD;
+	
+	let mut _compress_buffer = Vec::with_capacity (_compress_capacity);
 	compress (_decrypted, &mut _compress_buffer) .else_wrap (0xa9fadcdc) ?;
 	
-	let mut _encrypt_buffer = Vec::with_capacity (_encrypt_max_len);
-	_encrypt_buffer.extend_from_slice (&_compress_buffer);
-	
-	let _decompressed_len = _decrypted.len ();
 	{
 		let mut _buffer = [0u8; 4];
-		use ::byteorder::ByteOrder as _;
-		::byteorder::BigEndian::write_u32 (&mut _buffer, _decompressed_len as u32);
-		_encrypt_buffer.extend_from_slice (&_buffer);
+		encode_u32 (_decrypted_len as u32, &mut _buffer);
+		_compress_buffer.extend_from_slice (&_buffer);
 	}
 	
 	{
-		let _padding = CRYPTO_PADDING - (_encrypt_buffer.len () % CRYPTO_PADDING);
+		let _padding = CRYPTO_ENCRYPTED_PADDING - (_compress_buffer.len () % CRYPTO_ENCRYPTED_PADDING);
 		assert! (_padding >= 1, "[0a1987ea]");
 		assert! (_padding <= 256, "[d2c4f983]");
 		let _padding = _padding as u8;
 		for _ in 0 .. _padding {
-			_encrypt_buffer.push (_padding);
+			_compress_buffer.push (_padding);
 		}
 	}
 	
 	let _shared = _sender.0.0.diffie_hellman (&_recipient.0.0);
 	
-	apply_salsa20 (&_shared, &mut _encrypt_buffer) ?;
+	apply_salsa20 (&_shared, &mut _compress_buffer) ?;
 	
-	// ...
+	let _encode_capacity = encode_capacity_max (_compress_buffer.len ()) .else_wrap (0x00bf84c9) ?;
 	
-	let mut _encode_buffer = Vec::new ();
-	_encode_buffer.resize ((_encrypt_buffer.len () / 5 + 1) * 7, 0);
-	let _encode_buffer_size =
-			::bs58::encode (&_encrypt_buffer)
-			.with_alphabet (::bs58::Alphabet::BITCOIN)
-			.into (_encode_buffer.as_mut_slice ())
-			.else_wrap (0xafe90906) ?;
-	_encode_buffer.truncate (_encode_buffer_size);
+	let mut _encode_buffer = Vec::with_capacity (_encode_capacity);
+	encode (&_compress_buffer, &mut _encode_buffer) .else_wrap (0x5bc239f9) ?;
 	
+	// NOTE:  This last step is an overhead, but it ensures an all-or-nothing processing!
 	_encrypted.extend_from_slice (&_encode_buffer);
-	
-	zeroize_and_drop (_encrypt_buffer);
-	zeroize_and_drop (_compress_buffer);
 	
 	Ok (())
 }
@@ -98,49 +82,63 @@ pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _
 
 pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _encrypted : &[u8], _decrypted : &mut Vec<u8>) -> CryptoResult {
 	
-	// FIXME:  On `Err` things aren't zeroized!
+	let _encrypted_len = _encrypted.len ();
 	
-	let _decrypt_max_len = decrypted_max_len (_encrypted.len ()) ?;
+	if _encrypted_len > CRYPTO_ENCRYPTED_SIZE_MAX {
+		fail! (0x5832104d);
+	}
 	
-	let mut _decrypt_buffer = Vec::new ();
-	_decrypt_buffer.resize ((_encrypted.len () / 5 + 1) * 4, 0);
-	let _decrypt_buffer_size =
-			::bs58::decode (_encrypted)
-			.with_alphabet (::bs58::Alphabet::BITCOIN)
-			.into (_decrypt_buffer.as_mut_slice ())
-			.else_wrap (0x5bd4757f) ?;
-	_decrypt_buffer.truncate (_decrypt_buffer_size);
+	let _decode_capacity = decode_capacity_max (_encrypted_len) .else_wrap (0xae545303) ?;
+	
+	let mut _decode_buffer = Vec::with_capacity (_decode_capacity);
+	decode (_encrypted, &mut _decode_buffer) .else_wrap (0x10ff413a) ?;
 	
 	let _shared = _recipient.0.0.diffie_hellman (&_sender.0.0);
 	
-	apply_salsa20 (&_shared, &mut _decrypt_buffer) ?;
+	apply_salsa20 (&_shared, &mut _decode_buffer) ?;
 	
 	{
-		let _padding = * _decrypt_buffer.last () .unwrap ();
-		assert! (_padding >= 1, "[a296d085]");
-		for _ in 0 .. _padding {
-			let _padding_actual = _decrypt_buffer.pop () .unwrap ();
+		let _decode_len = _decode_buffer.len ();
+		if _decode_len <= 1 {
+			fail! (0x04d212d0);
+		}
+		
+		let _padding = _decode_buffer[_decode_len - 1];
+		if _padding < 1 {
+			fail! (0x628e3a2b);
+		}
+		if _decode_len < (_padding as usize) {
+			fail! (0xe17b846c);
+		}
+		for _padding_offset in 0 .. (_padding as usize) {
+			let _padding_actual = _decode_buffer[_decode_len - _padding_offset - 1];
 			if _padding_actual != _padding {
 				fail! (0x1f66027e);
 			}
 		}
+		
+		_decode_buffer.truncate (_decode_len - (_padding as usize));
 	}
 	
-	let mut _decompress_len : usize;
+	let mut _decrypted_len : usize;
 	{
-		let _buffer = &_decrypt_buffer[_decrypt_buffer.len () - 4 ..];
-		use ::byteorder::ByteOrder as _;
-		_decompress_len = ::byteorder::BigEndian::read_u32 (_buffer) as usize;
-		_decrypt_buffer.truncate (_decrypt_buffer.len () - 4);
+		let _decode_len = _decode_buffer.len ();
+		if _decode_len < 4 {
+			fail! (0x60af3a4c);
+		}
+		_decrypted_len = decode_u32_slice (&_decode_buffer[_decode_len - 4 ..]) as usize;
+		_decode_buffer.truncate (_decode_len - 4);
 	}
 	
-	let mut _decompress_buffer = Vec::with_capacity (_decompress_len);
-	decompress (&_decrypt_buffer, &mut _decompress_buffer) .else_wrap (0x0a2de8ec) ?;
+	if _decrypted_len > CRYPTO_DECRYPTED_SIZE_MAX {
+		fail! (0x433f5bb6);
+	}
 	
+	let mut _decompress_buffer = Vec::with_capacity (_decrypted_len);
+	decompress (&_decode_buffer, &mut _decompress_buffer) .else_wrap (0xec71bc5c) ?;
+	
+	// NOTE:  This last step is an overhead, but it ensures an all-or-nothing processing!
 	_decrypted.extend_from_slice (&_decompress_buffer);
-	
-	zeroize_and_drop (_decrypt_buffer);
-	zeroize_and_drop (_decompress_buffer);
 	
 	Ok (())
 }
@@ -178,7 +176,7 @@ fn encrypted_max_len (_decrypted_len : usize) -> CryptoResult<usize> {
 		fail! (0xf486af87);
 	}
 	
-	let _encrypted_len = (((_decrypted_len / CRYPTO_PADDING) + 1) * CRYPTO_PADDING) + CRYPTO_OVERHEAD;
+	let _encrypted_len = ((((_decrypted_len + 4) / CRYPTO_ENCRYPTED_PADDING) + 1) * CRYPTO_ENCRYPTED_PADDING) + CRYPTO_ENCRYPTED_OVERHEAD;
 	
 	Ok (_encrypted_len)
 }
@@ -190,19 +188,13 @@ fn decrypted_max_len (_encrypted_len : usize) -> CryptoResult<usize> {
 		fail! (0x2f099ff9);
 	}
 	
-//	if _encrypted_len < (CRYPTO_PADDING + CRYPTO_OVERHEAD) {
-//		fail! (0xafb25d04);
-//	}
+	if _encrypted_len < (4 + CRYPTO_ENCRYPTED_PADDING + CRYPTO_ENCRYPTED_OVERHEAD) {
+		fail! (0xafb25d04);
+	}
 	
-//	let _decrypted_len = _encrypted_len - CRYPTO_PADDING - CRYPTO_OVERHEAD;
-	let _decrypted_len = _encrypted_len;
+	let _decrypted_len = _encrypted_len - (4 + CRYPTO_ENCRYPTED_OVERHEAD + CRYPTO_ENCRYPTED_PADDING);
 	
 	Ok (_decrypted_len)
 }
-
-
-
-
-
 
 

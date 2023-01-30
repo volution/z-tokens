@@ -9,7 +9,6 @@ use ::z_tokens_runtime::{
 		sensitive::SensitiveZeroize,
 		sensitive::SensitiveIgnored,
 		sensitive::zeroize_and_drop,
-		sensitive::Zeroize as _,
 	};
 
 
@@ -135,7 +134,7 @@ pub fn decode_sender_public_key (_string : &str) -> KeyEncodingResult<SenderPubl
 	let mut _key_data = [0u8; 32];
 	decode_raw (SENDER_PUBLIC_KEY_ENCODED_PREFIX, _string, &mut _key_data) ?;
 	let _key = x25519::PublicKey::from (_key_data);
-	_key_data.zeroize ();
+	zeroize_and_drop (_key_data);
 	Ok (SenderPublicKey (Rb::new (_key.into ())))
 }
 

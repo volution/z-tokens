@@ -11,11 +11,6 @@ use crate::armor::*;
 use crate::io::*;
 
 
-use ::z_tokens_runtime::{
-		sensitive::zeroize_and_drop,
-	};
-
-
 
 
 define_error! (pub MainError, result : MainResult);
@@ -143,9 +138,6 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	_stream.write (&_encrypted) .else_wrap (0x2d673134) ?;
 	mem::drop (_stream);
 	
-	zeroize_and_drop (_decrypted);
-	zeroize_and_drop (_encrypted);
-	
 	Ok (ExitCode::SUCCESS)
 }
 
@@ -188,9 +180,6 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	_stream.write (&_decrypted) .else_wrap (0x19352ca2) ?;
 	mem::drop (_stream);
 	
-	zeroize_and_drop (_encrypted);
-	zeroize_and_drop (_decrypted);
-	
 	Ok (ExitCode::SUCCESS)
 }
 
@@ -220,9 +209,6 @@ pub fn main_armor (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	_stream.write (&_encoded) .else_wrap (0x2d673134) ?;
 	mem::drop (_stream);
 	
-	zeroize_and_drop (_decoded);
-	zeroize_and_drop (_encoded);
-	
 	Ok (ExitCode::SUCCESS)
 }
 
@@ -247,9 +233,6 @@ pub fn main_dearmor (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _stream = stdout_locked ();
 	_stream.write (&_decoded) .else_wrap (0x2d7f55d6) ?;
 	mem::drop (_stream);
-	
-	zeroize_and_drop (_encoded);
-	zeroize_and_drop (_decoded);
 	
 	Ok (ExitCode::SUCCESS)
 }
