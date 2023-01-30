@@ -10,8 +10,8 @@ use ::vrl_errors::*;
 
 
 
-define_error! (pub CompressionError, result : CompressionResult);
-define_error! (pub EncodingError, result : EncodingResult);
+define_error! (pub(crate) CompressionError, result : CompressionResult);
+define_error! (pub(crate) EncodingError, result : EncodingResult);
 
 
 
@@ -19,11 +19,12 @@ define_error! (pub EncodingError, result : EncodingResult);
 pub(crate) const CODING_CHUNK_DECODED_SIZE : usize = 8;
 pub(crate) const CODING_CHUNK_ENCODED_SIZE : usize = 13;
 
-
 pub(crate) const CODING_CHUNKS_PER_LINE : usize = 5;
 
 
 
+
+pub(crate) const COMPRESSION_OVERHEAD_MAX : usize = 1024;
 
 const COMPRESSION_BROTLI_Q : u32 = 9;
 const COMPRESSION_BROTLI_LGWIN : u32 = 24;
@@ -50,7 +51,7 @@ pub(crate) fn encode (_decoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 	for (_index, _decoded_chunk) in _decoded.chunks (CODING_CHUNK_DECODED_SIZE) .enumerate () {
 		
 		let _decoded_chunk_len = _decoded_chunk.len ();
-		_decode_buffer[0 .. _decoded_chunk_len].copy_from_slice (_decoded_chunk);
+		_decode_buffer[.. _decoded_chunk_len].copy_from_slice (_decoded_chunk);
 		
 		_offset += _decoded_chunk_len as u32;
 		encode_u32 (_offset, &mut _offset_buffer);
@@ -71,12 +72,12 @@ pub(crate) fn encode (_decoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 		}
 		
 		let _encode_size =
-				::bs58::encode (&_decode_buffer[0 ..= _decoded_chunk_len])
+				::bs58::encode (&_decode_buffer[..= _decoded_chunk_len])
 				.with_alphabet (::bs58::Alphabet::BITCOIN)
 				.into (_encode_buffer.as_mut_slice ())
 				.else_wrap (0xafe90906) ?;
 		
-		_buffer.extend_from_slice (&_encode_buffer[0 .. _encode_size]);
+		_buffer.extend_from_slice (&_encode_buffer[.. _encode_size]);
 		
 		_encode_size_last = _encode_size;
 	}
@@ -121,7 +122,7 @@ pub(crate) fn decode (_encoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 		encode_u32 (_offset, &mut _offset_buffer);
 		
 		let mut _crc = ::crc_any::CRCu8::crc8 ();
-		_crc.digest (&_decode_buffer[0 .. (_decode_size - 1)]);
+		_crc.digest (&_decode_buffer[.. (_decode_size - 1)]);
 		_crc.digest (&_offset_buffer);
 		let _crc_actual = _crc.get_crc ();
 		
@@ -129,7 +130,7 @@ pub(crate) fn decode (_encoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 			fail! (0xa4ba6e58);
 		}
 		
-		_buffer.extend_from_slice (&_decode_buffer[0 .. (_decode_size - 1)]);
+		_buffer.extend_from_slice (&_decode_buffer[.. (_decode_size - 1)]);
 	}
 	
 	assert! (_buffer.capacity () == _buffer_capacity, "[6d624ac5]");
@@ -142,7 +143,7 @@ pub(crate) fn decode (_encoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 
 pub(crate) fn encode_capacity_max (_decoded_len : usize) -> EncodingResult<usize> {
 	
-	let _chunks = (_decoded_len / CODING_CHUNK_DECODED_SIZE) + 1;
+	let _chunks = ((_decoded_len + COMPRESSION_OVERHEAD_MAX + 4) / CODING_CHUNK_DECODED_SIZE) + 1;
 	
 	let _encoded_len = _chunks * (CODING_CHUNK_ENCODED_SIZE + 1);
 	
@@ -153,7 +154,7 @@ pub(crate) fn encode_capacity_max (_decoded_len : usize) -> EncodingResult<usize
 pub(crate) fn decode_capacity_max (_encoded_len : usize) -> EncodingResult<usize> {
 	
 	// NOTE:  Some tokens are shorter.
-	let _chunks = (_encoded_len / (CODING_CHUNK_ENCODED_SIZE - 1 + 1)) + 1;
+	let _chunks = (_encoded_len / (CODING_CHUNK_ENCODED_SIZE - 2 + 1)) + 1;
 	
 	let _decoded_len = _chunks * CODING_CHUNK_DECODED_SIZE;
 	
@@ -172,6 +173,7 @@ pub(crate) fn compress (_data : &[u8], _buffer : &mut Vec<u8>) -> CompressionRes
 	let _buffer_capacity = _buffer.capacity ();
 	
 	let mut _encoder = ::brotli::CompressorWriter::new (_buffer, COMPRESSION_BROTLI_BLOCK, COMPRESSION_BROTLI_Q, COMPRESSION_BROTLI_LGWIN);
+	
 	_encoder.write_all (_data) .else_wrap (0x7ea342b9) ?;
 	_encoder.flush () .else_wrap (0xb5560900) ?;
 	let _buffer = _encoder.into_inner ();
@@ -189,6 +191,7 @@ pub(crate) fn decompress (_data : &[u8], _buffer : &mut Vec<u8>) -> CompressionR
 	let _buffer_capacity = _buffer.capacity ();
 	
 	let mut _decoder = ::brotli::Decompressor::new (_data, COMPRESSION_BROTLI_BLOCK);
+	
 	_decoder.read_to_end (_buffer) .else_wrap (0xf20a0822) ?;
 	
 	assert! (_buffer.capacity () == _buffer_capacity, "[630ddcba]");
@@ -203,7 +206,7 @@ pub(crate) fn compress_capacity_max (_uncompressed_len : usize) -> CompressionRe
 	
 	// FIXME:  https://github.com/google/brotli/issues/274
 	
-	Ok (_uncompressed_len + 1024)
+	Ok (_uncompressed_len + COMPRESSION_OVERHEAD_MAX)
 }
 
 
@@ -218,6 +221,7 @@ pub(crate) fn encode_u32 (_value : u32, _buffer : &mut [u8; 4]) -> () {
 }
 
 #[ allow (dead_code) ]
+#[ must_use ]
 pub(crate) fn decode_u32 (_buffer : &[u8; 4]) -> u32 {
 	decode_u32_slice (_buffer.as_slice ())
 }
@@ -228,6 +232,7 @@ pub(crate) fn encode_u32_slice (_value : u32, _buffer : &mut [u8]) -> () {
 	::byteorder::BigEndian::write_u32 (_buffer, _value);
 }
 
+#[ must_use ]
 pub(crate) fn decode_u32_slice (_buffer : &[u8]) -> u32 {
 	use ::byteorder::ByteOrder as _;
 	::byteorder::BigEndian::read_u32 (_buffer)
@@ -240,13 +245,101 @@ pub(crate) fn encode_u32_push (_value : u32, _buffer : &mut Vec<u8>) -> () {
 	encode_u32_slice (_value, &mut _buffer[_buffer_len - 4 ..]);
 }
 
+#[ must_use ]
 pub(crate) fn decode_u32_pop (_buffer : &mut Vec<u8>) -> Option<u32> {
+	
 	let _buffer_len = _buffer.len ();
 	if _buffer_len < 4 {
 		return None;
 	}
+	
 	let _value = decode_u32_slice (&_buffer[_buffer_len - 4 ..]);
+	
 	_buffer.truncate (_buffer_len - 4);
+	
 	Some (_value)
 }
+
+
+
+
+
+
+
+
+#[ must_use ]
+pub(crate) fn bytes_pop <const SIZE : usize> (_buffer : &mut Vec<u8>) -> Option<[u8; SIZE]> {
+	
+	let _buffer_len = _buffer.len ();
+	if _buffer_len < SIZE {
+		return None;
+	}
+	
+	let mut _bytes = [0u8; SIZE];
+	_bytes.copy_from_slice (&_buffer[(_buffer_len - SIZE) ..]);
+	
+	_buffer.truncate (_buffer_len - SIZE);
+	
+	Some (_bytes)
+}
+
+
+
+
+
+
+
+
+pub(crate) fn padding_push (_alignment : usize, _buffer : &mut Vec<u8>) -> () {
+	
+	assert! (_alignment > 0, "[cdc52ac7]");
+	assert! (_alignment <= 256, "[9d23d229]");
+	
+	let _padding = _alignment - (_buffer.len () % _alignment);
+	assert! (_padding >= 1, "[0a1987ea]");
+	assert! (_padding <= 255, "[d2c4f983]");
+	
+	let _padding = _padding as u8;
+	for _ in 0 .. _padding {
+		_buffer.push (_padding);
+	}
+	
+	assert! ((_buffer.len () % _alignment) == 0, "[4471a66f]");
+}
+
+
+pub(crate) fn padding_pop (_alignment : usize, _buffer : &mut Vec<u8>) -> EncodingResult {
+	
+	assert! (_alignment > 0, "[cbf1cbaf]");
+	assert! (_alignment <= 256, "[a5b18bae]");
+	
+	let _buffer_len = _buffer.len ();
+	if _buffer_len <= 1 {
+		fail! (0x04d212d0);
+	}
+	if (_buffer_len % _alignment) != 0 {
+		fail! (0x25bfe610);
+	}
+	
+	let _padding = _buffer[_buffer_len - 1];
+	if _padding < 1 {
+		fail! (0x628e3a2b);
+	}
+	
+	if _buffer_len < (_padding as usize) {
+		fail! (0xe17b846c);
+	}
+	
+	for _padding_offset in 0 .. (_padding as usize) {
+		let _padding_actual = _buffer[_buffer_len - _padding_offset - 1];
+		if _padding_actual != _padding {
+			fail! (0x1f66027e);
+		}
+	}
+	
+	_buffer.truncate (_buffer_len - (_padding as usize));
+	
+	Ok (())
+}
+
 

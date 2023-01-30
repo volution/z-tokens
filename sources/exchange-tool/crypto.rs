@@ -13,16 +13,27 @@ use ::x25519_dalek as x25519;
 
 
 
+
+
+
+
 define_error! (pub CryptoError, result : CryptoResult);
 
 
 
 
 pub const CRYPTO_DECRYPTED_SIZE_MAX : usize = 128 * 1024 * 1024;
-pub const CRYPTO_ENCRYPTED_SIZE_MAX : usize = CRYPTO_DECRYPTED_SIZE_MAX + 4 + CRYPTO_ENCRYPTED_PADDING + CRYPTO_ENCRYPTED_OVERHEAD;
+
+pub const CRYPTO_ENCRYPTED_SIZE_MAX : usize =
+		(
+			(
+				(CRYPTO_DECRYPTED_SIZE_MAX + COMPRESSION_OVERHEAD_MAX + 4 + CRYPTO_ENCRYPTED_PADDING + CRYPTO_ENCRYPTED_OVERHEAD)
+				/ CODING_CHUNK_DECODED_SIZE
+			) + 1
+		) * (CODING_CHUNK_ENCODED_SIZE + 1);
 
 
-pub const CRYPTO_ENCRYPTED_PADDING : usize = 256;
+pub const CRYPTO_ENCRYPTED_PADDING : usize = 255;
 pub const CRYPTO_ENCRYPTED_OVERHEAD : usize = CRYPTO_ENCRYPTED_NONCE + CRYPTO_ENCRYPTED_MAC;
 pub const CRYPTO_ENCRYPTED_NONCE : usize = 8;
 pub const CRYPTO_ENCRYPTED_MAC : usize = 8;
@@ -55,28 +66,15 @@ pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _
 	
 	encode_u32_push (_decrypted_len as u32, &mut _compress_buffer);
 	
-	{
-		let _padding = CRYPTO_ENCRYPTED_PADDING - (_compress_buffer.len () % CRYPTO_ENCRYPTED_PADDING);
-		assert! (_padding >= 1, "[0a1987ea]");
-		assert! (_padding <= 256, "[d2c4f983]");
-		let _padding = _padding as u8;
-		for _ in 0 .. _padding {
-			_compress_buffer.push (_padding);
-		}
-	}
+	padding_push (CRYPTO_ENCRYPTED_PADDING, &mut _compress_buffer);
 	
-	let mut _nonce = [0u8; CRYPTO_ENCRYPTED_NONCE];
-	{
-		use ::rand::RngCore as _;
-		::rand::rngs::OsRng.fill_bytes (&mut _nonce);
-	}
+	let _nonce = generate_nonce () ?;
 	
 	let (_encrypt_key, _encrypt_nonce, _authentication_key) = derive_keys (&_sender.0.0, &_recipient.0.0, &_nonce) ?;
 	
 	apply_encryption (&_encrypt_key, &_encrypt_nonce, &mut _compress_buffer) ?;
 	
-	let mut _mac = [0u8; CRYPTO_ENCRYPTED_MAC];
-	apply_authentication (&_authentication_key, &_compress_buffer, &mut _mac) ?;
+	let _mac = apply_authentication (&_authentication_key, &_compress_buffer) ?;
 	
 	_compress_buffer.extend_from_slice (&_mac);
 	
@@ -87,9 +85,7 @@ pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _
 	let mut _encode_buffer = Vec::with_capacity (_encode_capacity);
 	encode (&_compress_buffer, &mut _encode_buffer) .else_wrap (0x5bc239f9) ?;
 	
-	if _encode_buffer.len () > CRYPTO_ENCRYPTED_SIZE_MAX {
-		fail! (0x635f1fe4);
-	}
+	assert! (_encode_buffer.len () <= CRYPTO_ENCRYPTED_SIZE_MAX, "[393786fc]");
 	
 	// NOTE:  This last step is an overhead, but it ensures an all-or-nothing processing!
 	_encrypted.extend_from_slice (&_encode_buffer);
@@ -113,30 +109,13 @@ pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _
 	let mut _decode_buffer = Vec::with_capacity (_decode_capacity);
 	decode (_encrypted, &mut _decode_buffer) .else_wrap (0x10ff413a) ?;
 	
-	let mut _nonce = [0u8; CRYPTO_ENCRYPTED_NONCE];
-	{
-		let _decode_len = _decode_buffer.len ();
-		if _decode_len < CRYPTO_ENCRYPTED_NONCE {
-			fail! (0xbfead1cb);
-		}
-		_nonce.copy_from_slice (&_decode_buffer[(_decode_len - CRYPTO_ENCRYPTED_NONCE) .. _decode_len]);
-		_decode_buffer.truncate (_decode_len - CRYPTO_ENCRYPTED_NONCE);
-	}
+	let _nonce = bytes_pop::<CRYPTO_ENCRYPTED_NONCE> (&mut _decode_buffer) .else_wrap (0x78ed3811) ?;
 	
 	let (_encrypt_key, _encrypt_nonce, _authentication_key) = derive_keys (&_recipient.0.0, &_sender.0.0, &_nonce) ?;
 	
-	let mut _mac_expected = [0u8; CRYPTO_ENCRYPTED_MAC];
-	{
-		let _decode_len = _decode_buffer.len ();
-		if _decode_len < CRYPTO_ENCRYPTED_MAC {
-			fail! (0xb40635e3);
-		}
-		_mac_expected.copy_from_slice (&_decode_buffer[(_decode_len - CRYPTO_ENCRYPTED_MAC) .. _decode_len]);
-		_decode_buffer.truncate (_decode_len - CRYPTO_ENCRYPTED_MAC);
-	}
+	let _mac_expected = bytes_pop::<CRYPTO_ENCRYPTED_MAC> (&mut _decode_buffer) .else_wrap (0x88084589) ?;
 	
-	let mut _mac_actual = [0u8; CRYPTO_ENCRYPTED_MAC];
-	apply_authentication (&_authentication_key, &_decode_buffer, &mut _mac_actual) ?;
+	let _mac_actual = apply_authentication (&_authentication_key, &_decode_buffer) ?;
 	
 	if ! ::constant_time_eq::constant_time_eq (&_mac_actual, &_mac_expected) {
 		fail! (0xad70c84c);
@@ -144,28 +123,7 @@ pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _
 	
 	apply_encryption (&_encrypt_key, &_encrypt_nonce, &mut _decode_buffer) ?;
 	
-	{
-		let _decode_len = _decode_buffer.len ();
-		if _decode_len <= 1 {
-			fail! (0x04d212d0);
-		}
-		
-		let _padding = _decode_buffer[_decode_len - 1];
-		if _padding < 1 {
-			fail! (0x628e3a2b);
-		}
-		if _decode_len < (_padding as usize) {
-			fail! (0xe17b846c);
-		}
-		for _padding_offset in 0 .. (_padding as usize) {
-			let _padding_actual = _decode_buffer[_decode_len - _padding_offset - 1];
-			if _padding_actual != _padding {
-				fail! (0x1f66027e);
-			}
-		}
-		
-		_decode_buffer.truncate (_decode_len - (_padding as usize));
-	}
+	padding_pop (CRYPTO_ENCRYPTED_PADDING, &mut _decode_buffer) .else_wrap (0xbbdd100e) ?;
 	
 	let _decrypted_len = decode_u32_pop (&mut _decode_buffer) .else_wrap (0xa8b8f7d8) ? as usize;
 	
@@ -175,6 +133,10 @@ pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _
 	
 	let mut _decompress_buffer = Vec::with_capacity (_decrypted_len);
 	decompress (&_decode_buffer, &mut _decompress_buffer) .else_wrap (0xec71bc5c) ?;
+	
+	if _decompress_buffer.len () != _decrypted_len {
+		fail! (0x0610eb74);
+	}
 	
 	// NOTE:  This last step is an overhead, but it ensures an all-or-nothing processing!
 	_decrypted.extend_from_slice (&_decompress_buffer);
@@ -194,7 +156,7 @@ fn apply_encryption (_key : &[u8; 32], _nonce : &[u8; 32], _data : &mut [u8]) ->
 	use ::salsa20::cipher::KeyIvInit as _;
 	use ::salsa20::cipher::StreamCipher as _;
 	
-	let _nonce = &_nonce[0 .. CRYPTO_ENCRYPTED_NONCE];
+	let _nonce = &_nonce[.. CRYPTO_ENCRYPTED_NONCE];
 	
 	let _key = ::salsa20::Key::from_slice (_key);
 	let _nonce = ::salsa20::Nonce::from_slice (_nonce);
@@ -209,18 +171,17 @@ fn apply_encryption (_key : &[u8; 32], _nonce : &[u8; 32], _data : &mut [u8]) ->
 
 
 
-fn apply_authentication (_key : &[u8; 32], _data : &[u8], _mac : &mut [u8; CRYPTO_ENCRYPTED_MAC]) -> CryptoResult {
-	
-	assert! (_mac.len () == CRYPTO_ENCRYPTED_MAC, "[bbcf8472]");
+fn apply_authentication (_key : &[u8; 32], _data : &[u8]) -> CryptoResult<[u8; CRYPTO_ENCRYPTED_MAC]> {
 	
 	let _hash =
 			::blake3::Hasher::new_keyed (_key)
 			.update (_data)
 			.finalize ();
 	
-	_mac.copy_from_slice (& _hash.as_bytes () [0 .. CRYPTO_ENCRYPTED_MAC]);
+	let mut _mac = [0u8; CRYPTO_ENCRYPTED_MAC];
+	_mac.copy_from_slice (& _hash.as_bytes () [.. CRYPTO_ENCRYPTED_MAC]);
 	
-	Ok (())
+	Ok (_mac)
 }
 
 
@@ -253,6 +214,16 @@ fn derive_keys (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, 
 			.into ();
 	
 	Ok ((_encryption_key, _encryption_nonce, _authentication_key))
+}
+
+
+
+
+fn generate_nonce () -> CryptoResult<[u8; CRYPTO_ENCRYPTED_NONCE]> {
+	use ::rand::RngCore as _;
+	let mut _nonce = [0u8; CRYPTO_ENCRYPTED_NONCE];
+	::rand::rngs::OsRng.fill_bytes (&mut _nonce);
+	Ok (_nonce)
 }
 
 

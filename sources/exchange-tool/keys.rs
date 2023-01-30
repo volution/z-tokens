@@ -17,6 +17,10 @@ use ::x25519_dalek as x25519;
 
 
 
+
+
+
+
 define_error! (pub KeyEncodingError, result : KeyEncodingResult);
 define_error! (pub KeyCreateError, result : KeyCreateResult);
 
@@ -28,6 +32,19 @@ pub struct SenderPublicKey (pub(crate) Rb<SensitiveIgnored<x25519::PublicKey>>);
 
 pub struct RecipientPrivateKey (pub(crate) Rb<SensitiveZeroize<x25519::StaticSecret>>);
 pub struct RecipientPublicKey (pub(crate) Rb<SensitiveIgnored<x25519::PublicKey>>);
+
+
+
+
+pub const SENDER_PRIVATE_KEY_ENCODED_PREFIX : &str = "ztxsk";
+pub const SENDER_PUBLIC_KEY_ENCODED_PREFIX : &str = "ztxsp";
+
+pub const RECEIVER_PRIVATE_KEY_ENCODED_PREFIX : &str = "ztxrk";
+pub const RECEIVER_PUBLIC_KEY_ENCODED_PREFIX : &str = "ztxrp";
+
+
+
+
 
 
 
@@ -108,15 +125,6 @@ impl RecipientPublicKey {
 
 
 
-
-
-
-
-pub const SENDER_PRIVATE_KEY_ENCODED_PREFIX : &str = "ztxsk";
-pub const SENDER_PUBLIC_KEY_ENCODED_PREFIX : &str = "ztxsp";
-
-pub const RECEIVER_PRIVATE_KEY_ENCODED_PREFIX : &str = "ztxrk";
-pub const RECEIVER_PUBLIC_KEY_ENCODED_PREFIX : &str = "ztxrp";
 
 
 

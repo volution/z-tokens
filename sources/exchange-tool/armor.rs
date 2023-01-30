@@ -9,13 +9,28 @@ use crate::coding::*;
 
 
 
+
+
+
+
 define_error! (pub ArmorError, result : ArmorResult);
 
 
 
 
 pub(crate) const ARMOR_DECODED_SIZE_MAX : usize = 128 * 1024 * 1024;
-pub(crate) const ARMOR_ENCODED_SIZE_MAX : usize = ((ARMOR_DECODED_SIZE_MAX / CODING_CHUNK_DECODED_SIZE) + 1) * (CODING_CHUNK_ENCODED_SIZE + 1) + 4;
+
+pub(crate) const ARMOR_ENCODED_SIZE_MAX : usize =
+		(
+			(
+				(ARMOR_DECODED_SIZE_MAX + COMPRESSION_OVERHEAD_MAX + 4)
+				/ CODING_CHUNK_DECODED_SIZE
+			) + 1
+		) * (CODING_CHUNK_ENCODED_SIZE + 1);
+
+
+
+
 
 
 
@@ -41,9 +56,7 @@ pub fn armor (_decoded : &[u8], _encoded : &mut Vec<u8>) -> ArmorResult {
 	let mut _encode_buffer = Vec::with_capacity (_encode_capacity);
 	encode (&_compress_buffer, &mut _encode_buffer) .else_wrap (0x080c7733) ?;
 	
-	if _encode_buffer.len () > ARMOR_ENCODED_SIZE_MAX {
-		fail! (0xb894e943);
-	}
+	assert! (_encode_buffer.len () <= ARMOR_ENCODED_SIZE_MAX, "[e14aea63]");
 	
 	// NOTE:  This last step is an overhead, but it ensures an all-or-nothing processing!
 	_encoded.extend_from_slice (&_encode_buffer);
@@ -75,6 +88,10 @@ pub fn dearmor (_encoded : &[u8], _decoded : &mut Vec<u8>) -> ArmorResult {
 	
 	let mut _decompress_buffer = Vec::with_capacity (_decoded_len);
 	decompress (&_decode_buffer, &mut _decompress_buffer) .else_wrap (0x70f5d0b4) ?;
+	
+	if _decompress_buffer.len () != _decoded_len {
+		fail! (0xc763571b);
+	}
 	
 	// NOTE:  This last step is an overhead, but it ensures an all-or-nothing processing!
 	_decoded.extend_from_slice (&_decompress_buffer);
