@@ -1,0 +1,12 @@
+>>  z-tokens exchange decrypt --help
+
+Usage:
+  z-tokens exchange decrypt [OPTIONS]
+
+
+Optional arguments:
+  -h,--help             Show this help message and exit
+  -r,--recipient {sender}
+                        (recipient private key)
+  -s,--sender {recipient}
+                        (sender public key)

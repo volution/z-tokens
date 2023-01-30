@@ -1,9 +1,17 @@
 
 
 tools--version :: --version
+
 tools--help--patterns :: patterns --help
 tools--help--generate :: generate --help
+
 tools--help--hash :: hash --help
+
+tools--help--exchange--keys :: exchange keys --help
+tools--help--exchange--encrypt :: exchange encrypt --help
+tools--help--exchange--decrypt :: exchange decrypt --help
+tools--help--exchange--armor :: exchange armor --help
+tools--help--exchange--dearmor :: exchange dearmor --help
 
 
 
@@ -108,4 +116,5 @@ hash / argon2 / size-16 :: hash --argon2 --token 1234 --size 16
 hash / argon2d / size-16 :: hash --argon2d --token 1234 --size 16
 hash / argon2i / size-16 :: hash --argon2i --token 1234 --size 16
 hash / argon2id / size-16 :: hash --argon2id --token 1234 --size 16
+
 

@@ -1,0 +1,14 @@
+>>  z-tokens exchange keys --help
+
+Usage:
+  z-tokens exchange keys [OPTIONS]
+
+
+Optional arguments:
+  -h,--help             Show this help message and exit
+  -s                    (generate sender key pair)
+  --sender {enabled}    
+  -r                    (generate recipient key pair)
+  --recipient {enabled} 
+  -c                    (output comments)
+  --comments {enabled}  
