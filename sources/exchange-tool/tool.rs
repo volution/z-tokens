@@ -27,7 +27,7 @@ const STDOUT_BUFFER_SIZE : usize = 8 * 1024;
 
 
 
-pub fn main_create_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _sender_generate : Option<bool> = None;
 	let mut _recipient_generate : Option<bool> = None;
@@ -107,6 +107,10 @@ pub fn main_create_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 
 
+
+
+
+
 pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _sender_private : Option<String> = None;
@@ -136,7 +140,17 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let _decrypted = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) ?;
 	
-	fail! (0x023d2e00);
+	let mut _encrypted = Vec::new ();
+	encrypt (&_sender_private, &_recipient_public, &_decrypted, &mut _encrypted) .else_wrap (0x38d2ce1e) ?;
+	
+	let mut _stream = stdout_locked ();
+	_stream.write (&_encrypted) .else_wrap (0x2d673134) ?;
+	mem::drop (_stream);
+	
+	zeroize_and_drop (_decrypted);
+	zeroize_and_drop (_encrypted);
+	
+	Ok (ExitCode::SUCCESS)
 }
 
 
@@ -166,13 +180,27 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _recipient_private = _recipient_private.else_wrap (0xc9683cf5) ?;
 	let _sender_public = _sender_public.else_wrap (0xdb9a095f) ?;
 	
-	let _recipient_private = SenderPrivateKey::decode_and_zeroize (_recipient_private) .else_wrap (0xd58c9ad4) ?;
-	let _sender_public = RecipientPublicKey::decode_and_zeroize (_sender_public) .else_wrap (0xbb6f004f) ?;
+	let _recipient_private = RecipientPrivateKey::decode_and_zeroize (_recipient_private) .else_wrap (0xd58c9ad4) ?;
+	let _sender_public = SenderPublicKey::decode_and_zeroize (_sender_public) .else_wrap (0xbb6f004f) ?;
 	
 	let _encrypted = read_at_most (stdin_locked (), CRYPTO_ENCRYPTED_SIZE_MAX) ?;
 	
-	fail! (0x0b2816d0);
+	let mut _decrypted = Vec::new ();
+	decrypt (&_recipient_private, &_sender_public, &_encrypted, &mut _decrypted) .else_wrap (0x95273e1d) ?;
+	
+	let mut _stream = stdout_locked ();
+	_stream.write (&_decrypted) .else_wrap (0x19352ca2) ?;
+	mem::drop (_stream);
+	
+	zeroize_and_drop (_encrypted);
+	zeroize_and_drop (_decrypted);
+	
+	Ok (ExitCode::SUCCESS)
 }
+
+
+
+
 
 
 

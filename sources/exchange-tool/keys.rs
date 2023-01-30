@@ -24,11 +24,11 @@ define_error! (pub KeyCreateError, result : KeyCreateResult);
 
 
 
-pub struct SenderPrivateKey (Rb<SensitiveZeroize<x25519::StaticSecret>>);
-pub struct SenderPublicKey (Rb<SensitiveIgnored<x25519::PublicKey>>);
+pub struct SenderPrivateKey (pub(crate) Rb<SensitiveZeroize<x25519::StaticSecret>>);
+pub struct SenderPublicKey (pub(crate) Rb<SensitiveIgnored<x25519::PublicKey>>);
 
-pub struct RecipientPrivateKey (Rb<SensitiveZeroize<x25519::StaticSecret>>);
-pub struct RecipientPublicKey (Rb<SensitiveIgnored<x25519::PublicKey>>);
+pub struct RecipientPrivateKey (pub(crate) Rb<SensitiveZeroize<x25519::StaticSecret>>);
+pub struct RecipientPublicKey (pub(crate) Rb<SensitiveIgnored<x25519::PublicKey>>);
 
 
 
