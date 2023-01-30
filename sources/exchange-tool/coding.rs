@@ -45,7 +45,8 @@ pub(crate) fn encode (_decoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 	let mut _encode_buffer = [0u8; CODING_CHUNK_ENCODED_SIZE];
 	
 	let mut _offset : u32 = 0;
-	let mut _offset_buffer = [0u8; 4];
+	let mut _crc_buffer = [0u8; 4];
+	let _decoded_len = _decoded.len ();
 	
 	let mut _encode_size_last = 0;
 	for (_index, _decoded_chunk) in _decoded.chunks (CODING_CHUNK_DECODED_SIZE) .enumerate () {
@@ -54,11 +55,17 @@ pub(crate) fn encode (_decoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 		_decode_buffer[.. _decoded_chunk_len].copy_from_slice (_decoded_chunk);
 		
 		_offset += _decoded_chunk_len as u32;
-		encode_u32 (_offset, &mut _offset_buffer);
+		encode_u32 (_offset, &mut _crc_buffer);
 		
 		let mut _crc = ::crc_any::CRCu8::crc8 ();
 		_crc.digest (_decoded_chunk);
-		_crc.digest (&_offset_buffer);
+		_crc.digest (&_crc_buffer);
+		
+		if (_offset as usize) == _decoded_len {
+			encode_u32 (u32::MAX, &mut _crc_buffer);
+			_crc.digest (&_crc_buffer);
+		}
+		
 		_decode_buffer[_decoded_chunk_len] = _crc.get_crc ();
 		
 		if _index > 0 {
@@ -99,12 +106,17 @@ pub(crate) fn decode (_encoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 	let mut _decode_buffer = [0u8; CODING_CHUNK_DECODED_SIZE + 1];
 	
 	let mut _offset : u32 = 0;
-	let mut _offset_buffer = [0u8; 4];
+	let mut _crc_buffer = [0u8; 4];
 	
+	let mut _end_of_chunks = false;
 	for _encoded_chunk in _encoded.split (u8::is_ascii_whitespace) {
 		
 		if _encoded_chunk.is_empty () {
 			continue;
+		}
+		
+		if _end_of_chunks {
+			fail! (0x379115d2);
 		}
 		
 		let _decode_size =
@@ -119,18 +131,29 @@ pub(crate) fn decode (_encoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 		let _crc_expected = _decode_buffer[_decode_size - 1];
 		
 		_offset += _decode_size as u32 - 1;
-		encode_u32 (_offset, &mut _offset_buffer);
+		encode_u32 (_offset, &mut _crc_buffer);
 		
 		let mut _crc = ::crc_any::CRCu8::crc8 ();
 		_crc.digest (&_decode_buffer[.. (_decode_size - 1)]);
-		_crc.digest (&_offset_buffer);
-		let _crc_actual = _crc.get_crc ();
+		_crc.digest (&_crc_buffer);
 		
-		if _crc_expected != _crc_actual {
-			fail! (0xa4ba6e58);
+		if _crc_expected != _crc.get_crc () {
+			
+			encode_u32 (u32::MAX, &mut _crc_buffer);
+			_crc.digest (&_crc_buffer);
+			
+			if _crc_expected != _crc.get_crc () {
+				fail! (0xa4ba6e58);
+			} else {
+				_end_of_chunks = true;
+			}
 		}
 		
 		_buffer.extend_from_slice (&_decode_buffer[.. (_decode_size - 1)]);
+	}
+	
+	if ! _end_of_chunks {
+		fail! (0x924663bd);
 	}
 	
 	assert! (_buffer.capacity () == _buffer_capacity, "[6d624ac5]");
