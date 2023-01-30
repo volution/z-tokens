@@ -49,6 +49,8 @@ Other related tools part of this project are:
 
   * z-tokens hash -- hash strings, stdin or files with various hashes (SHA1,2,3
     families, Blake2 and Blake3, MD5, etc.);
+  * z-tokens exchange -- encrypt (with X25519 PKI) or armor (like Base64) stdin
+    or files;
   * z-tokens encode -- (TODO) encode / decode strings, stdin or files to / from
     various encodings (Base*, Bech32, Z85, etc.);
   * z-tokens secret -- (TODO) storing, sharing and using security sensitive
@@ -99,10 +101,11 @@ z-tokens patterns --help
 
 z-tokens hash --help
 
-z-tokens encode --help
-z-tokens decode --help
-
-z-tokens secret --help
+z-tokens exchange keys --help
+z-tokens exchange encrypt --help
+z-tokens exchange decrypt --help
+z-tokens exchange armor --help
+z-tokens exchange dearmor --help
 
 z-tokens --readme
 

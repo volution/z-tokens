@@ -15,7 +15,7 @@ I just hope others also find some use in it.</p><p>In terms of types of generate
 complete random ASCII dumps;</li><li>pins -- numeric tokens with various levels of entropy (see the <code>digits-base10-*</code> ones);</li><li>raw tokens -- in various encodings (such as <code>base64</code>, <code>base32</code>, <code>z85</code>, <code>bech32</code>, etc.);
 (please note that such tokens just use the encoding character set,
 and don't necessarily decode correctly in one of those encodings;)</li><li>bytes -- hex encoded random bytes (see <code>bytes-*</code>);</li><li>IP and MAC addresses;</li><li>UUIDv4;</li><li>timestamps in various representations;
-(not for security purposes, as they have almost 0 entropy;)</li><li>time sorted tokens with various levels of entropy (see the <code>flake-*</code> ones);</li><li>seed phrases (see the <code>mnemonic-*</code> or <code>bip0039-*</code> ones);</li></ul><p>Other related tools part of this project are:</p><ul><li><code>z-tokens hash</code> -- hash strings, stdin or files with various hashes (SHA1,2,3 families, Blake2 and Blake3, MD5, etc.);</li><li><code>z-tokens encode</code> -- (TODO) encode / decode strings, stdin or files to / from various encodings (Base*, Bech32, Z85, etc.);</li><li><code>z-tokens secret</code> -- (TODO) storing, sharing and using security sensitive data in operational and development scripts;
+(not for security purposes, as they have almost 0 entropy;)</li><li>time sorted tokens with various levels of entropy (see the <code>flake-*</code> ones);</li><li>seed phrases (see the <code>mnemonic-*</code> or <code>bip0039-*</code> ones);</li></ul><p>Other related tools part of this project are:</p><ul><li><code>z-tokens hash</code> -- hash strings, stdin or files with various hashes (SHA1,2,3 families, Blake2 and Blake3, MD5, etc.);</li><li><code>z-tokens exchange</code> -- encrypt (with X25519 PKI) or armor (like Base64) stdin or files;</li><li><code>z-tokens encode</code> -- (TODO) encode / decode strings, stdin or files to / from various encodings (Base*, Bech32, Z85, etc.);</li><li><code>z-tokens secret</code> -- (TODO) storing, sharing and using security sensitive data in operational and development scripts;
 (for the gist of the idea <a href=https://scratchpad.volution.ro/ciprian/992c7f2944456f18cdde77f683f49aa7/e45fc3da.html>see this document</a>;)</li></ul><hr><h2><span id=status>Status</span></h2><p><strong>The Rust code is quite fresh and thus not thoroughly tested and reviewed.</strong></p><p>However, it relies on solid Rust libraries (like <code>rand</code>)
 and it doesn't do much (like touching the file-system or talking to the network),
 thus it shouldn't break anything.</p><p>The only critical code at the moment,
@@ -36,10 +36,11 @@ z-tokens patterns --help
 
 z-tokens hash --help
 
-z-tokens encode --help
-z-tokens decode --help
-
-z-tokens secret --help
+z-tokens exchange keys --help
+z-tokens exchange encrypt --help
+z-tokens exchange decrypt --help
+z-tokens exchange armor --help
+z-tokens exchange dearmor --help
 
 z-tokens --readme
 </code></pre><p>For how to install see the <a href=#install>dedicated section</a>.</p><hr><h2><span id=examples>Examples</span></h2><h3>How to generate passwords and other tokens</h3><p>Generate a few consonant-vowel passwords,
