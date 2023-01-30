@@ -1,0 +1,102 @@
+#!/dev/null
+
+
+
+
+<< test / exchange / armor
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / debug / build & collect'
+	export -- RUST_BACKTRACE=1
+	
+	exec -- "${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
+			exchange armor \
+		< ./notice.txt \
+	#
+!!
+
+
+<< test / exchange / armor & dearmor
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / debug / build & collect'
+	export -- RUST_BACKTRACE=1
+	
+	"${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
+			exchange armor \
+		< ./readme.md \
+	| "${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
+			exchange dearmor \
+	| md5sum -b -- /dev/stdin ./readme.md \
+	#
+!!
+
+
+
+
+
+
+
+
+<< test / exchange / keys
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / debug / build & collect'
+	export -- RUST_BACKTRACE=1
+	
+	exec -- "${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
+			exchange keys \
+	#
+!!
+
+
+
+
+<< test / exchange / encrypt
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / debug / build & collect'
+	export -- RUST_BACKTRACE=1
+	
+	exec -- "${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
+			exchange encrypt \
+				--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
+				--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+		< ./notice.txt \
+	#
+!!
+
+
+<< test / exchange / encrypt & dencrypt
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / debug / build & collect'
+	export -- RUST_BACKTRACE=1
+	
+	"${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
+			exchange encrypt \
+				--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
+				--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+		< ./readme.md \
+	| "${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
+			exchange decrypt \
+				--sender ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88 \
+				--recipient ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk \
+	| md5sum -b -- \
+			/dev/stdin \
+			./readme.md \
+	#
+!!
+
+
+
+
+<< test / exchange / encrypt / hello
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / debug / build & collect'
+	export -- RUST_BACKTRACE=1
+	
+	exec -- "${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
+			exchange encrypt \
+				--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
+				--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+		<<< $'hello world!\n' \
+	#
+!!
+
+
