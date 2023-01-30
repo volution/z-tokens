@@ -3,7 +3,7 @@
 
 
 
-<< tests / run / descriptors
+--<< tests / run / descriptors
 	test "${#}" -eq 0
 	cat -- ./documentation/tests/_descriptors.txt
 !!

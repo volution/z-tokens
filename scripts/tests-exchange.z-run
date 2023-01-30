@@ -3,7 +3,7 @@
 
 
 
-<< test / exchange / armor
+<< tests / quick / exchange / armor
 	test "${#}" -eq 0
 	"${ZRUN}" ':: cargo / debug / build & collect'
 	export -- RUST_BACKTRACE=1
@@ -15,7 +15,7 @@
 !!
 
 
-<< test / exchange / armor & dearmor
+<< tests / quick / exchange / armor & dearmor
 	test "${#}" -eq 0
 	"${ZRUN}" ':: cargo / debug / build & collect'
 	export -- RUST_BACKTRACE=1
@@ -30,13 +30,25 @@
 !!
 
 
+<< tests / quick / exchange / armor / hello
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / debug / build & collect'
+	export -- RUST_BACKTRACE=1
+	
+	exec -- "${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
+			exchange armor \
+		<<< $'hello world!\n' \
+	#
+!!
 
 
 
 
 
 
-<< test / exchange / keys
+
+
+<< tests / quick / exchange / keys
 	test "${#}" -eq 0
 	"${ZRUN}" ':: cargo / debug / build & collect'
 	export -- RUST_BACKTRACE=1
@@ -49,7 +61,7 @@
 
 
 
-<< test / exchange / encrypt
+<< tests / quick / exchange / encrypt
 	test "${#}" -eq 0
 	"${ZRUN}" ':: cargo / debug / build & collect'
 	export -- RUST_BACKTRACE=1
@@ -63,7 +75,7 @@
 !!
 
 
-<< test / exchange / encrypt & dencrypt
+<< tests / quick / exchange / encrypt & dencrypt
 	test "${#}" -eq 0
 	"${ZRUN}" ':: cargo / debug / build & collect'
 	export -- RUST_BACKTRACE=1
@@ -86,7 +98,7 @@
 
 
 
-<< test / exchange / encrypt / hello
+<< tests / quick / exchange / encrypt / hello
 	test "${#}" -eq 0
 	"${ZRUN}" ':: cargo / debug / build & collect'
 	export -- RUST_BACKTRACE=1
