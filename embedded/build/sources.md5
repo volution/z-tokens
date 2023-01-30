@@ -35,9 +35,9 @@ a4294e529b69e4bed40e7b0380442e14 *embedded/sbom/sbom.html
 adc3adfdc8adc4602a6909708c689d7e *encodings-tool/Cargo.toml
 84870363cabc87ca0290713c022e081e *encodings-tool/lib.rs
 48dfaad937c6276edb74b5b07124758a *exchange-tool/Cargo.toml
-0eceefc3770c348e17d466ef6bbbbdfc *exchange-tool/armor.rs
-7ba9552d5d6e55b978c34671691060ec *exchange-tool/coding.rs
-40b6dfdf5dfc9eb1020d99cfda7fff99 *exchange-tool/crypto.rs
+4ef65fdef57d5b68125bb4d6933f1024 *exchange-tool/armor.rs
+3f223cfd093968dc7262c7d43e21c1ce *exchange-tool/coding.rs
+e5dd7e8455df21facaba0442fb4640e7 *exchange-tool/crypto.rs
 ceb8c571e55dfb1145d0d58fa062b076 *exchange-tool/io.rs
 37c2ce5012ec5add405c981b8990cc7b *exchange-tool/keys.rs
 c9945cdc2881057ec57774d5c5d2eb12 *exchange-tool/lib.rs
