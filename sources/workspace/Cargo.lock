@@ -922,6 +922,7 @@ dependencies = [
  "brotli",
  "bs58",
  "byteorder",
+ "constant_time_eq",
  "crc-any",
  "rand",
  "salsa20",

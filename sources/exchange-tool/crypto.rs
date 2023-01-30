@@ -23,7 +23,9 @@ pub const CRYPTO_ENCRYPTED_SIZE_MAX : usize = CRYPTO_DECRYPTED_SIZE_MAX + 4 + CR
 
 
 pub const CRYPTO_ENCRYPTED_PADDING : usize = 256;
-pub const CRYPTO_ENCRYPTED_OVERHEAD : usize = 64;
+pub const CRYPTO_ENCRYPTED_OVERHEAD : usize = CRYPTO_ENCRYPTED_NONCE + CRYPTO_ENCRYPTED_MAC;
+pub const CRYPTO_ENCRYPTED_NONCE : usize = 8;
+pub const CRYPTO_ENCRYPTED_MAC : usize = 8;
 
 
 
@@ -64,7 +66,15 @@ pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _
 	
 	let _shared = _sender.0.0.diffie_hellman (&_recipient.0.0);
 	
-	apply_salsa20 (&_shared, &mut _compress_buffer) ?;
+	let mut _nonce = [0u8; CRYPTO_ENCRYPTED_NONCE];
+	{
+		use ::rand::RngCore as _;
+		::rand::rngs::OsRng.fill_bytes (&mut _nonce);
+	}
+	
+	apply_salsa20 (&_shared, &_nonce, &mut _compress_buffer) ?;
+	
+	_compress_buffer.extend_from_slice (&_nonce);
 	
 	let _encode_capacity = encode_capacity_max (_compress_buffer.len ()) .else_wrap (0x00bf84c9) ?;
 	
@@ -93,9 +103,20 @@ pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _
 	let mut _decode_buffer = Vec::with_capacity (_decode_capacity);
 	decode (_encrypted, &mut _decode_buffer) .else_wrap (0x10ff413a) ?;
 	
+	
+	let mut _nonce = [0u8; CRYPTO_ENCRYPTED_NONCE];
+	{
+		let _decode_len = _decode_buffer.len ();
+		if _decode_len < CRYPTO_ENCRYPTED_NONCE {
+			fail! (0xbfead1cb);
+		}
+		_nonce.copy_from_slice (&_decode_buffer[(_decode_len - CRYPTO_ENCRYPTED_NONCE) .. _decode_len]);
+		_decode_buffer.truncate (_decode_len - CRYPTO_ENCRYPTED_NONCE);
+	}
+	
 	let _shared = _recipient.0.0.diffie_hellman (&_sender.0.0);
 	
-	apply_salsa20 (&_shared, &mut _decode_buffer) ?;
+	apply_salsa20 (&_shared, &_nonce, &mut _decode_buffer) ?;
 	
 	{
 		let _decode_len = _decode_buffer.len ();
@@ -146,15 +167,13 @@ pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _
 
 
 
-fn apply_salsa20 (_shared : &x25519::SharedSecret, _data : &mut [u8]) -> CryptoResult {
+fn apply_salsa20 (_shared : &x25519::SharedSecret, _nonce : &[u8], _data : &mut [u8]) -> CryptoResult {
 	
 	use ::salsa20::cipher::KeyIvInit as _;
 	use ::salsa20::cipher::StreamCipher as _;
 	
 	let _key = ::salsa20::Key::from_slice (_shared.as_bytes ());
-	
-	// FIXME!
-	let _nonce = ::salsa20::Nonce::from ([0u8; 8]);
+	let _nonce = ::salsa20::Nonce::from_slice (_nonce);
 	
 	let mut _cipher = ::salsa20::Salsa20::new (&_key, &_nonce);
 	
