@@ -229,10 +229,10 @@ fn encode_raw (_prefix : &str, _data : &[u8]) -> KeyEncodingResult<Rb<String>> {
 	
 	let mut _bech_nibles = Vec::with_capacity (_bech_nibles_capacity);
 	::bech32::ToBase32::write_base32 (&_data, &mut _bech_nibles) .else_replace (0xd5ea985b) ?;
-	assert! (_bech_nibles_capacity == _bech_nibles.capacity (), "[5e22b060]");
+	assert! (_bech_nibles_capacity == _bech_nibles.capacity (), "[5e22b060]  {} == {}", _bech_nibles_capacity, _bech_nibles.capacity ());
 	
 	let mut _bech_string = String::with_capacity (_bech_string_capacity);
-	assert! (_bech_string_capacity == _bech_string.capacity (), "[0x9549d10e]");
+	assert! (_bech_string_capacity == _bech_string.capacity (), "[9549d10e]  {} == {}", _bech_string_capacity, _bech_string.capacity ());
 	
 	::bech32::encode_to_fmt (&mut _bech_string, _prefix, &_bech_nibles, ::bech32::Variant::Bech32m) .else_wrap (0x9ee94010) ? .else_wrap (0x49c6b0af) ?;
 	

@@ -96,7 +96,7 @@ pub(crate) fn encode (_decoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 	
 	_buffer.push (b'\n');
 	
-	assert! (_buffer.capacity () == _buffer_capacity, "[9360b1c0]");
+	assert! (_buffer.capacity () == _buffer_capacity, "[9360b1c0]  {} == {}", _buffer.capacity (), _buffer_capacity);
 	
 	Ok (())
 }
@@ -162,7 +162,7 @@ pub(crate) fn decode (_encoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 	//	fail! (0x924663bd);
 	//}
 	
-	assert! (_buffer.capacity () == _buffer_capacity, "[6d624ac5]");
+	assert! (_buffer.capacity () == _buffer_capacity, "[6d624ac5]  {} == {}", _buffer.capacity (), _buffer_capacity);
 	
 	Ok (())
 }
@@ -207,7 +207,7 @@ pub(crate) fn compress (_data : &[u8], _buffer : &mut Vec<u8>) -> CompressionRes
 	_encoder.flush () .else_wrap (0xb5560900) ?;
 	let _buffer = _encoder.into_inner ();
 	
-	assert! (_buffer.capacity () == _buffer_capacity, "[af54fcfc]");
+	assert! (_buffer.capacity () == _buffer_capacity, "[af54fcfc]  {} == {}", _buffer.capacity (), _buffer_capacity);
 	
 	Ok (())
 }
@@ -223,7 +223,7 @@ pub(crate) fn decompress (_data : &[u8], _buffer : &mut Vec<u8>) -> CompressionR
 	
 	_decoder.read_to_end (_buffer) .else_wrap (0xf20a0822) ?;
 	
-	assert! (_buffer.capacity () == _buffer_capacity, "[630ddcba]");
+	assert! (_buffer.capacity () == _buffer_capacity, "[630ddcba]  {} == {}", _buffer.capacity (), _buffer_capacity);
 	
 	Ok (())
 }
@@ -323,6 +323,7 @@ pub(crate) fn padding_push (_alignment : usize, _buffer : &mut Vec<u8>) -> () {
 	assert! (_alignment <= 256, "[9d23d229]");
 	
 	let _padding = _alignment - (_buffer.len () % _alignment);
+	
 	assert! (_padding >= 1, "[0a1987ea]");
 	assert! (_padding <= 255, "[d2c4f983]");
 	

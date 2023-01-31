@@ -118,8 +118,8 @@ pub fn entropy_estimates (_entropy : &Entropy) -> EntropyResult<EntropyEstimates
 				f64::log2 (_unit_count as f64) +
 				f64::log2 (3600.0);
 		
-		debug_assert! (! _bits.is_nan (), "[!!] [732c4ada]");
-		debug_assert! (_bits.is_finite (), "[!!] [5ab30220]");
+		debug_assert! (! _bits.is_nan (), "[732c4ada]");
+		debug_assert! (_bits.is_finite (), "[5ab30220]");
 		
 		_bits
 	}
@@ -146,14 +146,14 @@ pub fn entropy_estimates (_entropy : &Entropy) -> EntropyResult<EntropyEstimates
 			_unit_hps *= _yearly_hps_factor;
 			_unit_count *= _yearly_count_factor;
 			
-			debug_assert! (! _total_tera_hashes.is_nan (), "[!!] [6e3898bc]");
-			debug_assert! (_total_tera_hashes.is_finite (), "[!!] [900c14b8]");
+			debug_assert! (! _total_tera_hashes.is_nan (), "[6e3898bc]");
+			debug_assert! (_total_tera_hashes.is_finite (), "[900c14b8]");
 		}
 		
 		let _total_bits = f64::log2 (_total_tera_hashes) + f64::log2 (1_000_000_000_000.0);
 		
-		debug_assert! (! _total_bits.is_nan (), "[!!] [d7bd0c84]");
-		debug_assert! (_total_bits.is_finite (), "[!!] [bdf77e79]");
+		debug_assert! (! _total_bits.is_nan (), "[d7bd0c84]");
+		debug_assert! (_total_bits.is_finite (), "[bdf77e79]");
 		
 		_total_bits
 	}
@@ -172,10 +172,10 @@ pub fn entropy_estimates (_entropy : &Entropy) -> EntropyResult<EntropyEstimates
 		
 		let _hours_count = f64::powf (2.0, _hours_bits);
 		
-		debug_assert! (! _hours_count.is_nan (), "[!!] [360d61a8]");
+		debug_assert! (! _hours_count.is_nan (), "[360d61a8]");
 		
 		let _hours_count = if _hours_count.is_finite () {
-				debug_assert! (_hours_count.is_finite (), "[!!] [bd1b1cbc]");
+				debug_assert! (_hours_count.is_finite (), "[bd1b1cbc]");
 				Some (_hours_count)
 			} else {
 				None

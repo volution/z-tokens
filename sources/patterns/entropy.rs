@@ -91,8 +91,8 @@ impl Entropy {
 			} else {
 				self.accumulator_log2
 			};
-		debug_assert! (! _bits.is_nan (), "[!!] [0375f69f]");
-		debug_assert! (_bits.is_finite (), "[!!] [86036975]");
+		debug_assert! (! _bits.is_nan (), "[0375f69f]");
+		debug_assert! (_bits.is_finite (), "[86036975]");
 		_bits
 	}
 	

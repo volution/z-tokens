@@ -85,7 +85,7 @@ pub fn armor (_decoded : &[u8], _encoded : &mut Vec<u8>, _pin : Option<&[u8]>) -
 	let mut _encode_buffer = Vec::with_capacity (_encode_capacity);
 	encode (&_compress_buffer, &mut _encode_buffer) .else_wrap (0x080c7733) ?;
 	
-	assert! (_encode_buffer.len () <= ARMOR_ENCODED_SIZE_MAX, "[e14aea63]");
+	assert! (_encode_buffer.len () <= ARMOR_ENCODED_SIZE_MAX, "[e14aea63]  {} <= {}", _encode_buffer.len (), ARMOR_ENCODED_SIZE_MAX);
 	
 	// NOTE:  finalizing...
 	

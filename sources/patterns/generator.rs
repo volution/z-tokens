@@ -94,8 +94,8 @@ pub fn generate_token_push (_pattern : impl AsRef<TokenPattern>, _randomizer : &
 
 pub fn generate_separator (_pattern : impl AsRef<SeparatorPattern>, _index : usize, _count : usize) -> GeneratorResult<(Option<Rb<Separator>>, Option<Rb<Separator>>)> {
 	
-	debug_assert! (_count > 0, "[!!] [5e054c68]");
-	debug_assert! (_index < _count, "[!!] [ff47b883]");
+	debug_assert! (_count > 0, "[5e054c68]");
+	debug_assert! (_index < _count, "[ff47b883]");
 	
 	let _pattern = _pattern.as_ref ();
 	let _separators = match _pattern {
