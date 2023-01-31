@@ -33,7 +33,8 @@ pub(crate) const ARMOR_ENCODED_HASH : usize = CODING_CHUNK_DECODED_SIZE * 2 - 4;
 pub(crate) const ARMOR_ENCODED_SALT : usize = 16;
 
 
-static ARMOR_ALL_OR_NOTHING_KEY_CONTEXT : &str = "z-tokens exchange armor-all-or-nothing key (2023a)";
+static ARMOR_AONT_KEY_CONTEXT : &str = "z-tokens exchange armor key (2023a)";
+static ARMOR_AONT_PIN_CONTEXT : &str = "z-tokens exchange armor pin (2023a)";
 
 
 
@@ -42,7 +43,7 @@ static ARMOR_ALL_OR_NOTHING_KEY_CONTEXT : &str = "z-tokens exchange armor-all-or
 
 
 
-pub fn armor (_decoded : &[u8], _encoded : &mut Vec<u8>) -> ArmorResult {
+pub fn armor (_decoded : &[u8], _encoded : &mut Vec<u8>, _pin : Option<&[u8]>) -> ArmorResult {
 	
 	let _decoded_len = _decoded.len ();
 	
@@ -69,7 +70,7 @@ pub fn armor (_decoded : &[u8], _encoded : &mut Vec<u8>) -> ArmorResult {
 	
 	let mut _salt = generate_salt () ?;
 	
-	apply_all_or_nothing_encryption (&_salt, &mut _compress_buffer) ?;
+	apply_all_or_nothing_encryption (&_salt, &mut _compress_buffer, _pin) ?;
 	apply_all_or_nothing_mangling (&mut _salt, &_compress_buffer) ?;
 	
 	_compress_buffer.extend_from_slice (&_salt);
@@ -94,7 +95,7 @@ pub fn armor (_decoded : &[u8], _encoded : &mut Vec<u8>) -> ArmorResult {
 
 
 
-pub fn dearmor (_encoded : &[u8], _decoded : &mut Vec<u8>) -> ArmorResult {
+pub fn dearmor (_encoded : &[u8], _decoded : &mut Vec<u8>, _pin : Option<&[u8]>) -> ArmorResult {
 	
 	let _encoded_len = _encoded.len ();
 	
@@ -114,7 +115,7 @@ pub fn dearmor (_encoded : &[u8], _decoded : &mut Vec<u8>) -> ArmorResult {
 	let mut _salt = bytes_pop::<ARMOR_ENCODED_SALT> (&mut _decode_buffer) .else_wrap (0xcfdbfbc3) ?;
 	
 	apply_all_or_nothing_mangling (&mut _salt, &_decode_buffer) ?;
-	apply_all_or_nothing_encryption (&_salt, &mut _decode_buffer) ?;
+	apply_all_or_nothing_encryption (&_salt, &mut _decode_buffer, _pin) ?;
 	
 	// NOTE:  unwrapping...
 	
@@ -156,14 +157,21 @@ pub fn dearmor (_encoded : &[u8], _decoded : &mut Vec<u8>) -> ArmorResult {
 
 
 
-fn apply_all_or_nothing_encryption (_salt : &[u8; ARMOR_ENCODED_SALT], _data : &mut [u8]) -> ArmorResult {
+fn apply_all_or_nothing_encryption (_salt : &[u8; ARMOR_ENCODED_SALT], _data : &mut [u8], _pin : Option<&[u8]>) -> ArmorResult {
 	
 	use ::salsa20::cipher::KeyIvInit as _;
 	use ::salsa20::cipher::StreamCipher as _;
 	
+	let _pin : [u8; 32] =
+			::blake3::Hasher::new_derive_key (ARMOR_AONT_PIN_CONTEXT)
+			.update (_pin.unwrap_or (&[]))
+			.finalize ()
+			.into ();
+	
 	let _key : [u8; 32] =
-			::blake3::Hasher::new_derive_key (ARMOR_ALL_OR_NOTHING_KEY_CONTEXT)
+			::blake3::Hasher::new_derive_key (ARMOR_AONT_KEY_CONTEXT)
 			.update (_salt)
+			.update (&_pin)
 			.finalize ()
 			.into ();
 	

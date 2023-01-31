@@ -28,6 +28,7 @@ pub(crate) const COMPRESSION_OVERHEAD_MAX : usize = 1024;
 
 const COMPRESSION_BROTLI_Q : u32 = 9;
 const COMPRESSION_BROTLI_LGWIN : u32 = 24;
+
 const COMPRESSION_BROTLI_BLOCK : usize = 128 * 1024;
 
 

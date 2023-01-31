@@ -41,6 +41,7 @@ pub const CRYPTO_ENCRYPTED_MAC : usize = 16;
 
 static CRYPTO_ENCRYPTION_KEY_CONTEXT : &str = "z-tokens exchange encryption key (2023a)";
 static CRYPTO_AUTHENTICATION_KEY_CONTEXT : &str = "z-tokens exchange authentication key (2023a)";
+static CRYPTO_PIN_CONTEXT : &str = "z-tokens exchange pin (2023a)";
 
 
 
@@ -49,7 +50,7 @@ static CRYPTO_AUTHENTICATION_KEY_CONTEXT : &str = "z-tokens exchange authenticat
 
 
 
-pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _decrypted : &[u8], _encrypted : &mut Vec<u8>) -> CryptoResult {
+pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _decrypted : &[u8], _encrypted : &mut Vec<u8>, _pin : Option<&[u8]>) -> CryptoResult {
 	
 	let _decrypted_len = _decrypted.len ();
 	
@@ -69,7 +70,7 @@ pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _
 	
 	let mut _salt = generate_salt () ?;
 	
-	let (_encryption_key, _authentication_key) = derive_keys (&_sender.0.0, &_recipient.0.0, &_salt) ?;
+	let (_encryption_key, _authentication_key) = derive_keys (&_sender.0.0, &_recipient.0.0, &_salt, _pin) ?;
 	
 	apply_encryption (&_encryption_key, &mut _compress_buffer) ?;
 	
@@ -97,7 +98,7 @@ pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _
 
 
 
-pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _encrypted : &[u8], _decrypted : &mut Vec<u8>) -> CryptoResult {
+pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _encrypted : &[u8], _decrypted : &mut Vec<u8>, _pin : Option<&[u8]>) -> CryptoResult {
 	
 	let _encrypted_len = _encrypted.len ();
 	
@@ -114,7 +115,7 @@ pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _
 	
 	apply_all_or_nothing_mangling (&mut _salt, &_decode_buffer) ?;
 	
-	let (_encryption_key, _authentication_key) = derive_keys (&_recipient.0.0, &_sender.0.0, &_salt) ?;
+	let (_encryption_key, _authentication_key) = derive_keys (&_recipient.0.0, &_sender.0.0, &_salt, _pin) ?;
 	
 	let _mac_expected = bytes_pop::<CRYPTO_ENCRYPTED_MAC> (&mut _decode_buffer) .else_wrap (0x88084589) ?;
 	
@@ -190,15 +191,22 @@ fn apply_authentication (_key : &[u8; 32], _data : &[u8]) -> CryptoResult<[u8; C
 
 
 
-fn derive_keys (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, _salt : &[u8; CRYPTO_ENCRYPTED_SALT]) -> CryptoResult<([u8; 32], [u8; 32])> {
+fn derive_keys (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, _salt : &[u8; CRYPTO_ENCRYPTED_SALT], _pin : Option<&[u8]>) -> CryptoResult<([u8; 32], [u8; 32])> {
 	
 	let _shared = x25519::StaticSecret::diffie_hellman (_private, _public);
 	let _shared = _shared.as_bytes ();
+	
+	let _pin : [u8; 32] =
+			::blake3::Hasher::new_derive_key (CRYPTO_PIN_CONTEXT)
+			.update (_pin.unwrap_or (&[]))
+			.finalize ()
+			.into ();
 	
 	let _encryption_key =
 			::blake3::Hasher::new_derive_key (CRYPTO_ENCRYPTION_KEY_CONTEXT)
 			.update (_shared)
 			.update (_salt)
+			.update (&_pin)
 			.finalize ()
 			.into ();
 	
@@ -206,6 +214,7 @@ fn derive_keys (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, 
 			::blake3::Hasher::new_derive_key (CRYPTO_AUTHENTICATION_KEY_CONTEXT)
 			.update (_shared)
 			.update (_salt)
+			.update (&_pin)
 			.finalize ()
 			.into ();
 	
