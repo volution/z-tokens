@@ -152,9 +152,10 @@ pub(crate) fn decode (_encoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 		_buffer.extend_from_slice (&_decode_buffer[.. (_decode_size - 1)]);
 	}
 	
-	if ! _end_of_chunks {
-		fail! (0x924663bd);
-	}
+	// NOTE:  Sometimes (1 in 256) the CRC will succeed without requiring the end-of-chunks application.
+	//if ! _end_of_chunks {
+	//	fail! (0x924663bd);
+	//}
 	
 	assert! (_buffer.capacity () == _buffer_capacity, "[6d624ac5]");
 	
