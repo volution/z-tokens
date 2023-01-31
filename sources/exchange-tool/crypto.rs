@@ -197,6 +197,11 @@ fn apply_authentication (_key : &[u8; 32], _data : &[u8]) -> CryptoResult<[u8; C
 fn derive_keys (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, _salt : &[u8; CRYPTO_ENCRYPTED_SALT], _pin : Option<&[u8]>) -> CryptoResult<([u8; 32], [u8; 32])> {
 	
 	let _shared = x25519::StaticSecret::diffie_hellman (_private, _public);
+	
+	if ! _shared.was_contributory () {
+		fail! (0xd00d13f7);
+	}
+	
 	let _shared = _shared.as_bytes ();
 	
 	let _pin : [u8; 32] =
