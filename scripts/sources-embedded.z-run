@@ -94,6 +94,7 @@
 	find -L . \
 			-type f \
 			-not -path './embedded/build/*' \
+			-not -path './.dependencies/*' \
 			-printf '%P\0' \
 	| LC_ALL=C sort -z \
 		>| "${_outputs}/markers/build-sources.list.tmp" \
