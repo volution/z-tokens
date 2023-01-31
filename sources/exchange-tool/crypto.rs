@@ -207,17 +207,17 @@ fn derive_keys (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, 
 	
 	let _encryption_key =
 			::blake3::Hasher::new_derive_key (CRYPTO_ENCRYPTION_KEY_CONTEXT)
+			.update (&_pin)
 			.update (_shared)
 			.update (_salt)
-			.update (&_pin)
 			.finalize ()
 			.into ();
 	
 	let _authentication_key =
 			::blake3::Hasher::new_derive_key (CRYPTO_AUTHENTICATION_KEY_CONTEXT)
+			.update (&_pin)
 			.update (_shared)
 			.update (_salt)
-			.update (&_pin)
 			.finalize ()
 			.into ();
 	

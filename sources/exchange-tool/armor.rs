@@ -173,8 +173,8 @@ fn apply_all_or_nothing_encryption (_salt : &[u8; ARMOR_ENCODED_SALT], _data : &
 	
 	let _key : [u8; 32] =
 			::blake3::Hasher::new_derive_key (ARMOR_AONT_KEY_CONTEXT)
-			.update (_salt)
 			.update (&_pin)
+			.update (_salt)
 			.finalize ()
 			.into ();
 	
