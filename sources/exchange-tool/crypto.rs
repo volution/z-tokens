@@ -34,13 +34,12 @@ pub const CRYPTO_ENCRYPTED_SIZE_MAX : usize =
 
 
 pub const CRYPTO_ENCRYPTED_PADDING : usize = 255;
-pub const CRYPTO_ENCRYPTED_OVERHEAD : usize = CRYPTO_ENCRYPTED_NONCE + CRYPTO_ENCRYPTED_MAC;
-pub const CRYPTO_ENCRYPTED_NONCE : usize = 16;
+pub const CRYPTO_ENCRYPTED_OVERHEAD : usize = CRYPTO_ENCRYPTED_SALT + CRYPTO_ENCRYPTED_MAC;
+pub const CRYPTO_ENCRYPTED_SALT : usize = 16;
 pub const CRYPTO_ENCRYPTED_MAC : usize = 16;
 
 
 static CRYPTO_ENCRYPTION_KEY_CONTEXT : &str = "z-tokens exchange encryption key (2023a)";
-static CRYPTO_ENCRYPTION_NONCE_CONTEXT : &str = "z-tokens exchange encryption nonce (2023a)";
 static CRYPTO_AUTHENTICATION_KEY_CONTEXT : &str = "z-tokens exchange authentication key (2023a)";
 
 
@@ -68,19 +67,19 @@ pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _
 	
 	padding_push (CRYPTO_ENCRYPTED_PADDING, &mut _compress_buffer);
 	
-	let mut _nonce = generate_nonce () ?;
+	let mut _salt = generate_salt () ?;
 	
-	let (_encrypt_key, _encrypt_nonce, _authentication_key) = derive_keys (&_sender.0.0, &_recipient.0.0, &_nonce) ?;
+	let (_encryption_key, _authentication_key) = derive_keys (&_sender.0.0, &_recipient.0.0, &_salt) ?;
 	
-	apply_encryption (&_encrypt_key, &_encrypt_nonce, &mut _compress_buffer) ?;
+	apply_encryption (&_encryption_key, &mut _compress_buffer) ?;
 	
 	let _mac = apply_authentication (&_authentication_key, &_compress_buffer) ?;
 	
 	_compress_buffer.extend_from_slice (&_mac);
 	
-	apply_all_or_nothing_mangling (&mut _nonce, &_compress_buffer) ?;
+	apply_all_or_nothing_mangling (&mut _salt, &_compress_buffer) ?;
 	
-	_compress_buffer.extend_from_slice (&_nonce);
+	_compress_buffer.extend_from_slice (&_salt);
 	
 	let _encode_capacity = encode_capacity_max (_compress_buffer.len ()) .else_wrap (0x00bf84c9) ?;
 	
@@ -111,11 +110,11 @@ pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _
 	let mut _decode_buffer = Vec::with_capacity (_decode_capacity);
 	decode (_encrypted, &mut _decode_buffer) .else_wrap (0x10ff413a) ?;
 	
-	let mut _nonce = bytes_pop::<CRYPTO_ENCRYPTED_NONCE> (&mut _decode_buffer) .else_wrap (0x78ed3811) ?;
+	let mut _salt = bytes_pop::<CRYPTO_ENCRYPTED_SALT> (&mut _decode_buffer) .else_wrap (0x78ed3811) ?;
 	
-	apply_all_or_nothing_mangling (&mut _nonce, &_decode_buffer) ?;
+	apply_all_or_nothing_mangling (&mut _salt, &_decode_buffer) ?;
 	
-	let (_encrypt_key, _encrypt_nonce, _authentication_key) = derive_keys (&_recipient.0.0, &_sender.0.0, &_nonce) ?;
+	let (_encryption_key, _authentication_key) = derive_keys (&_recipient.0.0, &_sender.0.0, &_salt) ?;
 	
 	let _mac_expected = bytes_pop::<CRYPTO_ENCRYPTED_MAC> (&mut _decode_buffer) .else_wrap (0x88084589) ?;
 	
@@ -125,7 +124,7 @@ pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _
 		fail! (0xad70c84c);
 	}
 	
-	apply_encryption (&_encrypt_key, &_encrypt_nonce, &mut _decode_buffer) ?;
+	apply_encryption (&_encryption_key, &mut _decode_buffer) ?;
 	
 	padding_pop (CRYPTO_ENCRYPTED_PADDING, &mut _decode_buffer) .else_wrap (0xbbdd100e) ?;
 	
@@ -155,15 +154,15 @@ pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _
 
 
 
-fn apply_encryption (_key : &[u8; 32], _nonce : &[u8; 32], _data : &mut [u8]) -> CryptoResult {
+fn apply_encryption (_key : &[u8; 32], _data : &mut [u8]) -> CryptoResult {
 	
 	use ::salsa20::cipher::KeyIvInit as _;
 	use ::salsa20::cipher::StreamCipher as _;
 	
-	let _nonce = &_nonce[..8];
+	let _nonce = [0u8; 8];
 	
 	let _key = ::salsa20::Key::from_slice (_key);
-	let _nonce = ::salsa20::Nonce::from_slice (_nonce);
+	let _nonce = ::salsa20::Nonce::from (_nonce);
 	
 	let mut _cipher = ::salsa20::Salsa20::new (&_key, &_nonce);
 	
@@ -191,7 +190,7 @@ fn apply_authentication (_key : &[u8; 32], _data : &[u8]) -> CryptoResult<[u8; C
 
 
 
-fn derive_keys (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, _nonce : &[u8; CRYPTO_ENCRYPTED_NONCE]) -> CryptoResult<([u8; 32], [u8; 32], [u8; 32])> {
+fn derive_keys (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, _salt : &[u8; CRYPTO_ENCRYPTED_SALT]) -> CryptoResult<([u8; 32], [u8; 32])> {
 	
 	let _shared = x25519::StaticSecret::diffie_hellman (_private, _public);
 	let _shared = _shared.as_bytes ();
@@ -199,31 +198,24 @@ fn derive_keys (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, 
 	let _encryption_key =
 			::blake3::Hasher::new_derive_key (CRYPTO_ENCRYPTION_KEY_CONTEXT)
 			.update (_shared)
-			.update (_nonce)
-			.finalize ()
-			.into ();
-	
-	let _encryption_nonce =
-			::blake3::Hasher::new_derive_key (CRYPTO_ENCRYPTION_NONCE_CONTEXT)
-			.update (_shared)
-			.update (_nonce)
+			.update (_salt)
 			.finalize ()
 			.into ();
 	
 	let _authentication_key =
 			::blake3::Hasher::new_derive_key (CRYPTO_AUTHENTICATION_KEY_CONTEXT)
 			.update (_shared)
-			.update (_nonce)
+			.update (_salt)
 			.finalize ()
 			.into ();
 	
-	Ok ((_encryption_key, _encryption_nonce, _authentication_key))
+	Ok ((_encryption_key, _authentication_key))
 }
 
 
 
 
-fn apply_all_or_nothing_mangling (_nonce : &mut [u8; CRYPTO_ENCRYPTED_NONCE], _data : &[u8]) -> CryptoResult {
+fn apply_all_or_nothing_mangling (_salt : &mut [u8; CRYPTO_ENCRYPTED_SALT], _data : &[u8]) -> CryptoResult {
 	
 	let _hash =
 			::blake3::Hasher::new ()
@@ -232,8 +224,8 @@ fn apply_all_or_nothing_mangling (_nonce : &mut [u8; CRYPTO_ENCRYPTED_NONCE], _d
 	
 	let _hash = _hash.as_bytes ();
 	
-	for _index in 0 .. CRYPTO_ENCRYPTED_NONCE {
-		_nonce[_index] ^= _hash[_index];
+	for _index in 0 .. CRYPTO_ENCRYPTED_SALT {
+		_salt[_index] ^= _hash[_index];
 	}
 	
 	Ok (())
@@ -242,11 +234,11 @@ fn apply_all_or_nothing_mangling (_nonce : &mut [u8; CRYPTO_ENCRYPTED_NONCE], _d
 
 
 
-fn generate_nonce () -> CryptoResult<[u8; CRYPTO_ENCRYPTED_NONCE]> {
+fn generate_salt () -> CryptoResult<[u8; CRYPTO_ENCRYPTED_SALT]> {
 	use ::rand::RngCore as _;
-	let mut _nonce = [0u8; CRYPTO_ENCRYPTED_NONCE];
-	::rand::rngs::OsRng.fill_bytes (&mut _nonce);
-	Ok (_nonce)
+	let mut _salt = [0u8; CRYPTO_ENCRYPTED_SALT];
+	::rand::rngs::OsRng.fill_bytes (&mut _salt);
+	Ok (_salt)
 }
 
 

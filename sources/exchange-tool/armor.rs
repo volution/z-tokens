@@ -23,13 +23,17 @@ pub(crate) const ARMOR_DECODED_SIZE_MAX : usize = 128 * 1024 * 1024;
 pub(crate) const ARMOR_ENCODED_SIZE_MAX : usize =
 		(
 			(
-				(ARMOR_DECODED_SIZE_MAX + COMPRESSION_OVERHEAD_MAX + 4 + ARMOR_ENCODED_HASH + ARMOR_ENCODED_KEY)
+				(ARMOR_DECODED_SIZE_MAX + COMPRESSION_OVERHEAD_MAX + 4 + ARMOR_ENCODED_HASH + ARMOR_ENCODED_SALT)
 				/ CODING_CHUNK_DECODED_SIZE
 			) + 1
 		) * (CODING_CHUNK_ENCODED_SIZE + 1);
 
+
 pub(crate) const ARMOR_ENCODED_HASH : usize = CODING_CHUNK_DECODED_SIZE * 2 - 4;
-pub(crate) const ARMOR_ENCODED_KEY : usize = 16;
+pub(crate) const ARMOR_ENCODED_SALT : usize = 16;
+
+
+static ARMOR_ALL_OR_NOTHING_KEY_CONTEXT : &str = "z-tokens exchange armor-all-or-nothing key (2023a)";
 
 
 
@@ -49,7 +53,7 @@ pub fn armor (_decoded : &[u8], _encoded : &mut Vec<u8>) -> ArmorResult {
 	// NOTE:  compressing...
 	
 	let _compress_capacity = compress_capacity_max (_decoded_len) .else_wrap (0xd7e27086) ?;
-	let _compress_capacity = _compress_capacity + 4 + ARMOR_ENCODED_HASH + ARMOR_ENCODED_KEY;
+	let _compress_capacity = _compress_capacity + 4 + ARMOR_ENCODED_HASH + ARMOR_ENCODED_SALT;
 	
 	let mut _compress_buffer = Vec::with_capacity (_compress_capacity);
 	compress (_decoded, &mut _compress_buffer) .else_wrap (0x08e19178) ?;
@@ -63,12 +67,12 @@ pub fn armor (_decoded : &[u8], _encoded : &mut Vec<u8>) -> ArmorResult {
 	
 	// NOTE:  all-or-nothing...
 	
-	let mut _key = generate_key () ?;
+	let mut _salt = generate_salt () ?;
 	
-	apply_all_or_nothing_encryption (&_key, &mut _compress_buffer) ?;
-	apply_all_or_nothing_mangling (&mut _key, &_compress_buffer) ?;
+	apply_all_or_nothing_encryption (&_salt, &mut _compress_buffer) ?;
+	apply_all_or_nothing_mangling (&mut _salt, &_compress_buffer) ?;
 	
-	_compress_buffer.extend_from_slice (&_key);
+	_compress_buffer.extend_from_slice (&_salt);
 	
 	// NOTE:  encoding...
 	
@@ -107,10 +111,10 @@ pub fn dearmor (_encoded : &[u8], _decoded : &mut Vec<u8>) -> ArmorResult {
 	
 	// NOTE:  all-or-nothing...
 	
-	let mut _key = bytes_pop::<ARMOR_ENCODED_KEY> (&mut _decode_buffer) .else_wrap (0xcfdbfbc3) ?;
+	let mut _salt = bytes_pop::<ARMOR_ENCODED_SALT> (&mut _decode_buffer) .else_wrap (0xcfdbfbc3) ?;
 	
-	apply_all_or_nothing_mangling (&mut _key, &_decode_buffer) ?;
-	apply_all_or_nothing_encryption (&_key, &mut _decode_buffer) ?;
+	apply_all_or_nothing_mangling (&mut _salt, &_decode_buffer) ?;
+	apply_all_or_nothing_encryption (&_salt, &mut _decode_buffer) ?;
 	
 	// NOTE:  unwrapping...
 	
@@ -152,17 +156,21 @@ pub fn dearmor (_encoded : &[u8], _decoded : &mut Vec<u8>) -> ArmorResult {
 
 
 
-fn apply_all_or_nothing_encryption (_key : &[u8; ARMOR_ENCODED_KEY], _data : &mut [u8]) -> ArmorResult {
+fn apply_all_or_nothing_encryption (_salt : &[u8; ARMOR_ENCODED_SALT], _data : &mut [u8]) -> ArmorResult {
 	
 	use ::salsa20::cipher::KeyIvInit as _;
 	use ::salsa20::cipher::StreamCipher as _;
 	
-	let _nonce = [0u8; 8];
-	let mut _key_0 = [0u8; 32];
-	_key_0[.. ARMOR_ENCODED_KEY].copy_from_slice (_key);
+	let _key : [u8; 32] =
+			::blake3::Hasher::new_derive_key (ARMOR_ALL_OR_NOTHING_KEY_CONTEXT)
+			.update (_salt)
+			.finalize ()
+			.into ();
 	
-	let _key = ::salsa20::Key::from_slice (&_key_0);
-	let _nonce = ::salsa20::Nonce::from_slice (&_nonce);
+	let _nonce = [0u8; 8];
+	
+	let _key = ::salsa20::Key::from_slice (&_key);
+	let _nonce = ::salsa20::Nonce::from (_nonce);
 	
 	let mut _cipher = ::salsa20::Salsa20::new (&_key, &_nonce);
 	
@@ -172,7 +180,7 @@ fn apply_all_or_nothing_encryption (_key : &[u8; ARMOR_ENCODED_KEY], _data : &mu
 }
 
 
-fn apply_all_or_nothing_mangling (_key : &mut [u8; ARMOR_ENCODED_KEY], _data : &[u8]) -> ArmorResult {
+fn apply_all_or_nothing_mangling (_salt : &mut [u8; ARMOR_ENCODED_SALT], _data : &[u8]) -> ArmorResult {
 	
 	let _hash =
 			::blake3::Hasher::new ()
@@ -181,8 +189,8 @@ fn apply_all_or_nothing_mangling (_key : &mut [u8; ARMOR_ENCODED_KEY], _data : &
 	
 	let _hash = _hash.as_bytes ();
 	
-	for _index in 0 .. ARMOR_ENCODED_KEY {
-		_key[_index] ^= _hash[_index];
+	for _index in 0 .. ARMOR_ENCODED_SALT {
+		_salt[_index] ^= _hash[_index];
 	}
 	
 	Ok (())
@@ -207,11 +215,11 @@ fn apply_fingerprint (_data : &[u8]) -> ArmorResult<[u8; ARMOR_ENCODED_HASH]> {
 
 
 
-fn generate_key () -> ArmorResult<[u8; ARMOR_ENCODED_KEY]> {
+fn generate_salt () -> ArmorResult<[u8; ARMOR_ENCODED_SALT]> {
 	use ::rand::RngCore as _;
-	let mut _key = [0u8; ARMOR_ENCODED_KEY];
-	::rand::rngs::OsRng.fill_bytes (&mut _key);
-	Ok (_key)
+	let mut _salt = [0u8; ARMOR_ENCODED_SALT];
+	::rand::rngs::OsRng.fill_bytes (&mut _salt);
+	Ok (_salt)
 }
 
 
