@@ -106,6 +106,6 @@ z-tokens-runtime = { path = "../runtime", optional = true, default-features = fa
 vrl-errors = { version = "*", default-features = false, features = [] }
 vrl-preludes = { version = "*", default-features = false, features = [] }
 
-platform-info = { version = "*", default-features = false, features = [] }
+platform-info = { version = "^1.0", default-features = false, features = [] }
 
 

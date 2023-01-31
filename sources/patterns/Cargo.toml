@@ -148,10 +148,10 @@ vrl-errors = { version = "*", default-features = false, features = [] }
 vrl-preludes = { version = "*", default-features = false, features = [] }
 vrl-random = { version = "*", default-features = false, features = [] }
 
-rand = { version = "*", default-features = false, features = ["std", "std_rng", "getrandom", "small_rng"] }
-num-bigint = { version = "*", default-features = false, features = ["std"] }
-num-traits = { version = "*", default-features = false, features = ["std"] }
-paste = { version = "*", default-features = false, features = [] }
-chrono = { version = "*", default-features = false, features = ["alloc", "clock"] }
+rand = { version = "^0.8", default-features = false, features = ["std", "std_rng", "getrandom", "small_rng"] }
+num-bigint = { version = "^0.4", default-features = false, features = ["std"] }
+num-traits = { version = "^0.2", default-features = false, features = ["std"] }
+paste = { version = "^1.0", default-features = false, features = [] }
+chrono = { version = "^0.4", default-features = false, features = ["alloc", "clock"] }
 
 

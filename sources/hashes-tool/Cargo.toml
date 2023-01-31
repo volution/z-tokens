@@ -59,17 +59,17 @@ z-tokens-runtime = { path = "../runtime", default-features = false, features = [
 vrl-errors = { version = "*", default-features = false, features = [] }
 vrl-preludes = { version = "*", default-features = false, features = [] }
 
-digest = { version = "*", default-features = false, features = ["std", "core-api"] }
+digest = { version = "^0.10", default-features = false, features = ["std", "core-api"] }
 
-blake3 = { version = "*", default-features = false, features = ["std", "digest", "traits-preview"] }
-blake2 = { version = "*", default-features = false, features = ["std"] }
+blake3 = { version = "^1.3", default-features = false, features = ["std", "digest", "traits-preview"] }
+blake2 = { version = "^0.10", default-features = false, features = ["std"] }
 
-sha3 = { version = "*", default-features = false, features = ["std"] }
-sha2 = { version = "*", default-features = false, features = ["std"] }
-sha1 = { version = "*", default-features = false, features = ["std"] }
+sha3 = { version = "^0.10", default-features = false, features = ["std"] }
+sha2 = { version = "^0.10", default-features = false, features = ["std"] }
+sha1 = { version = "^0.10", default-features = false, features = ["std"] }
 
-md-5 = { version = "*", default-features = false, features = ["std"] }
+md-5 = { version = "^0.10", default-features = false, features = ["std"] }
 
-argon2 = { version = "*", default-features = false, features = ["std"] }
+argon2 = { version = "^0.4", default-features = false, features = ["std"] }
 
 

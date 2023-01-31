@@ -59,6 +59,6 @@ z-tokens-runtime = { path = "../runtime", default-features = false, features = [
 vrl-errors = { version = "*", default-features = false, features = [] }
 vrl-preludes = { version = "*", default-features = false, features = [] }
 
-x25519-dalek = { version = "*", default-features = false, features = ["std", "u64_backend"] }
+x25519-dalek = { version = "^1.2", default-features = false, features = ["std", "u64_backend"] }
 
 
