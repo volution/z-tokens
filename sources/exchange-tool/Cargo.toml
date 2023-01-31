@@ -60,7 +60,7 @@ vrl-errors = { version = "*", default-features = false, features = [] }
 vrl-preludes = { version = "*", default-features = false, features = [] }
 
 x25519-dalek = { version = "*", default-features = false, features = ["std", "u64_backend"] }
-salsa20 = { version = "*", default-features = false, features = ["std"] }
+chacha20 = { version = "*", default-features = false, features = ["std"] }
 blake3 = { version = "*", default-features = false, features = ["std"] }
 constant_time_eq = { version = "*", default-features = false, features = [] }
 block-padding = { version = "*", default-features = false, features = ["std"] }

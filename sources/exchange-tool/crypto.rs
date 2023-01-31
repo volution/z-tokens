@@ -160,15 +160,15 @@ pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _
 
 fn apply_encryption (_key : &[u8; 32], _data : &mut [u8]) -> CryptoResult {
 	
-	use ::salsa20::cipher::KeyIvInit as _;
-	use ::salsa20::cipher::StreamCipher as _;
+	use ::chacha20::cipher::KeyIvInit as _;
+	use ::chacha20::cipher::StreamCipher as _;
 	
-	let _nonce = [0u8; 8];
+	let _nonce = [0u8; 12];
 	
-	let _key = ::salsa20::Key::from_slice (_key);
-	let _nonce = ::salsa20::Nonce::from (_nonce);
+	let _key = ::chacha20::Key::from_slice (_key);
+	let _nonce = ::chacha20::Nonce::from (_nonce);
 	
-	let mut _cipher = ::salsa20::Salsa20::new (&_key, &_nonce);
+	let mut _cipher = ::chacha20::ChaCha20::new (&_key, &_nonce);
 	
 	_cipher.try_apply_keystream (_data) .else_wrap (0x9c94d0d5) ?;
 	
