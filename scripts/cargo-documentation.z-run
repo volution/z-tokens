@@ -16,7 +16,7 @@
 	for _package in "${_packages[@]}" ; do
 		case "${_package}" in
 			( * )
-				_arguments+=( --package "${_package%*}" )
+				_arguments+=( --package "${_package}" )
 			;;
 		esac
 	done

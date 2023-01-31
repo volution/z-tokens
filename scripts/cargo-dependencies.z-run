@@ -9,7 +9,7 @@
 
 
 << cargo / dependencies / update / aggressive
-	exec -- "${ZRUN}" ':: cargo / exec / local' update --package z-tokens --aggressive "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec / local' update --aggressive --package z-tokens "${@}"
 !!
 
 
@@ -96,12 +96,12 @@
 		
 		"${ZRUN}" ':: cargo / exec / local' tree --workspace --all-features --edges normal --no-dedupe --format '{p}' --prefix none \
 		| cut -f 1,2 -d ' ' \
-		| sed -r -e 's#^([^ ]+) v([^ ]+)$#\1:\2#' \
+		| sed -r -e 's#^([^ ]+) v([^ ]+)$#\1:\2#' -e '/^$/d' \
 		#
 		
 		"${ZRUN}" ':: cargo / exec / local' metadata --format-version 1 --no-deps \
 		| jq -r '.workspace_members[]' \
-		| sed -r -e 's#^([^ ]+) ([^ ]+) \([^ ]+\)$#\1:\2#' \
+		| sed -r -e 's#^([^ ]+) ([^ ]+) \([^ ]+\)$#\1:\2#' -e '/^$/d' \
 		#
 		
 	) \
