@@ -65,11 +65,15 @@
 		time \
 		for _file in "${_files[@]}" ; do
 		
+		_pin="${SRANDOM}"
+		
 		"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 				exchange armor \
+					--pin "${_pin}" \
 			< "${_file}" \
 		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 				exchange dearmor \
+					--pin "${_pin}" \
 		| md5sum -b -- /dev/fd/5 5<&0 \
 		| md5sum -c --quiet 5< "${_file}" \
 		#
@@ -98,14 +102,18 @@
 			if test "${_size}" -le 134217728 ; then break ; fi
 		done
 		
+		_pin="${SRANDOM}"
+		
 		TIMEFORMAT="[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;  ${_size} bytes;"
 		
 		time \
 		head -c "${_size}" < /dev/urandom \
 		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 				exchange armor \
+					--pin "${_pin}" \
 		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 				exchange dearmor \
+					--pin "${_pin}" \
 			> /dev/null \
 		#
 		
@@ -196,15 +204,19 @@
 		time \
 		for _file in "${_files[@]}" ; do
 		
+		_pin="${SRANDOM}"
+		
 		"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 				exchange encrypt \
 					--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
 					--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+					--pin "${_pin}" \
 			< "${_file}" \
 		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 				exchange decrypt \
 					--sender ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88 \
 					--recipient ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk \
+					--pin "${_pin}" \
 		| md5sum -b -- /dev/fd/5 5<&0 \
 		| md5sum -c --quiet 5< "${_file}" \
 		#
@@ -233,6 +245,8 @@
 			if test "${_size}" -le 134217728 ; then break ; fi
 		done
 		
+		_pin="${SRANDOM}"
+		
 		TIMEFORMAT="[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;  ${_size} bytes;"
 		
 		time \
@@ -241,10 +255,12 @@
 				exchange encrypt \
 					--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
 					--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+					--pin "${_pin}" \
 		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 				exchange decrypt \
 					--sender ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88 \
 					--recipient ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk \
+					--pin "${_pin}" \
 			> /dev/null \
 		#
 		
