@@ -82,12 +82,12 @@ pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _
 	
 	_compress_buffer.extend_from_slice (&_salt);
 	
-	let _encode_capacity = encode_capacity_max (_compress_buffer.len ()) .else_wrap (0x00bf84c9) ?;
+	let _encode_capacity = encode_capacity_max (_compress_buffer.len ()) .else_wrap (0x7f15a8ec) ?;
 	
 	let mut _encode_buffer = Vec::with_capacity (_encode_capacity);
 	encode (&_compress_buffer, &mut _encode_buffer) .else_wrap (0x5bc239f9) ?;
 	
-	assert! (_encode_buffer.len () <= CRYPTO_ENCRYPTED_SIZE_MAX, "[393786fc]");
+	assert! (_encode_buffer.len () <= CRYPTO_ENCRYPTED_SIZE_MAX, "[bb3c2546]");
 	
 	// NOTE:  This last step is an overhead, but it ensures an all-or-nothing processing!
 	_encrypted.extend_from_slice (&_encode_buffer);

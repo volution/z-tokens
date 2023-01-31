@@ -33,7 +33,7 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _write_comments : Option<bool> = None;
 	
 	{
-		let mut _parser = create_parser () .else_wrap (0x0102258d) ?;
+		let mut _parser = create_parser () .else_wrap (0xd885e228) ?;
 		
 		_parser.refer (&mut _sender_generate)
 				.metavar ("{enabled}")
@@ -70,7 +70,7 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		let _sender_public = _sender_public.encode () .else_wrap (0x92094072) ?;
 		
 		if _write_comments {
-			writeln! (&mut _output, "## sender private key") .else_wrap (0x6cfa2380) ?;
+			writeln! (&mut _output, "## sender private key") .else_wrap (0x75658618) ?;
 		}
 		writeln! (&mut _output, "{}", _sender_private.deref ()) .else_wrap (0x91a2fad1) ?;
 		
@@ -98,7 +98,7 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		writeln! (&mut _output, "{}", _recipient_public.deref ()) .else_wrap (0x71da88be) ?;
 	}
 	
-	drop (_output.into_inner () .else_replace (0x8ab3f5e2) ?);
+	drop (_output.into_inner () .else_replace (0x6c15be3e) ?);
 	
 	Ok (ExitCode::SUCCESS)
 }
@@ -117,7 +117,7 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _pin : Option<String> = None;
 	
 	{
-		let mut _parser = create_parser () .else_wrap (0x608139b1) ?;
+		let mut _parser = create_parser () .else_wrap (0x93d41b76) ?;
 		
 		_parser.refer (&mut _sender_private)
 				.metavar ("{sender}")
@@ -131,13 +131,13 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.metavar ("{pin}")
 				.add_option (&["-p", "--pin"], ArgStoreOption, "(PIN, for **WEAK** additional security)");
 		
-		if execute_parser (_parser, _arguments) .else_wrap (0xe3a49130) ? {
+		if execute_parser (_parser, _arguments) .else_wrap (0x8a373e9a) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}
 	
-	let _sender_private = _sender_private.else_wrap (0xc9683cf5) ?;
-	let _recipient_public = _recipient_public.else_wrap (0xdb9a095f) ?;
+	let _sender_private = _sender_private.else_wrap (0x11dddce5) ?;
+	let _recipient_public = _recipient_public.else_wrap (0xd94ce2c5) ?;
 	
 	let _sender_private = SenderPrivateKey::decode_and_zeroize (_sender_private) .else_wrap (0x750a42c0) ?;
 	let _recipient_public = RecipientPublicKey::decode_and_zeroize (_recipient_public) .else_wrap (0x233175e9) ?;
@@ -150,7 +150,7 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	encrypt (&_sender_private, &_recipient_public, &_decrypted, &mut _encrypted, _pin) .else_wrap (0x38d2ce1e) ?;
 	
 	let mut _stream = stdout_locked ();
-	_stream.write (&_encrypted) .else_wrap (0x2d673134) ?;
+	_stream.write (&_encrypted) .else_wrap (0x815d15bc) ?;
 	mem::drop (_stream);
 	
 	Ok (ExitCode::SUCCESS)
