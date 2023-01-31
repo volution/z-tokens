@@ -24,7 +24,11 @@ pub(crate) const CODING_CHUNKS_PER_LINE : usize = 5;
 
 
 
-pub(crate) const COMPRESSION_OVERHEAD_MAX : usize = 1024;
+// FIXME:  https://github.com/google/brotli/issues/274
+pub(crate) const COMPRESSION_OVERHEAD_FRACTION : usize = 1;
+pub(crate) const COMPRESSION_OVERHEAD_DIVIDER : usize = 16;
+pub(crate) const COMPRESSION_OVERHEAD_EXTRA : usize = 1024;
+
 
 const COMPRESSION_BROTLI_Q : u32 = 9;
 const COMPRESSION_BROTLI_LGWIN : u32 = 24;
@@ -168,7 +172,7 @@ pub(crate) fn decode (_encoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 
 pub(crate) fn encode_capacity_max (_decoded_len : usize) -> EncodingResult<usize> {
 	
-	let _chunks = ((_decoded_len + COMPRESSION_OVERHEAD_MAX + 4) / CODING_CHUNK_DECODED_SIZE) + 1;
+	let _chunks = (_decoded_len / CODING_CHUNK_DECODED_SIZE) + 1;
 	
 	let _encoded_len = _chunks * (CODING_CHUNK_ENCODED_SIZE + 1);
 	
@@ -228,10 +232,8 @@ pub(crate) fn decompress (_data : &[u8], _buffer : &mut Vec<u8>) -> CompressionR
 
 
 pub(crate) fn compress_capacity_max (_uncompressed_len : usize) -> CompressionResult<usize> {
-	
-	// FIXME:  https://github.com/google/brotli/issues/274
-	
-	Ok (_uncompressed_len + COMPRESSION_OVERHEAD_MAX)
+		
+	Ok (_uncompressed_len + (_uncompressed_len * COMPRESSION_OVERHEAD_FRACTION / COMPRESSION_OVERHEAD_DIVIDER) + COMPRESSION_OVERHEAD_EXTRA)
 }
 
 
