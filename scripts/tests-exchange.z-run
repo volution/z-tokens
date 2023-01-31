@@ -3,31 +3,8 @@
 
 
 
-<< tests / quick / exchange / armor
-	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / debug / build & collect'
-	export -- RUST_BACKTRACE=1
-	
-	exec -- "${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
-			exchange armor \
-		< ./notice.txt \
-	#
-!!
 
 
-<< tests / quick / exchange / armor & dearmor
-	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / debug / build & collect'
-	export -- RUST_BACKTRACE=1
-	
-	"${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
-			exchange armor \
-		< ./readme.md \
-	| "${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
-			exchange dearmor \
-	| md5sum -b -- /dev/stdin ./readme.md \
-	#
-!!
 
 
 << tests / quick / exchange / armor / hello
@@ -54,6 +31,88 @@
 !!
 
 
+<< tests / quick / exchange / armor / notice
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / debug / build & collect'
+	export -- RUST_BACKTRACE=1
+	
+	exec -- "${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
+			exchange armor \
+		< ./notice.txt \
+	#
+!!
+
+
+
+
+<< tests / quick / exchange / armor & dearmor / files
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect'
+	export -- RUST_BACKTRACE=1
+	
+	readarray -t -- _files \
+		< <( exec -- "${ZRUN}" ':: tests / quick / exchange / files' ) -
+	#
+	
+	for _index_1 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
+	for _index_2 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
+	for _index_3 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
+		
+		printf -- '[ii]  running iteration `%02d-%02d-%02d`...\n' "${_index_1}" "${_index_2}" "${_index_3}" >&2
+		
+		TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+		
+		time \
+		for _file in "${_files[@]}" ; do
+		
+		"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
+				exchange armor \
+			< "${_file}" \
+		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
+				exchange dearmor \
+		| md5sum -b -- /dev/fd/5 5<&0 \
+		| md5sum -c --quiet 5< "${_file}" \
+		#
+		
+	done ; done ; done ; done
+!!
+
+
+
+
+<< tests / quick / exchange / armor & dearmor / random
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect'
+	export -- RUST_BACKTRACE=1
+	
+	for _index_1 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
+	for _index_2 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
+	for _index_3 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
+		
+		printf -- '[ii]  running iteration `%02d-%02d-%02d`...\n' "${_index_1}" "${_index_2}" "${_index_3}" >&2
+		
+		for _try in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
+		
+		while true ; do
+			_size="${SRANDOM}"
+			if test "${_size}" -le 134217728 ; then break ; fi
+		done
+		
+		TIMEFORMAT="[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;  ${_size} bytes;"
+		
+		time \
+		head -c "${_size}" < /dev/urandom \
+		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
+				exchange armor \
+		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
+				exchange dearmor \
+			> /dev/null \
+		#
+		
+	done ; done ; done ; done
+!!
+
+
 
 
 
@@ -67,43 +126,6 @@
 	
 	exec -- "${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
 			exchange keys \
-	#
-!!
-
-
-
-
-<< tests / quick / exchange / encrypt
-	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / debug / build & collect'
-	export -- RUST_BACKTRACE=1
-	
-	exec -- "${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
-			exchange encrypt \
-				--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
-				--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
-		< ./notice.txt \
-	#
-!!
-
-
-<< tests / quick / exchange / encrypt & dencrypt
-	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / debug / build & collect'
-	export -- RUST_BACKTRACE=1
-	
-	"${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
-			exchange encrypt \
-				--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
-				--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
-		< ./readme.md \
-	| "${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
-			exchange decrypt \
-				--sender ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88 \
-				--recipient ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk \
-	| md5sum -b -- \
-			/dev/stdin \
-			./readme.md \
 	#
 !!
 
@@ -135,6 +157,111 @@
 				--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
 		<<< '' \
 	#
+!!
+
+
+<< tests / quick / exchange / encrypt / notice
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / debug / build & collect'
+	export -- RUST_BACKTRACE=1
+	
+	exec -- "${__OUTPUTS}/binaries/z-tokens--debug--linux--native" \
+			exchange encrypt \
+				--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
+				--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+		< ./notice.txt \
+	#
+!!
+
+
+
+
+<< tests / quick / exchange / encrypt & dencrypt / files
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect'
+	export -- RUST_BACKTRACE=1
+	
+	readarray -t -- _files \
+		< <( exec -- "${ZRUN}" ':: tests / quick / exchange / files' ) -
+	#
+	
+	for _index_1 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
+	for _index_2 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
+	for _index_3 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
+		
+		printf -- '[ii]  running iteration `%02d-%02d-%02d`...\n' "${_index_1}" "${_index_2}" "${_index_3}" >&2
+		
+		TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+		
+		time \
+		for _file in "${_files[@]}" ; do
+		
+		"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
+				exchange encrypt \
+					--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
+					--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+			< "${_file}" \
+		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
+				exchange decrypt \
+					--sender ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88 \
+					--recipient ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk \
+		| md5sum -b -- /dev/fd/5 5<&0 \
+		| md5sum -c --quiet 5< "${_file}" \
+		#
+		
+	done ; done ; done ; done
+!!
+
+
+
+
+<< tests / quick / exchange / encrypt & dencrypt / random
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect'
+	export -- RUST_BACKTRACE=1
+	
+	for _index_1 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
+	for _index_2 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
+	for _index_3 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
+		
+		printf -- '[ii]  running iteration `%02d-%02d-%02d`...\n' "${_index_1}" "${_index_2}" "${_index_3}" >&2
+		
+		for _try in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
+		
+		while true ; do
+			_size="${SRANDOM}"
+			if test "${_size}" -le 134217728 ; then break ; fi
+		done
+		
+		TIMEFORMAT="[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;  ${_size} bytes;"
+		
+		time \
+		head -c "${_size}" < /dev/urandom \
+		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
+				exchange encrypt \
+					--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
+					--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
+				exchange decrypt \
+					--sender ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88 \
+					--recipient ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk \
+			> /dev/null \
+		#
+		
+	done ; done ; done ; done
+!!
+
+
+
+
+
+
+
+
+<< tests / quick / exchange / files
+	test "${#}" -eq 0
+	
+	find ./sources -type f | sort
 !!
 
 
