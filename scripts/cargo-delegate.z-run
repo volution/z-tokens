@@ -170,7 +170,7 @@
 					#~	-C link-arg=-Wl,--compress-debug-sections=zstd
 					#~	-C link-arg=-Wl,--compress-debug-sections=zlib
 						
-						-C link-self-contained=no
+					#?	-C link-self-contained=no
 						-C prefer-dynamic=no
 						-C force-frame-pointers=no
 						
