@@ -44,6 +44,7 @@ pub const CRYPTO_ENCRYPTED_MAC : usize = 16;
 
 static CRYPTO_ENCRYPTION_KEY_CONTEXT : &str = "z-tokens exchange encryption key (2023a)";
 static CRYPTO_AUTHENTICATION_KEY_CONTEXT : &str = "z-tokens exchange authentication key (2023a)";
+static CRYPTO_AONT_KEY_CONTEXT : &str = "z-tokens exchange all-or-nothing key (2023a)";
 static CRYPTO_PIN_CONTEXT : &str = "z-tokens exchange pin (2023a)";
 
 
@@ -71,9 +72,11 @@ pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _
 	
 	padding_push (CRYPTO_ENCRYPTED_PADDING, &mut _compress_buffer);
 	
+	let (_base_key, _aont_key) = derive_keys_phase_1 (&_sender.0.0, &_recipient.0.0, _pin) ?;
+	
 	let mut _salt = generate_salt () ?;
 	
-	let (_encryption_key, _authentication_key) = derive_keys (&_sender.0.0, &_recipient.0.0, &_salt, _pin) ?;
+	let (_encryption_key, _authentication_key) = derive_keys_phase_2 (&_base_key, &_salt) ?;
 	
 	apply_encryption (&_encryption_key, &mut _compress_buffer) ?;
 	
@@ -81,7 +84,7 @@ pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _
 	
 	_compress_buffer.extend_from_slice (&_mac);
 	
-	apply_all_or_nothing_mangling (&mut _salt, &_compress_buffer) ?;
+	apply_all_or_nothing_mangling (&_aont_key, &mut _salt, &_compress_buffer) ?;
 	
 	_compress_buffer.extend_from_slice (&_salt);
 	
@@ -114,11 +117,13 @@ pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _
 	let mut _decode_buffer = Vec::with_capacity (_decode_capacity);
 	decode (_encrypted, &mut _decode_buffer) .else_wrap (0x10ff413a) ?;
 	
+	let (_base_key, _aont_key) = derive_keys_phase_1 (&_recipient.0.0, &_sender.0.0, _pin) ?;
+	
 	let mut _salt = bytes_pop::<CRYPTO_ENCRYPTED_SALT> (&mut _decode_buffer) .else_wrap (0x78ed3811) ?;
 	
-	apply_all_or_nothing_mangling (&mut _salt, &_decode_buffer) ?;
+	apply_all_or_nothing_mangling (&_aont_key, &mut _salt, &_decode_buffer) ?;
 	
-	let (_encryption_key, _authentication_key) = derive_keys (&_recipient.0.0, &_sender.0.0, &_salt, _pin) ?;
+	let (_encryption_key, _authentication_key) = derive_keys_phase_2 (&_base_key, &_salt) ?;
 	
 	let _mac_expected = bytes_pop::<CRYPTO_ENCRYPTED_MAC> (&mut _decode_buffer) .else_wrap (0x88084589) ?;
 	
@@ -194,7 +199,7 @@ fn apply_authentication (_key : &[u8; 32], _data : &[u8]) -> CryptoResult<[u8; C
 
 
 
-fn derive_keys (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, _salt : &[u8; CRYPTO_ENCRYPTED_SALT], _pin : Option<&[u8]>) -> CryptoResult<([u8; 32], [u8; 32])> {
+fn derive_keys_phase_1 (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, _pin : Option<&[u8]>) -> CryptoResult<([u8; 32], [u8; 32])> {
 	
 	let _shared = x25519::StaticSecret::diffie_hellman (_private, _public);
 	
@@ -210,18 +215,35 @@ fn derive_keys (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, 
 			.finalize ()
 			.into ();
 	
-	let _encryption_key =
-			::blake3::Hasher::new_derive_key (CRYPTO_ENCRYPTION_KEY_CONTEXT)
+	let _base_key : [u8; 32] =
+			::blake3::Hasher::new_derive_key (CRYPTO_AONT_KEY_CONTEXT)
 			.update (&_pin)
 			.update (_shared)
+			.finalize ()
+			.into ();
+	
+	let _aont_key : [u8; 32] =
+			::blake3::Hasher::new_derive_key (CRYPTO_AONT_KEY_CONTEXT)
+			.update (&_base_key)
+			.finalize ()
+			.into ();
+	
+	Ok ((_base_key, _aont_key))
+}
+
+
+fn derive_keys_phase_2 (_base_key : &[u8; 32], _salt : &[u8; CRYPTO_ENCRYPTED_SALT]) -> CryptoResult<([u8; 32], [u8; 32])> {
+	
+	let _encryption_key : [u8; 32] =
+			::blake3::Hasher::new_derive_key (CRYPTO_ENCRYPTION_KEY_CONTEXT)
+			.update (_base_key)
 			.update (_salt)
 			.finalize ()
 			.into ();
 	
-	let _authentication_key =
+	let _authentication_key : [u8; 32] =
 			::blake3::Hasher::new_derive_key (CRYPTO_AUTHENTICATION_KEY_CONTEXT)
-			.update (&_pin)
-			.update (_shared)
+			.update (_base_key)
 			.update (_salt)
 			.finalize ()
 			.into ();
@@ -232,10 +254,10 @@ fn derive_keys (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, 
 
 
 
-fn apply_all_or_nothing_mangling (_salt : &mut [u8; CRYPTO_ENCRYPTED_SALT], _data : &[u8]) -> CryptoResult {
+fn apply_all_or_nothing_mangling (_key : &[u8; 32], _salt : &mut [u8; CRYPTO_ENCRYPTED_SALT], _data : &[u8]) -> CryptoResult {
 	
 	let _hash =
-			::blake3::Hasher::new ()
+			::blake3::Hasher::new_keyed (_key)
 			.update (_data)
 			.finalize ();
 	
