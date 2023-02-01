@@ -53,7 +53,22 @@ pub(crate) fn encode (_decoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 	let mut _crc_buffer = [0u8; 4];
 	let _decoded_len = _decoded.len ();
 	
+	let _encode_lines_count =
+			if _decoded_len > 0 {
+				(_decoded_len / (CODING_CHUNK_DECODED_SIZE * CODING_CHUNKS_PER_LINE))
+				+ if (_decoded_len % (CODING_CHUNK_DECODED_SIZE * CODING_CHUNKS_PER_LINE)) == 0 { 0 } else { 1 }
+			} else {
+				0
+			};
+	let _encode_line_width =
+			if _encode_lines_count >= 2 {
+				(_encode_lines_count.ilog10 () as usize) + 1
+			} else {
+				0
+			};
+	
 	let mut _encode_size_last = 0;
+	let mut _encode_line_index = 0;
 	for (_index, _decoded_chunk) in _decoded.chunks (CODING_CHUNK_DECODED_SIZE) .enumerate () {
 		
 		let _decoded_chunk_len = _decoded_chunk.len ();
@@ -73,10 +88,20 @@ pub(crate) fn encode (_decoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 		
 		_decode_buffer[_decoded_chunk_len] = _crc.get_crc ();
 		
-		if _index > 0 {
-			if (_index % CODING_CHUNKS_PER_LINE) == 0 {
+		if (_index % CODING_CHUNKS_PER_LINE) == 0 {
+			if _index > 0 {
 				_buffer.push (b'\n');
-			} else {
+				_encode_line_index += 1;
+			}
+			if _encode_line_width > 0 {
+				if (_encode_line_index + 1) < _encode_lines_count {
+					write! (_buffer, "#{0:01$},  ", _encode_line_index + 1, _encode_line_width) .else_panic (0xa7e364d5);
+				} else {
+					write! (_buffer, "#{0:01$}.  ", _encode_line_index + 1, _encode_line_width) .else_panic (0x83426d64);
+				}
+			}
+		} else {
+			if _index > 0 {
 				for _ in _encode_size_last ..= CODING_CHUNK_ENCODED_SIZE {
 					_buffer.push (b' ');
 				}
@@ -94,7 +119,13 @@ pub(crate) fn encode (_decoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 		_encode_size_last = _encode_size;
 	}
 	
-	_buffer.push (b'\n');
+	if _decoded_len > 0 {
+		_buffer.push (b'\n');
+		assert! ((_encode_line_index + 1) == _encode_lines_count, "[27c3972a] {} {}", _encode_line_index, _encode_lines_count);
+	} else {
+		assert! (_encode_lines_count == 0, "[544feca9]");
+		assert! (_encode_line_index == 0, "[0c3a15c8]");
+	}
 	
 	assert! (_buffer.capacity () == _buffer_capacity, "[9360b1c0]  {} == {}", _buffer.capacity (), _buffer_capacity);
 	
@@ -117,6 +148,10 @@ pub(crate) fn decode (_encoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 	for _encoded_chunk in _encoded.split (u8::is_ascii_whitespace) {
 		
 		if _encoded_chunk.is_empty () {
+			continue;
+		}
+		
+		if _encoded_chunk[0] == b'#' {
 			continue;
 		}
 		
@@ -174,7 +209,8 @@ pub(crate) fn encode_capacity_max (_decoded_len : usize) -> EncodingResult<usize
 	
 	let _chunks = (_decoded_len / CODING_CHUNK_DECODED_SIZE) + 1;
 	
-	let _encoded_len = _chunks * (CODING_CHUNK_ENCODED_SIZE + 1);
+	// NOTE:  Let's assume we write at most 10 million lines.
+	let _encoded_len = _chunks * (CODING_CHUNK_ENCODED_SIZE + 1 + 9 + 4);
 	
 	Ok (_encoded_len)
 }
@@ -183,6 +219,7 @@ pub(crate) fn encode_capacity_max (_decoded_len : usize) -> EncodingResult<usize
 pub(crate) fn decode_capacity_max (_encoded_len : usize) -> EncodingResult<usize> {
 	
 	// NOTE:  Some tokens are shorter.
+	// NOTE:  We don't take into account line numbers, thus the resulting number is an overestimation.
 	let _chunks = (_encoded_len / (CODING_CHUNK_ENCODED_SIZE - 2 + 1)) + 1;
 	
 	let _decoded_len = _chunks * CODING_CHUNK_DECODED_SIZE;
