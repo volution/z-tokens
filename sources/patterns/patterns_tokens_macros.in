@@ -29,7 +29,7 @@ macro_rules! define_repeat {
 		::paste::paste! {
 			
 			$(
-				define_named! ($_visibility [< $_pattern _ $_count >], $_labels, { concat => $_identifier, ":", $_count },
+				define_named! ($_visibility [< $_pattern _ $_count >], $_labels, { number_suffixed => $_identifier, $_count },
 						& TokenPattern::Repeat (Rb::new_static ($_element), Rb::new_static ($_separator), $_count)
 					);
 			)*
@@ -66,7 +66,7 @@ macro_rules! define_repeat {
 				static [< _ $_pattern _ $_count __SEQUENCE >] : &TokenPattern =
 					& TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern _ $_count __SEQUENCE_0 >] ), Rb::new_static (separators::NONE_PATTERN));
 				
-				define_named! ($_visibility [< $_pattern _ $_count >], $_labels, { concat => $_identifier, ":", $_count },
+				define_named! ($_visibility [< $_pattern _ $_count >], $_labels, { number_suffixed => $_identifier, $_count },
 						[< _ $_pattern _ $_count __SEQUENCE >]
 					);
 			)*
@@ -89,7 +89,7 @@ macro_rules! define_bytes {
 		::paste::paste! {
 			
 			$(
-				define_named! ($_visibility [< $_pattern _ $_count >], $_labels, { concat => $_identifier, ":", $_count },
+				define_named! ($_visibility [< $_pattern _ $_count >], $_labels, { number_suffixed => $_identifier, $_count },
 						glyphs::[< $_glyph _ $_count _TOKEN >]
 					);
 			)*
@@ -140,6 +140,28 @@ macro_rules! define_named {
 				concat! ( $_identifier, $( $_suffix ),* ),
 				concat! ( $_alias_1, $( $_suffix ),* ),
 				concat! ( $_alias_2, $( $_suffix ),* )
+			}, $_wrapped);
+	};
+	
+	( $_visibility : vis $_pattern : ident, $_labels : tt, { number_suffixed => ( $_identifier : literal ), $_number : literal }, $_wrapped : expr ) => {
+		define_named! ($_visibility $_pattern, $_labels,
+			{ expr =>
+				::const_format::formatcp! ( "{}:{}", $_identifier, $_number as usize )
+			}, $_wrapped);
+	};
+	( $_visibility : vis $_pattern : ident, $_labels : tt, { number_suffixed => ( $_identifier : literal, $_alias_1 : literal ), $_number : literal }, $_wrapped : expr ) => {
+		define_named! ($_visibility $_pattern, $_labels,
+			{ expr =>
+				::const_format::formatcp! ( "{}:{}", $_identifier, $_number as usize ),
+				::const_format::formatcp! ( "{}:{}", $_alias_1, $_number as usize )
+			}, $_wrapped);
+	};
+	( $_visibility : vis $_pattern : ident, $_labels : tt, { number_suffixed => ( $_identifier : literal, $_alias_1 : literal, $_alias_2 : literal ), $_number : literal }, $_wrapped : expr ) => {
+		define_named! ($_visibility $_pattern, $_labels,
+			{ expr =>
+				::const_format::formatcp! ( "{}:{}", $_identifier, $_number as usize ),
+				::const_format::formatcp! ( "{}:{}", $_alias_1, $_number as usize ),
+				::const_format::formatcp! ( "{}:{}", $_alias_2, $_number as usize )
 			}, $_wrapped);
 	};
 	
