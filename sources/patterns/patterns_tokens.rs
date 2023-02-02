@@ -302,7 +302,7 @@ define_repeat! (
 			( ASCII_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN ),
 			( separators::SPACE_OPTIONAL_TOKEN, ASCII_CONSONANT_VOWEL_PLUS_A_WORD, )
 		},
-		(16 : 1));
+		(15 : 1, number_plus_one));
 
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
@@ -314,7 +314,7 @@ define_repeat! (
 			( ASCII_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN ),
 			( separators::SPACE_OPTIONAL_TOKEN, ASCII_CONSONANT_VOWEL_PLUS_B_WORD, )
 		},
-		(16 : 1));
+		(15 : 1, number_plus_one));
 
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
@@ -326,7 +326,7 @@ define_repeat! (
 			( ASCII_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN ),
 			( separators::SPACE_OPTIONAL_TOKEN, ASCII_CONSONANT_VOWEL_PLUS_C_WORD, )
 		},
-		(16 : 1));
+		(15 : 1, number_plus_one));
 
 
 
@@ -732,7 +732,7 @@ define_repeat! (
 			( glyphs::BYTES_HEX_4_TOKEN => separators::HYPHEN_OPTIONAL_INFIX_PATTERN ),
 			()
 		},
-		(16 : 1));
+		(16 : 1, number_times_four_in_bits));
 
 
 
