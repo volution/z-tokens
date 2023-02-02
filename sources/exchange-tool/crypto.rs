@@ -72,7 +72,7 @@ pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _
 	
 	padding_push (CRYPTO_ENCRYPTED_PADDING, &mut _compress_buffer);
 	
-	let (_base_key, _aont_key) = derive_keys_phase_1 (&_sender.0.0, &_recipient.0.0, _pin) ?;
+	let (_base_key, _aont_key) = derive_keys_phase_1 (&_sender.0.0, &_recipient.0.0, true, _pin) ?;
 	
 	let mut _salt = generate_salt () ?;
 	
@@ -117,7 +117,7 @@ pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _
 	let mut _decode_buffer = Vec::with_capacity (_decode_capacity);
 	decode (_encrypted, &mut _decode_buffer) .else_wrap (0x10ff413a) ?;
 	
-	let (_base_key, _aont_key) = derive_keys_phase_1 (&_recipient.0.0, &_sender.0.0, _pin) ?;
+	let (_base_key, _aont_key) = derive_keys_phase_1 (&_recipient.0.0, &_sender.0.0, false, _pin) ?;
 	
 	let mut _salt = bytes_pop::<CRYPTO_ENCRYPTED_SALT> (&mut _decode_buffer) .else_wrap (0x78ed3811) ?;
 	
@@ -199,7 +199,7 @@ fn apply_authentication (_key : &[u8; 32], _data : &[u8]) -> CryptoResult<[u8; C
 
 
 
-fn derive_keys_phase_1 (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, _pin : Option<&[u8]>) -> CryptoResult<([u8; 32], [u8; 32])> {
+fn derive_keys_phase_1 (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, _encryption : bool, _pin : Option<&[u8]>) -> CryptoResult<([u8; 32], [u8; 32])> {
 	
 	let _shared = x25519::StaticSecret::diffie_hellman (_private, _public);
 	
@@ -208,6 +208,11 @@ fn derive_keys_phase_1 (_private : &x25519::StaticSecret, _public : &x25519::Pub
 	}
 	
 	let _shared = _shared.as_bytes ();
+	
+	let _private_public = x25519::PublicKey::from (_private);
+	
+	let _sender_public = if _encryption { _private_public.as_bytes () } else { _public.as_bytes () };
+	let _receiver_public = if _encryption { _public.as_bytes () } else { _private_public.as_bytes () };
 	
 	let _pin : [u8; 32] =
 			::blake3::Hasher::new_derive_key (CRYPTO_PIN_CONTEXT)
@@ -219,6 +224,8 @@ fn derive_keys_phase_1 (_private : &x25519::StaticSecret, _public : &x25519::Pub
 			::blake3::Hasher::new_derive_key (CRYPTO_AONT_KEY_CONTEXT)
 			.update (&_pin)
 			.update (_shared)
+			.update (_sender_public)
+			.update (_receiver_public)
 			.finalize ()
 			.into ();
 	
