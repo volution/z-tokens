@@ -214,26 +214,18 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 pub fn main_armor (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
-	let mut _pin : Option<String> = None;
-	
 	{
 		let mut _parser = create_parser () .else_wrap (0x9deb1736) ?;
-		
-		_parser.refer (&mut _pin)
-				.metavar ("{pin}")
-				.add_option (&["-p", "--pin"], ArgStoreOption, "(PIN, for **WEAK** additional security)");
 		
 		if execute_parser (_parser, _arguments) .else_wrap (0xa38080cc) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}
 	
-	let _pin = _pin.as_ref () .map (String::as_bytes);
-	
 	let _decoded = read_at_most (stdin_locked (), ARMOR_DECODED_SIZE_MAX) .else_wrap (0xaf8bf415) ?;
 	
 	let mut _encoded = Vec::new ();
-	armor (&_decoded, &mut _encoded, _pin) .else_wrap (0x7f3ed3ae) ?;
+	armor (&_decoded, &mut _encoded) .else_wrap (0x7f3ed3ae) ?;
 	
 	let mut _stream = stdout_locked ();
 	_stream.write (&_encoded) .else_wrap (0x2d673134) ?;
@@ -247,26 +239,18 @@ pub fn main_armor (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 pub fn main_dearmor (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
-	let mut _pin : Option<String> = None;
-	
 	{
 		let mut _parser = create_parser () .else_wrap (0xe46fc464) ?;
-		
-		_parser.refer (&mut _pin)
-				.metavar ("{pin}")
-				.add_option (&["-p", "--pin"], ArgStoreOption, "(PIN, for **WEAK** additional security)");
 		
 		if execute_parser (_parser, _arguments) .else_wrap (0x222a3894) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}
 	
-	let _pin = _pin.as_ref () .map (String::as_bytes);
-	
 	let _encoded = read_at_most (stdin_locked (), ARMOR_ENCODED_SIZE_MAX) .else_wrap (0x7657c246) ?;
 	
 	let mut _decoded = Vec::new ();
-	dearmor (&_encoded, &mut _decoded, _pin) .else_wrap (0x069245f3) ?;
+	dearmor (&_encoded, &mut _decoded) .else_wrap (0x069245f3) ?;
 	
 	let mut _stream = stdout_locked ();
 	_stream.write (&_decoded) .else_wrap (0x2d7f55d6) ?;
