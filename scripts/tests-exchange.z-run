@@ -14,12 +14,9 @@
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
-	_pin=1234
-	
 	time \
 	"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 			exchange armor \
-				--pin "${_pin}" \
 		<<< $'hello world!\n' \
 	#
 !!
@@ -32,12 +29,9 @@
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
-	_pin=1234
-	
 	time \
 	"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 			exchange armor \
-				--pin "${_pin}" \
 		<<< '' \
 	#
 !!
@@ -50,12 +44,9 @@
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
-	_pin=1234
-	
 	time \
 	"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 			exchange armor \
-				--pin "${_pin}" \
 		< ./notice.txt \
 	#
 !!
@@ -75,11 +66,9 @@
 	time \
 	"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 			exchange armor \
-				--pin "${_pin}" \
 		<<< $'hello world!\n' \
 	| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 			exchange dearmor \
-				--pin "${_pin}" \
 	#
 !!
 
@@ -95,31 +84,23 @@
 		< <( exec -- "${ZRUN}" ':: tests / quick / exchange / files' ) -
 	#
 	
-	for _index_1 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
-	for _index_2 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
-	for _index_3 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
-		
-		printf -- '[ii]  running iteration `%02d-%02d-%02d`...\n' "${_index_1}" "${_index_2}" "${_index_3}" >&2
-		
-		TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
-		
-		time \
-		for _file in "${_files[@]}" ; do
+	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	time \
+	for _file in "${_files[@]}" ; do
 		
 		_pin="${SRANDOM}"
 		
 		"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 				exchange armor \
-					--pin "${_pin}" \
 			< "${_file}" \
 		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 				exchange dearmor \
-					--pin "${_pin}" \
 		| md5sum -b -- /dev/fd/5 5<&0 \
 		| md5sum -c --quiet 5< "${_file}" \
 		#
 		
-	done ; done ; done ; done
+	done
 !!
 
 
@@ -151,10 +132,8 @@
 		head -c "${_size}" < /dev/urandom \
 		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 				exchange armor \
-					--pin "${_pin}" \
 		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 				exchange dearmor \
-					--pin "${_pin}" \
 			> /dev/null \
 		#
 		
