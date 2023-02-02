@@ -69,5 +69,6 @@ brotli = { version = "^3.3", default-features = false, features = ["std"] }
 byteorder = { version = "^1.4", default-features = false, features = [] }
 bs58 = { version = "^0.4", default-features = false, features = ["std"] }
 crc-any = { version = "^2.4", default-features = false, features = [] }
+argon2 = { version = "^0.4", default-features = false, features = ["std"] }
 
 

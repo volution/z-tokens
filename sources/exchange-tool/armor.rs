@@ -37,7 +37,17 @@ pub(crate) const ARMOR_ENCODED_SALT : usize = 16;
 
 
 static ARMOR_AONT_KEY_CONTEXT : &str = "z-tokens exchange armor key (2023a)";
-static ARMOR_AONT_PIN_CONTEXT : &str = "z-tokens exchange armor pin (2023a)";
+static ARMOR_PIN_CONTEXT : &str = "z-tokens exchange armor pin (2023a)";
+
+
+static ARMOR_PIN_ARGON_SALT : &str = "z-tokens exchange armor pin salt (2023a)";
+
+const ARMOR_PIN_ARGON_ALGORITHM : ::argon2::Algorithm = ::argon2::Algorithm::Argon2id;
+const ARMOR_PIN_ARGON_VERSION : ::argon2::Version = ::argon2::Version::V0x13;
+
+const ARMOR_PIN_ARGON_M_COST : u32 = 128 * 1024;
+const ARMOR_PIN_ARGON_T_COST : u32 = 8;
+const ARMOR_PIN_ARGON_P_COST : u32 = 1;
 
 
 
@@ -165,9 +175,11 @@ fn apply_all_or_nothing_encryption (_salt : &[u8; ARMOR_ENCODED_SALT], _data : &
 	use ::chacha20::cipher::KeyIvInit as _;
 	use ::chacha20::cipher::StreamCipher as _;
 	
+	let _pin = apply_argon (_pin) ?;
+	
 	let _pin : [u8; 32] =
-			::blake3::Hasher::new_derive_key (ARMOR_AONT_PIN_CONTEXT)
-			.update (_pin.unwrap_or (&[]))
+			::blake3::Hasher::new_derive_key (ARMOR_PIN_CONTEXT)
+			.update (&_pin)
 			.finalize ()
 			.into ();
 	
@@ -221,6 +233,36 @@ fn apply_fingerprint (_data : &[u8]) -> ArmorResult<[u8; ARMOR_ENCODED_HASH]> {
 	_fingerprint.copy_from_slice (& _hash.as_bytes () [.. ARMOR_ENCODED_HASH]);
 	
 	Ok (_fingerprint)
+}
+
+
+
+
+fn apply_argon (_pin : Option<&[u8]>) -> ArmorResult<[u8; 32]> {
+	
+	let mut _output = [0u8; 32];
+	
+	let _pin = _pin.unwrap_or (&[]);
+	if _pin.is_empty () {
+		return Ok (_output);
+	}
+	
+	let _parameters = ::argon2::Params::new (
+				ARMOR_PIN_ARGON_M_COST,
+				ARMOR_PIN_ARGON_T_COST,
+				ARMOR_PIN_ARGON_P_COST,
+				Some (_output.len ()),
+			) .else_wrap (0x23aba478) ?;
+	
+	let _hasher = ::argon2::Argon2::new (
+				ARMOR_PIN_ARGON_ALGORITHM,
+				ARMOR_PIN_ARGON_VERSION,
+				_parameters,
+			);
+	
+	_hasher.hash_password_into (_pin, ARMOR_PIN_ARGON_SALT.as_bytes (), &mut _output) .else_wrap (0x6ab7506e) ?;
+	
+	Ok (_output)
 }
 
 

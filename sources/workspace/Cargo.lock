@@ -939,6 +939,7 @@ dependencies = [
 name = "z-tokens-exchange-tool"
 version = "0.1.0"
 dependencies = [
+ "argon2",
  "bech32",
  "blake3",
  "brotli",

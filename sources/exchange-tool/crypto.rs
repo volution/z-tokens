@@ -48,6 +48,16 @@ static CRYPTO_AONT_KEY_CONTEXT : &str = "z-tokens exchange all-or-nothing key (2
 static CRYPTO_PIN_CONTEXT : &str = "z-tokens exchange pin (2023a)";
 
 
+static CRYPTO_PIN_ARGON_SALT : &str = "z-tokens exchange encryption pin salt (2023a)";
+
+const CRYPTO_PIN_ARGON_ALGORITHM : ::argon2::Algorithm = ::argon2::Algorithm::Argon2id;
+const CRYPTO_PIN_ARGON_VERSION : ::argon2::Version = ::argon2::Version::V0x13;
+
+const CRYPTO_PIN_ARGON_M_COST : u32 = 128 * 1024;
+const CRYPTO_PIN_ARGON_T_COST : u32 = 8;
+const CRYPTO_PIN_ARGON_P_COST : u32 = 1;
+
+
 
 
 
@@ -214,9 +224,11 @@ fn derive_keys_phase_1 (_private : &x25519::StaticSecret, _public : &x25519::Pub
 	let _sender_public = if _encryption { _private_public.as_bytes () } else { _public.as_bytes () };
 	let _receiver_public = if _encryption { _public.as_bytes () } else { _private_public.as_bytes () };
 	
+	let _pin = apply_argon (_pin) ?;
+	
 	let _pin : [u8; 32] =
 			::blake3::Hasher::new_derive_key (CRYPTO_PIN_CONTEXT)
-			.update (_pin.unwrap_or (&[]))
+			.update (&_pin)
 			.finalize ()
 			.into ();
 	
@@ -275,6 +287,36 @@ fn apply_all_or_nothing_mangling (_key : &[u8; 32], _salt : &mut [u8; CRYPTO_ENC
 	}
 	
 	Ok (())
+}
+
+
+
+
+fn apply_argon (_pin : Option<&[u8]>) -> CryptoResult<[u8; 32]> {
+	
+	let mut _output = [0u8; 32];
+	
+	let _pin = _pin.unwrap_or (&[]);
+	if _pin.is_empty () {
+		return Ok (_output);
+	}
+	
+	let _parameters = ::argon2::Params::new (
+				CRYPTO_PIN_ARGON_M_COST,
+				CRYPTO_PIN_ARGON_T_COST,
+				CRYPTO_PIN_ARGON_P_COST,
+				Some (_output.len ()),
+			) .else_wrap (0x23aba478) ?;
+	
+	let _hasher = ::argon2::Argon2::new (
+				CRYPTO_PIN_ARGON_ALGORITHM,
+				CRYPTO_PIN_ARGON_VERSION,
+				_parameters,
+			);
+	
+	_hasher.hash_password_into (_pin, CRYPTO_PIN_ARGON_SALT.as_bytes (), &mut _output) .else_wrap (0x23a4154f) ?;
+	
+	Ok (_output)
 }
 
 
