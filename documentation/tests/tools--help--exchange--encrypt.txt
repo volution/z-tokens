@@ -9,3 +9,4 @@ Optional arguments:
   -s,--sender {sender}  (sender private key)
   -r,--recipient {recipient}
                         (recipient public key)
+  -p,--pin {pin}        (PIN, for **WEAK** additional security)

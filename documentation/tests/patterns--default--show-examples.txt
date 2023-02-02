@@ -4849,7 +4849,7 @@
     \_        DADI XumB Dofa mosI roPI PoTe NByI NBxi waYu MuyA woMi coSa VBxa XBGe QOZi geZU
 
 
-**  ~~~~~~~~  cv-plus-a:1
+**  ~~~~~~~~  cv-plus-a:2
 \_  bits:     26.7162
 \_  length:   9
 \_  examples:
@@ -4865,7 +4865,7 @@
     \_        kexe 5183
 
 
-**  ~~~~~~~~  cv-plus-a:2
+**  ~~~~~~~~  cv-plus-a:3
 \_  bits:     40.1446
 \_  length:   14
 \_  examples:
@@ -4881,7 +4881,7 @@
     \_        ripi noma 1693
 
 
-**  ~~~~~~~~  cv-plus-a:3
+**  ~~~~~~~~  cv-plus-a:4
 \_  bits:     53.5731
 \_  length:   19
 \_  examples:
@@ -4897,7 +4897,7 @@
     \_        zane gibe geno 3445
 
 
-**  ~~~~~~~~  cv-plus-a:4
+**  ~~~~~~~~  cv-plus-a:5
 \_  bits:     67.0016
 \_  length:   24
 \_  examples:
@@ -4913,7 +4913,7 @@
     \_        gexa mexe yoha gafe 1776
 
 
-**  ~~~~~~~~  cv-plus-a:5
+**  ~~~~~~~~  cv-plus-a:6
 \_  bits:     80.4301
 \_  length:   29
 \_  examples:
@@ -4929,7 +4929,7 @@
     \_        rile bina tebi givu pipa 2356
 
 
-**  ~~~~~~~~  cv-plus-a:6
+**  ~~~~~~~~  cv-plus-a:7
 \_  bits:     93.8586
 \_  length:   34
 \_  examples:
@@ -4945,7 +4945,7 @@
     \_        ceke taca newe fuho ceni joka 9935
 
 
-**  ~~~~~~~~  cv-plus-a:7
+**  ~~~~~~~~  cv-plus-a:8
 \_  bits:     107.2871
 \_  length:   39
 \_  examples:
@@ -4961,7 +4961,7 @@
     \_        voju wayo lani tuqa luto bepa vimi 5785
 
 
-**  ~~~~~~~~  cv-plus-a:8
+**  ~~~~~~~~  cv-plus-a:9
 \_  bits:     120.7156
 \_  length:   44
 \_  examples:
@@ -4977,7 +4977,7 @@
     \_        seba vase micu vevu dupu ropi voye lene 1424
 
 
-**  ~~~~~~~~  cv-plus-a:9
+**  ~~~~~~~~  cv-plus-a:10
 \_  bits:     134.1441
 \_  length:   49
 \_  examples:
@@ -4993,7 +4993,7 @@
     \_        xiqi mogu sifu gugu laka vuni zogi life qona 0636
 
 
-**  ~~~~~~~~  cv-plus-a:10
+**  ~~~~~~~~  cv-plus-a:11
 \_  bits:     147.5726
 \_  length:   54
 \_  examples:
@@ -5009,7 +5009,7 @@
     \_        mivi feqo nacu bire duvu xeno yuwa xeti fure xivi 6357
 
 
-**  ~~~~~~~~  cv-plus-a:11
+**  ~~~~~~~~  cv-plus-a:12
 \_  bits:     161.0011
 \_  length:   59
 \_  examples:
@@ -5025,7 +5025,7 @@
     \_        woba puga toso tuba momi lixo jiho xexi lowi qode fepe 4906
 
 
-**  ~~~~~~~~  cv-plus-a:12
+**  ~~~~~~~~  cv-plus-a:13
 \_  bits:     174.4296
 \_  length:   64
 \_  examples:
@@ -5041,7 +5041,7 @@
     \_        zexi lowi qode fepe xiya rovo yuca jeda rago tiha tawo zupa 3981
 
 
-**  ~~~~~~~~  cv-plus-a:13
+**  ~~~~~~~~  cv-plus-a:14
 \_  bits:     187.8580
 \_  length:   69
 \_  examples:
@@ -5057,7 +5057,7 @@
     \_        goti hata wozu pake luyu doxa rule nesu gowe laha runa nofu zepi 4977
 
 
-**  ~~~~~~~~  cv-plus-a:14
+**  ~~~~~~~~  cv-plus-a:15
 \_  bits:     201.2865
 \_  length:   74
 \_  examples:
@@ -5073,7 +5073,7 @@
     \_        wela haru nano fuze pixi yita wucu qoxu fafa woci jawe ripa tome ruka 0233
 
 
-**  ~~~~~~~~  cv-plus-a:15
+**  ~~~~~~~~  cv-plus-a:16
 \_  bits:     214.7150
 \_  length:   79
 \_  examples:
@@ -5089,23 +5089,7 @@
     \_        zufa fawo cija weri pato meru kage kese vave xoto mebe momi lote kubu vomi 0896
 
 
-**  ~~~~~~~~  cv-plus-a:16
-\_  bits:     228.1435
-\_  length:   84
-\_  examples:
-    \_        taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju 5133
-    \_        xivi zete kexe piwe voxi goha cude boba leku horu bajo yori pino maya saba tuxi 8754
-    \_        fucu suja neza negi bege nozi zile lozi pogi gore luli kavi none vese dize gexa 4229
-    \_        teva gafe fote dela rile bina tebi givu pipa gefo yece keta cane wefu hoce nijo 3099
-    \_        jofu nufo lugo yuqe cevo juwa yola nitu qalu tobe pavi mipi taxi dese bava semi 6909
-    \_        vevu dupu ropi voye lene vihi bofi xiqi mogu sifu gugu laka vuni zogi life qona 0636
-    \_        duvu xeno yuwa xeti fure xivi kiwo bapu gato sotu bamo mili xoji hoxe xilo wiqo 1225
-    \_        huma rovo yuca jeda rago tiha tawo zupa kelu yudo xaru lene sugo wela haru nano 1825
-    \_        mumu nawu cuqo xufa fawo cija weri pato meru kage kese vave xoto mebe momi lote 0380
-    \_        xomi yoqo vuqe doha gasa muvo sogi zofo regi qize gona xone joke koru rixu heyo 0597
-
-
-**  ~~~~~~~~  cv-plus-b:1
+**  ~~~~~~~~  cv-plus-b:2
 \_  bits:     26.7865
 \_  length:   9
 \_  examples:
@@ -5121,7 +5105,7 @@
     \_        teke XB51
 
 
-**  ~~~~~~~~  cv-plus-b:2
+**  ~~~~~~~~  cv-plus-b:3
 \_  bits:     40.2150
 \_  length:   14
 \_  examples:
@@ -5137,7 +5121,7 @@
     \_        noma yasa BA71
 
 
-**  ~~~~~~~~  cv-plus-b:3
+**  ~~~~~~~~  cv-plus-b:4
 \_  bits:     53.6435
 \_  length:   19
 \_  examples:
@@ -5153,7 +5137,7 @@
     \_        neza negi bege NO34
 
 
-**  ~~~~~~~~  cv-plus-b:4
+**  ~~~~~~~~  cv-plus-b:5
 \_  bits:     67.0720
 \_  length:   24
 \_  examples:
@@ -5169,7 +5153,7 @@
     \_        pone vese dize gexa MB29
 
 
-**  ~~~~~~~~  cv-plus-b:5
+**  ~~~~~~~~  cv-plus-b:6
 \_  bits:     80.5005
 \_  length:   29
 \_  examples:
@@ -5185,7 +5169,7 @@
     \_        tote dela rile bina tebi GI59
 
 
-**  ~~~~~~~~  cv-plus-b:6
+**  ~~~~~~~~  cv-plus-b:7
 \_  bits:     93.9290
 \_  length:   34
 \_  examples:
@@ -5201,7 +5185,7 @@
     \_        teta cane wefu hoce nijo kava YB56
 
 
-**  ~~~~~~~~  cv-plus-b:7
+**  ~~~~~~~~  cv-plus-b:8
 \_  bits:     107.3575
 \_  length:   39
 \_  examples:
@@ -5217,7 +5201,7 @@
     \_        qece voju wayo lani tuqa luto bepa VI47
 
 
-**  ~~~~~~~~  cv-plus-b:8
+**  ~~~~~~~~  cv-plus-b:9
 \_  bits:     120.7860
 \_  length:   44
 \_  examples:
@@ -5233,7 +5217,7 @@
     \_        seba vase micu vevu dupu ropi voye lene VI24
 
 
-**  ~~~~~~~~  cv-plus-b:9
+**  ~~~~~~~~  cv-plus-b:10
 \_  bits:     134.2145
 \_  length:   49
 \_  examples:
@@ -5249,7 +5233,7 @@
     \_        hibo fixi qimo gusi fugu gula kavu nizo gili FB60
 
 
-**  ~~~~~~~~  cv-plus-b:10
+**  ~~~~~~~~  cv-plus-b:11
 \_  bits:     147.6430
 \_  length:   54
 \_  examples:
@@ -5265,7 +5249,7 @@
     \_        feqo nacu bire duvu xeno yuwa xeti fure xivi kiwo BA58
 
 
-**  ~~~~~~~~  cv-plus-b:11
+**  ~~~~~~~~  cv-plus-b:12
 \_  bits:     161.0715
 \_  length:   59
 \_  examples:
@@ -5281,7 +5265,7 @@
     \_        miki woba puga toso tuba momi lixo jiho xexi lowi qode FB52
 
 
-**  ~~~~~~~~  cv-plus-b:12
+**  ~~~~~~~~  cv-plus-b:13
 \_  bits:     174.4999
 \_  length:   64
 \_  examples:
@@ -5297,7 +5281,7 @@
     \_        xilo wiqo defe pexi yaro voyu caje dara goti hata wozu pake LU98
 
 
-**  ~~~~~~~~  cv-plus-b:13
+**  ~~~~~~~~  cv-plus-b:14
 \_  bits:     187.9284
 \_  length:   69
 \_  examples:
@@ -5313,7 +5297,7 @@
     \_        goti hata wozu pake luyu doxa rule nesu gowe laha runa nofu zepi XI97
 
 
-**  ~~~~~~~~  cv-plus-b:14
+**  ~~~~~~~~  cv-plus-b:15
 \_  bits:     201.3569
 \_  length:   74
 \_  examples:
@@ -5329,7 +5313,7 @@
     \_        tela haru nano fuze pixi yita wucu qoxu fafa woci jawe ripa tome ruka GB37
 
 
-**  ~~~~~~~~  cv-plus-b:15
+**  ~~~~~~~~  cv-plus-b:16
 \_  bits:     214.7854
 \_  length:   79
 \_  examples:
@@ -5345,23 +5329,7 @@
     \_        kawe ripa tome ruka geke seva vexo tome bemo milo teku buvo miyo qovu qedo HA03
 
 
-**  ~~~~~~~~  cv-plus-b:16
-\_  bits:     228.2139
-\_  length:   84
-\_  examples:
-    \_        taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju FI13
-    \_        juxi vize teke xepi wevo xigo hacu debo bale kuho ruba joyo ripi noma yasa batu XI87
-    \_        suxi fucu suja neza negi bege nozi zile lozi pogi gore luli kavi none vese dize GB14
-    \_        huhu teva gafe fote dela rile bina tebi givu pipa gefo yece keta cane wefu hoce NI33
-    \_        baye pofu nufo lugo yuqe cevo juwa yola nitu qalu tobe pavi mipi taxi dese bava SB44
-    \_        cuve vudu puro pivo yele nevi hibo fixi qimo gusi fugu gula kavu nizo gili feqo NA06
-    \_        duvu xeno yuwa xeti fure xivi kiwo bapu gato sotu bamo mili xoji hoxe xilo wiqo DB25
-    \_        huma rovo yuca jeda rago tiha tawo zupa kelu yudo xaru lene sugo wela haru nano FU25
-    \_        mumu nawu cuqo xufa fawo cija weri pato meru kage kese vave xoto mebe momi lote KU06
-    \_        miyo qovu qedo haga samu voso gizo fore giqi zego naxo nejo keko ruri xuhe yoqa SO74
-
-
-**  ~~~~~~~~  cv-plus-c:1
+**  ~~~~~~~~  cv-plus-c:2
 \_  bits:     28.4646
 \_  length:   9
 \_  examples:
@@ -5377,7 +5345,7 @@
     \_        feke XB5%
 
 
-**  ~~~~~~~~  cv-plus-c:2
+**  ~~~~~~~~  cv-plus-c:3
 \_  bits:     41.8931
 \_  length:   14
 \_  examples:
@@ -5393,7 +5361,7 @@
     \_        sori pino MA1[
 
 
-**  ~~~~~~~~  cv-plus-c:3
+**  ~~~~~~~~  cv-plus-c:4
 \_  bits:     55.3216
 \_  length:   19
 \_  examples:
@@ -5409,7 +5377,7 @@
     \_        xifu cusu jane ZA2(
 
 
-**  ~~~~~~~~  cv-plus-c:4
+**  ~~~~~~~~  cv-plus-c:5
 \_  bits:     68.7501
 \_  length:   24
 \_  examples:
@@ -5425,7 +5393,7 @@
     \_        pone vese dize gexa MB2|
 
 
-**  ~~~~~~~~  cv-plus-c:5
+**  ~~~~~~~~  cv-plus-c:6
 \_  bits:     82.1786
 \_  length:   29
 \_  examples:
@@ -5441,7 +5409,7 @@
     \_        tebi givu pipa gefo yece KB7$
 
 
-**  ~~~~~~~~  cv-plus-c:6
+**  ~~~~~~~~  cv-plus-c:7
 \_  bits:     95.6071
 \_  length:   34
 \_  examples:
@@ -5457,7 +5425,7 @@
     \_        foye ceke taca newe fuho ceni JO3!
 
 
-**  ~~~~~~~~  cv-plus-c:7
+**  ~~~~~~~~  cv-plus-c:8
 \_  bits:     109.0356
 \_  length:   39
 \_  examples:
@@ -5473,7 +5441,7 @@
     \_        yuqe cevo juwa yola nitu qalu tobe PA5/
 
 
-**  ~~~~~~~~  cv-plus-c:8
+**  ~~~~~~~~  cv-plus-c:9
 \_  bits:     122.4641
 \_  length:   44
 \_  examples:
@@ -5489,7 +5457,7 @@
     \_        mita xide seba vase micu vevu dupu ropi VO5'
 
 
-**  ~~~~~~~~  cv-plus-c:9
+**  ~~~~~~~~  cv-plus-c:10
 \_  bits:     135.8925
 \_  length:   49
 \_  examples:
@@ -5505,7 +5473,7 @@
     \_        hibo fixi qimo gusi fugu gula kavu nizo gili FB6:
 
 
-**  ~~~~~~~~  cv-plus-c:10
+**  ~~~~~~~~  cv-plus-c:11
 \_  bits:     149.3210
 \_  length:   54
 \_  examples:
@@ -5521,7 +5489,7 @@
     \_        gili feqo nacu bire duvu xeno yuwa xeti fure xivi KI7_
 
 
-**  ~~~~~~~~  cv-plus-c:11
+**  ~~~~~~~~  cv-plus-c:12
 \_  bits:     162.7495
 \_  length:   59
 \_  examples:
@@ -5537,7 +5505,7 @@
     \_        kapu gato sotu bamo mili xoji hoxe xilo wiqo defe pexi YA6^
 
 
-**  ~~~~~~~~  cv-plus-c:12
+**  ~~~~~~~~  cv-plus-c:13
 \_  bits:     176.1780
 \_  length:   64
 \_  examples:
@@ -5553,7 +5521,7 @@
     \_        huno wiqo defe pexi yaro voyu caje dara goti hata wozu pake LU9%
 
 
-**  ~~~~~~~~  cv-plus-c:13
+**  ~~~~~~~~  cv-plus-c:14
 \_  bits:     189.6065
 \_  length:   69
 \_  examples:
@@ -5569,7 +5537,7 @@
     \_        goti hata wozu pake luyu doxa rule nesu gowe laha runa nofu zepi XI9]
 
 
-**  ~~~~~~~~  cv-plus-c:14
+**  ~~~~~~~~  cv-plus-c:15
 \_  bits:     203.0350
 \_  length:   74
 \_  examples:
@@ -5585,7 +5553,7 @@
     \_        haru nano fuze pixi yita wucu qoxu fafa woci jawe ripa tome ruka geke SB7]
 
 
-**  ~~~~~~~~  cv-plus-c:15
+**  ~~~~~~~~  cv-plus-c:16
 \_  bits:     216.4635
 \_  length:   79
 \_  examples:
@@ -5599,22 +5567,6 @@
     \_        tuba momi lixo jiho xexi lowi qode fepe xiya rovo yuca jeda rago tiha tawo ZU5*
     \_        luyu doxa rule nesu gowe laha runa nofu zepi xiyi tawu cuqo xufa fawo cija WB6;
     \_        pato meru kage kese vave xoto mebe momi lote kubu vomi yoqo vuqe doha gasa MU7[
-
-
-**  ~~~~~~~~  cv-plus-c:16
-\_  bits:     229.8920
-\_  length:   84
-\_  examples:
-    \_        taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju FI1*
-    \_        juxi vize teke xepi wevo xigo hacu debo bale kuho ruba joyo ripi noma yasa batu XI8\
-    \_        suxi fucu suja neza negi bege nozi zile lozi pogi gore luli kavi none vese dize GB1/
-    \_        huhu teva gafe fote dela rile bina tebi givu pipa gefo yece keta cane wefu hoce NI3~
-    \_        sava yepo funu folu goyu qece voju wayo lani tuqa luto bepa vimi pita xide seba VA7,
-    \_        gimo cuve vudu puro pivo yele nevi hibo fixi qimo gusi fugu gula kavu nizo gili FB6:
-    \_        babi redu vuxe noyu waxe tifu rexi viki woba puga toso tuba momi lixo jiho xexi LO8.
-    \_        qode fepe xiya rovo yuca jeda rago tiha tawo zupa kelu yudo xaru lene sugo wela HA6_
-    \_        nano fuze pixi yita wucu qoxu fafa woci jawe ripa tome ruka geke seva vexo tome BB4\
-    \_        milo teku buvo miyo qovu qedo haga samu voso gizo fore giqi zego naxo nejo keko RU6{
 
 
 **  ~~~~~~~~  proquint-lower:1
@@ -19265,7 +19217,7 @@
     \_        29607b74
 
 
-**  ~~~~~~~~  flake:1
+**  ~~~~~~~~  flake:32
 \_  bits:     32  (exact)
 \_  length:   17
 \_  examples:
@@ -19281,7 +19233,7 @@
     \_        29607b74-549d1d43
 
 
-**  ~~~~~~~~  flake:2
+**  ~~~~~~~~  flake:64
 \_  bits:     64  (exact)
 \_  length:   26
 \_  examples:
@@ -19297,7 +19249,7 @@
     \_        29607b74-5438b887-e34d0cf8
 
 
-**  ~~~~~~~~  flake:3
+**  ~~~~~~~~  flake:96
 \_  bits:     96  (exact)
 \_  length:   35
 \_  examples:
@@ -19313,7 +19265,7 @@
     \_        29607b74-ef78fff6-f013bb34-627ba50c
 
 
-**  ~~~~~~~~  flake:4
+**  ~~~~~~~~  flake:128
 \_  bits:     128  (exact)
 \_  length:   44
 \_  examples:
@@ -19329,7 +19281,7 @@
     \_        29607b74-ba4ed5fe-f0551f3a-fd1c7865-bc66308f
 
 
-**  ~~~~~~~~  flake:5
+**  ~~~~~~~~  flake:160
 \_  bits:     160  (exact)
 \_  length:   53
 \_  examples:
@@ -19345,7 +19297,7 @@
     \_        29607b74-97095f34-f33e5f13-a814cd80-8d4e5ee1-d08b43a3
 
 
-**  ~~~~~~~~  flake:6
+**  ~~~~~~~~  flake:192
 \_  bits:     192  (exact)
 \_  length:   62
 \_  examples:
@@ -19361,7 +19313,7 @@
     \_        29607b74-2a2529cb-7c99e3de-560162bb-28f02f10-15a3dcec-38dca4fc
 
 
-**  ~~~~~~~~  flake:7
+**  ~~~~~~~~  flake:224
 \_  bits:     224  (exact)
 \_  length:   71
 \_  examples:
@@ -19377,7 +19329,7 @@
     \_        29607b74-e22b20fa-72cc0b4c-ee98ddea-a5a06263-11355dad-94690e61-10aed803
 
 
-**  ~~~~~~~~  flake:8
+**  ~~~~~~~~  flake:256
 \_  bits:     256  (exact)
 \_  length:   80
 \_  examples:
@@ -19393,7 +19345,7 @@
     \_        29607b74-e3fd1ddb-28613f9e-ad9869b3-92fa1f9d-91bef1ab-625605c9-68c72f53-12ac77aa
 
 
-**  ~~~~~~~~  flake:9
+**  ~~~~~~~~  flake:288
 \_  bits:     288  (exact)
 \_  length:   89
 \_  examples:
@@ -19409,7 +19361,7 @@
     \_        29607b74-dba89b15-47d9efd0-10b37e15-6ebc6bf4-1a4dca84-d67c6bdc-a88ac0c0-c3420141-d57426de
 
 
-**  ~~~~~~~~  flake:10
+**  ~~~~~~~~  flake:320
 \_  bits:     320  (exact)
 \_  length:   98
 \_  examples:
@@ -19425,7 +19377,7 @@
     \_        29607b74-45356f2a-84456d16-9bc4593c-8a23e359-b898dbe5-1b4ef62f-10eb99e2-18c5be85-5df2859f-267d07fa
 
 
-**  ~~~~~~~~  flake:11
+**  ~~~~~~~~  flake:352
 \_  bits:     352  (exact)
 \_  length:   107
 \_  examples:
@@ -19441,7 +19393,7 @@
     \_        29607b74-267d07fa-024a1969-3b968943-36ac4267-10210a40-ceadb07b-b79926fc-d95ad7ff-f5d37faa-7dd2df18-49940cac
 
 
-**  ~~~~~~~~  flake:12
+**  ~~~~~~~~  flake:384
 \_  bits:     384  (exact)
 \_  length:   116
 \_  examples:
@@ -19457,7 +19409,7 @@
     \_        29607b74-7dd2df18-49940cac-d208a79f-b3a0b2ca-87cb50b2-635ce54a-a15782cd-2b9c6ca2-2b2501ea-bdf3c808-fa1ab8ea-93176615
 
 
-**  ~~~~~~~~  flake:13
+**  ~~~~~~~~  flake:416
 \_  bits:     416  (exact)
 \_  length:   125
 \_  examples:
@@ -19473,7 +19425,7 @@
     \_        29607b74-bdf3c808-fa1ab8ea-93176615-27e0fb03-5ae58c31-ffa84dbf-181ce7a7-2ab61bbe-fb8bda94-950b7c0f-dcbacf2f-7602f7dd-23255b37
 
 
-**  ~~~~~~~~  flake:14
+**  ~~~~~~~~  flake:448
 \_  bits:     448  (exact)
 \_  length:   134
 \_  examples:
@@ -19489,7 +19441,7 @@
     \_        29607b74-950b7c0f-dcbacf2f-7602f7dd-23255b37-ea9c64ba-e29f9051-7895954d-5223635a-40d5629d-b9bf898e-3dea6732-12cf6da2-b1277b73-6a3b9f04
 
 
-**  ~~~~~~~~  flake:15
+**  ~~~~~~~~  flake:480
 \_  bits:     480  (exact)
 \_  length:   143
 \_  examples:
@@ -19505,7 +19457,7 @@
     \_        29607b74-b9bf898e-3dea6732-12cf6da2-b1277b73-6a3b9f04-662bb993-d8754b15-16e9a030-10b6e852-7c5923bb-dc7def3e-8c70400b-89d7ed09-c71f0b98-107d57ea
 
 
-**  ~~~~~~~~  flake:16
+**  ~~~~~~~~  flake:512
 \_  bits:     512  (exact)
 \_  length:   152
 \_  examples:

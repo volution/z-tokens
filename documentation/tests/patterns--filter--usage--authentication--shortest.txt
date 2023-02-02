@@ -20,9 +20,9 @@
 ::  cv-lower:3              :   40.2 b :   14 c ::    taqe veza zaye
 ::  cv-upper:3              :   40.2 b :   14 c ::    TAQB VBZA ZAYB
 ::  cv-mixed:2              :   34.8 b :    9 c ::    PaFi PiQI
-::  cv-plus-a:2             :   40.1 b :   14 c ::    taqe veza 0449
-::  cv-plus-b:2             :   40.2 b :   14 c ::    taqe veza ZA44
-::  cv-plus-c:2             :   41.8 b :   14 c ::    taqe veza ZA4(
+::  cv-plus-a:3             :   40.1 b :   14 c ::    taqe veza 0449
+::  cv-plus-b:3             :   40.2 b :   14 c ::    taqe veza ZA44
+::  cv-plus-c:3             :   41.8 b :   14 c ::    taqe veza ZA4(
 ::  proquint-lower:2        :   32  =b :   11 c ::    sanis gufaz
 ::  proquint-upper:2        :   32  =b :   11 c ::    SANIS GUFAZ
 ::  koremutake-a:3          :   42  =b :   17 c ::    drobo stufi stoda
@@ -38,4 +38,4 @@
 ::  bytes-hex:4             :   32  =b :    8 c ::    7f6f2ccd
 ::  uuid-v4                 :  122  =b :   36 c ::    c5a0ef11-f80c-41ce-8329-75e88c63a6e1
 ::  ip-mac                  :   40  =b :   17 c ::    02:bb:c6:43:cb:f8
-::  flake:1                 :   32  =b :   17 c ::    29607b74-7f6f2ccd
+::  flake:32                :   32  =b :   17 c ::    29607b74-7f6f2ccd

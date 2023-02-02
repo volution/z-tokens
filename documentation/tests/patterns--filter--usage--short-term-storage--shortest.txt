@@ -19,9 +19,9 @@
 ::  cv-lower:6              :   80.5 b :   29 c ::    taqe veza zaye fugi rixu cezu
 ::  cv-upper:6              :   80.5 b :   29 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU
 ::  cv-mixed:5              :   87.1 b :   24 c ::    PaFi PiQI YayU mAjO lAzi
-::  cv-plus-a:5             :   80.4 b :   29 c ::    taqe veza zaye fugi rixu 2906
-::  cv-plus-b:5             :   80.5 b :   29 c ::    taqe veza zaye fugi rixu CB90
-::  cv-plus-c:5             :   82.1 b :   29 c ::    taqe veza zaye fugi rixu CB9!
+::  cv-plus-a:6             :   80.4 b :   29 c ::    taqe veza zaye fugi rixu 2906
+::  cv-plus-b:6             :   80.5 b :   29 c ::    taqe veza zaye fugi rixu CB90
+::  cv-plus-c:6             :   82.1 b :   29 c ::    taqe veza zaye fugi rixu CB9!
 ::  proquint-lower:5        :   80  =b :   29 c ::    sanis gufaz lofug mudad damud
 ::  proquint-upper:5        :   80  =b :   29 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD
 ::  koremutake-a:5          :   70  =b :   28 c ::    drobo stufi stoda napru hyhi
@@ -36,4 +36,4 @@
 ::  nato:14                 :   72.3 b :   82 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
 ::  bytes-hex:9             :   72  =b :   18 c ::    7f6f2ccdb23f2abb7b
 ::  uuid-v4                 :  122  =b :   36 c ::    c5a0ef11-f80c-41ce-8329-75e88c63a6e1
-::  flake:3                 :   96  =b :   35 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e
+::  flake:96                :   96  =b :   35 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e

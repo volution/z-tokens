@@ -123,36 +123,33 @@
 ::  cv-mixed:14             :  243.9 b :   69 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA
 ::  cv-mixed:15             :  261.4 b :   74 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO
 ::  cv-mixed:16             :  278.8 b :   79 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle
-::  cv-plus-a:7             :  107.2 b :   39 c ::    taqe veza zaye fugi rixu cezu saco 6573
-::  cv-plus-a:8             :  120.7 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa 3526
-::  cv-plus-a:9             :  134.1 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize 2606
-::  cv-plus-a:10            :  147.5 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose 6062
-::  cv-plus-a:11            :  161.0 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago 2335
-::  cv-plus-a:12            :  174.4 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko 0320
-::  cv-plus-a:13            :  187.8 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha 9460
-::  cv-plus-a:14            :  201.2 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu 9351
-::  cv-plus-a:15            :  214.7 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku 5138
-::  cv-plus-a:16            :  228.1 b :   84 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
-::  cv-plus-b:7             :  107.3 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO57
-::  cv-plus-b:8             :  120.7 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa KI26
-::  cv-plus-b:9             :  134.2 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO60
-::  cv-plus-b:10            :  147.6 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose RA62
-::  cv-plus-b:11            :  161.0 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB33
-::  cv-plus-b:12            :  174.4 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA32
-::  cv-plus-b:13            :  187.9 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI60
-::  cv-plus-b:14            :  201.3 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU35
-::  cv-plus-b:15            :  214.7 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA38
-::  cv-plus-b:16            :  228.2 b :   84 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
-::  cv-plus-c:7             :  109.0 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO5]
-::  cv-plus-c:8             :  122.4 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa KI2@
-::  cv-plus-c:9             :  135.8 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO6"
-::  cv-plus-c:10            :  149.3 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose RA6+
-::  cv-plus-c:11            :  162.7 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB3,
-::  cv-plus-c:12            :  176.1 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA3"
-::  cv-plus-c:13            :  189.6 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI6_
-::  cv-plus-c:14            :  203.0 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU3<
-::  cv-plus-c:15            :  216.4 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA3`
-::  cv-plus-c:16            :  229.8 b :   84 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju  [...]
+::  cv-plus-a:8             :  107.2 b :   39 c ::    taqe veza zaye fugi rixu cezu saco 6573
+::  cv-plus-a:9             :  120.7 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa 3526
+::  cv-plus-a:10            :  134.1 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize 2606
+::  cv-plus-a:11            :  147.5 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose 6062
+::  cv-plus-a:12            :  161.0 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago 2335
+::  cv-plus-a:13            :  174.4 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko 0320
+::  cv-plus-a:14            :  187.8 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha 9460
+::  cv-plus-a:15            :  201.2 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu 9351
+::  cv-plus-a:16            :  214.7 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku 5138
+::  cv-plus-b:8             :  107.3 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO57
+::  cv-plus-b:9             :  120.7 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa KI26
+::  cv-plus-b:10            :  134.2 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO60
+::  cv-plus-b:11            :  147.6 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose RA62
+::  cv-plus-b:12            :  161.0 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB33
+::  cv-plus-b:13            :  174.4 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA32
+::  cv-plus-b:14            :  187.9 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI60
+::  cv-plus-b:15            :  201.3 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU35
+::  cv-plus-b:16            :  214.7 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA38
+::  cv-plus-c:8             :  109.0 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO5]
+::  cv-plus-c:9             :  122.4 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa KI2@
+::  cv-plus-c:10            :  135.8 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO6"
+::  cv-plus-c:11            :  149.3 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose RA6+
+::  cv-plus-c:12            :  162.7 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB3,
+::  cv-plus-c:13            :  176.1 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA3"
+::  cv-plus-c:14            :  189.6 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI6_
+::  cv-plus-c:15            :  203.0 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU3<
+::  cv-plus-c:16            :  216.4 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA3`
 ::  proquint-lower:7        :  112  =b :   41 c ::    sanis gufaz lofug mudad damud mihup dogip
 ::  proquint-lower:8        :  128  =b :   47 c ::    sanis gufaz lofug mudad damud mihup dogip bajal
 ::  proquint-lower:9        :  144  =b :   53 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv
@@ -495,16 +492,16 @@
 ::  bytes-hex:126           : 1008  =b :  252 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
 ::  bytes-hex:127           : 1016  =b :  254 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
 ::  uuid-v4                 :  122  =b :   36 c ::    c5a0ef11-f80c-41ce-8329-75e88c63a6e1
-::  flake:4                 :  128  =b :   44 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6
-::  flake:5                 :  160  =b :   53 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf
-::  flake:6                 :  192  =b :   62 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06
-::  flake:7                 :  224  =b :   71 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab
-::  flake:8                 :  256  =b :   80 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95
-::  flake:9                 :  288  =b :   89 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
-::  flake:10                :  320  =b :   98 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
-::  flake:11                :  352  =b :  107 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
-::  flake:12                :  384  =b :  116 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
-::  flake:13                :  416  =b :  125 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
-::  flake:14                :  448  =b :  134 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
-::  flake:15                :  480  =b :  143 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
-::  flake:16                :  512  =b :  152 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
+::  flake:128               :  128  =b :   44 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6
+::  flake:160               :  160  =b :   53 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf
+::  flake:192               :  192  =b :   62 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06
+::  flake:224               :  224  =b :   71 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab
+::  flake:256               :  256  =b :   80 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95
+::  flake:288               :  288  =b :   89 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
+::  flake:320               :  320  =b :   98 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
+::  flake:352               :  352  =b :  107 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
+::  flake:384               :  384  =b :  116 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
+::  flake:416               :  416  =b :  125 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
+::  flake:448               :  448  =b :  134 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
+::  flake:480               :  480  =b :  143 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
+::  flake:512               :  512  =b :  152 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]

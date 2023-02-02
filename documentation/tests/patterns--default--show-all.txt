@@ -7943,8 +7943,8 @@
 \_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle
 
 
-**  ~~~~~~~~  cv-plus-a:1
-\_  aliases:  cva:1
+**  ~~~~~~~~  cv-plus-a:2
+\_  aliases:  cva:2
 \_  labels:   cv-plus-a cv-plus cv ascii password memorable
 \_  bits:     26.7162
 \_  length:   9
@@ -7970,8 +7970,8 @@
 \_  example:  taqe 2711
 
 
-**  ~~~~~~~~  cv-plus-a:2
-\_  aliases:  cva:2
+**  ~~~~~~~~  cv-plus-a:3
+\_  aliases:  cva:3
 \_  labels:   cv-plus-a cv-plus cv ascii password memorable
 \_  bits:     40.1446
 \_  length:   14
@@ -7997,8 +7997,8 @@
 \_  example:  taqe veza 0449
 
 
-**  ~~~~~~~~  cv-plus-a:3
-\_  aliases:  cva:3
+**  ~~~~~~~~  cv-plus-a:4
+\_  aliases:  cva:4
 \_  labels:   cv-plus-a cv-plus cv ascii password memorable
 \_  bits:     53.5731
 \_  length:   19
@@ -8024,8 +8024,8 @@
 \_  example:  taqe veza zaye 5182
 
 
-**  ~~~~~~~~  cv-plus-a:4
-\_  aliases:  cva:4
+**  ~~~~~~~~  cv-plus-a:5
+\_  aliases:  cva:5
 \_  labels:   cv-plus-a cv-plus cv ascii password memorable
 \_  bits:     67.0016
 \_  length:   24
@@ -8051,8 +8051,8 @@
 \_  example:  taqe veza zaye fugi 6290
 
 
-**  ~~~~~~~~  cv-plus-a:5
-\_  aliases:  cva:5
+**  ~~~~~~~~  cv-plus-a:6
+\_  aliases:  cva:6
 \_  labels:   cv-plus-a cv-plus cv ascii password memorable
 \_  bits:     80.4301
 \_  length:   29
@@ -8078,8 +8078,8 @@
 \_  example:  taqe veza zaye fugi rixu 2906
 
 
-**  ~~~~~~~~  cv-plus-a:6
-\_  aliases:  cva:6
+**  ~~~~~~~~  cv-plus-a:7
+\_  aliases:  cva:7
 \_  labels:   cv-plus-a cv-plus cv ascii password memorable
 \_  bits:     93.8586
 \_  length:   34
@@ -8105,8 +8105,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu 0665
 
 
-**  ~~~~~~~~  cv-plus-a:7
-\_  aliases:  cva:7
+**  ~~~~~~~~  cv-plus-a:8
+\_  aliases:  cva:8
 \_  labels:   cv-plus-a cv-plus cv ascii password memorable
 \_  bits:     107.2871
 \_  length:   39
@@ -8132,8 +8132,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco 6573
 
 
-**  ~~~~~~~~  cv-plus-a:8
-\_  aliases:  cva:8
+**  ~~~~~~~~  cv-plus-a:9
+\_  aliases:  cva:9
 \_  labels:   cv-plus-a cv-plus cv ascii password memorable
 \_  bits:     120.7156
 \_  length:   44
@@ -8159,8 +8159,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa 3526
 
 
-**  ~~~~~~~~  cv-plus-a:9
-\_  aliases:  cva:9
+**  ~~~~~~~~  cv-plus-a:10
+\_  aliases:  cva:10
 \_  labels:   cv-plus-a cv-plus cv ascii password memorable
 \_  bits:     134.1441
 \_  length:   49
@@ -8186,8 +8186,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize 2606
 
 
-**  ~~~~~~~~  cv-plus-a:10
-\_  aliases:  cva:10
+**  ~~~~~~~~  cv-plus-a:11
+\_  aliases:  cva:11
 \_  labels:   cv-plus-a cv-plus cv ascii password memorable
 \_  bits:     147.5726
 \_  length:   54
@@ -8213,8 +8213,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose 6062
 
 
-**  ~~~~~~~~  cv-plus-a:11
-\_  aliases:  cva:11
+**  ~~~~~~~~  cv-plus-a:12
+\_  aliases:  cva:12
 \_  labels:   cv-plus-a cv-plus cv ascii password memorable
 \_  bits:     161.0011
 \_  length:   59
@@ -8240,8 +8240,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago 2335
 
 
-**  ~~~~~~~~  cv-plus-a:12
-\_  aliases:  cva:12
+**  ~~~~~~~~  cv-plus-a:13
+\_  aliases:  cva:13
 \_  labels:   cv-plus-a cv-plus cv ascii password memorable
 \_  bits:     174.4296
 \_  length:   64
@@ -8267,8 +8267,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko 0320
 
 
-**  ~~~~~~~~  cv-plus-a:13
-\_  aliases:  cva:13
+**  ~~~~~~~~  cv-plus-a:14
+\_  aliases:  cva:14
 \_  labels:   cv-plus-a cv-plus cv ascii password memorable
 \_  bits:     187.8580
 \_  length:   69
@@ -8294,8 +8294,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha 9460
 
 
-**  ~~~~~~~~  cv-plus-a:14
-\_  aliases:  cva:14
+**  ~~~~~~~~  cv-plus-a:15
+\_  aliases:  cva:15
 \_  labels:   cv-plus-a cv-plus cv ascii password memorable
 \_  bits:     201.2865
 \_  length:   74
@@ -8321,8 +8321,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu 9351
 
 
-**  ~~~~~~~~  cv-plus-a:15
-\_  aliases:  cva:15
+**  ~~~~~~~~  cv-plus-a:16
+\_  aliases:  cva:16
 \_  labels:   cv-plus-a cv-plus cv ascii password memorable
 \_  bits:     214.7150
 \_  length:   79
@@ -8348,35 +8348,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku 5138
 
 
-**  ~~~~~~~~  cv-plus-a:16
-\_  aliases:  cva:16
-\_  labels:   cv-plus-a cv-plus cv ascii password memorable
-\_  bits:     228.1435
-\_  length:   84
-\_  usable for:
-    \_  cryptography            OK         with   +100.14  bits of margin
-    \_  authentication          OK         with   +196.14  bits of margin
-    \_  archival storage        OK         with   +127.85  bits of margin
-    \_  long term storage       OK         with   +151.30  bits of margin
-    \_  short term storage      OK         with   +158.15  bits of margin
-\_  bruteforce time:
-    \_  MD4                     --         (more than trillions of years)
-    \_  MD5                     --         (more than trillions of years)
-    \_  SHA1                    --         (more than trillions of years)
-    \_  SHA2-256                --         (more than trillions of years)
-    \_  SHA3-256                --         (more than trillions of years)
-    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
-    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
-    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
-    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
-    \_  scrypt                  --         (more than trillions of years)
-    \_  GPG                     --         (more than trillions of years)
-    \_  AES-128                 --         (more than trillions of years)
-\_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju 5133
-
-
-**  ~~~~~~~~  cv-plus-b:1
-\_  aliases:  cvb:1
+**  ~~~~~~~~  cv-plus-b:2
+\_  aliases:  cvb:2
 \_  labels:   cv-plus-b cv-plus cv ascii password memorable
 \_  bits:     26.7865
 \_  length:   9
@@ -8402,8 +8375,8 @@
 \_  example:  taqe VB71
 
 
-**  ~~~~~~~~  cv-plus-b:2
-\_  aliases:  cvb:2
+**  ~~~~~~~~  cv-plus-b:3
+\_  aliases:  cvb:3
 \_  labels:   cv-plus-b cv-plus cv ascii password memorable
 \_  bits:     40.2150
 \_  length:   14
@@ -8429,8 +8402,8 @@
 \_  example:  taqe veza ZA44
 
 
-**  ~~~~~~~~  cv-plus-b:3
-\_  aliases:  cvb:3
+**  ~~~~~~~~  cv-plus-b:4
+\_  aliases:  cvb:4
 \_  labels:   cv-plus-b cv-plus cv ascii password memorable
 \_  bits:     53.6435
 \_  length:   19
@@ -8456,8 +8429,8 @@
 \_  example:  taqe veza zaye FU25
 
 
-**  ~~~~~~~~  cv-plus-b:4
-\_  aliases:  cvb:4
+**  ~~~~~~~~  cv-plus-b:5
+\_  aliases:  cvb:5
 \_  labels:   cv-plus-b cv-plus cv ascii password memorable
 \_  bits:     67.0720
 \_  length:   24
@@ -8483,8 +8456,8 @@
 \_  example:  taqe veza zaye fugi RI29
 
 
-**  ~~~~~~~~  cv-plus-b:5
-\_  aliases:  cvb:5
+**  ~~~~~~~~  cv-plus-b:6
+\_  aliases:  cvb:6
 \_  labels:   cv-plus-b cv-plus cv ascii password memorable
 \_  bits:     80.5005
 \_  length:   29
@@ -8510,8 +8483,8 @@
 \_  example:  taqe veza zaye fugi rixu CB90
 
 
-**  ~~~~~~~~  cv-plus-b:6
-\_  aliases:  cvb:6
+**  ~~~~~~~~  cv-plus-b:7
+\_  aliases:  cvb:7
 \_  labels:   cv-plus-b cv-plus cv ascii password memorable
 \_  bits:     93.9290
 \_  length:   34
@@ -8537,8 +8510,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu SA66
 
 
-**  ~~~~~~~~  cv-plus-b:7
-\_  aliases:  cvb:7
+**  ~~~~~~~~  cv-plus-b:8
+\_  aliases:  cvb:8
 \_  labels:   cv-plus-b cv-plus cv ascii password memorable
 \_  bits:     107.3575
 \_  length:   39
@@ -8564,8 +8537,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco VO57
 
 
-**  ~~~~~~~~  cv-plus-b:8
-\_  aliases:  cvb:8
+**  ~~~~~~~~  cv-plus-b:9
+\_  aliases:  cvb:9
 \_  labels:   cv-plus-b cv-plus cv ascii password memorable
 \_  bits:     120.7860
 \_  length:   44
@@ -8591,8 +8564,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa KI26
 
 
-**  ~~~~~~~~  cv-plus-b:9
-\_  aliases:  cvb:9
+**  ~~~~~~~~  cv-plus-b:10
+\_  aliases:  cvb:10
 \_  labels:   cv-plus-b cv-plus cv ascii password memorable
 \_  bits:     134.2145
 \_  length:   49
@@ -8618,8 +8591,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize HO60
 
 
-**  ~~~~~~~~  cv-plus-b:10
-\_  aliases:  cvb:10
+**  ~~~~~~~~  cv-plus-b:11
+\_  aliases:  cvb:11
 \_  labels:   cv-plus-b cv-plus cv ascii password memorable
 \_  bits:     147.6430
 \_  length:   54
@@ -8645,8 +8618,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose RA62
 
 
-**  ~~~~~~~~  cv-plus-b:11
-\_  aliases:  cvb:11
+**  ~~~~~~~~  cv-plus-b:12
+\_  aliases:  cvb:12
 \_  labels:   cv-plus-b cv-plus cv ascii password memorable
 \_  bits:     161.0715
 \_  length:   59
@@ -8672,8 +8645,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB33
 
 
-**  ~~~~~~~~  cv-plus-b:12
-\_  aliases:  cvb:12
+**  ~~~~~~~~  cv-plus-b:13
+\_  aliases:  cvb:13
 \_  labels:   cv-plus-b cv-plus cv ascii password memorable
 \_  bits:     174.4999
 \_  length:   64
@@ -8699,8 +8672,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA32
 
 
-**  ~~~~~~~~  cv-plus-b:13
-\_  aliases:  cvb:13
+**  ~~~~~~~~  cv-plus-b:14
+\_  aliases:  cvb:14
 \_  labels:   cv-plus-b cv-plus cv ascii password memorable
 \_  bits:     187.9284
 \_  length:   69
@@ -8726,8 +8699,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI60
 
 
-**  ~~~~~~~~  cv-plus-b:14
-\_  aliases:  cvb:14
+**  ~~~~~~~~  cv-plus-b:15
+\_  aliases:  cvb:15
 \_  labels:   cv-plus-b cv-plus cv ascii password memorable
 \_  bits:     201.3569
 \_  length:   74
@@ -8753,8 +8726,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU35
 
 
-**  ~~~~~~~~  cv-plus-b:15
-\_  aliases:  cvb:15
+**  ~~~~~~~~  cv-plus-b:16
+\_  aliases:  cvb:16
 \_  labels:   cv-plus-b cv-plus cv ascii password memorable
 \_  bits:     214.7854
 \_  length:   79
@@ -8780,35 +8753,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA38
 
 
-**  ~~~~~~~~  cv-plus-b:16
-\_  aliases:  cvb:16
-\_  labels:   cv-plus-b cv-plus cv ascii password memorable
-\_  bits:     228.2139
-\_  length:   84
-\_  usable for:
-    \_  cryptography            OK         with   +100.21  bits of margin
-    \_  authentication          OK         with   +196.21  bits of margin
-    \_  archival storage        OK         with   +127.92  bits of margin
-    \_  long term storage       OK         with   +151.38  bits of margin
-    \_  short term storage      OK         with   +158.22  bits of margin
-\_  bruteforce time:
-    \_  MD4                     --         (more than trillions of years)
-    \_  MD5                     --         (more than trillions of years)
-    \_  SHA1                    --         (more than trillions of years)
-    \_  SHA2-256                --         (more than trillions of years)
-    \_  SHA3-256                --         (more than trillions of years)
-    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
-    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
-    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
-    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
-    \_  scrypt                  --         (more than trillions of years)
-    \_  GPG                     --         (more than trillions of years)
-    \_  AES-128                 --         (more than trillions of years)
-\_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju FI13
-
-
-**  ~~~~~~~~  cv-plus-c:1
-\_  aliases:  cvc:1
+**  ~~~~~~~~  cv-plus-c:2
+\_  aliases:  cvc:2
 \_  labels:   cv-plus-c cv-plus cv ascii password memorable
 \_  bits:     28.4646
 \_  length:   9
@@ -8834,8 +8780,8 @@
 \_  example:  taqe VB7~
 
 
-**  ~~~~~~~~  cv-plus-c:2
-\_  aliases:  cvc:2
+**  ~~~~~~~~  cv-plus-c:3
+\_  aliases:  cvc:3
 \_  labels:   cv-plus-c cv-plus cv ascii password memorable
 \_  bits:     41.8931
 \_  length:   14
@@ -8861,8 +8807,8 @@
 \_  example:  taqe veza ZA4(
 
 
-**  ~~~~~~~~  cv-plus-c:3
-\_  aliases:  cvc:3
+**  ~~~~~~~~  cv-plus-c:4
+\_  aliases:  cvc:4
 \_  labels:   cv-plus-c cv-plus cv ascii password memorable
 \_  bits:     55.3216
 \_  length:   19
@@ -8888,8 +8834,8 @@
 \_  example:  taqe veza zaye FU2;
 
 
-**  ~~~~~~~~  cv-plus-c:4
-\_  aliases:  cvc:4
+**  ~~~~~~~~  cv-plus-c:5
+\_  aliases:  cvc:5
 \_  labels:   cv-plus-c cv-plus cv ascii password memorable
 \_  bits:     68.7501
 \_  length:   24
@@ -8915,8 +8861,8 @@
 \_  example:  taqe veza zaye fugi RI2~
 
 
-**  ~~~~~~~~  cv-plus-c:5
-\_  aliases:  cvc:5
+**  ~~~~~~~~  cv-plus-c:6
+\_  aliases:  cvc:6
 \_  labels:   cv-plus-c cv-plus cv ascii password memorable
 \_  bits:     82.1786
 \_  length:   29
@@ -8942,8 +8888,8 @@
 \_  example:  taqe veza zaye fugi rixu CB9!
 
 
-**  ~~~~~~~~  cv-plus-c:6
-\_  aliases:  cvc:6
+**  ~~~~~~~~  cv-plus-c:7
+\_  aliases:  cvc:7
 \_  labels:   cv-plus-c cv-plus cv ascii password memorable
 \_  bits:     95.6071
 \_  length:   34
@@ -8969,8 +8915,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu SA6^
 
 
-**  ~~~~~~~~  cv-plus-c:7
-\_  aliases:  cvc:7
+**  ~~~~~~~~  cv-plus-c:8
+\_  aliases:  cvc:8
 \_  labels:   cv-plus-c cv-plus cv ascii password memorable
 \_  bits:     109.0356
 \_  length:   39
@@ -8996,8 +8942,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco VO5]
 
 
-**  ~~~~~~~~  cv-plus-c:8
-\_  aliases:  cvc:8
+**  ~~~~~~~~  cv-plus-c:9
+\_  aliases:  cvc:9
 \_  labels:   cv-plus-c cv-plus cv ascii password memorable
 \_  bits:     122.4641
 \_  length:   44
@@ -9023,8 +8969,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa KI2@
 
 
-**  ~~~~~~~~  cv-plus-c:9
-\_  aliases:  cvc:9
+**  ~~~~~~~~  cv-plus-c:10
+\_  aliases:  cvc:10
 \_  labels:   cv-plus-c cv-plus cv ascii password memorable
 \_  bits:     135.8925
 \_  length:   49
@@ -9050,8 +8996,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize HO6"
 
 
-**  ~~~~~~~~  cv-plus-c:10
-\_  aliases:  cvc:10
+**  ~~~~~~~~  cv-plus-c:11
+\_  aliases:  cvc:11
 \_  labels:   cv-plus-c cv-plus cv ascii password memorable
 \_  bits:     149.3210
 \_  length:   54
@@ -9077,8 +9023,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose RA6+
 
 
-**  ~~~~~~~~  cv-plus-c:11
-\_  aliases:  cvc:11
+**  ~~~~~~~~  cv-plus-c:12
+\_  aliases:  cvc:12
 \_  labels:   cv-plus-c cv-plus cv ascii password memorable
 \_  bits:     162.7495
 \_  length:   59
@@ -9104,8 +9050,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB3,
 
 
-**  ~~~~~~~~  cv-plus-c:12
-\_  aliases:  cvc:12
+**  ~~~~~~~~  cv-plus-c:13
+\_  aliases:  cvc:13
 \_  labels:   cv-plus-c cv-plus cv ascii password memorable
 \_  bits:     176.1780
 \_  length:   64
@@ -9131,8 +9077,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA3"
 
 
-**  ~~~~~~~~  cv-plus-c:13
-\_  aliases:  cvc:13
+**  ~~~~~~~~  cv-plus-c:14
+\_  aliases:  cvc:14
 \_  labels:   cv-plus-c cv-plus cv ascii password memorable
 \_  bits:     189.6065
 \_  length:   69
@@ -9158,8 +9104,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI6_
 
 
-**  ~~~~~~~~  cv-plus-c:14
-\_  aliases:  cvc:14
+**  ~~~~~~~~  cv-plus-c:15
+\_  aliases:  cvc:15
 \_  labels:   cv-plus-c cv-plus cv ascii password memorable
 \_  bits:     203.0350
 \_  length:   74
@@ -9185,8 +9131,8 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU3<
 
 
-**  ~~~~~~~~  cv-plus-c:15
-\_  aliases:  cvc:15
+**  ~~~~~~~~  cv-plus-c:16
+\_  aliases:  cvc:16
 \_  labels:   cv-plus-c cv-plus cv ascii password memorable
 \_  bits:     216.4635
 \_  length:   79
@@ -9210,33 +9156,6 @@
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA3`
-
-
-**  ~~~~~~~~  cv-plus-c:16
-\_  aliases:  cvc:16
-\_  labels:   cv-plus-c cv-plus cv ascii password memorable
-\_  bits:     229.8920
-\_  length:   84
-\_  usable for:
-    \_  cryptography            OK         with   +101.89  bits of margin
-    \_  authentication          OK         with   +197.89  bits of margin
-    \_  archival storage        OK         with   +129.60  bits of margin
-    \_  long term storage       OK         with   +153.05  bits of margin
-    \_  short term storage      OK         with   +159.90  bits of margin
-\_  bruteforce time:
-    \_  MD4                     --         (more than trillions of years)
-    \_  MD5                     --         (more than trillions of years)
-    \_  SHA1                    --         (more than trillions of years)
-    \_  SHA2-256                --         (more than trillions of years)
-    \_  SHA3-256                --         (more than trillions of years)
-    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
-    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
-    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
-    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
-    \_  scrypt                  --         (more than trillions of years)
-    \_  GPG                     --         (more than trillions of years)
-    \_  AES-128                 --         (more than trillions of years)
-\_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju FI1*
 
 
 **  ~~~~~~~~  proquint-lower:1
@@ -31949,7 +31868,7 @@
 \_  example:  29607b74
 
 
-**  ~~~~~~~~  flake:1
+**  ~~~~~~~~  flake:32
 \_  labels:   flake timestamp
 \_  bits:     32  (exact)
 \_  length:   17
@@ -31975,7 +31894,7 @@
 \_  example:  29607b74-7f6f2ccd
 
 
-**  ~~~~~~~~  flake:2
+**  ~~~~~~~~  flake:64
 \_  labels:   flake timestamp
 \_  bits:     64  (exact)
 \_  length:   26
@@ -32001,7 +31920,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb
 
 
-**  ~~~~~~~~  flake:3
+**  ~~~~~~~~  flake:96
 \_  labels:   flake timestamp
 \_  bits:     96  (exact)
 \_  length:   35
@@ -32027,7 +31946,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e
 
 
-**  ~~~~~~~~  flake:4
+**  ~~~~~~~~  flake:128
 \_  labels:   flake timestamp
 \_  bits:     128  (exact)
 \_  length:   44
@@ -32053,7 +31972,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6
 
 
-**  ~~~~~~~~  flake:5
+**  ~~~~~~~~  flake:160
 \_  labels:   flake timestamp
 \_  bits:     160  (exact)
 \_  length:   53
@@ -32079,7 +31998,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf
 
 
-**  ~~~~~~~~  flake:6
+**  ~~~~~~~~  flake:192
 \_  labels:   flake timestamp
 \_  bits:     192  (exact)
 \_  length:   62
@@ -32105,7 +32024,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06
 
 
-**  ~~~~~~~~  flake:7
+**  ~~~~~~~~  flake:224
 \_  labels:   flake timestamp
 \_  bits:     224  (exact)
 \_  length:   71
@@ -32131,7 +32050,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab
 
 
-**  ~~~~~~~~  flake:8
+**  ~~~~~~~~  flake:256
 \_  labels:   flake timestamp
 \_  bits:     256  (exact)
 \_  length:   80
@@ -32157,7 +32076,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95
 
 
-**  ~~~~~~~~  flake:9
+**  ~~~~~~~~  flake:288
 \_  labels:   flake timestamp
 \_  bits:     288  (exact)
 \_  length:   89
@@ -32183,7 +32102,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de
 
 
-**  ~~~~~~~~  flake:10
+**  ~~~~~~~~  flake:320
 \_  labels:   flake timestamp
 \_  bits:     320  (exact)
 \_  length:   98
@@ -32209,7 +32128,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de-549d1d43
 
 
-**  ~~~~~~~~  flake:11
+**  ~~~~~~~~  flake:352
 \_  labels:   flake timestamp
 \_  bits:     352  (exact)
 \_  length:   107
@@ -32235,7 +32154,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de-549d1d43-22c4711f
 
 
-**  ~~~~~~~~  flake:12
+**  ~~~~~~~~  flake:384
 \_  labels:   flake timestamp
 \_  bits:     384  (exact)
 \_  length:   116
@@ -32261,7 +32180,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de-549d1d43-22c4711f-11efa0c5
 
 
-**  ~~~~~~~~  flake:13
+**  ~~~~~~~~  flake:416
 \_  labels:   flake timestamp
 \_  bits:     416  (exact)
 \_  length:   125
@@ -32287,7 +32206,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de-549d1d43-22c4711f-11efa0c5-13790312
 
 
-**  ~~~~~~~~  flake:14
+**  ~~~~~~~~  flake:448
 \_  labels:   flake timestamp
 \_  bits:     448  (exact)
 \_  length:   134
@@ -32313,7 +32232,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de-549d1d43-22c4711f-11efa0c5-13790312-4f85fc37
 
 
-**  ~~~~~~~~  flake:15
+**  ~~~~~~~~  flake:480
 \_  labels:   flake timestamp
 \_  bits:     480  (exact)
 \_  length:   143
@@ -32339,7 +32258,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de-549d1d43-22c4711f-11efa0c5-13790312-4f85fc37-c761ffc9
 
 
-**  ~~~~~~~~  flake:16
+**  ~~~~~~~~  flake:512
 \_  labels:   flake timestamp
 \_  bits:     512  (exact)
 \_  length:   152

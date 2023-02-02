@@ -303,54 +303,51 @@
 ::  cv-mixed:14             :  243.9 b :   56 c ::    PaFiPiQIYayUmAjOlAziZUKafANoZiZBcBFiroDBfonaWuGaQOSUPoVA
 ::  cv-mixed:15             :  261.4 b :   60 c ::    PaFiPiQIYayUmAjOlAziZUKafANoZiZBcBFiroDBfonaWuGaQOSUPoVAgoPO
 ::  cv-mixed:16             :  278.8 b :   64 c ::    PaFiPiQIYayUmAjOlAziZUKafANoZiZBcBFiroDBfonaWuGaQOSUPoVAgoPOkAle
-::  cv-plus-a:1             :   26.7 b :    8 c ::    taqe2711
-::  cv-plus-a:2             :   40.1 b :   12 c ::    taqeveza0449
-::  cv-plus-a:3             :   53.5 b :   16 c ::    taqevezazaye5182
-::  cv-plus-a:4             :   67.0 b :   20 c ::    taqevezazayefugi6290
-::  cv-plus-a:5             :   80.4 b :   24 c ::    taqevezazayefugirixu2906
-::  cv-plus-a:6             :   93.8 b :   28 c ::    taqevezazayefugirixucezu0665
-::  cv-plus-a:7             :  107.2 b :   32 c ::    taqevezazayefugirixucezusaco6573
-::  cv-plus-a:8             :  120.7 b :   36 c ::    taqevezazayefugirixucezusacovoxa3526
-::  cv-plus-a:9             :  134.1 b :   40 c ::    taqevezazayefugirixucezusacovoxakize2606
-::  cv-plus-a:10            :  147.5 b :   44 c ::    taqevezazayefugirixucezusacovoxakizehose6062
-::  cv-plus-a:11            :  161.0 b :   48 c ::    taqevezazayefugirixucezusacovoxakizehoserago2335
-::  cv-plus-a:12            :  174.4 b :   52 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqeko0320
-::  cv-plus-a:13            :  187.8 b :   56 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobaha9460
-::  cv-plus-a:14            :  201.2 b :   60 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwu9351
-::  cv-plus-a:15            :  214.7 b :   64 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuyuku5138
-::  cv-plus-a:16            :  228.1 b :   68 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuyukupaju5133
-::  cv-plus-b:1             :   26.7 b :    8 c ::    taqeVB71
-::  cv-plus-b:2             :   40.2 b :   12 c ::    taqevezaZA44
-::  cv-plus-b:3             :   53.6 b :   16 c ::    taqevezazayeFU25
-::  cv-plus-b:4             :   67.0 b :   20 c ::    taqevezazayefugiRI29
-::  cv-plus-b:5             :   80.5 b :   24 c ::    taqevezazayefugirixuCB90
-::  cv-plus-b:6             :   93.9 b :   28 c ::    taqevezazayefugirixucezuSA66
-::  cv-plus-b:7             :  107.3 b :   32 c ::    taqevezazayefugirixucezusacoVO57
-::  cv-plus-b:8             :  120.7 b :   36 c ::    taqevezazayefugirixucezusacovoxaKI26
-::  cv-plus-b:9             :  134.2 b :   40 c ::    taqevezazayefugirixucezusacovoxakizeHO60
-::  cv-plus-b:10            :  147.6 b :   44 c ::    taqevezazayefugirixucezusacovoxakizehoseRA62
-::  cv-plus-b:11            :  161.0 b :   48 c ::    taqevezazayefugirixucezusacovoxakizehoseragoQB33
-::  cv-plus-b:12            :  174.4 b :   52 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekoBA32
-::  cv-plus-b:13            :  187.9 b :   56 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahaYI60
-::  cv-plus-b:14            :  201.3 b :   60 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuYU35
-::  cv-plus-b:15            :  214.7 b :   64 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuyukuPA38
-::  cv-plus-b:16            :  228.2 b :   68 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuyukupajuFI13
-::  cv-plus-c:1             :   28.4 b :    8 c ::    taqeVB7~
-::  cv-plus-c:2             :   41.8 b :   12 c ::    taqevezaZA4(
-::  cv-plus-c:3             :   55.3 b :   16 c ::    taqevezazayeFU2;
-::  cv-plus-c:4             :   68.7 b :   20 c ::    taqevezazayefugiRI2~
-::  cv-plus-c:5             :   82.1 b :   24 c ::    taqevezazayefugirixuCB9!
-::  cv-plus-c:6             :   95.6 b :   28 c ::    taqevezazayefugirixucezuSA6^
-::  cv-plus-c:7             :  109.0 b :   32 c ::    taqevezazayefugirixucezusacoVO5]
-::  cv-plus-c:8             :  122.4 b :   36 c ::    taqevezazayefugirixucezusacovoxaKI2@
-::  cv-plus-c:9             :  135.8 b :   40 c ::    taqevezazayefugirixucezusacovoxakizeHO6"
-::  cv-plus-c:10            :  149.3 b :   44 c ::    taqevezazayefugirixucezusacovoxakizehoseRA6+
-::  cv-plus-c:11            :  162.7 b :   48 c ::    taqevezazayefugirixucezusacovoxakizehoseragoQB3,
-::  cv-plus-c:12            :  176.1 b :   52 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekoBA3"
-::  cv-plus-c:13            :  189.6 b :   56 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahaYI6_
-::  cv-plus-c:14            :  203.0 b :   60 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuYU3<
-::  cv-plus-c:15            :  216.4 b :   64 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuyukuPA3`
-::  cv-plus-c:16            :  229.8 b :   68 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuyukupajuFI1*
+::  cv-plus-a:2             :   26.7 b :    8 c ::    taqe2711
+::  cv-plus-a:3             :   40.1 b :   12 c ::    taqeveza0449
+::  cv-plus-a:4             :   53.5 b :   16 c ::    taqevezazaye5182
+::  cv-plus-a:5             :   67.0 b :   20 c ::    taqevezazayefugi6290
+::  cv-plus-a:6             :   80.4 b :   24 c ::    taqevezazayefugirixu2906
+::  cv-plus-a:7             :   93.8 b :   28 c ::    taqevezazayefugirixucezu0665
+::  cv-plus-a:8             :  107.2 b :   32 c ::    taqevezazayefugirixucezusaco6573
+::  cv-plus-a:9             :  120.7 b :   36 c ::    taqevezazayefugirixucezusacovoxa3526
+::  cv-plus-a:10            :  134.1 b :   40 c ::    taqevezazayefugirixucezusacovoxakize2606
+::  cv-plus-a:11            :  147.5 b :   44 c ::    taqevezazayefugirixucezusacovoxakizehose6062
+::  cv-plus-a:12            :  161.0 b :   48 c ::    taqevezazayefugirixucezusacovoxakizehoserago2335
+::  cv-plus-a:13            :  174.4 b :   52 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqeko0320
+::  cv-plus-a:14            :  187.8 b :   56 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobaha9460
+::  cv-plus-a:15            :  201.2 b :   60 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwu9351
+::  cv-plus-a:16            :  214.7 b :   64 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuyuku5138
+::  cv-plus-b:2             :   26.7 b :    8 c ::    taqeVB71
+::  cv-plus-b:3             :   40.2 b :   12 c ::    taqevezaZA44
+::  cv-plus-b:4             :   53.6 b :   16 c ::    taqevezazayeFU25
+::  cv-plus-b:5             :   67.0 b :   20 c ::    taqevezazayefugiRI29
+::  cv-plus-b:6             :   80.5 b :   24 c ::    taqevezazayefugirixuCB90
+::  cv-plus-b:7             :   93.9 b :   28 c ::    taqevezazayefugirixucezuSA66
+::  cv-plus-b:8             :  107.3 b :   32 c ::    taqevezazayefugirixucezusacoVO57
+::  cv-plus-b:9             :  120.7 b :   36 c ::    taqevezazayefugirixucezusacovoxaKI26
+::  cv-plus-b:10            :  134.2 b :   40 c ::    taqevezazayefugirixucezusacovoxakizeHO60
+::  cv-plus-b:11            :  147.6 b :   44 c ::    taqevezazayefugirixucezusacovoxakizehoseRA62
+::  cv-plus-b:12            :  161.0 b :   48 c ::    taqevezazayefugirixucezusacovoxakizehoseragoQB33
+::  cv-plus-b:13            :  174.4 b :   52 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekoBA32
+::  cv-plus-b:14            :  187.9 b :   56 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahaYI60
+::  cv-plus-b:15            :  201.3 b :   60 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuYU35
+::  cv-plus-b:16            :  214.7 b :   64 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuyukuPA38
+::  cv-plus-c:2             :   28.4 b :    8 c ::    taqeVB7~
+::  cv-plus-c:3             :   41.8 b :   12 c ::    taqevezaZA4(
+::  cv-plus-c:4             :   55.3 b :   16 c ::    taqevezazayeFU2;
+::  cv-plus-c:5             :   68.7 b :   20 c ::    taqevezazayefugiRI2~
+::  cv-plus-c:6             :   82.1 b :   24 c ::    taqevezazayefugirixuCB9!
+::  cv-plus-c:7             :   95.6 b :   28 c ::    taqevezazayefugirixucezuSA6^
+::  cv-plus-c:8             :  109.0 b :   32 c ::    taqevezazayefugirixucezusacoVO5]
+::  cv-plus-c:9             :  122.4 b :   36 c ::    taqevezazayefugirixucezusacovoxaKI2@
+::  cv-plus-c:10            :  135.8 b :   40 c ::    taqevezazayefugirixucezusacovoxakizeHO6"
+::  cv-plus-c:11            :  149.3 b :   44 c ::    taqevezazayefugirixucezusacovoxakizehoseRA6+
+::  cv-plus-c:12            :  162.7 b :   48 c ::    taqevezazayefugirixucezusacovoxakizehoseragoQB3,
+::  cv-plus-c:13            :  176.1 b :   52 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekoBA3"
+::  cv-plus-c:14            :  189.6 b :   56 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahaYI6_
+::  cv-plus-c:15            :  203.0 b :   60 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuYU3<
+::  cv-plus-c:16            :  216.4 b :   64 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuyukuPA3`
 ::  proquint-lower:1        :   16  =b :    5 c ::    sanis
 ::  proquint-lower:2        :   32  =b :   10 c ::    sanisgufaz
 ::  proquint-lower:3        :   48  =b :   15 c ::    sanisgufazlofug
@@ -1204,19 +1201,19 @@
 ::  timestamp-nano-hex      :    0  =b :   18 c ::    0016c58df3a287c45d
 ::  timestamp-flake         :    0  =b :    9 c ::    694188916
 ::  timestamp-flake-hex     :    0  =b :    8 c ::    29607b74
-::  flake:1                 :   32  =b :   16 c ::    29607b747f6f2ccd
-::  flake:2                 :   64  =b :   24 c ::    29607b747f6f2ccdb23f2abb
-::  flake:3                 :   96  =b :   32 c ::    29607b747f6f2ccdb23f2abb7b69278e
-::  flake:4                 :  128  =b :   40 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6
-::  flake:5                 :  160  =b :   48 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf
-::  flake:6                 :  192  =b :   56 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06
-::  flake:7                 :  224  =b :   64 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab
-::  flake:8                 :  256  =b :   72 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95
-::  flake:9                 :  288  =b :   80 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de
-::  flake:10                :  320  =b :   88 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de [...]
-::  flake:11                :  352  =b :   96 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de [...]
-::  flake:12                :  384  =b :  104 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de [...]
-::  flake:13                :  416  =b :  112 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de [...]
-::  flake:14                :  448  =b :  120 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de [...]
-::  flake:15                :  480  =b :  128 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de [...]
-::  flake:16                :  512  =b :  136 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de [...]
+::  flake:32                :   32  =b :   16 c ::    29607b747f6f2ccd
+::  flake:64                :   64  =b :   24 c ::    29607b747f6f2ccdb23f2abb
+::  flake:96                :   96  =b :   32 c ::    29607b747f6f2ccdb23f2abb7b69278e
+::  flake:128               :  128  =b :   40 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6
+::  flake:160               :  160  =b :   48 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf
+::  flake:192               :  192  =b :   56 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06
+::  flake:224               :  224  =b :   64 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab
+::  flake:256               :  256  =b :   72 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95
+::  flake:288               :  288  =b :   80 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de
+::  flake:320               :  320  =b :   88 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de [...]
+::  flake:352               :  352  =b :   96 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de [...]
+::  flake:384               :  384  =b :  104 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de [...]
+::  flake:416               :  416  =b :  112 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de [...]
+::  flake:448               :  448  =b :  120 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de [...]
+::  flake:480               :  480  =b :  128 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de [...]
+::  flake:512               :  512  =b :  136 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de [...]

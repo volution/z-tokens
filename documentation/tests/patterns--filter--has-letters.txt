@@ -222,27 +222,27 @@
 ::  cv-mixed:6              :  104.5 b :   29 c ::    PaFi PiQI YayU mAjO lAzi ZUKa
 ::  cv-mixed:7              :  121.9 b :   34 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo
 ::  cv-mixed:8              :  139.4 b :   39 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB
-::  cv-plus-a:1             :   26.7 b :    9 c ::    taqe 2711
-::  cv-plus-a:2             :   40.1 b :   14 c ::    taqe veza 0449
-::  cv-plus-a:3             :   53.5 b :   19 c ::    taqe veza zaye 5182
-::  cv-plus-a:4             :   67.0 b :   24 c ::    taqe veza zaye fugi 6290
-::  cv-plus-a:5             :   80.4 b :   29 c ::    taqe veza zaye fugi rixu 2906
-::  cv-plus-a:6             :   93.8 b :   34 c ::    taqe veza zaye fugi rixu cezu 0665
-::  cv-plus-a:7             :  107.2 b :   39 c ::    taqe veza zaye fugi rixu cezu saco 6573
-::  cv-plus-b:1             :   26.7 b :    9 c ::    taqe VB71
-::  cv-plus-b:2             :   40.2 b :   14 c ::    taqe veza ZA44
-::  cv-plus-b:3             :   53.6 b :   19 c ::    taqe veza zaye FU25
-::  cv-plus-b:4             :   67.0 b :   24 c ::    taqe veza zaye fugi RI29
-::  cv-plus-b:5             :   80.5 b :   29 c ::    taqe veza zaye fugi rixu CB90
-::  cv-plus-b:6             :   93.9 b :   34 c ::    taqe veza zaye fugi rixu cezu SA66
-::  cv-plus-b:7             :  107.3 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO57
-::  cv-plus-c:1             :   28.4 b :    9 c ::    taqe VB7~
-::  cv-plus-c:2             :   41.8 b :   14 c ::    taqe veza ZA4(
-::  cv-plus-c:3             :   55.3 b :   19 c ::    taqe veza zaye FU2;
-::  cv-plus-c:4             :   68.7 b :   24 c ::    taqe veza zaye fugi RI2~
-::  cv-plus-c:5             :   82.1 b :   29 c ::    taqe veza zaye fugi rixu CB9!
-::  cv-plus-c:6             :   95.6 b :   34 c ::    taqe veza zaye fugi rixu cezu SA6^
-::  cv-plus-c:7             :  109.0 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO5]
+::  cv-plus-a:2             :   26.7 b :    9 c ::    taqe 2711
+::  cv-plus-a:3             :   40.1 b :   14 c ::    taqe veza 0449
+::  cv-plus-a:4             :   53.5 b :   19 c ::    taqe veza zaye 5182
+::  cv-plus-a:5             :   67.0 b :   24 c ::    taqe veza zaye fugi 6290
+::  cv-plus-a:6             :   80.4 b :   29 c ::    taqe veza zaye fugi rixu 2906
+::  cv-plus-a:7             :   93.8 b :   34 c ::    taqe veza zaye fugi rixu cezu 0665
+::  cv-plus-a:8             :  107.2 b :   39 c ::    taqe veza zaye fugi rixu cezu saco 6573
+::  cv-plus-b:2             :   26.7 b :    9 c ::    taqe VB71
+::  cv-plus-b:3             :   40.2 b :   14 c ::    taqe veza ZA44
+::  cv-plus-b:4             :   53.6 b :   19 c ::    taqe veza zaye FU25
+::  cv-plus-b:5             :   67.0 b :   24 c ::    taqe veza zaye fugi RI29
+::  cv-plus-b:6             :   80.5 b :   29 c ::    taqe veza zaye fugi rixu CB90
+::  cv-plus-b:7             :   93.9 b :   34 c ::    taqe veza zaye fugi rixu cezu SA66
+::  cv-plus-b:8             :  107.3 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO57
+::  cv-plus-c:2             :   28.4 b :    9 c ::    taqe VB7~
+::  cv-plus-c:3             :   41.8 b :   14 c ::    taqe veza ZA4(
+::  cv-plus-c:4             :   55.3 b :   19 c ::    taqe veza zaye FU2;
+::  cv-plus-c:5             :   68.7 b :   24 c ::    taqe veza zaye fugi RI2~
+::  cv-plus-c:6             :   82.1 b :   29 c ::    taqe veza zaye fugi rixu CB9!
+::  cv-plus-c:7             :   95.6 b :   34 c ::    taqe veza zaye fugi rixu cezu SA6^
+::  cv-plus-c:8             :  109.0 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO5]
 ::  proquint-lower:1        :   16  =b :    5 c ::    sanis
 ::  proquint-lower:2        :   32  =b :   11 c ::    sanis gufaz
 ::  proquint-lower:3        :   48  =b :   17 c ::    sanis gufaz lofug
@@ -339,6 +339,6 @@
 ::  timestamp-sec-hex       :    0  =b :   10 c ::    0061cdbef4
 ::  timestamp-nano-hex      :    0  =b :   18 c ::    0016c58df3a287c45d
 ::  timestamp-flake-hex     :    0  =b :    8 c ::    29607b74
-::  flake:1                 :   32  =b :   17 c ::    29607b74-7f6f2ccd
-::  flake:2                 :   64  =b :   26 c ::    29607b74-7f6f2ccd-b23f2abb
-::  flake:3                 :   96  =b :   35 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e
+::  flake:32                :   32  =b :   17 c ::    29607b74-7f6f2ccd
+::  flake:64                :   64  =b :   26 c ::    29607b74-7f6f2ccd-b23f2abb
+::  flake:96                :   96  =b :   35 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e

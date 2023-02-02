@@ -5758,7 +5758,7 @@
 \_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle
 
 
-**  ~~~~~~~~  cv-plus-a:1
+**  ~~~~~~~~  cv-plus-a:2
 \_  bits:     26.7162
 \_  length:   9
 \_  bruteforce time:
@@ -5777,7 +5777,7 @@
 \_  example:  taqe 2711
 
 
-**  ~~~~~~~~  cv-plus-a:2
+**  ~~~~~~~~  cv-plus-a:3
 \_  bits:     40.1446
 \_  length:   14
 \_  bruteforce time:
@@ -5796,7 +5796,7 @@
 \_  example:  taqe veza 0449
 
 
-**  ~~~~~~~~  cv-plus-a:3
+**  ~~~~~~~~  cv-plus-a:4
 \_  bits:     53.5731
 \_  length:   19
 \_  bruteforce time:
@@ -5815,7 +5815,7 @@
 \_  example:  taqe veza zaye 5182
 
 
-**  ~~~~~~~~  cv-plus-a:4
+**  ~~~~~~~~  cv-plus-a:5
 \_  bits:     67.0016
 \_  length:   24
 \_  bruteforce time:
@@ -5834,7 +5834,7 @@
 \_  example:  taqe veza zaye fugi 6290
 
 
-**  ~~~~~~~~  cv-plus-a:5
+**  ~~~~~~~~  cv-plus-a:6
 \_  bits:     80.4301
 \_  length:   29
 \_  bruteforce time:
@@ -5853,7 +5853,7 @@
 \_  example:  taqe veza zaye fugi rixu 2906
 
 
-**  ~~~~~~~~  cv-plus-a:6
+**  ~~~~~~~~  cv-plus-a:7
 \_  bits:     93.8586
 \_  length:   34
 \_  bruteforce time:
@@ -5872,7 +5872,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu 0665
 
 
-**  ~~~~~~~~  cv-plus-a:7
+**  ~~~~~~~~  cv-plus-a:8
 \_  bits:     107.2871
 \_  length:   39
 \_  bruteforce time:
@@ -5891,7 +5891,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco 6573
 
 
-**  ~~~~~~~~  cv-plus-a:8
+**  ~~~~~~~~  cv-plus-a:9
 \_  bits:     120.7156
 \_  length:   44
 \_  bruteforce time:
@@ -5910,7 +5910,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa 3526
 
 
-**  ~~~~~~~~  cv-plus-a:9
+**  ~~~~~~~~  cv-plus-a:10
 \_  bits:     134.1441
 \_  length:   49
 \_  bruteforce time:
@@ -5929,7 +5929,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize 2606
 
 
-**  ~~~~~~~~  cv-plus-a:10
+**  ~~~~~~~~  cv-plus-a:11
 \_  bits:     147.5726
 \_  length:   54
 \_  bruteforce time:
@@ -5948,7 +5948,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose 6062
 
 
-**  ~~~~~~~~  cv-plus-a:11
+**  ~~~~~~~~  cv-plus-a:12
 \_  bits:     161.0011
 \_  length:   59
 \_  bruteforce time:
@@ -5967,7 +5967,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago 2335
 
 
-**  ~~~~~~~~  cv-plus-a:12
+**  ~~~~~~~~  cv-plus-a:13
 \_  bits:     174.4296
 \_  length:   64
 \_  bruteforce time:
@@ -5986,7 +5986,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko 0320
 
 
-**  ~~~~~~~~  cv-plus-a:13
+**  ~~~~~~~~  cv-plus-a:14
 \_  bits:     187.8580
 \_  length:   69
 \_  bruteforce time:
@@ -6005,7 +6005,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha 9460
 
 
-**  ~~~~~~~~  cv-plus-a:14
+**  ~~~~~~~~  cv-plus-a:15
 \_  bits:     201.2865
 \_  length:   74
 \_  bruteforce time:
@@ -6024,7 +6024,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu 9351
 
 
-**  ~~~~~~~~  cv-plus-a:15
+**  ~~~~~~~~  cv-plus-a:16
 \_  bits:     214.7150
 \_  length:   79
 \_  bruteforce time:
@@ -6043,26 +6043,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku 5138
 
 
-**  ~~~~~~~~  cv-plus-a:16
-\_  bits:     228.1435
-\_  length:   84
-\_  bruteforce time:
-    \_  MD4                     --         (more than trillions of years)
-    \_  MD5                     --         (more than trillions of years)
-    \_  SHA1                    --         (more than trillions of years)
-    \_  SHA2-256                --         (more than trillions of years)
-    \_  SHA3-256                --         (more than trillions of years)
-    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
-    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
-    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
-    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
-    \_  scrypt                  --         (more than trillions of years)
-    \_  GPG                     --         (more than trillions of years)
-    \_  AES-128                 --         (more than trillions of years)
-\_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju 5133
-
-
-**  ~~~~~~~~  cv-plus-b:1
+**  ~~~~~~~~  cv-plus-b:2
 \_  bits:     26.7865
 \_  length:   9
 \_  bruteforce time:
@@ -6081,7 +6062,7 @@
 \_  example:  taqe VB71
 
 
-**  ~~~~~~~~  cv-plus-b:2
+**  ~~~~~~~~  cv-plus-b:3
 \_  bits:     40.2150
 \_  length:   14
 \_  bruteforce time:
@@ -6100,7 +6081,7 @@
 \_  example:  taqe veza ZA44
 
 
-**  ~~~~~~~~  cv-plus-b:3
+**  ~~~~~~~~  cv-plus-b:4
 \_  bits:     53.6435
 \_  length:   19
 \_  bruteforce time:
@@ -6119,7 +6100,7 @@
 \_  example:  taqe veza zaye FU25
 
 
-**  ~~~~~~~~  cv-plus-b:4
+**  ~~~~~~~~  cv-plus-b:5
 \_  bits:     67.0720
 \_  length:   24
 \_  bruteforce time:
@@ -6138,7 +6119,7 @@
 \_  example:  taqe veza zaye fugi RI29
 
 
-**  ~~~~~~~~  cv-plus-b:5
+**  ~~~~~~~~  cv-plus-b:6
 \_  bits:     80.5005
 \_  length:   29
 \_  bruteforce time:
@@ -6157,7 +6138,7 @@
 \_  example:  taqe veza zaye fugi rixu CB90
 
 
-**  ~~~~~~~~  cv-plus-b:6
+**  ~~~~~~~~  cv-plus-b:7
 \_  bits:     93.9290
 \_  length:   34
 \_  bruteforce time:
@@ -6176,7 +6157,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu SA66
 
 
-**  ~~~~~~~~  cv-plus-b:7
+**  ~~~~~~~~  cv-plus-b:8
 \_  bits:     107.3575
 \_  length:   39
 \_  bruteforce time:
@@ -6195,7 +6176,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco VO57
 
 
-**  ~~~~~~~~  cv-plus-b:8
+**  ~~~~~~~~  cv-plus-b:9
 \_  bits:     120.7860
 \_  length:   44
 \_  bruteforce time:
@@ -6214,7 +6195,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa KI26
 
 
-**  ~~~~~~~~  cv-plus-b:9
+**  ~~~~~~~~  cv-plus-b:10
 \_  bits:     134.2145
 \_  length:   49
 \_  bruteforce time:
@@ -6233,7 +6214,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize HO60
 
 
-**  ~~~~~~~~  cv-plus-b:10
+**  ~~~~~~~~  cv-plus-b:11
 \_  bits:     147.6430
 \_  length:   54
 \_  bruteforce time:
@@ -6252,7 +6233,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose RA62
 
 
-**  ~~~~~~~~  cv-plus-b:11
+**  ~~~~~~~~  cv-plus-b:12
 \_  bits:     161.0715
 \_  length:   59
 \_  bruteforce time:
@@ -6271,7 +6252,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB33
 
 
-**  ~~~~~~~~  cv-plus-b:12
+**  ~~~~~~~~  cv-plus-b:13
 \_  bits:     174.4999
 \_  length:   64
 \_  bruteforce time:
@@ -6290,7 +6271,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA32
 
 
-**  ~~~~~~~~  cv-plus-b:13
+**  ~~~~~~~~  cv-plus-b:14
 \_  bits:     187.9284
 \_  length:   69
 \_  bruteforce time:
@@ -6309,7 +6290,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI60
 
 
-**  ~~~~~~~~  cv-plus-b:14
+**  ~~~~~~~~  cv-plus-b:15
 \_  bits:     201.3569
 \_  length:   74
 \_  bruteforce time:
@@ -6328,7 +6309,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU35
 
 
-**  ~~~~~~~~  cv-plus-b:15
+**  ~~~~~~~~  cv-plus-b:16
 \_  bits:     214.7854
 \_  length:   79
 \_  bruteforce time:
@@ -6347,26 +6328,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA38
 
 
-**  ~~~~~~~~  cv-plus-b:16
-\_  bits:     228.2139
-\_  length:   84
-\_  bruteforce time:
-    \_  MD4                     --         (more than trillions of years)
-    \_  MD5                     --         (more than trillions of years)
-    \_  SHA1                    --         (more than trillions of years)
-    \_  SHA2-256                --         (more than trillions of years)
-    \_  SHA3-256                --         (more than trillions of years)
-    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
-    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
-    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
-    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
-    \_  scrypt                  --         (more than trillions of years)
-    \_  GPG                     --         (more than trillions of years)
-    \_  AES-128                 --         (more than trillions of years)
-\_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju FI13
-
-
-**  ~~~~~~~~  cv-plus-c:1
+**  ~~~~~~~~  cv-plus-c:2
 \_  bits:     28.4646
 \_  length:   9
 \_  bruteforce time:
@@ -6385,7 +6347,7 @@
 \_  example:  taqe VB7~
 
 
-**  ~~~~~~~~  cv-plus-c:2
+**  ~~~~~~~~  cv-plus-c:3
 \_  bits:     41.8931
 \_  length:   14
 \_  bruteforce time:
@@ -6404,7 +6366,7 @@
 \_  example:  taqe veza ZA4(
 
 
-**  ~~~~~~~~  cv-plus-c:3
+**  ~~~~~~~~  cv-plus-c:4
 \_  bits:     55.3216
 \_  length:   19
 \_  bruteforce time:
@@ -6423,7 +6385,7 @@
 \_  example:  taqe veza zaye FU2;
 
 
-**  ~~~~~~~~  cv-plus-c:4
+**  ~~~~~~~~  cv-plus-c:5
 \_  bits:     68.7501
 \_  length:   24
 \_  bruteforce time:
@@ -6442,7 +6404,7 @@
 \_  example:  taqe veza zaye fugi RI2~
 
 
-**  ~~~~~~~~  cv-plus-c:5
+**  ~~~~~~~~  cv-plus-c:6
 \_  bits:     82.1786
 \_  length:   29
 \_  bruteforce time:
@@ -6461,7 +6423,7 @@
 \_  example:  taqe veza zaye fugi rixu CB9!
 
 
-**  ~~~~~~~~  cv-plus-c:6
+**  ~~~~~~~~  cv-plus-c:7
 \_  bits:     95.6071
 \_  length:   34
 \_  bruteforce time:
@@ -6480,7 +6442,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu SA6^
 
 
-**  ~~~~~~~~  cv-plus-c:7
+**  ~~~~~~~~  cv-plus-c:8
 \_  bits:     109.0356
 \_  length:   39
 \_  bruteforce time:
@@ -6499,7 +6461,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco VO5]
 
 
-**  ~~~~~~~~  cv-plus-c:8
+**  ~~~~~~~~  cv-plus-c:9
 \_  bits:     122.4641
 \_  length:   44
 \_  bruteforce time:
@@ -6518,7 +6480,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa KI2@
 
 
-**  ~~~~~~~~  cv-plus-c:9
+**  ~~~~~~~~  cv-plus-c:10
 \_  bits:     135.8925
 \_  length:   49
 \_  bruteforce time:
@@ -6537,7 +6499,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize HO6"
 
 
-**  ~~~~~~~~  cv-plus-c:10
+**  ~~~~~~~~  cv-plus-c:11
 \_  bits:     149.3210
 \_  length:   54
 \_  bruteforce time:
@@ -6556,7 +6518,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose RA6+
 
 
-**  ~~~~~~~~  cv-plus-c:11
+**  ~~~~~~~~  cv-plus-c:12
 \_  bits:     162.7495
 \_  length:   59
 \_  bruteforce time:
@@ -6575,7 +6537,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB3,
 
 
-**  ~~~~~~~~  cv-plus-c:12
+**  ~~~~~~~~  cv-plus-c:13
 \_  bits:     176.1780
 \_  length:   64
 \_  bruteforce time:
@@ -6594,7 +6556,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA3"
 
 
-**  ~~~~~~~~  cv-plus-c:13
+**  ~~~~~~~~  cv-plus-c:14
 \_  bits:     189.6065
 \_  length:   69
 \_  bruteforce time:
@@ -6613,7 +6575,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI6_
 
 
-**  ~~~~~~~~  cv-plus-c:14
+**  ~~~~~~~~  cv-plus-c:15
 \_  bits:     203.0350
 \_  length:   74
 \_  bruteforce time:
@@ -6632,7 +6594,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU3<
 
 
-**  ~~~~~~~~  cv-plus-c:15
+**  ~~~~~~~~  cv-plus-c:16
 \_  bits:     216.4635
 \_  length:   79
 \_  bruteforce time:
@@ -6649,25 +6611,6 @@
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA3`
-
-
-**  ~~~~~~~~  cv-plus-c:16
-\_  bits:     229.8920
-\_  length:   84
-\_  bruteforce time:
-    \_  MD4                     --         (more than trillions of years)
-    \_  MD5                     --         (more than trillions of years)
-    \_  SHA1                    --         (more than trillions of years)
-    \_  SHA2-256                --         (more than trillions of years)
-    \_  SHA3-256                --         (more than trillions of years)
-    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
-    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
-    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
-    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
-    \_  scrypt                  --         (more than trillions of years)
-    \_  GPG                     --         (more than trillions of years)
-    \_  AES-128                 --         (more than trillions of years)
-\_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju FI1*
 
 
 **  ~~~~~~~~  proquint-lower:1
@@ -22877,7 +22820,7 @@
 \_  example:  29607b74
 
 
-**  ~~~~~~~~  flake:1
+**  ~~~~~~~~  flake:32
 \_  bits:     32  (exact)
 \_  length:   17
 \_  bruteforce time:
@@ -22896,7 +22839,7 @@
 \_  example:  29607b74-7f6f2ccd
 
 
-**  ~~~~~~~~  flake:2
+**  ~~~~~~~~  flake:64
 \_  bits:     64  (exact)
 \_  length:   26
 \_  bruteforce time:
@@ -22915,7 +22858,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb
 
 
-**  ~~~~~~~~  flake:3
+**  ~~~~~~~~  flake:96
 \_  bits:     96  (exact)
 \_  length:   35
 \_  bruteforce time:
@@ -22934,7 +22877,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e
 
 
-**  ~~~~~~~~  flake:4
+**  ~~~~~~~~  flake:128
 \_  bits:     128  (exact)
 \_  length:   44
 \_  bruteforce time:
@@ -22953,7 +22896,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6
 
 
-**  ~~~~~~~~  flake:5
+**  ~~~~~~~~  flake:160
 \_  bits:     160  (exact)
 \_  length:   53
 \_  bruteforce time:
@@ -22972,7 +22915,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf
 
 
-**  ~~~~~~~~  flake:6
+**  ~~~~~~~~  flake:192
 \_  bits:     192  (exact)
 \_  length:   62
 \_  bruteforce time:
@@ -22991,7 +22934,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06
 
 
-**  ~~~~~~~~  flake:7
+**  ~~~~~~~~  flake:224
 \_  bits:     224  (exact)
 \_  length:   71
 \_  bruteforce time:
@@ -23010,7 +22953,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab
 
 
-**  ~~~~~~~~  flake:8
+**  ~~~~~~~~  flake:256
 \_  bits:     256  (exact)
 \_  length:   80
 \_  bruteforce time:
@@ -23029,7 +22972,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95
 
 
-**  ~~~~~~~~  flake:9
+**  ~~~~~~~~  flake:288
 \_  bits:     288  (exact)
 \_  length:   89
 \_  bruteforce time:
@@ -23048,7 +22991,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de
 
 
-**  ~~~~~~~~  flake:10
+**  ~~~~~~~~  flake:320
 \_  bits:     320  (exact)
 \_  length:   98
 \_  bruteforce time:
@@ -23067,7 +23010,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de-549d1d43
 
 
-**  ~~~~~~~~  flake:11
+**  ~~~~~~~~  flake:352
 \_  bits:     352  (exact)
 \_  length:   107
 \_  bruteforce time:
@@ -23086,7 +23029,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de-549d1d43-22c4711f
 
 
-**  ~~~~~~~~  flake:12
+**  ~~~~~~~~  flake:384
 \_  bits:     384  (exact)
 \_  length:   116
 \_  bruteforce time:
@@ -23105,7 +23048,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de-549d1d43-22c4711f-11efa0c5
 
 
-**  ~~~~~~~~  flake:13
+**  ~~~~~~~~  flake:416
 \_  bits:     416  (exact)
 \_  length:   125
 \_  bruteforce time:
@@ -23124,7 +23067,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de-549d1d43-22c4711f-11efa0c5-13790312
 
 
-**  ~~~~~~~~  flake:14
+**  ~~~~~~~~  flake:448
 \_  bits:     448  (exact)
 \_  length:   134
 \_  bruteforce time:
@@ -23143,7 +23086,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de-549d1d43-22c4711f-11efa0c5-13790312-4f85fc37
 
 
-**  ~~~~~~~~  flake:15
+**  ~~~~~~~~  flake:480
 \_  bits:     480  (exact)
 \_  length:   143
 \_  bruteforce time:
@@ -23162,7 +23105,7 @@
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de-549d1d43-22c4711f-11efa0c5-13790312-4f85fc37-c761ffc9
 
 
-**  ~~~~~~~~  flake:16
+**  ~~~~~~~~  flake:512
 \_  bits:     512  (exact)
 \_  length:   152
 \_  bruteforce time:

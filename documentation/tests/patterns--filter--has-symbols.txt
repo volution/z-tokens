@@ -70,13 +70,13 @@
 ::  ascii-any:28            :  183.5 b :   34 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
 ::  ascii-any:30            :  196.6 b :   37 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[
 ::  ascii-any:32            :  209.7 b :   39 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
-::  cv-plus-c:1             :   28.4 b :    9 c ::    taqe VB7~
-::  cv-plus-c:2             :   41.8 b :   14 c ::    taqe veza ZA4(
-::  cv-plus-c:3             :   55.3 b :   19 c ::    taqe veza zaye FU2;
-::  cv-plus-c:4             :   68.7 b :   24 c ::    taqe veza zaye fugi RI2~
-::  cv-plus-c:5             :   82.1 b :   29 c ::    taqe veza zaye fugi rixu CB9!
-::  cv-plus-c:6             :   95.6 b :   34 c ::    taqe veza zaye fugi rixu cezu SA6^
-::  cv-plus-c:7             :  109.0 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO5]
+::  cv-plus-c:2             :   28.4 b :    9 c ::    taqe VB7~
+::  cv-plus-c:3             :   41.8 b :   14 c ::    taqe veza ZA4(
+::  cv-plus-c:4             :   55.3 b :   19 c ::    taqe veza zaye FU2;
+::  cv-plus-c:5             :   68.7 b :   24 c ::    taqe veza zaye fugi RI2~
+::  cv-plus-c:6             :   82.1 b :   29 c ::    taqe veza zaye fugi rixu CB9!
+::  cv-plus-c:7             :   95.6 b :   34 c ::    taqe veza zaye fugi rixu cezu SA6^
+::  cv-plus-c:8             :  109.0 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO5]
 ::  eff-large:1             :   12.9 b :    5 c ::    scope
 ::  eff-large:2             :   25.8 b :   12 c ::    scope slacks
 ::  eff-large:3             :   38.7 b :   22 c ::    scope slacks patronize
@@ -91,6 +91,6 @@
 ::  timestamp-date-time     :    0  =b :   19 c ::    2021-12-30-14-15-16
 ::  timestamp-date          :    0  =b :   10 c ::    2021-12-30
 ::  timestamp-time          :    0  =b :    8 c ::    14-15-16
-::  flake:1                 :   32  =b :   17 c ::    29607b74-7f6f2ccd
-::  flake:2                 :   64  =b :   26 c ::    29607b74-7f6f2ccd-b23f2abb
-::  flake:3                 :   96  =b :   35 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e
+::  flake:32                :   32  =b :   17 c ::    29607b74-7f6f2ccd
+::  flake:64                :   64  =b :   26 c ::    29607b74-7f6f2ccd-b23f2abb
+::  flake:96                :   96  =b :   35 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e

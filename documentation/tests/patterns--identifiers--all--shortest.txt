@@ -20,9 +20,9 @@ ascii-any:2
 cv-lower:1
 cv-upper:1
 cv-mixed:1
-cv-plus-a:1
-cv-plus-b:1
-cv-plus-c:1
+cv-plus-a:2
+cv-plus-b:2
+cv-plus-c:2
 proquint-lower:1
 proquint-upper:1
 koremutake-a:1
@@ -51,4 +51,4 @@ timestamp-nano
 timestamp-nano-hex
 timestamp-flake
 timestamp-flake-hex
-flake:1
+flake:32

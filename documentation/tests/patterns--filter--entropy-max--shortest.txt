@@ -18,9 +18,9 @@
 ::  ascii-any:2             :   13.1 b :    2 c ::    ei
 ::  cv-lower:1              :   13.4 b :    4 c ::    taqe
 ::  cv-mixed:1              :   17.4 b :    4 c ::    PaFi
-::  cv-plus-a:1             :   26.7 b :    9 c ::    taqe 2711
-::  cv-plus-b:1             :   26.7 b :    9 c ::    taqe VB71
-::  cv-plus-c:1             :   28.4 b :    9 c ::    taqe VB7~
+::  cv-plus-a:2             :   26.7 b :    9 c ::    taqe 2711
+::  cv-plus-b:2             :   26.7 b :    9 c ::    taqe VB71
+::  cv-plus-c:2             :   28.4 b :    9 c ::    taqe VB7~
 ::  proquint-lower:1        :   16  =b :    5 c ::    sanis
 ::  koremutake-a:1          :   14  =b :    5 c ::    drobo
 ::  koremutake-b:1          :   21  =b :    8 c ::    drobostu
@@ -47,4 +47,4 @@
 ::  timestamp-nano-hex      :    0  =b :   18 c ::    0016c58df3a287c45d
 ::  timestamp-flake         :    0  =b :    9 c ::    694188916
 ::  timestamp-flake-hex     :    0  =b :    8 c ::    29607b74
-::  flake:1                 :   32  =b :   17 c ::    29607b74-7f6f2ccd
+::  flake:32                :   32  =b :   17 c ::    29607b74-7f6f2ccd

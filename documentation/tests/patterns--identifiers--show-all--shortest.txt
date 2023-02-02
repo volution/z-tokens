@@ -24,12 +24,12 @@ cv-lower:1
 cv:1
 cv-upper:1
 cv-mixed:1
-cv-plus-a:1
-cva:1
-cv-plus-b:1
-cvb:1
-cv-plus-c:1
-cvc:1
+cv-plus-a:2
+cva:2
+cv-plus-b:2
+cvb:2
+cv-plus-c:2
+cvc:2
 proquint-lower:1
 proquint:1
 proquint-upper:1
@@ -64,4 +64,4 @@ timestamp-nano
 timestamp-nano-hex
 timestamp-flake
 timestamp-flake-hex
-flake:1
+flake:32
