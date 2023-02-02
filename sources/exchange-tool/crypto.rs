@@ -44,6 +44,7 @@ pub const CRYPTO_ENCRYPTED_MAC : usize = 16;
 
 static CRYPTO_ENCRYPTION_KEY_CONTEXT : &str = "z-tokens exchange encryption key (2023a)";
 static CRYPTO_AUTHENTICATION_KEY_CONTEXT : &str = "z-tokens exchange authentication key (2023a)";
+static CRYPTO_BASE_KEY_CONTEXT : &str = "z-tokens exchange base key (2023a)";
 static CRYPTO_AONT_KEY_CONTEXT : &str = "z-tokens exchange all-or-nothing key (2023a)";
 static CRYPTO_PIN_CONTEXT : &str = "z-tokens exchange pin (2023a)";
 
@@ -233,7 +234,7 @@ fn derive_keys_phase_1 (_private : &x25519::StaticSecret, _public : &x25519::Pub
 			.into ();
 	
 	let _base_key : [u8; 32] =
-			::blake3::Hasher::new_derive_key (CRYPTO_AONT_KEY_CONTEXT)
+			::blake3::Hasher::new_derive_key (CRYPTO_BASE_KEY_CONTEXT)
 			.update (&_pin)
 			.update (_shared)
 			.update (_sender_public)
