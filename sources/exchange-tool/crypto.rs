@@ -44,12 +44,12 @@ pub const CRYPTO_ENCRYPTED_MAC : usize = 16;
 
 static CRYPTO_ENCRYPTION_KEY_CONTEXT : &str = "z-tokens exchange encryption key (2023a)";
 static CRYPTO_AUTHENTICATION_KEY_CONTEXT : &str = "z-tokens exchange authentication key (2023a)";
+static CRYPTO_SHARED_KEY_CONTEXT : &str = "z-tokens exchange shared key (2023a)";
 static CRYPTO_BASE_KEY_CONTEXT : &str = "z-tokens exchange base key (2023a)";
 static CRYPTO_AONT_KEY_CONTEXT : &str = "z-tokens exchange all-or-nothing key (2023a)";
-static CRYPTO_PIN_CONTEXT : &str = "z-tokens exchange pin (2023a)";
+static CRYPTO_PIN_SALT_CONTEXT : &str = "z-tokens exchange pin salt (2023a)";
+static CRYPTO_PIN_KEY_CONTEXT : &str = "z-tokens exchange pin key (2023a)";
 
-
-static CRYPTO_PIN_ARGON_SALT : &str = "z-tokens exchange encryption pin salt (2023a)";
 
 const CRYPTO_PIN_ARGON_ALGORITHM : ::argon2::Algorithm = ::argon2::Algorithm::Argon2id;
 const CRYPTO_PIN_ARGON_VERSION : ::argon2::Version = ::argon2::Version::V0x13;
@@ -212,23 +212,37 @@ fn apply_authentication (_key : &[u8; 32], _data : &[u8]) -> CryptoResult<[u8; C
 
 fn derive_keys_phase_1 (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, _encryption : bool, _pin : Option<&[u8]>) -> CryptoResult<([u8; 32], [u8; 32])> {
 	
-	let _shared = x25519::StaticSecret::diffie_hellman (_private, _public);
+	let _dhe = x25519::StaticSecret::diffie_hellman (_private, _public);
 	
-	if ! _shared.was_contributory () {
+	if ! _dhe.was_contributory () {
 		fail! (0xd00d13f7);
 	}
 	
-	let _shared = _shared.as_bytes ();
+	let _dhe = _dhe.as_bytes ();
 	
 	let _private_public = x25519::PublicKey::from (_private);
 	
 	let _sender_public = if _encryption { _private_public.as_bytes () } else { _public.as_bytes () };
 	let _receiver_public = if _encryption { _public.as_bytes () } else { _private_public.as_bytes () };
 	
-	let _pin = apply_argon (_pin) ?;
+	let _shared_key : [u8; 32] =
+			::blake3::Hasher::new_derive_key (CRYPTO_SHARED_KEY_CONTEXT)
+			.update (_dhe)
+			.update (_sender_public)
+			.update (_receiver_public)
+			.finalize ()
+			.into ();
+	
+	let _pin_salt : [u8; 32] =
+			::blake3::Hasher::new_derive_key (CRYPTO_PIN_SALT_CONTEXT)
+			.update (&_shared_key)
+			.finalize ()
+			.into ();
+	
+	let _pin = apply_argon (_pin.map (|_pin| (_pin, &_pin_salt))) ?;
 	
 	let _pin : [u8; 32] =
-			::blake3::Hasher::new_derive_key (CRYPTO_PIN_CONTEXT)
+			::blake3::Hasher::new_derive_key (CRYPTO_PIN_KEY_CONTEXT)
 			.update (&_pin)
 			.finalize ()
 			.into ();
@@ -236,7 +250,7 @@ fn derive_keys_phase_1 (_private : &x25519::StaticSecret, _public : &x25519::Pub
 	let _base_key : [u8; 32] =
 			::blake3::Hasher::new_derive_key (CRYPTO_BASE_KEY_CONTEXT)
 			.update (&_pin)
-			.update (_shared)
+			.update (&_shared_key)
 			.update (_sender_public)
 			.update (_receiver_public)
 			.finalize ()
@@ -293,11 +307,15 @@ fn apply_all_or_nothing_mangling (_key : &[u8; 32], _salt : &mut [u8; CRYPTO_ENC
 
 
 
-fn apply_argon (_pin : Option<&[u8]>) -> CryptoResult<[u8; 32]> {
+fn apply_argon (_pin_and_salt : Option<(&[u8], &[u8; 32])>) -> CryptoResult<[u8; 32]> {
 	
 	let mut _output = [0u8; 32];
 	
-	let _pin = _pin.unwrap_or (&[]);
+	let Some ((_pin, _salt)) = _pin_and_salt
+		else {
+			return Ok (_output);
+		};
+	
 	if _pin.is_empty () {
 		return Ok (_output);
 	}
@@ -315,7 +333,7 @@ fn apply_argon (_pin : Option<&[u8]>) -> CryptoResult<[u8; 32]> {
 				_parameters,
 			);
 	
-	_hasher.hash_password_into (_pin, CRYPTO_PIN_ARGON_SALT.as_bytes (), &mut _output) .else_wrap (0x23a4154f) ?;
+	_hasher.hash_password_into (_pin, _salt, &mut _output) .else_wrap (0x23a4154f) ?;
 	
 	Ok (_output)
 }

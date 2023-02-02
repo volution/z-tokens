@@ -36,8 +36,8 @@ pub(crate) const ARMOR_ENCODED_HASH : usize = CODING_CHUNK_DECODED_SIZE * 2 - 4;
 pub(crate) const ARMOR_ENCODED_SALT : usize = 16;
 
 
-static ARMOR_AONT_KEY_CONTEXT : &str = "z-tokens exchange armor key (2023a)";
-static ARMOR_PIN_CONTEXT : &str = "z-tokens exchange armor pin (2023a)";
+static ARMOR_AONT_KEY_CONTEXT : &str = "z-tokens exchange armor aont key (2023a)";
+static ARMOR_PIN_KEY_CONTEXT : &str = "z-tokens exchange armor pin key (2023a)";
 
 
 static ARMOR_PIN_ARGON_SALT : &str = "z-tokens exchange armor pin salt (2023a)";
@@ -178,7 +178,7 @@ fn apply_all_or_nothing_encryption (_salt : &[u8; ARMOR_ENCODED_SALT], _data : &
 	let _pin = apply_argon (_pin) ?;
 	
 	let _pin : [u8; 32] =
-			::blake3::Hasher::new_derive_key (ARMOR_PIN_CONTEXT)
+			::blake3::Hasher::new_derive_key (ARMOR_PIN_KEY_CONTEXT)
 			.update (&_pin)
 			.finalize ()
 			.into ();
@@ -242,7 +242,11 @@ fn apply_argon (_pin : Option<&[u8]>) -> ArmorResult<[u8; 32]> {
 	
 	let mut _output = [0u8; 32];
 	
-	let _pin = _pin.unwrap_or (&[]);
+	let Some (_pin) = _pin
+		else {
+			return Ok (_output);
+		};
+	
 	if _pin.is_empty () {
 		return Ok (_output);
 	}
