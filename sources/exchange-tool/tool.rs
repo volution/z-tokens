@@ -186,13 +186,12 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	}
 	
 	let _sender_private = _sender_private.filter (|_key| ! _key.is_empty ());
-	let _sender_private = _sender_private.else_wrap (0x11dddce5) ?;
+	let _sender_private = _sender_private.map (SenderPrivateKey::decode_and_zeroize) .transpose () .else_wrap (0x750a42c0) ?;
+	let _sender_private = _sender_private.as_ref ();
 	
 	let _recipient_public = _recipient_public.filter (|_key| ! _key.is_empty ());
-	let _recipient_public = _recipient_public.else_wrap (0xd94ce2c5) ?;
-	
-	let _sender_private = SenderPrivateKey::decode_and_zeroize (_sender_private) .else_wrap (0x750a42c0) ?;
-	let _recipient_public = RecipientPublicKey::decode_and_zeroize (_recipient_public) .else_wrap (0x233175e9) ?;
+	let _recipient_public = _recipient_public.map (RecipientPublicKey::decode_and_zeroize) .transpose () .else_wrap (0x233175e9) ?;
+	let _recipient_public = _recipient_public.as_ref ();
 	
 	let _secret = _secret.filter (|_secret| ! _secret.is_empty ());
 	let _secret = _secret.map (SharedSecret::decode_and_zeroize) .transpose () .else_wrap (0xab68aede) ?;
@@ -204,7 +203,7 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _decrypted = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0xb0e8db93) ?;
 	
 	let mut _encrypted = Vec::new ();
-	encrypt (&_sender_private, &_recipient_public, _secret, _pin, &_decrypted, &mut _encrypted) .else_wrap (0x38d2ce1e) ?;
+	encrypt (_sender_private, _recipient_public, _secret, _pin, &_decrypted, &mut _encrypted) .else_wrap (0x38d2ce1e) ?;
 	
 	let mut _stream = stdout_locked ();
 	_stream.write (&_encrypted) .else_wrap (0x815d15bc) ?;
@@ -248,13 +247,12 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	}
 	
 	let _recipient_private = _recipient_private.filter (|_key| ! _key.is_empty ());
-	let _recipient_private = _recipient_private.else_wrap (0xc9683cf5) ?;
+	let _recipient_private = _recipient_private.map (RecipientPrivateKey::decode_and_zeroize) .transpose () .else_wrap (0xd58c9ad4) ?;
+	let _recipient_private = _recipient_private.as_ref ();
 	
 	let _sender_public = _sender_public.filter (|_key| ! _key.is_empty ());
-	let _sender_public = _sender_public.else_wrap (0xdb9a095f) ?;
-	
-	let _recipient_private = RecipientPrivateKey::decode_and_zeroize (_recipient_private) .else_wrap (0xd58c9ad4) ?;
-	let _sender_public = SenderPublicKey::decode_and_zeroize (_sender_public) .else_wrap (0xbb6f004f) ?;
+	let _sender_public = _sender_public.map (SenderPublicKey::decode_and_zeroize) .transpose () .else_wrap (0xbb6f004f) ?;
+	let _sender_public = _sender_public.as_ref ();
 	
 	let _secret = _secret.filter (|_secret| ! _secret.is_empty ());
 	let _secret = _secret.map (SharedSecret::decode_and_zeroize) .transpose () .else_wrap (0x07d3b030) ?;
@@ -266,7 +264,7 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _encrypted = read_at_most (stdin_locked (), CRYPTO_ENCRYPTED_SIZE_MAX) .else_wrap (0xf71cef7e) ?;
 	
 	let mut _decrypted = Vec::new ();
-	decrypt (&_recipient_private, &_sender_public, _secret, _pin, &_encrypted, &mut _decrypted) .else_wrap (0x95273e1d) ?;
+	decrypt (_recipient_private, _sender_public, _secret, _pin, &_encrypted, &mut _decrypted) .else_wrap (0x95273e1d) ?;
 	
 	let mut _stream = stdout_locked ();
 	_stream.write (&_decrypted) .else_wrap (0x19352ca2) ?;

@@ -76,8 +76,8 @@ const CRYPTO_PIN_ARGON_P_COST : u32 = 1;
 
 
 pub fn encrypt (
-			_sender : &SenderPrivateKey,
-			_recipient : &RecipientPublicKey,
+			_sender : Option<&SenderPrivateKey>,
+			_recipient : Option<&RecipientPublicKey>,
 			_secret : Option<&[u8]>,
 			_pin : Option<&[u8]>,
 			_decrypted : &[u8],
@@ -100,7 +100,10 @@ pub fn encrypt (
 	
 	padding_push (CRYPTO_ENCRYPTED_PADDING, &mut _compress_buffer);
 	
-	let (_base_key, _aont_key) = derive_keys_phase_1 (&_sender.0.0, &_recipient.0.0, _secret, _pin, true) ?;
+	let _sender = _sender.map (|_key| &_key.0.0);
+	let _recipient = _recipient.map (|_key| &_key.0.0);
+	
+	let (_base_key, _aont_key) = derive_keys_phase_1 (_sender, _recipient, _secret, _pin, true) ?;
 	
 	let mut _salt = generate_salt () ?;
 	
@@ -133,8 +136,8 @@ pub fn encrypt (
 
 
 pub fn decrypt (
-			_recipient : &RecipientPrivateKey,
-			_sender : &SenderPublicKey,
+			_recipient : Option<&RecipientPrivateKey>,
+			_sender : Option<&SenderPublicKey>,
 			_secret : Option<&[u8]>,
 			_pin : Option<&[u8]>,
 			_encrypted : &[u8],
@@ -152,7 +155,10 @@ pub fn decrypt (
 	let mut _decode_buffer = Vec::with_capacity (_decode_capacity);
 	decode (_encrypted, &mut _decode_buffer) .else_wrap (0x10ff413a) ?;
 	
-	let (_base_key, _aont_key) = derive_keys_phase_1 (&_recipient.0.0, &_sender.0.0, _secret, _pin, false) ?;
+	let _sender = _sender.map (|_key| &_key.0.0);
+	let _recipient = _recipient.map (|_key| &_key.0.0);
+	
+	let (_base_key, _aont_key) = derive_keys_phase_1 (_recipient, _sender, _secret, _pin, false) ?;
 	
 	let mut _salt = bytes_pop::<CRYPTO_ENCRYPTED_SALT> (&mut _decode_buffer) .else_wrap (0x78ed3811) ?;
 	
@@ -234,7 +240,16 @@ fn apply_authentication (_key : &[u8; 32], _data : &[u8]) -> CryptoResult<[u8; C
 
 
 
-fn derive_keys_phase_1 (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, _secret : Option<&[u8]>, _pin : Option<&[u8]>, _encryption : bool) -> CryptoResult<([u8; 32], [u8; 32])> {
+fn derive_keys_phase_1 (
+			_private : Option<&x25519::StaticSecret>,
+			_public : Option<&x25519::PublicKey>,
+			_secret : Option<&[u8]>,
+			_pin : Option<&[u8]>,
+			_encryption : bool,
+		) -> CryptoResult<([u8; 32], [u8; 32])>
+{
+	let _private = _private.else_wrap (0x70f91100) ?;
+	let _public = _public.else_wrap (0x9d7be1bf) ?;
 	
 	let _dhe = x25519::StaticSecret::diffie_hellman (_private, _public);
 	
