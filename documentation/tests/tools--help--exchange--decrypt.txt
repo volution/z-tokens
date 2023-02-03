@@ -10,4 +10,5 @@ Optional arguments:
                         (recipient private key)
   -s,--sender {recipient}
                         (sender public key)
-  -p,--pin {pin}        (PIN, for **WEAK** additional security)
+  -x,--secret {secret}  (shared secret, for additional security)
+  -p,--pin {pin}        (shared PIN, for **WEAK** additional security)

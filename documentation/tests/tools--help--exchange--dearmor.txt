@@ -1,9 +1,8 @@
 >>  z-tokens exchange dearmor --help
 
 Usage:
-  z-tokens exchange dearmor [OPTIONS]
+  z-tokens exchange dearmor
 
 
 Optional arguments:
   -h,--help             Show this help message and exit
-  -p,--pin {pin}        (PIN, for **WEAK** additional security)

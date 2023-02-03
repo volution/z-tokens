@@ -1,9 +1,8 @@
 >>  z-tokens exchange armor --help
 
 Usage:
-  z-tokens exchange armor [OPTIONS]
+  z-tokens exchange armor
 
 
 Optional arguments:
   -h,--help             Show this help message and exit
-  -p,--pin {pin}        (PIN, for **WEAK** additional security)

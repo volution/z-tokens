@@ -10,5 +10,12 @@ Optional arguments:
   --sender {enabled}    
   -r                    (generate recipient key pair)
   --recipient {enabled} 
+  -x                    (generate shared secret)
+  --secret {enabled}    
+  -p                    (generate shared PIN)
+  --pin {enabled}       
+  -o                    (**CAUTION**, generate one key, and encode it both for
+                        sending and receiving)
+  --self {enabled}      
   -c                    (output comments)
   --comments {enabled}  
