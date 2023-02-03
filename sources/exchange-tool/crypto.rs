@@ -249,7 +249,13 @@ fn derive_keys_phase_1 (
 		) -> CryptoResult<([u8; 32], [u8; 32])>
 {
 	let _private = _private.else_wrap (0x70f91100) ?;
-	let _public = _public.else_wrap (0x9d7be1bf) ?;
+	let _private_public = x25519::PublicKey::from (_private);
+	
+	let _public = if let Some (_public) = _public {
+			_public
+		} else {
+			&_private_public
+		};
 	
 	let _dhe = x25519::StaticSecret::diffie_hellman (_private, _public);
 	
@@ -258,8 +264,6 @@ fn derive_keys_phase_1 (
 	}
 	
 	let _dhe = _dhe.as_bytes ();
-	
-	let _private_public = x25519::PublicKey::from (_private);
 	
 	let _sender_public = if _encryption { _private_public.as_bytes () } else { _public.as_bytes () };
 	let _receiver_public = if _encryption { _public.as_bytes () } else { _private_public.as_bytes () };
