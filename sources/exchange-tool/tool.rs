@@ -30,6 +30,8 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _sender_generate : Option<bool> = None;
 	let mut _recipient_generate : Option<bool> = None;
+	let mut _secret_generate : Option<bool> = None;
+	let mut _pin_generate : Option<bool> = None;
 	let mut _write_comments : Option<bool> = None;
 	
 	{
@@ -45,6 +47,16 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.add_option (&["-r"], ArgStoreConst (Some (true)), "(generate recipient key pair)")
 				.add_option (&["--recipient"], ArgStoreOption, "");
 		
+		_parser.refer (&mut _secret_generate)
+				.metavar ("{enabled}")
+				.add_option (&["-x"], ArgStoreConst (Some (true)), "(generate shared secret)")
+				.add_option (&["--secret"], ArgStoreOption, "");
+		
+		_parser.refer (&mut _pin_generate)
+				.metavar ("{enabled}")
+				.add_option (&["-p"], ArgStoreConst (Some (true)), "(generate shared PIN)")
+				.add_option (&["--pin"], ArgStoreOption, "");
+		
 		_parser.refer (&mut _write_comments)
 				.metavar ("{enabled}")
 				.add_option (&["-c"], ArgStoreConst (Some (true)), "(output comments)")
@@ -55,9 +67,11 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		}
 	}
 	
-	let _any_generate_explicit = _sender_generate.is_some () || _recipient_generate.is_some ();
+	let _any_generate_explicit = _sender_generate.is_some () || _recipient_generate.is_some () || _secret_generate.is_some () || _pin_generate.is_some ();
 	let _sender_generate = _sender_generate.unwrap_or (! _any_generate_explicit);
 	let _recipient_generate = _recipient_generate.unwrap_or (! _any_generate_explicit);
+	let _secret_generate = _secret_generate.unwrap_or (! _any_generate_explicit);
+	let _pin_generate = _pin_generate.unwrap_or (! _any_generate_explicit);
 	let _write_comments = _write_comments.unwrap_or (true);
 	
 	let mut _output = BufWriter::with_capacity (STDOUT_BUFFER_SIZE, stdout_locked ());
@@ -78,6 +92,8 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			writeln! (&mut _output, "## sender public key") .else_wrap (0x6cfa2380) ?;
 		}
 		writeln! (&mut _output, "{}", _sender_public.deref ()) .else_wrap (0xd2699fde) ?;
+		
+		writeln! (&mut _output) .else_wrap (0xd2b185da) ?;
 	}
 	
 	if _recipient_generate {
@@ -96,6 +112,34 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			writeln! (&mut _output, "## recipient public key") .else_wrap (0xc7fa9e1b) ?;
 		}
 		writeln! (&mut _output, "{}", _recipient_public.deref ()) .else_wrap (0x71da88be) ?;
+		
+		writeln! (&mut _output) .else_wrap (0xf9be83e3) ?;
+	}
+	
+	if _secret_generate {
+		
+		let _secret = create_shared_secret () .else_wrap (0xf61895cb) ?;
+		
+		let _secret = _secret.encode () .else_wrap (0x1a9d778c) ?;
+		
+		if _write_comments {
+			writeln! (&mut _output, "## shared secret (optional)") .else_wrap (0xa95dbf57) ?;
+		}
+		writeln! (&mut _output, "{}", _secret.deref ()) .else_wrap (0x6c8c9dd9) ?;
+		
+		writeln! (&mut _output) .else_wrap (0x5cd3e5be) ?;
+	}
+	
+	if _pin_generate {
+		
+		let _pin = create_shared_pin () .else_wrap (0xcee02c7f) ?;
+		
+		if _write_comments {
+			writeln! (&mut _output, "## shared pin (optional)") .else_wrap (0x4ba07df1) ?;
+		}
+		writeln! (&mut _output, "{}", _pin.deref ()) .else_wrap (0x61fd4511) ?;
+		
+		writeln! (&mut _output) .else_wrap (0x10c04432) ?;
 	}
 	
 	drop (_output.into_inner () .else_replace (0x6c15be3e) ?);
@@ -134,7 +178,7 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		_parser.refer (&mut _pin)
 				.metavar ("{pin}")
-				.add_option (&["-p", "--pin"], ArgStoreOption, "(PIN, for **WEAK** additional security)");
+				.add_option (&["-p", "--pin"], ArgStoreOption, "(shared PIN, for **WEAK** additional security)");
 		
 		if execute_parser (_parser, _arguments) .else_wrap (0x8a373e9a) ? {
 			return Ok (ExitCode::SUCCESS);
@@ -147,7 +191,9 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _sender_private = SenderPrivateKey::decode_and_zeroize (_sender_private) .else_wrap (0x750a42c0) ?;
 	let _recipient_public = RecipientPublicKey::decode_and_zeroize (_recipient_public) .else_wrap (0x233175e9) ?;
 	
-	let _secret = _secret.as_ref () .map (String::as_bytes);
+	let _secret = _secret.map (SharedSecret::decode_and_zeroize) .transpose () .else_wrap (0xab68aede) ?;
+	let _secret = _secret.as_ref () .map (SharedSecret::as_bytes);
+	
 	let _pin = _pin.as_ref () .map (String::as_bytes);
 	
 	let _decrypted = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0xb0e8db93) ?;
@@ -189,7 +235,7 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		_parser.refer (&mut _pin)
 				.metavar ("{pin}")
-				.add_option (&["-p", "--pin"], ArgStoreOption, "(PIN, for **WEAK** additional security)");
+				.add_option (&["-p", "--pin"], ArgStoreOption, "(shared PIN, for **WEAK** additional security)");
 		
 		if execute_parser (_parser, _arguments) .else_wrap (0xe3a49130) ? {
 			return Ok (ExitCode::SUCCESS);
@@ -202,7 +248,9 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _recipient_private = RecipientPrivateKey::decode_and_zeroize (_recipient_private) .else_wrap (0xd58c9ad4) ?;
 	let _sender_public = SenderPublicKey::decode_and_zeroize (_sender_public) .else_wrap (0xbb6f004f) ?;
 	
-	let _secret = _secret.as_ref () .map (String::as_bytes);
+	let _secret = _secret.map (SharedSecret::decode_and_zeroize) .transpose () .else_wrap (0x07d3b030) ?;
+	let _secret = _secret.as_ref () .map (SharedSecret::as_bytes);
+	
 	let _pin = _pin.as_ref () .map (String::as_bytes);
 	
 	let _encrypted = read_at_most (stdin_locked (), CRYPTO_ENCRYPTED_SIZE_MAX) .else_wrap (0xf71cef7e) ?;

@@ -372,7 +372,7 @@ fn apply_argon_secret (_secret_and_salt : Option<(&[u8], &[u8; 32])>) -> CryptoR
 				_parameters,
 			);
 	
-	_hasher.hash_password_into (_secret, _salt, &mut _output) .else_wrap (0x23a4154f) ?;
+	_hasher.hash_password_into (_secret, _salt, &mut _output) .else_wrap (0xacae7396) ?;
 	
 	Ok (_output)
 }

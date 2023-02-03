@@ -33,6 +33,8 @@ pub struct SenderPublicKey (pub(crate) Rb<SensitiveIgnored<x25519::PublicKey>>);
 pub struct RecipientPrivateKey (pub(crate) Rb<SensitiveZeroize<x25519::StaticSecret>>);
 pub struct RecipientPublicKey (pub(crate) Rb<SensitiveIgnored<x25519::PublicKey>>);
 
+pub struct SharedSecret (pub(crate) Rb<SensitiveZeroize<[u8; 32]>>);
+
 
 
 
@@ -41,6 +43,8 @@ pub const SENDER_PUBLIC_KEY_ENCODED_PREFIX : &str = "ztxsp";
 
 pub const RECEIVER_PRIVATE_KEY_ENCODED_PREFIX : &str = "ztxrk";
 pub const RECEIVER_PUBLIC_KEY_ENCODED_PREFIX : &str = "ztxrp";
+
+pub const SHARED_SECRET_ENCODED_PREFIX : &str = "ztxcs";
 
 
 
@@ -81,6 +85,28 @@ impl SenderPublicKey {
 	
 	pub fn encode (&self) -> KeyEncodingResult<Rb<String>> {
 		encode_sender_public_key (self)
+	}
+}
+
+
+impl SharedSecret {
+	
+	pub fn decode_and_zeroize (_string : String) -> KeyEncodingResult<Self> {
+		let _outcome = Self::decode (&_string);
+		zeroize_and_drop (_string);
+		_outcome
+	}
+	
+	pub fn decode (_string : &str) -> KeyEncodingResult<Self> {
+		decode_shared_secret (_string)
+	}
+	
+	pub fn encode (&self) -> KeyEncodingResult<Rb<String>> {
+		encode_shared_secret (self)
+	}
+	
+	pub fn as_bytes (&self) -> &[u8] {
+		&self.0.0
 	}
 }
 
@@ -165,6 +191,13 @@ pub fn decode_recipient_public_key (_string : &str) -> KeyEncodingResult<Recipie
 }
 
 
+pub fn decode_shared_secret (_string : &str) -> KeyEncodingResult<SharedSecret> {
+	let mut _key_data = [0u8; 32];
+	decode_raw (SHARED_SECRET_ENCODED_PREFIX, _string, &mut _key_data) ?;
+	Ok (SharedSecret (Rb::new (_key_data.into ())))
+}
+
+
 fn decode_raw (_prefix : &str, _encoded : &str, _data : &mut [u8]) -> KeyEncodingResult {
 	
 	// FIXME:  Find a way to eliminate allocations!
@@ -222,6 +255,12 @@ pub fn encode_recipient_public_key (_key : &RecipientPublicKey) -> KeyEncodingRe
 }
 
 
+pub fn encode_shared_secret (_key : &SharedSecret) -> KeyEncodingResult<Rb<String>> {
+	let _bytes = &_key.0.0;
+	encode_raw (SHARED_SECRET_ENCODED_PREFIX, _bytes)
+}
+
+
 fn encode_raw (_prefix : &str, _data : &[u8]) -> KeyEncodingResult<Rb<String>> {
 	
 	let _bech_nibles_capacity = _data.len () * 8 / 5 + 1;
@@ -275,6 +314,35 @@ fn create_x25519_pair_from_random () -> KeyCreateResult<(x25519::StaticSecret, x
 	let _public = x25519::PublicKey::from (&_private);
 	
 	Ok ((_private, _public))
+}
+
+
+
+
+pub fn create_shared_secret () -> KeyCreateResult<SharedSecret> {
+	
+	use ::rand::RngCore as _;
+	let mut _bytes = [0u8; 32];
+	::rand::rngs::OsRng.fill_bytes (&mut _bytes);
+	
+	Ok (SharedSecret (Rb::new (_bytes.into ())))
+}
+
+
+
+
+pub fn create_shared_pin () -> KeyCreateResult<Rb<String>> {
+	
+	use ::rand::RngCore as _;
+	let mut _bytes = [0u8; 8];
+	::rand::rngs::OsRng.fill_bytes (&mut _bytes);
+	
+	let _pin : u64 = unsafe { mem::transmute (_bytes) };
+	let _pin = _pin % 10_000_000_000;
+	
+	let _pin = format! ("{:10}", _pin);
+	
+	Ok (Rb::new (_pin))
 }
 
 
