@@ -191,9 +191,11 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _sender_private = SenderPrivateKey::decode_and_zeroize (_sender_private) .else_wrap (0x750a42c0) ?;
 	let _recipient_public = RecipientPublicKey::decode_and_zeroize (_recipient_public) .else_wrap (0x233175e9) ?;
 	
+	let _secret = _secret.filter (|_secret| ! _secret.is_empty ());
 	let _secret = _secret.map (SharedSecret::decode_and_zeroize) .transpose () .else_wrap (0xab68aede) ?;
 	let _secret = _secret.as_ref () .map (SharedSecret::as_bytes);
 	
+	let _pin = _pin.filter (|_pin| ! _pin.is_empty ());
 	let _pin = _pin.as_ref () .map (String::as_bytes);
 	
 	let _decrypted = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0xb0e8db93) ?;
@@ -248,9 +250,11 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _recipient_private = RecipientPrivateKey::decode_and_zeroize (_recipient_private) .else_wrap (0xd58c9ad4) ?;
 	let _sender_public = SenderPublicKey::decode_and_zeroize (_sender_public) .else_wrap (0xbb6f004f) ?;
 	
+	let _secret = _secret.filter (|_secret| ! _secret.is_empty ());
 	let _secret = _secret.map (SharedSecret::decode_and_zeroize) .transpose () .else_wrap (0x07d3b030) ?;
 	let _secret = _secret.as_ref () .map (SharedSecret::as_bytes);
 	
+	let _pin = _pin.filter (|_pin| ! _pin.is_empty ());
 	let _pin = _pin.as_ref () .map (String::as_bytes);
 	
 	let _encrypted = read_at_most (stdin_locked (), CRYPTO_ENCRYPTED_SIZE_MAX) .else_wrap (0xf71cef7e) ?;
