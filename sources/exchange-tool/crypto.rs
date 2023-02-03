@@ -47,15 +47,25 @@ static CRYPTO_AUTHENTICATION_KEY_CONTEXT : &str = "z-tokens exchange authenticat
 static CRYPTO_SHARED_KEY_CONTEXT : &str = "z-tokens exchange shared key (2023a)";
 static CRYPTO_BASE_KEY_CONTEXT : &str = "z-tokens exchange base key (2023a)";
 static CRYPTO_AONT_KEY_CONTEXT : &str = "z-tokens exchange all-or-nothing key (2023a)";
+static CRYPTO_SECRET_SALT_CONTEXT : &str = "z-tokens exchange secret salt (2023a)";
+static CRYPTO_SECRET_KEY_CONTEXT : &str = "z-tokens exchange secret key (2023a)";
 static CRYPTO_PIN_SALT_CONTEXT : &str = "z-tokens exchange pin salt (2023a)";
 static CRYPTO_PIN_KEY_CONTEXT : &str = "z-tokens exchange pin key (2023a)";
+
+
+const CRYPTO_SECRET_ARGON_ALGORITHM : ::argon2::Algorithm = ::argon2::Algorithm::Argon2id;
+const CRYPTO_SECRET_ARGON_VERSION : ::argon2::Version = ::argon2::Version::V0x13;
+
+const CRYPTO_SECRET_ARGON_M_COST : u32 = 512 * 1024;
+const CRYPTO_SECRET_ARGON_T_COST : u32 = 8;
+const CRYPTO_SECRET_ARGON_P_COST : u32 = 1;
 
 
 const CRYPTO_PIN_ARGON_ALGORITHM : ::argon2::Algorithm = ::argon2::Algorithm::Argon2id;
 const CRYPTO_PIN_ARGON_VERSION : ::argon2::Version = ::argon2::Version::V0x13;
 
 const CRYPTO_PIN_ARGON_M_COST : u32 = 128 * 1024;
-const CRYPTO_PIN_ARGON_T_COST : u32 = 8;
+const CRYPTO_PIN_ARGON_T_COST : u32 = 2;
 const CRYPTO_PIN_ARGON_P_COST : u32 = 1;
 
 
@@ -65,8 +75,15 @@ const CRYPTO_PIN_ARGON_P_COST : u32 = 1;
 
 
 
-pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _decrypted : &[u8], _encrypted : &mut Vec<u8>, _pin : Option<&[u8]>) -> CryptoResult {
-	
+pub fn encrypt (
+			_sender : &SenderPrivateKey,
+			_recipient : &RecipientPublicKey,
+			_secret : Option<&[u8]>,
+			_pin : Option<&[u8]>,
+			_decrypted : &[u8],
+			_encrypted : &mut Vec<u8>,
+		) -> CryptoResult
+{
 	let _decrypted_len = _decrypted.len ();
 	
 	if _decrypted_len > CRYPTO_DECRYPTED_SIZE_MAX {
@@ -83,7 +100,7 @@ pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _
 	
 	padding_push (CRYPTO_ENCRYPTED_PADDING, &mut _compress_buffer);
 	
-	let (_base_key, _aont_key) = derive_keys_phase_1 (&_sender.0.0, &_recipient.0.0, true, _pin) ?;
+	let (_base_key, _aont_key) = derive_keys_phase_1 (&_sender.0.0, &_recipient.0.0, _secret, _pin, true) ?;
 	
 	let mut _salt = generate_salt () ?;
 	
@@ -115,8 +132,15 @@ pub fn encrypt (_sender : &SenderPrivateKey, _recipient : &RecipientPublicKey, _
 
 
 
-pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _encrypted : &[u8], _decrypted : &mut Vec<u8>, _pin : Option<&[u8]>) -> CryptoResult {
-	
+pub fn decrypt (
+			_recipient : &RecipientPrivateKey,
+			_sender : &SenderPublicKey,
+			_secret : Option<&[u8]>,
+			_pin : Option<&[u8]>,
+			_encrypted : &[u8],
+			_decrypted : &mut Vec<u8>,
+		) -> CryptoResult
+{
 	let _encrypted_len = _encrypted.len ();
 	
 	if _encrypted_len > CRYPTO_ENCRYPTED_SIZE_MAX {
@@ -128,7 +152,7 @@ pub fn decrypt (_recipient : &RecipientPrivateKey, _sender : &SenderPublicKey, _
 	let mut _decode_buffer = Vec::with_capacity (_decode_capacity);
 	decode (_encrypted, &mut _decode_buffer) .else_wrap (0x10ff413a) ?;
 	
-	let (_base_key, _aont_key) = derive_keys_phase_1 (&_recipient.0.0, &_sender.0.0, false, _pin) ?;
+	let (_base_key, _aont_key) = derive_keys_phase_1 (&_recipient.0.0, &_sender.0.0, _secret, _pin, false) ?;
 	
 	let mut _salt = bytes_pop::<CRYPTO_ENCRYPTED_SALT> (&mut _decode_buffer) .else_wrap (0x78ed3811) ?;
 	
@@ -210,7 +234,7 @@ fn apply_authentication (_key : &[u8; 32], _data : &[u8]) -> CryptoResult<[u8; C
 
 
 
-fn derive_keys_phase_1 (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, _encryption : bool, _pin : Option<&[u8]>) -> CryptoResult<([u8; 32], [u8; 32])> {
+fn derive_keys_phase_1 (_private : &x25519::StaticSecret, _public : &x25519::PublicKey, _secret : Option<&[u8]>, _pin : Option<&[u8]>, _encryption : bool) -> CryptoResult<([u8; 32], [u8; 32])> {
 	
 	let _dhe = x25519::StaticSecret::diffie_hellman (_private, _public);
 	
@@ -233,13 +257,27 @@ fn derive_keys_phase_1 (_private : &x25519::StaticSecret, _public : &x25519::Pub
 			.finalize ()
 			.into ();
 	
+	let _secret_salt : [u8; 32] =
+			::blake3::Hasher::new_derive_key (CRYPTO_SECRET_SALT_CONTEXT)
+			.update (&_shared_key)
+			.finalize ()
+			.into ();
+	
 	let _pin_salt : [u8; 32] =
 			::blake3::Hasher::new_derive_key (CRYPTO_PIN_SALT_CONTEXT)
 			.update (&_shared_key)
 			.finalize ()
 			.into ();
 	
-	let _pin = apply_argon (_pin.map (|_pin| (_pin, &_pin_salt))) ?;
+	let _secret = apply_argon_secret (_secret.map (|_secret| (_secret, &_secret_salt))) ?;
+	
+	let _pin = apply_argon_pin (_pin.map (|_pin| (_pin, &_pin_salt))) ?;
+	
+	let _secret : [u8; 32] =
+			::blake3::Hasher::new_derive_key (CRYPTO_SECRET_KEY_CONTEXT)
+			.update (&_secret)
+			.finalize ()
+			.into ();
 	
 	let _pin : [u8; 32] =
 			::blake3::Hasher::new_derive_key (CRYPTO_PIN_KEY_CONTEXT)
@@ -250,6 +288,7 @@ fn derive_keys_phase_1 (_private : &x25519::StaticSecret, _public : &x25519::Pub
 	let _base_key : [u8; 32] =
 			::blake3::Hasher::new_derive_key (CRYPTO_BASE_KEY_CONTEXT)
 			.update (&_pin)
+			.update (&_secret)
 			.update (&_shared_key)
 			.update (_sender_public)
 			.update (_receiver_public)
@@ -307,7 +346,39 @@ fn apply_all_or_nothing_mangling (_key : &[u8; 32], _salt : &mut [u8; CRYPTO_ENC
 
 
 
-fn apply_argon (_pin_and_salt : Option<(&[u8], &[u8; 32])>) -> CryptoResult<[u8; 32]> {
+fn apply_argon_secret (_secret_and_salt : Option<(&[u8], &[u8; 32])>) -> CryptoResult<[u8; 32]> {
+	
+	let mut _output = [0u8; 32];
+	
+	let Some ((_secret, _salt)) = _secret_and_salt
+		else {
+			return Ok (_output);
+		};
+	
+	if _secret.is_empty () {
+		return Ok (_output);
+	}
+	
+	let _parameters = ::argon2::Params::new (
+				CRYPTO_SECRET_ARGON_M_COST,
+				CRYPTO_SECRET_ARGON_T_COST,
+				CRYPTO_SECRET_ARGON_P_COST,
+				Some (_output.len ()),
+			) .else_wrap (0xf2eebb0c) ?;
+	
+	let _hasher = ::argon2::Argon2::new (
+				CRYPTO_SECRET_ARGON_ALGORITHM,
+				CRYPTO_SECRET_ARGON_VERSION,
+				_parameters,
+			);
+	
+	_hasher.hash_password_into (_secret, _salt, &mut _output) .else_wrap (0x23a4154f) ?;
+	
+	Ok (_output)
+}
+
+
+fn apply_argon_pin (_pin_and_salt : Option<(&[u8], &[u8; 32])>) -> CryptoResult<[u8; 32]> {
 	
 	let mut _output = [0u8; 32];
 	
