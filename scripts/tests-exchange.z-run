@@ -7,9 +7,27 @@
 
 
 
+<< tests / quick / exchange
+	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	time \
+	"${__OUTPUTS}/binaries/z-tokens--release--linux--native" exchange "${@}" \
+	#
+!!
+
+
+
+
+
+
+
+
 << tests / quick / exchange / armor / hello
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect'
+	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
@@ -24,7 +42,7 @@
 
 << tests / quick / exchange / armor / empty
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect'
+	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
@@ -39,7 +57,7 @@
 
 << tests / quick / exchange / armor / notice
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect'
+	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
@@ -56,12 +74,10 @@
 
 << tests / quick / exchange / armor & dearmor / hello
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect'
+	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
-	
-	_pin=1234
 	
 	time \
 	"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
@@ -77,7 +93,7 @@
 
 << tests / quick / exchange / armor & dearmor / files
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect'
+	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	readarray -t -- _files \
@@ -88,8 +104,6 @@
 	
 	time \
 	for _file in "${_files[@]}" ; do
-		
-		_pin="${SRANDOM}"
 		
 		"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 				exchange armor \
@@ -108,7 +122,7 @@
 
 << tests / quick / exchange / armor & dearmor / random
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect'
+	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	for _index_1 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
@@ -123,8 +137,6 @@
 			_size="${SRANDOM}"
 			if test "${_size}" -le 134217728 ; then break ; fi
 		done
-		
-		_pin="${SRANDOM}"
 		
 		TIMEFORMAT="[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;  ${_size} bytes;"
 		
@@ -149,7 +161,7 @@
 
 << tests / quick / exchange / keys
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect'
+	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
@@ -165,18 +177,20 @@
 
 << tests / quick / exchange / encrypt / hello
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect'
+	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
-	_pin=1234
+	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
+	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 	
 	time \
 	"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 			exchange encrypt \
 				--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
 				--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+				--secret "${_secret}" \
 				--pin "${_pin}" \
 		<<< $'hello world!\n' \
 	#
@@ -185,18 +199,20 @@
 
 << tests / quick / exchange / encrypt / empty
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect'
+	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
-	_pin=1234
+	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
+	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 	
 	time \
 	"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 			exchange encrypt \
 				--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
 				--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+				--secret "${_secret}" \
 				--pin "${_pin}" \
 		<<< '' \
 	#
@@ -205,18 +221,20 @@
 
 << tests / quick / exchange / encrypt / notice
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect'
+	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
-	_pin=1234
+	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
+	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 	
 	time \
 	"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 			exchange encrypt \
 				--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
 				--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+				--secret "${_secret}" \
 				--pin "${_pin}" \
 		< ./notice.txt \
 	#
@@ -227,7 +245,7 @@
 
 << tests / quick / exchange / encrypt & decrypt / hello
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect'
+	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
@@ -247,7 +265,7 @@
 
 << tests / quick / exchange / encrypt & dencrypt / files
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect'
+	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	readarray -t -- _files \
@@ -265,18 +283,21 @@
 		time \
 		for _file in "${_files[@]}" ; do
 		
-		_pin="${SRANDOM}"
+		_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
+		_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 		
 		"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 				exchange encrypt \
 					--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
 					--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+					--secret "${_secret}" \
 					--pin "${_pin}" \
 			< "${_file}" \
 		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 				exchange decrypt \
 					--sender ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88 \
 					--recipient ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk \
+					--secret "${_secret}" \
 					--pin "${_pin}" \
 		| md5sum -b -- /dev/fd/5 5<&0 \
 		| md5sum -c --quiet 5< "${_file}" \
@@ -290,7 +311,7 @@
 
 << tests / quick / exchange / encrypt & dencrypt / random
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect'
+	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	for _index_1 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
@@ -306,7 +327,8 @@
 			if test "${_size}" -le 134217728 ; then break ; fi
 		done
 		
-		_pin="${SRANDOM}"
+		_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
+		_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 		
 		TIMEFORMAT="[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;  ${_size} bytes;"
 		
@@ -316,11 +338,13 @@
 				exchange encrypt \
 					--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
 					--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+					--secret "${_secret}" \
 					--pin "${_pin}" \
 		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 				exchange decrypt \
 					--sender ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88 \
 					--recipient ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk \
+					--secret "${_secret}" \
 					--pin "${_pin}" \
 			> /dev/null \
 		#
@@ -340,5 +364,15 @@
 	
 	find ./sources -type f | sort
 !!
+
+
+
+
+:: tests / quick / exchange / set / secret / empty :: export -- __ZTOKENS_EXCHANGE_SECRET=''
+:: tests / quick / exchange / set / secret / random :: export -- __ZTOKENS_EXCHANGE_SECRET="${SRANDOM}"
+:: tests / quick / exchange / set / secret / testing :: export -- __ZTOKENS_EXCHANGE_SECRET='ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm'
+
+:: tests / quick / exchange / set / pin / empty :: export -- __ZTOKENS_EXCHANGE_PIN=''
+:: tests / quick / exchange / set / pin / random :: export -- __ZTOKENS_EXCHANGE_PIN="${SRANDOM}"
 
 
