@@ -185,7 +185,10 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		}
 	}
 	
+	let _sender_private = _sender_private.filter (|_key| ! _key.is_empty ());
 	let _sender_private = _sender_private.else_wrap (0x11dddce5) ?;
+	
+	let _recipient_public = _recipient_public.filter (|_key| ! _key.is_empty ());
 	let _recipient_public = _recipient_public.else_wrap (0xd94ce2c5) ?;
 	
 	let _sender_private = SenderPrivateKey::decode_and_zeroize (_sender_private) .else_wrap (0x750a42c0) ?;
@@ -244,7 +247,10 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		}
 	}
 	
+	let _recipient_private = _recipient_private.filter (|_key| ! _key.is_empty ());
 	let _recipient_private = _recipient_private.else_wrap (0xc9683cf5) ?;
+	
+	let _sender_public = _sender_public.filter (|_key| ! _key.is_empty ());
 	let _sender_public = _sender_public.else_wrap (0xdb9a095f) ?;
 	
 	let _recipient_private = RecipientPrivateKey::decode_and_zeroize (_recipient_private) .else_wrap (0xd58c9ad4) ?;
