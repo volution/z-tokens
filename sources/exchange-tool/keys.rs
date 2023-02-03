@@ -68,6 +68,10 @@ impl SenderPrivateKey {
 	pub fn encode (&self) -> KeyEncodingResult<Rb<String>> {
 		encode_sender_private_key (self)
 	}
+	
+	pub fn to_recipient (&self) -> RecipientPrivateKey {
+		RecipientPrivateKey (self.0.clone ())
+	}
 }
 
 
@@ -86,27 +90,9 @@ impl SenderPublicKey {
 	pub fn encode (&self) -> KeyEncodingResult<Rb<String>> {
 		encode_sender_public_key (self)
 	}
-}
-
-
-impl SharedSecret {
 	
-	pub fn decode_and_zeroize (_string : String) -> KeyEncodingResult<Self> {
-		let _outcome = Self::decode (&_string);
-		zeroize_and_drop (_string);
-		_outcome
-	}
-	
-	pub fn decode (_string : &str) -> KeyEncodingResult<Self> {
-		decode_shared_secret (_string)
-	}
-	
-	pub fn encode (&self) -> KeyEncodingResult<Rb<String>> {
-		encode_shared_secret (self)
-	}
-	
-	pub fn as_bytes (&self) -> &[u8] {
-		&self.0.0
+	pub fn to_recipient (&self) -> RecipientPublicKey {
+		RecipientPublicKey (self.0.clone ())
 	}
 }
 
@@ -128,6 +114,10 @@ impl RecipientPrivateKey {
 	pub fn encode (&self) -> KeyEncodingResult<Rb<String>> {
 		encode_recipient_private_key (self)
 	}
+	
+	pub fn to_sender (&self) -> SenderPrivateKey {
+		SenderPrivateKey (self.0.clone ())
+	}
 }
 
 
@@ -145,6 +135,34 @@ impl RecipientPublicKey {
 	
 	pub fn encode (&self) -> KeyEncodingResult<Rb<String>> {
 		encode_recipient_public_key (self)
+	}
+	
+	pub fn to_sender (&self) -> SenderPublicKey {
+		SenderPublicKey (self.0.clone ())
+	}
+}
+
+
+
+
+impl SharedSecret {
+	
+	pub fn decode_and_zeroize (_string : String) -> KeyEncodingResult<Self> {
+		let _outcome = Self::decode (&_string);
+		zeroize_and_drop (_string);
+		_outcome
+	}
+	
+	pub fn decode (_string : &str) -> KeyEncodingResult<Self> {
+		decode_shared_secret (_string)
+	}
+	
+	pub fn encode (&self) -> KeyEncodingResult<Rb<String>> {
+		encode_shared_secret (self)
+	}
+	
+	pub fn as_bytes (&self) -> &[u8] {
+		&self.0.0
 	}
 }
 

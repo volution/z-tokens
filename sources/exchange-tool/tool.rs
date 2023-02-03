@@ -32,6 +32,7 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _recipient_generate : Option<bool> = None;
 	let mut _secret_generate : Option<bool> = None;
 	let mut _pin_generate : Option<bool> = None;
+	let mut _self_generate : Option<bool> = None;
 	let mut _write_comments : Option<bool> = None;
 	
 	{
@@ -57,6 +58,11 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.add_option (&["-p"], ArgStoreConst (Some (true)), "(generate shared PIN)")
 				.add_option (&["--pin"], ArgStoreOption, "");
 		
+		_parser.refer (&mut _self_generate)
+				.metavar ("{enabled}")
+				.add_option (&["-o"], ArgStoreConst (Some (true)), "(**CAUTION**, generate one key, and encode it both for sending and receiving)")
+				.add_option (&["--self"], ArgStoreOption, "");
+		
 		_parser.refer (&mut _write_comments)
 				.metavar ("{enabled}")
 				.add_option (&["-c"], ArgStoreConst (Some (true)), "(output comments)")
@@ -67,18 +73,47 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		}
 	}
 	
-	let _any_generate_explicit = _sender_generate.is_some () || _recipient_generate.is_some () || _secret_generate.is_some () || _pin_generate.is_some ();
-	let _sender_generate = _sender_generate.unwrap_or (! _any_generate_explicit);
-	let _recipient_generate = _recipient_generate.unwrap_or (! _any_generate_explicit);
+	let _any_generate_explicit = _sender_generate.is_some () || _recipient_generate.is_some () || _self_generate.is_some () || _secret_generate.is_some () || _pin_generate.is_some ();
+	let _self_generate = _self_generate.unwrap_or (false);
+	let _sender_generate = _sender_generate.unwrap_or (! _any_generate_explicit || _self_generate);
+	let _recipient_generate = _recipient_generate.unwrap_or (! _any_generate_explicit || _self_generate);
 	let _secret_generate = _secret_generate.unwrap_or (! _any_generate_explicit);
 	let _pin_generate = _pin_generate.unwrap_or (! _any_generate_explicit);
 	let _write_comments = _write_comments.unwrap_or (true);
 	
 	let mut _output = BufWriter::with_capacity (STDOUT_BUFFER_SIZE, stdout_locked ());
 	
-	if _sender_generate {
-		
-		let (_sender_private, _sender_public) = create_sender_pair () .else_wrap (0xd13990c4) ?;
+	let (_sender_pair, _recipient_pair) = if _self_generate {
+			
+			let (_sender_private, _sender_public) = create_sender_pair () .else_wrap (0x82797f52) ?;
+			
+			let _recipient_private = _sender_private.to_recipient ();
+			let _recipient_public = _sender_public.to_recipient ();
+			
+			(
+				Some ((_sender_private, _sender_public)),
+				Some ((_recipient_private, _recipient_public)),
+			)
+			
+		} else {
+			(
+				if _sender_generate {
+						
+						let _sender_pair = create_sender_pair () .else_wrap (0xd13990c4) ?;
+						
+						Some (_sender_pair)
+					} else { None },
+				
+				if _recipient_generate {
+						
+						let _recipient_pair = create_recipient_pair () .else_wrap (0x32a9769f) ?;
+						
+						Some (_recipient_pair)
+					} else { None },
+			)
+		};
+	
+	if let Some ((_sender_private, _sender_public)) = _sender_pair {
 		
 		let _sender_private = _sender_private.encode () .else_wrap (0xa52ca3bc) ?;
 		let _sender_public = _sender_public.encode () .else_wrap (0x92094072) ?;
@@ -96,9 +131,7 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		writeln! (&mut _output) .else_wrap (0xd2b185da) ?;
 	}
 	
-	if _recipient_generate {
-		
-		let (_recipient_private, _recipient_public) = create_recipient_pair () .else_wrap (0x32a9769f) ?;
+	if let Some ((_recipient_private, _recipient_public)) = _recipient_pair {
 		
 		let _recipient_private = _recipient_private.encode () .else_wrap (0x9845b620) ?;
 		let _recipient_public = _recipient_public.encode () .else_wrap (0x7262954a) ?;
