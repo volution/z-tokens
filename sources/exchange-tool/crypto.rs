@@ -65,7 +65,7 @@ const CRYPTO_PIN_ARGON_ALGORITHM : ::argon2::Algorithm = ::argon2::Algorithm::Ar
 const CRYPTO_PIN_ARGON_VERSION : ::argon2::Version = ::argon2::Version::V0x13;
 
 const CRYPTO_PIN_ARGON_M_COST : u32 = 128 * 1024;
-const CRYPTO_PIN_ARGON_T_COST : u32 = 2;
+const CRYPTO_PIN_ARGON_T_COST : u32 = 8;
 const CRYPTO_PIN_ARGON_P_COST : u32 = 1;
 
 
