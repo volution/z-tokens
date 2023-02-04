@@ -431,7 +431,7 @@ pub fn main_keys_ssh (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		for _key in _keys.iter () {
 			
-			let _key_handle = _key.handle () .else_wrap (0x77ed1b9e) ?;
+			let _key_handle = _key.handle () .else_wrap (0xfd3bf576) ?;
 			
 			let mut _wrapper = SshWrapper::new (_key.clone (), _agent) .else_wrap (0x9adff71c) ?;
 			
