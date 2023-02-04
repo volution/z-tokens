@@ -7,7 +7,19 @@
 
 
 
-<< tests / quick / exchange
+<< tests / quick / exchange / debug
+	"${ZRUN}" ':: cargo / debug / build & collect' < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	time \
+	"${__OUTPUTS}/binaries/z-tokens--debug--linux--native" exchange "${@}" \
+	#
+!!
+
+
+<< tests / quick / exchange / release
 	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
@@ -160,7 +172,6 @@
 
 
 << tests / quick / exchange / keys
-	test "${#}" -eq 0
 	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
@@ -168,7 +179,33 @@
 	
 	time \
 	"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
-			exchange keys \
+			exchange keys "${@}" \
+	#
+!!
+
+
+<< tests / quick / exchange / keys / self
+	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	time \
+	"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
+			exchange keys --self true "${@}" \
+	#
+!!
+
+
+<< tests / quick / exchange / keys / ssh
+	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	time \
+	"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
+			exchange keys ssh "${@}" \
 	#
 !!
 
@@ -182,16 +219,25 @@
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
+	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
+	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
+	
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	
+	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
+	
+	set -x
 	
 	time \
 	"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 			exchange encrypt \
-				--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
-				--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+				--sender "${_sender_private}" \
+				--recipient "${_recipient_public}" \
 				--secret "${_secret}" \
 				--pin "${_pin}" \
+				--ssh-wrap "${_ssh_wrap}" \
+				--empty-is-missing true \
 		<<< $'hello world!\n' \
 	#
 !!
@@ -204,16 +250,23 @@
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
+	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
+	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
+	
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	
+	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
 	time \
 	"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 			exchange encrypt \
-				--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
-				--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+				--sender "${_sender_private}" \
+				--recipient "${_recipient_public}" \
 				--secret "${_secret}" \
 				--pin "${_pin}" \
+				--ssh-wrap "${_ssh_wrap}" \
+				--empty-is-missing true \
 		<<< '' \
 	#
 !!
@@ -226,16 +279,23 @@
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
+	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
+	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
+	
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	
+	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
 	time \
 	"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 			exchange encrypt \
-				--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
-				--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+				--sender "${_sender_private}" \
+				--recipient "${_recipient_public}" \
 				--secret "${_secret}" \
 				--pin "${_pin}" \
+				--ssh-wrap "${_ssh_wrap}" \
+				--empty-is-missing true \
 		< ./notice.txt \
 	#
 !!
@@ -248,25 +308,55 @@
 	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
+	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
+	_sender_public="${__ZTOKENS_EXCHANGE_SENDER_PUBLIC:-}"
+	
+	_recipient_private="${__ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE:-}"
+	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
+	
+	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
+	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	
+	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
+	
 	"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 			exchange encrypt \
-				--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
-				--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+				--sender "${_sender_private}" \
+				--recipient "${_recipient_public}" \
+				--secret "${_secret}" \
+				--pin "${_pin}" \
+				--ssh-wrap "${_ssh_wrap}" \
+				--empty-is-missing true \
 		<<< $'hello world!\n' \
 	| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 			exchange decrypt \
-				--sender ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88 \
-				--recipient ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk \
+				--sender "${_sender_public}" \
+				--recipient "${_recipient_private}" \
+				--secret "${_secret}" \
+				--pin "${_pin}" \
+				--ssh-wrap "${_ssh_wrap}" \
+				--empty-is-missing true \
 	#
 !!
 
 
 
 
-<< tests / quick / exchange / encrypt & dencrypt / files
+<< tests / quick / exchange / encrypt & decrypt / files
 	test "${#}" -eq 0
 	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
+	
+	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
+	_sender_public="${__ZTOKENS_EXCHANGE_SENDER_PUBLIC:-}"
+	
+	_recipient_private="${__ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE:-}"
+	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
+	
+	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
+	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	
+	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
 	readarray -t -- _files \
 		< <( exec -- "${ZRUN}" ':: tests / quick / exchange / files' ) -
@@ -283,22 +373,23 @@
 		time \
 		for _file in "${_files[@]}" ; do
 		
-		_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
-		_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
-		
 		"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 				exchange encrypt \
-					--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
-					--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+					--sender "${_sender_private}" \
+					--recipient "${_recipient_public}" \
 					--secret "${_secret}" \
 					--pin "${_pin}" \
+					--ssh-wrap "${_ssh_wrap}" \
+					--empty-is-missing true \
 			< "${_file}" \
 		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 				exchange decrypt \
-					--sender ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88 \
-					--recipient ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk \
+					--sender "${_sender_public}" \
+					--recipient "${_recipient_private}" \
 					--secret "${_secret}" \
 					--pin "${_pin}" \
+					--ssh-wrap "${_ssh_wrap}" \
+					--empty-is-missing true \
 		| md5sum -b -- /dev/fd/5 5<&0 \
 		| md5sum -c --quiet 5< "${_file}" \
 		#
@@ -309,10 +400,21 @@
 
 
 
-<< tests / quick / exchange / encrypt & dencrypt / random
+<< tests / quick / exchange / encrypt & decrypt / random
 	test "${#}" -eq 0
 	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
+	
+	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
+	_sender_public="${__ZTOKENS_EXCHANGE_SENDER_PUBLIC:-}"
+	
+	_recipient_private="${__ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE:-}"
+	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
+	
+	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
+	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	
+	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
 	for _index_1 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
 	for _index_2 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
@@ -327,25 +429,26 @@
 			if test "${_size}" -le 134217728 ; then break ; fi
 		done
 		
-		_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
-		_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
-		
 		TIMEFORMAT="[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;  ${_size} bytes;"
 		
 		time \
 		head -c "${_size}" < /dev/urandom \
 		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 				exchange encrypt \
-					--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 \
-					--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah \
+					--sender "${_sender_private}" \
+					--recipient "${_recipient_public}" \
 					--secret "${_secret}" \
 					--pin "${_pin}" \
+					--ssh-wrap "${_ssh_wrap}" \
+					--empty-is-missing true \
 		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 				exchange decrypt \
-					--sender ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88 \
-					--recipient ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk \
+					--sender "${_sender_public}" \
+					--recipient "${_recipient_private}" \
 					--secret "${_secret}" \
 					--pin "${_pin}" \
+					--ssh-wrap "${_ssh_wrap}" \
+					--empty-is-missing true \
 			> /dev/null \
 		#
 		
@@ -359,7 +462,7 @@
 
 
 
-<< tests / quick / exchange / files
+--<< tests / quick / exchange / files
 	test "${#}" -eq 0
 	
 	find ./sources -type f | sort
@@ -368,11 +471,82 @@
 
 
 
+
+
+
+
+<< tests / quick / exchange / ssh / generate
+	test "${#}" -eq 0
+	
+	_path="${__OUTPUTS}/ssh-keygen.${$}.${SRANDOM}"
+	
+	ssh-keygen \
+			-q \
+			-t ed25519 \
+			-C 'z-tokens exchange ssh wrap key for testing' \
+			-N '' \
+			-f "${_path}" \
+	#
+	
+	printf -- '## key fingerprint\n'
+	ssh-keygen \
+			-l \
+			-E SHA256 \
+			-f "${_path}.pub" \
+	#
+	printf -- '\n'
+	
+	printf -- '## public key\n'
+	cat -- "${_path}.pub"
+	printf -- '\n'
+	
+	printf -- '## private key\n'
+	cat -- "${_path}"
+	printf -- '\n'
+	
+	rm -- "${_path}" "${_path}.pub"
+!!
+
+
+<< tests / quick / exchange / ssh / load / testing
+	test "${#}" -eq 0
+	
+	ssh-add -- /dev/stdin << 'EOS'
+	-----BEGIN OPENSSH PRIVATE KEY-----
+	b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+	QyNTUxOQAAACC5LNdWIb7GoVWjecSPqzgpDL04TnyQgaTVVYy+pmcEHAAAALCIOkpDiDpK
+	QwAAAAtzc2gtZWQyNTUxOQAAACC5LNdWIb7GoVWjecSPqzgpDL04TnyQgaTVVYy+pmcEHA
+	AAAEBt/+OBtWrN7kZOK/AidxjmK+6hgt80u9RMII7Qf6ADY7ks11YhvsahVaN5xI+rOCkM
+	vThOfJCBpNVVjL6mZwQcAAAAKnotdG9rZW5zIGV4Y2hhbmdlIHNzaCB3cmFwIGtleSBmb3
+	IgdGVzdGluZwECAw==
+	-----END OPENSSH PRIVATE KEY-----
+	EOS
+!!
+
+
+
+
+
+
+
+
+&&== env-fallback __ZTOKENS_EXCHANGE_SENDER_PRIVATE ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920
+&&== env-fallback __ZTOKENS_EXCHANGE_SENDER_PUBLIC ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88
+
+&&== env-fallback __ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk
+&&== env-fallback __ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah
+
+
+:: tests / quick / exchange / set / keys / both :: export -- __ZTOKENS_EXCHANGE_SENDER_PRIVATE=ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 __ZTOKENS_EXCHANGE_SENDER_PUBLIC=ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88 __ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE=ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk __ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC=ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah
+:: tests / quick / exchange / set / keys / self :: export -- __ZTOKENS_EXCHANGE_SENDER_PRIVATE=ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m __ZTOKENS_EXCHANGE_SENDER_PUBLIC= __ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE=ztxrk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqfgdyps __ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC=
+
 :: tests / quick / exchange / set / secret / empty :: export -- __ZTOKENS_EXCHANGE_SECRET=''
-:: tests / quick / exchange / set / secret / random :: export -- __ZTOKENS_EXCHANGE_SECRET="${SRANDOM}"
 :: tests / quick / exchange / set / secret / testing :: export -- __ZTOKENS_EXCHANGE_SECRET='ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm'
 
 :: tests / quick / exchange / set / pin / empty :: export -- __ZTOKENS_EXCHANGE_PIN=''
 :: tests / quick / exchange / set / pin / random :: export -- __ZTOKENS_EXCHANGE_PIN="${SRANDOM}"
+
+:: tests / quick / exchange / set / ssh-wrap / empty :: export -- __ZTOKENS_EXCHANGE_SSH_WRAP=''
+:: tests / quick / exchange / set / ssh-wrap / testing :: export -- __ZTOKENS_EXCHANGE_SSH_WRAP='ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqspf9hel'
 
 
