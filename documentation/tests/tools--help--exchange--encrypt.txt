@@ -11,3 +11,7 @@ Optional arguments:
                         (recipient public key)
   -x,--secret {secret}  (shared secret, for additional security)
   -p,--pin {pin}        (shared PIN, for **WEAK** additional security)
+  --ssh-wrap {key}      (shared SSH agent key handle)
+  -M                    (treat empty arguments as unspecified)
+  --empty-is-missing {bool}
+                        
