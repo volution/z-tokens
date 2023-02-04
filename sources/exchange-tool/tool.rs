@@ -196,6 +196,7 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _secret : Option<String> = None;
 	let mut _pin : Option<String> = None;
 	let mut _ssh_wrapper : Option<String> = None;
+	let mut _empty_is_missing : Option<bool> = None;
 	
 	{
 		let mut _parser = create_parser () .else_wrap (0x93d41b76) ?;
@@ -220,29 +221,36 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.metavar ("{key}")
 				.add_option (&["--ssh-wrap"], ArgStoreOption, "(shared SSH agent key handle)");
 		
+		_parser.refer (&mut _empty_is_missing)
+				.metavar ("{bool}")
+				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified)")
+				.add_option (&["--empty-is-missing"], ArgStoreOption, "");
+		
 		if execute_parser (_parser, _arguments) .else_wrap (0x8a373e9a) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}
 	
-	let _sender_private = _sender_private.filter (|_key| ! _key.is_empty ());
+	let _empty_is_missing = _empty_is_missing.unwrap_or (false);
+	
+	let _sender_private = _sender_private.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
 	let _sender_private = _sender_private.map (SenderPrivateKey::decode_and_zeroize) .transpose () .else_wrap (0x750a42c0) ?;
 	let _sender_private = _sender_private.as_ref ();
 	
-	let _recipient_public = _recipient_public.filter (|_key| ! _key.is_empty ());
+	let _recipient_public = _recipient_public.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
 	let _recipient_public = _recipient_public.map (RecipientPublicKey::decode_and_zeroize) .transpose () .else_wrap (0x233175e9) ?;
 	let _recipient_public = _recipient_public.as_ref ();
 	
-	let _ssh_wrapper = _ssh_wrapper.filter (|_key| ! _key.is_empty ());
+	let _ssh_wrapper = _ssh_wrapper.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
 	let _ssh_wrapper = _ssh_wrapper.map (SshWrapperKey::decode_and_zeroize) .transpose () .else_wrap (0x6d68c3c2) ?;
 	let mut _ssh_wrapper = _ssh_wrapper.map (Rb::new) .map (SshWrapper::connect) .transpose () .else_wrap (0xe1f9e4bf) ?;
 	let _ssh_wrapper = _ssh_wrapper.as_mut ();
 	
-	let _secret = _secret.filter (|_secret| ! _secret.is_empty ());
+	let _secret = _secret.filter (|_secret| ! (_secret.is_empty () && _empty_is_missing));
 	let _secret = _secret.map (SharedSecret::decode_and_zeroize) .transpose () .else_wrap (0xab68aede) ?;
 	let _secret = _secret.as_ref () .map (SharedSecret::as_bytes);
 	
-	let _pin = _pin.filter (|_pin| ! _pin.is_empty ());
+	let _pin = _pin.filter (|_pin| ! (_pin.is_empty () && _empty_is_missing));
 	let _pin = _pin.as_ref () .map (String::as_bytes);
 	
 	let _decrypted = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0xb0e8db93) ?;
@@ -267,6 +275,7 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _secret : Option<String> = None;
 	let mut _pin : Option<String> = None;
 	let mut _ssh_wrapper : Option<String> = None;
+	let mut _empty_is_missing : Option<bool> = None;
 	
 	{
 		let mut _parser = create_parser () .else_wrap (0x608139b1) ?;
@@ -291,29 +300,36 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.metavar ("{key}")
 				.add_option (&["--ssh-wrap"], ArgStoreOption, "(shared SSH agent key handle)");
 		
+		_parser.refer (&mut _empty_is_missing)
+				.metavar ("{bool}")
+				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified)")
+				.add_option (&["--empty-is-missing"], ArgStoreOption, "");
+		
 		if execute_parser (_parser, _arguments) .else_wrap (0xe3a49130) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}
 	
-	let _recipient_private = _recipient_private.filter (|_key| ! _key.is_empty ());
+	let _empty_is_missing = _empty_is_missing.unwrap_or (false);
+	
+	let _recipient_private = _recipient_private.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
 	let _recipient_private = _recipient_private.map (RecipientPrivateKey::decode_and_zeroize) .transpose () .else_wrap (0xd58c9ad4) ?;
 	let _recipient_private = _recipient_private.as_ref ();
 	
-	let _sender_public = _sender_public.filter (|_key| ! _key.is_empty ());
+	let _sender_public = _sender_public.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
 	let _sender_public = _sender_public.map (SenderPublicKey::decode_and_zeroize) .transpose () .else_wrap (0xbb6f004f) ?;
 	let _sender_public = _sender_public.as_ref ();
 	
-	let _ssh_wrapper = _ssh_wrapper.filter (|_key| ! _key.is_empty ());
+	let _ssh_wrapper = _ssh_wrapper.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
 	let _ssh_wrapper = _ssh_wrapper.map (SshWrapperKey::decode_and_zeroize) .transpose () .else_wrap (0x1fea5617) ?;
 	let mut _ssh_wrapper = _ssh_wrapper.map (Rb::new) .map (SshWrapper::connect) .transpose () .else_wrap (0xfeda4c77) ?;
 	let _ssh_wrapper = _ssh_wrapper.as_mut ();
 	
-	let _secret = _secret.filter (|_secret| ! _secret.is_empty ());
+	let _secret = _secret.filter (|_secret| ! (_secret.is_empty () && _empty_is_missing));
 	let _secret = _secret.map (SharedSecret::decode_and_zeroize) .transpose () .else_wrap (0x07d3b030) ?;
 	let _secret = _secret.as_ref () .map (SharedSecret::as_bytes);
 	
-	let _pin = _pin.filter (|_pin| ! _pin.is_empty ());
+	let _pin = _pin.filter (|_pin| ! (_pin.is_empty () && _empty_is_missing));
 	let _pin = _pin.as_ref () .map (String::as_bytes);
 	
 	let _encrypted = read_at_most (stdin_locked (), CRYPTO_ENCRYPTED_SIZE_MAX) .else_wrap (0xf71cef7e) ?;
