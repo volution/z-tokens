@@ -8,6 +8,7 @@ use ::z_tokens_runtime::flags::*;
 use crate::keys::*;
 use crate::crypto::*;
 use crate::armor::*;
+use crate::ssh::*;
 use crate::io::*;
 
 
@@ -356,6 +357,61 @@ pub fn main_dearmor (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _stream = stdout_locked ();
 	_stream.write (&_decoded) .else_wrap (0x2d7f55d6) ?;
 	mem::drop (_stream);
+	
+	Ok (ExitCode::SUCCESS)
+}
+
+
+
+
+
+
+
+
+pub fn main_keys_ssh (_arguments : Vec<String>) -> MainResult<ExitCode> {
+	
+	let mut _agent = SshWrapperAgent::connect () .else_wrap (0x4e058c28) ?;
+	
+	let _keys = _agent.keys () .else_wrap (0x63ecbf4e) ?;
+	
+	let mut _output = BufWriter::with_capacity (STDOUT_BUFFER_SIZE, stdout_locked ());
+	
+	for _key in _keys.iter () {
+		
+		let _key_handle = _key.handle () .else_wrap (0x77ed1b9e) ?;
+		let _key_encoded = _key.encode () .else_wrap (0xe0a1a54a) ?;
+		
+		writeln! (&mut _output) .else_wrap (0x4d2a1a9f) ?;
+		
+		writeln! (&mut _output, "## {}", _key_handle.deref ()) .else_wrap (0x2fc50e68) ?;
+		writeln! (&mut _output, "{}", _key_encoded.deref ()) .else_wrap (0xeb977277) ?;
+		
+		writeln! (&mut _output) .else_wrap (0x387d7ec5) ?;
+	}
+	
+	
+	if false {
+		
+		for _key in _keys.iter () {
+			
+			let _key_handle = _key.handle () .else_wrap (0x77ed1b9e) ?;
+			
+			let mut _wrapper = SshWrapper::new (_key.clone (), _agent) .else_wrap (0x9adff71c) ?;
+			
+			let _wrap_input = [0x0u8; 32];
+			let mut _wrap_output = [0u8; 32];
+			_wrapper.wrap (&_wrap_input, &mut _wrap_output) .else_wrap (0x9fe5ffb5) ?;
+			
+			let _wrap_output : (u128, u128) = unsafe { mem::transmute (_wrap_output) };
+			
+			writeln! (&mut _output, "##  {:60}  {:032x}{:032x}", _key_handle.deref (), &_wrap_output.0, &_wrap_output.1) .else_wrap (0x4cef22ff) ?;
+			
+			_agent = _wrapper.into_agent ();
+		}
+	}
+	
+	
+	drop (_output.into_inner () .else_replace (0xc1441245) ?);
 	
 	Ok (ExitCode::SUCCESS)
 }

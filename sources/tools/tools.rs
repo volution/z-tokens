@@ -20,6 +20,7 @@ use ::z_tokens_hashes_tool::{
 #[ cfg (feature = "z-tokens-exchange-tool") ]
 use ::z_tokens_exchange_tool::{
 		tool::main_keys as main_exchange_keys,
+		tool::main_keys_ssh as main_exchange_keys_ssh,
 		tool::main_encrypt as main_exchange_encrypt,
 		tool::main_decrypt as main_exchange_decrypt,
 		tool::main_armor as main_exchange_armor,
@@ -142,6 +143,11 @@ pub fn main () -> MainResult<ExitCode> {
 		(&["exchange", "keys"], _) => {
 			_arguments.insert (0, String::from ("z-tokens exchange keys"));
 			main_exchange_keys (_arguments) .else_wrap (0x0df94b2b)
+		}
+		#[ cfg (feature = "z-tokens-exchange-tool") ]
+		(&["exchange", "keys", "ssh"], _) => {
+			_arguments.insert (0, String::from ("z-tokens exchange keys ssh"));
+			main_exchange_keys_ssh (_arguments) .else_wrap (0xfe84133d)
 		}
 		#[ cfg (feature = "z-tokens-exchange-tool") ]
 		(&["exchange", "encrypt"], _) => {
