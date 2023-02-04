@@ -216,7 +216,23 @@ pub fn decode_shared_secret (_string : &str) -> KeyEncodingResult<SharedSecret> 
 }
 
 
-fn decode_raw (_prefix : &str, _encoded : &str, _data : &mut [u8]) -> KeyEncodingResult {
+pub(crate) fn decode_raw (_prefix : &str, _encoded : &str, _data : &mut [u8]) -> KeyEncodingResult {
+	
+	let _data_actual = decode_raw_vec (_prefix, _encoded) ?;
+	
+	if _data_actual.len () != _data.len () {
+		fail! (0xdce379e1);
+	}
+	
+	_data.copy_from_slice (&_data_actual);
+	
+	zeroize_and_drop (_data_actual);
+	
+	Ok (())
+}
+
+
+pub(crate) fn decode_raw_vec (_prefix : &str, _encoded : &str) -> KeyEncodingResult<Vec<u8>> {
 	
 	// FIXME:  Find a way to eliminate allocations!
 	let (_prefix_actual, _bech_nibles, _bech_variant) = ::bech32::decode (_encoded) .else_wrap (0x2ba31a69) ?;
@@ -228,20 +244,12 @@ fn decode_raw (_prefix : &str, _encoded : &str, _data : &mut [u8]) -> KeyEncodin
 		fail! (0xcbd4e755);
 	}
 	
-	let _data_actual : Vec<u8>;
-	_data_actual = ::bech32::FromBase32::from_base32 (&_bech_nibles) .else_wrap (0x799c1726) ?;
-	
-	if _data_actual.len () != _data.len () {
-		fail! (0xdce379e1);
-	}
-	
-	_data.copy_from_slice (&_data_actual);
+	let _data = ::bech32::FromBase32::from_base32 (&_bech_nibles) .else_wrap (0x799c1726) ?;
 	
 	let _bech_nibles : Vec<u8> = unsafe { mem::transmute (_bech_nibles) };
 	zeroize_and_drop (_bech_nibles);
-	zeroize_and_drop (_data_actual);
 	
-	Ok (())
+	Ok (_data)
 }
 
 
@@ -279,7 +287,7 @@ pub fn encode_shared_secret (_key : &SharedSecret) -> KeyEncodingResult<Rb<Strin
 }
 
 
-fn encode_raw (_prefix : &str, _data : &[u8]) -> KeyEncodingResult<Rb<String>> {
+pub(crate) fn encode_raw (_prefix : &str, _data : &[u8]) -> KeyEncodingResult<Rb<String>> {
 	
 	let _bech_nibles_capacity = _data.len () * 8 / 5 + 1;
 	let _bech_string_capacity = _prefix.len () + 1 + _bech_nibles_capacity;
