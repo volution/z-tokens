@@ -52,7 +52,8 @@ static CRYPTO_SECRET_SALT_CONTEXT : &str = "z-tokens exchange secret salt (2023a
 static CRYPTO_SECRET_KEY_CONTEXT : &str = "z-tokens exchange secret key (2023a)";
 static CRYPTO_PIN_SALT_CONTEXT : &str = "z-tokens exchange pin salt (2023a)";
 static CRYPTO_PIN_KEY_CONTEXT : &str = "z-tokens exchange pin key (2023a)";
-static CRYPTO_SSH_WRAPPED_INPUT_CONTEXT : &str = "z-tokens exchange ssh wrapped input (2023a)";
+static CRYPTO_SSH_WRAP_INPUT_CONTEXT : &str = "z-tokens exchange ssh wrap input (2023a)";
+static CRYPTO_SSH_WRAP_OUTPUT_CONTEXT : &str = "z-tokens exchange ssh wrap output (2023a)";
 
 
 const CRYPTO_SECRET_ARGON_ALGORITHM : ::argon2::Algorithm = ::argon2::Algorithm::Argon2id;
@@ -338,17 +339,25 @@ fn derive_keys_phase_2 (
 {
 	let _wrapped_key = if let Some (_ssh_wrapper) = _ssh_wrapper {
 		
-		let _wrapped_input : [u8; 32] =
-				::blake3::Hasher::new_derive_key (CRYPTO_SSH_WRAPPED_INPUT_CONTEXT)
+		let _wrap_input : [u8; 32] =
+				::blake3::Hasher::new_derive_key (CRYPTO_SSH_WRAP_INPUT_CONTEXT)
 				.update (_base_key)
 				.update (_salt)
 				.finalize ()
 				.into ();
 		
-		let mut _wrapped_output = [0u8; 32];
-		_ssh_wrapper.wrap (&_wrapped_input, &mut _wrapped_output) .else_wrap (0xcc07e95e) ?;
+		let mut _wrap_output = [0u8; 32];
+		_ssh_wrapper.wrap (&_wrap_input, &mut _wrap_output) .else_wrap (0xcc07e95e) ?;
 		
-		Some (_wrapped_output)
+		let _wrap_output : [u8; 32] =
+				::blake3::Hasher::new_derive_key (CRYPTO_SSH_WRAP_OUTPUT_CONTEXT)
+				.update (_base_key)
+				.update (_salt)
+				.update (&_wrap_output)
+				.finalize ()
+				.into ();
+		
+		Some (_wrap_output)
 	} else {
 		None
 	};
