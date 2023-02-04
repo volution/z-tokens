@@ -92,8 +92,8 @@ impl SshWrapper {
 	}
 	
 	
-	pub fn into_agent (self) -> SshWrapperAgent {
-		self.agent
+	pub fn into_agent (self) -> SshResult<SshWrapperAgent> {
+		Ok (self.agent)
 	}
 	
 	

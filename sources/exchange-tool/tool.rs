@@ -443,7 +443,7 @@ pub fn main_keys_ssh (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			
 			writeln! (&mut _output, "##  {:60}  {:032x}{:032x}", _key_handle.deref (), &_wrap_output.0, &_wrap_output.1) .else_wrap (0x4cef22ff) ?;
 			
-			_agent = _wrapper.into_agent ();
+			_agent = _wrapper.into_agent () .else_wrap (0x6fa5e28f) ?;
 		}
 	}
 	

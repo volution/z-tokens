@@ -71,7 +71,15 @@ bs58 = { version = "^0.4", default-features = false, features = ["std"] }
 crc-any = { version = "^2.4", default-features = false, features = [] }
 argon2 = { version = "^0.4", default-features = false, features = ["std"] }
 
-russh-keys = { version = "^0.24", default-features = false, features = ["openssl"] }
+
+
+
+[target.'cfg(any( all(target_os = "linux", target_env = "gnu"), target_os = "android" ))'.dependencies]
+russh-keys = { version = "^0.24", default-features = false, features = ["vendored-openssl"] }
+tokio = { version = "^1.25", default-features = false, features = ["rt", "net"] }
+
+[target.'cfg(any( all(target_os = "linux", target_env = "musl"), target_os = "macos" ))'.dependencies]
+russh-keys = { version = "^0.24", default-features = false, features = [] }
 tokio = { version = "^1.25", default-features = false, features = ["rt", "net"] }
 
 
