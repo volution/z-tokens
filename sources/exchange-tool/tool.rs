@@ -3,6 +3,7 @@
 use ::vrl_preludes::std_plus_extras::*;
 use ::vrl_errors::*;
 use ::z_tokens_runtime::flags::*;
+use ::z_tokens_runtime::memory::Rb;
 
 
 use crate::keys::*;
@@ -194,6 +195,7 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _recipient_public : Option<String> = None;
 	let mut _secret : Option<String> = None;
 	let mut _pin : Option<String> = None;
+	let mut _ssh_wrapper : Option<String> = None;
 	
 	{
 		let mut _parser = create_parser () .else_wrap (0x93d41b76) ?;
@@ -214,6 +216,10 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.metavar ("{pin}")
 				.add_option (&["-p", "--pin"], ArgStoreOption, "(shared PIN, for **WEAK** additional security)");
 		
+		_parser.refer (&mut _ssh_wrapper)
+				.metavar ("{key}")
+				.add_option (&["--ssh-wrap"], ArgStoreOption, "(shared SSH agent key handle)");
+		
 		if execute_parser (_parser, _arguments) .else_wrap (0x8a373e9a) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
@@ -227,6 +233,11 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _recipient_public = _recipient_public.map (RecipientPublicKey::decode_and_zeroize) .transpose () .else_wrap (0x233175e9) ?;
 	let _recipient_public = _recipient_public.as_ref ();
 	
+	let _ssh_wrapper = _ssh_wrapper.filter (|_key| ! _key.is_empty ());
+	let _ssh_wrapper = _ssh_wrapper.map (SshWrapperKey::decode_and_zeroize) .transpose () .else_wrap (0x6d68c3c2) ?;
+	let mut _ssh_wrapper = _ssh_wrapper.map (Rb::new) .map (SshWrapper::connect) .transpose () .else_wrap (0xe1f9e4bf) ?;
+	let _ssh_wrapper = _ssh_wrapper.as_mut ();
+	
 	let _secret = _secret.filter (|_secret| ! _secret.is_empty ());
 	let _secret = _secret.map (SharedSecret::decode_and_zeroize) .transpose () .else_wrap (0xab68aede) ?;
 	let _secret = _secret.as_ref () .map (SharedSecret::as_bytes);
@@ -237,7 +248,7 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _decrypted = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0xb0e8db93) ?;
 	
 	let mut _encrypted = Vec::new ();
-	encrypt (_sender_private, _recipient_public, _secret, _pin, &_decrypted, &mut _encrypted) .else_wrap (0x38d2ce1e) ?;
+	encrypt (_sender_private, _recipient_public, _secret, _pin, &_decrypted, &mut _encrypted, _ssh_wrapper) .else_wrap (0x38d2ce1e) ?;
 	
 	let mut _stream = stdout_locked ();
 	_stream.write (&_encrypted) .else_wrap (0x815d15bc) ?;
@@ -255,6 +266,7 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _sender_public : Option<String> = None;
 	let mut _secret : Option<String> = None;
 	let mut _pin : Option<String> = None;
+	let mut _ssh_wrapper : Option<String> = None;
 	
 	{
 		let mut _parser = create_parser () .else_wrap (0x608139b1) ?;
@@ -275,6 +287,10 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.metavar ("{pin}")
 				.add_option (&["-p", "--pin"], ArgStoreOption, "(shared PIN, for **WEAK** additional security)");
 		
+		_parser.refer (&mut _ssh_wrapper)
+				.metavar ("{key}")
+				.add_option (&["--ssh-wrap"], ArgStoreOption, "(shared SSH agent key handle)");
+		
 		if execute_parser (_parser, _arguments) .else_wrap (0xe3a49130) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
@@ -288,6 +304,11 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _sender_public = _sender_public.map (SenderPublicKey::decode_and_zeroize) .transpose () .else_wrap (0xbb6f004f) ?;
 	let _sender_public = _sender_public.as_ref ();
 	
+	let _ssh_wrapper = _ssh_wrapper.filter (|_key| ! _key.is_empty ());
+	let _ssh_wrapper = _ssh_wrapper.map (SshWrapperKey::decode_and_zeroize) .transpose () .else_wrap (0x1fea5617) ?;
+	let mut _ssh_wrapper = _ssh_wrapper.map (Rb::new) .map (SshWrapper::connect) .transpose () .else_wrap (0xfeda4c77) ?;
+	let _ssh_wrapper = _ssh_wrapper.as_mut ();
+	
 	let _secret = _secret.filter (|_secret| ! _secret.is_empty ());
 	let _secret = _secret.map (SharedSecret::decode_and_zeroize) .transpose () .else_wrap (0x07d3b030) ?;
 	let _secret = _secret.as_ref () .map (SharedSecret::as_bytes);
@@ -298,7 +319,7 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _encrypted = read_at_most (stdin_locked (), CRYPTO_ENCRYPTED_SIZE_MAX) .else_wrap (0xf71cef7e) ?;
 	
 	let mut _decrypted = Vec::new ();
-	decrypt (_recipient_private, _sender_public, _secret, _pin, &_encrypted, &mut _decrypted) .else_wrap (0x95273e1d) ?;
+	decrypt (_recipient_private, _sender_public, _secret, _pin, &_encrypted, &mut _decrypted, _ssh_wrapper) .else_wrap (0x95273e1d) ?;
 	
 	let mut _stream = stdout_locked ();
 	_stream.write (&_decrypted) .else_wrap (0x19352ca2) ?;
