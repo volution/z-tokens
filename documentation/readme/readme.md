@@ -136,6 +136,8 @@ z-tokens exchange encrypt --help
 z-tokens exchange decrypt --help
 z-tokens exchange armor --help
 z-tokens exchange dearmor --help
+z-tokens exchange ssh keys --help
+z-tokens exchange ssh wrap --help
 
 z-tokens --readme
 ~~~~
