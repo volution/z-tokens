@@ -20,6 +20,7 @@ define_error! (pub ArmorError, result : ArmorResult);
 
 pub(crate) const ARMOR_DECODED_SIZE_MAX : usize = 128 * 1024 * 1024;
 
+
 pub(crate) const ARMOR_ENCODED_SIZE_MAX : usize =
 		(
 			(
@@ -28,8 +29,13 @@ pub(crate) const ARMOR_ENCODED_SIZE_MAX : usize =
 					+ (ARMOR_DECODED_SIZE_MAX * COMPRESSION_OVERHEAD_FRACTION / COMPRESSION_OVERHEAD_DIVIDER) + COMPRESSION_OVERHEAD_EXTRA
 					+ 4 + ARMOR_ENCODED_FINGERPRINT
 				) / CODING_CHUNK_DECODED_SIZE
-			) + 1
-		) * (CODING_CHUNK_ENCODED_SIZE + 1);
+				+ 1
+			) / CODING_CHUNKS_PER_LINE
+			+ 1
+		) * (
+			9 + 4
+			+ CODING_CHUNKS_PER_LINE * (CODING_CHUNKS_PER_LINE + CODING_CHUNK_ENCODED_SIZE + 1)
+		);
 
 
 pub(crate) const ARMOR_ENCODED_FINGERPRINT : usize = CODING_CHUNK_DECODED_SIZE * 2 - 4;
