@@ -12,6 +12,8 @@ tools--help--exchange--encrypt :: exchange encrypt --help
 tools--help--exchange--decrypt :: exchange decrypt --help
 tools--help--exchange--armor :: exchange armor --help
 tools--help--exchange--dearmor :: exchange dearmor --help
+tools--help--exchange--ssh--keys :: exchange ssh keys --help
+tools--help--exchange--ssh--wrap :: exchange ssh wrap --help
 
 
 
