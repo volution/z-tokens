@@ -102,18 +102,18 @@ pub fn encrypt (
 	let _compress_capacity = compress_capacity_max (_decrypted_len) .else_wrap (0x4198ca8b) ?;
 	let _compress_capacity = _compress_capacity + 4 + CRYPTO_ENCRYPTED_PADDING + CRYPTO_ENCRYPTED_OVERHEAD;
 	
-	let mut _compress_buffer = Vec::with_capacity (_compress_capacity);
-	compress (_decrypted, &mut _compress_buffer) .else_wrap (0xa9fadcdc) ?;
+	let mut _intermediate_buffer = Vec::with_capacity (_compress_capacity);
+	compress (_decrypted, &mut _intermediate_buffer) .else_wrap (0xa9fadcdc) ?;
 	
-	if _compress_buffer.len () >= _decrypted_len {
+	if _intermediate_buffer.len () >= _decrypted_len {
 		
-		_compress_buffer.clear ();
-		_compress_buffer.extend_from_slice (_decrypted);
+		_intermediate_buffer.clear ();
+		_intermediate_buffer.extend_from_slice (_decrypted);
 	}
 	
-	encode_u32_push (_decrypted_len as u32, &mut _compress_buffer);
+	encode_u32_push (_decrypted_len as u32, &mut _intermediate_buffer);
 	
-	padding_push (CRYPTO_ENCRYPTED_PADDING, &mut _compress_buffer);
+	padding_push (CRYPTO_ENCRYPTED_PADDING, &mut _intermediate_buffer);
 	
 	let _sender = _sender.map (|_key| &_key.0.0);
 	let _recipient = _recipient.map (|_key| &_key.0.0);
@@ -124,22 +124,22 @@ pub fn encrypt (
 	
 	let (_encryption_key, _authentication_key) = derive_keys_phase_2 (&_base_key, &_salt, _ssh_wrapper) ?;
 	
-	apply_encryption (&_encryption_key, &mut _compress_buffer) ?;
+	apply_encryption (&_encryption_key, &mut _intermediate_buffer) ?;
 	
-	let _mac = apply_authentication (&_authentication_key, &_compress_buffer) ?;
+	let _mac = apply_authentication (&_authentication_key, &_intermediate_buffer) ?;
 	
-	_compress_buffer.extend_from_slice (&_mac);
+	_intermediate_buffer.extend_from_slice (&_mac);
 	
-	apply_all_or_nothing_mangling (&_aont_key, &mut _salt, &_compress_buffer) ?;
+	apply_all_or_nothing_mangling (&_aont_key, &mut _salt, &_intermediate_buffer) ?;
 	
-	_compress_buffer.extend_from_slice (&_salt);
+	_intermediate_buffer.extend_from_slice (&_salt);
 	
-	assert! (_compress_buffer.len () <= (_decrypted_len + 4 + CRYPTO_ENCRYPTED_PADDING + CRYPTO_ENCRYPTED_OVERHEAD), "[0e17b154]");
+	assert! (_intermediate_buffer.len () <= (_decrypted_len + 4 + CRYPTO_ENCRYPTED_PADDING + CRYPTO_ENCRYPTED_OVERHEAD), "[0e17b154]");
 	
-	let _encode_capacity = encode_capacity_max (_compress_buffer.len ()) .else_wrap (0x7f15a8ec) ?;
+	let _encode_capacity = encode_capacity_max (_intermediate_buffer.len ()) .else_wrap (0x7f15a8ec) ?;
 	
 	let mut _encode_buffer = Vec::with_capacity (_encode_capacity);
-	encode (&_compress_buffer, &mut _encode_buffer) .else_wrap (0x5bc239f9) ?;
+	encode (&_intermediate_buffer, &mut _encode_buffer) .else_wrap (0x5bc239f9) ?;
 	
 	assert! (_encode_buffer.len () <= CRYPTO_ENCRYPTED_SIZE_MAX, "[bb3c2546]  {} <= {}", _encode_buffer.len (), CRYPTO_ENCRYPTED_SIZE_MAX);
 	
@@ -170,46 +170,46 @@ pub fn decrypt (
 	
 	let _decode_capacity = decode_capacity_max (_encrypted_len) .else_wrap (0xae545303) ?;
 	
-	let mut _decode_buffer = Vec::with_capacity (_decode_capacity);
-	decode (_encrypted, &mut _decode_buffer) .else_wrap (0x10ff413a) ?;
+	let mut _intermediate_buffer = Vec::with_capacity (_decode_capacity);
+	decode (_encrypted, &mut _intermediate_buffer) .else_wrap (0x10ff413a) ?;
 	
 	let _sender = _sender.map (|_key| &_key.0.0);
 	let _recipient = _recipient.map (|_key| &_key.0.0);
 	
 	let (_base_key, _aont_key) = derive_keys_phase_1 (_recipient, _sender, _secret, _pin, false) ?;
 	
-	let mut _salt = bytes_pop::<CRYPTO_ENCRYPTED_SALT> (&mut _decode_buffer) .else_wrap (0x78ed3811) ?;
+	let mut _salt = bytes_pop::<CRYPTO_ENCRYPTED_SALT> (&mut _intermediate_buffer) .else_wrap (0x78ed3811) ?;
 	
-	apply_all_or_nothing_mangling (&_aont_key, &mut _salt, &_decode_buffer) ?;
+	apply_all_or_nothing_mangling (&_aont_key, &mut _salt, &_intermediate_buffer) ?;
 	
 	let (_encryption_key, _authentication_key) = derive_keys_phase_2 (&_base_key, &_salt, _ssh_wrapper) ?;
 	
-	let _mac_expected = bytes_pop::<CRYPTO_ENCRYPTED_MAC> (&mut _decode_buffer) .else_wrap (0x88084589) ?;
+	let _mac_expected = bytes_pop::<CRYPTO_ENCRYPTED_MAC> (&mut _intermediate_buffer) .else_wrap (0x88084589) ?;
 	
-	let _mac_actual = apply_authentication (&_authentication_key, &_decode_buffer) ?;
+	let _mac_actual = apply_authentication (&_authentication_key, &_intermediate_buffer) ?;
 	
 	if ! ::constant_time_eq::constant_time_eq (&_mac_actual, &_mac_expected) {
 		fail! (0xad70c84c);
 	}
 	
-	apply_encryption (&_encryption_key, &mut _decode_buffer) ?;
+	apply_encryption (&_encryption_key, &mut _intermediate_buffer) ?;
 	
-	padding_pop (CRYPTO_ENCRYPTED_PADDING, &mut _decode_buffer) .else_wrap (0xbbdd100e) ?;
+	padding_pop (CRYPTO_ENCRYPTED_PADDING, &mut _intermediate_buffer) .else_wrap (0xbbdd100e) ?;
 	
-	let _decrypted_len = decode_u32_pop (&mut _decode_buffer) .else_wrap (0xa8b8f7d8) ? as usize;
+	let _decrypted_len = decode_u32_pop (&mut _intermediate_buffer) .else_wrap (0xa8b8f7d8) ? as usize;
 	
 	if _decrypted_len > CRYPTO_DECRYPTED_SIZE_MAX {
 		fail! (0x433f5bb6);
 	}
 	
-	let _decompress_buffer = if _decrypted_len > _decode_buffer.len () {
+	let _decompress_buffer = if _decrypted_len > _intermediate_buffer.len () {
 		
 		let mut _decompress_buffer = Vec::with_capacity (_decrypted_len);
-		decompress (&_decode_buffer, &mut _decompress_buffer) .else_wrap (0xec71bc5c) ?;
+		decompress (&_intermediate_buffer, &mut _decompress_buffer) .else_wrap (0xec71bc5c) ?;
 		
 		_decompress_buffer
 	} else {
-		_decode_buffer
+		_intermediate_buffer
 	};
 	
 	if _decompress_buffer.len () != _decrypted_len {

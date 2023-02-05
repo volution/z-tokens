@@ -63,36 +63,36 @@ pub fn armor (_decoded : &[u8], _encoded : &mut Vec<u8>) -> ArmorResult {
 	let _compress_capacity = compress_capacity_max (_decoded_len) .else_wrap (0xd7e27086) ?;
 	let _compress_capacity = _compress_capacity + 4 + ARMOR_ENCODED_FINGERPRINT;
 	
-	let mut _compress_buffer = Vec::with_capacity (_compress_capacity);
-	compress (_decoded, &mut _compress_buffer) .else_wrap (0x08e19178) ?;
+	let mut _intermediate_buffer = Vec::with_capacity (_compress_capacity);
+	compress (_decoded, &mut _intermediate_buffer) .else_wrap (0x08e19178) ?;
 	
-	if _compress_buffer.len () >= _decoded_len {
+	if _intermediate_buffer.len () >= _decoded_len {
 		
-		_compress_buffer.clear ();
-		_compress_buffer.extend_from_slice (_decoded);
+		_intermediate_buffer.clear ();
+		_intermediate_buffer.extend_from_slice (_decoded);
 	}
 	
 	// NOTE:  wrapping...
 	
-	encode_u32_push (_decoded_len as u32, &mut _compress_buffer);
+	encode_u32_push (_decoded_len as u32, &mut _intermediate_buffer);
 	
 	// NOTE:  all-or-nothing...
 	
-	let mut _fingerprint = apply_fingerprint (&_compress_buffer) ?;
+	let mut _fingerprint = apply_fingerprint (&_intermediate_buffer) ?;
 	
-	apply_all_or_nothing_encryption (&_fingerprint, &mut _compress_buffer) ?;
-	apply_all_or_nothing_mangling (&mut _fingerprint, &_compress_buffer) ?;
+	apply_all_or_nothing_encryption (&_fingerprint, &mut _intermediate_buffer) ?;
+	apply_all_or_nothing_mangling (&mut _fingerprint, &_intermediate_buffer) ?;
 	
-	_compress_buffer.extend_from_slice (&_fingerprint);
+	_intermediate_buffer.extend_from_slice (&_fingerprint);
 	
-	assert! (_compress_buffer.len () <= (_decoded_len + 4 + ARMOR_ENCODED_FINGERPRINT), "[8c327ecd]");
+	assert! (_intermediate_buffer.len () <= (_decoded_len + 4 + ARMOR_ENCODED_FINGERPRINT), "[8c327ecd]");
 	
 	// NOTE:  encoding...
 	
-	let _encode_capacity = encode_capacity_max (_compress_buffer.len ()) .else_wrap (0x00bf84c9) ?;
+	let _encode_capacity = encode_capacity_max (_intermediate_buffer.len ()) .else_wrap (0x00bf84c9) ?;
 	
 	let mut _encode_buffer = Vec::with_capacity (_encode_capacity);
-	encode (&_compress_buffer, &mut _encode_buffer) .else_wrap (0x080c7733) ?;
+	encode (&_intermediate_buffer, &mut _encode_buffer) .else_wrap (0x080c7733) ?;
 	
 	assert! (_encode_buffer.len () <= ARMOR_ENCODED_SIZE_MAX, "[e14aea63]  {} <= {}", _encode_buffer.len (), ARMOR_ENCODED_SIZE_MAX);
 	
@@ -119,25 +119,25 @@ pub fn dearmor (_encoded : &[u8], _decoded : &mut Vec<u8>) -> ArmorResult {
 	
 	let _decode_capacity = decode_capacity_max (_encoded_len) .else_wrap (0x7321f5b4) ?;
 	
-	let mut _decode_buffer = Vec::with_capacity (_decode_capacity);
-	decode (_encoded, &mut _decode_buffer) .else_wrap (0x6432ccd9) ?;
+	let mut _intermediate_buffer = Vec::with_capacity (_decode_capacity);
+	decode (_encoded, &mut _intermediate_buffer) .else_wrap (0x6432ccd9) ?;
 	
 	// NOTE:  all-or-nothing...
 	
-	let mut _fingerprint = bytes_pop::<ARMOR_ENCODED_FINGERPRINT> (&mut _decode_buffer) .else_wrap (0xcfdbfbc3) ?;
+	let mut _fingerprint = bytes_pop::<ARMOR_ENCODED_FINGERPRINT> (&mut _intermediate_buffer) .else_wrap (0xcfdbfbc3) ?;
 	
-	apply_all_or_nothing_mangling (&mut _fingerprint, &_decode_buffer) ?;
-	apply_all_or_nothing_encryption (&_fingerprint, &mut _decode_buffer) ?;
+	apply_all_or_nothing_mangling (&mut _fingerprint, &_intermediate_buffer) ?;
+	apply_all_or_nothing_encryption (&_fingerprint, &mut _intermediate_buffer) ?;
 	
 	// NOTE:  unwrapping...
 	
-	let _fingerprint_actual = apply_fingerprint (&_decode_buffer) ?;
+	let _fingerprint_actual = apply_fingerprint (&_intermediate_buffer) ?;
 	
 	if ! ::constant_time_eq::constant_time_eq (&_fingerprint_actual, &_fingerprint) {
 		fail! (0x7c3ab20d);
 	}
 	
-	let _decoded_len = decode_u32_pop (&mut _decode_buffer) .else_wrap (0xa8d32a02) ? as usize;
+	let _decoded_len = decode_u32_pop (&mut _intermediate_buffer) .else_wrap (0xa8d32a02) ? as usize;
 	
 	if _decoded_len > ARMOR_DECODED_SIZE_MAX {
 		fail! (0xd0db488b);
@@ -145,14 +145,14 @@ pub fn dearmor (_encoded : &[u8], _decoded : &mut Vec<u8>) -> ArmorResult {
 	
 	// NOTE:  decompressing...
 	
-	let _decompress_buffer = if _decoded_len > _decode_buffer.len () {
+	let _decompress_buffer = if _decoded_len > _intermediate_buffer.len () {
 		
 		let mut _decompress_buffer = Vec::with_capacity (_decoded_len);
-		decompress (&_decode_buffer, &mut _decompress_buffer) .else_wrap (0x70f5d0b4) ?;
+		decompress (&_intermediate_buffer, &mut _decompress_buffer) .else_wrap (0x70f5d0b4) ?;
 		
 		_decompress_buffer
 	} else {
-		_decode_buffer
+		_intermediate_buffer
 	};
 	
 	if _decompress_buffer.len () != _decoded_len {
