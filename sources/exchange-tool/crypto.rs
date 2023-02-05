@@ -105,6 +105,12 @@ pub fn encrypt (
 	let mut _compress_buffer = Vec::with_capacity (_compress_capacity);
 	compress (_decrypted, &mut _compress_buffer) .else_wrap (0xa9fadcdc) ?;
 	
+	if _compress_buffer.len () >= _decrypted_len {
+		
+		_compress_buffer.clear ();
+		_compress_buffer.extend_from_slice (_decrypted);
+	}
+	
 	encode_u32_push (_decrypted_len as u32, &mut _compress_buffer);
 	
 	padding_push (CRYPTO_ENCRYPTED_PADDING, &mut _compress_buffer);
@@ -127,6 +133,8 @@ pub fn encrypt (
 	apply_all_or_nothing_mangling (&_aont_key, &mut _salt, &_compress_buffer) ?;
 	
 	_compress_buffer.extend_from_slice (&_salt);
+	
+	assert! (_compress_buffer.len () <= (_decrypted_len + 4 + CRYPTO_ENCRYPTED_PADDING + CRYPTO_ENCRYPTED_OVERHEAD), "[0e17b154]");
 	
 	let _encode_capacity = encode_capacity_max (_compress_buffer.len ()) .else_wrap (0x7f15a8ec) ?;
 	
@@ -194,8 +202,15 @@ pub fn decrypt (
 		fail! (0x433f5bb6);
 	}
 	
-	let mut _decompress_buffer = Vec::with_capacity (_decrypted_len);
-	decompress (&_decode_buffer, &mut _decompress_buffer) .else_wrap (0xec71bc5c) ?;
+	let _decompress_buffer = if _decrypted_len > _decode_buffer.len () {
+		
+		let mut _decompress_buffer = Vec::with_capacity (_decrypted_len);
+		decompress (&_decode_buffer, &mut _decompress_buffer) .else_wrap (0xec71bc5c) ?;
+		
+		_decompress_buffer
+	} else {
+		_decode_buffer
+	};
 	
 	if _decompress_buffer.len () != _decrypted_len {
 		fail! (0x0610eb74);

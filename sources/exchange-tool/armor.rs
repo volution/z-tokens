@@ -66,6 +66,12 @@ pub fn armor (_decoded : &[u8], _encoded : &mut Vec<u8>) -> ArmorResult {
 	let mut _compress_buffer = Vec::with_capacity (_compress_capacity);
 	compress (_decoded, &mut _compress_buffer) .else_wrap (0x08e19178) ?;
 	
+	if _compress_buffer.len () >= _decoded_len {
+		
+		_compress_buffer.clear ();
+		_compress_buffer.extend_from_slice (_decoded);
+	}
+	
 	// NOTE:  wrapping...
 	
 	encode_u32_push (_decoded_len as u32, &mut _compress_buffer);
@@ -78,6 +84,8 @@ pub fn armor (_decoded : &[u8], _encoded : &mut Vec<u8>) -> ArmorResult {
 	apply_all_or_nothing_mangling (&mut _fingerprint, &_compress_buffer) ?;
 	
 	_compress_buffer.extend_from_slice (&_fingerprint);
+	
+	assert! (_compress_buffer.len () <= (_decoded_len + 4 + ARMOR_ENCODED_FINGERPRINT), "[8c327ecd]");
 	
 	// NOTE:  encoding...
 	
@@ -137,8 +145,15 @@ pub fn dearmor (_encoded : &[u8], _decoded : &mut Vec<u8>) -> ArmorResult {
 	
 	// NOTE:  decompressing...
 	
-	let mut _decompress_buffer = Vec::with_capacity (_decoded_len);
-	decompress (&_decode_buffer, &mut _decompress_buffer) .else_wrap (0x70f5d0b4) ?;
+	let _decompress_buffer = if _decoded_len > _decode_buffer.len () {
+		
+		let mut _decompress_buffer = Vec::with_capacity (_decoded_len);
+		decompress (&_decode_buffer, &mut _decompress_buffer) .else_wrap (0x70f5d0b4) ?;
+		
+		_decompress_buffer
+	} else {
+		_decode_buffer
+	};
 	
 	if _decompress_buffer.len () != _decoded_len {
 		fail! (0xc763571b);
