@@ -109,3 +109,13 @@
 	#
 !!
 
+
+<< cargo / dependencies / list / latest
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / dependencies / list' \
+	| sort -V -r -k 2,2 -t ':' \
+	| sort -u -s -k 1,1 -t ':' \
+	#
+!!
+
+

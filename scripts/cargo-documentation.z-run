@@ -10,11 +10,15 @@
 
 << cargo / documentation / build / internals
 	readarray -t -d $'\n' -- _packages \
-		< <( exec -- "${ZRUN}" ':: cargo / dependencies / list' ) \
+		< <( exec -- "${ZRUN}" ':: cargo / dependencies / list / latest' ) \
 	#
 	_arguments=()
 	for _package in "${_packages[@]}" ; do
 		case "${_package}" in
+			( memsec:* | proc-macro2:* | quote:* | syn:* | synstructure:* | unicode-ident:* | unicode-xid:* | md5:* )
+				## FIXME:  WTF?!
+				continue
+			;;
 			( * )
 				_arguments+=( --package "${_package}" )
 			;;
