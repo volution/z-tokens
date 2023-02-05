@@ -5,9 +5,9 @@
 * executable    : /mnt/volatile/ciprian/workbench/rust--scratch/outputs/binaries/z-tokens--release--linux--native
 * executable-0  : /mnt/motirare/ciprian/workbench/miscellaneous/z-tokens/.outputs/binaries/z-tokens--release--linux--native
 * build target  : release
-* build number  : 12721, 2023-02-04-15-08-10
+* build number  : 12788, 2023-02-05-17-03-34
 * code & issues : https://github.com/volution/z-tokens
-* sources git   : 8e10352fbaca389741c4561b9332e5c99d709ed6-uncommitted
-* sources hash  : 734b20bc7ea097824af6a7c2b1899512
+* sources git   : c47ea5bdfe61e7e42411f5c5469b7c29b4232e7f-uncommitted
+* sources hash  : e6ba6ef21cfc8940ae136ccdb6d63e33
 * uname node    : xiyipoke
 * uname system  : Linux, 6.1.7-1-default, x86_64
