@@ -2,9 +2,9 @@
 9ffca391e8c23c8dda9e381c13ec9aac *bin.rs
 fd2a6e37b20856e3780e72e9dca4dd78 *embedded/help/_footer.txt
 cafe6ee12097ee6f81f4a315dec68396 *embedded/help/_header.txt
-7f659147b2f79d7643a29d641b9da461 *embedded/help/main.txt
-377bfb92f9af2a3ee877d2d7f64ed3a8 *embedded/readme/readme.html
-e42bc9d9b73224466a1368acc047abc5 *embedded/readme/readme.txt
+7ac19a7748d5c66acca8b6343482802e *embedded/help/main.txt
+08ba96fe7f311e585e30df69622ffee1 *embedded/readme/readme.html
+29b6aed506e5b8176ab191b1b9de3fc6 *embedded/readme/readme.txt
 a4294e529b69e4bed40e7b0380442e14 *embedded/sbom/sbom.html
 7453ad6946bdbbc449298ef3a37483bf *embedded/sbom/sbom.json
 07751d1ba94041f019e34df06b398812 *embedded/sbom/sbom.txt
@@ -20,7 +20,7 @@ ec5f826119934dc058491b2ed07d61c7 *exchange-tool/lib.rs
 d4b388c509d8debba3d049bbeca7d666 *exchange-tool/macros.rs
 b0c7152b551b099f57c0a3ce73cb5b75 *exchange-tool/ssh.rs
 b7a071755dd99bcf23e72bc5c27bf614 *exchange-tool/ssh_no.rs
-ecc1fa4e7185789a1ae85421e9360cf2 *exchange-tool/tool.rs
+73f92fc652091c8449a4acf653345ded *exchange-tool/tool.rs
 d9f49885b2599dd01ced5f7e410bc3c9 *hashes-tool/Cargo.toml
 fbff8ddfd3cb9d76b26ecb7434b0451a *hashes-tool/format.rs
 406c75f2849e5133093ee420733261f0 *hashes-tool/hashes.rs
@@ -79,7 +79,7 @@ f757a7ce44ab4b72629e87ecf5634a28 *runtime/flags.rs
 92ff6f284e0094878eb9d3e9d8ffbf54 *tools/Cargo.toml
 001d16fc7a7f38de8c63e57fbb33e345 *tools/bin.rs
 ccf4283cb6c11d6e454ecd02c37f3f95 *tools/lib.rs
-0998aed2e9db38d43c60c046ecb5560f *tools/tools.rs
-35c319514c70215aef16d68329868405 *workspace/Cargo.lock
+d660923797d1e6d4ef95492aa3358880 *tools/tools.rs
+4526c3353ac382a106953d79526b38a8 *workspace/Cargo.lock
 c8ec3b0b1ce420c1a6d5f7688fd5d180 *workspace/Cargo.toml
 9ffca391e8c23c8dda9e381c13ec9aac *workspace/bin.rs
