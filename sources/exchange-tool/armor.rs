@@ -85,9 +85,9 @@ pub fn armor (_decoded : &[u8], _encoded : &mut Vec<u8>) -> ArmorResult {
 	
 	_intermediate_buffer.extend_from_slice (&_fingerprint);
 	
-	assert! (_intermediate_buffer.len () <= (_decoded_len + 4 + ARMOR_ENCODED_FINGERPRINT), "[8c327ecd]");
-	
 	// NOTE:  encoding...
+	
+	assert! (_intermediate_buffer.len () <= (_decoded_len + 4 + ARMOR_ENCODED_FINGERPRINT), "[8c327ecd]");
 	
 	let _encode_capacity = encode_capacity_max (_intermediate_buffer.len ()) .else_wrap (0x00bf84c9) ?;
 	
@@ -129,13 +129,13 @@ pub fn dearmor (_encoded : &[u8], _decoded : &mut Vec<u8>) -> ArmorResult {
 	apply_all_or_nothing_mangling (&mut _fingerprint, &_intermediate_buffer) ?;
 	apply_all_or_nothing_encryption (&_fingerprint, &mut _intermediate_buffer) ?;
 	
-	// NOTE:  unwrapping...
-	
 	let _fingerprint_actual = apply_fingerprint (&_intermediate_buffer) ?;
 	
 	if ! ::constant_time_eq::constant_time_eq (&_fingerprint_actual, &_fingerprint) {
 		fail! (0x7c3ab20d);
 	}
+	
+	// NOTE:  unwrapping...
 	
 	let _decoded_len = decode_u32_pop (&mut _intermediate_buffer) .else_wrap (0xa8d32a02) ? as usize;
 	
