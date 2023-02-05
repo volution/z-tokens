@@ -26,9 +26,9 @@ pub(crate) const CODING_LINES_PER_BLOCK : usize = 20;
 
 
 // FIXME:  https://github.com/google/brotli/issues/274
-pub(crate) const COMPRESSION_OVERHEAD_FRACTION : usize = 1;
-pub(crate) const COMPRESSION_OVERHEAD_DIVIDER : usize = 16;
-pub(crate) const COMPRESSION_OVERHEAD_EXTRA : usize = 1024;
+const COMPRESSION_OVERHEAD_FRACTION : usize = 1;
+const COMPRESSION_OVERHEAD_DIVIDER : usize = 16;
+const COMPRESSION_OVERHEAD_EXTRA : usize = 1024;
 
 
 const COMPRESSION_BROTLI_Q : u32 = 9;
