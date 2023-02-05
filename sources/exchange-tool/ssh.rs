@@ -34,6 +34,8 @@ use crate::keys::{
 		decode_raw_vec,
 	};
 
+use crate::macros::*;
+
 
 
 
@@ -49,9 +51,13 @@ define_error! (pub SshError, result : SshResult);
 pub const SSH_WRAPPER_KEY_ENCODED_PREFIX : &str = "ztxws";
 
 
-const SSH_WRAP_KEY_HASH_CONTEXT : &str = "z-tokens exchange ssh wrap key hash (2023a)";
-const SSH_WRAP_INPUT_HASH_CONTEXT : &str = "z-tokens exchange ssh wrap input hash (2023a)";
-const SSH_WRAP_OUTPUT_HASH_CONTEXT : &str = "z-tokens exchange ssh wrap output hash (2023a)";
+define_cryptographic_context! (SSH_WRAP_KEY_HASH_CONTEXT, ssh_wrap, key_hash);
+define_cryptographic_context! (SSH_WRAP_INPUT_HASH_CONTEXT, ssh_wrap, input_hash);
+define_cryptographic_context! (SSH_WRAP_OUTPUT_HASH_CONTEXT, ssh_wrap, output_hash);
+
+
+
+
 
 
 

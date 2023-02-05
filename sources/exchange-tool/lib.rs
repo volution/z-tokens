@@ -9,6 +9,7 @@ pub mod armor;
 pub mod coding;
 pub mod io;
 pub mod tool;
+pub mod macros;
 
 
 #[ cfg (any (target_os = "linux", target_os = "android", target_os = "openbsd", target_os = "freebsd", target_os = "netbsd", target_os = "macos")) ]

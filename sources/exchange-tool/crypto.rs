@@ -6,6 +6,7 @@ use ::vrl_errors::*;
 
 use crate::keys::*;
 use crate::coding::*;
+use crate::macros::*;
 use crate::ssh::SshWrapper;
 
 
@@ -42,23 +43,23 @@ pub const CRYPTO_ENCRYPTED_SIZE_MAX : usize =
 		);
 
 
-pub const CRYPTO_ENCRYPTED_PADDING : usize = 255;
-pub const CRYPTO_ENCRYPTED_OVERHEAD : usize = CRYPTO_ENCRYPTED_SALT + CRYPTO_ENCRYPTED_MAC;
-pub const CRYPTO_ENCRYPTED_SALT : usize = 16;
-pub const CRYPTO_ENCRYPTED_MAC : usize = 16;
+const CRYPTO_ENCRYPTED_PADDING : usize = 255;
+const CRYPTO_ENCRYPTED_OVERHEAD : usize = CRYPTO_ENCRYPTED_SALT + CRYPTO_ENCRYPTED_MAC;
+const CRYPTO_ENCRYPTED_SALT : usize = 16;
+const CRYPTO_ENCRYPTED_MAC : usize = 16;
 
 
-static CRYPTO_ENCRYPTION_KEY_CONTEXT : &str = "z-tokens exchange encryption key (2023a)";
-static CRYPTO_AUTHENTICATION_KEY_CONTEXT : &str = "z-tokens exchange authentication key (2023a)";
-static CRYPTO_SHARED_KEY_CONTEXT : &str = "z-tokens exchange shared key (2023a)";
-static CRYPTO_BASE_KEY_CONTEXT : &str = "z-tokens exchange base key (2023a)";
-static CRYPTO_AONT_KEY_CONTEXT : &str = "z-tokens exchange all-or-nothing key (2023a)";
-static CRYPTO_SECRET_SALT_CONTEXT : &str = "z-tokens exchange secret salt (2023a)";
-static CRYPTO_SECRET_KEY_CONTEXT : &str = "z-tokens exchange secret key (2023a)";
-static CRYPTO_PIN_SALT_CONTEXT : &str = "z-tokens exchange pin salt (2023a)";
-static CRYPTO_PIN_KEY_CONTEXT : &str = "z-tokens exchange pin key (2023a)";
-static CRYPTO_SSH_WRAP_INPUT_CONTEXT : &str = "z-tokens exchange ssh wrap input (2023a)";
-static CRYPTO_SSH_WRAP_OUTPUT_CONTEXT : &str = "z-tokens exchange ssh wrap output (2023a)";
+define_cryptographic_context! (CRYPTO_ENCRYPTION_KEY_CONTEXT, encryption, encryption_key);
+define_cryptographic_context! (CRYPTO_AUTHENTICATION_KEY_CONTEXT, encryption, authentication_key);
+define_cryptographic_context! (CRYPTO_SHARED_KEY_CONTEXT, encryption, shared_key);
+define_cryptographic_context! (CRYPTO_BASE_KEY_CONTEXT, encryption, base_key);
+define_cryptographic_context! (CRYPTO_AONT_KEY_CONTEXT, encryption, aont_key);
+define_cryptographic_context! (CRYPTO_SECRET_SALT_CONTEXT, encryption, secret_salt);
+define_cryptographic_context! (CRYPTO_SECRET_KEY_CONTEXT, encryption, secret_key);
+define_cryptographic_context! (CRYPTO_PIN_SALT_CONTEXT, encryption, pin_salt);
+define_cryptographic_context! (CRYPTO_PIN_KEY_CONTEXT, encryption, pin_key);
+define_cryptographic_context! (CRYPTO_SSH_WRAP_INPUT_CONTEXT, encryption, ssh_wrap_input);
+define_cryptographic_context! (CRYPTO_SSH_WRAP_OUTPUT_CONTEXT, encryption, ssh_wrap_output);
 
 
 const CRYPTO_SECRET_ARGON_ALGORITHM : ::argon2::Algorithm = ::argon2::Algorithm::Argon2id;

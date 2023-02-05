@@ -5,6 +5,7 @@ use ::vrl_errors::*;
 
 
 use crate::coding::*;
+use crate::macros::*;
 
 
 
@@ -18,10 +19,10 @@ define_error! (pub ArmorError, result : ArmorResult);
 
 
 
-pub(crate) const ARMOR_DECODED_SIZE_MAX : usize = 128 * 1024 * 1024;
+pub const ARMOR_DECODED_SIZE_MAX : usize = 128 * 1024 * 1024;
 
 
-pub(crate) const ARMOR_ENCODED_SIZE_MAX : usize =
+pub const ARMOR_ENCODED_SIZE_MAX : usize =
 		(
 			(
 				(
@@ -38,10 +39,10 @@ pub(crate) const ARMOR_ENCODED_SIZE_MAX : usize =
 		);
 
 
-pub(crate) const ARMOR_ENCODED_FINGERPRINT : usize = CODING_CHUNK_DECODED_SIZE * 2 - 4;
+const ARMOR_ENCODED_FINGERPRINT : usize = CODING_CHUNK_DECODED_SIZE * 2 - 4;
 
 
-static ARMOR_AONT_KEY_CONTEXT : &str = "z-tokens exchange armor aont key (2023a)";
+define_cryptographic_context! (ARMOR_AONT_KEY_CONTEXT, armor, aont_key);
 
 
 
