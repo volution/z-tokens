@@ -405,7 +405,7 @@ pub fn main_dearmor (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 
 
-pub fn main_keys_ssh (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_ssh_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _agent = SshWrapperAgent::connect () .else_wrap (0x4e058c28) ?;
 	
@@ -449,6 +449,59 @@ pub fn main_keys_ssh (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	
 	drop (_output.into_inner () .else_replace (0xc1441245) ?);
+	
+	Ok (ExitCode::SUCCESS)
+}
+
+
+
+
+pub fn main_ssh_wrap (_arguments : Vec<String>) -> MainResult<ExitCode> {
+	
+	let mut _agent = SshWrapperAgent::connect () .else_wrap (0x3031a84a) ?;
+	
+	let mut _key : Option<String> = None;
+	let mut _empty_is_missing : Option<bool> = None;
+	
+	{
+		let mut _parser = create_parser () .else_wrap (0xeead67de) ?;
+		
+		_parser.refer (&mut _key)
+				.metavar ("{key}")
+				.add_option (&["-k", "--key"], ArgStoreOption, "(shared SSH agent key handle)");
+		
+		_parser.refer (&mut _empty_is_missing)
+				.metavar ("{bool}")
+				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified)")
+				.add_option (&["--empty-is-missing"], ArgStoreOption, "");
+		
+		if execute_parser (_parser, _arguments) .else_wrap (0x596c8a62) ? {
+			return Ok (ExitCode::SUCCESS);
+		}
+	}
+	
+	let _empty_is_missing = _empty_is_missing.unwrap_or (false);
+	
+	let _key = _key.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
+	let _key = _key.else_wrap (0x76dd6a4e) ?;
+	
+	let _key = SshWrapperKey::decode_and_zeroize (_key) .else_wrap (0xf183991d) ?;
+	let mut _wrapper = SshWrapper::new (Rb::new (_key), _agent) .else_wrap (0x373fe104) ?;
+	
+	let _wrap_input = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0x3be3690b) ?;
+	
+	let mut _wrap_output = [0u8; 32];
+	_wrapper.wrap (&_wrap_input, &mut _wrap_output) .else_wrap (0xe5926524) ?;
+	
+	let mut _wrap_buffer = String::with_capacity (_wrap_output.len () * 2 + 1);
+	for _wrap_output_byte in _wrap_output {
+		_wrap_buffer.write_fmt (format_args! ("{:02x}", _wrap_output_byte)) .else_wrap (0xbae3a03b) ?;
+	}
+	_wrap_buffer.push ('\n');
+	
+	let mut _stream = stdout_locked ();
+	_stream.write (_wrap_buffer.as_bytes ()) .else_wrap (0x245ce871) ?;
+	mem::drop (_stream);
 	
 	Ok (ExitCode::SUCCESS)
 }
