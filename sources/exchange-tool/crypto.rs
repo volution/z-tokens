@@ -38,7 +38,7 @@ pub const CRYPTO_ENCRYPTED_SIZE_MAX : usize =
 			) / CODING_CHUNKS_PER_LINE
 			+ 1
 		) * (
-			9 + 4
+			9 + 4 + 1
 			+ CODING_CHUNKS_PER_LINE * (CODING_CHUNKS_PER_LINE + CODING_CHUNK_ENCODED_SIZE + 1)
 		);
 

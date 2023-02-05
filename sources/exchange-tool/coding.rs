@@ -20,6 +20,7 @@ pub(crate) const CODING_CHUNK_DECODED_SIZE : usize = 8;
 pub(crate) const CODING_CHUNK_ENCODED_SIZE : usize = 13;
 
 pub(crate) const CODING_CHUNKS_PER_LINE : usize = 5;
+pub(crate) const CODING_LINES_PER_BLOCK : usize = 20;
 
 
 
@@ -67,6 +68,10 @@ pub(crate) fn encode (_decoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 				0
 			};
 	
+	if _encode_line_width > 0 {
+		_buffer.push (b'\n');
+	}
+	
 	let mut _encode_size_last = 0;
 	let mut _encode_line_index = 0;
 	for (_index, _decoded_chunk) in _decoded.chunks (CODING_CHUNK_DECODED_SIZE) .enumerate () {
@@ -94,6 +99,9 @@ pub(crate) fn encode (_decoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 				_encode_line_index += 1;
 			}
 			if _encode_line_width > 0 {
+				if (_encode_line_index > 0) && (_encode_line_index % CODING_LINES_PER_BLOCK) == 0 {
+					_buffer.push (b'\n');
+				}
 				if (_encode_line_index + 1) < _encode_lines_count {
 					write! (_buffer, "#{0:01$},  ", _encode_line_index + 1, _encode_line_width) .else_panic (0xa7e364d5);
 				} else {
@@ -117,6 +125,10 @@ pub(crate) fn encode (_decoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 		_buffer.extend_from_slice (&_encode_buffer[.. _encode_size]);
 		
 		_encode_size_last = _encode_size;
+	}
+	
+	if _encode_line_width > 0 {
+		_buffer.push (b'\n');
 	}
 	
 	if _decoded_len > 0 {
