@@ -132,7 +132,9 @@ impl SshWrapper {
 				&[
 					_key_algorithm.as_bytes (),
 					&_key_serialized,
-				]);
+				],
+				None,
+			);
 		
 		drop! (_key_algorithm, _key_serialized);
 		
@@ -144,7 +146,9 @@ impl SshWrapper {
 				],
 				&[
 					_input.access (),
-				]);
+				],
+				None,
+			);
 		
 		let _outcome = {
 			
@@ -181,7 +185,9 @@ impl SshWrapper {
 				],
 				&[
 					&_signature,
-				]);
+				],
+				None,
+			);
 		
 		_output.copy_from_slice (_output_hash.access ());
 		

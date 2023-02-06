@@ -9,7 +9,7 @@ use ::blake3::Hasher as Blake3;
 
 
 use crate::crypto::CryptoResult;
-use crate::coding::encode_u32;
+use crate::coding::encode_u32_into;
 
 
 
@@ -117,7 +117,9 @@ pub(crate) fn x25519_dhe <WC, WO> (
 				_sender_public,
 				_receiver_public,
 			],
-			&[]);
+			&[],
+			None,
+		);
 	
 	Ok (_shared_key)
 }
@@ -130,13 +132,14 @@ pub(crate) fn blake3_derive_key <const NF : usize, const NV : usize, WC, WO> (
 		_context : &'static str,
 		_fixed_elements : &[&[u8; 32]; NF],
 		_variable_elements : &[&[u8]; NV],
+		_index : Option<u32>,
 	) -> WO
 	where
 		WC : Fn ([u8; 32]) -> WO,
 {
 	let mut _hasher = Blake3::new_derive_key (_context);
 	
-	blake3_update (&mut _hasher, _fixed_elements, _variable_elements);
+	blake3_update (&mut _hasher, _fixed_elements, _variable_elements, _index);
 	
 	let _hash : [u8; 32] = _hasher.finalize () .into ();
 	
@@ -150,13 +153,14 @@ pub(crate) fn blake3_keyed_hash <const NF : usize, const NV : usize, WC, WO> (
 		_key : &[u8; 32],
 		_fixed_elements : &[&[u8; 32]; NF],
 		_variable_elements : &[&[u8]; NV],
+		_index : Option<u32>,
 	) -> WO
 	where
 		WC : Fn ([u8; 32]) -> WO,
 {
 	let mut _hasher = Blake3::new_keyed (_key);
 	
-	blake3_update (&mut _hasher, _fixed_elements, _variable_elements);
+	blake3_update (&mut _hasher, _fixed_elements, _variable_elements, _index);
 	
 	let _hash : [u8; 32] = _hasher.finalize () .into ();
 	
@@ -169,22 +173,48 @@ pub(crate) fn blake3_update <const NF : usize, const NV : usize> (
 		_hasher : &mut Blake3,
 		_fixed_elements : &[&[u8; 32]; NF],
 		_variable_elements : &[&[u8]; NV],
+		_index : Option<u32>,
 	) -> ()
 {
+	if let Some (_index) = _index {
+		_hasher.update (& encode_u32_into (_index));
+	}
+	
 	for _fixed_element in _fixed_elements {
 		_hasher.update (_fixed_element.as_slice ());
 	}
 	
 	for _variable_element in _variable_elements {
 		
-		let mut _size_buffer = [0u8; 4];
 		let _size : u32 = _variable_element.len () .try_into () .else_panic (0xe5d3933d);
-		encode_u32 (_size, &mut _size_buffer);
 		
-		_hasher.update (&_size_buffer);
+		_hasher.update (& encode_u32_into (_size));
 		
 		_hasher.update (_variable_element);
 	}
+}
+
+
+
+
+pub(crate) fn blake3_derive_key_join <'a, WC, WO> (
+		_wrapper : WC,
+		_context : &'static str,
+		_elements : impl Iterator<Item = &'a [u8; 32]>,
+	) -> WO
+	where
+		WC : Fn ([u8; 32]) -> WO,
+{
+	let mut _hasher = Blake3::new_derive_key (_context);
+	
+	for _element in _elements {
+		_hasher.update (_element);
+	}
+	
+	let _hash : [u8; 32] = _hasher.finalize () .into ();
+	
+	let _wrapped = _wrapper (_hash);
+	_wrapped
 }
 
 

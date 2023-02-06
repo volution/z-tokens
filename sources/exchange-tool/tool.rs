@@ -249,14 +249,16 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _secret = _secret.filter (|_secret| ! (_secret.is_empty () && _empty_is_missing));
 	let _secret = _secret.map (SharedSecret::decode_and_zeroize) .transpose () .else_wrap (0xab68aede) ?;
 	let _secret = _secret.as_ref () .map (SharedSecret::access_bytes) .map (|_bytes| _bytes.as_slice ());
+	let _secret : Vec<_> = _secret.into_iter () .collect ();
 	
 	let _pin = _pin.filter (|_pin| ! (_pin.is_empty () && _empty_is_missing));
 	let _pin = _pin.as_ref () .map (String::as_bytes);
+	let _pin : Vec<_> = _pin.into_iter () .collect ();
 	
 	let _decrypted = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0xb0e8db93) ?;
 	
 	let mut _encrypted = Vec::new ();
-	encrypt (_sender_private, _recipient_public, _secret, _pin, &_decrypted, &mut _encrypted, _ssh_wrapper) .else_wrap (0x38d2ce1e) ?;
+	encrypt (_sender_private, _recipient_public, &_secret, &_pin, &_decrypted, &mut _encrypted, _ssh_wrapper) .else_wrap (0x38d2ce1e) ?;
 	
 	let mut _stream = stdout_locked ();
 	_stream.write (&_encrypted) .else_wrap (0x815d15bc) ?;
@@ -328,14 +330,16 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _secret = _secret.filter (|_secret| ! (_secret.is_empty () && _empty_is_missing));
 	let _secret = _secret.map (SharedSecret::decode_and_zeroize) .transpose () .else_wrap (0x07d3b030) ?;
 	let _secret = _secret.as_ref () .map (SharedSecret::access_bytes) .map (|_bytes| _bytes.as_slice ());
+	let _secret : Vec<_> = _secret.into_iter () .collect ();
 	
 	let _pin = _pin.filter (|_pin| ! (_pin.is_empty () && _empty_is_missing));
 	let _pin = _pin.as_ref () .map (String::as_bytes);
+	let _pin : Vec<_> = _pin.into_iter () .collect ();
 	
 	let _encrypted = read_at_most (stdin_locked (), CRYPTO_ENCRYPTED_SIZE_MAX) .else_wrap (0xf71cef7e) ?;
 	
 	let mut _decrypted = Vec::new ();
-	decrypt (_recipient_private, _sender_public, _secret, _pin, &_encrypted, &mut _decrypted, _ssh_wrapper) .else_wrap (0x95273e1d) ?;
+	decrypt (_recipient_private, _sender_public, &_secret, &_pin, &_encrypted, &mut _decrypted, _ssh_wrapper) .else_wrap (0x95273e1d) ?;
 	
 	let mut _stream = stdout_locked ();
 	_stream.write (&_decrypted) .else_wrap (0x19352ca2) ?;
