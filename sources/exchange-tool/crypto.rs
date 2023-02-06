@@ -369,7 +369,7 @@ fn apply_authentication (_key : InternalAuthenticationKey, _data : &[u8]) -> Cry
 
 fn apply_all_or_nothing_mangling (_key : InternalAontKey, _packet_salt : &mut InternalPacketSalt, _data : &[u8]) -> CryptoResult {
 	
-	const _SIZE = InternalPacketSalt::SIZE;
+	const _SIZE : usize = InternalPacketSalt::SIZE;
 	
 	let _hash : [u8; _SIZE] = blake3_keyed_hash (
 			|_hash| _hash,

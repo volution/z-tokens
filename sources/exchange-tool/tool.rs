@@ -426,28 +426,6 @@ pub fn main_ssh_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		writeln! (&mut _output) .else_wrap (0x387d7ec5) ?;
 	}
 	
-	
-	if false {
-		
-		for _key in _keys.iter () {
-			
-			let _key_handle = _key.handle () .else_wrap (0xfd3bf576) ?;
-			
-			let mut _wrapper = SshWrapper::new (_key.clone (), _agent) .else_wrap (0x9adff71c) ?;
-			
-			let _wrap_input = [0x0u8; 32];
-			let mut _wrap_output = [0u8; 32];
-			_wrapper.wrap (&_wrap_input, &mut _wrap_output) .else_wrap (0x9fe5ffb5) ?;
-			
-			let _wrap_output : (u128, u128) = unsafe { mem::transmute (_wrap_output) };
-			
-			writeln! (&mut _output, "##  {:60}  {:032x}{:032x}", _key_handle.deref (), &_wrap_output.0, &_wrap_output.1) .else_wrap (0x4cef22ff) ?;
-			
-			_agent = _wrapper.into_agent () .else_wrap (0x6fa5e28f) ?;
-		}
-	}
-	
-	
 	drop (_output.into_inner () .else_replace (0xc1441245) ?);
 	
 	Ok (ExitCode::SUCCESS)
