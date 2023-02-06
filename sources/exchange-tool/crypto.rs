@@ -55,27 +55,29 @@ const CRYPTO_ENCRYPTED_MAC : usize = 32;
 
 
 
-struct InternalSharedKey ([u8; 32]);
-struct InternalBaseKey ([u8; 32]);
+struct InternalDheKey ([u8; 32]);
+struct InternalNaiveKey ([u8; 32]);
 struct InternalAontKey ([u8; 32]);
 
+struct InternalPacketSalt ([u8; 32]);
+struct InternalPacketKey ([u8; 32]);
+
 struct InternalEncryptionKey ([u8; 32]);
-struct InternalEncryptionSalt ([u8; 32]);
 
 struct InternalAuthenticationKey ([u8; 32]);
 struct InternalAuthenticationMac ([u8; 32]);
 
-struct InternalSecretSalt ([u8; 32]);
-struct InternalSecretKey ([u8; 32]);
 struct InternalSecretInput <'a> (&'a [u8]);
 struct InternalSecretHash ([u8; 32]);
+struct InternalSecretSalt ([u8; 32]);
 struct InternalSecretArgon ([u8; 32]);
+struct InternalSecretKey ([u8; 32]);
 
-struct InternalPinSalt ([u8; 32]);
-struct InternalPinKey ([u8; 32]);
 struct InternalPinInput <'a> (&'a [u8]);
 struct InternalPinHash ([u8; 32]);
+struct InternalPinSalt ([u8; 32]);
 struct InternalPinArgon ([u8; 32]);
+struct InternalPinKey ([u8; 32]);
 
 struct InternalSshWrapInput ([u8; 32]);
 struct InternalSshWrapOutput ([u8; 32]);
@@ -86,12 +88,12 @@ struct InternalDataEncrypted <'a> (&'a [u8]);
 
 
 
-define_cryptographic_context! (CRYPTO_SHARED_KEY_CONTEXT, encryption, shared_key);
-define_cryptographic_context! (CRYPTO_BASE_KEY_CONTEXT, encryption, base_key);
+define_cryptographic_context! (CRYPTO_DHE_KEY_CONTEXT, encryption, dhe_key);
+define_cryptographic_context! (CRYPTO_NAIVE_KEY_CONTEXT, encryption, naive_key);
 define_cryptographic_context! (CRYPTO_AONT_KEY_CONTEXT, encryption, aont_key);
 
+define_cryptographic_context! (CRYPTO_PACKET_KEY_CONTEXT, encryption, packet_key);
 define_cryptographic_context! (CRYPTO_ENCRYPTION_KEY_CONTEXT, encryption, encryption_key);
-
 define_cryptographic_context! (CRYPTO_AUTHENTICATION_KEY_CONTEXT, encryption, authentication_key);
 
 define_cryptographic_context! (CRYPTO_SECRET_HASH_CONTEXT, encryption, secret_hash);
@@ -124,18 +126,18 @@ const CRYPTO_PIN_ARGON_T_COST : u32 = 8;
 pub fn encrypt (
 			_sender : Option<&SenderPrivateKey>,
 			_recipient : Option<&RecipientPublicKey>,
-			_secret : Option<&[u8]>,
-			_pin : Option<&[u8]>,
+			_secret_input : Option<&[u8]>,
+			_pin_input : Option<&[u8]>,
 			_decrypted : &[u8],
 			_encrypted : &mut Vec<u8>,
 			_ssh_wrapper : Option<&mut SshWrapper>,
 		) -> CryptoResult
 {
-	let _secret = _secret.map (InternalSecretInput);
-	let _secret = _secret.as_ref ();
+	let _secret_input = _secret_input.map (InternalSecretInput);
+	let _secret_input = _secret_input.as_ref ();
 	
-	let _pin = _pin.map (InternalPinInput);
-	let _pin = _pin.as_ref ();
+	let _pin_input = _pin_input.map (InternalPinInput);
+	let _pin_input = _pin_input.as_ref ();
 	
 	let _decrypted = InternalDataDecrypted (_decrypted);
 	let _decrypted_len = _decrypted.0.len ();
@@ -158,36 +160,59 @@ pub fn encrypt (
 		_intermediate_buffer.extend_from_slice (&_decrypted.0);
 	}
 	
-	// NOTE:  wrapping...
+	// NOTE:  padding...
 	
 	encode_u32_push (_decrypted_len as u32, &mut _intermediate_buffer);
 	
 	padding_push (CRYPTO_ENCRYPTED_PADDING, &mut _intermediate_buffer);
+	
+	// --------------------------------------------------------------------------------
+	// --------------------------------------------------------------------------------
 	
 	// NOTE:  deriving keys...
 	
 	let _sender = _sender.map (|_key| &_key.0.0);
 	let _recipient = _recipient.map (|_key| &_key.0.0);
 	
-	let (_base_key, _aont_key) = derive_keys_phase_1 (_sender, _recipient, _secret, _pin, true) ?;
+	let (_naive_key, _aont_key, (_secret_hash, _secret_exists), (_pin_hash, _pin_exists))
+			= derive_keys_phase_1 (_sender, _recipient, _secret_input, _pin_input, true) ?;
 	
-	let mut _salt = generate_random (InternalEncryptionSalt);
+	let _sender = ();
+	let _recipient = ();
 	
-	let (_encryption_key, _authentication_key) = derive_keys_phase_2 (&_base_key, &_salt, _ssh_wrapper) ?;
+	// NOTE:  salting...
 	
-	// NOTE:  authenticated encryption...
+	let mut _packet_salt = generate_random (InternalPacketSalt);
+	
+	let (_encryption_key, _authentication_key)
+			= derive_keys_phase_2 (&_naive_key, &_packet_salt, (&_secret_hash, _secret_exists), (&_pin_hash, _pin_exists), _ssh_wrapper) ?;
+	
+	// NOTE:  encryption...
 	
 	apply_encryption (&_encryption_key, &mut _intermediate_buffer) ?;
+	
+	let _encryption_key = ();
+	
+	// NOTE:  authentication...
 	
 	let _mac = apply_authentication (&_authentication_key, &_intermediate_buffer) ?;
 	
 	_intermediate_buffer.extend_from_slice (&_mac.0);
 	
+	let _authentication_key = ();
+	let _mac = ();
+	
 	// NOTE:  all-or-nothing...
 	
-	apply_all_or_nothing_mangling (&_aont_key, &mut _salt, &_intermediate_buffer) ?;
+	apply_all_or_nothing_mangling (&_aont_key, &mut _packet_salt, &_intermediate_buffer) ?;
 	
-	_intermediate_buffer.extend_from_slice (&_salt.0);
+	_intermediate_buffer.extend_from_slice (&_packet_salt.0);
+	
+	let _aont_key = ();
+	let _packet_salt = ();
+	
+	// --------------------------------------------------------------------------------
+	// --------------------------------------------------------------------------------
 	
 	// NOTE:  encoding...
 	
@@ -214,18 +239,18 @@ pub fn encrypt (
 pub fn decrypt (
 			_recipient : Option<&RecipientPrivateKey>,
 			_sender : Option<&SenderPublicKey>,
-			_secret : Option<&[u8]>,
-			_pin : Option<&[u8]>,
+			_secret_input : Option<&[u8]>,
+			_pin_input : Option<&[u8]>,
 			_encrypted : &[u8],
 			_decrypted : &mut Vec<u8>,
 			_ssh_wrapper : Option<&mut SshWrapper>,
 		) -> CryptoResult
 {
-	let _secret = _secret.map (InternalSecretInput);
-	let _secret = _secret.as_ref ();
+	let _secret_input = _secret_input.map (InternalSecretInput);
+	let _secret_input = _secret_input.as_ref ();
 	
-	let _pin = _pin.map (InternalPinInput);
-	let _pin = _pin.as_ref ();
+	let _pin_input = _pin_input.map (InternalPinInput);
+	let _pin_input = _pin_input.as_ref ();
 	
 	let _encrypted = InternalDataEncrypted (_encrypted);
 	let _encrypted_len = _encrypted.0.len ();
@@ -241,25 +266,35 @@ pub fn decrypt (
 	let mut _intermediate_buffer = Vec::with_capacity (_decode_capacity);
 	decode (&_encrypted.0, &mut _intermediate_buffer) .else_wrap (0x10ff413a) ?;
 	
+	// --------------------------------------------------------------------------------
+	// --------------------------------------------------------------------------------
+	
 	// NOTE:  deriving keys...
 	
 	let _sender = _sender.map (|_key| &_key.0.0);
 	let _recipient = _recipient.map (|_key| &_key.0.0);
 	
-	let (_base_key, _aont_key) = derive_keys_phase_1 (_recipient, _sender, _secret, _pin, false) ?;
+	let (_naive_key, _aont_key, (_secret_hash, _secret_exists), (_pin_hash, _pin_exists))
+			= derive_keys_phase_1 (_recipient, _sender, _secret_input, _pin_input, false) ?;
 	
-	// NOTE:  all-or-nothing...
+	let _sender = ();
+	let _recipient = ();
 	
-	let _salt = bytes_pop::<CRYPTO_ENCRYPTED_SALT> (&mut _intermediate_buffer) .else_wrap (0x78ed3811) ?;
-	let mut _salt = InternalEncryptionSalt (_salt);
+	// NOTE:  all-or-nothing and salting...
 	
-	apply_all_or_nothing_mangling (&_aont_key, &mut _salt, &_intermediate_buffer) ?;
+	let _packet_salt = bytes_pop::<CRYPTO_ENCRYPTED_SALT> (&mut _intermediate_buffer) .else_wrap (0x78ed3811) ?;
+	let mut _packet_salt = InternalPacketSalt (_packet_salt);
+	
+	apply_all_or_nothing_mangling (&_aont_key, &mut _packet_salt, &_intermediate_buffer) ?;
+	
+	let _aont_key = ();
 	
 	// NOTE:  deriving keys...
 	
-	let (_encryption_key, _authentication_key) = derive_keys_phase_2 (&_base_key, &_salt, _ssh_wrapper) ?;
+	let (_encryption_key, _authentication_key)
+			= derive_keys_phase_2 (&_naive_key, &_packet_salt, (&_secret_hash, _secret_exists), (&_pin_hash, _pin_exists), _ssh_wrapper) ?;
 	
-	// NOTE:  authenticated encryption...
+	// NOTE:  authentication...
 	
 	let _mac_expected = bytes_pop::<CRYPTO_ENCRYPTED_MAC> (&mut _intermediate_buffer) .else_wrap (0x88084589) ?;
 	let _mac_expected = InternalAuthenticationMac (_mac_expected);
@@ -270,9 +305,20 @@ pub fn decrypt (
 		fail! (0xad70c84c);
 	}
 	
+	let _authentication_key = ();
+	let _mac_expected = ();
+	let _mac_actual = ();
+	
+	// NOTE:  decryption...
+	
 	apply_encryption (&_encryption_key, &mut _intermediate_buffer) ?;
 	
-	// NOTE:  unwrapping...
+	let _encryption_key = ();
+	
+	// --------------------------------------------------------------------------------
+	// --------------------------------------------------------------------------------
+	
+	// NOTE:  padding...
 	
 	padding_pop (CRYPTO_ENCRYPTED_PADDING, &mut _intermediate_buffer) .else_wrap (0xbbdd100e) ?;
 	
@@ -349,9 +395,9 @@ fn apply_authentication (_key : &InternalAuthenticationKey, _data : &[u8]) -> Cr
 
 
 
-fn apply_all_or_nothing_mangling (_key : &InternalAontKey, _salt : &mut InternalEncryptionSalt, _data : &[u8]) -> CryptoResult {
+fn apply_all_or_nothing_mangling (_key : &InternalAontKey, _packet_salt : &mut InternalPacketSalt, _data : &[u8]) -> CryptoResult {
 	
-	const _SIZE : usize = mem::size_of::<InternalEncryptionSalt> ();
+	const _SIZE : usize = mem::size_of::<InternalPacketSalt> ();
 	
 	let _hash : [u8; _SIZE] = blake3_keyed_hash (
 			|_hash| _hash,
@@ -363,7 +409,7 @@ fn apply_all_or_nothing_mangling (_key : &InternalAontKey, _salt : &mut Internal
 		);
 	
 	for _index in 0 .. _SIZE {
-		_salt.0[_index] ^= _hash[_index];
+		_packet_salt.0[_index] ^= _hash[_index];
 	}
 	
 	Ok (())
@@ -382,16 +428,16 @@ fn derive_keys_phase_1 (
 			_secret_input : Option<&InternalSecretInput>,
 			_pin_input : Option<&InternalPinInput>,
 			_encryption : bool,
-		) -> CryptoResult<(InternalBaseKey, InternalAontKey)>
+		) -> CryptoResult<(InternalNaiveKey, InternalAontKey, (InternalSecretHash, bool), (InternalPinHash, bool))>
 {
 	// --------------------------------------------------------------------------------
 	// NOTE:  apply X25519 DHE...
 	
 	let _private = _private.else_wrap (0x70f91100) ?;
 	
-	let _shared_key = x25519_dhe (
-			InternalSharedKey,
-			CRYPTO_SHARED_KEY_CONTEXT,
+	let _dhe_key = x25519_dhe (
+			InternalDheKey,
+			CRYPTO_DHE_KEY_CONTEXT,
 			_private,
 			_public,
 			_encryption,
@@ -434,77 +480,18 @@ fn derive_keys_phase_1 (
 	let _pin_input = ();
 	
 	// --------------------------------------------------------------------------------
-	// NOTE:  derive secret and pin argon (if exists)...
+	// NOTE:  derive naive key (for the entire transaction)...
 	
-	// NOTE:  derive secret and pin salts...
-	
-	let _secret_salt = blake3_derive_key (
-			InternalSecretSalt,
-			CRYPTO_SECRET_SALT_CONTEXT,
+	let _naive_key = blake3_derive_key (
+			InternalNaiveKey,
+			CRYPTO_NAIVE_KEY_CONTEXT,
 			&[
 				&_pin_hash.0,
-				&_shared_key.0,
-			],
-			&[]);
-	
-	let _pin_salt = blake3_derive_key (
-			InternalPinSalt,
-			CRYPTO_PIN_SALT_CONTEXT,
-			&[
 				&_secret_hash.0,
-				&_shared_key.0,
+				&_dhe_key.0,
 			],
 			&[]);
 	
-	// NOTE:  derive secret argon...
-	
-	let _secret_and_salt = if _secret_exists { Some ((&_secret_hash, &_secret_salt)) } else { None };
-	let _secret_argon = apply_argon_secret (_secret_and_salt) ?;
-	
-	let _secret_key = blake3_derive_key (
-			InternalSecretKey,
-			CRYPTO_SECRET_KEY_CONTEXT,
-			&[
-				&_secret_argon.0,
-			],
-			&[]);
-	
-	let _secret_hash = ();
-	let _secret_salt = ();
-	let _secret_argon = ();
-	
-	// NOTE:  derive pin argon...
-	
-	let _pin_and_salt = if _pin_exists { Some ((&_pin_hash, &_pin_salt)) } else { None };
-	let _pin_argon = apply_argon_pin (_pin_and_salt) ?;
-	
-	let _pin_key = blake3_derive_key (
-			InternalPinKey,
-			CRYPTO_PIN_KEY_CONTEXT,
-			&[
-				&_pin_argon.0,
-			],
-			&[]);
-	
-	let _pin_hash = ();
-	let _pin_salt = ();
-	let _pin_argon = ();
-	
-	// --------------------------------------------------------------------------------
-	// NOTE:  derive base key (for the entire transaction)...
-	
-	let _base_key = blake3_derive_key (
-			InternalBaseKey,
-			CRYPTO_BASE_KEY_CONTEXT,
-			&[
-				&_pin_key.0,
-				&_secret_key.0,
-				&_shared_key.0,
-			],
-			&[]);
-	
-	let _shared_key = ();
-	let _secret_key = ();
 	let _pin_key = ();
 	
 	// --------------------------------------------------------------------------------
@@ -514,11 +501,13 @@ fn derive_keys_phase_1 (
 			InternalAontKey,
 			CRYPTO_AONT_KEY_CONTEXT,
 			&[
-				&_base_key.0,
+				&_naive_key.0,
 			],
 			&[]);
 	
-	Ok ((_base_key, _aont_key))
+	// --------------------------------------------------------------------------------
+	
+	Ok ((_naive_key, _aont_key, (_secret_hash, _secret_exists), (_pin_hash, _pin_exists)))
 }
 
 
@@ -529,63 +518,149 @@ fn derive_keys_phase_1 (
 
 
 fn derive_keys_phase_2 (
-			_base_key : &InternalBaseKey,
-			_salt : &InternalEncryptionSalt,
+			_naive_key : &InternalNaiveKey,
+			_packet_salt : &InternalPacketSalt,
+			_secret_hash : (&InternalSecretHash, bool),
+			_pin_hash : (&InternalPinHash, bool),
 			_ssh_wrapper : Option<&mut SshWrapper>,
 		) -> CryptoResult<(InternalEncryptionKey, InternalAuthenticationKey)>
 {
-	let _wrapped_key = if let Some (_ssh_wrapper) = _ssh_wrapper {
-		
-		let _wrap_input = blake3_derive_key (
-				InternalSshWrapInput,
-				CRYPTO_SSH_WRAP_INPUT_CONTEXT,
-				&[
-					&_base_key.0,
-					&_salt.0,
-				],
-				&[]);
-		
-		let mut _wrap_output = [0u8; 32];
-		_ssh_wrapper.wrap (&_wrap_input.0, &mut _wrap_output) .else_wrap (0xcc07e95e) ?;
-		
-		let _wrap_output = blake3_derive_key (
-				InternalSshWrapOutput,
-				CRYPTO_SSH_WRAP_OUTPUT_CONTEXT,
-				&[
-					&_base_key.0,
-					&_salt.0,
-					&_wrap_output,
-				],
-				&[]);
-		
-		Some (_wrap_output)
-	} else {
-		None
-	};
+	let (_secret_hash, _secret_exists) = _secret_hash;
+	let (_pin_hash, _pin_exists) = _pin_hash;
 	
-	let _wrapped_key = _wrapped_key.as_ref ()
-			.map (|_wrapped_key| &_wrapped_key.0)
-			.unwrap_or (&_base_key.0);
+	// --------------------------------------------------------------------------------
+	// NOTE:  derive secret argon (if exists)...
 	
-	let _base_key = ();
+	let _secret_key = if _secret_exists {
+			
+			let _secret_salt = blake3_derive_key (
+					InternalSecretSalt,
+					CRYPTO_SECRET_SALT_CONTEXT,
+					&[
+						&_pin_hash.0,
+						&_packet_salt.0,
+						&_naive_key.0,
+					],
+					&[]);
+			
+			let _secret_argon = apply_argon_secret (_secret_hash, &_secret_salt) ?;
+			
+			let _secret_key = blake3_derive_key (
+					InternalSecretKey,
+					CRYPTO_SECRET_KEY_CONTEXT,
+					&[
+						&_secret_argon.0,
+					],
+					&[]);
+			
+			_secret_key
+			
+		} else {
+			InternalSecretKey (_secret_hash.0)
+		};
+	
+	// --------------------------------------------------------------------------------
+	// NOTE:  derive pin argon (if exists)...
+	
+	let _pin_key = if _pin_exists {
+			
+			let _pin_salt = blake3_derive_key (
+					InternalPinSalt,
+					CRYPTO_PIN_SALT_CONTEXT,
+					&[
+						&_secret_hash.0,
+						&_packet_salt.0,
+						&_naive_key.0,
+					],
+					&[]);
+			
+			let _pin_argon = apply_argon_pin (_pin_hash, &_pin_salt) ?;
+			
+			let _pin_key = blake3_derive_key (
+					InternalPinKey,
+					CRYPTO_PIN_KEY_CONTEXT,
+					&[
+						&_pin_argon.0,
+					],
+					&[]);
+			
+			_pin_key
+			
+		} else {
+			InternalPinKey (_pin_hash.0)
+		};
+	
+	// --------------------------------------------------------------------------------
+	// NOTE:  call SSH wrapper (if exists)...
+	
+	let _ssh_wrap_key = if let Some (_ssh_wrapper) = _ssh_wrapper {
+			
+			let _ssh_wrap_input = blake3_derive_key (
+					InternalSshWrapInput,
+					CRYPTO_SSH_WRAP_INPUT_CONTEXT,
+					&[
+						&_naive_key.0,
+						&_packet_salt.0,
+					],
+					&[]);
+			
+			let mut _ssh_wrap_output = [0u8; 32];
+			_ssh_wrapper.wrap (&_ssh_wrap_input.0, &mut _ssh_wrap_output) .else_wrap (0xcc07e95e) ?;
+			
+			let _ssh_wrap_output = blake3_derive_key (
+					InternalSshWrapOutput,
+					CRYPTO_SSH_WRAP_OUTPUT_CONTEXT,
+					&[
+						&_naive_key.0,
+						&_packet_salt.0,
+						&_ssh_wrap_output,
+					],
+					&[]);
+			
+			_ssh_wrap_output
+			
+		} else {
+			InternalSshWrapOutput ([0u8; 32])
+		};
+	
+	// --------------------------------------------------------------------------------
+	// NOTE:  derive wrapping key...
+	
+	let _wrapping_key = blake3_derive_key (
+			InternalPacketKey,
+			CRYPTO_PACKET_KEY_CONTEXT,
+			&[
+				&_naive_key.0,
+				&_secret_key.0,
+				&_pin_key.0,
+				&_ssh_wrap_key.0,
+				&_packet_salt.0,
+			],
+			&[]);
+	
+	// --------------------------------------------------------------------------------
+	// NOTE:  derive encryption key...
 	
 	let _encryption_key = blake3_derive_key (
 			InternalEncryptionKey,
 			CRYPTO_ENCRYPTION_KEY_CONTEXT,
 			&[
-				_wrapped_key,
-				&_salt.0,
+				&_wrapping_key.0,
 			],
 			&[]);
+	
+	// --------------------------------------------------------------------------------
+	// NOTE:  derive authentication key...
 	
 	let _authentication_key = blake3_derive_key (
 			InternalAuthenticationKey,
 			CRYPTO_AUTHENTICATION_KEY_CONTEXT,
 			&[
-				_wrapped_key,
-				&_salt.0,
+				&_wrapping_key.0,
 			],
 			&[]);
+	
+	// --------------------------------------------------------------------------------
 	
 	Ok ((_encryption_key, _authentication_key))
 }
@@ -597,26 +672,24 @@ fn derive_keys_phase_2 (
 
 
 
-fn apply_argon_secret (_secret_and_salt : Option<(&InternalSecretHash, &InternalSecretSalt)>) -> CryptoResult<InternalSecretArgon> {
-	
-	let _secret_and_salt = _secret_and_salt.map (|(_secret, _salt)| (_secret.0.as_slice (), &_salt.0));
+fn apply_argon_secret (_secret_hash : &InternalSecretHash, _secret_salt : &InternalSecretSalt) -> CryptoResult<InternalSecretArgon> {
 	
 	argon_derive (
 			InternalSecretArgon,
-			_secret_and_salt,
+			&_secret_hash.0,
+			&_secret_salt.0,
 			CRYPTO_SECRET_ARGON_M_COST,
 			CRYPTO_SECRET_ARGON_T_COST,
 		)
 }
 
 
-fn apply_argon_pin (_pin_and_salt : Option<(&InternalPinHash, &InternalPinSalt)>) -> CryptoResult<InternalPinArgon> {
-	
-	let _pin_and_salt = _pin_and_salt.map (|(_pin, _salt)| (_pin.0.as_slice (), &_salt.0));
+fn apply_argon_pin (_pin_hash : &InternalPinHash, _pin_salt : &InternalPinSalt) -> CryptoResult<InternalPinArgon> {
 	
 	argon_derive (
 			InternalPinArgon,
-			_pin_and_salt,
+			&_pin_hash.0,
+			&_pin_salt.0,
 			CRYPTO_PIN_ARGON_M_COST,
 			CRYPTO_PIN_ARGON_T_COST,
 		)

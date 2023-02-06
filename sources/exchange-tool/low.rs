@@ -145,7 +145,8 @@ pub(crate) fn blake3_update <const NF : usize, const NV : usize> (
 
 pub(crate) fn argon_derive <WC, WO> (
 		_wrapper : WC,
-		_secret_and_salt : Option<(&[u8], &[u8; 32])>,
+		_secret : &[u8],
+		_salt : &[u8; 32],
 		_m_cost : u32,
 		_t_cost : u32,
 	) -> CryptoResult<WO>
@@ -153,17 +154,6 @@ pub(crate) fn argon_derive <WC, WO> (
 		WC : Fn ([u8; 32]) -> WO,
 {
 	let mut _output = [0u8; 32];
-	
-	let Some ((_secret, _salt)) = _secret_and_salt
-		else {
-			let _wrapped = _wrapper (_output);
-			return Ok (_wrapped);
-		};
-	
-	if _secret.is_empty () {
-		let _wrapped = _wrapper (_output);
-		return Ok (_wrapped);
-	}
 	
 	let _parameters = ::argon2::Params::new (
 				_m_cost,
