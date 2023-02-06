@@ -34,6 +34,7 @@ use crate::keys::{
 		decode_raw_vec,
 	};
 
+use crate::low::*;
 use crate::macros::*;
 
 
@@ -119,20 +120,24 @@ impl SshWrapper {
 		let _runtime = &mut self.agent.runtime;
 		let mut _client = self.agent.client.take () .else_wrap (0xa5bc5a47) ?;
 		
-		let _key_hash : [u8; 32] =
-				::blake3::Hasher::new_derive_key (SSH_WRAP_KEY_HASH_CONTEXT)
-				.update (_key_algorithm.as_bytes ())
-				.update (&[0u8])
-				.update (&_key_serialized)
-				.finalize ()
-				.into ();
+		let _key_hash : [u8; 32] = blake3_derive_key (
+				|_hash| _hash,
+				SSH_WRAP_KEY_HASH_CONTEXT,
+				&[],
+				&[
+					_key_algorithm.as_bytes (),
+					&_key_serialized,
+				]);
 		
-		let _input_hash : [u8; 32] =
-				::blake3::Hasher::new_derive_key (SSH_WRAP_INPUT_HASH_CONTEXT)
-				.update (&_key_hash)
-				.update (_input)
-				.finalize ()
-				.into ();
+		let _input_hash : [u8; 32] = blake3_derive_key (
+				|_hash| _hash,
+				SSH_WRAP_INPUT_HASH_CONTEXT,
+				&[
+					&_key_hash,
+				],
+				&[
+					_input,
+				]);
 		
 		let (_client, _outcome) = self.agent.runtime.block_on (async {
 				_client.sign_request_signature (_key, &_input_hash) .await
@@ -150,13 +155,16 @@ impl SshWrapper {
 			fail! (0x8fc8e73a);
 		}
 		
-		let _output_hash : [u8; 32] =
-				::blake3::Hasher::new_derive_key (SSH_WRAP_OUTPUT_HASH_CONTEXT)
-				.update (&_key_hash)
-				.update (&_input_hash)
-				.update (&_signature)
-				.finalize ()
-				.into ();
+		let _output_hash : [u8; 32] = blake3_derive_key (
+				|_hash| _hash,
+				SSH_WRAP_OUTPUT_HASH_CONTEXT,
+				&[
+					&_key_hash,
+					&_input_hash,
+				],
+				&[
+					&_signature,
+				]);
 		
 		_output.copy_from_slice (&_output_hash);
 		
