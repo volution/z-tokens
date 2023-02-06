@@ -248,7 +248,7 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let _secret = _secret.filter (|_secret| ! (_secret.is_empty () && _empty_is_missing));
 	let _secret = _secret.map (SharedSecret::decode_and_zeroize) .transpose () .else_wrap (0xab68aede) ?;
-	let _secret = _secret.as_ref () .map (SharedSecret::as_bytes);
+	let _secret = _secret.as_ref () .map (SharedSecret::access_bytes) .map (|_bytes| _bytes.as_slice ());
 	
 	let _pin = _pin.filter (|_pin| ! (_pin.is_empty () && _empty_is_missing));
 	let _pin = _pin.as_ref () .map (String::as_bytes);
@@ -327,7 +327,7 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let _secret = _secret.filter (|_secret| ! (_secret.is_empty () && _empty_is_missing));
 	let _secret = _secret.map (SharedSecret::decode_and_zeroize) .transpose () .else_wrap (0x07d3b030) ?;
-	let _secret = _secret.as_ref () .map (SharedSecret::as_bytes);
+	let _secret = _secret.as_ref () .map (SharedSecret::access_bytes) .map (|_bytes| _bytes.as_slice ());
 	
 	let _pin = _pin.filter (|_pin| ! (_pin.is_empty () && _empty_is_missing));
 	let _pin = _pin.as_ref () .map (String::as_bytes);

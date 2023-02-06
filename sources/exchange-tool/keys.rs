@@ -27,13 +27,13 @@ define_error! (pub KeyCreateError, result : KeyCreateResult);
 
 
 
-pub struct SenderPrivateKey (pub(crate) Rb<SensitiveZeroize<x25519::StaticSecret>>);
-pub struct SenderPublicKey (pub(crate) Rb<SensitiveIgnored<x25519::PublicKey>>);
+pub struct SenderPrivateKey (Rb<SensitiveZeroize<x25519::StaticSecret>>);
+pub struct SenderPublicKey (Rb<SensitiveIgnored<x25519::PublicKey>>);
 
-pub struct RecipientPrivateKey (pub(crate) Rb<SensitiveZeroize<x25519::StaticSecret>>);
-pub struct RecipientPublicKey (pub(crate) Rb<SensitiveIgnored<x25519::PublicKey>>);
+pub struct RecipientPrivateKey (Rb<SensitiveZeroize<x25519::StaticSecret>>);
+pub struct RecipientPublicKey (Rb<SensitiveIgnored<x25519::PublicKey>>);
 
-pub struct SharedSecret (pub(crate) Rb<SensitiveZeroize<[u8; 32]>>);
+pub struct SharedSecret (Rb<SensitiveZeroize<[u8; 32]>>);
 
 
 
@@ -72,6 +72,16 @@ impl SenderPrivateKey {
 	pub fn to_recipient (&self) -> RecipientPrivateKey {
 		RecipientPrivateKey (self.0.clone ())
 	}
+	
+	pub(crate) fn access (&self) -> &x25519::StaticSecret {
+		&self.0.0
+	}
+	
+	pub(crate) fn access_bytes (&self) -> &[u8; 32] {
+		let _key : &x25519::StaticSecret = self.access ();
+		let _bytes : &[u8; 32] = unsafe { mem::transmute (_key) };
+		_bytes
+	}
 }
 
 
@@ -93,6 +103,14 @@ impl SenderPublicKey {
 	
 	pub fn to_recipient (&self) -> RecipientPublicKey {
 		RecipientPublicKey (self.0.clone ())
+	}
+	
+	pub(crate) fn access (&self) -> &x25519::PublicKey {
+		&self.0.0
+	}
+	
+	pub(crate) fn access_bytes (&self) -> &[u8; 32] {
+		self.access () .as_bytes ()
 	}
 }
 
@@ -118,6 +136,16 @@ impl RecipientPrivateKey {
 	pub fn to_sender (&self) -> SenderPrivateKey {
 		SenderPrivateKey (self.0.clone ())
 	}
+	
+	pub(crate) fn access (&self) -> &x25519::StaticSecret {
+		&self.0.0
+	}
+	
+	pub(crate) fn access_bytes (&self) -> &[u8; 32] {
+		let _key : &x25519::StaticSecret = self.access ();
+		let _bytes : &[u8; 32] = unsafe { mem::transmute (_key) };
+		_bytes
+	}
 }
 
 
@@ -140,6 +168,14 @@ impl RecipientPublicKey {
 	pub fn to_sender (&self) -> SenderPublicKey {
 		SenderPublicKey (self.0.clone ())
 	}
+	
+	pub(crate) fn access (&self) -> &x25519::PublicKey {
+		&self.0.0
+	}
+	
+	pub(crate) fn access_bytes (&self) -> &[u8; 32] {
+		self.access () .as_bytes ()
+	}
 }
 
 
@@ -161,7 +197,7 @@ impl SharedSecret {
 		encode_shared_secret (self)
 	}
 	
-	pub fn as_bytes (&self) -> &[u8] {
+	pub fn access_bytes (&self) -> &[u8; 32] {
 		&self.0.0
 	}
 }
@@ -256,33 +292,31 @@ pub(crate) fn decode_raw_vec (_prefix : &str, _encoded : &str) -> KeyEncodingRes
 
 
 pub fn encode_sender_private_key (_key : &SenderPrivateKey) -> KeyEncodingResult<Rb<String>> {
-	let _key : &x25519::StaticSecret = &_key.0.0;
-	let _bytes : &[u8; 32] = unsafe { mem::transmute (_key) };
+	let _bytes = _key.access_bytes ();
 	encode_raw (SENDER_PRIVATE_KEY_ENCODED_PREFIX, _bytes)
 }
 
 
 pub fn encode_sender_public_key (_key : &SenderPublicKey) -> KeyEncodingResult<Rb<String>> {
-	let _bytes = _key.0.0.as_bytes ();
+	let _bytes = _key.access_bytes ();
 	encode_raw (SENDER_PUBLIC_KEY_ENCODED_PREFIX, _bytes)
 }
 
 
 pub fn encode_recipient_private_key (_key : &RecipientPrivateKey) -> KeyEncodingResult<Rb<String>> {
-	let _key : &x25519::StaticSecret = &_key.0.0;
-	let _bytes : &[u8; 32] = unsafe { mem::transmute (_key) };
+	let _bytes = _key.access_bytes ();
 	encode_raw (RECEIVER_PRIVATE_KEY_ENCODED_PREFIX, _bytes)
 }
 
 
 pub fn encode_recipient_public_key (_key : &RecipientPublicKey) -> KeyEncodingResult<Rb<String>> {
-	let _bytes = _key.0.0.as_bytes ();
+	let _bytes = _key.access_bytes ();
 	encode_raw (RECEIVER_PUBLIC_KEY_ENCODED_PREFIX, _bytes)
 }
 
 
 pub fn encode_shared_secret (_key : &SharedSecret) -> KeyEncodingResult<Rb<String>> {
-	let _bytes = &_key.0.0;
+	let _bytes = _key.access_bytes ();
 	encode_raw (SHARED_SECRET_ENCODED_PREFIX, _bytes)
 }
 
