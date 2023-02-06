@@ -325,6 +325,8 @@
 	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
+	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
 	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
 	_sender_public="${__ZTOKENS_EXCHANGE_SENDER_PUBLIC:-}"
 	
@@ -336,6 +338,7 @@
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
+	time \
 	"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
 			exchange encrypt \
 				--sender "${_sender_private}" \
