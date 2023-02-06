@@ -104,22 +104,11 @@ define_cryptographic_context! (CRYPTO_SSH_WRAP_OUTPUT_CONTEXT, encryption, ssh_w
 
 
 
-const CRYPTO_SECRET_ARGON_ALGORITHM : ::argon2::Algorithm = ::argon2::Algorithm::Argon2id;
-const CRYPTO_SECRET_ARGON_VERSION : ::argon2::Version = ::argon2::Version::V0x13;
-
 const CRYPTO_SECRET_ARGON_M_COST : u32 = 512 * 1024;
 const CRYPTO_SECRET_ARGON_T_COST : u32 = 8;
-const CRYPTO_SECRET_ARGON_P_COST : u32 = 1;
-
-
-
-
-const CRYPTO_PIN_ARGON_ALGORITHM : ::argon2::Algorithm = ::argon2::Algorithm::Argon2id;
-const CRYPTO_PIN_ARGON_VERSION : ::argon2::Version = ::argon2::Version::V0x13;
 
 const CRYPTO_PIN_ARGON_M_COST : u32 = 128 * 1024;
 const CRYPTO_PIN_ARGON_T_COST : u32 = 8;
-const CRYPTO_PIN_ARGON_P_COST : u32 = 1;
 
 
 
@@ -356,6 +345,33 @@ fn apply_authentication (_key : &InternalAuthenticationKey, _data : &[u8]) -> Cr
 
 
 
+fn apply_all_or_nothing_mangling (_key : &InternalAontKey, _salt : &mut InternalEncryptionSalt, _data : &[u8]) -> CryptoResult {
+	
+	const _SIZE : usize = mem::size_of::<InternalEncryptionSalt> ();
+	
+	let _hash : [u8; _SIZE] = blake3_keyed_hash (
+			|_hash| _hash,
+			&_key.0,
+			&[],
+			&[
+				_data,
+			],
+		);
+	
+	for _index in 0 .. _SIZE {
+		_salt.0[_index] ^= _hash[_index];
+	}
+	
+	Ok (())
+}
+
+
+
+
+
+
+
+
 fn derive_keys_phase_1 (
 			_private : Option<&x25519::StaticSecret>,
 			_public : Option<&x25519::PublicKey>,
@@ -452,6 +468,10 @@ fn derive_keys_phase_1 (
 
 
 
+
+
+
+
 fn derive_keys_phase_2 (
 			_base_key : &InternalBaseKey,
 			_salt : &InternalEncryptionSalt,
@@ -515,90 +535,33 @@ fn derive_keys_phase_2 (
 
 
 
-fn apply_all_or_nothing_mangling (_key : &InternalAontKey, _salt : &mut InternalEncryptionSalt, _data : &[u8]) -> CryptoResult {
-	
-	const _SIZE : usize = mem::size_of::<InternalEncryptionSalt> ();
-	
-	let _hash : [u8; _SIZE] = blake3_keyed_hash (
-			|_hash| _hash,
-			&_key.0,
-			&[],
-			&[
-				_data,
-			],
-		);
-	
-	for _index in 0 .. _SIZE {
-		_salt.0[_index] ^= _hash[_index];
-	}
-	
-	Ok (())
-}
 
 
 
 
 fn apply_argon_secret (_secret_and_salt : Option<(&InternalSecretInput, &InternalSecretSalt)>) -> CryptoResult<InternalSecretArgon> {
 	
-	let mut _output = InternalSecretArgon ([0u8; 32]);
+	let _secret_and_salt = _secret_and_salt.map (|(_secret, _salt)| (_secret.0, &_salt.0));
 	
-	let Some ((_secret, _salt)) = _secret_and_salt
-		else {
-			return Ok (_output);
-		};
-	
-	if _secret.0.is_empty () {
-		return Ok (_output);
-	}
-	
-	let _parameters = ::argon2::Params::new (
-				CRYPTO_SECRET_ARGON_M_COST,
-				CRYPTO_SECRET_ARGON_T_COST,
-				CRYPTO_SECRET_ARGON_P_COST,
-				Some (_output.0.len ()),
-			) .else_wrap (0xf2eebb0c) ?;
-	
-	let _hasher = ::argon2::Argon2::new (
-				CRYPTO_SECRET_ARGON_ALGORITHM,
-				CRYPTO_SECRET_ARGON_VERSION,
-				_parameters,
-			);
-	
-	_hasher.hash_password_into (&_secret.0, &_salt.0, &mut _output.0) .else_wrap (0xacae7396) ?;
-	
-	Ok (_output)
+	argon_derive (
+			InternalSecretArgon,
+			_secret_and_salt,
+			CRYPTO_SECRET_ARGON_M_COST,
+			CRYPTO_SECRET_ARGON_T_COST,
+		)
 }
 
 
 fn apply_argon_pin (_pin_and_salt : Option<(&InternalPinInput, &InternalPinSalt)>) -> CryptoResult<InternalPinArgon> {
 	
-	let mut _output = InternalPinArgon ([0u8; 32]);
+	let _pin_and_salt = _pin_and_salt.map (|(_pin, _salt)| (_pin.0, &_salt.0));
 	
-	let Some ((_pin, _salt)) = _pin_and_salt
-		else {
-			return Ok (_output);
-		};
-	
-	if _pin.0.is_empty () {
-		return Ok (_output);
-	}
-	
-	let _parameters = ::argon2::Params::new (
-				CRYPTO_PIN_ARGON_M_COST,
-				CRYPTO_PIN_ARGON_T_COST,
-				CRYPTO_PIN_ARGON_P_COST,
-				Some (_output.0.len ()),
-			) .else_wrap (0x23aba478) ?;
-	
-	let _hasher = ::argon2::Argon2::new (
-				CRYPTO_PIN_ARGON_ALGORITHM,
-				CRYPTO_PIN_ARGON_VERSION,
-				_parameters,
-			);
-	
-	_hasher.hash_password_into (&_pin.0, &_salt.0, &mut _output.0) .else_wrap (0x23a4154f) ?;
-	
-	Ok (_output)
+	argon_derive (
+			InternalPinArgon,
+			_pin_and_salt,
+			CRYPTO_PIN_ARGON_M_COST,
+			CRYPTO_PIN_ARGON_T_COST,
+		)
 }
 
 

@@ -18,6 +18,17 @@ use crate::coding::encode_u32;
 
 
 
+const ARGON_ALGORITHM : ::argon2::Algorithm = ::argon2::Algorithm::Argon2id;
+const ARGON_VERSION : ::argon2::Version = ::argon2::Version::V0x13;
+const ARGON_P_COST : u32 = 1;
+
+
+
+
+
+
+
+
 pub(crate) fn x25519_dhe <WC, WO> (
 		_wrapper : WC,
 		_context : &'static str,
@@ -79,7 +90,6 @@ pub(crate) fn blake3_derive_key <const NF : usize, const NV : usize, WC, WO> (
 	let _hash : [u8; 32] = _hasher.finalize () .into ();
 	
 	let _wrapped = _wrapper (_hash);
-	
 	_wrapped
 }
 
@@ -100,7 +110,6 @@ pub(crate) fn blake3_keyed_hash <const NF : usize, const NV : usize, WC, WO> (
 	let _hash : [u8; 32] = _hasher.finalize () .into ();
 	
 	let _wrapped = _wrapper (_hash);
-	
 	_wrapped
 }
 
@@ -130,6 +139,62 @@ pub(crate) fn blake3_update <const NF : usize, const NV : usize> (
 
 
 
+
+
+
+
+pub(crate) fn argon_derive <WC, WO> (
+		_wrapper : WC,
+		_secret_and_salt : Option<(&[u8], &[u8; 32])>,
+		_m_cost : u32,
+		_t_cost : u32,
+	) -> CryptoResult<WO>
+	where
+		WC : Fn ([u8; 32]) -> WO,
+{
+	let mut _output = [0u8; 32];
+	
+	let Some ((_secret, _salt)) = _secret_and_salt
+		else {
+			let _wrapped = _wrapper (_output);
+			return Ok (_wrapped);
+		};
+	
+	if _secret.is_empty () {
+		let _wrapped = _wrapper (_output);
+		return Ok (_wrapped);
+	}
+	
+	let _parameters = ::argon2::Params::new (
+				_m_cost,
+				_t_cost,
+				ARGON_P_COST,
+				Some (_output.len ()),
+			) .else_wrap (0xf2eebb0c) ?;
+	
+	let _hasher = ::argon2::Argon2::new (
+				ARGON_ALGORITHM,
+				ARGON_VERSION,
+				_parameters,
+			);
+	
+	_hasher.hash_password_into (
+				&_secret,
+				_salt.as_slice (),
+				&mut _output
+			) .else_wrap (0xacae7396) ?;
+	
+	let _wrapped = _wrapper (_output);
+	return Ok (_wrapped);
+}
+
+
+
+
+
+
+
+
 pub(crate) fn generate_random <WC, WO> (_wrapper : WC) -> WO
 	where
 		WC : Fn ([u8; 32]) -> WO,
@@ -142,7 +207,6 @@ pub(crate) fn generate_random <WC, WO> (_wrapper : WC) -> WO
 	OsRng.fill_bytes (&mut _data);
 	
 	let _wrapped = _wrapper (_data);
-	
 	_wrapped
 }
 
