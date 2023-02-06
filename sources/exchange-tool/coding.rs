@@ -368,51 +368,53 @@ pub(crate) fn bytes_pop <const SIZE : usize> (_buffer : &mut Vec<u8>) -> Option<
 
 pub(crate) fn padding_push (_alignment : usize, _buffer : &mut Vec<u8>) -> () {
 	
+	let _buffer_len = _buffer.len ();
+	
 	assert! (_alignment > 0, "[cdc52ac7]");
 	assert! (_alignment <= 256, "[9d23d229]");
 	
-	let _padding = _alignment - (_buffer.len () % _alignment);
+	let _padding = _alignment - (_buffer_len % _alignment);
 	
 	assert! (_padding >= 1, "[0a1987ea]");
-	assert! (_padding <= 256, "[d2c4f983]");
+	assert! (_padding <= _alignment, "[d2c4f983]");
 	
 	for _index in 0 .. _padding {
-		let _remaining = _padding - 1 - _index;
-		assert! (_remaining <= 255, "[bdb6c424]");
-		_buffer.push (_remaining as u8);
+		let _remaining = _index as u8;
+		_buffer.push (_remaining);
 	}
 	
+	assert! (_buffer.len () == (_buffer_len + _padding), "[e295c14b]");
 	assert! ((_buffer.len () % _alignment) == 0, "[4471a66f]");
 }
 
 
 pub(crate) fn padding_pop (_alignment : usize, _buffer : &mut Vec<u8>) -> EncodingResult {
 	
+	let _buffer_len = _buffer.len ();
+	
 	assert! (_alignment > 0, "[cbf1cbaf]");
 	assert! (_alignment <= 256, "[a5b18bae]");
 	
-	let _buffer_len = _buffer.len ();
-	if _buffer_len <= 1 {
+	if _buffer_len < _alignment {
 		fail! (0x04d212d0);
 	}
 	if (_buffer_len % _alignment) != 0 {
 		fail! (0x25bfe610);
 	}
 	
-	let _padding = _buffer[_buffer_len - 1] as usize;
-	if _padding < 1 {
-		fail! (0x628e3a2b);
-	}
+	let _padding = 1 + _buffer[_buffer_len - 1] as usize;
 	
+	if _padding > _alignment {
+		fail! (0x1d74fcde);
+	}
 	if _buffer_len < _padding {
 		fail! (0xe17b846c);
 	}
 	
 	for _index in 0 .. _padding {
-		let _remaining = _padding - 1 - _index;
-		assert! (_remaining <= 255, "[de8941f0]");
-		let _remaining_actual = _buffer[_buffer_len - _index - 1];
-		if _remaining_actual != (_remaining as u8) {
+		let _remaining_expected = _index as u8;
+		let _remaining_actual = _buffer[_buffer_len - _padding + _index];
+		if _remaining_actual != _remaining_expected {
 			fail! (0x1f66027e);
 		}
 	}
