@@ -374,11 +374,12 @@ pub(crate) fn padding_push (_alignment : usize, _buffer : &mut Vec<u8>) -> () {
 	let _padding = _alignment - (_buffer.len () % _alignment);
 	
 	assert! (_padding >= 1, "[0a1987ea]");
-	assert! (_padding <= 255, "[d2c4f983]");
+	assert! (_padding <= 256, "[d2c4f983]");
 	
-	let _padding = _padding as u8;
-	for _ in 0 .. _padding {
-		_buffer.push (_padding);
+	for _index in 0 .. _padding {
+		let _remaining = _padding - 1 - _index;
+		assert! (_remaining <= 255, "[bdb6c424]");
+		_buffer.push (_remaining as u8);
 	}
 	
 	assert! ((_buffer.len () % _alignment) == 0, "[4471a66f]");
@@ -398,23 +399,25 @@ pub(crate) fn padding_pop (_alignment : usize, _buffer : &mut Vec<u8>) -> Encodi
 		fail! (0x25bfe610);
 	}
 	
-	let _padding = _buffer[_buffer_len - 1];
+	let _padding = _buffer[_buffer_len - 1] as usize;
 	if _padding < 1 {
 		fail! (0x628e3a2b);
 	}
 	
-	if _buffer_len < (_padding as usize) {
+	if _buffer_len < _padding {
 		fail! (0xe17b846c);
 	}
 	
-	for _padding_offset in 0 .. (_padding as usize) {
-		let _padding_actual = _buffer[_buffer_len - _padding_offset - 1];
-		if _padding_actual != _padding {
+	for _index in 0 .. _padding {
+		let _remaining = _padding - 1 - _index;
+		assert! (_remaining <= 255, "[de8941f0]");
+		let _remaining_actual = _buffer[_buffer_len - _index - 1];
+		if _remaining_actual != (_remaining as u8) {
 			fail! (0x1f66027e);
 		}
 	}
 	
-	_buffer.truncate (_buffer_len - (_padding as usize));
+	_buffer.truncate (_buffer_len - _padding);
 	
 	Ok (())
 }
