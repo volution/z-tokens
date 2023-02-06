@@ -611,9 +611,9 @@ fn derive_keys_phase_2 (
 		};
 	
 	// --------------------------------------------------------------------------------
-	// NOTE:  derive wrapping key...
+	// NOTE:  derive packet key...
 	
-	let _wrapping_key = blake3_derive_key (
+	let _packet_key = blake3_derive_key (
 			InternalPacketKey::wrap,
 			CRYPTO_PACKET_KEY_CONTEXT,
 			&[
@@ -632,7 +632,7 @@ fn derive_keys_phase_2 (
 			InternalEncryptionKey::wrap,
 			CRYPTO_ENCRYPTION_KEY_CONTEXT,
 			&[
-				_wrapping_key.access (),
+				_packet_key.access (),
 			],
 			&[]);
 	
@@ -643,7 +643,7 @@ fn derive_keys_phase_2 (
 			InternalAuthenticationKey::wrap,
 			CRYPTO_AUTHENTICATION_KEY_CONTEXT,
 			&[
-				_wrapping_key.access (),
+				_packet_key.access (),
 			],
 			&[]);
 	
