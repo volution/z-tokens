@@ -45,8 +45,8 @@ pub const CRYPTO_ENCRYPTED_SIZE_MAX : usize =
 
 const CRYPTO_ENCRYPTED_PADDING : usize = 256;
 const CRYPTO_ENCRYPTED_OVERHEAD : usize = CRYPTO_ENCRYPTED_SALT + CRYPTO_ENCRYPTED_MAC;
-const CRYPTO_ENCRYPTED_SALT : usize = 32;
-const CRYPTO_ENCRYPTED_MAC : usize = 32;
+const CRYPTO_ENCRYPTED_SALT : usize = InternalPacketSalt::SIZE;
+const CRYPTO_ENCRYPTED_MAC : usize = InternalAuthenticationMac::SIZE;
 
 
 
@@ -55,35 +55,35 @@ const CRYPTO_ENCRYPTED_MAC : usize = 32;
 
 
 
-struct InternalDheKey ([u8; 32]);
-struct InternalNaiveKey ([u8; 32]);
-struct InternalAontKey ([u8; 32]);
+define_cryptographic_material! (InternalDheKey, 32);
+define_cryptographic_material! (InternalNaiveKey, 32);
+define_cryptographic_material! (InternalAontKey, 32);
 
-struct InternalPacketSalt ([u8; 32]);
-struct InternalPacketKey ([u8; 32]);
+define_cryptographic_material! (InternalPacketSalt, 32);
+define_cryptographic_material! (InternalPacketKey, 32);
 
-struct InternalEncryptionKey ([u8; 32]);
+define_cryptographic_material! (InternalEncryptionKey, 32);
 
-struct InternalAuthenticationKey ([u8; 32]);
-struct InternalAuthenticationMac ([u8; 32]);
+define_cryptographic_material! (InternalAuthenticationKey, 32);
+define_cryptographic_material! (InternalAuthenticationMac, 32);
 
-struct InternalSecretInput <'a> (&'a [u8]);
-struct InternalSecretHash ([u8; 32]);
-struct InternalSecretSalt ([u8; 32]);
-struct InternalSecretArgon ([u8; 32]);
-struct InternalSecretKey ([u8; 32]);
+define_cryptographic_material! (InternalSecretInput, input, slice);
+define_cryptographic_material! (InternalSecretHash, 32);
+define_cryptographic_material! (InternalSecretSalt, 32);
+define_cryptographic_material! (InternalSecretArgon, 32);
+define_cryptographic_material! (InternalSecretKey, 32);
 
-struct InternalPinInput <'a> (&'a [u8]);
-struct InternalPinHash ([u8; 32]);
-struct InternalPinSalt ([u8; 32]);
-struct InternalPinArgon ([u8; 32]);
-struct InternalPinKey ([u8; 32]);
+define_cryptographic_material! (InternalPinInput, input, slice);
+define_cryptographic_material! (InternalPinHash, 32);
+define_cryptographic_material! (InternalPinSalt, 32);
+define_cryptographic_material! (InternalPinArgon, 32);
+define_cryptographic_material! (InternalPinKey, 32);
 
-struct InternalSshWrapInput ([u8; 32]);
-struct InternalSshWrapOutput ([u8; 32]);
+define_cryptographic_material! (InternalSshWrapInput, 32);
+define_cryptographic_material! (InternalSshWrapOutput, 32);
 
-struct InternalDataDecrypted <'a> (&'a [u8]);
-struct InternalDataEncrypted <'a> (&'a [u8]);
+define_cryptographic_material! (InternalDataDecrypted, input, slice);
+define_cryptographic_material! (InternalDataEncrypted, input, slice);
 
 
 
