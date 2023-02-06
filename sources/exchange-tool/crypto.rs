@@ -486,8 +486,8 @@ fn derive_keys_phase_1 (
 			InternalNaiveKey,
 			CRYPTO_NAIVE_KEY_CONTEXT,
 			&[
-				&_pin_hash.0,
 				&_secret_hash.0,
+				&_pin_hash.0,
 				&_dhe_key.0,
 			],
 			&[]);
@@ -529,6 +529,39 @@ fn derive_keys_phase_2 (
 	let (_pin_hash, _pin_exists) = _pin_hash;
 	
 	// --------------------------------------------------------------------------------
+	// NOTE:  call SSH wrapper (if exists)...
+	
+	let _ssh_wrap_key = if let Some (_ssh_wrapper) = _ssh_wrapper {
+			
+			let _ssh_wrap_input = blake3_derive_key (
+					InternalSshWrapInput,
+					CRYPTO_SSH_WRAP_INPUT_CONTEXT,
+					&[
+						&_packet_salt.0,
+						&_naive_key.0,
+					],
+					&[]);
+			
+			let mut _ssh_wrap_output = [0u8; 32];
+			_ssh_wrapper.wrap (&_ssh_wrap_input.0, &mut _ssh_wrap_output) .else_wrap (0xcc07e95e) ?;
+			
+			let _ssh_wrap_output = blake3_derive_key (
+					InternalSshWrapOutput,
+					CRYPTO_SSH_WRAP_OUTPUT_CONTEXT,
+					&[
+						&_packet_salt.0,
+						&_naive_key.0,
+						&_ssh_wrap_output,
+					],
+					&[]);
+			
+			_ssh_wrap_output
+			
+		} else {
+			InternalSshWrapOutput ([0u8; 32])
+		};
+	
+	// --------------------------------------------------------------------------------
 	// NOTE:  derive secret argon (if exists)...
 	
 	let _secret_key = if _secret_exists {
@@ -537,7 +570,7 @@ fn derive_keys_phase_2 (
 					InternalSecretSalt,
 					CRYPTO_SECRET_SALT_CONTEXT,
 					&[
-						&_pin_hash.0,
+						&_ssh_wrap_key.0,
 						&_packet_salt.0,
 						&_naive_key.0,
 					],
@@ -568,7 +601,7 @@ fn derive_keys_phase_2 (
 					InternalPinSalt,
 					CRYPTO_PIN_SALT_CONTEXT,
 					&[
-						&_secret_hash.0,
+						&_ssh_wrap_key.0,
 						&_packet_salt.0,
 						&_naive_key.0,
 					],
@@ -591,50 +624,17 @@ fn derive_keys_phase_2 (
 		};
 	
 	// --------------------------------------------------------------------------------
-	// NOTE:  call SSH wrapper (if exists)...
-	
-	let _ssh_wrap_key = if let Some (_ssh_wrapper) = _ssh_wrapper {
-			
-			let _ssh_wrap_input = blake3_derive_key (
-					InternalSshWrapInput,
-					CRYPTO_SSH_WRAP_INPUT_CONTEXT,
-					&[
-						&_naive_key.0,
-						&_packet_salt.0,
-					],
-					&[]);
-			
-			let mut _ssh_wrap_output = [0u8; 32];
-			_ssh_wrapper.wrap (&_ssh_wrap_input.0, &mut _ssh_wrap_output) .else_wrap (0xcc07e95e) ?;
-			
-			let _ssh_wrap_output = blake3_derive_key (
-					InternalSshWrapOutput,
-					CRYPTO_SSH_WRAP_OUTPUT_CONTEXT,
-					&[
-						&_naive_key.0,
-						&_packet_salt.0,
-						&_ssh_wrap_output,
-					],
-					&[]);
-			
-			_ssh_wrap_output
-			
-		} else {
-			InternalSshWrapOutput ([0u8; 32])
-		};
-	
-	// --------------------------------------------------------------------------------
 	// NOTE:  derive wrapping key...
 	
 	let _wrapping_key = blake3_derive_key (
 			InternalPacketKey,
 			CRYPTO_PACKET_KEY_CONTEXT,
 			&[
-				&_naive_key.0,
+				&_ssh_wrap_key.0,
 				&_secret_key.0,
 				&_pin_key.0,
-				&_ssh_wrap_key.0,
 				&_packet_salt.0,
+				&_naive_key.0,
 			],
 			&[]);
 	
