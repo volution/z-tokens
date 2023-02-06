@@ -43,10 +43,21 @@ pub const CRYPTO_ENCRYPTED_SIZE_MAX : usize =
 		);
 
 
+
+
 const CRYPTO_ENCRYPTED_PADDING : usize = 256;
 const CRYPTO_ENCRYPTED_OVERHEAD : usize = CRYPTO_ENCRYPTED_SALT + CRYPTO_ENCRYPTED_MAC;
 const CRYPTO_ENCRYPTED_SALT : usize = InternalPacketSalt::SIZE;
 const CRYPTO_ENCRYPTED_MAC : usize = InternalAuthenticationMac::SIZE;
+
+
+
+
+const CRYPTO_SECRET_ARGON_M_COST : u32 = 512 * 1024;
+const CRYPTO_SECRET_ARGON_T_COST : u32 = 8;
+
+const CRYPTO_PIN_ARGON_M_COST : u32 = 32 * 1024;
+const CRYPTO_PIN_ARGON_T_COST : u32 = 4;
 
 
 
@@ -106,15 +117,6 @@ define_cryptographic_context! (CRYPTO_PIN_KEY_CONTEXT, encryption, pin_key);
 
 define_cryptographic_context! (CRYPTO_SSH_WRAP_INPUT_CONTEXT, encryption, ssh_wrap_input);
 define_cryptographic_context! (CRYPTO_SSH_WRAP_OUTPUT_CONTEXT, encryption, ssh_wrap_output);
-
-
-
-
-const CRYPTO_SECRET_ARGON_M_COST : u32 = 512 * 1024;
-const CRYPTO_SECRET_ARGON_T_COST : u32 = 8;
-
-const CRYPTO_PIN_ARGON_M_COST : u32 = 128 * 1024;
-const CRYPTO_PIN_ARGON_T_COST : u32 = 8;
 
 
 
