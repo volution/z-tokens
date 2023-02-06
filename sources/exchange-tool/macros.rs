@@ -83,8 +83,22 @@ macro_rules! define_cryptographic_material {
 
 
 
+macro_rules! drop {
+	
+	( $_identifier : ident ) => {
+		let $_identifier = mem::drop ($_identifier);
+	};
+	
+	( $( $_identifier : ident ),+ ) => {
+		$( drop! ($_identifier); )+
+	}
+}
+
+
+
+
 pub(crate) use define_cryptographic_material;
 pub(crate) use define_cryptographic_context;
-
+pub(crate) use drop;
 
 

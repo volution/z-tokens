@@ -143,6 +143,9 @@ pub fn encrypt (
 		fail! (0x83d6c657);
 	}
 	
+	// --------------------------------------------------------------------------------
+	// --------------------------------------------------------------------------------
+	
 	// NOTE:  compressing...
 	
 	let _compress_capacity = compress_capacity_max (_decrypted_len) .else_wrap (0x4198ca8b) ?;
@@ -156,6 +159,8 @@ pub fn encrypt (
 		_intermediate_buffer.clear ();
 		_intermediate_buffer.extend_from_slice (_decrypted.access ());
 	}
+	
+	drop! (_decrypted);
 	
 	// NOTE:  padding...
 	
@@ -174,6 +179,8 @@ pub fn encrypt (
 	let (_naive_key, _aont_key, (_secret_hash, _secret_exists), (_pin_hash, _pin_exists))
 			= derive_keys_phase_1 (_sender, _recipient, _secret_input, _pin_input, true) ?;
 	
+	drop! (_sender, _recipient);
+	
 	// NOTE:  salting...
 	
 	let mut _packet_salt = generate_random (InternalPacketSalt::wrap);
@@ -191,11 +198,15 @@ pub fn encrypt (
 	
 	_intermediate_buffer.extend_from_slice (_mac.access ());
 	
+	drop! (_mac);
+	
 	// NOTE:  all-or-nothing...
 	
 	apply_all_or_nothing_mangling (_aont_key, &mut _packet_salt, &_intermediate_buffer) ?;
 	
 	_intermediate_buffer.extend_from_slice (_packet_salt.access ());
+	
+	drop! (_packet_salt);
 	
 	// --------------------------------------------------------------------------------
 	// --------------------------------------------------------------------------------
@@ -211,7 +222,8 @@ pub fn encrypt (
 	
 	assert! (_encode_buffer.len () <= CRYPTO_ENCRYPTED_SIZE_MAX, "[bb3c2546]  {} <= {}", _encode_buffer.len (), CRYPTO_ENCRYPTED_SIZE_MAX);
 	
-	// NOTE:  finalizing...
+	// --------------------------------------------------------------------------------
+	// --------------------------------------------------------------------------------
 	
 	// NOTE:  This last step is an overhead, but it ensures an all-or-nothing processing!
 	_encrypted.extend_from_slice (&_encode_buffer);
@@ -242,12 +254,17 @@ pub fn decrypt (
 		fail! (0x5832104d);
 	}
 	
+	// --------------------------------------------------------------------------------
+	// --------------------------------------------------------------------------------
+	
 	// NOTE:  decoding...
 	
 	let _decode_capacity = decode_capacity_max (_encrypted_len) .else_wrap (0xae545303) ?;
 	
 	let mut _intermediate_buffer = Vec::with_capacity (_decode_capacity);
 	decode (_encrypted.access (), &mut _intermediate_buffer) .else_wrap (0x10ff413a) ?;
+	
+	drop! (_encrypted);
 	
 	// --------------------------------------------------------------------------------
 	// --------------------------------------------------------------------------------
@@ -260,6 +277,8 @@ pub fn decrypt (
 	let (_naive_key, _aont_key, (_secret_hash, _secret_exists), (_pin_hash, _pin_exists))
 			= derive_keys_phase_1 (_recipient, _sender, _secret_input, _pin_input, false) ?;
 	
+	drop! (_sender, _recipient);
+	
 	// NOTE:  all-or-nothing and salting...
 	
 	let _packet_salt = bytes_pop::<CRYPTO_ENCRYPTED_SALT> (&mut _intermediate_buffer) .else_wrap (0x78ed3811) ?;
@@ -271,6 +290,8 @@ pub fn decrypt (
 	
 	let (_encryption_key, _authentication_key)
 			= derive_keys_phase_2 (_naive_key, &_packet_salt, (_secret_hash, _secret_exists), (_pin_hash, _pin_exists), _ssh_wrapper) ?;
+	
+	drop! (_packet_salt);
 	
 	// NOTE:  authentication...
 	
@@ -316,7 +337,8 @@ pub fn decrypt (
 		fail! (0x0610eb74);
 	}
 	
-	// NOTE:  finalizing...
+	// --------------------------------------------------------------------------------
+	// --------------------------------------------------------------------------------
 	
 	// NOTE:  This last step is an overhead, but it ensures an all-or-nothing processing!
 	_decrypted.extend_from_slice (&_decompress_buffer);
