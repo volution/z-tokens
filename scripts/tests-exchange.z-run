@@ -547,6 +547,112 @@
 
 
 
+<< tests / quick / exchange / encrypt & decrypt / cases
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	for _case_ssh_wrap in without-ssh-wrap with-ssh-wrap ; do
+	for _case_secret in without-secret with-secret ; do
+	for _case_pin in without-pin with-pin ; do
+	for _case_send in send self ; do
+		
+		_file=./notice.txt
+		
+		_encrypt_arguments=()
+		_decrypt_arguments=()
+		_common_arguments=()
+		
+		case "${_case_send}" in
+			( send )
+				_encrypt_arguments+=(
+						--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920
+						--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah
+					)
+				_decrypt_arguments+=(
+						--recipient ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk
+						--sender ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88
+					)
+			;;
+			( self )
+				_encrypt_arguments+=(
+						--sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m
+					)
+				_decrypt_arguments+=(
+						--recipient ztxrk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqfgdyps
+					)
+			;;
+			( * )
+				false
+			;;
+		esac
+		
+		case "${_case_pin}" in
+			( with-pin )
+				_common_arguments+=(
+						--pin "${SRANDOM}"
+					)
+			;;
+			( without-pin )
+			;;
+			( * )
+				false
+			;;
+		esac
+		
+		case "${_case_secret}" in
+			( with-secret )
+				_common_arguments+=(
+						--secret ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm
+					)
+			;;
+			( without-secret )
+			;;
+			( * )
+			;;
+		esac
+		
+		case "${_case_ssh_wrap}" in
+			( with-ssh-wrap )
+				_common_arguments+=(
+						--ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqspf9hel
+					)
+			;;
+			( without-ssh-wrap )
+			;;
+			( * )
+				false
+			;;
+		esac
+		
+		printf -- '[ii]  running iteration `%s %s %s %s`...\n' "${_case_send}" "${_case_pin}" "${_case_secret}" "${_case_ssh_wrap}" >&2
+		
+		TIMEFORMAT="[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;"
+		
+		time \
+		"${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
+				exchange encrypt \
+					"${_encrypt_arguments[@]}" \
+					"${_common_arguments[@]}" \
+			< "${_file}" \
+		| "${__OUTPUTS}/binaries/z-tokens--release--linux--native" \
+				exchange decrypt \
+					"${_decrypt_arguments[@]}" \
+					"${_common_arguments[@]}" \
+		| md5sum -b -- /dev/fd/5 5<&0 \
+		| md5sum -c --quiet 5< "${_file}" \
+		#
+		
+	done ; done ; done ; done
+!!
+
+
+
+
+
+
+
+
 &&== env-fallback __ZTOKENS_EXCHANGE_SENDER_PRIVATE ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920
 &&== env-fallback __ZTOKENS_EXCHANGE_SENDER_PUBLIC ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88
 
@@ -564,6 +670,6 @@
 :: tests / quick / exchange / set / pin / random :: export -- __ZTOKENS_EXCHANGE_PIN="${SRANDOM}"
 
 :: tests / quick / exchange / set / ssh-wrap / empty :: export -- __ZTOKENS_EXCHANGE_SSH_WRAP=''
-:: tests / quick / exchange / set / ssh-wrap / testing :: export -- __ZTOKENS_EXCHANGE_SSH_WRAP='ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqspf9hel'
+:: tests / quick / exchange / set / ssh-wrap / testing :: export -- __ZTOKENS_EXCHANGE_SSH_WRAP=ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqspf9hel
 
 
