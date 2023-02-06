@@ -117,9 +117,6 @@ impl SshWrapper {
 		let _key_algorithm = _key.name ();
 		let _key_serialized = _key.public_key_bytes ();
 		
-		let _runtime = &mut self.agent.runtime;
-		let mut _client = self.agent.client.take () .else_wrap (0xa5bc5a47) ?;
-		
 		let _key_hash : [u8; 32] = blake3_derive_key (
 				|_hash| _hash,
 				SSH_WRAP_KEY_HASH_CONTEXT,
@@ -139,11 +136,19 @@ impl SshWrapper {
 					_input,
 				]);
 		
-		let (_client, _outcome) = self.agent.runtime.block_on (async {
-				_client.sign_request_signature (_key, &_input_hash) .await
-			});
-		
-		self.agent.client = Some (_client);
+		let _outcome = {
+			
+			let _runtime = &mut self.agent.runtime;
+			let mut _client = self.agent.client.take () .else_wrap (0xa5bc5a47) ?;
+			
+			let (_client, _outcome) = self.agent.runtime.block_on (async {
+					_client.sign_request_signature (_key, &_input_hash) .await
+				});
+			
+			self.agent.client = Some (_client);
+			
+			_outcome
+		};
 		
 		let _signature = _outcome.else_wrap (0xe3badadd) ?;
 		let _signature : &[u8] = match _signature {
