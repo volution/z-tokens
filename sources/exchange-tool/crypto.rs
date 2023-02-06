@@ -68,11 +68,13 @@ struct InternalAuthenticationMac ([u8; 32]);
 struct InternalSecretSalt ([u8; 32]);
 struct InternalSecretKey ([u8; 32]);
 struct InternalSecretInput <'a> (&'a [u8]);
+struct InternalSecretHash ([u8; 32]);
 struct InternalSecretArgon ([u8; 32]);
 
 struct InternalPinSalt ([u8; 32]);
 struct InternalPinKey ([u8; 32]);
 struct InternalPinInput <'a> (&'a [u8]);
+struct InternalPinHash ([u8; 32]);
 struct InternalPinArgon ([u8; 32]);
 
 struct InternalSshWrapInput ([u8; 32]);
@@ -92,9 +94,11 @@ define_cryptographic_context! (CRYPTO_ENCRYPTION_KEY_CONTEXT, encryption, encryp
 
 define_cryptographic_context! (CRYPTO_AUTHENTICATION_KEY_CONTEXT, encryption, authentication_key);
 
+define_cryptographic_context! (CRYPTO_SECRET_HASH_CONTEXT, encryption, secret_hash);
 define_cryptographic_context! (CRYPTO_SECRET_SALT_CONTEXT, encryption, secret_salt);
 define_cryptographic_context! (CRYPTO_SECRET_KEY_CONTEXT, encryption, secret_key);
 
+define_cryptographic_context! (CRYPTO_PIN_HASH_CONTEXT, encryption, pin_hash);
 define_cryptographic_context! (CRYPTO_PIN_SALT_CONTEXT, encryption, pin_salt);
 define_cryptographic_context! (CRYPTO_PIN_KEY_CONTEXT, encryption, pin_key);
 
@@ -375,11 +379,14 @@ fn apply_all_or_nothing_mangling (_key : &InternalAontKey, _salt : &mut Internal
 fn derive_keys_phase_1 (
 			_private : Option<&x25519::StaticSecret>,
 			_public : Option<&x25519::PublicKey>,
-			_secret : Option<&InternalSecretInput>,
-			_pin : Option<&InternalPinInput>,
+			_secret_input : Option<&InternalSecretInput>,
+			_pin_input : Option<&InternalPinInput>,
 			_encryption : bool,
 		) -> CryptoResult<(InternalBaseKey, InternalAontKey)>
 {
+	// --------------------------------------------------------------------------------
+	// NOTE:  apply X25519 DHE...
+	
 	let _private = _private.else_wrap (0x70f91100) ?;
 	
 	let _shared_key = x25519_dhe (
@@ -390,14 +397,52 @@ fn derive_keys_phase_1 (
 			_encryption,
 		) ?;
 	
-	mem::drop (_private);
-	mem::drop (_public);
-	mem::drop (_encryption);
+	let _private = ();
+	let _public = ();
+	let _encryption = ();
+	
+	// --------------------------------------------------------------------------------
+	// NOTE:  derive secret hash (if exists)...
+	
+	let _secret_input = _secret_input.map (|_secret_input| _secret_input.0) .unwrap_or (&[]);
+	let _secret_exists = ! _secret_input.is_empty ();
+	
+	let _secret_hash = blake3_derive_key (
+			InternalSecretHash,
+			CRYPTO_SECRET_HASH_CONTEXT,
+			&[],
+			&[
+				_secret_input,
+			]);
+	
+	let _secret_input = ();
+	
+	// --------------------------------------------------------------------------------
+	// NOTE:  derive pin hash (if exists)...
+	
+	let _pin_input = _pin_input.map (|_pin_input| _pin_input.0) .unwrap_or (&[]);
+	let _pin_exists = ! _pin_input.is_empty ();
+	
+	let _pin_hash = blake3_derive_key (
+			InternalPinHash,
+			CRYPTO_PIN_HASH_CONTEXT,
+			&[],
+			&[
+				_pin_input,
+			]);
+	
+	let _pin_input = ();
+	
+	// --------------------------------------------------------------------------------
+	// NOTE:  derive secret and pin argon (if exists)...
+	
+	// NOTE:  derive secret and pin salts...
 	
 	let _secret_salt = blake3_derive_key (
 			InternalSecretSalt,
 			CRYPTO_SECRET_SALT_CONTEXT,
 			&[
+				&_pin_hash.0,
 				&_shared_key.0,
 			],
 			&[]);
@@ -406,21 +451,17 @@ fn derive_keys_phase_1 (
 			InternalPinSalt,
 			CRYPTO_PIN_SALT_CONTEXT,
 			&[
+				&_secret_hash.0,
 				&_shared_key.0,
 			],
 			&[]);
 	
-	let _secret_argon = apply_argon_secret (_secret.map (|_secret| (_secret, &_secret_salt))) ?;
+	// NOTE:  derive secret argon...
 	
-	mem::drop (_secret);
-	mem::drop (_secret_salt);
+	let _secret_and_salt = if _secret_exists { Some ((&_secret_hash, &_secret_salt)) } else { None };
+	let _secret_argon = apply_argon_secret (_secret_and_salt) ?;
 	
-	let _pin_argon = apply_argon_pin (_pin.map (|_pin| (_pin, &_pin_salt))) ?;
-	
-	mem::drop (_pin);
-	mem::drop (_pin_salt);
-	
-	let _secret_hash = blake3_derive_key (
+	let _secret_key = blake3_derive_key (
 			InternalSecretKey,
 			CRYPTO_SECRET_KEY_CONTEXT,
 			&[
@@ -428,9 +469,16 @@ fn derive_keys_phase_1 (
 			],
 			&[]);
 	
-	mem::drop (_secret_argon);
+	let _secret_hash = ();
+	let _secret_salt = ();
+	let _secret_argon = ();
 	
-	let _pin_hash = blake3_derive_key (
+	// NOTE:  derive pin argon...
+	
+	let _pin_and_salt = if _pin_exists { Some ((&_pin_hash, &_pin_salt)) } else { None };
+	let _pin_argon = apply_argon_pin (_pin_and_salt) ?;
+	
+	let _pin_key = blake3_derive_key (
 			InternalPinKey,
 			CRYPTO_PIN_KEY_CONTEXT,
 			&[
@@ -438,21 +486,29 @@ fn derive_keys_phase_1 (
 			],
 			&[]);
 	
-	mem::drop (_pin_argon);
+	let _pin_hash = ();
+	let _pin_salt = ();
+	let _pin_argon = ();
+	
+	// --------------------------------------------------------------------------------
+	// NOTE:  derive base key (for the entire transaction)...
 	
 	let _base_key = blake3_derive_key (
 			InternalBaseKey,
 			CRYPTO_BASE_KEY_CONTEXT,
 			&[
-				&_pin_hash.0,
-				&_secret_hash.0,
+				&_pin_key.0,
+				&_secret_key.0,
 				&_shared_key.0,
 			],
 			&[]);
 	
-	mem::drop (_shared_key);
-	mem::drop (_secret_hash);
-	mem::drop (_pin_hash);
+	let _shared_key = ();
+	let _secret_key = ();
+	let _pin_key = ();
+	
+	// --------------------------------------------------------------------------------
+	// NOTE:  derive AONT key...
 	
 	let _aont_key = blake3_derive_key (
 			InternalAontKey,
@@ -511,6 +567,8 @@ fn derive_keys_phase_2 (
 			.map (|_wrapped_key| &_wrapped_key.0)
 			.unwrap_or (&_base_key.0);
 	
+	let _base_key = ();
+	
 	let _encryption_key = blake3_derive_key (
 			InternalEncryptionKey,
 			CRYPTO_ENCRYPTION_KEY_CONTEXT,
@@ -539,9 +597,9 @@ fn derive_keys_phase_2 (
 
 
 
-fn apply_argon_secret (_secret_and_salt : Option<(&InternalSecretInput, &InternalSecretSalt)>) -> CryptoResult<InternalSecretArgon> {
+fn apply_argon_secret (_secret_and_salt : Option<(&InternalSecretHash, &InternalSecretSalt)>) -> CryptoResult<InternalSecretArgon> {
 	
-	let _secret_and_salt = _secret_and_salt.map (|(_secret, _salt)| (_secret.0, &_salt.0));
+	let _secret_and_salt = _secret_and_salt.map (|(_secret, _salt)| (_secret.0.as_slice (), &_salt.0));
 	
 	argon_derive (
 			InternalSecretArgon,
@@ -552,9 +610,9 @@ fn apply_argon_secret (_secret_and_salt : Option<(&InternalSecretInput, &Interna
 }
 
 
-fn apply_argon_pin (_pin_and_salt : Option<(&InternalPinInput, &InternalPinSalt)>) -> CryptoResult<InternalPinArgon> {
+fn apply_argon_pin (_pin_and_salt : Option<(&InternalPinHash, &InternalPinSalt)>) -> CryptoResult<InternalPinArgon> {
 	
-	let _pin_and_salt = _pin_and_salt.map (|(_pin, _salt)| (_pin.0, &_salt.0));
+	let _pin_and_salt = _pin_and_salt.map (|(_pin, _salt)| (_pin.0.as_slice (), &_salt.0));
 	
 	argon_derive (
 			InternalPinArgon,
