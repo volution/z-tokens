@@ -364,8 +364,6 @@ fn derive_keys_phase_1 (
 			.update (&_pin)
 			.update (&_secret)
 			.update (&_shared_key)
-			.update (_sender_public)
-			.update (_receiver_public)
 			.finalize ()
 			.into ();
 	
