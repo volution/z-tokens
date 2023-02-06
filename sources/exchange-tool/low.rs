@@ -18,6 +18,57 @@ use crate::coding::encode_u32;
 
 
 
+pub(crate) trait CryptographicMaterial <const SIZE : usize> : Sized {
+	
+	fn consume (self) -> ();
+	
+	fn access (&self) -> &[u8; SIZE];
+	
+	fn access_slice (&self) -> &[u8] {
+		Self::access (self) .as_slice ()
+	}
+	
+	fn compare_access (_left : &Self, _right : &Self) -> bool {
+		::constant_time_eq::constant_time_eq (_left.access (), _right.access ())
+	}
+	
+	fn compare_consume (_left : Self, _right : Self) -> bool {
+		let _outcome = Self::compare_access (&_left, &_right);
+		_left.consume ();
+		_right.consume ();
+		_outcome
+	}
+}
+
+
+pub(crate) trait CryptographicInput <'a> : Sized {
+	
+	fn consume (self) -> ();
+	
+	fn access (&self) -> &'a [u8];
+	
+	fn access_consume (self) -> &'a [u8] {
+		let _material = self.access ();
+		self.consume ();
+		_material
+	}
+	
+	fn size (&self) -> usize {
+		self.access () .len ()
+	}
+	
+	fn is_empty (&self) -> bool {
+		self.access () .is_empty ()
+	}
+}
+
+
+
+
+
+
+
+
 const ARGON_ALGORITHM : ::argon2::Algorithm = ::argon2::Algorithm::Argon2id;
 const ARGON_VERSION : ::argon2::Version = ::argon2::Version::V0x13;
 const ARGON_P_COST : u32 = 1;
