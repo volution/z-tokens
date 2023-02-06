@@ -52,6 +52,12 @@ define_error! (pub SshError, result : SshResult);
 pub const SSH_WRAPPER_KEY_ENCODED_PREFIX : &str = "ztxws";
 
 
+define_cryptographic_material! (InternalSshWrapInput, input, slice);
+define_cryptographic_material! (InternalSshWrapKeyHash, 32);
+define_cryptographic_material! (InternalSshWrapInputHash, 32);
+define_cryptographic_material! (InternalSshWrapOutputHash, 32);
+
+
 define_cryptographic_context! (SSH_WRAP_KEY_HASH_CONTEXT, ssh_wrap, key_hash);
 define_cryptographic_context! (SSH_WRAP_INPUT_HASH_CONTEXT, ssh_wrap, input_hash);
 define_cryptographic_context! (SSH_WRAP_OUTPUT_HASH_CONTEXT, ssh_wrap, output_hash);
@@ -113,12 +119,14 @@ impl SshWrapper {
 	
 	pub fn wrap (&mut self, _input : &[u8], _output : &mut [u8; 32]) -> SshResult {
 		
+		let _input = InternalSshWrapInput::wrap (_input);
+		
 		let _key = &self.key.public_key.0;
 		let _key_algorithm = _key.name ();
 		let _key_serialized = _key.public_key_bytes ();
 		
-		let _key_hash : [u8; 32] = blake3_derive_key (
-				|_hash| _hash,
+		let _key_hash = blake3_derive_key (
+				InternalSshWrapKeyHash::wrap,
 				SSH_WRAP_KEY_HASH_CONTEXT,
 				&[],
 				&[
@@ -126,14 +134,16 @@ impl SshWrapper {
 					&_key_serialized,
 				]);
 		
-		let _input_hash : [u8; 32] = blake3_derive_key (
-				|_hash| _hash,
+		drop! (_key_algorithm, _key_serialized);
+		
+		let _input_hash = blake3_derive_key (
+				InternalSshWrapInputHash::wrap,
 				SSH_WRAP_INPUT_HASH_CONTEXT,
 				&[
-					&_key_hash,
+					_key_hash.access (),
 				],
 				&[
-					_input,
+					_input.access (),
 				]);
 		
 		let _outcome = {
@@ -142,7 +152,7 @@ impl SshWrapper {
 			let mut _client = self.agent.client.take () .else_wrap (0xa5bc5a47) ?;
 			
 			let (_client, _outcome) = self.agent.runtime.block_on (async {
-					_client.sign_request_signature (_key, &_input_hash) .await
+					_client.sign_request_signature (_key, _input_hash.access ()) .await
 				});
 			
 			self.agent.client = Some (_client);
@@ -156,22 +166,24 @@ impl SshWrapper {
 			SshSignature::RSA { hash : _, bytes : ref _bytes } => &_bytes,
 		};
 		
-		if ! _key.verify_detached (&_input_hash, &_signature) {
+		if ! _key.verify_detached (_input_hash.access (), &_signature) {
 			fail! (0x8fc8e73a);
 		}
 		
-		let _output_hash : [u8; 32] = blake3_derive_key (
-				|_hash| _hash,
+		drop! (_key);
+		
+		let _output_hash = blake3_derive_key (
+				InternalSshWrapOutputHash::wrap,
 				SSH_WRAP_OUTPUT_HASH_CONTEXT,
 				&[
-					&_key_hash,
-					&_input_hash,
+					_key_hash.access (),
+					_input_hash.access (),
 				],
 				&[
 					&_signature,
 				]);
 		
-		_output.copy_from_slice (&_output_hash);
+		_output.copy_from_slice (_output_hash.access ());
 		
 		Ok (())
 	}

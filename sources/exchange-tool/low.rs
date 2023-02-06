@@ -196,7 +196,7 @@ pub(crate) fn blake3_update <const NF : usize, const NV : usize> (
 
 pub(crate) fn argon_derive <WC, WO> (
 		_wrapper : WC,
-		_secret : &[u8],
+		_secret : &[u8; 32],
 		_salt : &[u8; 32],
 		_m_cost : u32,
 		_t_cost : u32,
@@ -220,7 +220,7 @@ pub(crate) fn argon_derive <WC, WO> (
 			);
 	
 	_hasher.hash_password_into (
-				&_secret,
+				_secret.as_slice (),
 				_salt.as_slice (),
 				&mut _output
 			) .else_wrap (0xacae7396) ?;

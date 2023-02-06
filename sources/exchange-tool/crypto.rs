@@ -360,7 +360,7 @@ fn apply_encryption (_key : InternalEncryptionKey, _data : &mut [u8]) -> CryptoR
 	
 	let _nonce = [0u8; 12];
 	
-	let _key = ::chacha20::Key::from_slice (_key.access ());
+	let _key = ::chacha20::Key::from (_key.material);
 	let _nonce = ::chacha20::Nonce::from (_nonce);
 	
 	let mut _cipher = ::chacha20::ChaCha20::new (&_key, &_nonce);

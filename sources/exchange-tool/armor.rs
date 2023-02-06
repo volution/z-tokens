@@ -187,7 +187,7 @@ fn apply_all_or_nothing_encryption (_fingerprint : &[u8; ARMOR_ENCODED_FINGERPRI
 	
 	let _nonce = [0u8; 12];
 	
-	let _key = ::chacha20::Key::from_slice (&_key);
+	let _key = ::chacha20::Key::from (_key);
 	let _nonce = ::chacha20::Nonce::from (_nonce);
 	
 	let mut _cipher = ::chacha20::ChaCha20::new (&_key, &_nonce);
