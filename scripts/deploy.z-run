@@ -23,6 +23,8 @@
 
 --<<.. deploy / list / main
 	z-tokens
+	z-hashes
+	z-exchange
 !!
 
 

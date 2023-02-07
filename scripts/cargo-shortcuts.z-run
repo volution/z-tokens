@@ -19,31 +19,46 @@
 
 
 << cargo / debug / build & collect
+	if test "${#}" -ge 1 ; then _tool="${1}" ; shift -- 1 ; else _tool=all ; fi
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / debug / build'
-	"${ZRUN}" ':: cargo / debug / collect'
+	if test "${_tool}" == all ; then set -- --bins ; else set -- --bin "${_tool}" ; fi
+	"${ZRUN}" ':: cargo / debug / build' "${@}"
+	"${ZRUN}" ':: cargo / debug / collect' "${@}"
 !!
 
 << cargo / release / build & collect
+	if test "${#}" -ge 1 ; then _tool="${1}" ; shift -- 1 ; else _tool=all ; fi
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build'
-	"${ZRUN}" ':: cargo / release / collect'
+	if test "${_tool}" == all ; then set -- --bins ; else set -- --bin "${_tool}" ; fi
+	"${ZRUN}" ':: cargo / release / build' "${@}"
+	"${ZRUN}" ':: cargo / release / collect' "${@}"
 !!
 
 
 
 
-<< cargo / debug / build & collect & run
-	"${ZRUN}" ':: cargo / debug / build'
-	"${ZRUN}" ':: cargo / debug / collect'
-	exec -- "${__OUTPUTS}/binaries/z-tokens--debug--linux--native" "${@}"
+:: cargo / debug / build & collect & run / z-tokens :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' z-tokens "${@}"
+:: cargo / release / build & collect & run / z-tokens :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' z-tokens "${@}"
+
+:: cargo / debug / build & collect & run / z-hashes :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' z-hashes "${@}"
+:: cargo / release / build & collect & run / z-hashes :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' z-hashes "${@}"
+
+:: cargo / debug / build & collect & run / z-exchange :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' z-exchange "${@}"
+:: cargo / release / build & collect & run / z-exchange :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' z-exchange "${@}"
+
+
+--<< cargo / debug / build & collect & run / *
+	test "${#}" -ge 1 ; _tool="${1}" ; shift -- 1
+	"${ZRUN}" ':: cargo / debug / build' --bin "${_tool}"
+	"${ZRUN}" ':: cargo / debug / collect' --bin "${_tool}"
+	exec -- "${__OUTPUTS}/binaries/${_tool}--debug--linux--native" "${@}"
 !!
 
-<< cargo / release / build & collect & run
-	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build'
-	"${ZRUN}" ':: cargo / release / collect'
-	exec -- "${__OUTPUTS}/binaries/z-tokens--release--linux--native" "${@}"
+--<< cargo / release / build & collect & run / *
+	test "${#}" -ge 1 ; _tool="${1}" ; shift -- 1
+	"${ZRUN}" ':: cargo / release / build' --bin "${_tool}"
+	"${ZRUN}" ':: cargo / release / collect' --bin "${_tool}"
+	exec -- "${__OUTPUTS}/binaries/${_tool}--release--linux--native" "${@}"
 !!
 
 

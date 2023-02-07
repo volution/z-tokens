@@ -42,6 +42,10 @@
 				shift -- 2
 			;;
 			( --bins )
+				_bins=all
+				shift -- 1
+			;;
+			( --bin )
 				test "${#}" -ge 2
 				_bins="${2}"
 				shift -- 2
@@ -64,6 +68,8 @@
 		( all )
 			_bins=(
 					z-tokens
+					z-hashes
+					z-exchange
 				)
 		;;
 		( * )
