@@ -7,7 +7,7 @@
 
 
 
-<< tests / quick / exchange / debug
+<< tests / quick / exchange / run / debug
 	"${ZRUN}" ':: cargo / debug / build & collect' z-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
@@ -19,7 +19,7 @@
 !!
 
 
-<< tests / quick / exchange / release
+<< tests / quick / exchange / run / release
 	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
