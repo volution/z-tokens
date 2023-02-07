@@ -50,6 +50,10 @@ impl SshWrapper {
 	pub fn wrap (&mut self, _input : &[u8], _output : &mut [u8; 32]) -> SshResult {
 		fail! (0x27e97836);
 	}
+	
+	pub fn cmp_by_keys (_left : &Self, _right : &Self) -> Ordering {
+		panic! (0x252e1474);
+	}
 }
 
 

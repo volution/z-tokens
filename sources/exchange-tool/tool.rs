@@ -245,6 +245,7 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _ssh_wrapper = _ssh_wrapper.map (SshWrapperKey::decode_and_zeroize) .transpose () .else_wrap (0x6d68c3c2) ?;
 	let mut _ssh_wrapper = _ssh_wrapper.map (Rb::new) .map (SshWrapper::connect) .transpose () .else_wrap (0xe1f9e4bf) ?;
 	let _ssh_wrapper = _ssh_wrapper.as_mut ();
+	let _ssh_wrapper : Vec<_> = _ssh_wrapper.into_iter () .collect ();
 	
 	let _secret = _secret.filter (|_secret| ! (_secret.is_empty () && _empty_is_missing));
 	let _secret = _secret.map (SharedSecret::decode_and_zeroize) .transpose () .else_wrap (0xab68aede) ?;
@@ -326,6 +327,7 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _ssh_wrapper = _ssh_wrapper.map (SshWrapperKey::decode_and_zeroize) .transpose () .else_wrap (0x1fea5617) ?;
 	let mut _ssh_wrapper = _ssh_wrapper.map (Rb::new) .map (SshWrapper::connect) .transpose () .else_wrap (0xfeda4c77) ?;
 	let _ssh_wrapper = _ssh_wrapper.as_mut ();
+	let _ssh_wrapper : Vec<_> = _ssh_wrapper.into_iter () .collect ();
 	
 	let _secret = _secret.filter (|_secret| ! (_secret.is_empty () && _empty_is_missing));
 	let _secret = _secret.map (SharedSecret::decode_and_zeroize) .transpose () .else_wrap (0x07d3b030) ?;

@@ -193,6 +193,23 @@ impl SshWrapper {
 		
 		Ok (())
 	}
+	
+	
+	pub fn cmp_by_keys (_left : &Self, _right : &Self) -> Ordering {
+		
+		let _left_key = &_left.key.public_key.0;
+		let _right_key = &_right.key.public_key.0;
+		
+		let _left_key_algorithm = _left_key.name ();
+		let _right_key_algorithm = _right_key.name ();
+		
+		Ord::cmp (_left_key_algorithm, _right_key_algorithm) .then_with (
+				|| {
+					let _left_key_serialized = _left_key.public_key_bytes ();
+					let _right_key_serialized = _right_key.public_key_bytes ();
+					Ord::cmp (&_left_key_serialized, &_right_key_serialized)
+				})
+	}
 }
 
 

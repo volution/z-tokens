@@ -43,6 +43,11 @@ pub const CRYPTO_ENCRYPTED_SIZE_MAX : usize =
 		);
 
 
+pub const CRYPTO_SECRET_COUNT_MAX : usize = 1024;
+pub const CRYPTO_PIN_COUNT_MAX : usize = 1024;
+pub const CRYPTO_SSH_WRAPPER_COUNT_MAX : usize = 1024;
+
+
 
 
 const CRYPTO_ENCRYPTED_PADDING : usize = 256;
@@ -132,10 +137,11 @@ pub fn encrypt (
 			_pin_inputs : &[&[u8]],
 			_decrypted : &[u8],
 			_encrypted : &mut Vec<u8>,
-			_ssh_wrapper : Option<&mut SshWrapper>,
+			_ssh_wrappers : Vec<&mut SshWrapper>,
 		) -> CryptoResult
 {
 	let (_secret_inputs, _pin_inputs) = wrap_secrets_and_pins_inputs (_secret_inputs, _pin_inputs) ?;
+	let _ssh_wrappers = wrap_ssh_wrappers (_ssh_wrappers) ?;
 	
 	let _decrypted = InternalDataDecrypted::wrap (_decrypted);
 	let _decrypted_len = _decrypted.size ();
@@ -187,7 +193,7 @@ pub fn encrypt (
 	let mut _packet_salt = generate_random (InternalPacketSalt::wrap);
 	
 	let (_encryption_key, _authentication_key)
-			= derive_keys_phase_2 (_naive_key, &_packet_salt, _secret_hashes, _pin_hashes, _ssh_wrapper) ?;
+			= derive_keys_phase_2 (_naive_key, &_packet_salt, _secret_hashes, _pin_hashes, _ssh_wrappers) ?;
 	
 	// NOTE:  encryption...
 	
@@ -242,10 +248,11 @@ pub fn decrypt (
 			_pin_inputs : &[&[u8]],
 			_encrypted : &[u8],
 			_decrypted : &mut Vec<u8>,
-			_ssh_wrapper : Option<&mut SshWrapper>,
+			_ssh_wrappers : Vec<&mut SshWrapper>,
 		) -> CryptoResult
 {
 	let (_secret_inputs, _pin_inputs) = wrap_secrets_and_pins_inputs (_secret_inputs, _pin_inputs) ?;
+	let _ssh_wrappers = wrap_ssh_wrappers (_ssh_wrappers) ?;
 	
 	let _encrypted = InternalDataEncrypted::wrap (_encrypted);
 	let _encrypted_len = _encrypted.size ();
@@ -289,7 +296,7 @@ pub fn decrypt (
 	// NOTE:  deriving keys...
 	
 	let (_encryption_key, _authentication_key)
-			= derive_keys_phase_2 (_naive_key, &_packet_salt, _secret_hashes, _pin_hashes, _ssh_wrapper) ?;
+			= derive_keys_phase_2 (_naive_key, &_packet_salt, _secret_hashes, _pin_hashes, _ssh_wrappers) ?;
 	
 	drop! (_packet_salt);
 	
@@ -537,7 +544,7 @@ fn derive_keys_phase_2 (
 			_packet_salt : &InternalPacketSalt,
 			_secret_hash : (InternalSecretHash, Vec<InternalSecretHash>),
 			_pin_hash : (InternalPinHash, Vec<InternalPinHash>),
-			_ssh_wrapper : Option<&mut SshWrapper>,
+			_ssh_wrappers : Vec<&mut SshWrapper>,
 		) -> CryptoResult<(InternalEncryptionKey, InternalAuthenticationKey)>
 {
 	let (_secret_hash, _secret_hashes) = _secret_hash;
@@ -549,40 +556,40 @@ fn derive_keys_phase_2 (
 	// --------------------------------------------------------------------------------
 	// NOTE:  call SSH wrapper (if exists)...
 	
-	let _ssh_wrap_key = if let Some (_ssh_wrapper) = _ssh_wrapper {
-			
-			let _ssh_wrap_input = blake3_derive_key (
-					InternalSshWrapInput::wrap,
-					CRYPTO_SSH_WRAP_INPUT_CONTEXT,
-					&[
-						_packet_salt.access (),
-						_naive_key.access (),
-					],
-					&[],
-					None,
-				);
-			
-			// FIXME:  zeroize!
-			let mut _ssh_wrap_output = [0u8; 32];
-			_ssh_wrapper.wrap (_ssh_wrap_input.access (), &mut _ssh_wrap_output) .else_wrap (0xcc07e95e) ?;
-			
-			let _ssh_wrap_output = blake3_derive_key (
-					InternalSshWrapOutput::wrap,
-					CRYPTO_SSH_WRAP_OUTPUT_CONTEXT,
-					&[
-						_packet_salt.access (),
-						_naive_key.access (),
-						&_ssh_wrap_output,
-					],
-					&[],
-					None,
-				);
-			
-			_ssh_wrap_output
-			
-		} else {
-			InternalSshWrapOutput::zero ()
-		};
+	let mut _ssh_wrap_key = InternalSshWrapOutput::zero ();
+	
+	for _ssh_wrapper in _ssh_wrappers.into_iter () {
+		
+		let _ssh_wrap_input = blake3_derive_key (
+				InternalSshWrapInput::wrap,
+				CRYPTO_SSH_WRAP_INPUT_CONTEXT,
+				&[
+					_ssh_wrap_key.access (),
+					_packet_salt.access (),
+					_naive_key.access (),
+				],
+				&[],
+				None,
+			);
+		
+		_ssh_wrap_key.consume ();
+		
+		// FIXME:  zeroize!
+		let mut _ssh_wrap_output = [0u8; 32];
+		_ssh_wrapper.wrap (_ssh_wrap_input.access (), &mut _ssh_wrap_output) .else_wrap (0xcc07e95e) ?;
+		
+		_ssh_wrap_key = blake3_derive_key (
+				InternalSshWrapOutput::wrap,
+				CRYPTO_SSH_WRAP_OUTPUT_CONTEXT,
+				&[
+					_packet_salt.access (),
+					_naive_key.access (),
+					&_ssh_wrap_output,
+				],
+				&[],
+				None,
+			);
+	}
 	
 	// --------------------------------------------------------------------------------
 	// NOTE:  derive secret argon (if exists)...
@@ -740,10 +747,13 @@ fn wrap_secrets_and_pins_inputs <'a> (
 			_pin_inputs : &'a [&'a [u8]],
 		) -> CryptoResult<(Vec<InternalSecretInput<'a>>, Vec<InternalPinInput<'a>>)>
 {
-	if _secret_inputs.len () > (u32::MAX as usize) {
+	debug_assert! (CRYPTO_SECRET_COUNT_MAX <= (u32::MAX as usize), "[424cdca6]");
+	debug_assert! (CRYPTO_PIN_COUNT_MAX <= (u32::MAX as usize), "[f1d98265]");
+	
+	if _secret_inputs.len () > CRYPTO_SECRET_COUNT_MAX {
 		fail! (0x6eceb6e4);
 	}
-	if _pin_inputs.len () > (u32::MAX as usize) {
+	if _pin_inputs.len () > CRYPTO_PIN_COUNT_MAX {
 		fail! (0x8b060b37);
 	}
 	
@@ -751,6 +761,25 @@ fn wrap_secrets_and_pins_inputs <'a> (
 	let _pin_inputs = Vec::from (_pin_inputs) .into_iter () .map (InternalPinInput::wrap) .collect ();
 	
 	Ok ((_secret_inputs, _pin_inputs))
+}
+
+
+fn wrap_ssh_wrappers <'a> (
+			_ssh_wrappers : Vec<&'a mut SshWrapper>,
+		) -> CryptoResult<Vec<&'a mut SshWrapper>>
+{
+	debug_assert! (CRYPTO_SSH_WRAPPER_COUNT_MAX <= (u32::MAX as usize), "[8d49c9e0]");
+	
+	if _ssh_wrappers.len () > CRYPTO_SSH_WRAPPER_COUNT_MAX {
+		fail! (0x22fb37e2);
+	}
+	
+	let mut _ssh_wrappers : Vec<_> = _ssh_wrappers.into_iter () .collect ();
+	
+	_ssh_wrappers.sort_by (|_left, _right| SshWrapper::cmp_by_keys (*_left, *_right));
+	_ssh_wrappers.dedup_by (|_left, _right| SshWrapper::cmp_by_keys (*_left, *_right) == Ordering::Equal);
+	
+	Ok (_ssh_wrappers)
 }
 
 
