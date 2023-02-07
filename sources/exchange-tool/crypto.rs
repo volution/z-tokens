@@ -99,8 +99,11 @@ define_cryptographic_material! (InternalSshWrapInput, 32);
 define_cryptographic_material! (InternalSshWrapOutput, 32);
 define_cryptographic_material! (InternalSshWrapKey, 32);
 
-define_cryptographic_material! (InternalDataDecrypted, input, slice);
-define_cryptographic_material! (InternalDataEncrypted, input, slice);
+define_cryptographic_material! (InternalDecryptedData, input, slice);
+define_cryptographic_material! (InternalEncryptedData, input, slice);
+
+define_cryptographic_material! (InternalPasswordData, input, slice);
+define_cryptographic_material! (InternalPasswordOutput, 32);
 
 
 
@@ -125,9 +128,92 @@ define_cryptographic_context! (CRYPTO_PIN_KEY_CONTEXT, encryption, pin_key);
 define_cryptographic_context! (CRYPTO_SSH_WRAP_INPUT_CONTEXT, encryption, ssh_wrap_input);
 define_cryptographic_context! (CRYPTO_SSH_WRAP_OUTPUT_CONTEXT, encryption, ssh_wrap_output);
 
+define_cryptographic_context! (CRYPTO_DERIVE_SALT_CONTEXT, password, salt);
+define_cryptographic_context! (CRYPTO_DERIVE_OUTPUT_CONTEXT, password, output);
 
 
 
+
+
+
+
+
+pub fn password (
+			_sender : Option<&SenderPrivateKey>,
+			_recipient : Option<&RecipientPublicKey>,
+			_secret_inputs : &[&[u8]],
+			_pin_inputs : &[&[u8]],
+			_password_data : &[u8],
+			_password_output : &mut [u8; 32],
+			_ssh_wrappers : Vec<&mut SshWrapper>,
+		) -> CryptoResult
+{
+	let (_secret_inputs, _pin_inputs) = wrap_secrets_and_pins_inputs (_secret_inputs, _pin_inputs) ?;
+	let _ssh_wrappers = wrap_ssh_wrappers (_ssh_wrappers) ?;
+	let _ssh_wrapper_exists = ! _ssh_wrappers.is_empty ();
+	
+	let _password_data = InternalPasswordData::wrap (_password_data);
+	let _password_data_len = _password_data.size ();
+	
+	if _password_data_len > CRYPTO_DECRYPTED_SIZE_MAX {
+		fail! (0xfa4d9417);
+	}
+	
+	// --------------------------------------------------------------------------------
+	// --------------------------------------------------------------------------------
+	
+	// NOTE:  deriving keys...
+	
+	let _sender = _sender.map (SenderPrivateKey::access);
+	let _recipient = _recipient.map (RecipientPublicKey::access);
+	
+	let (_naive_key, _aont_key, _secret_hashes, _pin_hashes)
+			= derive_keys_phase_1 (_sender, _recipient, _secret_inputs, _pin_inputs, true, _ssh_wrapper_exists) ?;
+	
+	drop! (_sender, _recipient);
+	drop! (_aont_key);
+	
+	// NOTE:  salting...
+	
+	let _packet_salt = blake3_derive_key (
+			InternalPacketSalt::wrap,
+			CRYPTO_DERIVE_SALT_CONTEXT,
+			&[
+				_naive_key.access (),
+			],
+			&[
+				_password_data.access (),
+			],
+			None,
+		);
+	
+	drop! (_password_data);
+	
+	let (_packet_key, _encryption_key, _authentication_key)
+			= derive_keys_phase_2 (_naive_key, &_packet_salt, _secret_hashes, _pin_hashes, _ssh_wrappers) ?;
+	
+	drop! (_encryption_key, _authentication_key);
+	
+	let _password_output_0 = blake3_derive_key (
+			InternalPasswordOutput::wrap,
+			CRYPTO_DERIVE_OUTPUT_CONTEXT,
+			&[
+				_packet_key.access (),
+			],
+			&[],
+			None,
+		);
+	
+	drop! (_packet_key);
+	
+	// --------------------------------------------------------------------------------
+	// --------------------------------------------------------------------------------
+	
+	// NOTE:  This last step is an overhead, but it ensures an all-or-nothing processing!
+	_password_output.copy_from_slice (_password_output_0.access ());
+	
+	Ok (())
+}
 
 
 
@@ -147,7 +233,7 @@ pub fn encrypt (
 	let _ssh_wrappers = wrap_ssh_wrappers (_ssh_wrappers) ?;
 	let _ssh_wrapper_exists = ! _ssh_wrappers.is_empty ();
 	
-	let _decrypted = InternalDataDecrypted::wrap (_decrypted);
+	let _decrypted = InternalDecryptedData::wrap (_decrypted);
 	let _decrypted_len = _decrypted.size ();
 	
 	if _decrypted_len > CRYPTO_DECRYPTED_SIZE_MAX {
@@ -213,8 +299,10 @@ pub fn encrypt (
 	
 	drop! (_decrypted);
 	
-	let (_encryption_key, _authentication_key)
+	let (_packet_key, _encryption_key, _authentication_key)
 			= derive_keys_phase_2 (_naive_key, &_packet_salt, _secret_hashes, _pin_hashes, _ssh_wrappers) ?;
+	
+	drop! (_packet_key);
 	
 	// NOTE:  encryption...
 	
@@ -276,7 +364,7 @@ pub fn decrypt (
 	let _ssh_wrappers = wrap_ssh_wrappers (_ssh_wrappers) ?;
 	let _ssh_wrapper_exists = ! _ssh_wrappers.is_empty ();
 	
-	let _encrypted = InternalDataEncrypted::wrap (_encrypted);
+	let _encrypted = InternalEncryptedData::wrap (_encrypted);
 	let _encrypted_len = _encrypted.size ();
 	
 	if _encrypted_len > CRYPTO_ENCRYPTED_SIZE_MAX {
@@ -317,9 +405,10 @@ pub fn decrypt (
 	
 	// NOTE:  deriving keys...
 	
-	let (_encryption_key, _authentication_key)
+	let (_packet_key, _encryption_key, _authentication_key)
 			= derive_keys_phase_2 (_naive_key, &_packet_salt, _secret_hashes, _pin_hashes, _ssh_wrappers) ?;
 	
+	drop! (_packet_key);
 	drop! (_packet_salt);
 	
 	// NOTE:  authentication...
@@ -580,7 +669,7 @@ fn derive_keys_phase_2 (
 			_secret_hash : (InternalSecretHash, Vec<InternalSecretHash>),
 			_pin_hash : (InternalPinHash, Vec<InternalPinHash>),
 			_ssh_wrappers : Vec<&mut SshWrapper>,
-		) -> CryptoResult<(InternalEncryptionKey, InternalAuthenticationKey)>
+		) -> CryptoResult<(InternalPacketKey, InternalEncryptionKey, InternalAuthenticationKey)>
 {
 	let (_secret_hash, _secret_hashes) = _secret_hash;
 	let (_pin_hash, _pin_hashes) = _pin_hash;
@@ -732,7 +821,7 @@ fn derive_keys_phase_2 (
 	
 	// --------------------------------------------------------------------------------
 	
-	Ok ((_encryption_key, _authentication_key))
+	Ok ((_packet_key, _encryption_key, _authentication_key))
 }
 
 

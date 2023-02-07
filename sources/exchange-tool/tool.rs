@@ -354,6 +354,91 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 
 
+pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
+	
+	let mut _sender_private : Option<String> = None;
+	let mut _recipient_public : Option<String> = None;
+	let mut _secrets : Vec<String> = Vec::new ();
+	let mut _pins : Vec<String> = Vec::new ();
+	let mut _ssh_wrappers : Vec<String> = Vec::new ();
+	let mut _empty_is_missing : Option<bool> = None;
+	
+	{
+		let mut _parser = create_parser () .else_wrap (0xb2fd613d) ?;
+		
+		_parser.refer (&mut _sender_private)
+				.metavar ("{sender}")
+				.add_option (&["-s", "--sender"], ArgStoreOption, "(sender private key)");
+		
+		_parser.refer (&mut _recipient_public)
+				.metavar ("{recipient}")
+				.add_option (&["-r", "--recipient"], ArgStoreOption, "(recipient public key)");
+		
+		_parser.refer (&mut _secrets)
+				.metavar ("{secret}")
+				.add_option (&["-x", "--secret"], ArgCollect, "(shared secret, for additional security) (multiple allowed)");
+		
+		_parser.refer (&mut _pins)
+				.metavar ("{pin}")
+				.add_option (&["-p", "--pin"], ArgCollect, "(shared PIN, for **WEAK** additional security) (multiple allowed)");
+		
+		_parser.refer (&mut _ssh_wrappers)
+				.metavar ("{key}")
+				.add_option (&["--ssh-wrap"], ArgCollect, "(shared SSH agent key handle) (multiple allowed)");
+		
+		_parser.refer (&mut _empty_is_missing)
+				.metavar ("{bool}")
+				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified)")
+				.add_option (&["--empty-is-missing"], ArgStoreOption, "");
+		
+		if execute_parser (_parser, _arguments) .else_wrap (0xd3606aac) ? {
+			return Ok (ExitCode::SUCCESS);
+		}
+	}
+	
+	let _empty_is_missing = _empty_is_missing.unwrap_or (false);
+	
+	let _sender_private = _sender_private.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
+	let _sender_private = _sender_private.map (SenderPrivateKey::decode_and_zeroize) .transpose () .else_wrap (0xa3edd671) ?;
+	let _sender_private = _sender_private.as_ref ();
+	
+	let _recipient_public = _recipient_public.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
+	let _recipient_public = _recipient_public.map (RecipientPublicKey::decode_and_zeroize) .transpose () .else_wrap (0x9c5d68bf) ?;
+	let _recipient_public = _recipient_public.as_ref ();
+	
+	let _ssh_wrappers = _ssh_wrappers.into_iter ().filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapperKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x535691ae) ?;
+	let mut _ssh_wrappers = _ssh_wrappers.into_iter () .map (Rb::new) .map (SshWrapper::connect) .collect::<Result<Vec<_>, _>> () .else_wrap (0x2c549ad6) ?;
+	let _ssh_wrappers = _ssh_wrappers.iter_mut () .collect::<Vec<_>> ();
+	
+	let _secrets = _secrets.into_iter () .filter (|_secret| ! (_secret.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _secrets = _secrets.into_iter () .map (SharedSecret::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x20de63fc) ?;
+	let _secrets = _secrets.iter () .map (SharedSecret::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
+	
+	let _pins = _pins.into_iter () .filter (|_pin| ! (_pin.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _pins = _pins.iter () .map (String::as_bytes) .collect::<Vec<_>> ();
+	
+	let _password_input = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0x6772b7e4) ?;
+	
+	let mut _password_output = [0u8; 32];
+	password (_sender_private, _recipient_public, &_secrets, &_pins, &_password_input, &mut _password_output, _ssh_wrappers) .else_wrap (0xec55f5c3) ?;
+	
+	let mut _password_buffer = String::with_capacity (_password_output.len () * 2 + 1);
+	for _password_output_byte in _password_output {
+		_password_buffer.write_fmt (format_args! ("{:02x}", _password_output_byte)) .else_wrap (0x3c7b44ec) ?;
+	}
+	_password_buffer.push ('\n');
+	
+	let mut _stream = stdout_locked ();
+	_stream.write (_password_buffer.as_bytes ()) .else_wrap (0x06a66fe0) ?;
+	mem::drop (_stream);
+	
+	Ok (ExitCode::SUCCESS)
+}
+
+
+
+
 
 
 
