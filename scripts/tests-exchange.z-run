@@ -231,6 +231,37 @@
 
 
 
+<< tests / quick / exchange / password / hello
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
+	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
+	
+	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
+	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	
+	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
+	
+	time \
+	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+			password \
+				--sender "${_sender_private}" \
+				--recipient "${_recipient_public}" \
+				--secret "${_secret}" \
+				--pin "${_pin}" \
+				--ssh-wrap "${_ssh_wrap}" \
+				--empty-is-missing true \
+		<<< $'hello world!\n' \
+	#
+!!
+
+
+
+
 << tests / quick / exchange / encrypt / hello
 	test "${#}" -eq 0
 	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
@@ -485,11 +516,12 @@
 
 
 
-<< tests / quick / exchange / encrypt & decrypt / cases
+<< tests / quick / exchange / encrypt & decrypt & password / cases
 	test "${#}" -eq 0
 	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
+	for _case_tool in password encrypt ; do
 	for _case_deterministic in with-siv without-salt ; do
 	for _case_secret in without-secret empty-secret with-secret-1 with-secret-1d with-secret-2 with-secret-2d ; do
 	for _case_ssh_wrap in without-ssh-wrap empty-ssh-wrap with-ssh-wrap-1 with-ssh-wrap-1d with-ssh-wrap-2 with-ssh-wrap-2d ; do
@@ -510,9 +542,6 @@
 		_encrypt_arguments=()
 		_decrypt_arguments=()
 		_common_arguments=()
-		
-		printf -- '\n' >&2
-		printf -- '[ii]  running iteration `%s %s %s %s %s`...\n' "${_case_send}" "${_case_pin}" "${_case_secret}" "${_case_ssh_wrap}" "${_case_deterministic}" >&2
 		
 		_empty_is_missing=false
 		
@@ -720,9 +749,11 @@
 		
 		case "${_case_deterministic}" in
 			( with-siv )
-				_encrypt_arguments+=(
-						--siv
-					)
+				if test "${_case_tool}" != password ; then
+					_encrypt_arguments+=(
+							--siv
+						)
+				fi
 			;;
 			( with-salt )
 			;;
@@ -734,12 +765,15 @@
 			;;
 		esac
 		
+		printf -- '\n' >&2
+		printf -- '[ii]  running iteration `%s %s %s %s %s %s`...\n' "${_case_tool}" "${_case_send}" "${_case_pin}" "${_case_secret}" "${_case_ssh_wrap}" "${_case_deterministic}" >&2
+		
 		if test "${#_encrypt_arguments[@]}" -eq 0 ; then
-			printf -- '[ii]    -> empty encryption;  skipping!\n' >&2
+			printf -- '[ii]    -> empty arguments;  skipping!\n' >&2
 			continue
 		fi
 		if test "${#_decrypt_arguments[@]}" -eq 0 ; then
-			printf -- '[ii]    -> empty decryption;  skipping!\n' >&2
+			printf -- '[ii]    -> empty arguments;  skipping!\n' >&2
 			continue
 		fi
 		
@@ -747,34 +781,63 @@
 				--empty-is-missing "${_empty_is_missing}"
 			)
 		
-		_encrypt_command=(
-				encrypt
-					"${_encrypt_arguments[@]}"
-					"${_common_arguments[@]}"
-			)
-		_decrypt_command=(
-				decrypt
-					"${_decrypt_arguments[@]}"
-					"${_common_arguments[@]}"
-			)
-		
-		printf -- '[xx]    >> %s\n' "${_encrypt_command[*]@Q}" >&2
-		printf -- '[xx]    >> %s\n' "${_decrypt_command[*]@Q}" >&2
 		
 		TIMEFORMAT="[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;"
 		
-		time \
-		cat \
-			< "${_file}" \
-		| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" "${_encrypt_command[@]}" \
-		| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" "${_decrypt_command[@]}" \
-		| md5sum -b -- /dev/fd/5 5<&0 \
-		| md5sum -c --quiet 5< "${_file}" \
-		#
+		case "${_case_tool}" in
+			
+			( password )
+				
+				_password_command=(
+						password
+							"${_encrypt_arguments[@]}"
+							"${_common_arguments[@]}"
+					)
+				
+				printf -- '[xx]    >> %s\n' "${_password_command[*]@Q}" >&2
+				
+				time \
+				"${__OUTPUTS}/binaries/z-exchange--release--linux--native" "${_password_command[@]}" \
+					< "${_file}" \
+				#
+				
+			;;
+			
+			( encrypt )
+				
+				_encrypt_command=(
+						encrypt
+							"${_encrypt_arguments[@]}"
+							"${_common_arguments[@]}"
+					)
+				_decrypt_command=(
+						decrypt
+							"${_decrypt_arguments[@]}"
+							"${_common_arguments[@]}"
+					)
+				
+				printf -- '[xx]    >> %s\n' "${_encrypt_command[*]@Q}" >&2
+				printf -- '[xx]    >> %s\n' "${_decrypt_command[*]@Q}" >&2
+				
+				time \
+				cat \
+					< "${_file}" \
+				| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" "${_encrypt_command[@]}" \
+				| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" "${_decrypt_command[@]}" \
+				| md5sum -b -- /dev/fd/5 5<&0 \
+				| md5sum -c --quiet 5< "${_file}" \
+				#
+				
+			;;
+			
+			( * )
+				false
+			;;
+		esac
 		
 		printf -- '\n' >&2
 		
-	done ; done ; done ; done ; done
+	done ; done ; done ; done ; done ; done
 !!
 
 
