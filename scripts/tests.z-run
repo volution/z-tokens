@@ -73,8 +73,8 @@
 	test "${#}" -eq 0
 	
 	if test -z "${__TESTS__NO_BUILD:-}" ; then
-		"${ZRUN}" ':: cargo / release / build'
-		"${ZRUN}" ':: cargo / release / collect'
+		"${ZRUN}" ':: cargo / release / build' < /dev/null > /dev/null
+		"${ZRUN}" ':: cargo / release / collect' < /dev/null > /dev/null
 	fi
 	
 	_report="./documentation/tests/${_identifier}.txt"
