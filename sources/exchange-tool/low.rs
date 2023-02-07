@@ -292,10 +292,13 @@ pub(crate) fn generate_random <WC, WO> (_wrapper : WC) -> WO
 
 
 
+#[ allow (dead_code) ]
 pub(crate) fn debug_key <const SIZE : usize> (_identifier : &str, _wrapper : &impl CryptographicMaterial<SIZE>) -> () {
 	debug_bytes (_identifier, _wrapper.access ());
 }
 
+
+#[ allow (dead_code) ]
 pub(crate) fn debug_bytes (_identifier : &str, _bytes : &[u8]) -> () {
 	let mut _buffer = String::with_capacity (1024);
 	_buffer.write_fmt (format_args! ("[>>] [a99accf0]  >>  {:-40}  >>  ", _identifier)) .else_panic (0xc3663c18);
