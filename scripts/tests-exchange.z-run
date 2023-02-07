@@ -522,7 +522,7 @@
 	export -- RUST_BACKTRACE=1
 	
 	for _case_tool in password encrypt ; do
-	for _case_deterministic in with-siv without-salt ; do
+	for _case_deterministic in with-siv with-salt ; do
 	for _case_secret in without-secret empty-secret with-secret-1 with-secret-1d with-secret-2 with-secret-2d ; do
 	for _case_ssh_wrap in without-ssh-wrap empty-ssh-wrap with-ssh-wrap-1 with-ssh-wrap-1d with-ssh-wrap-2 with-ssh-wrap-2d ; do
 	for _case_pin in without-pin empty-pin with-pin-1 with-pin-1d with-pin-2 with-pin-2d ; do
@@ -578,7 +578,7 @@
 				continue
 			;;
 			( * )
-				false
+				false -- '[4d9f156a]' "${_case_send}"
 			;;
 		esac
 		
@@ -633,7 +633,7 @@
 				continue
 			;;
 			( * )
-				false
+				false -- '[ca46feb8]' "${_case_pin}"
 			;;
 		esac
 		
@@ -688,7 +688,7 @@
 				continue
 			;;
 			( * )
-				false
+				false -- '[0x91e71e27]' "${_case_secret}"
 			;;
 		esac
 		
@@ -743,7 +743,7 @@
 				continue
 			;;
 			( * )
-				false
+				false -- '[eee16443]' "${_case_ssh_wrap}"
 			;;
 		esac
 		
@@ -761,7 +761,7 @@
 				continue
 			;;
 			( * )
-				false
+				false -- '[ee232fa3]' "${_case_deterministic}"
 			;;
 		esac
 		
@@ -831,7 +831,7 @@
 			;;
 			
 			( * )
-				false
+				false -- '[12356273]' "${_case_tool}"
 			;;
 		esac
 		
