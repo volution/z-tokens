@@ -69,8 +69,8 @@ In terms of types of generated tokens, here are a few of them:
 * seed phrases (see the `mnemonic-*` or `bip0039-*` ones);
 
 Other related tools part of this project are:
-* `z-tokens hash` -- hash strings, stdin or files with various hashes (SHA1,2,3 families, Blake2 and Blake3, MD5, etc.);
-* `z-tokens exchange` -- encrypt (with X25519 PKI) or armor (like Base64) stdin or files;
+* `z-tokens hash` -- (EXPERIMENTAL) hash strings, stdin or files with various hashes (SHA1,2,3 families, Blake2 and Blake3, MD5, etc.);
+* `z-tokens exchange` -- (EXPERIMENTAL) encrypt (with X25519 PKI) or armor (like Base64) stdin or files;
 * `z-tokens encode` -- (TODO) encode / decode strings, stdin or files to / from various encodings (Base*, Bech32, Z85, etc.);
 * `z-tokens secret` -- (TODO) storing, sharing and using security sensitive data in operational and development scripts;
   (for the gist of the idea [see this document](<https://scratchpad.volution.ro/ciprian/992c7f2944456f18cdde77f683f49aa7/e45fc3da.html>);)
@@ -134,6 +134,7 @@ z-tokens hash --help
 z-tokens exchange keys --help
 z-tokens exchange encrypt --help
 z-tokens exchange decrypt --help
+z-tokens exchange password --help
 z-tokens exchange armor --help
 z-tokens exchange dearmor --help
 z-tokens exchange ssh keys --help
