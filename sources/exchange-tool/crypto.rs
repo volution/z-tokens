@@ -142,6 +142,7 @@ pub fn encrypt (
 {
 	let (_secret_inputs, _pin_inputs) = wrap_secrets_and_pins_inputs (_secret_inputs, _pin_inputs) ?;
 	let _ssh_wrappers = wrap_ssh_wrappers (_ssh_wrappers) ?;
+	let _ssh_wrapper_exists = ! _ssh_wrappers.is_empty ();
 	
 	let _decrypted = InternalDataDecrypted::wrap (_decrypted);
 	let _decrypted_len = _decrypted.size ();
@@ -184,7 +185,7 @@ pub fn encrypt (
 	let _recipient = _recipient.map (RecipientPublicKey::access);
 	
 	let (_naive_key, _aont_key, _secret_hashes, _pin_hashes)
-			= derive_keys_phase_1 (_sender, _recipient, _secret_inputs, _pin_inputs, true) ?;
+			= derive_keys_phase_1 (_sender, _recipient, _secret_inputs, _pin_inputs, true, _ssh_wrapper_exists) ?;
 	
 	drop! (_sender, _recipient);
 	
@@ -253,6 +254,7 @@ pub fn decrypt (
 {
 	let (_secret_inputs, _pin_inputs) = wrap_secrets_and_pins_inputs (_secret_inputs, _pin_inputs) ?;
 	let _ssh_wrappers = wrap_ssh_wrappers (_ssh_wrappers) ?;
+	let _ssh_wrapper_exists = ! _ssh_wrappers.is_empty ();
 	
 	let _encrypted = InternalDataEncrypted::wrap (_encrypted);
 	let _encrypted_len = _encrypted.size ();
@@ -282,7 +284,7 @@ pub fn decrypt (
 	let _recipient = _recipient.map (RecipientPrivateKey::access);
 	
 	let (_naive_key, _aont_key, _secret_hashes, _pin_hashes)
-			= derive_keys_phase_1 (_recipient, _sender, _secret_inputs, _pin_inputs, false) ?;
+			= derive_keys_phase_1 (_recipient, _sender, _secret_inputs, _pin_inputs, false, _ssh_wrapper_exists) ?;
 	
 	drop! (_sender, _recipient);
 	
@@ -434,21 +436,9 @@ fn derive_keys_phase_1 (
 			_secret_inputs : Vec<InternalSecretInput>,
 			_pin_inputs : Vec<InternalPinInput>,
 			_encryption : bool,
+			_ssh_wrapper_exists : bool,
 		) -> CryptoResult<(InternalNaiveKey, InternalAontKey, (InternalSecretHash, Vec<InternalSecretHash>), (InternalPinHash, Vec<InternalPinHash>))>
 {
-	// --------------------------------------------------------------------------------
-	// NOTE:  apply X25519 DHE...
-	
-	let _private = _private.else_wrap (0x70f91100) ?;
-	
-	let _dhe_key = x25519_dhe (
-			InternalDheKey::wrap,
-			CRYPTO_DHE_KEY_CONTEXT,
-			_private,
-			_public,
-			_encryption,
-		) ?;
-	
 	// --------------------------------------------------------------------------------
 	// NOTE:  derive secret hashes...
 	
@@ -498,6 +488,31 @@ fn derive_keys_phase_1 (
 			CRYPTO_PIN_HASH_CONTEXT,
 			_pin_hashes.iter () .map (InternalPinHash::access),
 		);
+	
+	// --------------------------------------------------------------------------------
+	// NOTE:  derive X25519 DHE...
+	
+	let _dhe_key = if let Some (_private) = _private {
+			
+			x25519_dhe (
+				InternalDheKey::wrap,
+				CRYPTO_DHE_KEY_CONTEXT,
+				_private,
+				_public,
+				_encryption,
+			) ?
+			
+		} else {
+			
+			if _public.is_some () {
+				fail! (0x884cbe55);
+			}
+			if _secret_hashes.is_empty () && _pin_hashes.is_empty () && ! _ssh_wrapper_exists {
+				fail! (0xa1de0167);
+			}
+			
+			InternalDheKey::zero ()
+		};
 	
 	// --------------------------------------------------------------------------------
 	// NOTE:  derive naive key (for the entire transaction)...
@@ -550,11 +565,8 @@ fn derive_keys_phase_2 (
 	let (_secret_hash, _secret_hashes) = _secret_hash;
 	let (_pin_hash, _pin_hashes) = _pin_hash;
 	
-	let _secret_exists = ! _secret_hashes.is_empty ();
-	let _pin_exists = ! _pin_hashes.is_empty ();
-	
 	// --------------------------------------------------------------------------------
-	// NOTE:  call SSH wrapper (if exists)...
+	// NOTE:  call SSH wrappers...
 	
 	let mut _ssh_wrap_key = InternalSshWrapOutput::zero ();
 	
@@ -592,7 +604,7 @@ fn derive_keys_phase_2 (
 	}
 	
 	// --------------------------------------------------------------------------------
-	// NOTE:  derive secret argon (if exists)...
+	// NOTE:  derive secret argon hashes...
 	
 	let mut _secret_key = InternalSecretKey::wrap (_secret_hash.material);
 	
@@ -627,7 +639,7 @@ fn derive_keys_phase_2 (
 	}
 	
 	// --------------------------------------------------------------------------------
-	// NOTE:  derive pin argon (if exists)...
+	// NOTE:  derive pin argon hashes...
 	
 	let mut _pin_key = InternalPinKey::wrap (_pin_hash.material);
 	
