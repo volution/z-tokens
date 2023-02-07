@@ -8,9 +8,21 @@ use crate::tools::*;
 
 
 
-pub fn bin () -> Result<ExitCode, ()> {
+pub fn bin_tools () -> Result<ExitCode, ()> {
+	bin_wrapper (premain_tools)
+}
+
+#[ cfg (feature = "z-tokens-exchange-tool") ]
+pub fn bin_exchange () -> Result<ExitCode, ()> {
+	bin_wrapper (premain_exchange)
+}
+
+
+
+
+pub fn bin_wrapper <Main> (_main : Main) -> Result<ExitCode, ()> where Main : FnOnce () -> MainResult<ExitCode> {
 	
-	match premain () {
+	match _main () {
 		
 		Ok (_code) =>
 			Ok (_code),

@@ -46,14 +46,26 @@ define_error! (pub MainError, result : MainResult);
 
 
 
-pub fn premain () -> MainResult<ExitCode> {
+pub fn premain_tools () -> MainResult<ExitCode> {
+	premain_wrapper (main_tools)
+}
+
+#[ cfg (feature = "z-tokens-exchange-tool") ]
+pub fn premain_exchange () -> MainResult<ExitCode> {
+	premain_wrapper (main_exchange)
+}
+
+
+
+
+pub fn premain_wrapper <Main> (_main : Main) -> MainResult<ExitCode> where Main : FnOnce () -> MainResult<ExitCode> {
 	
 	#[ cfg (feature = "zt-runtime-allocator") ]
 	if allocator::DEBUG_REPORT {
 		allocator::report ();
 	}
 	
-	let _outcome = main ();
+	let _outcome = _main ();
 	
 	#[ cfg (feature = "zt-runtime-allocator") ]
 	if allocator::DEBUG_REPORT {
@@ -66,34 +78,9 @@ pub fn premain () -> MainResult<ExitCode> {
 
 
 
-pub fn main () -> MainResult<ExitCode> {
+pub fn main_tools () -> MainResult<ExitCode> {
 	
-	let mut _arguments_os : Vec<_> = env::args_os () .collect ();
-	if _arguments_os.is_empty () {
-		fail! (0xf28dc498);
-	} else {
-		_arguments_os.remove (0);
-	};
-	
-	let mut _commands = Vec::with_capacity (4);
-	let mut _arguments = Vec::with_capacity (_arguments_os.len ());
-	for _argument_os in _arguments_os.into_iter () {
-		let _argument = _argument_os.into_string () .else_replace (0xa03c1f9c) ?;
-		if ! _arguments.is_empty () {
-			_arguments.push (_argument);
-		} else {
-			match _argument.chars () .next () {
-				None =>
-					fail! (0xc83bdfd9),
-				Some ('-') =>
-					_arguments.push (_argument),
-				Some (_char) if (_char >= 'a') && (_char <= 'z') =>
-					_commands.push (_argument),
-				_ =>
-					fail! (0xa9f7ef96),
-			}
-		}
-	}
+	let (mut _commands, mut _arguments) = main_arguments () ?;
 	
 	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
 	let _commands_refs = _commands_refs.as_slice ();
@@ -101,6 +88,9 @@ pub fn main () -> MainResult<ExitCode> {
 	let _arguments_refs = _arguments_refs.as_slice ();
 	
 	match (_commands_refs, _arguments_refs) {
+		
+		
+		
 		
 		#[ cfg (feature = "z-tokens-patterns-tool") ]
 		(&["patterns"], _) | (&["p"], _) => {
@@ -134,11 +124,17 @@ pub fn main () -> MainResult<ExitCode> {
 			main_generate (_arguments) .else_wrap (0x284c1286)
 		}
 		
+		
+		
+		
 		#[ cfg (feature = "z-tokens-hashes-tool") ]
 		(&["hash"], _) => {
 			_arguments.insert (0, String::from ("z-tokens hash"));
 			main_hash (_arguments) .else_wrap (0xff8dcc61)
 		}
+		
+		
+		
 		
 		#[ cfg (feature = "z-tokens-exchange-tool") ]
 		(&["exchange", "keys"], _) => {
@@ -175,6 +171,85 @@ pub fn main () -> MainResult<ExitCode> {
 			_arguments.insert (0, String::from ("z-tokens exchange ssh wrap"));
 			main_exchange_ssh_wrap (_arguments) .else_wrap (0x3108dc57)
 		}
+		
+		
+		
+		
+		_ =>
+			main_unknown (_commands, _arguments),
+	}
+}
+
+
+
+
+#[ cfg (feature = "z-tokens-exchange-tool") ]
+pub fn main_exchange () -> MainResult<ExitCode> {
+	
+	let (mut _commands, mut _arguments) = main_arguments () ?;
+	
+	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _commands_refs = _commands_refs.as_slice ();
+	let _arguments_refs = _arguments.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _arguments_refs = _arguments_refs.as_slice ();
+	
+	match (_commands_refs, _arguments_refs) {
+		
+		
+		
+		
+		(&["keys"], _) => {
+			_arguments.insert (0, String::from ("z-exchange keys"));
+			main_exchange_keys (_arguments) .else_wrap (0x7685fa9c)
+		}
+		(&["encrypt"], _) => {
+			_arguments.insert (0, String::from ("z-exchange encrypt"));
+			main_exchange_encrypt (_arguments) .else_wrap (0xadd1e78c)
+		}
+		(&["decrypt"], _) => {
+			_arguments.insert (0, String::from ("z-exchange decrypt"));
+			main_exchange_decrypt (_arguments) .else_wrap (0x46af8dea)
+		}
+		(&["armor"], _) => {
+			_arguments.insert (0, String::from ("z-exchange armor"));
+			main_exchange_armor (_arguments) .else_wrap (0x82a1222e)
+		}
+		(&["dearmor"], _) => {
+			_arguments.insert (0, String::from ("z-exchange dearmor"));
+			main_exchange_dearmor (_arguments) .else_wrap (0x1008ba10)
+		}
+		(&["ssh", "keys"], _) => {
+			_arguments.insert (0, String::from ("z-exchange ssh keys"));
+			main_exchange_ssh_keys (_arguments) .else_wrap (0x7fff2cbd)
+		}
+		(&["ssh", "wrap"], _) => {
+			_arguments.insert (0, String::from ("z-exchange ssh wrap"));
+			main_exchange_ssh_wrap (_arguments) .else_wrap (0xcb42bef7)
+		}
+		
+		
+		
+		
+		_ =>
+			main_unknown (_commands, _arguments),
+	}
+}
+
+
+
+
+
+
+
+
+pub(crate) fn main_unknown (_commands : Vec<String>, _arguments : Vec<String>) -> MainResult<ExitCode> {
+	
+	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _commands_refs = _commands_refs.as_slice ();
+	let _arguments_refs = _arguments.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _arguments_refs = _arguments_refs.as_slice ();
+	
+	match (_commands_refs, _arguments_refs) {
 		
 		#[ cfg (feature = "zt-embedded-help") ]
 		(&["help"], _) | (&["h"], _) |
@@ -224,6 +299,49 @@ pub fn main () -> MainResult<ExitCode> {
 			print_and_exit (&["[ee] [37d61e27]  invalid command;  see `z-tokens help`;  aborting!", "\n"], false),
 	}
 }
+
+
+
+
+
+
+
+
+pub fn main_arguments () -> MainResult<(Vec<String>, Vec<String>)> {
+	
+	let mut _arguments_os : Vec<_> = env::args_os () .collect ();
+	if _arguments_os.is_empty () {
+		fail! (0xf28dc498);
+	} else {
+		_arguments_os.remove (0);
+	};
+	
+	let mut _commands = Vec::with_capacity (4);
+	let mut _arguments = Vec::with_capacity (_arguments_os.len ());
+	for _argument_os in _arguments_os.into_iter () {
+		let _argument = _argument_os.into_string () .else_replace (0xa03c1f9c) ?;
+		if ! _arguments.is_empty () {
+			_arguments.push (_argument);
+		} else {
+			match _argument.chars () .next () {
+				None =>
+					fail! (0xc83bdfd9),
+				Some ('-') =>
+					_arguments.push (_argument),
+				Some (_char) if (_char >= 'a') && (_char <= 'z') =>
+					_commands.push (_argument),
+				_ =>
+					fail! (0xa9f7ef96),
+			}
+		}
+	}
+	
+	Ok ((_commands, _arguments))
+}
+
+
+
+
 
 
 

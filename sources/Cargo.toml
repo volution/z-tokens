@@ -30,7 +30,13 @@ documentation.workspace = true
 [[bin]]
 
 name = "z-tokens"
-path = "./bin.rs"
+path = "./bins/tools.rs"
+
+
+[[bin]]
+
+name = "z-exchange"
+path = "./bins/exchange.rs"
 
 
 
