@@ -325,8 +325,8 @@
 			
 			export -- __CARGO__CROSS=true
 			export -- __CARGO__TARGET="${_target}"
-			"${ZRUN}" ':: cargo / release / build' --quiet
-			"${ZRUN}" ':: cargo / release / collect'
+			"${ZRUN}" ':: cargo / release / build' --bin "${_main}" --quiet
+			"${ZRUN}" ':: cargo / release / collect' --bin "${_main}"
 			
 		done
 	done
