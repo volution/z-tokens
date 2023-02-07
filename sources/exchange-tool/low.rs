@@ -115,7 +115,7 @@ pub(crate) fn x25519_dhe <WC, WO> (
 	let _dhe = _dhe.as_bytes ();
 	
 	let _sender_public = if _encryption { _private_public.as_bytes () } else { _public.as_bytes () };
-	let _receiver_public = if _encryption { _public.as_bytes () } else { _private_public.as_bytes () };
+	let _recipient_public = if _encryption { _public.as_bytes () } else { _private_public.as_bytes () };
 	
 	let _shared_key = blake3_derive_key (
 			_wrapper,
@@ -123,7 +123,7 @@ pub(crate) fn x25519_dhe <WC, WO> (
 			&[
 				_dhe,
 				_sender_public,
-				_receiver_public,
+				_recipient_public,
 			],
 			&[],
 			None,
@@ -287,6 +287,23 @@ pub(crate) fn generate_random <WC, WO> (_wrapper : WC) -> WO
 	
 	let _wrapped = _wrapper (_data);
 	_wrapped
+}
+
+
+
+
+pub(crate) fn debug_key <const SIZE : usize> (_identifier : &str, _wrapper : &impl CryptographicMaterial<SIZE>) -> () {
+	debug_bytes (_identifier, _wrapper.access ());
+}
+
+pub(crate) fn debug_bytes (_identifier : &str, _bytes : &[u8]) -> () {
+	let mut _buffer = String::with_capacity (1024);
+	_buffer.write_fmt (format_args! ("[>>] [a99accf0]  >>  {:-40}  >>  ", _identifier)) .else_panic (0xc3663c18);
+	for _byte in _bytes {
+		_buffer.write_fmt (format_args! ("{:02x}", *_byte)) .else_panic (0x5d9cb2c0);
+	}
+	_buffer.push ('\n');
+	stderr_locked () .write (_buffer.as_bytes ()) .else_panic (0xe6d38156);
 }
 
 
