@@ -487,17 +487,10 @@
 	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
-	_is_first=true
-	
-	for _case_secret in without-secret with-secret-1 with-secret-1d with-secret-2 with-secret-2d ; do
-	for _case_ssh_wrap in without-ssh-wrap with-ssh-wrap-1 with-ssh-wrap-1d with-ssh-wrap-2 with-ssh-wrap-2d ; do
-	for _case_pin in without-pin with-pin-1 with-pin-1d with-pin-2 with-pin-2d ; do
-	for _case_send in none send self ; do
-		
-		if test "${_is_first}" == true ; then
-			_is_first=false
-			continue
-		fi
+	for _case_secret in without-secret empty-secret with-secret-1 with-secret-1d with-secret-2 with-secret-2d ; do
+	for _case_ssh_wrap in without-ssh-wrap empty-ssh-wrap with-ssh-wrap-1 with-ssh-wrap-1d with-ssh-wrap-2 with-ssh-wrap-2d ; do
+	for _case_pin in without-pin empty-pin with-pin-1 with-pin-1d with-pin-2 with-pin-2d ; do
+	for _case_send in without-x25519 empty-x25519 send-x25519 self-x25519 ; do
 		
 		_pin_1="${SRANDOM}"
 		_pin_2="${SRANDOM}"
@@ -517,8 +510,10 @@
 		printf -- '\n' >&2
 		printf -- '[ii]  running iteration `%s %s %s %s`...\n' "${_case_send}" "${_case_pin}" "${_case_secret}" "${_case_ssh_wrap}" >&2
 		
+		_empty_is_missing=false
+		
 		case "${_case_send}" in
-			( send )
+			( send-x25519 )
 				_encrypt_arguments+=(
 						--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920
 						--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah
@@ -528,7 +523,7 @@
 						--sender ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88
 					)
 			;;
-			( self )
+			( self-x25519 )
 				_encrypt_arguments+=(
 						--sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m
 					)
@@ -536,7 +531,15 @@
 						--recipient ztxrk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqfgdyps
 					)
 			;;
-			( none )
+			( without-x25519 )
+			;;
+			( empty-x25519 )
+				_encrypt_arguments+=(
+						--sender ''
+					)
+				_decrypt_arguments+=(
+					)
+				_empty_is_missing=true
 			;;
 			( __* )
 				continue
@@ -585,6 +588,14 @@
 			;;
 			( without-pin )
 			;;
+			( empty-pin )
+				_encrypt_arguments+=(
+						--pin ''
+					)
+				_decrypt_arguments+=(
+					)
+				_empty_is_missing=true
+			;;
 			( __* )
 				continue
 			;;
@@ -631,6 +642,14 @@
 					)
 			;;
 			( without-secret )
+			;;
+			( empty-secret )
+				_encrypt_arguments+=(
+						--secret ''
+					)
+				_decrypt_arguments+=(
+					)
+				_empty_is_missing=true
 			;;
 			( __* )
 				continue
@@ -679,6 +698,14 @@
 			;;
 			( without-ssh-wrap )
 			;;
+			( empty-ssh-wrap )
+				_encrypt_arguments+=(
+						--ssh-wrap ''
+					)
+				_decrypt_arguments+=(
+					)
+				_empty_is_missing=true
+			;;
 			( __* )
 				continue
 			;;
@@ -686,6 +713,19 @@
 				false
 			;;
 		esac
+		
+		if test "${#_encrypt_arguments[@]}" -eq 0 ; then
+			printf -- '[ii]    -> empty encryption;  skipping!\n' >&2
+			continue
+		fi
+		if test "${#_decrypt_arguments[@]}" -eq 0 ; then
+			printf -- '[ii]    -> empty decryption;  skipping!\n' >&2
+			continue
+		fi
+		
+		_common_arguments+=(
+				--empty-is-missing "${_empty_is_missing}"
+			)
 		
 		_encrypt_command=(
 						exchange encrypt
