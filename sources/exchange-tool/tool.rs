@@ -193,9 +193,9 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _sender_private : Option<String> = None;
 	let mut _recipient_public : Option<String> = None;
-	let mut _secret : Option<String> = None;
-	let mut _pin : Option<String> = None;
-	let mut _ssh_wrapper : Option<String> = None;
+	let mut _secrets : Vec<String> = Vec::new ();
+	let mut _pins : Vec<String> = Vec::new ();
+	let mut _ssh_wrappers : Vec<String> = Vec::new ();
 	let mut _empty_is_missing : Option<bool> = None;
 	
 	{
@@ -209,17 +209,17 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.metavar ("{recipient}")
 				.add_option (&["-r", "--recipient"], ArgStoreOption, "(recipient public key)");
 		
-		_parser.refer (&mut _secret)
+		_parser.refer (&mut _secrets)
 				.metavar ("{secret}")
-				.add_option (&["-x", "--secret"], ArgStoreOption, "(shared secret, for additional security)");
+				.add_option (&["-x", "--secret"], ArgCollect, "(shared secret, for additional security) (multiple allowed)");
 		
-		_parser.refer (&mut _pin)
+		_parser.refer (&mut _pins)
 				.metavar ("{pin}")
-				.add_option (&["-p", "--pin"], ArgStoreOption, "(shared PIN, for **WEAK** additional security)");
+				.add_option (&["-p", "--pin"], ArgCollect, "(shared PIN, for **WEAK** additional security) (multiple allowed)");
 		
-		_parser.refer (&mut _ssh_wrapper)
+		_parser.refer (&mut _ssh_wrappers)
 				.metavar ("{key}")
-				.add_option (&["--ssh-wrap"], ArgStoreOption, "(shared SSH agent key handle)");
+				.add_option (&["--ssh-wrap"], ArgCollect, "(shared SSH agent key handle) (multiple allowed)");
 		
 		_parser.refer (&mut _empty_is_missing)
 				.metavar ("{bool}")
@@ -241,25 +241,22 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _recipient_public = _recipient_public.map (RecipientPublicKey::decode_and_zeroize) .transpose () .else_wrap (0x233175e9) ?;
 	let _recipient_public = _recipient_public.as_ref ();
 	
-	let _ssh_wrapper = _ssh_wrapper.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
-	let _ssh_wrapper = _ssh_wrapper.map (SshWrapperKey::decode_and_zeroize) .transpose () .else_wrap (0x6d68c3c2) ?;
-	let mut _ssh_wrapper = _ssh_wrapper.map (Rb::new) .map (SshWrapper::connect) .transpose () .else_wrap (0xe1f9e4bf) ?;
-	let _ssh_wrapper = _ssh_wrapper.as_mut ();
-	let _ssh_wrapper : Vec<_> = _ssh_wrapper.into_iter () .collect ();
+	let _ssh_wrappers = _ssh_wrappers.into_iter ().filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapperKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x6d68c3c2) ?;
+	let mut _ssh_wrappers = _ssh_wrappers.into_iter () .map (Rb::new) .map (SshWrapper::connect) .collect::<Result<Vec<_>, _>> () .else_wrap (0xe1f9e4bf) ?;
+	let _ssh_wrappers = _ssh_wrappers.iter_mut () .collect::<Vec<_>> ();
 	
-	let _secret = _secret.filter (|_secret| ! (_secret.is_empty () && _empty_is_missing));
-	let _secret = _secret.map (SharedSecret::decode_and_zeroize) .transpose () .else_wrap (0xab68aede) ?;
-	let _secret = _secret.as_ref () .map (SharedSecret::access_bytes) .map (|_bytes| _bytes.as_slice ());
-	let _secret : Vec<_> = _secret.into_iter () .collect ();
+	let _secrets = _secrets.into_iter () .filter (|_secret| ! (_secret.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _secrets = _secrets.into_iter () .map (SharedSecret::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0xab68aede) ?;
+	let _secrets = _secrets.iter () .map (SharedSecret::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
 	
-	let _pin = _pin.filter (|_pin| ! (_pin.is_empty () && _empty_is_missing));
-	let _pin = _pin.as_ref () .map (String::as_bytes);
-	let _pin : Vec<_> = _pin.into_iter () .collect ();
+	let _pins = _pins.into_iter () .filter (|_pin| ! (_pin.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _pins = _pins.iter () .map (String::as_bytes) .collect::<Vec<_>> ();
 	
 	let _decrypted = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0xb0e8db93) ?;
 	
 	let mut _encrypted = Vec::new ();
-	encrypt (_sender_private, _recipient_public, &_secret, &_pin, &_decrypted, &mut _encrypted, _ssh_wrapper) .else_wrap (0x38d2ce1e) ?;
+	encrypt (_sender_private, _recipient_public, &_secrets, &_pins, &_decrypted, &mut _encrypted, _ssh_wrappers) .else_wrap (0x38d2ce1e) ?;
 	
 	let mut _stream = stdout_locked ();
 	_stream.write (&_encrypted) .else_wrap (0x815d15bc) ?;
@@ -275,9 +272,9 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _recipient_private : Option<String> = None;
 	let mut _sender_public : Option<String> = None;
-	let mut _secret : Option<String> = None;
-	let mut _pin : Option<String> = None;
-	let mut _ssh_wrapper : Option<String> = None;
+	let mut _secrets : Vec<String> = Vec::new ();
+	let mut _pins : Vec<String> = Vec::new ();
+	let mut _ssh_wrappers : Vec<String> = Vec::new ();
 	let mut _empty_is_missing : Option<bool> = None;
 	
 	{
@@ -291,17 +288,17 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.metavar ("{recipient}")
 				.add_option (&["-s", "--sender"], ArgStoreOption, "(sender public key)");
 		
-		_parser.refer (&mut _secret)
+		_parser.refer (&mut _secrets)
 				.metavar ("{secret}")
-				.add_option (&["-x", "--secret"], ArgStoreOption, "(shared secret, for additional security)");
+				.add_option (&["-x", "--secret"], ArgCollect, "(shared secret, for additional security) (multiple allowed)");
 		
-		_parser.refer (&mut _pin)
+		_parser.refer (&mut _pins)
 				.metavar ("{pin}")
-				.add_option (&["-p", "--pin"], ArgStoreOption, "(shared PIN, for **WEAK** additional security)");
+				.add_option (&["-p", "--pin"], ArgCollect, "(shared PIN, for **WEAK** additional security) (multiple allowed)");
 		
-		_parser.refer (&mut _ssh_wrapper)
+		_parser.refer (&mut _ssh_wrappers)
 				.metavar ("{key}")
-				.add_option (&["--ssh-wrap"], ArgStoreOption, "(shared SSH agent key handle)");
+				.add_option (&["--ssh-wrap"], ArgCollect, "(shared SSH agent key handle) (multiple allowed)");
 		
 		_parser.refer (&mut _empty_is_missing)
 				.metavar ("{bool}")
@@ -323,25 +320,22 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _sender_public = _sender_public.map (SenderPublicKey::decode_and_zeroize) .transpose () .else_wrap (0xbb6f004f) ?;
 	let _sender_public = _sender_public.as_ref ();
 	
-	let _ssh_wrapper = _ssh_wrapper.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
-	let _ssh_wrapper = _ssh_wrapper.map (SshWrapperKey::decode_and_zeroize) .transpose () .else_wrap (0x1fea5617) ?;
-	let mut _ssh_wrapper = _ssh_wrapper.map (Rb::new) .map (SshWrapper::connect) .transpose () .else_wrap (0xfeda4c77) ?;
-	let _ssh_wrapper = _ssh_wrapper.as_mut ();
-	let _ssh_wrapper : Vec<_> = _ssh_wrapper.into_iter () .collect ();
+	let _ssh_wrappers = _ssh_wrappers.into_iter ().filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapperKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x1fea5617) ?;
+	let mut _ssh_wrappers = _ssh_wrappers.into_iter () .map (Rb::new) .map (SshWrapper::connect) .collect::<Result<Vec<_>, _>> () .else_wrap (0xfeda4c77) ?;
+	let _ssh_wrappers = _ssh_wrappers.iter_mut () .collect::<Vec<_>> ();
 	
-	let _secret = _secret.filter (|_secret| ! (_secret.is_empty () && _empty_is_missing));
-	let _secret = _secret.map (SharedSecret::decode_and_zeroize) .transpose () .else_wrap (0x07d3b030) ?;
-	let _secret = _secret.as_ref () .map (SharedSecret::access_bytes) .map (|_bytes| _bytes.as_slice ());
-	let _secret : Vec<_> = _secret.into_iter () .collect ();
+	let _secrets = _secrets.into_iter () .filter (|_secret| ! (_secret.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _secrets = _secrets.into_iter () .map (SharedSecret::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x07d3b030) ?;
+	let _secrets = _secrets.iter () .map (SharedSecret::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
 	
-	let _pin = _pin.filter (|_pin| ! (_pin.is_empty () && _empty_is_missing));
-	let _pin = _pin.as_ref () .map (String::as_bytes);
-	let _pin : Vec<_> = _pin.into_iter () .collect ();
+	let _pins = _pins.into_iter () .filter (|_pin| ! (_pin.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _pins = _pins.iter () .map (String::as_bytes) .collect::<Vec<_>> ();
 	
 	let _encrypted = read_at_most (stdin_locked (), CRYPTO_ENCRYPTED_SIZE_MAX) .else_wrap (0xf71cef7e) ?;
 	
 	let mut _decrypted = Vec::new ();
-	decrypt (_recipient_private, _sender_public, &_secret, &_pin, &_encrypted, &mut _decrypted, _ssh_wrapper) .else_wrap (0x95273e1d) ?;
+	decrypt (_recipient_private, _sender_public, &_secrets, &_pins, &_encrypted, &mut _decrypted, _ssh_wrappers) .else_wrap (0x95273e1d) ?;
 	
 	let mut _stream = stdout_locked ();
 	_stream.write (&_decrypted) .else_wrap (0x19352ca2) ?;
