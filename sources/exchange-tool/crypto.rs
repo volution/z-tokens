@@ -443,9 +443,9 @@ fn derive_keys_phase_1 (
 		) ?;
 	
 	// --------------------------------------------------------------------------------
-	// NOTE:  derive secret hash (if exists)...
+	// NOTE:  derive secret hashes...
 	
-	let _secret_hashes : Vec<_> = _secret_inputs.into_iter () .enumerate () .map (
+	let mut _secret_hashes : Vec<_> = _secret_inputs.into_iter () .enumerate () .map (
 			|(_secret_index, _secret_input)|
 					blake3_derive_key (
 							InternalSecretHash::wrap,
@@ -454,9 +454,12 @@ fn derive_keys_phase_1 (
 							&[
 								_secret_input.access_consume (),
 							],
-							Some (_secret_index as u32),
+							None,
 						)
 		) .collect ();
+	
+	_secret_hashes.sort_by (InternalSecretHash::cmp_access);
+	_secret_hashes.dedup_by (|_left, _right| InternalSecretHash::eq_access (_left, _right));
 	
 	let _secret_hash = blake3_derive_key_join (
 			InternalSecretHash::wrap,
@@ -465,9 +468,9 @@ fn derive_keys_phase_1 (
 		);
 	
 	// --------------------------------------------------------------------------------
-	// NOTE:  derive pin hash (if exists)...
+	// NOTE:  derive pin hashes...
 	
-	let _pin_hashes : Vec<_> = _pin_inputs.into_iter () .enumerate () .map (
+	let mut _pin_hashes : Vec<_> = _pin_inputs.into_iter () .enumerate () .map (
 			|(_pin_index, _pin_input)|
 					blake3_derive_key (
 							InternalPinHash::wrap,
@@ -476,9 +479,12 @@ fn derive_keys_phase_1 (
 							&[
 								_pin_input.access_consume (),
 							],
-							Some (_pin_index as u32),
+							None,
 						)
 		) .collect ();
+	
+	_pin_hashes.sort_by (InternalPinHash::cmp_access);
+	_pin_hashes.dedup_by (|_left, _right| InternalPinHash::eq_access (_left, _right));
 	
 	let _pin_hash = blake3_derive_key_join (
 			InternalPinHash::wrap,
@@ -581,72 +587,72 @@ fn derive_keys_phase_2 (
 	// --------------------------------------------------------------------------------
 	// NOTE:  derive secret argon (if exists)...
 	
-	let _secret_key = if _secret_exists {
-			
-			let _secret_salt = blake3_derive_key (
-					InternalSecretSalt::wrap,
-					CRYPTO_SECRET_SALT_CONTEXT,
-					&[
-						_ssh_wrap_key.access (),
-						_packet_salt.access (),
-						_naive_key.access (),
-					],
-					&[],
-					None,
-				);
-			
-			let _secret_argon = apply_argon_secret (_secret_hash, _secret_salt) ?;
-			
-			let _secret_key = blake3_derive_key (
-					InternalSecretKey::wrap,
-					CRYPTO_SECRET_KEY_CONTEXT,
-					&[
-						_secret_argon.access (),
-					],
-					&[],
-					None,
-				);
-			
-			_secret_key
-			
-		} else {
-			InternalSecretKey::wrap (_secret_hash.material)
-		};
+	let mut _secret_key = InternalSecretKey::wrap (_secret_hash.material);
+	
+	for _secret_hash in _secret_hashes.into_iter () {
+		
+		let _secret_salt = blake3_derive_key (
+				InternalSecretSalt::wrap,
+				CRYPTO_SECRET_SALT_CONTEXT,
+				&[
+					_secret_key.access (),
+					_ssh_wrap_key.access (),
+					_packet_salt.access (),
+					_naive_key.access (),
+				],
+				&[],
+				None,
+			);
+		
+		_secret_key.consume ();
+		
+		let _secret_argon = apply_argon_secret (_secret_hash, _secret_salt) ?;
+		
+		_secret_key = blake3_derive_key (
+				InternalSecretKey::wrap,
+				CRYPTO_SECRET_KEY_CONTEXT,
+				&[
+					_secret_argon.access (),
+				],
+				&[],
+				None,
+			);
+	}
 	
 	// --------------------------------------------------------------------------------
 	// NOTE:  derive pin argon (if exists)...
 	
-	let _pin_key = if _pin_exists {
-			
-			let _pin_salt = blake3_derive_key (
-					InternalPinSalt::wrap,
-					CRYPTO_PIN_SALT_CONTEXT,
-					&[
-						_ssh_wrap_key.access (),
-						_packet_salt.access (),
-						_naive_key.access (),
-					],
-					&[],
-					None,
-				);
-			
-			let _pin_argon = apply_argon_pin (_pin_hash, _pin_salt) ?;
-			
-			let _pin_key = blake3_derive_key (
-					InternalPinKey::wrap,
-					CRYPTO_PIN_KEY_CONTEXT,
-					&[
-						_pin_argon.access (),
-					],
-					&[],
-					None,
-				);
-			
-			_pin_key
-			
-		} else {
-			InternalPinKey::wrap (_pin_hash.material)
-		};
+	let mut _pin_key = InternalPinKey::wrap (_pin_hash.material);
+	
+	for _pin_hash in _pin_hashes.into_iter () {
+		
+		let _pin_salt = blake3_derive_key (
+				InternalPinSalt::wrap,
+				CRYPTO_PIN_SALT_CONTEXT,
+				&[
+					_pin_key.access (),
+					_ssh_wrap_key.access (),
+					_packet_salt.access (),
+					_naive_key.access (),
+				],
+				&[],
+				None,
+			);
+		
+		_pin_key.consume ();
+		
+		let _pin_argon = apply_argon_pin (_pin_hash, _pin_salt) ?;
+		
+		_pin_key = blake3_derive_key (
+				InternalPinKey::wrap,
+				CRYPTO_PIN_KEY_CONTEXT,
+				&[
+					_pin_argon.access (),
+				],
+				&[],
+				None,
+			);
+	}
 	
 	// --------------------------------------------------------------------------------
 	// NOTE:  derive packet key...

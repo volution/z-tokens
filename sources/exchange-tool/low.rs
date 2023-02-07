@@ -38,6 +38,14 @@ pub(crate) trait CryptographicMaterial <const SIZE : usize> : Sized {
 		_right.consume ();
 		_outcome
 	}
+	
+	fn eq_access (_left : &Self, _right : &Self) -> bool {
+		PartialEq::eq (_left.access (), _right.access ())
+	}
+	
+	fn cmp_access (_left : &Self, _right : &Self) -> Ordering {
+		Ord::cmp (_left.access (), _right.access ())
+	}
 }
 
 
