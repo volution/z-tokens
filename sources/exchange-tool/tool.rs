@@ -9,6 +9,7 @@ use ::z_tokens_runtime::memory::Rb;
 use crate::keys::*;
 use crate::crypto::*;
 use crate::armor::*;
+use crate::coding::*;
 use crate::ssh::*;
 use crate::io::*;
 
@@ -485,6 +486,64 @@ pub fn main_dearmor (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _stream = stdout_locked ();
 	_stream.write (&_decoded) .else_wrap (0x2d7f55d6) ?;
+	mem::drop (_stream);
+	
+	Ok (ExitCode::SUCCESS)
+}
+
+
+
+
+
+
+
+
+pub fn main_encode (_arguments : Vec<String>) -> MainResult<ExitCode> {
+	
+	{
+		let mut _parser = create_parser () .else_wrap (0xcb1b3482) ?;
+		
+		if execute_parser (_parser, _arguments) .else_wrap (0xad08f353) ? {
+			return Ok (ExitCode::SUCCESS);
+		}
+	}
+	
+	let _decoded = read_at_most (stdin_locked (), ARMOR_DECODED_SIZE_MAX) .else_wrap (0xba262231) ?;
+	
+	let _encoded_capacity = encode_capacity_max (_decoded.len ()) .else_wrap (0x7837b91c) ?;
+	let mut _encoded = Vec::with_capacity (_encoded_capacity);
+	
+	encode (&_decoded, &mut _encoded) .else_wrap (0xef489995) ?;
+	
+	let mut _stream = stdout_locked ();
+	_stream.write (&_encoded) .else_wrap (0x9ce3a5fa) ?;
+	mem::drop (_stream);
+	
+	Ok (ExitCode::SUCCESS)
+}
+
+
+
+
+pub fn main_decode (_arguments : Vec<String>) -> MainResult<ExitCode> {
+	
+	{
+		let mut _parser = create_parser () .else_wrap (0x9235af69) ?;
+		
+		if execute_parser (_parser, _arguments) .else_wrap (0xe0737dae) ? {
+			return Ok (ExitCode::SUCCESS);
+		}
+	}
+	
+	let _encoded = read_at_most (stdin_locked (), ARMOR_ENCODED_SIZE_MAX) .else_wrap (0x7d1f6a2d) ?;
+	
+	let _decoded_capacity = decode_capacity_max (_encoded.len ()) .else_wrap (0x7fce69ef) ?;
+	let mut _decoded = Vec::with_capacity (_decoded_capacity);
+	
+	decode (&_encoded, &mut _decoded) .else_wrap (0xcbf8a0fd) ?;
+	
+	let mut _stream = stdout_locked ();
+	_stream.write (&_decoded) .else_wrap (0xb35cf6db) ?;
 	mem::drop (_stream);
 	
 	Ok (ExitCode::SUCCESS)

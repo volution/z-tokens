@@ -25,6 +25,8 @@ use ::z_tokens_exchange_tool::{
 		tool::main_password as main_exchange_password,
 		tool::main_armor as main_exchange_armor,
 		tool::main_dearmor as main_exchange_dearmor,
+		tool::main_encode as main_exchange_encode,
+		tool::main_decode as main_exchange_decode,
 		tool::main_ssh_keys as main_exchange_ssh_keys,
 		tool::main_ssh_wrap as main_exchange_ssh_wrap,
 	};
@@ -177,6 +179,16 @@ pub fn main_tools () -> MainResult<ExitCode> {
 			main_exchange_dearmor (_arguments) .else_wrap (0x605c4c42)
 		}
 		#[ cfg (feature = "z-tokens-exchange-tool") ]
+		(&["exchange", "raw", "encode"], _) => {
+			_arguments.insert (0, String::from ("z-tokens exchange raw encode"));
+			main_exchange_encode (_arguments) .else_wrap (0x0f6f25f9)
+		}
+		#[ cfg (feature = "z-tokens-exchange-tool") ]
+		(&["exchange", "raw", "decode"], _) => {
+			_arguments.insert (0, String::from ("z-tokens exchange raw decode"));
+			main_exchange_decode (_arguments) .else_wrap (0x4ea46e82)
+		}
+		#[ cfg (feature = "z-tokens-exchange-tool") ]
 		(&["exchange", "ssh", "keys"], _) => {
 			_arguments.insert (0, String::from ("z-tokens exchange ssh keys"));
 			main_exchange_ssh_keys (_arguments) .else_wrap (0xfe84133d)
@@ -276,6 +288,14 @@ pub fn main_exchange () -> MainResult<ExitCode> {
 		(&["dearmor"], _) => {
 			_arguments.insert (0, String::from ("z-exchange dearmor"));
 			main_exchange_dearmor (_arguments) .else_wrap (0x1008ba10)
+		}
+		(&["raw", "encode"], _) => {
+			_arguments.insert (0, String::from ("z-exchange raw encode"));
+			main_exchange_encode (_arguments) .else_wrap (0x71c2c1b5)
+		}
+		(&["raw", "decode"], _) => {
+			_arguments.insert (0, String::from ("z-exchange raw decode"));
+			main_exchange_decode (_arguments) .else_wrap (0xecdd6ca7)
 		}
 		(&["ssh", "keys"], _) => {
 			_arguments.insert (0, String::from ("z-exchange ssh keys"));
