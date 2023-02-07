@@ -109,6 +109,7 @@ define_cryptographic_context! (CRYPTO_DHE_KEY_CONTEXT, encryption, dhe_key);
 define_cryptographic_context! (CRYPTO_NAIVE_KEY_CONTEXT, encryption, naive_key);
 define_cryptographic_context! (CRYPTO_AONT_KEY_CONTEXT, encryption, aont_key);
 
+define_cryptographic_context! (CRYPTO_PACKET_SALT_CONTEXT, encryption, packet_salt);
 define_cryptographic_context! (CRYPTO_PACKET_KEY_CONTEXT, encryption, packet_key);
 define_cryptographic_context! (CRYPTO_ENCRYPTION_KEY_CONTEXT, encryption, encryption_key);
 define_cryptographic_context! (CRYPTO_AUTHENTICATION_KEY_CONTEXT, encryption, authentication_key);
@@ -139,6 +140,7 @@ pub fn encrypt (
 			_decrypted : &[u8],
 			_encrypted : &mut Vec<u8>,
 			_ssh_wrappers : Vec<&mut SshWrapper>,
+			_packet_salt_deterministic : bool,
 		) -> CryptoResult
 {
 	let (_secret_inputs, _pin_inputs) = wrap_secrets_and_pins_inputs (_secret_inputs, _pin_inputs) ?;
@@ -169,8 +171,6 @@ pub fn encrypt (
 		_intermediate_buffer.extend_from_slice (_decrypted.access ());
 	}
 	
-	drop! (_decrypted);
-	
 	// NOTE:  padding...
 	
 	encode_u32_push (_decrypted_len as u32, &mut _intermediate_buffer);
@@ -192,7 +192,26 @@ pub fn encrypt (
 	
 	// NOTE:  salting...
 	
-	let mut _packet_salt = generate_random (InternalPacketSalt::wrap);
+	let mut _packet_salt = if _packet_salt_deterministic {
+			
+			blake3_derive_key (
+					InternalPacketSalt::wrap,
+					CRYPTO_PACKET_SALT_CONTEXT,
+					&[
+						_naive_key.access (),
+					],
+					&[
+						_decrypted.access (),
+					],
+					None,
+				)
+			
+		} else {
+			
+			generate_random (InternalPacketSalt::wrap)
+		};
+	
+	drop! (_decrypted);
 	
 	let (_encryption_key, _authentication_key)
 			= derive_keys_phase_2 (_naive_key, &_packet_salt, _secret_hashes, _pin_hashes, _ssh_wrappers) ?;

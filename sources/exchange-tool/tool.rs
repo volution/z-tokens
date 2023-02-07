@@ -196,6 +196,7 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _secrets : Vec<String> = Vec::new ();
 	let mut _pins : Vec<String> = Vec::new ();
 	let mut _ssh_wrappers : Vec<String> = Vec::new ();
+	let mut _deterministic : Option<bool> = None;
 	let mut _empty_is_missing : Option<bool> = None;
 	
 	{
@@ -220,6 +221,10 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		_parser.refer (&mut _ssh_wrappers)
 				.metavar ("{key}")
 				.add_option (&["--ssh-wrap"], ArgCollect, "(shared SSH agent key handle) (multiple allowed)");
+		
+		_parser.refer (&mut _deterministic)
+				.metavar ("{bool}")
+				.add_option (&["--siv"], ArgStoreConst (Some (true)), "(deterministic output, based on SIV) (!!!CAUTION!!!)");
 		
 		_parser.refer (&mut _empty_is_missing)
 				.metavar ("{bool}")
@@ -253,10 +258,12 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _pins = _pins.into_iter () .filter (|_pin| ! (_pin.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
 	let _pins = _pins.iter () .map (String::as_bytes) .collect::<Vec<_>> ();
 	
+	let _deterministic = _deterministic.unwrap_or (false);
+	
 	let _decrypted = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0xb0e8db93) ?;
 	
 	let mut _encrypted = Vec::new ();
-	encrypt (_sender_private, _recipient_public, &_secrets, &_pins, &_decrypted, &mut _encrypted, _ssh_wrappers) .else_wrap (0x38d2ce1e) ?;
+	encrypt (_sender_private, _recipient_public, &_secrets, &_pins, &_decrypted, &mut _encrypted, _ssh_wrappers, _deterministic) .else_wrap (0x38d2ce1e) ?;
 	
 	let mut _stream = stdout_locked ();
 	_stream.write (&_encrypted) .else_wrap (0x815d15bc) ?;

@@ -75,7 +75,7 @@ pub fn main () -> MainResult<ExitCode> {
 		_arguments_os.remove (0);
 	};
 	
-	let mut _commands = Vec::with_capacity (1);
+	let mut _commands = Vec::with_capacity (4);
 	let mut _arguments = Vec::with_capacity (_arguments_os.len ());
 	for _argument_os in _arguments_os.into_iter () {
 		let _argument = _argument_os.into_string () .else_replace (0xa03c1f9c) ?;
