@@ -12,6 +12,11 @@ pub fn bin_tools () -> Result<ExitCode, ()> {
 	bin_wrapper (premain_tools)
 }
 
+#[ cfg (feature = "z-tokens-hashes-tool") ]
+pub fn bin_hashes () -> Result<ExitCode, ()> {
+	bin_wrapper (premain_hashes)
+}
+
 #[ cfg (feature = "z-tokens-exchange-tool") ]
 pub fn bin_exchange () -> Result<ExitCode, ()> {
 	bin_wrapper (premain_exchange)

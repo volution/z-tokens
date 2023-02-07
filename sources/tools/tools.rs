@@ -50,6 +50,11 @@ pub fn premain_tools () -> MainResult<ExitCode> {
 	premain_wrapper (main_tools)
 }
 
+#[ cfg (feature = "z-tokens-hashes-tool") ]
+pub fn premain_hashes () -> MainResult<ExitCode> {
+	premain_wrapper (main_hashes)
+}
+
 #[ cfg (feature = "z-tokens-exchange-tool") ]
 pub fn premain_exchange () -> MainResult<ExitCode> {
 	premain_wrapper (main_exchange)
@@ -74,6 +79,10 @@ pub fn premain_wrapper <Main> (_main : Main) -> MainResult<ExitCode> where Main 
 	
 	_outcome
 }
+
+
+
+
 
 
 
@@ -179,6 +188,45 @@ pub fn main_tools () -> MainResult<ExitCode> {
 			main_unknown (_commands, _arguments),
 	}
 }
+
+
+
+
+
+
+
+
+#[ cfg (feature = "z-tokens-hashes-tool") ]
+pub fn main_hashes () -> MainResult<ExitCode> {
+	
+	let (mut _commands, mut _arguments) = main_arguments () ?;
+	
+	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _commands_refs = _commands_refs.as_slice ();
+	let _arguments_refs = _arguments.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _arguments_refs = _arguments_refs.as_slice ();
+	
+	match (_commands_refs, _arguments_refs) {
+		
+		
+		
+		
+		(&["hash"], _) => {
+			_arguments.insert (0, String::from ("z-hashes"));
+			main_hash (_arguments) .else_wrap (0xf90b7753)
+		}
+		
+		
+		
+		
+		_ =>
+			main_unknown (_commands, _arguments),
+	}
+}
+
+
+
+
 
 
 
