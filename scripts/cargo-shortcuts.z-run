@@ -49,15 +49,15 @@
 
 --<< cargo / debug / build & collect & run / *
 	test "${#}" -ge 1 ; _tool="${1}" ; shift -- 1
-	"${ZRUN}" ':: cargo / debug / build' --bin "${_tool}"
-	"${ZRUN}" ':: cargo / debug / collect' --bin "${_tool}"
+	"${ZRUN}" ':: cargo / debug / build' --bin "${_tool}" < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / debug / collect' --bin "${_tool}" < /dev/null > /dev/null
 	exec -- "${__OUTPUTS}/binaries/${_tool}--debug--linux--native" "${@}"
 !!
 
 --<< cargo / release / build & collect & run / *
 	test "${#}" -ge 1 ; _tool="${1}" ; shift -- 1
-	"${ZRUN}" ':: cargo / release / build' --bin "${_tool}"
-	"${ZRUN}" ':: cargo / release / collect' --bin "${_tool}"
+	"${ZRUN}" ':: cargo / release / build' --bin "${_tool}" < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / collect' --bin "${_tool}" < /dev/null > /dev/null
 	exec -- "${__OUTPUTS}/binaries/${_tool}--release--linux--native" "${@}"
 !!
 

@@ -1100,6 +1100,7 @@
 :: tests / quick / exchange / set / secret / testing-2 :: export -- __ZTOKENS_EXCHANGE_SECRET='ztxcs1zw32errd0vu44rvt2h6vnmfecjtp20aacyzpxcyg9dq3szerw0sswvu32a'
 
 :: tests / quick / exchange / set / pin / empty :: export -- __ZTOKENS_EXCHANGE_PIN=''
+:: tests / quick / exchange / set / pin / 1234 :: export -- __ZTOKENS_EXCHANGE_PIN='1234'
 :: tests / quick / exchange / set / pin / random :: export -- __ZTOKENS_EXCHANGE_PIN="${SRANDOM}"
 
 :: tests / quick / exchange / set / ssh-wrap / empty :: export -- __ZTOKENS_EXCHANGE_SSH_WRAP=''
