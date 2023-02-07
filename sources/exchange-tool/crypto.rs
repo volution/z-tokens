@@ -97,6 +97,7 @@ define_cryptographic_material! (InternalPinKey, 32);
 
 define_cryptographic_material! (InternalSshWrapInput, 32);
 define_cryptographic_material! (InternalSshWrapOutput, 32);
+define_cryptographic_material! (InternalSshWrapKey, 32);
 
 define_cryptographic_material! (InternalDataDecrypted, input, slice);
 define_cryptographic_material! (InternalDataEncrypted, input, slice);
@@ -584,19 +585,15 @@ fn derive_keys_phase_2 (
 				None,
 			);
 		
-		_ssh_wrap_key.consume ();
-		
-		// FIXME:  zeroize!
-		let mut _ssh_wrap_output = [0u8; 32];
-		_ssh_wrapper.wrap (_ssh_wrap_input.access (), &mut _ssh_wrap_output) .else_wrap (0xcc07e95e) ?;
+		let mut _ssh_wrap_output = InternalSshWrapOutput::zero ();
+		_ssh_wrapper.wrap (_ssh_wrap_input.access (), &mut _ssh_wrap_output.material) .else_wrap (0xcc07e95e) ?;
 		
 		_ssh_wrap_key = blake3_derive_key (
 				InternalSshWrapOutput::wrap,
 				CRYPTO_SSH_WRAP_OUTPUT_CONTEXT,
 				&[
-					_packet_salt.access (),
-					_naive_key.access (),
-					&_ssh_wrap_output,
+					_ssh_wrap_input.access (),
+					_ssh_wrap_output.access (),
 				],
 				&[],
 				None,
@@ -623,14 +620,13 @@ fn derive_keys_phase_2 (
 				None,
 			);
 		
-		_secret_key.consume ();
-		
-		let _secret_argon = apply_argon_secret (_secret_hash, _secret_salt) ?;
+		let _secret_argon = apply_argon_secret (_secret_hash, &_secret_salt) ?;
 		
 		_secret_key = blake3_derive_key (
 				InternalSecretKey::wrap,
 				CRYPTO_SECRET_KEY_CONTEXT,
 				&[
+					_secret_salt.access (),
 					_secret_argon.access (),
 				],
 				&[],
@@ -658,14 +654,13 @@ fn derive_keys_phase_2 (
 				None,
 			);
 		
-		_pin_key.consume ();
-		
-		let _pin_argon = apply_argon_pin (_pin_hash, _pin_salt) ?;
+		let _pin_argon = apply_argon_pin (_pin_hash, &_pin_salt) ?;
 		
 		_pin_key = blake3_derive_key (
 				InternalPinKey::wrap,
 				CRYPTO_PIN_KEY_CONTEXT,
 				&[
+					_pin_salt.access (),
 					_pin_argon.access (),
 				],
 				&[],
@@ -728,7 +723,7 @@ fn derive_keys_phase_2 (
 
 
 
-fn apply_argon_secret (_secret_hash : InternalSecretHash, _secret_salt : InternalSecretSalt) -> CryptoResult<InternalSecretArgon> {
+fn apply_argon_secret (_secret_hash : InternalSecretHash, _secret_salt : &InternalSecretSalt) -> CryptoResult<InternalSecretArgon> {
 	
 	argon_derive (
 			InternalSecretArgon::wrap,
@@ -740,7 +735,7 @@ fn apply_argon_secret (_secret_hash : InternalSecretHash, _secret_salt : Interna
 }
 
 
-fn apply_argon_pin (_pin_hash : InternalPinHash, _pin_salt : InternalPinSalt) -> CryptoResult<InternalPinArgon> {
+fn apply_argon_pin (_pin_hash : InternalPinHash, _pin_salt : &InternalPinSalt) -> CryptoResult<InternalPinArgon> {
 	
 	argon_derive (
 			InternalPinArgon::wrap,
