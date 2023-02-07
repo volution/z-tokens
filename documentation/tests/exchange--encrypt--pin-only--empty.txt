@@ -1,0 +1,12 @@
+>>  z-tokens exchange encrypt --siv --pin 1234
+
+
+#1,  nRuxvf4Pq6R7  TTCoKWtpLto2  2mq41nvjjT7dK 2N4bXkbMuwqtG 43E3hYAwwWkB4
+#2,  ZPKoqDNSzuEj  3cEKZ67qQJ2tJ 2kxjSdNa5zaPm ijYP6M1Yymmq  GXsqCxTup4nD
+#3,  2C1ArFTb434sf 2bTA52vZJtiYA Q91Rd6zTNm8s  3omP1BDCYmQiJ 4BmsrZh4nHDhy
+#4,  4vX5qJp94MJQ  3qYXyDMr1sW29 3huQVaCa187m3 ViVuqsBSQyfg  36bQ8o5hRrU2x
+#5,  3wT1kQqtnrRf4 3GmSDJk4ruvyy J6dxjiv3tPAA  jYMCQdtuCewB  2t9MWrhKu8wxQ
+#6,  349gowKg4RC9S 1Wq1Lyi1i2ti  3v6N8NMvgqntT zZaaon2aeA2K  2nTfa6wx5jSY4
+#7,  3GSNkLi1gB7DK 35Ef7EPBjA2wn 3qadVC1dPyGuC yFT81jBSCqTe  3BxLDgeXBrJ6B
+#8.  396MFYrrJTT1d 3E87VFmpLNEEz 3miKXHJdqV53C odJYsRXRtpuq  3xWjfdkQw1wGZ
+

@@ -1,0 +1,12 @@
+>>  z-tokens exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqspf9hel
+
+
+#1,  2mrbpdZ4jGccB 2b3s6H2ZiAFp  uvQ4kqjZNSFi  hTVEifLhEyrt  43fvzQxJTESK1
+#2,  3wJJbvyHd1sTW 4CRH1fh942ax6 3NdT4LjAiLMaU 2bArt38CaCbYa 2ZZp7DBj465Xi
+#3,  3899sPEMmCZHd KvwcuYNKJtGS  2utNnGvaHA4b5 3fB2KfjeHWrw7 3BQm3JvRe9kZ3
+#4,  3kT8F1VoKAnKN 3QQvr99C529iP 2WPeb3Qy5hMoT 3mV6QhkHt645u ZzFUmZNo3qKM
+#5,  nLZyZGoWccVD  4Ehdg33X1rGe4 vTymcSgUsdxJ  3xqgsMq1GfU4r 2wNB42ubj4xyF
+#6,  2TP5dsE8yaiQT 27yr4RQNVcxeR 42Ea8MyXVZ6hR 2wqS3bxeZdHt  4DpF3RnArktd2
+#7,  2p7659TCSrEqv AoXSa22Evhii  3nSbvDD5gr8Ej 3y2LjHYj1sJDD JwWCtsVLEXxr
+#8.  Q1gHZSKnCptp  46peYAH3XeDYx 4EugjHr8t5Ct2 2XvhFEBcrRTNA 48qUK3yT6RmSp
+

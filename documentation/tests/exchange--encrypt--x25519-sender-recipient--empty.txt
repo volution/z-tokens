@@ -1,0 +1,12 @@
+>>  z-tokens exchange encrypt --siv --sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 --recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah
+
+
+#1,  b49Ko63iiQ5v  3f2KbbDWwLWtT 2DU8X3uG8cuQ9 pzG3gEYSg77   4DiqcB2qRYD3p
+#2,  26in8XQg1E6BR 2YbPm4VrihYuW U3HrFtGX8gEG  tGrmyEwwRJzn  3K7ybnueY4GoQ
+#3,  2ffYiHYdcJ8bM TaZ2zBVHCWge  3QJMkfpPJiEhQ keuHtQ6ZnvLf  25VNWWUKLQ6th
+#4,  2fK5Y1KYN25gh 4CaMUzkS7NegZ 2PqAq7hfr4VbU 3AinT8u4LzBYP Nzbz2WVu4uUQ
+#5,  3Lgaqncq4s7Xa Q2M81cZo8PPD  YpFBGt66CmMg  3zjJhZDZXKcHx Z2MNtejkjyLw
+#6,  2cv5zkpv27SDV 3vyqEcAUxhMko xqTpM4AbYYcc  3Z4VebDYCqa9a 7uzuGBWVGadi
+#7,  3HfaBWU7M6u4m 2HZ8vQEnbwhqj 3WDJuLM8ENXWj iafCZedGjqyh  F1BBnrY28qRU
+#8.  jDGPHTxm6eFo  cLb7Bw3AqGWo  2TfAz4RzQPKcL 3VrmBknsex73C 3c9YXFeDWrJPC
+

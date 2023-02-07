@@ -1,0 +1,3 @@
+>>  z-tokens exchange ssh wrap --key ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqspf9hel
+
+c6997c1b93ad17af0c5b9a058f438d0b9145b1863e926d7d7d9c49024f62d839

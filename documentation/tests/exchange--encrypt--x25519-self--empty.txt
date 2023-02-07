@@ -1,0 +1,12 @@
+>>  z-tokens exchange encrypt --siv --sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m
+
+
+#1,  gtSNRRU5rKLH  48uNePnxuWRqc CF1LvYViEVgA  PLhdA6aEy63G  g5vAUrZtVDzU
+#2,  2wqN6UiHEChqB 37EGpfL9WnDDH 3FSJinSSpE1KK 24coamm4Kantg 4CApPSJ9pRMYS
+#3,  2xrqpYkA8ZCNh 2zW54NLPHuZj  3XqppBMFFyVcy 3L5mEsJ71VyhK j3PsT7CAxyir
+#4,  4ew1KbsFM8aY  2ang6mn6voHJL 3HNiYti4LVEzu kgsPi5sY6NaL  4EJSgkZ76HkQk
+#5,  HnNoYnBZaHCd  31THqyv1KRNtw PLoGZ1qizTVk  csGC8dVJfHei  bEaS4bBwWjYD
+#6,  4A6BoBnGn7Pqf j3U8usFpJS8w  2oyj5gRJnZPqp 2gtvounSzsazg 233jc4bdJRwTw
+#7,  3jrSpBomfGduQ 3yC2BwEKYeaeC 5z3MxNue1VaV  3TNoNZKMWV79m 29iyN9xAxkejc
+#8.  3TbUoHBiBs63Y 3kfSc9omjJJKn 2uS1yqbkKgKSM 3bwfzXrjnneYc 2656Q3Y14oVHG
+
