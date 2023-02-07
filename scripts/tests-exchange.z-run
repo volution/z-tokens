@@ -171,6 +171,140 @@
 
 
 
+<< tests / quick / exchange / encode / hello
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	time \
+	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+			raw encode \
+		<<< $'hello world!\n' \
+	#
+!!
+
+
+<< tests / quick / exchange / encode / empty
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	time \
+	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+			raw encode \
+		<<< '' \
+	#
+!!
+
+
+<< tests / quick / exchange / encode / notice
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	time \
+	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+			raw encode \
+		< ./notice.txt \
+	#
+!!
+
+
+
+
+<< tests / quick / exchange / encode & decode / hello
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	time \
+	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+			raw encode \
+		<<< $'hello world!\n' \
+	| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+			raw decode \
+	#
+!!
+
+
+
+
+<< tests / quick / exchange / encode & decode / files
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	readarray -t -- _files \
+		< <( exec -- "${ZRUN}" ':: tests / quick / exchange / files' ) -
+	#
+	
+	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	time \
+	for _file in "${_files[@]}" ; do
+		
+		"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+				raw encode \
+			< "${_file}" \
+		| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+				raw decode \
+		| md5sum -b -- /dev/fd/5 5<&0 \
+		| md5sum -c --quiet 5< "${_file}" \
+		#
+		
+	done
+!!
+
+
+
+
+<< tests / quick / exchange / encode & decode / random
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	for _index_1 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
+	for _index_2 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
+	for _index_3 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
+		
+		printf -- '[ii]  running iteration `%02d-%02d-%02d`...\n' "${_index_1}" "${_index_2}" "${_index_3}" >&2
+		
+		for _try in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
+		
+		while true ; do
+			_size="${SRANDOM}"
+			if test "${_size}" -le 134217728 ; then break ; fi
+		done
+		
+		TIMEFORMAT="[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;  ${_size} bytes;"
+		
+		time \
+		head -c "${_size}" < /dev/urandom \
+		| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+				raw encode \
+		| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+				raw decode \
+			> /dev/null \
+		#
+		
+	done ; done ; done ; done
+!!
+
+
+
+
+
+
+
+
 << tests / quick / exchange / keys
 	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
@@ -849,6 +983,12 @@
 
 --<< tests / quick / exchange / files
 	test "${#}" -eq 0
+	
+	_extra_files=(
+			/dev/null
+		)
+	
+	printf -- '%s\n' "${_extra_files}"
 	
 	find ./sources -type f | sort
 !!
