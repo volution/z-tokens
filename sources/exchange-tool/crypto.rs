@@ -128,8 +128,8 @@ define_cryptographic_context! (CRYPTO_PIN_KEY_CONTEXT, encryption, pin_key);
 define_cryptographic_context! (CRYPTO_SSH_WRAP_INPUT_CONTEXT, encryption, ssh_wrap_input);
 define_cryptographic_context! (CRYPTO_SSH_WRAP_OUTPUT_CONTEXT, encryption, ssh_wrap_output);
 
-define_cryptographic_context! (CRYPTO_DERIVE_SALT_CONTEXT, password, salt);
-define_cryptographic_context! (CRYPTO_DERIVE_OUTPUT_CONTEXT, password, output);
+define_cryptographic_context! (CRYPTO_PASSWORD_SALT_CONTEXT, password, salt);
+define_cryptographic_context! (CRYPTO_PASSWORD_OUTPUT_CONTEXT, password, output);
 
 
 
@@ -177,7 +177,7 @@ pub fn password (
 	
 	let _packet_salt = blake3_derive_key (
 			InternalPacketSalt::wrap,
-			CRYPTO_DERIVE_SALT_CONTEXT,
+			CRYPTO_PASSWORD_SALT_CONTEXT,
 			&[
 				_naive_key.access (),
 			],
@@ -196,7 +196,7 @@ pub fn password (
 	
 	let _password_output_0 = blake3_derive_key (
 			InternalPasswordOutput::wrap,
-			CRYPTO_DERIVE_OUTPUT_CONTEXT,
+			CRYPTO_PASSWORD_OUTPUT_CONTEXT,
 			&[
 				_packet_key.access (),
 			],
@@ -580,7 +580,7 @@ fn derive_keys_phase_1 (
 			|(_pin_index, _pin_input)|
 					blake3_derive_key (
 							InternalPinHash::wrap,
-							CRYPTO_SECRET_HASH_CONTEXT,
+							CRYPTO_PIN_HASH_CONTEXT,
 							&[],
 							&[
 								_pin_input.access_consume (),
