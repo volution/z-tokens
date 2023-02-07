@@ -254,6 +254,7 @@
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
+				--siv \
 				--empty-is-missing true \
 		<<< $'hello world!\n' \
 	#
@@ -283,6 +284,7 @@
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
+				--siv \
 				--empty-is-missing true \
 		<<< '' \
 	#
@@ -312,6 +314,7 @@
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
+				--siv \
 				--empty-is-missing true \
 		< ./notice.txt \
 	#
@@ -487,6 +490,7 @@
 	"${ZRUN}" ':: cargo / release / build & collect' < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
+	for _case_deterministic in with-siv without-salt ; do
 	for _case_secret in without-secret empty-secret with-secret-1 with-secret-1d with-secret-2 with-secret-2d ; do
 	for _case_ssh_wrap in without-ssh-wrap empty-ssh-wrap with-ssh-wrap-1 with-ssh-wrap-1d with-ssh-wrap-2 with-ssh-wrap-2d ; do
 	for _case_pin in without-pin empty-pin with-pin-1 with-pin-1d with-pin-2 with-pin-2d ; do
@@ -508,7 +512,7 @@
 		_common_arguments=()
 		
 		printf -- '\n' >&2
-		printf -- '[ii]  running iteration `%s %s %s %s`...\n' "${_case_send}" "${_case_pin}" "${_case_secret}" "${_case_ssh_wrap}" >&2
+		printf -- '[ii]  running iteration `%s %s %s %s %s`...\n' "${_case_send}" "${_case_pin}" "${_case_secret}" "${_case_ssh_wrap}" "${_case_deterministic}" >&2
 		
 		_empty_is_missing=false
 		
@@ -714,6 +718,22 @@
 			;;
 		esac
 		
+		case "${_case_deterministic}" in
+			( with-siv )
+				_encrypt_arguments+=(
+						--siv
+					)
+			;;
+			( with-salt )
+			;;
+			( __* )
+				continue
+			;;
+			( * )
+				false
+			;;
+		esac
+		
 		if test "${#_encrypt_arguments[@]}" -eq 0 ; then
 			printf -- '[ii]    -> empty encryption;  skipping!\n' >&2
 			continue
@@ -738,8 +758,8 @@
 							"${_common_arguments[@]}"
 			)
 		
-		printf -- '[xx]    >> %s\n' "${_encrypt_command[*]}" >&2
-		printf -- '[xx]    >> %s\n' "${_decrypt_command[*]}" >&2
+		printf -- '[xx]    >> %s\n' "${_encrypt_command[*]@Q}" >&2
+		printf -- '[xx]    >> %s\n' "${_decrypt_command[*]@Q}" >&2
 		
 		TIMEFORMAT="[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;"
 		
@@ -754,7 +774,7 @@
 		
 		printf -- '\n' >&2
 		
-	done ; done ; done ; done
+	done ; done ; done ; done ; done
 !!
 
 
