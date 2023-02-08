@@ -383,9 +383,8 @@ impl SshWrapperKey {
 	
 	pub fn handle (&self) -> SshResult<Rb<String>> {
 		let _key = &self.0;
-		let _ssh_algorithm = _key.public_key.name ();
 		let _ssh_fingerprint = _key.public_key.fingerprint ();
-		let _handle = format! ("[{}:{}][{}:{}]", _key.key_algorithm.identifier (), _key.signature_algorithm.identifier (), _ssh_algorithm, _ssh_fingerprint);
+		let _handle = format! ("[{}:{}:{}]", _key.key_algorithm.identifier (), _key.signature_algorithm.identifier (), _ssh_fingerprint);
 		zeroize_and_drop (_ssh_fingerprint);
 		Ok (Rb::new (_handle))
 	}
