@@ -29,6 +29,13 @@ macro_rules! define_cryptographic_material {
 			}
 			
 			#[ allow (dead_code) ]
+			pub fn wrap_copy (_material : &[u8; $_identifier::SIZE]) -> Self {
+				Self {
+						material : *_material,
+					}
+			}
+			
+			#[ allow (dead_code) ]
 			pub fn zero () -> Self {
 				Self::wrap ([0u8; $_identifier::SIZE])
 			}

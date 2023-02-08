@@ -9,6 +9,7 @@ use crate::coding::*;
 use crate::low::*;
 use crate::macros::*;
 use crate::ssh::SshWrapper;
+use crate::ssh::SshResult;
 
 
 use ::x25519_dalek as x25519;
@@ -104,6 +105,8 @@ define_cryptographic_material! (InternalEncryptedData, input, slice);
 
 define_cryptographic_material! (InternalPasswordData, input, slice);
 define_cryptographic_material! (InternalPasswordOutput, 32);
+
+define_cryptographic_material! (SshWrapperHandle, 32);
 
 
 
@@ -668,7 +671,7 @@ fn derive_keys_phase_2 (
 			_packet_salt : &InternalPacketSalt,
 			_secret_hash : (InternalSecretHash, Vec<InternalSecretHash>),
 			_pin_hash : (InternalPinHash, Vec<InternalPinHash>),
-			_ssh_wrappers : Vec<&mut SshWrapper>,
+			_ssh_wrappers : Vec<(&mut SshWrapper, SshWrapperHandle)>,
 		) -> CryptoResult<(InternalPacketKey, InternalEncryptionKey, InternalAuthenticationKey)>
 {
 	let (_secret_hash, _secret_hashes) = _secret_hash;
@@ -679,7 +682,7 @@ fn derive_keys_phase_2 (
 	
 	let mut _ssh_wrap_key = InternalSshWrapOutput::zero ();
 	
-	for _ssh_wrapper in _ssh_wrappers.into_iter () {
+	for (_ssh_wrapper, _ssh_wrapper_handle) in _ssh_wrappers.into_iter () {
 		
 		let _ssh_wrap_input = blake3_derive_key (
 				InternalSshWrapInput::wrap,
@@ -879,9 +882,11 @@ fn wrap_secrets_and_pins_inputs <'a> (
 }
 
 
+
+
 fn wrap_ssh_wrappers <'a> (
 			_ssh_wrappers : Vec<&'a mut SshWrapper>,
-		) -> CryptoResult<Vec<&'a mut SshWrapper>>
+		) -> CryptoResult<Vec<(&'a mut SshWrapper, SshWrapperHandle)>>
 {
 	debug_assert! (CRYPTO_SSH_WRAPPER_COUNT_MAX <= (u32::MAX as usize), "[8d49c9e0]");
 	
@@ -889,10 +894,17 @@ fn wrap_ssh_wrappers <'a> (
 		fail! (0x22fb37e2);
 	}
 	
-	let mut _ssh_wrappers : Vec<_> = _ssh_wrappers.into_iter () .collect ();
+	let mut _ssh_wrappers : Vec<_> = _ssh_wrappers.into_iter ()
+			.map (
+				|_ssh_wrapper| {
+					let _ssh_wrapper_handle = _ssh_wrapper.handle () ?;
+					let _ssh_wrapper_handle = SshWrapperHandle::wrap_copy (_ssh_wrapper_handle);
+					Ok ((_ssh_wrapper, _ssh_wrapper_handle))
+				})
+			.collect::<SshResult<_>> () .else_wrap (0xa0911f9c) ?;
 	
-	_ssh_wrappers.sort_by (|_left, _right| SshWrapper::cmp_by_keys (*_left, *_right));
-	_ssh_wrappers.dedup_by (|_left, _right| SshWrapper::cmp_by_keys (*_left, *_right) == Ordering::Equal);
+	_ssh_wrappers.sort_by (|_left, _right| Ord::cmp (_left.1.access (), _right.1.access ()));
+	_ssh_wrappers.dedup_by (|_left, _right| PartialEq::eq (_left.1.access (), _right.1.access ()));
 	
 	Ok (_ssh_wrappers)
 }
