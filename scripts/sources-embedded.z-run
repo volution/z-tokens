@@ -164,6 +164,7 @@
 	execline-cd ./sources \
 	find -L . \
 			-type f \
+			-not -path './.dependencies/*' \
 			-print0 \
 	| LC_ALL=C sort -z \
 	| execline-cd ./sources \
