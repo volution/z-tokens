@@ -368,7 +368,7 @@ impl SshWrapperKey {
 			_ => fail! (0xacbf3148),
 		};
 		
-		let _public_key = parse_public_key (&_key_algorithm, &_serialized) ?;
+		let _public_key = parse_public_key (&_key_algorithm, &_signature_algorithm, &_serialized) ?;
 		
 		let _wrapper_key = SshWrapperKeyInternals {
 				key_algorithm : _key_algorithm,
@@ -443,23 +443,29 @@ impl SshWrapperAgent {
 		
 		for _public_key in _public_keys.into_iter () {
 			
-			let Some ((_key_algorithm, _signature_algorithm, _public_key_bytes)) = deconstruct_public_key (&_public_key)
+			let Some ((_key_algorithm, _signature_algorithms, _public_key_bytes)) = deconstruct_public_key (&_public_key)
 				else {
 					continue
 				};
 			
-			let _wrapper_key = SshWrapperKeyInternals {
-					
-					key_algorithm : _key_algorithm,
-					signature_algorithm : _signature_algorithm,
-					
-					public_key_bytes : _public_key_bytes,
-					public_key : _public_key,
-				};
-			
-			let _wrapper_key = SshWrapperKey (Rb::new (_wrapper_key));
-			
-			_wrapper_keys.push (_wrapper_key);
+			for _signature_algorithm in _signature_algorithms.into_iter () {
+				
+				// NOTE:  (See the comment in `parse_public_key`!)
+				let _public_key = parse_public_key (&_key_algorithm, &_signature_algorithm, &_public_key_bytes) ?;
+				
+				let _wrapper_key = SshWrapperKeyInternals {
+						
+						key_algorithm : _key_algorithm.clone (),
+						signature_algorithm : _signature_algorithm,
+						
+						public_key_bytes : _public_key_bytes.clone (),
+						public_key : _public_key,
+					};
+				
+				let _wrapper_key = SshWrapperKey (Rb::new (_wrapper_key));
+				
+				_wrapper_keys.push (_wrapper_key);
+			}
 		}
 		
 		Ok (_wrapper_keys)
@@ -473,17 +479,20 @@ impl SshWrapperAgent {
 
 
 
-fn deconstruct_public_key (_public_key : &ssh::PublicKey) -> Option<(KeyAlgorithm, SignatureAlgorithm, Vec<u8>)> {
+fn deconstruct_public_key (_public_key : &ssh::PublicKey) -> Option<(KeyAlgorithm, Vec<SignatureAlgorithm>, Vec<u8>)> {
 	
-	let (_key_algorithm, _signature_algorithm) = match ssh::AlgorithmName (_public_key.name ()) {
+	let (_key_algorithm, _signature_algorithms) = match ssh::AlgorithmName (_public_key.name ()) {
 			
 			ssh::SIG_ED25519 =>
-				(KeyAlgorithm::Ed25519, SignatureAlgorithm::Ed25519),
+				(KeyAlgorithm::Ed25519, vec![ SignatureAlgorithm::Ed25519 ]),
 			
 			// NOTE:  The `russh` library lies about the algorithm name... The public key is always `ssh-rsa`!
-			// NOTE:  Because all `ssh-agent`'s return `ssh-rsa` signatures, let's use that!
 			ssh::SIG_RSA_SHA1 | ssh::SIG_RSA_SHA2_256 | ssh::SIG_RSA_SHA2_512 =>
-				(KeyAlgorithm::RSA, SignatureAlgorithm::RSA_SHA1),
+				(KeyAlgorithm::RSA, vec! [
+						SignatureAlgorithm::RSA_SHA1,
+						SignatureAlgorithm::RSA_SHA2_256,
+						SignatureAlgorithm::RSA_SHA2_512,
+					]),
 			
 			_ =>
 				return None,
@@ -491,15 +500,18 @@ fn deconstruct_public_key (_public_key : &ssh::PublicKey) -> Option<(KeyAlgorith
 	
 	let _public_key_bytes = ssh::PublicKeyBase64::public_key_bytes (_public_key);
 	
-	Some ((_key_algorithm, _signature_algorithm, _public_key_bytes))
+	Some ((_key_algorithm, _signature_algorithms, _public_key_bytes))
 }
 
 
 
 
-fn parse_public_key (_key_algorithm : &KeyAlgorithm, _bytes : &[u8]) -> SshResult<ssh::PublicKey> {
+fn parse_public_key (_key_algorithm : &KeyAlgorithm, _signature_algorithm : &SignatureAlgorithm, _bytes : &[u8]) -> SshResult<ssh::PublicKey> {
 	
-	let _key = ssh::PublicKey::parse (_key_algorithm.ssh_name () .as_bytes (), &_bytes) .else_wrap (0x536edcf6) ?;
+	// NOTE:  Although the key doesn't contain any signature related information,
+	//        the `russh` library uses that to control the `ssh-agent` signature request...
+	
+	let _key = ssh::PublicKey::parse (_signature_algorithm.ssh_name () .as_bytes (), &_bytes) .else_wrap (0x536edcf6) ?;
 	
 	Ok (_key)
 }
