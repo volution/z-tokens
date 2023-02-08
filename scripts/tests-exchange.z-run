@@ -668,8 +668,8 @@
 		_secret_1=ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm
 		_secret_2=ztxcs1zw32errd0vu44rvt2h6vnmfecjtp20aacyzpxcyg9dq3szerw0sswvu32a
 		
-		_ssh_wrap_1=ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqspf9hel
-		_ssh_wrap_2=ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqgyg7zfdlhxsaymch3pu5c74xz82y5pt67grpy6ej8tcatltw4ar0gqss7rhum
+		_ssh_wrap_1=ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8
+		_ssh_wrap_2=ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqgyg7zfdlhxsaymch3pu5c74xz82y5pt67grpy6ej8tcatltw4ar0gqszkku9ux
 		
 		_file=./notice.txt
 		
@@ -1037,7 +1037,7 @@
 	test "${#}" -eq 0
 	
 	printf -- '[ii]  loading `%s`...\n' \
-			'ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqspf9hel' \
+			'ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8' \
 			'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILks11YhvsahVaN5xI+rOCkMvThOfJCBpNVVjL6mZwQc' \
 			'SHA256:ro0s5DyFq2CE4LuWiWLL9TAfT7Uy+kM2+VLjteCHBIc' \
 		>&2 \
@@ -1060,7 +1060,7 @@
 	test "${#}" -eq 0
 	
 	printf -- '[ii]  loading `%s`...\n' \
-			'ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqgyg7zfdlhxsaymch3pu5c74xz82y5pt67grpy6ej8tcatltw4ar0gqss7rhum' \
+			'ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqgyg7zfdlhxsaymch3pu5c74xz82y5pt67grpy6ej8tcatltw4ar0gqszkku9ux'
 			'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIjwkt/c0Ok3i8Q8pj1TCOolAr15Awk1mR146v63V6N6' \
 			'SHA256:WRjxd4AByQpJgIqT24dkBU0gUQzmX+3iHnMwoiE9PRE' \
 		>&2 \
@@ -1104,7 +1104,7 @@
 :: tests / quick / exchange / set / pin / random :: export -- __ZTOKENS_EXCHANGE_PIN="${SRANDOM}"
 
 :: tests / quick / exchange / set / ssh-wrap / empty :: export -- __ZTOKENS_EXCHANGE_SSH_WRAP=''
-:: tests / quick / exchange / set / ssh-wrap / testing-1 :: export -- __ZTOKENS_EXCHANGE_SSH_WRAP=ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqspf9hel
-:: tests / quick / exchange / set / ssh-wrap / testing-2 :: export -- __ZTOKENS_EXCHANGE_SSH_WRAP=ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqgyg7zfdlhxsaymch3pu5c74xz82y5pt67grpy6ej8tcatltw4ar0gqss7rhum
+:: tests / quick / exchange / set / ssh-wrap / testing-1 :: export -- __ZTOKENS_EXCHANGE_SSH_WRAP=ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8
+:: tests / quick / exchange / set / ssh-wrap / testing-2 :: export -- __ZTOKENS_EXCHANGE_SSH_WRAP=ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqgyg7zfdlhxsaymch3pu5c74xz82y5pt67grpy6ej8tcatltw4ar0gqszkku9ux
 
 

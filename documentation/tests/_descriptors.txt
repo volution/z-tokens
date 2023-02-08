@@ -146,9 +146,9 @@ exchange / password / secret-only / empty :: exchange password --secret ztxcs1qv
 exchange / password / secret-only / hello :: exchange password --secret ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm <<< $'hello world!\n'
 exchange / password / secret-only / notice :: exchange password --secret ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm < ./notice.txt
 
-exchange / password / ssh-wrap-only / empty :: exchange password --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqspf9hel <<< $''
-exchange / password / ssh-wrap-only / hello :: exchange password --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqspf9hel <<< $'hello world!\n'
-exchange / password / ssh-wrap-only / notice :: exchange password --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqspf9hel < ./notice.txt
+exchange / password / ssh-wrap-only / empty :: exchange password --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 <<< $''
+exchange / password / ssh-wrap-only / hello :: exchange password --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 <<< $'hello world!\n'
+exchange / password / ssh-wrap-only / notice :: exchange password --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 < ./notice.txt
 
 
 exchange / encrypt / x25519-self / empty :: exchange encrypt --siv --sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m <<< $''
@@ -167,12 +167,12 @@ exchange / encrypt / secret-only / empty :: exchange encrypt --siv --secret ztxc
 exchange / encrypt / secret-only / hello :: exchange encrypt --siv --secret ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm <<< $'hello world!\n'
 exchange / encrypt / secret-only / notice :: exchange encrypt --siv --secret ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm < ./notice.txt
 
-exchange / encrypt / ssh-wrap-only / empty :: exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqspf9hel <<< $''
-exchange / encrypt / ssh-wrap-only / hello :: exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqspf9hel <<< $'hello world!\n'
-exchange / encrypt / ssh-wrap-only / notice :: exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqspf9hel < ./notice.txt
+exchange / encrypt / ssh-wrap-only / empty :: exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 <<< $''
+exchange / encrypt / ssh-wrap-only / hello :: exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 <<< $'hello world!\n'
+exchange / encrypt / ssh-wrap-only / notice :: exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 < ./notice.txt
 
 
-exchange / ssh / wrap / empty :: exchange ssh wrap --key ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqspf9hel <<< $''
-exchange / ssh / wrap / hello :: exchange ssh wrap --key ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqspf9hel <<< $'hello world!\n'
-exchange / ssh / wrap / notice :: exchange ssh wrap --key ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqspf9hel < ./notice.txt
+exchange / ssh / wrap / empty :: exchange ssh wrap --key ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 <<< $''
+exchange / ssh / wrap / hello :: exchange ssh wrap --key ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 <<< $'hello world!\n'
+exchange / ssh / wrap / notice :: exchange ssh wrap --key ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 < ./notice.txt
 
