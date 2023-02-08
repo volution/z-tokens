@@ -3,7 +3,6 @@
 use ::vrl_preludes::std_plus_extras::*;
 use ::vrl_errors::*;
 use ::z_tokens_runtime::flags::*;
-use ::z_tokens_runtime::memory::Rb;
 
 
 use crate::keys::*;
@@ -249,7 +248,7 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let _ssh_wrappers = _ssh_wrappers.into_iter ().filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
 	let _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapperKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x6d68c3c2) ?;
-	let mut _ssh_wrappers = _ssh_wrappers.into_iter () .map (Rb::new) .map (SshWrapper::connect) .collect::<Result<Vec<_>, _>> () .else_wrap (0xe1f9e4bf) ?;
+	let mut _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapper::connect) .collect::<Result<Vec<_>, _>> () .else_wrap (0xe1f9e4bf) ?;
 	let _ssh_wrappers = _ssh_wrappers.iter_mut () .collect::<Vec<_>> ();
 	
 	let _secrets = _secrets.into_iter () .filter (|_secret| ! (_secret.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
@@ -330,7 +329,7 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let _ssh_wrappers = _ssh_wrappers.into_iter ().filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
 	let _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapperKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x1fea5617) ?;
-	let mut _ssh_wrappers = _ssh_wrappers.into_iter () .map (Rb::new) .map (SshWrapper::connect) .collect::<Result<Vec<_>, _>> () .else_wrap (0xfeda4c77) ?;
+	let mut _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapper::connect) .collect::<Result<Vec<_>, _>> () .else_wrap (0xfeda4c77) ?;
 	let _ssh_wrappers = _ssh_wrappers.iter_mut () .collect::<Vec<_>> ();
 	
 	let _secrets = _secrets.into_iter () .filter (|_secret| ! (_secret.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
@@ -409,7 +408,7 @@ pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let _ssh_wrappers = _ssh_wrappers.into_iter ().filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
 	let _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapperKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x535691ae) ?;
-	let mut _ssh_wrappers = _ssh_wrappers.into_iter () .map (Rb::new) .map (SshWrapper::connect) .collect::<Result<Vec<_>, _>> () .else_wrap (0x2c549ad6) ?;
+	let mut _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapper::connect) .collect::<Result<Vec<_>, _>> () .else_wrap (0x2c549ad6) ?;
 	let _ssh_wrappers = _ssh_wrappers.iter_mut () .collect::<Vec<_>> ();
 	
 	let _secrets = _secrets.into_iter () .filter (|_secret| ! (_secret.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
@@ -615,7 +614,7 @@ pub fn main_ssh_wrap (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _key = _key.else_wrap (0x76dd6a4e) ?;
 	
 	let _key = SshWrapperKey::decode_and_zeroize (_key) .else_wrap (0xf183991d) ?;
-	let mut _wrapper = SshWrapper::new (Rb::new (_key), _agent) .else_wrap (0x373fe104) ?;
+	let mut _wrapper = SshWrapper::new (_key, _agent) .else_wrap (0x373fe104) ?;
 	
 	let _wrap_input = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0x3be3690b) ?;
 	

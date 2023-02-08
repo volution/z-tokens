@@ -6,7 +6,6 @@ use ::vrl_errors::*;
 
 use ::z_tokens_runtime::{
 		memory::Rb,
-		memory::RbList,
 		sensitive::Sensitive,
 	};
 
@@ -35,7 +34,7 @@ pub struct SshWrapperAgent {}
 
 impl SshWrapper {
 	
-	pub fn new (_key : impl Into<Rb<SshWrapperKey>>, _agent : SshWrapperAgent) -> SshResult<SshWrapper> {
+	pub fn new (_key : SshWrapperKey, _agent : SshWrapperAgent) -> SshResult<SshWrapper> {
 		fail! (0xd1331652);
 	}
 	
@@ -43,7 +42,7 @@ impl SshWrapper {
 		fail! (0x6bc7ddbd);
 	}
 	
-	pub fn connect (_key : impl Into<Rb<SshWrapperKey>>) -> SshResult<SshWrapper> {
+	pub fn connect (_key : SshWrapperKey) -> SshResult<SshWrapper> {
 		fail! (0x0e2fae2c);
 	}
 	
@@ -93,7 +92,7 @@ impl SshWrapperAgent {
 		fail! (0x24dc11d5);
 	}
 	
-	pub fn keys (&mut self) -> SshResult<RbList<SshWrapperKey>> {
+	pub fn keys (&mut self) -> SshResult<Vec<SshWrapperKey>> {
 		fail! (0x25a4327b);
 	}
 }
