@@ -127,6 +127,7 @@ define_cryptographic_context! (CRYPTO_PIN_HASH_CONTEXT, encryption, pin_hash);
 define_cryptographic_context! (CRYPTO_PIN_SALT_CONTEXT, encryption, pin_salt);
 define_cryptographic_context! (CRYPTO_PIN_KEY_CONTEXT, encryption, pin_key);
 
+define_cryptographic_context! (CRYPTO_ORACLE_HANDLE_CONTEXT, encryption, oracle_handle);
 define_cryptographic_context! (CRYPTO_ORACLE_INPUT_CONTEXT, encryption, oracle_input);
 define_cryptographic_context! (CRYPTO_ORACLE_OUTPUT_CONTEXT, encryption, oracle_output);
 
@@ -151,8 +152,7 @@ pub fn password (
 		) -> CryptoResult
 {
 	let (_secret_inputs, _pin_inputs) = wrap_secrets_and_pins_inputs (_secret_inputs, _pin_inputs) ?;
-	let _oracles = wrap_oracles (_ssh_wrappers) ?;
-	let _oracles_exists = ! _oracles.is_empty ();
+	let (_oracles, _oracle_handles) = wrap_oracles (_ssh_wrappers) ?;
 	
 	let _password_data = InternalPasswordData::wrap (_password_data);
 	let _password_data_len = _password_data.size ();
@@ -169,8 +169,8 @@ pub fn password (
 	let _sender = _sender.map (SenderPrivateKey::access);
 	let _recipient = _recipient.map (RecipientPublicKey::access);
 	
-	let (_naive_key, _aont_key, _secret_hashes, _pin_hashes)
-			= derive_keys_phase_1 (_sender, _recipient, _secret_inputs, _pin_inputs, true, _oracles_exists) ?;
+	let (_naive_key, _aont_key, _secret_hashes, _pin_hashes, _oracle_hashes)
+			= derive_keys_phase_1 (_sender, _recipient, _secret_inputs, _pin_inputs, _oracle_handles, true) ?;
 	
 	drop! (_sender, _recipient);
 	drop! (_aont_key);
@@ -192,7 +192,7 @@ pub fn password (
 	drop! (_password_data);
 	
 	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (_naive_key, &_packet_salt, _secret_hashes, _pin_hashes, _oracles) ?;
+			= derive_keys_phase_2 (_naive_key, &_packet_salt, _secret_hashes, _pin_hashes, (_oracles, _oracle_hashes)) ?;
 	
 	drop! (_encryption_key, _authentication_key);
 	
@@ -232,8 +232,7 @@ pub fn encrypt (
 		) -> CryptoResult
 {
 	let (_secret_inputs, _pin_inputs) = wrap_secrets_and_pins_inputs (_secret_inputs, _pin_inputs) ?;
-	let _oracles = wrap_oracles (_ssh_wrappers) ?;
-	let _oracles_exists = ! _oracles.is_empty ();
+	let (_oracles, _oracle_handles) = wrap_oracles (_ssh_wrappers) ?;
 	
 	let _decrypted = InternalDecryptedData::wrap (_decrypted);
 	let _decrypted_len = _decrypted.size ();
@@ -273,8 +272,8 @@ pub fn encrypt (
 	let _sender = _sender.map (SenderPrivateKey::access);
 	let _recipient = _recipient.map (RecipientPublicKey::access);
 	
-	let (_naive_key, _aont_key, _secret_hashes, _pin_hashes)
-			= derive_keys_phase_1 (_sender, _recipient, _secret_inputs, _pin_inputs, true, _oracles_exists) ?;
+	let (_naive_key, _aont_key, _secret_hashes, _pin_hashes, _oracle_hashes)
+			= derive_keys_phase_1 (_sender, _recipient, _secret_inputs, _pin_inputs, _oracle_handles, true) ?;
 	
 	drop! (_sender, _recipient);
 	
@@ -302,7 +301,7 @@ pub fn encrypt (
 	drop! (_decrypted);
 	
 	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (_naive_key, &_packet_salt, _secret_hashes, _pin_hashes, _oracles) ?;
+			= derive_keys_phase_2 (_naive_key, &_packet_salt, _secret_hashes, _pin_hashes, (_oracles, _oracle_hashes)) ?;
 	
 	drop! (_packet_key);
 	
@@ -363,8 +362,7 @@ pub fn decrypt (
 		) -> CryptoResult
 {
 	let (_secret_inputs, _pin_inputs) = wrap_secrets_and_pins_inputs (_secret_inputs, _pin_inputs) ?;
-	let _oracles = wrap_oracles (_ssh_wrappers) ?;
-	let _oracles_exists = ! _oracles.is_empty ();
+	let (_oracles, _oracle_handles) = wrap_oracles (_ssh_wrappers) ?;
 	
 	let _encrypted = InternalEncryptedData::wrap (_encrypted);
 	let _encrypted_len = _encrypted.size ();
@@ -393,8 +391,8 @@ pub fn decrypt (
 	let _sender = _sender.map (SenderPublicKey::access);
 	let _recipient = _recipient.map (RecipientPrivateKey::access);
 	
-	let (_naive_key, _aont_key, _secret_hashes, _pin_hashes)
-			= derive_keys_phase_1 (_recipient, _sender, _secret_inputs, _pin_inputs, false, _oracles_exists) ?;
+	let (_naive_key, _aont_key, _secret_hashes, _pin_hashes, _oracle_hashes)
+			= derive_keys_phase_1 (_recipient, _sender, _secret_inputs, _pin_inputs, _oracle_handles, false) ?;
 	
 	drop! (_sender, _recipient);
 	
@@ -408,7 +406,7 @@ pub fn decrypt (
 	// NOTE:  deriving keys...
 	
 	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (_naive_key, &_packet_salt, _secret_hashes, _pin_hashes, _oracles) ?;
+			= derive_keys_phase_2 (_naive_key, &_packet_salt, _secret_hashes, _pin_hashes, (_oracles, _oracle_hashes)) ?;
 	
 	drop! (_packet_key);
 	drop! (_packet_salt);
@@ -546,9 +544,9 @@ fn derive_keys_phase_1 (
 			_public : Option<&x25519::PublicKey>,
 			_secret_inputs : Vec<InternalSecretInput>,
 			_pin_inputs : Vec<InternalPinInput>,
+			_oracle_handles : Vec<InternalOracleHandle>,
 			_encryption : bool,
-			_oracles_exists : bool,
-		) -> CryptoResult<(InternalNaiveKey, InternalAontKey, (InternalSecretHash, Vec<InternalSecretHash>), (InternalPinHash, Vec<InternalPinHash>))>
+		) -> CryptoResult<(InternalNaiveKey, InternalAontKey, (InternalSecretHash, Vec<InternalSecretHash>), (InternalPinHash, Vec<InternalPinHash>), InternalOracleHandle)>
 {
 	// --------------------------------------------------------------------------------
 	// NOTE:  derive secret hashes...
@@ -601,6 +599,15 @@ fn derive_keys_phase_1 (
 		);
 	
 	// --------------------------------------------------------------------------------
+	// NOTE:  derive oracle hashes...
+	
+	let _oracle_hash = blake3_derive_key_join (
+			InternalOracleHandle::wrap,
+			CRYPTO_ORACLE_HANDLE_CONTEXT,
+			_oracle_handles.iter () .map (InternalOracleHandle::access),
+		);
+	
+	// --------------------------------------------------------------------------------
 	// NOTE:  derive X25519 DHE...
 	
 	let _dhe_key = if let Some (_private) = _private {
@@ -618,7 +625,7 @@ fn derive_keys_phase_1 (
 			if _public.is_some () {
 				fail! (0x884cbe55);
 			}
-			if _secret_hashes.is_empty () && _pin_hashes.is_empty () && ! _oracles_exists {
+			if _secret_hashes.is_empty () && _pin_hashes.is_empty () && _oracle_handles.is_empty () {
 				fail! (0xa1de0167);
 			}
 			
@@ -632,6 +639,7 @@ fn derive_keys_phase_1 (
 			InternalNaiveKey::wrap,
 			CRYPTO_NAIVE_KEY_CONTEXT,
 			&[
+				_oracle_hash.access (),
 				_secret_hash.access (),
 				_pin_hash.access (),
 				_dhe_key.access (),
@@ -655,7 +663,7 @@ fn derive_keys_phase_1 (
 	
 	// --------------------------------------------------------------------------------
 	
-	Ok ((_naive_key, _aont_key, (_secret_hash, _secret_hashes), (_pin_hash, _pin_hashes)))
+	Ok ((_naive_key, _aont_key, (_secret_hash, _secret_hashes), (_pin_hash, _pin_hashes), _oracle_hash))
 }
 
 
@@ -670,16 +678,17 @@ fn derive_keys_phase_2 (
 			_packet_salt : &InternalPacketSalt,
 			_secret_hash : (InternalSecretHash, Vec<InternalSecretHash>),
 			_pin_hash : (InternalPinHash, Vec<InternalPinHash>),
-			_oracles : Vec<(&mut SshWrapper, InternalOracleHandle)>,
+			_oracles : (Vec<(&mut SshWrapper, InternalOracleHandle)>, InternalOracleHandle),
 		) -> CryptoResult<(InternalPacketKey, InternalEncryptionKey, InternalAuthenticationKey)>
 {
 	let (_secret_hash, _secret_hashes) = _secret_hash;
 	let (_pin_hash, _pin_hashes) = _pin_hash;
+	let (_oracles, _oracle_hashes) = _oracles;
 	
 	// --------------------------------------------------------------------------------
 	// NOTE:  call SSH wrappers...
 	
-	let mut _oracle_key = InternalOracleOutput::zero ();
+	let mut _oracle_key = InternalOracleOutput::wrap (_oracle_hashes.material);
 	
 	for (_oracle_wrapper, _oracle_handle) in _oracles.into_iter () {
 		
@@ -687,6 +696,7 @@ fn derive_keys_phase_2 (
 				InternalOracleInput::wrap,
 				CRYPTO_ORACLE_INPUT_CONTEXT,
 				&[
+					_oracle_handle.access (),
 					_oracle_key.access (),
 					_packet_salt.access (),
 					_naive_key.access (),
@@ -885,7 +895,7 @@ fn wrap_secrets_and_pins_inputs <'a> (
 
 fn wrap_oracles <'a> (
 			_ssh_wrappers : Vec<&'a mut SshWrapper>,
-		) -> CryptoResult<Vec<(&'a mut SshWrapper, InternalOracleHandle)>>
+		) -> CryptoResult<(Vec<(&'a mut SshWrapper, InternalOracleHandle)>, Vec<InternalOracleHandle>)>
 {
 	debug_assert! (CRYPTO_ORACLE_COUNT_MAX <= (u32::MAX as usize), "[8d49c9e0]");
 	
@@ -905,7 +915,9 @@ fn wrap_oracles <'a> (
 	_oracles.sort_by (|_left, _right| Ord::cmp (_left.1.access (), _right.1.access ()));
 	_oracles.dedup_by (|_left, _right| PartialEq::eq (_left.1.access (), _right.1.access ()));
 	
-	Ok (_oracles)
+	let _oracle_handles = _oracles.iter () .map (|_pair| InternalOracleHandle::wrap_copy (_pair.1.access ())) .collect ();
+	
+	Ok ((_oracles, _oracle_handles))
 }
 
 
