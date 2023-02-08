@@ -25,7 +25,7 @@ b9ddbf3cee2d643dc27ee6fe1d1c6a23 *exchange-tool-go/lib/decrypt.go
 7c2b098930b026ac1ae3f222ca96e10f *exchange-tool/Cargo.toml
 a07f806942ed6f7887551b792171a349 *exchange-tool/armor.rs
 d95f28e409a23b86f08392474aaa46f7 *exchange-tool/coding.rs
-47d7f0e7df5210105c3acc51fe284344 *exchange-tool/crypto.rs
+17e9bafce4d90d58d48d069e46b0cb17 *exchange-tool/crypto.rs
 ceb8c571e55dfb1145d0d58fa062b076 *exchange-tool/io.rs
 25ecdbb809bb839e06739489696ec076 *exchange-tool/keys.rs
 c928f8e939ade444e7d9eab8b2d6b608 *exchange-tool/lib.rs
