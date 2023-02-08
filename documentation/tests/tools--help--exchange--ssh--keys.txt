@@ -1,0 +1,8 @@
+>>  z-tokens exchange ssh keys --help
+
+Usage:
+  z-tokens exchange ssh keys
+
+
+Optional arguments:
+  -h,--help             Show this help message and exit
