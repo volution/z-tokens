@@ -557,6 +557,14 @@ pub fn main_decode (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 pub fn main_ssh_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
+	{
+		let mut _parser = create_parser () .else_wrap (0xc0f96685) ?;
+		
+		if execute_parser (_parser, _arguments) .else_wrap (0xf17bd371) ? {
+			return Ok (ExitCode::SUCCESS);
+		}
+	}
+	
 	let mut _agent = SshWrapperAgent::connect () .else_wrap (0x4e058c28) ?;
 	
 	let _keys = _agent.keys () .else_wrap (0x63ecbf4e) ?;
@@ -586,8 +594,6 @@ pub fn main_ssh_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 pub fn main_ssh_wrap (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
-	let mut _agent = SshWrapperAgent::connect () .else_wrap (0x3031a84a) ?;
-	
 	let mut _key : Option<String> = None;
 	let mut _empty_is_missing : Option<bool> = None;
 	
@@ -607,6 +613,8 @@ pub fn main_ssh_wrap (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}
+	
+	let mut _agent = SshWrapperAgent::connect () .else_wrap (0x3031a84a) ?;
 	
 	let _empty_is_missing = _empty_is_missing.unwrap_or (false);
 	
