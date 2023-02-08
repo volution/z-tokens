@@ -9,7 +9,7 @@ import (
 
 
 
-func bech32_decode_key (_prefix string, _encoded string) ([32]byte) {
+func bech32_decode_key (_prefix string, _encoded string) (Key) {
 	
 	_prefix_actual, _u5_slice, _error := bech32.Decode (_encoded)
 	abort_on_error (0x01dfd25c, _error)
@@ -21,10 +21,7 @@ func bech32_decode_key (_prefix string, _encoded string) ([32]byte) {
 	
 	abort_if_not_equals (0xe071efb5, len (_u8_slice), 32)
 	
-	var _decoded [32]byte
-	copy (_decoded[:], _u8_slice)
-	
-	return _decoded
+	return key_from_slice (_u8_slice)
 }
 
 

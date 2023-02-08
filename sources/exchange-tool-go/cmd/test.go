@@ -25,16 +25,24 @@ func main () () {
 	_recipient := TEST_RECIPIENT_PRIVATE_BECH32
 	_sender := TEST_SENDER_PUBLIC_BECH32
 	
-	fmt.Fprintf (os.Stderr, "[--]\n")
 	
-	Decrypt (_recipient, _sender, "", "", TEST_ENCRYPTED_BOTH)
-	fmt.Fprintf (os.Stderr, "[--]\n")
+	if true {
+		fmt.Fprintf (os.Stderr, "[--]\n")
+		Decrypt (_recipient, _sender, "", "", TEST_ENCRYPTED_BOTH)
+		fmt.Fprintf (os.Stderr, "[--]\n")
+	}
 	
-	Decrypt (_recipient, _sender, "", TEST_PIN_STRING, TEST_ENCRYPTED_BOTH_WITH_PIN)
-	fmt.Fprintf (os.Stderr, "[--]\n")
+	if false {
+		fmt.Fprintf (os.Stderr, "[--]\n")
+		Decrypt (_recipient, _sender, "", TEST_PIN_STRING, TEST_ENCRYPTED_BOTH_WITH_PIN)
+		fmt.Fprintf (os.Stderr, "[--]\n")
+	}
 	
-	Decrypt (_recipient, _sender, TEST_SECRET_BECH32, TEST_PIN_STRING, TEST_ENCRYPTED_BOTH_WITH_PIN_AND_SECRET)
-	fmt.Fprintf (os.Stderr, "[--]\n")
+	if false {
+		fmt.Fprintf (os.Stderr, "[--]\n")
+		Decrypt (_recipient, _sender, TEST_SECRET_BECH32, TEST_PIN_STRING, TEST_ENCRYPTED_BOTH_WITH_PIN_AND_SECRET)
+		fmt.Fprintf (os.Stderr, "[--]\n")
+	}
 }
 
 
