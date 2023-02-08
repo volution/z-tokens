@@ -13,7 +13,7 @@ import (
 
 
 type sshWrapper struct {
-	public_key_algorithm string
+	key_algorithm string
 	signature_algorithm string
 	public_key ssh.PublicKey
 	signer ssh.Signer
@@ -26,7 +26,7 @@ type SshWrapper *sshWrapper
 
 func ssh_wrap (_ssh_wrapper SshWrapper, _input_data []byte) (Key) {
 	
-	_public_key_algorithm := _ssh_wrapper.public_key_algorithm
+	_key_algorithm := _ssh_wrapper.key_algorithm
 	_signature_algorithm := _ssh_wrapper.signature_algorithm
 	_public_key := _ssh_wrapper.public_key
 	_public_key_serialized := _public_key.Marshal ()
@@ -34,8 +34,8 @@ func ssh_wrap (_ssh_wrapper SshWrapper, _input_data []byte) (Key) {
 	_ssh_wrapper = nil
 	
 	_key_hash := blake3_derive_key (SSH_WRAP_KEY_HASH_CONTEXT, nil, [][]byte {
-		//	[]byte (_signature_algorithm),
-			[]byte (_public_key_algorithm),
+			[]byte (_key_algorithm),
+			[]byte (_signature_algorithm),
 			[]byte (_public_key_serialized),
 		})
 	
@@ -57,7 +57,22 @@ func ssh_wrap (_ssh_wrapper SshWrapper, _input_data []byte) (Key) {
 	_signature, _error := _signer.Sign (nil, _input_hash[:])
 	abort_on_error (0xd80c431b, _error)
 	
-	abort_if_not_equals (0x5dda6367, _signature.Format, _signature_algorithm)
+	var _signature_algorithm_actual string
+	switch _signature.Format {
+		case "ssh-ed25519" :
+			_signature_algorithm_actual = "sig-SSH-Ed25519"
+		case "ssh-rsa" :
+			_signature_algorithm = "sig-SSH-RSA-SHA1"
+		case "rsa-sha2-256" :
+			_signature_algorithm = "sig-SSH-RSA-SHA2-256"
+		case "rsa-sha2-512" :
+			_signature_algorithm = "sig-SSH-RSA-SHA2-512"
+		default :
+			abort (0x40371f48, nil)
+	}
+	
+	abort_if_not_equals (0x5dda6367, _signature_algorithm_actual, _signature_algorithm)
+	
 	_signature_data := _signature.Blob
 	
 	debug_slice ("ssh_wrap_signature_data", _signature_data)
@@ -93,35 +108,34 @@ func ssh_wrapper_decode (_bech32 string) (SshWrapper) {
 	
 	debug_slice ("ssh_wrapper_handle_bytes", _buffer)
 	
-	abort_if (0xd0b77034, _buffer_len < 1)
+	abort_if (0xd0b77034, _buffer_len < 2)
 	
-	_buffer_len -= 1
-	_key_type := _buffer[_buffer_len]
+	_buffer_len -= 2
+	_key_type := _buffer[_buffer_len + 0]
+	_signature_type := _buffer[_buffer_len + 1]
 	_buffer = _buffer[:_buffer_len]
 	
-	var _public_key_algorithm string
+	var _key_algorithm string
 	var _signature_algorithm string
 	
 	switch _key_type {
-		
 		case 1 :
-			_public_key_algorithm = ssh.KeyAlgoED25519
-			_signature_algorithm = ssh.KeyAlgoED25519
-		
+			_key_algorithm = "key-SSH-Ed25519"
 		case 2 :
-			_public_key_algorithm = ssh.KeyAlgoRSA
-			_signature_algorithm = ssh.KeyAlgoRSA
-		
+			_key_algorithm = "key-SSH-RSA"
+		default :
+			abort (0x9de245d6, nil)
+	}
+	
+	switch _signature_type {
+		case 1 :
+			_signature_algorithm = "sig-SSH-Ed25519"
+		case 2 :
+			_signature_algorithm = "sig-SSH-RSA-SHA1"
 		case 3 :
-			// FIXME:  Currently not supported!
-			_public_key_algorithm = ssh.KeyAlgoRSA
-			_signature_algorithm = ssh.KeyAlgoRSASHA256
-		
+			_signature_algorithm = "sig-SSH-RSA-SHA2-256"
 		case 4 :
-			// FIXME:  Currently not supported!
-			_public_key_algorithm = ssh.KeyAlgoRSA
-			_signature_algorithm = ssh.KeyAlgoRSASHA512
-		
+			_signature_algorithm = "sig-SSH-RSA-SHA2-512"
 		default :
 			abort (0xf6867c6f, nil)
 	}
@@ -133,8 +147,6 @@ func ssh_wrapper_decode (_bech32 string) (SshWrapper) {
 	
 	_public_key, _error = ssh.ParsePublicKey (_buffer)
 	abort_on_error (0x0f58c245, _error)
-	
-	abort_if_not_equals (0xd0a78102, _public_key.Type (), _public_key_algorithm)
 	
 	{
 		_private_key, _error := ssh.ParsePrivateKey (test_private_ssh_key)
@@ -148,7 +160,7 @@ func ssh_wrapper_decode (_bech32 string) (SshWrapper) {
 	}
 	
 	_ssh_wrapper := & sshWrapper {
-			public_key_algorithm : _public_key_algorithm,
+			key_algorithm : _key_algorithm,
 			signature_algorithm : _signature_algorithm,
 			public_key : _public_key,
 			signer : _signer,
