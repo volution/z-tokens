@@ -35,6 +35,8 @@ const BECH32_SENDER_PUBLIC_PREFIX = "ztxsp"
 
 const BECH32_SECRET_PREFIX = "ztxcs"
 
+const BECH32_SSH_WRAP_HANDLE_PREFIX = "ztxws"
+
 
 
 
@@ -60,6 +62,10 @@ var CRYPTO_SSH_WRAP_OUTPUT_CONTEXT = cryptographic_context ("encryption", "ssh_w
 
 var CRYPTO_DERIVE_SALT_CONTEXT = cryptographic_context ("password", "salt")
 var CRYPTO_DERIVE_OUTPUT_CONTEXT = cryptographic_context ("password", "output")
+
+var SSH_WRAP_KEY_HASH_CONTEXT = cryptographic_context ("ssh_wrap", "key_hash")
+var SSH_WRAP_INPUT_HASH_CONTEXT = cryptographic_context ("ssh_wrap", "input_hash")
+var SSH_WRAP_OUTPUT_HASH_CONTEXT = cryptographic_context ("ssh_wrap", "output_hash")
 
 
 

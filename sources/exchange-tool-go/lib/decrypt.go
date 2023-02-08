@@ -35,6 +35,7 @@ func Decrypt (
 		_secret_input_bech32 string,
 		_pin_input_string string,
 		_encrypted []byte,
+		_ssh_wrap_handle_bech32 string,
 ) ([]byte) {
 	
 	_recipient_private_key := bech32_decode_key (BECH32_RECIPIENT_PRIVATE_PREFIX, _recipient_private_bech32)
@@ -62,6 +63,10 @@ func Decrypt (
 	}
 	
 	var _ssh_wrappers = make ([]SshWrapper, 0)
+	if _ssh_wrap_handle_bech32 != "" {
+		_ssh_wrapper := ssh_wrapper_decode (_ssh_wrap_handle_bech32)
+		_ssh_wrappers = append (_ssh_wrappers, _ssh_wrapper)
+	}
 	
 	return decrypt (
 			_recipient_private_key,
@@ -200,7 +205,7 @@ func decrypt (
 				_naive_key,
 			}, nil)
 		
-		_ssh_wrap_output := ssh_wrap (_ssh_wrapper, _ssh_wrap_input)
+		_ssh_wrap_output := ssh_wrap (_ssh_wrapper, _ssh_wrap_input[:])
 		
 		_ssh_wrap_key = blake3_derive_key (CRYPTO_SSH_WRAP_OUTPUT_CONTEXT, []Key {
 				_ssh_wrap_input,
