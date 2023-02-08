@@ -50,6 +50,10 @@ impl SshWrapper {
 		fail! (0x27e97836);
 	}
 	
+	pub fn handle (&self) -> SshResult<&[u8; 32]> {
+		fail! (0x7dba805f);
+	}
+	
 	pub fn cmp_by_keys (_left : &Self, _right : &Self) -> Ordering {
 		panic! (0x252e1474);
 	}
@@ -72,7 +76,11 @@ impl SshWrapperKey {
 		fail! (0xec629e9f);
 	}
 	
-	pub fn handle (&self) -> SshResult<Rb<String>> {
+	pub fn handle (&self) -> SshResult<&[u8; 32]> {
+		fail! (0x3c821ea8);
+	}
+	
+	pub fn description (&self) -> SshResult<Rb<String>> {
 		fail! (0xbec36a24);
 	}
 }

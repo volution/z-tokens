@@ -565,7 +565,7 @@ pub fn main_ssh_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	for _key in _keys.iter () {
 		
-		let _key_handle = _key.handle () .else_wrap (0x77ed1b9e) ?;
+		let _key_handle = _key.description () .else_wrap (0x77ed1b9e) ?;
 		let _key_encoded = _key.encode () .else_wrap (0xe0a1a54a) ?;
 		
 		writeln! (&mut _output) .else_wrap (0x4d2a1a9f) ?;

@@ -109,6 +109,8 @@ struct SshWrapperKeyInternals {
 	
 	public_key : ssh::PublicKey,
 	public_key_bytes : Vec<u8>,
+	
+	key_hash : InternalSshWrapKeyHash,
 }
 
 
@@ -211,17 +213,7 @@ impl SshWrapper {
 		
 		let _key = self.key.0.deref ();
 		
-		let _key_hash = blake3_derive_key (
-				InternalSshWrapKeyHash::wrap,
-				SSH_WRAP_KEY_HASH_CONTEXT,
-				&[],
-				&[
-					_key.key_algorithm.identifier () .as_bytes (),
-					_key.signature_algorithm.identifier () .as_bytes (),
-					&_key.public_key_bytes,
-				],
-				None,
-			);
+		let _key_hash = &_key.key_hash;
 		
 		let _input_hash = blake3_derive_key (
 				InternalSshWrapInputHash::wrap,
@@ -291,6 +283,11 @@ impl SshWrapper {
 		_output.copy_from_slice (_output_hash.access ());
 		
 		Ok (())
+	}
+	
+	
+	pub fn handle (&self) -> SshResult<&[u8; 32]> {
+		self.key.handle ()
 	}
 	
 	
@@ -370,18 +367,27 @@ impl SshWrapperKey {
 		
 		let _public_key = parse_public_key (&_key_algorithm, &_signature_algorithm, &_serialized) ?;
 		
+		let _key_hash = key_hash (&_key_algorithm, &_signature_algorithm, &_serialized);
+		
 		let _wrapper_key = SshWrapperKeyInternals {
 				key_algorithm : _key_algorithm,
 				signature_algorithm : _signature_algorithm,
 				public_key_bytes : _serialized,
 				public_key : _public_key,
+				key_hash : _key_hash,
 			};
 		
 		Ok (SshWrapperKey (Rb::new (_wrapper_key)))
 	}
 	
 	
-	pub fn handle (&self) -> SshResult<Rb<String>> {
+	pub fn handle (&self) -> SshResult<&[u8; 32]> {
+		let _key = &self.0;
+		Ok (_key.key_hash.access ())
+	}
+	
+	
+	pub fn description (&self) -> SshResult<Rb<String>> {
 		let _key = &self.0;
 		let _ssh_fingerprint = _key.public_key.fingerprint ();
 		let _handle = format! ("[{}:{}:{}]", _key.key_algorithm.identifier (), _key.signature_algorithm.identifier (), _ssh_fingerprint);
@@ -453,6 +459,8 @@ impl SshWrapperAgent {
 				// NOTE:  (See the comment in `parse_public_key`!)
 				let _public_key = parse_public_key (&_key_algorithm, &_signature_algorithm, &_public_key_bytes) ?;
 				
+				let _key_hash = key_hash (&_key_algorithm, &_signature_algorithm, &_public_key_bytes);
+				
 				let _wrapper_key = SshWrapperKeyInternals {
 						
 						key_algorithm : _key_algorithm.clone (),
@@ -460,6 +468,8 @@ impl SshWrapperAgent {
 						
 						public_key_bytes : _public_key_bytes.clone (),
 						public_key : _public_key,
+						
+						key_hash : _key_hash,
 					};
 				
 				let _wrapper_key = SshWrapperKey (Rb::new (_wrapper_key));
@@ -470,6 +480,30 @@ impl SshWrapperAgent {
 		
 		Ok (_wrapper_keys)
 	}
+}
+
+
+
+
+
+
+
+
+fn key_hash (_key_algorithm : &KeyAlgorithm, _signature_algorithm : &SignatureAlgorithm, _public_key_bytes : &[u8]) -> InternalSshWrapKeyHash {
+	
+	let _key_hash = blake3_derive_key (
+			InternalSshWrapKeyHash::wrap,
+			SSH_WRAP_KEY_HASH_CONTEXT,
+			&[],
+			&[
+				_key_algorithm.identifier () .as_bytes (),
+				_signature_algorithm.identifier () .as_bytes (),
+				_public_key_bytes,
+			],
+			None,
+		);
+	
+	_key_hash
 }
 
 
