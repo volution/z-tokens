@@ -73,7 +73,7 @@ const CRYPTO_PIN_ARGON_T_COST : u32 = 4;
 
 
 define_cryptographic_material! (InternalDheKey, 32);
-define_cryptographic_material! (InternalNaiveKey, 32);
+define_cryptographic_material! (InternalPartialKey, 32);
 define_cryptographic_material! (InternalAontKey, 32);
 
 define_cryptographic_material! (InternalPacketSalt, 32);
@@ -111,7 +111,7 @@ define_cryptographic_material! (InternalPasswordOutput, 32);
 
 
 define_cryptographic_context! (CRYPTO_DHE_KEY_CONTEXT, encryption, dhe_key);
-define_cryptographic_context! (CRYPTO_NAIVE_KEY_CONTEXT, encryption, naive_key);
+define_cryptographic_context! (CRYPTO_PARTIAL_KEY_CONTEXT, encryption, partial_key);
 define_cryptographic_context! (CRYPTO_AONT_KEY_CONTEXT, encryption, aont_key);
 
 define_cryptographic_context! (CRYPTO_PACKET_SALT_CONTEXT, encryption, packet_salt);
@@ -169,7 +169,7 @@ pub fn password (
 	let _sender = _sender.map (SenderPrivateKey::access);
 	let _recipient = _recipient.map (RecipientPublicKey::access);
 	
-	let (_naive_key, _aont_key, _secret_hashes, _pin_hashes, _oracle_hashes)
+	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _oracle_hashes)
 			= derive_keys_phase_1 (_sender, _recipient, _secret_inputs, _pin_inputs, _oracle_handles, true) ?;
 	
 	drop! (_sender, _recipient);
@@ -181,7 +181,7 @@ pub fn password (
 			InternalPacketSalt::wrap,
 			CRYPTO_PASSWORD_SALT_CONTEXT,
 			&[
-				_naive_key.access (),
+				_partial_key.access (),
 			],
 			&[
 				_password_data.access (),
@@ -192,7 +192,7 @@ pub fn password (
 	drop! (_password_data);
 	
 	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (_naive_key, &_packet_salt, _secret_hashes, _pin_hashes, (_oracles, _oracle_hashes)) ?;
+			= derive_keys_phase_2 (_partial_key, &_packet_salt, _secret_hashes, _pin_hashes, (_oracles, _oracle_hashes)) ?;
 	
 	drop! (_encryption_key, _authentication_key);
 	
@@ -272,7 +272,7 @@ pub fn encrypt (
 	let _sender = _sender.map (SenderPrivateKey::access);
 	let _recipient = _recipient.map (RecipientPublicKey::access);
 	
-	let (_naive_key, _aont_key, _secret_hashes, _pin_hashes, _oracle_hashes)
+	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _oracle_hashes)
 			= derive_keys_phase_1 (_sender, _recipient, _secret_inputs, _pin_inputs, _oracle_handles, true) ?;
 	
 	drop! (_sender, _recipient);
@@ -285,7 +285,7 @@ pub fn encrypt (
 					InternalPacketSalt::wrap,
 					CRYPTO_PACKET_SALT_CONTEXT,
 					&[
-						_naive_key.access (),
+						_partial_key.access (),
 					],
 					&[
 						_decrypted.access (),
@@ -301,7 +301,7 @@ pub fn encrypt (
 	drop! (_decrypted);
 	
 	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (_naive_key, &_packet_salt, _secret_hashes, _pin_hashes, (_oracles, _oracle_hashes)) ?;
+			= derive_keys_phase_2 (_partial_key, &_packet_salt, _secret_hashes, _pin_hashes, (_oracles, _oracle_hashes)) ?;
 	
 	drop! (_packet_key);
 	
@@ -391,7 +391,7 @@ pub fn decrypt (
 	let _sender = _sender.map (SenderPublicKey::access);
 	let _recipient = _recipient.map (RecipientPrivateKey::access);
 	
-	let (_naive_key, _aont_key, _secret_hashes, _pin_hashes, _oracle_hashes)
+	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _oracle_hashes)
 			= derive_keys_phase_1 (_recipient, _sender, _secret_inputs, _pin_inputs, _oracle_handles, false) ?;
 	
 	drop! (_sender, _recipient);
@@ -406,7 +406,7 @@ pub fn decrypt (
 	// NOTE:  deriving keys...
 	
 	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (_naive_key, &_packet_salt, _secret_hashes, _pin_hashes, (_oracles, _oracle_hashes)) ?;
+			= derive_keys_phase_2 (_partial_key, &_packet_salt, _secret_hashes, _pin_hashes, (_oracles, _oracle_hashes)) ?;
 	
 	drop! (_packet_key);
 	drop! (_packet_salt);
@@ -546,7 +546,7 @@ fn derive_keys_phase_1 (
 			_pin_inputs : Vec<InternalPinInput>,
 			_oracle_handles : Vec<InternalOracleHandle>,
 			_encryption : bool,
-		) -> CryptoResult<(InternalNaiveKey, InternalAontKey, (InternalSecretHash, Vec<InternalSecretHash>), (InternalPinHash, Vec<InternalPinHash>), InternalOracleHandle)>
+		) -> CryptoResult<(InternalPartialKey, InternalAontKey, (InternalSecretHash, Vec<InternalSecretHash>), (InternalPinHash, Vec<InternalPinHash>), InternalOracleHandle)>
 {
 	// --------------------------------------------------------------------------------
 	// NOTE:  derive secret hashes...
@@ -633,11 +633,11 @@ fn derive_keys_phase_1 (
 		};
 	
 	// --------------------------------------------------------------------------------
-	// NOTE:  derive naive key (for the entire transaction)...
+	// NOTE:  derive partial key (for the entire transaction)...
 	
-	let _naive_key = blake3_derive_key (
-			InternalNaiveKey::wrap,
-			CRYPTO_NAIVE_KEY_CONTEXT,
+	let _partial_key = blake3_derive_key (
+			InternalPartialKey::wrap,
+			CRYPTO_PARTIAL_KEY_CONTEXT,
 			&[
 				_oracle_hash.access (),
 				_secret_hash.access (),
@@ -655,7 +655,7 @@ fn derive_keys_phase_1 (
 			InternalAontKey::wrap,
 			CRYPTO_AONT_KEY_CONTEXT,
 			&[
-				_naive_key.access (),
+				_partial_key.access (),
 			],
 			&[],
 			None,
@@ -663,7 +663,7 @@ fn derive_keys_phase_1 (
 	
 	// --------------------------------------------------------------------------------
 	
-	Ok ((_naive_key, _aont_key, (_secret_hash, _secret_hashes), (_pin_hash, _pin_hashes), _oracle_hash))
+	Ok ((_partial_key, _aont_key, (_secret_hash, _secret_hashes), (_pin_hash, _pin_hashes), _oracle_hash))
 }
 
 
@@ -674,7 +674,7 @@ fn derive_keys_phase_1 (
 
 
 fn derive_keys_phase_2 (
-			_naive_key : InternalNaiveKey,
+			_partial_key : InternalPartialKey,
 			_packet_salt : &InternalPacketSalt,
 			_secret_hash : (InternalSecretHash, Vec<InternalSecretHash>),
 			_pin_hash : (InternalPinHash, Vec<InternalPinHash>),
@@ -699,7 +699,7 @@ fn derive_keys_phase_2 (
 					_oracle_handle.access (),
 					_oracle_key.access (),
 					_packet_salt.access (),
-					_naive_key.access (),
+					_partial_key.access (),
 				],
 				&[],
 				None,
@@ -734,7 +734,7 @@ fn derive_keys_phase_2 (
 					_secret_key.access (),
 					_oracle_key.access (),
 					_packet_salt.access (),
-					_naive_key.access (),
+					_partial_key.access (),
 				],
 				&[],
 				None,
@@ -768,7 +768,7 @@ fn derive_keys_phase_2 (
 					_pin_key.access (),
 					_oracle_key.access (),
 					_packet_salt.access (),
-					_naive_key.access (),
+					_partial_key.access (),
 				],
 				&[],
 				None,
@@ -799,7 +799,7 @@ fn derive_keys_phase_2 (
 				_secret_key.access (),
 				_pin_key.access (),
 				_packet_salt.access (),
-				_naive_key.access (),
+				_partial_key.access (),
 			],
 			&[],
 			None,
