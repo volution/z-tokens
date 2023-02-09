@@ -672,6 +672,9 @@
 	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
+	_reports="$( exec -- readlink -e -- ./documentation/tests-exchange-cases )"
+	_outputs="$( exec -- "${ZRUN}" ':: workbench / outputs' )"
+	
 	for _case_tool in password encrypt ; do
 	for _case_deterministic in deterministic randomized ; do
 	for _case_secret in without-secret empty-secret with-secret-1 with-secret-1d with-secret-2 with-secret-2d ; do
@@ -969,6 +972,10 @@
 				--empty-is-missing "${_empty_is_missing}"
 			)
 		
+		_identifier="${_case_tool}--${_case_send}--${_case_pin}--${_case_secret}--${_case_ssh_wrap}--${_case_associated}--${_case_deterministic}"
+		_report="${_reports}/${_identifier}.txt"
+		_output="${_outputs}/tests/${_identifier}.${$}.tmp"
+		
 		
 		TIMEFORMAT="[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;"
 		
@@ -984,11 +991,15 @@
 				
 				printf -- '[xx]    >> %s\n' "${_password_command[*]@Q}" >&2
 				
+				printf -- '>>  %q' z-tokens > "${_output}"
+				printf -- ' %q' "${_password_command[@]}" >> "${_output}"
+				printf -- '\n\n' >> "${_output}"
+				
 				time \
 				"${__OUTPUTS}/binaries/z-exchange--release--linux--native" "${_password_command[@]}" \
 					< "${_file}" \
+					>> "${_output}" \
 				#
-				
 			;;
 			
 			( encrypt )
@@ -1007,21 +1018,33 @@
 				printf -- '[xx]    >> %s\n' "${_encrypt_command[*]@Q}" >&2
 				printf -- '[xx]    >> %s\n' "${_decrypt_command[*]@Q}" >&2
 				
+				printf -- '>>  %q' z-tokens > "${_output}"
+				printf -- ' %q' "${_encrypt_command[@]}" >> "${_output}"
+				printf -- '\n' >> "${_output}"
+				
+				printf -- '>>  %q' z-tokens >> "${_output}"
+				printf -- ' %q' "${_decrypt_command[@]}" >> "${_output}"
+				printf -- '\n' >> "${_output}"
+				
+				printf -- '\n' >> "${_output}"
+				
 				time \
 				cat \
 					< "${_file}" \
 				| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" "${_encrypt_command[@]}" \
 				| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" "${_decrypt_command[@]}" \
+				| tee -a -- /dev/stderr 2>> "${_output}" \
 				| md5sum -b -- /dev/fd/5 5<&0 \
 				| md5sum -c --quiet 5< "${_file}" \
 				#
-				
 			;;
 			
 			( * )
 				false -- '[12356273]' "${_case_tool}"
 			;;
 		esac
+		
+		mv -T -- "${_output}" "${_report}"
 		
 		printf -- '\n' >&2
 		
