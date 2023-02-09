@@ -10,11 +10,16 @@ Optional arguments:
                         (recipient private key)
   -s,--sender {recipient}
                         (sender public key)
+  -a,--associated {associated}
+                        (associated data) (multiple allowed, order is
+                        important)
   -x,--secret {secret}  (shared secret, for additional security) (multiple
-                        allowed)
+                        allowed, any order)
   -p,--pin {pin}        (shared PIN, for **WEAK** additional security)
-                        (multiple allowed)
-  --ssh-wrap {key}      (shared SSH agent key handle) (multiple allowed)
-  -M                    (treat empty arguments as unspecified)
+                        (multiple allowed, any order)
+  --ssh-wrap {key}      (shared SSH agent key handle) (multiple allowed, any
+                        order)
+  -M                    (treat empty arguments as unspecified) (!!! CAUTION
+                        !!!)
   --empty-is-missing {bool}
                         

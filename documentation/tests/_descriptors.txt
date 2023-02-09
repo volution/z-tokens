@@ -132,43 +132,53 @@ exchange / armor / notice :: exchange armor < ./notice.txt
 
 exchange / password / x25519-self / empty :: exchange password --sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m <<< $''
 exchange / password / x25519-self / hello :: exchange password --sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m <<< $'hello world!\n'
+exchange / password / x25519-self / hello / with-associated :: exchange password --sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m --associated hello <<< $'hello world!\n'
 exchange / password / x25519-self / notice :: exchange password --sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m < ./notice.txt
 
 exchange / password / x25519-sender-recipient / empty :: exchange password --sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 --recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah <<< $''
 exchange / password / x25519-sender-recipient / hello :: exchange password --sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 --recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah <<< $'hello world!\n'
+exchange / password / x25519-sender-recipient / hello / with-associated :: exchange password --sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 --recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah --associated hello <<< $'hello world!\n'
 exchange / password / x25519-sender-recipient / notice :: exchange password --sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 --recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah < ./notice.txt
 
 exchange / password / pin-only / empty :: exchange password --pin 1234 <<< $''
 exchange / password / pin-only / hello :: exchange password --pin 1234 <<< $'hello world!\n'
+exchange / password / pin-only / hello / with-associated :: exchange password --pin 1234 <<< $'hello world!\n'
 exchange / password / pin-only / notice :: exchange password --pin 1234 < ./notice.txt
 
 exchange / password / secret-only / empty :: exchange password --secret ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm <<< $''
 exchange / password / secret-only / hello :: exchange password --secret ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm <<< $'hello world!\n'
+exchange / password / secret-only / hello / with-associated :: exchange password --secret ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm <<< $'hello world!\n'
 exchange / password / secret-only / notice :: exchange password --secret ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm < ./notice.txt
 
 exchange / password / ssh-wrap-only / empty :: exchange password --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 <<< $''
 exchange / password / ssh-wrap-only / hello :: exchange password --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 <<< $'hello world!\n'
+exchange / password / ssh-wrap-only / hello / with-associated :: exchange password --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --associated hello <<< $'hello world!\n'
 exchange / password / ssh-wrap-only / notice :: exchange password --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 < ./notice.txt
 
 
 exchange / encrypt / x25519-self / empty :: exchange encrypt --siv --sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m <<< $''
 exchange / encrypt / x25519-self / hello :: exchange encrypt --siv --sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m <<< $'hello world!\n'
+exchange / encrypt / x25519-self / hello / with-associated :: exchange encrypt --siv --sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m --associated hello <<< $'hello world!\n'
 exchange / encrypt / x25519-self / notice :: exchange encrypt --siv --sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m < ./notice.txt
 
 exchange / encrypt / x25519-sender-recipient / empty :: exchange encrypt --siv --sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 --recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah <<< $''
 exchange / encrypt / x25519-sender-recipient / hello :: exchange encrypt --siv --sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 --recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah <<< $'hello world!\n'
+exchange / encrypt / x25519-sender-recipient / hello / with-associated :: exchange encrypt --siv --sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 --recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah --associated hello <<< $'hello world!\n'
 exchange / encrypt / x25519-sender-recipient / notice :: exchange encrypt --siv --sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 --recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah < ./notice.txt
 
 exchange / encrypt / pin-only / empty :: exchange encrypt --siv --pin 1234 <<< $''
 exchange / encrypt / pin-only / hello :: exchange encrypt --siv --pin 1234 <<< $'hello world!\n'
+exchange / encrypt / pin-only / hello / with-associated :: exchange encrypt --siv --pin 1234 --associated hello <<< $'hello world!\n'
 exchange / encrypt / pin-only / notice :: exchange encrypt --siv --pin 1234 < ./notice.txt
 
 exchange / encrypt / secret-only / empty :: exchange encrypt --siv --secret ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm <<< $''
 exchange / encrypt / secret-only / hello :: exchange encrypt --siv --secret ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm <<< $'hello world!\n'
+exchange / encrypt / secret-only / hello / with-associated :: exchange encrypt --siv --secret ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm --associated hello <<< $'hello world!\n'
 exchange / encrypt / secret-only / notice :: exchange encrypt --siv --secret ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm < ./notice.txt
 
 exchange / encrypt / ssh-wrap-only / empty :: exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 <<< $''
 exchange / encrypt / ssh-wrap-only / hello :: exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 <<< $'hello world!\n'
+exchange / encrypt / ssh-wrap-only / hello / with-associated :: exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --associated hello <<< $'hello world!\n'
 exchange / encrypt / ssh-wrap-only / notice :: exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 < ./notice.txt
 
 

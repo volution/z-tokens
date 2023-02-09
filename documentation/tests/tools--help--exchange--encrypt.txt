@@ -9,12 +9,17 @@ Optional arguments:
   -s,--sender {sender}  (sender private key)
   -r,--recipient {recipient}
                         (recipient public key)
+  -a,--associated {associated}
+                        (associated data) (multiple allowed, order is
+                        important)
   -x,--secret {secret}  (shared secret, for additional security) (multiple
-                        allowed)
+                        allowed, in any order)
   -p,--pin {pin}        (shared PIN, for **WEAK** additional security)
-                        (multiple allowed)
-  --ssh-wrap {key}      (shared SSH agent key handle) (multiple allowed)
-  --siv                 (deterministic output, based on SIV) (!!!CAUTION!!!)
-  -M                    (treat empty arguments as unspecified)
+                        (multiple allowed, in any order)
+  --ssh-wrap {key}      (shared SSH agent key handle) (multiple allowed, in any
+                        order)
+  --siv                 (deterministic output, based on SIV) (!!! CAUTION !!!)
+  -M                    (treat empty arguments as unspecified) (!!! CAUTION
+                        !!!)
   --empty-is-missing {bool}
                         

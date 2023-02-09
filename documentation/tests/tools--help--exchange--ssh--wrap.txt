@@ -7,6 +7,7 @@ Usage:
 Optional arguments:
   -h,--help             Show this help message and exit
   -k,--key {key}        (shared SSH agent key handle)
-  -M                    (treat empty arguments as unspecified)
+  -M                    (treat empty arguments as unspecified) (!!! CAUTION
+                        !!!)
   --empty-is-missing {bool}
                         

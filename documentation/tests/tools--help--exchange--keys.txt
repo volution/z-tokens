@@ -14,8 +14,8 @@ Optional arguments:
   --secret {enabled}    
   -p                    (generate shared PIN)
   --pin {enabled}       
-  -o                    (**CAUTION**, generate one key, and encode it both for
-                        sending and receiving)
+  -o                    generate one key, and encode it both for sending and
+                        receiving) (!!! CAUTION !!!)
   --self {enabled}      
   -c                    (output comments)
   --comments {enabled}  

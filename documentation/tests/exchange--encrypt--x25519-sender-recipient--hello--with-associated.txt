@@ -1,0 +1,12 @@
+>>  z-tokens exchange encrypt --siv --sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 --recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah --associated hello
+
+
+#1,  CFG5J5Kedpet  eaigy5xipnhv  NDjWy9T72R5B  foAd2bk6FzpC  2GvjSHyM1kSK3
+#2,  YR7fLoJNbiNE  3P4xxQcSNKjZ2 2NvZ8DXQPQ81Z i6bAwDZB294S  9CQws9EqJ2PY
+#3,  2rD2bMXZjWem8 3J8VZrNvyqgAK 3ZGy16qX9ndF3 2q1dbgYNusBoo MRkBhZMVJSBX
+#4,  267ZYrXsvEpui 3hUoKaZVctefp 2YvHFarU3NtUk 3EJj67FT8PgNS foDFCSPsJYhB
+#5,  3C57QgHJsAdJC 3cQtyGy1hwNYS 2p214YCjhffsc R5nShCyxJswZ  25guMgXJ92QgA
+#6,  46rdAvE8dvh3q 3dawVn17x4jU8 3knwnWNAvAdFU 3fVJsrGUC1pq7 2fLfcheGiA511
+#7,  44gbvvnvsGcKz 2SCBkVnpg1eqZ ZHmVmns57zfK  3geXxDhKkyf8y 22CHxVHoXgdYQ
+#8.  FXjvTvKns1Yk  CmLWUhRgNNcZ  dRxJNAG6fsmJ  3uuam7EvNpCF8 hViCXhtziFHb
+

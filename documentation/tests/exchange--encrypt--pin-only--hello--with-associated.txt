@@ -1,0 +1,12 @@
+>>  z-tokens exchange encrypt --siv --pin 1234 --associated hello
+
+
+#1,  81Be15BaR3V5  kwq46fZpWziv  34RsXXKK3Tmgm 3YjBAtot6a7e6 7o6WkNU9awjn
+#2,  3u3xngtDcCX7F 28Y6kAYDPaiR6 xQz9d2PPESX1  3rDCtuNjuhj1e 2uu1N4K5a6PhL
+#3,  353nwEnusYUF7 3semb4df8qUJa 2LLu1AYiMtjWo 2JoPKoE1L27X3 3nNU6yXw8X8FU
+#4,  3kocqWALkbKuP XuCrMDr34iSP  2D5DYPkopRgLb 3HvzFvGqMPB2H 232MdR8qSeBK
+#5,  2nPdAdgstYRf  2dLFPd3yo99xn 26eNoPecsH5Sy 31EhM4TecGZgq 4Bq976DzdpEmv
+#6,  twypEJ6hZ9C9  2mMJoT6ughoBn 2AceDi3KfhDcf XRfNHuPicQq9  3XW84ao5HrRL3
+#7,  4C6iNTgLGzbiK 2eZsfHNmdbRU  483M9oJKMb2Eu 2whipPH6SoH7o 3WJHqTqQNvnAN
+#8.  2Liabms7pAtYi Mao4MV41x7rN  21CmVdm6hiMeP 3d7FH8vWLfvsk grCSdfBpXewj
+
