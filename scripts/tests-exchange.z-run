@@ -375,6 +375,7 @@
 	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
 	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
 	
+	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 	
@@ -385,6 +386,7 @@
 			password \
 				--sender "${_sender_private}" \
 				--recipient "${_recipient_public}" \
+				--associated "${_associated}" \
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
@@ -406,6 +408,7 @@
 	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
 	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
 	
+	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 	
@@ -416,6 +419,7 @@
 			encrypt \
 				--sender "${_sender_private}" \
 				--recipient "${_recipient_public}" \
+				--associated "${_associated}" \
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
@@ -436,6 +440,7 @@
 	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
 	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
 	
+	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 	
@@ -446,6 +451,7 @@
 			encrypt \
 				--sender "${_sender_private}" \
 				--recipient "${_recipient_public}" \
+				--associated "${_associated}" \
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
@@ -466,6 +472,7 @@
 	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
 	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
 	
+	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 	
@@ -476,6 +483,7 @@
 			encrypt \
 				--sender "${_sender_private}" \
 				--recipient "${_recipient_public}" \
+				--associated "${_associated}" \
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
@@ -501,6 +509,7 @@
 	_recipient_private="${__ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE:-}"
 	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
 	
+	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 	
@@ -511,6 +520,7 @@
 			encrypt \
 				--sender "${_sender_private}" \
 				--recipient "${_recipient_public}" \
+				--associated "${_associated}" \
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
@@ -520,6 +530,7 @@
 			decrypt \
 				--sender "${_sender_public}" \
 				--recipient "${_recipient_private}" \
+				--associated "${_associated}" \
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
@@ -541,6 +552,7 @@
 	_recipient_private="${__ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE:-}"
 	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
 	
+	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 	
@@ -565,6 +577,7 @@
 				encrypt \
 					--sender "${_sender_private}" \
 					--recipient "${_recipient_public}" \
+					--associated "${_associated}" \
 					--secret "${_secret}" \
 					--pin "${_pin}" \
 					--ssh-wrap "${_ssh_wrap}" \
@@ -574,6 +587,7 @@
 				decrypt \
 					--sender "${_sender_public}" \
 					--recipient "${_recipient_private}" \
+					--associated "${_associated}" \
 					--secret "${_secret}" \
 					--pin "${_pin}" \
 					--ssh-wrap "${_ssh_wrap}" \
@@ -599,6 +613,7 @@
 	_recipient_private="${__ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE:-}"
 	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
 	
+	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 	
@@ -625,6 +640,7 @@
 				encrypt \
 					--sender "${_sender_private}" \
 					--recipient "${_recipient_public}" \
+					--associated "${_associated}" \
 					--secret "${_secret}" \
 					--pin "${_pin}" \
 					--ssh-wrap "${_ssh_wrap}" \
@@ -633,6 +649,7 @@
 				decrypt \
 					--sender "${_sender_public}" \
 					--recipient "${_recipient_private}" \
+					--associated "${_associated}" \
 					--secret "${_secret}" \
 					--pin "${_pin}" \
 					--ssh-wrap "${_ssh_wrap}" \
@@ -656,14 +673,18 @@
 	export -- RUST_BACKTRACE=1
 	
 	for _case_tool in password encrypt ; do
-	for _case_deterministic in with-siv with-salt ; do
+	for _case_deterministic in deterministic randomized ; do
 	for _case_secret in without-secret empty-secret with-secret-1 with-secret-1d with-secret-2 with-secret-2d ; do
 	for _case_ssh_wrap in without-ssh-wrap empty-ssh-wrap with-ssh-wrap-1 with-ssh-wrap-1d with-ssh-wrap-2 with-ssh-wrap-2d ; do
 	for _case_pin in without-pin empty-pin with-pin-1 with-pin-1d with-pin-2 with-pin-2d ; do
+	for _case_associated in without-associated empty-associated with-associated-1 with-associated-2 ; do
 	for _case_send in without-x25519 empty-x25519 send-x25519 self-x25519 ; do
 		
 		_pin_1="${SRANDOM}"
 		_pin_2="${SRANDOM}"
+		
+		_associated_1='associated-1'
+		_associated_2='associated-2'
 		
 		_secret_1=ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm
 		_secret_2=ztxcs1zw32errd0vu44rvt2h6vnmfecjtp20aacyzpxcyg9dq3szerw0sswvu32a
@@ -713,6 +734,36 @@
 			;;
 			( * )
 				false -- '[4d9f156a]' "${_case_send}"
+			;;
+		esac
+		
+		case "${_case_associated}" in
+			( with-associated-1 )
+				_common_arguments+=(
+						--associated "${_associated_1}"
+					)
+			;;
+			( with-associated-2 )
+				_common_arguments+=(
+						--associated "${_associated_1}"
+						--associated "${_associated_2}"
+					)
+			;;
+			( without-associated )
+			;;
+			( empty-associated )
+				_encrypt_arguments+=(
+						--associated ''
+					)
+				_decrypt_arguments+=(
+					)
+				_empty_is_missing=true
+			;;
+			( __* )
+				continue
+			;;
+			( * )
+				false -- '[0x78bbf839]' "${_case_associated}"
 			;;
 		esac
 		
@@ -882,14 +933,17 @@
 		esac
 		
 		case "${_case_deterministic}" in
-			( with-siv )
+			( deterministic )
 				if test "${_case_tool}" != password ; then
 					_encrypt_arguments+=(
 							--siv
 						)
 				fi
 			;;
-			( with-salt )
+			( randomized )
+				if test "${_case_tool}" == password ; then
+					continue
+				fi
 			;;
 			( __* )
 				continue
@@ -900,7 +954,7 @@
 		esac
 		
 		printf -- '\n' >&2
-		printf -- '[ii]  running iteration `%s %s %s %s %s %s`...\n' "${_case_tool}" "${_case_send}" "${_case_pin}" "${_case_secret}" "${_case_ssh_wrap}" "${_case_deterministic}" >&2
+		printf -- '[ii]  running iteration `%s %s %s %s %s %s %s`...\n' "${_case_tool}" "${_case_send}" "${_case_pin}" "${_case_secret}" "${_case_ssh_wrap}" "${_case_associated}" "${_case_deterministic}" >&2
 		
 		if test "${#_encrypt_arguments[@]}" -eq 0 ; then
 			printf -- '[ii]    -> empty arguments;  skipping!\n' >&2
@@ -971,7 +1025,7 @@
 		
 		printf -- '\n' >&2
 		
-	done ; done ; done ; done ; done ; done
+	done ; done ; done ; done ; done ; done ; done
 !!
 
 
@@ -1094,6 +1148,10 @@
 
 :: tests / quick / exchange / set / keys / both :: export -- __ZTOKENS_EXCHANGE_SENDER_PRIVATE=ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 __ZTOKENS_EXCHANGE_SENDER_PUBLIC=ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88 __ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE=ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk __ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC=ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah
 :: tests / quick / exchange / set / keys / self :: export -- __ZTOKENS_EXCHANGE_SENDER_PRIVATE=ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m __ZTOKENS_EXCHANGE_SENDER_PUBLIC= __ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE=ztxrk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqfgdyps __ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC=
+
+:: tests / quick / exchange / set / associated / empty :: export -- __ZTOKENS_EXCHANGE_ASSOCIATED=''
+:: tests / quick / exchange / set / associated / 1234 :: export -- __ZTOKENS_EXCHANGE_ASSOCIATED='1234'
+:: tests / quick / exchange / set / associated / random :: export -- __ZTOKENS_EXCHANGE_ASSOCIATED="${SRANDOM}"
 
 :: tests / quick / exchange / set / secret / empty :: export -- __ZTOKENS_EXCHANGE_SECRET=''
 :: tests / quick / exchange / set / secret / testing-1 :: export -- __ZTOKENS_EXCHANGE_SECRET='ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm'
