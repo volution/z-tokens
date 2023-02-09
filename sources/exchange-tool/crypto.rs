@@ -227,6 +227,10 @@ pub fn password (
 
 
 
+
+
+
+
 pub fn encrypt (
 			_sender : Option<&SenderPrivateKey>,
 			_recipient : Option<&RecipientPublicKey>,
@@ -355,6 +359,10 @@ pub fn encrypt (
 	
 	Ok (())
 }
+
+
+
+
 
 
 
@@ -728,7 +736,11 @@ fn derive_keys_phase_2 (
 			_secret_hash : (InternalSecretHash, Vec<InternalSecretHash>),
 			_pin_hash : (InternalPinHash, Vec<InternalPinHash>),
 			_oracles : (Vec<(&mut SshWrapper, InternalOracleHandle)>, InternalOracleHandle),
-		) -> CryptoResult<(InternalPacketKey, InternalEncryptionKey, InternalAuthenticationKey)>
+		) -> CryptoResult<(
+			InternalPacketKey,
+			InternalEncryptionKey,
+			InternalAuthenticationKey,
+		)>
 {
 	let (_secret_hash, _secret_hashes) = _secret_hash;
 	let (_pin_hash, _pin_hashes) = _pin_hash;
@@ -918,11 +930,19 @@ fn apply_argon_pin (_pin_hash : InternalPinHash, _pin_salt : &InternalPinSalt) -
 
 
 
+
+
+
+
 fn wrap_associated_and_secrets_and_pins_inputs <'a> (
 			_associated_inputs : &'a [&'a [u8]],
 			_secret_inputs : &'a [&'a [u8]],
 			_pin_inputs : &'a [&'a [u8]],
-		) -> CryptoResult<(Vec<InternalAssociatedInput<'a>>, Vec<InternalSecretInput<'a>>, Vec<InternalPinInput<'a>>)>
+		) -> CryptoResult<(
+			Vec<InternalAssociatedInput<'a>>,
+			Vec<InternalSecretInput<'a>>,
+			Vec<InternalPinInput<'a>>,
+		)>
 {
 	debug_assert! (CRYPTO_ASSOCIATED_COUNT_MAX <= (u32::MAX as usize), "[aa8fdcf2]");
 	debug_assert! (CRYPTO_SECRET_COUNT_MAX <= (u32::MAX as usize), "[424cdca6]");
@@ -950,7 +970,10 @@ fn wrap_associated_and_secrets_and_pins_inputs <'a> (
 
 fn wrap_oracles <'a> (
 			_ssh_wrappers : Vec<&'a mut SshWrapper>,
-		) -> CryptoResult<(Vec<(&'a mut SshWrapper, InternalOracleHandle)>, Vec<InternalOracleHandle>)>
+		) -> CryptoResult<(
+			Vec<(&'a mut SshWrapper, InternalOracleHandle)>,
+			Vec<InternalOracleHandle>,
+		)>
 {
 	debug_assert! (CRYPTO_ORACLE_COUNT_MAX <= (u32::MAX as usize), "[8d49c9e0]");
 	
