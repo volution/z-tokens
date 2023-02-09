@@ -62,7 +62,7 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		_parser.refer (&mut _self_generate)
 				.metavar ("{enabled}")
-				.add_option (&["-o"], ArgStoreConst (Some (true)), "(**CAUTION**, generate one key, and encode it both for sending and receiving)")
+				.add_option (&["-o"], ArgStoreConst (Some (true)), "generate one key, and encode it both for sending and receiving)  (!!! CAUTION !!!)")
 				.add_option (&["--self"], ArgStoreOption, "");
 		
 		_parser.refer (&mut _write_comments)
@@ -193,6 +193,7 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _sender_private : Option<String> = None;
 	let mut _recipient_public : Option<String> = None;
+	let mut _associated : Vec<String> = Vec::new ();
 	let mut _secrets : Vec<String> = Vec::new ();
 	let mut _pins : Vec<String> = Vec::new ();
 	let mut _ssh_wrappers : Vec<String> = Vec::new ();
@@ -210,25 +211,29 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.metavar ("{recipient}")
 				.add_option (&["-r", "--recipient"], ArgStoreOption, "(recipient public key)");
 		
+		_parser.refer (&mut _associated)
+				.metavar ("{associated}")
+				.add_option (&["-a", "--associated"], ArgCollect, "(associated data) (multiple allowed, order is important)");
+		
 		_parser.refer (&mut _secrets)
 				.metavar ("{secret}")
-				.add_option (&["-x", "--secret"], ArgCollect, "(shared secret, for additional security) (multiple allowed)");
+				.add_option (&["-x", "--secret"], ArgCollect, "(shared secret, for additional security) (multiple allowed, in any order)");
 		
 		_parser.refer (&mut _pins)
 				.metavar ("{pin}")
-				.add_option (&["-p", "--pin"], ArgCollect, "(shared PIN, for **WEAK** additional security) (multiple allowed)");
+				.add_option (&["-p", "--pin"], ArgCollect, "(shared PIN, for **WEAK** additional security) (multiple allowed, in any order)");
 		
 		_parser.refer (&mut _ssh_wrappers)
 				.metavar ("{key}")
-				.add_option (&["--ssh-wrap"], ArgCollect, "(shared SSH agent key handle) (multiple allowed)");
+				.add_option (&["--ssh-wrap"], ArgCollect, "(shared SSH agent key handle) (multiple allowed, in any order)");
 		
 		_parser.refer (&mut _deterministic)
 				.metavar ("{bool}")
-				.add_option (&["--siv"], ArgStoreConst (Some (true)), "(deterministic output, based on SIV) (!!!CAUTION!!!)");
+				.add_option (&["--siv"], ArgStoreConst (Some (true)), "(deterministic output, based on SIV) (!!! CAUTION !!!)");
 		
 		_parser.refer (&mut _empty_is_missing)
 				.metavar ("{bool}")
-				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified)")
+				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified) (!!! CAUTION !!!)")
 				.add_option (&["--empty-is-missing"], ArgStoreOption, "");
 		
 		if execute_parser (_parser, _arguments) .else_wrap (0x8a373e9a) ? {
@@ -251,6 +256,9 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapper::connect) .collect::<Result<Vec<_>, _>> () .else_wrap (0xe1f9e4bf) ?;
 	let _ssh_wrappers = _ssh_wrappers.iter_mut () .collect::<Vec<_>> ();
 	
+	let _associated = _associated.into_iter () .filter (|_pin| ! (_pin.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _associated = _associated.iter () .map (String::as_bytes) .collect::<Vec<_>> ();
+	
 	let _secrets = _secrets.into_iter () .filter (|_secret| ! (_secret.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
 	let _secrets = _secrets.into_iter () .map (SharedSecret::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0xab68aede) ?;
 	let _secrets = _secrets.iter () .map (SharedSecret::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
@@ -263,7 +271,7 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _decrypted = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0xb0e8db93) ?;
 	
 	let mut _encrypted = Vec::new ();
-	encrypt (_sender_private, _recipient_public, &_secrets, &_pins, &_decrypted, &mut _encrypted, _ssh_wrappers, _deterministic) .else_wrap (0x38d2ce1e) ?;
+	encrypt (_sender_private, _recipient_public, &_associated, &_secrets, &_pins, &_decrypted, &mut _encrypted, _ssh_wrappers, _deterministic) .else_wrap (0x38d2ce1e) ?;
 	
 	let mut _stream = stdout_locked ();
 	_stream.write (&_encrypted) .else_wrap (0x815d15bc) ?;
@@ -279,6 +287,7 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _recipient_private : Option<String> = None;
 	let mut _sender_public : Option<String> = None;
+	let mut _associated : Vec<String> = Vec::new ();
 	let mut _secrets : Vec<String> = Vec::new ();
 	let mut _pins : Vec<String> = Vec::new ();
 	let mut _ssh_wrappers : Vec<String> = Vec::new ();
@@ -295,21 +304,25 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.metavar ("{recipient}")
 				.add_option (&["-s", "--sender"], ArgStoreOption, "(sender public key)");
 		
+		_parser.refer (&mut _associated)
+				.metavar ("{associated}")
+				.add_option (&["-a", "--associated"], ArgCollect, "(associated data) (multiple allowed, order is important)");
+		
 		_parser.refer (&mut _secrets)
 				.metavar ("{secret}")
-				.add_option (&["-x", "--secret"], ArgCollect, "(shared secret, for additional security) (multiple allowed)");
+				.add_option (&["-x", "--secret"], ArgCollect, "(shared secret, for additional security) (multiple allowed, any order)");
 		
 		_parser.refer (&mut _pins)
 				.metavar ("{pin}")
-				.add_option (&["-p", "--pin"], ArgCollect, "(shared PIN, for **WEAK** additional security) (multiple allowed)");
+				.add_option (&["-p", "--pin"], ArgCollect, "(shared PIN, for **WEAK** additional security) (multiple allowed, any order)");
 		
 		_parser.refer (&mut _ssh_wrappers)
 				.metavar ("{key}")
-				.add_option (&["--ssh-wrap"], ArgCollect, "(shared SSH agent key handle) (multiple allowed)");
+				.add_option (&["--ssh-wrap"], ArgCollect, "(shared SSH agent key handle) (multiple allowed, any order)");
 		
 		_parser.refer (&mut _empty_is_missing)
 				.metavar ("{bool}")
-				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified)")
+				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified) (!!! CAUTION !!!)")
 				.add_option (&["--empty-is-missing"], ArgStoreOption, "");
 		
 		if execute_parser (_parser, _arguments) .else_wrap (0xe3a49130) ? {
@@ -332,6 +345,9 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapper::connect) .collect::<Result<Vec<_>, _>> () .else_wrap (0xfeda4c77) ?;
 	let _ssh_wrappers = _ssh_wrappers.iter_mut () .collect::<Vec<_>> ();
 	
+	let _associated = _associated.into_iter () .filter (|_pin| ! (_pin.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _associated = _associated.iter () .map (String::as_bytes) .collect::<Vec<_>> ();
+	
 	let _secrets = _secrets.into_iter () .filter (|_secret| ! (_secret.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
 	let _secrets = _secrets.into_iter () .map (SharedSecret::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x07d3b030) ?;
 	let _secrets = _secrets.iter () .map (SharedSecret::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
@@ -342,7 +358,7 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _encrypted = read_at_most (stdin_locked (), CRYPTO_ENCRYPTED_SIZE_MAX) .else_wrap (0xf71cef7e) ?;
 	
 	let mut _decrypted = Vec::new ();
-	decrypt (_recipient_private, _sender_public, &_secrets, &_pins, &_encrypted, &mut _decrypted, _ssh_wrappers) .else_wrap (0x95273e1d) ?;
+	decrypt (_recipient_private, _sender_public, &_associated, &_secrets, &_pins, &_encrypted, &mut _decrypted, _ssh_wrappers) .else_wrap (0x95273e1d) ?;
 	
 	let mut _stream = stdout_locked ();
 	_stream.write (&_decrypted) .else_wrap (0x19352ca2) ?;
@@ -358,6 +374,7 @@ pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _sender_private : Option<String> = None;
 	let mut _recipient_public : Option<String> = None;
+	let mut _associated : Vec<String> = Vec::new ();
 	let mut _secrets : Vec<String> = Vec::new ();
 	let mut _pins : Vec<String> = Vec::new ();
 	let mut _ssh_wrappers : Vec<String> = Vec::new ();
@@ -374,21 +391,25 @@ pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.metavar ("{recipient}")
 				.add_option (&["-r", "--recipient"], ArgStoreOption, "(recipient public key)");
 		
+		_parser.refer (&mut _associated)
+				.metavar ("{associated}")
+				.add_option (&["-a", "--associated"], ArgCollect, "(associated data) (multiple allowed, order is important)");
+		
 		_parser.refer (&mut _secrets)
 				.metavar ("{secret}")
-				.add_option (&["-x", "--secret"], ArgCollect, "(shared secret, for additional security) (multiple allowed)");
+				.add_option (&["-x", "--secret"], ArgCollect, "(shared secret, for additional security) (multiple allowed, any order)");
 		
 		_parser.refer (&mut _pins)
 				.metavar ("{pin}")
-				.add_option (&["-p", "--pin"], ArgCollect, "(shared PIN, for **WEAK** additional security) (multiple allowed)");
+				.add_option (&["-p", "--pin"], ArgCollect, "(shared PIN, for **WEAK** additional security) (multiple allowed, any order)");
 		
 		_parser.refer (&mut _ssh_wrappers)
 				.metavar ("{key}")
-				.add_option (&["--ssh-wrap"], ArgCollect, "(shared SSH agent key handle) (multiple allowed)");
+				.add_option (&["--ssh-wrap"], ArgCollect, "(shared SSH agent key handle) (multiple allowed, any order)");
 		
 		_parser.refer (&mut _empty_is_missing)
 				.metavar ("{bool}")
-				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified)")
+				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified) (!!! CAUTION !!!)")
 				.add_option (&["--empty-is-missing"], ArgStoreOption, "");
 		
 		if execute_parser (_parser, _arguments) .else_wrap (0xd3606aac) ? {
@@ -411,6 +432,9 @@ pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapper::connect) .collect::<Result<Vec<_>, _>> () .else_wrap (0x2c549ad6) ?;
 	let _ssh_wrappers = _ssh_wrappers.iter_mut () .collect::<Vec<_>> ();
 	
+	let _associated = _associated.into_iter () .filter (|_pin| ! (_pin.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _associated = _associated.iter () .map (String::as_bytes) .collect::<Vec<_>> ();
+	
 	let _secrets = _secrets.into_iter () .filter (|_secret| ! (_secret.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
 	let _secrets = _secrets.into_iter () .map (SharedSecret::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x20de63fc) ?;
 	let _secrets = _secrets.iter () .map (SharedSecret::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
@@ -421,7 +445,7 @@ pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _password_input = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0x6772b7e4) ?;
 	
 	let mut _password_output = [0u8; 32];
-	password (_sender_private, _recipient_public, &_secrets, &_pins, &_password_input, &mut _password_output, _ssh_wrappers) .else_wrap (0xec55f5c3) ?;
+	password (_sender_private, _recipient_public, &_associated, &_secrets, &_pins, &_password_input, &mut _password_output, _ssh_wrappers) .else_wrap (0xec55f5c3) ?;
 	
 	let mut _password_buffer = String::with_capacity (_password_output.len () * 2 + 1);
 	for _password_output_byte in _password_output {
@@ -606,7 +630,7 @@ pub fn main_ssh_wrap (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		_parser.refer (&mut _empty_is_missing)
 				.metavar ("{bool}")
-				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified)")
+				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified) (!!! CAUTION !!!)")
 				.add_option (&["--empty-is-missing"], ArgStoreOption, "");
 		
 		if execute_parser (_parser, _arguments) .else_wrap (0x596c8a62) ? {
