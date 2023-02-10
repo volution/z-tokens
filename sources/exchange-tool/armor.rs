@@ -41,7 +41,7 @@ pub const ARMOR_ENCODED_SIZE_MAX : usize =
 const ARMOR_ENCODED_FINGERPRINT : usize = CODING_CHUNK_DECODED_SIZE * 2 - 4;
 
 
-define_cryptographic_context! (ARMOR_AONT_KEY_CONTEXT, armor, aont_key);
+define_cryptographic_purpose! (ARMOR_AONT_KEY_PURPOSE, armor, aont_key);
 
 
 
@@ -180,7 +180,7 @@ fn apply_all_or_nothing_encryption (_fingerprint : &[u8; ARMOR_ENCODED_FINGERPRI
 	use ::chacha20::cipher::StreamCipher as _;
 	
 	let _key : [u8; 32] =
-			::blake3::Hasher::new_derive_key (ARMOR_AONT_KEY_CONTEXT)
+			::blake3::Hasher::new_derive_key (ARMOR_AONT_KEY_PURPOSE)
 			.update (_fingerprint)
 			.finalize ()
 			.into ();

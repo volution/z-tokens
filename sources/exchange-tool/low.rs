@@ -90,7 +90,7 @@ const ARGON_P_COST : u32 = 1;
 
 pub(crate) fn x25519_dhe <WC, WO> (
 		_wrapper : WC,
-		_context : &'static str,
+		_purpose : &'static str,
 		_private : &x25519::StaticSecret,
 		_public : Option<&x25519::PublicKey>,
 		_encryption : bool,
@@ -119,7 +119,7 @@ pub(crate) fn x25519_dhe <WC, WO> (
 	
 	let _shared_key = blake3_derive_key (
 			_wrapper,
-			_context,
+			_purpose,
 			&[
 				_dhe,
 				_sender_public,
@@ -137,7 +137,7 @@ pub(crate) fn x25519_dhe <WC, WO> (
 
 pub(crate) fn blake3_derive_key <const NF : usize, const NV : usize, WC, WO> (
 		_wrapper : WC,
-		_context : &'static str,
+		_purpose : &'static str,
 		_fixed_elements : &[&[u8; 32]; NF],
 		_variable_elements : &[&[u8]; NV],
 		_index : Option<u32>,
@@ -145,7 +145,7 @@ pub(crate) fn blake3_derive_key <const NF : usize, const NV : usize, WC, WO> (
 	where
 		WC : Fn ([u8; 32]) -> WO,
 {
-	let mut _hasher = Blake3::new_derive_key (_context);
+	let mut _hasher = Blake3::new_derive_key (_purpose);
 	
 	blake3_update (&mut _hasher, _fixed_elements, _variable_elements, _index);
 	
@@ -207,13 +207,13 @@ pub(crate) fn blake3_update <const NF : usize, const NV : usize> (
 
 pub(crate) fn blake3_derive_key_join <'a, WC, WO> (
 		_wrapper : WC,
-		_context : &'static str,
+		_purpose : &'static str,
 		_elements : impl Iterator<Item = &'a [u8; 32]>,
 	) -> WO
 	where
 		WC : Fn ([u8; 32]) -> WO,
 {
-	let mut _hasher = Blake3::new_derive_key (_context);
+	let mut _hasher = Blake3::new_derive_key (_purpose);
 	
 	for _element in _elements {
 		_hasher.update (_element);

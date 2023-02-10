@@ -114,31 +114,31 @@ define_cryptographic_material! (InternalPasswordOutput, 32);
 
 
 
-define_cryptographic_context! (CRYPTO_DHE_KEY_CONTEXT, encryption, dhe_key);
-define_cryptographic_context! (CRYPTO_PARTIAL_KEY_CONTEXT, encryption, partial_key);
-define_cryptographic_context! (CRYPTO_AONT_KEY_CONTEXT, encryption, aont_key);
+define_cryptographic_purpose! (CRYPTO_DHE_KEY_PURPOSE, encryption, dhe_key);
+define_cryptographic_purpose! (CRYPTO_PARTIAL_KEY_PURPOSE, encryption, partial_key);
+define_cryptographic_purpose! (CRYPTO_AONT_KEY_PURPOSE, encryption, aont_key);
 
-define_cryptographic_context! (CRYPTO_PACKET_SALT_CONTEXT, encryption, packet_salt);
-define_cryptographic_context! (CRYPTO_PACKET_KEY_CONTEXT, encryption, packet_key);
-define_cryptographic_context! (CRYPTO_ENCRYPTION_KEY_CONTEXT, encryption, encryption_key);
-define_cryptographic_context! (CRYPTO_AUTHENTICATION_KEY_CONTEXT, encryption, authentication_key);
+define_cryptographic_purpose! (CRYPTO_PACKET_SALT_PURPOSE, encryption, packet_salt);
+define_cryptographic_purpose! (CRYPTO_PACKET_KEY_PURPOSE, encryption, packet_key);
+define_cryptographic_purpose! (CRYPTO_ENCRYPTION_KEY_PURPOSE, encryption, encryption_key);
+define_cryptographic_purpose! (CRYPTO_AUTHENTICATION_KEY_PURPOSE, encryption, authentication_key);
 
-define_cryptographic_context! (CRYPTO_ASSOCIATED_HASH_CONTEXT, encryption, associated_hash);
+define_cryptographic_purpose! (CRYPTO_ASSOCIATED_HASH_PURPOSE, encryption, associated_hash);
 
-define_cryptographic_context! (CRYPTO_SECRET_HASH_CONTEXT, encryption, secret_hash);
-define_cryptographic_context! (CRYPTO_SECRET_SALT_CONTEXT, encryption, secret_salt);
-define_cryptographic_context! (CRYPTO_SECRET_KEY_CONTEXT, encryption, secret_key);
+define_cryptographic_purpose! (CRYPTO_SECRET_HASH_PURPOSE, encryption, secret_hash);
+define_cryptographic_purpose! (CRYPTO_SECRET_SALT_PURPOSE, encryption, secret_salt);
+define_cryptographic_purpose! (CRYPTO_SECRET_KEY_PURPOSE, encryption, secret_key);
 
-define_cryptographic_context! (CRYPTO_PIN_HASH_CONTEXT, encryption, pin_hash);
-define_cryptographic_context! (CRYPTO_PIN_SALT_CONTEXT, encryption, pin_salt);
-define_cryptographic_context! (CRYPTO_PIN_KEY_CONTEXT, encryption, pin_key);
+define_cryptographic_purpose! (CRYPTO_PIN_HASH_PURPOSE, encryption, pin_hash);
+define_cryptographic_purpose! (CRYPTO_PIN_SALT_PURPOSE, encryption, pin_salt);
+define_cryptographic_purpose! (CRYPTO_PIN_KEY_PURPOSE, encryption, pin_key);
 
-define_cryptographic_context! (CRYPTO_ORACLE_HANDLE_CONTEXT, encryption, oracle_handle);
-define_cryptographic_context! (CRYPTO_ORACLE_INPUT_CONTEXT, encryption, oracle_input);
-define_cryptographic_context! (CRYPTO_ORACLE_OUTPUT_CONTEXT, encryption, oracle_output);
+define_cryptographic_purpose! (CRYPTO_ORACLE_HANDLE_PURPOSE, encryption, oracle_handle);
+define_cryptographic_purpose! (CRYPTO_ORACLE_INPUT_PURPOSE, encryption, oracle_input);
+define_cryptographic_purpose! (CRYPTO_ORACLE_OUTPUT_PURPOSE, encryption, oracle_output);
 
-define_cryptographic_context! (CRYPTO_PASSWORD_SALT_CONTEXT, password, salt);
-define_cryptographic_context! (CRYPTO_PASSWORD_OUTPUT_CONTEXT, password, output);
+define_cryptographic_purpose! (CRYPTO_PASSWORD_SALT_PURPOSE, password, salt);
+define_cryptographic_purpose! (CRYPTO_PASSWORD_OUTPUT_PURPOSE, password, output);
 
 
 
@@ -186,7 +186,7 @@ pub fn password (
 	
 	let _packet_salt = blake3_derive_key (
 			InternalPacketSalt::wrap,
-			CRYPTO_PASSWORD_SALT_CONTEXT,
+			CRYPTO_PASSWORD_SALT_PURPOSE,
 			&[
 				_partial_key.access (),
 			],
@@ -205,7 +205,7 @@ pub fn password (
 	
 	let _password_output_0 = blake3_derive_key (
 			InternalPasswordOutput::wrap,
-			CRYPTO_PASSWORD_OUTPUT_CONTEXT,
+			CRYPTO_PASSWORD_OUTPUT_PURPOSE,
 			&[
 				_packet_key.access (),
 			],
@@ -295,7 +295,7 @@ pub fn encrypt (
 			
 			blake3_derive_key (
 					InternalPacketSalt::wrap,
-					CRYPTO_PACKET_SALT_CONTEXT,
+					CRYPTO_PACKET_SALT_PURPOSE,
 					&[
 						_partial_key.access (),
 					],
@@ -579,7 +579,7 @@ fn derive_keys_phase_1 (
 			|_associated_input|
 					blake3_derive_key (
 							InternalAssociatedHash::wrap,
-							CRYPTO_ASSOCIATED_HASH_CONTEXT,
+							CRYPTO_ASSOCIATED_HASH_PURPOSE,
 							&[],
 							&[
 								_associated_input.access_consume (),
@@ -592,7 +592,7 @@ fn derive_keys_phase_1 (
 	
 	let _associated_hash = blake3_derive_key_join (
 			InternalAssociatedHash::wrap,
-			CRYPTO_ASSOCIATED_HASH_CONTEXT,
+			CRYPTO_ASSOCIATED_HASH_PURPOSE,
 			_associated_hashes.iter () .map (InternalAssociatedHash::access),
 		);
 	
@@ -603,7 +603,7 @@ fn derive_keys_phase_1 (
 			|_secret_input|
 					blake3_derive_key (
 							InternalSecretHash::wrap,
-							CRYPTO_SECRET_HASH_CONTEXT,
+							CRYPTO_SECRET_HASH_PURPOSE,
 							&[],
 							&[
 								_secret_input.access_consume (),
@@ -617,7 +617,7 @@ fn derive_keys_phase_1 (
 	
 	let _secret_hash = blake3_derive_key_join (
 			InternalSecretHash::wrap,
-			CRYPTO_SECRET_HASH_CONTEXT,
+			CRYPTO_SECRET_HASH_PURPOSE,
 			_secret_hashes.iter () .map (InternalSecretHash::access),
 		);
 	
@@ -628,7 +628,7 @@ fn derive_keys_phase_1 (
 			|_pin_input|
 					blake3_derive_key (
 							InternalPinHash::wrap,
-							CRYPTO_PIN_HASH_CONTEXT,
+							CRYPTO_PIN_HASH_PURPOSE,
 							&[],
 							&[
 								_pin_input.access_consume (),
@@ -642,7 +642,7 @@ fn derive_keys_phase_1 (
 	
 	let _pin_hash = blake3_derive_key_join (
 			InternalPinHash::wrap,
-			CRYPTO_PIN_HASH_CONTEXT,
+			CRYPTO_PIN_HASH_PURPOSE,
 			_pin_hashes.iter () .map (InternalPinHash::access),
 		);
 	
@@ -651,7 +651,7 @@ fn derive_keys_phase_1 (
 	
 	let _oracle_hash = blake3_derive_key_join (
 			InternalOracleHandle::wrap,
-			CRYPTO_ORACLE_HANDLE_CONTEXT,
+			CRYPTO_ORACLE_HANDLE_PURPOSE,
 			_oracle_handles.iter () .map (InternalOracleHandle::access),
 		);
 	
@@ -662,7 +662,7 @@ fn derive_keys_phase_1 (
 			
 			x25519_dhe (
 				InternalDheKey::wrap,
-				CRYPTO_DHE_KEY_CONTEXT,
+				CRYPTO_DHE_KEY_PURPOSE,
 				_private,
 				_public,
 				_encryption,
@@ -685,7 +685,7 @@ fn derive_keys_phase_1 (
 	
 	let _partial_key = blake3_derive_key (
 			InternalPartialKey::wrap,
-			CRYPTO_PARTIAL_KEY_CONTEXT,
+			CRYPTO_PARTIAL_KEY_PURPOSE,
 			&[
 				_oracle_hash.access (),
 				_secret_hash.access (),
@@ -704,7 +704,7 @@ fn derive_keys_phase_1 (
 	
 	let _aont_key = blake3_derive_key (
 			InternalAontKey::wrap,
-			CRYPTO_AONT_KEY_CONTEXT,
+			CRYPTO_AONT_KEY_PURPOSE,
 			&[
 				_partial_key.access (),
 			],
@@ -755,7 +755,7 @@ fn derive_keys_phase_2 (
 		
 		let _oracle_input = blake3_derive_key (
 				InternalOracleInput::wrap,
-				CRYPTO_ORACLE_INPUT_CONTEXT,
+				CRYPTO_ORACLE_INPUT_PURPOSE,
 				&[
 					_oracle_handle.access (),
 					_oracle_key.access (),
@@ -771,7 +771,7 @@ fn derive_keys_phase_2 (
 		
 		_oracle_key = blake3_derive_key (
 				InternalOracleOutput::wrap,
-				CRYPTO_ORACLE_OUTPUT_CONTEXT,
+				CRYPTO_ORACLE_OUTPUT_PURPOSE,
 				&[
 					_oracle_input.access (),
 					_oracle_output.access (),
@@ -790,7 +790,7 @@ fn derive_keys_phase_2 (
 		
 		let _secret_salt = blake3_derive_key (
 				InternalSecretSalt::wrap,
-				CRYPTO_SECRET_SALT_CONTEXT,
+				CRYPTO_SECRET_SALT_PURPOSE,
 				&[
 					_secret_key.access (),
 					_oracle_key.access (),
@@ -805,7 +805,7 @@ fn derive_keys_phase_2 (
 		
 		_secret_key = blake3_derive_key (
 				InternalSecretKey::wrap,
-				CRYPTO_SECRET_KEY_CONTEXT,
+				CRYPTO_SECRET_KEY_PURPOSE,
 				&[
 					_secret_salt.access (),
 					_secret_argon.access (),
@@ -824,7 +824,7 @@ fn derive_keys_phase_2 (
 		
 		let _pin_salt = blake3_derive_key (
 				InternalPinSalt::wrap,
-				CRYPTO_PIN_SALT_CONTEXT,
+				CRYPTO_PIN_SALT_PURPOSE,
 				&[
 					_pin_key.access (),
 					_oracle_key.access (),
@@ -839,7 +839,7 @@ fn derive_keys_phase_2 (
 		
 		_pin_key = blake3_derive_key (
 				InternalPinKey::wrap,
-				CRYPTO_PIN_KEY_CONTEXT,
+				CRYPTO_PIN_KEY_PURPOSE,
 				&[
 					_pin_salt.access (),
 					_pin_argon.access (),
@@ -854,7 +854,7 @@ fn derive_keys_phase_2 (
 	
 	let _packet_key = blake3_derive_key (
 			InternalPacketKey::wrap,
-			CRYPTO_PACKET_KEY_CONTEXT,
+			CRYPTO_PACKET_KEY_PURPOSE,
 			&[
 				_oracle_key.access (),
 				_secret_key.access (),
@@ -871,7 +871,7 @@ fn derive_keys_phase_2 (
 	
 	let _encryption_key = blake3_derive_key (
 			InternalEncryptionKey::wrap,
-			CRYPTO_ENCRYPTION_KEY_CONTEXT,
+			CRYPTO_ENCRYPTION_KEY_PURPOSE,
 			&[
 				_packet_key.access (),
 			],
@@ -884,7 +884,7 @@ fn derive_keys_phase_2 (
 	
 	let _authentication_key = blake3_derive_key (
 			InternalAuthenticationKey::wrap,
-			CRYPTO_AUTHENTICATION_KEY_CONTEXT,
+			CRYPTO_AUTHENTICATION_KEY_PURPOSE,
 			&[
 				_packet_key.access (),
 			],

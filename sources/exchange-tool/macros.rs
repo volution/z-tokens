@@ -1,6 +1,6 @@
 
 
-macro_rules! define_cryptographic_context {
+macro_rules! define_cryptographic_purpose {
 	
 	( $_visibility : vis $_identifier : ident, $_namespace : ident, $_purpose : ident ) => {
 		
@@ -105,7 +105,7 @@ macro_rules! drop {
 
 
 pub(crate) use define_cryptographic_material;
-pub(crate) use define_cryptographic_context;
+pub(crate) use define_cryptographic_purpose;
 pub(crate) use drop;
 
 

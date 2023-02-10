@@ -72,9 +72,9 @@ define_cryptographic_material! (InternalSshWrapInputHash, 32);
 define_cryptographic_material! (InternalSshWrapOutputHash, 32);
 
 
-define_cryptographic_context! (SSH_WRAP_KEY_HASH_CONTEXT, ssh_wrap, key_hash);
-define_cryptographic_context! (SSH_WRAP_INPUT_HASH_CONTEXT, ssh_wrap, input_hash);
-define_cryptographic_context! (SSH_WRAP_OUTPUT_HASH_CONTEXT, ssh_wrap, output_hash);
+define_cryptographic_purpose! (SSH_WRAP_KEY_HASH_PURPOSE, ssh_wrap, key_hash);
+define_cryptographic_purpose! (SSH_WRAP_INPUT_HASH_PURPOSE, ssh_wrap, input_hash);
+define_cryptographic_purpose! (SSH_WRAP_OUTPUT_HASH_PURPOSE, ssh_wrap, output_hash);
 
 
 
@@ -217,7 +217,7 @@ impl SshWrapper {
 		
 		let _input_hash = blake3_derive_key (
 				InternalSshWrapInputHash::wrap,
-				SSH_WRAP_INPUT_HASH_CONTEXT,
+				SSH_WRAP_INPUT_HASH_PURPOSE,
 				&[
 					_key_hash.access (),
 				],
@@ -269,7 +269,7 @@ impl SshWrapper {
 		
 		let _output_hash = blake3_derive_key (
 				InternalSshWrapOutputHash::wrap,
-				SSH_WRAP_OUTPUT_HASH_CONTEXT,
+				SSH_WRAP_OUTPUT_HASH_PURPOSE,
 				&[
 					_key_hash.access (),
 					_input_hash.access (),
@@ -493,7 +493,7 @@ fn key_hash (_key_algorithm : &KeyAlgorithm, _signature_algorithm : &SignatureAl
 	
 	let _key_hash = blake3_derive_key (
 			InternalSshWrapKeyHash::wrap,
-			SSH_WRAP_KEY_HASH_CONTEXT,
+			SSH_WRAP_KEY_HASH_PURPOSE,
 			&[],
 			&[
 				_key_algorithm.identifier () .as_bytes (),
