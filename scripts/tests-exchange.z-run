@@ -683,8 +683,8 @@
 	for _case_associated in without-associated empty-associated with-associated-1 with-associated-2 ; do
 	for _case_send in without-x25519 empty-x25519 send-x25519 self-x25519 ; do
 		
-		_pin_1="${SRANDOM}"
-		_pin_2="${SRANDOM}"
+		_pin_1=1234
+		_pin_2=5678
 		
 		_associated_1='associated-1'
 		_associated_2='associated-2'
