@@ -92,6 +92,7 @@ generate / pattern / no-mandatory-separators :: generate --token-pattern mnemoni
 hash / md5 / default :: hash --md5 --token 1234
 hash / sha1 / default :: hash --sha1 --token 1234
 hash / sha2 / default :: hash --sha2 --token 1234
+
 hash / sha3 / default :: hash --sha3 --token 1234
 hash / sha3 / size-01 :: hash --sha3 --token 1234 --size 1
 hash / sha3 / size-04 :: hash --sha3 --token 1234 --size 4
@@ -109,11 +110,33 @@ hash / sha3 / size-40 :: hash --sha3 --token 1234 --size 40
 hash / sha3 / size-48 :: hash --sha3 --token 1234 --size 48
 hash / sha3 / size-56 :: hash --sha3 --token 1234 --size 56
 hash / sha3 / size-64 :: hash --sha3 --token 1234 --size 64
+
 hash / blake2 / default :: hash --blake2 --token 1234
 hash / blake2s / default :: hash --blake2s --token 1234
 hash / blake2b / default :: hash --blake2b --token 1234
+
 hash / blake3 / default :: hash --blake3 --token 1234
 hash / blake3 / size-128 :: hash --blake3 --token 1234 --size 128
+
+hash / siphash / default :: hash --siphash --token 1234
+hash / siphash / size-64 :: hash --siphash --token 1234 --64b
+hash / siphash / size-128 :: hash --siphash --token 1234 --128b
+
+hash / highway / default :: hash --highway --token 1234
+hash / highway / size-64 :: hash --highway --token 1234 --64b
+hash / highway / size-128 :: hash --highway --token 1234 --128b
+hash / highway / size-256 :: hash --highway --token 1234 --256b
+
+hash / seahash / default :: hash --seahash --token 1234
+
+hash / xxhash / default :: hash --xxhash --token 1234
+hash / xxhash / size-32 :: hash --xxhash --token 1234 --32b
+hash / xxhash / size-64 :: hash --xxhash --token 1234 --64b
+
+hash / xxh3 / default :: hash --xxh3 --token 1234
+hash / xxh3 / size-64 :: hash --xxh3 --token 1234 --64b
+hash / xxh3 / size-128 :: hash --xxh3 --token 1234 --128b
+
 hash / argon2 / default :: hash --argon2 --token 1234
 hash / argon2 / size-16 :: hash --argon2 --token 1234 --size 16
 hash / argon2d / size-16 :: hash --argon2d --token 1234 --size 16

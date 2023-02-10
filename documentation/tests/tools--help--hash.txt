@@ -21,6 +21,11 @@ Optional arguments:
   --argon2d             (use Argon2d) !!! EXPERIMENTAL !!!
   --argon2i             (use Argon2i) !!! EXPERIMENTAL !!!
   --argon2id            (use Argon2id) !!! EXPERIMENTAL !!!
+  --siphash             (use SipHash) !!! WEAK !!!
+  --seahash             (use SeaHash) !!! WEAK !!!
+  --highway             (use HighwayHash) !!! WEAK !!!
+  --xxhash              (use XxHash) !!! WEAK !!!
+  --xxh3                (use Xxh3) !!! WEAK and EXPERIMENTAL !!!
   -s,--size {size}      (hash output size in bytes)
   --8b,--1B             (output 8 bits / 1 byte)
   --16b,--2B            (output 16 bits / 2 bytes)
@@ -30,4 +35,5 @@ Optional arguments:
   --256b,--32B          (output 256 bits / 32 bytes)
   --512b,--64B          (output 512 bits / 64 bytes)
   -i,--stdin            (read from stdin)
+  -f,--file {input}     (read from file)
   -t,--token {input}    (use this argument)

@@ -1,18 +1,18 @@
 >>  z-tokens exchange keys
 
 ## sender private key
-ztxsk1zztajy4lckutml4fatk0jp989c7mehx57p7pm0x850r265w603nqfcpq63
+ztxsk1eqler8ahch680scha0w45yktwzykut8x7sp6vp6sgmgz57a9f49qv8flmu
 ## sender public key
-ztxsp1yvs9w3pf5u4yd0mv9c9dft8uxjtlmstjhpqq9f3gc6g4xchgk4lsjamtfk
+ztxsp17exrk5yn8jgmhtctfuzy2ysqt3f04kz3gxzejl6r26v6wlxu746qw4vwlh
 
 ## recipient private key
-ztxrk1vreq8jz37gzwvk98aleuqcs4uxm566ejdx7nargry6qafu2sldrq46u4aj
+ztxrk1kzj673e3mzu032a58vhj3jl9jd0fy8mxmn7qn2qjxvx2vlwmw9gs2d70s3
 ## recipient public key
-ztxrp16lll6njg5ewz5udac6jxqv37usfx30ktxlrc5yp6c9c7fxs8q92s5v9r0v
+ztxrp1ut6d2gmd6kfw9h26n55s956egsz4q0ymgswkp0zfg4j8jfqp63vq5repvv
 
 ## shared secret (optional)
-ztxcs1kt4g37twgs45c0cvdc4ha42hd5046q8xsts8xhux5ml2uzt79h7s3y3ppc
+ztxcs1hu7da9yp0scv0s7c5qgezw7sn3q4gma6zgnglf32lganpdmc8e7sa9ln6n
 
 ## shared pin (optional)
-9477199757
+7311841032
 
