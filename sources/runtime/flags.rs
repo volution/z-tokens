@@ -14,6 +14,7 @@ pub use ::argparse::{
 		StoreConst as ArgStoreConst,
 		StoreOption as ArgStoreOption,
 		Collect as ArgCollect,
+		self as argparse,
 	};
 
 
