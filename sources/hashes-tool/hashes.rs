@@ -75,10 +75,24 @@ pub fn hash (_algorithm : Algorithm, _output_size : usize, _input : impl Input) 
 		Algorithm::Argon2id =>
 			hash_argon (::argon2::Algorithm::Argon2id, _input, &mut _output) ?,
 		
+		Algorithm::XxHash_32 =>
+			hash_xxhash_32 (_input, &mut _output) ?,
+		Algorithm::XxHash_64 =>
+			hash_xxhash_64 (_input, &mut _output) ?,
+		
+		Algorithm::Xxh3_64 =>
+			hash_xxh3_64 (_input, &mut _output) ?,
+		Algorithm::Xxh3_128 =>
+			hash_xxh3_128 (_input, &mut _output) ?,
+		
 	}
 	
 	Ok (_output)
 }
+
+
+
+
 
 
 
@@ -131,6 +145,103 @@ fn hash_update <Hasher> (_hasher : &mut Hasher, mut _input : impl Input) -> Hash
 	
 	Ok (())
 }
+
+
+
+
+
+
+
+
+fn hash_xxhash_32 (_input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hasher = ::twox_hash::XxHash32::with_seed (0);
+	hash_update_std (&mut _hasher, _input) ?;
+	let _hash_value = Hasher::finish (&_hasher) as u32;
+	
+	let mut _hash_bytes = [0u8; 4];
+	use ::byteorder::ByteOrder as _;
+	::byteorder::BigEndian::write_u32 (&mut _hash_bytes, _hash_value);
+	
+	copy_output_from_slice (&_hash_bytes, _output)
+}
+
+
+fn hash_xxhash_64 (_input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hasher = ::twox_hash::XxHash64::with_seed (0);
+	hash_update_std (&mut _hasher, _input) ?;
+	let _hash_value = Hasher::finish (&_hasher);
+	
+	let mut _hash_bytes = [0u8; 8];
+	use ::byteorder::ByteOrder as _;
+	::byteorder::BigEndian::write_u64 (&mut _hash_bytes, _hash_value);
+	
+	copy_output_from_slice (&_hash_bytes, _output)
+}
+
+
+
+
+fn hash_xxh3_64 (_input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hasher = ::twox_hash::Xxh3Hash64::with_seed (0);
+	hash_update_std (&mut _hasher, _input) ?;
+	let _hash_value = Hasher::finish (&_hasher);
+	
+	let mut _hash_bytes = [0u8; 8];
+	use ::byteorder::ByteOrder as _;
+	::byteorder::BigEndian::write_u64 (&mut _hash_bytes, _hash_value);
+	
+	copy_output_from_slice (&_hash_bytes, _output)
+}
+
+
+fn hash_xxh3_128 (_input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hasher = ::twox_hash::Xxh3Hash128::with_seed (0);
+	hash_update_std (&mut _hasher, _input) ?;
+	let _hash_value = ::twox_hash::xxh3::HasherExt::finish_ext (&_hasher);
+	
+	let mut _hash_bytes = [0u8; 16];
+	use ::byteorder::ByteOrder as _;
+	::byteorder::BigEndian::write_u128 (&mut _hash_bytes, _hash_value);
+	
+	copy_output_from_slice (&_hash_bytes, _output)
+}
+
+
+
+
+fn hash_update_std <Hasher> (_hasher : &mut Hasher, mut _input : impl Input) -> HashResult
+		where Hasher : hash::Hasher
+{
+	while let Some (_data) = _input.input () .else_wrap (0x397076d5) ? {
+		_hasher.write (_data);
+	}
+	
+	Ok (())
+}
+
+
+
+
+fn copy_output_from_slice (_hash : &[u8], _output : &mut [u8]) -> HashResult {
+	
+	let _output_len = _output.len ();
+	
+	if _hash.len () < _output_len {
+		fail! (0xedf869a5);
+	}
+	
+	_output.copy_from_slice (&_hash[.. _output_len]);
+	
+	Ok (())
+}
+
+
+
+
 
 
 

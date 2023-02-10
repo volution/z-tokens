@@ -17,6 +17,7 @@ pub const OUTPUT_SIZE_MAX : usize = 1024 * 1024 * 1024;
 
 
 #[ derive (Copy, Clone) ]
+#[ allow (non_camel_case_types) ]
 pub enum Family {
 	
 	MD5,
@@ -37,10 +38,14 @@ pub enum Family {
 	Argon2i,
 	Argon2id,
 	
+	XxHash,
+	Xxh3,
+	
 }
 
 
 #[ derive (Copy, Clone) ]
+#[ allow (non_camel_case_types) ]
 pub enum Algorithm {
 	
 	MD5,
@@ -66,6 +71,12 @@ pub enum Algorithm {
 	Argon2d,
 	Argon2i,
 	Argon2id,
+	
+	XxHash_32,
+	XxHash_64,
+	
+	Xxh3_64,
+	Xxh3_128,
 	
 }
 
@@ -101,6 +112,8 @@ impl Family {
 			Family::Argon2d |
 			Family::Argon2i |
 			Family::Argon2id => (4, OUTPUT_SIZE_MAX, 32),
+			Family::XxHash => (1, 64 / 8, 64 / 8),
+			Family::Xxh3 => (1, 128 / 8, 128 / 8),
 		}
 	}
 	
@@ -132,6 +145,12 @@ impl Family {
 			Family::Argon2d => Ok (Algorithm::Argon2d),
 			Family::Argon2i => Ok (Algorithm::Argon2i),
 			Family::Argon2id => Ok (Algorithm::Argon2id),
+			
+			Family::XxHash if _output_size <= 32 / 8 => Ok (Algorithm::XxHash_32),
+			Family::XxHash if _output_size <= 64 / 8 => Ok (Algorithm::XxHash_64),
+			
+			Family::Xxh3 if _output_size <= 64 / 8 => Ok (Algorithm::Xxh3_64),
+			Family::Xxh3 if _output_size <= 128 / 8 => Ok (Algorithm::Xxh3_128),
 			
 			_ =>
 				fail! (0x36b18fd0),

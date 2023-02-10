@@ -48,7 +48,9 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.add_option (&["--argon2"], ArgStoreConst (Some (Family::Argon2)), "(use one of Argon2 family) !!! EXPERIMENTAL !!!")
 				.add_option (&["--argon2d"], ArgStoreConst (Some (Family::Argon2d)), "(use Argon2d) !!! EXPERIMENTAL !!!")
 				.add_option (&["--argon2i"], ArgStoreConst (Some (Family::Argon2i)), "(use Argon2i) !!! EXPERIMENTAL !!!")
-				.add_option (&["--argon2id"], ArgStoreConst (Some (Family::Argon2id)), "(use Argon2id) !!! EXPERIMENTAL !!!");
+				.add_option (&["--argon2id"], ArgStoreConst (Some (Family::Argon2id)), "(use Argon2id) !!! EXPERIMENTAL !!!")
+				.add_option (&["--xxhash"], ArgStoreConst (Some (Family::XxHash)), "(use XxHash) !!! WEAK !!!")
+				.add_option (&["--xxh3"], ArgStoreConst (Some (Family::Xxh3)), "(use Xxh3) !!! WEAK and EXPERIMENTAL !!!");
 		
 		_parser.refer (&mut _output_size)
 				.metavar ("{size}")
