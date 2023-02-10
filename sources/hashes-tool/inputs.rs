@@ -94,6 +94,14 @@ pub fn input_from_stdio () -> InputResult<impl Input> {
 }
 
 
+pub fn input_from_file (_path : &Path) -> InputResult<impl Input> {
+	
+	let _stream = fs::File::open (_path) .else_wrap (0x425b5064) ?;
+	
+	input_from_stream (_stream)
+}
+
+
 pub fn input_from_string (_string : &str) -> InputResult<InputFromBytes> {
 	
 	input_from_bytes (_string.as_bytes ())

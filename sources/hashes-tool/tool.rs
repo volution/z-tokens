@@ -64,6 +64,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		_parser.refer (&mut _input_source)
 				.metavar ("{input}")
 				.add_option (&["-i", "--stdin"], ArgStoreConst (Some (InputSource::Stdin)), "(read from stdin)")
+				.add_option (&["-f", "--file"], ParseInputSourceFile, "(read from file)")
 				.add_option (&["-t", "--token"], ArgStoreOption, "(use this argument)");
 		
 		if execute_parser (_parser, _arguments) .else_wrap (0x88824ad0) ? {
@@ -79,6 +80,8 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _input : Box<dyn Input> = match _input_source {
 			InputSource::Stdin =>
 				Box::new (input_from_stdio () .else_wrap (0x211ceca5) ?),
+			InputSource::File (ref _path) =>
+				Box::new (input_from_file (_path) .else_wrap (0xa8211613) ?),
 			InputSource::String (ref _string) =>
 				Box::new (input_from_string (_string) .else_wrap (0xc87afcd6) ?),
 		};
@@ -100,6 +103,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 #[ derive (Clone) ]
 enum InputSource {
 	Stdin,
+	File (PathBuf),
 	String (String),
 }
 
@@ -110,6 +114,35 @@ impl FromStr for InputSource {
 	
 	fn from_str (_string : &str) -> Result<Self, ()> {
 		Ok (InputSource::String (String::from (_string)))
+	}
+}
+
+
+
+
+
+
+
+
+struct ParseInputSourceFile;
+struct ParseInputSourceFileAction <'a> (Rc<RefCell<&'a mut Option<InputSource>>>);
+
+
+impl argparse::action::TypedAction<Option<InputSource>> for ParseInputSourceFile {
+	
+	fn bind <'a> (&self, _cell : Rc<RefCell<&'a mut Option<InputSource>>>) -> argparse::action::Action<'a> {
+		return argparse::action::Action::Single (Box::new (ParseInputSourceFileAction (_cell)));
+	}
+}
+
+
+impl <'a> argparse::action::IArgAction for ParseInputSourceFileAction <'a> {
+	
+	fn parse_arg (&self, _argument : &str) -> argparse::action::ParseResult {
+		let _cell : &RefCell<_> = self.0.borrow ();
+		let mut _cell : RefMut<_> = _cell.borrow_mut ();
+		** _cell = Some (InputSource::File (PathBuf::from (_argument)));
+		argparse::action::ParseResult::Parsed
 	}
 }
 
