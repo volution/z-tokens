@@ -24,7 +24,7 @@ pub fn format_hash (_hash : &[u8], _format : &Format, mut _stream : impl Write) 
 	match _format {
 		Format::Hex => {
 			for _byte in _hash {
-				write! (&mut _stream, "{:0x}", _byte) .else_wrap (0xd3bc5f48) ?;
+				write! (&mut _stream, "{:02x}", _byte) .else_wrap (0xd3bc5f48) ?;
 			}
 			Ok (())
 		}
