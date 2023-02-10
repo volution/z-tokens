@@ -1032,8 +1032,8 @@
 				cat \
 					< "${_file}" \
 				| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" "${_encrypt_command[@]}" \
-				| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" "${_decrypt_command[@]}" \
 				| tee -a -- /dev/stderr 2>> "${_output}" \
+				| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" "${_decrypt_command[@]}" \
 				| md5sum -b -- /dev/fd/5 5<&0 \
 				| md5sum -c --quiet 5< "${_file}" \
 				#
