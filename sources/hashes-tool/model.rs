@@ -38,6 +38,10 @@ pub enum Family {
 	Argon2i,
 	Argon2id,
 	
+	SipHash,
+	SeaHash,
+	HighwayHash,
+	
 	XxHash,
 	Xxh3,
 	
@@ -71,6 +75,15 @@ pub enum Algorithm {
 	Argon2d,
 	Argon2i,
 	Argon2id,
+	
+	SipHash_64,
+	SipHash_128,
+	
+	SeaHash,
+	
+	HighwayHash_64,
+	HighwayHash_128,
+	HighwayHash_256,
 	
 	XxHash_32,
 	XxHash_64,
@@ -112,8 +125,11 @@ impl Family {
 			Family::Argon2d |
 			Family::Argon2i |
 			Family::Argon2id => (4, OUTPUT_SIZE_MAX, 32),
+			Family::SipHash => (1, 128 / 8, 64 / 8),
+			Family::SeaHash => (1, 64 / 8, 64 / 8),
+			Family::HighwayHash => (1, 256 / 8, 64 / 8),
 			Family::XxHash => (1, 64 / 8, 64 / 8),
-			Family::Xxh3 => (1, 128 / 8, 128 / 8),
+			Family::Xxh3 => (1, 128 / 8, 64 / 8),
 		}
 	}
 	
@@ -145,6 +161,15 @@ impl Family {
 			Family::Argon2d => Ok (Algorithm::Argon2d),
 			Family::Argon2i => Ok (Algorithm::Argon2i),
 			Family::Argon2id => Ok (Algorithm::Argon2id),
+			
+			Family::SipHash if _output_size <= 64 / 8 => Ok (Algorithm::SipHash_64),
+			Family::SipHash if _output_size <= 128 / 8 => Ok (Algorithm::SipHash_128),
+			
+			Family::SeaHash if _output_size <= 64 / 8 => Ok (Algorithm::SeaHash),
+			
+			Family::HighwayHash if _output_size <= 64 / 8 => Ok (Algorithm::HighwayHash_64),
+			Family::HighwayHash if _output_size <= 128 / 8 => Ok (Algorithm::HighwayHash_128),
+			Family::HighwayHash if _output_size <= 256 / 8 => Ok (Algorithm::HighwayHash_256),
 			
 			Family::XxHash if _output_size <= 32 / 8 => Ok (Algorithm::XxHash_32),
 			Family::XxHash if _output_size <= 64 / 8 => Ok (Algorithm::XxHash_64),

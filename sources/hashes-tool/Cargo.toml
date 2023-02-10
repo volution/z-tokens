@@ -70,7 +70,10 @@ sha1 = { version = "^0.10", default-features = false, features = ["std", "asm"] 
 
 md-5 = { version = "^0.10", default-features = false, features = ["std", "asm"] }
 
-twox-hash = { version = "^1.6", default-features = false, features = ["std"] }
+twox-hash = { version = "^1.6", default-features = false, features = [] }
+siphasher = { version = "^0.3", default-features = false, features = [] }
+seahash = { version = "^4.1", default-features = false, features = [] }
+highway = { version = "^0.8", default-features = false, features = ["std"] }
 
 argon2 = { version = "^0.4", default-features = false, features = ["std"] }
 

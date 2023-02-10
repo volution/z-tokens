@@ -75,6 +75,21 @@ pub fn hash (_algorithm : Algorithm, _output_size : usize, _input : impl Input) 
 		Algorithm::Argon2id =>
 			hash_argon (::argon2::Algorithm::Argon2id, _input, &mut _output) ?,
 		
+		Algorithm::SipHash_64 =>
+			hash_siphash_64 (_input, &mut _output) ?,
+		Algorithm::SipHash_128 =>
+			hash_siphash_128 (_input, &mut _output) ?,
+		
+		Algorithm::SeaHash =>
+			hash_seahash (_input, &mut _output) ?,
+		
+		Algorithm::HighwayHash_64 =>
+			hash_highwayhash_64 (_input, &mut _output) ?,
+		Algorithm::HighwayHash_128 =>
+			hash_highwayhash_128 (_input, &mut _output) ?,
+		Algorithm::HighwayHash_256 =>
+			hash_highwayhash_256 (_input, &mut _output) ?,
+		
 		Algorithm::XxHash_32 =>
 			hash_xxhash_32 (_input, &mut _output) ?,
 		Algorithm::XxHash_64 =>
@@ -153,17 +168,79 @@ fn hash_update <Hasher> (_hasher : &mut Hasher, mut _input : impl Input) -> Hash
 
 
 
+fn hash_siphash_64 (_input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hasher = ::siphasher::sip::SipHasher24::new ();
+	hash_update_std (&mut _hasher, _input) ?;
+	let _hash_value = Hasher::finish (&_hasher);
+	
+	copy_output_from_u64 (_hash_value, _output)
+}
+
+
+fn hash_siphash_128 (_input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hasher = ::siphasher::sip128::SipHasher24::new ();
+	hash_update_std (&mut _hasher, _input) ?;
+	let _hash_value = ::siphasher::sip128::Hasher128::finish128 (&_hasher) .as_u128 ();
+	
+	copy_output_from_u128 (_hash_value, _output)
+}
+
+
+
+
+fn hash_seahash (_input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hasher = ::seahash::SeaHasher::new ();
+	hash_update_std (&mut _hasher, _input) ?;
+	let _hash_value = Hasher::finish (&_hasher);
+	
+	copy_output_from_u64 (_hash_value, _output)
+}
+
+
+
+
+fn hash_highwayhash_64 (_input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hasher = ::highway::HighwayHasher::new (Default::default ());
+	hash_update_std (&mut _hasher, _input) ?;
+	let _hash_value = ::highway::HighwayHash::finalize64 (_hasher);
+	
+	copy_output_from_u64 (_hash_value, _output)
+}
+
+
+fn hash_highwayhash_128 (_input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hasher = ::highway::HighwayHasher::new (Default::default ());
+	hash_update_std (&mut _hasher, _input) ?;
+	let _hash_values = ::highway::HighwayHash::finalize128 (_hasher);
+	
+	copy_output_from_u64s (&_hash_values, _output)
+}
+
+
+fn hash_highwayhash_256 (_input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hasher = ::highway::HighwayHasher::new (Default::default ());
+	hash_update_std (&mut _hasher, _input) ?;
+	let _hash_values = ::highway::HighwayHash::finalize256 (_hasher);
+	
+	copy_output_from_u64s (&_hash_values, _output)
+}
+
+
+
+
 fn hash_xxhash_32 (_input : impl Input, _output : &mut [u8]) -> HashResult {
 	
 	let mut _hasher = ::twox_hash::XxHash32::with_seed (0);
 	hash_update_std (&mut _hasher, _input) ?;
 	let _hash_value = Hasher::finish (&_hasher) as u32;
 	
-	let mut _hash_bytes = [0u8; 4];
-	use ::byteorder::ByteOrder as _;
-	::byteorder::BigEndian::write_u32 (&mut _hash_bytes, _hash_value);
-	
-	copy_output_from_slice (&_hash_bytes, _output)
+	copy_output_from_u32 (_hash_value, _output)
 }
 
 
@@ -173,11 +250,7 @@ fn hash_xxhash_64 (_input : impl Input, _output : &mut [u8]) -> HashResult {
 	hash_update_std (&mut _hasher, _input) ?;
 	let _hash_value = Hasher::finish (&_hasher);
 	
-	let mut _hash_bytes = [0u8; 8];
-	use ::byteorder::ByteOrder as _;
-	::byteorder::BigEndian::write_u64 (&mut _hash_bytes, _hash_value);
-	
-	copy_output_from_slice (&_hash_bytes, _output)
+	copy_output_from_u64 (_hash_value, _output)
 }
 
 
@@ -189,11 +262,7 @@ fn hash_xxh3_64 (_input : impl Input, _output : &mut [u8]) -> HashResult {
 	hash_update_std (&mut _hasher, _input) ?;
 	let _hash_value = Hasher::finish (&_hasher);
 	
-	let mut _hash_bytes = [0u8; 8];
-	use ::byteorder::ByteOrder as _;
-	::byteorder::BigEndian::write_u64 (&mut _hash_bytes, _hash_value);
-	
-	copy_output_from_slice (&_hash_bytes, _output)
+	copy_output_from_u64 (_hash_value, _output)
 }
 
 
@@ -203,11 +272,7 @@ fn hash_xxh3_128 (_input : impl Input, _output : &mut [u8]) -> HashResult {
 	hash_update_std (&mut _hasher, _input) ?;
 	let _hash_value = ::twox_hash::xxh3::HasherExt::finish_ext (&_hasher);
 	
-	let mut _hash_bytes = [0u8; 16];
-	use ::byteorder::ByteOrder as _;
-	::byteorder::BigEndian::write_u128 (&mut _hash_bytes, _hash_value);
-	
-	copy_output_from_slice (&_hash_bytes, _output)
+	copy_output_from_u128 (_hash_value, _output)
 }
 
 
@@ -224,6 +289,51 @@ fn hash_update_std <Hasher> (_hasher : &mut Hasher, mut _input : impl Input) -> 
 }
 
 
+
+
+
+
+
+
+fn copy_output_from_u32 (_hash_value : u32, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hash_bytes = [0u8; 4];
+	use ::byteorder::ByteOrder as _;
+	::byteorder::BigEndian::write_u32 (&mut _hash_bytes, _hash_value);
+	
+	copy_output_from_slice (&_hash_bytes, _output)
+}
+
+
+fn copy_output_from_u64 (_hash_value : u64, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hash_bytes = [0u8; 8];
+	use ::byteorder::ByteOrder as _;
+	::byteorder::BigEndian::write_u64 (&mut _hash_bytes, _hash_value);
+	
+	copy_output_from_slice (&_hash_bytes, _output)
+}
+
+
+fn copy_output_from_u64s <const SIZE : usize> (_hash_values : &[u64; SIZE], _output : &mut [u8]) -> HashResult {
+	
+	// FIXME:  We can't write `8 * SIZE`...
+	let mut _hash_bytes = [0u8; 8 * 4];
+	use ::byteorder::ByteOrder as _;
+	::byteorder::BigEndian::write_u64_into (_hash_values, &mut _hash_bytes[.. 8 * SIZE]);
+	
+	copy_output_from_slice (&_hash_bytes, _output)
+}
+
+
+fn copy_output_from_u128 (_hash_value : u128, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hash_bytes = [0u8; 16];
+	use ::byteorder::ByteOrder as _;
+	::byteorder::BigEndian::write_u128 (&mut _hash_bytes, _hash_value);
+	
+	copy_output_from_slice (&_hash_bytes, _output)
+}
 
 
 fn copy_output_from_slice (_hash : &[u8], _output : &mut [u8]) -> HashResult {

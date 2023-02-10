@@ -49,6 +49,9 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.add_option (&["--argon2d"], ArgStoreConst (Some (Family::Argon2d)), "(use Argon2d) !!! EXPERIMENTAL !!!")
 				.add_option (&["--argon2i"], ArgStoreConst (Some (Family::Argon2i)), "(use Argon2i) !!! EXPERIMENTAL !!!")
 				.add_option (&["--argon2id"], ArgStoreConst (Some (Family::Argon2id)), "(use Argon2id) !!! EXPERIMENTAL !!!")
+				.add_option (&["--siphash"], ArgStoreConst (Some (Family::SipHash)), "(use SipHash) !!! WEAK !!!")
+				.add_option (&["--seahash"], ArgStoreConst (Some (Family::SeaHash)), "(use SeaHash) !!! WEAK !!!")
+				.add_option (&["--highway"], ArgStoreConst (Some (Family::HighwayHash)), "(use HighwayHash) !!! WEAK !!!")
 				.add_option (&["--xxhash"], ArgStoreConst (Some (Family::XxHash)), "(use XxHash) !!! WEAK !!!")
 				.add_option (&["--xxh3"], ArgStoreConst (Some (Family::Xxh3)), "(use Xxh3) !!! WEAK and EXPERIMENTAL !!!");
 		
