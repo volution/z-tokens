@@ -229,7 +229,7 @@ pub fn main_hashes () -> MainResult<ExitCode> {
 		
 		
 		
-		(&["hash"], _) => {
+		(&[], _) => {
 			_arguments.insert (0, String::from ("z-hashes"));
 			main_hash (_arguments) .else_wrap (0xf90b7753)
 		}
