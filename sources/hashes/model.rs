@@ -12,6 +12,7 @@ define_error! (pub AlgorithmError, result : AlgorithmResult);
 
 
 pub const OUTPUT_SIZE_MAX : usize = 1024 * 1024 * 1024;
+pub const INPUT_SIZE_MAX : usize = 1024 * 1024 * 1024;
 
 
 
@@ -33,13 +34,14 @@ pub enum Family {
 	MD5,
 	
 	SHA1,
-	GitSHA1,
-	
 	SHA2,
 	
 	SHA3,
 	Shake_128,
 	Shake_256,
+	
+	GitSHA1,
+	GitSHA2,
 	
 	Blake3,
 	
@@ -93,6 +95,7 @@ pub enum Algorithm {
 	Shake_256,
 	
 	GitSHA1,
+	GitSHA2,
 	
 	Blake2s,
 	Blake2b,
@@ -155,14 +158,15 @@ impl Family {
 			
 			Family::MD5 => (1, 128 / 8, 128 / 8),
 			
-			Family::SHA1 |
-			Family::GitSHA1 => (1, 160 / 8, 160 / 8),
-			
-			Family::SHA2 => (1, 512 / 8, 256 / 8),
+			Family::SHA1 => (1, 160 / 8, 160 / 8),
+			Family::SHA2 =>  (1, 512 / 8, 256 / 8),
 			Family::SHA3 => (1, 512 / 8, 256 / 8),
 			
 			Family::Shake_128 => (1, OUTPUT_SIZE_MAX, 128 / 8),
 			Family::Shake_256 => (1, OUTPUT_SIZE_MAX, 256 / 8),
+			
+			Family::GitSHA1 => (1, 160 / 8, 160 / 8),
+			Family::GitSHA2 => (1, 256 / 8, 256 / 8),
 			
 			Family::Blake2 => (1, 64, 64),
 			Family::Blake2s => (1, 32, 32),
@@ -214,6 +218,9 @@ impl Family {
 			
 			Family::Shake_128 => Ok (Algorithm::Shake_128),
 			Family::Shake_256 => Ok (Algorithm::Shake_256),
+			
+			Family::GitSHA1 if _output_size <= 160 / 8 => Ok (Algorithm::GitSHA1),
+			Family::GitSHA2 if _output_size <= 256 / 8 => Ok (Algorithm::GitSHA2),
 			
 			Family::Blake2 if _output_size <= 32 => Ok (Algorithm::Blake2s),
 			Family::Blake2s if _output_size <= 32 => Ok (Algorithm::Blake2s),

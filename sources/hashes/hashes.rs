@@ -4,7 +4,7 @@ use ::vrl_preludes::std_plus_extras::*;
 use ::vrl_errors::*;
 
 use crate::model::*;
-use crate::inputs::Input;
+use crate::inputs::*;
 
 use ::digest::{
 		self as digest,
@@ -63,7 +63,9 @@ pub fn hash (_algorithm : Algorithm, _input : impl Input, _output_parameters : &
 			hash_extendable (::sha3::Shake256::default (), _input, &mut _output, _output_parameters) ?,
 		
 		Algorithm::GitSHA1 =>
-			fail! (0x64e83dae),
+			hash_git_sha1 (_input, &mut _output, _output_parameters) ?,
+		Algorithm::GitSHA2 =>
+			hash_git_sha2 (_input, &mut _output, _output_parameters) ?,
 		
 		Algorithm::Blake2s =>
 			hash_variable (::blake2::Blake2sVar::new (_output_parameters.size) .else_wrap (0xfb4c3bb9) ?, _input, &mut _output, _output_parameters) ?,
@@ -387,6 +389,47 @@ fn hash_adler32 (_input : impl Input, _output : &mut [u8], _output_parameters : 
 	let _hash_value = ::adler::Adler32::checksum (&_hasher);
 	
 	copy_output_from_u32 (_hash_value, _output, _output_parameters)
+}
+
+
+
+
+
+
+
+
+fn hash_git_sha1 (_input : impl Input, _output : &mut [u8], _output_parameters : &OutputParameters) -> HashResult {
+	hash_git_fixed (::sha1::Sha1::new (), _input, _output, _output_parameters)
+}
+
+
+fn hash_git_sha2 (_input : impl Input, _output : &mut [u8], _output_parameters : &OutputParameters) -> HashResult {
+	hash_git_fixed (::sha2::Sha256::new (), _input, _output, _output_parameters)
+}
+
+
+fn hash_git_fixed <Hasher> (mut _hasher : Hasher, _input : impl Input, _output : &mut [u8], _output_parameters : &OutputParameters) -> HashResult
+		where Hasher : digest::FixedOutput + digest::Update + io::Write
+{
+	// FIXME:  Optimize the code, so that if only one data item is returned, no buffering is needed.
+	
+	let mut _buffer = Vec::new ();
+	
+	hash_update_fn (
+			|_data| {
+				if (_buffer.len () + _data.len ()) > INPUT_SIZE_MAX {
+					fail! (0x9d4af86c);
+				}
+				_buffer.extend_from_slice (_data);
+				Ok (())
+			},
+			_input) ?;
+	
+	write! (_hasher, "blob {}\0", _buffer.len ()) .else_wrap (0x6160a28b) ?;
+	
+	let _input = InputFromBytesBoxes::from_vec (_buffer);
+	
+	hash_fixed (_hasher, _input, _output, _output_parameters)
 }
 
 
