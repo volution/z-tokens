@@ -84,15 +84,16 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		_parser.refer (&mut _input_sources)
 				.metavar ("{input}")
 				.add_option (&["-t", "--token"], ArgPush, "(use this argument)")
-				.add_option (&["-i", "--stdin"], ArgPushConst (InputSource::Stdin), "(read from stdin)")
 				.add_option (&["-f", "--file"], ArgPushInputSourceFile, "(read from file)")
-				.add_option (&["-e", "--empty"], ArgPushConst (InputSource::Empty), "(empty)")
+				// FIXME:  Flags and arguments aren't properly supported by `argparser`!
+				// .add_option (&["-i", "--stdin"], ArgPushConst (InputSource::Stdin), "(read from stdin)")
+				// .add_option (&["-e", "--empty"], ArgPushConst (InputSource::Empty), "(empty)")
 			;
 		
 		_parser.refer (&mut _inputs_canonicalize)
 				.metavar ("{canonicalize}")
-				.add_option (&["-c", "--concatenate"], ArgStoreConst (Some (false)), "(concatenate inputs) (default for one input)")
-				.add_option (&["-C", "--canonicalize"], ArgStoreConst (Some (true)), "(canonicalize inputs) (default for two or more inputs)");
+				.add_option (&["-c", "--inputs-concatenate"], ArgStoreConst (Some (false)), "(concatenate inputs) (default for one input)")
+				.add_option (&["-C", "--inputs-canonicalize"], ArgStoreConst (Some (true)), "(canonicalize inputs) (default for two or more inputs)");
 		
 		_parser.refer (&mut _output_discard_right)
 				.metavar ("{alignment}")
@@ -150,6 +151,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 
 #[ derive (Clone) ]
+#[ allow (dead_code) ]
 enum InputSource {
 	Stdin,
 	File (PathBuf),
