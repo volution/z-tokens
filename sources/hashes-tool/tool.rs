@@ -31,6 +31,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _output_reversed : Option<bool> = None;
 	
 	let mut _input_sources : Vec<InputSource> = Vec::new ();
+	let mut _inputs_canonicalize : Option<bool> = None;
 	
 	{
 		let mut _parser = create_parser () .else_wrap (0x0102258d) ?;
@@ -82,11 +83,16 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		_parser.refer (&mut _input_sources)
 				.metavar ("{input}")
+				.add_option (&["-t", "--token"], ArgPush, "(use this argument)")
 				.add_option (&["-i", "--stdin"], ArgPushConst (InputSource::Stdin), "(read from stdin)")
 				.add_option (&["-f", "--file"], ArgPushInputSourceFile, "(read from file)")
-				.add_option (&["-t", "--token"], ArgPush, "(use this argument)")
-				.add_option (&["--empty"], ArgPushConst (InputSource::Empty), "(empty)")
+				.add_option (&["-e", "--empty"], ArgPushConst (InputSource::Empty), "(empty)")
 			;
+		
+		_parser.refer (&mut _inputs_canonicalize)
+				.metavar ("{canonicalize}")
+				.add_option (&["-c", "--concatenate"], ArgStoreConst (Some (false)), "(concatenate inputs) (default for one input)")
+				.add_option (&["-C", "--canonicalize"], ArgStoreConst (Some (true)), "(canonicalize inputs) (default for two or more inputs)");
 		
 		_parser.refer (&mut _output_discard_right)
 				.metavar ("{alignment}")
@@ -114,15 +120,19 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _inputs = _input_sources.into_iter () .map (InputSource::into_boxed_input) .collect::<Result<Vec<_>, _>> () ?;
 	
+	if _inputs.is_empty () {
+		_inputs.push (InputSource::Stdin.into_boxed_input () ?)
+	}
+	
+	let _inputs_canonicalize = _inputs_canonicalize.unwrap_or (_inputs.len () >= 2);
+	
 	let mut _input : Box<dyn Input> =
-		if _inputs.len () <= 1 {
-			if let Some (_input_source) = _inputs.pop () {
-				_input_source
-			} else {
-				InputSource::Stdin.into_boxed_input () ?
-			}
-		} else {
+		if _inputs_canonicalize {
+			Box::new (inputs_canonicalize (_inputs.into_iter ()) .else_wrap (0xed0348a4) ?)
+		} else if _inputs.len () > 1 {
 			Box::new (inputs_concatenate (_inputs.into_iter ()) .else_wrap (0xd6032117) ?)
+		} else {
+			_inputs.pop () .else_panic (0xadd28f1a)
 		};
 	
 	let _hash = hash (_algorithm, &mut _input, &_output_parameters) .else_wrap (0x16112a03) ?;

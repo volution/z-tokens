@@ -522,8 +522,6 @@ fn hash_argon (_algorithm : ::argon2::Algorithm, mut _input : impl Input, _outpu
 	let _m_cost = u32::min (_output_size as u32 * M_COST_BASE, M_COST_MAX);
 	let _t_cost = u32::max (_output_size as u32 * T_COST_BASE / (M_COST_MAX / M_COST_BASE / 4), T_COST_BASE);
 	
-//	::std::eprintln! ("[dd] [65403625]  output {}, m_cost {}, t_cost {}", _output_size, _m_cost / 1024, _t_cost);
-	
 	let mut _input_hash = [0u8; INPUT_HASH_SIZE];
 	hash_fixed (::blake2::Blake2b512::new (), _input, &mut _input_hash, & OutputParameters { size : INPUT_HASH_SIZE, discard_right : true, reversed : false, }) ?;
 	
