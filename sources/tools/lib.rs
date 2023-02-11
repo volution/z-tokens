@@ -22,6 +22,15 @@ pub use crate::{
 	};
 
 
+#[ cfg (feature = "z-tokens-encodings-tool") ]
+pub use crate::{
+		
+		bin::bin_encodings,
+		tools::main_encodings,
+		tools::premain_encodings,
+	};
+
+
 #[ cfg (feature = "z-tokens-exchange-tool") ]
 pub use crate::{
 		

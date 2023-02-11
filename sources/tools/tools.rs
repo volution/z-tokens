@@ -17,6 +17,12 @@ use ::z_tokens_hashes_tool::{
 		tool::main as main_hash,
 	};
 
+#[ cfg (feature = "z-tokens-encodings-tool") ]
+use ::z_tokens_encodings_tool::{
+		tool::main_encode as main_encodings_encode,
+		tool::main_decode as main_encodings_decode,
+	};
+
 #[ cfg (feature = "z-tokens-exchange-tool") ]
 use ::z_tokens_exchange_tool::{
 		tool::main_keys as main_exchange_keys,
@@ -56,6 +62,11 @@ pub fn premain_tools () -> MainResult<ExitCode> {
 #[ cfg (feature = "z-tokens-hashes-tool") ]
 pub fn premain_hashes () -> MainResult<ExitCode> {
 	premain_wrapper (main_hashes)
+}
+
+#[ cfg (feature = "z-tokens-encodings-tool") ]
+pub fn premain_encodings () -> MainResult<ExitCode> {
+	premain_wrapper (main_encodings)
 }
 
 #[ cfg (feature = "z-tokens-exchange-tool") ]
@@ -148,6 +159,20 @@ pub fn main_tools () -> MainResult<ExitCode> {
 		
 		
 		
+		#[ cfg (feature = "z-tokens-encodings-tool") ]
+		(&["encodings", "encode"], _) => {
+			_arguments.insert (0, String::from ("z-tokens encodings encode"));
+			main_encodings_encode (_arguments) .else_wrap (0xdb709271)
+		}
+		#[ cfg (feature = "z-tokens-encodings-tool") ]
+		(&["encodings", "decode"], _) => {
+			_arguments.insert (0, String::from ("z-tokens encodings decode"));
+			main_encodings_decode (_arguments) .else_wrap (0x19ef259a)
+		}
+		
+		
+		
+		
 		#[ cfg (feature = "z-tokens-exchange-tool") ]
 		(&["exchange", "keys"], _) => {
 			_arguments.insert (0, String::from ("z-tokens exchange keys"));
@@ -232,6 +257,45 @@ pub fn main_hashes () -> MainResult<ExitCode> {
 		(&[], _) => {
 			_arguments.insert (0, String::from ("z-hashes"));
 			main_hash (_arguments) .else_wrap (0xf90b7753)
+		}
+		
+		
+		
+		
+		_ =>
+			main_unknown (_commands, _arguments),
+	}
+}
+
+
+
+
+
+
+
+
+#[ cfg (feature = "z-tokens-encodings-tool") ]
+pub fn main_encodings () -> MainResult<ExitCode> {
+	
+	let (mut _commands, mut _arguments) = main_arguments () ?;
+	
+	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _commands_refs = _commands_refs.as_slice ();
+	let _arguments_refs = _arguments.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _arguments_refs = _arguments_refs.as_slice ();
+	
+	match (_commands_refs, _arguments_refs) {
+		
+		
+		
+		
+		(&["encode"], _) => {
+			_arguments.insert (0, String::from ("z-encodings encode"));
+			main_encodings_encode (_arguments) .else_wrap (0xf90b7753)
+		}
+		(&["decode"], _) => {
+			_arguments.insert (0, String::from ("z-encodings decode"));
+			main_encodings_decode (_arguments) .else_wrap (0x8f9ff25b)
 		}
 		
 		

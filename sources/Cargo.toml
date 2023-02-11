@@ -41,6 +41,12 @@ path = "./bins/hashes.rs"
 
 [[bin]]
 
+name = "z-encodings"
+path = "./bins/encodings.rs"
+
+
+[[bin]]
+
 name = "z-exchange"
 path = "./bins/exchange.rs"
 
