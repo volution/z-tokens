@@ -215,19 +215,19 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		_parser.refer (&mut _associated)
 				.metavar ("{associated}")
-				.add_option (&["-a", "--associated"], ArgCollect, "(associated data) (multiple allowed, order is important)");
+				.add_option (&["-a", "--associated"], ArgPush, "(associated data) (multiple allowed, order is important)");
 		
 		_parser.refer (&mut _secrets)
 				.metavar ("{secret}")
-				.add_option (&["-x", "--secret"], ArgCollect, "(shared secret, for additional security) (multiple allowed, in any order)");
+				.add_option (&["-x", "--secret"], ArgPush, "(shared secret, for additional security) (multiple allowed, in any order)");
 		
 		_parser.refer (&mut _pins)
 				.metavar ("{pin}")
-				.add_option (&["-p", "--pin"], ArgCollect, "(shared PIN, for **WEAK** additional security) (multiple allowed, in any order)");
+				.add_option (&["-p", "--pin"], ArgPush, "(shared PIN, for **WEAK** additional security) (multiple allowed, in any order)");
 		
 		_parser.refer (&mut _ssh_wrappers)
 				.metavar ("{key}")
-				.add_option (&["--ssh-wrap"], ArgCollect, "(shared SSH agent key handle) (multiple allowed, in any order)");
+				.add_option (&["--ssh-wrap"], ArgPush, "(shared SSH agent key handle) (multiple allowed, in any order)");
 		
 		_parser.refer (&mut _deterministic)
 				.metavar ("{bool}")
@@ -308,19 +308,19 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		_parser.refer (&mut _associated)
 				.metavar ("{associated}")
-				.add_option (&["-a", "--associated"], ArgCollect, "(associated data) (multiple allowed, order is important)");
+				.add_option (&["-a", "--associated"], ArgPush, "(associated data) (multiple allowed, order is important)");
 		
 		_parser.refer (&mut _secrets)
 				.metavar ("{secret}")
-				.add_option (&["-x", "--secret"], ArgCollect, "(shared secret, for additional security) (multiple allowed, any order)");
+				.add_option (&["-x", "--secret"], ArgPush, "(shared secret, for additional security) (multiple allowed, any order)");
 		
 		_parser.refer (&mut _pins)
 				.metavar ("{pin}")
-				.add_option (&["-p", "--pin"], ArgCollect, "(shared PIN, for **WEAK** additional security) (multiple allowed, any order)");
+				.add_option (&["-p", "--pin"], ArgPush, "(shared PIN, for **WEAK** additional security) (multiple allowed, any order)");
 		
 		_parser.refer (&mut _ssh_wrappers)
 				.metavar ("{key}")
-				.add_option (&["--ssh-wrap"], ArgCollect, "(shared SSH agent key handle) (multiple allowed, any order)");
+				.add_option (&["--ssh-wrap"], ArgPush, "(shared SSH agent key handle) (multiple allowed, any order)");
 		
 		_parser.refer (&mut _empty_is_missing)
 				.metavar ("{bool}")
@@ -395,19 +395,19 @@ pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		_parser.refer (&mut _associated)
 				.metavar ("{associated}")
-				.add_option (&["-a", "--associated"], ArgCollect, "(associated data) (multiple allowed, order is important)");
+				.add_option (&["-a", "--associated"], ArgPush, "(associated data) (multiple allowed, order is important)");
 		
 		_parser.refer (&mut _secrets)
 				.metavar ("{secret}")
-				.add_option (&["-x", "--secret"], ArgCollect, "(shared secret, for additional security) (multiple allowed, any order)");
+				.add_option (&["-x", "--secret"], ArgPush, "(shared secret, for additional security) (multiple allowed, any order)");
 		
 		_parser.refer (&mut _pins)
 				.metavar ("{pin}")
-				.add_option (&["-p", "--pin"], ArgCollect, "(shared PIN, for **WEAK** additional security) (multiple allowed, any order)");
+				.add_option (&["-p", "--pin"], ArgPush, "(shared PIN, for **WEAK** additional security) (multiple allowed, any order)");
 		
 		_parser.refer (&mut _ssh_wrappers)
 				.metavar ("{key}")
-				.add_option (&["--ssh-wrap"], ArgCollect, "(shared SSH agent key handle) (multiple allowed, any order)");
+				.add_option (&["--ssh-wrap"], ArgPush, "(shared SSH agent key handle) (multiple allowed, any order)");
 		
 		_parser.refer (&mut _empty_is_missing)
 				.metavar ("{bool}")

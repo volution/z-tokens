@@ -13,7 +13,8 @@ pub use ::argparse::{
 		StoreFalse as ArgStoreFalse,
 		StoreConst as ArgStoreConst,
 		StoreOption as ArgStoreOption,
-		Collect as ArgCollect,
+		Collect as ArgPush,
+		PushConst as ArgPushConst,
 		self as argparse,
 	};
 
