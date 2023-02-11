@@ -158,19 +158,16 @@
 					#~	-C target-feature=+crt-static
 					#~	-C relocation-model=static
 						
-					#~	-C target-cpu=native
-					#~	-C target-cpu=core2
-					#~	-C target-cpu=nocona
-						-C target-cpu=x86-64
-						
 						-C linker=clang
 						-C link-arg=-fuse-ld=lld
 					#~	-C link-arg=-fuse-ld=mold
-						-C link-arg=-Wl,--compress-debug-sections=none
+					#~	-C link-arg=-Wl,--compress-debug-sections=none
 					#~	-C link-arg=-Wl,--compress-debug-sections=zstd
 					#~	-C link-arg=-Wl,--compress-debug-sections=zlib
 						
 					#?	-C link-self-contained=no
+						
+						-C link-dead-code=no
 						-C prefer-dynamic=no
 						-C force-frame-pointers=no
 						
@@ -178,11 +175,58 @@
 			else
 				_rust_flags+=(
 						
+						-C link-dead-code=no
 						-C prefer-dynamic=no
 						-C force-frame-pointers=no
 						
 					)
 			fi
+			case "${__CARGO__TARGET:-native}" in
+				( native )
+					_rust_flags+=(
+							
+						#~	-C target-cpu=native
+						#~	-C target-cpu=core2
+						#~	-C target-cpu=nocona
+							-C target-cpu=x86-64-v2
+							
+						)
+				;;&
+				( x86_64-* )
+					_rust_flags+=(
+							
+							-C target-cpu=x86-64-v2
+							
+						)
+				;;&
+				( native | *-linux-* | *-android )
+					_rust_flags+=(
+							
+							-C link-arg=-Wl,--compress-debug-sections=zlib
+							
+						)
+				;;&
+			esac
+			case "${__META__BUILD_TARGET_TYPE}" in
+				( release )
+					_rust_flags+=(
+							
+							-C opt-level=2
+							
+						#?	-C lto=fat
+						#?	-C codegen-units=1
+							
+							-C debuginfo=1
+							-C split-debuginfo=off
+							-C strip=none
+							
+							-C panic=abort
+							-C debug-assertions=no
+							-C overflow-checks=yes
+							
+						)
+				;;&
+			esac
 		;;
 		
 		( doc )

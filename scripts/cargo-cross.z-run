@@ -75,6 +75,26 @@
 
 
 
+<< cargo / debug / collect / build & cross / all
+	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
+			no-fetch \
+			build-targets \
+			':: cargo / debug / build & collect' "${@}" \
+	#
+!!
+
+
+<< cargo / release / collect / build & cross / all
+	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
+			no-fetch \
+			build-targets \
+			':: cargo / release / build & collect' "${@}" \
+	#
+!!
+
+
+
+
 << cargo / dependencies / fetch / cross
 	export -- __CARGO__CROSS=true
 	exec -- "${ZRUN}" ':: cargo / dependencies / fetch' "${@}"
