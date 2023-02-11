@@ -24,8 +24,14 @@ Optional arguments:
   --siphash             (use SipHash) !!! WEAK !!!
   --seahash             (use SeaHash) !!! WEAK !!!
   --highway             (use HighwayHash) !!! WEAK !!!
-  --xxhash              (use XxHash) !!! WEAK !!!
+  --xxhash              (use xxHash) !!! WEAK !!!
   --xxh3                (use Xxh3) !!! WEAK and EXPERIMENTAL !!!
+  --djb2                (use djb2) !!! WEAK !!!
+  --sdbm                (use SDBM) !!! WEAK !!!
+  --fnv1a               (use FNV1a) !!! WEAK !!!
+  --crc                 (use CRC) !!! WEAK !!!
+  --crc32c              (use CRC32C) !!! WEAK !!!
+  --adler               (use Adler) !!! WEAK !!!
   -s,--size {size}      (hash output size in bytes)
   --8b,--1B             (output 8 bits / 1 byte)
   --16b,--2B            (output 16 bits / 2 bytes)
@@ -34,6 +40,10 @@ Optional arguments:
   --128b,--16B          (output 128 bits / 16 bytes)
   --256b,--32B          (output 256 bits / 32 bytes)
   --512b,--64B          (output 512 bits / 64 bytes)
+  --1024b,--128B        (output 1024 bits / 128 bytes)
+  --2048b,--256B        (output 2048 bits / 256 bytes)
+  --4096b,--512B        (output 4096 bits / 512 bytes)
+  --8192b,--1024B       (output 8192 bits / 1024 bytes)
   -i,--stdin            (read from stdin)
   -f,--file {input}     (read from file)
   -t,--token {input}    (use this argument)

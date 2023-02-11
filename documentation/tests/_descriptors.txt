@@ -137,6 +137,22 @@ hash / xxh3 / default :: hash --xxh3 --token 1234
 hash / xxh3 / size-64 :: hash --xxh3 --token 1234 --64b
 hash / xxh3 / size-128 :: hash --xxh3 --token 1234 --128b
 
+hash / djb2 / default :: hash --djb2 --token 1234
+hash / sdbm / default :: hash --sdbm --token 1234
+
+hash / fnv1a / default :: hash --fnv1a --token 1234
+hash / fnv1a / size-32 :: hash --fnv1a --token 1234 --32b
+hash / fnv1a / size-64 :: hash --fnv1a --token 1234 --64b
+
+hash / crc / default :: hash --crc --token 1234
+hash / crc / size-8 :: hash --crc --token 1234 --8b
+hash / crc / size-16 :: hash --crc --token 1234 --16b
+hash / crc / size-32 :: hash --crc --token 1234 --32b
+hash / crc / size-64 :: hash --crc --token 1234 --64b
+hash / crc32c / default :: hash --crc32c --token 1234
+
+hash / adler / default :: hash --adler --token 1234
+
 hash / argon2 / default :: hash --argon2 --token 1234
 hash / argon2 / size-16 :: hash --argon2 --token 1234 --size 16
 hash / argon2d / size-16 :: hash --argon2d --token 1234 --size 16

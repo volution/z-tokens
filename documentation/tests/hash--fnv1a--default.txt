@@ -1,0 +1,3 @@
+>>  z-tokens hash --fnv1a --token 1234
+
+fdc422fd
