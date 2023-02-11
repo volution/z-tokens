@@ -1637,14 +1637,14 @@ dependencies = [
 
 [[package]]
 name = "z-tokens"
-version = "0.1.0"
+version = "0.3.0"
 dependencies = [
  "z-tokens-tools",
 ]
 
 [[package]]
 name = "z-tokens-encodings"
-version = "0.1.0"
+version = "0.3.0"
 dependencies = [
  "bech32",
  "bs58",
@@ -1659,7 +1659,7 @@ dependencies = [
 
 [[package]]
 name = "z-tokens-encodings-tool"
-version = "0.1.0"
+version = "0.3.0"
 dependencies = [
  "vrl-errors",
  "vrl-preludes",
@@ -1669,7 +1669,7 @@ dependencies = [
 
 [[package]]
 name = "z-tokens-exchange"
-version = "0.1.0"
+version = "0.3.0"
 dependencies = [
  "argon2",
  "bech32",
@@ -1691,7 +1691,7 @@ dependencies = [
 
 [[package]]
 name = "z-tokens-exchange-tool"
-version = "0.1.0"
+version = "0.3.0"
 dependencies = [
  "vrl-errors",
  "vrl-preludes",
@@ -1701,7 +1701,7 @@ dependencies = [
 
 [[package]]
 name = "z-tokens-hashes"
-version = "0.1.0"
+version = "0.3.0"
 dependencies = [
  "adler",
  "argon2",
@@ -1726,7 +1726,7 @@ dependencies = [
 
 [[package]]
 name = "z-tokens-hashes-tool"
-version = "0.1.0"
+version = "0.3.0"
 dependencies = [
  "vrl-errors",
  "vrl-preludes",
@@ -1736,7 +1736,7 @@ dependencies = [
 
 [[package]]
 name = "z-tokens-patterns"
-version = "0.1.0"
+version = "0.3.0"
 dependencies = [
  "chrono",
  "const_format",
@@ -1752,7 +1752,7 @@ dependencies = [
 
 [[package]]
 name = "z-tokens-patterns-tool"
-version = "0.1.0"
+version = "0.3.0"
 dependencies = [
  "vrl-errors",
  "vrl-preludes",
@@ -1762,7 +1762,7 @@ dependencies = [
 
 [[package]]
 name = "z-tokens-runtime"
-version = "0.1.0"
+version = "0.3.0"
 dependencies = [
  "argparse",
  "memsec",
@@ -1773,7 +1773,7 @@ dependencies = [
 
 [[package]]
 name = "z-tokens-secrets-tool"
-version = "0.1.0"
+version = "0.3.0"
 dependencies = [
  "vrl-errors",
  "vrl-preludes",
@@ -1783,7 +1783,7 @@ dependencies = [
 
 [[package]]
 name = "z-tokens-tools"
-version = "0.1.0"
+version = "0.3.0"
 dependencies = [
  "platform-info",
  "vrl-errors",

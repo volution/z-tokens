@@ -22,9 +22,13 @@ resolver = "2"
 
 
 
+
+
+
+
 [workspace.package]
 
-version = "0.1.0"
+version = "0.3.0"
 publish = false
 
 edition = "2021"
@@ -33,7 +37,7 @@ rust-version = "1.67"
 authors = [
 	"Ciprian Dorin Craciun <ciprian@volution.ro>",
 ]
-license = " GPL-3.0-or-later"
+license = "GPL-3.0-or-later"
 
 description = "z-tokens -- random tokens generation and related tools"
 keywords = [
@@ -55,6 +59,10 @@ documentation = "https://github.com/volution/z-tokens"
 
 
 
+
+
+
+
 [patch.crates-io]
 
 # vrl-errors = { path = "../.dependencies/volution-rust-libraries/errors" }
@@ -68,6 +76,10 @@ vrl-preludes = { git = "https://github.com/volution/volution-rust-libraries", br
 vrl-random = { git = "https://github.com/volution/volution-rust-libraries", branch = "development" }
 # x25519-dalek = { git = "https://github.com/cipriancraciun/x25519-dalek", branch = "patches/latest" }
 russh-keys = { git = "https://github.com/cipriancraciun/russh", branch = "patches/latest" }
+
+
+
+
 
 
 
