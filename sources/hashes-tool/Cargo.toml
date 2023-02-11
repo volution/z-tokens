@@ -75,6 +75,9 @@ siphasher = { version = "^0.3", default-features = false, features = [] }
 seahash = { version = "^4.1", default-features = false, features = [] }
 highway = { version = "^0.8", default-features = false, features = ["std"] }
 
+crc-any = { version = "^2.4", default-features = false, features = [] }
+hashers = { version = "^1.0", default-features = false, features = [] }
+
 argon2 = { version = "^0.4", default-features = false, features = ["std"] }
 
 byteorder = { version = "^1.4", default-features = false, features = [] }
