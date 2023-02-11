@@ -3,7 +3,8 @@
 use ::vrl_preludes::std_plus_extras::*;
 
 
-use crate::tools::*;
+use crate::premains::*;
+use crate::runtime::*;
 
 
 
@@ -12,15 +13,18 @@ pub fn bin_tools () -> Result<ExitCode, ()> {
 	bin_wrapper (premain_tools)
 }
 
+
 #[ cfg (feature = "z-tokens-hashes-tool") ]
 pub fn bin_hashes () -> Result<ExitCode, ()> {
 	bin_wrapper (premain_hashes)
 }
 
+
 #[ cfg (feature = "z-tokens-encodings-tool") ]
 pub fn bin_encodings () -> Result<ExitCode, ()> {
 	bin_wrapper (premain_encodings)
 }
+
 
 #[ cfg (feature = "z-tokens-exchange-tool") ]
 pub fn bin_exchange () -> Result<ExitCode, ()> {
@@ -30,7 +34,7 @@ pub fn bin_exchange () -> Result<ExitCode, ()> {
 
 
 
-pub fn bin_wrapper <Main> (_main : Main) -> Result<ExitCode, ()> where Main : FnOnce () -> MainResult<ExitCode> {
+fn bin_wrapper <Main> (_main : Main) -> Result<ExitCode, ()> where Main : FnOnce () -> MainResult<ExitCode> {
 	
 	match _main () {
 		
