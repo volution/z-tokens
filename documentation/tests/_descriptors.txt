@@ -7,6 +7,9 @@ tools / help / generate :: generate --help
 
 tools / help / hash :: hash --help
 
+tools / help / encodings / encode :: encodings encode --help
+tools / help / encodings / decode :: encodings decode --help
+
 tools / help / exchange / keys :: exchange keys --help
 tools / help / exchange / encrypt :: exchange encrypt --help
 tools / help / exchange / decrypt :: exchange decrypt --help

@@ -1,0 +1,8 @@
+>>  z-tokens encodings encode --help
+
+Usage:
+  z-tokens encodings encode
+
+
+Optional arguments:
+  -h,--help             Show this help message and exit

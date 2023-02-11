@@ -69,6 +69,7 @@
 			_bins=(
 					z-tokens
 					z-hashes
+					z-encodings
 					z-exchange
 				)
 		;;
