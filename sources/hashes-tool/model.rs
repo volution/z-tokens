@@ -49,6 +49,9 @@ pub enum Family {
 	SDBM,
 	FNV1a,
 	
+	CRC,
+	CRC32C,
+	
 }
 
 
@@ -99,6 +102,12 @@ pub enum Algorithm {
 	SDBM,
 	FNV1a_32,
 	FNV1a_64,
+	
+	CRC8,
+	CRC16,
+	CRC32,
+	CRC32C,
+	CRC64,
 	
 }
 
@@ -152,6 +161,10 @@ impl Family {
 			Family::Djb2 => (1, 32 / 8, 32 / 8),
 			Family::SDBM => (1, 32 / 8, 32 / 8),
 			Family::FNV1a => (1, 64 / 8, 64 / 8),
+			
+			Family::CRC => (1, 64 / 8, 32 / 8),
+			Family::CRC32C => (1, 32 / 8, 32 / 8),
+			
 		}
 	}
 	
@@ -205,6 +218,12 @@ impl Family {
 			
 			Family::FNV1a if _output_size <= 32 / 8 => Ok (Algorithm::FNV1a_32),
 			Family::FNV1a if _output_size <= 64 / 8 => Ok (Algorithm::FNV1a_64),
+			
+			Family::CRC if _output_size <= 8 / 8 => Ok (Algorithm::CRC8),
+			Family::CRC if _output_size <= 16 / 8 => Ok (Algorithm::CRC16),
+			Family::CRC if _output_size <= 32 / 8 => Ok (Algorithm::CRC32),
+			Family::CRC if _output_size <= 64 / 8 => Ok (Algorithm::CRC64),
+			Family::CRC32C if _output_size <= 32 / 8 => Ok (Algorithm::CRC32C),
 			
 			_ =>
 				fail! (0x36b18fd0),

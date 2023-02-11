@@ -57,6 +57,8 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.add_option (&["--djb2"], ArgStoreConst (Some (Family::Djb2)), "(use djb2) !!! WEAK !!!")
 				.add_option (&["--sdbm"], ArgStoreConst (Some (Family::SDBM)), "(use SDBM) !!! WEAK !!!")
 				.add_option (&["--fnv1a"], ArgStoreConst (Some (Family::FNV1a)), "(use FNV1a) !!! WEAK !!!")
+				.add_option (&["--crc"], ArgStoreConst (Some (Family::CRC)), "(use CRC) !!! WEAK !!!")
+				.add_option (&["--crc32c"], ArgStoreConst (Some (Family::CRC32C)), "(use CRC32C) !!! WEAK !!!")
 			;
 		
 		_parser.refer (&mut _output_size)

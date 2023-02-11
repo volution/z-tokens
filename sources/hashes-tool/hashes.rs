@@ -110,6 +110,17 @@ pub fn hash (_algorithm : Algorithm, _output_size : usize, _input : impl Input) 
 		Algorithm::FNV1a_64 =>
 			hash_fnv1a_64 (_input, &mut _output) ?,
 		
+		Algorithm::CRC8 =>
+			hash_crc8_any (::crc_any::CRCu8::crc8 (), _input, &mut _output) ?,
+		Algorithm::CRC16 =>
+			hash_crc16_any (::crc_any::CRCu16::crc16 (), _input, &mut _output) ?,
+		Algorithm::CRC32 =>
+			hash_crc32_any (::crc_any::CRCu32::crc32 (), _input, &mut _output) ?,
+		Algorithm::CRC32C =>
+			hash_crc32_any (::crc_any::CRCu32::crc32c (), _input, &mut _output) ?,
+		Algorithm::CRC64 =>
+			hash_crc64_any (::crc_any::CRCu64::crc64 (), _input, &mut _output) ?,
+		
 	}
 	
 	Ok (_output)
@@ -347,6 +358,83 @@ fn hash_update_std <Hasher> (_hasher : &mut Hasher, mut _input : impl Input) -> 
 
 
 
+
+
+fn hash_crc8_any (mut _hasher : ::crc_any::CRCu8, _input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	hash_update_fn (|_data| { _hasher.digest (_data); Ok (()) }, _input) ?;
+	let _hash_value = ::crc_any::CRCu8::get_crc (&_hasher);
+	
+	copy_output_from_u8 (_hash_value, _output)
+}
+
+
+fn hash_crc16_any (mut _hasher : ::crc_any::CRCu16, _input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	hash_update_fn (|_data| { _hasher.digest (_data); Ok (()) }, _input) ?;
+	let _hash_value = ::crc_any::CRCu16::get_crc (&_hasher);
+	
+	copy_output_from_u16 (_hash_value, _output)
+}
+
+
+fn hash_crc32_any (mut _hasher : ::crc_any::CRCu32, _input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	hash_update_fn (|_data| { _hasher.digest (_data); Ok (()) }, _input) ?;
+	let _hash_value = ::crc_any::CRCu32::get_crc (&_hasher);
+	
+	copy_output_from_u32 (_hash_value, _output)
+}
+
+
+fn hash_crc64_any (mut _hasher : ::crc_any::CRCu64, _input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	hash_update_fn (|_data| { _hasher.digest (_data); Ok (()) }, _input) ?;
+	let _hash_value = ::crc_any::CRCu64::get_crc (&_hasher);
+	
+	copy_output_from_u64 (_hash_value, _output)
+}
+
+
+
+
+
+
+
+
+fn hash_update_fn <Update> (mut _update : Update, mut _input : impl Input) -> HashResult
+		where Update : FnMut (&[u8]) -> HashResult
+{
+	while let Some (_data) = _input.input () .else_wrap (0x397076d5) ? {
+		_update (_data) ?;
+	}
+	
+	Ok (())
+}
+
+
+
+
+
+
+
+
+fn copy_output_from_u8 (_hash_value : u8, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hash_bytes = [ _hash_value ];
+	
+	copy_output_from_slice (&_hash_bytes, _output)
+}
+
+
+fn copy_output_from_u16 (_hash_value : u16, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hash_bytes = [0u8; 2];
+	use ::byteorder::ByteOrder as _;
+	::byteorder::BigEndian::write_u16 (&mut _hash_bytes, _hash_value);
+	
+	copy_output_from_slice (&_hash_bytes, _output)
+}
 
 
 fn copy_output_from_u32 (_hash_value : u32, _output : &mut [u8]) -> HashResult {
