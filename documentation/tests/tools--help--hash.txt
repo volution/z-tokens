@@ -44,9 +44,12 @@ Optional arguments:
   --2048b,--256B        (output 2048 bits / 256 bytes)
   --4096b,--512B        (output 4096 bits / 512 bytes)
   --8192b,--1024B       (output 8192 bits / 1024 bytes)
-  -i,--stdin            (read from stdin)
-  -f,--file {input}     (read from file)
   -t,--token {input}    (use this argument)
+  -f,--file {input}     (read from file)
+  -c,--inputs-concatenate
+                        (concatenate inputs) (default for one input)
+  -C,--inputs-canonicalize
+                        (canonicalize inputs) (default for two or more inputs)
   --output-discard-right
                         (if needed discard bytes from the right of the hash)
                         (default)

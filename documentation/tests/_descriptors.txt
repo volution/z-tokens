@@ -176,6 +176,14 @@ hash / argon2d / size-16 :: hash --argon2d --token 1234 --size 16
 hash / argon2i / size-16 :: hash --argon2i --token 1234 --size 16
 hash / argon2id / size-16 :: hash --argon2id --token 1234 --size 16
 
+hash / inputs / concatenate / 1 :: hash --md5 --token 1234 --inputs-concatenate
+hash / inputs / concatenate / 2 :: hash --md5 --token 12 --token 34 --inputs-concatenate
+hash / inputs / concatenate / 4 :: hash --md5 --token 12 --token '' --token '' --token 34 --inputs-concatenate
+
+hash / inputs / canonicalize / 1 :: hash --md5 --token 1234 --inputs-canonicalize
+hash / inputs / canonicalize / 2 :: hash --md5 --token 12 --token 34 --inputs-canonicalize
+hash / inputs / canonicalize / 4 :: hash --md5 --token 12 --token '' --token '' --token 34 --inputs-canonicalize
+
 
 
 
