@@ -1668,7 +1668,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "z-tokens-exchange-tool"
+name = "z-tokens-exchange"
 version = "0.1.0"
 dependencies = [
  "argon2",
@@ -1686,6 +1686,16 @@ dependencies = [
  "vrl-errors",
  "vrl-preludes",
  "x25519-dalek",
+ "z-tokens-runtime",
+]
+
+[[package]]
+name = "z-tokens-exchange-tool"
+version = "0.1.0"
+dependencies = [
+ "vrl-errors",
+ "vrl-preludes",
+ "z-tokens-exchange",
  "z-tokens-runtime",
 ]
 

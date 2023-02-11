@@ -10,8 +10,9 @@ use ::vrl_errors::*;
 
 
 
+define_error! (pub EncodingError, result : EncodingResult);
+
 define_error! (pub(crate) CompressionError, result : CompressionResult);
-define_error! (pub(crate) EncodingError, result : EncodingResult);
 
 
 
@@ -43,7 +44,7 @@ const COMPRESSION_BROTLI_BLOCK : usize = 128 * 1024;
 
 
 
-pub(crate) fn encode (_decoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResult {
+pub fn encode (_decoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResult {
 	
 	let _buffer_capacity = _buffer.capacity ();
 	
@@ -147,7 +148,7 @@ pub(crate) fn encode (_decoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 
 
 
-pub(crate) fn decode (_encoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResult {
+pub fn decode (_encoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResult {
 	
 	let _buffer_capacity = _buffer.capacity ();
 	
@@ -217,7 +218,7 @@ pub(crate) fn decode (_encoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResul
 
 
 
-pub(crate) fn encode_capacity_max (_decoded_len : usize) -> EncodingResult<usize> {
+pub fn encode_capacity_max (_decoded_len : usize) -> EncodingResult<usize> {
 	
 	let _chunks = (_decoded_len / CODING_CHUNK_DECODED_SIZE) + 1;
 	
@@ -228,7 +229,7 @@ pub(crate) fn encode_capacity_max (_decoded_len : usize) -> EncodingResult<usize
 }
 
 
-pub(crate) fn decode_capacity_max (_encoded_len : usize) -> EncodingResult<usize> {
+pub fn decode_capacity_max (_encoded_len : usize) -> EncodingResult<usize> {
 	
 	// NOTE:  Some tokens are shorter.
 	// NOTE:  We don't take into account line numbers, thus the resulting number is an overestimation.

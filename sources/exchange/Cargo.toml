@@ -1,0 +1,85 @@
+
+
+[package]
+
+name = "z-tokens-exchange"
+
+workspace = "../workspace"
+
+autobins = false
+autoexamples = false
+autotests = false
+autobenches = false
+
+version.workspace = true
+publish.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+description.workspace = true
+keywords.workspace = true
+categories.workspace = true
+homepage.workspace = true
+repository.workspace = true
+documentation.workspace = true
+
+
+
+
+[lib]
+
+name = "z_tokens_exchange"
+path = "./lib.rs"
+
+
+
+
+[features]
+
+default = [
+	"z-tokens-runtime/default",
+]
+
+development = [
+	"z-tokens-runtime/development",
+]
+
+release = [
+	"z-tokens-runtime/release",
+]
+
+
+
+
+[dependencies]
+
+z-tokens-runtime = { path = "../runtime", default-features = false, features = [] }
+
+vrl-errors = { version = "*", default-features = false, features = [] }
+vrl-preludes = { version = "*", default-features = false, features = [] }
+
+x25519-dalek = { version = "^1.2", default-features = false, features = ["std", "u64_backend"] }
+chacha20 = { version = "^0.9", default-features = false, features = ["std"] }
+blake3 = { version = "^1.3", default-features = false, features = ["std"] }
+constant_time_eq = { version = "^0.2", default-features = false, features = [] }
+bech32 = { version = "^0.9", default-features = false, features = ["std"] }
+rand = { version = "^0.8", default-features = false, features = ["std", "getrandom"] }
+brotli = { version = "^3.3", default-features = false, features = ["std"] }
+byteorder = { version = "^1.4", default-features = false, features = [] }
+bs58 = { version = "^0.4", default-features = false, features = ["std"] }
+crc-any = { version = "^2.4", default-features = false, features = [] }
+argon2 = { version = "^0.4", default-features = false, features = ["std"] }
+
+
+
+
+[target.'cfg(any( all(target_os = "linux", target_env = "gnu"), target_os = "android" ))'.dependencies]
+russh-keys = { version = "^0.24", default-features = false, features = ["vendored-openssl"] }
+tokio = { version = "^1.25", default-features = false, features = ["rt", "net"] }
+
+[target.'cfg(any( all(target_os = "linux", target_env = "musl"), target_os = "macos" ))'.dependencies]
+russh-keys = { version = "^0.24", default-features = false, features = [] }
+tokio = { version = "^1.25", default-features = false, features = ["rt", "net"] }
+
+
