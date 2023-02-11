@@ -12,11 +12,14 @@ Optional arguments:
   --sha1                (use SHA1)
   --sha2                (use SHA2)
   --sha3                (use SHA3)
+  --shake128            (use Shake128)
+  --shake256            (use Shake256)
   --blake2              (use Blake2s or Blake2b)
   --blake2s             (use Blake2s)
   --blake2b             (use Blake2b)
   --blake3              (use Blake3)
   --git-sha1            (use Git SHA1 flavour)
+  --git-sha2            (use Git SHA2 flavour)
   --argon2              (use one of Argon2 family) !!! EXPERIMENTAL !!!
   --argon2d             (use Argon2d) !!! EXPERIMENTAL !!!
   --argon2i             (use Argon2i) !!! EXPERIMENTAL !!!

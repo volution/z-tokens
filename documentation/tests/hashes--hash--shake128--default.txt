@@ -1,0 +1,3 @@
+>>  z-tokens hashes hash --shake128 --token 1234
+
+aeac89653a94368cbc2cb966807b45ab

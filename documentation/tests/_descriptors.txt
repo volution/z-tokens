@@ -93,8 +93,12 @@ generate / pattern / no-mandatory-separators :: generate --token-pattern mnemoni
 
 
 hashes / hash / md5 / default :: hashes hash --md5 --token 1234
+
 hashes / hash / sha1 / default :: hashes hash --sha1 --token 1234
 hashes / hash / sha2 / default :: hashes hash --sha2 --token 1234
+
+hashes / hash / git-sha1 / default :: hashes hash --git-sha1 --token 1234
+hashes / hash / git-sha2 / default :: hashes hash --git-sha2 --token 1234
 
 hashes / hash / sha3 / default :: hashes hash --sha3 --token 1234
 hashes / hash / sha3 / size-01 :: hashes hash --sha3 --token 1234 --size 1
@@ -117,6 +121,24 @@ hashes / hash / sha3 / size-64 :: hashes hash --sha3 --token 1234 --size 64
 hashes / hash / sha3 / size-56 / discard-right :: hashes hash --sha3 --token 1234 --size 56 --output-discard-right
 hashes / hash / sha3 / size-56 / discard-left :: hashes hash --sha3 --token 1234 --size 56 --output-discard-left
 hashes / hash / sha3 / size-56 / reversed :: hashes hash --sha3 --token 1234 --size 56 --output-reversed
+
+hashes / hash / shake128 / default :: hashes hash --shake128 --token 1234
+hashes / hash / shake128 / size-001 :: hashes hash --shake128 --token 1234 --size 1
+hashes / hash / shake128 / size-008 :: hashes hash --shake128 --token 1234 --size 8
+hashes / hash / shake128 / size-016 :: hashes hash --shake128 --token 1234 --size 16
+hashes / hash / shake128 / size-024 :: hashes hash --shake128 --token 1234 --size 24
+hashes / hash / shake128 / size-032 :: hashes hash --shake128 --token 1234 --size 32
+hashes / hash / shake128 / size-064 :: hashes hash --shake128 --token 1234 --size 64
+hashes / hash / shake128 / size-128 :: hashes hash --shake128 --token 1234 --size 128
+
+hashes / hash / shake256 / default :: hashes hash --shake256 --token 1234
+hashes / hash / shake256 / size-001 :: hashes hash --shake256 --token 1234 --size 1
+hashes / hash / shake256 / size-008 :: hashes hash --shake256 --token 1234 --size 8
+hashes / hash / shake256 / size-016 :: hashes hash --shake256 --token 1234 --size 16
+hashes / hash / shake256 / size-024 :: hashes hash --shake256 --token 1234 --size 24
+hashes / hash / shake256 / size-032 :: hashes hash --shake256 --token 1234 --size 32
+hashes / hash / shake256 / size-064 :: hashes hash --shake256 --token 1234 --size 64
+hashes / hash / shake256 / size-128 :: hashes hash --shake256 --token 1234 --size 128
 
 hashes / hash / blake2 / default :: hashes hash --blake2 --token 1234
 hashes / hash / blake2s / default :: hashes hash --blake2s --token 1234

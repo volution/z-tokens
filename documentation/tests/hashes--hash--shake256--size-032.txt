@@ -1,0 +1,3 @@
+>>  z-tokens hashes hash --shake256 --token 1234 --size 32
+
+7cb06ff73c0289bc7f4bbb0c355f1de651d5ab868d1694f11e8347613068c814

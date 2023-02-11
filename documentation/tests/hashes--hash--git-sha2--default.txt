@@ -1,0 +1,3 @@
+>>  z-tokens hashes hash --git-sha2 --token 1234
+
+936fa9c6268265236b9defdb43024751175417d21a0fda91ce69807347b0d4b9
