@@ -52,6 +52,8 @@ pub enum Family {
 	CRC,
 	CRC32C,
 	
+	Adler,
+	
 }
 
 
@@ -109,6 +111,8 @@ pub enum Algorithm {
 	CRC32C,
 	CRC64,
 	
+	Adler32,
+	
 }
 
 
@@ -164,6 +168,8 @@ impl Family {
 			
 			Family::CRC => (1, 64 / 8, 32 / 8),
 			Family::CRC32C => (1, 32 / 8, 32 / 8),
+			
+			Family::Adler => (1, 32 / 8, 32 / 8),
 			
 		}
 	}
@@ -224,6 +230,8 @@ impl Family {
 			Family::CRC if _output_size <= 32 / 8 => Ok (Algorithm::CRC32),
 			Family::CRC if _output_size <= 64 / 8 => Ok (Algorithm::CRC64),
 			Family::CRC32C if _output_size <= 32 / 8 => Ok (Algorithm::CRC32C),
+			
+			Family::Adler if _output_size <= 32 / 8 => Ok (Algorithm::Adler32),
 			
 			_ =>
 				fail! (0x36b18fd0),

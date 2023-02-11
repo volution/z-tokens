@@ -59,6 +59,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.add_option (&["--fnv1a"], ArgStoreConst (Some (Family::FNV1a)), "(use FNV1a) !!! WEAK !!!")
 				.add_option (&["--crc"], ArgStoreConst (Some (Family::CRC)), "(use CRC) !!! WEAK !!!")
 				.add_option (&["--crc32c"], ArgStoreConst (Some (Family::CRC32C)), "(use CRC32C) !!! WEAK !!!")
+				.add_option (&["--adler"], ArgStoreConst (Some (Family::Adler)), "(use Adler) !!! WEAK !!!")
 			;
 		
 		_parser.refer (&mut _output_size)

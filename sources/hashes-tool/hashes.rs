@@ -121,6 +121,9 @@ pub fn hash (_algorithm : Algorithm, _output_size : usize, _input : impl Input) 
 		Algorithm::CRC64 =>
 			hash_crc64_any (::crc_any::CRCu64::crc64 (), _input, &mut _output) ?,
 		
+		Algorithm::Adler32 =>
+			hash_adler32 (_input, &mut _output) ?,
+		
 	}
 	
 	Ok (_output)
@@ -365,6 +368,18 @@ fn hash_crc64_any (mut _hasher : ::crc_any::CRCu64, _input : impl Input, _output
 	let _hash_value = ::crc_any::CRCu64::get_crc (&_hasher);
 	
 	copy_output_from_u64 (_hash_value, _output)
+}
+
+
+
+
+fn hash_adler32 (_input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hasher = ::adler::Adler32::new ();
+	hash_update_fn (|_data| { _hasher.write_slice (_data); Ok (()) }, _input) ?;
+	let _hash_value = ::adler::Adler32::checksum (&_hasher);
+	
+	copy_output_from_u32 (_hash_value, _output)
 }
 
 
