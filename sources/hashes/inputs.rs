@@ -17,6 +17,7 @@ const BUFFER_SIZE_DEFAULT : usize = 128 * 1024;
 
 
 pub trait Input {
+	
 	fn input (&mut self) -> InputResult<Option<&[u8]>>;
 }
 
@@ -49,19 +50,145 @@ impl <Stream : Read> Input for InputFromStream<Stream> {
 
 
 
-pub struct InputFromBytes <'a> {
-	buffer : Option<&'a [u8]>,
+pub struct InputEmpty;
+
+
+impl Input for InputEmpty {
+	
+	fn input (&mut self) -> InputResult<Option<&[u8]>> {
+		return Ok (None);
+	}
 }
 
 
-impl <'a> Input for InputFromBytes <'a> {
+
+
+pub struct InputFromBytesBoxes {
+	stack : Vec<Box<[u8]>>,
+	should_pop : bool,
+}
+
+
+impl InputFromBytesBoxes {
+	
+	pub fn from_vec (_bytes : impl Into<Vec<u8>>) -> Self {
+		Self {
+				stack : vec! [_bytes.into () .into_boxed_slice ()],
+				should_pop : false,
+			}
+	}
+	
+	pub fn from_iter_of_vec (_bytes : impl Iterator<Item = Vec<u8>>) -> Self {
+		let mut _stack = _bytes.map (Vec::into_boxed_slice) .collect::<Vec<_>> ();
+		_stack.reverse ();
+		Self {
+				stack : _stack,
+				should_pop : false,
+			}
+	}
+}
+
+
+impl Input for InputFromBytesBoxes {
 	
 	fn input (&mut self) -> InputResult<Option<&[u8]>> {
-		if self.buffer.is_none () {
-			return Ok (None);
+		if self.should_pop {
+			self.stack.pop ();
+			self.should_pop = false;
 		}
-		let _data = self.buffer.take ();
-		Ok (_data)
+		let Some (_bytes) = self.stack.last ()
+			else {
+				return Ok (None);
+			};
+		self.should_pop = true;
+		return Ok (Some (&_bytes));
+	}
+}
+
+
+
+
+pub struct InputFromBytesSlices <'a> {
+	stack : Vec<&'a [u8]>,
+	should_pop : bool,
+}
+
+
+impl <'a> InputFromBytesSlices<'a> {
+	
+	pub fn from_slice (_bytes : impl Into<&'a [u8]>) -> Self {
+		Self {
+				stack : vec! [_bytes.into ()],
+				should_pop : false,
+			}
+	}
+	
+	pub fn from_iter_of_slice (_bytes : impl Iterator<Item = &'a [u8]>) -> Self {
+		let mut _stack = _bytes.collect::<Vec<_>> ();
+		_stack.reverse ();
+		Self {
+				stack : _stack,
+				should_pop : false,
+			}
+	}
+}
+
+
+impl <'a> Input for InputFromBytesSlices<'a> {
+	
+	fn input (&mut self) -> InputResult<Option<&[u8]>> {
+		if self.should_pop {
+			self.stack.pop ();
+			self.should_pop = false;
+		}
+		let Some (_bytes) = self.stack.last ()
+			else {
+				return Ok (None);
+			};
+		self.should_pop = true;
+		return Ok (Some (_bytes));
+	}
+}
+
+
+
+
+pub struct InputFromConcatenation <I : Input> {
+	stack : Vec<I>,
+	should_pop : bool,
+}
+
+
+impl <I : Input> InputFromConcatenation<I> {
+	
+	pub fn new (_inputs : impl Iterator<Item = I>) -> Self {
+		let mut _stack = _inputs.collect::<Vec<_>> ();
+		_stack.reverse ();
+		Self {
+				stack : _stack,
+				should_pop : false,
+			}
+	}
+}
+
+
+impl <I : Input> Input for InputFromConcatenation<I> {
+	
+	fn input (&mut self) -> InputResult<Option<&[u8]>> {
+		if self.should_pop {
+			self.stack.pop ();
+			self.should_pop = false;
+		}
+		let Some (_head) = self.stack.last_mut ()
+			else {
+				return Ok (None);
+			};
+		let Some (_data) = _head.input () ?
+			else {
+				self.should_pop = true;
+				return Ok (Some (&[]));
+			};
+		return Ok (Some (_data));
 	}
 }
 
@@ -86,6 +213,46 @@ impl <I : Input + ?Sized> Input for &mut I {
 
 
 
+pub fn inputs_concatenate <I : Input> (_inputs : impl Iterator<Item = I>) -> InputResult<impl Input> {
+	let _input = InputFromConcatenation::new (_inputs);
+	Ok (_input)
+}
+
+
+pub fn input_empty () -> InputResult<impl Input> {
+	
+	Ok (InputEmpty)
+}
+
+
+pub fn input_from_string_owned (_string : String) -> InputResult<impl Input> {
+	
+	input_from_bytes_owned (_string.into_bytes ())
+}
+
+
+pub fn input_from_bytes_owned (_bytes : Vec<u8>) -> InputResult<impl Input> {
+	
+	let _input = InputFromBytesBoxes::from_vec (_bytes);
+	
+	Ok (_input)
+}
+
+
+pub fn input_from_string_slice <'a> (_string : &'a str) -> InputResult<impl Input + 'a> {
+	
+	input_from_bytes_slice (_string.as_bytes ())
+}
+
+
+pub fn input_from_bytes_slice <'a> (_bytes : &'a [u8]) -> InputResult<impl Input + 'a> {
+	
+	let _input = InputFromBytesSlices::from_slice (_bytes);
+	
+	Ok (_input)
+}
+
+
 pub fn input_from_stdio () -> InputResult<impl Input> {
 	
 	let _stream = stdin_locked ();
@@ -102,23 +269,7 @@ pub fn input_from_file (_path : &Path) -> InputResult<impl Input> {
 }
 
 
-pub fn input_from_string (_string : &str) -> InputResult<InputFromBytes> {
-	
-	input_from_bytes (_string.as_bytes ())
-}
-
-
-pub fn input_from_bytes (_bytes : &[u8]) -> InputResult<InputFromBytes> {
-	
-	let _input = InputFromBytes {
-			buffer : Some (_bytes),
-		};
-	
-	Ok (_input)
-}
-
-
-pub fn input_from_stream <Stream : Read> (_stream : Stream) -> InputResult<InputFromStream<Stream>> {
+pub fn input_from_stream <Stream : Read> (_stream : Stream) -> InputResult<impl Input> {
 	
 	let _buffer = BufReader::with_capacity (BUFFER_SIZE_DEFAULT, _stream);
 	

@@ -30,7 +30,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _output_discard_right : Option<bool> = None;
 	let mut _output_reversed : Option<bool> = None;
 	
-	let mut _input_source : Option<InputSource> = None;
+	let mut _input_sources : Vec<InputSource> = Vec::new ();
 	
 	{
 		let mut _parser = create_parser () .else_wrap (0x0102258d) ?;
@@ -80,11 +80,13 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.add_option (&["--8192b", "--1024B"], ArgStoreConst (Some (1024)), "(output 8192 bits / 1024 bytes)")
 			;
 		
-		_parser.refer (&mut _input_source)
+		_parser.refer (&mut _input_sources)
 				.metavar ("{input}")
-				.add_option (&["-i", "--stdin"], ArgStoreConst (Some (InputSource::Stdin)), "(read from stdin)")
-				.add_option (&["-f", "--file"], ParseInputSourceFile, "(read from file)")
-				.add_option (&["-t", "--token"], ArgStoreOption, "(use this argument)");
+				.add_option (&["-i", "--stdin"], ArgPushConst (InputSource::Stdin), "(read from stdin)")
+				.add_option (&["-f", "--file"], ArgPushInputSourceFile, "(read from file)")
+				.add_option (&["-t", "--token"], ArgPush, "(use this argument)")
+				.add_option (&["--empty"], ArgPushConst (InputSource::Empty), "(empty)")
+			;
 		
 		_parser.refer (&mut _output_discard_right)
 				.metavar ("{alignment}")
@@ -110,15 +112,17 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			reversed : _output_reversed.unwrap_or (false),
 		};
 	
-	let _input_source = _input_source.else_wrap (0x808b3d1e) ?;
+	let mut _inputs = _input_sources.into_iter () .map (InputSource::into_boxed_input) .collect::<Result<Vec<_>, _>> () ?;
 	
-	let mut _input : Box<dyn Input> = match _input_source {
-			InputSource::Stdin =>
-				Box::new (input_from_stdio () .else_wrap (0x211ceca5) ?),
-			InputSource::File (ref _path) =>
-				Box::new (input_from_file (_path) .else_wrap (0xa8211613) ?),
-			InputSource::String (ref _string) =>
-				Box::new (input_from_string (_string) .else_wrap (0xc87afcd6) ?),
+	let mut _input : Box<dyn Input> =
+		if _inputs.len () <= 1 {
+			if let Some (_input_source) = _inputs.pop () {
+				_input_source
+			} else {
+				InputSource::Stdin.into_boxed_input () ?
+			}
+		} else {
+			Box::new (inputs_concatenate (_inputs.into_iter ()) .else_wrap (0xd6032117) ?)
 		};
 	
 	let _hash = hash (_algorithm, &mut _input, &_output_parameters) .else_wrap (0x16112a03) ?;
@@ -140,6 +144,25 @@ enum InputSource {
 	Stdin,
 	File (PathBuf),
 	String (String),
+	Empty,
+}
+
+
+impl InputSource {
+	
+	fn into_boxed_input (self) -> MainResult<Box<dyn Input>> {
+		let _input : Box<dyn Input> = match self {
+			InputSource::Stdin =>
+				Box::new (input_from_stdio () .else_wrap (0x211ceca5) ?),
+			InputSource::File (_path) =>
+				Box::new (input_from_file (&_path) .else_wrap (0xa8211613) ?),
+			InputSource::String (_string) =>
+				Box::new (input_from_string_owned (_string) .else_wrap (0xc87afcd6) ?),
+			InputSource::Empty =>
+				Box::new (input_empty () .else_wrap (0xf3574630) ?),
+		};
+		Ok (_input)
+	}
 }
 
 
@@ -159,24 +182,24 @@ impl FromStr for InputSource {
 
 
 
-struct ParseInputSourceFile;
-struct ParseInputSourceFileAction <'a> (Rc<RefCell<&'a mut Option<InputSource>>>);
+struct ArgPushInputSourceFile;
+struct ArgPushInputSourceFileAction <'a> (Rc<RefCell<&'a mut Vec<InputSource>>>);
 
 
-impl argparse::action::TypedAction<Option<InputSource>> for ParseInputSourceFile {
+impl argparse::action::TypedAction<Vec<InputSource>> for ArgPushInputSourceFile {
 	
-	fn bind <'a> (&self, _cell : Rc<RefCell<&'a mut Option<InputSource>>>) -> argparse::action::Action<'a> {
-		return argparse::action::Action::Single (Box::new (ParseInputSourceFileAction (_cell)));
+	fn bind <'a> (&self, _cell : Rc<RefCell<&'a mut Vec<InputSource>>>) -> argparse::action::Action<'a> {
+		return argparse::action::Action::Single (Box::new (ArgPushInputSourceFileAction (_cell)));
 	}
 }
 
 
-impl <'a> argparse::action::IArgAction for ParseInputSourceFileAction <'a> {
+impl <'a> argparse::action::IArgAction for ArgPushInputSourceFileAction <'a> {
 	
 	fn parse_arg (&self, _argument : &str) -> argparse::action::ParseResult {
 		let _cell : &RefCell<_> = self.0.borrow ();
 		let mut _cell : RefMut<_> = _cell.borrow_mut ();
-		** _cell = Some (InputSource::File (PathBuf::from (_argument)));
+		_cell.push (InputSource::File (PathBuf::from (_argument)));
 		argparse::action::ParseResult::Parsed
 	}
 }
