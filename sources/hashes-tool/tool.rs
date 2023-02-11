@@ -52,8 +52,12 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.add_option (&["--siphash"], ArgStoreConst (Some (Family::SipHash)), "(use SipHash) !!! WEAK !!!")
 				.add_option (&["--seahash"], ArgStoreConst (Some (Family::SeaHash)), "(use SeaHash) !!! WEAK !!!")
 				.add_option (&["--highway"], ArgStoreConst (Some (Family::HighwayHash)), "(use HighwayHash) !!! WEAK !!!")
-				.add_option (&["--xxhash"], ArgStoreConst (Some (Family::XxHash)), "(use XxHash) !!! WEAK !!!")
-				.add_option (&["--xxh3"], ArgStoreConst (Some (Family::Xxh3)), "(use Xxh3) !!! WEAK and EXPERIMENTAL !!!");
+				.add_option (&["--xxhash"], ArgStoreConst (Some (Family::XxHash)), "(use xxHash) !!! WEAK !!!")
+				.add_option (&["--xxh3"], ArgStoreConst (Some (Family::Xxh3)), "(use Xxh3) !!! WEAK and EXPERIMENTAL !!!")
+				.add_option (&["--djb2"], ArgStoreConst (Some (Family::Djb2)), "(use djb2) !!! WEAK !!!")
+				.add_option (&["--sdbm"], ArgStoreConst (Some (Family::SDBM)), "(use SDBM) !!! WEAK !!!")
+				.add_option (&["--fnv1a"], ArgStoreConst (Some (Family::FNV1a)), "(use FNV1a) !!! WEAK !!!")
+			;
 		
 		_parser.refer (&mut _output_size)
 				.metavar ("{size}")
@@ -64,7 +68,12 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.add_option (&["--64b", "--8B"], ArgStoreConst (Some (8)), "(output 64 bits / 8 bytes)")
 				.add_option (&["--128b", "--16B"], ArgStoreConst (Some (16)), "(output 128 bits / 16 bytes)")
 				.add_option (&["--256b", "--32B"], ArgStoreConst (Some (32)), "(output 256 bits / 32 bytes)")
-				.add_option (&["--512b", "--64B"], ArgStoreConst (Some (64)), "(output 512 bits / 64 bytes)");
+				.add_option (&["--512b", "--64B"], ArgStoreConst (Some (64)), "(output 512 bits / 64 bytes)")
+				.add_option (&["--1024b", "--128B"], ArgStoreConst (Some (128)), "(output 1024 bits / 128 bytes)")
+				.add_option (&["--2048b", "--256B"], ArgStoreConst (Some (256)), "(output 2048 bits / 256 bytes)")
+				.add_option (&["--4096b", "--512B"], ArgStoreConst (Some (512)), "(output 4096 bits / 512 bytes)")
+				.add_option (&["--8192b", "--1024B"], ArgStoreConst (Some (1024)), "(output 8192 bits / 1024 bytes)")
+			;
 		
 		_parser.refer (&mut _input_source)
 				.metavar ("{input}")

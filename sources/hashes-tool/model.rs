@@ -45,6 +45,10 @@ pub enum Family {
 	XxHash,
 	Xxh3,
 	
+	Djb2,
+	SDBM,
+	FNV1a,
+	
 }
 
 
@@ -91,6 +95,11 @@ pub enum Algorithm {
 	Xxh3_64,
 	Xxh3_128,
 	
+	Djb2,
+	SDBM,
+	FNV1a_32,
+	FNV1a_64,
+	
 }
 
 
@@ -110,28 +119,42 @@ impl FromStr for Family {
 
 impl Family {
 	
+	
 	fn output_size_range (&self) -> (usize, usize, usize) {
 		match self {
+			
 			Family::MD5 => (1, 128 / 8, 128 / 8),
+			
 			Family::SHA1 |
 			Family::GitSHA1 => (1, 160 / 8, 160 / 8),
+			
 			Family::SHA2 => (1, 512 / 8, 256 / 8),
 			Family::SHA3 => (1, 512 / 8, 256 / 8),
+			
 			Family::Blake2 => (1, 64, 64),
 			Family::Blake2s => (1, 32, 32),
 			Family::Blake2b => (1, 64, 64),
+			
 			Family::Blake3 => (1, OUTPUT_SIZE_MAX, 256 / 8),
+			
 			Family::Argon2 |
 			Family::Argon2d |
 			Family::Argon2i |
 			Family::Argon2id => (4, OUTPUT_SIZE_MAX, 32),
+			
 			Family::SipHash => (1, 128 / 8, 64 / 8),
 			Family::SeaHash => (1, 64 / 8, 64 / 8),
 			Family::HighwayHash => (1, 256 / 8, 64 / 8),
+			
 			Family::XxHash => (1, 64 / 8, 64 / 8),
 			Family::Xxh3 => (1, 128 / 8, 64 / 8),
+			
+			Family::Djb2 => (1, 32 / 8, 32 / 8),
+			Family::SDBM => (1, 32 / 8, 32 / 8),
+			Family::FNV1a => (1, 64 / 8, 64 / 8),
 		}
 	}
+	
 	
 	fn algorithm_for_output_size (&self, _output_size : usize) -> AlgorithmResult<Algorithm> {
 		match self {
@@ -176,6 +199,12 @@ impl Family {
 			
 			Family::Xxh3 if _output_size <= 64 / 8 => Ok (Algorithm::Xxh3_64),
 			Family::Xxh3 if _output_size <= 128 / 8 => Ok (Algorithm::Xxh3_128),
+			
+			Family::Djb2 if _output_size <= 32 / 8 => Ok (Algorithm::Djb2),
+			Family::SDBM if _output_size <= 32 / 8 => Ok (Algorithm::SDBM),
+			
+			Family::FNV1a if _output_size <= 32 / 8 => Ok (Algorithm::FNV1a_32),
+			Family::FNV1a if _output_size <= 64 / 8 => Ok (Algorithm::FNV1a_64),
 			
 			_ =>
 				fail! (0x36b18fd0),

@@ -100,6 +100,16 @@ pub fn hash (_algorithm : Algorithm, _output_size : usize, _input : impl Input) 
 		Algorithm::Xxh3_128 =>
 			hash_xxh3_128 (_input, &mut _output) ?,
 		
+		Algorithm::Djb2 =>
+			hash_djb2 (_input, &mut _output) ?,
+		Algorithm::SDBM =>
+			hash_sdbm (_input, &mut _output) ?,
+		
+		Algorithm::FNV1a_32 =>
+			hash_fnv1a_32 (_input, &mut _output) ?,
+		Algorithm::FNV1a_64 =>
+			hash_fnv1a_64 (_input, &mut _output) ?,
+		
 	}
 	
 	Ok (_output)
@@ -273,6 +283,50 @@ fn hash_xxh3_128 (_input : impl Input, _output : &mut [u8]) -> HashResult {
 	let _hash_value = ::twox_hash::xxh3::HasherExt::finish_ext (&_hasher);
 	
 	copy_output_from_u128 (_hash_value, _output)
+}
+
+
+
+
+fn hash_djb2 (_input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hasher = ::hashers::oz::DJB2Hasher::default ();
+	hash_update_std (&mut _hasher, _input) ?;
+	let _hash_value = Hasher::finish (&_hasher) as u32;
+	
+	copy_output_from_u32 (_hash_value, _output)
+}
+
+
+fn hash_sdbm (_input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hasher = ::hashers::oz::SDBMHasher::default ();
+	hash_update_std (&mut _hasher, _input) ?;
+	let _hash_value = Hasher::finish (&_hasher) as u32;
+	
+	copy_output_from_u32 (_hash_value, _output)
+}
+
+
+
+
+fn hash_fnv1a_32 (_input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hasher = ::hashers::fnv::FNV1aHasher32::default ();
+	hash_update_std (&mut _hasher, _input) ?;
+	let _hash_value = Hasher::finish (&_hasher) as u32;
+	
+	copy_output_from_u32 (_hash_value, _output)
+}
+
+
+fn hash_fnv1a_64 (_input : impl Input, _output : &mut [u8]) -> HashResult {
+	
+	let mut _hasher = ::hashers::fnv::FNV1aHasher64::default ();
+	hash_update_std (&mut _hasher, _input) ?;
+	let _hash_value = Hasher::finish (&_hasher);
+	
+	copy_output_from_u64 (_hash_value, _output)
 }
 
 
