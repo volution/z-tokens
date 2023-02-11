@@ -1643,7 +1643,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "z-tokens-encodings-tool"
+name = "z-tokens-encodings"
 version = "0.1.0"
 dependencies = [
  "bech32",
@@ -1655,6 +1655,16 @@ dependencies = [
  "vrl-preludes",
  "z-tokens-runtime",
  "z85",
+]
+
+[[package]]
+name = "z-tokens-encodings-tool"
+version = "0.1.0"
+dependencies = [
+ "vrl-errors",
+ "vrl-preludes",
+ "z-tokens-encodings",
+ "z-tokens-runtime",
 ]
 
 [[package]]

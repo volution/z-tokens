@@ -2,7 +2,7 @@
 
 [package]
 
-name = "z-tokens-encodings-tool"
+name = "z-tokens-encodings"
 
 workspace = "../workspace"
 
@@ -29,7 +29,7 @@ documentation.workspace = true
 
 [lib]
 
-name = "z_tokens_encodings_tool"
+name = "z_tokens_encodings"
 path = "./lib.rs"
 
 
@@ -38,17 +38,14 @@ path = "./lib.rs"
 [features]
 
 default = [
-	"z-tokens-encodings/default",
 	"z-tokens-runtime/default",
 ]
 
 development = [
-	"z-tokens-encodings/development",
 	"z-tokens-runtime/development",
 ]
 
 release = [
-	"z-tokens-encodings/release",
 	"z-tokens-runtime/release",
 ]
 
@@ -57,12 +54,16 @@ release = [
 
 [dependencies]
 
-z-tokens-encodings = { path = "../encodings", default-features = false, features = [] }
-
-z-tokens-runtime = { path = "../runtime", default-features = false, features = ["zt-runtime-flags"] }
+z-tokens-runtime = { path = "../runtime", default-features = false, features = [] }
 
 vrl-errors = { version = "*", default-features = false, features = [] }
 vrl-preludes = { version = "*", default-features = false, features = [] }
 
+data-encoding = { version = "^2.3", default-features = false, features = ["std"] }
+bech32 = { version = "^0.9", default-features = false, features = ["std"] }
+bs58 = { version = "^0.4", default-features = false, features = ["std"] }
+z85 = { version = "^3.0", default-features = false, features = [] }
+mnemonic = { version = "^1.0", default-features = false, features = [] }
+qrcode = { version = "^0.12", default-features = false, features = [] }
 
 
