@@ -1,3 +1,0 @@
->>  z-tokens hash --djb2 --token 1234
-
-7c540741

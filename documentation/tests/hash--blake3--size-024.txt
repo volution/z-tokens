@@ -1,3 +1,0 @@
->>  z-tokens hash --blake3 --token 1234 --size 24
-
-cde13a55f41e387480391c47238acfe9c0136dd56bf365b0

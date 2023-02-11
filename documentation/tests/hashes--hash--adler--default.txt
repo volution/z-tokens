@@ -1,0 +1,3 @@
+>>  z-tokens hashes hash --adler --token 1234
+
+01f800cb

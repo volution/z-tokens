@@ -1,3 +1,0 @@
->>  z-tokens hash --seahash --token 1234
-
-e79005bed7201f22

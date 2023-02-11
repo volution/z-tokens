@@ -1,3 +1,0 @@
->>  z-tokens hash --xxh3 --token 1234 --64b
-
-f738de32eb770b07

@@ -1,3 +1,0 @@
->>  z-tokens hash --argon2 --token 1234
-
-a1687e42c167e5906794c449c65d2dc22b9a02b073a51d71d798582289d2b692

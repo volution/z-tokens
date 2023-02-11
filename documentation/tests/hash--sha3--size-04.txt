@@ -1,3 +1,0 @@
->>  z-tokens hash --sha3 --token 1234 --size 4
-
-b0f3dc04

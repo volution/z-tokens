@@ -1,3 +1,0 @@
->>  z-tokens hash --crc --token 1234
-
-9be3e0a3

@@ -1,3 +1,0 @@
->>  z-tokens hash --sha3 --token 1234 --size 32
-
-1d6442ddcfd9db1ff81df77cbefcd5afcc8c7ca952ab3101ede17a84b866d3f3

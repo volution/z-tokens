@@ -1,0 +1,3 @@
+>>  z-tokens hashes hash --md5 --token 12 --token '' --token '' --token 34 --inputs-canonicalize
+
+dce338fe3c93a5328990772517e8194e

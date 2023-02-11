@@ -1,3 +1,0 @@
->>  z-tokens hash --md5 --token 1234 --inputs-canonicalize
-
-94ff505c4167267bc75cf24ee5d90980

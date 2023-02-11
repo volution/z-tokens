@@ -1,3 +1,0 @@
->>  z-tokens hash --xxhash --token 1234
-
-d8316e61d84f6ba4

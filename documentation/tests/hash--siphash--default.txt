@@ -1,3 +1,0 @@
->>  z-tokens hash --siphash --token 1234
-
-4e83fdc3328d7292

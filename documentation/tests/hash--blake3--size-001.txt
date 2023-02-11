@@ -1,3 +1,0 @@
->>  z-tokens hash --blake3 --token 1234 --size 1
-
-cd

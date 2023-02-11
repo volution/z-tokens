@@ -1,3 +1,0 @@
->>  z-tokens hash --md5 --token 12 --token 34 --inputs-concatenate
-
-81dc9bdb52d04dc20036dbd8313ed055

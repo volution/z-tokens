@@ -1,3 +1,0 @@
->>  z-tokens hash --crc --token 1234 --8b
-
-c2

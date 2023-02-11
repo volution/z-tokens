@@ -1,3 +1,0 @@
->>  z-tokens hash --crc32c --token 1234
-
-f63af4ee

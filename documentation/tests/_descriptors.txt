@@ -5,7 +5,7 @@ tools / version :: --version
 tools / help / patterns :: patterns --help
 tools / help / generate :: generate --help
 
-tools / help / hash :: hash --help
+tools / help / hashes / hash :: hashes hash --help
 
 tools / help / encodings / encode :: encodings encode --help
 tools / help / encodings / decode :: encodings decode --help
@@ -92,97 +92,97 @@ generate / pattern / no-mandatory-separators :: generate --token-pattern mnemoni
 
 
 
-hash / md5 / default :: hash --md5 --token 1234
-hash / sha1 / default :: hash --sha1 --token 1234
-hash / sha2 / default :: hash --sha2 --token 1234
+hashes / hash / md5 / default :: hashes hash --md5 --token 1234
+hashes / hash / sha1 / default :: hashes hash --sha1 --token 1234
+hashes / hash / sha2 / default :: hashes hash --sha2 --token 1234
 
-hash / sha3 / default :: hash --sha3 --token 1234
-hash / sha3 / size-01 :: hash --sha3 --token 1234 --size 1
-hash / sha3 / size-04 :: hash --sha3 --token 1234 --size 4
-hash / sha3 / size-06 :: hash --sha3 --token 1234 --size 6
-hash / sha3 / size-08 :: hash --sha3 --token 1234 --size 8
-hash / sha3 / size-10 :: hash --sha3 --token 1234 --size 10
-hash / sha3 / size-12 :: hash --sha3 --token 1234 --size 12
-hash / sha3 / size-14 :: hash --sha3 --token 1234 --size 14
-hash / sha3 / size-16 :: hash --sha3 --token 1234 --size 16
-hash / sha3 / size-20 :: hash --sha3 --token 1234 --size 20
-hash / sha3 / size-24 :: hash --sha3 --token 1234 --size 24
-hash / sha3 / size-28 :: hash --sha3 --token 1234 --size 28
-hash / sha3 / size-32 :: hash --sha3 --token 1234 --size 32
-hash / sha3 / size-40 :: hash --sha3 --token 1234 --size 40
-hash / sha3 / size-48 :: hash --sha3 --token 1234 --size 48
-hash / sha3 / size-56 :: hash --sha3 --token 1234 --size 56
-hash / sha3 / size-64 :: hash --sha3 --token 1234 --size 64
+hashes / hash / sha3 / default :: hashes hash --sha3 --token 1234
+hashes / hash / sha3 / size-01 :: hashes hash --sha3 --token 1234 --size 1
+hashes / hash / sha3 / size-04 :: hashes hash --sha3 --token 1234 --size 4
+hashes / hash / sha3 / size-06 :: hashes hash --sha3 --token 1234 --size 6
+hashes / hash / sha3 / size-08 :: hashes hash --sha3 --token 1234 --size 8
+hashes / hash / sha3 / size-10 :: hashes hash --sha3 --token 1234 --size 10
+hashes / hash / sha3 / size-12 :: hashes hash --sha3 --token 1234 --size 12
+hashes / hash / sha3 / size-14 :: hashes hash --sha3 --token 1234 --size 14
+hashes / hash / sha3 / size-16 :: hashes hash --sha3 --token 1234 --size 16
+hashes / hash / sha3 / size-20 :: hashes hash --sha3 --token 1234 --size 20
+hashes / hash / sha3 / size-24 :: hashes hash --sha3 --token 1234 --size 24
+hashes / hash / sha3 / size-28 :: hashes hash --sha3 --token 1234 --size 28
+hashes / hash / sha3 / size-32 :: hashes hash --sha3 --token 1234 --size 32
+hashes / hash / sha3 / size-40 :: hashes hash --sha3 --token 1234 --size 40
+hashes / hash / sha3 / size-48 :: hashes hash --sha3 --token 1234 --size 48
+hashes / hash / sha3 / size-56 :: hashes hash --sha3 --token 1234 --size 56
+hashes / hash / sha3 / size-64 :: hashes hash --sha3 --token 1234 --size 64
 
-hash / sha3 / size-56 / discard-right :: hash --sha3 --token 1234 --size 56 --output-discard-right
-hash / sha3 / size-56 / discard-left :: hash --sha3 --token 1234 --size 56 --output-discard-left
-hash / sha3 / size-56 / reversed :: hash --sha3 --token 1234 --size 56 --output-reversed
+hashes / hash / sha3 / size-56 / discard-right :: hashes hash --sha3 --token 1234 --size 56 --output-discard-right
+hashes / hash / sha3 / size-56 / discard-left :: hashes hash --sha3 --token 1234 --size 56 --output-discard-left
+hashes / hash / sha3 / size-56 / reversed :: hashes hash --sha3 --token 1234 --size 56 --output-reversed
 
-hash / blake2 / default :: hash --blake2 --token 1234
-hash / blake2s / default :: hash --blake2s --token 1234
-hash / blake2b / default :: hash --blake2b --token 1234
+hashes / hash / blake2 / default :: hashes hash --blake2 --token 1234
+hashes / hash / blake2s / default :: hashes hash --blake2s --token 1234
+hashes / hash / blake2b / default :: hashes hash --blake2b --token 1234
 
-hash / blake3 / default :: hash --blake3 --token 1234
-hash / blake3 / size-001 :: hash --blake3 --token 1234 --size 1
-hash / blake3 / size-008 :: hash --blake3 --token 1234 --size 8
-hash / blake3 / size-016 :: hash --blake3 --token 1234 --size 16
-hash / blake3 / size-024 :: hash --blake3 --token 1234 --size 24
-hash / blake3 / size-032 :: hash --blake3 --token 1234 --size 32
-hash / blake3 / size-064 :: hash --blake3 --token 1234 --size 64
-hash / blake3 / size-128 :: hash --blake3 --token 1234 --size 128
+hashes / hash / blake3 / default :: hashes hash --blake3 --token 1234
+hashes / hash / blake3 / size-001 :: hashes hash --blake3 --token 1234 --size 1
+hashes / hash / blake3 / size-008 :: hashes hash --blake3 --token 1234 --size 8
+hashes / hash / blake3 / size-016 :: hashes hash --blake3 --token 1234 --size 16
+hashes / hash / blake3 / size-024 :: hashes hash --blake3 --token 1234 --size 24
+hashes / hash / blake3 / size-032 :: hashes hash --blake3 --token 1234 --size 32
+hashes / hash / blake3 / size-064 :: hashes hash --blake3 --token 1234 --size 64
+hashes / hash / blake3 / size-128 :: hashes hash --blake3 --token 1234 --size 128
 
-hash / blake3 / size-024 / discard-right :: hash --blake3 --token 1234 --size 24 --output-discard-right
-hash / blake3 / size-024 / discard-left :: hash --blake3 --token 1234 --size 24 --output-discard-left
-hash / blake3 / size-024 / reversed :: hash --blake3 --token 1234 --size 24 --output-reversed
+hashes / hash / blake3 / size-024 / discard-right :: hashes hash --blake3 --token 1234 --size 24 --output-discard-right
+hashes / hash / blake3 / size-024 / discard-left :: hashes hash --blake3 --token 1234 --size 24 --output-discard-left
+hashes / hash / blake3 / size-024 / reversed :: hashes hash --blake3 --token 1234 --size 24 --output-reversed
 
-hash / siphash / default :: hash --siphash --token 1234
-hash / siphash / size-64 :: hash --siphash --token 1234 --64b
-hash / siphash / size-128 :: hash --siphash --token 1234 --128b
+hashes / hash / siphash / default :: hashes hash --siphash --token 1234
+hashes / hash / siphash / size-64 :: hashes hash --siphash --token 1234 --64b
+hashes / hash / siphash / size-128 :: hashes hash --siphash --token 1234 --128b
 
-hash / highway / default :: hash --highway --token 1234
-hash / highway / size-64 :: hash --highway --token 1234 --64b
-hash / highway / size-128 :: hash --highway --token 1234 --128b
-hash / highway / size-256 :: hash --highway --token 1234 --256b
+hashes / hash / highway / default :: hashes hash --highway --token 1234
+hashes / hash / highway / size-64 :: hashes hash --highway --token 1234 --64b
+hashes / hash / highway / size-128 :: hashes hash --highway --token 1234 --128b
+hashes / hash / highway / size-256 :: hashes hash --highway --token 1234 --256b
 
-hash / seahash / default :: hash --seahash --token 1234
+hashes / hash / seahash / default :: hashes hash --seahash --token 1234
 
-hash / xxhash / default :: hash --xxhash --token 1234
-hash / xxhash / size-32 :: hash --xxhash --token 1234 --32b
-hash / xxhash / size-64 :: hash --xxhash --token 1234 --64b
+hashes / hash / xxhash / default :: hashes hash --xxhash --token 1234
+hashes / hash / xxhash / size-32 :: hashes hash --xxhash --token 1234 --32b
+hashes / hash / xxhash / size-64 :: hashes hash --xxhash --token 1234 --64b
 
-hash / xxh3 / default :: hash --xxh3 --token 1234
-hash / xxh3 / size-64 :: hash --xxh3 --token 1234 --64b
-hash / xxh3 / size-128 :: hash --xxh3 --token 1234 --128b
+hashes / hash / xxh3 / default :: hashes hash --xxh3 --token 1234
+hashes / hash / xxh3 / size-64 :: hashes hash --xxh3 --token 1234 --64b
+hashes / hash / xxh3 / size-128 :: hashes hash --xxh3 --token 1234 --128b
 
-hash / djb2 / default :: hash --djb2 --token 1234
-hash / sdbm / default :: hash --sdbm --token 1234
+hashes / hash / djb2 / default :: hashes hash --djb2 --token 1234
+hashes / hash / sdbm / default :: hashes hash --sdbm --token 1234
 
-hash / fnv1a / default :: hash --fnv1a --token 1234
-hash / fnv1a / size-32 :: hash --fnv1a --token 1234 --32b
-hash / fnv1a / size-64 :: hash --fnv1a --token 1234 --64b
+hashes / hash / fnv1a / default :: hashes hash --fnv1a --token 1234
+hashes / hash / fnv1a / size-32 :: hashes hash --fnv1a --token 1234 --32b
+hashes / hash / fnv1a / size-64 :: hashes hash --fnv1a --token 1234 --64b
 
-hash / crc / default :: hash --crc --token 1234
-hash / crc / size-8 :: hash --crc --token 1234 --8b
-hash / crc / size-16 :: hash --crc --token 1234 --16b
-hash / crc / size-32 :: hash --crc --token 1234 --32b
-hash / crc / size-64 :: hash --crc --token 1234 --64b
-hash / crc32c / default :: hash --crc32c --token 1234
+hashes / hash / crc / default :: hashes hash --crc --token 1234
+hashes / hash / crc / size-8 :: hashes hash --crc --token 1234 --8b
+hashes / hash / crc / size-16 :: hashes hash --crc --token 1234 --16b
+hashes / hash / crc / size-32 :: hashes hash --crc --token 1234 --32b
+hashes / hash / crc / size-64 :: hashes hash --crc --token 1234 --64b
+hashes / hash / crc32c / default :: hashes hash --crc32c --token 1234
 
-hash / adler / default :: hash --adler --token 1234
+hashes / hash / adler / default :: hashes hash --adler --token 1234
 
-hash / argon2 / default :: hash --argon2 --token 1234
-hash / argon2 / size-16 :: hash --argon2 --token 1234 --size 16
-hash / argon2d / size-16 :: hash --argon2d --token 1234 --size 16
-hash / argon2i / size-16 :: hash --argon2i --token 1234 --size 16
-hash / argon2id / size-16 :: hash --argon2id --token 1234 --size 16
+hashes / hash / argon2 / default :: hashes hash --argon2 --token 1234
+hashes / hash / argon2 / size-16 :: hashes hash --argon2 --token 1234 --size 16
+hashes / hash / argon2d / size-16 :: hashes hash --argon2d --token 1234 --size 16
+hashes / hash / argon2i / size-16 :: hashes hash --argon2i --token 1234 --size 16
+hashes / hash / argon2id / size-16 :: hashes hash --argon2id --token 1234 --size 16
 
-hash / inputs / concatenate / 1 :: hash --md5 --token 1234 --inputs-concatenate
-hash / inputs / concatenate / 2 :: hash --md5 --token 12 --token 34 --inputs-concatenate
-hash / inputs / concatenate / 4 :: hash --md5 --token 12 --token '' --token '' --token 34 --inputs-concatenate
+hashes / hash / inputs / concatenate / 1 :: hashes hash --md5 --token 1234 --inputs-concatenate
+hashes / hash / inputs / concatenate / 2 :: hashes hash --md5 --token 12 --token 34 --inputs-concatenate
+hashes / hash / inputs / concatenate / 4 :: hashes hash --md5 --token 12 --token '' --token '' --token 34 --inputs-concatenate
 
-hash / inputs / canonicalize / 1 :: hash --md5 --token 1234 --inputs-canonicalize
-hash / inputs / canonicalize / 2 :: hash --md5 --token 12 --token 34 --inputs-canonicalize
-hash / inputs / canonicalize / 4 :: hash --md5 --token 12 --token '' --token '' --token 34 --inputs-canonicalize
+hashes / hash / inputs / canonicalize / 1 :: hashes hash --md5 --token 1234 --inputs-canonicalize
+hashes / hash / inputs / canonicalize / 2 :: hashes hash --md5 --token 12 --token 34 --inputs-canonicalize
+hashes / hash / inputs / canonicalize / 4 :: hashes hash --md5 --token 12 --token '' --token '' --token 34 --inputs-canonicalize
 
 
 

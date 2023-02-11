@@ -1,3 +1,0 @@
->>  z-tokens hash --sdbm --token 1234
-
-00a00882
