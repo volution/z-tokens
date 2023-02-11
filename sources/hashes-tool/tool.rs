@@ -4,10 +4,10 @@ use ::vrl_preludes::std_plus_extras::*;
 use ::vrl_errors::*;
 use ::z_tokens_runtime::flags::*;
 
-use crate::model::*;
-use crate::hashes::*;
-use crate::inputs::*;
-use crate::format::*;
+use ::z_tokens_hashes::model::*;
+use ::z_tokens_hashes::hashes::*;
+use ::z_tokens_hashes::inputs::*;
+use ::z_tokens_hashes::format::*;
 
 
 

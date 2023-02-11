@@ -1680,7 +1680,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "z-tokens-hashes-tool"
+name = "z-tokens-hashes"
 version = "0.1.0"
 dependencies = [
  "adler",
@@ -1701,6 +1701,16 @@ dependencies = [
  "twox-hash",
  "vrl-errors",
  "vrl-preludes",
+ "z-tokens-runtime",
+]
+
+[[package]]
+name = "z-tokens-hashes-tool"
+version = "0.1.0"
+dependencies = [
+ "vrl-errors",
+ "vrl-preludes",
+ "z-tokens-hashes",
  "z-tokens-runtime",
 ]
 
