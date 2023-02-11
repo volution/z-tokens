@@ -57,6 +57,11 @@ pub fn hash (_algorithm : Algorithm, _input : impl Input, _output_parameters : &
 		Algorithm::SHA3_512 =>
 			hash_fixed (::sha3::Sha3_512::new (), _input, &mut _output, _output_parameters) ?,
 		
+		Algorithm::Shake_128 =>
+			hash_extendable (::sha3::Shake128::default (), _input, &mut _output, _output_parameters) ?,
+		Algorithm::Shake_256 =>
+			hash_extendable (::sha3::Shake256::default (), _input, &mut _output, _output_parameters) ?,
+		
 		Algorithm::GitSHA1 =>
 			fail! (0x64e83dae),
 		

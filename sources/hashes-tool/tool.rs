@@ -43,6 +43,8 @@ pub fn main_hash (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.add_option (&["--sha1"], ArgStoreConst (Some (Family::SHA1)), "(use SHA1)")
 				.add_option (&["--sha2"], ArgStoreConst (Some (Family::SHA2)), "(use SHA2)")
 				.add_option (&["--sha3"], ArgStoreConst (Some (Family::SHA3)), "(use SHA3)")
+				.add_option (&["--shake128"], ArgStoreConst (Some (Family::Shake_128)), "(use Shake128)")
+				.add_option (&["--shake256"], ArgStoreConst (Some (Family::Shake_256)), "(use Shake256)")
 				.add_option (&["--blake2"], ArgStoreConst (Some (Family::Blake2)), "(use Blake2s or Blake2b)")
 				.add_option (&["--blake2s"], ArgStoreConst (Some (Family::Blake2s)), "(use Blake2s)")
 				.add_option (&["--blake2b"], ArgStoreConst (Some (Family::Blake2b)), "(use Blake2b)")

@@ -33,9 +33,13 @@ pub enum Family {
 	MD5,
 	
 	SHA1,
-	SHA2,
-	SHA3,
 	GitSHA1,
+	
+	SHA2,
+	
+	SHA3,
+	Shake_128,
+	Shake_256,
 	
 	Blake3,
 	
@@ -84,6 +88,9 @@ pub enum Algorithm {
 	SHA3_256,
 	SHA3_384,
 	SHA3_512,
+	
+	Shake_128,
+	Shake_256,
 	
 	GitSHA1,
 	
@@ -154,6 +161,9 @@ impl Family {
 			Family::SHA2 => (1, 512 / 8, 256 / 8),
 			Family::SHA3 => (1, 512 / 8, 256 / 8),
 			
+			Family::Shake_128 => (1, OUTPUT_SIZE_MAX, 128 / 8),
+			Family::Shake_256 => (1, OUTPUT_SIZE_MAX, 256 / 8),
+			
 			Family::Blake2 => (1, 64, 64),
 			Family::Blake2s => (1, 32, 32),
 			Family::Blake2b => (1, 64, 64),
@@ -201,6 +211,9 @@ impl Family {
 			Family::SHA3 if _output_size <= 256 / 8 => Ok (Algorithm::SHA3_256),
 			Family::SHA3 if _output_size <= 384 / 8 => Ok (Algorithm::SHA3_384),
 			Family::SHA3 if _output_size <= 512 / 8 => Ok (Algorithm::SHA3_512),
+			
+			Family::Shake_128 => Ok (Algorithm::Shake_128),
+			Family::Shake_256 => Ok (Algorithm::Shake_256),
 			
 			Family::Blake2 if _output_size <= 32 => Ok (Algorithm::Blake2s),
 			Family::Blake2s if _output_size <= 32 => Ok (Algorithm::Blake2s),
