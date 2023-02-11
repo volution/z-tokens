@@ -160,7 +160,7 @@ impl Family {
 			
 			Family::Djb2 => (1, 32 / 8, 32 / 8),
 			Family::SDBM => (1, 32 / 8, 32 / 8),
-			Family::FNV1a => (1, 64 / 8, 64 / 8),
+			Family::FNV1a => (1, 64 / 8, 32 / 8),
 			
 			Family::CRC => (1, 64 / 8, 32 / 8),
 			Family::CRC32C => (1, 32 / 8, 32 / 8),

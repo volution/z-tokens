@@ -136,7 +136,7 @@ pub fn hash (_algorithm : Algorithm, _output_size : usize, _input : impl Input) 
 fn hash_fixed <Hasher> (mut _hasher : Hasher, _input : impl Input, _output : &mut [u8]) -> HashResult
 		where Hasher : digest::FixedOutput + digest::Update
 {
-	hash_update (&mut _hasher, _input) .else_wrap (0x3322631d) ?;
+	hash_update_digest (&mut _hasher, _input) ?;
 	
 	let _output_size = _output.len ();
 	let _hash_full = _hasher.finalize_fixed ();
@@ -153,7 +153,7 @@ fn hash_fixed <Hasher> (mut _hasher : Hasher, _input : impl Input, _output : &mu
 fn hash_variable <Hasher> (mut _hasher : Hasher, _input : impl Input, _output : &mut [u8]) -> HashResult
 		where Hasher : digest::VariableOutput + digest::Update
 {
-	hash_update (&mut _hasher, _input) .else_wrap (0xccfa4243) ?;
+	hash_update_digest (&mut _hasher, _input) ?;
 	
 	_hasher.finalize_variable (_output) .else_wrap (0x52d8d078) ?;
 	
@@ -164,20 +164,9 @@ fn hash_variable <Hasher> (mut _hasher : Hasher, _input : impl Input, _output : 
 fn hash_extendable <Hasher> (mut _hasher : Hasher, _input : impl Input, _output : &mut [u8]) -> HashResult
 		where Hasher : digest::ExtendableOutput + digest::Update
 {
-	hash_update (&mut _hasher, _input) .else_wrap (0x5df214fb) ?;
+	hash_update_digest (&mut _hasher, _input) ?;
 	
 	_hasher.finalize_xof_into (_output);
-	
-	Ok (())
-}
-
-
-fn hash_update <Hasher> (_hasher : &mut Hasher, mut _input : impl Input) -> HashResult
-		where Hasher : digest::Update
-{
-	while let Some (_data) = _input.input () .else_wrap (0x17507faa) ? {
-		_hasher.update (_data);
-	}
 	
 	Ok (())
 }
@@ -343,23 +332,6 @@ fn hash_fnv1a_64 (_input : impl Input, _output : &mut [u8]) -> HashResult {
 
 
 
-fn hash_update_std <Hasher> (_hasher : &mut Hasher, mut _input : impl Input) -> HashResult
-		where Hasher : hash::Hasher
-{
-	while let Some (_data) = _input.input () .else_wrap (0x397076d5) ? {
-		_hasher.write (_data);
-	}
-	
-	Ok (())
-}
-
-
-
-
-
-
-
-
 fn hash_crc8_any (mut _hasher : ::crc_any::CRCu8, _input : impl Input, _output : &mut [u8]) -> HashResult {
 	
 	hash_update_fn (|_data| { _hasher.digest (_data); Ok (()) }, _input) ?;
@@ -400,6 +372,20 @@ fn hash_crc64_any (mut _hasher : ::crc_any::CRCu64, _input : impl Input, _output
 
 
 
+
+
+fn hash_update_digest <Hasher> (_hasher : &mut Hasher, mut _input : impl Input) -> HashResult
+		where Hasher : digest::Update
+{
+	hash_update_fn (|_data| { _hasher.update (_data); Ok (()) }, _input)
+}
+
+
+fn hash_update_std <Hasher> (_hasher : &mut Hasher, mut _input : impl Input) -> HashResult
+		where Hasher : hash::Hasher
+{
+	hash_update_fn (|_data| { _hasher.write (_data); Ok (()) }, _input)
+}
 
 
 fn hash_update_fn <Update> (mut _update : Update, mut _input : impl Input) -> HashResult
