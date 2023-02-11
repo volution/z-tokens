@@ -95,7 +95,7 @@ overflow-checks = true
 [profile.release]
 incremental = false
 codegen-units = 1
-opt-level = 3
+opt-level = 2
 lto = "fat"
 debug = 1
 debug-assertions = false
@@ -106,7 +106,7 @@ panic = "abort"
 [profile.bench]
 incremental = false
 codegen-units = 1
-opt-level = 3
+opt-level = 2
 lto = "fat"
 debug = 1
 debug-assertions = false
@@ -117,7 +117,7 @@ overflow-checks = true
 [profile.dev.package."*"]
 incremental = false
 codegen-units = 1
-opt-level = 3
+opt-level = 1
 debug = 2
 debug-assertions = true
 overflow-checks = true
@@ -127,7 +127,7 @@ overflow-checks = true
 [profile.dev.build-override]
 incremental = false
 codegen-units = 1
-opt-level = 3
+opt-level = 1
 debug = 2
 debug-assertions = true
 overflow-checks = true
@@ -137,7 +137,7 @@ overflow-checks = true
 [profile.release.build-override]
 incremental = false
 codegen-units = 1
-opt-level = 3
+opt-level = 1
 debug = 1
 debug-assertions = false
 overflow-checks = true
