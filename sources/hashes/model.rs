@@ -16,6 +16,16 @@ pub const OUTPUT_SIZE_MAX : usize = 1024 * 1024 * 1024;
 
 
 
+#[ derive (Clone) ]
+pub struct OutputParameters {
+	pub size : usize,
+	pub discard_right : bool,
+	pub reversed : bool,
+}
+
+
+
+
 #[ derive (Copy, Clone) ]
 #[ allow (non_camel_case_types) ]
 pub enum Family {

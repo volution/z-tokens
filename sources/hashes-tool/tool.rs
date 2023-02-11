@@ -27,6 +27,8 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _format : Option<Format> = None;
 	let mut _family : Option<Family> = None;
 	let mut _output_size : Option<usize> = None;
+	let mut _output_discard_right : Option<bool> = None;
+	let mut _output_reversed : Option<bool> = None;
 	
 	let mut _input_source : Option<InputSource> = None;
 	
@@ -84,6 +86,16 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.add_option (&["-f", "--file"], ParseInputSourceFile, "(read from file)")
 				.add_option (&["-t", "--token"], ArgStoreOption, "(use this argument)");
 		
+		_parser.refer (&mut _output_discard_right)
+				.metavar ("{alignment}")
+				.add_option (&["--output-discard-right"], ArgStoreConst (Some (true)), "(if needed discard bytes from the right of the hash) (default)")
+				.add_option (&["--output-discard-left"], ArgStoreConst (Some (false)), "(if needed discard bytes from the left of the hash)");
+		
+		_parser.refer (&mut _output_reversed)
+				.metavar ("{reversed}")
+				.add_option (&["--output-left-to-right"], ArgStoreConst (Some (false)), "(copy from left-to-right bytes from the hash) (default)")
+				.add_option (&["--output-right-to-left", "--output-reversed"], ArgStoreConst (Some (true)), "(copy from right-to-left bytes from the hash)");
+		
 		if execute_parser (_parser, _arguments) .else_wrap (0x88824ad0) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
@@ -91,6 +103,12 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let _format = _format.unwrap_or (Format::Hex);
 	let (_algorithm, _output_size) = choose_algorithm (_family, _output_size) .else_wrap (0x01241ede) ?;
+	
+	let _output_parameters = OutputParameters {
+			size : _output_size,
+			discard_right : _output_discard_right.unwrap_or (true),
+			reversed : _output_reversed.unwrap_or (false),
+		};
 	
 	let _input_source = _input_source.else_wrap (0x808b3d1e) ?;
 	
@@ -103,7 +121,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				Box::new (input_from_string (_string) .else_wrap (0xc87afcd6) ?),
 		};
 	
-	let _hash = hash (_algorithm, _output_size, &mut _input) .else_wrap (0x16112a03) ?;
+	let _hash = hash (_algorithm, &mut _input, &_output_parameters) .else_wrap (0x16112a03) ?;
 	drop (_input);
 	
 	let mut _output = BufWriter::with_capacity (STDOUT_BUFFER_SIZE, stdout_locked ());
