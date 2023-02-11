@@ -114,12 +114,26 @@ hash / sha3 / size-48 :: hash --sha3 --token 1234 --size 48
 hash / sha3 / size-56 :: hash --sha3 --token 1234 --size 56
 hash / sha3 / size-64 :: hash --sha3 --token 1234 --size 64
 
+hash / sha3 / size-56 / discard-right :: hash --sha3 --token 1234 --size 56 --output-discard-right
+hash / sha3 / size-56 / discard-left :: hash --sha3 --token 1234 --size 56 --output-discard-left
+hash / sha3 / size-56 / reversed :: hash --sha3 --token 1234 --size 56 --output-reversed
+
 hash / blake2 / default :: hash --blake2 --token 1234
 hash / blake2s / default :: hash --blake2s --token 1234
 hash / blake2b / default :: hash --blake2b --token 1234
 
 hash / blake3 / default :: hash --blake3 --token 1234
+hash / blake3 / size-001 :: hash --blake3 --token 1234 --size 1
+hash / blake3 / size-008 :: hash --blake3 --token 1234 --size 8
+hash / blake3 / size-016 :: hash --blake3 --token 1234 --size 16
+hash / blake3 / size-024 :: hash --blake3 --token 1234 --size 24
+hash / blake3 / size-032 :: hash --blake3 --token 1234 --size 32
+hash / blake3 / size-064 :: hash --blake3 --token 1234 --size 64
 hash / blake3 / size-128 :: hash --blake3 --token 1234 --size 128
+
+hash / blake3 / size-024 / discard-right :: hash --blake3 --token 1234 --size 24 --output-discard-right
+hash / blake3 / size-024 / discard-left :: hash --blake3 --token 1234 --size 24 --output-discard-left
+hash / blake3 / size-024 / reversed :: hash --blake3 --token 1234 --size 24 --output-reversed
 
 hash / siphash / default :: hash --siphash --token 1234
 hash / siphash / size-64 :: hash --siphash --token 1234 --64b

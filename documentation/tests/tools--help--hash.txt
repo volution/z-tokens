@@ -47,3 +47,11 @@ Optional arguments:
   -i,--stdin            (read from stdin)
   -f,--file {input}     (read from file)
   -t,--token {input}    (use this argument)
+  --output-discard-right
+                        (if needed discard bytes from the right of the hash)
+                        (default)
+  --output-discard-left (if needed discard bytes from the left of the hash)
+  --output-left-to-right
+                        (copy from left-to-right bytes from the hash) (default)
+  --output-right-to-left,--output-reversed
+                        (copy from right-to-left bytes from the hash)
