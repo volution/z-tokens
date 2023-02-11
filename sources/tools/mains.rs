@@ -20,7 +20,7 @@ use ::z_tokens_patterns_tool::{
 
 #[ cfg (feature = "z-tokens-hashes-tool") ]
 use ::z_tokens_hashes_tool::{
-		tool::main as main_hash,
+		tool::main_hash as main_hashes_hash,
 	};
 
 #[ cfg (feature = "z-tokens-encodings-tool") ]
@@ -100,9 +100,10 @@ pub fn main_tools () -> MainResult<ExitCode> {
 		
 		
 		#[ cfg (feature = "z-tokens-hashes-tool") ]
-		(&["hash"], _) => {
-			_arguments.insert (0, String::from ("z-tokens hash"));
-			main_hash (_arguments) .else_wrap (0xff8dcc61)
+		(&["hash"], _) |
+		(&["hashes", "hash"], _) => {
+			_arguments.insert (0, String::from ("z-tokens hashes hash"));
+			main_hashes_hash (_arguments) .else_wrap (0xff8dcc61)
 		}
 		
 		
@@ -203,9 +204,9 @@ pub fn main_hashes () -> MainResult<ExitCode> {
 		
 		
 		
-		(&[], _) => {
-			_arguments.insert (0, String::from ("z-hashes"));
-			main_hash (_arguments) .else_wrap (0xf90b7753)
+		(&["hash"], _) => {
+			_arguments.insert (0, String::from ("z-hashes hash"));
+			main_hashes_hash (_arguments) .else_wrap (0xf90b7753)
 		}
 		
 		
