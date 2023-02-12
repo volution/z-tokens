@@ -234,6 +234,11 @@
 							"./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" \
 							"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" \
 					#
+				else
+					cp -T -- \
+							"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" \
+							"./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" \
+					#
 				fi
 				
 				gpg --verify -- \
@@ -280,6 +285,11 @@
 					cp -T -- \
 							"./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" \
 							"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" \
+					#
+				else
+					cp -T -- \
+							"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" \
+							"./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" \
 					#
 				fi
 				
