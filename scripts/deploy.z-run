@@ -168,9 +168,6 @@
 	
 	if test "${_github_publish}" == true ; then
 		
-		printf -- '[--]\n' >&2
-		printf -- '[ii]  tagging and pushing for `%s` (on GitHub)...\n' "${_build_version}${_build_suffix}" >&2
-		
 		if ! git diff --quiet ; then
 			printf -- '[ee]  dirty repository (after build);  aborting!\n' >&2
 			exit -- 1
@@ -179,14 +176,6 @@
 			printf -- '[ee]  dirty repository (after build);  aborting!\n' >&2
 			exit -- 1
 		fi
-		
-		if test "${_build_release}" == true ; then
-			git tag --sign -m "[release]  Release \`v${_build_version}\`." -- "v${_build_version}" HEAD
-		else
-			git tag --sign -m "[preview]  Preview \`v${_build_version}\`." --force -- preview HEAD
-		fi
-		
-		"${ZRUN}" ':: github / push'
 		
 		printf -- '[--]\n' >&2
 	fi
@@ -324,6 +313,39 @@
 	done
 	
 	printf -- '[--]\n' >&2
+	
+	
+	if test "${_github_publish}" == true ; then
+		
+		printf -- '[--]\n' >&2
+		printf -- '[ii]  tagging and pushing for `%s` (on GitHub)...\n' "${_build_version}${_build_suffix}" >&2
+		
+		if ! git diff --quiet -- "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}" ; then
+			
+			git add -- "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}"
+			
+			git commit -m '[release]  Import release signatures.' -- "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}"
+		fi
+		
+		if ! git diff --quiet ; then
+			printf -- '[ee]  dirty repository (after build);  aborting!\n' >&2
+			exit -- 1
+		fi
+		if ! git diff --cached --quiet ; then
+			printf -- '[ee]  dirty repository (after build);  aborting!\n' >&2
+			exit -- 1
+		fi
+		
+		if test "${_build_release}" == true ; then
+			git tag --sign -m "[release]  Release \`v${_build_version}\`." -- "v${_build_version}" HEAD
+		else
+			git tag --sign -m "[preview]  Preview \`v${_build_version}\`." --force -- preview HEAD
+		fi
+		
+		"${ZRUN}" ':: github / push'
+		
+		printf -- '[--]\n' >&2
+	fi
 	
 	
 	if test "${_github_publish}" == true ; then
