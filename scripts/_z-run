@@ -43,6 +43,7 @@
 && _/documentation-sbom.z-run
 
 && _/tests.z-run
+&& _/tests-hashes.z-run
 && _/tests-exchange.z-run
 
 && _/deploy.z-run

@@ -1,0 +1,194 @@
+#!/dev/null
+
+
+
+
+
+
+
+
+<< tests / quick / hashes / run / debug
+	"${ZRUN}" ':: cargo / debug / build & collect' z-hashes < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	time \
+	"${__OUTPUTS}/binaries/z-hashes--debug--linux--native" "${@}" \
+	#
+!!
+
+
+<< tests / quick / hashes / run / release
+	"${ZRUN}" ':: cargo / release / build & collect' z-hashes < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	time \
+	"${__OUTPUTS}/binaries/z-hashes--release--linux--native" "${@}" \
+	#
+!!
+
+
+
+
+<< test / quick / hashes / hash / scrypt & argon2 / benchmark
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect' z-hashes < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	for _size in 4 8 16 32 64 128 ; do
+	for _algorithm in scrypt argon2 ; do
+		
+		TIMEFORMAT='[ii]    '"[ ${_algorithm} / ${_size} ]"' -> CPU (u/s/w):  %3lU %3lS %3lR;'
+		
+		time \
+		"${__OUTPUTS}/binaries/z-hashes--release--linux--native"  \
+				hash --"${_algorithm}" --size "${_size}" --token 1234 \
+			> /dev/null \
+		#
+		
+	done ; done
+!!
+
+
+
+
+<< test / quick / hashes / hash / cryptographic / benchmark
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect' z-hashes < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	_algorithms=(
+			
+			blake2s
+			blake2b
+			blake3
+			
+			md5
+			sha1
+			sha2-256
+			sha2-512
+			sha3-256
+			sha3-512
+			
+			shake128
+			shake256
+			
+		)
+	
+	if test ! -e "${__OUTPUTS}/tests" ; then
+		mkdir -- "${__OUTPUTS}/tests"
+	fi
+	_zero_128m_file="${__OUTPUTS}/tests/zero--128m"
+	if test ! -e "${_zero_128m_file}" ; then
+		truncate --size "$(( 128 * 1024 * 1024 ))" -- "${_zero_128m_file}"
+	fi
+	
+	_hyperfine_arguments=(
+			--warmup 10
+			--min-runs 10
+			--max-runs 100
+			--shell none
+		)
+	_hyperfine_commands=()
+	
+	for _algorithm in "${_algorithms[@]}" ; do
+		_command=(
+				"${__OUTPUTS}/binaries/z-hashes--release--linux--native"
+					hash --"${_algorithm}" --file "${_zero_128m_file}"
+			)
+		_hyperfine_arguments+=(
+				--command-name "${_algorithm}"
+			)
+		_hyperfine_commands+=(
+				"${_command[*]@Q}"
+			)
+	done
+	
+	exec -- hyperfine \
+			"${_hyperfine_arguments[@]}" \
+			-- \
+			"${_hyperfine_commands[@]}" \
+	#
+!!
+
+
+
+
+<< test / quick / hashes / hash / checksums / benchmark
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect' z-hashes < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	_algorithms=(
+			
+			blake3
+			
+			xxh3-64
+			xxh3-128
+			
+			xxhash-32
+			xxhash-64
+			
+			seahash
+			
+			siphash-64
+			siphash-128
+			
+			highwayhash-64
+			highwayhash-128
+			highwayhash-256
+			
+			djb2
+			sdbm
+			
+			fnv1a-32
+			fnv1a-64
+			
+			crc8
+			crc16
+			crc32
+			crc64
+			adler32
+			
+		)
+	
+	if test ! -e "${__OUTPUTS}/tests" ; then
+		mkdir -- "${__OUTPUTS}/tests"
+	fi
+	_zero_128m_file="${__OUTPUTS}/tests/zero--128m"
+	if test ! -e "${_zero_128m_file}" ; then
+		truncate --size "$(( 128 * 1024 * 1024 ))" -- "${_zero_128m_file}"
+	fi
+	
+	_hyperfine_arguments=(
+			--warmup 10
+			--min-runs 10
+			--max-runs 100
+			--shell none
+		)
+	_hyperfine_commands=()
+	
+	for _algorithm in "${_algorithms[@]}" ; do
+		_command=(
+				"${__OUTPUTS}/binaries/z-hashes--release--linux--native"
+					hash --"${_algorithm}" --file "${_zero_128m_file}"
+			)
+		_hyperfine_arguments+=(
+				--command-name "${_algorithm}"
+			)
+		_hyperfine_commands+=(
+				"${_command[*]@Q}"
+			)
+	done
+	
+	exec -- hyperfine \
+			"${_hyperfine_arguments[@]}" \
+			-- \
+			"${_hyperfine_commands[@]}" \
+	#
+!!
+
+
