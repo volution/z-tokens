@@ -6,35 +6,58 @@ Usage:
 
 Optional arguments:
   -h,--help             Show this help message and exit
-  -a,--algorithm {algorithm}
-                        (hashing algorithm)
   --md5                 (use MD5)
   --sha1                (use SHA1)
-  --sha2                (use SHA2)
-  --sha3                (use SHA3)
+  --sha2                (use one of SHA2)
+  --sha2-224            (use SHA2-224)
+  --sha2-256            (use SHA2-256)
+  --sha2-384            (use SHA2-384)
+  --sha2-512            (use SHA2-512)
+  --sha3                (use one of SHA3)
+  --sha3-224            (use SHA3-224)
+  --sha3-256            (use SHA3-256)
+  --sha3-384            (use SHA3-384)
+  --sha3-512            (use SHA3-512)
   --shake128            (use Shake128)
   --shake256            (use Shake256)
+  --git-sha1            (use Git SHA1 flavour)
+  --git-sha2            (use Git SHA2 flavour)
   --blake2              (use Blake2s or Blake2b)
   --blake2s             (use Blake2s)
   --blake2b             (use Blake2b)
   --blake3              (use Blake3)
-  --git-sha1            (use Git SHA1 flavour)
-  --git-sha2            (use Git SHA2 flavour)
+  --siphash             (use one of SipHash) !!! WEAK !!!
+  --siphash-64          (use SipHash-64) !!! WEAK !!!
+  --siphash-128         (use SipHash-128) !!! WEAK !!!
+  --seahash             (use SeaHash) !!! WEAK !!!
+  --highway             (use one of HighwayHash) !!! WEAK !!!
+  --highway-64          (use HighwayHash-64) !!! WEAK !!!
+  --highway-128         (use HighwayHash-128) !!! WEAK !!!
+  --highway-256         (use HighwayHash-256) !!! WEAK !!!
+  --xxhash              (use one of xxHash) !!! WEAK !!!
+  --xxhash-32           (use xxHash-32) !!! WEAK !!!
+  --xxhash-64           (use xxHash-64) !!! WEAK !!!
+  --xxh3                (use Xxh3) !!! WEAK and EXPERIMENTAL !!!
+  --xxh3-64             (use xxh3-64) !!! WEAK and EXPERIMENTAL !!!
+  --xxh3-128            (use xxh3-128) !!! WEAK and EXPERIMENTAL !!!
+  --djb2                (use djb2) !!! WEAK !!!
+  --sdbm                (use SDBM) !!! WEAK !!!
+  --fnv1a               (use one of FNV1a) !!! WEAK !!!
+  --fnv1a-32            (use FNV1a-32) !!! WEAK !!!
+  --fnv1a-64            (use FNV1a-64) !!! WEAK !!!
+  --crc                 (use one of CRC) !!! WEAK !!!
+  --crc8                (use CRC8) !!! WEAK !!!
+  --crc16               (use CRC16) !!! WEAK !!!
+  --crc32               (use CRC32) !!! WEAK !!!
+  --crc32c              (use CRC32C) !!! WEAK !!!
+  --crc64               (use CRC64) !!! WEAK !!!
+  --adler               (use one of Adler) !!! WEAK !!!
+  --adler32             (use Adler32) !!! WEAK !!!
+  --scrypt              (use Scrypt) !!! EXPERIMENTAL !!!
   --argon2              (use one of Argon2 family) !!! EXPERIMENTAL !!!
   --argon2d             (use Argon2d) !!! EXPERIMENTAL !!!
   --argon2i             (use Argon2i) !!! EXPERIMENTAL !!!
   --argon2id            (use Argon2id) !!! EXPERIMENTAL !!!
-  --siphash             (use SipHash) !!! WEAK !!!
-  --seahash             (use SeaHash) !!! WEAK !!!
-  --highway             (use HighwayHash) !!! WEAK !!!
-  --xxhash              (use xxHash) !!! WEAK !!!
-  --xxh3                (use Xxh3) !!! WEAK and EXPERIMENTAL !!!
-  --djb2                (use djb2) !!! WEAK !!!
-  --sdbm                (use SDBM) !!! WEAK !!!
-  --fnv1a               (use FNV1a) !!! WEAK !!!
-  --crc                 (use CRC) !!! WEAK !!!
-  --crc32c              (use CRC32C) !!! WEAK !!!
-  --adler               (use Adler) !!! WEAK !!!
   -s,--size {size}      (hash output size in bytes)
   --8b,--1B             (output 8 bits / 1 byte)
   --16b,--2B            (output 16 bits / 2 bytes)

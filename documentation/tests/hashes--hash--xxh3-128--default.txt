@@ -1,0 +1,3 @@
+>>  z-tokens hashes hash --xxh3-128 --token 1234
+
+9de441417473f52df738de32eb770b07

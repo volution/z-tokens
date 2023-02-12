@@ -1,0 +1,3 @@
+>>  z-tokens hashes hash --crc8 --token 1234
+
+c2

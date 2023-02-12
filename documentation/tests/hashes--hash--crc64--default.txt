@@ -1,0 +1,3 @@
+>>  z-tokens hashes hash --crc64 --token 1234
+
+1e360c1891a60f78

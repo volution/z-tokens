@@ -1,0 +1,3 @@
+>>  z-tokens hashes hash --sha2-224 --token 1234
+
+99fb2f48c6af4761f904fc85f95eb56190e5d40b1f44ec3a9c1fa319

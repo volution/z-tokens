@@ -1,0 +1,3 @@
+>>  z-tokens hashes hash --sha2-384 --token 1234
+
+504f008c8fcf8b2ed5dfcde752fc5464ab8ba064215d9c5b5fc486af3d9ab8c81b14785180d2ad7cee1ab792ad44798c

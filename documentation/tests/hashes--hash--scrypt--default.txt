@@ -1,0 +1,3 @@
+>>  z-tokens hashes hash --scrypt --token 1234
+
+e1b10980777b0f3a804159535d93724900d1766783f8d19960e0814349c3df8b

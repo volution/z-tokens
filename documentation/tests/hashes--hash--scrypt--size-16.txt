@@ -1,0 +1,3 @@
+>>  z-tokens hashes hash --scrypt --token 1234 --size 16
+
+a328845ad38ccbf9eb46fb1525459e95
