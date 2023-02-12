@@ -45,7 +45,8 @@ define_error! (pub MainError, result : MainResult);
 #[ derive (Debug) ]
 struct RsaKey {
 	slot_id : u64,
-	label : String,
+	id : Option<String>,
+	label : Option<String>,
 	modulus_bits : usize,
 	has_private : bool,
 	has_public : bool,
@@ -81,10 +82,15 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _print_keys = true || _print_all;
 	
 	
-	let mut _rsa_keys : HashMap<(u64, String), RsaKey> = HashMap::new ();
+	let mut _rsa_keys : HashMap<(u64, Option<String>, Option<String>), RsaKey> = HashMap::new ();
 	
 	
-	let mut _provider = crtk::Provider::new ("/usr/lib64/pkcs11/libsofthsm2.so") .else_wrap (0xfef3d2da) ?;
+	let _provider_library = Path::new ("/usr/lib64/pkcs11/libsofthsm2.so");
+	// let _provider_library = Path::new ("/usr/lib64/pkcs11/opensc-pkcs11.so");
+	let _slot_pin = "0000";
+	
+	
+	let mut _provider = crtk::Provider::new (_provider_library) .else_wrap (0xfef3d2da) ?;
 	
 	_provider.initialize (crtk::ProviderArguments::OsThreads) .else_wrap (0x0f9cc555) ?;
 	
@@ -170,7 +176,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		let mut _session = _provider.open_rw_session (_slot) .else_wrap (0x61eeccf1) ?;
 		
-		_session.login (crtk::UserType::User, Some ("0000")) .else_wrap (0xe928680a) ?;
+		_session.login (crtk::UserType::User, Some (_slot_pin)) .else_wrap (0xe928680a) ?;
 		
 		
 		let _objects = _session.find_objects (&[]) .else_wrap (0x9e90942c) ?;
@@ -178,6 +184,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			
 			if _print_object_details {
 				eprintln! ("[--]");
+				eprintln! ("[>>] [d08e06f3]  object {:08x} / {}...", _slot_id, _object_index);
 			}
 			
 			let mut _attribute_types = Vec::new ();
@@ -185,29 +192,32 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 					crtk::AttributeType::Class,
 					crtk::AttributeType::KeyType,
 					crtk::AttributeType::ModulusBits,
+					crtk::AttributeType::Id,
 					crtk::AttributeType::Label,
 					crtk::AttributeType::Encrypt,
 					crtk::AttributeType::Decrypt,
 					crtk::AttributeType::Sign,
 					crtk::AttributeType::Verify,
-					crtk::AttributeType::AllowedMechanisms,
 				]);
 			
 			// NOTE:  =>  <https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.0/os/pkcs11-base-v3.0-os.html#_Toc29976719>
 			// NOTE:  =>  <https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959757>
-			for _index in 0 ..= 0x600 {
-				let _attribute_type_raw : crtk::CK_ATTRIBUTE_TYPE = unsafe { mem::transmute (_index as u64) };
-				let Ok (_attribute_type) = crtk::AttributeType::try_from (_attribute_type_raw)
-					else { continue };
-				if _attribute_types.contains (&_attribute_type) {
-					continue;
+			if false {
+				for _index in 0 ..= 0x600 {
+					let _attribute_type_raw : crtk::CK_ATTRIBUTE_TYPE = unsafe { mem::transmute (_index as u64) };
+					let Ok (_attribute_type) = crtk::AttributeType::try_from (_attribute_type_raw)
+						else { continue };
+					if _attribute_types.contains (&_attribute_type) {
+						continue;
+					}
+					_attribute_types.push (_attribute_type);
 				}
-				_attribute_types.push (_attribute_type);
 			}
 			
 			let mut _is_public = false;
 			let mut _is_private = false;
 			let mut _is_rsa = false;
+			let mut _id = None;
 			let mut _label = None;
 			let mut _rsa_modulus_bits = None;
 			let mut _supports_decrypt = None;
@@ -215,7 +225,16 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			let mut _supports_sign = None;
 			let mut _supports_verify = None;
 			
-			let _attribute_details = _session.get_attributes (_object, &_attribute_types) .else_wrap (0x4aa0392d) ?;
+			let _attribute_details = if let Ok (_attribute_details) = _session.get_attributes (_object, &_attribute_types) {
+				_attribute_details
+			} else {
+				if _print_object_details {
+					eprintln! ("[>>] [ceefb1a0]  object {:08x} / {}:  failed listing attributes!", _slot_id, _object_index);
+					eprintln! ("[--]");
+				}
+				continue;
+			};
+			
 			for _attribute_details in _attribute_details.into_iter () {
 				match _attribute_details {
 					
@@ -247,18 +266,32 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 					
 					crtk::Attribute::ModulusBits (_modulus_bits) => {
 						if _print_object_details {
-							eprintln! ("[>>] [909a50fc]  object {:08x} / {}:  modulus-bits `{}`;", _slot_id, _object_index, _modulus_bits);
+							eprintln! ("[>>] [950ae1f9]  object {:08x} / {}:  modulus-bits `{}`;", _slot_id, _object_index, _modulus_bits);
 						}
 						_rsa_modulus_bits = Some (_modulus_bits);
 					}
 					
-					crtk::Attribute::Label (_label_0) => {
-						let _label_0 = str::from_utf8 (&_label_0) .else_wrap (0x9dbd9c6b) ?;
+					crtk::Attribute::Id (_id_data) => {
+						let _id_0 = {
+							let mut _buffer = String::with_capacity (_id_data.len () * 2);
+							for _byte in _id_data {
+								write! (_buffer, "{:02x}", _byte) .else_wrap (0x087b8b04) ?;
+							}
+							_buffer
+						};
+						if _print_object_details {
+							eprintln! ("[>>] [23d27f54]  object {:08x} / {}:  id `{}`;", _slot_id, _object_index, _id_0);
+						}
+						_id = if ! _id_0.is_empty () { Some (_id_0) } else { None };
+					},
+					
+					crtk::Attribute::Label (_label_data) => {
+						let _label_0 = str::from_utf8 (&_label_data) .else_wrap (0x9dbd9c6b) ?;
 						let _label_0 = String::from (_label_0);
 						if _print_object_details {
 							eprintln! ("[>>] [df90fc52]  object {:08x} / {}:  label `{}`;", _slot_id, _object_index, _label_0);
 						}
-						_label = Some (_label_0);
+						_label = if ! _label_0.is_empty () { Some (_label_0) } else { None };
 					},
 					
 					crtk::Attribute::Encrypt (_supported) =>
@@ -295,9 +328,9 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			
 			if _is_rsa {
 				
-				let _label = _label.else_wrap (0x3d5f177a) ?;
-				let _key = _rsa_keys.entry ((_slot_id, _label.clone ())) .or_default ();
+				let _key = _rsa_keys.entry ((_slot_id, _id.clone (), _label.clone ())) .or_default ();
 				
+				_key.id = _id;
 				_key.label = _label;
 				
 				_key.slot_id = _slot_id;
@@ -342,9 +375,10 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	
 	for _key in _rsa_keys.values () {
-		eprintln! ("[>>] [1f034f51]  RSA:  slot {:08x} ({}), label `{}`, bits {}, private {}, public {}, decrypt {}, encrypt {}, sign {}, verify {};",
+		eprintln! ("[>>] [1f034f51]  RSA:  slot {:08x} ({}), id `{}`, label `{}`, bits {}, private {}, public {}, decrypt {}, encrypt {}, sign {}, verify {};",
 				_key.slot_id, _key.slot_id,
-				_key.label,
+				_key.id.as_ref () .map (String::as_str) .unwrap_or (""),
+				_key.label.as_ref () .map (String::as_str) .unwrap_or (""),
 				_key.modulus_bits,
 				_key.has_private,
 				_key.has_public,
