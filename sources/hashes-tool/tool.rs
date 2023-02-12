@@ -76,10 +76,10 @@ pub fn main_hash (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				
 				.add_option (&["--seahash"], ArgStoreConst (Some (Family::SeaHash)), "(use SeaHash) !!! WEAK !!!")
 				
-				.add_option (&["--highway"], ArgStoreConst (Some (Family::HighwayHash)), "(use one of HighwayHash) !!! WEAK !!!")
-				.add_option (&["--highway-64"], ArgStoreConst (Some (Family::HighwayHash_64)), "(use HighwayHash-64) !!! WEAK !!!")
-				.add_option (&["--highway-128"], ArgStoreConst (Some (Family::HighwayHash_128)), "(use HighwayHash-128) !!! WEAK !!!")
-				.add_option (&["--highway-256"], ArgStoreConst (Some (Family::HighwayHash_256)), "(use HighwayHash-256) !!! WEAK !!!")
+				.add_option (&["--highwayhash"], ArgStoreConst (Some (Family::HighwayHash)), "(use one of HighwayHash) !!! WEAK !!!")
+				.add_option (&["--highwayhash-64"], ArgStoreConst (Some (Family::HighwayHash_64)), "(use HighwayHash-64) !!! WEAK !!!")
+				.add_option (&["--highwayhash-128"], ArgStoreConst (Some (Family::HighwayHash_128)), "(use HighwayHash-128) !!! WEAK !!!")
+				.add_option (&["--highwayhash-256"], ArgStoreConst (Some (Family::HighwayHash_256)), "(use HighwayHash-256) !!! WEAK !!!")
 				
 				.add_option (&["--xxhash"], ArgStoreConst (Some (Family::XxHash)), "(use one of xxHash) !!! WEAK !!!")
 				.add_option (&["--xxhash-32"], ArgStoreConst (Some (Family::XxHash_32)), "(use xxHash-32) !!! WEAK !!!")

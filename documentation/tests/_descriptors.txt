@@ -176,10 +176,10 @@ hashes / hash / siphash-128 / default :: hashes hash --siphash-128 --token 1234
 hashes / hash / siphash / size-64 :: hashes hash --siphash --token 1234 --64b
 hashes / hash / siphash / size-128 :: hashes hash --siphash --token 1234 --128b
 
-hashes / hash / highway / default :: hashes hash --highway --token 1234
-hashes / hash / highway-64 / default :: hashes hash --highway-64 --token 1234
-hashes / hash / highway-128 / default :: hashes hash --highway-128 --token 1234
-hashes / hash / highway-256 / default :: hashes hash --highway-256 --token 1234
+hashes / hash / highwayhash / default :: hashes hash --highwayhash --token 1234
+hashes / hash / highwayhash-64 / default :: hashes hash --highwayhash-64 --token 1234
+hashes / hash / highwayhash-128 / default :: hashes hash --highwayhash-128 --token 1234
+hashes / hash / highwayhash-256 / default :: hashes hash --highwayhash-256 --token 1234
 
 hashes / hash / highway / size-64 :: hashes hash --highway --token 1234 --64b
 hashes / hash / highway / size-128 :: hashes hash --highway --token 1234 --128b
