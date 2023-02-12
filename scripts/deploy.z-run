@@ -326,9 +326,9 @@
 		printf -- '[--]\n' >&2
 		printf -- '[ii]  tagging and pushing for `%s` (on GitHub)...\n' "${_build_version}${_build_suffix}" >&2
 		
-		if ! git diff --quiet -- "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}" ; then
+		git add -- "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}"
+		if ! git diff --cached --quiet -- "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}" ; then
 			printf -- '[--]\n' >&2
-			git add -- "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}"
 			git commit -m '[release]  Import release signatures.' -- "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}"
 			printf -- '[--]\n' >&2
 		fi
