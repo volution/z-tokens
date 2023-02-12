@@ -32,6 +32,18 @@ pub fn premain_exchange () -> MainResult<ExitCode> {
 }
 
 
+#[ cfg (feature = "z-tokens-oracles-tool") ]
+pub fn premain_oracles () -> MainResult<ExitCode> {
+	premain_wrapper (main_oracles)
+}
+
+
+#[ cfg (feature = "z-tokens-secrets-tool") ]
+pub fn premain_secrets () -> MainResult<ExitCode> {
+	premain_wrapper (main_secrets)
+}
+
+
 
 
 pub fn premain_wrapper <Main> (_main : Main) -> MainResult<ExitCode> where Main : FnOnce () -> MainResult<ExitCode> {

@@ -18,16 +18,19 @@ use ::z_tokens_patterns_tool::{
 		patterns::main as main_patterns,
 	};
 
+
 #[ cfg (feature = "z-tokens-hashes-tool") ]
 use ::z_tokens_hashes_tool::{
 		tool::main_hash as main_hashes_hash,
 	};
+
 
 #[ cfg (feature = "z-tokens-encodings-tool") ]
 use ::z_tokens_encodings_tool::{
 		tool::main_encode as main_encodings_encode,
 		tool::main_decode as main_encodings_decode,
 	};
+
 
 #[ cfg (feature = "z-tokens-exchange-tool") ]
 use ::z_tokens_exchange_tool::{
@@ -41,6 +44,18 @@ use ::z_tokens_exchange_tool::{
 		tool::main_decode as main_exchange_decode,
 		tool::main_ssh_keys as main_exchange_ssh_keys,
 		tool::main_ssh_wrap as main_exchange_ssh_wrap,
+	};
+
+
+#[ cfg (feature = "z-tokens-oracles-tool") ]
+use ::z_tokens_oracles_tool::{
+		tool::main as main_oracles_tool,
+	};
+
+
+#[ cfg (feature = "z-tokens-secrets-tool") ]
+use ::z_tokens_secrets_tool::{
+		tool::main as main_secrets_tool,
 	};
 
 
@@ -172,6 +187,24 @@ pub fn main_tools () -> MainResult<ExitCode> {
 		(&["exchange", "ssh", "wrap"], _) => {
 			_arguments.insert (0, String::from ("z-tokens exchange ssh wrap"));
 			main_exchange_ssh_wrap (_arguments) .else_wrap (0x3108dc57)
+		}
+		
+		
+		
+		
+		#[ cfg (feature = "z-tokens-oracles-tool") ]
+		(&["oracles"], _) => {
+			_arguments.insert (0, String::from ("z-tokens oracles"));
+			main_oracles_tool (_arguments) .else_wrap (0xf41acddd)
+		}
+		
+		
+		
+		
+		#[ cfg (feature = "z-tokens-secrets-tool") ]
+		(&["secrets"], _) => {
+			_arguments.insert (0, String::from ("z-tokens secrets"));
+			main_secrets_tool (_arguments) .else_wrap (0x7f006d5d)
 		}
 		
 		
@@ -318,6 +351,76 @@ pub fn main_exchange () -> MainResult<ExitCode> {
 		(&["ssh", "wrap"], _) => {
 			_arguments.insert (0, String::from ("z-exchange ssh wrap"));
 			main_exchange_ssh_wrap (_arguments) .else_wrap (0xcb42bef7)
+		}
+		
+		
+		
+		
+		_ =>
+			main_unknown (_commands, _arguments),
+	}
+}
+
+
+
+
+
+
+
+
+#[ cfg (feature = "z-tokens-oracles-tool") ]
+pub fn main_oracles () -> MainResult<ExitCode> {
+	
+	let (mut _commands, mut _arguments) = main_arguments () ?;
+	
+	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _commands_refs = _commands_refs.as_slice ();
+	let _arguments_refs = _arguments.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _arguments_refs = _arguments_refs.as_slice ();
+	
+	match (_commands_refs, _arguments_refs) {
+		
+		
+		
+		
+		(&[], _) => {
+			_arguments.insert (0, String::from ("z-oracles"));
+			main_oracles_tool (_arguments) .else_wrap (0x65ec678f)
+		}
+		
+		
+		
+		
+		_ =>
+			main_unknown (_commands, _arguments),
+	}
+}
+
+
+
+
+
+
+
+
+#[ cfg (feature = "z-tokens-secrets-tool") ]
+pub fn main_secrets () -> MainResult<ExitCode> {
+	
+	let (mut _commands, mut _arguments) = main_arguments () ?;
+	
+	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _commands_refs = _commands_refs.as_slice ();
+	let _arguments_refs = _arguments.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _arguments_refs = _arguments_refs.as_slice ();
+	
+	match (_commands_refs, _arguments_refs) {
+		
+		
+		
+		
+		(&[], _) => {
+			_arguments.insert (0, String::from ("z-secrets"));
+			main_secrets_tool (_arguments) .else_wrap (0x0d14e404)
 		}
 		
 		

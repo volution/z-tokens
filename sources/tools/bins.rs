@@ -32,6 +32,18 @@ pub fn bin_exchange () -> Result<ExitCode, ()> {
 }
 
 
+#[ cfg (feature = "z-tokens-oracles-tool") ]
+pub fn bin_oracles () -> Result<ExitCode, ()> {
+	bin_wrapper (premain_oracles)
+}
+
+
+#[ cfg (feature = "z-tokens-secrets-tool") ]
+pub fn bin_secrets () -> Result<ExitCode, ()> {
+	bin_wrapper (premain_secrets)
+}
+
+
 
 
 fn bin_wrapper <Main> (_main : Main) -> Result<ExitCode, ()> where Main : FnOnce () -> MainResult<ExitCode> {
