@@ -146,6 +146,14 @@
 	
 	
 	if test "${_github_publish}" == true ; then
+		
+		if ! git diff --quiet -- "./embedded/build" ; then
+			printf -- '[--]\n' >&2
+			git add -p -- "./embedded/build"
+			git commit -m '[build]  Snapshot build meta-data.' -- "./embedded/build"
+			printf -- '[--]\n' >&2
+		fi
+		
 		if ! git diff --quiet ; then
 			printf -- '[ee]  dirty repository (before build);  aborting!\n' >&2
 			exit -- 1
@@ -176,8 +184,6 @@
 			printf -- '[ee]  dirty repository (after build);  aborting!\n' >&2
 			exit -- 1
 		fi
-		
-		printf -- '[--]\n' >&2
 	fi
 	
 	
@@ -321,10 +327,10 @@
 		printf -- '[ii]  tagging and pushing for `%s` (on GitHub)...\n' "${_build_version}${_build_suffix}" >&2
 		
 		if ! git diff --quiet -- "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}" ; then
-			
+			printf -- '[--]\n' >&2
 			git add -- "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}"
-			
 			git commit -m '[release]  Import release signatures.' -- "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}"
+			printf -- '[--]\n' >&2
 		fi
 		
 		if ! git diff --quiet ; then
