@@ -1941,6 +1941,7 @@ name = "z-tokens-oracles-tool"
 version = "0.3.0"
 dependencies = [
  "cryptoki",
+ "cryptoki-sys",
  "ed25519-dalek",
  "rsa",
  "vrl-errors",

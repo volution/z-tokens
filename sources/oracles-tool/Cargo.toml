@@ -65,5 +65,6 @@ rsa = { version = "^0.8", default-features = false, features = ["std"] }
 
 [target.'cfg(any( all(target_os = "linux", target_env = "gnu"), target_os = "macos" ))'.dependencies]
 cryptoki = { version = "^0.4", default-features = false, features = [] }
+cryptoki-sys = { version = "^0.1", default-features = false, features = [] }
 
 
