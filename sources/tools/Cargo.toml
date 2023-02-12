@@ -45,8 +45,9 @@ default = [
 	"z-tokens-patterns-tool/default",
 	"z-tokens-hashes-tool/default",
 	"z-tokens-encodings-tool/default",
-	"z-tokens-secrets-tool/default",
 	"z-tokens-exchange-tool/default",
+	"z-tokens-oracles-tool/default",
+	"z-tokens-secrets-tool/default",
 	"z-tokens-runtime/default",
 ]
 
@@ -55,8 +56,9 @@ development = [
 	"z-tokens-patterns-tool/development",
 	"z-tokens-encodings-tool/development",
 	"z-tokens-hashes-tool/development",
-	"z-tokens-secrets-tool/development",
 	"z-tokens-exchange-tool/development",
+	"z-tokens-oracles-tool/development",
+	"z-tokens-secrets-tool/development",
 	"z-tokens-runtime/development",
 ]
 
@@ -67,8 +69,9 @@ release = [
 	"z-tokens-patterns-tool/release",
 	"z-tokens-hashes-tool/release",
 	"z-tokens-encodings-tool/release",
-#!	"z-tokens-secrets-tool/release",
 	"z-tokens-exchange-tool/release",
+#!	"z-tokens-oracles-tool/release",
+#!	"z-tokens-secrets-tool/release",
 	"z-tokens-runtime/release",
 ]
 
@@ -99,8 +102,9 @@ zt-embedded-build-meta = []
 z-tokens-patterns-tool = { path = "../patterns-tool", optional = true, default-features = false, features = [] }
 z-tokens-encodings-tool = { path = "../encodings-tool", optional = true, default-features = false, features = [] }
 z-tokens-hashes-tool = { path = "../hashes-tool", optional = true, default-features = false, features = [] }
-z-tokens-secrets-tool = { path = "../secrets-tool", optional = true, default-features = false, features = [] }
 z-tokens-exchange-tool = { path = "../exchange-tool", optional = true, default-features = false, features = [] }
+z-tokens-oracles-tool = { path = "../oracles-tool", optional = true, default-features = false, features = [] }
+z-tokens-secrets-tool = { path = "../secrets-tool", optional = true, default-features = false, features = [] }
 z-tokens-runtime = { path = "../runtime", optional = true, default-features = false, features = [] }
 
 vrl-errors = { version = "*", default-features = false, features = [] }

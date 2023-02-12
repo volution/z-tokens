@@ -51,6 +51,18 @@ name = "z-exchange"
 path = "./bins/exchange.rs"
 
 
+[[bin]]
+
+name = "z-oracles"
+path = "./bins/oracles.rs"
+
+
+[[bin]]
+
+name = "z-secrets"
+path = "./bins/secrets.rs"
+
+
 
 
 [features]
