@@ -75,6 +75,9 @@ pub fn hash (_algorithm : Algorithm, _input : impl Input, _output_parameters : &
 		Algorithm::Blake3 =>
 			hash_extendable (::blake3::Hasher::new (), _input, &mut _output, _output_parameters) ?,
 		
+		Algorithm::Scrypt =>
+			hash_scrypt (_input, &mut _output, _output_parameters) ?,
+		
 		Algorithm::Argon2d =>
 			hash_argon (::argon2::Algorithm::Argon2d, _input, &mut _output, _output_parameters) ?,
 		Algorithm::Argon2i =>
@@ -558,22 +561,49 @@ fn copy_output_from_slice (_hash : &[u8], _output : &mut [u8], _output_parameter
 
 
 
-fn hash_argon (_algorithm : ::argon2::Algorithm, mut _input : impl Input, _output : &mut [u8], _output_parameters : &OutputParameters) -> HashResult {
-	
-	const M_COST_MAX : u32 = 1024 * 1024;
-	const M_COST_BASE : u32 = 16 * 1024;
-	const T_COST_BASE : u32 = 8;
-	const P_COST : u32 = 1;
-	const INPUT_HASH_SIZE : usize = 64;
+fn hash_scrypt (mut _input : impl Input, _output : &mut [u8], _output_parameters : &OutputParameters) -> HashResult {
 	
 	let _output_size = _output.len ();
-	let _m_cost = u32::min (_output_size as u32 * M_COST_BASE, M_COST_MAX);
-	let _t_cost = u32::max (_output_size as u32 * T_COST_BASE / (M_COST_MAX / M_COST_BASE / 4), T_COST_BASE);
+	let (_m_cost, _t_cost, _p_cost) = hash_passwords_cost (_output_size) ?;
 	
+	// NOTE:  =>  https://words.filippo.io/the-scrypt-parameters/
+	let _r_cost = 8;
+	let _p_cost = _p_cost * u32::max (_t_cost / 2, 1);
+	let _n_cost : u32 = ((_m_cost as u64 * 1024) / _r_cost as u64 / 128) .try_into () .else_wrap (0xb9f46bf5) ? ;
+	let _n_log2_cost : u8 = _n_cost.ilog2 () .try_into () .else_wrap (0xd3015b16) ?;
+	
+	// ::std::eprintln! ("size {} {} || m {} / t {} || n {} / r {} / p {}", _output_size, _output_size * 8, _m_cost / 1024, _t_cost, _n_cost, _r_cost, _p_cost);
+	
+	const INPUT_HASH_SIZE : usize = 32;
+	let mut _input_hash = [0u8; INPUT_HASH_SIZE];
+	hash_fixed (::sha2::Sha256::new (), _input, &mut _input_hash, & OutputParameters { size : INPUT_HASH_SIZE, discard_right : true, reversed : false, }) ?;
+	
+	let _hasher_parameters = ::scrypt::Params::new (_n_log2_cost, _r_cost, _p_cost) .else_wrap (0x5c5ead84) ?;
+	
+	::scrypt::scrypt (&_input_hash, &_input_hash, &_hasher_parameters, _output) .else_wrap (0x532d2ed3) ?;
+	
+	if _output_parameters.reversed {
+		_output.reverse ();
+	}
+	
+	Ok (())
+}
+
+
+
+
+fn hash_argon (_algorithm : ::argon2::Algorithm, mut _input : impl Input, _output : &mut [u8], _output_parameters : &OutputParameters) -> HashResult {
+	
+	let _output_size = _output.len ();
+	let (_m_cost, _t_cost, _p_cost) = hash_passwords_cost (_output_size) ?;
+	
+	const INPUT_HASH_SIZE : usize = 64;
 	let mut _input_hash = [0u8; INPUT_HASH_SIZE];
 	hash_fixed (::blake2::Blake2b512::new (), _input, &mut _input_hash, & OutputParameters { size : INPUT_HASH_SIZE, discard_right : true, reversed : false, }) ?;
 	
-	let _hasher_parameters = ::argon2::Params::new (_m_cost, _t_cost, P_COST, Some (_output_size)) .else_wrap (0x8acd25cd) ?;
+	// ::std::eprintln! ("size {} {} || m {} / t {} / p {}", _output_size, _output_size * 8, _m_cost / 1024, _t_cost, _p_cost);
+	
+	let _hasher_parameters = ::argon2::Params::new (_m_cost, _t_cost, _p_cost, Some (_output_size)) .else_wrap (0x8acd25cd) ?;
 	let _hasher = ::argon2::Argon2::new (_algorithm, ::argon2::Version::V0x13, _hasher_parameters);
 	
 	_hasher.hash_password_into (&_input_hash, &_input_hash, _output) .else_wrap (0xce42692d) ?;
@@ -583,6 +613,29 @@ fn hash_argon (_algorithm : ::argon2::Algorithm, mut _input : impl Input, _outpu
 	}
 	
 	Ok (())
+}
+
+
+
+
+fn hash_passwords_cost (_output_size : usize) -> HashResult<(u32, u32, u32)> {
+	
+	if _output_size > PASSWORD_SIZE_MAX {
+		fail! (0x5daf563e);
+	}
+	
+	let _output_size = usize::max (_output_size / 4, 1);
+	let _output_size : u32 = _output_size.try_into () .else_wrap (0x55109be8) ?;
+	
+	const M_COST_MAX : u32 = 1 * 1024 * 1024;
+	const M_COST_BASE : u32 = 16 * 1024;
+	const T_COST_BASE : u32 = 16;
+	const P_COST : u32 = 1;
+	
+	let _m_cost = u64::min (_output_size as u64 * M_COST_BASE as u64, M_COST_MAX as u64) as u32;
+	let _t_cost = u64::max (_output_size as u64 * T_COST_BASE as u64 / (M_COST_MAX / M_COST_BASE / 4) as u64, T_COST_BASE as u64) as u32;
+	
+	Ok ((_m_cost, _t_cost, P_COST))
 }
 
 

@@ -11,8 +11,9 @@ define_error! (pub AlgorithmError, result : AlgorithmResult);
 
 
 
-pub const OUTPUT_SIZE_MAX : usize = 1024 * 1024 * 1024;
 pub const INPUT_SIZE_MAX : usize = 1024 * 1024 * 1024;
+pub const OUTPUT_SIZE_MAX : usize = 1024 * 1024 * 1024;
+pub const PASSWORD_SIZE_MAX : usize = 4096;
 
 
 
@@ -95,6 +96,8 @@ pub enum Family {
 	Adler,
 	Adler32,
 	
+	Scrypt,
+	
 	Argon2,
 	Argon2d,
 	Argon2i,
@@ -162,6 +165,8 @@ pub enum Algorithm {
 	CRC64,
 	
 	Adler32,
+	
+	Scrypt,
 	
 	Argon2d,
 	Argon2i,
@@ -254,10 +259,12 @@ impl Family {
 			Family::Adler |
 			Family::Adler32 => (1, 32 / 8, 32 / 8),
 			
+			Family::Scrypt => (4, PASSWORD_SIZE_MAX, 32),
+			
 			Family::Argon2 |
 			Family::Argon2d |
 			Family::Argon2i |
-			Family::Argon2id => (4, OUTPUT_SIZE_MAX, 32),
+			Family::Argon2id => (4, PASSWORD_SIZE_MAX, 32),
 			
 		}
 	}
@@ -339,10 +346,13 @@ impl Family {
 			(Family::Adler | Family::Adler32) if _output_size <= 32 / 8 => Ok (Algorithm::Adler32),
 			(Family::Adler | Family::Adler32) => fail! (0x1c8456b5),
 			
-			Family::Argon2 if _output_size <= OUTPUT_SIZE_MAX => Ok (Algorithm::Argon2id),
-			Family::Argon2d if _output_size <= OUTPUT_SIZE_MAX => Ok (Algorithm::Argon2d),
-			Family::Argon2i if _output_size <= OUTPUT_SIZE_MAX => Ok (Algorithm::Argon2i),
-			Family::Argon2id if _output_size <= OUTPUT_SIZE_MAX => Ok (Algorithm::Argon2id),
+			Family::Scrypt if _output_size <= PASSWORD_SIZE_MAX => Ok (Algorithm::Scrypt),
+			Family::Scrypt => fail! (0x9a7484ca),
+			
+			Family::Argon2 if _output_size <= PASSWORD_SIZE_MAX => Ok (Algorithm::Argon2id),
+			Family::Argon2d if _output_size <= PASSWORD_SIZE_MAX => Ok (Algorithm::Argon2d),
+			Family::Argon2i if _output_size <= PASSWORD_SIZE_MAX => Ok (Algorithm::Argon2i),
+			Family::Argon2id if _output_size <= PASSWORD_SIZE_MAX => Ok (Algorithm::Argon2id),
 			(Family::Argon2 | Family::Argon2d | Family::Argon2i | Family::Argon2id) => fail! (0xa684303b),
 		}
 	}

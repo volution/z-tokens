@@ -106,6 +106,8 @@ pub fn main_hash (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.add_option (&["--adler"], ArgStoreConst (Some (Family::Adler)), "(use one of Adler) !!! WEAK !!!")
 				.add_option (&["--adler32"], ArgStoreConst (Some (Family::Adler32)), "(use Adler32) !!! WEAK !!!")
 				
+				.add_option (&["--scrypt"], ArgStoreConst (Some (Family::Scrypt)), "(use Scrypt) !!! EXPERIMENTAL !!!")
+				
 				.add_option (&["--argon2"], ArgStoreConst (Some (Family::Argon2)), "(use one of Argon2 family) !!! EXPERIMENTAL !!!")
 				.add_option (&["--argon2d"], ArgStoreConst (Some (Family::Argon2d)), "(use Argon2d) !!! EXPERIMENTAL !!!")
 				.add_option (&["--argon2i"], ArgStoreConst (Some (Family::Argon2i)), "(use Argon2i) !!! EXPERIMENTAL !!!")
