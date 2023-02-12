@@ -38,34 +38,78 @@ pub fn main_hash (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		_parser.refer (&mut _family)
 				.metavar ("{algorithm}")
-				.add_option (&["-a", "--algorithm"], ArgStoreOption, "(hashing algorithm)")
+				
+				// FIXME:  Add support for this flag!
+				// .add_option (&["-a", "--algorithm"], ArgStoreOption, "(hashing algorithm)")
+				
 				.add_option (&["--md5"], ArgStoreConst (Some (Family::MD5)), "(use MD5)")
+				
 				.add_option (&["--sha1"], ArgStoreConst (Some (Family::SHA1)), "(use SHA1)")
-				.add_option (&["--sha2"], ArgStoreConst (Some (Family::SHA2)), "(use SHA2)")
-				.add_option (&["--sha3"], ArgStoreConst (Some (Family::SHA3)), "(use SHA3)")
+				
+				.add_option (&["--sha2"], ArgStoreConst (Some (Family::SHA2)), "(use one of SHA2)")
+				.add_option (&["--sha2-224"], ArgStoreConst (Some (Family::SHA2_224)), "(use SHA2-224)")
+				.add_option (&["--sha2-256"], ArgStoreConst (Some (Family::SHA2_256)), "(use SHA2-256)")
+				.add_option (&["--sha2-384"], ArgStoreConst (Some (Family::SHA2_384)), "(use SHA2-384)")
+				.add_option (&["--sha2-512"], ArgStoreConst (Some (Family::SHA2_512)), "(use SHA2-512)")
+				
+				.add_option (&["--sha3"], ArgStoreConst (Some (Family::SHA3)), "(use one of SHA3)")
+				.add_option (&["--sha3-224"], ArgStoreConst (Some (Family::SHA3_224)), "(use SHA3-224)")
+				.add_option (&["--sha3-256"], ArgStoreConst (Some (Family::SHA3_256)), "(use SHA3-256)")
+				.add_option (&["--sha3-384"], ArgStoreConst (Some (Family::SHA3_384)), "(use SHA3-384)")
+				.add_option (&["--sha3-512"], ArgStoreConst (Some (Family::SHA3_512)), "(use SHA3-512)")
+				
 				.add_option (&["--shake128"], ArgStoreConst (Some (Family::Shake_128)), "(use Shake128)")
 				.add_option (&["--shake256"], ArgStoreConst (Some (Family::Shake_256)), "(use Shake256)")
+				
+				.add_option (&["--git-sha1"], ArgStoreConst (Some (Family::GitSHA1)), "(use Git SHA1 flavour)")
+				.add_option (&["--git-sha2"], ArgStoreConst (Some (Family::GitSHA2)), "(use Git SHA2 flavour)")
+				
 				.add_option (&["--blake2"], ArgStoreConst (Some (Family::Blake2)), "(use Blake2s or Blake2b)")
 				.add_option (&["--blake2s"], ArgStoreConst (Some (Family::Blake2s)), "(use Blake2s)")
 				.add_option (&["--blake2b"], ArgStoreConst (Some (Family::Blake2b)), "(use Blake2b)")
+				
 				.add_option (&["--blake3"], ArgStoreConst (Some (Family::Blake3)), "(use Blake3)")
-				.add_option (&["--git-sha1"], ArgStoreConst (Some (Family::GitSHA1)), "(use Git SHA1 flavour)")
-				.add_option (&["--git-sha2"], ArgStoreConst (Some (Family::GitSHA2)), "(use Git SHA2 flavour)")
+				
+				.add_option (&["--siphash"], ArgStoreConst (Some (Family::SipHash)), "(use one of SipHash) !!! WEAK !!!")
+				.add_option (&["--siphash-64"], ArgStoreConst (Some (Family::SipHash_64)), "(use SipHash-64) !!! WEAK !!!")
+				.add_option (&["--siphash-128"], ArgStoreConst (Some (Family::SipHash_128)), "(use SipHash-128) !!! WEAK !!!")
+				
+				.add_option (&["--seahash"], ArgStoreConst (Some (Family::SeaHash)), "(use SeaHash) !!! WEAK !!!")
+				
+				.add_option (&["--highway"], ArgStoreConst (Some (Family::HighwayHash)), "(use one of HighwayHash) !!! WEAK !!!")
+				.add_option (&["--highway-64"], ArgStoreConst (Some (Family::HighwayHash_64)), "(use HighwayHash-64) !!! WEAK !!!")
+				.add_option (&["--highway-128"], ArgStoreConst (Some (Family::HighwayHash_128)), "(use HighwayHash-128) !!! WEAK !!!")
+				.add_option (&["--highway-256"], ArgStoreConst (Some (Family::HighwayHash_256)), "(use HighwayHash-256) !!! WEAK !!!")
+				
+				.add_option (&["--xxhash"], ArgStoreConst (Some (Family::XxHash)), "(use one of xxHash) !!! WEAK !!!")
+				.add_option (&["--xxhash-32"], ArgStoreConst (Some (Family::XxHash_32)), "(use xxHash-32) !!! WEAK !!!")
+				.add_option (&["--xxhash-64"], ArgStoreConst (Some (Family::XxHash_64)), "(use xxHash-64) !!! WEAK !!!")
+				
+				.add_option (&["--xxh3"], ArgStoreConst (Some (Family::Xxh3)), "(use Xxh3) !!! WEAK and EXPERIMENTAL !!!")
+				.add_option (&["--xxh3-64"], ArgStoreConst (Some (Family::Xxh3_64)), "(use xxh3-64) !!! WEAK and EXPERIMENTAL !!!")
+				.add_option (&["--xxh3-128"], ArgStoreConst (Some (Family::Xxh3_128)), "(use xxh3-128) !!! WEAK and EXPERIMENTAL !!!")
+				
+				.add_option (&["--djb2"], ArgStoreConst (Some (Family::Djb2)), "(use djb2) !!! WEAK !!!")
+				.add_option (&["--sdbm"], ArgStoreConst (Some (Family::SDBM)), "(use SDBM) !!! WEAK !!!")
+				
+				.add_option (&["--fnv1a"], ArgStoreConst (Some (Family::FNV1a)), "(use one of FNV1a) !!! WEAK !!!")
+				.add_option (&["--fnv1a-32"], ArgStoreConst (Some (Family::FNV1a_32)), "(use FNV1a-32) !!! WEAK !!!")
+				.add_option (&["--fnv1a-64"], ArgStoreConst (Some (Family::FNV1a_64)), "(use FNV1a-64) !!! WEAK !!!")
+				
+				.add_option (&["--crc"], ArgStoreConst (Some (Family::CRC)), "(use one of CRC) !!! WEAK !!!")
+				.add_option (&["--crc8"], ArgStoreConst (Some (Family::CRC8)), "(use CRC8) !!! WEAK !!!")
+				.add_option (&["--crc16"], ArgStoreConst (Some (Family::CRC16)), "(use CRC16) !!! WEAK !!!")
+				.add_option (&["--crc32"], ArgStoreConst (Some (Family::CRC32)), "(use CRC32) !!! WEAK !!!")
+				.add_option (&["--crc32c"], ArgStoreConst (Some (Family::CRC32C)), "(use CRC32C) !!! WEAK !!!")
+				.add_option (&["--crc64"], ArgStoreConst (Some (Family::CRC64)), "(use CRC64) !!! WEAK !!!")
+				
+				.add_option (&["--adler"], ArgStoreConst (Some (Family::Adler)), "(use one of Adler) !!! WEAK !!!")
+				.add_option (&["--adler32"], ArgStoreConst (Some (Family::Adler32)), "(use Adler32) !!! WEAK !!!")
+				
 				.add_option (&["--argon2"], ArgStoreConst (Some (Family::Argon2)), "(use one of Argon2 family) !!! EXPERIMENTAL !!!")
 				.add_option (&["--argon2d"], ArgStoreConst (Some (Family::Argon2d)), "(use Argon2d) !!! EXPERIMENTAL !!!")
 				.add_option (&["--argon2i"], ArgStoreConst (Some (Family::Argon2i)), "(use Argon2i) !!! EXPERIMENTAL !!!")
 				.add_option (&["--argon2id"], ArgStoreConst (Some (Family::Argon2id)), "(use Argon2id) !!! EXPERIMENTAL !!!")
-				.add_option (&["--siphash"], ArgStoreConst (Some (Family::SipHash)), "(use SipHash) !!! WEAK !!!")
-				.add_option (&["--seahash"], ArgStoreConst (Some (Family::SeaHash)), "(use SeaHash) !!! WEAK !!!")
-				.add_option (&["--highway"], ArgStoreConst (Some (Family::HighwayHash)), "(use HighwayHash) !!! WEAK !!!")
-				.add_option (&["--xxhash"], ArgStoreConst (Some (Family::XxHash)), "(use xxHash) !!! WEAK !!!")
-				.add_option (&["--xxh3"], ArgStoreConst (Some (Family::Xxh3)), "(use Xxh3) !!! WEAK and EXPERIMENTAL !!!")
-				.add_option (&["--djb2"], ArgStoreConst (Some (Family::Djb2)), "(use djb2) !!! WEAK !!!")
-				.add_option (&["--sdbm"], ArgStoreConst (Some (Family::SDBM)), "(use SDBM) !!! WEAK !!!")
-				.add_option (&["--fnv1a"], ArgStoreConst (Some (Family::FNV1a)), "(use FNV1a) !!! WEAK !!!")
-				.add_option (&["--crc"], ArgStoreConst (Some (Family::CRC)), "(use CRC) !!! WEAK !!!")
-				.add_option (&["--crc32c"], ArgStoreConst (Some (Family::CRC32C)), "(use CRC32C) !!! WEAK !!!")
-				.add_option (&["--adler"], ArgStoreConst (Some (Family::Adler)), "(use Adler) !!! WEAK !!!")
 			;
 		
 		_parser.refer (&mut _output_size)
