@@ -71,6 +71,8 @@
 					z-hashes
 					z-encodings
 					z-exchange
+					z-oracles
+					z-secrets
 				)
 		;;
 		( * )

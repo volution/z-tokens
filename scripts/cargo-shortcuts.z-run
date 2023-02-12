@@ -49,6 +49,12 @@
 :: cargo / debug / build & collect & run / z-exchange :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' z-exchange "${@}"
 :: cargo / release / build & collect & run / z-exchange :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' z-exchange "${@}"
 
+:: cargo / debug / build & collect & run / z-oracles :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' z-oracles "${@}"
+:: cargo / release / build & collect & run / z-oracles :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' z-oracles "${@}"
+
+:: cargo / debug / build & collect & run / z-secrets :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' z-secrets "${@}"
+:: cargo / release / build & collect & run / z-secrets :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' z-secrets "${@}"
+
 
 --<< cargo / debug / build & collect & run / *
 	test "${#}" -ge 1 ; _tool="${1}" ; shift -- 1

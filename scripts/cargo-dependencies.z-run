@@ -3,6 +3,22 @@
 
 
 
+<< cargo / dependencies / update + fetch / conservative
+	"${ZRUN}" ':: cargo / dependencies / update / conservative'
+	"${ZRUN}" ':: cargo / dependencies / fetch'
+	"${ZRUN}" ':: cargo / dependencies / fetch / cross'
+!!
+
+
+<< cargo / dependencies / update + fetch / aggressive
+	"${ZRUN}" ':: cargo / dependencies / update / aggressive'
+	"${ZRUN}" ':: cargo / dependencies / fetch'
+	"${ZRUN}" ':: cargo / dependencies / fetch / cross'
+!!
+
+
+
+
 << cargo / dependencies / update / conservative
 	exec -- "${ZRUN}" ':: cargo / exec / local' update --package z-tokens "${@}"
 !!
