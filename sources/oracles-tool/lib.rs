@@ -6,5 +6,6 @@
 
 
 pub mod tool;
+pub mod pkcs11;
 
 
