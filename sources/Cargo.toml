@@ -55,12 +55,14 @@ path = "./bins/exchange.rs"
 
 name = "z-oracles"
 path = "./bins/oracles.rs"
+required-features = ["development"]
 
 
 [[bin]]
 
 name = "z-secrets"
 path = "./bins/secrets.rs"
+required-features = ["development"]
 
 
 

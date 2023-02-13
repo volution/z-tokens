@@ -95,6 +95,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let _provider_library = Path::new ("/usr/lib64/pkcs11/libsofthsm2.so");
 	// let _provider_library = Path::new ("/usr/lib64/pkcs11/opensc-pkcs11.so");
+	// let _provider_library = Path::new ("/usr/lib64/libp11-kit.so.0");
 	let _slot_pin = "0000";
 	
 	
