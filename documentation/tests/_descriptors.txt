@@ -181,9 +181,10 @@ hashes / hash / highwayhash-64 / default :: hashes hash --highwayhash-64 --token
 hashes / hash / highwayhash-128 / default :: hashes hash --highwayhash-128 --token 1234
 hashes / hash / highwayhash-256 / default :: hashes hash --highwayhash-256 --token 1234
 
-hashes / hash / highway / size-64 :: hashes hash --highway --token 1234 --64b
-hashes / hash / highway / size-128 :: hashes hash --highway --token 1234 --128b
-hashes / hash / highway / size-256 :: hashes hash --highway --token 1234 --256b
+hashes / hash / highwayhash / size-64 :: hashes hash --highwayhash --token 1234 --64b
+hashes / hash / highwayhash / size-128 :: hashes hash --highwayhash --token 1234 --128b
+hashes / hash / highwayhash / size-256 :: hashes hash --highwayhash --token 1234 --256b
+
 hashes / hash / seahash / default :: hashes hash --seahash --token 1234
 
 hashes / hash / xxhash / default :: hashes hash --xxhash --token 1234

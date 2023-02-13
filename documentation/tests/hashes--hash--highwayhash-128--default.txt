@@ -1,0 +1,3 @@
+>>  z-tokens hashes hash --highwayhash-128 --token 1234
+
+04928c6363708a18fcabe91c174f0788

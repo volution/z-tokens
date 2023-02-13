@@ -30,10 +30,10 @@ Optional arguments:
   --siphash-64          (use SipHash-64) !!! WEAK !!!
   --siphash-128         (use SipHash-128) !!! WEAK !!!
   --seahash             (use SeaHash) !!! WEAK !!!
-  --highway             (use one of HighwayHash) !!! WEAK !!!
-  --highway-64          (use HighwayHash-64) !!! WEAK !!!
-  --highway-128         (use HighwayHash-128) !!! WEAK !!!
-  --highway-256         (use HighwayHash-256) !!! WEAK !!!
+  --highwayhash         (use one of HighwayHash) !!! WEAK !!!
+  --highwayhash-64      (use HighwayHash-64) !!! WEAK !!!
+  --highwayhash-128     (use HighwayHash-128) !!! WEAK !!!
+  --highwayhash-256     (use HighwayHash-256) !!! WEAK !!!
   --xxhash              (use one of xxHash) !!! WEAK !!!
   --xxhash-32           (use xxHash-32) !!! WEAK !!!
   --xxhash-64           (use xxHash-64) !!! WEAK !!!
