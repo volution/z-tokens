@@ -454,6 +454,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f1a467a65c5e759bce6e65eaf91cc29f466cdc57cb65777bd646872a8a1fd4de"
 dependencies = [
  "const-oid",
+ "pem-rfc7468",
  "zeroize",
 ]
 
@@ -1032,6 +1033,15 @@ dependencies = [
  "hmac",
  "password-hash",
  "sha2 0.10.6",
+]
+
+[[package]]
+name = "pem-rfc7468"
+version = "0.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "24d159833a9105500e0398934e205e0773f0b27529557134ecfc51c27646adac"
+dependencies = [
+ "base64ct",
 ]
 
 [[package]]
@@ -1943,6 +1953,7 @@ dependencies = [
  "cryptoki",
  "cryptoki-sys",
  "ed25519-dalek",
+ "pkcs1",
  "rsa",
  "vrl-errors",
  "vrl-preludes",
