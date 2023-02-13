@@ -8,8 +8,13 @@ use ::x25519_dalek as x25519;
 use ::blake3::Hasher as Blake3;
 
 
-use crate::crypto::CryptoResult;
-use crate::coding::encode_u32_into;
+
+
+
+
+
+
+define_error! (pub LowCryptoError, result : LowCryptoResult);
 
 
 
@@ -18,7 +23,16 @@ use crate::coding::encode_u32_into;
 
 
 
-pub(crate) trait CryptographicMaterial <const SIZE : usize> : Sized {
+include! ("./crypto_macros.in");
+
+
+
+
+
+
+
+
+pub trait CryptographicMaterial <const SIZE : usize> : Sized {
 	
 	fn consume (self) -> ();
 	
@@ -49,7 +63,7 @@ pub(crate) trait CryptographicMaterial <const SIZE : usize> : Sized {
 }
 
 
-pub(crate) trait CryptographicInput <'a> : Sized {
+pub trait CryptographicInput <'a> : Sized {
 	
 	fn consume (self) -> ();
 	
@@ -77,24 +91,13 @@ pub(crate) trait CryptographicInput <'a> : Sized {
 
 
 
-const ARGON_ALGORITHM : ::argon2::Algorithm = ::argon2::Algorithm::Argon2id;
-const ARGON_VERSION : ::argon2::Version = ::argon2::Version::V0x13;
-const ARGON_P_COST : u32 = 1;
-
-
-
-
-
-
-
-
-pub(crate) fn x25519_dhe <WC, WO> (
+pub fn x25519_dhe <WC, WO> (
 		_wrapper : WC,
 		_purpose : &'static str,
 		_private : &x25519::StaticSecret,
 		_public : Option<&x25519::PublicKey>,
 		_encryption : bool,
-	) -> CryptoResult<WO>
+	) -> LowCryptoResult<WO>
 	where
 		WC : Fn ([u8; 32]) -> WO,
 {
@@ -135,7 +138,11 @@ pub(crate) fn x25519_dhe <WC, WO> (
 
 
 
-pub(crate) fn blake3_derive_key <const NF : usize, const NV : usize, WC, WO> (
+
+
+
+
+pub fn blake3_derive_key <const NF : usize, const NV : usize, WC, WO> (
 		_wrapper : WC,
 		_purpose : &'static str,
 		_fixed_elements : &[&[u8; 32]; NF],
@@ -156,7 +163,7 @@ pub(crate) fn blake3_derive_key <const NF : usize, const NV : usize, WC, WO> (
 }
 
 
-pub(crate) fn blake3_keyed_hash <const NF : usize, const NV : usize, WC, WO> (
+pub fn blake3_keyed_hash <const NF : usize, const NV : usize, WC, WO> (
 		_wrapper : WC,
 		_key : &[u8; 32],
 		_fixed_elements : &[&[u8; 32]; NF],
@@ -177,7 +184,9 @@ pub(crate) fn blake3_keyed_hash <const NF : usize, const NV : usize, WC, WO> (
 }
 
 
-pub(crate) fn blake3_update <const NF : usize, const NV : usize> (
+
+
+pub fn blake3_update <const NF : usize, const NV : usize> (
 		_hasher : &mut Blake3,
 		_fixed_elements : &[&[u8; 32]; NF],
 		_variable_elements : &[&[u8]; NV],
@@ -185,7 +194,12 @@ pub(crate) fn blake3_update <const NF : usize, const NV : usize> (
 	) -> ()
 {
 	if let Some (_index) = _index {
-		_hasher.update (& encode_u32_into (_index));
+		{
+			let mut _bytes = [0u8; 4];
+			use ::byteorder::ByteOrder as _;
+			::byteorder::BigEndian::write_u32 (&mut _bytes, _index);
+			_hasher.update (&_bytes);
+		}
 	}
 	
 	for _fixed_element in _fixed_elements {
@@ -196,7 +210,12 @@ pub(crate) fn blake3_update <const NF : usize, const NV : usize> (
 		
 		let _size : u32 = _variable_element.len () .try_into () .else_panic (0xe5d3933d);
 		
-		_hasher.update (& encode_u32_into (_size));
+		{
+			let mut _bytes = [0u8; 4];
+			use ::byteorder::ByteOrder as _;
+			::byteorder::BigEndian::write_u32 (&mut _bytes, _size);
+			_hasher.update (&_bytes);
+		}
 		
 		_hasher.update (_variable_element);
 	}
@@ -205,7 +224,7 @@ pub(crate) fn blake3_update <const NF : usize, const NV : usize> (
 
 
 
-pub(crate) fn blake3_derive_key_join <'a, WC, WO> (
+pub fn blake3_derive_key_join <'a, WC, WO> (
 		_wrapper : WC,
 		_purpose : &'static str,
 		_elements : impl Iterator<Item = &'a [u8; 32]>,
@@ -232,13 +251,20 @@ pub(crate) fn blake3_derive_key_join <'a, WC, WO> (
 
 
 
-pub(crate) fn argon_derive <WC, WO> (
+const ARGON_ALGORITHM : ::argon2::Algorithm = ::argon2::Algorithm::Argon2id;
+const ARGON_VERSION : ::argon2::Version = ::argon2::Version::V0x13;
+const ARGON_P_COST : u32 = 1;
+
+
+
+
+pub fn argon_derive <WC, WO> (
 		_wrapper : WC,
 		_secret : &[u8; 32],
 		_salt : &[u8; 32],
 		_m_cost : u32,
 		_t_cost : u32,
-	) -> CryptoResult<WO>
+	) -> LowCryptoResult<WO>
 	where
 		WC : Fn ([u8; 32]) -> WO,
 {
@@ -274,7 +300,7 @@ pub(crate) fn argon_derive <WC, WO> (
 
 
 
-pub(crate) fn generate_random <WC, WO> (_wrapper : WC) -> WO
+pub fn generate_random <WC, WO> (_wrapper : WC) -> WO
 	where
 		WC : Fn ([u8; 32]) -> WO,
 {
@@ -292,14 +318,16 @@ pub(crate) fn generate_random <WC, WO> (_wrapper : WC) -> WO
 
 
 
-#[ allow (dead_code) ]
-pub(crate) fn debug_key <const SIZE : usize> (_identifier : &str, _wrapper : &impl CryptographicMaterial<SIZE>) -> () {
+
+
+
+
+pub fn debug_material <const SIZE : usize> (_identifier : &str, _wrapper : &impl CryptographicMaterial<SIZE>) -> () {
 	debug_bytes (_identifier, _wrapper.access ());
 }
 
 
-#[ allow (dead_code) ]
-pub(crate) fn debug_bytes (_identifier : &str, _bytes : &[u8]) -> () {
+pub fn debug_bytes (_identifier : &str, _bytes : &[u8]) -> () {
 	let mut _buffer = String::with_capacity (1024);
 	_buffer.write_fmt (format_args! ("[>>] [a99accf0]  >>  {:-40}  >>  ", _identifier)) .else_panic (0xc3663c18);
 	for _byte in _bytes {

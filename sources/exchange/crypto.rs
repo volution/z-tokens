@@ -6,10 +6,15 @@ use ::vrl_errors::*;
 
 use crate::keys::*;
 use crate::coding::*;
-use crate::low::*;
-use crate::macros::*;
 use crate::ssh::SshWrapper;
 use crate::ssh::SshResult;
+
+
+use ::z_tokens_runtime::crypto::*;
+
+use ::z_tokens_runtime::{
+		sensitive::drop,
+	};
 
 
 use ::x25519_dalek as x25519;
@@ -666,7 +671,7 @@ fn derive_keys_phase_1 (
 				_private,
 				_public,
 				_encryption,
-			) ?
+			) .else_wrap (0x56e47fad) ?
 			
 		} else {
 			
@@ -912,7 +917,7 @@ fn apply_argon_secret (_secret_hash : InternalSecretHash, _secret_salt : &Intern
 			_secret_salt.access (),
 			CRYPTO_SECRET_ARGON_M_COST,
 			CRYPTO_SECRET_ARGON_T_COST,
-		)
+		) .else_wrap (0xd26ab4d1)
 }
 
 
@@ -924,7 +929,7 @@ fn apply_argon_pin (_pin_hash : InternalPinHash, _pin_salt : &InternalPinSalt) -
 			_pin_salt.access (),
 			CRYPTO_PIN_ARGON_M_COST,
 			CRYPTO_PIN_ARGON_T_COST,
-		)
+		) .else_wrap (0xc396c6f6)
 }
 
 

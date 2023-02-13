@@ -189,3 +189,26 @@ pub fn zeroize_and_drop <Value : Sized + Zeroize> (mut _value : Value) -> () {
 	mem::drop (_value);
 }
 
+
+
+
+
+
+
+
+#[ macro_export ]
+macro_rules! drop {
+	
+	( $_identifier : ident ) => {
+		let $_identifier = mem::drop ($_identifier);
+	};
+	
+	( $( $_identifier : ident ),+ ) => {
+		$( drop! ($_identifier); )+
+	}
+}
+
+
+pub use drop;
+
+

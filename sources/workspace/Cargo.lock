@@ -1991,10 +1991,16 @@ dependencies = [
 name = "z-tokens-runtime"
 version = "0.3.0"
 dependencies = [
+ "argon2",
  "argparse",
+ "blake3",
+ "byteorder",
+ "constant_time_eq",
  "memsec",
+ "rand 0.8.5",
  "vrl-errors",
  "vrl-preludes",
+ "x25519-dalek",
  "zeroize",
 ]
 

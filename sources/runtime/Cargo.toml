@@ -54,6 +54,15 @@ zt-runtime-flags = [
 	"argparse",
 ]
 
+zt-runtime-crypto = [
+	"x25519-dalek",
+	"blake3",
+	"argon2",
+	"rand",
+	"constant_time_eq",
+	"byteorder",
+]
+
 
 
 
@@ -67,5 +76,12 @@ zeroize = { version = "^1.5", default-features = false, features = ["std", "allo
 memsec = { version = "^0.6", optional = true, default-features = false, features = ["default"] }
 
 argparse = { version = "^0.2", optional = true, default-features = false, features = [] }
+
+x25519-dalek = { version = "^1.2", optional = true, default-features = false, features = ["std", "u64_backend"] }
+blake3 = { version = "^1.3", optional = true, default-features = false, features = ["std"] }
+argon2 = { version = "^0.4", optional = true, default-features = false, features = ["std"] }
+rand = { version = "^0.8", optional = true, default-features = false, features = ["std", "getrandom"] }
+constant_time_eq = { version = "^0.2", optional = true, default-features = false, features = [] }
+byteorder = { version = "^1.4", optional = true, default-features = false, features = [] }
 
 

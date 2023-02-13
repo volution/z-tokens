@@ -293,6 +293,7 @@ pub(crate) fn compress_capacity_max (_uncompressed_len : usize) -> CompressionRe
 
 
 
+#[ allow (dead_code) ]
 pub(crate) fn encode_u32_into (_value : u32) -> [u8; 4] {
 	let mut _buffer = [0u8; 4];
 	encode_u32 (_value, &mut _buffer);

@@ -1,5 +1,6 @@
 
 
+#[ macro_export ]
 macro_rules! define_cryptographic_purpose {
 	
 	( $_visibility : vis $_identifier : ident, $_namespace : ident, $_purpose : ident ) => {
@@ -11,6 +12,7 @@ macro_rules! define_cryptographic_purpose {
 
 
 
+#[ macro_export ]
 macro_rules! define_cryptographic_material {
 	
 	( $_visibility : vis $_identifier : ident, $_size : literal ) => {
@@ -90,22 +92,7 @@ macro_rules! define_cryptographic_material {
 
 
 
-macro_rules! drop {
-	
-	( $_identifier : ident ) => {
-		let $_identifier = mem::drop ($_identifier);
-	};
-	
-	( $( $_identifier : ident ),+ ) => {
-		$( drop! ($_identifier); )+
-	}
-}
-
-
-
-
-pub(crate) use define_cryptographic_material;
-pub(crate) use define_cryptographic_purpose;
-pub(crate) use drop;
+pub use define_cryptographic_purpose;
+pub use define_cryptographic_material;
 
 
