@@ -5,9 +5,16 @@
 
 
 
+#[ cfg (feature = "zt-runtime-memory") ]
 pub mod memory;
+
+#[ cfg (feature = "zt-runtime-sensitive") ]
 pub mod sensitive;
 
+#[ cfg (all (feature = "zt-runtime-sensitive", feature = "zt-runtime-memory")) ]
+pub mod sensitive_memory;
+
+#[ cfg (feature = "zt-runtime-allocator") ]
 pub mod allocator;
 
 #[ cfg (feature = "zt-runtime-flags") ]

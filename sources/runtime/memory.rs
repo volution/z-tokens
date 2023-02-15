@@ -2,28 +2,26 @@
 
 use ::vrl_preludes::std_plus_extras::*;
 
-use crate::sensitive::*;
-
 
 
 
 #[ cfg_attr (debug_assertions, derive (Debug)) ]
-pub struct Rb <Value : Sized + Sensitive + 'static> (pub(crate) RbRef<Value>);
+pub struct Rb <Value : Sized + 'static> (pub(crate) RbRef<Value>);
 
 
 #[ cfg_attr (debug_assertions, derive (Debug)) ]
-pub struct RbList <Value : Sized + Sensitive + 'static> (pub(crate) RbListRef<Value>);
+pub struct RbList <Value : Sized + 'static> (pub(crate) RbListRef<Value>);
 
 
 #[ cfg_attr (debug_assertions, derive (Debug)) ]
-pub(crate) enum RbRef <Value : Sized + Sensitive + 'static> {
+pub(crate) enum RbRef <Value : Sized + 'static> {
 	Static (&'static Value),
 	Rc (Arc<Value>),
 }
 
 
 #[ cfg_attr (debug_assertions, derive (Debug)) ]
-pub(crate) enum RbListRef <Value : Sized + Sensitive + 'static> {
+pub(crate) enum RbListRef <Value : Sized + 'static> {
 	Static (&'static [Rb<Value>]),
 	Rc (Arc<[Rb<Value>]>),
 }
@@ -35,7 +33,7 @@ pub(crate) enum RbListRef <Value : Sized + Sensitive + 'static> {
 
 
 
-impl <Value : Sized + Sensitive + 'static> RbRef<Value> {
+impl <Value : Sized + 'static> RbRef<Value> {
 	
 	pub fn new (_value : Value) -> Self {
 		RbRef::Rc (Arc::new (_value))
@@ -67,7 +65,7 @@ impl <Value : Sized + Sensitive + 'static> RbRef<Value> {
 
 
 
-impl <Value : Sized + Sensitive + 'static> RbListRef<Value> {
+impl <Value : Sized + 'static> RbListRef<Value> {
 	
 	pub fn clone (&self) -> Self {
 		match self {
@@ -95,7 +93,7 @@ impl <Value : Sized + Sensitive + 'static> RbListRef<Value> {
 
 
 
-impl <Value : Sized + Sensitive + 'static> Rb<Value> {
+impl <Value : Sized + 'static> Rb<Value> {
 	
 	pub fn new (_value : Value) -> Self {
 		Self (RbRef::new (_value))
@@ -111,7 +109,7 @@ impl <Value : Sized + Sensitive + 'static> Rb<Value> {
 }
 
 
-impl <Value : Sized + Sensitive + 'static> Deref for Rb<Value> {
+impl <Value : Sized + 'static> Deref for Rb<Value> {
 	
 	type Target = Value;
 	
@@ -121,7 +119,7 @@ impl <Value : Sized + Sensitive + 'static> Deref for Rb<Value> {
 }
 
 
-impl <Value : Sized + Sensitive + 'static> AsRef<Value> for Rb<Value> {
+impl <Value : Sized + 'static> AsRef<Value> for Rb<Value> {
 	
 	fn as_ref (&self) -> &Value {
 		self.deref ()
@@ -131,7 +129,7 @@ impl <Value : Sized + Sensitive + 'static> AsRef<Value> for Rb<Value> {
 
 
 
-impl <Value : Sized + Sensitive + 'static> RbList <Value> {
+impl <Value : Sized + 'static> RbList <Value> {
 	
 	pub const fn from_static (_values : &'static [Rb<Value>]) -> Self {
 		Self (RbListRef::Static (_values))
@@ -153,7 +151,7 @@ impl <Value : Sized + Sensitive + 'static> RbList <Value> {
 }
 
 
-impl <Value : Sized + Sensitive + 'static> Deref for RbList<Value> {
+impl <Value : Sized + 'static> Deref for RbList<Value> {
 	
 	type Target = [Rb<Value>];
 	
@@ -163,7 +161,7 @@ impl <Value : Sized + Sensitive + 'static> Deref for RbList<Value> {
 }
 
 
-impl <Value : Sized + Sensitive + 'static> AsRef<[Rb<Value>]> for RbList<Value> {
+impl <Value : Sized + 'static> AsRef<[Rb<Value>]> for RbList<Value> {
 	
 	fn as_ref (&self) -> &[Rb<Value>] {
 		self.deref ()
