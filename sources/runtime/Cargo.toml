@@ -45,6 +45,11 @@ release = [
 	"zt-runtime-allocator",
 ]
 
+zt-runtime-memory = []
+
+zt-runtime-sensitive = [
+	"zeroize",
+]
 
 zt-runtime-allocator = [
 	"memsec",
@@ -71,7 +76,7 @@ zt-runtime-crypto = [
 vrl-errors = { version = "*", default-features = false, features = [] }
 vrl-preludes = { version = "*", default-features = false, features = [] }
 
-zeroize = { version = "^1.5", default-features = false, features = ["std", "alloc"] }
+zeroize = { version = "^1.5", optional = true, default-features = false, features = ["std", "alloc"] }
 
 memsec = { version = "^0.6", optional = true, default-features = false, features = ["default"] }
 
