@@ -6,8 +6,6 @@ use ::vrl_errors::*;
 
 use ::z_tokens_runtime::{
 		memory::Rb,
-		sensitive::SensitiveZeroize,
-		sensitive::SensitiveIgnored,
 		sensitive::zeroize_and_drop,
 	};
 
@@ -27,13 +25,13 @@ define_error! (pub KeyCreateError, result : KeyCreateResult);
 
 
 
-pub struct SenderPrivateKey (Rb<SensitiveZeroize<x25519::StaticSecret>>);
-pub struct SenderPublicKey (Rb<SensitiveIgnored<x25519::PublicKey>>);
+pub struct SenderPrivateKey (Rb<x25519::StaticSecret>);
+pub struct SenderPublicKey (Rb<x25519::PublicKey>);
 
-pub struct RecipientPrivateKey (Rb<SensitiveZeroize<x25519::StaticSecret>>);
-pub struct RecipientPublicKey (Rb<SensitiveIgnored<x25519::PublicKey>>);
+pub struct RecipientPrivateKey (Rb<x25519::StaticSecret>);
+pub struct RecipientPublicKey (Rb<x25519::PublicKey>);
 
-pub struct SharedSecret (Rb<SensitiveZeroize<[u8; 32]>>);
+pub struct SharedSecret (Rb<[u8; 32]>);
 
 
 
@@ -74,7 +72,7 @@ impl SenderPrivateKey {
 	}
 	
 	pub(crate) fn access (&self) -> &x25519::StaticSecret {
-		&self.0.0
+		&self.0
 	}
 	
 	pub(crate) fn access_bytes (&self) -> &[u8; 32] {
@@ -106,7 +104,7 @@ impl SenderPublicKey {
 	}
 	
 	pub(crate) fn access (&self) -> &x25519::PublicKey {
-		&self.0.0
+		&self.0
 	}
 	
 	pub(crate) fn access_bytes (&self) -> &[u8; 32] {
@@ -138,7 +136,7 @@ impl RecipientPrivateKey {
 	}
 	
 	pub(crate) fn access (&self) -> &x25519::StaticSecret {
-		&self.0.0
+		&self.0
 	}
 	
 	pub(crate) fn access_bytes (&self) -> &[u8; 32] {
@@ -170,7 +168,7 @@ impl RecipientPublicKey {
 	}
 	
 	pub(crate) fn access (&self) -> &x25519::PublicKey {
-		&self.0.0
+		&self.0
 	}
 	
 	pub(crate) fn access_bytes (&self) -> &[u8; 32] {
@@ -198,7 +196,7 @@ impl SharedSecret {
 	}
 	
 	pub fn access_bytes (&self) -> &[u8; 32] {
-		&self.0.0
+		&self.0
 	}
 }
 
@@ -214,7 +212,7 @@ pub fn decode_sender_private_key (_string : &str) -> KeyEncodingResult<SenderPri
 	decode_raw (SENDER_PRIVATE_KEY_ENCODED_PREFIX, _string, &mut _key_data) ?;
 	let _key = x25519::StaticSecret::from (_key_data);
 	zeroize_and_drop (_key_data);
-	Ok (SenderPrivateKey (Rb::new (_key.into ())))
+	Ok (SenderPrivateKey (Rb::new (_key)))
 }
 
 
@@ -223,7 +221,7 @@ pub fn decode_sender_public_key (_string : &str) -> KeyEncodingResult<SenderPubl
 	decode_raw (SENDER_PUBLIC_KEY_ENCODED_PREFIX, _string, &mut _key_data) ?;
 	let _key = x25519::PublicKey::from (_key_data);
 	zeroize_and_drop (_key_data);
-	Ok (SenderPublicKey (Rb::new (_key.into ())))
+	Ok (SenderPublicKey (Rb::new (_key)))
 }
 
 
@@ -232,7 +230,7 @@ pub fn decode_recipient_private_key (_string : &str) -> KeyEncodingResult<Recipi
 	decode_raw (RECEIVER_PRIVATE_KEY_ENCODED_PREFIX, _string, &mut _key_data) ?;
 	let _key = x25519::StaticSecret::from (_key_data);
 	zeroize_and_drop (_key_data);
-	Ok (RecipientPrivateKey (Rb::new (_key.into ())))
+	Ok (RecipientPrivateKey (Rb::new (_key)))
 }
 
 
@@ -241,14 +239,14 @@ pub fn decode_recipient_public_key (_string : &str) -> KeyEncodingResult<Recipie
 	decode_raw (RECEIVER_PUBLIC_KEY_ENCODED_PREFIX, _string, &mut _key_data) ?;
 	let _key = x25519::PublicKey::from (_key_data);
 	zeroize_and_drop (_key_data);
-	Ok (RecipientPublicKey (Rb::new (_key.into ())))
+	Ok (RecipientPublicKey (Rb::new (_key)))
 }
 
 
 pub fn decode_shared_secret (_string : &str) -> KeyEncodingResult<SharedSecret> {
 	let mut _key_data = [0u8; 32];
 	decode_raw (SHARED_SECRET_ENCODED_PREFIX, _string, &mut _key_data) ?;
-	Ok (SharedSecret (Rb::new (_key_data.into ())))
+	Ok (SharedSecret (Rb::new (_key_data)))
 }
 
 
@@ -350,16 +348,16 @@ pub(crate) fn encode_raw (_prefix : &str, _data : &[u8]) -> KeyEncodingResult<Rb
 
 pub fn create_sender_pair () -> KeyCreateResult<(SenderPrivateKey, SenderPublicKey)> {
 	let (_private, _public) = create_x25519_pair_from_random () ?;
-	let _private = SenderPrivateKey (Rb::new (_private.into ()));
-	let _public = SenderPublicKey (Rb::new (_public.into ()));
+	let _private = SenderPrivateKey (Rb::new (_private));
+	let _public = SenderPublicKey (Rb::new (_public));
 	Ok ((_private, _public))
 }
 
 
 pub fn create_recipient_pair () -> KeyCreateResult<(RecipientPrivateKey, RecipientPublicKey)> {
 	let (_private, _public) = create_x25519_pair_from_random () ?;
-	let _private = RecipientPrivateKey (Rb::new (_private.into ()));
-	let _public = RecipientPublicKey (Rb::new (_public.into ()));
+	let _private = RecipientPrivateKey (Rb::new (_private));
+	let _public = RecipientPublicKey (Rb::new (_public));
 	Ok ((_private, _public))
 }
 
@@ -385,7 +383,7 @@ pub fn create_shared_secret () -> KeyCreateResult<SharedSecret> {
 	let mut _bytes = [0u8; 32];
 	::rand::rngs::OsRng.fill_bytes (&mut _bytes);
 	
-	Ok (SharedSecret (Rb::new (_bytes.into ())))
+	Ok (SharedSecret (Rb::new (_bytes)))
 }
 
 

@@ -6,7 +6,6 @@ use ::vrl_errors::*;
 
 use ::z_tokens_runtime::{
 		memory::Rb,
-		sensitive::Sensitive,
 	};
 
 
@@ -83,12 +82,6 @@ impl SshWrapperKey {
 	pub fn description (&self) -> SshResult<Rb<String>> {
 		fail! (0xbec36a24);
 	}
-}
-
-
-impl Sensitive for SshWrapperKey {
-	
-	fn erase (&mut self) -> () {}
 }
 
 

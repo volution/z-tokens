@@ -39,7 +39,6 @@ use ::tokio::{
 
 use ::z_tokens_runtime::{
 		memory::Rb,
-		sensitive::Sensitive,
 		sensitive::zeroize_and_drop,
 		sensitive::drop,
 	};
@@ -393,14 +392,6 @@ impl SshWrapperKey {
 		let _handle = format! ("[{}:{}:{}]", _key.key_algorithm.identifier (), _key.signature_algorithm.identifier (), _ssh_fingerprint);
 		zeroize_and_drop (_ssh_fingerprint);
 		Ok (Rb::new (_handle))
-	}
-}
-
-
-impl Sensitive for SshWrapperKeyInternals {
-	
-	fn erase (&mut self) -> () {
-		// FIXME:  zeroize!
 	}
 }
 
