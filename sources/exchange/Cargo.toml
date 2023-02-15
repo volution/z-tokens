@@ -57,6 +57,7 @@ release = [
 z-tokens-runtime = { path = "../runtime", default-features = false, features = [
 		"zt-runtime-crypto",
 		"zt-runtime-memory",
+		"zt-runtime-sensitive",
 	] }
 
 vrl-errors = { version = "*", default-features = false, features = [] }

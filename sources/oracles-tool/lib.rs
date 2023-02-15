@@ -6,6 +6,8 @@
 
 
 pub mod tool;
+
+#[ cfg (feature = "zt-oracles-pkcs11") ]
 pub mod pkcs11;
 
 

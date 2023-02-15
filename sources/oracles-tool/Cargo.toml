@@ -43,10 +43,18 @@ default = [
 
 development = [
 	"z-tokens-runtime/development",
+	"zt-oracles-pkcs11",
 ]
 
 release = [
 	"z-tokens-runtime/release",
+]
+
+zt-oracles-pkcs11 = [
+	"rsa",
+	"pkcs1",
+	"cryptoki",
+	"cryptoki-sys",
 ]
 
 
@@ -63,13 +71,14 @@ z-tokens-runtime = { path = "../runtime", default-features = false, features = [
 vrl-errors = { version = "*", default-features = false, features = [] }
 vrl-preludes = { version = "*", default-features = false, features = [] }
 
-ed25519-dalek = { version = "^1.0", default-features = false, features = ["std"] }
-x25519-dalek = { version = "^1.2", default-features = false, features = ["std", "u64_backend"] }
-rsa = { version = "^0.8", default-features = false, features = ["std", "pem"] }
-pkcs1 = { version = "^0.4", default-features = false, features = ["std", "pem"] }
+ed25519-dalek = { version = "^1.0", optional = true, default-features = false, features = ["std"] }
+x25519-dalek = { version = "^1.2", optional = true, default-features = false, features = ["std", "u64_backend"] }
+
+rsa = { version = "^0.8", optional = true, default-features = false, features = ["std", "pem"] }
+pkcs1 = { version = "^0.4", optional = true, default-features = false, features = ["std", "pem"] }
 
 [target.'cfg(any( all(target_os = "linux", target_env = "gnu"), target_os = "macos" ))'.dependencies]
-cryptoki = { version = "^0.4", default-features = false, features = [] }
-cryptoki-sys = { version = "^0.1", default-features = false, features = [] }
+cryptoki = { version = "^0.4", optional = true, default-features = false, features = [] }
+cryptoki-sys = { version = "^0.1", optional = true, default-features = false, features = [] }
 
 
