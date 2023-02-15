@@ -68,6 +68,10 @@ zt-runtime-crypto = [
 	"byteorder",
 ]
 
+zt-runtime-rpc = [
+	"nng",
+]
+
 
 
 
@@ -88,5 +92,7 @@ argon2 = { version = "^0.4", optional = true, default-features = false, features
 rand = { version = "^0.8", optional = true, default-features = false, features = ["std", "getrandom"] }
 constant_time_eq = { version = "^0.2", optional = true, default-features = false, features = [] }
 byteorder = { version = "^1.4", optional = true, default-features = false, features = [] }
+
+nng = { version = "^1.0", optional = true, default-features = false, features = [] }
 
 
