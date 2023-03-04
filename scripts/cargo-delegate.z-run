@@ -425,6 +425,14 @@
 					CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-linux-gnu-gcc
 				)
 		;;
+		( arm-unknown-linux-gnueabihf )
+			_environment+=(
+					CC=arm-linux-gnueabihf-gcc
+					CXX=arm-linux-gnueabihf-g++
+					AR=arm-linux-gnueabihf-ar
+					CARGO_TARGET_ARM_UNKNOWN_LINUX_GNUEABIHF_LINKER=arm-linux-gnueabihf-gcc
+				)
+		;;
 		( x86_64-unknown-linux-musl )
 			_environment+=(
 					PATH="/opt/x86_64-linux-musl/bin:${_path}"
@@ -441,6 +449,15 @@
 					CXX=aarch64-linux-musl-g++
 					AR=aarch64-linux-musl-ar
 					CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER=aarch64-linux-musl-gcc
+				)
+		;;
+		( arm-unknown-linux-musleabihf )
+			_environment+=(
+					PATH="/opt/armv6-linux-musl/bin:${_path}"
+					CC=armv6-linux-musleabihf-gcc
+					CXX=armv6-linux-musleabihf-g++
+					AR=armv6-linux-musleabihf-ar
+					CARGO_TARGET_ARM_UNKNOWN_LINUX_MUSLEABIHF_LINKER=armv6-linux-musleabihf-gcc
 				)
 		;;
 		( x86_64-linux-android )

@@ -11,8 +11,10 @@
 --<<.. deploy / list / variant
 	linux--x86_64
 	linux--aarch64
+	linux--armv6
 	linux--x86_64--static
 	linux--aarch64--static
+	linux--armv6--static
 	darwin--x86_64
 	darwin--aarch64
 	android--x86_64
@@ -449,8 +451,10 @@
 			case "${_variant}" in
 				( linux--x86_64 ) _target=x86_64-unknown-linux-gnu ;;
 				( linux--aarch64 ) _target=aarch64-unknown-linux-gnu ;;
+				( linux--armv6 ) _target=arm-unknown-linux-gnueabihf ;;
 				( linux--x86_64--static ) _target=x86_64-unknown-linux-musl ;;
 				( linux--aarch64--static ) _target=aarch64-unknown-linux-musl ;;
+				( linux--armv6--static ) _target=arm-unknown-linux-musleabihf ;;
 				( darwin--x86_64 ) _target=x86_64-apple-darwin ;;
 				( darwin--aarch64 ) _target=aarch64-apple-darwin ;;
 				( freebsd--x86_64 ) _target=x86_64-unknown-freebsd ;;

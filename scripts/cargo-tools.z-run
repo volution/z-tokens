@@ -71,8 +71,8 @@
 					z-hashes
 					z-encodings
 					z-exchange
-					z-oracles
-					z-secrets
+				#!	z-oracles
+				#!	z-secrets
 				)
 		;;
 		( * )
@@ -119,6 +119,7 @@
 		( native ) _arch='native' ;;
 		( x86_64-* ) _arch='x86_64' ;;
 		( aarch64-* ) _arch='aarch64' ;;
+		( arm-* ) _arch='armv6' ;;
 		( * ) false ;;
 	esac
 	
@@ -126,8 +127,8 @@
 	_bin_suffix=''
 	case "${_target}" in
 		( native ) _os="${ZRUN_OS}" ;;
-		( *-unknown-linux-gnu ) _os=linux ;;
-		( *-unknown-linux-musl ) _os=linux ; _variant=static ;;
+		( *-unknown-linux-gnu | *-unknown-linux-gnueabihf ) _os=linux ;;
+		( *-unknown-linux-musl | *-unknown-linux-musleabihf ) _os=linux ; _variant=static ;;
 		( *-apple-darwin ) _os=darwin ;;
 		( *-unknown-freebsd ) _os=freebsd ;;
 		( *-unknown-openbsd ) _os=openbsd ;;
