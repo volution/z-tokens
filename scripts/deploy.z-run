@@ -93,9 +93,15 @@
 	
 	_minisign='./documentation/releases/minisign'
 	test -d "${_minisign}"
+	if test ! -e "${_minisign}/signatures" ; then
+		mkdir -- "${_minisign}/signatures"
+	fi
 	
 	_gpg='./documentation/releases/pgp'
 	test -d "${_gpg}"
+	if test ! -e "${_gpg}/signatures" ; then
+		mkdir -- "${_gpg}/signatures"
+	fi
 	
 	_gpg_sign_key="$( exec -- cat -- "${_gpg}/keys/public.txt" )"
 	
@@ -357,11 +363,22 @@
 		printf -- '[--]\n' >&2
 		printf -- '[ii]  tagging and pushing for `%s` (on GitHub)...\n' "${_build_version}${_build_suffix}" >&2
 		
-		git add -- "${_gpg}/signatures/v${_build_version}${_build_suffix}" "${_minisign}/signatures/v${_build_version}${_build_suffix}"
-		if ! git diff --cached --quiet -- "${_gpg}/signatures/v${_build_version}${_build_suffix}" "${_minisign}/signatures/v${_build_version}${_build_suffix}" ; then
-			printf -- '[--]\n' >&2
-			git commit -m '[release]  Import release signatures.' -- "${_gpg}/signatures/v${_build_version}${_build_suffix}" "${_minisign}/signatures/v${_build_version}${_build_suffix}"
-			printf -- '[--]\n' >&2
+		if test -e "${_gpg}/signatures/v${_build_version}${_build_suffix}" ; then
+			git add --all -- "${_gpg}/signatures/v${_build_version}${_build_suffix}"
+			if ! git diff --cached --quiet -- "${_gpg}/signatures/v${_build_version}${_build_suffix}" ; then
+				printf -- '[--]\n' >&2
+				git commit -m '[release]  Import release PGP signatures.' -- "${_gpg}/signatures/v${_build_version}${_build_suffix}"
+				printf -- '[--]\n' >&2
+			fi
+		fi
+		
+		if test -e "${_minisign}/signatures/v${_build_version}${_build_suffix}" ; then
+			git add --all -- "${_minisign}/signatures/v${_build_version}${_build_suffix}"
+			if ! git diff --cached --quiet -- "${_minisign}/signatures/v${_build_version}${_build_suffix}" ; then
+				printf -- '[--]\n' >&2
+				git commit -m '[release]  Import release `minisign` signatures.' -- "${_minisign}/signatures/v${_build_version}${_build_suffix}"
+				printf -- '[--]\n' >&2
+			fi
 		fi
 		
 		if ! git diff --quiet ; then
