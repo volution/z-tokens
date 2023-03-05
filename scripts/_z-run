@@ -35,6 +35,7 @@
 && _/sources-embedded.z-run
 && _/sources-grep.z-run
 
+&& _/workbench-environment.z-run
 && _/workbench-watch.z-run
 && _/workbench-tools.z-run
 

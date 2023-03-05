@@ -85,8 +85,19 @@
 	_outputs="$( exec -- "${ZRUN}" ':: workbench / outputs' )"
 	test -d "${_outputs}"
 	
-	_publish="${__PUBLISH}"
+	_publish="$( exec -- "${ZRUN}" ':: workbench / publish' )"
 	test -d "${_publish}"
+	
+	_embedded='./embedded'
+	test -d "${_embedded}"
+	
+	_minisign='./documentation/releases/minisign'
+	test -d "${_minisign}"
+	
+	_gpg='./documentation/releases/pgp'
+	test -d "${_gpg}"
+	
+	_gpg_sign_key="$( exec -- cat -- "${_gpg}/keys/public.txt" )"
 	
 	
 	"${ZRUN}" ':: documentation / all / render / forced'
@@ -100,10 +111,12 @@
 		_github_publish=true
 	fi
 	
+	
 	readarray -t -- _mains < <( exec -- "${ZRUN}" ':: deploy / list / main' )
 	readarray -t -- _variants < <( exec -- "${ZRUN}" ':: deploy / list / variant' )
 	
-	_build_version="$( exec -- cat -- ./embedded/build/version.txt )"
+	
+	_build_version="$( exec -- cat -- "${_embedded}/build/version.txt" )"
 	case "${_build_version}" in
 		( 0.0.0 | *.0 )
 			_build_release=false
@@ -149,10 +162,10 @@
 	
 	if test "${_github_publish}" == true ; then
 		
-		if ! git diff --quiet -- "./embedded/build" ; then
+		if ! git diff --quiet -- "${_embedded}/build" ; then
 			printf -- '[--]\n' >&2
-			git add -p -- "./embedded/build"
-			git commit -m '[build]  Snapshot build meta-data.' -- "./embedded/build"
+			git add -p -- "${_embedded}/build"
+			git commit -m '[build]  Snapshot build meta-data.' -- "${_embedded}/build"
 			printf -- '[--]\n' >&2
 		fi
 		
@@ -220,26 +233,29 @@
 				
 				if test ! -e "${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" ; then
 					printf -- '[ii]  signing `%s` for `%s` for `%s` (with GnuPG)...\n' "${_main}" "${_variant}" "${_build_version}${_build_suffix}" >&2
-					if test -e "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" ; then
-						rm -- "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc"
+					if test -e "${_gpg}/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" ; then
+						rm -- "${_gpg}/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc"
+					fi
+					if test ! -e "${_gpg}/signatures/v${_build_version}${_build_suffix}" ; then
+						mkdir -- "${_gpg}/signatures/v${_build_version}${_build_suffix}"
 					fi
 					for _retry in 1 2 3 4 ; do
 						if \
 								gpg --sign --detach-sign --armor \
-										--default-key 58FC2194FCC2478399CB220C5A974037A6FD8839 \
-										--output "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" \
+										--default-key "${_gpg_sign_key}" \
+										--output "${_gpg}/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" \
 										-- "${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}" \
 									< /dev/null > /dev/null 2> /dev/null \
 						; then break ; fi
 					done
 					cp -T -- \
-							"./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" \
+							"${_gpg}/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" \
 							"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" \
 					#
 				else
 					cp -T -- \
 							"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" \
-							"./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" \
+							"${_gpg}/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" \
 					#
 				fi
 				
@@ -260,7 +276,7 @@
 				if test -e "${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" ; then
 					if ! \
 							minisign -V \
-									-p './documentation/releases/minisign/keys/public.pub' \
+									-p "${_minisign}/keys/public.pub" \
 									-x "${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" \
 									-m "${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}" \
 								< /dev/null > /dev/null 2> /dev/null \
@@ -271,32 +287,35 @@
 				
 				if test ! -e "${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" ; then
 					printf -- '[ii]  signing `%s` for `%s` for `%s` (with minisign)...\n' "${_main}" "${_variant}" "${_build_version}${_build_suffix}" >&2
-					if test -e "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" ; then
-						rm -- "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig"
+					if test -e "${_minisign}/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" ; then
+						rm -- "${_minisign}/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig"
+					fi
+					if test ! -e "${_minisign}/signatures/v${_build_version}${_build_suffix}" ; then
+						mkdir -- "${_minisign}/signatures/v${_build_version}${_build_suffix}"
 					fi
 					for _retry in 1 2 3 4 ; do
 						if \
 								minisign -S \
 										-t "${_main}--${_variant}--v${_build_version}${_build_suffix}" \
-										-s <( exec -- gpg --decrypt < './documentation/releases/minisign/keys/private.asc' 2> /dev/null ) \
-										-x "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" \
+										-s <( exec -- gpg --decrypt < "${_minisign}/keys/private.asc" 2> /dev/null ) \
+										-x "${_minisign}/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" \
 										-m "${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}" \
 									< /dev/null > /dev/null 2> /dev/null \
 						; then break ; fi
 					done
 					cp -T -- \
-							"./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" \
+							"${_minisign}/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" \
 							"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" \
 					#
 				else
 					cp -T -- \
 							"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" \
-							"./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" \
+							"${_minisign}/signatures/v${_build_version}${_build_suffix}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" \
 					#
 				fi
 				
 				minisign -V \
-						-p './documentation/releases/minisign/keys/public.pub' \
+						-p "${_minisign}/keys/public.pub" \
 						-x "${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" \
 						-m "${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}" \
 					< /dev/null > /dev/null 2> /dev/null \
@@ -315,14 +334,14 @@
 				if test -e "${_publish}/${_variant}/${_main}${_build_suffix}.asc" ; then
 					rm -- "${_publish}/${_variant}/${_main}${_build_suffix}.asc"
 				fi
-				if test -e "./${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" ; then
+				if test -e "${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" ; then
 					ln -s -T -f -- "./${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" "${_publish}/${_variant}/${_main}${_build_suffix}.asc"
 				fi
 				
-				if test -e "${_publish}/${_variant}/${_main}${_build_suffix}.asc" ; then
+				if test -e "${_publish}/${_variant}/${_main}${_build_suffix}.sig" ; then
 					rm -- "${_publish}/${_variant}/${_main}${_build_suffix}.sig"
 				fi
-				if test -e "./${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" ; then
+				if test -e "${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" ; then
 					ln -s -T -f -- "./${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" "${_publish}/${_variant}/${_main}${_build_suffix}.sig"
 				fi
 			fi
@@ -338,10 +357,10 @@
 		printf -- '[--]\n' >&2
 		printf -- '[ii]  tagging and pushing for `%s` (on GitHub)...\n' "${_build_version}${_build_suffix}" >&2
 		
-		git add -- "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}"
-		if ! git diff --cached --quiet -- "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}" ; then
+		git add -- "${_gpg}/signatures/v${_build_version}${_build_suffix}" "${_minisign}/signatures/v${_build_version}${_build_suffix}"
+		if ! git diff --cached --quiet -- "${_gpg}/signatures/v${_build_version}${_build_suffix}" "${_minisign}/signatures/v${_build_version}${_build_suffix}" ; then
 			printf -- '[--]\n' >&2
-			git commit -m '[release]  Import release signatures.' -- "./documentation/releases/minisign/signatures/v${_build_version}${_build_suffix}"
+			git commit -m '[release]  Import release signatures.' -- "${_gpg}/signatures/v${_build_version}${_build_suffix}" "${_minisign}/signatures/v${_build_version}${_build_suffix}"
 			printf -- '[--]\n' >&2
 		fi
 		
@@ -372,6 +391,8 @@
 		printf -- '[ii]  publishing `%s` for `%s` for `%s` (on GitHub)...\n' "${_main_0}" "${_variant_0}" "${_build_version}${_build_suffix}" >&2
 		printf -- '[--]\n' >&2
 		
+		_gh_release_files=()
+		
 		for _main in "${_mains[@]}" ; do
 			if test "${_main_0}" != all -a "${_main_0}" != "${_main}" ; then continue ; fi
 			for _variant in "${_variants[@]}" ; do
@@ -379,32 +400,34 @@
 				
 				printf -- '[ii]  publishing `%s` for `%s` for `%s` (on GitHub)...\n' "${_main}" "${_variant}" "${_build_version}${_build_suffix}" >&2
 				
-				_gh_release_files=(
+				_gh_release_files+=(
 						"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}"
 					)
+				
 				if test -e "${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc" ; then
 					_gh_release_files+=(
 							"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.asc"
 						)
 				fi
+				
 				if test -e "${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig" ; then
 					_gh_release_files+=(
 							"${_publish}/${_variant}/${_main}--${_variant}--v${_build_version}${_build_suffix}.sig"
 						)
 				fi
 				
-				if test "${_build_release}" == true ; then
-					gh release upload --clobber -- "v${_build_version}" \
-							"${_gh_release_files[@]}" \
-					#
-				else
-					gh release upload --clobber -- preview \
-							"${_gh_release_files[@]}" \
-					#
-				fi
-				
 			done
 		done
+		
+		if test "${_build_release}" == true ; then
+			gh release upload --clobber -- "v${_build_version}" \
+					"${_gh_release_files[@]}" \
+			#
+		else
+			gh release upload --clobber -- preview \
+					"${_gh_release_files[@]}" \
+			#
+		fi
 		
 		printf -- '[--]\n' >&2
 	fi
@@ -467,7 +490,7 @@
 				( * ) false -- eec080ef ;;
 			esac
 			
-			printf -- '[ii]  releasing `%s` for `%s` / `%s`...\n' "${_main}" "${_variant}" "${_target}" >&2
+			printf -- '[ii]  releasing `%s` for `%s` (`%s`)...\n' "${_main}" "${_variant}" "${_target}" >&2
 			
 			export -- __CARGO__CROSS=true
 			export -- __CARGO__TARGET="${_target}"
@@ -490,18 +513,15 @@
 	
 	for _main in "${_mains[@]}" ; do
 		
-		
 		printf -- ':: deploy / publish / %s / all :: exec -- "${ZRUN}" ":: deploy / publish" %q "${@}"\n' "${_main}" "${_main}"
 		printf -- ':: deploy / publish / %s / all / no-github :: exec -- "${ZRUN}" ":: deploy / publish / no-github" %q "${@}"\n' "${_main}" "${_main}"
 		
 		printf -- ':: deploy / release / %s / all :: exec -- "${ZRUN}" ":: deploy / release" %q %q "${@}"\n' "${_main}" all "${_main}"
 		
-		
 		for _variant in "${_variants[@]}" ; do
 			printf -- ':: deploy / rsync / %s / %s :: exec -- "${ZRUN}" ":: deploy / rsync / *" %q %q "${@}"\n' "${_main}" "${_variant}" "${_main}" "${_variant}"
 			printf -- ':: deploy / release / %s / %s :: exec -- "${ZRUN}" ":: deploy / release" %q %q "${@}"\n' "${_main}" "${_variant}" "${_main}" "${_variant}"
 		done
-		
 		
 	done
 !!
