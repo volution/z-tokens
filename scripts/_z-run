@@ -47,7 +47,6 @@
 && _/tests-exchange.z-run
 
 && _/deploy.z-run
-&& _/generate.z-run
 
 
 
