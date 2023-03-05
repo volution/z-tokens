@@ -1,4 +1,4 @@
 untrusted comment: signature from minisign secret key
-RUTNU8euCgU67vedAtbbk7Y2M/T5uMrouDmKx32rmZtt8CA7pjQd2apVXJSIvSotwpCKcmftMs3tSqwRKTA/3iG8OdHqWYXk3QQ=
+RUTNU8euCgU67rg5c/nCiNXZIpzQt3p+auEiD2nAwtFoUwPZ9pVn8Klpb8TBSQSByJIQpctFcuShnchtSfeqF5XkIWLvbJlzfw8=
 trusted comment: z-hashes--windows--x86_64--v0.3.0--preview
-ig3j6UlMZD+4NcsUaZwCJhIFUKjGapyn2Nkooby6twnLCggSdinWrw4kl/LEbNNhkX+5VS0cjhGX+ptj17FzCA==
+kZ7yOKXqtM2//12Rr+zMzwUPUnbHyVkDntmL4gQDsRBLaMEVwz19097ZmVnGD8ZcggVGz72PVquT8R2FQOoRDA==
