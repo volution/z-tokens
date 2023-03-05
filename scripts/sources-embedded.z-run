@@ -7,11 +7,11 @@
 	
 	test "${#}" -eq 0
 	
-	"${ZRUN[@]}" ':: sources / embedded / readme'
-	"${ZRUN[@]}" ':: sources / embedded / help'
-	"${ZRUN[@]}" ':: sources / embedded / manuals'
-	"${ZRUN[@]}" ':: sources / embedded / sbom'
-	"${ZRUN[@]}" ':: sources / embedded / hash'
+	"${ZRUN}" ':: sources / embedded / readme'
+	"${ZRUN}" ':: sources / embedded / help'
+	"${ZRUN}" ':: sources / embedded / manuals'
+	"${ZRUN}" ':: sources / embedded / sbom'
+	"${ZRUN}" ':: sources / embedded / hash'
 !!
 
 
@@ -150,7 +150,7 @@
 	
 	test "${#}" -eq 0
 	
-	"${ZRUN[@]}" ':: sources / embedded / prepare'
+	"${ZRUN}" ':: sources / embedded / prepare'
 	
 	_outputs="$( exec -- "${ZRUN}" ':: workbench / outputs' )"
 	
