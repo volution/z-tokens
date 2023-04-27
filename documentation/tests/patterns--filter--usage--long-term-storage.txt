@@ -134,73 +134,136 @@
 ::  ascii-any:28            :  183.5 b :   34 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
 ::  ascii-any:30            :  196.6 b :   37 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[
 ::  ascii-any:32            :  209.7 b :   39 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
-::  cv-lower:6              :   80.5 b :   29 c ::    taqe veza zaye fugi rixu cezu
-::  cv-lower:7              :   93.9 b :   34 c ::    taqe veza zaye fugi rixu cezu saco
-::  cv-lower:8              :  107.4 b :   39 c ::    taqe veza zaye fugi rixu cezu saco voxa
-::  cv-lower:9              :  120.8 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa kize
-::  cv-lower:10             :  134.2 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose
-::  cv-lower:11             :  147.7 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago
-::  cv-lower:12             :  161.1 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko
-::  cv-lower:13             :  174.5 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha
-::  cv-lower:14             :  187.9 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu
-::  cv-lower:15             :  201.4 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku
-::  cv-lower:16             :  214.8 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju
-::  cv-upper:6              :   80.5 b :   29 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU
-::  cv-upper:7              :   93.9 b :   34 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO
-::  cv-upper:8              :  107.4 b :   39 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA
-::  cv-upper:9              :  120.8 b :   44 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB
-::  cv-upper:10             :  134.2 b :   49 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB
-::  cv-upper:11             :  147.7 b :   54 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO
-::  cv-upper:12             :  161.1 b :   59 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO
-::  cv-upper:13             :  174.5 b :   64 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA
-::  cv-upper:14             :  187.9 b :   69 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU
-::  cv-upper:15             :  201.4 b :   74 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU
-::  cv-upper:16             :  214.8 b :   79 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU
-::  cv-mixed:5              :   87.1 b :   24 c ::    PaFi PiQI YayU mAjO lAzi
-::  cv-mixed:6              :  104.5 b :   29 c ::    PaFi PiQI YayU mAjO lAzi ZUKa
-::  cv-mixed:7              :  121.9 b :   34 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo
-::  cv-mixed:8              :  139.4 b :   39 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB
-::  cv-mixed:9              :  156.8 b :   44 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi
-::  cv-mixed:10             :  174.2 b :   49 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB
-::  cv-mixed:11             :  191.7 b :   54 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona
-::  cv-mixed:12             :  209.1 b :   59 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa
-::  cv-mixed:13             :  226.5 b :   64 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU
-::  cv-mixed:14             :  243.9 b :   69 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA
-::  cv-mixed:15             :  261.4 b :   74 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO
-::  cv-mixed:16             :  278.8 b :   79 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle
-::  cv-plus-a:6             :   80.4 b :   29 c ::    taqe veza zaye fugi rixu 2906
-::  cv-plus-a:7             :   93.8 b :   34 c ::    taqe veza zaye fugi rixu cezu 0665
-::  cv-plus-a:8             :  107.2 b :   39 c ::    taqe veza zaye fugi rixu cezu saco 6573
-::  cv-plus-a:9             :  120.7 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa 3526
-::  cv-plus-a:10            :  134.1 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize 2606
-::  cv-plus-a:11            :  147.5 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose 6062
-::  cv-plus-a:12            :  161.0 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago 2335
-::  cv-plus-a:13            :  174.4 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko 0320
-::  cv-plus-a:14            :  187.8 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha 9460
-::  cv-plus-a:15            :  201.2 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu 9351
-::  cv-plus-a:16            :  214.7 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku 5138
-::  cv-plus-b:6             :   80.5 b :   29 c ::    taqe veza zaye fugi rixu CB90
-::  cv-plus-b:7             :   93.9 b :   34 c ::    taqe veza zaye fugi rixu cezu SA66
-::  cv-plus-b:8             :  107.3 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO57
-::  cv-plus-b:9             :  120.7 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa KI26
-::  cv-plus-b:10            :  134.2 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO60
-::  cv-plus-b:11            :  147.6 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose RA62
-::  cv-plus-b:12            :  161.0 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB33
-::  cv-plus-b:13            :  174.4 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA32
-::  cv-plus-b:14            :  187.9 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI60
-::  cv-plus-b:15            :  201.3 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU35
-::  cv-plus-b:16            :  214.7 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA38
-::  cv-plus-c:6             :   82.1 b :   29 c ::    taqe veza zaye fugi rixu CB9!
-::  cv-plus-c:7             :   95.6 b :   34 c ::    taqe veza zaye fugi rixu cezu SA6^
-::  cv-plus-c:8             :  109.0 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO5]
-::  cv-plus-c:9             :  122.4 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa KI2@
-::  cv-plus-c:10            :  135.8 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO6"
-::  cv-plus-c:11            :  149.3 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose RA6+
-::  cv-plus-c:12            :  162.7 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB3,
-::  cv-plus-c:13            :  176.1 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA3"
-::  cv-plus-c:14            :  189.6 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI6_
-::  cv-plus-c:15            :  203.0 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU3<
-::  cv-plus-c:16            :  216.4 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA3`
+::  cva-lower:6             :   80.5 b :   29 c ::    taqe veza zaye fugi rixu cezu
+::  cva-lower:7             :   93.9 b :   34 c ::    taqe veza zaye fugi rixu cezu saco
+::  cva-lower:8             :  107.4 b :   39 c ::    taqe veza zaye fugi rixu cezu saco voxa
+::  cva-lower:9             :  120.8 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa kize
+::  cva-lower:10            :  134.2 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose
+::  cva-lower:11            :  147.7 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago
+::  cva-lower:12            :  161.1 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko
+::  cva-lower:13            :  174.5 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha
+::  cva-lower:14            :  187.9 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu
+::  cva-lower:15            :  201.4 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku
+::  cva-lower:16            :  214.8 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju
+::  cva-upper:6             :   80.5 b :   29 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU
+::  cva-upper:7             :   93.9 b :   34 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO
+::  cva-upper:8             :  107.4 b :   39 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA
+::  cva-upper:9             :  120.8 b :   44 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE
+::  cva-upper:10            :  134.2 b :   49 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE
+::  cva-upper:11            :  147.7 b :   54 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO
+::  cva-upper:12            :  161.1 b :   59 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO
+::  cva-upper:13            :  174.5 b :   64 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO BAHA
+::  cva-upper:14            :  187.9 b :   69 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO BAHA YIWU
+::  cva-upper:15            :  201.4 b :   74 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO BAHA YIWU YUKU
+::  cva-upper:16            :  214.8 b :   79 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO BAHA YIWU YUKU PAJU
+::  cva-mixed:5             :   87.1 b :   24 c ::    PaFi PiQI YayU mAjO lAzi
+::  cva-mixed:6             :  104.5 b :   29 c ::    PaFi PiQI YayU mAjO lAzi ZUKa
+::  cva-mixed:7             :  121.9 b :   34 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo
+::  cva-mixed:8             :  139.4 b :   39 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE
+::  cva-mixed:9             :  156.8 b :   44 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi
+::  cva-mixed:10            :  174.2 b :   49 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE
+::  cva-mixed:11            :  191.7 b :   54 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona
+::  cva-mixed:12            :  209.1 b :   59 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa
+::  cva-mixed:13            :  226.5 b :   64 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU
+::  cva-mixed:14            :  243.9 b :   69 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA
+::  cva-mixed:15            :  261.4 b :   74 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA goPO
+::  cva-mixed:16            :  278.8 b :   79 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA goPO kAle
+::  cva-plus-a:6            :   80.4 b :   29 c ::    taqe veza zaye fugi rixu 2906
+::  cva-plus-a:7            :   93.8 b :   34 c ::    taqe veza zaye fugi rixu cezu 0665
+::  cva-plus-a:8            :  107.2 b :   39 c ::    taqe veza zaye fugi rixu cezu saco 6573
+::  cva-plus-a:9            :  120.7 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa 3526
+::  cva-plus-a:10           :  134.1 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize 2606
+::  cva-plus-a:11           :  147.5 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose 6062
+::  cva-plus-a:12           :  161.0 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago 2335
+::  cva-plus-a:13           :  174.4 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko 0320
+::  cva-plus-a:14           :  187.8 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha 9460
+::  cva-plus-a:15           :  201.2 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu 9351
+::  cva-plus-a:16           :  214.7 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku 5138
+::  cva-plus-b:6            :   80.5 b :   29 c ::    taqe veza zaye fugi rixu CE90
+::  cva-plus-b:7            :   93.9 b :   34 c ::    taqe veza zaye fugi rixu cezu SA66
+::  cva-plus-b:8            :  107.3 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO57
+::  cva-plus-b:9            :  120.7 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa KI26
+::  cva-plus-b:10           :  134.2 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO60
+::  cva-plus-b:11           :  147.6 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose RA62
+::  cva-plus-b:12           :  161.0 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago QE33
+::  cva-plus-b:13           :  174.4 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA32
+::  cva-plus-b:14           :  187.9 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI60
+::  cva-plus-b:15           :  201.3 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU35
+::  cva-plus-b:16           :  214.7 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA38
+::  cva-plus-c:6            :   82.1 b :   29 c ::    taqe veza zaye fugi rixu CE9!
+::  cva-plus-c:7            :   95.6 b :   34 c ::    taqe veza zaye fugi rixu cezu SA6^
+::  cva-plus-c:8            :  109.0 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO5]
+::  cva-plus-c:9            :  122.4 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa KI2@
+::  cva-plus-c:10           :  135.8 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO6"
+::  cva-plus-c:11           :  149.3 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose RA6+
+::  cva-plus-c:12           :  162.7 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago QE3,
+::  cva-plus-c:13           :  176.1 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA3"
+::  cva-plus-c:14           :  189.6 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI6_
+::  cva-plus-c:15           :  203.0 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU3<
+::  cva-plus-c:16           :  216.4 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA3`
+::  cvs-lower:7             :   88.5 b :   34 c ::    sane seda zalu dufi pivu ceba camu
+::  cvs-lower:8             :  101.1 b :   39 c ::    sane seda zalu dufi pivu ceba camu cige
+::  cvs-lower:9             :  113.7 b :   44 c ::    sane seda zalu dufi pivu ceba camu cige paco
+::  cvs-lower:10            :  126.4 b :   49 c ::    sane seda zalu dufi pivu ceba camu cige paco neho
+::  cvs-lower:11            :  139.0 b :   54 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe
+::  cvs-lower:12            :  151.7 b :   59 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu
+::  cvs-lower:13            :  164.3 b :   64 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva
+::  cvs-lower:14            :  177.0 b :   69 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma
+::  cvs-lower:15            :  189.6 b :   74 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu
+::  cvs-lower:16            :  202.3 b :   79 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu sice
+::  cvs-upper:7             :   88.5 b :   34 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU
+::  cvs-upper:8             :  101.1 b :   39 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE
+::  cvs-upper:9             :  113.7 b :   44 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO
+::  cvs-upper:10            :  126.4 b :   49 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO
+::  cvs-upper:11            :  139.0 b :   54 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE
+::  cvs-upper:12            :  151.7 b :   59 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU
+::  cvs-upper:13            :  164.3 b :   64 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU SUVA
+::  cvs-upper:14            :  177.0 b :   69 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU SUVA SUMA
+::  cvs-upper:15            :  189.6 b :   74 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU SUVA SUMA HETU
+::  cvs-upper:16            :  202.3 b :   79 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU SUVA SUMA HETU SICE
+::  cvs-mixed:5             :   83.2 b :   24 c ::    Lami NIZe lABE ziZU bENA
+::  cvs-mixed:6             :   99.8 b :   29 c ::    Lami NIZe lABE ziZU bENA MoZi
+::  cvs-mixed:7             :  116.5 b :   34 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE
+::  cvs-mixed:8             :  133.1 b :   39 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa
+::  cvs-mixed:9             :  149.7 b :   44 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU
+::  cvs-mixed:10            :  166.4 b :   49 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO
+::  cvs-mixed:11            :  183.0 b :   54 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe
+::  cvs-mixed:12            :  199.7 b :   59 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA
+::  cvs-mixed:13            :  216.3 b :   64 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno
+::  cvs-mixed:14            :  233.0 b :   69 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno noZI
+::  cvs-mixed:15            :  249.6 b :   74 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno noZI Liri
+::  cvs-mixed:16            :  266.3 b :   79 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno noZI Liri CePo
+::  cvs-plus-a:7            :   89.1 b :   34 c ::    sane seda zalu dufi pivu ceba 6657
+::  cvs-plus-a:8            :  101.7 b :   39 c ::    sane seda zalu dufi pivu ceba camu 3526
+::  cvs-plus-a:9            :  114.4 b :   44 c ::    sane seda zalu dufi pivu ceba camu cige 6062
+::  cvs-plus-a:10           :  127.0 b :   49 c ::    sane seda zalu dufi pivu ceba camu cige paco 2335
+::  cvs-plus-a:11           :  139.7 b :   54 c ::    sane seda zalu dufi pivu ceba camu cige paco neho 0320
+::  cvs-plus-a:12           :  152.3 b :   59 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe 0946
+::  cvs-plus-a:13           :  165.0 b :   64 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu 9351
+::  cvs-plus-a:14           :  177.6 b :   69 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva 3851
+::  cvs-plus-a:15           :  190.3 b :   74 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma 3385
+::  cvs-plus-a:16           :  202.9 b :   79 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu 5572
+::  cvs-plus-b:7            :   88.8 b :   34 c ::    sane seda zalu dufi pivu ceba CA57
+::  cvs-plus-b:8            :  101.4 b :   39 c ::    sane seda zalu dufi pivu ceba camu CI26
+::  cvs-plus-b:9            :  114.1 b :   44 c ::    sane seda zalu dufi pivu ceba camu cige PA62
+::  cvs-plus-b:10           :  126.7 b :   49 c ::    sane seda zalu dufi pivu ceba camu cige paco NE33
+::  cvs-plus-b:11           :  139.4 b :   54 c ::    sane seda zalu dufi pivu ceba camu cige paco neho BA32
+::  cvs-plus-b:12           :  152.0 b :   59 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe LO08
+::  cvs-plus-b:13           :  164.6 b :   64 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu SU35
+::  cvs-plus-b:14           :  177.3 b :   69 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva SU51
+::  cvs-plus-b:15           :  189.9 b :   74 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma HE38
+::  cvs-plus-b:16           :  202.6 b :   79 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu SI72
+::  cvs-plus-c:6            :   77.8 b :   29 c ::    sane seda zalu dufi pivu CE9!
+::  cvs-plus-c:7            :   90.5 b :   34 c ::    sane seda zalu dufi pivu ceba CA5]
+::  cvs-plus-c:8            :  103.1 b :   39 c ::    sane seda zalu dufi pivu ceba camu CI2@
+::  cvs-plus-c:9            :  115.7 b :   44 c ::    sane seda zalu dufi pivu ceba camu cige PA6+
+::  cvs-plus-c:10           :  128.4 b :   49 c ::    sane seda zalu dufi pivu ceba camu cige paco NE3,
+::  cvs-plus-c:11           :  141.0 b :   54 c ::    sane seda zalu dufi pivu ceba camu cige paco neho BA3"
+::  cvs-plus-c:12           :  153.7 b :   59 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe LO0_
+::  cvs-plus-c:13           :  166.3 b :   64 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu SU3<
+::  cvs-plus-c:14           :  179.0 b :   69 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva SU5'
+::  cvs-plus-c:15           :  191.6 b :   74 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma HE3~
+::  cvs-plus-c:16           :  204.3 b :   79 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu SI7\
 ::  proquint-lower:5        :   80  =b :   29 c ::    sanis gufaz lofug mudad damud
 ::  proquint-lower:6        :   96  =b :   35 c ::    sanis gufaz lofug mudad damud mihup
 ::  proquint-lower:7        :  112  =b :   41 c ::    sanis gufaz lofug mudad damud mihup dogip

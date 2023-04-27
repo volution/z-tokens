@@ -1,7 +1,8 @@
 >>  z-tokens patterns --entropy-min 256 --random-testing
 
-::  cv-mixed:15             :  261.4 b :   74 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO
-::  cv-mixed:16             :  278.8 b :   79 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle
+::  cva-mixed:15            :  261.4 b :   74 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA goPO
+::  cva-mixed:16            :  278.8 b :   79 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA goPO kAle
+::  cvs-mixed:16            :  266.3 b :   79 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno noZI Liri CePo
 ::  proquint-lower:16       :  256  =b :   95 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
 ::  koremutake-b:13         :  273  =b :  104 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
 ::  koremutake-b:14         :  294  =b :  112 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]

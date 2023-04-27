@@ -15,12 +15,18 @@
 ::  ascii-mixed:18          :  102.6 b :   22 c ::    MObE nOlP YZhY cwWl Di
 ::  ascii-symbols:22        :  110  =b :   27 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))
 ::  ascii-any:16            :  104.8 b :   19 c ::    ei#9 i5kg |~.+ {%IL
-::  cv-lower:8              :  107.4 b :   39 c ::    taqe veza zaye fugi rixu cezu saco voxa
-::  cv-upper:8              :  107.4 b :   39 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA
-::  cv-mixed:6              :  104.5 b :   29 c ::    PaFi PiQI YayU mAjO lAzi ZUKa
-::  cv-plus-a:8             :  107.2 b :   39 c ::    taqe veza zaye fugi rixu cezu saco 6573
-::  cv-plus-b:8             :  107.3 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO57
-::  cv-plus-c:8             :  109.0 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO5]
+::  cva-lower:8             :  107.4 b :   39 c ::    taqe veza zaye fugi rixu cezu saco voxa
+::  cva-upper:8             :  107.4 b :   39 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA
+::  cva-mixed:6             :  104.5 b :   29 c ::    PaFi PiQI YayU mAjO lAzi ZUKa
+::  cva-plus-a:8            :  107.2 b :   39 c ::    taqe veza zaye fugi rixu cezu saco 6573
+::  cva-plus-b:8            :  107.3 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO57
+::  cva-plus-c:8            :  109.0 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO5]
+::  cvs-lower:8             :  101.1 b :   39 c ::    sane seda zalu dufi pivu ceba camu cige
+::  cvs-upper:8             :  101.1 b :   39 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE
+::  cvs-mixed:7             :  116.5 b :   34 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE
+::  cvs-plus-a:8            :  101.7 b :   39 c ::    sane seda zalu dufi pivu ceba camu 3526
+::  cvs-plus-b:8            :  101.4 b :   39 c ::    sane seda zalu dufi pivu ceba camu CI26
+::  cvs-plus-c:8            :  103.1 b :   39 c ::    sane seda zalu dufi pivu ceba camu CI2@
 ::  proquint-lower:7        :  112  =b :   41 c ::    sanis gufaz lofug mudad damud mihup dogip
 ::  proquint-upper:7        :  112  =b :   41 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP
 ::  koremutake-a:8          :  112  =b :   46 c ::    drobo stufi stoda napru hyhi pupe grugro ditra

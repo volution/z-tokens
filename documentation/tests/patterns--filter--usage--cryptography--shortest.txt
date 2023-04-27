@@ -14,12 +14,18 @@
 ::  ascii-mixed:24          :  136.8 b :   29 c ::    MObE nOlP YZhY cwWl DiRk AHTT
 ::  ascii-symbols:26        :  130  =b :   32 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?
 ::  ascii-any:20            :  131.0 b :   24 c ::    ei#9 i5kg |~.+ {%IL 6U/o
-::  cv-lower:10             :  134.2 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose
-::  cv-upper:10             :  134.2 b :   49 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB
-::  cv-mixed:8              :  139.4 b :   39 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB
-::  cv-plus-a:10            :  134.1 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize 2606
-::  cv-plus-b:10            :  134.2 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO60
-::  cv-plus-c:10            :  135.8 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO6"
+::  cva-lower:10            :  134.2 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose
+::  cva-upper:10            :  134.2 b :   49 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE
+::  cva-mixed:8             :  139.4 b :   39 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE
+::  cva-plus-a:10           :  134.1 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize 2606
+::  cva-plus-b:10           :  134.2 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO60
+::  cva-plus-c:10           :  135.8 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO6"
+::  cvs-lower:11            :  139.0 b :   54 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe
+::  cvs-upper:11            :  139.0 b :   54 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE
+::  cvs-mixed:8             :  133.1 b :   39 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa
+::  cvs-plus-a:11           :  139.7 b :   54 c ::    sane seda zalu dufi pivu ceba camu cige paco neho 0320
+::  cvs-plus-b:11           :  139.4 b :   54 c ::    sane seda zalu dufi pivu ceba camu cige paco neho BA32
+::  cvs-plus-c:10           :  128.4 b :   49 c ::    sane seda zalu dufi pivu ceba camu cige paco NE3,
 ::  proquint-lower:8        :  128  =b :   47 c ::    sanis gufaz lofug mudad damud mihup dogip bajal
 ::  proquint-upper:8        :  128  =b :   47 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL
 ::  koremutake-a:10         :  140  =b :   58 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve

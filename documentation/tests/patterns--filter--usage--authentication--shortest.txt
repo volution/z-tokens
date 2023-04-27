@@ -17,12 +17,18 @@
 ::  ascii-mixed:6           :   34.2 b :    7 c ::    MObE nO
 ::  ascii-symbols:8         :   40  =b :    9 c ::    \)^~ %(;?
 ::  ascii-any:6             :   39.3 b :    7 c ::    ei#9 i5
-::  cv-lower:3              :   40.2 b :   14 c ::    taqe veza zaye
-::  cv-upper:3              :   40.2 b :   14 c ::    TAQB VBZA ZAYB
-::  cv-mixed:2              :   34.8 b :    9 c ::    PaFi PiQI
-::  cv-plus-a:3             :   40.1 b :   14 c ::    taqe veza 0449
-::  cv-plus-b:3             :   40.2 b :   14 c ::    taqe veza ZA44
-::  cv-plus-c:3             :   41.8 b :   14 c ::    taqe veza ZA4(
+::  cva-lower:3             :   40.2 b :   14 c ::    taqe veza zaye
+::  cva-upper:3             :   40.2 b :   14 c ::    TAQE VEZA ZAYE
+::  cva-mixed:2             :   34.8 b :    9 c ::    PaFi PiQI
+::  cva-plus-a:3            :   40.1 b :   14 c ::    taqe veza 0449
+::  cva-plus-b:3            :   40.2 b :   14 c ::    taqe veza ZA44
+::  cva-plus-c:3            :   41.8 b :   14 c ::    taqe veza ZA4(
+::  cvs-lower:3             :   37.9 b :   14 c ::    sane seda zalu
+::  cvs-upper:3             :   37.9 b :   14 c ::    SANE SEDA ZALU
+::  cvs-mixed:2             :   33.2 b :    9 c ::    Lami NIZe
+::  cvs-plus-a:3            :   38.5 b :   14 c ::    sane seda 0449
+::  cvs-plus-b:3            :   38.2 b :   14 c ::    sane seda ZA44
+::  cvs-plus-c:3            :   39.9 b :   14 c ::    sane seda ZA4(
 ::  proquint-lower:2        :   32  =b :   11 c ::    sanis gufaz
 ::  proquint-upper:2        :   32  =b :   11 c ::    SANIS GUFAZ
 ::  koremutake-a:3          :   42  =b :   17 c ::    drobo stufi stoda

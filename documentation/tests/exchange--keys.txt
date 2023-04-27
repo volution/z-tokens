@@ -1,18 +1,18 @@
 >>  z-tokens exchange keys
 
 ## sender private key
-ztxsk1hrxs3634y8f9wrhlvjz2548kvt22u2dgmn4g5zhzdyspjeg5tp4q7aueyd
+ztxsk14ru5hhvkvspg0cxkddu4xp7ckfagwhuwt4m6nant4vcetm6rnfwsgwar4y
 ## sender public key
-ztxsp18nfs39np4e6ryzrwtapjthaj6lkjfsllnzyysmrdqzml2x77acwqt9zctx
+ztxsp1jc55kq65tms0xqw2g67hkcm5ul4sx4333ex9gfqx7rqnwkrphvnspymquc
 
 ## recipient private key
-ztxrk1jq4jcarvujznglntk6h2g4xtr60wam36kkz09qadhfn07mxgqp5qmhvggy
+ztxrk1grf89v7svgrnuxsyrt0j8pa6gans2tjy7tlwsq7ltsws6uew2plsv8g5dr
 ## recipient public key
-ztxrp1gnnepvss5apptd6aesxf3qvny3dkcd40d7etj0mpxvatqyzp3ctq7vury0
+ztxrp1wsjptnnxmmrpapyyr7wtvdmx2ksuv3xqyqfk9c4pqs8haznf7v8s6k7kwc
 
 ## shared secret (optional)
-ztxcs18lrp93kwg5uz2xkl0ft5m3hx5s8yfaczdfq2qzatu8dxf0wawgvqx32av5
+ztxcs1cadnt6jrkjnsp7fq8hnv20k2ng4g2psw397hd7qduu39jm7qtfaqmqy9ql
 
 ## shared pin (optional)
-5457642233
+9441457259
 

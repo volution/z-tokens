@@ -16,12 +16,18 @@
 ::  ascii-mixed:14          :   79.8 b :   17 c ::    MObE nOlP YZhY cw
 ::  ascii-symbols:14        :   70  =b :   17 c ::    \)^~ %(;? :{#~ |!
 ::  ascii-any:12            :   78.6 b :   14 c ::    ei#9 i5kg |~.+
-::  cv-lower:6              :   80.5 b :   29 c ::    taqe veza zaye fugi rixu cezu
-::  cv-upper:6              :   80.5 b :   29 c ::    TAQB VBZA ZAYB FUGI RIXU CBZU
-::  cv-mixed:5              :   87.1 b :   24 c ::    PaFi PiQI YayU mAjO lAzi
-::  cv-plus-a:6             :   80.4 b :   29 c ::    taqe veza zaye fugi rixu 2906
-::  cv-plus-b:6             :   80.5 b :   29 c ::    taqe veza zaye fugi rixu CB90
-::  cv-plus-c:6             :   82.1 b :   29 c ::    taqe veza zaye fugi rixu CB9!
+::  cva-lower:6             :   80.5 b :   29 c ::    taqe veza zaye fugi rixu cezu
+::  cva-upper:6             :   80.5 b :   29 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU
+::  cva-mixed:5             :   87.1 b :   24 c ::    PaFi PiQI YayU mAjO lAzi
+::  cva-plus-a:6            :   80.4 b :   29 c ::    taqe veza zaye fugi rixu 2906
+::  cva-plus-b:6            :   80.5 b :   29 c ::    taqe veza zaye fugi rixu CE90
+::  cva-plus-c:6            :   82.1 b :   29 c ::    taqe veza zaye fugi rixu CE9!
+::  cvs-lower:6             :   75.8 b :   29 c ::    sane seda zalu dufi pivu ceba
+::  cvs-upper:6             :   75.8 b :   29 c ::    SANE SEDA ZALU DUFI PIVU CEBA
+::  cvs-mixed:5             :   83.2 b :   24 c ::    Lami NIZe lABE ziZU bENA
+::  cvs-plus-a:6            :   76.5 b :   29 c ::    sane seda zalu dufi pivu 2906
+::  cvs-plus-b:6            :   76.1 b :   29 c ::    sane seda zalu dufi pivu CE90
+::  cvs-plus-c:6            :   77.8 b :   29 c ::    sane seda zalu dufi pivu CE9!
 ::  proquint-lower:5        :   80  =b :   29 c ::    sanis gufaz lofug mudad damud
 ::  proquint-upper:5        :   80  =b :   29 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD
 ::  koremutake-a:5          :   70  =b :   28 c ::    drobo stufi stoda napru hyhi

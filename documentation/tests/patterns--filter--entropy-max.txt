@@ -95,22 +95,41 @@
 ::  ascii-any:4             :   26.2 b :    4 c ::    ei#9
 ::  ascii-any:6             :   39.3 b :    7 c ::    ei#9 i5
 ::  ascii-any:8             :   52.4 b :    9 c ::    ei#9 i5kg
-::  cv-lower:1              :   13.4 b :    4 c ::    taqe
-::  cv-lower:2              :   26.8 b :    9 c ::    taqe veza
-::  cv-lower:3              :   40.2 b :   14 c ::    taqe veza zaye
-::  cv-lower:4              :   53.7 b :   19 c ::    taqe veza zaye fugi
-::  cv-mixed:1              :   17.4 b :    4 c ::    PaFi
-::  cv-mixed:2              :   34.8 b :    9 c ::    PaFi PiQI
-::  cv-mixed:3              :   52.2 b :   14 c ::    PaFi PiQI YayU
-::  cv-plus-a:2             :   26.7 b :    9 c ::    taqe 2711
-::  cv-plus-a:3             :   40.1 b :   14 c ::    taqe veza 0449
-::  cv-plus-a:4             :   53.5 b :   19 c ::    taqe veza zaye 5182
-::  cv-plus-b:2             :   26.7 b :    9 c ::    taqe VB71
-::  cv-plus-b:3             :   40.2 b :   14 c ::    taqe veza ZA44
-::  cv-plus-b:4             :   53.6 b :   19 c ::    taqe veza zaye FU25
-::  cv-plus-c:2             :   28.4 b :    9 c ::    taqe VB7~
-::  cv-plus-c:3             :   41.8 b :   14 c ::    taqe veza ZA4(
-::  cv-plus-c:4             :   55.3 b :   19 c ::    taqe veza zaye FU2;
+::  cva-lower:1             :   13.4 b :    4 c ::    taqe
+::  cva-lower:2             :   26.8 b :    9 c ::    taqe veza
+::  cva-lower:3             :   40.2 b :   14 c ::    taqe veza zaye
+::  cva-lower:4             :   53.7 b :   19 c ::    taqe veza zaye fugi
+::  cva-mixed:1             :   17.4 b :    4 c ::    PaFi
+::  cva-mixed:2             :   34.8 b :    9 c ::    PaFi PiQI
+::  cva-mixed:3             :   52.2 b :   14 c ::    PaFi PiQI YayU
+::  cva-plus-a:2            :   26.7 b :    9 c ::    taqe 2711
+::  cva-plus-a:3            :   40.1 b :   14 c ::    taqe veza 0449
+::  cva-plus-a:4            :   53.5 b :   19 c ::    taqe veza zaye 5182
+::  cva-plus-b:2            :   26.7 b :    9 c ::    taqe VE71
+::  cva-plus-b:3            :   40.2 b :   14 c ::    taqe veza ZA44
+::  cva-plus-b:4            :   53.6 b :   19 c ::    taqe veza zaye FU25
+::  cva-plus-c:2            :   28.4 b :    9 c ::    taqe VE7~
+::  cva-plus-c:3            :   41.8 b :   14 c ::    taqe veza ZA4(
+::  cva-plus-c:4            :   55.3 b :   19 c ::    taqe veza zaye FU2;
+::  cvs-lower:1             :   12.6 b :    4 c ::    sane
+::  cvs-lower:2             :   25.2 b :    9 c ::    sane seda
+::  cvs-lower:3             :   37.9 b :   14 c ::    sane seda zalu
+::  cvs-lower:4             :   50.5 b :   19 c ::    sane seda zalu dufi
+::  cvs-lower:5             :   63.2 b :   24 c ::    sane seda zalu dufi pivu
+::  cvs-mixed:1             :   16.6 b :    4 c ::    Lami
+::  cvs-mixed:2             :   33.2 b :    9 c ::    Lami NIZe
+::  cvs-mixed:3             :   49.9 b :   14 c ::    Lami NIZe lABE
+::  cvs-plus-a:2            :   25.9 b :    9 c ::    sane 2711
+::  cvs-plus-a:3            :   38.5 b :   14 c ::    sane seda 0449
+::  cvs-plus-a:4            :   51.2 b :   19 c ::    sane seda zalu 2518
+::  cvs-plus-a:5            :   63.8 b :   24 c ::    sane seda zalu dufi 6290
+::  cvs-plus-b:2            :   25.6 b :    9 c ::    sane SE71
+::  cvs-plus-b:3            :   38.2 b :   14 c ::    sane seda ZA44
+::  cvs-plus-b:4            :   50.8 b :   19 c ::    sane seda zalu DU25
+::  cvs-plus-b:5            :   63.5 b :   24 c ::    sane seda zalu dufi PI29
+::  cvs-plus-c:2            :   27.2 b :    9 c ::    sane SE7~
+::  cvs-plus-c:3            :   39.9 b :   14 c ::    sane seda ZA4(
+::  cvs-plus-c:4            :   52.5 b :   19 c ::    sane seda zalu DU2;
 ::  proquint-lower:1        :   16  =b :    5 c ::    sanis
 ::  proquint-lower:2        :   32  =b :   11 c ::    sanis gufaz
 ::  proquint-lower:3        :   48  =b :   17 c ::    sanis gufaz lofug

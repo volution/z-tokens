@@ -4081,7 +4081,7 @@
     \_        f*'< o38/ {gw9 \'cJ }`@" })x> T]0O /E/|
 
 
-**  ~~~~~~~~  cv-lower:1
+**  ~~~~~~~~  cva-lower:1
 \_  bits:     13.4284
 \_  length:   4
 \_  examples:
@@ -4097,7 +4097,7 @@
     \_        hose
 
 
-**  ~~~~~~~~  cv-lower:2
+**  ~~~~~~~~  cva-lower:2
 \_  bits:     26.8569
 \_  length:   9
 \_  examples:
@@ -4113,7 +4113,7 @@
     \_        vize teke
 
 
-**  ~~~~~~~~  cv-lower:3
+**  ~~~~~~~~  cva-lower:3
 \_  bits:     40.2854
 \_  length:   14
 \_  examples:
@@ -4129,7 +4129,7 @@
     \_        ruba joyo ripi
 
 
-**  ~~~~~~~~  cv-lower:4
+**  ~~~~~~~~  cva-lower:4
 \_  bits:     53.7139
 \_  length:   19
 \_  examples:
@@ -4145,7 +4145,7 @@
     \_        suja neza negi bege
 
 
-**  ~~~~~~~~  cv-lower:5
+**  ~~~~~~~~  cva-lower:5
 \_  bits:     67.1424
 \_  length:   24
 \_  examples:
@@ -4161,7 +4161,7 @@
     \_        luli kavi none vese dize
 
 
-**  ~~~~~~~~  cv-lower:6
+**  ~~~~~~~~  cva-lower:6
 \_  bits:     80.5709
 \_  length:   29
 \_  examples:
@@ -4177,7 +4177,7 @@
     \_        fote dela rile bina tebi givu
 
 
-**  ~~~~~~~~  cv-lower:7
+**  ~~~~~~~~  cva-lower:7
 \_  bits:     93.9994
 \_  length:   34
 \_  examples:
@@ -4193,7 +4193,7 @@
     \_        keta cane wefu hoce nijo kava yepo
 
 
-**  ~~~~~~~~  cv-lower:8
+**  ~~~~~~~~  cva-lower:8
 \_  bits:     107.4279
 \_  length:   39
 \_  examples:
@@ -4209,7 +4209,7 @@
     \_        goyu qece voju wayo lani tuqa luto bepa
 
 
-**  ~~~~~~~~  cv-lower:9
+**  ~~~~~~~~  cva-lower:9
 \_  bits:     120.8564
 \_  length:   44
 \_  examples:
@@ -4225,7 +4225,7 @@
     \_        pita xide seba vase micu vevu dupu ropi voye
 
 
-**  ~~~~~~~~  cv-lower:10
+**  ~~~~~~~~  cva-lower:10
 \_  bits:     134.2849
 \_  length:   49
 \_  examples:
@@ -4241,7 +4241,7 @@
     \_        lene vihi bofi xiqi mogu sifu gugu laka vuni zogi
 
 
-**  ~~~~~~~~  cv-lower:11
+**  ~~~~~~~~  cva-lower:11
 \_  bits:     147.7134
 \_  length:   54
 \_  examples:
@@ -4257,7 +4257,7 @@
     \_        zogi life qona cubi redu vuxe noyu waxe tifu rexi viki
 
 
-**  ~~~~~~~~  cv-lower:12
+**  ~~~~~~~~  cva-lower:12
 \_  bits:     161.1418
 \_  length:   59
 \_  examples:
@@ -4273,7 +4273,7 @@
     \_        rexi viki woba puga toso tuba momi lixo jiho xexi lowi qode
 
 
-**  ~~~~~~~~  cv-lower:13
+**  ~~~~~~~~  cva-lower:13
 \_  bits:     174.5703
 \_  length:   64
 \_  examples:
@@ -4289,7 +4289,7 @@
     \_        xexi lowi qode fepe xiya rovo yuca jeda rago tiha tawo zupa kelu
 
 
-**  ~~~~~~~~  cv-lower:14
+**  ~~~~~~~~  cva-lower:14
 \_  bits:     187.9988
 \_  length:   69
 \_  examples:
@@ -4305,7 +4305,7 @@
     \_        tiha tawo zupa kelu yudo xaru lene sugo wela haru nano fuze pixi yita
 
 
-**  ~~~~~~~~  cv-lower:15
+**  ~~~~~~~~  cva-lower:15
 \_  bits:     201.4273
 \_  length:   74
 \_  examples:
@@ -4321,7 +4321,7 @@
     \_        haru nano fuze pixi yita wucu qoxu fafa woci jawe ripa tome ruka geke seva
 
 
-**  ~~~~~~~~  cv-lower:16
+**  ~~~~~~~~  cva-lower:16
 \_  bits:     214.8558
 \_  length:   79
 \_  examples:
@@ -4337,263 +4337,263 @@
     \_        jawe ripa tome ruka geke seva vexo tome bemo milo teku buvo miyo qovu qedo haga
 
 
-**  ~~~~~~~~  cv-upper:1
+**  ~~~~~~~~  cva-upper:1
 \_  bits:     13.4284
 \_  length:   4
 \_  examples:
-    \_        TAQB
-    \_        VBZA
-    \_        ZAYB
+    \_        TAQE
+    \_        VEZA
+    \_        ZAYE
     \_        FUGI
     \_        RIXU
-    \_        CBZU
+    \_        CEZU
     \_        SACO
     \_        VOXA
-    \_        KIZB
-    \_        HOSB
+    \_        KIZE
+    \_        HOSE
 
 
-**  ~~~~~~~~  cv-upper:2
+**  ~~~~~~~~  cva-upper:2
 \_  bits:     26.8569
 \_  length:   9
 \_  examples:
-    \_        TAQB VBZA
-    \_        ZAYB FUGI
-    \_        RIXU CBZU
+    \_        TAQE VEZA
+    \_        ZAYE FUGI
+    \_        RIXU CEZU
     \_        SACO VOXA
-    \_        KIZB HOSB
-    \_        RAGO QBKO
+    \_        KIZE HOSE
+    \_        RAGO QEKO
     \_        BAHA YIWU
     \_        YUKU PAJU
     \_        FIGA JUXI
-    \_        VIZB TBKB
+    \_        VIZE TEKE
 
 
-**  ~~~~~~~~  cv-upper:3
+**  ~~~~~~~~  cva-upper:3
 \_  bits:     40.2854
 \_  length:   14
 \_  examples:
-    \_        TAQB VBZA ZAYB
-    \_        FUGI RIXU CBZU
-    \_        SACO VOXA KIZB
-    \_        HOSB RAGO QBKO
+    \_        TAQE VEZA ZAYE
+    \_        FUGI RIXU CEZU
+    \_        SACO VOXA KIZE
+    \_        HOSE RAGO QEKO
     \_        BAHA YIWU YUKU
     \_        PAJU FIGA JUXI
-    \_        VIZB TBKB XBPI
-    \_        WBVO XIGO HACU
-    \_        DBBO BALB KUHO
+    \_        VIZE TEKE XEPI
+    \_        WEVO XIGO HACU
+    \_        DEBO BALE KUHO
     \_        RUBA JOYO RIPI
 
 
-**  ~~~~~~~~  cv-upper:4
+**  ~~~~~~~~  cva-upper:4
 \_  bits:     53.7139
 \_  length:   19
 \_  examples:
-    \_        TAQB VBZA ZAYB FUGI
-    \_        RIXU CBZU SACO VOXA
-    \_        KIZB HOSB RAGO QBKO
+    \_        TAQE VEZA ZAYE FUGI
+    \_        RIXU CEZU SACO VOXA
+    \_        KIZE HOSE RAGO QEKO
     \_        BAHA YIWU YUKU PAJU
-    \_        FIGA JUXI VIZB TBKB
-    \_        XBPI WBVO XIGO HACU
-    \_        DBBO BALB KUHO RUBA
+    \_        FIGA JUXI VIZE TEKE
+    \_        XEPI WEVO XIGO HACU
+    \_        DEBO BALE KUHO RUBA
     \_        JOYO RIPI NOMA YASA
     \_        BATU XIWO SUXI FUCU
-    \_        SUJA NBZA NBGI BBGB
+    \_        SUJA NEZA NEGI BEGE
 
 
-**  ~~~~~~~~  cv-upper:5
+**  ~~~~~~~~  cva-upper:5
 \_  bits:     67.1424
 \_  length:   24
 \_  examples:
-    \_        TAQB VBZA ZAYB FUGI RIXU
-    \_        CBZU SACO VOXA KIZB HOSB
-    \_        RAGO QBKO BAHA YIWU YUKU
-    \_        PAJU FIGA JUXI VIZB TBKB
-    \_        XBPI WBVO XIGO HACU DBBO
-    \_        BALB KUHO RUBA JOYO RIPI
+    \_        TAQE VEZA ZAYE FUGI RIXU
+    \_        CEZU SACO VOXA KIZE HOSE
+    \_        RAGO QEKO BAHA YIWU YUKU
+    \_        PAJU FIGA JUXI VIZE TEKE
+    \_        XEPI WEVO XIGO HACU DEBO
+    \_        BALE KUHO RUBA JOYO RIPI
     \_        NOMA YASA BATU XIWO SUXI
-    \_        FUCU SUJA NBZA NBGI BBGB
-    \_        NOZI ZILB LOZI POGI GORB
-    \_        LULI KAVI NONB VBSB DIZB
+    \_        FUCU SUJA NEZA NEGI BEGE
+    \_        NOZI ZILE LOZI POGI GORE
+    \_        LULI KAVI NONE VESE DIZE
 
 
-**  ~~~~~~~~  cv-upper:6
+**  ~~~~~~~~  cva-upper:6
 \_  bits:     80.5709
 \_  length:   29
 \_  examples:
-    \_        TAQB VBZA ZAYB FUGI RIXU CBZU
-    \_        SACO VOXA KIZB HOSB RAGO QBKO
+    \_        TAQE VEZA ZAYE FUGI RIXU CEZU
+    \_        SACO VOXA KIZE HOSE RAGO QEKO
     \_        BAHA YIWU YUKU PAJU FIGA JUXI
-    \_        VIZB TBKB XBPI WBVO XIGO HACU
-    \_        DBBO BALB KUHO RUBA JOYO RIPI
+    \_        VIZE TEKE XEPI WEVO XIGO HACU
+    \_        DEBO BALE KUHO RUBA JOYO RIPI
     \_        NOMA YASA BATU XIWO SUXI FUCU
-    \_        SUJA NBZA NBGI BBGB NOZI ZILB
-    \_        LOZI POGI GORB LULI KAVI NONB
-    \_        VBSB DIZB GBXA MBXB YOHA GAFB
-    \_        FOTB DBLA RILB BINA TBBI GIVU
+    \_        SUJA NEZA NEGI BEGE NOZI ZILE
+    \_        LOZI POGI GORE LULI KAVI NONE
+    \_        VESE DIZE GEXA MEXE YOHA GAFE
+    \_        FOTE DELA RILE BINA TEBI GIVU
 
 
-**  ~~~~~~~~  cv-upper:7
+**  ~~~~~~~~  cva-upper:7
 \_  bits:     93.9994
 \_  length:   34
 \_  examples:
-    \_        TAQB VBZA ZAYB FUGI RIXU CBZU SACO
-    \_        VOXA KIZB HOSB RAGO QBKO BAHA YIWU
-    \_        YUKU PAJU FIGA JUXI VIZB TBKB XBPI
-    \_        WBVO XIGO HACU DBBO BALB KUHO RUBA
+    \_        TAQE VEZA ZAYE FUGI RIXU CEZU SACO
+    \_        VOXA KIZE HOSE RAGO QEKO BAHA YIWU
+    \_        YUKU PAJU FIGA JUXI VIZE TEKE XEPI
+    \_        WEVO XIGO HACU DEBO BALE KUHO RUBA
     \_        JOYO RIPI NOMA YASA BATU XIWO SUXI
-    \_        FUCU SUJA NBZA NBGI BBGB NOZI ZILB
-    \_        LOZI POGI GORB LULI KAVI NONB VBSB
-    \_        DIZB GBXA MBXB YOHA GAFB FOTB DBLA
-    \_        RILB BINA TBBI GIVU PIPA GBFO YBCB
-    \_        KBTA CANB WBFU HOCB NIJO KAVA YBPO
+    \_        FUCU SUJA NEZA NEGI BEGE NOZI ZILE
+    \_        LOZI POGI GORE LULI KAVI NONE VESE
+    \_        DIZE GEXA MEXE YOHA GAFE FOTE DELA
+    \_        RILE BINA TEBI GIVU PIPA GEFO YECE
+    \_        KETA CANE WEFU HOCE NIJO KAVA YEPO
 
 
-**  ~~~~~~~~  cv-upper:8
+**  ~~~~~~~~  cva-upper:8
 \_  bits:     107.4279
 \_  length:   39
 \_  examples:
-    \_        TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA
-    \_        KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU
-    \_        FIGA JUXI VIZB TBKB XBPI WBVO XIGO HACU
-    \_        DBBO BALB KUHO RUBA JOYO RIPI NOMA YASA
-    \_        BATU XIWO SUXI FUCU SUJA NBZA NBGI BBGB
-    \_        NOZI ZILB LOZI POGI GORB LULI KAVI NONB
-    \_        VBSB DIZB GBXA MBXB YOHA GAFB FOTB DBLA
-    \_        RILB BINA TBBI GIVU PIPA GBFO YBCB KBTA
-    \_        CANB WBFU HOCB NIJO KAVA YBPO FUNU FOLU
-    \_        GOYU QBCB VOJU WAYO LANI TUQA LUTO BBPA
+    \_        TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA
+    \_        KIZE HOSE RAGO QEKO BAHA YIWU YUKU PAJU
+    \_        FIGA JUXI VIZE TEKE XEPI WEVO XIGO HACU
+    \_        DEBO BALE KUHO RUBA JOYO RIPI NOMA YASA
+    \_        BATU XIWO SUXI FUCU SUJA NEZA NEGI BEGE
+    \_        NOZI ZILE LOZI POGI GORE LULI KAVI NONE
+    \_        VESE DIZE GEXA MEXE YOHA GAFE FOTE DELA
+    \_        RILE BINA TEBI GIVU PIPA GEFO YECE KETA
+    \_        CANE WEFU HOCE NIJO KAVA YEPO FUNU FOLU
+    \_        GOYU QECE VOJU WAYO LANI TUQA LUTO BEPA
 
 
-**  ~~~~~~~~  cv-upper:9
+**  ~~~~~~~~  cva-upper:9
 \_  bits:     120.8564
 \_  length:   44
 \_  examples:
-    \_        TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB
-    \_        HOSB RAGO QBKO BAHA YIWU YUKU PAJU FIGA JUXI
-    \_        VIZB TBKB XBPI WBVO XIGO HACU DBBO BALB KUHO
+    \_        TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE
+    \_        HOSE RAGO QEKO BAHA YIWU YUKU PAJU FIGA JUXI
+    \_        VIZE TEKE XEPI WEVO XIGO HACU DEBO BALE KUHO
     \_        RUBA JOYO RIPI NOMA YASA BATU XIWO SUXI FUCU
-    \_        SUJA NBZA NBGI BBGB NOZI ZILB LOZI POGI GORB
-    \_        LULI KAVI NONB VBSB DIZB GBXA MBXB YOHA GAFB
-    \_        FOTB DBLA RILB BINA TBBI GIVU PIPA GBFO YBCB
-    \_        KBTA CANB WBFU HOCB NIJO KAVA YBPO FUNU FOLU
-    \_        GOYU QBCB VOJU WAYO LANI TUQA LUTO BBPA VIMI
-    \_        PITA XIDB SBBA VASB MICU VBVU DUPU ROPI VOYB
+    \_        SUJA NEZA NEGI BEGE NOZI ZILE LOZI POGI GORE
+    \_        LULI KAVI NONE VESE DIZE GEXA MEXE YOHA GAFE
+    \_        FOTE DELA RILE BINA TEBI GIVU PIPA GEFO YECE
+    \_        KETA CANE WEFU HOCE NIJO KAVA YEPO FUNU FOLU
+    \_        GOYU QECE VOJU WAYO LANI TUQA LUTO BEPA VIMI
+    \_        PITA XIDE SEBA VASE MICU VEVU DUPU ROPI VOYE
 
 
-**  ~~~~~~~~  cv-upper:10
+**  ~~~~~~~~  cva-upper:10
 \_  bits:     134.2849
 \_  length:   49
 \_  examples:
-    \_        TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB
-    \_        RAGO QBKO BAHA YIWU YUKU PAJU FIGA JUXI VIZB TBKB
-    \_        XBPI WBVO XIGO HACU DBBO BALB KUHO RUBA JOYO RIPI
-    \_        NOMA YASA BATU XIWO SUXI FUCU SUJA NBZA NBGI BBGB
-    \_        NOZI ZILB LOZI POGI GORB LULI KAVI NONB VBSB DIZB
-    \_        GBXA MBXB YOHA GAFB FOTB DBLA RILB BINA TBBI GIVU
-    \_        PIPA GBFO YBCB KBTA CANB WBFU HOCB NIJO KAVA YBPO
-    \_        FUNU FOLU GOYU QBCB VOJU WAYO LANI TUQA LUTO BBPA
-    \_        VIMI PITA XIDB SBBA VASB MICU VBVU DUPU ROPI VOYB
-    \_        LBNB VIHI BOFI XIQI MOGU SIFU GUGU LAKA VUNI ZOGI
+    \_        TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE
+    \_        RAGO QEKO BAHA YIWU YUKU PAJU FIGA JUXI VIZE TEKE
+    \_        XEPI WEVO XIGO HACU DEBO BALE KUHO RUBA JOYO RIPI
+    \_        NOMA YASA BATU XIWO SUXI FUCU SUJA NEZA NEGI BEGE
+    \_        NOZI ZILE LOZI POGI GORE LULI KAVI NONE VESE DIZE
+    \_        GEXA MEXE YOHA GAFE FOTE DELA RILE BINA TEBI GIVU
+    \_        PIPA GEFO YECE KETA CANE WEFU HOCE NIJO KAVA YEPO
+    \_        FUNU FOLU GOYU QECE VOJU WAYO LANI TUQA LUTO BEPA
+    \_        VIMI PITA XIDE SEBA VASE MICU VEVU DUPU ROPI VOYE
+    \_        LENE VIHI BOFI XIQI MOGU SIFU GUGU LAKA VUNI ZOGI
 
 
-**  ~~~~~~~~  cv-upper:11
+**  ~~~~~~~~  cva-upper:11
 \_  bits:     147.7134
 \_  length:   54
 \_  examples:
-    \_        TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO
-    \_        QBKO BAHA YIWU YUKU PAJU FIGA JUXI VIZB TBKB XBPI WBVO
-    \_        XIGO HACU DBBO BALB KUHO RUBA JOYO RIPI NOMA YASA BATU
-    \_        XIWO SUXI FUCU SUJA NBZA NBGI BBGB NOZI ZILB LOZI POGI
-    \_        GORB LULI KAVI NONB VBSB DIZB GBXA MBXB YOHA GAFB FOTB
-    \_        DBLA RILB BINA TBBI GIVU PIPA GBFO YBCB KBTA CANB WBFU
-    \_        HOCB NIJO KAVA YBPO FUNU FOLU GOYU QBCB VOJU WAYO LANI
-    \_        TUQA LUTO BBPA VIMI PITA XIDB SBBA VASB MICU VBVU DUPU
-    \_        ROPI VOYB LBNB VIHI BOFI XIQI MOGU SIFU GUGU LAKA VUNI
-    \_        ZOGI LIFB QONA CUBI RBDU VUXB NOYU WAXB TIFU RBXI VIKI
+    \_        TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO
+    \_        QEKO BAHA YIWU YUKU PAJU FIGA JUXI VIZE TEKE XEPI WEVO
+    \_        XIGO HACU DEBO BALE KUHO RUBA JOYO RIPI NOMA YASA BATU
+    \_        XIWO SUXI FUCU SUJA NEZA NEGI BEGE NOZI ZILE LOZI POGI
+    \_        GORE LULI KAVI NONE VESE DIZE GEXA MEXE YOHA GAFE FOTE
+    \_        DELA RILE BINA TEBI GIVU PIPA GEFO YECE KETA CANE WEFU
+    \_        HOCE NIJO KAVA YEPO FUNU FOLU GOYU QECE VOJU WAYO LANI
+    \_        TUQA LUTO BEPA VIMI PITA XIDE SEBA VASE MICU VEVU DUPU
+    \_        ROPI VOYE LENE VIHI BOFI XIQI MOGU SIFU GUGU LAKA VUNI
+    \_        ZOGI LIFE QONA CUBI REDU VUXE NOYU WAXE TIFU REXI VIKI
 
 
-**  ~~~~~~~~  cv-upper:12
+**  ~~~~~~~~  cva-upper:12
 \_  bits:     161.1418
 \_  length:   59
 \_  examples:
-    \_        TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO
-    \_        BAHA YIWU YUKU PAJU FIGA JUXI VIZB TBKB XBPI WBVO XIGO HACU
-    \_        DBBO BALB KUHO RUBA JOYO RIPI NOMA YASA BATU XIWO SUXI FUCU
-    \_        SUJA NBZA NBGI BBGB NOZI ZILB LOZI POGI GORB LULI KAVI NONB
-    \_        VBSB DIZB GBXA MBXB YOHA GAFB FOTB DBLA RILB BINA TBBI GIVU
-    \_        PIPA GBFO YBCB KBTA CANB WBFU HOCB NIJO KAVA YBPO FUNU FOLU
-    \_        GOYU QBCB VOJU WAYO LANI TUQA LUTO BBPA VIMI PITA XIDB SBBA
-    \_        VASB MICU VBVU DUPU ROPI VOYB LBNB VIHI BOFI XIQI MOGU SIFU
-    \_        GUGU LAKA VUNI ZOGI LIFB QONA CUBI RBDU VUXB NOYU WAXB TIFU
-    \_        RBXI VIKI WOBA PUGA TOSO TUBA MOMI LIXO JIHO XBXI LOWI QODB
+    \_        TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO
+    \_        BAHA YIWU YUKU PAJU FIGA JUXI VIZE TEKE XEPI WEVO XIGO HACU
+    \_        DEBO BALE KUHO RUBA JOYO RIPI NOMA YASA BATU XIWO SUXI FUCU
+    \_        SUJA NEZA NEGI BEGE NOZI ZILE LOZI POGI GORE LULI KAVI NONE
+    \_        VESE DIZE GEXA MEXE YOHA GAFE FOTE DELA RILE BINA TEBI GIVU
+    \_        PIPA GEFO YECE KETA CANE WEFU HOCE NIJO KAVA YEPO FUNU FOLU
+    \_        GOYU QECE VOJU WAYO LANI TUQA LUTO BEPA VIMI PITA XIDE SEBA
+    \_        VASE MICU VEVU DUPU ROPI VOYE LENE VIHI BOFI XIQI MOGU SIFU
+    \_        GUGU LAKA VUNI ZOGI LIFE QONA CUBI REDU VUXE NOYU WAXE TIFU
+    \_        REXI VIKI WOBA PUGA TOSO TUBA MOMI LIXO JIHO XEXI LOWI QODE
 
 
-**  ~~~~~~~~  cv-upper:13
+**  ~~~~~~~~  cva-upper:13
 \_  bits:     174.5703
 \_  length:   64
 \_  examples:
-    \_        TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA
-    \_        YIWU YUKU PAJU FIGA JUXI VIZB TBKB XBPI WBVO XIGO HACU DBBO BALB
-    \_        KUHO RUBA JOYO RIPI NOMA YASA BATU XIWO SUXI FUCU SUJA NBZA NBGI
-    \_        BBGB NOZI ZILB LOZI POGI GORB LULI KAVI NONB VBSB DIZB GBXA MBXB
-    \_        YOHA GAFB FOTB DBLA RILB BINA TBBI GIVU PIPA GBFO YBCB KBTA CANB
-    \_        WBFU HOCB NIJO KAVA YBPO FUNU FOLU GOYU QBCB VOJU WAYO LANI TUQA
-    \_        LUTO BBPA VIMI PITA XIDB SBBA VASB MICU VBVU DUPU ROPI VOYB LBNB
-    \_        VIHI BOFI XIQI MOGU SIFU GUGU LAKA VUNI ZOGI LIFB QONA CUBI RBDU
-    \_        VUXB NOYU WAXB TIFU RBXI VIKI WOBA PUGA TOSO TUBA MOMI LIXO JIHO
-    \_        XBXI LOWI QODB FBPB XIYA ROVO YUCA JBDA RAGO TIHA TAWO ZUPA KBLU
+    \_        TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO BAHA
+    \_        YIWU YUKU PAJU FIGA JUXI VIZE TEKE XEPI WEVO XIGO HACU DEBO BALE
+    \_        KUHO RUBA JOYO RIPI NOMA YASA BATU XIWO SUXI FUCU SUJA NEZA NEGI
+    \_        BEGE NOZI ZILE LOZI POGI GORE LULI KAVI NONE VESE DIZE GEXA MEXE
+    \_        YOHA GAFE FOTE DELA RILE BINA TEBI GIVU PIPA GEFO YECE KETA CANE
+    \_        WEFU HOCE NIJO KAVA YEPO FUNU FOLU GOYU QECE VOJU WAYO LANI TUQA
+    \_        LUTO BEPA VIMI PITA XIDE SEBA VASE MICU VEVU DUPU ROPI VOYE LENE
+    \_        VIHI BOFI XIQI MOGU SIFU GUGU LAKA VUNI ZOGI LIFE QONA CUBI REDU
+    \_        VUXE NOYU WAXE TIFU REXI VIKI WOBA PUGA TOSO TUBA MOMI LIXO JIHO
+    \_        XEXI LOWI QODE FEPE XIYA ROVO YUCA JEDA RAGO TIHA TAWO ZUPA KELU
 
 
-**  ~~~~~~~~  cv-upper:14
+**  ~~~~~~~~  cva-upper:14
 \_  bits:     187.9988
 \_  length:   69
 \_  examples:
-    \_        TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU
-    \_        YUKU PAJU FIGA JUXI VIZB TBKB XBPI WBVO XIGO HACU DBBO BALB KUHO RUBA
-    \_        JOYO RIPI NOMA YASA BATU XIWO SUXI FUCU SUJA NBZA NBGI BBGB NOZI ZILB
-    \_        LOZI POGI GORB LULI KAVI NONB VBSB DIZB GBXA MBXB YOHA GAFB FOTB DBLA
-    \_        RILB BINA TBBI GIVU PIPA GBFO YBCB KBTA CANB WBFU HOCB NIJO KAVA YBPO
-    \_        FUNU FOLU GOYU QBCB VOJU WAYO LANI TUQA LUTO BBPA VIMI PITA XIDB SBBA
-    \_        VASB MICU VBVU DUPU ROPI VOYB LBNB VIHI BOFI XIQI MOGU SIFU GUGU LAKA
-    \_        VUNI ZOGI LIFB QONA CUBI RBDU VUXB NOYU WAXB TIFU RBXI VIKI WOBA PUGA
-    \_        TOSO TUBA MOMI LIXO JIHO XBXI LOWI QODB FBPB XIYA ROVO YUCA JBDA RAGO
-    \_        TIHA TAWO ZUPA KBLU YUDO XARU LBNB SUGO WBLA HARU NANO FUZB PIXI YITA
+    \_        TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO BAHA YIWU
+    \_        YUKU PAJU FIGA JUXI VIZE TEKE XEPI WEVO XIGO HACU DEBO BALE KUHO RUBA
+    \_        JOYO RIPI NOMA YASA BATU XIWO SUXI FUCU SUJA NEZA NEGI BEGE NOZI ZILE
+    \_        LOZI POGI GORE LULI KAVI NONE VESE DIZE GEXA MEXE YOHA GAFE FOTE DELA
+    \_        RILE BINA TEBI GIVU PIPA GEFO YECE KETA CANE WEFU HOCE NIJO KAVA YEPO
+    \_        FUNU FOLU GOYU QECE VOJU WAYO LANI TUQA LUTO BEPA VIMI PITA XIDE SEBA
+    \_        VASE MICU VEVU DUPU ROPI VOYE LENE VIHI BOFI XIQI MOGU SIFU GUGU LAKA
+    \_        VUNI ZOGI LIFE QONA CUBI REDU VUXE NOYU WAXE TIFU REXI VIKI WOBA PUGA
+    \_        TOSO TUBA MOMI LIXO JIHO XEXI LOWI QODE FEPE XIYA ROVO YUCA JEDA RAGO
+    \_        TIHA TAWO ZUPA KELU YUDO XARU LENE SUGO WELA HARU NANO FUZE PIXI YITA
 
 
-**  ~~~~~~~~  cv-upper:15
+**  ~~~~~~~~  cva-upper:15
 \_  bits:     201.4273
 \_  length:   74
 \_  examples:
-    \_        TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU
-    \_        PAJU FIGA JUXI VIZB TBKB XBPI WBVO XIGO HACU DBBO BALB KUHO RUBA JOYO RIPI
-    \_        NOMA YASA BATU XIWO SUXI FUCU SUJA NBZA NBGI BBGB NOZI ZILB LOZI POGI GORB
-    \_        LULI KAVI NONB VBSB DIZB GBXA MBXB YOHA GAFB FOTB DBLA RILB BINA TBBI GIVU
-    \_        PIPA GBFO YBCB KBTA CANB WBFU HOCB NIJO KAVA YBPO FUNU FOLU GOYU QBCB VOJU
-    \_        WAYO LANI TUQA LUTO BBPA VIMI PITA XIDB SBBA VASB MICU VBVU DUPU ROPI VOYB
-    \_        LBNB VIHI BOFI XIQI MOGU SIFU GUGU LAKA VUNI ZOGI LIFB QONA CUBI RBDU VUXB
-    \_        NOYU WAXB TIFU RBXI VIKI WOBA PUGA TOSO TUBA MOMI LIXO JIHO XBXI LOWI QODB
-    \_        FBPB XIYA ROVO YUCA JBDA RAGO TIHA TAWO ZUPA KBLU YUDO XARU LBNB SUGO WBLA
-    \_        HARU NANO FUZB PIXI YITA WUCU QOXU FAFA WOCI JAWB RIPA TOMB RUKA GBKB SBVA
+    \_        TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO BAHA YIWU YUKU
+    \_        PAJU FIGA JUXI VIZE TEKE XEPI WEVO XIGO HACU DEBO BALE KUHO RUBA JOYO RIPI
+    \_        NOMA YASA BATU XIWO SUXI FUCU SUJA NEZA NEGI BEGE NOZI ZILE LOZI POGI GORE
+    \_        LULI KAVI NONE VESE DIZE GEXA MEXE YOHA GAFE FOTE DELA RILE BINA TEBI GIVU
+    \_        PIPA GEFO YECE KETA CANE WEFU HOCE NIJO KAVA YEPO FUNU FOLU GOYU QECE VOJU
+    \_        WAYO LANI TUQA LUTO BEPA VIMI PITA XIDE SEBA VASE MICU VEVU DUPU ROPI VOYE
+    \_        LENE VIHI BOFI XIQI MOGU SIFU GUGU LAKA VUNI ZOGI LIFE QONA CUBI REDU VUXE
+    \_        NOYU WAXE TIFU REXI VIKI WOBA PUGA TOSO TUBA MOMI LIXO JIHO XEXI LOWI QODE
+    \_        FEPE XIYA ROVO YUCA JEDA RAGO TIHA TAWO ZUPA KELU YUDO XARU LENE SUGO WELA
+    \_        HARU NANO FUZE PIXI YITA WUCU QOXU FAFA WOCI JAWE RIPA TOME RUKA GEKE SEVA
 
 
-**  ~~~~~~~~  cv-upper:16
+**  ~~~~~~~~  cva-upper:16
 \_  bits:     214.8558
 \_  length:   79
 \_  examples:
-    \_        TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU
-    \_        FIGA JUXI VIZB TBKB XBPI WBVO XIGO HACU DBBO BALB KUHO RUBA JOYO RIPI NOMA YASA
-    \_        BATU XIWO SUXI FUCU SUJA NBZA NBGI BBGB NOZI ZILB LOZI POGI GORB LULI KAVI NONB
-    \_        VBSB DIZB GBXA MBXB YOHA GAFB FOTB DBLA RILB BINA TBBI GIVU PIPA GBFO YBCB KBTA
-    \_        CANB WBFU HOCB NIJO KAVA YBPO FUNU FOLU GOYU QBCB VOJU WAYO LANI TUQA LUTO BBPA
-    \_        VIMI PITA XIDB SBBA VASB MICU VBVU DUPU ROPI VOYB LBNB VIHI BOFI XIQI MOGU SIFU
-    \_        GUGU LAKA VUNI ZOGI LIFB QONA CUBI RBDU VUXB NOYU WAXB TIFU RBXI VIKI WOBA PUGA
-    \_        TOSO TUBA MOMI LIXO JIHO XBXI LOWI QODB FBPB XIYA ROVO YUCA JBDA RAGO TIHA TAWO
-    \_        ZUPA KBLU YUDO XARU LBNB SUGO WBLA HARU NANO FUZB PIXI YITA WUCU QOXU FAFA WOCI
-    \_        JAWB RIPA TOMB RUKA GBKB SBVA VBXO TOMB BBMO MILO TBKU BUVO MIYO QOVU QBDO HAGA
+    \_        TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO BAHA YIWU YUKU PAJU
+    \_        FIGA JUXI VIZE TEKE XEPI WEVO XIGO HACU DEBO BALE KUHO RUBA JOYO RIPI NOMA YASA
+    \_        BATU XIWO SUXI FUCU SUJA NEZA NEGI BEGE NOZI ZILE LOZI POGI GORE LULI KAVI NONE
+    \_        VESE DIZE GEXA MEXE YOHA GAFE FOTE DELA RILE BINA TEBI GIVU PIPA GEFO YECE KETA
+    \_        CANE WEFU HOCE NIJO KAVA YEPO FUNU FOLU GOYU QECE VOJU WAYO LANI TUQA LUTO BEPA
+    \_        VIMI PITA XIDE SEBA VASE MICU VEVU DUPU ROPI VOYE LENE VIHI BOFI XIQI MOGU SIFU
+    \_        GUGU LAKA VUNI ZOGI LIFE QONA CUBI REDU VUXE NOYU WAXE TIFU REXI VIKI WOBA PUGA
+    \_        TOSO TUBA MOMI LIXO JIHO XEXI LOWI QODE FEPE XIYA ROVO YUCA JEDA RAGO TIHA TAWO
+    \_        ZUPA KELU YUDO XARU LENE SUGO WELA HARU NANO FUZE PIXI YITA WUCU QOXU FAFA WOCI
+    \_        JAWE RIPA TOME RUKA GEKE SEVA VEXO TOME BEMO MILO TEKU BUVO MIYO QOVU QEDO HAGA
 
 
-**  ~~~~~~~~  cv-mixed:1
+**  ~~~~~~~~  cva-mixed:1
 \_  bits:     17.4284
 \_  length:   4
 \_  examples:
@@ -4604,20 +4604,20 @@
     \_        lAzi
     \_        ZUKa
     \_        fANo
-    \_        ZiZB
-    \_        cBFi
-    \_        roDB
+    \_        ZiZE
+    \_        cEFi
+    \_        roDE
 
 
-**  ~~~~~~~~  cv-mixed:2
+**  ~~~~~~~~  cva-mixed:2
 \_  bits:     34.8569
 \_  length:   9
 \_  examples:
     \_        PaFi PiQI
     \_        YayU mAjO
     \_        lAzi ZUKa
-    \_        fANo ZiZB
-    \_        cBFi roDB
+    \_        fANo ZiZE
+    \_        cEFi roDE
     \_        fona WuGa
     \_        QOSU PoVA
     \_        goPO kAle
@@ -4625,231 +4625,231 @@
     \_        Misi CeRo
 
 
-**  ~~~~~~~~  cv-mixed:3
+**  ~~~~~~~~  cva-mixed:3
 \_  bits:     52.2854
 \_  length:   14
 \_  examples:
     \_        PaFi PiQI YayU
     \_        mAjO lAzi ZUKa
-    \_        fANo ZiZB cBFi
-    \_        roDB fona WuGa
+    \_        fANo ZiZE cEFi
+    \_        roDE fona WuGa
     \_        QOSU PoVA goPO
     \_        kAle roSA PAfI
-    \_        Misi CeRo QBVu
+    \_        Misi CeRo QEVu
     \_        mAna Sepa Jaci
-    \_        siTa tIcB CUJI
-    \_        WeHA BuzB geJU
+    \_        siTa tIcE CUJI
+    \_        WeHA BuzE geJU
 
 
-**  ~~~~~~~~  cv-mixed:4
+**  ~~~~~~~~  cva-mixed:4
 \_  bits:     69.7139
 \_  length:   19
 \_  examples:
     \_        PaFi PiQI YayU mAjO
-    \_        lAzi ZUKa fANo ZiZB
-    \_        cBFi roDB fona WuGa
+    \_        lAzi ZUKa fANo ZiZE
+    \_        cEFi roDE fona WuGa
     \_        QOSU PoVA goPO kAle
     \_        roSA PAfI Misi CeRo
-    \_        QBVu mAna Sepa Jaci
-    \_        siTa tIcB CUJI WeHA
-    \_        BuzB geJU saLa beNe
+    \_        QEVu mAna Sepa Jaci
+    \_        siTa tIcE CUJI WeHA
+    \_        BuzE geJU saLa beNe
     \_        VewO kIKA ZukO LOqA
     \_        zozi cinA Yozu wAnu
 
 
-**  ~~~~~~~~  cv-mixed:5
+**  ~~~~~~~~  cva-mixed:5
 \_  bits:     87.1424
 \_  length:   24
 \_  examples:
     \_        PaFi PiQI YayU mAjO lAzi
-    \_        ZUKa fANo ZiZB cBFi roDB
+    \_        ZUKa fANo ZiZE cEFi roDE
     \_        fona WuGa QOSU PoVA goPO
     \_        kAle roSA PAfI Misi CeRo
-    \_        QBVu mAna Sepa Jaci siTa
-    \_        tIcB CUJI WeHA BuzB geJU
+    \_        QEVu mAna Sepa Jaci siTa
+    \_        tIcE CUJI WeHA BuzE geJU
     \_        saLa beNe VewO kIKA ZukO
     \_        LOqA zozi cinA Yozu wAnu
-    \_        GBYe sAlB LuqO fusa JuBA
+    \_        GEYe sAlE LuqO fusa JuBA
     \_        MANI paci KezU sili Vexi
 
 
-**  ~~~~~~~~  cv-mixed:6
+**  ~~~~~~~~  cva-mixed:6
 \_  bits:     104.5709
 \_  length:   29
 \_  examples:
     \_        PaFi PiQI YayU mAjO lAzi ZUKa
-    \_        fANo ZiZB cBFi roDB fona WuGa
+    \_        fANo ZiZE cEFi roDE fona WuGa
     \_        QOSU PoVA goPO kAle roSA PAfI
-    \_        Misi CeRo QBVu mAna Sepa Jaci
-    \_        siTa tIcB CUJI WeHA BuzB geJU
+    \_        Misi CeRo QEVu mAna Sepa Jaci
+    \_        siTa tIcE CUJI WeHA BuzE geJU
     \_        saLa beNe VewO kIKA ZukO LOqA
-    \_        zozi cinA Yozu wAnu GBYe sAlB
+    \_        zozi cinA Yozu wAnu GEYe sAlE
     \_        LuqO fusa JuBA MANI paci KezU
-    \_        sili Vexi TiWI PAFa Naki MIHB
-    \_        Migi vaBB huwo buzo hIbu lADU
+    \_        sili Vexi TiWI PAFa Naki MIHE
+    \_        Migi vaBE huwo buzo hIbu lADU
 
 
-**  ~~~~~~~~  cv-mixed:7
+**  ~~~~~~~~  cva-mixed:7
 \_  bits:     121.9994
 \_  length:   34
 \_  examples:
     \_        PaFi PiQI YayU mAjO lAzi ZUKa fANo
-    \_        ZiZB cBFi roDB fona WuGa QOSU PoVA
-    \_        goPO kAle roSA PAfI Misi CeRo QBVu
-    \_        mAna Sepa Jaci siTa tIcB CUJI WeHA
-    \_        BuzB geJU saLa beNe VewO kIKA ZukO
-    \_        LOqA zozi cinA Yozu wAnu GBYe sAlB
+    \_        ZiZE cEFi roDE fona WuGa QOSU PoVA
+    \_        goPO kAle roSA PAfI Misi CeRo QEVu
+    \_        mAna Sepa Jaci siTa tIcE CUJI WeHA
+    \_        BuzE geJU saLa beNe VewO kIKA ZukO
+    \_        LOqA zozi cinA Yozu wAnu GEYe sAlE
     \_        LuqO fusa JuBA MANI paci KezU sili
-    \_        Vexi TiWI PAFa Naki MIHB Migi vaBB
+    \_        Vexi TiWI PAFa Naki MIHE Migi vaBE
     \_        huwo buzo hIbu lADU CUxO firA JUYi
-    \_        fako nIgo gOli jIWB Lexo ZobU fUrA
+    \_        fako nIgo gOli jIWE Lexo ZobU fUrA
 
 
-**  ~~~~~~~~  cv-mixed:8
+**  ~~~~~~~~  cva-mixed:8
 \_  bits:     139.4279
 \_  length:   39
 \_  examples:
-    \_        PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB
-    \_        cBFi roDB fona WuGa QOSU PoVA goPO kAle
-    \_        roSA PAfI Misi CeRo QBVu mAna Sepa Jaci
-    \_        siTa tIcB CUJI WeHA BuzB geJU saLa beNe
+    \_        PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE
+    \_        cEFi roDE fona WuGa QOSU PoVA goPO kAle
+    \_        roSA PAfI Misi CeRo QEVu mAna Sepa Jaci
+    \_        siTa tIcE CUJI WeHA BuzE geJU saLa beNe
     \_        VewO kIKA ZukO LOqA zozi cinA Yozu wAnu
-    \_        GBYe sAlB LuqO fusa JuBA MANI paci KezU
-    \_        sili Vexi TiWI PAFa Naki MIHB Migi vaBB
+    \_        GEYe sAlE LuqO fusa JuBA MANI paci KezU
+    \_        sili Vexi TiWI PAFa Naki MIHE Migi vaBE
     \_        huwo buzo hIbu lADU CUxO firA JUYi fako
-    \_        nIgo gOli jIWB Lexo ZobU fUrA Seve viLU
-    \_        Sano FoWO WUve hIXo lISB fIMa joPA NuNO
+    \_        nIgo gOli jIWE Lexo ZobU fUrA Seve viLU
+    \_        Sano FoWO WUve hIXo lISE fIMa joPA NuNO
 
 
-**  ~~~~~~~~  cv-mixed:9
+**  ~~~~~~~~  cva-mixed:9
 \_  bits:     156.8564
 \_  length:   44
 \_  examples:
-    \_        PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi
-    \_        roDB fona WuGa QOSU PoVA goPO kAle roSA PAfI
-    \_        Misi CeRo QBVu mAna Sepa Jaci siTa tIcB CUJI
-    \_        WeHA BuzB geJU saLa beNe VewO kIKA ZukO LOqA
-    \_        zozi cinA Yozu wAnu GBYe sAlB LuqO fusa JuBA
-    \_        MANI paci KezU sili Vexi TiWI PAFa Naki MIHB
-    \_        Migi vaBB huwo buzo hIbu lADU CUxO firA JUYi
-    \_        fako nIgo gOli jIWB Lexo ZobU fUrA Seve viLU
-    \_        Sano FoWO WUve hIXo lISB fIMa joPA NuNO gOmO
-    \_        NAdo NeLI sixB dUQo qOgO DUHB CBBU wIno yiJa
+    \_        PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi
+    \_        roDE fona WuGa QOSU PoVA goPO kAle roSA PAfI
+    \_        Misi CeRo QEVu mAna Sepa Jaci siTa tIcE CUJI
+    \_        WeHA BuzE geJU saLa beNe VewO kIKA ZukO LOqA
+    \_        zozi cinA Yozu wAnu GEYe sAlE LuqO fusa JuBA
+    \_        MANI paci KezU sili Vexi TiWI PAFa Naki MIHE
+    \_        Migi vaBE huwo buzo hIbu lADU CUxO firA JUYi
+    \_        fako nIgo gOli jIWE Lexo ZobU fUrA Seve viLU
+    \_        Sano FoWO WUve hIXo lISE fIMa joPA NuNO gOmO
+    \_        NAdo NeLI sixE dUQo qOgO DUHE CEBU wIno yiJa
 
 
-**  ~~~~~~~~  cv-mixed:10
+**  ~~~~~~~~  cva-mixed:10
 \_  bits:     174.2849
 \_  length:   49
 \_  examples:
-    \_        PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB
+    \_        PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE
     \_        fona WuGa QOSU PoVA goPO kAle roSA PAfI Misi CeRo
-    \_        QBVu mAna Sepa Jaci siTa tIcB CUJI WeHA BuzB geJU
+    \_        QEVu mAna Sepa Jaci siTa tIcE CUJI WeHA BuzE geJU
     \_        saLa beNe VewO kIKA ZukO LOqA zozi cinA Yozu wAnu
-    \_        GBYe sAlB LuqO fusa JuBA MANI paci KezU sili Vexi
-    \_        TiWI PAFa Naki MIHB Migi vaBB huwo buzo hIbu lADU
-    \_        CUxO firA JUYi fako nIgo gOli jIWB Lexo ZobU fUrA
-    \_        Seve viLU Sano FoWO WUve hIXo lISB fIMa joPA NuNO
-    \_        gOmO NAdo NeLI sixB dUQo qOgO DUHB CBBU wIno yiJa
-    \_        MuVA VIxu LiKA BiTi RiTu gAsO QAzI juyB hiFe yuPu
+    \_        GEYe sAlE LuqO fusa JuBA MANI paci KezU sili Vexi
+    \_        TiWI PAFa Naki MIHE Migi vaBE huwo buzo hIbu lADU
+    \_        CUxO firA JUYi fako nIgo gOli jIWE Lexo ZobU fUrA
+    \_        Seve viLU Sano FoWO WUve hIXo lISE fIMa joPA NuNO
+    \_        gOmO NAdo NeLI sixE dUQo qOgO DUHE CEBU wIno yiJa
+    \_        MuVA VIxu LiKA BiTi RiTu gAsO QAzI juyE hiFe yuPu
 
 
-**  ~~~~~~~~  cv-mixed:11
+**  ~~~~~~~~  cva-mixed:11
 \_  bits:     191.7134
 \_  length:   54
 \_  examples:
-    \_        PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona
-    \_        WuGa QOSU PoVA goPO kAle roSA PAfI Misi CeRo QBVu mAna
-    \_        Sepa Jaci siTa tIcB CUJI WeHA BuzB geJU saLa beNe VewO
-    \_        kIKA ZukO LOqA zozi cinA Yozu wAnu GBYe sAlB LuqO fusa
-    \_        JuBA MANI paci KezU sili Vexi TiWI PAFa Naki MIHB Migi
-    \_        vaBB huwo buzo hIbu lADU CUxO firA JUYi fako nIgo gOli
-    \_        jIWB Lexo ZobU fUrA Seve viLU Sano FoWO WUve hIXo lISB
-    \_        fIMa joPA NuNO gOmO NAdo NeLI sixB dUQo qOgO DUHB CBBU
-    \_        wIno yiJa MuVA VIxu LiKA BiTi RiTu gAsO QAzI juyB hiFe
-    \_        yuPu kAmB fafa rBgU hUBi LUSe doMU kOHO xBVo BIRU MBbo
+    \_        PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona
+    \_        WuGa QOSU PoVA goPO kAle roSA PAfI Misi CeRo QEVu mAna
+    \_        Sepa Jaci siTa tIcE CUJI WeHA BuzE geJU saLa beNe VewO
+    \_        kIKA ZukO LOqA zozi cinA Yozu wAnu GEYe sAlE LuqO fusa
+    \_        JuBA MANI paci KezU sili Vexi TiWI PAFa Naki MIHE Migi
+    \_        vaBE huwo buzo hIbu lADU CUxO firA JUYi fako nIgo gOli
+    \_        jIWE Lexo ZobU fUrA Seve viLU Sano FoWO WUve hIXo lISE
+    \_        fIMa joPA NuNO gOmO NAdo NeLI sixE dUQo qOgO DUHE CEBU
+    \_        wIno yiJa MuVA VIxu LiKA BiTi RiTu gAsO QAzI juyE hiFe
+    \_        yuPu kAmE fafa rEgU hUBi LUSe doMU kOHO xEVo BIRU MEbo
 
 
-**  ~~~~~~~~  cv-mixed:12
+**  ~~~~~~~~  cva-mixed:12
 \_  bits:     209.1418
 \_  length:   59
 \_  examples:
-    \_        PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa
-    \_        QOSU PoVA goPO kAle roSA PAfI Misi CeRo QBVu mAna Sepa Jaci
-    \_        siTa tIcB CUJI WeHA BuzB geJU saLa beNe VewO kIKA ZukO LOqA
-    \_        zozi cinA Yozu wAnu GBYe sAlB LuqO fusa JuBA MANI paci KezU
-    \_        sili Vexi TiWI PAFa Naki MIHB Migi vaBB huwo buzo hIbu lADU
-    \_        CUxO firA JUYi fako nIgo gOli jIWB Lexo ZobU fUrA Seve viLU
-    \_        Sano FoWO WUve hIXo lISB fIMa joPA NuNO gOmO NAdo NeLI sixB
-    \_        dUQo qOgO DUHB CBBU wIno yiJa MuVA VIxu LiKA BiTi RiTu gAsO
-    \_        QAzI juyB hiFe yuPu kAmB fafa rBgU hUBi LUSe doMU kOHO xBVo
-    \_        BIRU MBbo cANB tila xBxA VBrA XIKO ZiVI FIMe niDi VuZU bBQI
+    \_        PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa
+    \_        QOSU PoVA goPO kAle roSA PAfI Misi CeRo QEVu mAna Sepa Jaci
+    \_        siTa tIcE CUJI WeHA BuzE geJU saLa beNe VewO kIKA ZukO LOqA
+    \_        zozi cinA Yozu wAnu GEYe sAlE LuqO fusa JuBA MANI paci KezU
+    \_        sili Vexi TiWI PAFa Naki MIHE Migi vaBE huwo buzo hIbu lADU
+    \_        CUxO firA JUYi fako nIgo gOli jIWE Lexo ZobU fUrA Seve viLU
+    \_        Sano FoWO WUve hIXo lISE fIMa joPA NuNO gOmO NAdo NeLI sixE
+    \_        dUQo qOgO DUHE CEBU wIno yiJa MuVA VIxu LiKA BiTi RiTu gAsO
+    \_        QAzI juyE hiFe yuPu kAmE fafa rEgU hUBi LUSe doMU kOHO xEVo
+    \_        BIRU MEbo cANE tila xExA VErA XIKO ZiVI FIMe niDi VuZU bEQI
 
 
-**  ~~~~~~~~  cv-mixed:13
+**  ~~~~~~~~  cva-mixed:13
 \_  bits:     226.5703
 \_  length:   64
 \_  examples:
-    \_        PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU
-    \_        PoVA goPO kAle roSA PAfI Misi CeRo QBVu mAna Sepa Jaci siTa tIcB
-    \_        CUJI WeHA BuzB geJU saLa beNe VewO kIKA ZukO LOqA zozi cinA Yozu
-    \_        wAnu GBYe sAlB LuqO fusa JuBA MANI paci KezU sili Vexi TiWI PAFa
-    \_        Naki MIHB Migi vaBB huwo buzo hIbu lADU CUxO firA JUYi fako nIgo
-    \_        gOli jIWB Lexo ZobU fUrA Seve viLU Sano FoWO WUve hIXo lISB fIMa
-    \_        joPA NuNO gOmO NAdo NeLI sixB dUQo qOgO DUHB CBBU wIno yiJa MuVA
-    \_        VIxu LiKA BiTi RiTu gAsO QAzI juyB hiFe yuPu kAmB fafa rBgU hUBi
-    \_        LUSe doMU kOHO xBVo BIRU MBbo cANB tila xBxA VBrA XIKO ZiVI FIMe
-    \_        niDi VuZU bBQI Wara bBXU fiLI xUfI gOLO DasU Teye jOcA HOwA popi
+    \_        PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU
+    \_        PoVA goPO kAle roSA PAfI Misi CeRo QEVu mAna Sepa Jaci siTa tIcE
+    \_        CUJI WeHA BuzE geJU saLa beNe VewO kIKA ZukO LOqA zozi cinA Yozu
+    \_        wAnu GEYe sAlE LuqO fusa JuBA MANI paci KezU sili Vexi TiWI PAFa
+    \_        Naki MIHE Migi vaBE huwo buzo hIbu lADU CUxO firA JUYi fako nIgo
+    \_        gOli jIWE Lexo ZobU fUrA Seve viLU Sano FoWO WUve hIXo lISE fIMa
+    \_        joPA NuNO gOmO NAdo NeLI sixE dUQo qOgO DUHE CEBU wIno yiJa MuVA
+    \_        VIxu LiKA BiTi RiTu gAsO QAzI juyE hiFe yuPu kAmE fafa rEgU hUBi
+    \_        LUSe doMU kOHO xEVo BIRU MEbo cANE tila xExA VErA XIKO ZiVI FIMe
+    \_        niDi VuZU bEQI Wara bEXU fiLI xUfI gOLO DasU Teye jOcA HOwA popi
 
 
-**  ~~~~~~~~  cv-mixed:14
+**  ~~~~~~~~  cva-mixed:14
 \_  bits:     243.9988
 \_  length:   69
 \_  examples:
-    \_        PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA
-    \_        goPO kAle roSA PAfI Misi CeRo QBVu mAna Sepa Jaci siTa tIcB CUJI WeHA
-    \_        BuzB geJU saLa beNe VewO kIKA ZukO LOqA zozi cinA Yozu wAnu GBYe sAlB
-    \_        LuqO fusa JuBA MANI paci KezU sili Vexi TiWI PAFa Naki MIHB Migi vaBB
-    \_        huwo buzo hIbu lADU CUxO firA JUYi fako nIgo gOli jIWB Lexo ZobU fUrA
-    \_        Seve viLU Sano FoWO WUve hIXo lISB fIMa joPA NuNO gOmO NAdo NeLI sixB
-    \_        dUQo qOgO DUHB CBBU wIno yiJa MuVA VIxu LiKA BiTi RiTu gAsO QAzI juyB
-    \_        hiFe yuPu kAmB fafa rBgU hUBi LUSe doMU kOHO xBVo BIRU MBbo cANB tila
-    \_        xBxA VBrA XIKO ZiVI FIMe niDi VuZU bBQI Wara bBXU fiLI xUfI gOLO DasU
-    \_        Teye jOcA HOwA popi hBrO Diva riXa LBRe zBjO ZiCu xUNI sUdO QuGB VAXU
+    \_        PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA
+    \_        goPO kAle roSA PAfI Misi CeRo QEVu mAna Sepa Jaci siTa tIcE CUJI WeHA
+    \_        BuzE geJU saLa beNe VewO kIKA ZukO LOqA zozi cinA Yozu wAnu GEYe sAlE
+    \_        LuqO fusa JuBA MANI paci KezU sili Vexi TiWI PAFa Naki MIHE Migi vaBE
+    \_        huwo buzo hIbu lADU CUxO firA JUYi fako nIgo gOli jIWE Lexo ZobU fUrA
+    \_        Seve viLU Sano FoWO WUve hIXo lISE fIMa joPA NuNO gOmO NAdo NeLI sixE
+    \_        dUQo qOgO DUHE CEBU wIno yiJa MuVA VIxu LiKA BiTi RiTu gAsO QAzI juyE
+    \_        hiFe yuPu kAmE fafa rEgU hUBi LUSe doMU kOHO xEVo BIRU MEbo cANE tila
+    \_        xExA VErA XIKO ZiVI FIMe niDi VuZU bEQI Wara bEXU fiLI xUfI gOLO DasU
+    \_        Teye jOcA HOwA popi hErO Diva riXa LERe zEjO ZiCu xUNI sUdO QuGE VAXU
 
 
-**  ~~~~~~~~  cv-mixed:15
+**  ~~~~~~~~  cva-mixed:15
 \_  bits:     261.4273
 \_  length:   74
 \_  examples:
-    \_        PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO
-    \_        kAle roSA PAfI Misi CeRo QBVu mAna Sepa Jaci siTa tIcB CUJI WeHA BuzB geJU
-    \_        saLa beNe VewO kIKA ZukO LOqA zozi cinA Yozu wAnu GBYe sAlB LuqO fusa JuBA
-    \_        MANI paci KezU sili Vexi TiWI PAFa Naki MIHB Migi vaBB huwo buzo hIbu lADU
-    \_        CUxO firA JUYi fako nIgo gOli jIWB Lexo ZobU fUrA Seve viLU Sano FoWO WUve
-    \_        hIXo lISB fIMa joPA NuNO gOmO NAdo NeLI sixB dUQo qOgO DUHB CBBU wIno yiJa
-    \_        MuVA VIxu LiKA BiTi RiTu gAsO QAzI juyB hiFe yuPu kAmB fafa rBgU hUBi LUSe
-    \_        doMU kOHO xBVo BIRU MBbo cANB tila xBxA VBrA XIKO ZiVI FIMe niDi VuZU bBQI
-    \_        Wara bBXU fiLI xUfI gOLO DasU Teye jOcA HOwA popi hBrO Diva riXa LBRe zBjO
-    \_        ZiCu xUNI sUdO QuGB VAXU Rege gAJu qesa VOqB DADI XumB Dofa mosI roPI PoTe
+    \_        PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA goPO
+    \_        kAle roSA PAfI Misi CeRo QEVu mAna Sepa Jaci siTa tIcE CUJI WeHA BuzE geJU
+    \_        saLa beNe VewO kIKA ZukO LOqA zozi cinA Yozu wAnu GEYe sAlE LuqO fusa JuBA
+    \_        MANI paci KezU sili Vexi TiWI PAFa Naki MIHE Migi vaBE huwo buzo hIbu lADU
+    \_        CUxO firA JUYi fako nIgo gOli jIWE Lexo ZobU fUrA Seve viLU Sano FoWO WUve
+    \_        hIXo lISE fIMa joPA NuNO gOmO NAdo NeLI sixE dUQo qOgO DUHE CEBU wIno yiJa
+    \_        MuVA VIxu LiKA BiTi RiTu gAsO QAzI juyE hiFe yuPu kAmE fafa rEgU hUBi LUSe
+    \_        doMU kOHO xEVo BIRU MEbo cANE tila xExA VErA XIKO ZiVI FIMe niDi VuZU bEQI
+    \_        Wara bEXU fiLI xUfI gOLO DasU Teye jOcA HOwA popi hErO Diva riXa LERe zEjO
+    \_        ZiCu xUNI sUdO QuGE VAXU Rege gAJu qesa VOqE DADI XumE Dofa mosI roPI PoTe
 
 
-**  ~~~~~~~~  cv-mixed:16
+**  ~~~~~~~~  cva-mixed:16
 \_  bits:     278.8558
 \_  length:   79
 \_  examples:
-    \_        PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle
-    \_        roSA PAfI Misi CeRo QBVu mAna Sepa Jaci siTa tIcB CUJI WeHA BuzB geJU saLa beNe
-    \_        VewO kIKA ZukO LOqA zozi cinA Yozu wAnu GBYe sAlB LuqO fusa JuBA MANI paci KezU
-    \_        sili Vexi TiWI PAFa Naki MIHB Migi vaBB huwo buzo hIbu lADU CUxO firA JUYi fako
-    \_        nIgo gOli jIWB Lexo ZobU fUrA Seve viLU Sano FoWO WUve hIXo lISB fIMa joPA NuNO
-    \_        gOmO NAdo NeLI sixB dUQo qOgO DUHB CBBU wIno yiJa MuVA VIxu LiKA BiTi RiTu gAsO
-    \_        QAzI juyB hiFe yuPu kAmB fafa rBgU hUBi LUSe doMU kOHO xBVo BIRU MBbo cANB tila
-    \_        xBxA VBrA XIKO ZiVI FIMe niDi VuZU bBQI Wara bBXU fiLI xUfI gOLO DasU Teye jOcA
-    \_        HOwA popi hBrO Diva riXa LBRe zBjO ZiCu xUNI sUdO QuGB VAXU Rege gAJu qesa VOqB
-    \_        DADI XumB Dofa mosI roPI PoTe NByI NBxi waYu MuyA woMi coSa VBxa XBGe QOZi geZU
+    \_        PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA goPO kAle
+    \_        roSA PAfI Misi CeRo QEVu mAna Sepa Jaci siTa tIcE CUJI WeHA BuzE geJU saLa beNe
+    \_        VewO kIKA ZukO LOqA zozi cinA Yozu wAnu GEYe sAlE LuqO fusa JuBA MANI paci KezU
+    \_        sili Vexi TiWI PAFa Naki MIHE Migi vaBE huwo buzo hIbu lADU CUxO firA JUYi fako
+    \_        nIgo gOli jIWE Lexo ZobU fUrA Seve viLU Sano FoWO WUve hIXo lISE fIMa joPA NuNO
+    \_        gOmO NAdo NeLI sixE dUQo qOgO DUHE CEBU wIno yiJa MuVA VIxu LiKA BiTi RiTu gAsO
+    \_        QAzI juyE hiFe yuPu kAmE fafa rEgU hUBi LUSe doMU kOHO xEVo BIRU MEbo cANE tila
+    \_        xExA VErA XIKO ZiVI FIMe niDi VuZU bEQI Wara bEXU fiLI xUfI gOLO DasU Teye jOcA
+    \_        HOwA popi hErO Diva riXa LERe zEjO ZiCu xUNI sUdO QuGE VAXU Rege gAJu qesa VOqE
+    \_        DADI XumE Dofa mosI roPI PoTe NEyI NExi waYu MuyA woMi coSa VExa XEGe QOZi geZU
 
 
-**  ~~~~~~~~  cv-plus-a:2
+**  ~~~~~~~~  cva-plus-a:2
 \_  bits:     26.7162
 \_  length:   9
 \_  examples:
@@ -4865,7 +4865,7 @@
     \_        kexe 5183
 
 
-**  ~~~~~~~~  cv-plus-a:3
+**  ~~~~~~~~  cva-plus-a:3
 \_  bits:     40.1446
 \_  length:   14
 \_  examples:
@@ -4881,7 +4881,7 @@
     \_        ripi noma 1693
 
 
-**  ~~~~~~~~  cv-plus-a:4
+**  ~~~~~~~~  cva-plus-a:4
 \_  bits:     53.5731
 \_  length:   19
 \_  examples:
@@ -4897,7 +4897,7 @@
     \_        zane gibe geno 3445
 
 
-**  ~~~~~~~~  cv-plus-a:5
+**  ~~~~~~~~  cva-plus-a:5
 \_  bits:     67.0016
 \_  length:   24
 \_  examples:
@@ -4913,7 +4913,7 @@
     \_        gexa mexe yoha gafe 1776
 
 
-**  ~~~~~~~~  cv-plus-a:6
+**  ~~~~~~~~  cva-plus-a:6
 \_  bits:     80.4301
 \_  length:   29
 \_  examples:
@@ -4929,7 +4929,7 @@
     \_        rile bina tebi givu pipa 2356
 
 
-**  ~~~~~~~~  cv-plus-a:7
+**  ~~~~~~~~  cva-plus-a:7
 \_  bits:     93.8586
 \_  length:   34
 \_  examples:
@@ -4945,7 +4945,7 @@
     \_        ceke taca newe fuho ceni joka 9935
 
 
-**  ~~~~~~~~  cv-plus-a:8
+**  ~~~~~~~~  cva-plus-a:8
 \_  bits:     107.2871
 \_  length:   39
 \_  examples:
@@ -4961,7 +4961,7 @@
     \_        voju wayo lani tuqa luto bepa vimi 5785
 
 
-**  ~~~~~~~~  cv-plus-a:9
+**  ~~~~~~~~  cva-plus-a:9
 \_  bits:     120.7156
 \_  length:   44
 \_  examples:
@@ -4977,7 +4977,7 @@
     \_        seba vase micu vevu dupu ropi voye lene 1424
 
 
-**  ~~~~~~~~  cv-plus-a:10
+**  ~~~~~~~~  cva-plus-a:10
 \_  bits:     134.1441
 \_  length:   49
 \_  examples:
@@ -4993,7 +4993,7 @@
     \_        xiqi mogu sifu gugu laka vuni zogi life qona 0636
 
 
-**  ~~~~~~~~  cv-plus-a:11
+**  ~~~~~~~~  cva-plus-a:11
 \_  bits:     147.5726
 \_  length:   54
 \_  examples:
@@ -5009,7 +5009,7 @@
     \_        mivi feqo nacu bire duvu xeno yuwa xeti fure xivi 6357
 
 
-**  ~~~~~~~~  cv-plus-a:12
+**  ~~~~~~~~  cva-plus-a:12
 \_  bits:     161.0011
 \_  length:   59
 \_  examples:
@@ -5025,7 +5025,7 @@
     \_        woba puga toso tuba momi lixo jiho xexi lowi qode fepe 4906
 
 
-**  ~~~~~~~~  cv-plus-a:13
+**  ~~~~~~~~  cva-plus-a:13
 \_  bits:     174.4296
 \_  length:   64
 \_  examples:
@@ -5041,7 +5041,7 @@
     \_        zexi lowi qode fepe xiya rovo yuca jeda rago tiha tawo zupa 3981
 
 
-**  ~~~~~~~~  cv-plus-a:14
+**  ~~~~~~~~  cva-plus-a:14
 \_  bits:     187.8580
 \_  length:   69
 \_  examples:
@@ -5057,7 +5057,7 @@
     \_        goti hata wozu pake luyu doxa rule nesu gowe laha runa nofu zepi 4977
 
 
-**  ~~~~~~~~  cv-plus-a:15
+**  ~~~~~~~~  cva-plus-a:15
 \_  bits:     201.2865
 \_  length:   74
 \_  examples:
@@ -5073,7 +5073,7 @@
     \_        wela haru nano fuze pixi yita wucu qoxu fafa woci jawe ripa tome ruka 0233
 
 
-**  ~~~~~~~~  cv-plus-a:16
+**  ~~~~~~~~  cva-plus-a:16
 \_  bits:     214.7150
 \_  length:   79
 \_  examples:
@@ -5089,23 +5089,23 @@
     \_        zufa fawo cija weri pato meru kage kese vave xoto mebe momi lote kubu vomi 0896
 
 
-**  ~~~~~~~~  cv-plus-b:2
+**  ~~~~~~~~  cva-plus-b:2
 \_  bits:     26.7865
 \_  length:   9
 \_  examples:
-    \_        taqe VB71
+    \_        taqe VE71
     \_        daye FU25
-    \_        rixu CB90
+    \_        rixu CE90
     \_        covo XA35
-    \_        zeho SB60
+    \_        zeho SE60
     \_        goqe KO03
     \_        hayi WU93
     \_        paju FI13
     \_        juxi VI72
-    \_        teke XB51
+    \_        teke XE51
 
 
-**  ~~~~~~~~  cv-plus-b:3
+**  ~~~~~~~~  cva-plus-b:3
 \_  bits:     40.2150
 \_  length:   14
 \_  examples:
@@ -5114,14 +5114,14 @@
     \_        saco voxa KI26
     \_        goqe koba HA94
     \_        wuyu kupa JU51
-    \_        juxi vize TB32
+    \_        juxi vize TE32
     \_        piwe voxi GO20
     \_        wabo bale KU27
     \_        ruba joyo RI55
     \_        noma yasa BA71
 
 
-**  ~~~~~~~~  cv-plus-b:4
+**  ~~~~~~~~  cva-plus-b:4
 \_  bits:     53.6435
 \_  length:   19
 \_  examples:
@@ -5129,7 +5129,7 @@
     \_        rixu cezu saco VO57
     \_        xaki zeho sera GO23
     \_        koba hayi wuyu KU51
-    \_        jufi gaju xivi ZB72
+    \_        jufi gaju xivi ZE72
     \_        kexe piwe voxi GO20
     \_        wabo bale kuho RU07
     \_        joyo ripi noma YA00
@@ -5137,55 +5137,55 @@
     \_        neza negi bege NO34
 
 
-**  ~~~~~~~~  cv-plus-b:5
+**  ~~~~~~~~  cva-plus-b:5
 \_  bits:     67.0720
 \_  length:   24
 \_  examples:
     \_        taqe veza zaye fugi RI29
     \_        saco voxa kize hose RA62
     \_        koba hayi wuyu kupa JU51
-    \_        juxi vize teke xepi WB64
+    \_        juxi vize teke xepi WE64
     \_        goha cude boba leku HO16
     \_        ruba joyo ripi noma YA00
     \_        duxi wosu xifu cusu JA53
-    \_        zane gibe geno zizi LB46
+    \_        zane gibe geno zizi LE46
     \_        zipo gigo relu lika VI75
-    \_        pone vese dize gexa MB29
+    \_        pone vese dize gexa ME29
 
 
-**  ~~~~~~~~  cv-plus-b:6
+**  ~~~~~~~~  cva-plus-b:6
 \_  bits:     80.5005
 \_  length:   29
 \_  examples:
-    \_        taqe veza zaye fugi rixu CB90
+    \_        taqe veza zaye fugi rixu CE90
     \_        covo xaki zeho sera goqe KO03
     \_        hayi wuyu kupa jufi gaju XI55
     \_        zete kexe piwe voxi goha CU10
     \_        bale kuho ruba joyo ripi NO10
     \_        maya saba tuxi wosu xifu CU85
     \_        neza negi bege nozi zile LO91
-    \_        kipo gigo relu lika vino NB00
+    \_        kipo gigo relu lika vino NE00
     \_        vese dize gexa mexe yoha GA21
     \_        tote dela rile bina tebi GI59
 
 
-**  ~~~~~~~~  cv-plus-b:7
+**  ~~~~~~~~  cva-plus-b:7
 \_  bits:     93.9290
 \_  length:   34
 \_  examples:
     \_        taqe veza zaye fugi rixu cezu SA66
     \_        voxa kize hose rago qeko baha YI60
-    \_        wuyu kupa jufi gaju xivi zete KB25
+    \_        wuyu kupa jufi gaju xivi zete KE25
     \_        nujo xigo hacu debo bale kuho RU07
     \_        joyo ripi noma yasa batu xiwo SU48
     \_        suja neza negi bege nozi zile LO91
-    \_        kipo gigo relu lika vino neve SB19
+    \_        kipo gigo relu lika vino neve SE19
     \_        kege xame xeyo haga fefo tede LA87
-    \_        rile bina tebi givu pipa gefo YB03
-    \_        teta cane wefu hoce nijo kava YB56
+    \_        rile bina tebi givu pipa gefo YE03
+    \_        teta cane wefu hoce nijo kava YE56
 
 
-**  ~~~~~~~~  cv-plus-b:8
+**  ~~~~~~~~  cva-plus-b:8
 \_  bits:     107.3575
 \_  length:   39
 \_  examples:
@@ -5193,47 +5193,47 @@
     \_        xaki zeho sera goqe koba hayi wuyu KU51
     \_        jufi gaju xivi zete kexe piwe voxi GO20
     \_        wabo bale kuho ruba joyo ripi noma YA00
-    \_        duxi wosu xifu cusu jane zane gibe GB53
-    \_        nile lozi pogi gore luli kavi none VB19
-    \_        kege xame xeyo haga fefo tede lari LB04
-    \_        nate bigi vupi page foye ceke taca NB81
+    \_        duxi wosu xifu cusu jane zane gibe GE53
+    \_        nile lozi pogi gore luli kavi none VE19
+    \_        kege xame xeyo haga fefo tede lari LE04
+    \_        nate bigi vupi page foye ceke taca NE81
     \_        gefu hoce nijo kava yepo funu folu GO98
     \_        qece voju wayo lani tuqa luto bepa VI47
 
 
-**  ~~~~~~~~  cv-plus-b:9
+**  ~~~~~~~~  cva-plus-b:9
 \_  bits:     120.7860
 \_  length:   44
 \_  examples:
     \_        taqe veza zaye fugi rixu cezu saco voxa KI26
-    \_        goqe koba hayi wuyu kupa jufi gaju xivi ZB72
+    \_        goqe koba hayi wuyu kupa jufi gaju xivi ZE72
     \_        kexe piwe voxi goha cude boba leku horu BA63
     \_        poyo ripi noma yasa batu xiwo suxi fucu SU53
     \_        zane gibe geno zizi lelo zipo gigo relu LI30
-    \_        vino neve sedi zege xame xeyo haga fefo TB12
+    \_        vino neve sedi zege xame xeyo haga fefo TE12
     \_        lari lebi nate bigi vupi page foye ceke TA31
     \_        newe fuho ceni joka vaye pofu nufo lugo YU02
     \_        voju wayo lani tuqa luto bepa vimi pita XI18
     \_        seba vase micu vevu dupu ropi voye lene VI24
 
 
-**  ~~~~~~~~  cv-plus-b:10
+**  ~~~~~~~~  cva-plus-b:10
 \_  bits:     134.2145
 \_  length:   49
 \_  examples:
     \_        taqe veza zaye fugi rixu cezu saco voxa kize HO60
-    \_        goqe koba hayi wuyu kupa jufi gaju xivi zete KB25
+    \_        goqe koba hayi wuyu kupa jufi gaju xivi zete KE25
     \_        nujo xigo hacu debo bale kuho ruba joyo ripi NO10
-    \_        maya saba tuxi wosu xifu cusu jane zane gibe GB53
-    \_        nile lozi pogi gore luli kavi none vese dize GB14
+    \_        maya saba tuxi wosu xifu cusu jane zane gibe GE53
+    \_        nile lozi pogi gore luli kavi none vese dize GE14
     \_        huhu teva gafe fote dela rile bina tebi givu PI85
     \_        gefo yece keta cane wefu hoce nijo kava yepo FU11
     \_        zolu goyu qece voju wayo lani tuqa luto bepa VI47
-    \_        mita xide seba vase micu vevu dupu ropi voye LB31
-    \_        hibo fixi qimo gusi fugu gula kavu nizo gili FB60
+    \_        mita xide seba vase micu vevu dupu ropi voye LE31
+    \_        hibo fixi qimo gusi fugu gula kavu nizo gili FE60
 
 
-**  ~~~~~~~~  cv-plus-b:11
+**  ~~~~~~~~  cva-plus-b:11
 \_  bits:     147.6430
 \_  length:   54
 \_  examples:
@@ -5241,7 +5241,7 @@
     \_        koba hayi wuyu kupa jufi gaju xivi zete kexe piwe VO42
     \_        hacu debo bale kuho ruba joyo ripi noma yasa batu XI87
     \_        suxi fucu suja neza negi bege nozi zile lozi pogi GO46
-    \_        juli kavi none vese dize gexa mexe yoha gafe fote DB80
+    \_        juli kavi none vese dize gexa mexe yoha gafe fote DE80
     \_        rile bina tebi givu pipa gefo yece keta cane wefu HO27
     \_        nijo kava yepo funu folu goyu qece voju wayo lani TU93
     \_        luto bepa vimi pita xide seba vase micu vevu dupu RO56
@@ -5249,55 +5249,55 @@
     \_        feqo nacu bire duvu xeno yuwa xeti fure xivi kiwo BA58
 
 
-**  ~~~~~~~~  cv-plus-b:12
+**  ~~~~~~~~  cva-plus-b:12
 \_  bits:     161.0715
 \_  length:   59
 \_  examples:
-    \_        taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB33
+    \_        taqe veza zaye fugi rixu cezu saco voxa kize hose rago QE33
     \_        raha yiwu yuku paju figa juxi vize teke xepi wevo xigo HA08
     \_        debo bale kuho ruba joyo ripi noma yasa batu xiwo suxi FU88
-    \_        jane zane gibe geno zizi lelo zipo gigo relu lika vino NB00
+    \_        jane zane gibe geno zizi lelo zipo gigo relu lika vino NE00
     \_        vese dize gexa mexe yoha gafe fote dela rile bina tebi GI59
     \_        pipa gefo yece keta cane wefu hoce nijo kava yepo funu FO29
     \_        qece voju wayo lani tuqa luto bepa vimi pita xide seba VA73
     \_        gimo cuve vudu puro pivo yele nevi hibo fixi qimo gusi FU28
     \_        gula kavu nizo gili feqo nacu bire duvu xeno yuwa xeti FU68
-    \_        miki woba puga toso tuba momi lixo jiho xexi lowi qode FB52
+    \_        miki woba puga toso tuba momi lixo jiho xexi lowi qode FE52
 
 
-**  ~~~~~~~~  cv-plus-b:13
+**  ~~~~~~~~  cva-plus-b:13
 \_  bits:     174.4999
 \_  length:   64
 \_  examples:
     \_        taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA32
     \_        yiwu yuku paju figa juxi vize teke xepi wevo xigo hacu debo BA23
     \_        xeru bajo yori pino maya saba tuxi wosu xifu cusu jane zane GI02
-    \_        geno zizi lelo zipo gigo relu lika vino neve sedi zege xame XB97
-    \_        haga fefo tede lari lebi nate bigi vupi page foye ceke taca NB81
+    \_        geno zizi lelo zipo gigo relu lika vino neve sedi zege xame XE97
+    \_        haga fefo tede lari lebi nate bigi vupi page foye ceke taca NE81
     \_        gefu hoce nijo kava yepo funu folu goyu qece voju wayo lani TU93
-    \_        luto bepa vimi pita xide seba vase micu vevu dupu ropi voye LB31
+    \_        luto bepa vimi pita xide seba vase micu vevu dupu ropi voye LE31
     \_        hibo fixi qimo gusi fugu gula kavu nizo gili feqo nacu bire DU91
     \_        xeno yuwa xeti fure xivi kiwo bapu gato sotu bamo mili xoji HO82
     \_        xilo wiqo defe pexi yaro voyu caje dara goti hata wozu pake LU98
 
 
-**  ~~~~~~~~  cv-plus-b:14
+**  ~~~~~~~~  cva-plus-b:14
 \_  bits:     187.9284
 \_  length:   69
 \_  examples:
     \_        taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI60
     \_        wuyu kupa jufi gaju xivi zete kexe piwe voxi goha cude boba leku HO16
     \_        ruba joyo ripi noma yasa batu xiwo suxi fucu suja neza negi bege NO34
-    \_        lelo zipo gigo relu lika vino neve sedi zege xame xeyo haga fefo TB12
+    \_        lelo zipo gigo relu lika vino neve sedi zege xame xeyo haga fefo TE12
     \_        lari lebi nate bigi vupi page foye ceke taca newe fuho ceni joka VA93
-    \_        pofu nufo lugo yuqe cevo juwa yola nitu qalu tobe pavi mipi taxi DB82
+    \_        pofu nufo lugo yuqe cevo juwa yola nitu qalu tobe pavi mipi taxi DE82
     \_        bava semi cuve vudu puro pivo yele nevi hibo fixi qimo gusi fugu GU41
     \_        kavu nizo gili feqo nacu bire duvu xeno yuwa xeti fure xivi kiwo BA58
     \_        gato sotu bamo mili xoji hoxe xilo wiqo defe pexi yaro voyu caje DA69
     \_        goti hata wozu pake luyu doxa rule nesu gowe laha runa nofu zepi XI97
 
 
-**  ~~~~~~~~  cv-plus-b:15
+**  ~~~~~~~~  cva-plus-b:15
 \_  bits:     201.3569
 \_  length:   74
 \_  examples:
@@ -5310,18 +5310,18 @@
     \_        lene vihi bofi xiqi mogu sifu gugu laka vuni zogi life qona cubi redu VU19
     \_        xeno yuwa xeti fure xivi kiwo bapu gato sotu bamo mili xoji hoxe xilo WI77
     \_        defe pexi yaro voyu caje dara goti hata wozu pake luyu doxa rule nesu GO38
-    \_        tela haru nano fuze pixi yita wucu qoxu fafa woci jawe ripa tome ruka GB37
+    \_        tela haru nano fuze pixi yita wucu qoxu fafa woci jawe ripa tome ruka GE37
 
 
-**  ~~~~~~~~  cv-plus-b:16
+**  ~~~~~~~~  cva-plus-b:16
 \_  bits:     214.7854
 \_  length:   79
 \_  examples:
     \_        taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA38
     \_        figa juxi vize teke xepi wevo xigo hacu debo bale kuho ruba joyo ripi noma YA00
-    \_        duxi wosu xifu cusu jane zane gibe geno zizi lelo zipo gigo relu lika vino NB00
-    \_        vese dize gexa mexe yoha gafe fote dela rile bina tebi givu pipa gefo yece KB71
-    \_        cane wefu hoce nijo kava yepo funu folu goyu qece voju wayo lani tuqa luto BB51
+    \_        duxi wosu xifu cusu jane zane gibe geno zizi lelo zipo gigo relu lika vino NE00
+    \_        vese dize gexa mexe yoha gafe fote dela rile bina tebi givu pipa gefo yece KE71
+    \_        cane wefu hoce nijo kava yepo funu folu goyu qece voju wayo lani tuqa luto BE51
     \_        vimi pita xide seba vase micu vevu dupu ropi voye lene vihi bofi xiqi mogu SI28
     \_        gugu laka vuni zogi life qona cubi redu vuxe noyu waxe tifu rexi viki woba PU27
     \_        sore tuba momi lixo jiho xexi lowi qode fepe xiya rovo yuca jeda rago tiha TA87
@@ -5329,29 +5329,29 @@
     \_        kawe ripa tome ruka geke seva vexo tome bemo milo teku buvo miyo qovu qedo HA03
 
 
-**  ~~~~~~~~  cv-plus-c:2
+**  ~~~~~~~~  cva-plus-c:2
 \_  bits:     28.4646
 \_  length:   9
 \_  examples:
-    \_        taqe VB7~
+    \_        taqe VE7~
     \_        daye FU2;
-    \_        rixu CB9!
+    \_        rixu CE9!
     \_        covo XA3~
     \_        hese RA6+
     \_        koba HA9/
     \_        wuyu KU5$
     \_        jufi GA3*
     \_        juxi VI7\
-    \_        feke XB5%
+    \_        feke XE5%
 
 
-**  ~~~~~~~~  cv-plus-c:3
+**  ~~~~~~~~  cva-plus-c:3
 \_  bits:     41.8931
 \_  length:   14
 \_  examples:
     \_        taqe veza ZA4(
-    \_        fugi rixu CB9!
-    \_        covo xaki ZB2@
+    \_        fugi rixu CE9!
+    \_        covo xaki ZE2@
     \_        sera goqe KO0+
     \_        hayi wuyu KU5$
     \_        jufi gaju XI5~
@@ -5361,7 +5361,7 @@
     \_        sori pino MA1[
 
 
-**  ~~~~~~~~  cv-plus-c:4
+**  ~~~~~~~~  cva-plus-c:4
 \_  bits:     55.3216
 \_  length:   19
 \_  examples:
@@ -5369,7 +5369,7 @@
     \_        rixu cezu saco VO5]
     \_        xaki zeho sera GO2+
     \_        koba hayi wuyu KU5$
-    \_        jufi gaju xivi ZB7)
+    \_        jufi gaju xivi ZE7)
     \_        kexe piwe voxi GO2~
     \_        cawa boba leku HO1@
     \_        ruba joyo ripi NO1"
@@ -5377,7 +5377,7 @@
     \_        xifu cusu jane ZA2(
 
 
-**  ~~~~~~~~  cv-plus-c:5
+**  ~~~~~~~~  cva-plus-c:5
 \_  bits:     68.7501
 \_  length:   24
 \_  examples:
@@ -5385,31 +5385,31 @@
     \_        yoba voxa kize hose RA6+
     \_        koba hayi wuyu kupa JU5'
     \_        deju xivi zete kexe PI1_
-    \_        joxi goha cude boba LB3{
+    \_        joxi goha cude boba LE3{
     \_        horu bajo yori pino MA1[
     \_        cadu xiwo suxi fucu SU5:
-    \_        jane gibe geno zizi LB4>
+    \_        jane gibe geno zizi LE4>
     \_        zipo gigo relu lika VI7;
-    \_        pone vese dize gexa MB2|
+    \_        pone vese dize gexa ME2|
 
 
-**  ~~~~~~~~  cv-plus-c:6
+**  ~~~~~~~~  cva-plus-c:6
 \_  bits:     82.1786
 \_  length:   29
 \_  examples:
-    \_        taqe veza zaye fugi rixu CB9!
+    \_        taqe veza zaye fugi rixu CE9!
     \_        covo xaki zeho sera goqe KO0+
     \_        hayi wuyu kupa jufi gaju XI5~
     \_        gofe kexe piwe voxi goha CU1(
     \_        kuho ruba joyo ripi noma YA0!
     \_        duxi wosu xifu cusu jane ZA2(
-    \_        geno zizi lelo zipo gigo RB8*
+    \_        geno zizi lelo zipo gigo RE8*
     \_        lika vino neve sedi zege XA4)
     \_        yoha gafe fote dela rile BI3"
-    \_        tebi givu pipa gefo yece KB7$
+    \_        tebi givu pipa gefo yece KE7$
 
 
-**  ~~~~~~~~  cv-plus-c:7
+**  ~~~~~~~~  cva-plus-c:7
 \_  bits:     95.6071
 \_  length:   34
 \_  examples:
@@ -5419,13 +5419,13 @@
     \_        joxi goha cude boba leku horu BA6=
     \_        poyo ripi noma yasa batu xiwo SU4&
     \_        gucu suja neza negi bege nozi ZI4<
-    \_        hiqo zipo gigo relu lika vino NB0"
+    \_        hiqo zipo gigo relu lika vino NE0"
     \_        vese dize gexa mexe yoha gafe FO6\
     \_        vede lari lebi nate bigi vupi PA2:
     \_        foye ceke taca newe fuho ceni JO3!
 
 
-**  ~~~~~~~~  cv-plus-c:8
+**  ~~~~~~~~  cva-plus-c:8
 \_  bits:     109.0356
 \_  length:   39
 \_  examples:
@@ -5433,15 +5433,15 @@
     \_        xaki zeho sera goqe koba hayi wuyu KU5$
     \_        jufi gaju xivi zete kexe piwe voxi GO2~
     \_        cawa boba leku horu bajo yori pino MA1[
-    \_        cadu xiwo suxi fucu suja neza negi BB2;
-    \_        zizi lelo zipo gigo relu lika vino NB0"
-    \_        vese dize gexa mexe yoha gafe fote DB8"
-    \_        rile bina tebi givu pipa gefo yece KB7$
+    \_        cadu xiwo suxi fucu suja neza negi BE2;
+    \_        zizi lelo zipo gigo relu lika vino NE0"
+    \_        vese dize gexa mexe yoha gafe fote DE8"
+    \_        rile bina tebi givu pipa gefo yece KE7$
     \_        cane wefu hoce nijo kava yepo funu FO2[
     \_        yuqe cevo juwa yola nitu qalu tobe PA5/
 
 
-**  ~~~~~~~~  cv-plus-c:9
+**  ~~~~~~~~  cva-plus-c:9
 \_  bits:     122.4641
 \_  length:   44
 \_  examples:
@@ -5451,29 +5451,29 @@
     \_        ruba joyo ripi noma yasa batu xiwo suxi FU8[
     \_        weqa neza negi bege nozi zile lozi pogi GO4?
     \_        juli kavi none vese dize gexa mexe yoha GA2&
-    \_        tote dela rile bina tebi givu pipa gefo YB0=
+    \_        tote dela rile bina tebi givu pipa gefo YE0=
     \_        feke taca newe fuho ceni joka vaye pofu NU1~
     \_        lugo yuqe cevo juwa yola nitu qalu tobe PA5/
     \_        mita xide seba vase micu vevu dupu ropi VO5'
 
 
-**  ~~~~~~~~  cv-plus-c:10
+**  ~~~~~~~~  cva-plus-c:10
 \_  bits:     135.8925
 \_  length:   49
 \_  examples:
     \_        taqe veza zaye fugi rixu cezu saco voxa kize HO6"
-    \_        goqe koba hayi wuyu kupa jufi gaju xivi zete KB2<
+    \_        goqe koba hayi wuyu kupa jufi gaju xivi zete KE2<
     \_        nujo xigo hacu debo bale kuho ruba joyo ripi NO1"
-    \_        maya saba tuxi wosu xifu cusu jane zane gibe GB5'
-    \_        zizi lelo zipo gigo relu lika vino neve sedi ZB2{
+    \_        maya saba tuxi wosu xifu cusu jane zane gibe GE5'
+    \_        zizi lelo zipo gigo relu lika vino neve sedi ZE2{
     \_        dihu hute vaga fefo tede lari lebi nate bigi VU5}
-    \_        mupa gefo yece keta cane wefu hoce nijo kava YB5?
-    \_        funu folu goyu qece voju wayo lani tuqa luto BB5/
-    \_        mita xide seba vase micu vevu dupu ropi voye LB3^
-    \_        hibo fixi qimo gusi fugu gula kavu nizo gili FB6:
+    \_        mupa gefo yece keta cane wefu hoce nijo kava YE5?
+    \_        funu folu goyu qece voju wayo lani tuqa luto BE5/
+    \_        mita xide seba vase micu vevu dupu ropi voye LE3^
+    \_        hibo fixi qimo gusi fugu gula kavu nizo gili FE6:
 
 
-**  ~~~~~~~~  cv-plus-c:11
+**  ~~~~~~~~  cva-plus-c:11
 \_  bits:     149.3210
 \_  length:   54
 \_  examples:
@@ -5481,7 +5481,7 @@
     \_        koba hayi wuyu kupa jufi gaju xivi zete kexe piwe VO4-
     \_        hacu debo bale kuho ruba joyo ripi noma yasa batu XI8\
     \_        suxi fucu suja neza negi bege nozi zile lozi pogi GO4?
-    \_        juli kavi none vese dize gexa mexe yoha gafe fote DB8"
+    \_        juli kavi none vese dize gexa mexe yoha gafe fote DE8"
     \_        rile bina tebi givu pipa gefo yece keta cane wefu HO2&
     \_        mezo kava yepo funu folu goyu qece voju wayo lani TU9"
     \_        luto bepa vimi pita xide seba vase micu vevu dupu RO5]
@@ -5489,55 +5489,55 @@
     \_        gili feqo nacu bire duvu xeno yuwa xeti fure xivi KI7_
 
 
-**  ~~~~~~~~  cv-plus-c:12
+**  ~~~~~~~~  cva-plus-c:12
 \_  bits:     162.7495
 \_  length:   59
 \_  examples:
-    \_        taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB3,
+    \_        taqe veza zaye fugi rixu cezu saco voxa kize hose rago QE3,
     \_        raha yiwu yuku paju figa juxi vize teke xepi wevo xigo HA0(
-    \_        kuho ruba joyo ripi noma yasa batu xiwo suxi fucu suja NB0:
-    \_        gibe geno zizi lelo zipo gigo relu lika vino neve sedi ZB2{
+    \_        kuho ruba joyo ripi noma yasa batu xiwo suxi fucu suja NE0:
+    \_        gibe geno zizi lelo zipo gigo relu lika vino neve sedi ZE2{
     \_        dihu hute vaga fefo tede lari lebi nate bigi vupi page FO9<
-    \_        zece keta cane wefu hoce nijo kava yepo funu folu goyu QB0[
+    \_        zece keta cane wefu hoce nijo kava yepo funu folu goyu QE0[
     \_        juwa yola nitu qalu tobe pavi mipi taxi dese bava semi CU3`
     \_        dupu ropi voye lene vihi bofi xiqi mogu sifu gugu laka VU7~
     \_        ragi life qona cubi redu vuxe noyu waxe tifu rexi viki WO0&
     \_        kapu gato sotu bamo mili xoji hoxe xilo wiqo defe pexi YA6^
 
 
-**  ~~~~~~~~  cv-plus-c:13
+**  ~~~~~~~~  cva-plus-c:13
 \_  bits:     176.1780
 \_  length:   64
 \_  examples:
     \_        taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA3"
     \_        yiwu yuku paju figa juxi vize teke xepi wevo xigo hacu debo BA2{
     \_        horu bajo yori pino maya saba tuxi wosu xifu cusu jane zane GI0(
-    \_        geno zizi lelo zipo gigo relu lika vino neve sedi zege xame XB9)
-    \_        vaga fefo tede lari lebi nate bigi vupi page foye ceke taca NB8%
+    \_        geno zizi lelo zipo gigo relu lika vino neve sedi zege xame XE9)
+    \_        vaga fefo tede lari lebi nate bigi vupi page foye ceke taca NE8%
     \_        gefu hoce nijo kava yepo funu folu goyu qece voju wayo lani TU9"
-    \_        luto bepa vimi pita xide seba vase micu vevu dupu ropi voye LB3^
+    \_        luto bepa vimi pita xide seba vase micu vevu dupu ropi voye LE3^
     \_        hibo fixi qimo gusi fugu gula kavu nizo gili feqo nacu bire DU9%
     \_        xeno yuwa xeti fure xivi kiwo bapu gato sotu bamo mili xoji HO8~
     \_        huno wiqo defe pexi yaro voyu caje dara goti hata wozu pake LU9%
 
 
-**  ~~~~~~~~  cv-plus-c:14
+**  ~~~~~~~~  cva-plus-c:14
 \_  bits:     189.6065
 \_  length:   69
 \_  examples:
     \_        taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI6_
     \_        yuku paju figa juxi vize teke xepi wevo xigo hacu debo bale kuho RU0"
     \_        joyo ripi noma yasa batu xiwo suxi fucu suja neza negi bege nozi ZI4<
-    \_        hiqo zipo gigo relu lika vino neve sedi zege xame xeyo haga fefo TB1)
+    \_        hiqo zipo gigo relu lika vino neve sedi zege xame xeyo haga fefo TE1)
     \_        lari lebi nate bigi vupi page foye ceke taca newe fuho ceni joka VA9+
-    \_        pofu nufo lugo yuqe cevo juwa yola nitu qalu tobe pavi mipi taxi DB8(
+    \_        pofu nufo lugo yuqe cevo juwa yola nitu qalu tobe pavi mipi taxi DE8(
     \_        bava semi cuve vudu puro pivo yele nevi hibo fixi qimo gusi fugu GU4$
     \_        kavu nizo gili feqo nacu bire duvu xeno yuwa xeti fure xivi kiwo BA5_
     \_        gato sotu bamo mili xoji hoxe xilo wiqo defe pexi yaro voyu caje DA6}
     \_        goti hata wozu pake luyu doxa rule nesu gowe laha runa nofu zepi XI9]
 
 
-**  ~~~~~~~~  cv-plus-c:15
+**  ~~~~~~~~  cva-plus-c:15
 \_  bits:     203.0350
 \_  length:   74
 \_  examples:
@@ -5545,28 +5545,1516 @@
     \_        deku figa juxi vize teke xepi wevo xigo hacu debo bale kuho ruba joyo RI5;
     \_        noma yasa batu xiwo suxi fucu suja neza negi bege nozi zile lozi pogi GO4?
     \_        juli kavi none vese dize gexa mexe yoha gafe fote dela rile bina tebi GI5^
-    \_        vupi page foye ceke taca newe fuho ceni joka vaye pofu nufo lugo yuqe CB3,
+    \_        vupi page foye ceke taca newe fuho ceni joka vaye pofu nufo lugo yuqe CE3,
     \_        yuyo lani tuqa luto bepa vimi pita xide seba vase micu vevu dupu ropi VO5'
     \_        tene vihi bofi xiqi mogu sifu gugu laka vuni zogi life qona cubi redu VU1}
     \_        xeno yuwa xeti fure xivi kiwo bapu gato sotu bamo mili xoji hoxe xilo WI7\
     \_        defe pexi yaro voyu caje dara goti hata wozu pake luyu doxa rule nesu GO3-
-    \_        haru nano fuze pixi yita wucu qoxu fafa woci jawe ripa tome ruka geke SB7]
+    \_        haru nano fuze pixi yita wucu qoxu fafa woci jawe ripa tome ruka geke SE7]
 
 
-**  ~~~~~~~~  cv-plus-c:16
+**  ~~~~~~~~  cva-plus-c:16
 \_  bits:     216.4635
 \_  length:   79
 \_  examples:
     \_        taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA3`
     \_        figa juxi vize teke xepi wevo xigo hacu debo bale kuho ruba joyo ripi noma YA0!
-    \_        duxi wosu xifu cusu jane zane gibe geno zizi lelo zipo gigo relu lika vino NB0"
-    \_        vese dize gexa mexe yoha gafe fote dela rile bina tebi givu pipa gefo yece KB7$
-    \_        cane wefu hoce nijo kava yepo funu folu goyu qece voju wayo lani tuqa luto BB5/
+    \_        duxi wosu xifu cusu jane zane gibe geno zizi lelo zipo gigo relu lika vino NE0"
+    \_        vese dize gexa mexe yoha gafe fote dela rile bina tebi givu pipa gefo yece KE7$
+    \_        cane wefu hoce nijo kava yepo funu folu goyu qece voju wayo lani tuqa luto BE5/
     \_        mita xide seba vase micu vevu dupu ropi voye lene vihi bofi xiqi mogu sifu GU2$
     \_        kavu nizo gili feqo nacu bire duvu xeno yuwa xeti fure xivi kiwo bapu gato SO2"
     \_        tuba momi lixo jiho xexi lowi qode fepe xiya rovo yuca jeda rago tiha tawo ZU5*
-    \_        luyu doxa rule nesu gowe laha runa nofu zepi xiyi tawu cuqo xufa fawo cija WB6;
+    \_        luyu doxa rule nesu gowe laha runa nofu zepi xiyi tawu cuqo xufa fawo cija WE6;
     \_        pato meru kage kese vave xoto mebe momi lote kubu vomi yoqo vuqe doha gasa MU7[
+
+
+**  ~~~~~~~~  cvs-lower:1
+\_  bits:     12.6438
+\_  length:   4
+\_  examples:
+    \_        sane
+    \_        seda
+    \_        zalu
+    \_        dufi
+    \_        pivu
+    \_        ceba
+    \_        camu
+    \_        cige
+    \_        paco
+    \_        neho
+
+
+**  ~~~~~~~~  cvs-lower:2
+\_  bits:     25.2877
+\_  length:   9
+\_  examples:
+    \_        sane seda
+    \_        zalu dufi
+    \_        pivu ceba
+    \_        camu cige
+    \_        paco neho
+    \_        bahe lotu
+    \_        suva suma
+    \_        hetu sice
+    \_        geve dupu
+    \_        nifo gata
+
+
+**  ~~~~~~~~  cvs-lower:3
+\_  bits:     37.9315
+\_  length:   14
+\_  examples:
+    \_        sane seda zalu
+    \_        dufi pivu ceba
+    \_        camu cige paco
+    \_        neho bahe lotu
+    \_        suva suma hetu
+    \_        sice geve dupu
+    \_        nifo gata gapa
+    \_        behu ropu bano
+    \_        codo pima noda
+    \_        laco hara badu
+
+
+**  ~~~~~~~~  cvs-lower:4
+\_  bits:     50.5754
+\_  length:   19
+\_  examples:
+    \_        sane seda zalu dufi
+    \_        pivu ceba camu cige
+    \_        paco neho bahe lotu
+    \_        suva suma hetu sice
+    \_        geve dupu nifo gata
+    \_        gapa behu ropu bano
+    \_        codo pima noda laco
+    \_        hara badu vito vufu
+    \_        curu nami gebe femo
+    \_        zigi zipi fope juce
+
+
+**  ~~~~~~~~  cvs-lower:5
+\_  bits:     63.2192
+\_  length:   24
+\_  examples:
+    \_        sane seda zalu dufi pivu
+    \_        ceba camu cige paco neho
+    \_        bahe lotu suva suma hetu
+    \_        sice geve dupu nifo gata
+    \_        gapa behu ropu bano codo
+    \_        pima noda laco hara badu
+    \_        vito vufu curu nami gebe
+    \_        femo zigi zipi fope juce
+    \_        jiha siri mega zefe vale
+    \_        gure sasa goco seja ripi
+
+
+**  ~~~~~~~~  cvs-lower:6
+\_  bits:     75.8631
+\_  length:   29
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba
+    \_        camu cige paco neho bahe lotu
+    \_        suva suma hetu sice geve dupu
+    \_        nifo gata gapa behu ropu bano
+    \_        codo pima noda laco hara badu
+    \_        vito vufu curu nami gebe femo
+    \_        zigi zipi fope juce jiha siri
+    \_        mega zefe vale gure sasa goco
+    \_        seja ripi bide bifi vice puze
+    \_        cane hate dugo ceri leha zaho
+
+
+**  ~~~~~~~~  cvs-lower:7
+\_  bits:     88.5069
+\_  length:   34
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu
+    \_        cige paco neho bahe lotu suva suma
+    \_        hetu sice geve dupu nifo gata gapa
+    \_        behu ropu bano codo pima noda laco
+    \_        hara badu vito vufu curu nami gebe
+    \_        femo zigi zipi fope juce jiha siri
+    \_        mega zefe vale gure sasa goco seja
+    \_        ripi bide bifi vice puze cane hate
+    \_        dugo ceri leha zaho tidu doju foga
+    \_        soce nuta valo vaju pacu rasi lima
+
+
+**  ~~~~~~~~  cvs-lower:8
+\_  bits:     101.1508
+\_  length:   39
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige
+    \_        paco neho bahe lotu suva suma hetu sice
+    \_        geve dupu nifo gata gapa behu ropu bano
+    \_        codo pima noda laco hara badu vito vufu
+    \_        curu nami gebe femo zigi zipi fope juce
+    \_        jiha siri mega zefe vale gure sasa goco
+    \_        seja ripi bide bifi vice puze cane hate
+    \_        dugo ceri leha zaho tidu doju foga soce
+    \_        nuta valo vaju pacu rasi lima basa reli
+    \_        zasu zavo jomi somu gife digi pari lumu
+
+
+**  ~~~~~~~~  cvs-lower:9
+\_  bits:     113.7947
+\_  length:   44
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco
+    \_        neho bahe lotu suva suma hetu sice geve dupu
+    \_        nifo gata gapa behu ropu bano codo pima noda
+    \_        laco hara badu vito vufu curu nami gebe femo
+    \_        zigi zipi fope juce jiha siri mega zefe vale
+    \_        gure sasa goco seja ripi bide bifi vice puze
+    \_        cane hate dugo ceri leha zaho tidu doju foga
+    \_        soce nuta valo vaju pacu rasi lima basa reli
+    \_        zasu zavo jomi somu gife digi pari lumu nilo
+    \_        vosi nute jama silo ceni jifo ciba vape javu
+
+
+**  ~~~~~~~~  cvs-lower:10
+\_  bits:     126.4385
+\_  length:   49
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho
+    \_        bahe lotu suva suma hetu sice geve dupu nifo gata
+    \_        gapa behu ropu bano codo pima noda laco hara badu
+    \_        vito vufu curu nami gebe femo zigi zipi fope juce
+    \_        jiha siri mega zefe vale gure sasa goco seja ripi
+    \_        bide bifi vice puze cane hate dugo ceri leha zaho
+    \_        tidu doju foga soce nuta valo vaju pacu rasi lima
+    \_        basa reli zasu zavo jomi somu gife digi pari lumu
+    \_        nilo vosi nute jama silo ceni jifo ciba vape javu
+    \_        diru tari tose sivi ruzo bate naro fuba loni jivo
+
+
+**  ~~~~~~~~  cvs-lower:11
+\_  bits:     139.0824
+\_  length:   54
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe
+    \_        lotu suva suma hetu sice geve dupu nifo gata gapa behu
+    \_        ropu bano codo pima noda laco hara badu vito vufu curu
+    \_        nami gebe femo zigi zipi fope juce jiha siri mega zefe
+    \_        vale gure sasa goco seja ripi bide bifi vice puze cane
+    \_        hate dugo ceri leha zaho tidu doju foga soce nuta valo
+    \_        vaju pacu rasi lima basa reli zasu zavo jomi somu gife
+    \_        digi pari lumu nilo vosi nute jama silo ceni jifo ciba
+    \_        vape javu diru tari tose sivi ruzo bate naro fuba loni
+    \_        jivo higo vijo tino fevi napo ruva hebo zafo zeca togi
+
+
+**  ~~~~~~~~  cvs-lower:12
+\_  bits:     151.7262
+\_  length:   59
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu
+    \_        suva suma hetu sice geve dupu nifo gata gapa behu ropu bano
+    \_        codo pima noda laco hara badu vito vufu curu nami gebe femo
+    \_        zigi zipi fope juce jiha siri mega zefe vale gure sasa goco
+    \_        seja ripi bide bifi vice puze cane hate dugo ceri leha zaho
+    \_        tidu doju foga soce nuta valo vaju pacu rasi lima basa reli
+    \_        zasu zavo jomi somu gife digi pari lumu nilo vosi nute jama
+    \_        silo ceni jifo ciba vape javu diru tari tose sivi ruzo bate
+    \_        naro fuba loni jivo higo vijo tino fevi napo ruva hebo zafo
+    \_        zeca togi tahe judi domo tine gove dohu fahe rodu pulu situ
+
+
+**  ~~~~~~~~  cvs-lower:13
+\_  bits:     164.3701
+\_  length:   64
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva
+    \_        suma hetu sice geve dupu nifo gata gapa behu ropu bano codo pima
+    \_        noda laco hara badu vito vufu curu nami gebe femo zigi zipi fope
+    \_        juce jiha siri mega zefe vale gure sasa goco seja ripi bide bifi
+    \_        vice puze cane hate dugo ceri leha zaho tidu doju foga soce nuta
+    \_        valo vaju pacu rasi lima basa reli zasu zavo jomi somu gife digi
+    \_        pari lumu nilo vosi nute jama silo ceni jifo ciba vape javu diru
+    \_        tari tose sivi ruzo bate naro fuba loni jivo higo vijo tino fevi
+    \_        napo ruva hebo zafo zeca togi tahe judi domo tine gove dohu fahe
+    \_        rodu pulu situ cupu fuda daci hupa favu pisa civa feje sase nolo
+
+
+**  ~~~~~~~~  cvs-lower:14
+\_  bits:     177.0139
+\_  length:   69
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma
+    \_        hetu sice geve dupu nifo gata gapa behu ropu bano codo pima noda laco
+    \_        hara badu vito vufu curu nami gebe femo zigi zipi fope juce jiha siri
+    \_        mega zefe vale gure sasa goco seja ripi bide bifi vice puze cane hate
+    \_        dugo ceri leha zaho tidu doju foga soce nuta valo vaju pacu rasi lima
+    \_        basa reli zasu zavo jomi somu gife digi pari lumu nilo vosi nute jama
+    \_        silo ceni jifo ciba vape javu diru tari tose sivi ruzo bate naro fuba
+    \_        loni jivo higo vijo tino fevi napo ruva hebo zafo zeca togi tahe judi
+    \_        domo tine gove dohu fahe rodu pulu situ cupu fuda daci hupa favu pisa
+    \_        civa feje sase nolo fibe loli mire bupi pune gafa hoda ciso rofi zozo
+
+
+**  ~~~~~~~~  cvs-lower:15
+\_  bits:     189.6578
+\_  length:   74
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu
+    \_        sice geve dupu nifo gata gapa behu ropu bano codo pima noda laco hara badu
+    \_        vito vufu curu nami gebe femo zigi zipi fope juce jiha siri mega zefe vale
+    \_        gure sasa goco seja ripi bide bifi vice puze cane hate dugo ceri leha zaho
+    \_        tidu doju foga soce nuta valo vaju pacu rasi lima basa reli zasu zavo jomi
+    \_        somu gife digi pari lumu nilo vosi nute jama silo ceni jifo ciba vape javu
+    \_        diru tari tose sivi ruzo bate naro fuba loni jivo higo vijo tino fevi napo
+    \_        ruva hebo zafo zeca togi tahe judi domo tine gove dohu fahe rodu pulu situ
+    \_        cupu fuda daci hupa favu pisa civa feje sase nolo fibe loli mire bupi pune
+    \_        gafa hoda ciso rofi zozo pefi nize fobu rigi nehe hopu pivu gebo roca lavi
+
+
+**  ~~~~~~~~  cvs-lower:16
+\_  bits:     202.3016
+\_  length:   79
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu sice
+    \_        geve dupu nifo gata gapa behu ropu bano codo pima noda laco hara badu vito vufu
+    \_        curu nami gebe femo zigi zipi fope juce jiha siri mega zefe vale gure sasa goco
+    \_        seja ripi bide bifi vice puze cane hate dugo ceri leha zaho tidu doju foga soce
+    \_        nuta valo vaju pacu rasi lima basa reli zasu zavo jomi somu gife digi pari lumu
+    \_        nilo vosi nute jama silo ceni jifo ciba vape javu diru tari tose sivi ruzo bate
+    \_        naro fuba loni jivo higo vijo tino fevi napo ruva hebo zafo zeca togi tahe judi
+    \_        domo tine gove dohu fahe rodu pulu situ cupu fuda daci hupa favu pisa civa feje
+    \_        sase nolo fibe loli mire bupi pune gafa hoda ciso rofi zozo pefi nize fobu rigi
+    \_        nehe hopu pivu gebo roca lavi rofe bofe femu guju feze cunu sana duna sete zube
+
+
+**  ~~~~~~~~  cvs-upper:1
+\_  bits:     12.6438
+\_  length:   4
+\_  examples:
+    \_        SANE
+    \_        SEDA
+    \_        ZALU
+    \_        DUFI
+    \_        PIVU
+    \_        CEBA
+    \_        CAMU
+    \_        CIGE
+    \_        PACO
+    \_        NEHO
+
+
+**  ~~~~~~~~  cvs-upper:2
+\_  bits:     25.2877
+\_  length:   9
+\_  examples:
+    \_        SANE SEDA
+    \_        ZALU DUFI
+    \_        PIVU CEBA
+    \_        CAMU CIGE
+    \_        PACO NEHO
+    \_        BAHE LOTU
+    \_        SUVA SUMA
+    \_        HETU SICE
+    \_        GEVE DUPU
+    \_        NIFO GATA
+
+
+**  ~~~~~~~~  cvs-upper:3
+\_  bits:     37.9315
+\_  length:   14
+\_  examples:
+    \_        SANE SEDA ZALU
+    \_        DUFI PIVU CEBA
+    \_        CAMU CIGE PACO
+    \_        NEHO BAHE LOTU
+    \_        SUVA SUMA HETU
+    \_        SICE GEVE DUPU
+    \_        NIFO GATA GAPA
+    \_        BEHU ROPU BANO
+    \_        CODO PIMA NODA
+    \_        LACO HARA BADU
+
+
+**  ~~~~~~~~  cvs-upper:4
+\_  bits:     50.5754
+\_  length:   19
+\_  examples:
+    \_        SANE SEDA ZALU DUFI
+    \_        PIVU CEBA CAMU CIGE
+    \_        PACO NEHO BAHE LOTU
+    \_        SUVA SUMA HETU SICE
+    \_        GEVE DUPU NIFO GATA
+    \_        GAPA BEHU ROPU BANO
+    \_        CODO PIMA NODA LACO
+    \_        HARA BADU VITO VUFU
+    \_        CURU NAMI GEBE FEMO
+    \_        ZIGI ZIPI FOPE JUCE
+
+
+**  ~~~~~~~~  cvs-upper:5
+\_  bits:     63.2192
+\_  length:   24
+\_  examples:
+    \_        SANE SEDA ZALU DUFI PIVU
+    \_        CEBA CAMU CIGE PACO NEHO
+    \_        BAHE LOTU SUVA SUMA HETU
+    \_        SICE GEVE DUPU NIFO GATA
+    \_        GAPA BEHU ROPU BANO CODO
+    \_        PIMA NODA LACO HARA BADU
+    \_        VITO VUFU CURU NAMI GEBE
+    \_        FEMO ZIGI ZIPI FOPE JUCE
+    \_        JIHA SIRI MEGA ZEFE VALE
+    \_        GURE SASA GOCO SEJA RIPI
+
+
+**  ~~~~~~~~  cvs-upper:6
+\_  bits:     75.8631
+\_  length:   29
+\_  examples:
+    \_        SANE SEDA ZALU DUFI PIVU CEBA
+    \_        CAMU CIGE PACO NEHO BAHE LOTU
+    \_        SUVA SUMA HETU SICE GEVE DUPU
+    \_        NIFO GATA GAPA BEHU ROPU BANO
+    \_        CODO PIMA NODA LACO HARA BADU
+    \_        VITO VUFU CURU NAMI GEBE FEMO
+    \_        ZIGI ZIPI FOPE JUCE JIHA SIRI
+    \_        MEGA ZEFE VALE GURE SASA GOCO
+    \_        SEJA RIPI BIDE BIFI VICE PUZE
+    \_        CANE HATE DUGO CERI LEHA ZAHO
+
+
+**  ~~~~~~~~  cvs-upper:7
+\_  bits:     88.5069
+\_  length:   34
+\_  examples:
+    \_        SANE SEDA ZALU DUFI PIVU CEBA CAMU
+    \_        CIGE PACO NEHO BAHE LOTU SUVA SUMA
+    \_        HETU SICE GEVE DUPU NIFO GATA GAPA
+    \_        BEHU ROPU BANO CODO PIMA NODA LACO
+    \_        HARA BADU VITO VUFU CURU NAMI GEBE
+    \_        FEMO ZIGI ZIPI FOPE JUCE JIHA SIRI
+    \_        MEGA ZEFE VALE GURE SASA GOCO SEJA
+    \_        RIPI BIDE BIFI VICE PUZE CANE HATE
+    \_        DUGO CERI LEHA ZAHO TIDU DOJU FOGA
+    \_        SOCE NUTA VALO VAJU PACU RASI LIMA
+
+
+**  ~~~~~~~~  cvs-upper:8
+\_  bits:     101.1508
+\_  length:   39
+\_  examples:
+    \_        SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE
+    \_        PACO NEHO BAHE LOTU SUVA SUMA HETU SICE
+    \_        GEVE DUPU NIFO GATA GAPA BEHU ROPU BANO
+    \_        CODO PIMA NODA LACO HARA BADU VITO VUFU
+    \_        CURU NAMI GEBE FEMO ZIGI ZIPI FOPE JUCE
+    \_        JIHA SIRI MEGA ZEFE VALE GURE SASA GOCO
+    \_        SEJA RIPI BIDE BIFI VICE PUZE CANE HATE
+    \_        DUGO CERI LEHA ZAHO TIDU DOJU FOGA SOCE
+    \_        NUTA VALO VAJU PACU RASI LIMA BASA RELI
+    \_        ZASU ZAVO JOMI SOMU GIFE DIGI PARI LUMU
+
+
+**  ~~~~~~~~  cvs-upper:9
+\_  bits:     113.7947
+\_  length:   44
+\_  examples:
+    \_        SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO
+    \_        NEHO BAHE LOTU SUVA SUMA HETU SICE GEVE DUPU
+    \_        NIFO GATA GAPA BEHU ROPU BANO CODO PIMA NODA
+    \_        LACO HARA BADU VITO VUFU CURU NAMI GEBE FEMO
+    \_        ZIGI ZIPI FOPE JUCE JIHA SIRI MEGA ZEFE VALE
+    \_        GURE SASA GOCO SEJA RIPI BIDE BIFI VICE PUZE
+    \_        CANE HATE DUGO CERI LEHA ZAHO TIDU DOJU FOGA
+    \_        SOCE NUTA VALO VAJU PACU RASI LIMA BASA RELI
+    \_        ZASU ZAVO JOMI SOMU GIFE DIGI PARI LUMU NILO
+    \_        VOSI NUTE JAMA SILO CENI JIFO CIBA VAPE JAVU
+
+
+**  ~~~~~~~~  cvs-upper:10
+\_  bits:     126.4385
+\_  length:   49
+\_  examples:
+    \_        SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO
+    \_        BAHE LOTU SUVA SUMA HETU SICE GEVE DUPU NIFO GATA
+    \_        GAPA BEHU ROPU BANO CODO PIMA NODA LACO HARA BADU
+    \_        VITO VUFU CURU NAMI GEBE FEMO ZIGI ZIPI FOPE JUCE
+    \_        JIHA SIRI MEGA ZEFE VALE GURE SASA GOCO SEJA RIPI
+    \_        BIDE BIFI VICE PUZE CANE HATE DUGO CERI LEHA ZAHO
+    \_        TIDU DOJU FOGA SOCE NUTA VALO VAJU PACU RASI LIMA
+    \_        BASA RELI ZASU ZAVO JOMI SOMU GIFE DIGI PARI LUMU
+    \_        NILO VOSI NUTE JAMA SILO CENI JIFO CIBA VAPE JAVU
+    \_        DIRU TARI TOSE SIVI RUZO BATE NARO FUBA LONI JIVO
+
+
+**  ~~~~~~~~  cvs-upper:11
+\_  bits:     139.0824
+\_  length:   54
+\_  examples:
+    \_        SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE
+    \_        LOTU SUVA SUMA HETU SICE GEVE DUPU NIFO GATA GAPA BEHU
+    \_        ROPU BANO CODO PIMA NODA LACO HARA BADU VITO VUFU CURU
+    \_        NAMI GEBE FEMO ZIGI ZIPI FOPE JUCE JIHA SIRI MEGA ZEFE
+    \_        VALE GURE SASA GOCO SEJA RIPI BIDE BIFI VICE PUZE CANE
+    \_        HATE DUGO CERI LEHA ZAHO TIDU DOJU FOGA SOCE NUTA VALO
+    \_        VAJU PACU RASI LIMA BASA RELI ZASU ZAVO JOMI SOMU GIFE
+    \_        DIGI PARI LUMU NILO VOSI NUTE JAMA SILO CENI JIFO CIBA
+    \_        VAPE JAVU DIRU TARI TOSE SIVI RUZO BATE NARO FUBA LONI
+    \_        JIVO HIGO VIJO TINO FEVI NAPO RUVA HEBO ZAFO ZECA TOGI
+
+
+**  ~~~~~~~~  cvs-upper:12
+\_  bits:     151.7262
+\_  length:   59
+\_  examples:
+    \_        SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU
+    \_        SUVA SUMA HETU SICE GEVE DUPU NIFO GATA GAPA BEHU ROPU BANO
+    \_        CODO PIMA NODA LACO HARA BADU VITO VUFU CURU NAMI GEBE FEMO
+    \_        ZIGI ZIPI FOPE JUCE JIHA SIRI MEGA ZEFE VALE GURE SASA GOCO
+    \_        SEJA RIPI BIDE BIFI VICE PUZE CANE HATE DUGO CERI LEHA ZAHO
+    \_        TIDU DOJU FOGA SOCE NUTA VALO VAJU PACU RASI LIMA BASA RELI
+    \_        ZASU ZAVO JOMI SOMU GIFE DIGI PARI LUMU NILO VOSI NUTE JAMA
+    \_        SILO CENI JIFO CIBA VAPE JAVU DIRU TARI TOSE SIVI RUZO BATE
+    \_        NARO FUBA LONI JIVO HIGO VIJO TINO FEVI NAPO RUVA HEBO ZAFO
+    \_        ZECA TOGI TAHE JUDI DOMO TINE GOVE DOHU FAHE RODU PULU SITU
+
+
+**  ~~~~~~~~  cvs-upper:13
+\_  bits:     164.3701
+\_  length:   64
+\_  examples:
+    \_        SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU SUVA
+    \_        SUMA HETU SICE GEVE DUPU NIFO GATA GAPA BEHU ROPU BANO CODO PIMA
+    \_        NODA LACO HARA BADU VITO VUFU CURU NAMI GEBE FEMO ZIGI ZIPI FOPE
+    \_        JUCE JIHA SIRI MEGA ZEFE VALE GURE SASA GOCO SEJA RIPI BIDE BIFI
+    \_        VICE PUZE CANE HATE DUGO CERI LEHA ZAHO TIDU DOJU FOGA SOCE NUTA
+    \_        VALO VAJU PACU RASI LIMA BASA RELI ZASU ZAVO JOMI SOMU GIFE DIGI
+    \_        PARI LUMU NILO VOSI NUTE JAMA SILO CENI JIFO CIBA VAPE JAVU DIRU
+    \_        TARI TOSE SIVI RUZO BATE NARO FUBA LONI JIVO HIGO VIJO TINO FEVI
+    \_        NAPO RUVA HEBO ZAFO ZECA TOGI TAHE JUDI DOMO TINE GOVE DOHU FAHE
+    \_        RODU PULU SITU CUPU FUDA DACI HUPA FAVU PISA CIVA FEJE SASE NOLO
+
+
+**  ~~~~~~~~  cvs-upper:14
+\_  bits:     177.0139
+\_  length:   69
+\_  examples:
+    \_        SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU SUVA SUMA
+    \_        HETU SICE GEVE DUPU NIFO GATA GAPA BEHU ROPU BANO CODO PIMA NODA LACO
+    \_        HARA BADU VITO VUFU CURU NAMI GEBE FEMO ZIGI ZIPI FOPE JUCE JIHA SIRI
+    \_        MEGA ZEFE VALE GURE SASA GOCO SEJA RIPI BIDE BIFI VICE PUZE CANE HATE
+    \_        DUGO CERI LEHA ZAHO TIDU DOJU FOGA SOCE NUTA VALO VAJU PACU RASI LIMA
+    \_        BASA RELI ZASU ZAVO JOMI SOMU GIFE DIGI PARI LUMU NILO VOSI NUTE JAMA
+    \_        SILO CENI JIFO CIBA VAPE JAVU DIRU TARI TOSE SIVI RUZO BATE NARO FUBA
+    \_        LONI JIVO HIGO VIJO TINO FEVI NAPO RUVA HEBO ZAFO ZECA TOGI TAHE JUDI
+    \_        DOMO TINE GOVE DOHU FAHE RODU PULU SITU CUPU FUDA DACI HUPA FAVU PISA
+    \_        CIVA FEJE SASE NOLO FIBE LOLI MIRE BUPI PUNE GAFA HODA CISO ROFI ZOZO
+
+
+**  ~~~~~~~~  cvs-upper:15
+\_  bits:     189.6578
+\_  length:   74
+\_  examples:
+    \_        SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU SUVA SUMA HETU
+    \_        SICE GEVE DUPU NIFO GATA GAPA BEHU ROPU BANO CODO PIMA NODA LACO HARA BADU
+    \_        VITO VUFU CURU NAMI GEBE FEMO ZIGI ZIPI FOPE JUCE JIHA SIRI MEGA ZEFE VALE
+    \_        GURE SASA GOCO SEJA RIPI BIDE BIFI VICE PUZE CANE HATE DUGO CERI LEHA ZAHO
+    \_        TIDU DOJU FOGA SOCE NUTA VALO VAJU PACU RASI LIMA BASA RELI ZASU ZAVO JOMI
+    \_        SOMU GIFE DIGI PARI LUMU NILO VOSI NUTE JAMA SILO CENI JIFO CIBA VAPE JAVU
+    \_        DIRU TARI TOSE SIVI RUZO BATE NARO FUBA LONI JIVO HIGO VIJO TINO FEVI NAPO
+    \_        RUVA HEBO ZAFO ZECA TOGI TAHE JUDI DOMO TINE GOVE DOHU FAHE RODU PULU SITU
+    \_        CUPU FUDA DACI HUPA FAVU PISA CIVA FEJE SASE NOLO FIBE LOLI MIRE BUPI PUNE
+    \_        GAFA HODA CISO ROFI ZOZO PEFI NIZE FOBU RIGI NEHE HOPU PIVU GEBO ROCA LAVI
+
+
+**  ~~~~~~~~  cvs-upper:16
+\_  bits:     202.3016
+\_  length:   79
+\_  examples:
+    \_        SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU SUVA SUMA HETU SICE
+    \_        GEVE DUPU NIFO GATA GAPA BEHU ROPU BANO CODO PIMA NODA LACO HARA BADU VITO VUFU
+    \_        CURU NAMI GEBE FEMO ZIGI ZIPI FOPE JUCE JIHA SIRI MEGA ZEFE VALE GURE SASA GOCO
+    \_        SEJA RIPI BIDE BIFI VICE PUZE CANE HATE DUGO CERI LEHA ZAHO TIDU DOJU FOGA SOCE
+    \_        NUTA VALO VAJU PACU RASI LIMA BASA RELI ZASU ZAVO JOMI SOMU GIFE DIGI PARI LUMU
+    \_        NILO VOSI NUTE JAMA SILO CENI JIFO CIBA VAPE JAVU DIRU TARI TOSE SIVI RUZO BATE
+    \_        NARO FUBA LONI JIVO HIGO VIJO TINO FEVI NAPO RUVA HEBO ZAFO ZECA TOGI TAHE JUDI
+    \_        DOMO TINE GOVE DOHU FAHE RODU PULU SITU CUPU FUDA DACI HUPA FAVU PISA CIVA FEJE
+    \_        SASE NOLO FIBE LOLI MIRE BUPI PUNE GAFA HODA CISO ROFI ZOZO PEFI NIZE FOBU RIGI
+    \_        NEHE HOPU PIVU GEBO ROCA LAVI ROFE BOFE FEMU GUJU FEZE CUNU SANA DUNA SETE ZUBE
+
+
+**  ~~~~~~~~  cvs-mixed:1
+\_  bits:     16.6438
+\_  length:   4
+\_  examples:
+    \_        Lami
+    \_        NIZe
+    \_        lABE
+    \_        ziZU
+    \_        bENA
+    \_        MoZi
+    \_        HEcE
+    \_        poGa
+    \_        picU
+    \_        vEPO
+
+
+**  ~~~~~~~~  cvs-mixed:2
+\_  bits:     33.2877
+\_  length:   9
+\_  examples:
+    \_        Lami NIZe
+    \_        lABE ziZU
+    \_        bENA MoZi
+    \_        HEcE poGa
+    \_        picU vEPO
+    \_        ToCe noRA
+    \_        jeno noZI
+    \_        Liri CePo
+    \_        NESu sAma
+    \_        loSi HEbI
+
+
+**  ~~~~~~~~  cvs-mixed:3
+\_  bits:     49.9315
+\_  length:   14
+\_  examples:
+    \_        Lami NIZe lABE
+    \_        ziZU bENA MoZi
+    \_        HEcE poGa picU
+    \_        vEPO ToCe noRA
+    \_        jeno noZI Liri
+    \_        CePo NESu sAma
+    \_        loSi HEbI cEDA
+    \_        VEJU gERE zABu
+    \_        DEga veHe Jabe
+    \_        SetO LAZu hOJO
+
+
+**  ~~~~~~~~  cvs-mixed:4
+\_  bits:     66.5754
+\_  length:   19
+\_  examples:
+    \_        Lami NIZe lABE ziZU
+    \_        bENA MoZi HEcE poGa
+    \_        picU vEPO ToCe noRA
+    \_        jeno noZI Liri CePo
+    \_        NESu sAma loSi HEbI
+    \_        cEDA VEJU gERE zABu
+    \_        DEga veHe Jabe SetO
+    \_        LAZu hOJO nAzo Zazi
+    \_        liBo zutA muFE zAGE
+    \_        JuGO nuHu BALA maci
+
+
+**  ~~~~~~~~  cvs-mixed:5
+\_  bits:     83.2192
+\_  length:   24
+\_  examples:
+    \_        Lami NIZe lABE ziZU bENA
+    \_        MoZi HEcE poGa picU vEPO
+    \_        ToCe noRA jeno noZI Liri
+    \_        CePo NESu sAma loSi HEbI
+    \_        cEDA VEJU gERE zABu DEga
+    \_        veHe Jabe SetO LAZu hOJO
+    \_        nAzo Zazi liBo zutA muFE
+    \_        zAGE JuGO nuHu BALA maci
+    \_        fUmi Sevi mUmA DaMa hihI
+    \_        FINi mOcO BEMe suto bura
+
+
+**  ~~~~~~~~  cvs-mixed:6
+\_  bits:     99.8631
+\_  length:   29
+\_  examples:
+    \_        Lami NIZe lABE ziZU bENA MoZi
+    \_        HEcE poGa picU vEPO ToCe noRA
+    \_        jeno noZI Liri CePo NESu sAma
+    \_        loSi HEbI cEDA VEJU gERE zABu
+    \_        DEga veHe Jabe SetO LAZu hOJO
+    \_        nAzo Zazi liBo zutA muFE zAGE
+    \_        JuGO nuHu BALA maci fUmi Sevi
+    \_        mUmA DaMa hihI FINi mOcO BEMe
+    \_        suto bura cela BANU CURA zACU
+    \_        laDo fode nOgi MUmE dihu pobU
+
+
+**  ~~~~~~~~  cvs-mixed:7
+\_  bits:     116.5069
+\_  length:   34
+\_  examples:
+    \_        Lami NIZe lABE ziZU bENA MoZi HEcE
+    \_        poGa picU vEPO ToCe noRA jeno noZI
+    \_        Liri CePo NESu sAma loSi HEbI cEDA
+    \_        VEJU gERE zABu DEga veHe Jabe SetO
+    \_        LAZu hOJO nAzo Zazi liBo zutA muFE
+    \_        zAGE JuGO nuHu BALA maci fUmi Sevi
+    \_        mUmA DaMa hihI FINi mOcO BEMe suto
+    \_        bura cela BANU CURA zACU laDo fode
+    \_        nOgi MUmE dihu pobU pAGO seZE siJU
+    \_        RaJo rUPa TUse zISU cujI RESI beho
+
+
+**  ~~~~~~~~  cvs-mixed:8
+\_  bits:     133.1508
+\_  length:   39
+\_  examples:
+    \_        Lami NIZe lABE ziZU bENA MoZi HEcE poGa
+    \_        picU vEPO ToCe noRA jeno noZI Liri CePo
+    \_        NESu sAma loSi HEbI cEDA VEJU gERE zABu
+    \_        DEga veHe Jabe SetO LAZu hOJO nAzo Zazi
+    \_        liBo zutA muFE zAGE JuGO nuHu BALA maci
+    \_        fUmi Sevi mUmA DaMa hihI FINi mOcO BEMe
+    \_        suto bura cela BANU CURA zACU laDo fode
+    \_        nOgi MUmE dihu pobU pAGO seZE siJU RaJo
+    \_        rUPa TUse zISU cujI RESI beho CevI ZOfO
+    \_        lOCa CInI rivu FUTo RUcO GEME BUjI Dizo
+
+
+**  ~~~~~~~~  cvs-mixed:9
+\_  bits:     149.7947
+\_  length:   44
+\_  examples:
+    \_        Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU
+    \_        vEPO ToCe noRA jeno noZI Liri CePo NESu sAma
+    \_        loSi HEbI cEDA VEJU gERE zABu DEga veHe Jabe
+    \_        SetO LAZu hOJO nAzo Zazi liBo zutA muFE zAGE
+    \_        JuGO nuHu BALA maci fUmi Sevi mUmA DaMa hihI
+    \_        FINi mOcO BEMe suto bura cela BANU CURA zACU
+    \_        laDo fode nOgi MUmE dihu pobU pAGO seZE siJU
+    \_        RaJo rUPa TUse zISU cujI RESI beho CevI ZOfO
+    \_        lOCa CInI rivu FUTo RUcO GEME BUjI Dizo NeZi
+    \_        bIzu SASI JiHA MAhO lOju fANA TIZE giDe ruZA
+
+
+**  ~~~~~~~~  cvs-mixed:10
+\_  bits:     166.4385
+\_  length:   49
+\_  examples:
+    \_        Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO
+    \_        ToCe noRA jeno noZI Liri CePo NESu sAma loSi HEbI
+    \_        cEDA VEJU gERE zABu DEga veHe Jabe SetO LAZu hOJO
+    \_        nAzo Zazi liBo zutA muFE zAGE JuGO nuHu BALA maci
+    \_        fUmi Sevi mUmA DaMa hihI FINi mOcO BEMe suto bura
+    \_        cela BANU CURA zACU laDo fode nOgi MUmE dihu pobU
+    \_        pAGO seZE siJU RaJo rUPa TUse zISU cujI RESI beho
+    \_        CevI ZOfO lOCa CInI rivu FUTo RUcO GEME BUjI Dizo
+    \_        NeZi bIzu SASI JiHA MAhO lOju fANA TIZE giDe ruZA
+    \_        ZEza daGo sUgU VAJU POha VuhO GOME SoBI PULE boPi
+
+
+**  ~~~~~~~~  cvs-mixed:11
+\_  bits:     183.0824
+\_  length:   54
+\_  examples:
+    \_        Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe
+    \_        noRA jeno noZI Liri CePo NESu sAma loSi HEbI cEDA VEJU
+    \_        gERE zABu DEga veHe Jabe SetO LAZu hOJO nAzo Zazi liBo
+    \_        zutA muFE zAGE JuGO nuHu BALA maci fUmi Sevi mUmA DaMa
+    \_        hihI FINi mOcO BEMe suto bura cela BANU CURA zACU laDo
+    \_        fode nOgi MUmE dihu pobU pAGO seZE siJU RaJo rUPa TUse
+    \_        zISU cujI RESI beho CevI ZOfO lOCa CInI rivu FUTo RUcO
+    \_        GEME BUjI Dizo NeZi bIzu SASI JiHA MAhO lOju fANA TIZE
+    \_        giDe ruZA ZEza daGo sUgU VAJU POha VuhO GOME SoBI PULE
+    \_        boPi DIJE laLa vEZA zEpA mUHO ZiSI PuDI Lehi SuZU DaNI
+
+
+**  ~~~~~~~~  cvs-mixed:12
+\_  bits:     199.7262
+\_  length:   59
+\_  examples:
+    \_        Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA
+    \_        jeno noZI Liri CePo NESu sAma loSi HEbI cEDA VEJU gERE zABu
+    \_        DEga veHe Jabe SetO LAZu hOJO nAzo Zazi liBo zutA muFE zAGE
+    \_        JuGO nuHu BALA maci fUmi Sevi mUmA DaMa hihI FINi mOcO BEMe
+    \_        suto bura cela BANU CURA zACU laDo fode nOgi MUmE dihu pobU
+    \_        pAGO seZE siJU RaJo rUPa TUse zISU cujI RESI beho CevI ZOfO
+    \_        lOCa CInI rivu FUTo RUcO GEME BUjI Dizo NeZi bIzu SASI JiHA
+    \_        MAhO lOju fANA TIZE giDe ruZA ZEza daGo sUgU VAJU POha VuhO
+    \_        GOME SoBI PULE boPi DIJE laLa vEZA zEpA mUHO ZiSI PuDI Lehi
+    \_        SuZU DaNI Tapa bEVU JIVi dIfO JOnU geNO cAGO DANo SigE pOsa
+
+
+**  ~~~~~~~~  cvs-mixed:13
+\_  bits:     216.3701
+\_  length:   64
+\_  examples:
+    \_        Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno
+    \_        noZI Liri CePo NESu sAma loSi HEbI cEDA VEJU gERE zABu DEga veHe
+    \_        Jabe SetO LAZu hOJO nAzo Zazi liBo zutA muFE zAGE JuGO nuHu BALA
+    \_        maci fUmi Sevi mUmA DaMa hihI FINi mOcO BEMe suto bura cela BANU
+    \_        CURA zACU laDo fode nOgi MUmE dihu pobU pAGO seZE siJU RaJo rUPa
+    \_        TUse zISU cujI RESI beho CevI ZOfO lOCa CInI rivu FUTo RUcO GEME
+    \_        BUjI Dizo NeZi bIzu SASI JiHA MAhO lOju fANA TIZE giDe ruZA ZEza
+    \_        daGo sUgU VAJU POha VuhO GOME SoBI PULE boPi DIJE laLa vEZA zEpA
+    \_        mUHO ZiSI PuDI Lehi SuZU DaNI Tapa bEVU JIVi dIfO JOnU geNO cAGO
+    \_        DANo SigE pOsa picE PeGe ZiCu SuTI zIrU luFE jAVU fefA PEdu neGA
+
+
+**  ~~~~~~~~  cvs-mixed:14
+\_  bits:     233.0139
+\_  length:   69
+\_  examples:
+    \_        Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno noZI
+    \_        Liri CePo NESu sAma loSi HEbI cEDA VEJU gERE zABu DEga veHe Jabe SetO
+    \_        LAZu hOJO nAzo Zazi liBo zutA muFE zAGE JuGO nuHu BALA maci fUmi Sevi
+    \_        mUmA DaMa hihI FINi mOcO BEMe suto bura cela BANU CURA zACU laDo fode
+    \_        nOgi MUmE dihu pobU pAGO seZE siJU RaJo rUPa TUse zISU cujI RESI beho
+    \_        CevI ZOfO lOCa CInI rivu FUTo RUcO GEME BUjI Dizo NeZi bIzu SASI JiHA
+    \_        MAhO lOju fANA TIZE giDe ruZA ZEza daGo sUgU VAJU POha VuhO GOME SoBI
+    \_        PULE boPi DIJE laLa vEZA zEpA mUHO ZiSI PuDI Lehi SuZU DaNI Tapa bEVU
+    \_        JIVi dIfO JOnU geNO cAGO DANo SigE pOsa picE PeGe ZiCu SuTI zIrU luFE
+    \_        jAVU fefA PEdu neGA BALE nUlE Noda horI MomO DeME HIta vIvo Buja rOSE
+
+
+**  ~~~~~~~~  cvs-mixed:15
+\_  bits:     249.6578
+\_  length:   74
+\_  examples:
+    \_        Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno noZI Liri
+    \_        CePo NESu sAma loSi HEbI cEDA VEJU gERE zABu DEga veHe Jabe SetO LAZu hOJO
+    \_        nAzo Zazi liBo zutA muFE zAGE JuGO nuHu BALA maci fUmi Sevi mUmA DaMa hihI
+    \_        FINi mOcO BEMe suto bura cela BANU CURA zACU laDo fode nOgi MUmE dihu pobU
+    \_        pAGO seZE siJU RaJo rUPa TUse zISU cujI RESI beho CevI ZOfO lOCa CInI rivu
+    \_        FUTo RUcO GEME BUjI Dizo NeZi bIzu SASI JiHA MAhO lOju fANA TIZE giDe ruZA
+    \_        ZEza daGo sUgU VAJU POha VuhO GOME SoBI PULE boPi DIJE laLa vEZA zEpA mUHO
+    \_        ZiSI PuDI Lehi SuZU DaNI Tapa bEVU JIVi dIfO JOnU geNO cAGO DANo SigE pOsa
+    \_        picE PeGe ZiCu SuTI zIrU luFE jAVU fefA PEdu neGA BALE nUlE Noda horI MomO
+    \_        DeME HIta vIvo Buja rOSE vaRU FeGO meHe Veja peTI JEje vUpi NuNA tUGa ziDo
+
+
+**  ~~~~~~~~  cvs-mixed:16
+\_  bits:     266.3016
+\_  length:   79
+\_  examples:
+    \_        Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno noZI Liri CePo
+    \_        NESu sAma loSi HEbI cEDA VEJU gERE zABu DEga veHe Jabe SetO LAZu hOJO nAzo Zazi
+    \_        liBo zutA muFE zAGE JuGO nuHu BALA maci fUmi Sevi mUmA DaMa hihI FINi mOcO BEMe
+    \_        suto bura cela BANU CURA zACU laDo fode nOgi MUmE dihu pobU pAGO seZE siJU RaJo
+    \_        rUPa TUse zISU cujI RESI beho CevI ZOfO lOCa CInI rivu FUTo RUcO GEME BUjI Dizo
+    \_        NeZi bIzu SASI JiHA MAhO lOju fANA TIZE giDe ruZA ZEza daGo sUgU VAJU POha VuhO
+    \_        GOME SoBI PULE boPi DIJE laLa vEZA zEpA mUHO ZiSI PuDI Lehi SuZU DaNI Tapa bEVU
+    \_        JIVi dIfO JOnU geNO cAGO DANo SigE pOsa picE PeGe ZiCu SuTI zIrU luFE jAVU fefA
+    \_        PEdu neGA BALE nUlE Noda horI MomO DeME HIta vIvo Buja rOSE vaRU FeGO meHe Veja
+    \_        peTI JEje vUpi NuNA tUGa ziDo Holo GOGe PiNo FaHA JIdu JUNE josU RiRE nomO LoVo
+
+
+**  ~~~~~~~~  cvs-plus-a:2
+\_  bits:     25.9315
+\_  length:   9
+\_  examples:
+    \_        sane 2711
+    \_        zalu 2518
+    \_        fipi 2906
+    \_        camu 3526
+    \_        cone 3356
+    \_        bahe 0946
+    \_        tusu 3513
+    \_        suma 3385
+    \_        sice 7232
+    \_        dupu 4256
+
+
+**  ~~~~~~~~  cvs-plus-a:3
+\_  bits:     38.5754
+\_  length:   14
+\_  examples:
+    \_        sane seda 0449
+    \_        dufi pivu 2906
+    \_        camu cige 6062
+    \_        hoba helo 0888
+    \_        suva suma 3385
+    \_        sice geve 5183
+    \_        puni foga 0810
+    \_        pabe huro 6070
+    \_        noco dopi 5546
+    \_        dala coha 0017
+
+
+**  ~~~~~~~~  cvs-plus-a:4
+\_  bits:     51.2192
+\_  length:   19
+\_  examples:
+    \_        sane seda zalu 2518
+    \_        fipi vuce baca 5735
+    \_        gepa cone hoba 3209
+    \_        lotu suva suma 3385
+    \_        sice geve dupu 4256
+    \_        gata gapa behu 2716
+    \_        puba noco dopi 5546
+    \_        dala coha raba 7191
+    \_        tovu fucu runa 5302
+    \_        befe mozi gizi 5662
+
+
+**  ~~~~~~~~  cvs-plus-a:5
+\_  bits:     63.8631
+\_  length:   24
+\_  examples:
+    \_        sane seda zalu dufi 6290
+    \_        coca muci gepa cone 3356
+    \_        bahe lotu suva suma 3385
+    \_        sice geve dupu nifo 2081
+    \_        gapa behu ropu bano 7916
+    \_        pima noda laco hara 0171
+    \_        vito vufu curu nami 3024
+    \_        befe mozi gizi pifo 4684
+    \_        hasi rime gaze feva 4229
+    \_        resa sago cose jari 6714
+
+
+**  ~~~~~~~~  cvs-plus-a:6
+\_  bits:     76.5069
+\_  length:   29
+\_  examples:
+    \_        sane seda zalu dufi pivu 2906
+    \_        camu cige paco neho bahe 0946
+    \_        tusu vasu mahe tusi cege 2518
+    \_        puni foga taga pabe huro 6070
+    \_        noco dopi mano dala coha 0017
+    \_        duvi tovu fucu runa mige 4022
+    \_        mozi gizi pifo peju ceji 3046
+    \_        siri mega zefe vale gure 5070
+    \_        goco seja ripi bide bifi 5959
+    \_        cepu zeca neha tedu goce 7143
+
+
+**  ~~~~~~~~  cvs-plus-a:7
+\_  bits:     89.1508
+\_  length:   34
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba 6657
+    \_        cige paco neho bahe lotu suva 3851
+    \_        hetu sice geve dupu nifo gata 0600
+    \_        jehu ropu bano codo pima noda 4116
+    \_        hara badu vito vufu curu nami 3024
+    \_        befe mozi gizi pifo peju ceji 3046
+    \_        siri mega zefe vale gure sasa 2177
+    \_        cose jari pibi debi fivi cepu 5920
+    \_        neha tedu goce rile haza hoti 1162
+    \_        ruga soce nuta valo vaju pacu 7701
+
+
+**  ~~~~~~~~  cvs-plus-a:8
+\_  bits:     101.7947
+\_  length:   39
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu 3526
+    \_        cone hoba helo tusu vasu mahe tusi 7272
+    \_        vedu puni foga taga pabe huro puba 6359
+    \_        paru dopi mano dala coha raba duvi 8754
+    \_        fucu runa mige befe mozi gizi pifo 4684
+    \_        hasi rime gaze feva legu resa sago 6721
+    \_        seja ripi bide bifi vice puze cane 3727
+    \_        hate dugo ceri leha zaho tidu doju 2980
+    \_        soce nuta valo vaju pacu rasi lima 8280
+    \_        sare liza suza vojo miso mugi fedi 2460
+
+
+**  ~~~~~~~~  cvs-plus-a:9
+\_  bits:     114.4385
+\_  length:   44
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige 6062
+    \_        hoba helo tusu vasu mahe tusi cege vedu 3642
+    \_        joga taga pabe huro puba noco dopi mano 1041
+    \_        coha raba duvi tovu fucu runa mige befe 5344
+    \_        gizi pifo peju ceji hasi rime gaze feva 4229
+    \_        resa sago cose jari pibi debi fivi cepu 5920
+    \_        neha tedu goce rile haza hoti dudo jufo 9802
+    \_        soce nuta valo vaju pacu rasi lima basa 7324
+    \_        loza suza vojo miso mugi fedi gipa rilu 5744
+    \_        revo sinu teja masi loce niji foci bava 6369
+
+
+**  ~~~~~~~~  cvs-plus-a:10
+\_  bits:     127.0824
+\_  length:   49
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco 2335
+    \_        pace lotu suva suma hetu sice geve dupu nifo 2081
+    \_        gapa behu ropu bano codo pima noda laco hara 0171
+    \_        vito vufu curu nami gebe femo zigi zipi fope 8430
+    \_        siri mega zefe vale gure sasa goco seja ripi 4304
+    \_        debi fivi cepu zeca neha tedu goce rile haza 9356
+    \_        tidu doju foga soce nuta valo vaju pacu rasi 4745
+    \_        maba sare liza suza vojo miso mugi fedi gipa 7457
+    \_        lovo sinu teja masi loce niji foci bava peja 9199
+    \_        muru tari tose sivi ruzo bate naro fuba loni 6352
+
+
+**  ~~~~~~~~  cvs-plus-a:11
+\_  bits:     139.7262
+\_  length:   54
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho 0320
+    \_        lotu suva suma hetu sice geve dupu nifo gata gapa 0232
+    \_        ropu bano codo pima noda laco hara badu vito vufu 8853
+    \_        gebe femo zigi zipi fope juce jiha siri mega zefe 1422
+    \_        resa sago cose jari pibi debi fivi cepu zeca neha 1812
+    \_        dugo ceri leha zaho tidu doju foga soce nuta valo 9304
+    \_        fupa cura sili maba sare liza suza vojo miso mugi 7231
+    \_        lejo bolu muni lovo sinu teja masi loce niji foci 0063
+    \_        javu diru tari tose sivi ruzo bate naro fuba loni 6352
+    \_        vijo tino fevi napo ruva hebo zafo zeca togi tahe 9811
+
+
+**  ~~~~~~~~  cvs-plus-a:12
+\_  bits:     152.3701
+\_  length:   59
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe 0946
+    \_        tusu vasu mahe tusi cege vedu puni foga taga pabe huro 6070
+    \_        noco dopi mano dala coha raba duvi tovu fucu runa mige 4022
+    \_        mozi gizi pifo peju ceji hasi rime gaze feva legu resa 7021
+    \_        cose jari pibi debi fivi cepu zeca neha tedu goce rile 3099
+    \_        hoti dudo jufo gaso cenu tava lova jupa cura sili maba 3571
+    \_        reli zasu zavo jomi somu gife digi pari lumu nilo vosi 2828
+    \_        fuja masi loce niji foci bava peja vudi ruta rito sesi 6357
+    \_        toba tena rofu balo niji vohi govi joti nofe vina poru 0301
+    \_        boza foze cato gita heju dido moti nego vedo hufa hero 1816
+
+
+**  ~~~~~~~~  cvs-plus-a:13
+\_  bits:     165.0139
+\_  length:   64
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu 9351
+    \_        suma hetu sice geve dupu nifo gata gapa behu ropu bano codo 8655
+    \_        cino dala coha raba duvi tovu fucu runa mige befe mozi gizi 5662
+    \_        ripe juce jiha siri mega zefe vale gure sasa goco seja ripi 4304
+    \_        debi fivi cepu zeca neha tedu goce rile haza hoti dudo jufo 9802
+    \_        soce nuta valo vaju pacu rasi lima basa reli zasu zavo jomi 6594
+    \_        fedi gipa rilu muni lovo sinu teja masi loce niji foci bava 6369
+    \_        diru tari tose sivi ruzo bate naro fuba loni jivo higo vijo 8477
+    \_        fevi napo ruva hebo zafo zeca togi tahe judi domo tine gove 1638
+    \_        fahe rodu pulu situ cupu fuda daci hupa favu pisa civa feje 3703
+
+
+**  ~~~~~~~~  cvs-plus-a:14
+\_  bits:     177.6578
+\_  length:   69
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva 3851
+    \_        hetu sice geve dupu nifo gata gapa behu ropu bano codo pima noda 4116
+    \_        hara badu vito vufu curu nami gebe femo zigi zipi fope juce jiha 4647
+    \_        mome gaze feva legu resa sago cose jari pibi debi fivi cepu zeca 3727
+    \_        hate dugo ceri leha zaho tidu doju foga soce nuta valo vaju pacu 7701
+    \_        sili maba sare liza suza vojo miso mugi fedi gipa rilu muni lovo 5752
+    \_        nute jama silo ceni jifo ciba vape javu diru tari tose sivi ruzo 0305
+    \_        tena rofu balo niji vohi govi joti nofe vina poru vahe boza foze 7878
+    \_        beju dido moti nego vedo hufa hero dupu lusi tucu pufu dada cihu 6413
+    \_        bute pisa civa feje sase nolo fibe loli mire bupi pune gafa hoda 4976
+
+
+**  ~~~~~~~~  cvs-plus-a:15
+\_  bits:     190.3016
+\_  length:   74
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma 3385
+    \_        sice geve dupu nifo gata gapa behu ropu bano codo pima noda laco hara 0171
+    \_        vito vufu curu nami gebe femo zigi zipi fope juce jiha siri mega zefe 1422
+    \_        resa sago cose jari pibi debi fivi cepu zeca neha tedu goce rile haza 9356
+    \_        tidu doju foga soce nuta valo vaju pacu rasi lima basa reli zasu zavo 6565
+    \_        gife digi pari lumu nilo vosi nute jama silo ceni jifo ciba vape javu 1995
+    \_        ruta rito sesi viru zoba tena rofu balo niji vohi govi joti nofe vina 6779
+    \_        vahe boza foze cato gita heju dido moti nego vedo hufa hero dupu lusi 7390
+    \_        tucu pufu dada cihu pafa vupi saci vafe jesa seno lofi belo limi rebu 6408
+    \_        pune gafa hoda ciso rofi zozo pefi nize fobu rigi nehe hopu pivu gebo 5977
+
+
+**  ~~~~~~~~  cvs-plus-a:16
+\_  bits:     202.9455
+\_  length:   79
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu 5572
+    \_        geve dupu nifo gata gapa behu ropu bano codo pima noda laco hara badu vito 5488
+    \_        nami gebe femo zigi zipi fope juce jiha siri mega zefe vale gure sasa goco 2128
+    \_        jari pibi debi fivi cepu zeca neha tedu goce rile haza hoti dudo jufo gaso 3398
+    \_        valo vaju pacu rasi lima basa reli zasu zavo jomi somu gife digi pari lumu 7442
+    \_        vosi nute jama silo ceni jifo ciba vape javu diru tari tose sivi ruzo bate 7620
+    \_        fuba loni jivo higo vijo tino fevi napo ruva hebo zafo zeca togi tahe judi 1180
+    \_        moti nego vedo hufa hero dupu lusi tucu pufu dada cihu pafa vupi saci vafe 3733
+    \_        sase nolo fibe loli mire bupi pune gafa hoda ciso rofi zozo pefi nize fobu 7243
+    \_        heho pupi vuge boro cala viro febo fefe mugu jufe zecu nusa nadu nase tezu 5058
+
+
+**  ~~~~~~~~  cvs-plus-b:2
+\_  bits:     25.6096
+\_  length:   9
+\_  examples:
+    \_        sane SE71
+    \_        zalu DU25
+    \_        pivu CE90
+    \_        coca MU35
+    \_        gepa CO23
+    \_        pace LO08
+    \_        tusu VA38
+    \_        mahe TU55
+    \_        cege VE51
+    \_        tepu NI25
+
+
+**  ~~~~~~~~  cvs-plus-b:3
+\_  bits:     38.2534
+\_  length:   14
+\_  examples:
+    \_        sane seda ZA44
+    \_        dufi pivu CE90
+    \_        coca muci GE60
+    \_        cone hoba HE09
+    \_        lotu suva SU51
+    \_        hetu sice GE25
+    \_        dupu nifo GA08
+    \_        gapa behu RO60
+    \_        noco dopi MA46
+    \_        dala coha RA01
+
+
+**  ~~~~~~~~  cvs-plus-b:4
+\_  bits:     50.8973
+\_  length:   19
+\_  examples:
+    \_        sane seda zalu DU25
+    \_        pivu ceba camu CI26
+    \_        cone hoba helo TU93
+    \_        vasu mahe tusi CE72
+    \_        vedu puni foga TA06
+    \_        baje huro puba NO79
+    \_        dopi mano dala CO93
+    \_        nara badu vito VU48
+    \_        runa mige befe MO34
+    \_        gizi pifo peju CE43
+
+
+**  ~~~~~~~~  cvs-plus-b:5
+\_  bits:     63.5412
+\_  length:   24
+\_  examples:
+    \_        sane seda zalu dufi PI29
+    \_        baca muci gepa cone HO03
+    \_        lotu suva suma hetu SI72
+    \_        geve dupu nifo gata GA60
+    \_        behu ropu bano codo PI55
+    \_        cino dala coha raba DU14
+    \_        tovu fucu runa mige BE22
+    \_        mozi gizi pifo peju CE43
+    \_        bisi rime gaze feva LE29
+    \_        resa sago cose jari PI43
+
+
+**  ~~~~~~~~  cvs-plus-b:6
+\_  bits:     76.1850
+\_  length:   29
+\_  examples:
+    \_        sane seda zalu dufi pivu CE90
+    \_        coca muci gepa cone hoba HE09
+    \_        lotu suva suma hetu sice GE25
+    \_        dupu nifo gata gapa behu RO60
+    \_        noco dopi mano dala coha RA01
+    \_        duvi tovu fucu runa mige BE22
+    \_        mozi gizi pifo peju ceji HA46
+    \_        siri mega zefe vale gure SA70
+    \_        goco seja ripi bide bifi VI85
+    \_        cepu zeca neha tedu goce RI14
+
+
+**  ~~~~~~~~  cvs-plus-b:7
+\_  bits:     88.8289
+\_  length:   34
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba CA57
+    \_        cige paco neho bahe lotu suva SU51
+    \_        hetu sice geve dupu nifo gata GA60
+    \_        behu ropu bano codo pima noda LA16
+    \_        hara badu vito vufu curu nami GE40
+    \_        femo zigi zipi fope juce jiha SI75
+    \_        mega zefe vale gure sasa goco SE80
+    \_        ripi bide bifi vice puze cane HA18
+    \_        dedu goce rile haza hoti dudo JU29
+    \_        gaso cenu tava lova jupa cura SI47
+
+
+**  ~~~~~~~~  cvs-plus-b:8
+\_  bits:     101.4727
+\_  length:   39
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu CI26
+    \_        cone hoba helo tusu vasu mahe tusi CE72
+    \_        vedu puni foga taga pabe huro puba NO79
+    \_        dopi mano dala coha raba duvi tovu FU88
+    \_        nami gebe femo zigi zipi fope juce JI30
+    \_        siri mega zefe vale gure sasa goco SE80
+    \_        ripi bide bifi vice puze cane hate DU62
+    \_        rile haza hoti dudo jufo gaso cenu TA99
+    \_        jalo vaju pacu rasi lima basa reli ZA93
+    \_        suza vojo miso mugi fedi gipa rilu MU74
+
+
+**  ~~~~~~~~  cvs-plus-b:9
+\_  bits:     114.1166
+\_  length:   44
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige PA62
+    \_        hoba helo tusu vasu mahe tusi cege vedu PU42
+    \_        joga taga pabe huro puba noco dopi mano DA41
+    \_        coha raba duvi tovu fucu runa mige befe MO34
+    \_        gizi pifo peju ceji hasi rime gaze feva LE29
+    \_        resa sago cose jari pibi debi fivi cepu ZE03
+    \_        hate dugo ceri leha zaho tidu doju foga SO33
+    \_        tava lova jupa cura sili maba sare liza SU90
+    \_        vojo miso mugi fedi gipa rilu muni lovo SI28
+    \_        teja masi loce niji foci bava peja vudi RU81
+
+
+**  ~~~~~~~~  cvs-plus-b:10
+\_  bits:     126.7604
+\_  length:   49
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco NE33
+    \_        pace lotu suva suma hetu sice geve dupu nifo GA08
+    \_        gapa behu ropu bano codo pima noda laco hara BA71
+    \_        vito vufu curu nami gebe femo zigi zipi fope JU43
+    \_        bisi rime gaze feva legu resa sago cose jari PI43
+    \_        bide bifi vice puze cane hate dugo ceri leha ZA93
+    \_        pudu doju foga soce nuta valo vaju pacu rasi LI57
+    \_        maba sare liza suza vojo miso mugi fedi gipa RI45
+    \_        vilo vosi nute jama silo ceni jifo ciba vape JA91
+    \_        ziru tari tose sivi ruzo bate naro fuba loni JI63
+
+
+**  ~~~~~~~~  cvs-plus-b:11
+\_  bits:     139.4043
+\_  length:   54
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho BA32
+    \_        lotu suva suma hetu sice geve dupu nifo gata gapa BE32
+    \_        ropu bano codo pima noda laco hara badu vito vufu CU85
+    \_        gebe femo zigi zipi fope juce jiha siri mega zefe VA42
+    \_        gure sasa goco seja ripi bide bifi vice puze cane HA18
+    \_        dedu goce rile haza hoti dudo jufo gaso cenu tava LO93
+    \_        jupa cura sili maba sare liza suza vojo miso mugi FE31
+    \_        lejo bolu muni lovo sinu teja masi loce niji foci BA06
+    \_        hoja vudi ruta rito sesi viru zoba tena rofu balo NI63
+    \_        mevi joti nofe vina poru vahe boza foze cato gita HE98
+
+
+**  ~~~~~~~~  cvs-plus-b:12
+\_  bits:     152.0482
+\_  length:   59
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe LO08
+    \_        tusu vasu mahe tusi cege vedu puni foga taga pabe huro PU07
+    \_        noco dopi mano dala coha raba duvi tovu fucu runa mige BE22
+    \_        mozi gizi pifo peju ceji hasi rime gaze feva legu resa SA21
+    \_        cose jari pibi debi fivi cepu zeca neha tedu goce rile HA99
+    \_        hoti dudo jufo gaso cenu tava lova jupa cura sili maba SA73
+    \_        filo zasu zavo jomi somu gife digi pari lumu nilo vosi NU28
+    \_        fuja masi loce niji foci bava peja vudi ruta rito sesi VI78
+    \_        zoba tena rofu balo niji vohi govi joti nofe vina poru VA03
+    \_        gabo zafo zeca togi tahe judi domo tine gove dohu fahe RO18
+
+
+**  ~~~~~~~~  cvs-plus-b:13
+\_  bits:     164.6920
+\_  length:   64
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu SU35
+    \_        suma hetu sice geve dupu nifo gata gapa behu ropu bano codo PI55
+    \_        cino dala coha raba duvi tovu fucu runa mige befe mozi gizi PI62
+    \_        ripe juce jiha siri mega zefe vale gure sasa goco seja ripi BI30
+    \_        debi fivi cepu zeca neha tedu goce rile haza hoti dudo jufo GA23
+    \_        nuta valo vaju pacu rasi lima basa reli zasu zavo jomi somu GI72
+    \_        digi pari lumu nilo vosi nute jama silo ceni jifo ciba vape JA91
+    \_        ziru tari tose sivi ruzo bate naro fuba loni jivo higo vijo TI77
+    \_        fevi napo ruva hebo zafo zeca togi tahe judi domo tine gove DO38
+    \_        fahe rodu pulu situ cupu fuda daci hupa favu pisa civa feje SA32
+
+
+**  ~~~~~~~~  cvs-plus-b:14
+\_  bits:     177.3359
+\_  length:   69
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva SU51
+    \_        hetu sice geve dupu nifo gata gapa behu ropu bano codo pima noda LA16
+    \_        hara badu vito vufu curu nami gebe femo zigi zipi fope juce jiha SI75
+    \_        mega zefe vale gure sasa goco seja ripi bide bifi vice puze cane HA18
+    \_        dedu goce rile haza hoti dudo jufo gaso cenu tava lova jupa cura SI47
+    \_        maba sare liza suza vojo miso mugi fedi gipa rilu muni lovo sinu TE41
+    \_        masi loce niji foci bava peja vudi ruta rito sesi viru zoba tena RO20
+    \_        fuba loni jivo higo vijo tino fevi napo ruva hebo zafo zeca togi TA39
+    \_        dido moti nego vedo hufa hero dupu lusi tucu pufu dada cihu pafa VU65
+    \_        maci vafe jesa seno lofi belo limi rebu pipu nega faho daci soro FI96
+
+
+**  ~~~~~~~~  cvs-plus-b:15
+\_  bits:     189.9797
+\_  length:   74
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma HE38
+    \_        sice geve dupu nifo gata gapa behu ropu bano codo pima noda laco hara BA71
+    \_        vito vufu curu nami gebe femo zigi zipi fope juce jiha siri mega zefe VA42
+    \_        gure sasa goco seja ripi bide bifi vice puze cane hate dugo ceri leha ZA93
+    \_        pudu doju foga soce nuta valo vaju pacu rasi lima basa reli zasu zavo JO56
+    \_        mugi fedi gipa rilu muni lovo sinu teja masi loce niji foci bava peja VU19
+    \_        ziru tari tose sivi ruzo bate naro fuba loni jivo higo vijo tino fevi NA67
+    \_        ruva hebo zafo zeca togi tahe judi domo tine gove dohu fahe rodu pulu SI73
+    \_        tucu pufu dada cihu pafa vupi saci vafe jesa seno lofi belo limi rebu PI08
+    \_        pune gafa hoda ciso rofi zozo pefi nize fobu rigi nehe hopu pivu gebo RO49
+
+
+**  ~~~~~~~~  cvs-plus-b:16
+\_  bits:     202.6236
+\_  length:   79
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu SI72
+    \_        geve dupu nifo gata gapa behu ropu bano codo pima noda laco hara badu vito VU48
+    \_        runa mige befe mozi gizi pifo peju ceji hasi rime gaze feva legu resa sago CO21
+    \_        seja ripi bide bifi vice puze cane hate dugo ceri leha zaho tidu doju foga SO33
+    \_        tava lova jupa cura sili maba sare liza suza vojo miso mugi fedi gipa rilu MU74
+    \_        lovo sinu teja masi loce niji foci bava peja vudi ruta rito sesi viru zoba TE76
+    \_        fuba loni jivo higo vijo tino fevi napo ruva hebo zafo zeca togi tahe judi DO80
+    \_        moti nego vedo hufa hero dupu lusi tucu pufu dada cihu pafa vupi saci vafe JE37
+    \_        beno lofi belo limi rebu pipu nega faho daci soro fizo zope fini zefo buri GI36
+    \_        heho pupi vuge boro cala viro febo fefe mugu jufe zecu nusa nadu nase tezu BE58
+
+
+**  ~~~~~~~~  cvs-plus-c:2
+\_  bits:     27.2877
+\_  length:   9
+\_  examples:
+    \_        sane SE7~
+    \_        daza LU2;
+    \_        pivu CE9!
+    \_        coca MU3~
+    \_        gepa CO2+
+    \_        pace LO0_
+    \_        tusu VA3`
+    \_        mahe TU5~
+    \_        sege VE5%
+    \_        tepu NI2-
+
+
+**  ~~~~~~~~  cvs-plus-c:3
+\_  bits:     39.9315
+\_  length:   14
+\_  examples:
+    \_        sane seda ZA4(
+    \_        dufi pivu CE9!
+    \_        coca muci GE6"
+    \_        cone hoba HE0|
+    \_        lotu suva SU5'
+    \_        hetu sice GE2<
+    \_        dupu nifo GA0(
+    \_        huro puba NO7|
+    \_        dopi mano DA4$
+    \_        coha raba DU1.
+
+
+**  ~~~~~~~~  cvs-plus-c:4
+\_  bits:     52.5754
+\_  length:   19
+\_  examples:
+    \_        sane seda zalu DU2;
+    \_        pivu ceba camu CI2@
+    \_        paco neho bahe LO0_
+    \_        tusu vasu mahe TU5~
+    \_        sege vedu puni FO2~
+    \_        cata gapa behu RO6!
+    \_        noco dopi mano DA4$
+    \_        coha raba duvi TO5~
+    \_        vufu curu nami GE4(
+    \_        femo zigi zipi FO4?
+
+
+**  ~~~~~~~~  cvs-plus-c:5
+\_  bits:     65.2192
+\_  length:   24
+\_  examples:
+    \_        sane seda zalu dufi PI2~
+    \_        baca muci gepa cone HO0+
+    \_        lotu suva suma hetu SI7\
+    \_        geve dupu nifo gata GA6(
+    \_        huro puba noco dopi MA4=
+    \_        dala coha raba duvi TO5~
+    \_        vufu curu nami gebe FE5'
+    \_        zigi zipi fope juce JI3@
+    \_        siri mega zefe vale GU7)
+    \_        sasa goco seja ripi BI3"
+
+
+**  ~~~~~~~~  cvs-plus-c:6
+\_  bits:     77.8631
+\_  length:   29
+\_  examples:
+    \_        sane seda zalu dufi pivu CE9!
+    \_        coca muci gepa cone hoba HE0|
+    \_        lotu suva suma hetu sice GE2<
+    \_        dupu nifo gata gapa behu RO6!
+    \_        noco dopi mano dala coha RA0$
+    \_        duvi tovu fucu runa mige BE2;
+    \_        fozi gizi pifo peju ceji HA4@
+    \_        siri mega zefe vale gure SA7'
+    \_        goco seja ripi bide bifi VI8<
+    \_        cepu zeca neha tedu goce RI1/
+
+
+**  ~~~~~~~~  cvs-plus-c:7
+\_  bits:     90.5069
+\_  length:   34
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba CA5]
+    \_        cige paco neho bahe lotu suva SU5'
+    \_        hetu sice geve dupu nifo gata GA6(
+    \_        huro puba noco dopi mano dala CO9[
+    \_        badu vito vufu curu nami gebe FE5'
+    \_        zigi zipi fope juce jiha siri ME0"
+    \_        gaze feva legu resa sago cose JA8;
+    \_        pibi debi fivi cepu zeca neha TE1]
+    \_        goce rile haza hoti dudo jufo GA2[
+    \_        cenu tava lova jupa cura sili MA8(
+
+
+**  ~~~~~~~~  cvs-plus-c:8
+\_  bits:     103.1508
+\_  length:   39
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu CI2@
+    \_        paco neho bahe lotu suva suma hetu SI7\
+    \_        geve dupu nifo gata gapa behu ropu BA6=
+    \_        moco dopi mano dala coha raba duvi TO5~
+    \_        vufu curu nami gebe femo zigi zipi FO4?
+    \_        juce jiha siri mega zefe vale gure SA7'
+    \_        goco seja ripi bide bifi vice puze CA3$
+    \_        hate dugo ceri leha zaho tidu doju FO9`
+    \_        gaso cenu tava lova jupa cura sili MA8(
+    \_        basa reli zasu zavo jomi somu gife DI2!
+
+
+**  ~~~~~~~~  cvs-plus-c:9
+\_  bits:     115.7947
+\_  length:   44
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige PA6+
+    \_        pace lotu suva suma hetu sice geve dupu NI2-
+    \_        gata gapa behu ropu bano codo pima noda LA1[
+    \_        badu vito vufu curu nami gebe femo zigi ZI5?
+    \_        fifo peju ceji hasi rime gaze feva legu RE5=
+    \_        bago cose jari pibi debi fivi cepu zeca NE3$
+    \_        hate dugo ceri leha zaho tidu doju foga SO3,
+    \_        tava lova jupa cura sili maba sare liza SU9"
+    \_        vojo miso mugi fedi gipa rilu muni lovo SI2&
+    \_        nute jama silo ceni jifo ciba vape javu DI2[
+
+
+**  ~~~~~~~~  cvs-plus-c:10
+\_  bits:     128.4385
+\_  length:   49
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco NE3,
+    \_        pace lotu suva suma hetu sice geve dupu nifo GA0(
+    \_        huro puba noco dopi mano dala coha raba duvi TO5~
+    \_        vufu curu nami gebe femo zigi zipi fope juce JI3@
+    \_        siri mega zefe vale gure sasa goco seja ripi BI3"
+    \_        debi fivi cepu zeca neha tedu goce rile haza HO8-
+    \_        doju foga soce nuta valo vaju pacu rasi lima BA3<
+    \_        reli zasu zavo jomi somu gife digi pari lumu NI4[
+    \_        vosi nute jama silo ceni jifo ciba vape javu DI2[
+    \_        turi tose sivi ruzo bate naro fuba loni jivo HI2@
+
+
+**  ~~~~~~~~  cvs-plus-c:11
+\_  bits:     141.0824
+\_  length:   54
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho BA3"
+    \_        lotu suva suma hetu sice geve dupu nifo gata gapa BE3{
+    \_        ropu bano codo pima noda laco hara badu vito vufu CU8*
+    \_        nami gebe femo zigi zipi fope juce jiha siri mega ZE2{
+    \_        jale gure sasa goco seja ripi bide bifi vice puze CA3$
+    \_        hate dugo ceri leha zaho tidu doju foga soce nuta VA7{
+    \_        naju pacu rasi lima basa reli zasu zavo jomi somu GI7=
+    \_        digi pari lumu nilo vosi nute jama silo ceni jifo CI0#
+    \_        vape javu diru tari tose sivi ruzo bate naro fuba LO4~
+    \_        niji vohi govi joti nofe vina poru vahe boza foze CA8[
+
+
+**  ~~~~~~~~  cvs-plus-c:12
+\_  bits:     153.7262
+\_  length:   59
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe LO0_
+    \_        tusu vasu mahe tusi cege vedu puni foga taga pabe huro PU0"
+    \_        noco dopi mano dala coha raba duvi tovu fucu runa mige BE2;
+    \_        fozi gizi pifo peju ceji hasi rime gaze feva legu resa SA2&
+    \_        cose jari pibi debi fivi cepu zeca neha tedu goce rile HA9+
+    \_        pudu doju foga soce nuta valo vaju pacu rasi lima basa RE4/
+    \_        zasu zavo jomi somu gife digi pari lumu nilo vosi nute JA5^
+    \_        silo ceni jifo ciba vape javu diru tari tose sivi ruzo BA5_
+    \_        faro fuba loni jivo higo vijo tino fevi napo ruva hebo ZA2[
+    \_        zeca togi tahe judi domo tine gove dohu fahe rodu pulu SI7,
+
+
+**  ~~~~~~~~  cvs-plus-c:13
+\_  bits:     166.3701
+\_  length:   64
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu SU3<
+    \_        suma hetu sice geve dupu nifo gata gapa behu ropu bano codo PI5;
+    \_        cino dala coha raba duvi tovu fucu runa mige befe mozi gizi PI6[
+    \_        peju ceji hasi rime gaze feva legu resa sago cose jari pibi DE0;
+    \_        vice puze cane hate dugo ceri leha zaho tidu doju foga soce NU8|
+    \_        valo vaju pacu rasi lima basa reli zasu zavo jomi somu gife DI2!
+    \_        rilu muni lovo sinu teja masi loce niji foci bava peja vudi RU8&
+    \_        rito sesi viru zoba tena rofu balo niji vohi govi joti nofe VI9=
+    \_        boro vahe boza foze cato gita heju dido moti nego vedo hufa HE9"
+    \_        rodu pulu situ cupu fuda daci hupa favu pisa civa feje sase NO7.
+
+
+**  ~~~~~~~~  cvs-plus-c:14
+\_  bits:     179.0139
+\_  length:   69
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva SU5'
+    \_        hetu sice geve dupu nifo gata gapa behu ropu bano codo pima noda LA1[
+    \_        badu vito vufu curu nami gebe femo zigi zipi fope juce jiha siri ME0"
+    \_        gaze feva legu resa sago cose jari pibi debi fivi cepu zeca neha TE1]
+    \_        goce rile haza hoti dudo jufo gaso cenu tava lova jupa cura sili MA8(
+    \_        basa reli zasu zavo jomi somu gife digi pari lumu nilo vosi nute JA5^
+    \_        silo ceni jifo ciba vape javu diru tari tose sivi ruzo bate naro FU0/
+    \_        pini jivo higo vijo tino fevi napo ruva hebo zafo zeca togi tahe JU9%
+    \_        lado moti nego vedo hufa hero dupu lusi tucu pufu dada cihu pafa VU6;
+    \_        saci vafe jesa seno lofi belo limi rebu pipu nega faho daci soro FI9+
+
+
+**  ~~~~~~~~  cvs-plus-c:15
+\_  bits:     191.6578
+\_  length:   74
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma HE3~
+    \_        sege vedu puni foga taga pabe huro puba noco dopi mano dala coha raba DU1.
+    \_        tovu fucu runa mige befe mozi gizi pifo peju ceji hasi rime gaze feva LE2|
+    \_        resa sago cose jari pibi debi fivi cepu zeca neha tedu goce rile haza HO8-
+    \_        doju foga soce nuta valo vaju pacu rasi lima basa reli zasu zavo jomi SO5'
+    \_        nedi gipa rilu muni lovo sinu teja masi loce niji foci bava peja vudi RU8&
+    \_        rito sesi viru zoba tena rofu balo niji vohi govi joti nofe vina poru VA0+
+    \_        gabo zafo zeca togi tahe judi domo tine gove dohu fahe rodu pulu situ CU4>
+    \_        pufu dada cihu pafa vupi saci vafe jesa seno lofi belo limi rebu pipu NE1@
+    \_        gafa hoda ciso rofi zozo pefi nize fobu rigi nehe hopu pivu gebo roca LA9[
+
+
+**  ~~~~~~~~  cvs-plus-c:16
+\_  bits:     204.3016
+\_  length:   79
+\_  examples:
+    \_        sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu SI7\
+    \_        geve dupu nifo gata gapa behu ropu bano codo pima noda laco hara badu vito VU4&
+    \_        fucu runa mige befe mozi gizi pifo peju ceji hasi rime gaze feva legu resa SA2&
+    \_        cose jari pibi debi fivi cepu zeca neha tedu goce rile haza hoti dudo jufo GA2[
+    \_        cenu tava lova jupa cura sili maba sare liza suza vojo miso mugi fedi gipa RI4{
+    \_        muni lovo sinu teja masi loce niji foci bava peja vudi ruta rito sesi viru ZO0&
+    \_        hate naro fuba loni jivo higo vijo tino fevi napo ruva hebo zafo zeca togi TA3*
+    \_        judi domo tine gove dohu fahe rodu pulu situ cupu fuda daci hupa favu pisa CI2^
+    \_        vafe jesa seno lofi belo limi rebu pipu nega faho daci soro fizo zope fini ZE2?
+    \_        buri gine heho pupi vuge boro cala viro febo fefe mugu jufe zecu nusa nadu NA2`
 
 
 **  ~~~~~~~~  proquint-lower:1

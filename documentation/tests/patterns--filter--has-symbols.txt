@@ -70,13 +70,20 @@
 ::  ascii-any:28            :  183.5 b :   34 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
 ::  ascii-any:30            :  196.6 b :   37 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[
 ::  ascii-any:32            :  209.7 b :   39 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
-::  cv-plus-c:2             :   28.4 b :    9 c ::    taqe VB7~
-::  cv-plus-c:3             :   41.8 b :   14 c ::    taqe veza ZA4(
-::  cv-plus-c:4             :   55.3 b :   19 c ::    taqe veza zaye FU2;
-::  cv-plus-c:5             :   68.7 b :   24 c ::    taqe veza zaye fugi RI2~
-::  cv-plus-c:6             :   82.1 b :   29 c ::    taqe veza zaye fugi rixu CB9!
-::  cv-plus-c:7             :   95.6 b :   34 c ::    taqe veza zaye fugi rixu cezu SA6^
-::  cv-plus-c:8             :  109.0 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO5]
+::  cva-plus-c:2            :   28.4 b :    9 c ::    taqe VE7~
+::  cva-plus-c:3            :   41.8 b :   14 c ::    taqe veza ZA4(
+::  cva-plus-c:4            :   55.3 b :   19 c ::    taqe veza zaye FU2;
+::  cva-plus-c:5            :   68.7 b :   24 c ::    taqe veza zaye fugi RI2~
+::  cva-plus-c:6            :   82.1 b :   29 c ::    taqe veza zaye fugi rixu CE9!
+::  cva-plus-c:7            :   95.6 b :   34 c ::    taqe veza zaye fugi rixu cezu SA6^
+::  cva-plus-c:8            :  109.0 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO5]
+::  cvs-plus-c:2            :   27.2 b :    9 c ::    sane SE7~
+::  cvs-plus-c:3            :   39.9 b :   14 c ::    sane seda ZA4(
+::  cvs-plus-c:4            :   52.5 b :   19 c ::    sane seda zalu DU2;
+::  cvs-plus-c:5            :   65.2 b :   24 c ::    sane seda zalu dufi PI2~
+::  cvs-plus-c:6            :   77.8 b :   29 c ::    sane seda zalu dufi pivu CE9!
+::  cvs-plus-c:7            :   90.5 b :   34 c ::    sane seda zalu dufi pivu ceba CA5]
+::  cvs-plus-c:8            :  103.1 b :   39 c ::    sane seda zalu dufi pivu ceba camu CI2@
 ::  eff-large:1             :   12.9 b :    5 c ::    scope
 ::  eff-large:2             :   25.8 b :   12 c ::    scope slacks
 ::  eff-large:3             :   38.7 b :   22 c ::    scope slacks patronize

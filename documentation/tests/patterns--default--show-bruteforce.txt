@@ -4846,7 +4846,7 @@
 \_  example:  ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
 
 
-**  ~~~~~~~~  cv-lower:1
+**  ~~~~~~~~  cva-lower:1
 \_  bits:     13.4284
 \_  length:   4
 \_  bruteforce time:
@@ -4865,7 +4865,7 @@
 \_  example:  taqe
 
 
-**  ~~~~~~~~  cv-lower:2
+**  ~~~~~~~~  cva-lower:2
 \_  bits:     26.8569
 \_  length:   9
 \_  bruteforce time:
@@ -4884,7 +4884,7 @@
 \_  example:  taqe veza
 
 
-**  ~~~~~~~~  cv-lower:3
+**  ~~~~~~~~  cva-lower:3
 \_  bits:     40.2854
 \_  length:   14
 \_  bruteforce time:
@@ -4903,7 +4903,7 @@
 \_  example:  taqe veza zaye
 
 
-**  ~~~~~~~~  cv-lower:4
+**  ~~~~~~~~  cva-lower:4
 \_  bits:     53.7139
 \_  length:   19
 \_  bruteforce time:
@@ -4922,7 +4922,7 @@
 \_  example:  taqe veza zaye fugi
 
 
-**  ~~~~~~~~  cv-lower:5
+**  ~~~~~~~~  cva-lower:5
 \_  bits:     67.1424
 \_  length:   24
 \_  bruteforce time:
@@ -4941,7 +4941,7 @@
 \_  example:  taqe veza zaye fugi rixu
 
 
-**  ~~~~~~~~  cv-lower:6
+**  ~~~~~~~~  cva-lower:6
 \_  bits:     80.5709
 \_  length:   29
 \_  bruteforce time:
@@ -4960,7 +4960,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu
 
 
-**  ~~~~~~~~  cv-lower:7
+**  ~~~~~~~~  cva-lower:7
 \_  bits:     93.9994
 \_  length:   34
 \_  bruteforce time:
@@ -4979,7 +4979,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco
 
 
-**  ~~~~~~~~  cv-lower:8
+**  ~~~~~~~~  cva-lower:8
 \_  bits:     107.4279
 \_  length:   39
 \_  bruteforce time:
@@ -4998,7 +4998,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa
 
 
-**  ~~~~~~~~  cv-lower:9
+**  ~~~~~~~~  cva-lower:9
 \_  bits:     120.8564
 \_  length:   44
 \_  bruteforce time:
@@ -5017,7 +5017,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize
 
 
-**  ~~~~~~~~  cv-lower:10
+**  ~~~~~~~~  cva-lower:10
 \_  bits:     134.2849
 \_  length:   49
 \_  bruteforce time:
@@ -5036,7 +5036,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose
 
 
-**  ~~~~~~~~  cv-lower:11
+**  ~~~~~~~~  cva-lower:11
 \_  bits:     147.7134
 \_  length:   54
 \_  bruteforce time:
@@ -5055,7 +5055,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago
 
 
-**  ~~~~~~~~  cv-lower:12
+**  ~~~~~~~~  cva-lower:12
 \_  bits:     161.1418
 \_  length:   59
 \_  bruteforce time:
@@ -5074,7 +5074,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko
 
 
-**  ~~~~~~~~  cv-lower:13
+**  ~~~~~~~~  cva-lower:13
 \_  bits:     174.5703
 \_  length:   64
 \_  bruteforce time:
@@ -5093,7 +5093,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha
 
 
-**  ~~~~~~~~  cv-lower:14
+**  ~~~~~~~~  cva-lower:14
 \_  bits:     187.9988
 \_  length:   69
 \_  bruteforce time:
@@ -5112,7 +5112,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu
 
 
-**  ~~~~~~~~  cv-lower:15
+**  ~~~~~~~~  cva-lower:15
 \_  bits:     201.4273
 \_  length:   74
 \_  bruteforce time:
@@ -5131,7 +5131,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku
 
 
-**  ~~~~~~~~  cv-lower:16
+**  ~~~~~~~~  cva-lower:16
 \_  bits:     214.8558
 \_  length:   79
 \_  bruteforce time:
@@ -5150,7 +5150,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju
 
 
-**  ~~~~~~~~  cv-upper:1
+**  ~~~~~~~~  cva-upper:1
 \_  bits:     13.4284
 \_  length:   4
 \_  bruteforce time:
@@ -5166,10 +5166,10 @@
     \_  scrypt                  --         now
     \_  GPG                     --         now
     \_  AES-128                 --         now
-\_  example:  TAQB
+\_  example:  TAQE
 
 
-**  ~~~~~~~~  cv-upper:2
+**  ~~~~~~~~  cva-upper:2
 \_  bits:     26.8569
 \_  length:   9
 \_  bruteforce time:
@@ -5185,10 +5185,10 @@
     \_  scrypt                  --    0.2  seconds
     \_  GPG                     --         now
     \_  AES-128                 --         now
-\_  example:  TAQB VBZA
+\_  example:  TAQE VEZA
 
 
-**  ~~~~~~~~  cv-upper:3
+**  ~~~~~~~~  cva-upper:3
 \_  bits:     40.2854
 \_  length:   14
 \_  bruteforce time:
@@ -5204,10 +5204,10 @@
     \_  scrypt                  --   31.3  minutes
     \_  GPG                     --    0.5  seconds
     \_  AES-128                 --         now
-\_  example:  TAQB VBZA ZAYB
+\_  example:  TAQE VEZA ZAYE
 
 
-**  ~~~~~~~~  cv-upper:4
+**  ~~~~~~~~  cva-upper:4
 \_  bits:     53.7139
 \_  length:   19
 \_  bruteforce time:
@@ -5223,10 +5223,10 @@
     \_  scrypt                  --    7.9  months
     \_  GPG                     --    1.5  hours
     \_  AES-128                 --    6.7  seconds
-\_  example:  TAQB VBZA ZAYB FUGI
+\_  example:  TAQE VEZA ZAYE FUGI
 
 
-**  ~~~~~~~~  cv-upper:5
+**  ~~~~~~~~  cva-upper:5
 \_  bits:     67.1424
 \_  length:   24
 \_  bruteforce time:
@@ -5242,10 +5242,10 @@
     \_  scrypt                  --    7.2  millennia
     \_  GPG                     --    1.9  years
     \_  AES-128                 --   20.7  hours
-\_  example:  TAQB VBZA ZAYB FUGI RIXU
+\_  example:  TAQE VEZA ZAYE FUGI RIXU
 
 
-**  ~~~~~~~~  cv-upper:6
+**  ~~~~~~~~  cva-upper:6
 \_  bits:     80.5709
 \_  length:   29
 \_  bruteforce time:
@@ -5261,10 +5261,10 @@
     \_  scrypt                  --   79.9  millions of years
     \_  GPG                     --   21.2  millennia
     \_  AES-128                 --    2.6  decades
-\_  example:  TAQB VBZA ZAYB FUGI RIXU CBZU
+\_  example:  TAQE VEZA ZAYE FUGI RIXU CEZU
 
 
-**  ~~~~~~~~  cv-upper:7
+**  ~~~~~~~~  cva-upper:7
 \_  bits:     93.9994
 \_  length:   34
 \_  bruteforce time:
@@ -5280,10 +5280,10 @@
     \_  scrypt                  --  880.4  billions of years
     \_  GPG                     --  233.8  millions of years
     \_  AES-128                 --  286.5  millennia
-\_  example:  TAQB VBZA ZAYB FUGI RIXU CBZU SACO
+\_  example:  TAQE VEZA ZAYE FUGI RIXU CEZU SACO
 
 
-**  ~~~~~~~~  cv-upper:8
+**  ~~~~~~~~  cva-upper:8
 \_  bits:     107.4279
 \_  length:   39
 \_  bruteforce time:
@@ -5299,10 +5299,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --    2.6  trillions of years
     \_  AES-128                 --    3.2  billions of years
-\_  example:  TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA
+\_  example:  TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA
 
 
-**  ~~~~~~~~  cv-upper:9
+**  ~~~~~~~~  cva-upper:9
 \_  bits:     120.8564
 \_  length:   44
 \_  bruteforce time:
@@ -5318,10 +5318,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --   34.8  trillions of years
-\_  example:  TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB
+\_  example:  TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE
 
 
-**  ~~~~~~~~  cv-upper:10
+**  ~~~~~~~~  cva-upper:10
 \_  bits:     134.2849
 \_  length:   49
 \_  bruteforce time:
@@ -5337,10 +5337,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
-\_  example:  TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB
+\_  example:  TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE
 
 
-**  ~~~~~~~~  cv-upper:11
+**  ~~~~~~~~  cva-upper:11
 \_  bits:     147.7134
 \_  length:   54
 \_  bruteforce time:
@@ -5356,10 +5356,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
-\_  example:  TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO
+\_  example:  TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO
 
 
-**  ~~~~~~~~  cv-upper:12
+**  ~~~~~~~~  cva-upper:12
 \_  bits:     161.1418
 \_  length:   59
 \_  bruteforce time:
@@ -5375,10 +5375,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
-\_  example:  TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO
+\_  example:  TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO
 
 
-**  ~~~~~~~~  cv-upper:13
+**  ~~~~~~~~  cva-upper:13
 \_  bits:     174.5703
 \_  length:   64
 \_  bruteforce time:
@@ -5394,10 +5394,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
-\_  example:  TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA
+\_  example:  TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO BAHA
 
 
-**  ~~~~~~~~  cv-upper:14
+**  ~~~~~~~~  cva-upper:14
 \_  bits:     187.9988
 \_  length:   69
 \_  bruteforce time:
@@ -5413,10 +5413,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
-\_  example:  TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU
+\_  example:  TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO BAHA YIWU
 
 
-**  ~~~~~~~~  cv-upper:15
+**  ~~~~~~~~  cva-upper:15
 \_  bits:     201.4273
 \_  length:   74
 \_  bruteforce time:
@@ -5432,10 +5432,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
-\_  example:  TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU
+\_  example:  TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO BAHA YIWU YUKU
 
 
-**  ~~~~~~~~  cv-upper:16
+**  ~~~~~~~~  cva-upper:16
 \_  bits:     214.8558
 \_  length:   79
 \_  bruteforce time:
@@ -5451,10 +5451,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
-\_  example:  TAQB VBZA ZAYB FUGI RIXU CBZU SACO VOXA KIZB HOSB RAGO QBKO BAHA YIWU YUKU PAJU
+\_  example:  TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO BAHA YIWU YUKU PAJU
 
 
-**  ~~~~~~~~  cv-mixed:1
+**  ~~~~~~~~  cva-mixed:1
 \_  bits:     17.4284
 \_  length:   4
 \_  bruteforce time:
@@ -5473,7 +5473,7 @@
 \_  example:  PaFi
 
 
-**  ~~~~~~~~  cv-mixed:2
+**  ~~~~~~~~  cva-mixed:2
 \_  bits:     34.8569
 \_  length:   9
 \_  bruteforce time:
@@ -5492,7 +5492,7 @@
 \_  example:  PaFi PiQI
 
 
-**  ~~~~~~~~  cv-mixed:3
+**  ~~~~~~~~  cva-mixed:3
 \_  bits:     52.2854
 \_  length:   14
 \_  bruteforce time:
@@ -5511,7 +5511,7 @@
 \_  example:  PaFi PiQI YayU
 
 
-**  ~~~~~~~~  cv-mixed:4
+**  ~~~~~~~~  cva-mixed:4
 \_  bits:     69.7139
 \_  length:   19
 \_  bruteforce time:
@@ -5530,7 +5530,7 @@
 \_  example:  PaFi PiQI YayU mAjO
 
 
-**  ~~~~~~~~  cv-mixed:5
+**  ~~~~~~~~  cva-mixed:5
 \_  bits:     87.1424
 \_  length:   24
 \_  bruteforce time:
@@ -5549,7 +5549,7 @@
 \_  example:  PaFi PiQI YayU mAjO lAzi
 
 
-**  ~~~~~~~~  cv-mixed:6
+**  ~~~~~~~~  cva-mixed:6
 \_  bits:     104.5709
 \_  length:   29
 \_  bruteforce time:
@@ -5568,7 +5568,7 @@
 \_  example:  PaFi PiQI YayU mAjO lAzi ZUKa
 
 
-**  ~~~~~~~~  cv-mixed:7
+**  ~~~~~~~~  cva-mixed:7
 \_  bits:     121.9994
 \_  length:   34
 \_  bruteforce time:
@@ -5587,7 +5587,7 @@
 \_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo
 
 
-**  ~~~~~~~~  cv-mixed:8
+**  ~~~~~~~~  cva-mixed:8
 \_  bits:     139.4279
 \_  length:   39
 \_  bruteforce time:
@@ -5603,10 +5603,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
-\_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB
+\_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE
 
 
-**  ~~~~~~~~  cv-mixed:9
+**  ~~~~~~~~  cva-mixed:9
 \_  bits:     156.8564
 \_  length:   44
 \_  bruteforce time:
@@ -5622,10 +5622,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
-\_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi
+\_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi
 
 
-**  ~~~~~~~~  cv-mixed:10
+**  ~~~~~~~~  cva-mixed:10
 \_  bits:     174.2849
 \_  length:   49
 \_  bruteforce time:
@@ -5641,10 +5641,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
-\_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB
+\_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE
 
 
-**  ~~~~~~~~  cv-mixed:11
+**  ~~~~~~~~  cva-mixed:11
 \_  bits:     191.7134
 \_  length:   54
 \_  bruteforce time:
@@ -5660,10 +5660,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
-\_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona
+\_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona
 
 
-**  ~~~~~~~~  cv-mixed:12
+**  ~~~~~~~~  cva-mixed:12
 \_  bits:     209.1418
 \_  length:   59
 \_  bruteforce time:
@@ -5679,10 +5679,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
-\_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa
+\_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa
 
 
-**  ~~~~~~~~  cv-mixed:13
+**  ~~~~~~~~  cva-mixed:13
 \_  bits:     226.5703
 \_  length:   64
 \_  bruteforce time:
@@ -5698,10 +5698,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
-\_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU
+\_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU
 
 
-**  ~~~~~~~~  cv-mixed:14
+**  ~~~~~~~~  cva-mixed:14
 \_  bits:     243.9988
 \_  length:   69
 \_  bruteforce time:
@@ -5717,10 +5717,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
-\_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA
+\_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA
 
 
-**  ~~~~~~~~  cv-mixed:15
+**  ~~~~~~~~  cva-mixed:15
 \_  bits:     261.4273
 \_  length:   74
 \_  bruteforce time:
@@ -5736,10 +5736,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
-\_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO
+\_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA goPO
 
 
-**  ~~~~~~~~  cv-mixed:16
+**  ~~~~~~~~  cva-mixed:16
 \_  bits:     278.8558
 \_  length:   79
 \_  bruteforce time:
@@ -5755,10 +5755,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
-\_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZB cBFi roDB fona WuGa QOSU PoVA goPO kAle
+\_  example:  PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA goPO kAle
 
 
-**  ~~~~~~~~  cv-plus-a:2
+**  ~~~~~~~~  cva-plus-a:2
 \_  bits:     26.7162
 \_  length:   9
 \_  bruteforce time:
@@ -5777,7 +5777,7 @@
 \_  example:  taqe 2711
 
 
-**  ~~~~~~~~  cv-plus-a:3
+**  ~~~~~~~~  cva-plus-a:3
 \_  bits:     40.1446
 \_  length:   14
 \_  bruteforce time:
@@ -5796,7 +5796,7 @@
 \_  example:  taqe veza 0449
 
 
-**  ~~~~~~~~  cv-plus-a:4
+**  ~~~~~~~~  cva-plus-a:4
 \_  bits:     53.5731
 \_  length:   19
 \_  bruteforce time:
@@ -5815,7 +5815,7 @@
 \_  example:  taqe veza zaye 5182
 
 
-**  ~~~~~~~~  cv-plus-a:5
+**  ~~~~~~~~  cva-plus-a:5
 \_  bits:     67.0016
 \_  length:   24
 \_  bruteforce time:
@@ -5834,7 +5834,7 @@
 \_  example:  taqe veza zaye fugi 6290
 
 
-**  ~~~~~~~~  cv-plus-a:6
+**  ~~~~~~~~  cva-plus-a:6
 \_  bits:     80.4301
 \_  length:   29
 \_  bruteforce time:
@@ -5853,7 +5853,7 @@
 \_  example:  taqe veza zaye fugi rixu 2906
 
 
-**  ~~~~~~~~  cv-plus-a:7
+**  ~~~~~~~~  cva-plus-a:7
 \_  bits:     93.8586
 \_  length:   34
 \_  bruteforce time:
@@ -5872,7 +5872,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu 0665
 
 
-**  ~~~~~~~~  cv-plus-a:8
+**  ~~~~~~~~  cva-plus-a:8
 \_  bits:     107.2871
 \_  length:   39
 \_  bruteforce time:
@@ -5891,7 +5891,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco 6573
 
 
-**  ~~~~~~~~  cv-plus-a:9
+**  ~~~~~~~~  cva-plus-a:9
 \_  bits:     120.7156
 \_  length:   44
 \_  bruteforce time:
@@ -5910,7 +5910,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa 3526
 
 
-**  ~~~~~~~~  cv-plus-a:10
+**  ~~~~~~~~  cva-plus-a:10
 \_  bits:     134.1441
 \_  length:   49
 \_  bruteforce time:
@@ -5929,7 +5929,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize 2606
 
 
-**  ~~~~~~~~  cv-plus-a:11
+**  ~~~~~~~~  cva-plus-a:11
 \_  bits:     147.5726
 \_  length:   54
 \_  bruteforce time:
@@ -5948,7 +5948,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose 6062
 
 
-**  ~~~~~~~~  cv-plus-a:12
+**  ~~~~~~~~  cva-plus-a:12
 \_  bits:     161.0011
 \_  length:   59
 \_  bruteforce time:
@@ -5967,7 +5967,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago 2335
 
 
-**  ~~~~~~~~  cv-plus-a:13
+**  ~~~~~~~~  cva-plus-a:13
 \_  bits:     174.4296
 \_  length:   64
 \_  bruteforce time:
@@ -5986,7 +5986,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko 0320
 
 
-**  ~~~~~~~~  cv-plus-a:14
+**  ~~~~~~~~  cva-plus-a:14
 \_  bits:     187.8580
 \_  length:   69
 \_  bruteforce time:
@@ -6005,7 +6005,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha 9460
 
 
-**  ~~~~~~~~  cv-plus-a:15
+**  ~~~~~~~~  cva-plus-a:15
 \_  bits:     201.2865
 \_  length:   74
 \_  bruteforce time:
@@ -6024,7 +6024,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu 9351
 
 
-**  ~~~~~~~~  cv-plus-a:16
+**  ~~~~~~~~  cva-plus-a:16
 \_  bits:     214.7150
 \_  length:   79
 \_  bruteforce time:
@@ -6043,7 +6043,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku 5138
 
 
-**  ~~~~~~~~  cv-plus-b:2
+**  ~~~~~~~~  cva-plus-b:2
 \_  bits:     26.7865
 \_  length:   9
 \_  bruteforce time:
@@ -6059,10 +6059,10 @@
     \_  scrypt                  --    0.2  seconds
     \_  GPG                     --         now
     \_  AES-128                 --         now
-\_  example:  taqe VB71
+\_  example:  taqe VE71
 
 
-**  ~~~~~~~~  cv-plus-b:3
+**  ~~~~~~~~  cva-plus-b:3
 \_  bits:     40.2150
 \_  length:   14
 \_  bruteforce time:
@@ -6081,7 +6081,7 @@
 \_  example:  taqe veza ZA44
 
 
-**  ~~~~~~~~  cv-plus-b:4
+**  ~~~~~~~~  cva-plus-b:4
 \_  bits:     53.6435
 \_  length:   19
 \_  bruteforce time:
@@ -6100,7 +6100,7 @@
 \_  example:  taqe veza zaye FU25
 
 
-**  ~~~~~~~~  cv-plus-b:5
+**  ~~~~~~~~  cva-plus-b:5
 \_  bits:     67.0720
 \_  length:   24
 \_  bruteforce time:
@@ -6119,7 +6119,7 @@
 \_  example:  taqe veza zaye fugi RI29
 
 
-**  ~~~~~~~~  cv-plus-b:6
+**  ~~~~~~~~  cva-plus-b:6
 \_  bits:     80.5005
 \_  length:   29
 \_  bruteforce time:
@@ -6135,10 +6135,10 @@
     \_  scrypt                  --   76.1  millions of years
     \_  GPG                     --   20.2  millennia
     \_  AES-128                 --    2.5  decades
-\_  example:  taqe veza zaye fugi rixu CB90
+\_  example:  taqe veza zaye fugi rixu CE90
 
 
-**  ~~~~~~~~  cv-plus-b:7
+**  ~~~~~~~~  cva-plus-b:7
 \_  bits:     93.9290
 \_  length:   34
 \_  bruteforce time:
@@ -6157,7 +6157,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu SA66
 
 
-**  ~~~~~~~~  cv-plus-b:8
+**  ~~~~~~~~  cva-plus-b:8
 \_  bits:     107.3575
 \_  length:   39
 \_  bruteforce time:
@@ -6176,7 +6176,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco VO57
 
 
-**  ~~~~~~~~  cv-plus-b:9
+**  ~~~~~~~~  cva-plus-b:9
 \_  bits:     120.7860
 \_  length:   44
 \_  bruteforce time:
@@ -6195,7 +6195,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa KI26
 
 
-**  ~~~~~~~~  cv-plus-b:10
+**  ~~~~~~~~  cva-plus-b:10
 \_  bits:     134.2145
 \_  length:   49
 \_  bruteforce time:
@@ -6214,7 +6214,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize HO60
 
 
-**  ~~~~~~~~  cv-plus-b:11
+**  ~~~~~~~~  cva-plus-b:11
 \_  bits:     147.6430
 \_  length:   54
 \_  bruteforce time:
@@ -6233,7 +6233,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose RA62
 
 
-**  ~~~~~~~~  cv-plus-b:12
+**  ~~~~~~~~  cva-plus-b:12
 \_  bits:     161.0715
 \_  length:   59
 \_  bruteforce time:
@@ -6249,10 +6249,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
-\_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB33
+\_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago QE33
 
 
-**  ~~~~~~~~  cv-plus-b:13
+**  ~~~~~~~~  cva-plus-b:13
 \_  bits:     174.4999
 \_  length:   64
 \_  bruteforce time:
@@ -6271,7 +6271,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA32
 
 
-**  ~~~~~~~~  cv-plus-b:14
+**  ~~~~~~~~  cva-plus-b:14
 \_  bits:     187.9284
 \_  length:   69
 \_  bruteforce time:
@@ -6290,7 +6290,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI60
 
 
-**  ~~~~~~~~  cv-plus-b:15
+**  ~~~~~~~~  cva-plus-b:15
 \_  bits:     201.3569
 \_  length:   74
 \_  bruteforce time:
@@ -6309,7 +6309,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU35
 
 
-**  ~~~~~~~~  cv-plus-b:16
+**  ~~~~~~~~  cva-plus-b:16
 \_  bits:     214.7854
 \_  length:   79
 \_  bruteforce time:
@@ -6328,7 +6328,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA38
 
 
-**  ~~~~~~~~  cv-plus-c:2
+**  ~~~~~~~~  cva-plus-c:2
 \_  bits:     28.4646
 \_  length:   9
 \_  bruteforce time:
@@ -6344,10 +6344,10 @@
     \_  scrypt                  --    0.5  seconds
     \_  GPG                     --         now
     \_  AES-128                 --         now
-\_  example:  taqe VB7~
+\_  example:  taqe VE7~
 
 
-**  ~~~~~~~~  cv-plus-c:3
+**  ~~~~~~~~  cva-plus-c:3
 \_  bits:     41.8931
 \_  length:   14
 \_  bruteforce time:
@@ -6366,7 +6366,7 @@
 \_  example:  taqe veza ZA4(
 
 
-**  ~~~~~~~~  cv-plus-c:4
+**  ~~~~~~~~  cva-plus-c:4
 \_  bits:     55.3216
 \_  length:   19
 \_  bruteforce time:
@@ -6385,7 +6385,7 @@
 \_  example:  taqe veza zaye FU2;
 
 
-**  ~~~~~~~~  cv-plus-c:5
+**  ~~~~~~~~  cva-plus-c:5
 \_  bits:     68.7501
 \_  length:   24
 \_  bruteforce time:
@@ -6404,7 +6404,7 @@
 \_  example:  taqe veza zaye fugi RI2~
 
 
-**  ~~~~~~~~  cv-plus-c:6
+**  ~~~~~~~~  cva-plus-c:6
 \_  bits:     82.1786
 \_  length:   29
 \_  bruteforce time:
@@ -6420,10 +6420,10 @@
     \_  scrypt                  --  243.4  millions of years
     \_  GPG                     --   64.6  millennia
     \_  AES-128                 --    7.9  decades
-\_  example:  taqe veza zaye fugi rixu CB9!
+\_  example:  taqe veza zaye fugi rixu CE9!
 
 
-**  ~~~~~~~~  cv-plus-c:7
+**  ~~~~~~~~  cva-plus-c:7
 \_  bits:     95.6071
 \_  length:   34
 \_  bruteforce time:
@@ -6442,7 +6442,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu SA6^
 
 
-**  ~~~~~~~~  cv-plus-c:8
+**  ~~~~~~~~  cva-plus-c:8
 \_  bits:     109.0356
 \_  length:   39
 \_  bruteforce time:
@@ -6461,7 +6461,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco VO5]
 
 
-**  ~~~~~~~~  cv-plus-c:9
+**  ~~~~~~~~  cva-plus-c:9
 \_  bits:     122.4641
 \_  length:   44
 \_  bruteforce time:
@@ -6480,7 +6480,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa KI2@
 
 
-**  ~~~~~~~~  cv-plus-c:10
+**  ~~~~~~~~  cva-plus-c:10
 \_  bits:     135.8925
 \_  length:   49
 \_  bruteforce time:
@@ -6499,7 +6499,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize HO6"
 
 
-**  ~~~~~~~~  cv-plus-c:11
+**  ~~~~~~~~  cva-plus-c:11
 \_  bits:     149.3210
 \_  length:   54
 \_  bruteforce time:
@@ -6518,7 +6518,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose RA6+
 
 
-**  ~~~~~~~~  cv-plus-c:12
+**  ~~~~~~~~  cva-plus-c:12
 \_  bits:     162.7495
 \_  length:   59
 \_  bruteforce time:
@@ -6534,10 +6534,10 @@
     \_  scrypt                  --         (more than trillions of years)
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
-\_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago QB3,
+\_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago QE3,
 
 
-**  ~~~~~~~~  cv-plus-c:13
+**  ~~~~~~~~  cva-plus-c:13
 \_  bits:     176.1780
 \_  length:   64
 \_  bruteforce time:
@@ -6556,7 +6556,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA3"
 
 
-**  ~~~~~~~~  cv-plus-c:14
+**  ~~~~~~~~  cva-plus-c:14
 \_  bits:     189.6065
 \_  length:   69
 \_  bruteforce time:
@@ -6575,7 +6575,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI6_
 
 
-**  ~~~~~~~~  cv-plus-c:15
+**  ~~~~~~~~  cva-plus-c:15
 \_  bits:     203.0350
 \_  length:   74
 \_  bruteforce time:
@@ -6594,7 +6594,7 @@
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU3<
 
 
-**  ~~~~~~~~  cv-plus-c:16
+**  ~~~~~~~~  cva-plus-c:16
 \_  bits:     216.4635
 \_  length:   79
 \_  bruteforce time:
@@ -6611,6 +6611,1773 @@
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
 \_  example:  taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA3`
+
+
+**  ~~~~~~~~  cvs-lower:1
+\_  bits:     12.6438
+\_  length:   4
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  sane
+
+
+**  ~~~~~~~~  cvs-lower:2
+\_  bits:     25.2877
+\_  length:   9
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  sane seda
+
+
+**  ~~~~~~~~  cvs-lower:3
+\_  bits:     37.9315
+\_  length:   14
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --    0.1  seconds
+    \_  PBKDF2-HMAC-SHA256      --    0.3  seconds
+    \_  PBKDF2-HMAC-SHA512      --    0.8  seconds
+    \_  scrypt                  --    6.1  minutes
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  sane seda zalu
+
+
+**  ~~~~~~~~  cvs-lower:4
+\_  bits:     50.5754
+\_  length:   19
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --    0.1  seconds
+    \_  SHA1                    --    0.3  seconds
+    \_  SHA2-256                --    0.8  seconds
+    \_  SHA3-256                --    3.3  seconds
+    \_  PBKDF2-HMAC-MD5         --    6.1  minutes
+    \_  PBKDF2-HMAC-SHA1        --   14.6  minutes
+    \_  PBKDF2-HMAC-SHA256      --   31.5  minutes
+    \_  PBKDF2-HMAC-SHA512      --    1.5  hours
+    \_  scrypt                  --   27.2  days
+    \_  GPG                     --   10.4  minutes
+    \_  AES-128                 --    0.8  seconds
+\_  example:  sane seda zalu dufi
+
+
+**  ~~~~~~~~  cvs-lower:5
+\_  bits:     63.2192
+\_  length:   24
+\_  bruteforce time:
+    \_  MD4                     --    6.1  minutes
+    \_  MD5                     --   10.8  minutes
+    \_  SHA1                    --   35.1  minutes
+    \_  SHA2-256                --    1.4  hours
+    \_  SHA3-256                --    5.9  hours
+    \_  PBKDF2-HMAC-MD5         --   26.9  days
+    \_  PBKDF2-HMAC-SHA1        --    2.1  months
+    \_  PBKDF2-HMAC-SHA256      --    4.6  months
+    \_  PBKDF2-HMAC-SHA512      --    1.1  years
+    \_  scrypt                  --    4.8  centuries
+    \_  GPG                     --    1.5  months
+    \_  AES-128                 --    1.4  hours
+\_  example:  sane seda zalu dufi pivu
+
+
+**  ~~~~~~~~  cvs-lower:6
+\_  bits:     75.8631
+\_  length:   29
+\_  bruteforce time:
+    \_  MD4                     --   27.3  days
+    \_  MD5                     --    1.6  months
+    \_  SHA1                    --    5.1  months
+    \_  SHA2-256                --   11.9  months
+    \_  SHA3-256                --    4.3  years
+    \_  PBKDF2-HMAC-MD5         --    4.7  centuries
+    \_  PBKDF2-HMAC-SHA1        --    1.1  millennia
+    \_  PBKDF2-HMAC-SHA256      --    2.5  millennia
+    \_  PBKDF2-HMAC-SHA512      --    7.0  millennia
+    \_  scrypt                  --    3.1  millions of years
+    \_  GPG                     --    8.1  centuries
+    \_  AES-128                 --   11.9  months
+\_  example:  sane seda zalu dufi pivu ceba
+
+
+**  ~~~~~~~~  cvs-lower:7
+\_  bits:     88.5069
+\_  length:   34
+\_  bruteforce time:
+    \_  MD4                     --    4.8  centuries
+    \_  MD5                     --    8.4  centuries
+    \_  SHA1                    --    2.7  millennia
+    \_  SHA2-256                --    6.3  millennia
+    \_  SHA3-256                --   27.5  millennia
+    \_  PBKDF2-HMAC-MD5         --    3.0  millions of years
+    \_  PBKDF2-HMAC-SHA1        --    7.3  millions of years
+    \_  PBKDF2-HMAC-SHA256      --   15.7  millions of years
+    \_  PBKDF2-HMAC-SHA512      --   44.7  millions of years
+    \_  scrypt                  --   19.6  billions of years
+    \_  GPG                     --    5.2  millions of years
+    \_  AES-128                 --    6.4  millennia
+\_  example:  sane seda zalu dufi pivu ceba camu
+
+
+**  ~~~~~~~~  cvs-lower:8
+\_  bits:     101.1508
+\_  length:   39
+\_  bruteforce time:
+    \_  MD4                     --    3.1  millions of years
+    \_  MD5                     --    5.4  millions of years
+    \_  SHA1                    --   17.5  millions of years
+    \_  SHA2-256                --   40.5  millions of years
+    \_  SHA3-256                --  176.3  millions of years
+    \_  PBKDF2-HMAC-MD5         --   19.3  billions of years
+    \_  PBKDF2-HMAC-SHA1        --   46.6  billions of years
+    \_  PBKDF2-HMAC-SHA256      --  100.6  billions of years
+    \_  PBKDF2-HMAC-SHA512      --  285.8  billions of years
+    \_  scrypt                  --  125.2  trillions of years
+    \_  GPG                     --   33.2  billions of years
+    \_  AES-128                 --   40.7  millions of years
+\_  example:  sane seda zalu dufi pivu ceba camu cige
+
+
+**  ~~~~~~~~  cvs-lower:9
+\_  bits:     113.7947
+\_  length:   44
+\_  bruteforce time:
+    \_  MD4                     --   19.6  billions of years
+    \_  MD5                     --   34.6  billions of years
+    \_  SHA1                    --  111.9  billions of years
+    \_  SHA2-256                --  259.5  billions of years
+    \_  SHA3-256                --    1.1  trillions of years
+    \_  PBKDF2-HMAC-MD5         --  123.6  trillions of years
+    \_  PBKDF2-HMAC-SHA1        --  298.5  trillions of years
+    \_  PBKDF2-HMAC-SHA256      --  643.9  trillions of years
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --  212.7  trillions of years
+    \_  AES-128                 --  260.6  billions of years
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco
+
+
+**  ~~~~~~~~  cvs-lower:10
+\_  bits:     126.4385
+\_  length:   49
+\_  bruteforce time:
+    \_  MD4                     --  125.5  trillions of years
+    \_  MD5                     --  221.4  trillions of years
+    \_  SHA1                    --  716.4  trillions of years
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho
+
+
+**  ~~~~~~~~  cvs-lower:11
+\_  bits:     139.0824
+\_  length:   54
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe
+
+
+**  ~~~~~~~~  cvs-lower:12
+\_  bits:     151.7262
+\_  length:   59
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu
+
+
+**  ~~~~~~~~  cvs-lower:13
+\_  bits:     164.3701
+\_  length:   64
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva
+
+
+**  ~~~~~~~~  cvs-lower:14
+\_  bits:     177.0139
+\_  length:   69
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma
+
+
+**  ~~~~~~~~  cvs-lower:15
+\_  bits:     189.6578
+\_  length:   74
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu
+
+
+**  ~~~~~~~~  cvs-lower:16
+\_  bits:     202.3016
+\_  length:   79
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu sice
+
+
+**  ~~~~~~~~  cvs-upper:1
+\_  bits:     12.6438
+\_  length:   4
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  SANE
+
+
+**  ~~~~~~~~  cvs-upper:2
+\_  bits:     25.2877
+\_  length:   9
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  SANE SEDA
+
+
+**  ~~~~~~~~  cvs-upper:3
+\_  bits:     37.9315
+\_  length:   14
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --    0.1  seconds
+    \_  PBKDF2-HMAC-SHA256      --    0.3  seconds
+    \_  PBKDF2-HMAC-SHA512      --    0.8  seconds
+    \_  scrypt                  --    6.1  minutes
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  SANE SEDA ZALU
+
+
+**  ~~~~~~~~  cvs-upper:4
+\_  bits:     50.5754
+\_  length:   19
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --    0.1  seconds
+    \_  SHA1                    --    0.3  seconds
+    \_  SHA2-256                --    0.8  seconds
+    \_  SHA3-256                --    3.3  seconds
+    \_  PBKDF2-HMAC-MD5         --    6.1  minutes
+    \_  PBKDF2-HMAC-SHA1        --   14.6  minutes
+    \_  PBKDF2-HMAC-SHA256      --   31.5  minutes
+    \_  PBKDF2-HMAC-SHA512      --    1.5  hours
+    \_  scrypt                  --   27.2  days
+    \_  GPG                     --   10.4  minutes
+    \_  AES-128                 --    0.8  seconds
+\_  example:  SANE SEDA ZALU DUFI
+
+
+**  ~~~~~~~~  cvs-upper:5
+\_  bits:     63.2192
+\_  length:   24
+\_  bruteforce time:
+    \_  MD4                     --    6.1  minutes
+    \_  MD5                     --   10.8  minutes
+    \_  SHA1                    --   35.1  minutes
+    \_  SHA2-256                --    1.4  hours
+    \_  SHA3-256                --    5.9  hours
+    \_  PBKDF2-HMAC-MD5         --   26.9  days
+    \_  PBKDF2-HMAC-SHA1        --    2.1  months
+    \_  PBKDF2-HMAC-SHA256      --    4.6  months
+    \_  PBKDF2-HMAC-SHA512      --    1.1  years
+    \_  scrypt                  --    4.8  centuries
+    \_  GPG                     --    1.5  months
+    \_  AES-128                 --    1.4  hours
+\_  example:  SANE SEDA ZALU DUFI PIVU
+
+
+**  ~~~~~~~~  cvs-upper:6
+\_  bits:     75.8631
+\_  length:   29
+\_  bruteforce time:
+    \_  MD4                     --   27.3  days
+    \_  MD5                     --    1.6  months
+    \_  SHA1                    --    5.1  months
+    \_  SHA2-256                --   11.9  months
+    \_  SHA3-256                --    4.3  years
+    \_  PBKDF2-HMAC-MD5         --    4.7  centuries
+    \_  PBKDF2-HMAC-SHA1        --    1.1  millennia
+    \_  PBKDF2-HMAC-SHA256      --    2.5  millennia
+    \_  PBKDF2-HMAC-SHA512      --    7.0  millennia
+    \_  scrypt                  --    3.1  millions of years
+    \_  GPG                     --    8.1  centuries
+    \_  AES-128                 --   11.9  months
+\_  example:  SANE SEDA ZALU DUFI PIVU CEBA
+
+
+**  ~~~~~~~~  cvs-upper:7
+\_  bits:     88.5069
+\_  length:   34
+\_  bruteforce time:
+    \_  MD4                     --    4.8  centuries
+    \_  MD5                     --    8.4  centuries
+    \_  SHA1                    --    2.7  millennia
+    \_  SHA2-256                --    6.3  millennia
+    \_  SHA3-256                --   27.5  millennia
+    \_  PBKDF2-HMAC-MD5         --    3.0  millions of years
+    \_  PBKDF2-HMAC-SHA1        --    7.3  millions of years
+    \_  PBKDF2-HMAC-SHA256      --   15.7  millions of years
+    \_  PBKDF2-HMAC-SHA512      --   44.7  millions of years
+    \_  scrypt                  --   19.6  billions of years
+    \_  GPG                     --    5.2  millions of years
+    \_  AES-128                 --    6.4  millennia
+\_  example:  SANE SEDA ZALU DUFI PIVU CEBA CAMU
+
+
+**  ~~~~~~~~  cvs-upper:8
+\_  bits:     101.1508
+\_  length:   39
+\_  bruteforce time:
+    \_  MD4                     --    3.1  millions of years
+    \_  MD5                     --    5.4  millions of years
+    \_  SHA1                    --   17.5  millions of years
+    \_  SHA2-256                --   40.5  millions of years
+    \_  SHA3-256                --  176.3  millions of years
+    \_  PBKDF2-HMAC-MD5         --   19.3  billions of years
+    \_  PBKDF2-HMAC-SHA1        --   46.6  billions of years
+    \_  PBKDF2-HMAC-SHA256      --  100.6  billions of years
+    \_  PBKDF2-HMAC-SHA512      --  285.8  billions of years
+    \_  scrypt                  --  125.2  trillions of years
+    \_  GPG                     --   33.2  billions of years
+    \_  AES-128                 --   40.7  millions of years
+\_  example:  SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE
+
+
+**  ~~~~~~~~  cvs-upper:9
+\_  bits:     113.7947
+\_  length:   44
+\_  bruteforce time:
+    \_  MD4                     --   19.6  billions of years
+    \_  MD5                     --   34.6  billions of years
+    \_  SHA1                    --  111.9  billions of years
+    \_  SHA2-256                --  259.5  billions of years
+    \_  SHA3-256                --    1.1  trillions of years
+    \_  PBKDF2-HMAC-MD5         --  123.6  trillions of years
+    \_  PBKDF2-HMAC-SHA1        --  298.5  trillions of years
+    \_  PBKDF2-HMAC-SHA256      --  643.9  trillions of years
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --  212.7  trillions of years
+    \_  AES-128                 --  260.6  billions of years
+\_  example:  SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO
+
+
+**  ~~~~~~~~  cvs-upper:10
+\_  bits:     126.4385
+\_  length:   49
+\_  bruteforce time:
+    \_  MD4                     --  125.5  trillions of years
+    \_  MD5                     --  221.4  trillions of years
+    \_  SHA1                    --  716.4  trillions of years
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO
+
+
+**  ~~~~~~~~  cvs-upper:11
+\_  bits:     139.0824
+\_  length:   54
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE
+
+
+**  ~~~~~~~~  cvs-upper:12
+\_  bits:     151.7262
+\_  length:   59
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU
+
+
+**  ~~~~~~~~  cvs-upper:13
+\_  bits:     164.3701
+\_  length:   64
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU SUVA
+
+
+**  ~~~~~~~~  cvs-upper:14
+\_  bits:     177.0139
+\_  length:   69
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU SUVA SUMA
+
+
+**  ~~~~~~~~  cvs-upper:15
+\_  bits:     189.6578
+\_  length:   74
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU SUVA SUMA HETU
+
+
+**  ~~~~~~~~  cvs-upper:16
+\_  bits:     202.3016
+\_  length:   79
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU SUVA SUMA HETU SICE
+
+
+**  ~~~~~~~~  cvs-mixed:1
+\_  bits:     16.6438
+\_  length:   4
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  Lami
+
+
+**  ~~~~~~~~  cvs-mixed:2
+\_  bits:     33.2877
+\_  length:   9
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --   14.7  seconds
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  Lami NIZe
+
+
+**  ~~~~~~~~  cvs-mixed:3
+\_  bits:     49.9315
+\_  length:   14
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --    0.2  seconds
+    \_  SHA2-256                --    0.5  seconds
+    \_  SHA3-256                --    2.1  seconds
+    \_  PBKDF2-HMAC-MD5         --    3.9  minutes
+    \_  PBKDF2-HMAC-SHA1        --    9.4  minutes
+    \_  PBKDF2-HMAC-SHA256      --   20.2  minutes
+    \_  PBKDF2-HMAC-SHA512      --   57.3  minutes
+    \_  scrypt                  --   17.4  days
+    \_  GPG                     --    6.7  minutes
+    \_  AES-128                 --    0.5  seconds
+\_  example:  Lami NIZe lABE
+
+
+**  ~~~~~~~~  cvs-mixed:4
+\_  bits:     66.5754
+\_  length:   19
+\_  bruteforce time:
+    \_  MD4                     --    1.0  hours
+    \_  MD5                     --    1.9  hours
+    \_  SHA1                    --    6.0  hours
+    \_  SHA2-256                --   13.9  hours
+    \_  SHA3-256                --    2.5  days
+    \_  PBKDF2-HMAC-MD5         --    9.0  months
+    \_  PBKDF2-HMAC-SHA1        --    1.8  years
+    \_  PBKDF2-HMAC-SHA256      --    3.9  years
+    \_  PBKDF2-HMAC-SHA512      --    1.1  decades
+    \_  scrypt                  --    4.9  millennia
+    \_  GPG                     --    1.3  years
+    \_  AES-128                 --   13.9  hours
+\_  example:  Lami NIZe lABE ziZU
+
+
+**  ~~~~~~~~  cvs-mixed:5
+\_  bits:     83.2192
+\_  length:   24
+\_  bruteforce time:
+    \_  MD4                     --    1.2  decades
+    \_  MD5                     --    2.2  decades
+    \_  SHA1                    --    7.0  decades
+    \_  SHA2-256                --    1.6  centuries
+    \_  SHA3-256                --    7.1  centuries
+    \_  PBKDF2-HMAC-MD5         --   77.3  millennia
+    \_  PBKDF2-HMAC-SHA1        --  186.5  millennia
+    \_  PBKDF2-HMAC-SHA256      --  402.4  millennia
+    \_  PBKDF2-HMAC-SHA512      --    1.1  millions of years
+    \_  scrypt                  --  500.7  millions of years
+    \_  GPG                     --  133.0  millennia
+    \_  AES-128                 --    1.6  centuries
+\_  example:  Lami NIZe lABE ziZU bENA
+
+
+**  ~~~~~~~~  cvs-mixed:6
+\_  bits:     99.8631
+\_  length:   29
+\_  bruteforce time:
+    \_  MD4                     --    1.3  millions of years
+    \_  MD5                     --    2.2  millions of years
+    \_  SHA1                    --    7.2  millions of years
+    \_  SHA2-256                --   16.6  millions of years
+    \_  SHA3-256                --   72.2  millions of years
+    \_  PBKDF2-HMAC-MD5         --    7.9  billions of years
+    \_  PBKDF2-HMAC-SHA1        --   19.1  billions of years
+    \_  PBKDF2-HMAC-SHA256      --   41.2  billions of years
+    \_  PBKDF2-HMAC-SHA512      --  117.1  billions of years
+    \_  scrypt                  --   51.3  trillions of years
+    \_  GPG                     --   13.6  billions of years
+    \_  AES-128                 --   16.7  millions of years
+\_  example:  Lami NIZe lABE ziZU bENA MoZi
+
+
+**  ~~~~~~~~  cvs-mixed:7
+\_  bits:     116.5069
+\_  length:   34
+\_  bruteforce time:
+    \_  MD4                     --  128.6  billions of years
+    \_  MD5                     --  226.7  billions of years
+    \_  SHA1                    --  733.5  billions of years
+    \_  SHA2-256                --    1.7  trillions of years
+    \_  SHA3-256                --    7.4  trillions of years
+    \_  PBKDF2-HMAC-MD5         --  810.3  trillions of years
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --    1.7  trillions of years
+\_  example:  Lami NIZe lABE ziZU bENA MoZi HEcE
+
+
+**  ~~~~~~~~  cvs-mixed:8
+\_  bits:     133.1508
+\_  length:   39
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  Lami NIZe lABE ziZU bENA MoZi HEcE poGa
+
+
+**  ~~~~~~~~  cvs-mixed:9
+\_  bits:     149.7947
+\_  length:   44
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU
+
+
+**  ~~~~~~~~  cvs-mixed:10
+\_  bits:     166.4385
+\_  length:   49
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO
+
+
+**  ~~~~~~~~  cvs-mixed:11
+\_  bits:     183.0824
+\_  length:   54
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe
+
+
+**  ~~~~~~~~  cvs-mixed:12
+\_  bits:     199.7262
+\_  length:   59
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA
+
+
+**  ~~~~~~~~  cvs-mixed:13
+\_  bits:     216.3701
+\_  length:   64
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno
+
+
+**  ~~~~~~~~  cvs-mixed:14
+\_  bits:     233.0139
+\_  length:   69
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno noZI
+
+
+**  ~~~~~~~~  cvs-mixed:15
+\_  bits:     249.6578
+\_  length:   74
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno noZI Liri
+
+
+**  ~~~~~~~~  cvs-mixed:16
+\_  bits:     266.3016
+\_  length:   79
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno noZI Liri CePo
+
+
+**  ~~~~~~~~  cvs-plus-a:2
+\_  bits:     25.9315
+\_  length:   9
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  sane 2711
+
+
+**  ~~~~~~~~  cvs-plus-a:3
+\_  bits:     38.5754
+\_  length:   14
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --    0.2  seconds
+    \_  PBKDF2-HMAC-SHA256      --    0.5  seconds
+    \_  PBKDF2-HMAC-SHA512      --    1.3  seconds
+    \_  scrypt                  --    9.6  minutes
+    \_  GPG                     --    0.2  seconds
+    \_  AES-128                 --         now
+\_  example:  sane seda 0449
+
+
+**  ~~~~~~~~  cvs-plus-a:4
+\_  bits:     51.2192
+\_  length:   19
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --    0.2  seconds
+    \_  SHA1                    --    0.5  seconds
+    \_  SHA2-256                --    1.2  seconds
+    \_  SHA3-256                --    5.2  seconds
+    \_  PBKDF2-HMAC-MD5         --    9.5  minutes
+    \_  PBKDF2-HMAC-SHA1        --   22.8  minutes
+    \_  PBKDF2-HMAC-SHA256      --   49.3  minutes
+    \_  PBKDF2-HMAC-SHA512      --    2.3  hours
+    \_  scrypt                  --    1.4  months
+    \_  GPG                     --   16.3  minutes
+    \_  AES-128                 --    1.2  seconds
+\_  example:  sane seda zalu 2518
+
+
+**  ~~~~~~~~  cvs-plus-a:5
+\_  bits:     63.8631
+\_  length:   24
+\_  bruteforce time:
+    \_  MD4                     --    9.6  minutes
+    \_  MD5                     --   16.9  minutes
+    \_  SHA1                    --   54.8  minutes
+    \_  SHA2-256                --    2.1  hours
+    \_  SHA3-256                --    9.2  hours
+    \_  PBKDF2-HMAC-MD5         --    1.4  months
+    \_  PBKDF2-HMAC-SHA1        --    3.3  months
+    \_  PBKDF2-HMAC-SHA256      --    7.2  months
+    \_  PBKDF2-HMAC-SHA512      --    1.7  years
+    \_  scrypt                  --    7.5  centuries
+    \_  GPG                     --    2.4  months
+    \_  AES-128                 --    2.1  hours
+\_  example:  sane seda zalu dufi 6290
+
+
+**  ~~~~~~~~  cvs-plus-a:6
+\_  bits:     76.5069
+\_  length:   29
+\_  bruteforce time:
+    \_  MD4                     --    1.4  months
+    \_  MD5                     --    2.5  months
+    \_  SHA1                    --    8.0  months
+    \_  SHA2-256                --    1.5  years
+    \_  SHA3-256                --    6.7  years
+    \_  PBKDF2-HMAC-MD5         --    7.4  centuries
+    \_  PBKDF2-HMAC-SHA1        --    1.8  millennia
+    \_  PBKDF2-HMAC-SHA256      --    3.8  millennia
+    \_  PBKDF2-HMAC-SHA512      --   10.9  millennia
+    \_  scrypt                  --    4.8  millions of years
+    \_  GPG                     --    1.3  millennia
+    \_  AES-128                 --    1.6  years
+\_  example:  sane seda zalu dufi pivu 2906
+
+
+**  ~~~~~~~~  cvs-plus-a:7
+\_  bits:     89.1508
+\_  length:   34
+\_  bruteforce time:
+    \_  MD4                     --    7.5  centuries
+    \_  MD5                     --    1.3  millennia
+    \_  SHA1                    --    4.3  millennia
+    \_  SHA2-256                --    9.9  millennia
+    \_  SHA3-256                --   43.0  millennia
+    \_  PBKDF2-HMAC-MD5         --    4.7  millions of years
+    \_  PBKDF2-HMAC-SHA1        --   11.4  millions of years
+    \_  PBKDF2-HMAC-SHA256      --   24.6  millions of years
+    \_  PBKDF2-HMAC-SHA512      --   69.8  millions of years
+    \_  scrypt                  --   30.6  billions of years
+    \_  GPG                     --    8.1  millions of years
+    \_  AES-128                 --    9.9  millennia
+\_  example:  sane seda zalu dufi pivu ceba 6657
+
+
+**  ~~~~~~~~  cvs-plus-a:8
+\_  bits:     101.7947
+\_  length:   39
+\_  bruteforce time:
+    \_  MD4                     --    4.8  millions of years
+    \_  MD5                     --    8.4  millions of years
+    \_  SHA1                    --   27.3  millions of years
+    \_  SHA2-256                --   63.3  millions of years
+    \_  SHA3-256                --  275.5  millions of years
+    \_  PBKDF2-HMAC-MD5         --   30.2  billions of years
+    \_  PBKDF2-HMAC-SHA1        --   72.9  billions of years
+    \_  PBKDF2-HMAC-SHA256      --  157.2  billions of years
+    \_  PBKDF2-HMAC-SHA512      --  446.5  billions of years
+    \_  scrypt                  --  195.6  trillions of years
+    \_  GPG                     --   51.9  billions of years
+    \_  AES-128                 --   63.6  millions of years
+\_  example:  sane seda zalu dufi pivu ceba camu 3526
+
+
+**  ~~~~~~~~  cvs-plus-a:9
+\_  bits:     114.4385
+\_  length:   44
+\_  bruteforce time:
+    \_  MD4                     --   30.7  billions of years
+    \_  MD5                     --   54.1  billions of years
+    \_  SHA1                    --  174.9  billions of years
+    \_  SHA2-256                --  405.4  billions of years
+    \_  SHA3-256                --    1.8  trillions of years
+    \_  PBKDF2-HMAC-MD5         --  193.2  trillions of years
+    \_  PBKDF2-HMAC-SHA1        --  466.4  trillions of years
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --  332.4  trillions of years
+    \_  AES-128                 --  407.3  billions of years
+\_  example:  sane seda zalu dufi pivu ceba camu cige 6062
+
+
+**  ~~~~~~~~  cvs-plus-a:10
+\_  bits:     127.0824
+\_  length:   49
+\_  bruteforce time:
+    \_  MD4                     --  196.2  trillions of years
+    \_  MD5                     --  346.0  trillions of years
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco 2335
+
+
+**  ~~~~~~~~  cvs-plus-a:11
+\_  bits:     139.7262
+\_  length:   54
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho 0320
+
+
+**  ~~~~~~~~  cvs-plus-a:12
+\_  bits:     152.3701
+\_  length:   59
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe 0946
+
+
+**  ~~~~~~~~  cvs-plus-a:13
+\_  bits:     165.0139
+\_  length:   64
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu 9351
+
+
+**  ~~~~~~~~  cvs-plus-a:14
+\_  bits:     177.6578
+\_  length:   69
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva 3851
+
+
+**  ~~~~~~~~  cvs-plus-a:15
+\_  bits:     190.3016
+\_  length:   74
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma 3385
+
+
+**  ~~~~~~~~  cvs-plus-a:16
+\_  bits:     202.9455
+\_  length:   79
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu 5572
+
+
+**  ~~~~~~~~  cvs-plus-b:2
+\_  bits:     25.6096
+\_  length:   9
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  sane SE71
+
+
+**  ~~~~~~~~  cvs-plus-b:3
+\_  bits:     38.2534
+\_  length:   14
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --    0.2  seconds
+    \_  PBKDF2-HMAC-SHA256      --    0.4  seconds
+    \_  PBKDF2-HMAC-SHA512      --    1.0  seconds
+    \_  scrypt                  --    7.7  minutes
+    \_  GPG                     --    0.1  seconds
+    \_  AES-128                 --         now
+\_  example:  sane seda ZA44
+
+
+**  ~~~~~~~~  cvs-plus-b:4
+\_  bits:     50.8973
+\_  length:   19
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --    0.1  seconds
+    \_  SHA1                    --    0.4  seconds
+    \_  SHA2-256                --    1.0  seconds
+    \_  SHA3-256                --    4.1  seconds
+    \_  PBKDF2-HMAC-MD5         --    7.6  minutes
+    \_  PBKDF2-HMAC-SHA1        --   18.3  minutes
+    \_  PBKDF2-HMAC-SHA256      --   39.4  minutes
+    \_  PBKDF2-HMAC-SHA512      --    1.9  hours
+    \_  scrypt                  --    1.1  months
+    \_  GPG                     --   13.0  minutes
+    \_  AES-128                 --    1.0  seconds
+\_  example:  sane seda zalu DU25
+
+
+**  ~~~~~~~~  cvs-plus-b:5
+\_  bits:     63.5412
+\_  length:   24
+\_  bruteforce time:
+    \_  MD4                     --    7.7  minutes
+    \_  MD5                     --   13.6  minutes
+    \_  SHA1                    --   43.9  minutes
+    \_  SHA2-256                --    1.7  hours
+    \_  SHA3-256                --    7.4  hours
+    \_  PBKDF2-HMAC-MD5         --    1.1  months
+    \_  PBKDF2-HMAC-SHA1        --    2.7  months
+    \_  PBKDF2-HMAC-SHA256      --    5.7  months
+    \_  PBKDF2-HMAC-SHA512      --    1.4  years
+    \_  scrypt                  --    6.0  centuries
+    \_  GPG                     --    1.9  months
+    \_  AES-128                 --    1.7  hours
+\_  example:  sane seda zalu dufi PI29
+
+
+**  ~~~~~~~~  cvs-plus-b:6
+\_  bits:     76.1850
+\_  length:   29
+\_  bruteforce time:
+    \_  MD4                     --    1.1  months
+    \_  MD5                     --    2.0  months
+    \_  SHA1                    --    6.4  months
+    \_  SHA2-256                --    1.2  years
+    \_  SHA3-256                --    5.4  years
+    \_  PBKDF2-HMAC-MD5         --    5.9  centuries
+    \_  PBKDF2-HMAC-SHA1        --    1.4  millennia
+    \_  PBKDF2-HMAC-SHA256      --    3.1  millennia
+    \_  PBKDF2-HMAC-SHA512      --    8.7  millennia
+    \_  scrypt                  --    3.8  millions of years
+    \_  GPG                     --    1.0  millennia
+    \_  AES-128                 --    1.2  years
+\_  example:  sane seda zalu dufi pivu CE90
+
+
+**  ~~~~~~~~  cvs-plus-b:7
+\_  bits:     88.8289
+\_  length:   34
+\_  bruteforce time:
+    \_  MD4                     --    6.0  centuries
+    \_  MD5                     --    1.1  millennia
+    \_  SHA1                    --    3.4  millennia
+    \_  SHA2-256                --    7.9  millennia
+    \_  SHA3-256                --   34.4  millennia
+    \_  PBKDF2-HMAC-MD5         --    3.8  millions of years
+    \_  PBKDF2-HMAC-SHA1        --    9.1  millions of years
+    \_  PBKDF2-HMAC-SHA256      --   19.6  millions of years
+    \_  PBKDF2-HMAC-SHA512      --   55.8  millions of years
+    \_  scrypt                  --   24.4  billions of years
+    \_  GPG                     --    6.5  millions of years
+    \_  AES-128                 --    8.0  millennia
+\_  example:  sane seda zalu dufi pivu ceba CA57
+
+
+**  ~~~~~~~~  cvs-plus-b:8
+\_  bits:     101.4727
+\_  length:   39
+\_  bruteforce time:
+    \_  MD4                     --    3.8  millions of years
+    \_  MD5                     --    6.8  millions of years
+    \_  SHA1                    --   21.9  millions of years
+    \_  SHA2-256                --   50.7  millions of years
+    \_  SHA3-256                --  220.4  millions of years
+    \_  PBKDF2-HMAC-MD5         --   24.1  billions of years
+    \_  PBKDF2-HMAC-SHA1        --   58.3  billions of years
+    \_  PBKDF2-HMAC-SHA256      --  125.8  billions of years
+    \_  PBKDF2-HMAC-SHA512      --  357.2  billions of years
+    \_  scrypt                  --  156.5  trillions of years
+    \_  GPG                     --   41.5  billions of years
+    \_  AES-128                 --   50.9  millions of years
+\_  example:  sane seda zalu dufi pivu ceba camu CI26
+
+
+**  ~~~~~~~~  cvs-plus-b:9
+\_  bits:     114.1166
+\_  length:   44
+\_  bruteforce time:
+    \_  MD4                     --   24.5  billions of years
+    \_  MD5                     --   43.2  billions of years
+    \_  SHA1                    --  139.9  billions of years
+    \_  SHA2-256                --  324.3  billions of years
+    \_  SHA3-256                --    1.4  trillions of years
+    \_  PBKDF2-HMAC-MD5         --  154.5  trillions of years
+    \_  PBKDF2-HMAC-SHA1        --  373.1  trillions of years
+    \_  PBKDF2-HMAC-SHA256      --  804.8  trillions of years
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --  265.9  trillions of years
+    \_  AES-128                 --  325.8  billions of years
+\_  example:  sane seda zalu dufi pivu ceba camu cige PA62
+
+
+**  ~~~~~~~~  cvs-plus-b:10
+\_  bits:     126.7604
+\_  length:   49
+\_  bruteforce time:
+    \_  MD4                     --  156.9  trillions of years
+    \_  MD5                     --  276.8  trillions of years
+    \_  SHA1                    --  895.4  trillions of years
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco NE33
+
+
+**  ~~~~~~~~  cvs-plus-b:11
+\_  bits:     139.4043
+\_  length:   54
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho BA32
+
+
+**  ~~~~~~~~  cvs-plus-b:12
+\_  bits:     152.0482
+\_  length:   59
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe LO08
+
+
+**  ~~~~~~~~  cvs-plus-b:13
+\_  bits:     164.6920
+\_  length:   64
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu SU35
+
+
+**  ~~~~~~~~  cvs-plus-b:14
+\_  bits:     177.3359
+\_  length:   69
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva SU51
+
+
+**  ~~~~~~~~  cvs-plus-b:15
+\_  bits:     189.9797
+\_  length:   74
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma HE38
+
+
+**  ~~~~~~~~  cvs-plus-b:16
+\_  bits:     202.6236
+\_  length:   79
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu SI72
+
+
+**  ~~~~~~~~  cvs-plus-c:2
+\_  bits:     27.2877
+\_  length:   9
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --    0.2  seconds
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  sane SE7~
+
+
+**  ~~~~~~~~  cvs-plus-c:3
+\_  bits:     39.9315
+\_  length:   14
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --    0.2  seconds
+    \_  PBKDF2-HMAC-SHA1        --    0.5  seconds
+    \_  PBKDF2-HMAC-SHA256      --    1.2  seconds
+    \_  PBKDF2-HMAC-SHA512      --    3.4  seconds
+    \_  scrypt                  --   24.5  minutes
+    \_  GPG                     --    0.4  seconds
+    \_  AES-128                 --         now
+\_  example:  sane seda ZA4(
+
+
+**  ~~~~~~~~  cvs-plus-c:4
+\_  bits:     52.5754
+\_  length:   19
+\_  bruteforce time:
+    \_  MD4                     --    0.2  seconds
+    \_  MD5                     --    0.4  seconds
+    \_  SHA1                    --    1.3  seconds
+    \_  SHA2-256                --    3.1  seconds
+    \_  SHA3-256                --   13.3  seconds
+    \_  PBKDF2-HMAC-MD5         --   24.2  minutes
+    \_  PBKDF2-HMAC-SHA1        --   58.5  minutes
+    \_  PBKDF2-HMAC-SHA256      --    2.1  hours
+    \_  PBKDF2-HMAC-SHA512      --    6.0  hours
+    \_  scrypt                  --    3.6  months
+    \_  GPG                     --   41.7  minutes
+    \_  AES-128                 --    3.1  seconds
+\_  example:  sane seda zalu DU2;
+
+
+**  ~~~~~~~~  cvs-plus-c:5
+\_  bits:     65.2192
+\_  length:   24
+\_  bruteforce time:
+    \_  MD4                     --   24.6  minutes
+    \_  MD5                     --   43.4  minutes
+    \_  SHA1                    --    2.3  hours
+    \_  SHA2-256                --    5.4  hours
+    \_  SHA3-256                --   23.6  hours
+    \_  PBKDF2-HMAC-MD5         --    3.5  months
+    \_  PBKDF2-HMAC-SHA1        --    8.5  months
+    \_  PBKDF2-HMAC-SHA256      --    1.5  years
+    \_  PBKDF2-HMAC-SHA512      --    4.4  years
+    \_  scrypt                  --    1.9  millennia
+    \_  GPG                     --    6.1  months
+    \_  AES-128                 --    5.4  hours
+\_  example:  sane seda zalu dufi PI2~
+
+
+**  ~~~~~~~~  cvs-plus-c:6
+\_  bits:     77.8631
+\_  length:   29
+\_  bruteforce time:
+    \_  MD4                     --    3.6  months
+    \_  MD5                     --    6.3  months
+    \_  SHA1                    --    1.7  years
+    \_  SHA2-256                --    4.0  years
+    \_  SHA3-256                --    1.7  decades
+    \_  PBKDF2-HMAC-MD5         --    1.9  millennia
+    \_  PBKDF2-HMAC-SHA1        --    4.6  millennia
+    \_  PBKDF2-HMAC-SHA256      --    9.8  millennia
+    \_  PBKDF2-HMAC-SHA512      --   27.9  millennia
+    \_  scrypt                  --   12.2  millions of years
+    \_  GPG                     --    3.2  millennia
+    \_  AES-128                 --    4.0  years
+\_  example:  sane seda zalu dufi pivu CE9!
+
+
+**  ~~~~~~~~  cvs-plus-c:7
+\_  bits:     90.5069
+\_  length:   34
+\_  bruteforce time:
+    \_  MD4                     --    1.9  millennia
+    \_  MD5                     --    3.4  millennia
+    \_  SHA1                    --   10.9  millennia
+    \_  SHA2-256                --   25.3  millennia
+    \_  SHA3-256                --  110.2  millennia
+    \_  PBKDF2-HMAC-MD5         --   12.1  millions of years
+    \_  PBKDF2-HMAC-SHA1        --   29.1  millions of years
+    \_  PBKDF2-HMAC-SHA256      --   62.9  millions of years
+    \_  PBKDF2-HMAC-SHA512      --  178.6  millions of years
+    \_  scrypt                  --   78.2  billions of years
+    \_  GPG                     --   20.8  millions of years
+    \_  AES-128                 --   25.5  millennia
+\_  example:  sane seda zalu dufi pivu ceba CA5]
+
+
+**  ~~~~~~~~  cvs-plus-c:8
+\_  bits:     103.1508
+\_  length:   39
+\_  bruteforce time:
+    \_  MD4                     --   12.3  millions of years
+    \_  MD5                     --   21.6  millions of years
+    \_  SHA1                    --   70.0  millions of years
+    \_  SHA2-256                --  162.2  millions of years
+    \_  SHA3-256                --  705.2  millions of years
+    \_  PBKDF2-HMAC-MD5         --   77.3  billions of years
+    \_  PBKDF2-HMAC-SHA1        --  186.5  billions of years
+    \_  PBKDF2-HMAC-SHA256      --  402.4  billions of years
+    \_  PBKDF2-HMAC-SHA512      --    1.1  trillions of years
+    \_  scrypt                  --  500.7  trillions of years
+    \_  GPG                     --  133.0  billions of years
+    \_  AES-128                 --  162.9  millions of years
+\_  example:  sane seda zalu dufi pivu ceba camu CI2@
+
+
+**  ~~~~~~~~  cvs-plus-c:9
+\_  bits:     115.7947
+\_  length:   44
+\_  bruteforce time:
+    \_  MD4                     --   78.5  billions of years
+    \_  MD5                     --  138.4  billions of years
+    \_  SHA1                    --  447.7  billions of years
+    \_  SHA2-256                --    1.0  trillions of years
+    \_  SHA3-256                --    4.5  trillions of years
+    \_  PBKDF2-HMAC-MD5         --  494.6  trillions of years
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --  850.9  trillions of years
+    \_  AES-128                 --    1.0  trillions of years
+\_  example:  sane seda zalu dufi pivu ceba camu cige PA6+
+
+
+**  ~~~~~~~~  cvs-plus-c:10
+\_  bits:     128.4385
+\_  length:   49
+\_  bruteforce time:
+    \_  MD4                     --  502.2  trillions of years
+    \_  MD5                     --  885.7  trillions of years
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco NE3,
+
+
+**  ~~~~~~~~  cvs-plus-c:11
+\_  bits:     141.0824
+\_  length:   54
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho BA3"
+
+
+**  ~~~~~~~~  cvs-plus-c:12
+\_  bits:     153.7262
+\_  length:   59
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe LO0_
+
+
+**  ~~~~~~~~  cvs-plus-c:13
+\_  bits:     166.3701
+\_  length:   64
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu SU3<
+
+
+**  ~~~~~~~~  cvs-plus-c:14
+\_  bits:     179.0139
+\_  length:   69
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva SU5'
+
+
+**  ~~~~~~~~  cvs-plus-c:15
+\_  bits:     191.6578
+\_  length:   74
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma HE3~
+
+
+**  ~~~~~~~~  cvs-plus-c:16
+\_  bits:     204.3016
+\_  length:   79
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu SI7\
 
 
 **  ~~~~~~~~  proquint-lower:1
