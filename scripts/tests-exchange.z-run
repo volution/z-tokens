@@ -1137,7 +1137,7 @@
 	test "${#}" -eq 0
 	
 	printf -- '[ii]  loading `%s`...\n' \
-			'ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqgyg7zfdlhxsaymch3pu5c74xz82y5pt67grpy6ej8tcatltw4ar0gqszkku9ux'
+			'ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqgyg7zfdlhxsaymch3pu5c74xz82y5pt67grpy6ej8tcatltw4ar0gqszkku9ux' \
 			'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIjwkt/c0Ok3i8Q8pj1TCOolAr15Awk1mR146v63V6N6' \
 			'SHA256:WRjxd4AByQpJgIqT24dkBU0gUQzmX+3iHnMwoiE9PRE' \
 		>&2 \
