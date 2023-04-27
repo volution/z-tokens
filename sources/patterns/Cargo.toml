@@ -78,6 +78,7 @@ zt-patterns-extra = [
 	"zt-patterns-pgp",
 	"zt-patterns-eff-all",
 	"zt-patterns-nato",
+	"zt-patterns-tokens",
 	"zt-patterns-uuid",
 	"zt-patterns-ip",
 	"zt-patterns-bytes",
@@ -131,6 +132,7 @@ zt-patterns-eff-large = []
 zt-patterns-eff-short = []
 zt-patterns-eff-unique = []
 zt-patterns-nato = []
+zt-patterns-tokens = []
 zt-patterns-uuid = []
 zt-patterns-ip = []
 zt-patterns-bytes = []

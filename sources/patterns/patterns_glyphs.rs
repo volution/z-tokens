@@ -724,7 +724,18 @@ define_integer! (pub INTEGER_2_253, (2 ..= 253), IntegerFormat::Decimal);
 define_integer! (pub INTEGER_0_31, (0 ..= 31), IntegerFormat::Decimal);
 define_integer! (pub INTEGER_1_30, (1 ..= 30), IntegerFormat::Decimal);
 
-define_integer! (pub INTEGER_8B_HEX, (0 ..= 255), IntegerFormat::HexPadded (2));
+define_integer! (pub INTEGER_4B_HEX, (0 ..= ((1 << 4) - 1)), IntegerFormat::HexPadded (2 * 4 / 8));
+define_integer! (pub INTEGER_8B_HEX, (0 ..= ((1 << 8) - 1)), IntegerFormat::HexPadded (2 * 8 / 8));
+define_integer! (pub INTEGER_16B_HEX, (0 ..= ((1 << 16) - 1)), IntegerFormat::HexPadded (2 * 16 / 8));
+define_integer! (pub INTEGER_24B_HEX, (0 ..= ((1 << 24) - 1)), IntegerFormat::HexPadded (2 * 24 / 8));
+define_integer! (pub INTEGER_32B_HEX, (0 ..= ((1 << 32) - 1)), IntegerFormat::HexPadded (2 * 32 / 8));
+define_integer! (pub INTEGER_48B_HEX, (0 ..= ((1 << 48) - 1)), IntegerFormat::HexPadded (2 * 48 / 8));
+define_integer! (pub INTEGER_64B_HEX, (0 ..= ((1 << 64) - 1)), IntegerFormat::HexPadded (2 * 64 / 8));
+define_integer! (pub INTEGER_96B_HEX, (0 ..= ((1 << 96) - 1)), IntegerFormat::HexPadded (2 * 96 / 8));
+define_integer! (pub INTEGER_128B_HEX, (0 ..= 340282366920938463463374607431768211455), IntegerFormat::HexPadded (2 * 128 / 8));
+
+
+
 
 #[ cfg (feature = "zt-patterns-uuid") ]
 define_integer! (pub UUID_ANY_FIELD_1, (0 ..= ((1 << 32) - 1)), IntegerFormat::HexPadded (8));

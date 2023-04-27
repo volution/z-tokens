@@ -9,6 +9,7 @@ use ::num_bigint::{
 
 use ::num_traits::{
 		Zero as _,
+		One as _,
 		ToPrimitive as _,
 		Pow as _,
 	};
@@ -36,7 +37,17 @@ impl Entropy {
 			}
 	}
 	
-	pub fn for_choice (_count : usize) -> Self {
+	pub fn for_bits (_count : usize) -> Self {
+		if _count == 0 {
+			return Self::none ();
+		}
+		Self {
+				accumulator : BigUint::one () << _count,
+				accumulator_log2 : _count as f64,
+			}
+	}
+	
+	pub fn for_choice (_count : u128) -> Self {
 		if _count == 0 {
 			return Self::none ();
 		}
@@ -51,7 +62,7 @@ impl Entropy {
 			return Self::none ();
 		}
 		if _repeats == 1 {
-			return Self::for_choice (_count);
+			return Self::for_choice (_count as u128);
 		}
 		Self {
 				accumulator : BigUint::from (_count) .pow (_repeats),
@@ -188,18 +199,19 @@ pub fn entropy_glyph (_pattern : impl AsRef<GlyphPattern>) -> EntropyResult<Entr
 	match _pattern {
 		
 		GlyphPattern::Set (_patterns) =>
-			Ok (Entropy::for_choice (_patterns.len ())),
+			Ok (Entropy::for_choice (_patterns.len () as u128)),
 		
 		GlyphPattern::Integer (_lower, _upper, _format) => {
 			let (_lower, _upper) = (*_lower, *_upper);
 			if _lower > _upper {
 				fail! (0xb6347bbc);
 			}
-			let _delta = u128::abs_diff (_lower, _upper) + 1;
-			if _delta > (usize::MAX as u128) {
-				fail! (0x2a1640d7);
+			let _delta = u128::abs_diff (_lower, _upper);
+			if _delta == u128::MAX {
+				Ok (Entropy::for_bits (128))
+			} else {
+				Ok (Entropy::for_choice (_delta + 1))
 			}
-			Ok (Entropy::for_choice (_delta as usize))
 		}
 		
 		GlyphPattern::Bytes (_size, _format) =>

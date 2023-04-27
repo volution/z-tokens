@@ -181,16 +181,31 @@ pub fn generate_glyph_push (_pattern : impl AsRef<GlyphPattern>, _randomizer : &
 			if _lower > _upper {
 				fail! (0xb8a08c0e);
 			}
-			let _delta = (_upper - _lower) + 1;
-			if _delta > (usize::MAX as u128) {
+			let _delta = _upper - _lower;
+			let (_value, _count, _index) = if _delta == 0 {
+				(_lower, 1, 0)
+			} else if _delta == u128::MAX {
+				let _random = _randomizer.value_u128 () .else_wrap (0x33ed6d05) ?;
+				//  FIXME!
+				(_random, 0, 0)
+			} else if (_delta + 1) <= (usize::MAX as u128) {
+				let _count = (_delta + 1) as usize;
+				let _index = _randomizer.choose (_count) .else_wrap (0x5079d3d3) ?;
+				let _value = _lower + (_index as u128);
+				(_value, _count, _index)
+			} else if (_delta.leading_zeros () + _delta.trailing_ones ()) == 128 {
+				let _random = _randomizer.value_u128 () .else_wrap (0xb82829eb) ?;
+				let _index = _random & _delta;
+				let _value = _lower + _index;
+				//  FIXME!
+				(_value, 0, 0)
+			} else {
+				::std::eprintln! ("{} {} / {} {:x} {:b}", _delta.leading_zeros (), _delta.trailing_ones (), _delta, _delta, _delta);
 				fail! (0x4cc61b73);
-			}
-			let _delta = _delta as usize;
-			let _index = _randomizer.choose (_delta) .else_wrap (0x5079d3d3) ?;
-			let _value = _lower + (_index as u128);
+			};
 			let _glyph = Glyph::Integer (Rb::new (_value), *_format);
 			let _glyph = Rb::new (_glyph);
-			(_glyph, _delta, _index)
+			(_glyph, _count, _index)
 		}
 		
 		GlyphPattern::Bytes (_size, _format) => {

@@ -671,10 +671,99 @@ define_repeat! (
 
 
 
+#[ cfg (feature = "zt-patterns-tokens") ]
+define_named! (
+		pub TOKEN_HEX_16,
+		("token-hex-16", "tokens"),
+		("token-hex-16", "x-16"),
+		glyphs::INTEGER_16B_HEX_TOKEN);
+
+#[ cfg (feature = "zt-patterns-tokens") ]
+define_named! (
+		pub TOKEN_HEX_24,
+		("token-hex-24", "tokens"),
+		("token-hex-24", "x-24"),
+		glyphs::INTEGER_24B_HEX_TOKEN);
+
+#[ cfg (feature = "zt-patterns-tokens") ]
+define_named! (
+		pub TOKEN_HEX_32,
+		("token-hex-32", "tokens"),
+		("token-hex-32", "x-32"),
+		glyphs::INTEGER_32B_HEX_TOKEN);
+
+#[ cfg (feature = "zt-patterns-tokens") ]
+define_named! (
+		pub TOKEN_HEX_48,
+		("token-hex-48", "tokens"),
+		("token-hex-48", "x-48"),
+		glyphs::INTEGER_48B_HEX_TOKEN);
+
+#[ cfg (feature = "zt-patterns-tokens") ]
+define_named! (
+		pub TOKEN_HEX_64,
+		("token-hex-64", "tokens", "password"),
+		("token-hex-64", "x-64"),
+		glyphs::INTEGER_64B_HEX_TOKEN);
+
+#[ cfg (feature = "zt-patterns-tokens") ]
+define_named! (
+		pub TOKEN_HEX_96,
+		("token-hex-96", "tokens", "password"),
+		("token-hex-96", "x-96"),
+		glyphs::INTEGER_96B_HEX_TOKEN);
+
+#[ cfg (feature = "zt-patterns-tokens") ]
+define_named! (
+		pub TOKEN_HEX_128,
+		("token-hex-128", "tokens", "password"),
+		("token-hex-128", "x-128"),
+		glyphs::INTEGER_128B_HEX_TOKEN);
+
+#[ cfg (feature = "zt-patterns-tokens") ]
+define_sequence! (
+		pub TOKEN_HEX_256,
+		("token-hex-256", "tokens"),
+		("token-hex-256", "x-256"), [
+			glyphs::INTEGER_128B_HEX_TOKEN,
+			glyphs::INTEGER_128B_HEX_TOKEN,
+		], separators::HYPHEN_OPTIONAL_INFIX_PATTERN);
+
+#[ cfg (feature = "zt-patterns-tokens") ]
+define_sequence! (
+		pub TOKEN_HEX_512,
+		("token-hex-512", "tokens"),
+		("token-hex-512", "x-512"), [
+			glyphs::INTEGER_128B_HEX_TOKEN,
+			glyphs::INTEGER_128B_HEX_TOKEN,
+			glyphs::INTEGER_128B_HEX_TOKEN,
+			glyphs::INTEGER_128B_HEX_TOKEN,
+		], separators::HYPHEN_OPTIONAL_INFIX_PATTERN);
+
+#[ cfg (feature = "zt-patterns-tokens") ]
+define_all! (pub TOKEN_ALL, [
+		TOKEN_HEX_16,
+		TOKEN_HEX_24,
+		TOKEN_HEX_32,
+		TOKEN_HEX_48,
+		TOKEN_HEX_64,
+		TOKEN_HEX_96,
+		TOKEN_HEX_128,
+		TOKEN_HEX_256,
+		TOKEN_HEX_512,
+	]);
+
+
+
+
+
+
+
+
 #[ cfg (feature = "zt-patterns-uuid") ]
 define_sequence! (
 		pub UUID_V4,
-		("uuid-v4", "uuid", "password"),
+		("uuid-v4", "uuid", "tokens", "password"),
 		("uuid-v4"), [
 			glyphs::UUID_ANY_FIELD_1_TOKEN,
 			glyphs::UUID_ANY_FIELD_2_TOKEN,
@@ -981,6 +1070,9 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		
 		#[ cfg (feature = "zt-patterns-bytes") ]
 		BYTES_HEX_ALL,
+		
+		#[ cfg (feature = "zt-patterns-tokens") ]
+		TOKEN_ALL,
 		
 		#[ cfg (feature = "zt-patterns-uuid") ]
 		UUID_ALL,

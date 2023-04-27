@@ -31,6 +31,8 @@ pub trait Randomizer {
 	
 	fn bytes (&mut self, _buffer : &mut [u8]) -> RandomResult;
 	
+	fn value_u128 (&mut self) -> RandomResult<u128>;
+	
 	fn timestamp (&mut self) -> RandomResult<u128>;
 	
 	fn reset (&mut self) -> RandomResult;
@@ -85,6 +87,10 @@ impl Randomizer for OsRandomizer {
 		self.delegate.bytes (_buffer)
 	}
 	
+	fn value_u128 (&mut self) -> RandomResult<u128> {
+		self.delegate.value_u128 ()
+	}
+	
 	fn timestamp (&mut self) -> RandomResult<u128> {
 		self.delegate.timestamp ()
 	}
@@ -132,6 +138,10 @@ impl Randomizer for SeedRandomizer {
 		self.delegate.bytes (_buffer)
 	}
 	
+	fn value_u128 (&mut self) -> RandomResult<u128> {
+		self.delegate.value_u128 ()
+	}
+	
 	fn timestamp (&mut self) -> RandomResult<u128> {
 		self.delegate.timestamp ()
 	}
@@ -157,6 +167,10 @@ impl <Core : RngCore> RngRandomizer<Core> {
 	
 	fn bytes (&mut self, _buffer : &mut [u8]) -> RandomResult {
 		self.rng.try_fill_bytes (_buffer) .else_wrap (0xbee63cdc)
+	}
+	
+	fn value_u128 (&mut self) -> RandomResult<u128> {
+		Ok (random_u128_from (&mut self.rng))
 	}
 	
 	fn timestamp (&mut self) -> RandomResult<u128> {
