@@ -157,11 +157,11 @@ define_set! (pub ASCII_VOWEL_LOWER, Char, [
 		'a', 'e', 'i', 'o', 'u',
 	]);
 define_set! (pub ASCII_VOWEL_UPPER, Char, [
-		'A', 'B', 'I', 'O', 'U',
+		'A', 'E', 'I', 'O', 'U',
 	]);
 define_set! (pub ASCII_VOWEL_MIXED, Char, [
 		'a', 'e', 'i', 'o', 'u',
-		'A', 'B', 'I', 'O', 'U',
+		'A', 'E', 'I', 'O', 'U',
 	]);
 
 
