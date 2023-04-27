@@ -208,6 +208,34 @@ define_set! (pub ASCII_PRINTABLE, Char, [
 
 
 
+define_set! (pub SIMPLE_VOWEL_LOWER, Char, [
+		'a', 'e', 'i', 'o', 'u',
+	]);
+define_set! (pub SIMPLE_VOWEL_UPPER, Char, [
+		'A', 'E', 'I', 'O', 'U',
+	]);
+define_set! (pub SIMPLE_VOWEL_MIXED, Char, [
+		'a', 'e', 'i', 'o', 'u',
+		'A', 'E', 'I', 'O', 'U',
+	]);
+
+
+define_set! (pub SIMPLE_CONSONANT_LOWER, Char, [
+	//	'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z',
+		'b', 'c', 'd', 'f', 'g', 'h', 'j',      'l', 'm', 'n', 'p',      'r', 's', 't', 'v',                'z',
+	]);
+define_set! (pub SIMPLE_CONSONANT_UPPER, Char, [
+	//	'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z',
+		'B', 'C', 'D', 'F', 'G', 'H', 'J',      'L', 'M', 'N', 'P',      'R', 'S', 'T', 'V',                'Z',
+	]);
+define_set! (pub SIMPLE_CONSONANT_MIXED, Char, [
+		'b', 'c', 'd', 'f', 'g', 'h', 'j',      'l', 'm', 'n', 'p',      'r', 's', 't', 'v',                'z',
+		'B', 'C', 'D', 'F', 'G', 'H', 'J',      'L', 'M', 'N', 'P',      'R', 'S', 'T', 'V',                'Z',
+	]);
+
+
+
+
 // NOTE:  =>  https://github.com/dsw/proquint/blob/master/proquint-proposal.txt
 
 #[ cfg (feature = "zt-patterns-proquint") ]

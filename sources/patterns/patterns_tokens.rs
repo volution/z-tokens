@@ -231,24 +231,24 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub ASCII_CONSONANT_VOWEL_LOWER,
-		("cv-lower", "cv", "ascii", "password", "memorable"),
-		("cv-lower", "cv"),
+		("cva-lower", "cva", "cv", "ascii", "password", "memorable"),
+		("cva-lower", "cva"),
 		{ ASCII_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN },
 		(16 : 1));
 
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub ASCII_CONSONANT_VOWEL_UPPER,
-		("cv-upper", "cv", "ascii"),
-		("cv-upper"),
+		("cva-upper", "cva", "cv", "ascii"),
+		("cva-upper"),
 		{ ASCII_CONSONANT_VOWEL_UPPER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN },
 		(16 : 1));
 
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub ASCII_CONSONANT_VOWEL_MIXED,
-		("cv-mixed", "cv", "ascii", "password"),
-		("cv-mixed"),
+		("cva-mixed", "cva", "cv", "ascii", "password"),
+		("cva-mixed"),
 		{ ASCII_CONSONANT_VOWEL_MIXED_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN },
 		(16 : 1));
 
@@ -295,8 +295,8 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub ASCII_CONSONANT_VOWEL_PLUS_A,
-		("cv-plus-a", "cv-plus", "cv", "ascii", "password", "memorable"),
-		("cv-plus-a", "cva"),
+		("cva-plus-a", "cva-plus", "cv-plus", "cva", "cv", "ascii", "password", "memorable"),
+		("cva-plus-a", "cvapa"),
 		{
 			(),
 			( ASCII_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN ),
@@ -307,8 +307,8 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub ASCII_CONSONANT_VOWEL_PLUS_B,
-		("cv-plus-b", "cv-plus", "cv", "ascii", "password", "memorable"),
-		("cv-plus-b", "cvb"),
+		("cva-plus-b", "cva-plus", "cv-plus", "cva", "cv", "ascii", "password", "memorable"),
+		("cva-plus-b", "cvapb"),
 		{
 			(),
 			( ASCII_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN ),
@@ -319,12 +319,155 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub ASCII_CONSONANT_VOWEL_PLUS_C,
-		("cv-plus-c", "cv-plus", "cv", "ascii", "password", "memorable"),
-		("cv-plus-c", "cvc"),
+		("cva-plus-c", "cva-plus", "cv-plus", "cva", "cv", "ascii", "password", "memorable"),
+		("cva-plus-c", "cvapc"),
 		{
 			(),
 			( ASCII_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN ),
 			( separators::SPACE_OPTIONAL_TOKEN, ASCII_CONSONANT_VOWEL_PLUS_C_WORD, )
+		},
+		(15 : 1, number_plus_one));
+
+
+
+
+
+
+
+
+#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+define_sequence! (
+		pub SIMPLE_CONSONANT_VOWEL_LOWER_WORD,
+		(),
+		(),
+		[
+			glyphs::SIMPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::SIMPLE_VOWEL_LOWER_TOKEN,
+			glyphs::SIMPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::SIMPLE_VOWEL_LOWER_TOKEN,
+		], separators::NONE_PATTERN);
+
+#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+define_sequence! (
+		pub SIMPLE_CONSONANT_VOWEL_UPPER_WORD,
+		(),
+		(),
+		[
+			glyphs::SIMPLE_CONSONANT_UPPER_TOKEN,
+			glyphs::SIMPLE_VOWEL_UPPER_TOKEN,
+			glyphs::SIMPLE_CONSONANT_UPPER_TOKEN,
+			glyphs::SIMPLE_VOWEL_UPPER_TOKEN,
+		], separators::NONE_PATTERN);
+
+#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+define_sequence! (
+		pub SIMPLE_CONSONANT_VOWEL_MIXED_WORD,
+		(),
+		(),
+		[
+			glyphs::SIMPLE_CONSONANT_MIXED_TOKEN,
+			glyphs::SIMPLE_VOWEL_MIXED_TOKEN,
+			glyphs::SIMPLE_CONSONANT_MIXED_TOKEN,
+			glyphs::SIMPLE_VOWEL_MIXED_TOKEN,
+		], separators::NONE_PATTERN);
+
+#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+define_repeat! (
+		pub SIMPLE_CONSONANT_VOWEL_LOWER,
+		("cvs-lower", "cvs", "cv", "ascii", "password", "memorable"),
+		("cvs-lower", "cvs"),
+		{ SIMPLE_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN },
+		(16 : 1));
+
+#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+define_repeat! (
+		pub SIMPLE_CONSONANT_VOWEL_UPPER,
+		("cvs-upper", "cvs", "cv", "ascii"),
+		("cvs-upper"),
+		{ SIMPLE_CONSONANT_VOWEL_UPPER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN },
+		(16 : 1));
+
+#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+define_repeat! (
+		pub SIMPLE_CONSONANT_VOWEL_MIXED,
+		("cvs-mixed", "cvs", "cv", "ascii", "password"),
+		("cvs-mixed"),
+		{ SIMPLE_CONSONANT_VOWEL_MIXED_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN },
+		(16 : 1));
+
+
+
+
+#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+define_sequence! (
+		pub SIMPLE_CONSONANT_VOWEL_PLUS_A_WORD,
+		(),
+		(),
+		[
+			glyphs::DIGIT_BASE10_TOKEN,
+			glyphs::DIGIT_BASE10_TOKEN,
+			glyphs::DIGIT_BASE10_TOKEN,
+			glyphs::DIGIT_BASE10_TOKEN,
+		], separators::NONE_PATTERN);
+
+#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+define_sequence! (
+		pub SIMPLE_CONSONANT_VOWEL_PLUS_B_WORD,
+		(),
+		(),
+		[
+			glyphs::SIMPLE_CONSONANT_UPPER_TOKEN,
+			glyphs::SIMPLE_VOWEL_UPPER_TOKEN,
+			glyphs::DIGIT_BASE10_TOKEN,
+			glyphs::DIGIT_BASE10_TOKEN,
+		], separators::NONE_PATTERN);
+
+#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+define_sequence! (
+		pub SIMPLE_CONSONANT_VOWEL_PLUS_C_WORD,
+		(),
+		(),
+		[
+			glyphs::SIMPLE_CONSONANT_UPPER_TOKEN,
+			glyphs::SIMPLE_VOWEL_UPPER_TOKEN,
+			glyphs::DIGIT_BASE10_TOKEN,
+			glyphs::ASCII_SYMBOL_TOKEN,
+		], separators::NONE_PATTERN);
+
+
+#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+define_repeat! (
+		pub SIMPLE_CONSONANT_VOWEL_PLUS_A,
+		("cvs-plus-a", "cvs-plus", "cv-plus", "cvs", "cv", "ascii", "password", "memorable"),
+		("cvs-plus-a", "cvspa"),
+		{
+			(),
+			( SIMPLE_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN ),
+			( separators::SPACE_OPTIONAL_TOKEN, SIMPLE_CONSONANT_VOWEL_PLUS_A_WORD, )
+		},
+		(15 : 1, number_plus_one));
+
+#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+define_repeat! (
+		pub SIMPLE_CONSONANT_VOWEL_PLUS_B,
+		("cvs-plus-b", "cvs-plus", "cv-plus", "cvs", "cv", "ascii", "password", "memorable"),
+		("cvs-plus-b", "cvspb"),
+		{
+			(),
+			( SIMPLE_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN ),
+			( separators::SPACE_OPTIONAL_TOKEN, SIMPLE_CONSONANT_VOWEL_PLUS_B_WORD, )
+		},
+		(15 : 1, number_plus_one));
+
+#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+define_repeat! (
+		pub SIMPLE_CONSONANT_VOWEL_PLUS_C,
+		("cvs-plus-c", "cvs-plus", "cv-plus", "cvs", "cv", "ascii", "password", "memorable"),
+		("cvs-plus-c", "cvspc"),
+		{
+			(),
+			( SIMPLE_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN ),
+			( separators::SPACE_OPTIONAL_TOKEN, SIMPLE_CONSONANT_VOWEL_PLUS_C_WORD, )
 		},
 		(15 : 1, number_plus_one));
 
@@ -793,6 +936,20 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		ASCII_CONSONANT_VOWEL_PLUS_B_ALL,
 		#[ cfg (feature = "zt-patterns-consonant-vowel") ]
 		ASCII_CONSONANT_VOWEL_PLUS_C_ALL,
+		
+		#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+		SIMPLE_CONSONANT_VOWEL_LOWER_ALL,
+		#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+		SIMPLE_CONSONANT_VOWEL_UPPER_ALL,
+		#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+		SIMPLE_CONSONANT_VOWEL_MIXED_ALL,
+		
+		#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+		SIMPLE_CONSONANT_VOWEL_PLUS_A_ALL,
+		#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+		SIMPLE_CONSONANT_VOWEL_PLUS_B_ALL,
+		#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+		SIMPLE_CONSONANT_VOWEL_PLUS_C_ALL,
 		
 		#[ cfg (feature = "zt-patterns-proquint") ]
 		PROQUINT_LOWER_ALL,

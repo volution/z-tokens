@@ -5,7 +5,7 @@ use crate::prelude::*;
 
 
 
-const DEFAULT_PATTERN : &str = "cv-lower:4";
+const DEFAULT_PATTERN : &str = "cvs-lower:4";
 const DEFAULT_TOKEN_COUNT : usize = 10;
 const DEFAULT_GROUP_SIZE : usize = 10;
 
