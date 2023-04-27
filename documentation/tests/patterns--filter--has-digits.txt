@@ -252,6 +252,13 @@
 ::  bytes-hex:18            :  144  =b :   36 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a
 ::  bytes-hex:19            :  152  =b :   38 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31
 ::  bytes-hex:20            :  160  =b :   40 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf
+::  token-hex-16            :   16  =b :    4 c ::    bb2a
+::  token-hex-24            :   24  =b :    6 c ::    069dc1
+::  token-hex-32            :   32  =b :    8 c ::    c5a0ef11
+::  token-hex-48            :   48  =b :   12 c ::    bb2a3fb2cd2c
+::  token-hex-64            :   64  =b :   16 c ::    bb2a3fb2cd2c6f7f
+::  token-hex-96            :   96  =b :   24 c ::    8e27697bbb2a3fb2cd2c6f7f
+::  token-hex-128           :  128  =b :   32 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f
 ::  uuid-v4                 :  122  =b :   36 c ::    c5a0ef11-f80c-41ce-8329-75e88c63a6e1
 ::  ip-127                  :   23.9 b :   13 c ::    127.186.196.8
 ::  ip-10                   :   23.9 b :   12 c ::    10.186.196.8

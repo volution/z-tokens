@@ -42,6 +42,15 @@ eff-short:1
 eff-unique:1
 nato:1
 bytes-hex:1
+token-hex-16
+token-hex-24
+token-hex-32
+token-hex-48
+token-hex-64
+token-hex-96
+token-hex-128
+token-hex-256
+token-hex-512
 uuid-v4
 ip-127
 ip-10

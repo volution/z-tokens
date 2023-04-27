@@ -208,6 +208,9 @@
 ::  bytes-hex:14            :  112  =b :   28 c ::    7f6f2ccdb23f2abb7b69278e947c
 ::  bytes-hex:15            :  120  =b :   30 c ::    7f6f2ccdb23f2abb7b69278e947c01
 ::  bytes-hex:16            :  128  =b :   32 c ::    7f6f2ccdb23f2abb7b69278e947c01c6
+::  token-hex-64            :   64  =b :   16 c ::    bb2a3fb2cd2c6f7f
+::  token-hex-96            :   96  =b :   24 c ::    8e27697bbb2a3fb2cd2c6f7f
+::  token-hex-128           :  128  =b :   32 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f
 ::  uuid-v4                 :  122  =b :   36 c ::    c5a0ef11-f80c-41ce-8329-75e88c63a6e1
 ::  flake:64                :   64  =b :   26 c ::    29607b74-7f6f2ccd-b23f2abb
 ::  flake:96                :   96  =b :   35 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e

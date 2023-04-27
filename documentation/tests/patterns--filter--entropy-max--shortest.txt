@@ -38,6 +38,11 @@
 ::  eff-unique:1            :   10.3 b :    8 c ::    rekindle
 ::  nato:1                  :    5.1 b :    3 c ::    wun
 ::  bytes-hex:1             :    8  =b :    2 c ::    7f
+::  token-hex-16            :   16  =b :    4 c ::    bb2a
+::  token-hex-24            :   24  =b :    6 c ::    069dc1
+::  token-hex-32            :   32  =b :    8 c ::    c5a0ef11
+::  token-hex-48            :   48  =b :   12 c ::    bb2a3fb2cd2c
+::  token-hex-64            :   64  =b :   16 c ::    bb2a3fb2cd2c6f7f
 ::  ip-127                  :   23.9 b :   13 c ::    127.186.196.8
 ::  ip-10                   :   23.9 b :   12 c ::    10.186.196.8
 ::  ip-172                  :   20.8 b :   12 c ::    172.22.196.8

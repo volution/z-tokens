@@ -53,12 +53,15 @@ patterns / filter / has-letters-upper :: patterns --has-letters-upper --random-t
 patterns / filter / has-letters-lower :: patterns --has-letters-lower --random-testing
 
 patterns / filter / label / digits :: patterns --all --label digits --random-testing
-patterns / filter / label / ascii :: patterns --all --label ascii --random-testing
+patterns / filter / label / letters :: patterns --all --label letters --random-testing
 patterns / filter / label / password :: patterns --all --label password --random-testing
 patterns / filter / label / passphrase :: patterns --all --label passphrase --random-testing
+patterns / filter / label / pronounceable :: patterns --all --label pronounceable --random-testing
 patterns / filter / label / memorable :: patterns --all --label memorable --random-testing
+patterns / filter / label / dictionary :: patterns --all --label dictionary --random-testing
 patterns / filter / label / encoding :: patterns --all --label encoding --random-testing
 patterns / filter / label / networking :: patterns --all --label networking --random-testing
+patterns / filter / label / tokens :: patterns --all --label tokens --random-testing
 
 patterns / filter / usage / cryptography :: patterns --all --for-cryptography --random-testing
 patterns / filter / usage / cryptography / shortest :: patterns --all --for-cryptography --shortest --random-testing

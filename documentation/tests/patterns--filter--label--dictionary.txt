@@ -1,4 +1,4 @@
->>  z-tokens patterns --all --label passphrase --random-testing
+>>  z-tokens patterns --all --label dictionary --random-testing
 
 ::  mnemonic:1              :   10.6 b :    5 c ::    arrow
 ::  mnemonic:2              :   21.3 b :   13 c ::    arrow arizona
@@ -90,6 +90,22 @@
 ::  skey:28                 :  308  =b :  128 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
 ::  skey:29                 :  319  =b :  132 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
 ::  skey:30                 :  330  =b :  137 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
+::  pgp:1                   :   16  =b :   19 c ::    shamrock responsive
+::  pgp:2                   :   32  =b :   35 c ::    shamrock responsive crucial revival
+::  pgp:3                   :   48  =b :   50 c ::    shamrock responsive crucial revival vulcan yucatan
+::  pgp:4                   :   64  =b :   68 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer
+::  pgp:5                   :   80  =b :   85 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
+::  pgp:6                   :   96  =b :  102 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
+::  pgp:7                   :  112  =b :  120 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
+::  pgp:8                   :  128  =b :  132 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
+::  pgp:9                   :  144  =b :  151 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
+::  pgp:10                  :  160  =b :  171 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
+::  pgp:11                  :  176  =b :  190 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
+::  pgp:12                  :  192  =b :  211 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
+::  pgp:13                  :  208  =b :  228 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
+::  pgp:14                  :  224  =b :  245 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
+::  pgp:15                  :  240  =b :  265 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
+::  pgp:16                  :  256  =b :  282 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
 ::  eff-large:1             :   12.9 b :    5 c ::    scope
 ::  eff-large:2             :   25.8 b :   12 c ::    scope slacks
 ::  eff-large:3             :   38.7 b :   22 c ::    scope slacks patronize
@@ -180,3 +196,69 @@
 ::  eff-unique:28           :  289.5 b :  222 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
 ::  eff-unique:29           :  299.8 b :  233 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
 ::  eff-unique:30           :  310.1 b :  242 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
+::  nato:1                  :    5.1 b :    3 c ::    wun
+::  nato:2                  :   10.3 b :   10 c ::    wun victor
+::  nato:3                  :   15.5 b :   18 c ::    wun victor juliett
+::  nato:4                  :   20.6 b :   26 c ::    wun victor juliett foxtrot
+::  nato:5                  :   25.8 b :   31 c ::    wun victor juliett foxtrot echo
+::  nato:6                  :   31.0 b :   36 c ::    wun victor juliett foxtrot echo papa
+::  nato:7                  :   36.1 b :   40 c ::    wun victor juliett foxtrot echo papa ait
+::  nato:8                  :   41.3 b :   46 c ::    wun victor juliett foxtrot echo papa ait india
+::  nato:9                  :   46.5 b :   54 c ::    wun victor juliett foxtrot echo papa ait india uniform
+::  nato:10                 :   51.6 b :   59 c ::    wun victor juliett foxtrot echo papa ait india uniform fife
+::  nato:11                 :   56.8 b :   65 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel
+::  nato:12                 :   62.0 b :   72 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra
+::  nato:13                 :   67.2 b :   78 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo
+::  nato:14                 :   72.3 b :   82 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:15                 :   77.5 b :   86 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:16                 :   82.7 b :   94 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:17                 :   87.8 b :   99 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:18                 :   93.0 b :  104 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:19                 :   98.2 b :  108 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:20                 :  103.3 b :  115 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:21                 :  108.5 b :  120 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:22                 :  113.7 b :  128 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:23                 :  118.9 b :  136 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:24                 :  124.0 b :  144 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:25                 :  129.2 b :  149 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:26                 :  134.4 b :  155 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:27                 :  139.5 b :  161 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:28                 :  144.7 b :  165 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:29                 :  149.9 b :  169 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:30                 :  155.0 b :  175 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:31                 :  160.2 b :  180 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:32                 :  165.4 b :  188 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:33                 :  170.6 b :  196 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:34                 :  175.7 b :  201 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:35                 :  180.9 b :  208 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:36                 :  186.1 b :  213 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:37                 :  191.2 b :  218 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:38                 :  196.4 b :  224 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:39                 :  201.6 b :  230 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:40                 :  206.7 b :  235 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:41                 :  211.9 b :  243 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:42                 :  217.1 b :  249 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:43                 :  222.3 b :  255 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:44                 :  227.4 b :  260 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:45                 :  232.6 b :  264 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:46                 :  237.8 b :  270 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:47                 :  242.9 b :  276 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:48                 :  248.1 b :  281 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:49                 :  253.3 b :  290 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:50                 :  258.4 b :  295 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:51                 :  263.6 b :  302 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:52                 :  268.8 b :  308 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:53                 :  274.0 b :  313 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:54                 :  279.1 b :  318 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:55                 :  284.3 b :  323 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:56                 :  289.5 b :  328 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:57                 :  294.6 b :  332 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:58                 :  299.8 b :  340 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:59                 :  305.0 b :  345 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:60                 :  310.1 b :  349 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:61                 :  315.3 b :  354 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:62                 :  320.5 b :  359 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:63                 :  325.7 b :  367 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:64                 :  330.8 b :  372 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:65                 :  336.0 b :  377 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:66                 :  341.2 b :  384 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]

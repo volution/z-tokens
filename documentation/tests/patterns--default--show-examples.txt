@@ -20465,6 +20465,150 @@
     \_        de01217cb6bb19b3c297c5ca36163d38542bdaa8f5af83e66f59dfee5b2610ab91a97bd5a32fd48d8c1587ca312bfcc1056cf2174c9c8280559d055a8722ed3c97c97c5a68d8a829d508bc2401f0c290ad7f3f5ce6fef3db133a410c1137b638a8245588edda8ad06e0d0e019eafd333b4f7448c33b7f6defa8469889be0f566065fd4b31973e2196279edb6c1b39b8382913924f9c4bf55c87900212cd4b2168bb536f213ef65cd4164a057b2330bcba62031d8f712a7f83ca08a7ad5d2e18b8eef6e4edf77cbebd848f8584aa7af7ca068e2460d5130c154c457a024875426e7fcc4971145997441427c48dfe8737699970d01c58de25f5e228d9b72adc6f88c6acd6d55d7989ffb77ad2da3f0bd163ad6a0b2a389062286c8785bcf7aad3593622da39c7c72939cdab4ddd6dd19233265f42c9908ce596623956b732db374ab031de813858167b4e83c62b696f5c4e2ac0a0687d53a6f514a557967a9842cf7a70064f2f075fbdee2bc0abbf3d68b11927f8edc070237d171ae32d9d610fe476f5f15d60ec697587c589186ffa3fb6c5c848ccbac029030b7820546f327a1c1527987cf01c1152109ecc2a43c667b41030c45906b5e040071e1abdabf95125d9ec6dc979b86e539c9e2599287d405395fb3666ceec57e9bf3e41675266aa3cdcc6609b447f2510b6ec8941775ac9ce8b7efa40d792060c1660e9afc1c2419
 
 
+**  ~~~~~~~~  token-hex-16
+\_  bits:     16  (exact)
+\_  length:   4
+\_  examples:
+    \_        bb2a
+    \_        c601
+    \_        958b
+    \_        f80c
+    \_        23ae
+    \_        f6ff
+    \_        0ca5
+    \_        ec9c
+    \_        3a1f
+    \_        8f30
+
+
+**  ~~~~~~~~  token-hex-24
+\_  bits:     24  (exact)
+\_  length:   6
+\_  examples:
+    \_        069dc1
+    \_        958b76
+    \_        431d9d
+    \_        c5a0ef
+    \_        37fc85
+    \_        cb30ce
+    \_        ff0ea7
+    \_        23ae2c
+    \_        1ce4b8
+    \_        0ca57b
+
+
+**  ~~~~~~~~  token-hex-32
+\_  bits:     32  (exact)
+\_  length:   8
+\_  examples:
+    \_        c5a0ef11
+    \_        37fc854f
+    \_        23ae2c7b
+    \_        1ce4b87b
+    \_        0ca57b62
+    \_        6cfacf84
+    \_        ec9c7a3c
+    \_        8f3066bc
+    \_        345f0997
+    \_        80cd14a8
+
+
+**  ~~~~~~~~  token-hex-48
+\_  bits:     48  (exact)
+\_  length:   12
+\_  examples:
+    \_        bb2a3fb2cd2c
+    \_        c6017c948e27
+    \_        069dc102cf31
+    \_        431d9d54dee1
+    \_        37fc854f1203
+    \_        cb30ce1ac9ff
+    \_        bfd4a4ae9e0d
+    \_        f80c4de387b8
+    \_        ff0ea77dd998
+    \_        23ae2c7b4850
+
+
+**  ~~~~~~~~  token-hex-64
+\_  bits:     64  (exact)
+\_  length:   16
+\_  examples:
+    \_        bb2a3fb2cd2c6f7f
+    \_        069dc102cf310a16
+    \_        431d9d54dee17b11
+    \_        37fc854f12037913
+    \_        bfd4a4ae9e0d7fac
+    \_        ff0ea77dd9987f7e
+    \_        1ce4b87b0bd4b7bb
+    \_        0ca57b6234bb13f0
+    \_        75e88c63a6e1329a
+    \_        3a1f55f0fed54eba
+
+
+**  ~~~~~~~~  token-hex-96
+\_  bits:     96  (exact)
+\_  length:   24
+\_  examples:
+    \_        8e27697bbb2a3fb2cd2c6f7f
+    \_        abe5f6d0069dc102cf310a16
+    \_        1f71c422431d9d54dee17b11
+    \_        c9ff61c737fc854f12037913
+    \_        87b83854bfd4a4ae9e0d7fac
+    \_        48501800ff0ea77dd9987f7e
+    \_        fd9606551ce4b87b0bd4b7bb
+    \_        6e3bd6a20ca57b6234bb13f0
+    \_        30f0a32875e88c63a6e1329a
+    \_        65781cfd3a1f55f0fed54eba
+
+
+**  ~~~~~~~~  token-hex-128
+\_  bits:     128  (exact)
+\_  length:   32
+\_  examples:
+    \_        c6017c948e27697bbb2a3fb2cd2c6f7f
+    \_        958b761dabe5f6d0069dc102cf310a16
+    \_        c5a0ef111f71c422431d9d54dee17b11
+    \_        cb30ce1ac9ff61c737fc854f12037913
+    \_        f80c4de387b83854bfd4a4ae9e0d7fac
+    \_        23ae2c7b48501800ff0ea77dd9987f7e
+    \_        f6ff78effd9606551ce4b87b0bd4b7bb
+    \_        6cfacf846e3bd6a20ca57b6234bb13f0
+    \_        ec9c7a3c30f0a32875e88c63a6e1329a
+    \_        8f3066bc65781cfd3a1f55f0fed54eba
+
+
+**  ~~~~~~~~  token-hex-256
+\_  bits:     256  (exact)
+\_  length:   65
+\_  examples:
+    \_        c6017c948e27697bbb2a3fb2cd2c6f7f-958b761dabe5f6d0069dc102cf310a16
+    \_        c5a0ef111f71c422431d9d54dee17b11-cb30ce1ac9ff61c737fc854f12037913
+    \_        f80c4de387b83854bfd4a4ae9e0d7fac-23ae2c7b48501800ff0ea77dd9987f7e
+    \_        f6ff78effd9606551ce4b87b0bd4b7bb-6cfacf846e3bd6a20ca57b6234bb13f0
+    \_        ec9c7a3c30f0a32875e88c63a6e1329a-8f3066bc65781cfd3a1f55f0fed54eba
+    \_        d5e34c79b892a06427c7951faf976aeb-80cd14a8135f3ef3345f099776ef4fb1
+    \_        7a95e009bf5704d8a3438bd0e15e4e8d-dee3997ccb29252ae04696e7582b922f
+    \_        fca4dc38ecdca315102ff028bb620156-fa202be26fdc7e0737800b8b295b5373
+    \_        ad5d35116362a0a5eadd98ee4c0bcc72-11b8823ad192ea9703d8ae10610e6994
+    \_        9d1ffa92b36998ad9e3f6128db1dfde3-aa77ac12532fc768c9055662abf1be91
+
+
+**  ~~~~~~~~  token-hex-512
+\_  bits:     512  (exact)
+\_  length:   131
+\_  examples:
+    \_        c6017c948e27697bbb2a3fb2cd2c6f7f-958b761dabe5f6d0069dc102cf310a16-c5a0ef111f71c422431d9d54dee17b11-cb30ce1ac9ff61c737fc854f12037913
+    \_        f80c4de387b83854bfd4a4ae9e0d7fac-23ae2c7b48501800ff0ea77dd9987f7e-f6ff78effd9606551ce4b87b0bd4b7bb-6cfacf846e3bd6a20ca57b6234bb13f0
+    \_        ec9c7a3c30f0a32875e88c63a6e1329a-8f3066bc65781cfd3a1f55f0fed54eba-d5e34c79b892a06427c7951faf976aeb-80cd14a8135f3ef3345f099776ef4fb1
+    \_        7a95e009bf5704d8a3438bd0e15e4e8d-dee3997ccb29252ae04696e7582b922f-fca4dc38ecdca315102ff028bb620156-fa202be26fdc7e0737800b8b295b5373
+    \_        ad5d35116362a0a5eadd98ee4c0bcc72-11b8823ad192ea9703d8ae10610e6994-9d1ffa92b36998ad9e3f6128db1dfde3-aa77ac12532fc768c9055662abf1be91
+    \_        157eb310d0efd947159ba8dbdd58898e-c0c08aa8dc6b7cd684ca4d1af46bbc6e-166d45842a6f3545de2674d5410142c3-2ff64e1be5db98b859e3238a3c59c49b
+    \_        fa077d269f85f25d85bec518e299eb10-400a21106742ac364389963b69194a02-aa7fd3f5ffd75ad9fc2699b77bb0adce-cab2a0b39fa708d2ac0c944918dfd27d
+    \_        a26c9c2bcd8257a14ae55c63b250cb87-15661793eab81afa08c8f3bdea01252b-a7e71c18bf4da8ff318ce55a03fbe027-2fcfbadc0f7c0b9594da8bfbbe1bb62a
+    \_        51909fe2ba649cea375b2523ddf70276-8e89bfb99d62d5405a6323524d959578-049f3b6a737b27b1a26dcf123267ea3d-52e8b61030a0e916154b75d893b92b66
+    \_        09edd7890b40708c3eef7ddcbb23597c-711f22ff419c038fea577d10980b1fc7-0c30578d6e53e9e19c2b1c9528385520-d05413868bd2d489cd07e4ef3176d3df
+
+
 **  ~~~~~~~~  uuid-v4
 \_  bits:     122  (exact)
 \_  length:   36

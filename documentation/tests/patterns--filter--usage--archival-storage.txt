@@ -546,6 +546,9 @@
 ::  bytes-hex:125           : 1000  =b :  250 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
 ::  bytes-hex:126           : 1008  =b :  252 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
 ::  bytes-hex:127           : 1016  =b :  254 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
+::  token-hex-128           :  128  =b :   32 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f
+::  token-hex-256           :  256  =b :   65 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f-958b761dabe5f6d0069dc102cf310a16
+::  token-hex-512           :  512  =b :  131 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f-958b761dabe5f6d0069dc102cf310a16-c5a0ef111f71c4 [...]
 ::  uuid-v4                 :  122  =b :   36 c ::    c5a0ef11-f80c-41ce-8329-75e88c63a6e1
 ::  flake:128               :  128  =b :   44 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6
 ::  flake:160               :  160  =b :   53 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf

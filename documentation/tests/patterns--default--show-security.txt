@@ -15349,6 +15349,114 @@
 \_  example:  7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d4322c4711f11efa0c5137903124f85fc37c761ffc91ace30cbac7f0d9eaea4d4bf5438b887e34d0cf87e7f98d97da70eff001850487b2cae23bbb7d40b7bb8e41c550696fdef78fff6f013bb34627ba50ca2d63b6e84cffa6c9a32e1a6638ce87528a3f0303c7a9cecba4ed5fef0551f3afd1c7865bc66308feb6a97af1f95c72764a092b8794ce3d5b14fef7697095f34f33e5f13a814cd808d4e5ee1d08b43a3d80457bf09e0957a2f922b58e79646e02a2529cb7c99e3de560162bb28f02f1015a3dcec38dca4fc73535b298b0b8037077edc6fe22b20fa72cc0b4cee98ddeaa5a0626311355dad94690e6110aed80397ea92d13a82b811e3fd1ddb28613f9ead9869b392fa1f9d91bef1ab625605c968c72f5312ac77aa8e8958dddba89b1547d9efd010b37e156ebc6bf41a4dca84d67c6bdca88ac0c0c3420141d57426de45356f2a84456d169bc4593c8a23e359b898dbe51b4ef62f10eb99e218c5be855df2859f267d07fa024a19693b96894336ac426710210a40ceadb07bb79926fcd95ad7fff5d37faa7dd2df1849940cacd208a79fb3a0b2ca87cb50b2635ce54aa15782cd2b9c6ca22b2501eabdf3c808fa1ab8ea9317661527e0fb035ae58c31ffa84dbf181ce7a72ab61bbefb8bda94950b7c0fdcbacf2f
 
 
+**  ~~~~~~~~  token-hex-16
+\_  bits:     16  (exact)
+\_  length:   4
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -112.00  bits of margin
+    \_  authentication       !! NO !!      with    -16.00  bits of margin
+    \_  archival storage     !! NO !!      with    -84.30  bits of margin
+    \_  long term storage    !! NO !!      with    -60.84  bits of margin
+    \_  short term storage   !! NO !!      with    -54.00  bits of margin
+\_  example:  bb2a
+
+
+**  ~~~~~~~~  token-hex-24
+\_  bits:     24  (exact)
+\_  length:   6
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -104.00  bits of margin
+    \_  authentication       !! NO !!      with     -8.00  bits of margin
+    \_  archival storage     !! NO !!      with    -76.30  bits of margin
+    \_  long term storage    !! NO !!      with    -52.84  bits of margin
+    \_  short term storage   !! NO !!      with    -46.00  bits of margin
+\_  example:  069dc1
+
+
+**  ~~~~~~~~  token-hex-32
+\_  bits:     32  (exact)
+\_  length:   8
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -96.00  bits of margin
+    \_  authentication          OK         with     +0.00  bits of margin
+    \_  archival storage     !! NO !!      with    -68.30  bits of margin
+    \_  long term storage    !! NO !!      with    -44.84  bits of margin
+    \_  short term storage   !! NO !!      with    -38.00  bits of margin
+\_  example:  c5a0ef11
+
+
+**  ~~~~~~~~  token-hex-48
+\_  bits:     48  (exact)
+\_  length:   12
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -80.00  bits of margin
+    \_  authentication          OK         with    +16.00  bits of margin
+    \_  archival storage     !! NO !!      with    -52.30  bits of margin
+    \_  long term storage    !! NO !!      with    -28.84  bits of margin
+    \_  short term storage   !! NO !!      with    -22.00  bits of margin
+\_  example:  bb2a3fb2cd2c
+
+
+**  ~~~~~~~~  token-hex-64
+\_  bits:     64  (exact)
+\_  length:   16
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -64.00  bits of margin
+    \_  authentication          OK         with    +32.00  bits of margin
+    \_  archival storage     !! NO !!      with    -36.30  bits of margin
+    \_  long term storage    !! NO !!      with    -12.84  bits of margin
+    \_  short term storage   !! NO !!      with     -6.00  bits of margin
+\_  example:  bb2a3fb2cd2c6f7f
+
+
+**  ~~~~~~~~  token-hex-96
+\_  bits:     96  (exact)
+\_  length:   24
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -32.00  bits of margin
+    \_  authentication          OK         with    +64.00  bits of margin
+    \_  archival storage     !! NO !!      with     -4.30  bits of margin
+    \_  long term storage       OK         with    +19.16  bits of margin
+    \_  short term storage      OK         with    +26.00  bits of margin
+\_  example:  8e27697bbb2a3fb2cd2c6f7f
+
+
+**  ~~~~~~~~  token-hex-128
+\_  bits:     128  (exact)
+\_  length:   32
+\_  usable for:
+    \_  cryptography            OK         with     +0.00  bits of margin
+    \_  authentication          OK         with    +96.00  bits of margin
+    \_  archival storage        OK         with    +27.70  bits of margin
+    \_  long term storage       OK         with    +51.16  bits of margin
+    \_  short term storage      OK         with    +58.00  bits of margin
+\_  example:  c6017c948e27697bbb2a3fb2cd2c6f7f
+
+
+**  ~~~~~~~~  token-hex-256
+\_  bits:     256  (exact)
+\_  length:   65
+\_  usable for:
+    \_  cryptography            OK         with   +128.00  bits of margin
+    \_  authentication          OK         with   +224.00  bits of margin
+    \_  archival storage        OK         with   +155.70  bits of margin
+    \_  long term storage       OK         with   +179.16  bits of margin
+    \_  short term storage      OK         with   +186.00  bits of margin
+\_  example:  c6017c948e27697bbb2a3fb2cd2c6f7f-958b761dabe5f6d0069dc102cf310a16
+
+
+**  ~~~~~~~~  token-hex-512
+\_  bits:     512  (exact)
+\_  length:   131
+\_  usable for:
+    \_  cryptography            OK         with   +384.00  bits of margin
+    \_  authentication          OK         with   +480.00  bits of margin
+    \_  archival storage        OK         with   +411.70  bits of margin
+    \_  long term storage       OK         with   +435.16  bits of margin
+    \_  short term storage      OK         with   +442.00  bits of margin
+\_  example:  c6017c948e27697bbb2a3fb2cd2c6f7f-958b761dabe5f6d0069dc102cf310a16-c5a0ef111f71c422431d9d54dee17b11-cb30ce1ac9ff61c737fc854f12037913
+
+
 **  ~~~~~~~~  uuid-v4
 \_  bits:     122  (exact)
 \_  length:   36

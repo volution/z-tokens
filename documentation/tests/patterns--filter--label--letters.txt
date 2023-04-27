@@ -1,4 +1,4 @@
->>  z-tokens patterns --all --label ascii --random-testing
+>>  z-tokens patterns --all --label letters --random-testing
 
 ::  ascii-lower:2           :    9.4 b :    2 c ::    tu
 ::  ascii-lower:4           :   18.8 b :    4 c ::    tuap
@@ -48,38 +48,6 @@
 ::  ascii-mixed:28          :  159.6 b :   34 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY
 ::  ascii-mixed:30          :  171.0 b :   37 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJ
 ::  ascii-mixed:32          :  182.4 b :   39 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad
-::  ascii-symbols:2         :   10  =b :    2 c ::    \)
-::  ascii-symbols:4         :   20  =b :    4 c ::    \)^~
-::  ascii-symbols:6         :   30  =b :    7 c ::    \)^~ %(
-::  ascii-symbols:8         :   40  =b :    9 c ::    \)^~ %(;?
-::  ascii-symbols:10        :   50  =b :   12 c ::    \)^~ %(;? :{
-::  ascii-symbols:12        :   60  =b :   14 c ::    \)^~ %(;? :{#~
-::  ascii-symbols:14        :   70  =b :   17 c ::    \)^~ %(;? :{#~ |!
-::  ascii-symbols:16        :   80  =b :   19 c ::    \)^~ %(;? :{#~ |!#^
-::  ascii-symbols:18        :   90  =b :   22 c ::    \)^~ %(;? :{#~ |!#^ @]
-::  ascii-symbols:20        :  100  =b :   24 c ::    \)^~ %(;? :{#~ |!#^ @],~
-::  ascii-symbols:22        :  110  =b :   27 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))
-::  ascii-symbols:24        :  120  =b :   29 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^
-::  ascii-symbols:26        :  130  =b :   32 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?
-::  ascii-symbols:28        :  140  =b :   34 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"'
-::  ascii-symbols:30        :  150  =b :   37 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,
-::  ascii-symbols:32        :  160  =b :   39 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+
-::  ascii-any:2             :   13.1 b :    2 c ::    ei
-::  ascii-any:4             :   26.2 b :    4 c ::    ei#9
-::  ascii-any:6             :   39.3 b :    7 c ::    ei#9 i5
-::  ascii-any:8             :   52.4 b :    9 c ::    ei#9 i5kg
-::  ascii-any:10            :   65.5 b :   12 c ::    ei#9 i5kg |~
-::  ascii-any:12            :   78.6 b :   14 c ::    ei#9 i5kg |~.+
-::  ascii-any:14            :   91.7 b :   17 c ::    ei#9 i5kg |~.+ {%
-::  ascii-any:16            :  104.8 b :   19 c ::    ei#9 i5kg |~.+ {%IL
-::  ascii-any:18            :  117.9 b :   22 c ::    ei#9 i5kg |~.+ {%IL 6U
-::  ascii-any:20            :  131.0 b :   24 c ::    ei#9 i5kg |~.+ {%IL 6U/o
-::  ascii-any:22            :  144.2 b :   27 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4P
-::  ascii-any:24            :  157.3 b :   29 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs
-::  ascii-any:26            :  170.4 b :   32 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w
-::  ascii-any:28            :  183.5 b :   34 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
-::  ascii-any:30            :  196.6 b :   37 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[
-::  ascii-any:32            :  209.7 b :   39 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
 ::  cva-lower:1             :   13.4 b :    4 c ::    taqe
 ::  cva-lower:2             :   26.8 b :    9 c ::    taqe veza
 ::  cva-lower:3             :   40.2 b :   14 c ::    taqe veza zaye
@@ -128,51 +96,6 @@
 ::  cva-mixed:14            :  243.9 b :   69 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA
 ::  cva-mixed:15            :  261.4 b :   74 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA goPO
 ::  cva-mixed:16            :  278.8 b :   79 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA goPO kAle
-::  cva-plus-a:2            :   26.7 b :    9 c ::    taqe 2711
-::  cva-plus-a:3            :   40.1 b :   14 c ::    taqe veza 0449
-::  cva-plus-a:4            :   53.5 b :   19 c ::    taqe veza zaye 5182
-::  cva-plus-a:5            :   67.0 b :   24 c ::    taqe veza zaye fugi 6290
-::  cva-plus-a:6            :   80.4 b :   29 c ::    taqe veza zaye fugi rixu 2906
-::  cva-plus-a:7            :   93.8 b :   34 c ::    taqe veza zaye fugi rixu cezu 0665
-::  cva-plus-a:8            :  107.2 b :   39 c ::    taqe veza zaye fugi rixu cezu saco 6573
-::  cva-plus-a:9            :  120.7 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa 3526
-::  cva-plus-a:10           :  134.1 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize 2606
-::  cva-plus-a:11           :  147.5 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose 6062
-::  cva-plus-a:12           :  161.0 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago 2335
-::  cva-plus-a:13           :  174.4 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko 0320
-::  cva-plus-a:14           :  187.8 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha 9460
-::  cva-plus-a:15           :  201.2 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu 9351
-::  cva-plus-a:16           :  214.7 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku 5138
-::  cva-plus-b:2            :   26.7 b :    9 c ::    taqe VE71
-::  cva-plus-b:3            :   40.2 b :   14 c ::    taqe veza ZA44
-::  cva-plus-b:4            :   53.6 b :   19 c ::    taqe veza zaye FU25
-::  cva-plus-b:5            :   67.0 b :   24 c ::    taqe veza zaye fugi RI29
-::  cva-plus-b:6            :   80.5 b :   29 c ::    taqe veza zaye fugi rixu CE90
-::  cva-plus-b:7            :   93.9 b :   34 c ::    taqe veza zaye fugi rixu cezu SA66
-::  cva-plus-b:8            :  107.3 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO57
-::  cva-plus-b:9            :  120.7 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa KI26
-::  cva-plus-b:10           :  134.2 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO60
-::  cva-plus-b:11           :  147.6 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose RA62
-::  cva-plus-b:12           :  161.0 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago QE33
-::  cva-plus-b:13           :  174.4 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA32
-::  cva-plus-b:14           :  187.9 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI60
-::  cva-plus-b:15           :  201.3 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU35
-::  cva-plus-b:16           :  214.7 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA38
-::  cva-plus-c:2            :   28.4 b :    9 c ::    taqe VE7~
-::  cva-plus-c:3            :   41.8 b :   14 c ::    taqe veza ZA4(
-::  cva-plus-c:4            :   55.3 b :   19 c ::    taqe veza zaye FU2;
-::  cva-plus-c:5            :   68.7 b :   24 c ::    taqe veza zaye fugi RI2~
-::  cva-plus-c:6            :   82.1 b :   29 c ::    taqe veza zaye fugi rixu CE9!
-::  cva-plus-c:7            :   95.6 b :   34 c ::    taqe veza zaye fugi rixu cezu SA6^
-::  cva-plus-c:8            :  109.0 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO5]
-::  cva-plus-c:9            :  122.4 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa KI2@
-::  cva-plus-c:10           :  135.8 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO6"
-::  cva-plus-c:11           :  149.3 b :   54 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose RA6+
-::  cva-plus-c:12           :  162.7 b :   59 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago QE3,
-::  cva-plus-c:13           :  176.1 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA3"
-::  cva-plus-c:14           :  189.6 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI6_
-::  cva-plus-c:15           :  203.0 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU3<
-::  cva-plus-c:16           :  216.4 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA3`
 ::  cvs-lower:1             :   12.6 b :    4 c ::    sane
 ::  cvs-lower:2             :   25.2 b :    9 c ::    sane seda
 ::  cvs-lower:3             :   37.9 b :   14 c ::    sane seda zalu
@@ -221,51 +144,6 @@
 ::  cvs-mixed:14            :  233.0 b :   69 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno noZI
 ::  cvs-mixed:15            :  249.6 b :   74 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno noZI Liri
 ::  cvs-mixed:16            :  266.3 b :   79 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno noZI Liri CePo
-::  cvs-plus-a:2            :   25.9 b :    9 c ::    sane 2711
-::  cvs-plus-a:3            :   38.5 b :   14 c ::    sane seda 0449
-::  cvs-plus-a:4            :   51.2 b :   19 c ::    sane seda zalu 2518
-::  cvs-plus-a:5            :   63.8 b :   24 c ::    sane seda zalu dufi 6290
-::  cvs-plus-a:6            :   76.5 b :   29 c ::    sane seda zalu dufi pivu 2906
-::  cvs-plus-a:7            :   89.1 b :   34 c ::    sane seda zalu dufi pivu ceba 6657
-::  cvs-plus-a:8            :  101.7 b :   39 c ::    sane seda zalu dufi pivu ceba camu 3526
-::  cvs-plus-a:9            :  114.4 b :   44 c ::    sane seda zalu dufi pivu ceba camu cige 6062
-::  cvs-plus-a:10           :  127.0 b :   49 c ::    sane seda zalu dufi pivu ceba camu cige paco 2335
-::  cvs-plus-a:11           :  139.7 b :   54 c ::    sane seda zalu dufi pivu ceba camu cige paco neho 0320
-::  cvs-plus-a:12           :  152.3 b :   59 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe 0946
-::  cvs-plus-a:13           :  165.0 b :   64 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu 9351
-::  cvs-plus-a:14           :  177.6 b :   69 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva 3851
-::  cvs-plus-a:15           :  190.3 b :   74 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma 3385
-::  cvs-plus-a:16           :  202.9 b :   79 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu 5572
-::  cvs-plus-b:2            :   25.6 b :    9 c ::    sane SE71
-::  cvs-plus-b:3            :   38.2 b :   14 c ::    sane seda ZA44
-::  cvs-plus-b:4            :   50.8 b :   19 c ::    sane seda zalu DU25
-::  cvs-plus-b:5            :   63.5 b :   24 c ::    sane seda zalu dufi PI29
-::  cvs-plus-b:6            :   76.1 b :   29 c ::    sane seda zalu dufi pivu CE90
-::  cvs-plus-b:7            :   88.8 b :   34 c ::    sane seda zalu dufi pivu ceba CA57
-::  cvs-plus-b:8            :  101.4 b :   39 c ::    sane seda zalu dufi pivu ceba camu CI26
-::  cvs-plus-b:9            :  114.1 b :   44 c ::    sane seda zalu dufi pivu ceba camu cige PA62
-::  cvs-plus-b:10           :  126.7 b :   49 c ::    sane seda zalu dufi pivu ceba camu cige paco NE33
-::  cvs-plus-b:11           :  139.4 b :   54 c ::    sane seda zalu dufi pivu ceba camu cige paco neho BA32
-::  cvs-plus-b:12           :  152.0 b :   59 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe LO08
-::  cvs-plus-b:13           :  164.6 b :   64 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu SU35
-::  cvs-plus-b:14           :  177.3 b :   69 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva SU51
-::  cvs-plus-b:15           :  189.9 b :   74 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma HE38
-::  cvs-plus-b:16           :  202.6 b :   79 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu SI72
-::  cvs-plus-c:2            :   27.2 b :    9 c ::    sane SE7~
-::  cvs-plus-c:3            :   39.9 b :   14 c ::    sane seda ZA4(
-::  cvs-plus-c:4            :   52.5 b :   19 c ::    sane seda zalu DU2;
-::  cvs-plus-c:5            :   65.2 b :   24 c ::    sane seda zalu dufi PI2~
-::  cvs-plus-c:6            :   77.8 b :   29 c ::    sane seda zalu dufi pivu CE9!
-::  cvs-plus-c:7            :   90.5 b :   34 c ::    sane seda zalu dufi pivu ceba CA5]
-::  cvs-plus-c:8            :  103.1 b :   39 c ::    sane seda zalu dufi pivu ceba camu CI2@
-::  cvs-plus-c:9            :  115.7 b :   44 c ::    sane seda zalu dufi pivu ceba camu cige PA6+
-::  cvs-plus-c:10           :  128.4 b :   49 c ::    sane seda zalu dufi pivu ceba camu cige paco NE3,
-::  cvs-plus-c:11           :  141.0 b :   54 c ::    sane seda zalu dufi pivu ceba camu cige paco neho BA3"
-::  cvs-plus-c:12           :  153.7 b :   59 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe LO0_
-::  cvs-plus-c:13           :  166.3 b :   64 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu SU3<
-::  cvs-plus-c:14           :  179.0 b :   69 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva SU5'
-::  cvs-plus-c:15           :  191.6 b :   74 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma HE3~
-::  cvs-plus-c:16           :  204.3 b :   79 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu SI7\
 ::  proquint-lower:1        :   16  =b :    5 c ::    sanis
 ::  proquint-lower:2        :   32  =b :   11 c ::    sanis gufaz
 ::  proquint-lower:3        :   48  =b :   17 c ::    sanis gufaz lofug

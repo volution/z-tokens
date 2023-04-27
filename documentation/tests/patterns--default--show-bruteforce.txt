@@ -24302,6 +24302,177 @@
 \_  example:  7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d4322c4711f11efa0c5137903124f85fc37c761ffc91ace30cbac7f0d9eaea4d4bf5438b887e34d0cf87e7f98d97da70eff001850487b2cae23bbb7d40b7bb8e41c550696fdef78fff6f013bb34627ba50ca2d63b6e84cffa6c9a32e1a6638ce87528a3f0303c7a9cecba4ed5fef0551f3afd1c7865bc66308feb6a97af1f95c72764a092b8794ce3d5b14fef7697095f34f33e5f13a814cd808d4e5ee1d08b43a3d80457bf09e0957a2f922b58e79646e02a2529cb7c99e3de560162bb28f02f1015a3dcec38dca4fc73535b298b0b8037077edc6fe22b20fa72cc0b4cee98ddeaa5a0626311355dad94690e6110aed80397ea92d13a82b811e3fd1ddb28613f9ead9869b392fa1f9d91bef1ab625605c968c72f5312ac77aa8e8958dddba89b1547d9efd010b37e156ebc6bf41a4dca84d67c6bdca88ac0c0c3420141d57426de45356f2a84456d169bc4593c8a23e359b898dbe51b4ef62f10eb99e218c5be855df2859f267d07fa024a19693b96894336ac426710210a40ceadb07bb79926fcd95ad7fff5d37faa7dd2df1849940cacd208a79fb3a0b2ca87cb50b2635ce54aa15782cd2b9c6ca22b2501eabdf3c808fa1ab8ea9317661527e0fb035ae58c31ffa84dbf181ce7a72ab61bbefb8bda94950b7c0fdcbacf2f
 
 
+**  ~~~~~~~~  token-hex-16
+\_  bits:     16  (exact)
+\_  length:   4
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  bb2a
+
+
+**  ~~~~~~~~  token-hex-24
+\_  bits:     24  (exact)
+\_  length:   6
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  069dc1
+
+
+**  ~~~~~~~~  token-hex-32
+\_  bits:     32  (exact)
+\_  length:   8
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --    6.0  seconds
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  c5a0ef11
+
+
+**  ~~~~~~~~  token-hex-48
+\_  bits:     48  (exact)
+\_  length:   12
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --    0.1  seconds
+    \_  SHA3-256                --    0.6  seconds
+    \_  PBKDF2-HMAC-MD5         --    1.0  minutes
+    \_  PBKDF2-HMAC-SHA1        --    2.5  minutes
+    \_  PBKDF2-HMAC-SHA256      --    5.3  minutes
+    \_  PBKDF2-HMAC-SHA512      --   15.0  minutes
+    \_  scrypt                  --    4.6  days
+    \_  GPG                     --    1.7  minutes
+    \_  AES-128                 --    0.1  seconds
+\_  example:  bb2a3fb2cd2c
+
+
+**  ~~~~~~~~  token-hex-64
+\_  bits:     64  (exact)
+\_  length:   16
+\_  bruteforce time:
+    \_  MD4                     --   10.6  minutes
+    \_  MD5                     --   18.6  minutes
+    \_  SHA1                    --    1.0  hours
+    \_  SHA2-256                --    2.3  hours
+    \_  SHA3-256                --   10.1  hours
+    \_  PBKDF2-HMAC-MD5         --    1.5  months
+    \_  PBKDF2-HMAC-SHA1        --    3.7  months
+    \_  PBKDF2-HMAC-SHA256      --    7.9  months
+    \_  PBKDF2-HMAC-SHA512      --    1.9  years
+    \_  scrypt                  --    8.2  centuries
+    \_  GPG                     --    2.6  months
+    \_  AES-128                 --    2.3  hours
+\_  example:  bb2a3fb2cd2c6f7f
+
+
+**  ~~~~~~~~  token-hex-96
+\_  bits:     96  (exact)
+\_  length:   24
+\_  bruteforce time:
+    \_  MD4                     --   86.3  millennia
+    \_  MD5                     --  152.2  millennia
+    \_  SHA1                    --  492.3  millennia
+    \_  SHA2-256                --    1.1  millions of years
+    \_  SHA3-256                --    5.0  millions of years
+    \_  PBKDF2-HMAC-MD5         --  543.8  millions of years
+    \_  PBKDF2-HMAC-SHA1        --    1.3  billions of years
+    \_  PBKDF2-HMAC-SHA256      --    2.8  billions of years
+    \_  PBKDF2-HMAC-SHA512      --    8.0  billions of years
+    \_  scrypt                  --    3.5  trillions of years
+    \_  GPG                     --  935.6  millions of years
+    \_  AES-128                 --    1.1  millions of years
+\_  example:  8e27697bbb2a3fb2cd2c6f7f
+
+
+**  ~~~~~~~~  token-hex-128
+\_  bits:     128  (exact)
+\_  length:   32
+\_  bruteforce time:
+    \_  MD4                     --  370.5  trillions of years
+    \_  MD5                     --  653.5  trillions of years
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  c6017c948e27697bbb2a3fb2cd2c6f7f
+
+
+**  ~~~~~~~~  token-hex-256
+\_  bits:     256  (exact)
+\_  length:   65
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  c6017c948e27697bbb2a3fb2cd2c6f7f-958b761dabe5f6d0069dc102cf310a16
+
+
+**  ~~~~~~~~  token-hex-512
+\_  bits:     512  (exact)
+\_  length:   131
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  c6017c948e27697bbb2a3fb2cd2c6f7f-958b761dabe5f6d0069dc102cf310a16-c5a0ef111f71c422431d9d54dee17b11-cb30ce1ac9ff61c737fc854f12037913
+
+
 **  ~~~~~~~~  uuid-v4
 \_  bits:     122  (exact)
 \_  length:   36

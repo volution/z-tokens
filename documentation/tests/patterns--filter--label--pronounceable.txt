@@ -1,139 +1,26 @@
->>  z-tokens patterns --all --for-long-term-storage --random-testing
+>>  z-tokens patterns --all --label pronounceable --random-testing
 
+::  digits-base10:2         :    6.6 b :    2 c ::    70
+::  digits-base10:4         :   13.2 b :    4 c ::    7022
+::  digits-base10:6         :   19.9 b :    7 c ::    7022 71
+::  digits-base10:8         :   26.5 b :    9 c ::    7022 7110
+::  digits-base10:10        :   33.2 b :   12 c ::    7022 7110 44
+::  digits-base10:12        :   39.8 b :   14 c ::    7022 7110 4492
+::  digits-base10:14        :   46.5 b :   17 c ::    7022 7110 4492 51
+::  digits-base10:16        :   53.1 b :   19 c ::    7022 7110 4492 5182
+::  digits-base10:18        :   59.7 b :   22 c ::    7022 7110 4492 5182 56
+::  digits-base10:20        :   66.4 b :   24 c ::    7022 7110 4492 5182 5629
+::  digits-base10:22        :   73.0 b :   27 c ::    7022 7110 4492 5182 5629 06
 ::  digits-base10:24        :   79.7 b :   29 c ::    7022 7110 4492 5182 5629 0665
 ::  digits-base10:26        :   86.3 b :   32 c ::    7022 7110 4492 5182 5629 0665 73
 ::  digits-base10:28        :   93.0 b :   34 c ::    7022 7110 4492 5182 5629 0665 7352
 ::  digits-base10:30        :   99.6 b :   37 c ::    7022 7110 4492 5182 5629 0665 7352 60
 ::  digits-base10:32        :  106.3 b :   39 c ::    7022 7110 4492 5182 5629 0665 7352 6062
-::  digits-base8:26         :   78  =b :   32 c ::    6026 6103 7414 5775 0654 6142 25
-::  digits-base8:28         :   84  =b :   34 c ::    6026 6103 7414 5775 0654 6142 2556
-::  digits-base8:30         :   90  =b :   37 c ::    6026 6103 7414 5775 0654 6142 2556 25
-::  digits-base8:32         :   96  =b :   39 c ::    6026 6103 7414 5775 0654 6142 2556 2505
-::  digits-base16:20        :   80  =b :   24 c ::    c094 c32f 72d3 8ae1 3011
-::  digits-base16:22        :   88  =b :   27 c ::    c094 c32f 72d3 8ae1 3011 18
-::  digits-base16:24        :   96  =b :   29 c ::    c094 c32f 72d3 8ae1 3011 18c1
-::  digits-base16:26        :  104  =b :   32 c ::    c094 c32f 72d3 8ae1 3011 18c1 84
-::  digits-base16:28        :  112  =b :   34 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a
-::  digits-base16:30        :  120  =b :   37 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13
-::  digits-base16:32        :  128  =b :   39 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9
-::  digits-base32-hex:16    :   80  =b :   19 c ::    n8pv 47gk fs2v t02p
-::  digits-base32-hex:18    :   90  =b :   22 c ::    n8pv 47gk fs2v t02p lo
-::  digits-base32-hex:20    :  100  =b :   24 c ::    n8pv 47gk fs2v t02p lobv
-::  digits-base32-hex:22    :  110  =b :   27 c ::    n8pv 47gk fs2v t02p lobv 88
-::  digits-base32-hex:24    :  120  =b :   29 c ::    n8pv 47gk fs2v t02p lobv 88lp
-::  digits-base32-hex:26    :  130  =b :   32 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k
-::  digits-base32-hex:28    :  140  =b :   34 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16
-::  digits-base32-hex:30    :  150  =b :   37 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 ab
-::  digits-base32-hex:32    :  160  =b :   39 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka
-::  digits-base32-rfc:16    :   80  =b :   19 c ::    xiz7 ehqu p4c7 5acz
-::  digits-base32-rfc:18    :   90  =b :   22 c ::    xiz7 ehqu p4c7 5acz vy
-::  digits-base32-rfc:20    :  100  =b :   24 c ::    xiz7 ehqu p4c7 5acz vyl7
-::  digits-base32-rfc:22    :  110  =b :   27 c ::    xiz7 ehqu p4c7 5acz vyl7 ii
-::  digits-base32-rfc:24    :  120  =b :   29 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz
-::  digits-base32-rfc:26    :  130  =b :   32 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz ju
-::  digits-base32-rfc:28    :  140  =b :   34 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg
-::  digits-base32-rfc:30    :  150  =b :   37 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kl
-::  digits-base32-rfc:32    :  160  =b :   39 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk
-::  digits-base64-url:14    :   84  =b :   17 c ::    lx-H Dbd7 1Ng4 E_
-::  digits-base64-url:16    :   96  =b :   19 c ::    lx-H Dbd7 1Ng4 E_rE
-::  digits-base64-url:18    :  108  =b :   22 c ::    lx-H Dbd7 1Ng4 E_rE ny
-::  digits-base64-url:20    :  120  =b :   24 c ::    lx-H Dbd7 1Ng4 E_rE nyFF
-::  digits-base64-url:22    :  132  =b :   27 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hw
-::  digits-base64-url:24    :  144  =b :   29 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh
-::  digits-base64-url:26    :  156  =b :   32 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_
-::  digits-base64-url:28    :  168  =b :   34 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC
-::  digits-base64-url:30    :  180  =b :   37 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FM
-::  digits-base64-url:32    :  192  =b :   39 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU
-::  digits-base64-rfc:14    :   84  =b :   17 c ::    lx+H Dbd7 1Ng4 E/
-::  digits-base64-rfc:16    :   96  =b :   19 c ::    lx+H Dbd7 1Ng4 E/rE
-::  digits-base64-rfc:18    :  108  =b :   22 c ::    lx+H Dbd7 1Ng4 E/rE ny
-::  digits-base64-rfc:20    :  120  =b :   24 c ::    lx+H Dbd7 1Ng4 E/rE nyFF
-::  digits-base64-rfc:22    :  132  =b :   27 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hw
-::  digits-base64-rfc:24    :  144  =b :   29 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh
-::  digits-base64-rfc:26    :  156  =b :   32 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/
-::  digits-base64-rfc:28    :  168  =b :   34 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC
-::  digits-base64-rfc:30    :  180  =b :   37 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FM
-::  digits-base64-rfc:32    :  192  =b :   39 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU
-::  digits-base58:14        :   82.0 b :   17 c ::    jm2a GmDo kyz9 73
-::  digits-base58:16        :   93.7 b :   19 c ::    jm2a GmDo kyz9 73RT
-::  digits-base58:18        :  105.4 b :   22 c ::    jm2a GmDo kyz9 73RT vE
-::  digits-base58:20        :  117.1 b :   24 c ::    jm2a GmDo kyz9 73RT vEZA
-::  digits-base58:22        :  128.8 b :   27 c ::    jm2a GmDo kyz9 73RT vEZA qC
-::  digits-base58:24        :  140.5 b :   29 c ::    jm2a GmDo kyz9 73RT vEZA qCWU
-::  digits-base58:26        :  152.3 b :   32 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss
-::  digits-base58:28        :  164.0 b :   34 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z
-::  digits-base58:30        :  175.7 b :   37 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dy
-::  digits-base58:32        :  187.4 b :   39 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg
-::  digits-base62:14        :   83.3 b :   17 c ::    jl1a GlDn kyz8 x3
-::  digits-base62:16        :   95.2 b :   19 c ::    jl1a GlDn kyz8 x3QS
-::  digits-base62:18        :  107.1 b :   22 c ::    jl1a GlDn kyz8 x3QS vE
-::  digits-base62:20        :  119.0 b :   24 c ::    jl1a GlDn kyz8 x3QS vEY9
-::  digits-base62:22        :  130.9 b :   27 c ::    jl1a GlDn kyz8 x3QS vEY9 pC
-::  digits-base62:24        :  142.9 b :   29 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd
-::  digits-base62:26        :  154.8 b :   32 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts
-::  digits-base62:28        :  166.7 b :   34 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z
-::  digits-base62:30        :  178.6 b :   37 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dy
-::  digits-base62:32        :  190.5 b :   39 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0
-::  digits-bech32:16        :   80  =b :   19 c ::    hgel y8s5 0uzl aqze
-::  digits-bech32:18        :   90  =b :   22 c ::    hgel y8s5 0uzl aqze 4c
-::  digits-bech32:20        :  100  =b :   24 c ::    hgel y8s5 0uzl aqze 4ctl
-::  digits-bech32:22        :  110  =b :   27 c ::    hgel y8s5 0uzl aqze 4ctl gg
-::  digits-bech32:24        :  120  =b :   29 c ::    hgel y8s5 0uzl aqze 4ctl gg4e
-::  digits-bech32:26        :  130  =b :   32 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5
-::  digits-bech32:28        :  140  =b :   34 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px
-::  digits-bech32:30        :  150  =b :   37 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t
-::  digits-bech32:32        :  160  =b :   39 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52
-::  digits-z85:15           :   96.1 b :   17 c ::    .2Nm+ i^%9% 4AD]j
-::  digits-z85:20           :  128.1 b :   23 c ::    .2Nm+ i^%9% 4AD]j Ld?hS
-::  digits-z85:25           :  160.2 b :   29 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$
-::  digits-z85:30           :  192.2 b :   35 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU
-::  digits-z85:35           :  224.3 b :   41 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I
-::  ascii-lower:18          :   84.6 b :   22 c ::    tuap ufut zdzb lyoe vf
-::  ascii-lower:20          :   94.0 b :   24 c ::    tuap ufut zdzb lyoe vfnq
-::  ascii-lower:22          :  103.4 b :   27 c ::    tuap ufut zdzb lyoe vfnq mw
-::  ascii-lower:24          :  112.8 b :   29 c ::    tuap ufut zdzb lyoe vfnq mwwb
-::  ascii-lower:26          :  122.2 b :   32 c ::    tuap ufut zdzb lyoe vfnq mwwb zf
-::  ascii-lower:28          :  131.6 b :   34 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr
-::  ascii-lower:30          :  141.0 b :   37 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr ab
-::  ascii-lower:32          :  150.4 b :   39 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu
-::  ascii-upper:18          :   84.6 b :   22 c ::    TUAP UFUT ZDZB LYOE VF
-::  ascii-upper:20          :   94.0 b :   24 c ::    TUAP UFUT ZDZB LYOE VFNQ
-::  ascii-upper:22          :  103.4 b :   27 c ::    TUAP UFUT ZDZB LYOE VFNQ MW
-::  ascii-upper:24          :  112.8 b :   29 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB
-::  ascii-upper:26          :  122.2 b :   32 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZF
-::  ascii-upper:28          :  131.6 b :   34 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR
-::  ascii-upper:30          :  141.0 b :   37 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR AB
-::  ascii-upper:32          :  150.4 b :   39 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU
-::  ascii-mixed:14          :   79.8 b :   17 c ::    MObE nOlP YZhY cw
-::  ascii-mixed:16          :   91.2 b :   19 c ::    MObE nOlP YZhY cwWl
-::  ascii-mixed:18          :  102.6 b :   22 c ::    MObE nOlP YZhY cwWl Di
-::  ascii-mixed:20          :  114.0 b :   24 c ::    MObE nOlP YZhY cwWl DiRk
-::  ascii-mixed:22          :  125.4 b :   27 c ::    MObE nOlP YZhY cwWl DiRk AH
-::  ascii-mixed:24          :  136.8 b :   29 c ::    MObE nOlP YZhY cwWl DiRk AHTT
-::  ascii-mixed:26          :  148.2 b :   32 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZ
-::  ascii-mixed:28          :  159.6 b :   34 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY
-::  ascii-mixed:30          :  171.0 b :   37 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJ
-::  ascii-mixed:32          :  182.4 b :   39 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad
-::  ascii-symbols:16        :   80  =b :   19 c ::    \)^~ %(;? :{#~ |!#^
-::  ascii-symbols:18        :   90  =b :   22 c ::    \)^~ %(;? :{#~ |!#^ @]
-::  ascii-symbols:20        :  100  =b :   24 c ::    \)^~ %(;? :{#~ |!#^ @],~
-::  ascii-symbols:22        :  110  =b :   27 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))
-::  ascii-symbols:24        :  120  =b :   29 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^
-::  ascii-symbols:26        :  130  =b :   32 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?
-::  ascii-symbols:28        :  140  =b :   34 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"'
-::  ascii-symbols:30        :  150  =b :   37 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,
-::  ascii-symbols:32        :  160  =b :   39 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))@^ *?"' +,?+
-::  ascii-any:12            :   78.6 b :   14 c ::    ei#9 i5kg |~.+
-::  ascii-any:14            :   91.7 b :   17 c ::    ei#9 i5kg |~.+ {%
-::  ascii-any:16            :  104.8 b :   19 c ::    ei#9 i5kg |~.+ {%IL
-::  ascii-any:18            :  117.9 b :   22 c ::    ei#9 i5kg |~.+ {%IL 6U
-::  ascii-any:20            :  131.0 b :   24 c ::    ei#9 i5kg |~.+ {%IL 6U/o
-::  ascii-any:22            :  144.2 b :   27 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4P
-::  ascii-any:24            :  157.3 b :   29 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs
-::  ascii-any:26            :  170.4 b :   32 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w
-::  ascii-any:28            :  183.5 b :   34 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
-::  ascii-any:30            :  196.6 b :   37 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[
-::  ascii-any:32            :  209.7 b :   39 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
+::  cva-lower:1             :   13.4 b :    4 c ::    taqe
+::  cva-lower:2             :   26.8 b :    9 c ::    taqe veza
+::  cva-lower:3             :   40.2 b :   14 c ::    taqe veza zaye
+::  cva-lower:4             :   53.7 b :   19 c ::    taqe veza zaye fugi
+::  cva-lower:5             :   67.1 b :   24 c ::    taqe veza zaye fugi rixu
 ::  cva-lower:6             :   80.5 b :   29 c ::    taqe veza zaye fugi rixu cezu
 ::  cva-lower:7             :   93.9 b :   34 c ::    taqe veza zaye fugi rixu cezu saco
 ::  cva-lower:8             :  107.4 b :   39 c ::    taqe veza zaye fugi rixu cezu saco voxa
@@ -145,29 +32,10 @@
 ::  cva-lower:14            :  187.9 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu
 ::  cva-lower:15            :  201.4 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku
 ::  cva-lower:16            :  214.8 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju
-::  cva-upper:6             :   80.5 b :   29 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU
-::  cva-upper:7             :   93.9 b :   34 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO
-::  cva-upper:8             :  107.4 b :   39 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA
-::  cva-upper:9             :  120.8 b :   44 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE
-::  cva-upper:10            :  134.2 b :   49 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE
-::  cva-upper:11            :  147.7 b :   54 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO
-::  cva-upper:12            :  161.1 b :   59 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO
-::  cva-upper:13            :  174.5 b :   64 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO BAHA
-::  cva-upper:14            :  187.9 b :   69 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO BAHA YIWU
-::  cva-upper:15            :  201.4 b :   74 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO BAHA YIWU YUKU
-::  cva-upper:16            :  214.8 b :   79 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA KIZE HOSE RAGO QEKO BAHA YIWU YUKU PAJU
-::  cva-mixed:5             :   87.1 b :   24 c ::    PaFi PiQI YayU mAjO lAzi
-::  cva-mixed:6             :  104.5 b :   29 c ::    PaFi PiQI YayU mAjO lAzi ZUKa
-::  cva-mixed:7             :  121.9 b :   34 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo
-::  cva-mixed:8             :  139.4 b :   39 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE
-::  cva-mixed:9             :  156.8 b :   44 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi
-::  cva-mixed:10            :  174.2 b :   49 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE
-::  cva-mixed:11            :  191.7 b :   54 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona
-::  cva-mixed:12            :  209.1 b :   59 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa
-::  cva-mixed:13            :  226.5 b :   64 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU
-::  cva-mixed:14            :  243.9 b :   69 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA
-::  cva-mixed:15            :  261.4 b :   74 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA goPO
-::  cva-mixed:16            :  278.8 b :   79 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA goPO kAle
+::  cva-plus-a:2            :   26.7 b :    9 c ::    taqe 2711
+::  cva-plus-a:3            :   40.1 b :   14 c ::    taqe veza 0449
+::  cva-plus-a:4            :   53.5 b :   19 c ::    taqe veza zaye 5182
+::  cva-plus-a:5            :   67.0 b :   24 c ::    taqe veza zaye fugi 6290
 ::  cva-plus-a:6            :   80.4 b :   29 c ::    taqe veza zaye fugi rixu 2906
 ::  cva-plus-a:7            :   93.8 b :   34 c ::    taqe veza zaye fugi rixu cezu 0665
 ::  cva-plus-a:8            :  107.2 b :   39 c ::    taqe veza zaye fugi rixu cezu saco 6573
@@ -179,6 +47,10 @@
 ::  cva-plus-a:14           :  187.8 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha 9460
 ::  cva-plus-a:15           :  201.2 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu 9351
 ::  cva-plus-a:16           :  214.7 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku 5138
+::  cva-plus-b:2            :   26.7 b :    9 c ::    taqe VE71
+::  cva-plus-b:3            :   40.2 b :   14 c ::    taqe veza ZA44
+::  cva-plus-b:4            :   53.6 b :   19 c ::    taqe veza zaye FU25
+::  cva-plus-b:5            :   67.0 b :   24 c ::    taqe veza zaye fugi RI29
 ::  cva-plus-b:6            :   80.5 b :   29 c ::    taqe veza zaye fugi rixu CE90
 ::  cva-plus-b:7            :   93.9 b :   34 c ::    taqe veza zaye fugi rixu cezu SA66
 ::  cva-plus-b:8            :  107.3 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO57
@@ -190,6 +62,10 @@
 ::  cva-plus-b:14           :  187.9 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI60
 ::  cva-plus-b:15           :  201.3 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU35
 ::  cva-plus-b:16           :  214.7 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA38
+::  cva-plus-c:2            :   28.4 b :    9 c ::    taqe VE7~
+::  cva-plus-c:3            :   41.8 b :   14 c ::    taqe veza ZA4(
+::  cva-plus-c:4            :   55.3 b :   19 c ::    taqe veza zaye FU2;
+::  cva-plus-c:5            :   68.7 b :   24 c ::    taqe veza zaye fugi RI2~
 ::  cva-plus-c:6            :   82.1 b :   29 c ::    taqe veza zaye fugi rixu CE9!
 ::  cva-plus-c:7            :   95.6 b :   34 c ::    taqe veza zaye fugi rixu cezu SA6^
 ::  cva-plus-c:8            :  109.0 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO5]
@@ -201,6 +77,12 @@
 ::  cva-plus-c:14           :  189.6 b :   69 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI6_
 ::  cva-plus-c:15           :  203.0 b :   74 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU3<
 ::  cva-plus-c:16           :  216.4 b :   79 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA3`
+::  cvs-lower:1             :   12.6 b :    4 c ::    sane
+::  cvs-lower:2             :   25.2 b :    9 c ::    sane seda
+::  cvs-lower:3             :   37.9 b :   14 c ::    sane seda zalu
+::  cvs-lower:4             :   50.5 b :   19 c ::    sane seda zalu dufi
+::  cvs-lower:5             :   63.2 b :   24 c ::    sane seda zalu dufi pivu
+::  cvs-lower:6             :   75.8 b :   29 c ::    sane seda zalu dufi pivu ceba
 ::  cvs-lower:7             :   88.5 b :   34 c ::    sane seda zalu dufi pivu ceba camu
 ::  cvs-lower:8             :  101.1 b :   39 c ::    sane seda zalu dufi pivu ceba camu cige
 ::  cvs-lower:9             :  113.7 b :   44 c ::    sane seda zalu dufi pivu ceba camu cige paco
@@ -211,28 +93,11 @@
 ::  cvs-lower:14            :  177.0 b :   69 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma
 ::  cvs-lower:15            :  189.6 b :   74 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu
 ::  cvs-lower:16            :  202.3 b :   79 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu sice
-::  cvs-upper:7             :   88.5 b :   34 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU
-::  cvs-upper:8             :  101.1 b :   39 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE
-::  cvs-upper:9             :  113.7 b :   44 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO
-::  cvs-upper:10            :  126.4 b :   49 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO
-::  cvs-upper:11            :  139.0 b :   54 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE
-::  cvs-upper:12            :  151.7 b :   59 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU
-::  cvs-upper:13            :  164.3 b :   64 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU SUVA
-::  cvs-upper:14            :  177.0 b :   69 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU SUVA SUMA
-::  cvs-upper:15            :  189.6 b :   74 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU SUVA SUMA HETU
-::  cvs-upper:16            :  202.3 b :   79 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE PACO NEHO BAHE LOTU SUVA SUMA HETU SICE
-::  cvs-mixed:5             :   83.2 b :   24 c ::    Lami NIZe lABE ziZU bENA
-::  cvs-mixed:6             :   99.8 b :   29 c ::    Lami NIZe lABE ziZU bENA MoZi
-::  cvs-mixed:7             :  116.5 b :   34 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE
-::  cvs-mixed:8             :  133.1 b :   39 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa
-::  cvs-mixed:9             :  149.7 b :   44 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU
-::  cvs-mixed:10            :  166.4 b :   49 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO
-::  cvs-mixed:11            :  183.0 b :   54 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe
-::  cvs-mixed:12            :  199.7 b :   59 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA
-::  cvs-mixed:13            :  216.3 b :   64 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno
-::  cvs-mixed:14            :  233.0 b :   69 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno noZI
-::  cvs-mixed:15            :  249.6 b :   74 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno noZI Liri
-::  cvs-mixed:16            :  266.3 b :   79 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno noZI Liri CePo
+::  cvs-plus-a:2            :   25.9 b :    9 c ::    sane 2711
+::  cvs-plus-a:3            :   38.5 b :   14 c ::    sane seda 0449
+::  cvs-plus-a:4            :   51.2 b :   19 c ::    sane seda zalu 2518
+::  cvs-plus-a:5            :   63.8 b :   24 c ::    sane seda zalu dufi 6290
+::  cvs-plus-a:6            :   76.5 b :   29 c ::    sane seda zalu dufi pivu 2906
 ::  cvs-plus-a:7            :   89.1 b :   34 c ::    sane seda zalu dufi pivu ceba 6657
 ::  cvs-plus-a:8            :  101.7 b :   39 c ::    sane seda zalu dufi pivu ceba camu 3526
 ::  cvs-plus-a:9            :  114.4 b :   44 c ::    sane seda zalu dufi pivu ceba camu cige 6062
@@ -243,6 +108,11 @@
 ::  cvs-plus-a:14           :  177.6 b :   69 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva 3851
 ::  cvs-plus-a:15           :  190.3 b :   74 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma 3385
 ::  cvs-plus-a:16           :  202.9 b :   79 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu 5572
+::  cvs-plus-b:2            :   25.6 b :    9 c ::    sane SE71
+::  cvs-plus-b:3            :   38.2 b :   14 c ::    sane seda ZA44
+::  cvs-plus-b:4            :   50.8 b :   19 c ::    sane seda zalu DU25
+::  cvs-plus-b:5            :   63.5 b :   24 c ::    sane seda zalu dufi PI29
+::  cvs-plus-b:6            :   76.1 b :   29 c ::    sane seda zalu dufi pivu CE90
 ::  cvs-plus-b:7            :   88.8 b :   34 c ::    sane seda zalu dufi pivu ceba CA57
 ::  cvs-plus-b:8            :  101.4 b :   39 c ::    sane seda zalu dufi pivu ceba camu CI26
 ::  cvs-plus-b:9            :  114.1 b :   44 c ::    sane seda zalu dufi pivu ceba camu cige PA62
@@ -253,6 +123,10 @@
 ::  cvs-plus-b:14           :  177.3 b :   69 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva SU51
 ::  cvs-plus-b:15           :  189.9 b :   74 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma HE38
 ::  cvs-plus-b:16           :  202.6 b :   79 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu SI72
+::  cvs-plus-c:2            :   27.2 b :    9 c ::    sane SE7~
+::  cvs-plus-c:3            :   39.9 b :   14 c ::    sane seda ZA4(
+::  cvs-plus-c:4            :   52.5 b :   19 c ::    sane seda zalu DU2;
+::  cvs-plus-c:5            :   65.2 b :   24 c ::    sane seda zalu dufi PI2~
 ::  cvs-plus-c:6            :   77.8 b :   29 c ::    sane seda zalu dufi pivu CE9!
 ::  cvs-plus-c:7            :   90.5 b :   34 c ::    sane seda zalu dufi pivu ceba CA5]
 ::  cvs-plus-c:8            :  103.1 b :   39 c ::    sane seda zalu dufi pivu ceba camu CI2@
@@ -264,6 +138,10 @@
 ::  cvs-plus-c:14           :  179.0 b :   69 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva SU5'
 ::  cvs-plus-c:15           :  191.6 b :   74 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma HE3~
 ::  cvs-plus-c:16           :  204.3 b :   79 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu SI7\
+::  proquint-lower:1        :   16  =b :    5 c ::    sanis
+::  proquint-lower:2        :   32  =b :   11 c ::    sanis gufaz
+::  proquint-lower:3        :   48  =b :   17 c ::    sanis gufaz lofug
+::  proquint-lower:4        :   64  =b :   23 c ::    sanis gufaz lofug mudad
 ::  proquint-lower:5        :   80  =b :   29 c ::    sanis gufaz lofug mudad damud
 ::  proquint-lower:6        :   96  =b :   35 c ::    sanis gufaz lofug mudad damud mihup
 ::  proquint-lower:7        :  112  =b :   41 c ::    sanis gufaz lofug mudad damud mihup dogip
@@ -276,18 +154,11 @@
 ::  proquint-lower:14       :  224  =b :   83 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
 ::  proquint-lower:15       :  240  =b :   89 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
 ::  proquint-lower:16       :  256  =b :   95 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
-::  proquint-upper:5        :   80  =b :   29 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD
-::  proquint-upper:6        :   96  =b :   35 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP
-::  proquint-upper:7        :  112  =b :   41 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP
-::  proquint-upper:8        :  128  =b :   47 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL
-::  proquint-upper:9        :  144  =b :   53 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV
-::  proquint-upper:10       :  160  =b :   59 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ
-::  proquint-upper:11       :  176  =b :   65 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD
-::  proquint-upper:12       :  192  =b :   71 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG
-::  proquint-upper:13       :  208  =b :   77 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL
-::  proquint-upper:14       :  224  =b :   83 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
-::  proquint-upper:15       :  240  =b :   89 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
-::  proquint-upper:16       :  256  =b :   95 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  koremutake-a:1          :   14  =b :    5 c ::    drobo
+::  koremutake-a:2          :   28  =b :   11 c ::    drobo stufi
+::  koremutake-a:3          :   42  =b :   17 c ::    drobo stufi stoda
+::  koremutake-a:4          :   56  =b :   23 c ::    drobo stufi stoda napru
+::  koremutake-a:5          :   70  =b :   28 c ::    drobo stufi stoda napru hyhi
 ::  koremutake-a:6          :   84  =b :   33 c ::    drobo stufi stoda napru hyhi pupe
 ::  koremutake-a:7          :   98  =b :   40 c ::    drobo stufi stoda napru hyhi pupe grugro
 ::  koremutake-a:8          :  112  =b :   46 c ::    drobo stufi stoda napru hyhi pupe grugro ditra
@@ -299,6 +170,9 @@
 ::  koremutake-a:14         :  196  =b :   82 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
 ::  koremutake-a:15         :  210  =b :   88 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
 ::  koremutake-a:16         :  224  =b :   93 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-b:1          :   21  =b :    8 c ::    drobostu
+::  koremutake-b:2          :   42  =b :   16 c ::    drobostu fistoda
+::  koremutake-b:3          :   63  =b :   24 c ::    drobostu fistoda napruhy
 ::  koremutake-b:4          :   84  =b :   31 c ::    drobostu fistoda napruhy hipupe
 ::  koremutake-b:5          :  105  =b :   40 c ::    drobostu fistoda napruhy hipupe grugrodi
 ::  koremutake-b:6          :  126  =b :   50 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro
@@ -312,6 +186,13 @@
 ::  koremutake-b:14         :  294  =b :  112 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
 ::  koremutake-b:15         :  315  =b :  121 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
 ::  koremutake-b:16         :  336  =b :  129 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  mnemonic:1              :   10.6 b :    5 c ::    arrow
+::  mnemonic:2              :   21.3 b :   13 c ::    arrow arizona
+::  mnemonic:3              :   32.0 b :   19 c ::    arrow arizona mango
+::  mnemonic:4              :   42.6 b :   26 c ::    arrow arizona mango archer
+::  mnemonic:5              :   53.3 b :   33 c ::    arrow arizona mango archer jacket
+::  mnemonic:6              :   64.0 b :   40 c ::    arrow arizona mango archer jacket bundle
+::  mnemonic:7              :   74.7 b :   48 c ::    arrow arizona mango archer jacket bundle telecom
 ::  mnemonic:8              :   85.3 b :   54 c ::    arrow arizona mango archer jacket bundle telecom torso
 ::  mnemonic:9              :   96.0 b :   61 c ::    arrow arizona mango archer jacket bundle telecom torso domino
 ::  mnemonic:10             :  106.7 b :   68 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy
@@ -335,6 +216,12 @@
 ::  mnemonic:28             :  298.8 b :  197 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
 ::  mnemonic:29             :  309.5 b :  203 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
 ::  mnemonic:30             :  320.1 b :  209 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
+::  bip0039:1               :   11  =b :    5 c ::    robot
+::  bip0039:2               :   22  =b :   10 c ::    robot ship
+::  bip0039:3               :   33  =b :   16 c ::    robot ship night
+::  bip0039:4               :   44  =b :   23 c ::    robot ship night shield
+::  bip0039:5               :   55  =b :   27 c ::    robot ship night shield way
+::  bip0039:6               :   66  =b :   34 c ::    robot ship night shield way yellow
 ::  bip0039:7               :   77  =b :   41 c ::    robot ship night shield way yellow casual
 ::  bip0039:8               :   88  =b :   49 c ::    robot ship night shield way yellow casual brother
 ::  bip0039:9               :   99  =b :   55 c ::    robot ship night shield way yellow casual brother arrow
@@ -359,6 +246,12 @@
 ::  bip0039:28              :  308  =b :  174 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
 ::  bip0039:29              :  319  =b :  182 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
 ::  bip0039:30              :  330  =b :  187 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
+::  skey:1                  :   11  =b :    4 c ::    mile
+::  skey:2                  :   22  =b :    9 c ::    mile noun
+::  skey:3                  :   33  =b :   14 c ::    mile noun hear
+::  skey:4                  :   44  =b :   19 c ::    mile noun hear norm
+::  skey:5                  :   55  =b :   24 c ::    mile noun hear norm wast
+::  skey:6                  :   66  =b :   29 c ::    mile noun hear norm wast yarn
 ::  skey:7                  :   77  =b :   33 c ::    mile noun hear norm wast yarn led
 ::  skey:8                  :   88  =b :   35 c ::    mile noun hear norm wast yarn led i
 ::  skey:9                  :   99  =b :   39 c ::    mile noun hear norm wast yarn led i cur
@@ -383,6 +276,10 @@
 ::  skey:28                 :  308  =b :  128 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
 ::  skey:29                 :  319  =b :  132 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
 ::  skey:30                 :  330  =b :  137 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
+::  pgp:1                   :   16  =b :   19 c ::    shamrock responsive
+::  pgp:2                   :   32  =b :   35 c ::    shamrock responsive crucial revival
+::  pgp:3                   :   48  =b :   50 c ::    shamrock responsive crucial revival vulcan yucatan
+::  pgp:4                   :   64  =b :   68 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer
 ::  pgp:5                   :   80  =b :   85 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
 ::  pgp:6                   :   96  =b :  102 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
 ::  pgp:7                   :  112  =b :  120 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
@@ -395,6 +292,11 @@
 ::  pgp:14                  :  224  =b :  245 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
 ::  pgp:15                  :  240  =b :  265 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
 ::  pgp:16                  :  256  =b :  282 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
+::  eff-large:1             :   12.9 b :    5 c ::    scope
+::  eff-large:2             :   25.8 b :   12 c ::    scope slacks
+::  eff-large:3             :   38.7 b :   22 c ::    scope slacks patronize
+::  eff-large:4             :   51.6 b :   31 c ::    scope slacks patronize dumpling
+::  eff-large:5             :   64.6 b :   36 c ::    scope slacks patronize dumpling deny
 ::  eff-large:6             :   77.5 b :   42 c ::    scope slacks patronize dumpling deny spill
 ::  eff-large:7             :   90.4 b :   52 c ::    scope slacks patronize dumpling deny spill sharpener
 ::  eff-large:8             :  103.3 b :   57 c ::    scope slacks patronize dumpling deny spill sharpener visa
@@ -420,6 +322,13 @@
 ::  eff-large:28            :  361.8 b :  216 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
 ::  eff-large:29            :  374.8 b :  226 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
 ::  eff-large:30            :  387.7 b :  233 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
+::  eff-short:1             :   10.3 b :    5 c ::    shaft
+::  eff-short:2             :   20.6 b :   11 c ::    shaft sleep
+::  eff-short:3             :   31.0 b :   17 c ::    shaft sleep ankle
+::  eff-short:4             :   41.3 b :   22 c ::    shaft sleep ankle path
+::  eff-short:5             :   51.6 b :   27 c ::    shaft sleep ankle path sled
+::  eff-short:6             :   62.0 b :   32 c ::    shaft sleep ankle path sled deaf
+::  eff-short:7             :   72.3 b :   37 c ::    shaft sleep ankle path sled deaf shun
 ::  eff-short:8             :   82.7 b :   42 c ::    shaft sleep ankle path sled deaf shun zero
 ::  eff-short:9             :   93.0 b :   48 c ::    shaft sleep ankle path sled deaf shun zero chunk
 ::  eff-short:10            :  103.3 b :   54 c ::    shaft sleep ankle path sled deaf shun zero chunk candy
@@ -443,6 +352,13 @@
 ::  eff-short:28            :  289.5 b :  154 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
 ::  eff-short:29            :  299.8 b :  160 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
 ::  eff-short:30            :  310.1 b :  165 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
+::  eff-unique:1            :   10.3 b :    8 c ::    rekindle
+::  eff-unique:2            :   20.6 b :   16 c ::    rekindle satchel
+::  eff-unique:3            :   31.0 b :   26 c ::    rekindle satchel agonizing
+::  eff-unique:4            :   41.3 b :   31 c ::    rekindle satchel agonizing mule
+::  eff-unique:5            :   51.6 b :   39 c ::    rekindle satchel agonizing mule sardine
+::  eff-unique:6            :   62.0 b :   44 c ::    rekindle satchel agonizing mule sardine dibs
+::  eff-unique:7            :   72.3 b :   52 c ::    rekindle satchel agonizing mule sardine dibs riskily
 ::  eff-unique:8            :   82.7 b :   62 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium
 ::  eff-unique:9            :   93.0 b :   69 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot
 ::  eff-unique:10           :  103.3 b :   79 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness
@@ -466,6 +382,20 @@
 ::  eff-unique:28           :  289.5 b :  222 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
 ::  eff-unique:29           :  299.8 b :  233 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
 ::  eff-unique:30           :  310.1 b :  242 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
+::  nato:1                  :    5.1 b :    3 c ::    wun
+::  nato:2                  :   10.3 b :   10 c ::    wun victor
+::  nato:3                  :   15.5 b :   18 c ::    wun victor juliett
+::  nato:4                  :   20.6 b :   26 c ::    wun victor juliett foxtrot
+::  nato:5                  :   25.8 b :   31 c ::    wun victor juliett foxtrot echo
+::  nato:6                  :   31.0 b :   36 c ::    wun victor juliett foxtrot echo papa
+::  nato:7                  :   36.1 b :   40 c ::    wun victor juliett foxtrot echo papa ait
+::  nato:8                  :   41.3 b :   46 c ::    wun victor juliett foxtrot echo papa ait india
+::  nato:9                  :   46.5 b :   54 c ::    wun victor juliett foxtrot echo papa ait india uniform
+::  nato:10                 :   51.6 b :   59 c ::    wun victor juliett foxtrot echo papa ait india uniform fife
+::  nato:11                 :   56.8 b :   65 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel
+::  nato:12                 :   62.0 b :   72 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra
+::  nato:13                 :   67.2 b :   78 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo
+::  nato:14                 :   72.3 b :   82 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
 ::  nato:15                 :   77.5 b :   86 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
 ::  nato:16                 :   82.7 b :   94 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
 ::  nato:17                 :   87.8 b :   99 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
@@ -518,140 +448,3 @@
 ::  nato:64                 :  330.8 b :  372 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
 ::  nato:65                 :  336.0 b :  377 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
 ::  nato:66                 :  341.2 b :  384 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-::  bytes-hex:10            :   80  =b :   20 c ::    7f6f2ccdb23f2abb7b69
-::  bytes-hex:11            :   88  =b :   22 c ::    7f6f2ccdb23f2abb7b6927
-::  bytes-hex:12            :   96  =b :   24 c ::    7f6f2ccdb23f2abb7b69278e
-::  bytes-hex:13            :  104  =b :   26 c ::    7f6f2ccdb23f2abb7b69278e94
-::  bytes-hex:14            :  112  =b :   28 c ::    7f6f2ccdb23f2abb7b69278e947c
-::  bytes-hex:15            :  120  =b :   30 c ::    7f6f2ccdb23f2abb7b69278e947c01
-::  bytes-hex:16            :  128  =b :   32 c ::    7f6f2ccdb23f2abb7b69278e947c01c6
-::  bytes-hex:17            :  136  =b :   34 c ::    7f6f2ccdb23f2abb7b69278e947c01c616
-::  bytes-hex:18            :  144  =b :   36 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a
-::  bytes-hex:19            :  152  =b :   38 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31
-::  bytes-hex:20            :  160  =b :   40 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf
-::  bytes-hex:21            :  168  =b :   42 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02
-::  bytes-hex:22            :  176  =b :   44 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c1
-::  bytes-hex:23            :  184  =b :   46 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d
-::  bytes-hex:24            :  192  =b :   48 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06
-::  bytes-hex:25            :  200  =b :   50 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0
-::  bytes-hex:26            :  208  =b :   52 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6
-::  bytes-hex:27            :  216  =b :   54 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5
-::  bytes-hex:28            :  224  =b :   56 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab
-::  bytes-hex:29            :  232  =b :   58 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d
-::  bytes-hex:30            :  240  =b :   60 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d76
-::  bytes-hex:31            :  248  =b :   62 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b
-::  bytes-hex:32            :  256  =b :   64 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95
-::  bytes-hex:33            :  264  =b :   66 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b9511
-::  bytes-hex:34            :  272  =b :   68 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117b
-::  bytes-hex:35            :  280  =b :   70 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1
-::  bytes-hex:36            :  288  =b :   72 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de
-::  bytes-hex:37            :  296  =b :   74 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de54
-::  bytes-hex:38            :  304  =b :   76 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d
-::  bytes-hex:39            :  312  =b :   78 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d
-::  bytes-hex:40            :  320  =b :   80 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43
-::  bytes-hex:41            :  328  =b :   82 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:42            :  336  =b :   84 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:43            :  344  =b :   86 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:44            :  352  =b :   88 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:45            :  360  =b :   90 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:46            :  368  =b :   92 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:47            :  376  =b :   94 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:48            :  384  =b :   96 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:49            :  392  =b :   98 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:50            :  400  =b :  100 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:51            :  408  =b :  102 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:52            :  416  =b :  104 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:53            :  424  =b :  106 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:54            :  432  =b :  108 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:55            :  440  =b :  110 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:56            :  448  =b :  112 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:57            :  456  =b :  114 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:58            :  464  =b :  116 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:59            :  472  =b :  118 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:60            :  480  =b :  120 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:61            :  488  =b :  122 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:62            :  496  =b :  124 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:63            :  504  =b :  126 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:64            :  512  =b :  128 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:65            :  520  =b :  130 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:66            :  528  =b :  132 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:67            :  536  =b :  134 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:68            :  544  =b :  136 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:69            :  552  =b :  138 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:70            :  560  =b :  140 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:71            :  568  =b :  142 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:72            :  576  =b :  144 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:73            :  584  =b :  146 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:74            :  592  =b :  148 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:75            :  600  =b :  150 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:76            :  608  =b :  152 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:77            :  616  =b :  154 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:78            :  624  =b :  156 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:79            :  632  =b :  158 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:80            :  640  =b :  160 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:81            :  648  =b :  162 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:82            :  656  =b :  164 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:83            :  664  =b :  166 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:84            :  672  =b :  168 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:85            :  680  =b :  170 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:86            :  688  =b :  172 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:87            :  696  =b :  174 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:88            :  704  =b :  176 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:89            :  712  =b :  178 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:90            :  720  =b :  180 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:91            :  728  =b :  182 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:92            :  736  =b :  184 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:93            :  744  =b :  186 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:94            :  752  =b :  188 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:95            :  760  =b :  190 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:96            :  768  =b :  192 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:97            :  776  =b :  194 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:98            :  784  =b :  196 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:99            :  792  =b :  198 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:100           :  800  =b :  200 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:101           :  808  =b :  202 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:102           :  816  =b :  204 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:103           :  824  =b :  206 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:104           :  832  =b :  208 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:105           :  840  =b :  210 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:106           :  848  =b :  212 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:107           :  856  =b :  214 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:108           :  864  =b :  216 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:109           :  872  =b :  218 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:110           :  880  =b :  220 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:111           :  888  =b :  222 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:112           :  896  =b :  224 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:113           :  904  =b :  226 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:114           :  912  =b :  228 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:115           :  920  =b :  230 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:116           :  928  =b :  232 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:117           :  936  =b :  234 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:118           :  944  =b :  236 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:119           :  952  =b :  238 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:120           :  960  =b :  240 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:121           :  968  =b :  242 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:122           :  976  =b :  244 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:123           :  984  =b :  246 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:124           :  992  =b :  248 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:125           : 1000  =b :  250 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:126           : 1008  =b :  252 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  bytes-hex:127           : 1016  =b :  254 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  token-hex-96            :   96  =b :   24 c ::    8e27697bbb2a3fb2cd2c6f7f
-::  token-hex-128           :  128  =b :   32 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f
-::  token-hex-256           :  256  =b :   65 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f-958b761dabe5f6d0069dc102cf310a16
-::  token-hex-512           :  512  =b :  131 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f-958b761dabe5f6d0069dc102cf310a16-c5a0ef111f71c4 [...]
-::  uuid-v4                 :  122  =b :   36 c ::    c5a0ef11-f80c-41ce-8329-75e88c63a6e1
-::  flake:96                :   96  =b :   35 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e
-::  flake:128               :  128  =b :   44 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6
-::  flake:160               :  160  =b :   53 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf
-::  flake:192               :  192  =b :   62 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06
-::  flake:224               :  224  =b :   71 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab
-::  flake:256               :  256  =b :   80 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95
-::  flake:288               :  288  =b :   89 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
-::  flake:320               :  320  =b :   98 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
-::  flake:352               :  352  =b :  107 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
-::  flake:384               :  384  =b :  116 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
-::  flake:416               :  416  =b :  125 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
-::  flake:448               :  448  =b :  134 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
-::  flake:480               :  480  =b :  143 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
-::  flake:512               :  512  =b :  152 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
