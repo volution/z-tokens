@@ -26,7 +26,7 @@ include! ("./patterns_tokens_macros.in");
 #[ cfg (feature = "zt-patterns-digits-base10") ]
 define_repeat! (
 		pub DIGITS_BASE10,
-		("digits-base10", "digits"),
+		("digits-base10", "encoding", "digits", "password", "pronounceable", "memorable"),
 		("digits-base10", "d"),
 		{ glyphs::DIGIT_BASE10_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
 		(32 : 2));
@@ -34,7 +34,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-digits-base2") ]
 define_repeat! (
 		pub DIGITS_BASE2,
-		("digits-base2", "digits"),
+		("digits-base2", "encoding", "digits"),
 		("digits-base2"),
 		{ glyphs::DIGIT_BASE2_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_8_PATTERN },
 		(32 : 4));
@@ -42,7 +42,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-digits-base8") ]
 define_repeat! (
 		pub DIGITS_BASE8,
-		("digits-base8", "digits", "encoding"),
+		("digits-base8", "encoding", "digits"),
 		("digits-base8"),
 		{ glyphs::DIGIT_BASE8_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
 		(32 : 2));
@@ -50,7 +50,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-digits-base16") ]
 define_repeat! (
 		pub DIGITS_BASE16,
-		("digits-base16", "digits", "encoding", "password"),
+		("digits-base16", "encoding", "password"),
 		("digits-base16", "x"),
 		{ glyphs::DIGIT_BASE16_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
 		(32 : 2));
@@ -132,7 +132,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-bytes") ]
 define_bytes! (
 		pub BYTES_HEX,
-		("bytes-hex", "password"),
+		("bytes-hex", "encoding", "password"),
 		("bytes-hex", "b"),
 		BYTES_HEX,
 		(512 : 1));
@@ -147,7 +147,7 @@ define_bytes! (
 #[ cfg (feature = "zt-patterns-ascii") ]
 define_repeat! (
 		pub ASCII_LETTER_LOWER,
-		("ascii-lower", "ascii", "password"),
+		("ascii-lower", "letters", "password"),
 		("ascii-lower"),
 		{ glyphs::ASCII_LETTER_LOWER_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
 		(32 : 2));
@@ -155,7 +155,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-ascii") ]
 define_repeat! (
 		pub ASCII_LETTER_UPPER,
-		("ascii-upper", "ascii"),
+		("ascii-upper", "letters"),
 		("ascii-upper"),
 		{ glyphs::ASCII_LETTER_UPPER_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
 		(32 : 2));
@@ -163,7 +163,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-ascii") ]
 define_repeat! (
 		pub ASCII_LETTER_MIXED,
-		("ascii-mixed", "ascii", "password"),
+		("ascii-mixed", "letters", "password"),
 		("ascii-mixed"),
 		{ glyphs::ASCII_LETTER_MIXED_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
 		(32 : 2));
@@ -172,7 +172,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-ascii") ]
 define_repeat! (
 		pub ASCII_SYMBOLS,
-		("ascii-symbols", "ascii"),
+		("ascii-symbols"),
 		("ascii-symbols"),
 		{ glyphs::ASCII_SYMBOL_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
 		(32 : 2));
@@ -180,7 +180,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-ascii") ]
 define_repeat! (
 		pub ASCII_PRINTABLE,
-		("ascii-any", "ascii", "password"),
+		("ascii-any", "password"),
 		("ascii-any", "r"),
 		{ glyphs::ASCII_PRINTABLE_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
 		(32 : 2));
@@ -231,7 +231,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub ASCII_CONSONANT_VOWEL_LOWER,
-		("cva-lower", "cva", "cv", "ascii", "password", "memorable"),
+		("cva-lower", "cva", "cv", "letters", "password", "pronounceable", "memorable"),
 		("cva-lower", "cva"),
 		{ ASCII_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN },
 		(16 : 1));
@@ -239,7 +239,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub ASCII_CONSONANT_VOWEL_UPPER,
-		("cva-upper", "cva", "cv", "ascii"),
+		("cva-upper", "cva", "cv", "letters"),
 		("cva-upper"),
 		{ ASCII_CONSONANT_VOWEL_UPPER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN },
 		(16 : 1));
@@ -247,7 +247,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub ASCII_CONSONANT_VOWEL_MIXED,
-		("cva-mixed", "cva", "cv", "ascii", "password"),
+		("cva-mixed", "cva", "cv", "letters", "password"),
 		("cva-mixed"),
 		{ ASCII_CONSONANT_VOWEL_MIXED_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN },
 		(16 : 1));
@@ -295,7 +295,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub ASCII_CONSONANT_VOWEL_PLUS_A,
-		("cva-plus-a", "cva-plus", "cv-plus", "cva", "cv", "ascii", "password", "memorable"),
+		("cva-plus-a", "cva-plus", "cv-plus", "cva", "cv", "password", "pronounceable", "memorable"),
 		("cva-plus-a", "cvapa"),
 		{
 			(),
@@ -307,7 +307,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub ASCII_CONSONANT_VOWEL_PLUS_B,
-		("cva-plus-b", "cva-plus", "cv-plus", "cva", "cv", "ascii", "password", "memorable"),
+		("cva-plus-b", "cva-plus", "cv-plus", "cva", "cv", "password", "pronounceable", "memorable"),
 		("cva-plus-b", "cvapb"),
 		{
 			(),
@@ -319,7 +319,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub ASCII_CONSONANT_VOWEL_PLUS_C,
-		("cva-plus-c", "cva-plus", "cv-plus", "cva", "cv", "ascii", "password", "memorable"),
+		("cva-plus-c", "cva-plus", "cv-plus", "cva", "cv", "password", "pronounceable", "memorable"),
 		("cva-plus-c", "cvapc"),
 		{
 			(),
@@ -374,7 +374,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub SIMPLE_CONSONANT_VOWEL_LOWER,
-		("cvs-lower", "cvs", "cv", "ascii", "password", "memorable"),
+		("cvs-lower", "cvs", "cv", "letters", "password", "pronounceable", "memorable"),
 		("cvs-lower", "cvs"),
 		{ SIMPLE_CONSONANT_VOWEL_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN },
 		(16 : 1));
@@ -382,7 +382,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub SIMPLE_CONSONANT_VOWEL_UPPER,
-		("cvs-upper", "cvs", "cv", "ascii"),
+		("cvs-upper", "cvs", "cv", "letters"),
 		("cvs-upper"),
 		{ SIMPLE_CONSONANT_VOWEL_UPPER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN },
 		(16 : 1));
@@ -390,7 +390,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub SIMPLE_CONSONANT_VOWEL_MIXED,
-		("cvs-mixed", "cvs", "cv", "ascii", "password"),
+		("cvs-mixed", "cvs", "cv", "letters", "password"),
 		("cvs-mixed"),
 		{ SIMPLE_CONSONANT_VOWEL_MIXED_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN },
 		(16 : 1));
@@ -438,7 +438,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub SIMPLE_CONSONANT_VOWEL_PLUS_A,
-		("cvs-plus-a", "cvs-plus", "cv-plus", "cvs", "cv", "ascii", "password", "memorable"),
+		("cvs-plus-a", "cvs-plus", "cv-plus", "cvs", "cv", "password", "pronounceable", "memorable"),
 		("cvs-plus-a", "cvspa"),
 		{
 			(),
@@ -450,7 +450,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub SIMPLE_CONSONANT_VOWEL_PLUS_B,
-		("cvs-plus-b", "cvs-plus", "cv-plus", "cvs", "cv", "ascii", "password", "memorable"),
+		("cvs-plus-b", "cvs-plus", "cv-plus", "cvs", "cv", "password", "pronounceable", "memorable"),
 		("cvs-plus-b", "cvspb"),
 		{
 			(),
@@ -462,7 +462,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
 define_repeat! (
 		pub SIMPLE_CONSONANT_VOWEL_PLUS_C,
-		("cvs-plus-c", "cvs-plus", "cv-plus", "cvs", "cv", "ascii", "password", "memorable"),
+		("cvs-plus-c", "cvs-plus", "cv-plus", "cvs", "cv", "password", "pronounceable", "memorable"),
 		("cvs-plus-c", "cvspc"),
 		{
 			(),
@@ -507,7 +507,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-proquint") ]
 define_repeat! (
 		pub PROQUINT_LOWER,
-		("proquint-lower", "proquint", "ascii", "password", "memorable"),
+		("proquint-lower", "proquint", "letters", "password", "pronounceable", "memorable", "encoding"),
 		("proquint-lower", "proquint"),
 		{ PROQUINT_LOWER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN },
 		(16 : 1));
@@ -515,7 +515,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-proquint") ]
 define_repeat! (
 		pub PROQUINT_UPPER,
-		("proquint-upper", "proquint", "ascii"),
+		("proquint-upper", "proquint", "letters"),
 		("proquint-upper"),
 		{ PROQUINT_UPPER_WORD => separators::SPACE_OPTIONAL_INFIX_PATTERN },
 		(16 : 1));
@@ -551,7 +551,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-koremutake") ]
 define_repeat! (
 		pub KOREMUTAKE_A,
-		("koremutake-a", "koremutake", "ascii", "password", "memorable"),
+		("koremutake-a", "koremutake", "letters", "password", "pronounceable", "memorable", "encoding"),
 		("koremutake-a"),
 		{ KOREMUTAKE_WORD_A => separators::SPACE_OPTIONAL_INFIX_PATTERN },
 		(16 : 1));
@@ -559,7 +559,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-koremutake") ]
 define_repeat! (
 		pub KOREMUTAKE_B,
-		("koremutake-b", "koremutake", "ascii", "password", "memorable"),
+		("koremutake-b", "koremutake", "letters", "password", "pronounceable", "memorable", "encoding"),
 		("koremutake-b"),
 		{ KOREMUTAKE_WORD_B => separators::SPACE_OPTIONAL_INFIX_PATTERN },
 		(16 : 1));
@@ -574,7 +574,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-mnemonic") ]
 define_repeat! (
 		pub MNEMONIC,
-		("mnemonic", "passphrase", "memorable"),
+		("mnemonic", "dictionary", "passphrase", "pronounceable", "memorable", "encoding"),
 		("mnemonic"),
 		{ glyphs::MNEMONIC_WORD_TOKEN => separators::SPACE_MANDATORY_INFIX_PATTERN },
 		(30 : 1));
@@ -585,7 +585,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-bip0039") ]
 define_repeat! (
 		pub BIP0039,
-		("bip0039", "passphrase", "memorable"),
+		("bip0039", "dictionary", "passphrase", "pronounceable", "memorable", "encoding"),
 		("bip0039"),
 		{ glyphs::BIP0039_WORD_TOKEN => separators::SPACE_MANDATORY_INFIX_PATTERN },
 		(30 : 1));
@@ -596,7 +596,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-skey") ]
 define_repeat! (
 		pub SKEY,
-		("skey", "passphrase", "memorable"),
+		("skey", "dictionary", "passphrase", "pronounceable", "memorable", "encoding"),
 		("skey"),
 		{ glyphs::SKEY_WORD_TOKEN => separators::SPACE_MANDATORY_INFIX_PATTERN },
 		(30 : 1));
@@ -617,7 +617,7 @@ define_sequence! (
 #[ cfg (feature = "zt-patterns-pgp") ]
 define_repeat! (
 		pub PGP,
-		("pgp", "passphrase", "memorable"),
+		("pgp", "dictionary", "pronounceable", "encoding"),
 		("pgp"),
 		{ PGP_TUPLE => separators::SPACE_MANDATORY_INFIX_PATTERN },
 		(16 : 1));
@@ -628,7 +628,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-eff-large") ]
 define_repeat! (
 		pub EFF_LARGE,
-		("eff-large", "eff", "passphrase", "memorable"),
+		("eff-large", "eff", "dictionary", "passphrase", "pronounceable", "memorable"),
 		("eff-large"),
 		{ glyphs::EFF_LARGE_WORD_TOKEN => separators::SPACE_MANDATORY_INFIX_PATTERN },
 		(30 : 1));
@@ -636,7 +636,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-eff-short") ]
 define_repeat! (
 		pub EFF_SHORT,
-		("eff-short", "eff", "passphrase", "memorable"),
+		("eff-short", "eff", "dictionary", "passphrase", "pronounceable", "memorable"),
 		("eff-short"),
 		{ glyphs::EFF_SHORT_WORD_TOKEN => separators::SPACE_MANDATORY_INFIX_PATTERN },
 		(30 : 1));
@@ -644,7 +644,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-eff-unique") ]
 define_repeat! (
 		pub EFF_UNIQUE,
-		("eff-unique", "eff", "passphrase", "memorable"),
+		("eff-unique", "eff", "dictionary", "passphrase", "pronounceable", "memorable"),
 		("eff-unique"),
 		{ glyphs::EFF_UNIQUE_WORD_TOKEN => separators::SPACE_MANDATORY_INFIX_PATTERN },
 		(30 : 1));
@@ -659,7 +659,7 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-nato") ]
 define_repeat! (
 		pub NATO,
-		("nato"),
+		("nato", "dictionary", "pronounceable"),
 		("nato"),
 		{ glyphs::NATO_WORD_TOKEN => separators::SPACE_MANDATORY_INFIX_PATTERN },
 		(66 : 1));
