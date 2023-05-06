@@ -414,7 +414,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		}
 		
 		
-		_session.logout () .else_wrap (0xfa1ce8bf) ?;
+		_session.logout () .else_wrap (0xf3d79b8b) ?;
 	}
 	
 	
@@ -529,7 +529,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		let _input_size = (_key.modulus_bits / 8) as usize;
 		let mut _input_data = vec! [0xffu8; _input_size];
 		
-		// eprintln! ("[>>] [9ad03ccd]    -> input-data ({} / {}):  {:02x?}", _input_data.len (), _input_data.len () * 8, _input_data.as_slice ());
+		// eprintln! ("[>>] [81629ec6]    -> input-data ({} / {}):  {:02x?}", _input_data.len (), _input_data.len () * 8, _input_data.as_slice ());
 		
 		
 		for _round in 0 .. 16 {
