@@ -38,7 +38,7 @@
 	
 	case "${_switch}" in
 		( local )
-			_scratch="${__CARGO_LOCAL__SCRATCH}/${__CARGO_LOCAL__IDENTIFIER}"
+			_scratch="$( exec -- "${ZRUN}" ':: workbench / scratch' )"
 		;;
 		( remote )
 			_scratch="${__CARGO_REMOTE__SCRATCH}/${__CARGO_REMOTE__IDENTIFIER}"

@@ -3,16 +3,34 @@
 
 
 
+--<< workbench / scratch
+	
+	test "${#}" -eq 0
+	
+	_scratch="${__CARGO_LOCAL__SCRATCH}/${__CARGO_LOCAL__IDENTIFIER}"
+	
+	if test ! -e "${_scratch}" ; then
+		mkdir -- "${_scratch}"
+	fi
+	
+	printf -- '%s\n' "${_scratch}"
+!!
+
+
+
+
 --<< workbench / outputs
 	
-	_scratch="${__CARGO_LOCAL__SCRATCH}"
+	test "${#}" -eq 0
+	
 	_outputs="${__OUTPUTS}"
 	
 	if test ! -e "${_outputs}" ; then
+		_scratch="$( exec -- "${ZRUN}" ':: workbench / scratch' )"
 		if test ! -e "${_scratch}/outputs" ; then
 			mkdir -- "${_scratch}/outputs"
 		fi
-		ln -s -T -- "${_scratch}/outputs" "${_outputs}"
+		ln -f -s -T -- "${_scratch}/outputs" "${_outputs}"
 	fi
 	
 	test -d "${_outputs}"
@@ -30,6 +48,8 @@
 
 
 --<< workbench / publish
+	
+	test "${#}" -eq 0
 	
 	_publish="${__PUBLISH}"
 	test -d "${_publish}"

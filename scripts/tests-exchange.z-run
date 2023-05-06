@@ -1112,7 +1112,7 @@
 				--empty-is-missing "${_empty_is_missing}"
 			)
 		
-		_identifier="${_case_tool}--${_case_send}--${_case_pin}--${_case_secret}--${_ballast}--${_case_ssh_wrap}--${_case_associated}--${_case_deterministic}"
+		_identifier="${_case_tool}--${_case_send}--${_case_pin}--${_case_secret}--${_case_ballast}--${_case_ssh_wrap}--${_case_associated}--${_case_deterministic}"
 		_report="${_reports}/${_identifier}.txt"
 		_output="${_outputs}/tests/${_identifier}.${$}.tmp"
 		
@@ -1188,7 +1188,7 @@
 		
 		printf -- '\n' >&2
 		
-	done ; done ; done ; done ; done ; done ; done
+	done ; done ; done ; done ; done ; done ; done ; done
 !!
 
 

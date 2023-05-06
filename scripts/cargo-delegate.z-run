@@ -46,15 +46,17 @@
 
 --<< cargo / exec / local
 	
-	test -d "${__CARGO_LOCAL__SCRATCH}"
-	_scratch="${__CARGO_LOCAL__SCRATCH}/${__CARGO_LOCAL__IDENTIFIER}"
+	_scratch="$( exec -- "${ZRUN}" ':: workbench / scratch' )"
 	_executable="${__CARGO_LOCAL__EXECUTABLE}"
 	
-	if test ! -d "${_scratch}" ; then
-		mkdir -m 00700 -- "${_scratch}"
+	if test ! -e "${_scratch}/target" ; then
 		mkdir -m 00700 -- "${_scratch}/target"
+	fi
+	if test ! -e "${_scratch}/sources" ; then
 		ln -s -T -- "$( exec -- readlink -e -- ./sources )" "${_scratch}/sources"
 	fi
+	
+	test "${_scratch}/sources" -ef ./sources
 	
 	exec -- "${ZRUN}" ':: cargo / exec / any / delegate' \
 			"${_scratch}" "${_executable}" \
