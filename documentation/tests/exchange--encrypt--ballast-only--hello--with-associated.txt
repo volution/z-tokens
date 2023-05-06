@@ -1,0 +1,13 @@
+>>  z-tokens exchange encrypt --siv --ballast ztxbl1ah428t6ux086pfdgv5d5z8fle06rll5azaglg8gcnvd65mup65qqckq348 --associated hello
+
+
+#1,  2Fy9NoduQKBYo Bv5wZmuQtM77  33ZcqWuDw2qrS 35MngPT47HNY1 bp9tjMAnnRFQ
+#2,  2mqfLh7vTXE8F 2iMniKHHREB72 3JbLEyszBqh2b M8cTHq4Rd3kC  aPyNCfZm1Wg6
+#3,  3SVhvexiFSHQK 2JNjSoXEySHgs 47UYai9Vwcfnu 3DJc8iidxbYNH uMn2Wn9akWQe
+#4,  FteQmj8pMREi  2q6TnQmULmxAd 3Ur1QnrokYPUu 2HSiXPfexBvot 2PT4VAxhy7buD
+#5,  2hjnWnoCCeWW9 2jJPrcstJeBGo 28crfogmQUf4G c3CibgMsU9rK  49FafqqUZxiMq
+#6,  3FgQ5fBkFBoyD 47ewyX7JyjtmK mGptvBvyjcwq  2k72XRhMQ741p 68wd7rxvKF9b
+#7,  HEj4XmaAcsJQ  qEtJTeUMHKRh  FAcRScu81n5M  46b22jeHwNB5F 3DRFyktSmfi7n
+#8,  2hEKdwwN6Cwuy 21Xh9ocQBbumT sJVWG7pU6RVs  2Kc7iRc4erPBe 34ujSpyoWzvUi
+#9.  263WNSs6npdsp
+

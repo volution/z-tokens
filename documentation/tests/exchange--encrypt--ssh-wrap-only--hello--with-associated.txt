@@ -1,12 +1,13 @@
 >>  z-tokens exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --associated hello
 
 
-#1,  2XNJuAtHjf3Pp 2tmFnNYLbRZZU 42yHQMNHoq4WU 32mqdKXHJc183 2xafPqZgmLLmM
-#2,  1H2yULgtExo1  xLUkfSXcWrCX  3tqLUbAxHYzbL KVtu3FGGi8pY  3LVRuwucJc6RX
-#3,  bV8BhF8taHPF  2imeQBJEtC2s2 vUFuzBuisvSM  3GA4KKPMvFQ9R pCKmxWXSjY2f
-#4,  iCUU1RhR7jig  2EwhBtnLrMYAm 33UTa3orRW2FE 44VSB15Eh9Ln  32NZSZe9Amebc
-#5,  3ZuUXKLsSG5zR 3tzKg8NMGjGnP hf7DfbBneoWP  uu4TTLYYwXWT  CL9nL963VCj4
-#6,  3wri25bFuxHqs 22DQfq6Hk9T8b a9M5CWthahBW  2Jqwz3Pfqxzuw njkXCFVPgabx
-#7,  3Tct9UK4qibUR o4M9BHp1qzag  mHFpfjNtMekx  PwRjXQoWyN4m  qzB2SsRFTujq
-#8.  2VCGanRUqg89G hKnq9Am51vuv  2HUSMj2JYtVVa 3jyVAskmm2SR5 6Eot9GrSk4or
+#1,  2Fy9NoJNqRD2P d3LrafPnqSo2  3SPbSbnVttAfi UbDtbj1y9Zud  YDKYkxcDL7A2
+#2,  4A2iUrXcCYhkA 3D8h7HyRShSkp 2XLFz4HxjXwJZ 45BSLw6fY3gpZ 2Jgw15AAvXHwq
+#3,  231XRQqdrV5su 2DFTvkmRxppfH WCvvpeAh8UcW  2ANVxCs9mBELp 4FAeNZh8Cc9ca
+#4,  ZVZUD4w2Gubx  25w8kEXcERX7h HnovG2FoDLEy  28MzWWj7j1rCy 2KPqrXdoq3GS8
+#5,  2PC6Jrs6whfs1 2xy6hrv2KZCce 3iAGhBvhbvKZ5 szpGNTvY2Dkj  3uzPUVceS7zYy
+#6,  1eU9YwYQtuNq  29KvDeNnZgGc9 PVuLuukEVD2x  9s1j2bnVzK8q  2GdvmrBVgSkoc
+#7,  3eLkn7TnUgFnG f6KuDMSkEtEY  2FdD6dR9agYkZ qJ2rSKCqUPyc  42xmg55pFFSDs
+#8,  22VBtoHrUuubQ 2UM7d3hvTj1RT 28LQVYq4XbzbH 23PCBUkqrMLJw 27D1TXN2piyCQ
+#9.  2Uj8rP4ZFF36x
 

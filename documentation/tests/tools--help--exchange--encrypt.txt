@@ -18,8 +18,11 @@ Optional arguments:
                         (multiple allowed, in any order)
   --ssh-wrap {key}      (shared SSH agent key handle) (multiple allowed, in any
                         order)
-  --siv                 (deterministic output, based on SIV) (!!! CAUTION !!!)
+  -b,--ballast {ballast}
+                        (shared ballast, for additional security) (multiple
+                        allowed, in any order)
   -M                    (treat empty arguments as unspecified) (!!! CAUTION
                         !!!)
   --empty-is-missing {bool}
                         
+  --siv                 (deterministic output, based on SIV) (!!! CAUTION !!!)
