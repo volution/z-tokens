@@ -62,7 +62,7 @@
 	time \
 	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
 			armor \
-		<<< '' \
+		< /dev/null \
 	#
 !!
 
@@ -78,6 +78,21 @@
 	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
 			armor \
 		< ./notice.txt \
+	#
+!!
+
+
+<< tests / quick / exchange / armor / random
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	time \
+	head -c 64 < /dev/urandom \
+	| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+			armor \
 	#
 !!
 
@@ -196,7 +211,7 @@
 	time \
 	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
 			raw encode \
-		<<< '' \
+		< /dev/null \
 	#
 !!
 
@@ -212,6 +227,21 @@
 	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
 			raw encode \
 		< ./notice.txt \
+	#
+!!
+
+
+<< tests / quick / exchange / encode / random
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	time \
+	head -c 64 < /dev/urandom \
+	| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+			raw encode \
 	#
 !!
 
@@ -378,6 +408,7 @@
 	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -390,6 +421,7 @@
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
+				--ballast "${_ballast}" \
 				--empty-is-missing true \
 		<<< $'hello world!\n' \
 	#
@@ -411,6 +443,7 @@
 	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -423,6 +456,7 @@
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
+				--ballast "${_ballast}" \
 				--siv \
 				--empty-is-missing true \
 		<<< $'hello world!\n' \
@@ -443,6 +477,7 @@
 	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -455,9 +490,10 @@
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
+				--ballast "${_ballast}" \
 				--siv \
 				--empty-is-missing true \
-		<<< '' \
+		< /dev/null \
 	#
 !!
 
@@ -475,6 +511,7 @@
 	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -487,9 +524,44 @@
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
+				--ballast "${_ballast}" \
 				--siv \
 				--empty-is-missing true \
 		< ./notice.txt \
+	#
+!!
+
+
+<< tests / quick / exchange / encrypt / random
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
+	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
+	
+	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
+	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
+	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
+	
+	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
+	
+	time \
+	head -c 64 < /dev/urandom \
+	| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+			encrypt \
+				--sender "${_sender_private}" \
+				--recipient "${_recipient_public}" \
+				--associated "${_associated}" \
+				--secret "${_secret}" \
+				--pin "${_pin}" \
+				--ssh-wrap "${_ssh_wrap}" \
+				--ballast "${_ballast}" \
+				--siv \
+				--empty-is-missing true \
 	#
 !!
 
@@ -512,6 +584,7 @@
 	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -524,6 +597,7 @@
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
+				--ballast "${_ballast}" \
 				--empty-is-missing true \
 		<<< $'hello world!\n' \
 	| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
@@ -534,6 +608,7 @@
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
+				--ballast "${_ballast}" \
 				--empty-is-missing true \
 	#
 !!
@@ -555,6 +630,7 @@
 	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -581,6 +657,7 @@
 					--secret "${_secret}" \
 					--pin "${_pin}" \
 					--ssh-wrap "${_ssh_wrap}" \
+					--ballast "${_ballast}" \
 					--empty-is-missing true \
 			< "${_file}" \
 		| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
@@ -591,6 +668,7 @@
 					--secret "${_secret}" \
 					--pin "${_pin}" \
 					--ssh-wrap "${_ssh_wrap}" \
+					--ballast "${_ballast}" \
 					--empty-is-missing true \
 		| md5sum -b -- /dev/fd/5 5<&0 \
 		| md5sum -c --quiet 5< "${_file}" \
@@ -616,6 +694,7 @@
 	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -644,6 +723,7 @@
 					--secret "${_secret}" \
 					--pin "${_pin}" \
 					--ssh-wrap "${_ssh_wrap}" \
+					--ballast "${_ballast}" \
 					--empty-is-missing true \
 		| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
 				decrypt \
@@ -653,6 +733,7 @@
 					--secret "${_secret}" \
 					--pin "${_pin}" \
 					--ssh-wrap "${_ssh_wrap}" \
+					--ballast "${_ballast}" \
 					--empty-is-missing true \
 			> /dev/null \
 		#
@@ -680,6 +761,7 @@
 	for _case_secret in without-secret empty-secret with-secret-1 with-secret-1d with-secret-2 with-secret-2d ; do
 	for _case_ssh_wrap in without-ssh-wrap empty-ssh-wrap with-ssh-wrap-1 with-ssh-wrap-1d with-ssh-wrap-2 with-ssh-wrap-2d ; do
 	for _case_pin in without-pin empty-pin with-pin-1 with-pin-1d with-pin-2 with-pin-2d ; do
+	for _case_ballast in without-ballast empty-ballast with-ballast-1 with-ballast-1d with-ballast-2 with-ballast-2d ; do
 	for _case_associated in without-associated empty-associated with-associated-1 with-associated-2 ; do
 	for _case_send in without-x25519 empty-x25519 send-x25519 self-x25519 ; do
 		
@@ -689,11 +771,14 @@
 		_associated_1='associated-1'
 		_associated_2='associated-2'
 		
-		_secret_1=ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm
-		_secret_2=ztxcs1zw32errd0vu44rvt2h6vnmfecjtp20aacyzpxcyg9dq3szerw0sswvu32a
+		_secret_1='ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm'
+		_secret_2='ztxcs1zw32errd0vu44rvt2h6vnmfecjtp20aacyzpxcyg9dq3szerw0sswvu32a'
 		
-		_ssh_wrap_1=ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8
-		_ssh_wrap_2=ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqgyg7zfdlhxsaymch3pu5c74xz82y5pt67grpy6ej8tcatltw4ar0gqszkku9ux
+		_ballast_1='ztxbl1ah428t6ux086pfdgv5d5z8fle06rll5azaglg8gcnvd65mup65qqckq348'
+		_ballast_2='ztxbl1y00yn7a4jjqeyxke8u6hfqks7fhjadtamny4mmp6nc43qa9ra3mqu4swle'
+		
+		_ssh_wrap_1='ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8'
+		_ssh_wrap_2='ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqgyg7zfdlhxsaymch3pu5c74xz82y5pt67grpy6ej8tcatltw4ar0gqszkku9ux'
 		
 		_file=./notice.txt
 		
@@ -880,6 +965,61 @@
 			;;
 		esac
 		
+		case "${_case_ballast}" in
+			( with-ballast-1 )
+				_common_arguments+=(
+						--ballast "${_ballast_1}"
+					)
+			;;
+			( with-ballast-1d )
+				_encrypt_arguments+=(
+						--ballast "${_ballast_1}"
+					)
+				_decrypt_arguments+=(
+						--ballast "${_ballast_1}"
+						--ballast "${_ballast_1}"
+					)
+			;;
+			( with-ballast-2 )
+				_encrypt_arguments+=(
+						--ballast "${_ballast_1}"
+						--ballast "${_ballast_2}"
+					)
+				_decrypt_arguments+=(
+						--ballast "${_ballast_2}"
+						--ballast "${_ballast_1}"
+					)
+			;;
+			( with-ballast-2d )
+				_encrypt_arguments+=(
+						--ballast "${_ballast_1}"
+						--ballast "${_ballast_1}"
+						--ballast "${_ballast_2}"
+					)
+				_decrypt_arguments+=(
+						--ballast "${_ballast_2}"
+						--ballast "${_ballast_1}"
+						--ballast "${_ballast_1}"
+					)
+			;;
+			( without-ballast )
+			;;
+			( empty-ballast )
+				_encrypt_arguments+=(
+						--ballast ''
+					)
+				_decrypt_arguments+=(
+					)
+				_empty_is_missing=true
+			;;
+			( __* )
+				continue
+			;;
+			( * )
+				false -- '[0x5f499152]' "${_case_ballast}"
+			;;
+		esac
+		
 		case "${_case_ssh_wrap}" in
 			( with-ssh-wrap-1 )
 				_common_arguments+=(
@@ -957,7 +1097,7 @@
 		esac
 		
 		printf -- '\n' >&2
-		printf -- '[ii]  running iteration `%s %s %s %s %s %s %s`...\n' "${_case_tool}" "${_case_send}" "${_case_pin}" "${_case_secret}" "${_case_ssh_wrap}" "${_case_associated}" "${_case_deterministic}" >&2
+		printf -- '[ii]  running iteration `%s %s %s %s %s %s %s %s`...\n' "${_case_tool}" "${_case_send}" "${_case_pin}" "${_case_secret}" "${_case_ballast}" "${_case_ssh_wrap}" "${_case_associated}" "${_case_deterministic}" >&2
 		
 		if test "${#_encrypt_arguments[@]}" -eq 0 ; then
 			printf -- '[ii]    -> empty arguments;  skipping!\n' >&2
@@ -972,7 +1112,7 @@
 				--empty-is-missing "${_empty_is_missing}"
 			)
 		
-		_identifier="${_case_tool}--${_case_send}--${_case_pin}--${_case_secret}--${_case_ssh_wrap}--${_case_associated}--${_case_deterministic}"
+		_identifier="${_case_tool}--${_case_send}--${_case_pin}--${_case_secret}--${_ballast}--${_case_ssh_wrap}--${_case_associated}--${_case_deterministic}"
 		_report="${_reports}/${_identifier}.txt"
 		_output="${_outputs}/tests/${_identifier}.${$}.tmp"
 		
@@ -1179,6 +1319,10 @@
 :: tests / quick / exchange / set / secret / empty :: export -- __ZTOKENS_EXCHANGE_SECRET=''
 :: tests / quick / exchange / set / secret / testing-1 :: export -- __ZTOKENS_EXCHANGE_SECRET='ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm'
 :: tests / quick / exchange / set / secret / testing-2 :: export -- __ZTOKENS_EXCHANGE_SECRET='ztxcs1zw32errd0vu44rvt2h6vnmfecjtp20aacyzpxcyg9dq3szerw0sswvu32a'
+
+:: tests / quick / exchange / set / ballast / empty :: export -- __ZTOKENS_EXCHANGE_BALLAST=''
+:: tests / quick / exchange / set / ballast / testing-1 :: export -- __ZTOKENS_EXCHANGE_BALLAST='ztxbl1ah428t6ux086pfdgv5d5z8fle06rll5azaglg8gcnvd65mup65qqckq348'
+:: tests / quick / exchange / set / ballast / testing-2 :: export -- __ZTOKENS_EXCHANGE_BALLAST='ztxbl1y00yn7a4jjqeyxke8u6hfqks7fhjadtamny4mmp6nc43qa9ra3mqu4swle'
 
 :: tests / quick / exchange / set / pin / empty :: export -- __ZTOKENS_EXCHANGE_PIN=''
 :: tests / quick / exchange / set / pin / 1234 :: export -- __ZTOKENS_EXCHANGE_PIN='1234'
