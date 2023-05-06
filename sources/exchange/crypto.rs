@@ -54,6 +54,7 @@ pub const CRYPTO_ENCRYPTED_SIZE_MAX : usize =
 pub const CRYPTO_ASSOCIATED_COUNT_MAX : usize = 1024;
 pub const CRYPTO_SECRET_COUNT_MAX : usize = 1024;
 pub const CRYPTO_PIN_COUNT_MAX : usize = 1024;
+pub const CRYPTO_BALLAST_COUNT_MAX : usize = 1024;
 pub const CRYPTO_ORACLE_COUNT_MAX : usize = 1024;
 
 
@@ -71,11 +72,14 @@ const CRYPTO_ENCRYPTED_TRAILER_SIZE : usize = CRYPTO_ENCRYPTED_SALT_SIZE + CRYPT
 pub const CRYPTO_SCHEMA_V1_VALUE : u32 = 0x62d65696;
 
 
-const CRYPTO_SECRET_ARGON_M_COST : u32 = 512 * 1024;
-const CRYPTO_SECRET_ARGON_T_COST : u32 = 4;
+const CRYPTO_SECRET_ARGON_M_COST : u32 = 256 * 1024;
+const CRYPTO_SECRET_ARGON_T_COST : u32 = 2;
 
 const CRYPTO_PIN_ARGON_M_COST : u32 = 32 * 1024;
-const CRYPTO_PIN_ARGON_T_COST : u32 = 4;
+const CRYPTO_PIN_ARGON_T_COST : u32 = 2;
+
+const CRYPTO_BALLAST_ARGON_M_COST : u32 = 1024 * 1024;
+const CRYPTO_BALLAST_ARGON_T_COST : u32 = 2;
 
 
 
@@ -111,6 +115,12 @@ define_cryptographic_material! (InternalPinSalt, 32);
 define_cryptographic_material! (InternalPinArgon, 32);
 define_cryptographic_material! (InternalPinKey, 32);
 
+define_cryptographic_material! (InternalBallastInput, input, slice);
+define_cryptographic_material! (InternalBallastHash, 32);
+define_cryptographic_material! (InternalBallastSalt, 32);
+define_cryptographic_material! (InternalBallastArgon, 32);
+define_cryptographic_material! (InternalBallastKey, 32);
+
 define_cryptographic_material! (InternalOracleHandle, 32);
 define_cryptographic_material! (InternalOracleInput, 32);
 define_cryptographic_material! (InternalOracleOutput, 32);
@@ -144,6 +154,10 @@ define_cryptographic_purpose! (CRYPTO_PIN_HASH_PURPOSE, encryption, pin_hash);
 define_cryptographic_purpose! (CRYPTO_PIN_SALT_PURPOSE, encryption, pin_salt);
 define_cryptographic_purpose! (CRYPTO_PIN_KEY_PURPOSE, encryption, pin_key);
 
+define_cryptographic_purpose! (CRYPTO_BALLAST_HASH_PURPOSE, encryption, ballast_hash);
+define_cryptographic_purpose! (CRYPTO_BALLAST_SALT_PURPOSE, encryption, ballast_salt);
+define_cryptographic_purpose! (CRYPTO_BALLAST_KEY_PURPOSE, encryption, ballast_key);
+
 define_cryptographic_purpose! (CRYPTO_ORACLE_HANDLE_PURPOSE, encryption, oracle_handle);
 define_cryptographic_purpose! (CRYPTO_ORACLE_INPUT_PURPOSE, encryption, oracle_input);
 define_cryptographic_purpose! (CRYPTO_ORACLE_OUTPUT_PURPOSE, encryption, oracle_output);
@@ -164,12 +178,13 @@ pub fn password (
 			_associated_inputs : &[&[u8]],
 			_secret_inputs : &[&[u8]],
 			_pin_inputs : &[&[u8]],
+			_ballast_inputs : &[&[u8]],
 			_password_data : &[u8],
 			_password_output : &mut [u8; 32],
 			_ssh_wrappers : Vec<&mut SshWrapper>,
 		) -> CryptoResult
 {
-	let (_associated_inputs, _secret_inputs, _pin_inputs) = wrap_associated_and_secrets_and_pins_inputs (_associated_inputs, _secret_inputs, _pin_inputs) ?;
+	let (_associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs) ?;
 	let (_oracles, _oracle_handles) = wrap_oracles (_ssh_wrappers) ?;
 	
 	let _password_data = InternalPasswordData::wrap (_password_data);
@@ -187,8 +202,8 @@ pub fn password (
 	let _sender = _sender.map (SenderPrivateKey::access);
 	let _recipient = _recipient.map (RecipientPublicKey::access);
 	
-	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _oracle_hashes)
-			= derive_keys_phase_1 (_sender, _recipient, _associated_inputs, _secret_inputs, _pin_inputs, _oracle_handles, true) ?;
+	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _ballast_hashes, _oracle_hashes)
+			= derive_keys_phase_1 (_sender, _recipient, _associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs, _oracle_handles, true) ?;
 	
 	drop! (_sender, _recipient);
 	drop! (_aont_key);
@@ -210,7 +225,7 @@ pub fn password (
 	drop! (_password_data);
 	
 	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (_partial_key, &_packet_salt, _secret_hashes, _pin_hashes, (_oracles, _oracle_hashes)) ?;
+			= derive_keys_phase_2 (_partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _ballast_hashes, (_oracles, _oracle_hashes)) ?;
 	
 	drop! (_encryption_key, _authentication_key);
 	
@@ -248,13 +263,14 @@ pub fn encrypt (
 			_associated_inputs : &[&[u8]],
 			_secret_inputs : &[&[u8]],
 			_pin_inputs : &[&[u8]],
+			_ballast_inputs : &[&[u8]],
 			_decrypted : &[u8],
 			_encrypted : &mut Vec<u8>,
 			_ssh_wrappers : Vec<&mut SshWrapper>,
 			_packet_salt_deterministic : bool,
 		) -> CryptoResult
 {
-	let (_associated_inputs, _secret_inputs, _pin_inputs) = wrap_associated_and_secrets_and_pins_inputs (_associated_inputs, _secret_inputs, _pin_inputs) ?;
+	let (_associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs) ?;
 	let (_oracles, _oracle_handles) = wrap_oracles (_ssh_wrappers) ?;
 	
 	let _decrypted = InternalDecryptedData::wrap (_decrypted);
@@ -304,8 +320,8 @@ pub fn encrypt (
 	let _sender = _sender.map (SenderPrivateKey::access);
 	let _recipient = _recipient.map (RecipientPublicKey::access);
 	
-	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _oracle_hashes)
-			= derive_keys_phase_1 (_sender, _recipient, _associated_inputs, _secret_inputs, _pin_inputs, _oracle_handles, true) ?;
+	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _ballast_hashes, _oracle_hashes)
+			= derive_keys_phase_1 (_sender, _recipient, _associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs, _oracle_handles, true) ?;
 	
 	drop! (_sender, _recipient);
 	
@@ -333,7 +349,7 @@ pub fn encrypt (
 	drop! (_decrypted);
 	
 	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (_partial_key, &_packet_salt, _secret_hashes, _pin_hashes, (_oracles, _oracle_hashes)) ?;
+			= derive_keys_phase_2 (_partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _ballast_hashes, (_oracles, _oracle_hashes)) ?;
 	
 	drop! (_packet_key);
 	
@@ -393,12 +409,13 @@ pub fn decrypt (
 			_associated_inputs : &[&[u8]],
 			_secret_inputs : &[&[u8]],
 			_pin_inputs : &[&[u8]],
+			_ballast_inputs : &[&[u8]],
 			_encrypted : &[u8],
 			_decrypted : &mut Vec<u8>,
 			_ssh_wrappers : Vec<&mut SshWrapper>,
 		) -> CryptoResult
 {
-	let (_associated_inputs, _secret_inputs, _pin_inputs) = wrap_associated_and_secrets_and_pins_inputs (_associated_inputs, _secret_inputs, _pin_inputs) ?;
+	let (_associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs) ?;
 	let (_oracles, _oracle_handles) = wrap_oracles (_ssh_wrappers) ?;
 	
 	let _encrypted = InternalEncryptedData::wrap (_encrypted);
@@ -442,8 +459,8 @@ pub fn decrypt (
 	let _sender = _sender.map (SenderPublicKey::access);
 	let _recipient = _recipient.map (RecipientPrivateKey::access);
 	
-	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _oracle_hashes)
-			= derive_keys_phase_1 (_recipient, _sender, _associated_inputs, _secret_inputs, _pin_inputs, _oracle_handles, false) ?;
+	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _ballast_hashes, _oracle_hashes)
+			= derive_keys_phase_1 (_recipient, _sender, _associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs, _oracle_handles, false) ?;
 	
 	drop! (_sender, _recipient);
 	
@@ -457,7 +474,7 @@ pub fn decrypt (
 	// NOTE:  deriving keys...
 	
 	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (_partial_key, &_packet_salt, _secret_hashes, _pin_hashes, (_oracles, _oracle_hashes)) ?;
+			= derive_keys_phase_2 (_partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _ballast_hashes, (_oracles, _oracle_hashes)) ?;
 	
 	drop! (_packet_key);
 	drop! (_packet_salt);
@@ -620,6 +637,7 @@ fn derive_keys_phase_1 (
 			_associated_inputs : Vec<InternalAssociatedInput>,
 			_secret_inputs : Vec<InternalSecretInput>,
 			_pin_inputs : Vec<InternalPinInput>,
+			_ballast_inputs : Vec<InternalBallastInput>,
 			_oracle_handles : Vec<InternalOracleHandle>,
 			_encryption : bool,
 		) -> CryptoResult<(
@@ -627,6 +645,7 @@ fn derive_keys_phase_1 (
 			InternalAontKey,
 			(InternalSecretHash, Vec<InternalSecretHash>),
 			(InternalPinHash, Vec<InternalPinHash>),
+			(InternalBallastHash, Vec<InternalBallastHash>),
 			InternalOracleHandle,
 		)>
 {
@@ -705,6 +724,31 @@ fn derive_keys_phase_1 (
 		);
 	
 	// --------------------------------------------------------------------------------
+	// NOTE:  derive ballast hashes...
+	
+	let mut _ballast_hashes : Vec<_> = _ballast_inputs.into_iter () .map (
+			|_ballast_input|
+					blake3_derive_key (
+							InternalBallastHash::wrap,
+							CRYPTO_BALLAST_HASH_PURPOSE,
+							&[],
+							&[
+								_ballast_input.access_consume (),
+							],
+							None,
+						)
+		) .collect ();
+	
+	_ballast_hashes.sort_by (InternalBallastHash::cmp_access);
+	_ballast_hashes.dedup_by (|_left, _right| InternalBallastHash::eq_access (_left, _right));
+	
+	let _ballast_hash = blake3_derive_key_join (
+			InternalBallastHash::wrap,
+			CRYPTO_BALLAST_HASH_PURPOSE,
+			_ballast_hashes.iter () .map (InternalBallastHash::access),
+		);
+	
+	// --------------------------------------------------------------------------------
 	// NOTE:  derive oracle hashes...
 	
 	let _oracle_hash = blake3_derive_key_join (
@@ -731,7 +775,7 @@ fn derive_keys_phase_1 (
 			if _public.is_some () {
 				fail! (0x884cbe55);
 			}
-			if _secret_hashes.is_empty () && _pin_hashes.is_empty () && _oracle_handles.is_empty () {
+			if _secret_hashes.is_empty () && _pin_hashes.is_empty () && _ballast_hashes.is_empty () && _oracle_handles.is_empty () {
 				fail! (0xa1de0167);
 			}
 			
@@ -746,6 +790,7 @@ fn derive_keys_phase_1 (
 			CRYPTO_PARTIAL_KEY_PURPOSE,
 			&[
 				_oracle_hash.access (),
+				_ballast_hash.access (),
 				_secret_hash.access (),
 				_pin_hash.access (),
 				_associated_hash.access (),
@@ -777,6 +822,7 @@ fn derive_keys_phase_1 (
 			_aont_key,
 			(_secret_hash, _secret_hashes),
 			(_pin_hash, _pin_hashes),
+			(_ballast_hash, _ballast_hashes),
 			_oracle_hash,
 		))
 }
@@ -793,6 +839,7 @@ fn derive_keys_phase_2 (
 			_packet_salt : &InternalPacketSalt,
 			_secret_hash : (InternalSecretHash, Vec<InternalSecretHash>),
 			_pin_hash : (InternalPinHash, Vec<InternalPinHash>),
+			_ballast_hash : (InternalBallastHash, Vec<InternalBallastHash>),
 			_oracles : (Vec<(&mut SshWrapper, InternalOracleHandle)>, InternalOracleHandle),
 		) -> CryptoResult<(
 			InternalPacketKey,
@@ -802,6 +849,7 @@ fn derive_keys_phase_2 (
 {
 	let (_secret_hash, _secret_hashes) = _secret_hash;
 	let (_pin_hash, _pin_hashes) = _pin_hash;
+	let (_ballast_hash, _ballast_hashes) = _ballast_hash;
 	let (_oracles, _oracle_hashes) = _oracles;
 	
 	// --------------------------------------------------------------------------------
@@ -833,6 +881,41 @@ fn derive_keys_phase_2 (
 				&[
 					_oracle_input.access (),
 					_oracle_output.access (),
+				],
+				&[],
+				None,
+			);
+	}
+	
+	// --------------------------------------------------------------------------------
+	// NOTE:  derive ballast argon hashes...
+	
+	let mut _ballast_key = InternalBallastKey::wrap (_ballast_hash.material);
+	let _ballast_count = _ballast_hashes.len ();
+	
+	for _ballast_hash in _ballast_hashes.into_iter () {
+		
+		let _ballast_salt = blake3_derive_key (
+				InternalBallastSalt::wrap,
+				CRYPTO_BALLAST_SALT_PURPOSE,
+				&[
+					_ballast_key.access (),
+					_oracle_key.access (),
+					_packet_salt.access (),
+					_partial_key.access (),
+				],
+				&[],
+				None,
+			);
+		
+		let _ballast_argon = apply_argon_ballast (_ballast_hash, &_ballast_salt, _ballast_count) ?;
+		
+		_ballast_key = blake3_derive_key (
+				InternalBallastKey::wrap,
+				CRYPTO_BALLAST_KEY_PURPOSE,
+				&[
+					_ballast_salt.access (),
+					_ballast_argon.access (),
 				],
 				&[],
 				None,
@@ -915,6 +998,7 @@ fn derive_keys_phase_2 (
 			CRYPTO_PACKET_KEY_PURPOSE,
 			&[
 				_oracle_key.access (),
+				_ballast_key.access (),
 				_secret_key.access (),
 				_pin_key.access (),
 				_packet_salt.access (),
@@ -986,6 +1070,22 @@ fn apply_argon_pin (_pin_hash : InternalPinHash, _pin_salt : &InternalPinSalt) -
 }
 
 
+fn apply_argon_ballast (_ballast_hash : InternalBallastHash, _ballast_salt : &InternalBallastSalt, _ballast_count : usize) -> CryptoResult<InternalBallastArgon> {
+	
+	let _ballast_count = _ballast_count as u32;
+	
+	let _m_cost_factor = 1 + _ballast_count.ilog2 ();
+	
+	argon_derive (
+			InternalBallastArgon::wrap,
+			_ballast_hash.access (),
+			_ballast_salt.access (),
+			CRYPTO_BALLAST_ARGON_M_COST * _m_cost_factor,
+			CRYPTO_BALLAST_ARGON_T_COST,
+		) .else_wrap (0x5e8b2b57)
+}
+
+
 
 
 
@@ -996,15 +1096,18 @@ fn wrap_associated_and_secrets_and_pins_inputs <'a> (
 			_associated_inputs : &'a [&'a [u8]],
 			_secret_inputs : &'a [&'a [u8]],
 			_pin_inputs : &'a [&'a [u8]],
+			_ballast_inputs : &'a [&'a [u8]],
 		) -> CryptoResult<(
 			Vec<InternalAssociatedInput<'a>>,
 			Vec<InternalSecretInput<'a>>,
 			Vec<InternalPinInput<'a>>,
+			Vec<InternalBallastInput<'a>>,
 		)>
 {
 	debug_assert! (CRYPTO_ASSOCIATED_COUNT_MAX <= (u32::MAX as usize), "[aa8fdcf2]");
 	debug_assert! (CRYPTO_SECRET_COUNT_MAX <= (u32::MAX as usize), "[424cdca6]");
 	debug_assert! (CRYPTO_PIN_COUNT_MAX <= (u32::MAX as usize), "[f1d98265]");
+	debug_assert! (CRYPTO_BALLAST_COUNT_MAX <= (u32::MAX as usize), "[f5248ca4]");
 	
 	if _associated_inputs.len () > CRYPTO_ASSOCIATED_COUNT_MAX {
 		fail! (0xa8b5584a);
@@ -1015,12 +1118,16 @@ fn wrap_associated_and_secrets_and_pins_inputs <'a> (
 	if _pin_inputs.len () > CRYPTO_PIN_COUNT_MAX {
 		fail! (0x8b060b37);
 	}
+	if _ballast_inputs.len () > CRYPTO_BALLAST_COUNT_MAX {
+		fail! (0x618972f7);
+	}
 	
 	let _associated_inputs = Vec::from (_associated_inputs) .into_iter () .map (InternalAssociatedInput::wrap) .collect ();
 	let _secret_inputs = Vec::from (_secret_inputs) .into_iter () .map (InternalSecretInput::wrap) .collect ();
 	let _pin_inputs = Vec::from (_pin_inputs) .into_iter () .map (InternalPinInput::wrap) .collect ();
+	let _ballast_inputs = Vec::from (_ballast_inputs) .into_iter () .map (InternalBallastInput::wrap) .collect ();
 	
-	Ok ((_associated_inputs, _secret_inputs, _pin_inputs))
+	Ok ((_associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs))
 }
 
 

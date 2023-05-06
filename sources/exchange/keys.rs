@@ -32,6 +32,7 @@ pub struct RecipientPrivateKey (Rb<x25519::StaticSecret>);
 pub struct RecipientPublicKey (Rb<x25519::PublicKey>);
 
 pub struct SharedSecret (Rb<[u8; 32]>);
+pub struct SharedBallast (Rb<[u8; 32]>);
 
 
 
@@ -43,6 +44,7 @@ pub const RECEIVER_PRIVATE_KEY_ENCODED_PREFIX : &str = "ztxrk";
 pub const RECEIVER_PUBLIC_KEY_ENCODED_PREFIX : &str = "ztxrp";
 
 pub const SHARED_SECRET_ENCODED_PREFIX : &str = "ztxcs";
+pub const SHARED_BALLAST_ENCODED_PREFIX : &str = "ztxbl";
 
 
 
@@ -203,6 +205,30 @@ impl SharedSecret {
 
 
 
+impl SharedBallast {
+	
+	pub fn decode_and_zeroize (_string : String) -> KeyEncodingResult<Self> {
+		let _outcome = Self::decode (&_string);
+		zeroize_and_drop (_string);
+		_outcome
+	}
+	
+	pub fn decode (_string : &str) -> KeyEncodingResult<Self> {
+		decode_shared_ballast (_string)
+	}
+	
+	pub fn encode (&self) -> KeyEncodingResult<Rb<String>> {
+		encode_shared_ballast (self)
+	}
+	
+	pub fn access_bytes (&self) -> &[u8; 32] {
+		&self.0
+	}
+}
+
+
+
+
 
 
 
@@ -247,6 +273,13 @@ pub fn decode_shared_secret (_string : &str) -> KeyEncodingResult<SharedSecret> 
 	let mut _key_data = [0u8; 32];
 	decode_raw (SHARED_SECRET_ENCODED_PREFIX, _string, &mut _key_data) ?;
 	Ok (SharedSecret (Rb::new (_key_data)))
+}
+
+
+pub fn decode_shared_ballast (_string : &str) -> KeyEncodingResult<SharedBallast> {
+	let mut _key_data = [0u8; 32];
+	decode_raw (SHARED_BALLAST_ENCODED_PREFIX, _string, &mut _key_data) ?;
+	Ok (SharedBallast (Rb::new (_key_data)))
 }
 
 
@@ -319,6 +352,12 @@ pub fn encode_shared_secret (_key : &SharedSecret) -> KeyEncodingResult<Rb<Strin
 }
 
 
+pub fn encode_shared_ballast (_key : &SharedBallast) -> KeyEncodingResult<Rb<String>> {
+	let _bytes = _key.access_bytes ();
+	encode_raw (SHARED_BALLAST_ENCODED_PREFIX, _bytes)
+}
+
+
 pub(crate) fn encode_raw (_prefix : &str, _data : &[u8]) -> KeyEncodingResult<Rb<String>> {
 	
 	let _bech_nibles_capacity = _data.len () * 8 / 5 + 1;
@@ -384,6 +423,16 @@ pub fn create_shared_secret () -> KeyCreateResult<SharedSecret> {
 	::rand::rngs::OsRng.fill_bytes (&mut _bytes);
 	
 	Ok (SharedSecret (Rb::new (_bytes)))
+}
+
+
+pub fn create_shared_ballast () -> KeyCreateResult<SharedBallast> {
+	
+	use ::rand::RngCore as _;
+	let mut _bytes = [0u8; 32];
+	::rand::rngs::OsRng.fill_bytes (&mut _bytes);
+	
+	Ok (SharedBallast (Rb::new (_bytes)))
 }
 
 
