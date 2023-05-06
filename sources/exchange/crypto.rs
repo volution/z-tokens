@@ -789,11 +789,11 @@ fn derive_keys_phase_1 (
 			InternalPartialKey::wrap,
 			CRYPTO_PARTIAL_KEY_PURPOSE,
 			&[
+				_associated_hash.access (),
 				_oracle_hash.access (),
 				_ballast_hash.access (),
 				_secret_hash.access (),
 				_pin_hash.access (),
-				_associated_hash.access (),
 				_dhe_key.access (),
 			],
 			&[],
