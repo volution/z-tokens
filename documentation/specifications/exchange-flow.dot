@@ -1,0 +1,423 @@
+digraph "z-exchange" {
+	
+	node [ shape = box ];
+	nodesep = 1;
+	ranksep = 2;
+	ordering = out;
+	
+##	decrypted_data;
+##	encrypted_data;
+	
+	subgraph cluste_inputs {
+		
+		node [ fillcolor = green, style = filled ];
+		
+	##	rank = same;
+		
+		subgraph cluste_sender_keys {
+			sender_pair;
+			sender_private;
+			sender_public;
+		}
+		
+		subgraph cluste_recipient_keys {
+			recipient_pair;
+			recipient_private;
+			recipient_public;
+		}
+		
+		subgraph cluste_shared_inputs {
+			associated_inputs;
+			pin_inputs;
+			secret_inputs;
+			ballast_inputs;
+		}
+		
+		oracles;
+	}
+	
+	
+	subgraph {
+		
+		subgraph cluster_associated_inputs {
+			associated_inputs;
+			associated_hashes;
+			associated_hash;
+		}
+		
+		associated_inputs -> associated_hashes [ label = "map (derive_key)" ];
+		associated_hashes -> associated_hash [ label = "derive_key_join" ];
+		
+		subgraph cluster_pin_inputs {
+			pin_inputs;
+			pin_hashes;
+			pins_hash;
+		}
+		
+		pin_inputs -> pin_hashes [ label = "map (derive_key) | sort | deduplicate" ];
+		pin_hashes -> pins_hash [ label = "derive_key_join" ];
+		
+		subgraph cluster_secret_inputs {
+			secret_inputs;
+			secret_hashes;
+			secrets_hash;
+		}
+		
+		secret_inputs -> secret_hashes [ label = "map (derive_key) | sort | deduplicate" ];
+		secret_hashes -> secrets_hash [ label = "derive_key_join" ];
+		
+		subgraph cluster_ballast_inputs {
+			ballast_inputs;
+			ballast_hashes;
+			ballasts_hash;
+		}
+		
+		ballast_inputs -> ballast_hashes [ label = "map (derive_key) | sort | deduplicate" ];
+		ballast_hashes -> ballasts_hash [ label = "derive_key_join" ];
+		
+		subgraph cluster_oracles_inputs {
+			oracles;
+			oracle_handles;
+			oracles_hash;
+		}
+		
+		oracles -> oracle_handles [ label = "map (oracle_handle) | sort | deduplicate" ];
+		oracle_handles -> oracles_hash [ label = "derive_key_join" ];
+	}
+	
+	
+	
+	subgraph {
+		
+		subgraph cluster_dhe {
+			
+			dhe_key;
+			
+			subgraph clustex_sender_dhe {
+				sender_pair;
+				sender_private;
+				recipient_public;
+				dhe_sender_shared [ label = "x25519_dhe", shape = diamond ];
+				dhe_sender_key_0 [ shape = "record", label = "<S> sender | <R> recipient | <X> shared" ];
+				dhe_sender_key;
+			}
+			
+			subgraph clustex_recipient_dhe {
+				recipient_pair;
+				recipient_private;
+				sender_public;
+				dhe_recipient_shared [ label = "x25519_dhe", shape = diamond ];
+				dhe_recipient_key_0 [ shape = "record", label = "<S> sender | <R> recipient | <X> shared" ];
+				dhe_recipient_key;
+			}
+		}
+		
+		
+		sender_pair -> sender_public;
+		sender_pair -> sender_private;
+		recipient_pair -> recipient_public;
+		recipient_pair -> recipient_private;
+		
+		sender_private -> dhe_sender_shared;
+		recipient_public -> dhe_sender_shared;
+		
+		sender_public -> dhe_recipient_shared;
+		recipient_private -> dhe_recipient_shared;
+		
+		sender_public -> dhe_sender_key_0:S;
+		recipient_public -> dhe_sender_key_0:R;
+		dhe_sender_shared -> dhe_sender_key_0:X;
+		
+		sender_public -> dhe_recipient_key_0:S;
+		recipient_public -> dhe_recipient_key_0:R;
+		dhe_recipient_shared -> dhe_recipient_key_0:X;
+		
+		dhe_sender_key_0 -> dhe_sender_key [ label = "derive_key_join" ];
+		dhe_recipient_key_0 -> dhe_recipient_key [ label = "derive_key_join" ];
+		
+		dhe_sender_key -> dhe_key;
+		dhe_recipient_key -> dhe_key;
+	}
+	
+	
+	subgraph {
+		
+		subgraph clustex_partial_key {
+			partial_key_0 [ shape = "record", label = "<1> | <2> | <3> | <4> | <5> | <6>" ];
+			partial_key;
+		}
+		
+		associated_hash -> partial_key_0:1;
+		ballasts_hash -> partial_key_0:2;
+		secrets_hash -> partial_key_0:3;
+		pins_hash -> partial_key_0:4;
+		oracles_hash -> partial_key_0:5;
+		dhe_key -> partial_key_0:6;
+		
+		partial_key_0 -> partial_key [ label = "derive_key_join" ];
+		partial_key -> aont_key [ label = "derive_key" ];
+	}
+	
+	
+	partial_key -> derive_trailer;
+	packet_salt -> derive_trailer;
+	
+	
+	subgraph {
+		
+		subgraph cluster_oracle_derive {
+			oracle_key_loop;
+			oracle_handle;
+			oracle_input_0 [ shape = "record", label = "<1> | <2> | <3> | <4>" ];
+			oracle_input;
+			oracle_execute [ shape = "diamond" ];
+			oracle_output;
+			oracle_key_loop_0 [ shape = "record", label = "<1> | <2>" ];
+			oracle_key;
+		}
+		
+		oracles_hash -> oracle_key_loop;
+		oracle_handles -> oracle_handle;
+		
+		oracle_handle -> oracle_input_0:1;
+		oracle_key_loop -> oracle_input_0:2;
+		derive_trailer -> oracle_input_0:3;
+		
+		oracle_input_0 -> oracle_input [ label = "derive_key" ];
+		
+		oracle_input -> oracle_execute;
+		oracle_execute -> oracle_output;
+		
+		oracle_input -> oracle_key_loop_0:1;
+		oracle_output -> oracle_key_loop_0:2;
+		oracle_key_loop_0 -> oracle_key_loop [ label = "derive_key" ];
+		
+		oracle_key_loop -> oracle_key;
+	}
+	
+	
+	
+	
+	subgraph {
+		
+		subgraph cluster_ballast_derive {
+			ballast_hash;
+			ballast_key_loop;
+			ballast_salt_0 [ shape = "record", label = "<1> | <2> | <3> | <4>" ];
+			ballast_salt;
+			ballast_argon_execute [ shape = "diamond" ];
+			ballast_argon_output;
+			ballast_key_loop_0 [ shape = "record", label = "<1> | <2>" ];
+			ballast_key;
+		}
+		
+		ballasts_hash -> ballast_key_loop;
+		ballast_hashes -> ballast_hash;
+		
+		ballast_key_loop -> ballast_salt_0:1;
+		oracle_key -> ballast_salt_0:2;
+		derive_trailer -> ballast_salt_0:3;
+		
+		ballast_salt_0 -> ballast_salt;
+		
+		ballast_salt -> ballast_argon_execute;
+		ballast_hash -> ballast_argon_execute;
+		ballast_argon_execute -> ballast_argon_output;
+		
+		ballast_salt -> ballast_key_loop_0:1;
+		ballast_argon_output -> ballast_key_loop_0:2;
+		ballast_key_loop_0 -> ballast_key_loop;
+		
+		ballast_key_loop -> ballast_key;
+	}
+	
+	
+	
+	subgraph {
+		
+		subgraph cluster_secret_derive {
+			secret_hash;
+			secret_key_loop;
+			secret_salt_0 [ shape = "record", label = "<1> | <2> | <3> | <4>" ];
+			secret_salt;
+			secret_argon_execute [ shape = "diamond" ];
+			secret_argon_output;
+			secret_key_loop_0 [ shape = "record", label = "<1> | <2>" ];
+			secret_key;
+		}
+		
+		secrets_hash -> secret_key_loop;
+		secret_hashes -> secret_hash;
+		
+		secret_key_loop -> secret_salt_0:1;
+		oracle_key -> secret_salt_0:2;
+		derive_trailer -> secret_salt_0:3;
+		
+		secret_salt_0 -> secret_salt;
+		
+		secret_salt -> secret_argon_execute;
+		secret_hash -> secret_argon_execute;
+		secret_argon_execute -> secret_argon_output;
+		
+		secret_salt -> secret_key_loop_0:1;
+		secret_argon_output -> secret_key_loop_0:2;
+		secret_key_loop_0 -> secret_key_loop;
+		
+		secret_key_loop -> secret_key;
+	}
+	
+	
+	
+	subgraph {
+		
+		subgraph cluster_pin_derive {
+			rank = source;
+			pin_hash;
+			pin_key_loop;
+			pin_salt_0 [ shape = "record", label = "<1> | <2> | <3> | <4>" ];
+			pin_salt;
+			pin_argon_execute [ shape = "diamond" ];
+			pin_argon_output;
+			pin_key_loop_0 [ shape = "record", label = "<1> | <2>" ];
+			pin_key;
+		}
+		
+		pins_hash -> pin_key_loop;
+		pin_hashes -> pin_hash;
+		
+		pin_key_loop -> pin_salt_0:1;
+		oracle_key -> pin_salt_0:2;
+		derive_trailer -> pin_salt_0:3;
+		
+		pin_salt_0 -> pin_salt;
+		
+		pin_salt -> pin_argon_execute;
+		pin_hash -> pin_argon_execute;
+		pin_argon_execute -> pin_argon_output;
+		
+		pin_salt -> pin_key_loop_0:1;
+		pin_argon_output -> pin_key_loop_0:2;
+		pin_key_loop_0 -> pin_key_loop;
+		
+		pin_key_loop -> pin_key;
+	}
+	
+	
+	
+	subgraph {
+		
+	##	rank = same;
+		
+		dhe_key;
+		associated_hash;
+		
+		oracles_hash;
+		ballasts_hash;
+		secrets_hash;
+		pins_hash;
+	}
+	
+	subgraph {
+		
+	##	rank = same;
+		
+		oracle_key;
+		ballast_key;
+		secret_key;
+		pin_key;
+	}
+	
+	
+	
+	
+	
+	
+	subgraph {
+		
+		subgraph cluster_packet_key {
+			
+			oracle_key;
+			ballast_key;
+			secret_key;
+			pin_key;
+			
+			packet_key_0;
+			packet_key;
+			
+			encryption_key;
+			authentication_key;
+		}
+		
+		oracle_key -> packet_key_0;
+		ballast_key -> packet_key_0;
+		secret_key -> packet_key_0;
+		pin_key -> packet_key_0;
+		packet_salt -> packet_key_0;
+		partial_key -> packet_key_0;
+		
+		packet_key_0 -> packet_key;
+		
+		packet_key -> encryption_key;
+		packet_key -> authentication_key;
+	}
+	
+	
+	subgraph clustex_decrypted {
+		schema;
+		decrypted_data;
+		decrypted_size;
+		decrypted_compressed;
+		decrypted_padded;
+	}
+	
+	decrypted_data -> decrypted_size [ label = "length" ];
+	decrypted_data -> decrypted_compressed [ label = "compress" ];
+	decrypted_compressed -> decrypted_padded [ label = "padding 256" ];
+	
+	schema -> encrypt_buffer [ label = "push (1)" ];
+	decrypted_size -> encrypt_buffer [ label = "push (2)" ];
+	decrypted_padded -> encrypt_buffer [ label = "push (3)" ];
+	
+	
+	
+	
+	subgraph clustex_encryption {
+		packet_salt;
+		encrypt_buffer;
+		encryption_key;
+		authentication_key;
+		authentication_mac;
+		
+		encrypted_buffer_1;
+		encrypted_buffer_2;
+	}
+	
+	subgraph clustex_aont {
+		aont_key;
+		aont_mangling;
+		mangled_packet_salt;
+		mangled_encrypted_data;
+	}
+	
+	partial_key -> packet_salt;
+	encrypt_buffer -> packet_salt;
+	
+	encryption_key -> encrypted_buffer_1;
+	encrypt_buffer -> encrypted_buffer_1;
+	
+	authentication_key -> authentication_mac;
+	encrypted_buffer_1 -> authentication_mac;
+	
+	encrypted_buffer_1 -> encrypted_buffer_2;
+	authentication_mac -> encrypted_buffer_2;
+	
+	aont_key -> aont_mangling;
+	packet_salt -> aont_mangling;
+	encrypted_buffer_2 -> aont_mangling;
+	
+	aont_mangling -> mangled_packet_salt;
+	aont_mangling -> mangled_encrypted_data;
+	
+	mangled_encrypted_data -> encrypted_data;
+	mangled_packet_salt -> encrypted_data;
+}
