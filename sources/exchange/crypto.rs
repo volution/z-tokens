@@ -311,6 +311,8 @@ pub fn encrypt (
 	// --------------------------------------------------------------------------------
 	// --------------------------------------------------------------------------------
 	
+	drop! (_decrypted);
+	
 	// NOTE:  padding...
 	
 	padding_push (CRYPTO_ENCRYPTED_HEADER_SIZE, CRYPTO_ENCRYPTED_PADDING_SIZE, &mut _intermediate_buffer);
@@ -336,7 +338,7 @@ pub fn encrypt (
 						_partial_key.access (),
 					],
 					&[
-						_decrypted.access (),
+						&_intermediate_buffer,
 					],
 					None,
 				)
@@ -345,8 +347,6 @@ pub fn encrypt (
 			
 			generate_random (InternalPacketSalt::wrap)
 		};
-	
-	drop! (_decrypted);
 	
 	let (_packet_key, _encryption_key, _authentication_key)
 			= derive_keys_phase_2 (_partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _ballast_hashes, (_oracles, _oracle_hashes)) ?;
