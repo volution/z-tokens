@@ -374,14 +374,16 @@ pub(crate) fn bytes_pop <const SIZE : usize> (_buffer : &mut Vec<u8>) -> Option<
 
 
 
-pub(crate) fn padding_push (_alignment : usize, _buffer : &mut Vec<u8>) -> () {
+pub(crate) fn padding_push (_offset : usize, _alignment : usize, _buffer : &mut Vec<u8>) -> () {
 	
 	let _buffer_len = _buffer.len ();
+	
+	assert! (_offset <= _buffer_len, "[ca72a353]");
 	
 	assert! (_alignment > 0, "[cdc52ac7]");
 	assert! (_alignment <= 256, "[9d23d229]");
 	
-	let _padding = _alignment - (_buffer_len % _alignment);
+	let _padding = _alignment - ((_buffer_len - _offset) % _alignment);
 	
 	assert! (_padding >= 1, "[0a1987ea]");
 	assert! (_padding <= _alignment, "[d2c4f983]");
@@ -392,21 +394,24 @@ pub(crate) fn padding_push (_alignment : usize, _buffer : &mut Vec<u8>) -> () {
 	}
 	
 	assert! (_buffer.len () == (_buffer_len + _padding), "[e295c14b]");
-	assert! ((_buffer.len () % _alignment) == 0, "[4471a66f]");
+	assert! (((_buffer.len () - _offset) % _alignment) == 0, "[4471a66f]");
 }
 
 
-pub(crate) fn padding_pop (_alignment : usize, _buffer : &mut Vec<u8>) -> EncodingResult {
+pub(crate) fn padding_pop (_offset : usize, _alignment : usize, _buffer : &mut Vec<u8>) -> EncodingResult {
 	
 	let _buffer_len = _buffer.len ();
 	
 	assert! (_alignment > 0, "[cbf1cbaf]");
 	assert! (_alignment <= 256, "[a5b18bae]");
 	
-	if _buffer_len < _alignment {
+	if _offset > _buffer_len {
+		fail! (0x3c92d18e);
+	}
+	if (_buffer_len - _offset) < _alignment {
 		fail! (0x04d212d0);
 	}
-	if (_buffer_len % _alignment) != 0 {
+	if ((_buffer_len - _offset) % _alignment) != 0 {
 		fail! (0x25bfe610);
 	}
 	
@@ -415,7 +420,7 @@ pub(crate) fn padding_pop (_alignment : usize, _buffer : &mut Vec<u8>) -> Encodi
 	if _padding > _alignment {
 		fail! (0x1d74fcde);
 	}
-	if _buffer_len < _padding {
+	if (_buffer_len - _offset) < _padding {
 		fail! (0xe17b846c);
 	}
 	

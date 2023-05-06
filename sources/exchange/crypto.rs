@@ -38,7 +38,9 @@ pub const CRYPTO_ENCRYPTED_SIZE_MAX : usize =
 			(
 				(
 					CRYPTO_DECRYPTED_SIZE_MAX
-					+ 4 + CRYPTO_ENCRYPTED_PADDING + CRYPTO_ENCRYPTED_OVERHEAD
+					+ CRYPTO_ENCRYPTED_HEADER_SIZE
+					+ CRYPTO_ENCRYPTED_PADDING_SIZE
+					+ CRYPTO_ENCRYPTED_TRAILER_SIZE
 				) / CODING_CHUNK_DECODED_SIZE
 				+ 1
 			) / CODING_CHUNKS_PER_LINE
@@ -55,14 +57,18 @@ pub const CRYPTO_PIN_COUNT_MAX : usize = 1024;
 pub const CRYPTO_ORACLE_COUNT_MAX : usize = 1024;
 
 
+const CRYPTO_ENCRYPTED_SCHEMA_SIZE : usize = 4;
+const CRYPTO_ENCRYPTED_LENGTH_SIZE : usize = 4;
+const CRYPTO_ENCRYPTED_PADDING_SIZE : usize = 256;
+const CRYPTO_ENCRYPTED_SALT_SIZE : usize = InternalPacketSalt::SIZE;
+const CRYPTO_ENCRYPTED_MAC_SIZE : usize = InternalAuthenticationMac::SIZE;
 
 
-const CRYPTO_ENCRYPTED_PADDING : usize = 256;
-const CRYPTO_ENCRYPTED_OVERHEAD : usize = CRYPTO_ENCRYPTED_SALT + CRYPTO_ENCRYPTED_MAC;
-const CRYPTO_ENCRYPTED_SALT : usize = InternalPacketSalt::SIZE;
-const CRYPTO_ENCRYPTED_MAC : usize = InternalAuthenticationMac::SIZE;
+const CRYPTO_ENCRYPTED_HEADER_SIZE : usize = CRYPTO_ENCRYPTED_SCHEMA_SIZE + CRYPTO_ENCRYPTED_LENGTH_SIZE;
+const CRYPTO_ENCRYPTED_TRAILER_SIZE : usize = CRYPTO_ENCRYPTED_SALT_SIZE + CRYPTO_ENCRYPTED_MAC_SIZE;
 
 
+pub const CRYPTO_SCHEMA_V1_VALUE : u32 = 0x62d65696;
 
 
 const CRYPTO_SECRET_ARGON_M_COST : u32 = 512 * 1024;
@@ -254,35 +260,44 @@ pub fn encrypt (
 	let _decrypted = InternalDecryptedData::wrap (_decrypted);
 	let _decrypted_len = _decrypted.size ();
 	
+	// --------------------------------------------------------------------------------
+	// --------------------------------------------------------------------------------
+	
+	// NOTE:  sanity check...
+	
 	if _decrypted_len > CRYPTO_DECRYPTED_SIZE_MAX {
 		fail! (0x83d6c657);
 	}
 	
-	// --------------------------------------------------------------------------------
-	// --------------------------------------------------------------------------------
-	
-	// NOTE:  compressing...
-	
 	let _compress_capacity = compress_capacity_max (_decrypted_len) .else_wrap (0x4198ca8b) ?;
-	let _compress_capacity = _compress_capacity + 4 + CRYPTO_ENCRYPTED_PADDING + CRYPTO_ENCRYPTED_OVERHEAD;
+	let _compress_capacity = _compress_capacity + CRYPTO_ENCRYPTED_HEADER_SIZE + CRYPTO_ENCRYPTED_PADDING_SIZE + CRYPTO_ENCRYPTED_TRAILER_SIZE;
 	
 	let mut _intermediate_buffer = Vec::with_capacity (_compress_capacity);
-	compress (_decrypted.access (), &mut _intermediate_buffer) .else_wrap (0xa9fadcdc) ?;
 	
-	if _intermediate_buffer.len () >= _decrypted_len {
-		
-		_intermediate_buffer.clear ();
-		_intermediate_buffer.extend_from_slice (_decrypted.access ());
-	}
+	// NOTE:  schema...
 	
-	// NOTE:  padding...
+	encode_u32_push (CRYPTO_SCHEMA_V1_VALUE, &mut _intermediate_buffer);
+	
+	// NOTE:  length...
 	
 	encode_u32_push (_decrypted_len as u32, &mut _intermediate_buffer);
 	
-	padding_push (CRYPTO_ENCRYPTED_PADDING, &mut _intermediate_buffer);
+	// NOTE:  compressing...
+	
+	compress (_decrypted.access (), &mut _intermediate_buffer) .else_wrap (0xa9fadcdc) ?;
+	
+	if (_intermediate_buffer.len () + CRYPTO_ENCRYPTED_HEADER_SIZE) >= _decrypted_len {
+		
+		_intermediate_buffer.truncate (CRYPTO_ENCRYPTED_HEADER_SIZE);
+		_intermediate_buffer.extend_from_slice (_decrypted.access ());
+	}
 	
 	// --------------------------------------------------------------------------------
 	// --------------------------------------------------------------------------------
+	
+	// NOTE:  padding...
+	
+	padding_push (CRYPTO_ENCRYPTED_HEADER_SIZE, CRYPTO_ENCRYPTED_PADDING_SIZE, &mut _intermediate_buffer);
 	
 	// NOTE:  deriving keys...
 	
@@ -322,11 +337,11 @@ pub fn encrypt (
 	
 	drop! (_packet_key);
 	
-	// NOTE:  encryption...
+	// NOTE:  encrypting...
 	
 	apply_encryption (_encryption_key, &mut _intermediate_buffer) ?;
 	
-	// NOTE:  authentication...
+	// NOTE:  authenticating...
 	
 	let _mac = apply_authentication (_authentication_key, &_intermediate_buffer) ?;
 	
@@ -347,7 +362,7 @@ pub fn encrypt (
 	
 	// NOTE:  encoding...
 	
-	assert! (_intermediate_buffer.len () <= (_decrypted_len + 4 + CRYPTO_ENCRYPTED_PADDING + CRYPTO_ENCRYPTED_OVERHEAD), "[0e17b154]");
+	assert! (_intermediate_buffer.len () <= (_decrypted_len + CRYPTO_ENCRYPTED_HEADER_SIZE + CRYPTO_ENCRYPTED_PADDING_SIZE + CRYPTO_ENCRYPTED_TRAILER_SIZE), "[0e17b154]");
 	
 	let _encode_capacity = encode_capacity_max (_intermediate_buffer.len ()) .else_wrap (0x7f15a8ec) ?;
 	
@@ -389,12 +404,14 @@ pub fn decrypt (
 	let _encrypted = InternalEncryptedData::wrap (_encrypted);
 	let _encrypted_len = _encrypted.size ();
 	
+	// --------------------------------------------------------------------------------
+	// --------------------------------------------------------------------------------
+	
+	// NOTE:  sanity check...
+	
 	if _encrypted_len > CRYPTO_ENCRYPTED_SIZE_MAX {
 		fail! (0x5832104d);
 	}
-	
-	// --------------------------------------------------------------------------------
-	// --------------------------------------------------------------------------------
 	
 	// NOTE:  decoding...
 	
@@ -403,10 +420,22 @@ pub fn decrypt (
 	let mut _intermediate_buffer = Vec::with_capacity (_decode_capacity);
 	decode (_encrypted.access (), &mut _intermediate_buffer) .else_wrap (0x10ff413a) ?;
 	
-	drop! (_encrypted);
+	if _intermediate_buffer.len () < (CRYPTO_ENCRYPTED_HEADER_SIZE + CRYPTO_ENCRYPTED_PADDING_SIZE + CRYPTO_ENCRYPTED_TRAILER_SIZE) {
+		fail! (0x355aec97);
+	}
+	
+	// NOTE:  schema...
+	
+	let _schema_value = decode_u32_slice (&_intermediate_buffer[..CRYPTO_ENCRYPTED_SCHEMA_SIZE]);
+	
+	if _schema_value != CRYPTO_SCHEMA_V1_VALUE {
+		fail! (0xf64b2e28);
+	}
 	
 	// --------------------------------------------------------------------------------
 	// --------------------------------------------------------------------------------
+	
+	drop! (_encrypted);
 	
 	// NOTE:  deriving keys...
 	
@@ -420,7 +449,7 @@ pub fn decrypt (
 	
 	// NOTE:  all-or-nothing and salting...
 	
-	let _packet_salt = bytes_pop::<CRYPTO_ENCRYPTED_SALT> (&mut _intermediate_buffer) .else_wrap (0x78ed3811) ?;
+	let _packet_salt = bytes_pop::<CRYPTO_ENCRYPTED_SALT_SIZE> (&mut _intermediate_buffer) .else_wrap (0x78ed3811) ?;
 	let mut _packet_salt = InternalPacketSalt::wrap (_packet_salt);
 	
 	apply_all_or_nothing_mangling (_aont_key, &mut _packet_salt, &_intermediate_buffer) ?;
@@ -433,9 +462,9 @@ pub fn decrypt (
 	drop! (_packet_key);
 	drop! (_packet_salt);
 	
-	// NOTE:  authentication...
+	// NOTE:  authenticating...
 	
-	let _mac_expected = bytes_pop::<CRYPTO_ENCRYPTED_MAC> (&mut _intermediate_buffer) .else_wrap (0x88084589) ?;
+	let _mac_expected = bytes_pop::<CRYPTO_ENCRYPTED_MAC_SIZE> (&mut _intermediate_buffer) .else_wrap (0x88084589) ?;
 	let _mac_expected = InternalAuthenticationMac::wrap (_mac_expected);
 	
 	let _mac_actual = apply_authentication (_authentication_key, &_intermediate_buffer) ?;
@@ -444,18 +473,20 @@ pub fn decrypt (
 		fail! (0xad70c84c);
 	}
 	
-	// NOTE:  decryption...
+	// NOTE:  decrypting...
 	
 	apply_encryption (_encryption_key, &mut _intermediate_buffer) ?;
 	
-	// --------------------------------------------------------------------------------
-	// --------------------------------------------------------------------------------
-	
 	// NOTE:  padding...
 	
-	padding_pop (CRYPTO_ENCRYPTED_PADDING, &mut _intermediate_buffer) .else_wrap (0xbbdd100e) ?;
+	padding_pop (CRYPTO_ENCRYPTED_HEADER_SIZE, CRYPTO_ENCRYPTED_PADDING_SIZE, &mut _intermediate_buffer) .else_wrap (0xbbdd100e) ?;
 	
-	let _decrypted_len = decode_u32_pop (&mut _intermediate_buffer) .else_wrap (0xa8b8f7d8) ? as usize;
+	// --------------------------------------------------------------------------------
+	// --------------------------------------------------------------------------------
+	
+	// NOTE:  length...
+	
+	let _decrypted_len = decode_u32_slice (&_intermediate_buffer[CRYPTO_ENCRYPTED_SCHEMA_SIZE .. CRYPTO_ENCRYPTED_SCHEMA_SIZE + CRYPTO_ENCRYPTED_LENGTH_SIZE]) as usize;
 	
 	if _decrypted_len > CRYPTO_DECRYPTED_SIZE_MAX {
 		fail! (0x433f5bb6);
@@ -463,15 +494,17 @@ pub fn decrypt (
 	
 	// NOTE:  decompressing...
 	
-	let _decompress_buffer = if _decrypted_len > _intermediate_buffer.len () {
+	let mut _decompress_buffer = Vec::with_capacity (_decrypted_len);
+	if _decrypted_len > (_intermediate_buffer.len () - CRYPTO_ENCRYPTED_HEADER_SIZE) {
 		
-		let mut _decompress_buffer = Vec::with_capacity (_decrypted_len);
-		decompress (&_intermediate_buffer, &mut _decompress_buffer) .else_wrap (0xec71bc5c) ?;
+		decompress (&_intermediate_buffer[CRYPTO_ENCRYPTED_HEADER_SIZE..], &mut _decompress_buffer) .else_wrap (0xec71bc5c) ?;
 		
-		_decompress_buffer
 	} else {
-		_intermediate_buffer
-	};
+		
+		_decompress_buffer.extend_from_slice (&_intermediate_buffer[CRYPTO_ENCRYPTED_HEADER_SIZE..]);
+	}
+	
+	_intermediate_buffer.truncate (CRYPTO_ENCRYPTED_HEADER_SIZE);
 	
 	if _decompress_buffer.len () != _decrypted_len {
 		fail! (0x0610eb74);
@@ -479,6 +512,24 @@ pub fn decrypt (
 	
 	// --------------------------------------------------------------------------------
 	// --------------------------------------------------------------------------------
+	
+	// NOTE:  length...
+	
+	if _decrypted_len != decode_u32_pop (&mut _intermediate_buffer) .else_wrap (0x9d52a31c) ? as usize {
+		panic! (unreachable, 0x01c6b8ec);
+	}
+	
+	// NOTE:  schema...
+	
+	if _schema_value != decode_u32_pop (&mut _intermediate_buffer) .else_wrap (0x1555b2c2) ? {
+		panic! (unreachable, 0x210d372d);
+	}
+	
+	// NOTE:  finalizing...
+	
+	if ! _intermediate_buffer.is_empty () {
+		fail! (0x7fc2ebf6);
+	}
 	
 	// NOTE:  This last step is an overhead, but it ensures an all-or-nothing processing!
 	_decrypted.extend_from_slice (&_decompress_buffer);
@@ -505,7 +556,9 @@ fn apply_encryption (_key : InternalEncryptionKey, _data : &mut [u8]) -> CryptoR
 	
 	let mut _cipher = ::chacha20::ChaCha20::new (&_key, &_nonce);
 	
-	_cipher.try_apply_keystream (_data) .else_wrap (0x9c94d0d5) ?;
+	assert! (_data.len () >= CRYPTO_ENCRYPTED_HEADER_SIZE, "[c9e6989f]");
+	
+	_cipher.try_apply_keystream (&mut _data[CRYPTO_ENCRYPTED_SCHEMA_SIZE..]) .else_wrap (0x9c94d0d5) ?;
 	
 	Ok (())
 }
