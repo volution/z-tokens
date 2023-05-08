@@ -13,6 +13,8 @@
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
+	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
+	
 	time \
 	"${__OUTPUTS}/binaries/z-exchange--debug--linux--native" "${@}" \
 	#
@@ -24,6 +26,8 @@
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 	
 	time \
 	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" "${@}" \
@@ -341,6 +345,8 @@
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
+	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
+	
 	time \
 	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
 			keys "${@}" \
@@ -353,6 +359,8 @@
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 	
 	time \
 	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
@@ -369,6 +377,8 @@
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
+	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
+	
 	time \
 	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
 			ssh keys "${@}" \
@@ -381,6 +391,8 @@
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:?}"
 	
@@ -401,6 +413,8 @@
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 	
 	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
 	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
@@ -437,6 +451,8 @@
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
+	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
+	
 	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
 	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
 	
@@ -470,6 +486,8 @@
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 	
 	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
 	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
@@ -505,6 +523,8 @@
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
+	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
+	
 	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
 	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
 	
@@ -538,6 +558,8 @@
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 	
 	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
 	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
@@ -574,6 +596,8 @@
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
+	
+	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 	
 	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
 	_sender_public="${__ZTOKENS_EXCHANGE_SENDER_PUBLIC:-}"
@@ -646,6 +670,8 @@
 		
 		TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 		
+		export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
+		
 		time \
 		for _file in "${_files[@]}" ; do
 		
@@ -713,6 +739,8 @@
 		
 		TIMEFORMAT="[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;  ${_size} bytes;"
 		
+		export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
+		
 		time \
 		head -c "${_size}" < /dev/urandom \
 		| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
@@ -748,13 +776,8 @@
 
 
 
-<< tests / quick / exchange / encrypt & decrypt & password / cases
+--<< tests / quick / exchange / encrypt & decrypt & password / cases / options
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
-	export -- RUST_BACKTRACE=1
-	
-	_reports="$( exec -- readlink -e -- ./documentation/tests-exchange-cases )"
-	_outputs="$( exec -- "${ZRUN}" ':: workbench / outputs' )"
 	
 	for _case_tool in password encrypt ; do
 	for _case_deterministic in deterministic randomized ; do
@@ -763,7 +786,35 @@
 	for _case_pin in without-pin empty-pin with-pin-1 with-pin-1d with-pin-2 with-pin-2d ; do
 	for _case_ballast in without-ballast empty-ballast with-ballast-1 with-ballast-1d with-ballast-2 with-ballast-2d ; do
 	for _case_associated in without-associated empty-associated with-associated-1 with-associated-2 ; do
-	for _case_send in without-x25519 empty-x25519 send-x25519 self-x25519 ; do
+	for _case_send in without-x25519 empty-x25519 send-x25519-11 send-x25519-21 send-x25519-21d send-x25519-12 send-x25519-12d self-x25519-1 self-x25519-2 self-x25519-2d ; do
+		
+		printf -- \
+				'%s %s %s %s %s %s %s %s\n' \
+				"${_case_tool}" \
+				"${_case_deterministic}" \
+				"${_case_secret}" \
+				"${_case_ssh_wrap}" \
+				"${_case_pin}" \
+				"${_case_ballast}" \
+				"${_case_associated}" \
+				"${_case_send}" \
+		#
+		
+	done ; done ; done ; done ; done ; done ; done ; done
+!!
+
+
+<< tests / quick / exchange / encrypt & decrypt & password / cases
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	_reports="$( exec -- readlink -e -- ./documentation/tests-exchange-cases )"
+	_outputs="$( exec -- "${ZRUN}" ':: workbench / outputs' )"
+	
+	"${ZRUN}" ':: tests / quick / exchange / encrypt & decrypt & password / cases / options' \
+	| sort -R \
+	| while read -r -- _case_tool _case_deterministic _case_secret _case_ssh_wrap _case_pin _case_ballast _case_associated _case_send ; do
 		
 		_pin_1=1234
 		_pin_2=5678
@@ -780,6 +831,21 @@
 		_ssh_wrap_1='ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8'
 		_ssh_wrap_2='ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqgyg7zfdlhxsaymch3pu5c74xz82y5pt67grpy6ej8tcatltw4ar0gqszkku9ux'
 		
+		_x25519_1_sender_private='ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920'
+		_x25519_1_sender_public='ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88'
+		_x25519_2_sender_private='ztxsk1jz7yrht80clxjz85puk9gegnq2y9zhcnww9z8kqx2zml707rcfssgqppwg'
+		_x25519_2_sender_public='ztxsp1pmx399paepdyjwscpsk95w57tmfxm5hlp4pwxyxl2r57flmz6d0sk2jvyp'
+		
+		_x25519_1_recipient_private='ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk'
+		_x25519_1_recipient_public='ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah'
+		_x25519_2_recipient_private='ztxrk18z7rcqn88dwe2k3ya49gj3nldk02ute345580932w6nhm7jmgfkql4x4k0'
+		_x25519_2_recipient_public='ztxrp1fpay0z3f2sdyrj8c57yvfde9v3lf8pgj6532shuks26hstncng2qmy2dny'
+		
+		_x25519_3_sender_private='ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m'
+		_x25519_3_recipient_private='ztxrk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqfgdyps'
+		_x25519_4_sender_private='ztxsk1yp5x8wjj2ed680kcgrd9ufs5ls5lw5ln0qjp70hu3jr9fgesw3kqn85j9x'
+		_x25519_4_recipient_private='ztxrk1yp5x8wjj2ed680kcgrd9ufs5ls5lw5ln0qjp70hu3jr9fgesw3kqjm2t3d'
+		
 		_file=./notice.txt
 		
 		_encrypt_arguments=()
@@ -789,22 +855,96 @@
 		_empty_is_missing=false
 		
 		case "${_case_send}" in
-			( send-x25519 )
+			( send-x25519-11 )
 				_encrypt_arguments+=(
-						--sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920
-						--recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah
+						--sender "${_x25519_1_sender_private}"
+						--recipient "${_x25519_1_recipient_public}"
 					)
 				_decrypt_arguments+=(
-						--recipient ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk
-						--sender ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88
+						--recipient "${_x25519_1_recipient_private}"
+						--sender "${_x25519_1_sender_public}"
 					)
 			;;
-			( self-x25519 )
+			( send-x25519-12 )
 				_encrypt_arguments+=(
-						--sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m
+						--sender "${_x25519_1_sender_private}"
+						--recipient "${_x25519_1_recipient_public}"
+						--recipient "${_x25519_2_recipient_public}"
 					)
 				_decrypt_arguments+=(
-						--recipient ztxrk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqfgdyps
+						--recipient "${_x25519_2_recipient_private}"
+						--recipient "${_x25519_1_recipient_private}"
+						--sender "${_x25519_1_sender_public}"
+					)
+			;;
+			( send-x25519-12d )
+				_encrypt_arguments+=(
+						--sender "${_x25519_1_sender_private}"
+						--recipient "${_x25519_1_recipient_public}"
+						--recipient "${_x25519_2_recipient_public}"
+						--recipient "${_x25519_2_recipient_public}"
+					)
+				_decrypt_arguments+=(
+						--recipient "${_x25519_2_recipient_private}"
+						--recipient "${_x25519_2_recipient_private}"
+						--recipient "${_x25519_1_recipient_private}"
+						--sender "${_x25519_1_sender_public}"
+					)
+			;;
+			( send-x25519-21 )
+				_encrypt_arguments+=(
+						--sender "${_x25519_1_sender_private}"
+						--sender "${_x25519_2_sender_private}"
+						--recipient "${_x25519_1_recipient_public}"
+					)
+				_decrypt_arguments+=(
+						--recipient "${_x25519_1_recipient_private}"
+						--sender "${_x25519_2_sender_public}"
+						--sender "${_x25519_1_sender_public}"
+					)
+			;;
+			( send-x25519-21d )
+				_encrypt_arguments+=(
+						--sender "${_x25519_1_sender_private}"
+						--sender "${_x25519_2_sender_private}"
+						--sender "${_x25519_2_sender_private}"
+						--recipient "${_x25519_1_recipient_public}"
+					)
+				_decrypt_arguments+=(
+						--recipient "${_x25519_1_recipient_private}"
+						--sender "${_x25519_2_sender_public}"
+						--sender "${_x25519_2_sender_public}"
+						--sender "${_x25519_1_sender_public}"
+					)
+			;;
+			( self-x25519-1 )
+				_encrypt_arguments+=(
+						--sender "${_x25519_3_sender_private}"
+					)
+				_decrypt_arguments+=(
+						--recipient "${_x25519_3_recipient_private}"
+					)
+			;;
+			( self-x25519-2 )
+				_encrypt_arguments+=(
+						--sender "${_x25519_3_sender_private}"
+						--sender "${_x25519_4_sender_private}"
+					)
+				_decrypt_arguments+=(
+						--recipient "${_x25519_4_recipient_private}"
+						--recipient "${_x25519_3_recipient_private}"
+					)
+			;;
+			( self-x25519-2d )
+				_encrypt_arguments+=(
+						--sender "${_x25519_3_sender_private}"
+						--sender "${_x25519_3_sender_private}"
+						--sender "${_x25519_4_sender_private}"
+					)
+				_decrypt_arguments+=(
+						--recipient "${_x25519_4_recipient_private}"
+						--recipient "${_x25519_3_recipient_private}"
+						--recipient "${_x25519_3_recipient_private}"
 					)
 			;;
 			( without-x25519 )
@@ -1096,6 +1236,14 @@
 			;;
 		esac
 		
+		_identifier="${_case_tool}--${_case_send}--${_case_pin}--${_case_secret}--${_case_ballast}--${_case_ssh_wrap}--${_case_associated}--${_case_deterministic}"
+		_report="${_reports}/${_identifier}.txt"
+		_output="${_outputs}/tests/${_identifier}.${$}.tmp"
+		
+		if test -e "${_report}" ; then
+			continue
+		fi
+		
 		printf -- '\n' >&2
 		printf -- '[ii]  running iteration `%s %s %s %s %s %s %s %s`...\n' "${_case_tool}" "${_case_send}" "${_case_pin}" "${_case_secret}" "${_case_ballast}" "${_case_ssh_wrap}" "${_case_associated}" "${_case_deterministic}" >&2
 		
@@ -1112,12 +1260,9 @@
 				--empty-is-missing "${_empty_is_missing}"
 			)
 		
-		_identifier="${_case_tool}--${_case_send}--${_case_pin}--${_case_secret}--${_case_ballast}--${_case_ssh_wrap}--${_case_associated}--${_case_deterministic}"
-		_report="${_reports}/${_identifier}.txt"
-		_output="${_outputs}/tests/${_identifier}.${$}.tmp"
-		
-		
 		TIMEFORMAT="[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;"
+		
+		export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 		
 		case "${_case_tool}" in
 			
@@ -1188,7 +1333,7 @@
 		
 		printf -- '\n' >&2
 		
-	done ; done ; done ; done ; done ; done ; done ; done
+	done
 !!
 
 
@@ -1260,6 +1405,8 @@
 		>&2 \
 	#
 	
+	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
+	
 	ssh-add -- /dev/stdin << 'EOS'
 	-----BEGIN OPENSSH PRIVATE KEY-----
 	b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
@@ -1283,6 +1430,8 @@
 		>&2 \
 	#
 	
+	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
+	
 	ssh-add -- /dev/stdin << 'EOS'
 	-----BEGIN OPENSSH PRIVATE KEY-----
 	b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
@@ -1293,6 +1442,21 @@
 	IgdGVzdGluZwECAw==
 	-----END OPENSSH PRIVATE KEY-----
 	EOS
+!!
+
+
+<< tests / quick / exchange / ssh / agent
+	test "${#}" -eq 0
+	
+	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
+	
+	set -x
+	exec -- ssh-agent \
+			-s \
+			-d \
+			-a "${SSH_AUTH_SOCK}" \
+		> /dev/null \
+	#
 !!
 
 
