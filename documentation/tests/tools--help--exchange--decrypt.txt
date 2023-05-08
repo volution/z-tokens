@@ -7,9 +7,10 @@ Usage:
 Optional arguments:
   -h,--help             Show this help message and exit
   -r,--recipient {sender}
-                        (recipient private key)
+                        (recipient private key) (multiple allowed, in any
+                        order)
   -s,--sender {recipient}
-                        (sender public key)
+                        (sender public key) (multiple allowed, in any order)
   -a,--associated {associated}
                         (associated data) (multiple allowed, order is
                         important)

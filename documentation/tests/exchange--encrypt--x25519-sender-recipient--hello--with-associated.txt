@@ -1,13 +1,13 @@
 >>  z-tokens exchange encrypt --siv --sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 --recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah --associated hello
 
 
-#1,  2Fy9NoenkK62P Rzf1pnNyWxuN  THVovAXdCuER  3Sy7hp8GHFHyq 3Nxzm3Mtt8UyT
-#2,  3itGSWd4hTQJP 3dFuSTsdGhPdT 2g9qjzhPiwQ1x 3Zo3HnHtSzD42 eWHmuHsvwg5V
-#3,  3BNL9U673KkWS 2SVaAPzfAL2cB wAcAAYk6diHH  w9x9gLfxgMfx  2VZdkESJjeKxD
-#4,  3CHinc7zmZUz6 XGWCPZgGBvwR  3ivkkAtqDS1aQ 54cXEJ37trwQ  3h3bBBqe7wvtD
-#5,  3oymKcHw1JTNr 3KAZp2p6WGjuW JGVfSfLFLbiP  JgJy8kvq2vaJ  jrh1UeRKmuc7
-#6,  2MGVbaVHunnp5 3QbHrnFxFkCX7 iJZrsfpjeCWK  3ryGRyGHpym1C 3YWSqxonexQtg
-#7,  3Esz9tjBLxDqB 3KYruDRYvfNDN 2hnuaPZgSSWtS e51gJdDewxxP  NKpjPcXXzduy
-#8,  2BzDcrprbbNq2 JXm8NfYrzUfu  U2i52fynvx9j  sMuUCxzGXDCK  36Er43vVfPSb7
-#9.  rfewbfrvHFXC
+#1,  2Fy9NoP37tw6Z ZWc4hWyDETmA  oB568gSynQn2  ay9rK9TAyBrJ  3EWeXqyijkSmW
+#2,  22Msy97AAcL4y 4goW5rP8Ko69  2C4R3iMfRhPJ6 jZHCCTJsTzdD  2dmQyUW6AbrHq
+#3,  Hwh82PVNgR6M  3prbZ3K9pEjnM 49KKC4a3fsAue 3tUhixPUitYu2 Ep9aJnuorKHU
+#4,  EVT5PoQTyTox  2FHdfZ5JrihEC JbM4HSQ9x7ha  48tGkUqFYAntg 2EWyS81egh5Z6
+#5,  2fyeYAqEXi469 27Mi4AqW8y1L8 2stTQN91YLH3S 3f8QwcF6JEmxn 3FwNNDCUeWrCW
+#6,  4DWdsnUPQgJSv 3ZYpF8fKGE1m9 3m7aoCQ4e2Ks3 22ithwcJ9Ce4d CsCBx2hZvJKs
+#7,  2HNFQAMBk4aAv 3x8jKJKX7UhHz 3n8gcvnYa5VPn 3vE2wEnrkTKDA 3qdWT3xm5d1kp
+#8,  2ESwbfCL3B5y2 2NLneMLmMz94t 29P7uXZYz6t19 24GQjwwafXgBg 3Y8c8ZnVMfZoX
+#9.  2xnCwaJoBhyv2
 
