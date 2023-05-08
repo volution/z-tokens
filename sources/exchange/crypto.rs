@@ -51,6 +51,7 @@ pub const CRYPTO_ENCRYPTED_SIZE_MAX : usize =
 		);
 
 
+pub const CRYPTO_X25519_COUNT_MAX : usize = 1024;
 pub const CRYPTO_ASSOCIATED_COUNT_MAX : usize = 1024;
 pub const CRYPTO_SECRET_COUNT_MAX : usize = 1024;
 pub const CRYPTO_PIN_COUNT_MAX : usize = 1024;
@@ -173,8 +174,8 @@ define_cryptographic_purpose! (CRYPTO_PASSWORD_OUTPUT_PURPOSE, password, output)
 
 
 pub fn password (
-			_sender : Option<&SenderPrivateKey>,
-			_recipient : Option<&RecipientPublicKey>,
+			_senders : &[&SenderPrivateKey],
+			_recipients : &[&RecipientPublicKey],
 			_associated_inputs : &[&[u8]],
 			_secret_inputs : &[&[u8]],
 			_pin_inputs : &[&[u8]],
@@ -184,6 +185,7 @@ pub fn password (
 			_ssh_wrappers : Vec<&mut SshWrapper>,
 		) -> CryptoResult
 {
+	let (_senders, _recipients) = wrap_senders_and_recipients_inputs (_senders, _recipients) ?;
 	let (_associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs) ?;
 	let (_oracles, _oracle_handles) = wrap_oracles (_ssh_wrappers) ?;
 	
@@ -199,13 +201,9 @@ pub fn password (
 	
 	// NOTE:  deriving keys...
 	
-	let _sender = _sender.map (SenderPrivateKey::access);
-	let _recipient = _recipient.map (RecipientPublicKey::access);
-	
 	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _ballast_hashes, _oracle_hashes)
-			= derive_keys_phase_1 (_sender, _recipient, _associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs, _oracle_handles, true) ?;
+			= derive_keys_phase_1 (_senders, _recipients, _associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs, _oracle_handles, true) ?;
 	
-	drop! (_sender, _recipient);
 	drop! (_aont_key);
 	
 	// NOTE:  salting...
@@ -258,8 +256,8 @@ pub fn password (
 
 
 pub fn encrypt (
-			_sender : Option<&SenderPrivateKey>,
-			_recipient : Option<&RecipientPublicKey>,
+			_senders : &[&SenderPrivateKey],
+			_recipients : &[&RecipientPublicKey],
 			_associated_inputs : &[&[u8]],
 			_secret_inputs : &[&[u8]],
 			_pin_inputs : &[&[u8]],
@@ -270,6 +268,7 @@ pub fn encrypt (
 			_packet_salt_deterministic : bool,
 		) -> CryptoResult
 {
+	let (_senders, _recipients) = wrap_senders_and_recipients_inputs (_senders, _recipients) ?;
 	let (_associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs) ?;
 	let (_oracles, _oracle_handles) = wrap_oracles (_ssh_wrappers) ?;
 	
@@ -319,13 +318,8 @@ pub fn encrypt (
 	
 	// NOTE:  deriving keys...
 	
-	let _sender = _sender.map (SenderPrivateKey::access);
-	let _recipient = _recipient.map (RecipientPublicKey::access);
-	
 	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _ballast_hashes, _oracle_hashes)
-			= derive_keys_phase_1 (_sender, _recipient, _associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs, _oracle_handles, true) ?;
-	
-	drop! (_sender, _recipient);
+			= derive_keys_phase_1 (_senders, _recipients, _associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs, _oracle_handles, true) ?;
 	
 	// NOTE:  salting...
 	
@@ -404,8 +398,8 @@ pub fn encrypt (
 
 
 pub fn decrypt (
-			_recipient : Option<&RecipientPrivateKey>,
-			_sender : Option<&SenderPublicKey>,
+			_recipients : &[&RecipientPrivateKey],
+			_senders : &[&SenderPublicKey],
 			_associated_inputs : &[&[u8]],
 			_secret_inputs : &[&[u8]],
 			_pin_inputs : &[&[u8]],
@@ -415,6 +409,7 @@ pub fn decrypt (
 			_ssh_wrappers : Vec<&mut SshWrapper>,
 		) -> CryptoResult
 {
+	let (_recipients, _senders) = wrap_recipients_and_senders_inputs (_recipients, _senders) ?;
 	let (_associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs) ?;
 	let (_oracles, _oracle_handles) = wrap_oracles (_ssh_wrappers) ?;
 	
@@ -456,13 +451,8 @@ pub fn decrypt (
 	
 	// NOTE:  deriving keys...
 	
-	let _sender = _sender.map (SenderPublicKey::access);
-	let _recipient = _recipient.map (RecipientPrivateKey::access);
-	
 	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _ballast_hashes, _oracle_hashes)
-			= derive_keys_phase_1 (_recipient, _sender, _associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs, _oracle_handles, false) ?;
-	
-	drop! (_sender, _recipient);
+			= derive_keys_phase_1 (_recipients, _senders, _associated_inputs, _secret_inputs, _pin_inputs, _ballast_inputs, _oracle_handles, false) ?;
 	
 	// NOTE:  all-or-nothing and salting...
 	
@@ -632,8 +622,8 @@ fn apply_all_or_nothing_mangling (_key : InternalAontKey, _packet_salt : &mut In
 
 
 fn derive_keys_phase_1 (
-			_private : Option<&x25519::StaticSecret>,
-			_public : Option<&x25519::PublicKey>,
+			_private_keys : Vec<&x25519::StaticSecret>,
+			_public_keys : Vec<&x25519::PublicKey>,
 			_associated_inputs : Vec<InternalAssociatedInput>,
 			_secret_inputs : Vec<InternalSecretInput>,
 			_pin_inputs : Vec<InternalPinInput>,
@@ -760,27 +750,81 @@ fn derive_keys_phase_1 (
 	// --------------------------------------------------------------------------------
 	// NOTE:  derive X25519 DHE...
 	
-	let _dhe_key = if let Some (_private) = _private {
-			
-			x25519_dhe (
-				InternalDheKey::wrap,
-				CRYPTO_DHE_KEY_PURPOSE,
-				_private,
-				_public,
-				_encryption,
-			) .else_wrap (0x56e47fad) ?
-			
-		} else {
-			
-			if _public.is_some () {
-				fail! (0x884cbe55);
-			}
+	let _dhe_key = match (_private_keys.len (), _public_keys.len ()) {
+		
+		(0, 0) =>
 			if _secret_hashes.is_empty () && _pin_hashes.is_empty () && _ballast_hashes.is_empty () && _oracle_handles.is_empty () {
 				fail! (0xa1de0167);
+			} else {
+				InternalDheKey::zero ()
+			}
+		
+		(0, _) =>
+			fail! (0x9cfadd5b),
+		
+		(_, _) => {
+			
+			let mut _private_public_keys = _private_keys.iter () .map (|_private_key| x25519::PublicKey::from (*_private_key)) .collect::<Vec<_>> ();
+			_private_public_keys.sort_by (|_left, _right| Ord::cmp (_left.as_bytes (), _right.as_bytes ()));
+			let _private_public_keys = _private_public_keys.iter () .collect::<Vec<_>> ();
+			
+			// NOTE:  If no recipient keys are specified, use sender public keys.
+			let _public_keys = if _public_keys.is_empty () {
+					&_private_public_keys
+				} else {
+					&_public_keys
+				};
+			
+			let mut _dhe_shared = Vec::with_capacity (_private_keys.len () * _public_keys.len ());
+			
+			for _private_key in _private_keys {
+				for _public_key in _public_keys {
+					
+					let _dhe = x25519::StaticSecret::diffie_hellman (_private_key, _public_key);
+					
+					if ! _dhe.was_contributory () {
+						fail! (0xd00d13f7);
+					}
+					
+					_dhe_shared.push (_dhe.to_bytes ());
+				}
 			}
 			
-			InternalDheKey::zero ()
-		};
+			let _private_public_hash = blake3_derive_key_join (
+					|_hash| _hash,
+					CRYPTO_DHE_KEY_PURPOSE,
+					_private_public_keys.iter () .map (|_key| _key.as_bytes ()),
+				);
+			let _public_hash = blake3_derive_key_join (
+					|_hash| _hash,
+					CRYPTO_DHE_KEY_PURPOSE,
+					_public_keys.iter () .map (|_key| _key.as_bytes ()),
+				);
+			let _dhe_hash = blake3_derive_key_join (
+					|_hash| _hash,
+					CRYPTO_DHE_KEY_PURPOSE,
+					_dhe_shared.iter (),
+				);
+			
+			let (_senders_hash, _recipients_hash) = if _encryption {
+				(_private_public_hash, _public_hash)
+			} else {
+				(_public_hash, _private_public_hash)
+			};
+			
+			let _dhe_key = blake3_derive_key_join (
+					InternalDheKey::wrap,
+					CRYPTO_DHE_KEY_PURPOSE,
+					[
+						_senders_hash,
+						_recipients_hash,
+						_dhe_hash,
+					] .iter (),
+				);
+			
+			_dhe_key
+		}
+	};
 	
 	// --------------------------------------------------------------------------------
 	// NOTE:  derive partial key (for the entire transaction)...
@@ -1083,6 +1127,69 @@ fn apply_argon_ballast (_ballast_hash : InternalBallastHash, _ballast_salt : &In
 			CRYPTO_BALLAST_ARGON_M_COST * _m_cost_factor,
 			CRYPTO_BALLAST_ARGON_T_COST,
 		) .else_wrap (0x5e8b2b57)
+}
+
+
+
+
+
+
+
+
+fn wrap_senders_and_recipients_inputs <'a> (
+			_senders : &'a [&'a SenderPrivateKey],
+			_recipients : &'a [&'a RecipientPublicKey],
+		) -> CryptoResult<(
+			Vec<&'a x25519::StaticSecret>,
+			Vec<&'a x25519::PublicKey>,
+		)>
+{
+	let _private_keys = Vec::from (_senders) .into_iter () .map (SenderPrivateKey::access) .collect ();
+	let _public_keys = Vec::from (_recipients) .into_iter () .map (RecipientPublicKey::access) .collect ();
+	
+	wrap_private_and_public_keys (_private_keys, _public_keys)
+}
+
+
+fn wrap_recipients_and_senders_inputs <'a> (
+			_recipients : &'a [&'a RecipientPrivateKey],
+			_senders : &'a [&'a SenderPublicKey],
+		) -> CryptoResult<(
+			Vec<&'a x25519::StaticSecret>,
+			Vec<&'a x25519::PublicKey>,
+		)>
+{
+	let _private_keys = Vec::from (_recipients) .into_iter () .map (RecipientPrivateKey::access) .collect ();
+	let _public_keys = Vec::from (_senders) .into_iter () .map (SenderPublicKey::access) .collect ();
+	
+	wrap_private_and_public_keys (_private_keys, _public_keys)
+}
+
+
+fn wrap_private_and_public_keys <'a> (
+			mut _private_keys : Vec<&'a x25519::StaticSecret>,
+			mut _public_keys : Vec<&'a x25519::PublicKey>,
+		) -> CryptoResult<(
+			Vec<&'a x25519::StaticSecret>,
+			Vec<&'a x25519::PublicKey>,
+		)>
+{
+	debug_assert! (CRYPTO_X25519_COUNT_MAX <= (u32::MAX as usize), "[b370bd5b]");
+	
+	if _private_keys.len () > CRYPTO_X25519_COUNT_MAX {
+		fail! (0x00bc509c);
+	}
+	if _public_keys.len () > CRYPTO_X25519_COUNT_MAX {
+		fail! (0x7f1713ae);
+	}
+	
+	_private_keys.sort_by (|_left, _right| Ord::cmp (_left.as_bytes (), _right.as_bytes ()));
+	_private_keys.dedup_by (|_left, _right| PartialEq::eq (_left.as_bytes (), _right.as_bytes ()));
+	
+	_public_keys.sort_by (|_left, _right| Ord::cmp (_left.as_bytes (), _right.as_bytes ()));
+	_public_keys.dedup_by (|_left, _right| PartialEq::eq (_left.as_bytes (), _right.as_bytes ()));
+	
+	Ok ((_private_keys, _public_keys))
 }
 
 

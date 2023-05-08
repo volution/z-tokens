@@ -214,8 +214,8 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
-	let mut _sender_private : Option<String> = None;
-	let mut _recipient_public : Option<String> = None;
+	let mut _senders_private : Vec<String> = Vec::new ();
+	let mut _recipients_public : Vec<String> = Vec::new ();
 	let mut _associated : Vec<String> = Vec::new ();
 	let mut _secrets : Vec<String> = Vec::new ();
 	let mut _ballasts : Vec<String> = Vec::new ();
@@ -227,13 +227,13 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	{
 		let mut _parser = create_parser () .else_wrap (0x93d41b76) ?;
 		
-		_parser.refer (&mut _sender_private)
+		_parser.refer (&mut _senders_private)
 				.metavar ("{sender}")
-				.add_option (&["-s", "--sender"], ArgStoreOption, "(sender private key)");
+				.add_option (&["-s", "--sender"], ArgPush, "(sender private key) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _recipient_public)
+		_parser.refer (&mut _recipients_public)
 				.metavar ("{recipient}")
-				.add_option (&["-r", "--recipient"], ArgStoreOption, "(recipient public key)");
+				.add_option (&["-r", "--recipient"], ArgPush, "(recipient public key) (multiple allowed, in any order)");
 		
 		_parser.refer (&mut _associated)
 				.metavar ("{associated}")
@@ -271,15 +271,15 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let _empty_is_missing = _empty_is_missing.unwrap_or (false);
 	
-	let _sender_private = _sender_private.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
-	let _sender_private = _sender_private.map (SenderPrivateKey::decode_and_zeroize) .transpose () .else_wrap (0x750a42c0) ?;
-	let _sender_private = _sender_private.as_ref ();
+	let _senders_private = _senders_private.into_iter () .filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _senders_private = _senders_private.into_iter () .map (SenderPrivateKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x750a42c0) ?;
+	let _senders_private = _senders_private.iter () .collect::<Vec<_>> ();
 	
-	let _recipient_public = _recipient_public.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
-	let _recipient_public = _recipient_public.map (RecipientPublicKey::decode_and_zeroize) .transpose () .else_wrap (0x233175e9) ?;
-	let _recipient_public = _recipient_public.as_ref ();
+	let _recipients_public = _recipients_public.into_iter () .filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _recipients_public = _recipients_public.into_iter () .map (RecipientPublicKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x233175e9) ?;
+	let _recipients_public = _recipients_public.iter () .collect::<Vec<_>> ();
 	
-	let _ssh_wrappers = _ssh_wrappers.into_iter ().filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _ssh_wrappers = _ssh_wrappers.into_iter () .filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
 	let _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapperKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x6d68c3c2) ?;
 	let mut _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapper::connect) .collect::<Result<Vec<_>, _>> () .else_wrap (0xe1f9e4bf) ?;
 	let _ssh_wrappers = _ssh_wrappers.iter_mut () .collect::<Vec<_>> ();
@@ -303,7 +303,7 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _decrypted = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0xb0e8db93) ?;
 	
 	let mut _encrypted = Vec::new ();
-	encrypt (_sender_private, _recipient_public, &_associated, &_secrets, &_pins, &_ballasts, &_decrypted, &mut _encrypted, _ssh_wrappers, _deterministic) .else_wrap (0x38d2ce1e) ?;
+	encrypt (&_senders_private, &_recipients_public, &_associated, &_secrets, &_pins, &_ballasts, &_decrypted, &mut _encrypted, _ssh_wrappers, _deterministic) .else_wrap (0x38d2ce1e) ?;
 	
 	let mut _stream = stdout_locked ();
 	_stream.write (&_encrypted) .else_wrap (0x815d15bc) ?;
@@ -317,8 +317,8 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
-	let mut _recipient_private : Option<String> = None;
-	let mut _sender_public : Option<String> = None;
+	let mut _recipients_private : Vec<String> = Vec::new ();
+	let mut _senders_public : Vec<String> = Vec::new ();
 	let mut _associated : Vec<String> = Vec::new ();
 	let mut _secrets : Vec<String> = Vec::new ();
 	let mut _ballasts : Vec<String> = Vec::new ();
@@ -329,13 +329,13 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	{
 		let mut _parser = create_parser () .else_wrap (0x608139b1) ?;
 		
-		_parser.refer (&mut _recipient_private)
+		_parser.refer (&mut _recipients_private)
 				.metavar ("{sender}")
-				.add_option (&["-r", "--recipient"], ArgStoreOption, "(recipient private key)");
+				.add_option (&["-r", "--recipient"], ArgPush, "(recipient private key) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _sender_public)
+		_parser.refer (&mut _senders_public)
 				.metavar ("{recipient}")
-				.add_option (&["-s", "--sender"], ArgStoreOption, "(sender public key)");
+				.add_option (&["-s", "--sender"], ArgPush, "(sender public key) (multiple allowed, in any order)");
 		
 		_parser.refer (&mut _associated)
 				.metavar ("{associated}")
@@ -369,15 +369,15 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let _empty_is_missing = _empty_is_missing.unwrap_or (false);
 	
-	let _recipient_private = _recipient_private.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
-	let _recipient_private = _recipient_private.map (RecipientPrivateKey::decode_and_zeroize) .transpose () .else_wrap (0xd58c9ad4) ?;
-	let _recipient_private = _recipient_private.as_ref ();
+	let _recipients_private = _recipients_private.into_iter () .filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _recipients_private = _recipients_private.into_iter () .map (RecipientPrivateKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0xd58c9ad4) ?;
+	let _recipients_private = _recipients_private.iter () .collect::<Vec<_>> ();
 	
-	let _sender_public = _sender_public.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
-	let _sender_public = _sender_public.map (SenderPublicKey::decode_and_zeroize) .transpose () .else_wrap (0xbb6f004f) ?;
-	let _sender_public = _sender_public.as_ref ();
+	let _senders_public = _senders_public.into_iter () .filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _senders_public = _senders_public.into_iter () .map (SenderPublicKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0xbb6f004f) ?;
+	let _senders_public = _senders_public.iter () .collect::<Vec<_>> ();
 	
-	let _ssh_wrappers = _ssh_wrappers.into_iter ().filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _ssh_wrappers = _ssh_wrappers.into_iter () .filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
 	let _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapperKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x1fea5617) ?;
 	let mut _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapper::connect) .collect::<Result<Vec<_>, _>> () .else_wrap (0xfeda4c77) ?;
 	let _ssh_wrappers = _ssh_wrappers.iter_mut () .collect::<Vec<_>> ();
@@ -399,7 +399,7 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _encrypted = read_at_most (stdin_locked (), CRYPTO_ENCRYPTED_SIZE_MAX) .else_wrap (0xf71cef7e) ?;
 	
 	let mut _decrypted = Vec::new ();
-	decrypt (_recipient_private, _sender_public, &_associated, &_secrets, &_pins, &_ballasts, &_encrypted, &mut _decrypted, _ssh_wrappers) .else_wrap (0x95273e1d) ?;
+	decrypt (&_recipients_private, &_senders_public, &_associated, &_secrets, &_pins, &_ballasts, &_encrypted, &mut _decrypted, _ssh_wrappers) .else_wrap (0x95273e1d) ?;
 	
 	let mut _stream = stdout_locked ();
 	_stream.write (&_decrypted) .else_wrap (0x19352ca2) ?;
@@ -413,8 +413,8 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
-	let mut _sender_private : Option<String> = None;
-	let mut _recipient_public : Option<String> = None;
+	let mut _senders_private : Vec<String> = Vec::new ();
+	let mut _recipients_public : Vec<String> = Vec::new ();
 	let mut _associated : Vec<String> = Vec::new ();
 	let mut _secrets : Vec<String> = Vec::new ();
 	let mut _ballasts : Vec<String> = Vec::new ();
@@ -425,13 +425,13 @@ pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	{
 		let mut _parser = create_parser () .else_wrap (0xb2fd613d) ?;
 		
-		_parser.refer (&mut _sender_private)
+		_parser.refer (&mut _senders_private)
 				.metavar ("{sender}")
-				.add_option (&["-s", "--sender"], ArgStoreOption, "(sender private key)");
+				.add_option (&["-s", "--sender"], ArgPush, "(sender private key) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _recipient_public)
+		_parser.refer (&mut _recipients_public)
 				.metavar ("{recipient}")
-				.add_option (&["-r", "--recipient"], ArgStoreOption, "(recipient public key)");
+				.add_option (&["-r", "--recipient"], ArgPush, "(recipient public key) (multiple allowed, in any order)");
 		
 		_parser.refer (&mut _associated)
 				.metavar ("{associated}")
@@ -465,15 +465,15 @@ pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let _empty_is_missing = _empty_is_missing.unwrap_or (false);
 	
-	let _sender_private = _sender_private.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
-	let _sender_private = _sender_private.map (SenderPrivateKey::decode_and_zeroize) .transpose () .else_wrap (0xa3edd671) ?;
-	let _sender_private = _sender_private.as_ref ();
+	let _senders_private = _senders_private.into_iter () .filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _senders_private = _senders_private.into_iter () .map (SenderPrivateKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0xa3edd671) ?;
+	let _senders_private = _senders_private.iter () .collect::<Vec<_>> ();
 	
-	let _recipient_public = _recipient_public.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
-	let _recipient_public = _recipient_public.map (RecipientPublicKey::decode_and_zeroize) .transpose () .else_wrap (0x9c5d68bf) ?;
-	let _recipient_public = _recipient_public.as_ref ();
+	let _recipients_public = _recipients_public.into_iter () .filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _recipients_public = _recipients_public.into_iter () .map (RecipientPublicKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x9c5d68bf) ?;
+	let _recipients_public = _recipients_public.iter () .collect::<Vec<_>> ();
 	
-	let _ssh_wrappers = _ssh_wrappers.into_iter ().filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _ssh_wrappers = _ssh_wrappers.into_iter () .filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
 	let _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapperKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x535691ae) ?;
 	let mut _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapper::connect) .collect::<Result<Vec<_>, _>> () .else_wrap (0x2c549ad6) ?;
 	let _ssh_wrappers = _ssh_wrappers.iter_mut () .collect::<Vec<_>> ();
@@ -495,7 +495,7 @@ pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _password_input = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0x6772b7e4) ?;
 	
 	let mut _password_output = [0u8; 32];
-	password (_sender_private, _recipient_public, &_associated, &_secrets, &_pins, &_ballasts, &_password_input, &mut _password_output, _ssh_wrappers) .else_wrap (0xec55f5c3) ?;
+	password (&_senders_private, &_recipients_public, &_associated, &_secrets, &_pins, &_ballasts, &_password_input, &mut _password_output, _ssh_wrappers) .else_wrap (0xec55f5c3) ?;
 	
 	let mut _password_buffer = String::with_capacity (_password_output.len () * 2 + 1);
 	for _password_output_byte in _password_output {
