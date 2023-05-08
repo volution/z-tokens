@@ -790,6 +790,8 @@ fn derive_keys_phase_1 (
 				}
 			}
 			
+			_dhe_shared.sort ();
+			
 			let _private_public_hash = blake3_derive_key_join (
 					|_hash| _hash,
 					CRYPTO_DHE_KEY_PURPOSE,
