@@ -196,6 +196,14 @@
 ::  eff-unique:28           :  289.5 b :  222 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
 ::  eff-unique:29           :  299.8 b :  233 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
 ::  eff-unique:30           :  310.1 b :  242 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
+::  pets-medium-1           :   10.0 b :    4 c ::    anoa
+::  pets-medium-2           :   20.2 b :   13 c ::    dynamic-shark
+::  pets-medium-3           :   30.9 b :   25 c ::    righteously-dynamic-shark
+::  pets-medium-4           :   36.9 b :   33 c ::    righteously-dynamic-sienna-skater
+::  pets-small-1            :    8.8 b :    6 c ::    python
+::  pets-small-2            :   17.6 b :   10 c ::    real-robin
+::  pets-small-3            :   25.6 b :   20 c ::    openly-endless-robin
+::  pets-small-4            :   31.6 b :   28 c ::    openly-endless-sienna-donkey
 ::  nato:1                  :    5.1 b :    3 c ::    wun
 ::  nato:2                  :   10.3 b :   10 c ::    wun victor
 ::  nato:3                  :   15.5 b :   18 c ::    wun victor juliett

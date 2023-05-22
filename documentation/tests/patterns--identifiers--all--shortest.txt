@@ -40,6 +40,14 @@ pgp:1
 eff-large:1
 eff-short:1
 eff-unique:1
+pets-medium-1
+pets-medium-2
+pets-medium-3
+pets-medium-4
+pets-small-1
+pets-small-2
+pets-small-3
+pets-small-4
 nato:1
 bytes-hex:1
 token-hex-16

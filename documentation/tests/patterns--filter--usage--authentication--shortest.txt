@@ -40,6 +40,7 @@
 ::  eff-large:3             :   38.7 b :   22 c ::    scope slacks patronize
 ::  eff-short:4             :   41.3 b :   22 c ::    shaft sleep ankle path
 ::  eff-unique:4            :   41.3 b :   31 c ::    rekindle satchel agonizing mule
+::  pets-medium-4           :   36.9 b :   33 c ::    righteously-dynamic-sienna-skater
 ::  nato:7                  :   36.1 b :   40 c ::    wun victor juliett foxtrot echo papa ait
 ::  bytes-hex:4             :   32  =b :    8 c ::    7f6f2ccd
 ::  token-hex-32            :   32  =b :    8 c ::    c5a0ef11

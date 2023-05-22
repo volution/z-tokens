@@ -18413,6 +18413,218 @@
 \_  example:  rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto circle debris ketchup omnivorous jezebel trucks tiptoeing yield wound uptown actress nuptials nirvana auctioneer laryngitis automobile flypaper
 
 
+**  ~~~~~~~~  pets-medium-1
+\_  labels:   pets-medium-1 pets dictionary pronounceable memorable
+\_  bits:     10.0498
+\_  length:   4
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -117.95  bits of margin
+    \_  authentication       !! NO !!      with    -21.95  bits of margin
+    \_  archival storage     !! NO !!      with    -90.25  bits of margin
+    \_  long term storage    !! NO !!      with    -66.79  bits of margin
+    \_  short term storage   !! NO !!      with    -59.95  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  anoa
+
+
+**  ~~~~~~~~  pets-medium-2
+\_  labels:   pets-medium-2 pets dictionary pronounceable memorable
+\_  bits:     20.2762
+\_  length:   13
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -107.72  bits of margin
+    \_  authentication       !! NO !!      with    -11.72  bits of margin
+    \_  archival storage     !! NO !!      with    -80.02  bits of margin
+    \_  long term storage    !! NO !!      with    -56.56  bits of margin
+    \_  short term storage   !! NO !!      with    -49.72  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  dynamic-shark
+
+
+**  ~~~~~~~~  pets-medium-3
+\_  labels:   pets-medium-3 pets dictionary pronounceable memorable
+\_  bits:     30.9469
+\_  length:   25
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -97.05  bits of margin
+    \_  authentication       !! NO !!      with     -1.05  bits of margin
+    \_  archival storage     !! NO !!      with    -69.35  bits of margin
+    \_  long term storage    !! NO !!      with    -45.89  bits of margin
+    \_  short term storage   !! NO !!      with    -39.05  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --    2.9  seconds
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  righteously-dynamic-shark
+
+
+**  ~~~~~~~~  pets-medium-4
+\_  labels:   pets-medium-4 pets dictionary pronounceable memorable
+\_  bits:     36.9241
+\_  length:   33
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -91.08  bits of margin
+    \_  authentication          OK         with     +4.92  bits of margin
+    \_  archival storage     !! NO !!      with    -63.37  bits of margin
+    \_  long term storage    !! NO !!      with    -39.91  bits of margin
+    \_  short term storage   !! NO !!      with    -33.07  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --    0.1  seconds
+    \_  PBKDF2-HMAC-SHA512      --    0.4  seconds
+    \_  scrypt                  --    3.0  minutes
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  righteously-dynamic-sienna-skater
+
+
+**  ~~~~~~~~  pets-small-1
+\_  aliases:  pets-1
+\_  labels:   pets-small-1 pets dictionary pronounceable memorable
+\_  bits:     8.8328
+\_  length:   6
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -119.17  bits of margin
+    \_  authentication       !! NO !!      with    -23.17  bits of margin
+    \_  archival storage     !! NO !!      with    -91.46  bits of margin
+    \_  long term storage    !! NO !!      with    -68.01  bits of margin
+    \_  short term storage   !! NO !!      with    -61.16  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  python
+
+
+**  ~~~~~~~~  pets-small-2
+\_  aliases:  pets-2 pets
+\_  labels:   pets-small-2 pets dictionary pronounceable memorable
+\_  bits:     17.6434
+\_  length:   10
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -110.36  bits of margin
+    \_  authentication       !! NO !!      with    -14.36  bits of margin
+    \_  archival storage     !! NO !!      with    -82.65  bits of margin
+    \_  long term storage    !! NO !!      with    -59.20  bits of margin
+    \_  short term storage   !! NO !!      with    -52.35  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  real-robin
+
+
+**  ~~~~~~~~  pets-small-3
+\_  aliases:  pets-3
+\_  labels:   pets-small-3 pets dictionary pronounceable memorable
+\_  bits:     25.6713
+\_  length:   20
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -102.33  bits of margin
+    \_  authentication       !! NO !!      with     -6.33  bits of margin
+    \_  archival storage     !! NO !!      with    -74.62  bits of margin
+    \_  long term storage    !! NO !!      with    -51.17  bits of margin
+    \_  short term storage   !! NO !!      with    -44.32  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  openly-endless-robin
+
+
+**  ~~~~~~~~  pets-small-4
+\_  aliases:  pets-4
+\_  labels:   pets-small-4 pets dictionary pronounceable memorable
+\_  bits:     31.6486
+\_  length:   28
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -96.35  bits of margin
+    \_  authentication       !! NO !!      with     -0.35  bits of margin
+    \_  archival storage     !! NO !!      with    -68.65  bits of margin
+    \_  long term storage    !! NO !!      with    -45.19  bits of margin
+    \_  short term storage   !! NO !!      with    -38.35  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --    4.7  seconds
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  openly-endless-sienna-donkey
+
+
 **  ~~~~~~~~  nato:1
 \_  labels:   nato dictionary pronounceable
 \_  bits:     5.1699

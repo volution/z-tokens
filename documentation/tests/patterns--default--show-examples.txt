@@ -11217,6 +11217,134 @@
     \_        juice glove tirade cinnamon woolworker tutorial daytime powerboat vacuum natives poetic eternal mundane fountain upload pebble unopened goatskin cheesecake jersey tulip mutation veteran fence amnesty gullible riptide asymmetric unarmored ribbon
 
 
+**  ~~~~~~~~  pets-medium-1
+\_  bits:     10.0498
+\_  length:   4
+\_  examples:
+    \_        anoa
+    \_        needlefish
+    \_        shark
+    \_        skater
+    \_        sardine
+    \_        whitefly
+    \_        zebra
+    \_        bat
+    \_        javelina
+    \_        kookaburra
+
+
+**  ~~~~~~~~  pets-medium-2
+\_  bits:     20.2762
+\_  length:   13
+\_  examples:
+    \_        dynamic-shark
+    \_        brief-bat
+    \_        unassuming-louse
+    \_        perky-bison
+    \_        willing-trunkfish
+    \_        preferred-blackfish
+    \_        opulent-shrike
+    \_        awed-bobwhite
+    \_        leisurely-saury
+    \_        convenient-willet
+
+
+**  ~~~~~~~~  pets-medium-3
+\_  bits:     30.9469
+\_  length:   25
+\_  examples:
+    \_        righteously-dynamic-shark
+    \_        divisively-brief-bat
+    \_        intractably-unassuming-louse
+    \_        plainly-surprising-bison
+    \_        wittily-wanted-trunkfish
+    \_        adequately-opulent-shrike
+    \_        privately-awed-bobwhite
+    \_        lustfully-resolute-grenadier
+    \_        delightedly-wanted-dunlin
+    \_        wistfully-praised-siskin
+
+
+**  ~~~~~~~~  pets-medium-4
+\_  bits:     36.9241
+\_  length:   33
+\_  examples:
+    \_        righteously-dynamic-sienna-skater
+    \_        saucily-brief-white-bat
+    \_        intractably-unassuming-chartreuse-louse
+    \_        plainly-surprising-thistle-bison
+    \_        wittily-wanted-turquoise-blackfish
+    \_        peevishly-open-smoke-bobwhite
+    \_        lustfully-resolute-thistle-grenadier
+    \_        delightedly-wanted-chocolate-dunlin
+    \_        wistfully-praised-smoke-flea
+    \_        pitiably-affluent-beige-crab
+
+
+**  ~~~~~~~~  pets-small-1
+\_  bits:     8.8328
+\_  length:   6
+\_  examples:
+    \_        python
+    \_        robin
+    \_        anteater
+    \_        moccasin
+    \_        fawn
+    \_        robin
+    \_        donkey
+    \_        raptor
+    \_        wasp
+    \_        yeti
+
+
+**  ~~~~~~~~  pets-small-2
+\_  bits:     17.6434
+\_  length:   10
+\_  examples:
+    \_        real-robin
+    \_        adjusted-moccasin
+    \_        endless-robin
+    \_        destined-raptor
+    \_        wealthy-yeti
+    \_        clear-calf
+    \_        wanted-bat
+    \_        holy-kitten
+    \_        meet-cod
+    \_        stable-doberman
+
+
+**  ~~~~~~~~  pets-small-3
+\_  bits:     25.6713
+\_  length:   20
+\_  examples:
+    \_        openly-endless-robin
+    \_        extremely-settling-raptor
+    \_        yearly-clear-calf
+    \_        legally-infinite-toad
+    \_        fairly-meet-cod
+    \_        specially-dear-lion
+    \_        precisely-inviting-stork
+    \_        surely-awaited-woodcock
+    \_        wholly-precise-alpaca
+    \_        blindly-noted-mosquito
+
+
+**  ~~~~~~~~  pets-small-4
+\_  bits:     31.6486
+\_  length:   28
+\_  examples:
+    \_        openly-endless-sienna-donkey
+    \_        sharply-relieved-yellow-yeti
+    \_        daily-causal-white-bat
+    \_        legally-infinite-violet-drake
+    \_        specially-dear-khaki-newt
+    \_        surely-awaited-zinc-dolphin
+    \_        wholly-precise-almond-blowfish
+    \_        plainly-normal-smoke-panda
+    \_        carefully-bold-lavender-rattler
+    \_        supposedly-brave-firebrick-cricket
+
+
 **  ~~~~~~~~  nato:1
 \_  bits:     5.1699
 \_  length:   3

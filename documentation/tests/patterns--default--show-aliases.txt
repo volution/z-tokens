@@ -4393,6 +4393,58 @@
 \_  example:  rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto circle debris ketchup omnivorous jezebel trucks tiptoeing yield wound uptown actress nuptials nirvana auctioneer laryngitis automobile flypaper
 
 
+**  ~~~~~~~~  pets-medium-1
+\_  bits:     10.0498
+\_  length:   4
+\_  example:  anoa
+
+
+**  ~~~~~~~~  pets-medium-2
+\_  bits:     20.2762
+\_  length:   13
+\_  example:  dynamic-shark
+
+
+**  ~~~~~~~~  pets-medium-3
+\_  bits:     30.9469
+\_  length:   25
+\_  example:  righteously-dynamic-shark
+
+
+**  ~~~~~~~~  pets-medium-4
+\_  bits:     36.9241
+\_  length:   33
+\_  example:  righteously-dynamic-sienna-skater
+
+
+**  ~~~~~~~~  pets-small-1
+\_  aliases:  pets-1
+\_  bits:     8.8328
+\_  length:   6
+\_  example:  python
+
+
+**  ~~~~~~~~  pets-small-2
+\_  aliases:  pets-2 pets
+\_  bits:     17.6434
+\_  length:   10
+\_  example:  real-robin
+
+
+**  ~~~~~~~~  pets-small-3
+\_  aliases:  pets-3
+\_  bits:     25.6713
+\_  length:   20
+\_  example:  openly-endless-robin
+
+
+**  ~~~~~~~~  pets-small-4
+\_  aliases:  pets-4
+\_  bits:     31.6486
+\_  length:   28
+\_  example:  openly-endless-sienna-donkey
+
+
 **  ~~~~~~~~  nato:1
 \_  bits:     5.1699
 \_  length:   3

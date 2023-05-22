@@ -616,6 +616,7 @@
 ::  eff-unique:28           :  289.5 b :  222 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
 ::  eff-unique:29           :  299.8 b :  233 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
 ::  eff-unique:30           :  310.1 b :  242 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
+::  pets-medium-4           :   36.9 b :   33 c ::    righteously-dynamic-sienna-skater
 ::  nato:7                  :   36.1 b :   40 c ::    wun victor juliett foxtrot echo papa ait
 ::  nato:8                  :   41.3 b :   46 c ::    wun victor juliett foxtrot echo papa ait india
 ::  nato:9                  :   46.5 b :   54 c ::    wun victor juliett foxtrot echo papa ait india uniform
