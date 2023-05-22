@@ -656,6 +656,88 @@ define_repeat! (
 
 
 
+#[ cfg (feature = "zt-patterns-pets-medium") ]
+define_named! (
+		pub PETS_MEDIUM_1,
+		("pets-medium-1", "pets", "dictionary", "pronounceable", "memorable"),
+		("pets-medium-1"),
+		glyphs::PETS_MEDIUM_NAME_TOKEN);
+
+
+#[ cfg (feature = "zt-patterns-pets-medium") ]
+define_sequence! (
+		pub PETS_MEDIUM_2,
+		("pets-medium-2", "pets", "dictionary", "pronounceable", "memorable"),
+		("pets-medium-2"), [
+			glyphs::PETS_MEDIUM_ADJECTIVE_TOKEN,
+			glyphs::PETS_MEDIUM_NAME_TOKEN,
+		], separators::HYPHEN_OPTIONAL_INFIX_PATTERN);
+
+
+#[ cfg (feature = "zt-patterns-pets-medium") ]
+define_sequence! (
+		pub PETS_MEDIUM_3,
+		("pets-medium-3", "pets", "dictionary", "pronounceable", "memorable"),
+		("pets-medium-3"), [
+			glyphs::PETS_MEDIUM_ADVERB_TOKEN,
+			glyphs::PETS_MEDIUM_ADJECTIVE_TOKEN,
+			glyphs::PETS_MEDIUM_NAME_TOKEN,
+		], separators::HYPHEN_OPTIONAL_INFIX_PATTERN);
+
+
+#[ cfg (feature = "zt-patterns-pets-medium") ]
+define_all! (pub PETS_MEDIUM_ALL, [
+		PETS_MEDIUM_1,
+		PETS_MEDIUM_2,
+		PETS_MEDIUM_3,
+	]);
+
+
+
+
+#[ cfg (feature = "zt-patterns-pets-small") ]
+define_named! (
+		pub PETS_SMALL_1,
+		("pets-small-1", "pets", "dictionary", "pronounceable", "memorable"),
+		("pets-small-1", "pets-1"),
+		glyphs::PETS_SMALL_NAME_TOKEN);
+
+
+#[ cfg (feature = "zt-patterns-pets-small") ]
+define_sequence! (
+		pub PETS_SMALL_2,
+		("pets-small-2", "pets", "dictionary", "pronounceable", "memorable"),
+		("pets-small-2", "pets-2", "pets"), [
+			glyphs::PETS_SMALL_ADJECTIVE_TOKEN,
+			glyphs::PETS_SMALL_NAME_TOKEN,
+		], separators::HYPHEN_OPTIONAL_INFIX_PATTERN);
+
+
+#[ cfg (feature = "zt-patterns-pets-small") ]
+define_sequence! (
+		pub PETS_SMALL_3,
+		("pets-small-3", "pets", "dictionary", "pronounceable", "memorable"),
+		("pets-small-3", "pets-3"), [
+			glyphs::PETS_SMALL_ADVERB_TOKEN,
+			glyphs::PETS_SMALL_ADJECTIVE_TOKEN,
+			glyphs::PETS_SMALL_NAME_TOKEN,
+		], separators::HYPHEN_OPTIONAL_INFIX_PATTERN);
+
+
+#[ cfg (feature = "zt-patterns-pets-small") ]
+define_all! (pub PETS_SMALL_ALL, [
+		PETS_SMALL_1,
+		PETS_SMALL_2,
+		PETS_SMALL_3,
+	]);
+
+
+
+
+
+
+
+
 #[ cfg (feature = "zt-patterns-nato") ]
 define_repeat! (
 		pub NATO,
@@ -1064,6 +1146,11 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		EFF_SHORT_ALL,
 		#[ cfg (feature = "zt-patterns-eff-unique") ]
 		EFF_UNIQUE_ALL,
+		
+		#[ cfg (feature = "zt-patterns-pets-medium") ]
+		PETS_MEDIUM_ALL,
+		#[ cfg (feature = "zt-patterns-pets-small") ]
+		PETS_SMALL_ALL,
 		
 		#[ cfg (feature = "zt-patterns-nato") ]
 		NATO_ALL,

@@ -78,3 +78,21 @@ pub mod eff_unique {
 }
 
 
+
+
+#[ cfg (feature = "zt-patterns-pets-medium") ]
+pub mod pets_medium {
+	// NOTE:  => https://github.com/dustinkirkland/petname
+	// NOTE:  => https://github.com/dustinkirkland/petname/tree/master/usr/share/petname/medium
+	include! ("./_generated/patterns_consts_pets_medium.in");
+}
+
+
+#[ cfg (feature = "zt-patterns-eff-short") ]
+pub mod pets_small {
+	// NOTE:  => https://github.com/dustinkirkland/petname
+	// NOTE:  => https://github.com/dustinkirkland/petname/tree/master/usr/share/petname/small
+	include! ("./_generated/patterns_consts_pets_small.in");
+}
+
+
