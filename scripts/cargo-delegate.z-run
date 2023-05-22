@@ -535,6 +535,7 @@
 		nice -n 19 -- \
 	\
 		podman container run \
+			--rm \
 			--interactive \
 			--tty \
 			--init \
