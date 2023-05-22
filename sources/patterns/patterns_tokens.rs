@@ -671,7 +671,7 @@ define_sequence! (
 		("pets-medium-2"), [
 			glyphs::PETS_MEDIUM_ADJECTIVE_TOKEN,
 			glyphs::PETS_MEDIUM_NAME_TOKEN,
-		], separators::HYPHEN_OPTIONAL_INFIX_PATTERN);
+		], separators::HYPHEN_MANDATORY_INFIX_PATTERN);
 
 
 #[ cfg (feature = "zt-patterns-pets-medium") ]
@@ -682,7 +682,7 @@ define_sequence! (
 			glyphs::PETS_MEDIUM_ADVERB_TOKEN,
 			glyphs::PETS_MEDIUM_ADJECTIVE_TOKEN,
 			glyphs::PETS_MEDIUM_NAME_TOKEN,
-		], separators::HYPHEN_OPTIONAL_INFIX_PATTERN);
+		], separators::HYPHEN_MANDATORY_INFIX_PATTERN);
 
 
 #[ cfg (feature = "zt-patterns-pets-medium") ]
@@ -694,7 +694,7 @@ define_sequence! (
 			glyphs::PETS_MEDIUM_ADJECTIVE_TOKEN,
 			glyphs::PETS_COMMON_COLOR_TOKEN,
 			glyphs::PETS_MEDIUM_NAME_TOKEN,
-		], separators::HYPHEN_OPTIONAL_INFIX_PATTERN);
+		], separators::HYPHEN_MANDATORY_INFIX_PATTERN);
 
 
 #[ cfg (feature = "zt-patterns-pets-medium") ]
@@ -723,7 +723,7 @@ define_sequence! (
 		("pets-small-2", "pets-2", "pets"), [
 			glyphs::PETS_SMALL_ADJECTIVE_TOKEN,
 			glyphs::PETS_SMALL_NAME_TOKEN,
-		], separators::HYPHEN_OPTIONAL_INFIX_PATTERN);
+		], separators::HYPHEN_MANDATORY_INFIX_PATTERN);
 
 
 #[ cfg (feature = "zt-patterns-pets-small") ]
@@ -734,7 +734,7 @@ define_sequence! (
 			glyphs::PETS_SMALL_ADVERB_TOKEN,
 			glyphs::PETS_SMALL_ADJECTIVE_TOKEN,
 			glyphs::PETS_SMALL_NAME_TOKEN,
-		], separators::HYPHEN_OPTIONAL_INFIX_PATTERN);
+		], separators::HYPHEN_MANDATORY_INFIX_PATTERN);
 
 
 #[ cfg (feature = "zt-patterns-pets-small") ]
@@ -746,7 +746,7 @@ define_sequence! (
 			glyphs::PETS_SMALL_ADJECTIVE_TOKEN,
 			glyphs::PETS_COMMON_COLOR_TOKEN,
 			glyphs::PETS_SMALL_NAME_TOKEN,
-		], separators::HYPHEN_OPTIONAL_INFIX_PATTERN);
+		], separators::HYPHEN_MANDATORY_INFIX_PATTERN);
 
 
 #[ cfg (feature = "zt-patterns-pets-small") ]
