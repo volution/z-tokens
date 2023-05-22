@@ -85,12 +85,16 @@
 	test -f "${_executable}"
 	test -x "${_executable}"
 	
+	_environment=(
+			SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
+		)
+	
 	printf -- '[ii]  testing `%s` >> %s\n' "${_identifier}" "${_command[*]@Q}" >&2
 	
 	printf -- '>>  %q' z-tokens > "${_output}"
 	printf -- ' %q' "${_command[@]}" >> "${_output}"
 	printf -- '\n\n' >> "${_output}"
-	"${_executable}" "${_command[@]}" \
+	env "${_environment[@]}" "${_executable}" "${_command[@]}" \
 		>> "${_output}" \
 	#
 	
