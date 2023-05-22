@@ -88,11 +88,19 @@ pub mod pets_medium {
 }
 
 
-#[ cfg (feature = "zt-patterns-eff-short") ]
+#[ cfg (feature = "zt-patterns-pets-small") ]
 pub mod pets_small {
 	// NOTE:  => https://github.com/dustinkirkland/petname
 	// NOTE:  => https://github.com/dustinkirkland/petname/tree/master/usr/share/petname/small
 	include! ("./_generated/patterns_consts_pets_small.in");
+}
+
+
+#[ cfg (any (feature = "zt-patterns-pets-medium", feature = "zt-patterns-pets-small")) ]
+pub mod pets_common {
+	// NOTE:  => https://raw.githubusercontent.com/johnd/server-name
+	// NOTE:  => https://raw.githubusercontent.com/johnd/server-name/master/lib/rgb.txt
+	include! ("./_generated/patterns_consts_pets_common.in");
 }
 
 

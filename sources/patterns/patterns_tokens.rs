@@ -686,10 +686,23 @@ define_sequence! (
 
 
 #[ cfg (feature = "zt-patterns-pets-medium") ]
+define_sequence! (
+		pub PETS_MEDIUM_4,
+		("pets-medium-4", "pets", "dictionary", "pronounceable", "memorable"),
+		("pets-medium-4"), [
+			glyphs::PETS_MEDIUM_ADVERB_TOKEN,
+			glyphs::PETS_MEDIUM_ADJECTIVE_TOKEN,
+			glyphs::PETS_COMMON_COLOR_TOKEN,
+			glyphs::PETS_MEDIUM_NAME_TOKEN,
+		], separators::HYPHEN_OPTIONAL_INFIX_PATTERN);
+
+
+#[ cfg (feature = "zt-patterns-pets-medium") ]
 define_all! (pub PETS_MEDIUM_ALL, [
 		PETS_MEDIUM_1,
 		PETS_MEDIUM_2,
 		PETS_MEDIUM_3,
+		PETS_MEDIUM_4,
 	]);
 
 
@@ -725,10 +738,23 @@ define_sequence! (
 
 
 #[ cfg (feature = "zt-patterns-pets-small") ]
+define_sequence! (
+		pub PETS_SMALL_4,
+		("pets-small-4", "pets", "dictionary", "pronounceable", "memorable"),
+		("pets-small-4", "pets-4"), [
+			glyphs::PETS_SMALL_ADVERB_TOKEN,
+			glyphs::PETS_SMALL_ADJECTIVE_TOKEN,
+			glyphs::PETS_COMMON_COLOR_TOKEN,
+			glyphs::PETS_SMALL_NAME_TOKEN,
+		], separators::HYPHEN_OPTIONAL_INFIX_PATTERN);
+
+
+#[ cfg (feature = "zt-patterns-pets-small") ]
 define_all! (pub PETS_SMALL_ALL, [
 		PETS_SMALL_1,
 		PETS_SMALL_2,
 		PETS_SMALL_3,
+		PETS_SMALL_4,
 	]);
 
 
