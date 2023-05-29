@@ -41,6 +41,7 @@
 
 && _/documentation-all.z-run
 && _/documentation-readme.z-run
+&& _/documentation-markdown.z-run
 && _/documentation-sbom.z-run
 
 && _/tests.z-run
