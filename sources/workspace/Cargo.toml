@@ -75,8 +75,8 @@ documentation = "https://github.com/volution/z-tokens"
 vrl-errors = { git = "https://github.com/volution/volution-rust-libraries", branch = "development" }
 vrl-preludes = { git = "https://github.com/volution/volution-rust-libraries", branch = "development" }
 vrl-random = { git = "https://github.com/volution/volution-rust-libraries", branch = "development" }
-x25519-dalek = { git = "https://github.com/cipriancraciun/x25519-dalek", branch = "patches/latest" }
-russh-keys = { git = "https://github.com/cipriancraciun/russh", branch = "patches/latest" }
+# x25519-dalek = { git = "https://github.com/cipriancraciun/x25519-dalek", branch = "patches/latest" }
+# russh-keys = { git = "https://github.com/cipriancraciun/russh", branch = "patches/latest" }
 
 
 
