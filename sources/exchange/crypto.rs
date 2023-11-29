@@ -242,7 +242,7 @@ pub fn password (
 	drop! (_password_data);
 	
 	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (_partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, (_oracles, _oracle_hashes)) ?;
+			= derive_keys_phase_2 (CRYPTO_PASSWORD_SCHEMA_V1, _partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, (_oracles, _oracle_hashes)) ?;
 	
 	drop! (_encryption_key, _authentication_key);
 	
@@ -363,7 +363,7 @@ pub fn encrypt (
 		};
 	
 	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (_partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, (_oracles, _oracle_hashes)) ?;
+			= derive_keys_phase_2 (CRYPTO_ENCRYPTION_SCHEMA_V1, _partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, (_oracles, _oracle_hashes)) ?;
 	
 	drop! (_packet_key);
 	
@@ -485,7 +485,7 @@ pub fn decrypt (
 	// NOTE:  deriving keys...
 	
 	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (_partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, (_oracles, _oracle_hashes)) ?;
+			= derive_keys_phase_2 (CRYPTO_ENCRYPTION_SCHEMA_V1, _partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, (_oracles, _oracle_hashes)) ?;
 	
 	drop! (_packet_key);
 	drop! (_packet_salt);
@@ -955,6 +955,7 @@ fn derive_keys_phase_1 (
 
 
 fn derive_keys_phase_2 (
+			_schema : &'static str,
 			_partial_key : InternalPartialKey,
 			_packet_salt : &InternalPacketSalt,
 			_secret_hash : (InternalSecretHash, Vec<InternalSecretHash>),
@@ -995,7 +996,7 @@ fn derive_keys_phase_2 (
 			);
 		
 		let mut _oracle_output = InternalOracleOutput::zero ();
-		_oracle_wrapper.wrap (_oracle_input.access (), &mut _oracle_output.material) .else_wrap (0xcc07e95e) ?;
+		_oracle_wrapper.wrap (Some (_schema), _oracle_input.access (), &mut _oracle_output.material) .else_wrap (0xcc07e95e) ?;
 		
 		_oracle_key = blake3_derive_key (
 				InternalOracleOutput::wrap,

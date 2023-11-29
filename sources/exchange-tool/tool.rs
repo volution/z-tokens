@@ -749,7 +749,7 @@ pub fn main_ssh_wrap (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _wrap_input = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0x3be3690b) ?;
 	
 	let mut _wrap_output = [0u8; 32];
-	_wrapper.wrap (&_wrap_input, &mut _wrap_output) .else_wrap (0xe5926524) ?;
+	_wrapper.wrap (None, &_wrap_input, &mut _wrap_output) .else_wrap (0xe5926524) ?;
 	
 	let mut _wrap_buffer = String::with_capacity (_wrap_output.len () * 2 + 1);
 	for _wrap_output_byte in _wrap_output {
