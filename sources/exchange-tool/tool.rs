@@ -35,6 +35,7 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _sender_generate : Option<bool> = None;
 	let mut _recipient_generate : Option<bool> = None;
 	let mut _secret_generate : Option<bool> = None;
+	let mut _seed_generate : Option<bool> = None;
 	let mut _ballast_generate : Option<bool> = None;
 	let mut _pin_generate : Option<bool> = None;
 	let mut _self_generate : Option<bool> = None;
@@ -57,6 +58,11 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				.metavar ("{enabled}")
 				.add_option (&["-x"], ArgStoreConst (Some (true)), "(generate shared secret)")
 				.add_option (&["--secret"], ArgStoreOption, "");
+		
+		_parser.refer (&mut _seed_generate)
+				.metavar ("{enabled}")
+				.add_option (&["-e"], ArgStoreConst (Some (true)), "(generate shared seed)")
+				.add_option (&["--seed"], ArgStoreOption, "");
 		
 		_parser.refer (&mut _ballast_generate)
 				.metavar ("{enabled}")
@@ -83,11 +89,12 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		}
 	}
 	
-	let _any_generate_explicit = _sender_generate.is_some () || _recipient_generate.is_some () || _self_generate.is_some () || _secret_generate.is_some () || _ballast_generate.is_some () || _pin_generate.is_some ();
+	let _any_generate_explicit = _sender_generate.is_some () || _recipient_generate.is_some () || _self_generate.is_some () || _secret_generate.is_some () || _seed_generate.is_some () || _ballast_generate.is_some () || _pin_generate.is_some ();
 	let _self_generate = _self_generate.unwrap_or (false);
 	let _sender_generate = _sender_generate.unwrap_or (! _any_generate_explicit || _self_generate);
 	let _recipient_generate = _recipient_generate.unwrap_or (! _any_generate_explicit || _self_generate);
 	let _secret_generate = _secret_generate.unwrap_or (! _any_generate_explicit);
+	let _seed_generate = _seed_generate.unwrap_or (! _any_generate_explicit);
 	let _ballast_generate = _ballast_generate.unwrap_or (! _any_generate_explicit);
 	let _pin_generate = _pin_generate.unwrap_or (! _any_generate_explicit);
 	let _write_comments = _write_comments.unwrap_or (true);
@@ -174,6 +181,20 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		writeln! (&mut _output) .else_wrap (0x5cd3e5be) ?;
 	}
 	
+	if _seed_generate {
+		
+		let _seed = create_shared_seed () .else_wrap (0xacea5a06) ?;
+		
+		let _seed = _seed.encode () .else_wrap (0x4041ce91) ?;
+		
+		if _write_comments {
+			writeln! (&mut _output, "## shared seed (optional)") .else_wrap (0xefc86968) ?;
+		}
+		writeln! (&mut _output, "{}", _seed.deref ()) .else_wrap (0x499fe0ab) ?;
+		
+		writeln! (&mut _output) .else_wrap (0x9ebb97fe) ?;
+	}
+	
 	if _ballast_generate {
 		
 		let _ballast = create_shared_ballast () .else_wrap (0x19447431) ?;
@@ -218,6 +239,7 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _recipients_public : Vec<String> = Vec::new ();
 	let mut _associated : Vec<String> = Vec::new ();
 	let mut _secrets : Vec<String> = Vec::new ();
+	let mut _seeds : Vec<String> = Vec::new ();
 	let mut _ballasts : Vec<String> = Vec::new ();
 	let mut _pins : Vec<String> = Vec::new ();
 	let mut _ssh_wrappers : Vec<String> = Vec::new ();
@@ -250,6 +272,10 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		_parser.refer (&mut _ssh_wrappers)
 				.metavar ("{key}")
 				.add_option (&["--ssh-wrap"], ArgPush, "(shared SSH agent key handle) (multiple allowed, in any order)");
+		
+		_parser.refer (&mut _seeds)
+				.metavar ("{seed}")
+				.add_option (&["-e", "--seed"], ArgPush, "(shared seed, for additional security) (multiple allowed, in any order)");
 		
 		_parser.refer (&mut _ballasts)
 				.metavar ("{ballast}")
@@ -291,6 +317,10 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _secrets = _secrets.into_iter () .map (SharedSecret::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0xab68aede) ?;
 	let _secrets = _secrets.iter () .map (SharedSecret::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
 	
+	let _seeds = _seeds.into_iter () .filter (|_seed| ! (_seed.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _seeds = _seeds.into_iter () .map (SharedSeed::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x6a6d8fe6) ?;
+	let _seeds = _seeds.iter () .map (SharedSeed::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
+	
 	let _ballasts = _ballasts.into_iter () .filter (|_ballast| ! (_ballast.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
 	let _ballasts = _ballasts.into_iter () .map (SharedBallast::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x125f8f44) ?;
 	let _ballasts = _ballasts.iter () .map (SharedBallast::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
@@ -303,7 +333,7 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _decrypted = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0xb0e8db93) ?;
 	
 	let mut _encrypted = Vec::new ();
-	encrypt (&_senders_private, &_recipients_public, &_associated, &_secrets, &_pins, &_ballasts, &_decrypted, &mut _encrypted, _ssh_wrappers, _deterministic) .else_wrap (0x38d2ce1e) ?;
+	encrypt (&_senders_private, &_recipients_public, &_associated, &_secrets, &_pins, &_seeds, &_ballasts, &_decrypted, &mut _encrypted, _ssh_wrappers, _deterministic) .else_wrap (0x38d2ce1e) ?;
 	
 	let mut _stream = stdout_locked ();
 	_stream.write (&_encrypted) .else_wrap (0x815d15bc) ?;
@@ -321,6 +351,7 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _senders_public : Vec<String> = Vec::new ();
 	let mut _associated : Vec<String> = Vec::new ();
 	let mut _secrets : Vec<String> = Vec::new ();
+	let mut _seeds : Vec<String> = Vec::new ();
 	let mut _ballasts : Vec<String> = Vec::new ();
 	let mut _pins : Vec<String> = Vec::new ();
 	let mut _ssh_wrappers : Vec<String> = Vec::new ();
@@ -352,6 +383,10 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		_parser.refer (&mut _ssh_wrappers)
 				.metavar ("{key}")
 				.add_option (&["--ssh-wrap"], ArgPush, "(shared SSH agent key handle) (multiple allowed, in any order)");
+		
+		_parser.refer (&mut _seeds)
+				.metavar ("{seed}")
+				.add_option (&["-e", "--seed"], ArgPush, "(shared seed, for additional security) (multiple allowed, in any order)");
 		
 		_parser.refer (&mut _ballasts)
 				.metavar ("{ballast}")
@@ -389,6 +424,10 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _secrets = _secrets.into_iter () .map (SharedSecret::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x07d3b030) ?;
 	let _secrets = _secrets.iter () .map (SharedSecret::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
 	
+	let _seeds = _seeds.into_iter () .filter (|_seed| ! (_seed.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _seeds = _seeds.into_iter () .map (SharedSeed::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0xf3bdd6dc) ?;
+	let _seeds = _seeds.iter () .map (SharedSeed::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
+	
 	let _ballasts = _ballasts.into_iter () .filter (|_ballast| ! (_ballast.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
 	let _ballasts = _ballasts.into_iter () .map (SharedBallast::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0xb0bc927a) ?;
 	let _ballasts = _ballasts.iter () .map (SharedBallast::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
@@ -399,7 +438,7 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _encrypted = read_at_most (stdin_locked (), CRYPTO_ENCRYPTED_SIZE_MAX) .else_wrap (0xf71cef7e) ?;
 	
 	let mut _decrypted = Vec::new ();
-	decrypt (&_recipients_private, &_senders_public, &_associated, &_secrets, &_pins, &_ballasts, &_encrypted, &mut _decrypted, _ssh_wrappers) .else_wrap (0x95273e1d) ?;
+	decrypt (&_recipients_private, &_senders_public, &_associated, &_secrets, &_pins, &_seeds, &_ballasts, &_encrypted, &mut _decrypted, _ssh_wrappers) .else_wrap (0x95273e1d) ?;
 	
 	let mut _stream = stdout_locked ();
 	_stream.write (&_decrypted) .else_wrap (0x19352ca2) ?;
@@ -417,6 +456,7 @@ pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _recipients_public : Vec<String> = Vec::new ();
 	let mut _associated : Vec<String> = Vec::new ();
 	let mut _secrets : Vec<String> = Vec::new ();
+	let mut _seeds : Vec<String> = Vec::new ();
 	let mut _ballasts : Vec<String> = Vec::new ();
 	let mut _pins : Vec<String> = Vec::new ();
 	let mut _ssh_wrappers : Vec<String> = Vec::new ();
@@ -448,6 +488,10 @@ pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		_parser.refer (&mut _ssh_wrappers)
 				.metavar ("{key}")
 				.add_option (&["--ssh-wrap"], ArgPush, "(shared SSH agent key handle) (multiple allowed, in any order)");
+		
+		_parser.refer (&mut _seeds)
+				.metavar ("{seed}")
+				.add_option (&["-e", "--seed"], ArgPush, "(shared seed, for additional security) (multiple allowed, in any order)");
 		
 		_parser.refer (&mut _ballasts)
 				.metavar ("{ballast}")
@@ -485,7 +529,11 @@ pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _secrets = _secrets.into_iter () .map (SharedSecret::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x20de63fc) ?;
 	let _secrets = _secrets.iter () .map (SharedSecret::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
 	
-	let _ballasts = _ballasts.into_iter () .filter (|_secret| ! (_secret.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _seeds = _seeds.into_iter () .filter (|_seed| ! (_seed.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
+	let _seeds = _seeds.into_iter () .map (SharedSeed::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x7bc88ccf) ?;
+	let _seeds = _seeds.iter () .map (SharedSeed::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
+	
+	let _ballasts = _ballasts.into_iter () .filter (|_ballast| ! (_ballast.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
 	let _ballasts = _ballasts.into_iter () .map (SharedBallast::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0xbadcd29b) ?;
 	let _ballasts = _ballasts.iter () .map (SharedBallast::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
 	
@@ -495,7 +543,7 @@ pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _password_input = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0x6772b7e4) ?;
 	
 	let mut _password_output = [0u8; 32];
-	password (&_senders_private, &_recipients_public, &_associated, &_secrets, &_pins, &_ballasts, &_password_input, &mut _password_output, _ssh_wrappers) .else_wrap (0xec55f5c3) ?;
+	password (&_senders_private, &_recipients_public, &_associated, &_secrets, &_pins, &_seeds, &_ballasts, &_password_input, &mut _password_output, _ssh_wrappers) .else_wrap (0xec55f5c3) ?;
 	
 	let mut _password_buffer = String::with_capacity (_password_output.len () * 2 + 1);
 	for _password_output_byte in _password_output {
