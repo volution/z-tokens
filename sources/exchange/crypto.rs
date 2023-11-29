@@ -96,6 +96,7 @@ const CRYPTO_BALLAST_ARGON_T_COST : u32 = 2;
 define_cryptographic_material! (InternalDheKey, 32);
 define_cryptographic_material! (InternalPartialKey, 32);
 define_cryptographic_material! (InternalAontKey, 32);
+define_cryptographic_material! (InternalSchemaHash, 32);
 
 define_cryptographic_material! (InternalPacketSalt, 32);
 define_cryptographic_material! (InternalPacketKey, 32);
@@ -145,6 +146,9 @@ define_cryptographic_material! (InternalPasswordOutput, 32);
 
 
 
+
+define_cryptographic_purpose! (CRYPTO_ENCRYPTION_SCHEMA_V1, encryption, schema_v1);
+define_cryptographic_purpose! (CRYPTO_PASSWORD_SCHEMA_V1, password, schema_v1);
 
 define_cryptographic_purpose! (CRYPTO_DHE_KEY_PURPOSE, encryption, dhe_key);
 define_cryptographic_purpose! (CRYPTO_PARTIAL_KEY_PURPOSE, encryption, partial_key);
@@ -217,7 +221,7 @@ pub fn password (
 	// NOTE:  deriving keys...
 	
 	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, _oracle_hashes)
-			= derive_keys_phase_1 (_senders, _recipients, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, true) ?;
+			= derive_keys_phase_1 (CRYPTO_PASSWORD_SCHEMA_V1, _senders, _recipients, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, true) ?;
 	
 	drop! (_aont_key);
 	
@@ -335,7 +339,7 @@ pub fn encrypt (
 	// NOTE:  deriving keys...
 	
 	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, _oracle_hashes)
-			= derive_keys_phase_1 (_senders, _recipients, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, true) ?;
+			= derive_keys_phase_1 (CRYPTO_ENCRYPTION_SCHEMA_V1, _senders, _recipients, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, true) ?;
 	
 	// NOTE:  salting...
 	
@@ -469,7 +473,7 @@ pub fn decrypt (
 	// NOTE:  deriving keys...
 	
 	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, _oracle_hashes)
-			= derive_keys_phase_1 (_recipients, _senders, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, false) ?;
+			= derive_keys_phase_1 (CRYPTO_ENCRYPTION_SCHEMA_V1, _recipients, _senders, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, false) ?;
 	
 	// NOTE:  all-or-nothing and salting...
 	
@@ -639,6 +643,7 @@ fn apply_all_or_nothing_mangling (_key : InternalAontKey, _packet_salt : &mut In
 
 
 fn derive_keys_phase_1 (
+			_schema : &'static str,
 			_private_keys : Vec<&x25519::StaticSecret>,
 			_public_keys : Vec<&x25519::PublicKey>,
 			_associated_inputs : Vec<InternalAssociatedInput>,
@@ -659,6 +664,17 @@ fn derive_keys_phase_1 (
 		)>
 {
 	// --------------------------------------------------------------------------------
+	// NOTE:  derive schema hash...
+	
+	let _schema_hash = blake3_derive_key (
+			InternalSchemaHash::wrap,
+			_schema,
+			&[],
+			&[],
+			None,
+		);
+	
+	// --------------------------------------------------------------------------------
 	// NOTE:  derive associated hashes...
 	
 	let mut _associated_hashes : Vec<_> = _associated_inputs.into_iter () .map (
@@ -666,7 +682,9 @@ fn derive_keys_phase_1 (
 					blake3_derive_key (
 							InternalAssociatedHash::wrap,
 							CRYPTO_ASSOCIATED_HASH_PURPOSE,
-							&[],
+							&[
+								_schema_hash.access (),
+							],
 							&[
 								_associated_input.access_consume (),
 							],
@@ -690,7 +708,9 @@ fn derive_keys_phase_1 (
 					blake3_derive_key (
 							InternalSecretHash::wrap,
 							CRYPTO_SECRET_HASH_PURPOSE,
-							&[],
+							&[
+								_schema_hash.access (),
+							],
 							&[
 								_secret_input.access_consume (),
 							],
@@ -715,7 +735,9 @@ fn derive_keys_phase_1 (
 					blake3_derive_key (
 							InternalPinHash::wrap,
 							CRYPTO_PIN_HASH_PURPOSE,
-							&[],
+							&[
+								_schema_hash.access (),
+							],
 							&[
 								_pin_input.access_consume (),
 							],
@@ -740,7 +762,9 @@ fn derive_keys_phase_1 (
 					blake3_derive_key (
 							InternalSeedHash::wrap,
 							CRYPTO_SEED_HASH_PURPOSE,
-							&[],
+							&[
+								_schema_hash.access (),
+							],
 							&[
 								_seed_input.access_consume (),
 							],
@@ -765,7 +789,9 @@ fn derive_keys_phase_1 (
 					blake3_derive_key (
 							InternalBallastHash::wrap,
 							CRYPTO_BALLAST_HASH_PURPOSE,
-							&[],
+							&[
+								_schema_hash.access (),
+							],
 							&[
 								_ballast_input.access_consume (),
 							],
@@ -862,10 +888,11 @@ fn derive_keys_phase_1 (
 					InternalDheKey::wrap,
 					CRYPTO_DHE_KEY_PURPOSE,
 					[
-						_senders_hash,
-						_recipients_hash,
-						_dhe_hash,
-					] .iter (),
+						_schema_hash.access (),
+						&_senders_hash,
+						&_recipients_hash,
+						&_dhe_hash,
+					] .into_iter (),
 				);
 			
 			_dhe_key
@@ -879,6 +906,7 @@ fn derive_keys_phase_1 (
 			InternalPartialKey::wrap,
 			CRYPTO_PARTIAL_KEY_PURPOSE,
 			&[
+				_schema_hash.access (),
 				_associated_hash.access (),
 				_oracle_hash.access (),
 				_ballast_hash.access (),
