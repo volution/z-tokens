@@ -13,9 +13,8 @@ use crate::runtime::*;
 
 #[ cfg (feature = "z-tokens-patterns-tool") ]
 use ::z_tokens_patterns_tool::{
-		
-		generate::main as main_generate,
-		patterns::main as main_patterns,
+		patterns::main as main_patterns_list,
+		generate::main as main_patterns_generate,
 	};
 
 
@@ -82,13 +81,12 @@ pub fn main_tools () -> MainResult<ExitCode> {
 		#[ cfg (feature = "z-tokens-patterns-tool") ]
 		(&["patterns"], _) | (&["p"], _) => {
 			_arguments.insert (0, String::from ("z-tokens patterns"));
-			main_patterns (_arguments) .else_wrap (0x9093f429)
+			main_patterns_list (_arguments) .else_wrap (0x9093f429)
 		}
-		
 		#[ cfg (feature = "z-tokens-patterns-tool") ]
 		(&["generate"], _) => {
 			_arguments.insert (0, String::from ("z-tokens generate"));
-			main_generate (_arguments) .else_wrap (0x7565abe0)
+			main_patterns_generate (_arguments) .else_wrap (0x7565abe0)
 		}
 		#[ cfg (feature = "z-tokens-patterns-tool") ]
 		(&["g"], _) => {
@@ -97,7 +95,7 @@ pub fn main_tools () -> MainResult<ExitCode> {
 			_arguments.insert (2, String::from ("true"));
 			_arguments.insert (3, String::from ("--token-count"));
 			_arguments.insert (4, String::from ("1"));
-			main_generate (_arguments) .else_wrap (0x6a8d26ca)
+			main_patterns_generate (_arguments) .else_wrap (0x6a8d26ca)
 		}
 		#[ cfg (feature = "z-tokens-patterns-tool") ]
 		(&["g", _pattern], _) => {
@@ -108,7 +106,7 @@ pub fn main_tools () -> MainResult<ExitCode> {
 			_arguments.insert (4, String::from ("1"));
 			_arguments.insert (5, String::from ("--token-pattern"));
 			_arguments.insert (6, String::from (_pattern));
-			main_generate (_arguments) .else_wrap (0x284c1286)
+			main_patterns_generate (_arguments) .else_wrap (0x284c1286)
 		}
 		
 		
@@ -205,6 +203,66 @@ pub fn main_tools () -> MainResult<ExitCode> {
 		(&["secrets"], _) => {
 			_arguments.insert (0, String::from ("z-tokens secrets"));
 			main_secrets_tool (_arguments) .else_wrap (0x7f006d5d)
+		}
+		
+		
+		
+		
+		_ =>
+			main_unknown (_commands, _arguments),
+	}
+}
+
+
+
+
+
+
+
+
+#[ cfg (feature = "z-tokens-patterns-tool") ]
+pub fn main_patterns () -> MainResult<ExitCode> {
+	
+	let (mut _commands, mut _arguments) = main_arguments () ?;
+	
+	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _commands_refs = _commands_refs.as_slice ();
+	let _arguments_refs = _arguments.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _arguments_refs = _arguments_refs.as_slice ();
+	
+	match (_commands_refs, _arguments_refs) {
+		
+		
+		
+		
+		(&["list"], _) | (&["l"], _) => {
+			_arguments.insert (0, String::from ("z-patterns list"));
+			main_patterns_list (_arguments) .else_wrap (0xd1a6fe40)
+		}
+		
+		(&["generate"], _) => {
+			_arguments.insert (0, String::from ("z-patterns generate"));
+			main_patterns_generate (_arguments) .else_wrap (0x87484b00)
+		}
+		
+		(&["g"], _) => {
+			_arguments.insert (0, String::from ("z-patterns generate"));
+			_arguments.insert (1, String::from ("--compact"));
+			_arguments.insert (2, String::from ("true"));
+			_arguments.insert (3, String::from ("--token-count"));
+			_arguments.insert (4, String::from ("1"));
+			main_patterns_generate (_arguments) .else_wrap (0xba4528d0)
+		}
+		
+		(&["g", _pattern], _) => {
+			_arguments.insert (0, String::from ("z-patterns generate"));
+			_arguments.insert (1, String::from ("--compact"));
+			_arguments.insert (2, String::from ("true"));
+			_arguments.insert (3, String::from ("--token-count"));
+			_arguments.insert (4, String::from ("1"));
+			_arguments.insert (5, String::from ("--token-pattern"));
+			_arguments.insert (6, String::from (_pattern));
+			main_patterns_generate (_arguments) .else_wrap (0x7cdbc803)
 		}
 		
 		

@@ -13,6 +13,15 @@ pub use crate::{
 	};
 
 
+#[ cfg (feature = "z-tokens-patterns-tool") ]
+pub use crate::{
+		
+		bins::bin_patterns,
+		mains::main_patterns,
+		premains::premain_patterns,
+	};
+
+
 #[ cfg (feature = "z-tokens-hashes-tool") ]
 pub use crate::{
 		

@@ -14,6 +14,12 @@ pub fn bin_tools () -> Result<ExitCode, ()> {
 }
 
 
+#[ cfg (feature = "z-tokens-patterns-tool") ]
+pub fn bin_patterns () -> Result<ExitCode, ()> {
+	bin_wrapper (premain_patterns)
+}
+
+
 #[ cfg (feature = "z-tokens-hashes-tool") ]
 pub fn bin_hashes () -> Result<ExitCode, ()> {
 	bin_wrapper (premain_hashes)

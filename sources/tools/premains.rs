@@ -14,6 +14,12 @@ pub fn premain_tools () -> MainResult<ExitCode> {
 }
 
 
+#[ cfg (feature = "z-tokens-patterns-tool") ]
+pub fn premain_patterns () -> MainResult<ExitCode> {
+	premain_wrapper (main_patterns)
+}
+
+
 #[ cfg (feature = "z-tokens-hashes-tool") ]
 pub fn premain_hashes () -> MainResult<ExitCode> {
 	premain_wrapper (main_hashes)

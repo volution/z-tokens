@@ -112,7 +112,7 @@ pub fn x25519_dhe <WC, WO> (
 	let _dhe = x25519::StaticSecret::diffie_hellman (_private, _public);
 	
 	if ! _dhe.was_contributory () {
-		fail! (0xd00d13f7);
+		fail! (0xa1ecea77);
 	}
 	
 	let _dhe = _dhe.as_bytes ();

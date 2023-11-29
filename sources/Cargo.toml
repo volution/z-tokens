@@ -35,6 +35,12 @@ path = "./bins/tools.rs"
 
 [[bin]]
 
+name = "z-patterns"
+path = "./bins/patterns.rs"
+
+
+[[bin]]
+
 name = "z-hashes"
 path = "./bins/hashes.rs"
 
