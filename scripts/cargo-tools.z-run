@@ -64,10 +64,36 @@
 	done
 	test "${#}" -eq 0
 	
+	_variant='default'
+	_bin_suffix=''
+	_target_0="${_target}"
+	
+	case "${_target}" in
+		( native ) _arch='native' ;;
+		( x86_64-* ) _arch='x86_64' ;;
+		( aarch64-* ) _arch='aarch64' ;;
+		( arm-* ) _arch='armv6' ;;
+		( * ) false ;;
+	esac
+	
+	case "${_target}" in
+		( native ) _os="${ZRUN_OS}" ;;
+		( *-unknown-linux-gnu | *-unknown-linux-gnueabihf ) _os=linux ;;
+		( *-unknown-linux-musl | *-unknown-linux-musleabihf ) _os=linux ; _variant=musl ;;
+		( *-unknown-linux-musl-static | *-unknown-linux-musleabihf-static ) _os=linux ; _variant=static ; _target_0="${_target%-static}" ;;
+		( *-apple-darwin ) _os=darwin ;;
+		( *-unknown-freebsd ) _os=freebsd ;;
+		( *-unknown-openbsd ) _os=openbsd ;;
+		( *-linux-android ) _os=android ;;
+		( *-pc-windows-gnu ) _os=windows ; _bin_suffix='.exe' ;;
+		( * ) false ;;
+	esac
+	
 	case "${_bins}" in
 		( all )
 			_bins=(
 					z-tokens
+					z-patterns
 					z-hashes
 					z-encodings
 					z-exchange
@@ -108,34 +134,12 @@
 	test -d "${_builds}"
 	
 	if test "${_target}" != native ; then
-		_builds="${_builds}/${_target}"
+		_builds="${_builds}/${_target_0}"
 		test -d "${_builds}"
 	fi
 	
 	_builds="${_builds}/${_type}"
 	test -d "${_builds}"
-	
-	case "${_target}" in
-		( native ) _arch='native' ;;
-		( x86_64-* ) _arch='x86_64' ;;
-		( aarch64-* ) _arch='aarch64' ;;
-		( arm-* ) _arch='armv6' ;;
-		( * ) false ;;
-	esac
-	
-	_variant='default'
-	_bin_suffix=''
-	case "${_target}" in
-		( native ) _os="${ZRUN_OS}" ;;
-		( *-unknown-linux-gnu | *-unknown-linux-gnueabihf ) _os=linux ;;
-		( *-unknown-linux-musl | *-unknown-linux-musleabihf ) _os=linux ; _variant=static ;;
-		( *-apple-darwin ) _os=darwin ;;
-		( *-unknown-freebsd ) _os=freebsd ;;
-		( *-unknown-openbsd ) _os=openbsd ;;
-		( *-linux-android ) _os=android ;;
-		( *-pc-windows-gnu ) _os=windows ; _bin_suffix='.exe' ;;
-		( * ) false ;;
-	esac
 	
 	for _bin in "${_bins[@]}" ; do
 		

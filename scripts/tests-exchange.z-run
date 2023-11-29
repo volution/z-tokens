@@ -1585,14 +1585,15 @@
 << tests / quick / exchange / ssh / agent
 	test "${#}" -eq 0
 	
+	export -- SSH_DTACH_SOCK="${__OUTPUTS}/tests/ssh-agent-dtach.sock"
 	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 	
-	set -x
-	exec -- ssh-agent \
+	exec -- \
+		dtach -A "${SSH_DTACH_SOCK}" \
+	ssh-agent \
 			-s \
 			-d \
 			-a "${SSH_AUTH_SOCK}" \
-		> /dev/null \
 	#
 !!
 

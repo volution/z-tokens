@@ -12,6 +12,9 @@
 	linux--x86_64
 	linux--aarch64
 	linux--armv6
+	linux--x86_64--musl
+	linux--aarch64--musl
+	linux--armv6--musl
 	linux--x86_64--static
 	linux--aarch64--static
 	linux--armv6--static
@@ -25,6 +28,7 @@
 
 --<<.. deploy / list / main
 	z-tokens
+	z-patterns
 	z-hashes
 	z-exchange
 !!
@@ -492,9 +496,12 @@
 				( linux--x86_64 ) _target=x86_64-unknown-linux-gnu ;;
 				( linux--aarch64 ) _target=aarch64-unknown-linux-gnu ;;
 				( linux--armv6 ) _target=arm-unknown-linux-gnueabihf ;;
-				( linux--x86_64--static ) _target=x86_64-unknown-linux-musl ;;
-				( linux--aarch64--static ) _target=aarch64-unknown-linux-musl ;;
-				( linux--armv6--static ) _target=arm-unknown-linux-musleabihf ;;
+				( linux--x86_64--musl ) _target=x86_64-unknown-linux-musl ;;
+				( linux--aarch64--musl ) _target=aarch64-unknown-linux-musl ;;
+				( linux--armv6--musl ) _target=arm-unknown-linux-musleabihf ;;
+				( linux--x86_64--static ) _target=x86_64-unknown-linux-musl-static ;;
+				( linux--aarch64--static ) _target=aarch64-unknown-linux-musl-static ;;
+				( linux--armv6--static ) _target=arm-unknown-linux-musleabihf-static ;;
 				( darwin--x86_64 ) _target=x86_64-apple-darwin ;;
 				( darwin--aarch64 ) _target=aarch64-apple-darwin ;;
 				( freebsd--x86_64 ) _target=x86_64-unknown-freebsd ;;

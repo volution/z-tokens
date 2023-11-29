@@ -166,6 +166,10 @@
 					aarch64-unknown-linux-musl
 					arm-unknown-linux-musleabihf
 					
+					x86_64-unknown-linux-musl-static
+					aarch64-unknown-linux-musl-static
+					arm-unknown-linux-musleabihf-static
+					
 					x86_64-linux-android
 					aarch64-linux-android
 					

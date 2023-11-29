@@ -40,6 +40,9 @@
 :: cargo / debug / build & collect & run / z-tokens :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' z-tokens "${@}"
 :: cargo / release / build & collect & run / z-tokens :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' z-tokens "${@}"
 
+:: cargo / debug / build & collect & run / z-patterns :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' z-patterns "${@}"
+:: cargo / release / build & collect & run / z-patterns :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' z-patterns "${@}"
+
 :: cargo / debug / build & collect & run / z-hashes :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' z-hashes "${@}"
 :: cargo / release / build & collect & run / z-hashes :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' z-hashes "${@}"
 
