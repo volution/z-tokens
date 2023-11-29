@@ -162,6 +162,10 @@
 					aarch64-unknown-linux-gnu
 					arm-unknown-linux-gnueabihf
 					
+					x86_64-unknown-linux-gnu-static
+					aarch64-unknown-linux-gnu-static
+					arm-unknown-linux-gnueabihf-static
+					
 					x86_64-unknown-linux-musl
 					aarch64-unknown-linux-musl
 					arm-unknown-linux-musleabihf

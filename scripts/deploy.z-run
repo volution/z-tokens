@@ -493,15 +493,18 @@
 			if test "${_variant_0}" != all -a "${_variant_0}" != "${_variant}" ; then continue ; fi
 			
 			case "${_variant}" in
-				( linux--x86_64 ) _target=x86_64-unknown-linux-gnu ;;
-				( linux--aarch64 ) _target=aarch64-unknown-linux-gnu ;;
-				( linux--armv6 ) _target=arm-unknown-linux-gnueabihf ;;
+				( linux--x86_64--glibc ) _target=x86_64-unknown-linux-gnu ;;
+				( linux--aarch64--glibc ) _target=aarch64-unknown-linux-gnu ;;
+				( linux--armv6--glibc ) _target=arm-unknown-linux-gnueabihf ;;
 				( linux--x86_64--musl ) _target=x86_64-unknown-linux-musl ;;
 				( linux--aarch64--musl ) _target=aarch64-unknown-linux-musl ;;
 				( linux--armv6--musl ) _target=arm-unknown-linux-musleabihf ;;
-				( linux--x86_64--static ) _target=x86_64-unknown-linux-musl-static ;;
-				( linux--aarch64--static ) _target=aarch64-unknown-linux-musl-static ;;
-				( linux--armv6--static ) _target=arm-unknown-linux-musleabihf-static ;;
+				( linux--x86_64--glibc--static ) _target=x86_64-unknown-linux-gnu-static ;;
+				( linux--aarch64--glibc--static ) _target=aarch64-unknown-linux-gnu-static ;;
+				( linux--armv6--glibc--static ) _target=arm-unknown-linux-gnueabihf-static ;;
+				( linux--x86_64--musl--static ) _target=x86_64-unknown-linux-musl-static ;;
+				( linux--aarch64--musl--static ) _target=aarch64-unknown-linux-musl-static ;;
+				( linux--armv6--musl--static ) _target=arm-unknown-linux-musleabihf-static ;;
 				( darwin--x86_64 ) _target=x86_64-apple-darwin ;;
 				( darwin--aarch64 ) _target=aarch64-apple-darwin ;;
 				( freebsd--x86_64 ) _target=x86_64-unknown-freebsd ;;

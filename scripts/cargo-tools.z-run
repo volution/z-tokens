@@ -78,9 +78,10 @@
 	
 	case "${_target}" in
 		( native ) _os="${ZRUN_OS}" ;;
-		( *-unknown-linux-gnu | *-unknown-linux-gnueabihf ) _os=linux ;;
+		( *-unknown-linux-gnu | *-unknown-linux-gnueabihf ) _os=linux ; _variant=glibc ;;
 		( *-unknown-linux-musl | *-unknown-linux-musleabihf ) _os=linux ; _variant=musl ;;
-		( *-unknown-linux-musl-static | *-unknown-linux-musleabihf-static ) _os=linux ; _variant=static ; _target_0="${_target%-static}" ;;
+		( *-unknown-linux-gnu-static | *-unknown-linux-gnueabihf-static ) _os=linux ; _variant=glibc--static ; _target_0="${_target%-static}" ;;
+		( *-unknown-linux-musl-static | *-unknown-linux-musleabihf-static ) _os=linux ; _variant=musl--static ; _target_0="${_target%-static}" ;;
 		( *-apple-darwin ) _os=darwin ;;
 		( *-unknown-freebsd ) _os=freebsd ;;
 		( *-unknown-openbsd ) _os=openbsd ;;
