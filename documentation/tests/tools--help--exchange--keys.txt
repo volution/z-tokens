@@ -12,6 +12,8 @@ Optional arguments:
   --recipient {enabled} 
   -x                    (generate shared secret)
   --secret {enabled}    
+  -e                    (generate shared seed)
+  --seed {enabled}      
   -b                    (generate shared ballast)
   --ballast {enabled}   
   -p                    (generate shared PIN)

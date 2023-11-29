@@ -1,13 +1,13 @@
 >>  z-tokens exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8
 
 
-#1,  2Fy9NoCgoyDps 4FcACYZV5oL5X 2HdPkGQz33EUD 3UPuDUqDHZQnh 2vV22V2NRuX9H
-#2,  2jcXup71ZV3NE 2jc97vHoubcSW 3XQhgBA4W7C9X 46U2yPL8AUBz6 3fT6bhixLXU1A
-#3,  ypJX5ooKtAdA  qNc3mubC36Ds  2fbfVMhngbAym 3K1cbrGbo6bRG 4CPPQVbjGV24j
-#4,  38LnCUmV9ZEEK JEygzVWCuKU2  2iHR97CviVvEP Q7ruodeN8LYq  TGMxus3XZSkV
-#5,  2eEfiqotbc9Ks yucfJV4Q4qry  2weWpM2AiUCHz 3haMNmp3LAPws 23dzsCrmaJ1gf
-#6,  2iK6ehqxoMfdJ 48qz2R3Sri3bg 38avytcpSTYVj 3iLpF2V684oEg 3tyf3AoWTLAwe
-#7,  2eKVjAdUAQErX 27TGzcTDzkq1Y 2cYgaHQvczJrV YKQDTheVsEp4  HSSu5ingTW6m
-#8,  1iVYXqSwLUs6  2bD4S8QnBG845 2SZzxwzjwsMBQ 484n61viLbXao 42ozmmW2474uq
-#9.  kii37ueQi9jb
+#1,  2Fy9Noeh8tnHB 39WzZqz7BovWV PGrghESfyifh  QHV78McBYjXR  N9rgpkoJL1do
+#2,  2kNZovsJDSbCg vLp8oay1nVkd  3RaBFLpF59fpd 22gGubeGVwncr 479Nvuh1rfmnB
+#3,  3AgJd2da7NAdG 4BWDoy5JxxRcv 3Z8u4SwmPsVWh 3A7BJGYXqqtdx Ykv895LPKrqX
+#4,  3jmRqU45hJBim TjDNTQ6f9iKw  SwKWawWXMBYF  2A8uxgaoBhVhe 26cKs5BET75W3
+#5,  32QSW3thudtL4 2ZGJpECpDYjzL VTXVsb4aLKCE  xYnQXn8KnahQ  DPkocS1JKSFx
+#6,  3jkZFnFqL2u6D 4A9SRQMa2PQ8i 6cFeDLnJcToX  mxgR7vbtx7VJ  2yiWAteXFAEUb
+#7,  2nFELN4UAhaCd SAZWXDyve9pX  2MM58JBMSpdhh 3aoP5RAoQKKJh jPop4qnGPG2S
+#8,  48kg6zG3mR5k1 2ENxnpVPvb8Xa 3pVpqZhWKyJZy 33xTeC6WYidvq 3aCWhtz8XzcQo
+#9.  2r17Sx7DnVrzC
 

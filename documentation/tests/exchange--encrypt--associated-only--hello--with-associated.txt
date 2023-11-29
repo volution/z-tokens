@@ -1,0 +1,13 @@
+>>  z-tokens exchange encrypt --siv --associated context --associated testing
+
+
+#1,  2Fy9NoUTUCyDC SVZpAoZauWkJ  2eWLXDyEvAmEd 24VjiRTBHxoo3 7eyzvLsTHuTh
+#2,  2PfhxhYveUfg9 31EQnWTmzPrHg 3XHEKPyynxKiu 33TToraR2aGe2 3umQpBhvNfTwZ
+#3,  3FFriqorYFbWm 387Dt9Dskn5LF 2BAasqSxwkkZ8 3jVMr3gqWFr1g 2QBhi8vmAjA5d
+#4,  2MW1rA6r46LJt 6QWjETaXgUn4  ugm83t8k7Xs2  2yG8QQnf4WS7r 46La7WT9x135S
+#5,  3bLCrpJTXLyFb DrSnLTs3nFGs  GQKoA88TbCtY  2SPS24d9hMMDn 2a74se22XPSkb
+#6,  3xNJduWkjmAZ8 48UkdN7GTRJuF Gc3RijHvx3hM  b44Gtvt5tHfB  33PSFK8oamTgM
+#7,  2ov69v24A78SW nY6Q9UGVioor  2HR1YJMc2UoYV 2Q2zVkv7aepMe 3Dc72iNGKVBNf
+#8,  toxyVT76gbfd  pdC15NuA5RnE  JdVpEGoebMnU  56F1LagPLLic  3UjvDE2YQ6cKk
+#9.  2tATx7CV6PPXL
+

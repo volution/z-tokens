@@ -1,13 +1,13 @@
->>  z-tokens exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --associated hello
+>>  z-tokens exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --associated testing
 
 
-#1,  2Fy9NoJNqRD2P d3LrafPnqSo2  3SPbSbnVttAfi UbDtbj1y9Zud  YDKYkxcDL7A2
-#2,  4A2iUrXcCYhkA 3D8h7HyRShSkp 2XLFz4HxjXwJZ 45BSLw6fY3gpZ 2Jgw15AAvXHwq
-#3,  231XRQqdrV5su 2DFTvkmRxppfH WCvvpeAh8UcW  2ANVxCs9mBELp 4FAeNZh8Cc9ca
-#4,  ZVZUD4w2Gubx  25w8kEXcERX7h HnovG2FoDLEy  28MzWWj7j1rCy 2KPqrXdoq3GS8
-#5,  2PC6Jrs6whfs1 2xy6hrv2KZCce 3iAGhBvhbvKZ5 szpGNTvY2Dkj  3uzPUVceS7zYy
-#6,  1eU9YwYQtuNq  29KvDeNnZgGc9 PVuLuukEVD2x  9s1j2bnVzK8q  2GdvmrBVgSkoc
-#7,  3eLkn7TnUgFnG f6KuDMSkEtEY  2FdD6dR9agYkZ qJ2rSKCqUPyc  42xmg55pFFSDs
-#8,  22VBtoHrUuubQ 2UM7d3hvTj1RT 28LQVYq4XbzbH 23PCBUkqrMLJw 27D1TXN2piyCQ
-#9.  2Uj8rP4ZFF36x
+#1,  2Fy9NoaLag1qU 3U4qzpmgNgtym tiwXTHVDwdeV  r651FVoYf3xw  3CAq8ttnxRzWa
+#2,  21pG78j551hp8 21eURfiqnBV2k o8KBDaSU2CsE  BXG8mrJtLz5A  2XyY6x3HaWKtW
+#3,  3YEvoAMgu2cxg 1HNTXejN5WB6  3DEhLXQAJmcfJ 3cXPTu5nHr9Ft 2QBvtoQ7gr94o
+#4,  hw485tRkMNRd  CcAd37d9UVGM  223VqQ7Bioitn 3pSvazCN52paP 2r237iiNQiQim
+#5,  3xFGk5mmgq8dy 39Go5CxfrGRZL 3Z1fxDMV4j2KD 3PSrgutRLuGMA 2ooGen81eMqff
+#6,  gL772gAtFA3i  3bgshwLBfS7nR 2tkV6rigqzcVv sX2UWtHABZyK  2SKEtC6pGyKo5
+#7,  26se1SeENJHWT 32zrcp9FMYmZ2 gHUghUYnNt5g  3V4UKx5F7FRUi 3hUUmGc1c4xL
+#8,  2ZsMWmzUshjSS 2Vk7Fn8BByGyo NhpskMMp1rpa  Pm9zyj38fkpc  8Yhd1S1eBDuS
+#9.  3xmiM5S5ZFeev
 

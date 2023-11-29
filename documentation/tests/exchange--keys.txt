@@ -1,21 +1,24 @@
 >>  z-tokens exchange keys
 
 ## sender private key
-ztxsk13psj22z0wxg6s5mptrvw7m23mas9vajfwddzypl4qjfgg3d3ap2sxptgdw
+ztxsk1f6chtvul2xmhp30w3lqlxyvpad4td7lan8h5qzxt8jx6xy9yr0nsjlsd7f
 ## sender public key
-ztxsp186s36jn2ug4qtt79l0ga9hkczelckaeq5wk2hmldmnzdy2892chs2rhthw
+ztxsp1esvy9274dwzn9946eywk48e4509ysxp7wmag2z8qkncta2tl8svss09kcm
 
 ## recipient private key
-ztxrk1dq7sea8apmn9c97xqltrdjhhs7xce94uayye50xp0nyc5fzjr43s6ynstl
+ztxrk1q5t2fdfsrgswpkhvgtfwatk595wq5d43xq6ggtauma8eeu95l9jqyp2umq
 ## recipient public key
-ztxrp1d6dsskkmgmrccjyl6e5ywgv389vyqdznaclur4e3jds8tllxaq5s53ahtd
+ztxrp12lc9eu0wg6edws8nyyejls4nfr5228rs0fqhql2ce6l7smj23gas9srv5l
 
 ## shared secret (optional)
-ztxcs1xrg7rfd5ucj9j6g7eg3dfehwvvvreuyxarmczrrpswcc7ajh7xks6xa3sj
+ztxcs1llrxn0lqsjt5g8gr8whcm9uy0je84udspffgfr865vrmxrpsds7qmgampv
+
+## shared seed (optional)
+ztxsd1urcr8xyys9vvmvh3e3undude8e0mf9l4g9lhp8xp2evc5jfteerqagdaks
 
 ## shared ballast (optional)
-ztxbl1w822l56enl92c5kcpelp6k7jzy59vq9pdx33ragk5sa3ud9s569qtfgeq6
+ztxbl14xamwnl8tmcszewe6e8fmrt00ncnzd86xu0ynhfuzvu2va09sj7qafv379
 
 ## shared pin (optional)
-3701093455
+1949424878
 
