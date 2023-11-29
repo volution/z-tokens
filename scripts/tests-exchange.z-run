@@ -416,12 +416,13 @@
 	
 	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 	
-	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
+	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:-}"
 	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
 	
 	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	_seed="${__ZTOKENS_EXCHANGE_SEED:-}"
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
@@ -435,9 +436,68 @@
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
+				--seed "${_seed}" \
 				--ballast "${_ballast}" \
 				--empty-is-missing true \
 		<<< $'hello world!\n' \
+	#
+!!
+
+
+
+
+<< tests / quick / exchange / password / benchmark
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
+	
+	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:-}"
+	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
+	
+	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
+	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
+	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	_seed="${__ZTOKENS_EXCHANGE_SEED:-}"
+	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
+	
+	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
+	
+	_hyperfine_arguments=(
+			--warmup 2
+			--min-runs 10
+			--max-runs 100
+			--shell none
+		##	--show-output
+		)
+	_hyperfine_commands=()
+	
+	_command=(
+			"${__OUTPUTS}/binaries/z-exchange--release--linux--native"
+				password \
+					--sender "${_sender_private}" \
+					--recipient "${_recipient_public}" \
+					--associated "${_associated}" \
+					--secret "${_secret}" \
+					--pin "${_pin}" \
+					--ssh-wrap "${_ssh_wrap}" \
+					--seed "${_seed}" \
+					--ballast "${_ballast}" \
+					--empty-is-missing true \
+		)
+	_hyperfine_arguments+=(
+			--command-name "password sender:${_sender_private:+Y} recipient:${_recipient_public:+Y} associated:${_associated:+Y} secret:${_secret:+Y} pin:${_pin:+Y} ssh-wrap:${_ssh_wrap:+Y} seed:${_seed:+Y} ballast:${_ballast:+Y}"
+		)
+	_hyperfine_commands+=(
+			"${_command[*]@Q}"
+		)
+	
+	exec -- hyperfine \
+			"${_hyperfine_arguments[@]}" \
+			-- \
+			"${_hyperfine_commands[@]}" \
+		< /dev/null \
 	#
 !!
 
@@ -453,12 +513,13 @@
 	
 	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 	
-	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
+	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:-}"
 	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
 	
 	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	_seed="${__ZTOKENS_EXCHANGE_SEED:-}"
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
@@ -472,6 +533,7 @@
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
+				--seed "${_seed}" \
 				--ballast "${_ballast}" \
 				--siv \
 				--empty-is-missing true \
@@ -489,12 +551,13 @@
 	
 	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 	
-	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
+	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:-}"
 	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
 	
 	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	_seed="${__ZTOKENS_EXCHANGE_SEED:-}"
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
@@ -508,6 +571,7 @@
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
+				--seed "${_seed}" \
 				--ballast "${_ballast}" \
 				--siv \
 				--empty-is-missing true \
@@ -525,12 +589,13 @@
 	
 	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 	
-	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
+	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:-}"
 	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
 	
 	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	_seed="${__ZTOKENS_EXCHANGE_SEED:-}"
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
@@ -544,6 +609,7 @@
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
+				--seed "${_seed}" \
 				--ballast "${_ballast}" \
 				--siv \
 				--empty-is-missing true \
@@ -561,12 +627,13 @@
 	
 	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 	
-	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
+	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:-}"
 	_recipient_public="${__ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC:-}"
 	
 	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	_seed="${__ZTOKENS_EXCHANGE_SEED:-}"
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
@@ -581,6 +648,7 @@
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
+				--seed "${_seed}" \
 				--ballast "${_ballast}" \
 				--siv \
 				--empty-is-missing true \
@@ -599,7 +667,7 @@
 	
 	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 	
-	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
+	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:-}"
 	_sender_public="${__ZTOKENS_EXCHANGE_SENDER_PUBLIC:-}"
 	
 	_recipient_private="${__ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE:-}"
@@ -608,6 +676,7 @@
 	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	_seed="${__ZTOKENS_EXCHANGE_SEED:-}"
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
@@ -621,6 +690,7 @@
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
+				--seed "${_seed}" \
 				--ballast "${_ballast}" \
 				--empty-is-missing true \
 		<<< $'hello world!\n' \
@@ -632,6 +702,7 @@
 				--secret "${_secret}" \
 				--pin "${_pin}" \
 				--ssh-wrap "${_ssh_wrap}" \
+				--seed "${_seed}" \
 				--ballast "${_ballast}" \
 				--empty-is-missing true \
 	#
@@ -645,7 +716,7 @@
 	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
-	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
+	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:-}"
 	_sender_public="${__ZTOKENS_EXCHANGE_SENDER_PUBLIC:-}"
 	
 	_recipient_private="${__ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE:-}"
@@ -654,6 +725,7 @@
 	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	_seed="${__ZTOKENS_EXCHANGE_SEED:-}"
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
@@ -683,6 +755,7 @@
 					--secret "${_secret}" \
 					--pin "${_pin}" \
 					--ssh-wrap "${_ssh_wrap}" \
+					--seed "${_seed}" \
 					--ballast "${_ballast}" \
 					--empty-is-missing true \
 			< "${_file}" \
@@ -694,6 +767,7 @@
 					--secret "${_secret}" \
 					--pin "${_pin}" \
 					--ssh-wrap "${_ssh_wrap}" \
+					--seed "${_seed}" \
 					--ballast "${_ballast}" \
 					--empty-is-missing true \
 		| md5sum -b -- /dev/fd/5 5<&0 \
@@ -711,7 +785,7 @@
 	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
-	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:?}"
+	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:-}"
 	_sender_public="${__ZTOKENS_EXCHANGE_SENDER_PUBLIC:-}"
 	
 	_recipient_private="${__ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE:-}"
@@ -720,6 +794,7 @@
 	_associated="${__ZTOKENS_EXCHANGE_ASSOCIATED:-}"
 	_secret="${__ZTOKENS_EXCHANGE_SECRET:-}"
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
+	_seed="${__ZTOKENS_EXCHANGE_SEED:-}"
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
@@ -751,6 +826,7 @@
 					--secret "${_secret}" \
 					--pin "${_pin}" \
 					--ssh-wrap "${_ssh_wrap}" \
+					--seed "${_seed}" \
 					--ballast "${_ballast}" \
 					--empty-is-missing true \
 		| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
@@ -761,6 +837,7 @@
 					--secret "${_secret}" \
 					--pin "${_pin}" \
 					--ssh-wrap "${_ssh_wrap}" \
+					--seed "${_seed}" \
 					--ballast "${_ballast}" \
 					--empty-is-missing true \
 			> /dev/null \
@@ -784,6 +861,7 @@
 	for _case_secret in without-secret empty-secret with-secret-1 with-secret-1d with-secret-2 with-secret-2d ; do
 	for _case_ssh_wrap in without-ssh-wrap empty-ssh-wrap with-ssh-wrap-1 with-ssh-wrap-1d with-ssh-wrap-2 with-ssh-wrap-2d ; do
 	for _case_pin in without-pin empty-pin with-pin-1 with-pin-1d with-pin-2 with-pin-2d ; do
+	for _case_seed in without-seed empty-seed with-seed-1 with-seed-1d with-seed-2 with-seed-2d ; do
 	for _case_ballast in without-ballast empty-ballast with-ballast-1 with-ballast-1d with-ballast-2 with-ballast-2d ; do
 	for _case_associated in without-associated empty-associated with-associated-1 with-associated-2 ; do
 	for _case_send in without-x25519 empty-x25519 send-x25519-11 send-x25519-21 send-x25519-21d send-x25519-12 send-x25519-12d self-x25519-1 self-x25519-2 self-x25519-2d ; do
@@ -795,6 +873,7 @@
 				"${_case_secret}" \
 				"${_case_ssh_wrap}" \
 				"${_case_pin}" \
+				"${_case_seed}" \
 				"${_case_ballast}" \
 				"${_case_associated}" \
 				"${_case_send}" \
@@ -814,7 +893,7 @@
 	
 	"${ZRUN}" ':: tests / quick / exchange / encrypt & decrypt & password / cases / options' \
 	| sort -R \
-	| while read -r -- _case_tool _case_deterministic _case_secret _case_ssh_wrap _case_pin _case_ballast _case_associated _case_send ; do
+	| while read -r -- _case_tool _case_deterministic _case_secret _case_ssh_wrap _case_pin _case_seed _case_ballast _case_associated _case_send ; do
 		
 		_pin_1=1234
 		_pin_2=5678
@@ -824,6 +903,9 @@
 		
 		_secret_1='ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm'
 		_secret_2='ztxcs1zw32errd0vu44rvt2h6vnmfecjtp20aacyzpxcyg9dq3szerw0sswvu32a'
+		
+		_seed_1='ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx'
+		_seed_2='ztxsd1ggthngksghaqtnqegmdkn5jv53fw5ptv8wswa08ws7r2w9vs03js74k5ga'
 		
 		_ballast_1='ztxbl1ah428t6ux086pfdgv5d5z8fle06rll5azaglg8gcnvd65mup65qqckq348'
 		_ballast_2='ztxbl1y00yn7a4jjqeyxke8u6hfqks7fhjadtamny4mmp6nc43qa9ra3mqu4swle'
@@ -1105,6 +1187,61 @@
 			;;
 		esac
 		
+		case "${_case_seed}" in
+			( with-seed-1 )
+				_common_arguments+=(
+						--seed "${_seed_1}"
+					)
+			;;
+			( with-seed-1d )
+				_encrypt_arguments+=(
+						--seed "${_seed_1}"
+					)
+				_decrypt_arguments+=(
+						--seed "${_seed_1}"
+						--seed "${_seed_1}"
+					)
+			;;
+			( with-seed-2 )
+				_encrypt_arguments+=(
+						--seed "${_seed_1}"
+						--seed "${_seed_2}"
+					)
+				_decrypt_arguments+=(
+						--seed "${_seed_2}"
+						--seed "${_seed_1}"
+					)
+			;;
+			( with-seed-2d )
+				_encrypt_arguments+=(
+						--seed "${_seed_1}"
+						--seed "${_seed_1}"
+						--seed "${_seed_2}"
+					)
+				_decrypt_arguments+=(
+						--seed "${_seed_2}"
+						--seed "${_seed_1}"
+						--seed "${_seed_1}"
+					)
+			;;
+			( without-seed )
+			;;
+			( empty-seed )
+				_encrypt_arguments+=(
+						--seed ''
+					)
+				_decrypt_arguments+=(
+					)
+				_empty_is_missing=true
+			;;
+			( __* )
+				continue
+			;;
+			( * )
+				false -- '[0x7de1942b]' "${_case_seed}"
+			;;
+		esac
+		
 		case "${_case_ballast}" in
 			( with-ballast-1 )
 				_common_arguments+=(
@@ -1236,7 +1373,7 @@
 			;;
 		esac
 		
-		_identifier="${_case_tool}--${_case_send}--${_case_pin}--${_case_secret}--${_case_ballast}--${_case_ssh_wrap}--${_case_associated}--${_case_deterministic}"
+		_identifier="${_case_tool}--${_case_send}--${_case_pin}--${_case_secret}--${_case_seed}--${_case_ballast}--${_case_ssh_wrap}--${_case_associated}--${_case_deterministic}"
 		_report="${_reports}/${_identifier}.txt"
 		_output="${_outputs}/tests/${_identifier}.${$}.tmp"
 		
@@ -1245,7 +1382,7 @@
 		fi
 		
 		printf -- '\n' >&2
-		printf -- '[ii]  running iteration `%s %s %s %s %s %s %s %s`...\n' "${_case_tool}" "${_case_send}" "${_case_pin}" "${_case_secret}" "${_case_ballast}" "${_case_ssh_wrap}" "${_case_associated}" "${_case_deterministic}" >&2
+		printf -- '[ii]  running iteration `%s %s %s %s %s %s %s %s %s`...\n' "${_case_tool}" "${_case_send}" "${_case_pin}" "${_case_secret}" "${_case_seed}" "${_case_ballast}" "${_case_ssh_wrap}" "${_case_associated}" "${_case_deterministic}" >&2
 		
 		if test "${#_encrypt_arguments[@]}" -eq 0 ; then
 			printf -- '[ii]    -> empty arguments;  skipping!\n' >&2
@@ -1466,15 +1603,16 @@
 
 
 
-&&== env-fallback __ZTOKENS_EXCHANGE_SENDER_PRIVATE ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920
-&&== env-fallback __ZTOKENS_EXCHANGE_SENDER_PUBLIC ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88
+##&&== env-fallback __ZTOKENS_EXCHANGE_SENDER_PRIVATE ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920
+##&&== env-fallback __ZTOKENS_EXCHANGE_SENDER_PUBLIC ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88
 
-&&== env-fallback __ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk
-&&== env-fallback __ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah
+##&&== env-fallback __ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk
+##&&== env-fallback __ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah
 
 
-:: tests / quick / exchange / set / keys / both :: export -- __ZTOKENS_EXCHANGE_SENDER_PRIVATE=ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 __ZTOKENS_EXCHANGE_SENDER_PUBLIC=ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88 __ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE=ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk __ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC=ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah
-:: tests / quick / exchange / set / keys / self :: export -- __ZTOKENS_EXCHANGE_SENDER_PRIVATE=ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m __ZTOKENS_EXCHANGE_SENDER_PUBLIC= __ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE=ztxrk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqfgdyps __ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC=
+:: tests / quick / exchange / set / sender-recipient / empty :: export -- __ZTOKENS_EXCHANGE_SENDER_PRIVATE='' __ZTOKENS_EXCHANGE_SENDER_PUBLIC='' __ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE='' __ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC=''
+:: tests / quick / exchange / set / sender-recipient / both :: export -- __ZTOKENS_EXCHANGE_SENDER_PRIVATE=ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 __ZTOKENS_EXCHANGE_SENDER_PUBLIC=ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88 __ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE=ztxrk1rp0qkrrrht77nh42pkzcf70uy3yrs5uxpq6uvql55h3jsgsxm9fqn6lxmk __ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC=ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah
+:: tests / quick / exchange / set / sender-recipient / self :: export -- __ZTOKENS_EXCHANGE_SENDER_PRIVATE=ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m __ZTOKENS_EXCHANGE_SENDER_PUBLIC= __ZTOKENS_EXCHANGE_RECIPIENT_PRIVATE=ztxrk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqfgdyps __ZTOKENS_EXCHANGE_RECIPIENT_PUBLIC=
 
 :: tests / quick / exchange / set / associated / empty :: export -- __ZTOKENS_EXCHANGE_ASSOCIATED=''
 :: tests / quick / exchange / set / associated / 1234 :: export -- __ZTOKENS_EXCHANGE_ASSOCIATED='1234'
@@ -1483,6 +1621,10 @@
 :: tests / quick / exchange / set / secret / empty :: export -- __ZTOKENS_EXCHANGE_SECRET=''
 :: tests / quick / exchange / set / secret / testing-1 :: export -- __ZTOKENS_EXCHANGE_SECRET='ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm'
 :: tests / quick / exchange / set / secret / testing-2 :: export -- __ZTOKENS_EXCHANGE_SECRET='ztxcs1zw32errd0vu44rvt2h6vnmfecjtp20aacyzpxcyg9dq3szerw0sswvu32a'
+
+:: tests / quick / exchange / set / seed / empty :: export -- __ZTOKENS_EXCHANGE_SEED=''
+:: tests / quick / exchange / set / seed / testing-1 :: export -- __ZTOKENS_EXCHANGE_SEED='ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx'
+:: tests / quick / exchange / set / seed / testing-2 :: export -- __ZTOKENS_EXCHANGE_SEED='ztxsd1ggthngksghaqtnqegmdkn5jv53fw5ptv8wswa08ws7r2w9vs03js74k5ga'
 
 :: tests / quick / exchange / set / ballast / empty :: export -- __ZTOKENS_EXCHANGE_BALLAST=''
 :: tests / quick / exchange / set / ballast / testing-1 :: export -- __ZTOKENS_EXCHANGE_BALLAST='ztxbl1ah428t6ux086pfdgv5d5z8fle06rll5azaglg8gcnvd65mup65qqckq348'
