@@ -3,6 +3,40 @@
 
 
 
+:: cargo / cross / targets :: exec "${ZRUN}" ':: cargo / cross / exec / targets' all-targets
+
+:: cargo / debug / check / cross / one :: exec "${ZRUN}" ':: cargo / cross / exec / one' ':: cargo / debug / check' "${@}"
+:: cargo / release / check / cross / one :: exec "${ZRUN}" ':: cargo / cross / exec / one' ':: cargo / release / check' "${@}"
+:: cargo / install / check / cross / one :: exec "${ZRUN}" ':: cargo / cross / exec / one' ':: cargo / install / check' "${@}"
+
+:: cargo / debug / build / cross / one :: exec "${ZRUN}" ':: cargo / cross / exec / one' ':: cargo / debug / build' "${@}"
+:: cargo / release / build / cross / one :: exec "${ZRUN}" ':: cargo / cross / exec / one' ':: cargo / release / build' "${@}"
+:: cargo / install / build / cross / one :: exec "${ZRUN}" ':: cargo / cross / exec / one' ':: cargo / install / build' "${@}"
+
+:: cargo / debug / collect / cross / one :: exec "${ZRUN}" ':: cargo / cross / exec / one' ':: cargo / debug / collect' "${@}"
+:: cargo / release / collect / cross / one :: exec "${ZRUN}" ':: cargo / cross / exec / one' ':: cargo / release / collect' "${@}"
+
+:: cargo / debug / build & collect / cross / one :: exec "${ZRUN}" ':: cargo / cross / exec / one' ':: cargo / debug / build & collect' "${@}"
+:: cargo / release / build & collect / cross / one :: exec "${ZRUN}" ':: cargo / cross / exec / one' ':: cargo / release / build & collect' "${@}"
+
+
+
+
+--<< cargo / cross / exec / one
+	
+	test "${#}" -ge 2
+	_delegate="${1}"
+	_target="${2}"
+	shift -- 2
+	
+	export -- __CARGO__CROSS=true
+	export -- __CARGO__TARGET="${_target}"
+	exec -- "${ZRUN}" "${_delegate}" "${@}"
+!!
+
+
+
+
 << cargo / debug / check / cross / all
 	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
 			check-targets \
@@ -75,7 +109,7 @@
 
 
 
-<< cargo / debug / collect / build & cross / all
+<< cargo / debug / build & collect / cross / all
 	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
 			no-fetch \
 			build-targets \
@@ -84,7 +118,7 @@
 !!
 
 
-<< cargo / release / collect / build & cross / all
+<< cargo / release / build & collect / cross / all
 	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
 			no-fetch \
 			build-targets \
