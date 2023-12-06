@@ -1,0 +1,11 @@
+
+https://blog.cloudflare.com/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application/
+
+https://github.com/landhb/linux-keyutils
+https://crates.io/crates/linux-keyutils
+https://docs.rs/linux-keyutils
+
+https://github.com/mathstuf/rust-keyutils
+https://crates.io/crates/keyutils
+https://docs.rs/keyutils
+
