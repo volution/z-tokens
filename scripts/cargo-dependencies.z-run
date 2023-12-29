@@ -29,6 +29,11 @@
 !!
 
 
+<< cargo / dependencies / update / lock
+	exec -- "${ZRUN}" ':: cargo / exec / local' update --workspace --package z-tokens "${@}"
+!!
+
+
 << cargo / dependencies / fetch
 	exec -- "${ZRUN}" ':: cargo / exec' fetch "${@}"
 !!
