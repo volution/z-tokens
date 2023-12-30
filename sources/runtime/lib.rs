@@ -5,6 +5,12 @@
 
 
 
+#[ cfg (all (feature = "development", feature = "release")) ]
+::std::compile_error! ("[c63017a5]  both `development` and `release` features requested!");
+
+
+
+
 #[ cfg (feature = "zt-runtime-memory") ]
 pub mod memory;
 
