@@ -43,7 +43,7 @@ default = [
 
 development = [
 	"z-tokens-runtime/development",
-	"zt-oracles-pkcs11",
+#!	"zt-oracles-pkcs11",
 ]
 
 release = [
@@ -77,8 +77,6 @@ x25519-dalek = { version = "^2.0", optional = true, default-features = false, fe
 rsa = { version = "^0.8", optional = true, default-features = false, features = ["std", "pem"] }
 pkcs1 = { version = "^0.4", optional = true, default-features = false, features = ["std", "pem"] }
 
-[target.'cfg(any( all(target_os = "linux", target_env = "gnu"), target_os = "macos" ))'.dependencies]
 cryptoki = { version = "^0.4", optional = true, default-features = false, features = [] }
 cryptoki-sys = { version = "^0.1", optional = true, default-features = false, features = [] }
-
 

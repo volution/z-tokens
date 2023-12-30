@@ -51,7 +51,7 @@ struct RsaKey {
 	id_data : Option<Vec<u8>>,
 	label : String,
 	label_data : Option<Vec<u8>>,
-	modulus_bits : u64,
+	modulus_bits : usize,
 	modulus_data : Vec<u8>,
 	exponent_data : Vec<u8>,
 	has_private : bool,
@@ -215,7 +215,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			// NOTE:  =>  <https://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc416959757>
 			if false {
 				for _index in 0 ..= 0x600 {
-					let _attribute_type_raw : crtk::CK_ATTRIBUTE_TYPE = unsafe { mem::transmute (_index as u64) };
+					let _attribute_type_raw : crtk::CK_ATTRIBUTE_TYPE = unsafe { mem::transmute (_index as c_ulong) };
 					let Ok (_attribute_type) = crtk::AttributeType::try_from (_attribute_type_raw)
 						else { continue };
 					if _attribute_types.contains (&_attribute_type) {
