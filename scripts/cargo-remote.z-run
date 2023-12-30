@@ -5,16 +5,9 @@
 
 --<< cargo / exec / remote
 	
-	"${ZRUN}" \
-			--ssh \
-			--ssh-target="${__CARGO_REMOTE__SSH_TARGET}" \
-			--ssh-workspace=/var/lib/empty \
-			':: cargo / exec / remote / prepare' \
-	#
-	
-	"${ZRUN}" \
-			':: cargo / exec / remote / synchronize / push' \
-	#
+	if test "${__CARGO_REMOTE__SYNCHRONIZE:-true}" == true ; then
+		"${ZRUN}" ':: cargo / exec / remote / synchronize'
+	fi
 	
 	exec -- "${ZRUN}" \
 			--ssh \
@@ -27,6 +20,24 @@
 			--ssh-export=__META__BUILD_TARGET_TYPE \
 			':: cargo / exec / remote / delegate' \
 			"${@}" \
+	#
+!!
+
+
+
+
+--<< cargo / exec / remote / synchronize
+	test "${#}" -eq 0
+	
+	"${ZRUN}" \
+			--ssh \
+			--ssh-target="${__CARGO_REMOTE__SSH_TARGET}" \
+			--ssh-workspace=/var/lib/empty \
+			':: cargo / exec / remote / prepare' \
+	#
+	
+	"${ZRUN}" \
+			':: cargo / exec / remote / synchronize / push' \
 	#
 !!
 

@@ -139,6 +139,12 @@
 
 --<< cargo / cross / exec / all
 	
+	_synchronize=true
+	if test "${#}" -ge 1 -a "${1}" == no-synchronize ; then
+		_synchronize=false
+		shift -- 1
+	fi
+	
 	_fetch=true
 	if test "${#}" -ge 1 -a "${1}" == no-fetch ; then
 		_fetch=false
@@ -153,6 +159,17 @@
 	readarray -t -- _targets < <( exec -- "${ZRUN}" ':: cargo / cross / exec / targets' "${_targets}" )
 	
 	export -- __CARGO__CROSS=true
+
+	if test -z "${__SOURCES__PREPARED:-}" ; then
+		"${ZRUN}" ':: sources / embedded / prepare'
+	fi
+	export -- __SOURCES__PREPARED=true
+	
+	if test "${_synchronize}" == true -a "${__CARGO_REMOTE__SYNCHRONIZE:-true}" == true ; then
+		printf -- '[ii]  synchronizing sources...\n' >&2
+		"${ZRUN}" ':: cargo / exec / remote / synchronize'
+	fi
+	export -- __CARGO_REMOTE__SYNCHRONIZE=false
 	
 	if test "${_fetch}" == true ; then
 		printf -- '[ii]  fetching dependencies...\n' >&2

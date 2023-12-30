@@ -6,6 +6,17 @@
 << cargo / all / check
 	
 	test "${#}" -eq 0
+
+	if test -z "${__SOURCES__PREPARED:-}" ; then
+		"${ZRUN}" ':: sources / embedded / prepare'
+	fi
+	export -- __SOURCES__PREPARED=true
+	
+	if test "${__CARGO_REMOTE__SYNCHRONIZE:-true}" == true ; then
+		printf -- '[ii]  synchronizing sources...\n' >&2
+		"${ZRUN}" ':: cargo / exec / remote / synchronize'
+	fi
+	export -- __CARGO_REMOTE__SYNCHRONIZE=false
 	
 	for _type in debug release install ; do
 		
@@ -27,6 +38,17 @@
 << cargo / all / build
 	
 	test "${#}" -eq 0
+
+	if test -z "${__SOURCES__PREPARED:-}" ; then
+		"${ZRUN}" ':: sources / embedded / prepare'
+	fi
+	export -- __SOURCES__PREPARED=true
+	
+	if test "${__CARGO_REMOTE__SYNCHRONIZE:-true}" == true ; then
+		printf -- '[ii]  synchronizing sources...\n' >&2
+		"${ZRUN}" ':: cargo / exec / remote / synchronize'
+	fi
+	export -- __CARGO_REMOTE__SYNCHRONIZE=false
 	
 	for _type in debug release install ; do
 		
