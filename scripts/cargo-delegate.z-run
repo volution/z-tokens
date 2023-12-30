@@ -299,7 +299,8 @@
 	esac
 	
 	_rust_flags+=(
-			-C metadata="${__META__BUILD_GIT_HASH}--${__META__BUILD_TARGET_TYPE}"
+		#!	-C metadata="${__META__BUILD_TARGET_TYPE}--${__META__BUILD_GIT_HASH}"
+			-C metadata="${__META__BUILD_TARGET_TYPE}"
 		)
 	
 	export -- __CARGO__RUST_FLAGS="${_rust_flags[*]}"
