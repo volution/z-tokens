@@ -115,10 +115,13 @@
 		>| "${_outputs}/markers/build-sources.hash.tmp" \
 	#
 	
-	if \
-			! cmp -s -- "${_outputs}/markers/build-sources.hash.tmp" ./embedded/build/sources.hash \
-			|| ! cmp -s -- "${_outputs}/markers/build-git-hash.txt.tmp" "${_outputs}/markers/build-git-hash.txt" && test "${_git_hash}" != unknown && ! git diff --quiet || ! git diff --quiet --cached \
-	; then
+	if { \
+			! cmp -s -- "${_outputs}/markers/build-sources.hash.tmp" ./embedded/build/sources.hash ; \
+	} || { \
+			! cmp -s -- "${_outputs}/markers/build-git-hash.txt.tmp" "${_outputs}/markers/build-git-hash.txt" \
+			&& test "${_git_hash}" != unknown \
+			&& { ! git diff --quiet || ! git diff --quiet --cached ; } ; \
+	} ; then
 		
 		_build_number="$( exec -- cat -- ./embedded/build/number.txt )"
 		_build_number="$(( _build_number + 1 ))"
@@ -141,7 +144,8 @@
 		
 	else
 		
-		rm -- "${_outputs}/markers/build-git-hash.txt.tmp"
+		mv -T -- "${_outputs}/markers/build-git-hash.txt.tmp" "${_outputs}/markers/build-git-hash.txt"
+		
 		rm -- "${_outputs}/markers/build-sources.list.tmp"
 		rm -- "${_outputs}/markers/build-sources.md5.tmp"
 		rm -- "${_outputs}/markers/build-sources.hash.tmp"
