@@ -85,6 +85,8 @@
 		_git_hash='unknown'
 	fi
 	
+	printf -- '%s\n' "${_git_hash}" >| "${_outputs}/markers/build-git-hash.txt.tmp"
+	
 	if test -e ./embedded/build/sources.cpio.gz -a -s ./embedded/build/sources.cpio.gz ; then
 		rm -- ./embedded/build/sources.cpio.gz
 		touch -- ./embedded/build/sources.cpio.gz
@@ -113,7 +115,10 @@
 		>| "${_outputs}/markers/build-sources.hash.tmp" \
 	#
 	
-	if ! cmp -s -- "${_outputs}/markers/build-sources.hash.tmp" ./embedded/build/sources.hash ; then
+	if \
+			! cmp -s -- "${_outputs}/markers/build-sources.hash.tmp" ./embedded/build/sources.hash \
+			|| ! cmp -s -- "${_outputs}/markers/build-git-hash.txt.tmp" "${_outputs}/markers/build-git-hash.txt" \
+	; then
 		
 		_build_number="$( exec -- cat -- ./embedded/build/number.txt )"
 		_build_number="$(( _build_number + 1 ))"
@@ -123,6 +128,8 @@
 		
 		printf -- '%d\n' "${_build_number}" >| ./embedded/build/number.txt.tmp
 		printf -- '%s\n' "${_build_timestamp}" >| ./embedded/build/timestamp.txt.tmp
+		
+		mv -T -- "${_outputs}/markers/build-git-hash.txt.tmp" "${_outputs}/markers/build-git-hash.txt"
 		
 		mv -T -- ./embedded/build/number.txt.tmp ./embedded/build/number.txt
 		mv -T -- ./embedded/build/timestamp.txt.tmp ./embedded/build/timestamp.txt
@@ -134,13 +141,12 @@
 		
 	else
 		
+		rm -- "${_outputs}/markers/build-git-hash.txt.tmp"
 		rm -- "${_outputs}/markers/build-sources.list.tmp"
 		rm -- "${_outputs}/markers/build-sources.md5.tmp"
 		rm -- "${_outputs}/markers/build-sources.hash.tmp"
 	fi
 	
-	printf -- '%s\n' "${_git_hash}" >| "${_outputs}/markers/build-git-hash.txt.tmp"
-	mv -T -- "${_outputs}/markers/build-git-hash.txt.tmp" "${_outputs}/markers/build-git-hash.txt"
 !!
 
 
