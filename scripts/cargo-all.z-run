@@ -57,6 +57,7 @@
 		"${ZRUN}" ":: cargo / ${_type} / build"
 		case "${_type}" in
 			( debug | release )
+				printf -- '[ii]  collecting...\n' >&2
 				"${ZRUN}" ":: cargo / ${_type} / collect"
 			;;
 		esac
@@ -67,6 +68,7 @@
 		"${ZRUN}" ":: cargo / ${_type} / build / cross / all"
 		case "${_type}" in
 			( debug | release )
+				printf -- '[ii]  collecting...\n' >&2
 				"${ZRUN}" ":: cargo / ${_type} / collect / cross / all"
 			;;
 		esac
