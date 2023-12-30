@@ -117,7 +117,7 @@
 	
 	if \
 			! cmp -s -- "${_outputs}/markers/build-sources.hash.tmp" ./embedded/build/sources.hash \
-			|| ! cmp -s -- "${_outputs}/markers/build-git-hash.txt.tmp" "${_outputs}/markers/build-git-hash.txt" \
+			|| ! cmp -s -- "${_outputs}/markers/build-git-hash.txt.tmp" "${_outputs}/markers/build-git-hash.txt" && test "${_git_hash}" != unknown && ! git diff --quiet || ! git diff --quiet --cached \
 	; then
 		
 		_build_number="$( exec -- cat -- ./embedded/build/number.txt )"
