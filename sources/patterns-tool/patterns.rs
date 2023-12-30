@@ -54,112 +54,143 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _for_short_term_storage : Option<bool> = None;
 	
 	{
-		let mut _parser = create_parser () .else_wrap (0x146c4b38) ?;
+		let mut _flags = create_flags () .else_wrap (0x146c4b38) ?;
 		
-		_parser.refer (&mut _select_all)
-				.add_option (&["-a", "--all"], ArgStoreConst (Some (true)), "(select all patterns)");
-		_parser.refer (&mut _select_shortest)
-				.add_option (&["-a", "--shortest"], ArgStoreConst (Some (true)), "(select shortest patterns)");
+		_flags.define_switch_0 (&mut _select_all)
+				.with_flag ('a', "all")
+				.with_description ("select all patterns");
+		_flags.define_switch_0 (&mut _select_shortest)
+				.with_flag ((), "shortest")
+				.with_description ("select shortest patterns");
 		
-		_parser.refer (&mut _identifiers_only)
-				.add_option (&["-i", "--identifiers-only"], ArgStoreConst (Some (true)), "(list only identifiers)");
+		_flags.define_switch_0 (&mut _identifiers_only)
+				.with_flag ('i', "identifiers-only")
+				.with_description ("list only identifiers");
 		
-		_parser.refer (&mut _display_all)
-				.metavar ("{show}")
-				.add_option (&["-X", "--show-all"], ArgStoreConst (Some (true)), "(show all details)");
+		_flags.define_switch_0 (&mut _display_all)
+				.with_flag ('X', "show-all")
+				.with_description ("show all details");
 		
-		_parser.refer (&mut _display_aliases)
-				.metavar ("{show}")
-				.add_option (&["--show-aliases"], ArgStoreConst (Some (true)), "(show aliases)");
-		_parser.refer (&mut _display_labels)
-				.metavar ("{show}")
-				.add_option (&["--show-labels"], ArgStoreConst (Some (true)), "(show labels)");
+		_flags.define_switch_0 (&mut _display_aliases)
+				.with_flag ((), "show-aliases")
+				.with_description ("show aliases");
+		_flags.define_switch_0 (&mut _display_labels)
+				.with_flag ((), "show-labels")
+				.with_description ("show labels");
 		
-		_parser.refer (&mut _display_security)
-				.metavar ("{show}")
-				.add_option (&["--show-security"], ArgStoreConst (Some (true)), "(show security guess-timates)");
-		_parser.refer (&mut _display_bruteforce)
-				.metavar ("{show}")
-				.add_option (&["--show-bruteforce"], ArgStoreConst (Some (true)), "(show bruteforce guess-timates)");
+		_flags.define_switch_0 (&mut _display_security)
+				.with_flag ((), "show-security")
+				.with_description ("show security guess-timates");
+		_flags.define_switch_0 (&mut _display_bruteforce)
+				.with_flag ((), "show-bruteforce")
+				.with_description ("show bruteforce guess-timates");
 		
-		_parser.refer (&mut _display_examples)
-				.metavar ("{count}")
-				.add_option (&["-e", "--show-examples"], ArgStoreOption, "(show these many examples)");
+		_flags.define_single_flag_0 (&mut _display_examples)
+				.with_flag ('e', "show-examples")
+				.with_placeholder ("count")
+				.with_description ("show these many examples");
 		
-		_parser.refer (&mut _identifier_prefix)
-				.metavar ("{prefix}")
-				.add_option (&["--identifier-prefix"], ArgStoreOption, "(filter if identifier has prefix)");
-		_parser.refer (&mut _identifier_suffix)
-				.metavar ("{suffix}")
-				.add_option (&["--identifier-suffix"], ArgStoreOption, "(filter if identifier has suffix)");
-		_parser.refer (&mut _identifier_contains)
-				.metavar ("{string}")
-				.add_option (&["--identifier-contains"], ArgStoreOption, "(filter if identifier contains string)");
+		_flags.define_single_flag_0 (&mut _identifier_prefix)
+				.with_flag ((), "identifier-prefix")
+				.with_placeholder ("prefix")
+				.with_description ("filter if identifier has prefix");
+		_flags.define_single_flag_0 (&mut _identifier_suffix)
+				.with_flag ((), "identifier-suffix")
+				.with_placeholder ("suffix")
+				.with_description ("filter if identifier has suffix");
+		_flags.define_single_flag_0 (&mut _identifier_contains)
+				.with_flag ((), "identifier-contains")
+				.with_placeholder ("string")
+				.with_description ("filter if identifier contains string");
 		
-		_parser.refer (&mut _has_identifier)
-				.add_option (&["-p", "--identifier"], ArgStoreOption, "(filter by identifier)");
-		_parser.refer (&mut _has_label)
-				.add_option (&["-f", "--label"], ArgStoreOption, "(filter by label)");
+		_flags.define_single_flag_0 (&mut _has_identifier)
+				.with_flag ('p', "identifier")
+				.with_description ("filter by identifier");
+		_flags.define_single_flag_0 (&mut _has_label)
+				.with_flag ('f', "label")
+				.with_description ("filter by label");
 		
-		_parser.refer (&mut _entropy_minimum)
-				.metavar ("{bits}")
-				.add_option (&["-b", "--entropy-min"], ArgStoreOption, "(filter by minimum entropy in bits)");
-		_parser.refer (&mut _entropy_maximum)
-				.metavar ("{bits}")
-				.add_option (&["-B", "--entropy-max"], ArgStoreOption, "(filter by maximum entropy in bits)");
+		_flags.define_single_flag_0 (&mut _entropy_minimum)
+				.with_flag ('b', "entropy-min")
+				.with_placeholder ("bits")
+				.with_description ("filter by minimum entropy in bits");
+		_flags.define_single_flag_0 (&mut _entropy_maximum)
+				.with_flag ('B', "entropy-max")
+				.with_placeholder ("bits")
+				.with_description ("filter by maximum entropy in bits");
 		
-		_parser.refer (&mut _length_minimum)
-				.metavar ("{length}")
-				.add_option (&["-s", "--length-min"], ArgStoreOption, "(filter by minimum output length)");
-		_parser.refer (&mut _length_maximum)
-				.metavar ("{length}")
-				.add_option (&["-S", "--length-max"], ArgStoreOption, "(filter by maximum output length)");
+		_flags.define_single_flag_0 (&mut _length_minimum)
+				.with_flag ('s', "length-min")
+				.with_placeholder ("length")
+				.with_description ("filter by minimum output length");
+		_flags.define_single_flag_0 (&mut _length_maximum)
+				.with_flag ('S', "length-max")
+				.with_placeholder ("length")
+				.with_description ("filter by maximum output length");
 		
-		_parser.refer (&mut _has_all)
-				.metavar ("{count}")
-				.add_option (&["-A", "--has-all"], ArgStoreConst (Some (1)), "(require letters, digits and symbols)")
-				.add_option (&["--all-min"], ArgStoreOption, "");
-		_parser.refer (&mut _has_letters)
-				.metavar ("{count}")
-				.add_option (&["-l", "--has-letters"], ArgStoreConst (Some (1)), "(require letters)")
-				.add_option (&["--letters-min"], ArgStoreOption, "");
-		_parser.refer (&mut _has_letters_upper)
-				.metavar ("{count}")
-				.add_option (&["-U", "--has-letters-upper"], ArgStoreConst (Some (1)), "(require upper letters)")
-				.add_option (&["--letters-upper-min"], ArgStoreOption, "");
-		_parser.refer (&mut _has_letters_lower)
-				.metavar ("{count}")
-				.add_option (&["-L", "--has-letters-lower"], ArgStoreConst (Some (1)), "(require lower letters)")
-				.add_option (&["--letters-lower-min"], ArgStoreOption, "");
-		_parser.refer (&mut _has_digits)
-				.metavar ("{count}")
-				.add_option (&["-D", "--has-digits"], ArgStoreConst (Some (1)), "(require digits)")
-				.add_option (&["--digits-min"], ArgStoreOption, "");
-		_parser.refer (&mut _has_symbols)
-				.metavar ("{count}")
-				.add_option (&["-Y", "--has-symbols"], ArgStoreConst (Some (1)), "(require symbols)")
-				.add_option (&["--symbols-min"], ArgStoreOption, "");
+		let _flag = _flags.define_complex (&mut _has_all);
+		_flag.define_switch_0 (1)
+				.with_flag ('A', "has-all")
+				.with_description ("require letters, digits and symbols");
+		_flag.define_flag_0 ()
+				.with_flag ((), "all-min")
+				.with_placeholder ("count");
+		let _flag = _flags.define_complex (&mut _has_letters);
+		_flag.define_switch_0 (1)
+				.with_flag ('l', "has-letters")
+				.with_description ("require letters");
+		_flag.define_flag_0 ()
+				.with_flag ((), "letters-min")
+				.with_placeholder ("count");
+		let _flag = _flags.define_complex (&mut _has_letters_upper);
+		_flag.define_switch_0 (1)
+				.with_flag ('U', "has-letters-upper")
+				.with_description ("require upper letters");
+		_flag.define_flag_0 ()
+				.with_flag ((), "letters-upper-min")
+				.with_placeholder ("count");
+		let _flag = _flags.define_complex (&mut _has_letters_lower);
+		_flag.define_switch_0 (1)
+				.with_flag ('L', "has-letters-lower")
+				.with_description ("require lower letters");
+		_flag.define_flag_0 ()
+				.with_flag ((), "letters-lower-min")
+				.with_placeholder ("count");
+		let _flag = _flags.define_complex (&mut _has_digits);
+		_flag.define_switch_0 (1)
+				.with_flag ('D', "has-digits")
+				.with_description ("require digits");
+		_flag.define_flag_0 ()
+				.with_flag ((), "digits-min")
+				.with_placeholder ("count");
+		let _flag = _flags.define_complex (&mut _has_symbols);
+		_flag.define_switch_0 (1)
+				.with_flag ('Y', "has-symbols")
+				.with_description ("require symbols");
+		_flag.define_flag_0 ()
+				.with_flag ((), "symbols-min")
+				.with_placeholder ("count");
 		
-		_parser.refer (&mut _for_cryptography)
-				.metavar ("{usable}")
-				.add_option (&["--for-cryptography"], ArgStoreConst (Some (true)), "(filter if usable for cryptography)");
-		_parser.refer (&mut _for_authentication)
-				.metavar ("{usable}")
-				.add_option (&["--for-authentication"], ArgStoreConst (Some (true)), "(filter if usable for authentication)");
-		_parser.refer (&mut _for_archival_storage)
-				.metavar ("{usable}")
-				.add_option (&["--for-archival-storage"], ArgStoreConst (Some (true)), "(filter if usable for archival storage)");
-		_parser.refer (&mut _for_long_term_storage)
-				.metavar ("{usable}")
-				.add_option (&["--for-long-term-storage"], ArgStoreConst (Some (true)), "(filter if usable for long term storage)");
-		_parser.refer (&mut _for_short_term_storage)
-				.metavar ("{usable}")
-				.add_option (&["--for-short-term-storage"], ArgStoreConst (Some (true)), "(filter if usable for short term storage)");
+		_flags.define_switch_0 (&mut _for_cryptography)
+				.with_flag ((), "for-cryptography")
+				.with_description ("filter if usable for cryptography");
+		_flags.define_switch_0 (&mut _for_authentication)
+				.with_flag ((), "for-authentication")
+				.with_description ("filter if usable for authentication");
+		_flags.define_switch_0 (&mut _for_archival_storage)
+				.with_flag ((), "for-archival-storage")
+				.with_description ("filter if usable for archival storage");
+		_flags.define_switch_0 (&mut _for_long_term_storage)
+				.with_flag ((), "for-long-term-storage")
+				.with_description ("filter if usable for long term storage");
+		_flags.define_switch_0 (&mut _for_short_term_storage)
+				.with_flag ((), "for-short-term-storage")
+				.with_description ("filter if usable for short term storage");
 		
-		_output_flags.parser (&mut _parser) .else_wrap (0x2dbc1e80) ?;
-		_randomizer_flags.parser (&mut _parser) .else_wrap (0x7a560f7c) ?;
+		_output_flags.flags (&mut _flags) .else_wrap (0x2dbc1e80) ?;
+		_randomizer_flags.flags (&mut _flags) .else_wrap (0x7a560f7c) ?;
 		
-		if execute_parser (_parser, _arguments) .else_wrap (0xf1ae4cdd) ? {
+		if execute_flags (_flags, _arguments) .else_wrap (0xf1ae4cdd) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}

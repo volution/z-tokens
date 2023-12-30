@@ -15,11 +15,22 @@ pub struct RandomizerFlags {
 }
 
 
+#[ derive (Debug) ]
 #[ derive (Copy, Clone) ]
 pub enum RandomizerSource {
 	Os,
 	Testing,
 }
+
+impl FlagValue for RandomizerSource {}
+
+impl FlagValueDisplay for RandomizerSource {
+	fn display_value (&self, _formatter : &mut Formatter) -> FlagValueDisplayResult {
+		Debug::fmt (self, _formatter) .else_wrap (0xd4eb1d49)
+	}
+}
+
+
 
 
 impl RandomizerFlags {
@@ -31,12 +42,16 @@ impl RandomizerFlags {
 		Ok (_self)
 	}
 	
-	pub fn parser <'a> (&'a mut self, _parser : &mut ArgParser<'a>) -> FlagsResult {
-		
-		_parser.refer (&mut self.source)
-				.add_option (&["--random-os"], ArgStoreConst (RandomizerSource::Os), "(use OS secure random generator)")
-				.add_option (&["--random-testing"], ArgStoreConst (RandomizerSource::Testing), "(unsafe constant generator)");
-		
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		let _flag = _flags.define_complex (&mut self.source);
+		_flag.define_switch_0 (RandomizerSource::Os)
+				.with_flag ((), "random-os")
+				.with_description ("use OS secure random generator")
+				.with_default ("default");
+		_flag.define_switch_0 (RandomizerSource::Testing)
+				.with_flag ((), "random-testing")
+				.with_description ("unsafe constant generator")
+				.with_warning ("DO-NOT-USE");
 		Ok (())
 	}
 	
@@ -72,20 +87,25 @@ impl OutputFlags {
 		Ok (_self)
 	}
 	
-	pub fn parser <'a> (&'a mut self, _parser : &mut ArgParser<'a>) -> FlagsResult {
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
 		
-		_parser.refer (&mut self.compact)
-				.metavar ("{compact}")
-				.add_option (&["-C"], ArgStoreConst (Some (true)), "(compact output, skip optional separators and groups)")
-				.add_option (&["--compact"], ArgStoreOption, "");
+		let _flag = _flags.define_complex (&mut self.compact);
+		_flag.define_switch_0 (true)
+				.with_flag ('C', ())
+				.with_description ("compact output, skip optional separators and groups");
+		_flag.define_flag_0 ()
+				.with_flag ((), "compact")
+				.with_placeholder ("boolean");
 		
-		_parser.refer (&mut self.skip_separators_mandatory)
-				.metavar ("{skip}")
-				.add_option (&["--token-skip-mandatory-separators"], ArgStoreOption, "(skip token mandatory separators)");
+		_flags.define_single_flag_0 (&mut self.skip_separators_mandatory)
+				.with_flag ((), "token-skip-mandatory-separators")
+				.with_placeholder ("boolean")
+				.with_description ("skip token mandatory separators");
 		
-		_parser.refer (&mut self.skip_separators_optional)
-				.metavar ("{skip}")
-				.add_option (&["--token-skip-optional-separators"], ArgStoreOption, "(skip token optional separators)");
+		_flags.define_single_flag_0 (&mut self.skip_separators_optional)
+				.with_flag ((), "token-skip-optional-separators")
+				.with_placeholder ("boolean")
+				.with_description ("skip token optional separators");
 		
 		Ok (())
 	}

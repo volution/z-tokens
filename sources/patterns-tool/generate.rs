@@ -25,34 +25,44 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _group_separator : Option<String> = None;
 	
 	{
-		let mut _parser = create_parser () .else_wrap (0x69fe2749) ?;
+		let mut _flags = create_flags () .else_wrap (0x69fe2749) ?;
 		
-		_parser.refer (&mut _pattern)
-				.metavar ("{token-pattern}")
-				.add_option (&["-p", "--token-pattern"], ArgStoreOption, "(see the `patterns` command for available identifiers)");
+		_flags.define_single_flag_0 (&mut _pattern)
+				.with_flag ('p', "token-pattern")
+				.with_placeholder ("pattern")
+				.with_description ("see the `patterns` command for available identifiers");
 		
-		_parser.refer (&mut _token_count)
-				.metavar ("{token-count}")
-				.add_option (&["-c", "--token-count"], ArgStoreOption, "(generate more than one token)");
+		_flags.define_single_flag_0 (&mut _token_count)
+				.with_flag ('c', "token-count")
+				.with_placeholder ("count")
+				.with_description ("generate more than one token");
 		
-		_parser.refer (&mut _token_separator)
-				.metavar ("{token-separator}")
-				.add_option (&["-s", "--token-separator"], ArgStoreOption, "(separator after each token)")
-				.add_option (&["-n", "--token-separator-none"], ArgStoreConst (Some (String::new ())), "(no separator after each token)")
-				.add_option (&["-z", "--token-separator-null"], ArgStoreConst (Some (String::from ("\0"))), "(`\\0` separator after each token)");
+		let _flag = _flags.define_complex (&mut _token_separator);
+		_flag.define_flag_0 ()
+				.with_flag ('s', "token-separator")
+				.with_placeholder ("separator")
+				.with_description ("separator after each token");
+		_flag.define_switch_0 (String::new ())
+				.with_flag ('n', "token-separator-none")
+				.with_description ("no separator after each token");
+		_flag.define_switch_0 (String::from ("\0"))
+				.with_flag ('z', "token-separator-null")
+				.with_description ("`\\0` separator after each token");
 		
-		_parser.refer (&mut _group_size)
-				.metavar ("{group-size}")
-				.add_option (&["-g", "--group-size"], ArgStoreOption, "(output tokens in groups)");
+		_flags.define_single_flag_0 (&mut _group_size)
+				.with_flag ('g', "group-size")
+				.with_placeholder ("count")
+				.with_description ("output tokens in groups");
 		
-		_parser.refer (&mut _group_separator)
-				.metavar ("{group-separator}")
-				.add_option (&["--group-separator"], ArgStoreOption, "(separator between each group)");
+		_flags.define_single_flag_0 (&mut _group_separator)
+				.with_flag ((), "group-separator")
+				.with_placeholder ("separator")
+				.with_description ("separator between each group");
 		
-		_output_flags.parser (&mut _parser) .else_wrap (0xc06bf3db) ?;
-		_randomizer_flags.parser (&mut _parser) .else_wrap (0x6d197cc8) ?;
+		_output_flags.flags (&mut _flags) .else_wrap (0xc06bf3db) ?;
+		_randomizer_flags.flags (&mut _flags) .else_wrap (0x6d197cc8) ?;
 		
-		if execute_parser (_parser, _arguments) .else_wrap (0xb77c0d40) ? {
+		if execute_flags (_flags, _arguments) .else_wrap (0xb77c0d40) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}
