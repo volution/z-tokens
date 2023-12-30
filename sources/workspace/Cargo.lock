@@ -1674,9 +1674,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
 
 [[package]]
+name = "vrl-cli-arguments"
+version = "0.1.0"
+dependencies = [
+ "vrl-errors",
+ "vrl-preludes",
+]
+
+[[package]]
 name = "vrl-errors"
 version = "0.1.0"
-source = "git+https://github.com/volution/volution-rust-libraries?branch=development#19f013a0f9b9bbf1400345edb2671c2e92b59fc2"
 dependencies = [
  "vrl-preludes",
 ]
@@ -1684,12 +1691,10 @@ dependencies = [
 [[package]]
 name = "vrl-preludes"
 version = "0.1.0"
-source = "git+https://github.com/volution/volution-rust-libraries?branch=development#19f013a0f9b9bbf1400345edb2671c2e92b59fc2"
 
 [[package]]
 name = "vrl-random"
 version = "0.1.0"
-source = "git+https://github.com/volution/volution-rust-libraries?branch=development#19f013a0f9b9bbf1400345edb2671c2e92b59fc2"
 dependencies = [
  "paste",
  "rand 0.8.5",
@@ -2098,6 +2103,7 @@ dependencies = [
  "memsec",
  "nng",
  "rand 0.8.5",
+ "vrl-cli-arguments",
  "vrl-errors",
  "vrl-preludes",
  "x25519-dalek",

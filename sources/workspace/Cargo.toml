@@ -66,15 +66,19 @@ documentation = "https://github.com/volution/z-tokens"
 
 [patch.crates-io]
 
-# vrl-errors = { path = "../.dependencies/volution-rust-libraries/errors" }
-# vrl-preludes = { path = "../.dependencies/volution-rust-libraries/preludes" }
-# vrl-random = { path = "../.dependencies/volution-rust-libraries/random" }
+vrl-errors = { path = "../.dependencies/volution-rust-libraries/errors" }
+vrl-cli-arguments = { path = "../.dependencies/volution-rust-libraries/cli-arguments" }
+vrl-preludes = { path = "../.dependencies/volution-rust-libraries/preludes" }
+vrl-random = { path = "../.dependencies/volution-rust-libraries/random" }
+
+# vrl-errors = { git = "https://github.com/volution/volution-rust-libraries", branch = "development" }
+# vrl-cli-arguments = { git = "https://github.com/volution/volution-rust-libraries", branch = "development" }
+# vrl-preludes = { git = "https://github.com/volution/volution-rust-libraries", branch = "development" }
+# vrl-random = { git = "https://github.com/volution/volution-rust-libraries", branch = "development" }
+
 # x25519-dalek = { path = "../.dependencies/x25519-dalek" }
 # russh-keys = { path = "../.dependencies/russh/russh-keys" }
 
-vrl-errors = { git = "https://github.com/volution/volution-rust-libraries", branch = "development" }
-vrl-preludes = { git = "https://github.com/volution/volution-rust-libraries", branch = "development" }
-vrl-random = { git = "https://github.com/volution/volution-rust-libraries", branch = "development" }
 # x25519-dalek = { git = "https://github.com/cipriancraciun/x25519-dalek", branch = "patches/latest" }
 # russh-keys = { git = "https://github.com/cipriancraciun/russh", branch = "patches/latest" }
 

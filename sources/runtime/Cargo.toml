@@ -57,6 +57,7 @@ zt-runtime-allocator = [
 
 zt-runtime-flags = [
 	"argparse",
+	"vrl-cli-arguments",
 ]
 
 zt-runtime-crypto = [
@@ -84,6 +85,7 @@ zeroize = { version = "^1.5", optional = true, default-features = false, feature
 
 memsec = { version = "^0.6", optional = true, default-features = false, features = ["default"] }
 
+vrl-cli-arguments = { version = "*", optional = true, default-features = false, features = [] }
 argparse = { version = "^0.2", optional = true, default-features = false, features = [] }
 
 x25519-dalek = { version = "^2.0", optional = true, default-features = false, features = ["static_secrets"] }
