@@ -71,7 +71,7 @@ pub fn execute_flags (mut _parser : FlagsParserBuilder, mut _arguments : Vec<Str
 		fail! (0xee8fb3cb);
 	}
 	if _parsed.is_help_requested () {
-		_parsed.help_print (stderr_locked ()) .else_wrap (0xeb9669f7) ?;
+		_parsed.help_print (stdout_locked ()) .else_wrap (0xeb9669f7) ?;
 		return Ok (true);
 	}
 	_parsed.done () .else_wrap (0x2e356555) ?;

@@ -116,19 +116,17 @@ pub fn main_hash (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		{
 			let _flag = _flags.define_complex (&mut _output_size);
 			_flag.define_flag ('s', "size") .with_placeholder ("size") .with_description ("hash output size in bytes");
-			/*
-			_flag.define_switch (&["8b", "1B"], 1)), ("output 8 bits / 1 byte");
-			_flag.define_switch (&["16b", "2B"], 2)), ("output 16 bits / 2 bytes");
-			_flag.define_switch (&["32b", "4B"], 4)), ("output 32 bits / 4 bytes");
-			_flag.define_switch (&["64b", "8B"], 8)), ("output 64 bits / 8 bytes");
-			_flag.define_switch (&["128b", "16B"], 16)), ("output 128 bits / 16 bytes");
-			_flag.define_switch (&["256b", "32B"], 32)), ("output 256 bits / 32 bytes");
-			_flag.define_switch (&["512b", "64B"], 64)), ("output 512 bits / 64 bytes");
-			_flag.define_switch (&["1024b", "128B"], 128)), ("output 1024 bits / 128 bytes");
-			_flag.define_switch (&["2048b", "256B"], 256)), ("output 2048 bits / 256 bytes");
-			_flag.define_switch (&["4096b", "512B"], 512)), ("output 4096 bits / 512 bytes");
-			_flag.define_switch (&["8192b", "1024B"], 1024)), ("output 8192 bits / 1024 bytes");
-			*/
+			_flag.define_switch ((), "8b", 1) .with_alias ((), "1B") .with_description ("output 8 bits / 1 byte");
+			_flag.define_switch ((), "16b", 2) .with_alias ((), "2B") .with_description ("output 16 bits / 2 bytes");
+			_flag.define_switch ((), "32b", 4) .with_alias ((), "4B") .with_description ("output 32 bits / 4 bytes");
+			_flag.define_switch ((), "64b", 8) .with_alias ((), "8B") .with_description ("output 64 bits / 8 bytes");
+			_flag.define_switch ((), "128b", 16) .with_alias ((), "16B") .with_description ("output 128 bits / 16 bytes");
+			_flag.define_switch ((), "256b", 32) .with_alias ((), "32B") .with_description ("output 256 bits / 32 bytes");
+			_flag.define_switch ((), "512b", 64) .with_alias ((), "64B") .with_description ("output 512 bits / 64 bytes");
+			_flag.define_switch ((), "1024b", 128) .with_alias ((), "128B") .with_description ("output 1024 bits / 128 bytes");
+			_flag.define_switch ((), "2048b", 256) .with_alias ((), "256B") .with_description ("output 2048 bits / 256 bytes");
+			_flag.define_switch ((), "4096b", 512) .with_alias ((), "512B") .with_description ("output 4096 bits / 512 bytes");
+			_flag.define_switch ((), "8192b", 1024) .with_alias ((), "1024B") .with_description ("output 8192 bits / 1024 bytes");
 		}
 		
 		{
