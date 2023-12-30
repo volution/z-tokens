@@ -2,6 +2,7 @@
 
 use ::vrl_preludes::std_plus_extras::*;
 use ::vrl_errors::*;
+use ::z_tokens_runtime::flags::*;
 
 
 
@@ -28,6 +29,7 @@ pub struct OutputParameters {
 
 
 
+#[ derive (Debug) ]
 #[ derive (Copy, Clone) ]
 #[ allow (non_camel_case_types) ]
 pub enum Family {
@@ -108,6 +110,7 @@ pub enum Family {
 
 
 
+#[ derive (Debug) ]
 #[ derive (Copy, Clone) ]
 #[ allow (non_camel_case_types) ]
 pub enum Algorithm {
@@ -172,18 +175,6 @@ pub enum Algorithm {
 	Argon2i,
 	Argon2id,
 	
-}
-
-
-
-
-impl FromStr for Family {
-	
-	type Err = AlgorithmError;
-	
-	fn from_str (_string : &str) -> AlgorithmResult<Self> {
-		fail! (0x1c3de566);
-	}
 }
 
 
@@ -379,6 +370,44 @@ pub fn choose_algorithm (_family : Option<Family>, _output_size : Option<usize>)
 	let _algorithm = _family.algorithm_for_output_size (_output_size) ?;
 	
 	Ok ((_algorithm, _output_size))
+}
+
+
+
+
+
+
+
+
+impl FlagValue for Family {}
+
+impl FlagValueDisplay for Family {
+	fn display_value (&self, _formatter : &mut Formatter) -> FlagValueDisplayResult {
+		Debug::fmt (self, _formatter) .else_wrap (0xd4eb1d49)
+	}
+}
+
+impl FlagValueParsable for Family {
+	fn parse_string (_string : String) -> FlagValueParseResult<Self> {
+		fail! (0x1bd9cb5d);
+	}
+}
+
+
+
+
+impl FlagValue for Algorithm {}
+
+impl FlagValueDisplay for Algorithm {
+	fn display_value (&self, _formatter : &mut Formatter) -> FlagValueDisplayResult {
+		Debug::fmt (self, _formatter) .else_wrap (0x18dd1207)
+	}
+}
+
+impl FlagValueParsable for Algorithm {
+	fn parse_string (_string : String) -> FlagValueParseResult<Self> {
+		fail! (0xc247f344);
+	}
 }
 
 

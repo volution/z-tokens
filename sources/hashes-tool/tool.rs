@@ -34,127 +34,130 @@ pub fn main_hash (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _inputs_canonicalize : Option<bool> = None;
 	
 	{
-		let mut _parser = create_parser () .else_wrap (0x0102258d) ?;
+		let mut _flags = create_flags () .else_wrap (0x0102258d) ?;
 		
-		_parser.refer (&mut _family)
-				.metavar ("{algorithm}")
+		{
+			let _flag = _flags.define_complex (&mut _family);
 				
-				// FIXME:  Add support for this flag!
-				// .add_option (&["-a", "--algorithm"], ArgStoreOption, "(hashing algorithm)")
+			_flag.define_flag ('a', "algorithm") .with_placeholder ("algorithm") .with_description ("hashing algorithm");
+			
+			_flag.define_switch ((), "md5", Family::MD5) .with_description ("use MD5");
 				
-				.add_option (&["--md5"], ArgStoreConst (Some (Family::MD5)), "(use MD5)")
-				
-				.add_option (&["--sha1"], ArgStoreConst (Some (Family::SHA1)), "(use SHA1)")
-				
-				.add_option (&["--sha2"], ArgStoreConst (Some (Family::SHA2)), "(use one of SHA2)")
-				.add_option (&["--sha2-224"], ArgStoreConst (Some (Family::SHA2_224)), "(use SHA2-224)")
-				.add_option (&["--sha2-256"], ArgStoreConst (Some (Family::SHA2_256)), "(use SHA2-256)")
-				.add_option (&["--sha2-384"], ArgStoreConst (Some (Family::SHA2_384)), "(use SHA2-384)")
-				.add_option (&["--sha2-512"], ArgStoreConst (Some (Family::SHA2_512)), "(use SHA2-512)")
-				
-				.add_option (&["--sha3"], ArgStoreConst (Some (Family::SHA3)), "(use one of SHA3)")
-				.add_option (&["--sha3-224"], ArgStoreConst (Some (Family::SHA3_224)), "(use SHA3-224)")
-				.add_option (&["--sha3-256"], ArgStoreConst (Some (Family::SHA3_256)), "(use SHA3-256)")
-				.add_option (&["--sha3-384"], ArgStoreConst (Some (Family::SHA3_384)), "(use SHA3-384)")
-				.add_option (&["--sha3-512"], ArgStoreConst (Some (Family::SHA3_512)), "(use SHA3-512)")
-				
-				.add_option (&["--shake128"], ArgStoreConst (Some (Family::Shake_128)), "(use Shake128)")
-				.add_option (&["--shake256"], ArgStoreConst (Some (Family::Shake_256)), "(use Shake256)")
-				
-				.add_option (&["--git-sha1"], ArgStoreConst (Some (Family::GitSHA1)), "(use Git SHA1 flavour)")
-				.add_option (&["--git-sha2"], ArgStoreConst (Some (Family::GitSHA2)), "(use Git SHA2 flavour)")
-				
-				.add_option (&["--blake2"], ArgStoreConst (Some (Family::Blake2)), "(use Blake2s or Blake2b)")
-				.add_option (&["--blake2s"], ArgStoreConst (Some (Family::Blake2s)), "(use Blake2s)")
-				.add_option (&["--blake2b"], ArgStoreConst (Some (Family::Blake2b)), "(use Blake2b)")
-				
-				.add_option (&["--blake3"], ArgStoreConst (Some (Family::Blake3)), "(use Blake3)")
-				
-				.add_option (&["--siphash"], ArgStoreConst (Some (Family::SipHash)), "(use one of SipHash) !!! WEAK !!!")
-				.add_option (&["--siphash-64"], ArgStoreConst (Some (Family::SipHash_64)), "(use SipHash-64) !!! WEAK !!!")
-				.add_option (&["--siphash-128"], ArgStoreConst (Some (Family::SipHash_128)), "(use SipHash-128) !!! WEAK !!!")
-				
-				.add_option (&["--seahash"], ArgStoreConst (Some (Family::SeaHash)), "(use SeaHash) !!! WEAK !!!")
-				
-				.add_option (&["--highwayhash"], ArgStoreConst (Some (Family::HighwayHash)), "(use one of HighwayHash) !!! WEAK !!!")
-				.add_option (&["--highwayhash-64"], ArgStoreConst (Some (Family::HighwayHash_64)), "(use HighwayHash-64) !!! WEAK !!!")
-				.add_option (&["--highwayhash-128"], ArgStoreConst (Some (Family::HighwayHash_128)), "(use HighwayHash-128) !!! WEAK !!!")
-				.add_option (&["--highwayhash-256"], ArgStoreConst (Some (Family::HighwayHash_256)), "(use HighwayHash-256) !!! WEAK !!!")
-				
-				.add_option (&["--xxhash"], ArgStoreConst (Some (Family::XxHash)), "(use one of xxHash) !!! WEAK !!!")
-				.add_option (&["--xxhash-32"], ArgStoreConst (Some (Family::XxHash_32)), "(use xxHash-32) !!! WEAK !!!")
-				.add_option (&["--xxhash-64"], ArgStoreConst (Some (Family::XxHash_64)), "(use xxHash-64) !!! WEAK !!!")
-				
-				.add_option (&["--xxh3"], ArgStoreConst (Some (Family::Xxh3)), "(use Xxh3) !!! WEAK and EXPERIMENTAL !!!")
-				.add_option (&["--xxh3-64"], ArgStoreConst (Some (Family::Xxh3_64)), "(use xxh3-64) !!! WEAK and EXPERIMENTAL !!!")
-				.add_option (&["--xxh3-128"], ArgStoreConst (Some (Family::Xxh3_128)), "(use xxh3-128) !!! WEAK and EXPERIMENTAL !!!")
-				
-				.add_option (&["--djb2"], ArgStoreConst (Some (Family::Djb2)), "(use djb2) !!! WEAK !!!")
-				.add_option (&["--sdbm"], ArgStoreConst (Some (Family::SDBM)), "(use SDBM) !!! WEAK !!!")
-				
-				.add_option (&["--fnv1a"], ArgStoreConst (Some (Family::FNV1a)), "(use one of FNV1a) !!! WEAK !!!")
-				.add_option (&["--fnv1a-32"], ArgStoreConst (Some (Family::FNV1a_32)), "(use FNV1a-32) !!! WEAK !!!")
-				.add_option (&["--fnv1a-64"], ArgStoreConst (Some (Family::FNV1a_64)), "(use FNV1a-64) !!! WEAK !!!")
-				
-				.add_option (&["--crc"], ArgStoreConst (Some (Family::CRC)), "(use one of CRC) !!! WEAK !!!")
-				.add_option (&["--crc8"], ArgStoreConst (Some (Family::CRC8)), "(use CRC8) !!! WEAK !!!")
-				.add_option (&["--crc16"], ArgStoreConst (Some (Family::CRC16)), "(use CRC16) !!! WEAK !!!")
-				.add_option (&["--crc32"], ArgStoreConst (Some (Family::CRC32)), "(use CRC32) !!! WEAK !!!")
-				.add_option (&["--crc32c"], ArgStoreConst (Some (Family::CRC32C)), "(use CRC32C) !!! WEAK !!!")
-				.add_option (&["--crc64"], ArgStoreConst (Some (Family::CRC64)), "(use CRC64) !!! WEAK !!!")
-				
-				.add_option (&["--adler"], ArgStoreConst (Some (Family::Adler)), "(use one of Adler) !!! WEAK !!!")
-				.add_option (&["--adler32"], ArgStoreConst (Some (Family::Adler32)), "(use Adler32) !!! WEAK !!!")
-				
-				.add_option (&["--scrypt"], ArgStoreConst (Some (Family::Scrypt)), "(use Scrypt) !!! EXPERIMENTAL !!!")
-				
-				.add_option (&["--argon2"], ArgStoreConst (Some (Family::Argon2)), "(use one of Argon2 family) !!! EXPERIMENTAL !!!")
-				.add_option (&["--argon2d"], ArgStoreConst (Some (Family::Argon2d)), "(use Argon2d) !!! EXPERIMENTAL !!!")
-				.add_option (&["--argon2i"], ArgStoreConst (Some (Family::Argon2i)), "(use Argon2i) !!! EXPERIMENTAL !!!")
-				.add_option (&["--argon2id"], ArgStoreConst (Some (Family::Argon2id)), "(use Argon2id) !!! EXPERIMENTAL !!!")
-			;
+			_flag.define_switch ((), "sha1", Family::SHA1) .with_description ("use SHA1");
+			
+			_flag.define_switch ((), "sha2", Family::SHA2) .with_description ("use one of SHA2");
+			_flag.define_switch ((), "sha2-224", Family::SHA2_224) .with_description ("use SHA2-224");
+			_flag.define_switch ((), "sha2-256", Family::SHA2_256) .with_description ("use SHA2-256");
+			_flag.define_switch ((), "sha2-384", Family::SHA2_384) .with_description ("use SHA2-384");
+			_flag.define_switch ((), "sha2-512", Family::SHA2_512) .with_description ("use SHA2-512");
+			
+			_flag.define_switch ((), "sha3", Family::SHA3) .with_description ("use one of SHA3");
+			_flag.define_switch ((), "sha3-224", Family::SHA3_224) .with_description ("use SHA3-224");
+			_flag.define_switch ((), "sha3-256", Family::SHA3_256) .with_description ("use SHA3-256");
+			_flag.define_switch ((), "sha3-384", Family::SHA3_384) .with_description ("use SHA3-384");
+			_flag.define_switch ((), "sha3-512", Family::SHA3_512) .with_description ("use SHA3-512");
+			
+			_flag.define_switch ((), "shake128", Family::Shake_128) .with_description ("use Shake128");
+			_flag.define_switch ((), "shake256", Family::Shake_256) .with_description ("use Shake256");
+			
+			_flag.define_switch ((), "git-sha1", Family::GitSHA1) .with_description ("use Git SHA1 flavour");
+			_flag.define_switch ((), "git-sha2", Family::GitSHA2) .with_description ("use Git SHA2 flavour");
+			
+			_flag.define_switch ((), "blake2", Family::Blake2) .with_description ("use Blake2s or Blake2b");
+			_flag.define_switch ((), "blake2s", Family::Blake2s) .with_description ("use Blake2s");
+			_flag.define_switch ((), "blake2b", Family::Blake2b) .with_description ("use Blake2b");
+			
+			_flag.define_switch ((), "blake3", Family::Blake3) .with_description ("use Blake3");
+			
+			_flag.define_switch ((), "siphash", Family::SipHash) .with_description ("use one of SipHash") .with_warning ("WEAK");
+			_flag.define_switch ((), "siphash-64", Family::SipHash_64) .with_description ("use SipHash-64") .with_warning ("WEAK");
+			_flag.define_switch ((), "siphash-128", Family::SipHash_128) .with_description ("use SipHash-128") .with_warning ("WEAK");
+			
+			_flag.define_switch ((), "seahash", Family::SeaHash) .with_description ("use SeaHash") .with_warning ("WEAK");
+			
+			_flag.define_switch ((), "highwayhash", Family::HighwayHash) .with_description ("use one of HighwayHash") .with_warning ("WEAK");
+			_flag.define_switch ((), "highwayhash-64", Family::HighwayHash_64) .with_description ("use HighwayHash-64") .with_warning ("WEAK");
+			_flag.define_switch ((), "highwayhash-128", Family::HighwayHash_128) .with_description ("use HighwayHash-128") .with_warning ("WEAK");
+			_flag.define_switch ((), "highwayhash-256", Family::HighwayHash_256) .with_description ("use HighwayHash-256") .with_warning ("WEAK");
+			
+			_flag.define_switch ((), "xxhash", Family::XxHash) .with_description ("use one of xxHash") .with_warning ("WEAK");
+			_flag.define_switch ((), "xxhash-32", Family::XxHash_32) .with_description ("use xxHash-32") .with_warning ("WEAK");
+			_flag.define_switch ((), "xxhash-64", Family::XxHash_64) .with_description ("use xxHash-64") .with_warning ("WEAK");
+			
+			_flag.define_switch ((), "xxh3", Family::Xxh3) .with_description ("use Xxh3") .with_warning ("WEAK") .with_warning ("EXPERIMENTAL");
+			_flag.define_switch ((), "xxh3-64", Family::Xxh3_64) .with_description ("use xxh3-64") .with_warning ("WEAK") .with_warning ("EXPERIMENTAL");
+			_flag.define_switch ((), "xxh3-128", Family::Xxh3_128) .with_description ("use xxh3-128") .with_warning ("WEAK") .with_warning ("EXPERIMENTAL");
+			
+			_flag.define_switch ((), "djb2", Family::Djb2) .with_description ("use djb2") .with_warning ("WEAK");
+			_flag.define_switch ((), "sdbm", Family::SDBM) .with_description ("use SDBM") .with_warning ("WEAK");
+			
+			_flag.define_switch ((), "fnv1a", Family::FNV1a) .with_description ("use one of FNV1a") .with_warning ("WEAK");
+			_flag.define_switch ((), "fnv1a-32", Family::FNV1a_32) .with_description ("use FNV1a-32") .with_warning ("WEAK");
+			_flag.define_switch ((), "fnv1a-64", Family::FNV1a_64) .with_description ("use FNV1a-64") .with_warning ("WEAK");
+			
+			_flag.define_switch ((), "crc", Family::CRC) .with_description ("use one of CRC") .with_warning ("WEAK");
+			_flag.define_switch ((), "crc8", Family::CRC8) .with_description ("use CRC8") .with_warning ("WEAK");
+			_flag.define_switch ((), "crc16", Family::CRC16) .with_description ("use CRC16") .with_warning ("WEAK");
+			_flag.define_switch ((), "crc32", Family::CRC32) .with_description ("use CRC32") .with_warning ("WEAK");
+			_flag.define_switch ((), "crc32c", Family::CRC32C) .with_description ("use CRC32C") .with_warning ("WEAK");
+			_flag.define_switch ((), "crc64", Family::CRC64) .with_description ("use CRC64") .with_warning ("WEAK");
+			
+			_flag.define_switch ((), "adler", Family::Adler) .with_description ("use one of Adler") .with_warning ("WEAK");
+			_flag.define_switch ((), "adler32", Family::Adler32) .with_description ("use Adler32") .with_warning ("WEAK");
+			
+			_flag.define_switch ((), "scrypt", Family::Scrypt) .with_description ("use Scrypt") .with_warning ("EXPERIMENTAL");
+			
+			_flag.define_switch ((), "argon2", Family::Argon2) .with_description ("use one of Argon2 family") .with_warning ("EXPERIMENTAL");
+			_flag.define_switch ((), "argon2d", Family::Argon2d) .with_description ("use Argon2d") .with_warning ("EXPERIMENTAL");
+			_flag.define_switch ((), "argon2i", Family::Argon2i) .with_description ("use Argon2i") .with_warning ("EXPERIMENTAL");
+			_flag.define_switch ((), "argon2id", Family::Argon2id) .with_description ("use Argon2id") .with_warning ("EXPERIMENTAL");
+		}
 		
-		_parser.refer (&mut _output_size)
-				.metavar ("{size}")
-				.add_option (&["-s", "--size"], ArgStoreOption, "(hash output size in bytes)")
-				.add_option (&["--8b", "--1B"], ArgStoreConst (Some (1)), "(output 8 bits / 1 byte)")
-				.add_option (&["--16b", "--2B"], ArgStoreConst (Some (2)), "(output 16 bits / 2 bytes)")
-				.add_option (&["--32b", "--4B"], ArgStoreConst (Some (4)), "(output 32 bits / 4 bytes)")
-				.add_option (&["--64b", "--8B"], ArgStoreConst (Some (8)), "(output 64 bits / 8 bytes)")
-				.add_option (&["--128b", "--16B"], ArgStoreConst (Some (16)), "(output 128 bits / 16 bytes)")
-				.add_option (&["--256b", "--32B"], ArgStoreConst (Some (32)), "(output 256 bits / 32 bytes)")
-				.add_option (&["--512b", "--64B"], ArgStoreConst (Some (64)), "(output 512 bits / 64 bytes)")
-				.add_option (&["--1024b", "--128B"], ArgStoreConst (Some (128)), "(output 1024 bits / 128 bytes)")
-				.add_option (&["--2048b", "--256B"], ArgStoreConst (Some (256)), "(output 2048 bits / 256 bytes)")
-				.add_option (&["--4096b", "--512B"], ArgStoreConst (Some (512)), "(output 4096 bits / 512 bytes)")
-				.add_option (&["--8192b", "--1024B"], ArgStoreConst (Some (1024)), "(output 8192 bits / 1024 bytes)")
-			;
+		{
+			let _flag = _flags.define_complex (&mut _output_size);
+			_flag.define_flag ('s', "size") .with_placeholder ("size") .with_description ("hash output size in bytes");
+			/*
+			_flag.define_switch (&["8b", "1B"], 1)), ("output 8 bits / 1 byte");
+			_flag.define_switch (&["16b", "2B"], 2)), ("output 16 bits / 2 bytes");
+			_flag.define_switch (&["32b", "4B"], 4)), ("output 32 bits / 4 bytes");
+			_flag.define_switch (&["64b", "8B"], 8)), ("output 64 bits / 8 bytes");
+			_flag.define_switch (&["128b", "16B"], 16)), ("output 128 bits / 16 bytes");
+			_flag.define_switch (&["256b", "32B"], 32)), ("output 256 bits / 32 bytes");
+			_flag.define_switch (&["512b", "64B"], 64)), ("output 512 bits / 64 bytes");
+			_flag.define_switch (&["1024b", "128B"], 128)), ("output 1024 bits / 128 bytes");
+			_flag.define_switch (&["2048b", "256B"], 256)), ("output 2048 bits / 256 bytes");
+			_flag.define_switch (&["4096b", "512B"], 512)), ("output 4096 bits / 512 bytes");
+			_flag.define_switch (&["8192b", "1024B"], 1024)), ("output 8192 bits / 1024 bytes");
+			*/
+		}
 		
-		_parser.refer (&mut _input_sources)
-				.metavar ("{input}")
-				.add_option (&["-t", "--token"], ArgPush, "(use this argument)")
-				.add_option (&["-f", "--file"], ArgPushInputSourceFile, "(read from file)")
-				// FIXME:  Flags and arguments aren't properly supported by `argparser`!
-				// .add_option (&["-i", "--stdin"], ArgPushConst (InputSource::Stdin), "(read from stdin)")
-				// .add_option (&["-e", "--empty"], ArgPushConst (InputSource::Empty), "(empty)")
-			;
+		{
+			let _flag = _flags.define_complex (&mut _input_sources);
+			_flag.define_flag_with_wrapper ('t', "token", InputSource::String) .with_placeholder ("string") .with_description ("use this argument");
+			_flag.define_flag_with_wrapper ('f', "file", |_path| InputSource::File (PathBuf::from (_path))) .with_placeholder ("path") .with_description ("read from file");
+			_flag.define_switch ('i', "stdin", InputSource::Stdin) .with_description ("read from stdin");
+			_flag.define_switch ('e', "empty", InputSource::Empty) .with_description ("empty");
+		}
 		
-		_parser.refer (&mut _inputs_canonicalize)
-				.metavar ("{canonicalize}")
-				.add_option (&["-c", "--inputs-concatenate"], ArgStoreConst (Some (false)), "(concatenate inputs) (default for one input)")
-				.add_option (&["-C", "--inputs-canonicalize"], ArgStoreConst (Some (true)), "(canonicalize inputs) (default for two or more inputs)");
+		{
+			let _flag = _flags.define_complex (&mut _inputs_canonicalize);
+			_flag.define_switch ('c', "inputs-concatenate", false) .with_description ("concatenate inputs") .with_default ("default for one input");
+			_flag.define_switch ('C', "inputs-canonicalize", true) .with_description ("canonicalize inputs") .with_default ("default for two or more inputs");
+		}
 		
-		_parser.refer (&mut _output_discard_right)
-				.metavar ("{alignment}")
-				.add_option (&["--output-discard-right"], ArgStoreConst (Some (true)), "(if needed discard bytes from the right of the hash) (default)")
-				.add_option (&["--output-discard-left"], ArgStoreConst (Some (false)), "(if needed discard bytes from the left of the hash)");
+		{
+			let _flag = _flags.define_complex (&mut _output_discard_right);
+			_flag.define_switch ((), "output-discard-right", true) .with_description ("if needed discard bytes from the right of the hash") .with_default ("default");
+			_flag.define_switch ((), "output-discard-left", false) .with_description ("if needed discard bytes from the left of the hash");
+		}
 		
-		_parser.refer (&mut _output_reversed)
-				.metavar ("{reversed}")
-				.add_option (&["--output-left-to-right"], ArgStoreConst (Some (false)), "(copy from left-to-right bytes from the hash) (default)")
-				.add_option (&["--output-right-to-left", "--output-reversed"], ArgStoreConst (Some (true)), "(copy from right-to-left bytes from the hash)");
+		{
+			let _flag = _flags.define_complex (&mut _output_reversed);
+			_flag.define_switch ((), "output-left-to-right", false) .with_description ("copy from left-to-right bytes from the hash") .with_default ("default");
+			_flag.define_switch ((), "output-right-to-left", true) .with_alias ((), "output-reversed") .with_description ("copy from right-to-left bytes from the hash");
+		}
 		
-		if execute_parser (_parser, _arguments) .else_wrap (0x88824ad0) ? {
+		if execute_flags (_flags, _arguments) .else_wrap (0x88824ad0) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}
@@ -227,41 +230,17 @@ impl InputSource {
 }
 
 
-impl FromStr for InputSource {
-	
-	type Err = ();
-	
-	fn from_str (_string : &str) -> Result<Self, ()> {
-		Ok (InputSource::String (String::from (_string)))
+impl FlagValue for InputSource {}
+
+impl FlagValueDisplay for InputSource {
+	fn display_value (&self, _formatter : &mut Formatter) -> FlagValueDisplayResult {
+		fail! (0x69769807);
 	}
 }
 
-
-
-
-
-
-
-
-struct ArgPushInputSourceFile;
-struct ArgPushInputSourceFileAction <'a> (Rc<RefCell<&'a mut Vec<InputSource>>>);
-
-
-impl argparse::action::TypedAction<Vec<InputSource>> for ArgPushInputSourceFile {
-	
-	fn bind <'a> (&self, _cell : Rc<RefCell<&'a mut Vec<InputSource>>>) -> argparse::action::Action<'a> {
-		return argparse::action::Action::Single (Box::new (ArgPushInputSourceFileAction (_cell)));
-	}
-}
-
-
-impl <'a> argparse::action::IArgAction for ArgPushInputSourceFileAction <'a> {
-	
-	fn parse_arg (&self, _argument : &str) -> argparse::action::ParseResult {
-		let _cell : &RefCell<_> = self.0.borrow ();
-		let mut _cell : RefMut<_> = _cell.borrow_mut ();
-		_cell.push (InputSource::File (PathBuf::from (_argument)));
-		argparse::action::ParseResult::Parsed
+impl FlagValueParsable for InputSource {
+	fn parse_string (_string : String) -> FlagValueParseResult<Self> {
+		fail! (0xa042006e);
 	}
 }
 
