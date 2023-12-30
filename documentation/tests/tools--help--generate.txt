@@ -1,30 +1,43 @@
 >>  z-tokens generate --help
 
-Usage:
-  z-tokens generate [OPTIONS]
 
+  -p --token-pattern  {pattern}
+    **  see the `patterns` command for available identifiers
 
-Optional arguments:
-  -h,--help             Show this help message and exit
-  -p,--token-pattern {token-pattern}
-                        (see the `patterns` command for available identifiers)
-  -c,--token-count {token-count}
-                        (generate more than one token)
-  -s,--token-separator {token-separator}
-                        (separator after each token)
-  -n,--token-separator-none
-                        (no separator after each token)
-  -z,--token-separator-null
-                        (`\0` separator after each token)
-  -g,--group-size {group-size}
-                        (output tokens in groups)
-  --group-separator {group-separator}
-                        (separator between each group)
-  -C                    (compact output, skip optional separators and groups)
-  --compact {compact}   
-  --token-skip-mandatory-separators {skip}
-                        (skip token mandatory separators)
-  --token-skip-optional-separators {skip}
-                        (skip token optional separators)
-  --random-os           (use OS secure random generator)
-  --random-testing      (unsafe constant generator)
+  -c --token-count  {count}
+    **  generate more than one token
+
+  -s --token-separator  {separator}
+    **  separator after each token
+  -n --token-separator-none
+    **  no separator after each token
+  -z --token-separator-null
+    **  `\0` separator after each token
+
+  -g --group-size  {count}
+    **  output tokens in groups
+
+  --group-separator  {separator}
+    **  separator between each group
+
+  -C
+    **  compact output, skip optional separators and groups
+  --compact  {boolean}
+
+  --token-skip-mandatory-separators  {boolean}
+    **  skip token mandatory separators
+
+  --token-skip-optional-separators  {boolean}
+    **  skip token optional separators
+
+  --random-os
+    ?=  default
+    **  use OS secure random generator
+  --random-testing
+    **  unsafe constant generator
+    !!  DO-NOT-USE
+
+  -v --version
+
+  -h --help
+

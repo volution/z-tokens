@@ -1,13 +1,13 @@
 >>  z-tokens --version
 
 * tool          : z-tokens
-* version       : 0.3.0
-* executable    : /mnt/volatile/ciprian/workbench/rust--scratch/xiyipoke--07416ce657957d754348c99198710eff--38c4ac07d880655f6386024203125c8eb9692a94586c1d5b514403701419463e/outputs/binaries/z-tokens--release--linux--native
+* version       : 0.4.0
+* executable    : /mnt/volatile/ciprian/workbench/rust--scratch/xiyipoke--44328fcf4c3d9d057a42aa0f06176ff7--38c4ac07d880655f6386024203125c8eb9692a94586c1d5b514403701419463e/outputs/binaries/z-tokens--release--linux--native
 * executable-0  : /mnt/motirare/ciprian/workbench/miscellaneous/z-tokens/.outputs/binaries/z-tokens--release--linux--native
 * build target  : release
-* build number  : 14660, 2023-11-29-13-21-55
+* build number  : 14890, 2023-12-30-18-16-31
 * code & issues : https://github.com/volution/z-tokens
-* sources git   : 8ea5bf7f683a2e3196c9296a11b9882fb39218f1-uncommitted
-* sources hash  : b0d72c93606eff703e5e5fdd1c4fbc4c
+* sources git   : f56817ebda2ebbb7dc4e3dcd82cc3b2b7375388c-uncommitted
+* sources hash  : b62b8ebe14a85e77e7704ac18aec8af6
 * uname node    : xiyipoke.olympus
-* uname system  : Linux, 6.5.9-1-default, x86_64
+* uname system  : Linux, 6.6.6-1-default, x86_64

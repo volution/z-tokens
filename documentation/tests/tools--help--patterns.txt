@@ -1,67 +1,117 @@
 >>  z-tokens patterns --help
 
-Usage:
-  z-tokens patterns [OPTIONS]
 
+  -a --all
+    **  select all patterns
 
-Optional arguments:
-  -h,--help             Show this help message and exit
-  -a,--all              (select all patterns)
-  -a,--shortest         (select shortest patterns)
-  -i,--identifiers-only (list only identifiers)
-  -X,--show-all         (show all details)
-  --show-aliases        (show aliases)
-  --show-labels         (show labels)
-  --show-security       (show security guess-timates)
-  --show-bruteforce     (show bruteforce guess-timates)
-  -e,--show-examples {count}
-                        (show these many examples)
-  --identifier-prefix {prefix}
-                        (filter if identifier has prefix)
-  --identifier-suffix {suffix}
-                        (filter if identifier has suffix)
-  --identifier-contains {string}
-                        (filter if identifier contains string)
-  -p,--identifier IDENTIFIER
-                        (filter by identifier)
-  -f,--label LABEL      (filter by label)
-  -b,--entropy-min {bits}
-                        (filter by minimum entropy in bits)
-  -B,--entropy-max {bits}
-                        (filter by maximum entropy in bits)
-  -s,--length-min {length}
-                        (filter by minimum output length)
-  -S,--length-max {length}
-                        (filter by maximum output length)
-  -A,--has-all          (require letters, digits and symbols)
-  --all-min {count}     
-  -l,--has-letters      (require letters)
-  --letters-min {count} 
-  -U,--has-letters-upper
-                        (require upper letters)
-  --letters-upper-min {count}
-                        
-  -L,--has-letters-lower
-                        (require lower letters)
-  --letters-lower-min {count}
-                        
-  -D,--has-digits       (require digits)
-  --digits-min {count}  
-  -Y,--has-symbols      (require symbols)
-  --symbols-min {count} 
-  --for-cryptography    (filter if usable for cryptography)
-  --for-authentication  (filter if usable for authentication)
+  --shortest
+    **  select shortest patterns
+
+  -i --identifiers-only
+    **  list only identifiers
+
+  -X --show-all
+    **  show all details
+
+  --show-aliases
+    **  show aliases
+
+  --show-labels
+    **  show labels
+
+  --show-security
+    **  show security guess-timates
+
+  --show-bruteforce
+    **  show bruteforce guess-timates
+
+  -e --show-examples  {count}
+    **  show these many examples
+
+  --identifier-prefix  {prefix}
+    **  filter if identifier has prefix
+
+  --identifier-suffix  {suffix}
+    **  filter if identifier has suffix
+
+  --identifier-contains  {string}
+    **  filter if identifier contains string
+
+  -p --identifier  {value}
+    **  filter by identifier
+
+  -f --label  {value}
+    **  filter by label
+
+  -b --entropy-min  {bits}
+    **  filter by minimum entropy in bits
+
+  -B --entropy-max  {bits}
+    **  filter by maximum entropy in bits
+
+  -s --length-min  {length}
+    **  filter by minimum output length
+
+  -S --length-max  {length}
+    **  filter by maximum output length
+
+  -A --has-all
+    **  require letters, digits and symbols
+  --all-min  {count}
+
+  -l --has-letters
+    **  require letters
+  --letters-min  {count}
+
+  -U --has-letters-upper
+    **  require upper letters
+  --letters-upper-min  {count}
+
+  -L --has-letters-lower
+    **  require lower letters
+  --letters-lower-min  {count}
+
+  -D --has-digits
+    **  require digits
+  --digits-min  {count}
+
+  -Y --has-symbols
+    **  require symbols
+  --symbols-min  {count}
+
+  --for-cryptography
+    **  filter if usable for cryptography
+
+  --for-authentication
+    **  filter if usable for authentication
+
   --for-archival-storage
-                        (filter if usable for archival storage)
+    **  filter if usable for archival storage
+
   --for-long-term-storage
-                        (filter if usable for long term storage)
+    **  filter if usable for long term storage
+
   --for-short-term-storage
-                        (filter if usable for short term storage)
-  -C                    (compact output, skip optional separators and groups)
-  --compact {compact}   
-  --token-skip-mandatory-separators {skip}
-                        (skip token mandatory separators)
-  --token-skip-optional-separators {skip}
-                        (skip token optional separators)
-  --random-os           (use OS secure random generator)
-  --random-testing      (unsafe constant generator)
+    **  filter if usable for short term storage
+
+  -C
+    **  compact output, skip optional separators and groups
+  --compact  {boolean}
+
+  --token-skip-mandatory-separators  {boolean}
+    **  skip token mandatory separators
+
+  --token-skip-optional-separators  {boolean}
+    **  skip token optional separators
+
+  --random-os
+    ?=  default
+    **  use OS secure random generator
+  --random-testing
+    **  unsafe constant generator
+    !!  DO-NOT-USE
+
+  -v --version
+
+  -h --help
+

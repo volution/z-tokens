@@ -1,86 +1,202 @@
 >>  z-tokens hashes hash --help
 
-Usage:
-  z-tokens hashes hash [OPTIONS]
 
+  -a --algorithm  {algorithm}
+    **  hashing algorithm
+  --md5
+    **  use MD5
+  --sha1
+    **  use SHA1
+  --sha2
+    **  use one of SHA2
+  --sha2-224
+    **  use SHA2-224
+  --sha2-256
+    **  use SHA2-256
+  --sha2-384
+    **  use SHA2-384
+  --sha2-512
+    **  use SHA2-512
+  --sha3
+    **  use one of SHA3
+  --sha3-224
+    **  use SHA3-224
+  --sha3-256
+    **  use SHA3-256
+  --sha3-384
+    **  use SHA3-384
+  --sha3-512
+    **  use SHA3-512
+  --shake128
+    **  use Shake128
+  --shake256
+    **  use Shake256
+  --git-sha1
+    **  use Git SHA1 flavour
+  --git-sha2
+    **  use Git SHA2 flavour
+  --blake2
+    **  use Blake2s or Blake2b
+  --blake2s
+    **  use Blake2s
+  --blake2b
+    **  use Blake2b
+  --blake3
+    **  use Blake3
+  --siphash
+    **  use one of SipHash
+    !!  WEAK
+  --siphash-64
+    **  use SipHash-64
+    !!  WEAK
+  --siphash-128
+    **  use SipHash-128
+    !!  WEAK
+  --seahash
+    **  use SeaHash
+    !!  WEAK
+  --highwayhash
+    **  use one of HighwayHash
+    !!  WEAK
+  --highwayhash-64
+    **  use HighwayHash-64
+    !!  WEAK
+  --highwayhash-128
+    **  use HighwayHash-128
+    !!  WEAK
+  --highwayhash-256
+    **  use HighwayHash-256
+    !!  WEAK
+  --xxhash
+    **  use one of xxHash
+    !!  WEAK
+  --xxhash-32
+    **  use xxHash-32
+    !!  WEAK
+  --xxhash-64
+    **  use xxHash-64
+    !!  WEAK
+  --xxh3
+    **  use Xxh3
+    !!  WEAK
+    !!  EXPERIMENTAL
+  --xxh3-64
+    **  use xxh3-64
+    !!  WEAK
+    !!  EXPERIMENTAL
+  --xxh3-128
+    **  use xxh3-128
+    !!  WEAK
+    !!  EXPERIMENTAL
+  --djb2
+    **  use djb2
+    !!  WEAK
+  --sdbm
+    **  use SDBM
+    !!  WEAK
+  --fnv1a
+    **  use one of FNV1a
+    !!  WEAK
+  --fnv1a-32
+    **  use FNV1a-32
+    !!  WEAK
+  --fnv1a-64
+    **  use FNV1a-64
+    !!  WEAK
+  --crc
+    **  use one of CRC
+    !!  WEAK
+  --crc8
+    **  use CRC8
+    !!  WEAK
+  --crc16
+    **  use CRC16
+    !!  WEAK
+  --crc32
+    **  use CRC32
+    !!  WEAK
+  --crc32c
+    **  use CRC32C
+    !!  WEAK
+  --crc64
+    **  use CRC64
+    !!  WEAK
+  --adler
+    **  use one of Adler
+    !!  WEAK
+  --adler32
+    **  use Adler32
+    !!  WEAK
+  --scrypt
+    **  use Scrypt
+    !!  EXPERIMENTAL
+  --argon2
+    **  use one of Argon2 family
+    !!  EXPERIMENTAL
+  --argon2d
+    **  use Argon2d
+    !!  EXPERIMENTAL
+  --argon2i
+    **  use Argon2i
+    !!  EXPERIMENTAL
+  --argon2id
+    **  use Argon2id
+    !!  EXPERIMENTAL
 
-Optional arguments:
-  -h,--help             Show this help message and exit
-  --md5                 (use MD5)
-  --sha1                (use SHA1)
-  --sha2                (use one of SHA2)
-  --sha2-224            (use SHA2-224)
-  --sha2-256            (use SHA2-256)
-  --sha2-384            (use SHA2-384)
-  --sha2-512            (use SHA2-512)
-  --sha3                (use one of SHA3)
-  --sha3-224            (use SHA3-224)
-  --sha3-256            (use SHA3-256)
-  --sha3-384            (use SHA3-384)
-  --sha3-512            (use SHA3-512)
-  --shake128            (use Shake128)
-  --shake256            (use Shake256)
-  --git-sha1            (use Git SHA1 flavour)
-  --git-sha2            (use Git SHA2 flavour)
-  --blake2              (use Blake2s or Blake2b)
-  --blake2s             (use Blake2s)
-  --blake2b             (use Blake2b)
-  --blake3              (use Blake3)
-  --siphash             (use one of SipHash) !!! WEAK !!!
-  --siphash-64          (use SipHash-64) !!! WEAK !!!
-  --siphash-128         (use SipHash-128) !!! WEAK !!!
-  --seahash             (use SeaHash) !!! WEAK !!!
-  --highwayhash         (use one of HighwayHash) !!! WEAK !!!
-  --highwayhash-64      (use HighwayHash-64) !!! WEAK !!!
-  --highwayhash-128     (use HighwayHash-128) !!! WEAK !!!
-  --highwayhash-256     (use HighwayHash-256) !!! WEAK !!!
-  --xxhash              (use one of xxHash) !!! WEAK !!!
-  --xxhash-32           (use xxHash-32) !!! WEAK !!!
-  --xxhash-64           (use xxHash-64) !!! WEAK !!!
-  --xxh3                (use Xxh3) !!! WEAK and EXPERIMENTAL !!!
-  --xxh3-64             (use xxh3-64) !!! WEAK and EXPERIMENTAL !!!
-  --xxh3-128            (use xxh3-128) !!! WEAK and EXPERIMENTAL !!!
-  --djb2                (use djb2) !!! WEAK !!!
-  --sdbm                (use SDBM) !!! WEAK !!!
-  --fnv1a               (use one of FNV1a) !!! WEAK !!!
-  --fnv1a-32            (use FNV1a-32) !!! WEAK !!!
-  --fnv1a-64            (use FNV1a-64) !!! WEAK !!!
-  --crc                 (use one of CRC) !!! WEAK !!!
-  --crc8                (use CRC8) !!! WEAK !!!
-  --crc16               (use CRC16) !!! WEAK !!!
-  --crc32               (use CRC32) !!! WEAK !!!
-  --crc32c              (use CRC32C) !!! WEAK !!!
-  --crc64               (use CRC64) !!! WEAK !!!
-  --adler               (use one of Adler) !!! WEAK !!!
-  --adler32             (use Adler32) !!! WEAK !!!
-  --scrypt              (use Scrypt) !!! EXPERIMENTAL !!!
-  --argon2              (use one of Argon2 family) !!! EXPERIMENTAL !!!
-  --argon2d             (use Argon2d) !!! EXPERIMENTAL !!!
-  --argon2i             (use Argon2i) !!! EXPERIMENTAL !!!
-  --argon2id            (use Argon2id) !!! EXPERIMENTAL !!!
-  -s,--size {size}      (hash output size in bytes)
-  --8b,--1B             (output 8 bits / 1 byte)
-  --16b,--2B            (output 16 bits / 2 bytes)
-  --32b,--4B            (output 32 bits / 4 bytes)
-  --64b,--8B            (output 64 bits / 8 bytes)
-  --128b,--16B          (output 128 bits / 16 bytes)
-  --256b,--32B          (output 256 bits / 32 bytes)
-  --512b,--64B          (output 512 bits / 64 bytes)
-  --1024b,--128B        (output 1024 bits / 128 bytes)
-  --2048b,--256B        (output 2048 bits / 256 bytes)
-  --4096b,--512B        (output 4096 bits / 512 bytes)
-  --8192b,--1024B       (output 8192 bits / 1024 bytes)
-  -t,--token {input}    (use this argument)
-  -f,--file {input}     (read from file)
-  -c,--inputs-concatenate
-                        (concatenate inputs) (default for one input)
-  -C,--inputs-canonicalize
-                        (canonicalize inputs) (default for two or more inputs)
+  -s --size  {size}
+    **  hash output size in bytes
+  --8b --1B
+    **  output 8 bits / 1 byte
+  --16b --2B
+    **  output 16 bits / 2 bytes
+  --32b --4B
+    **  output 32 bits / 4 bytes
+  --64b --8B
+    **  output 64 bits / 8 bytes
+  --128b --16B
+    **  output 128 bits / 16 bytes
+  --256b --32B
+    **  output 256 bits / 32 bytes
+  --512b --64B
+    **  output 512 bits / 64 bytes
+  --1024b --128B
+    **  output 1024 bits / 128 bytes
+  --2048b --256B
+    **  output 2048 bits / 256 bytes
+  --4096b --512B
+    **  output 4096 bits / 512 bytes
+  --8192b --1024B
+    **  output 8192 bits / 1024 bytes
+
+  -t --token  {string}
+    **  use this argument
+  -f --file  {path}
+    **  read from file
+  -i --stdin
+    **  read from stdin
+  -e --empty
+    **  empty
+
+  -c --inputs-concatenate
+    ?=  default for one input
+    **  concatenate inputs
+  -C --inputs-canonicalize
+    ?=  default for two or more inputs
+    **  canonicalize inputs
+
   --output-discard-right
-                        (if needed discard bytes from the right of the hash)
-                        (default)
-  --output-discard-left (if needed discard bytes from the left of the hash)
+    ?=  default
+    **  if needed discard bytes from the right of the hash
+  --output-discard-left
+    **  if needed discard bytes from the left of the hash
+
   --output-left-to-right
-                        (copy from left-to-right bytes from the hash) (default)
-  --output-right-to-left,--output-reversed
-                        (copy from right-to-left bytes from the hash)
+    ?=  default
+    **  copy from left-to-right bytes from the hash
+  --output-right-to-left --output-reversed
+    **  copy from right-to-left bytes from the hash
+
+  -v --version
+
+  -h --help
+
