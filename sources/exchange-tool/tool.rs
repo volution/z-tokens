@@ -272,7 +272,7 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
-	let mut _flags = EncryptFlags::new () .else_wrap (0x078cfc03) ?;
+	let mut _flags = PasswordFlags::new () .else_wrap (0x078cfc03) ?;
 	
 	let mut _parser = create_flags () .else_wrap (0xf6c152eb) ?;
 	_flags.flags (&mut _parser) .else_wrap (0x67d0bd69) ?;

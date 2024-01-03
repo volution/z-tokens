@@ -45,6 +45,29 @@ pub struct DecryptFlags {
 
 
 
+pub struct PasswordArguments {
+	pub senders : MaterialSources<SenderPrivateKey>,
+	pub recipients : MaterialSources<RecipientPublicKey>,
+	pub shared : SharedKeysArguments,
+	pub ssh_wrappers : SshWrappersArguments,
+}
+
+
+pub struct PasswordFlags {
+	pub senders : SendersPrivateFlags,
+	pub recipients : RecipientsPublicFlags,
+	pub shared : SharedKeysFlags,
+	pub ssh_wrappers : SshWrappersFlags,
+	pub common : CommonFlags,
+}
+
+
+
+
+
+
+
+
 pub struct SharedKeysArguments {
 	pub associated : MaterialSources<Associated>,
 	pub secrets : MaterialSources<SharedSecret>,
@@ -464,6 +487,41 @@ impl DecryptFlags {
 
 
 
+impl PasswordFlags {
+	
+	pub fn new () -> FlagsResult<Self> {
+		Ok (Self {
+				senders : SendersPrivateFlags::new () ?,
+				recipients : RecipientsPublicFlags::new () ?,
+				shared : SharedKeysFlags::new () ?,
+				ssh_wrappers : SshWrappersFlags::new () ?,
+				common : CommonFlags::new () ?,
+			})
+	}
+	
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		
+		self.senders.flags (_flags) ?;
+		self.recipients.flags (_flags) ?;
+		self.shared.flags (_flags) ?;
+		self.ssh_wrappers.flags (_flags) ?;
+		self.common.flags (_flags) ?;
+		
+		Ok (())
+	}
+	
+	pub fn arguments (&self) -> FlagsResult<Option<()>> {
+		Ok (None)
+	}
+}
+
+
+
+
+
+
+
+
 impl SharedKeysFlags {
 	
 	pub fn new () -> FlagsResult<Self> {
@@ -516,4 +574,5 @@ impl CommonFlags {
 		Ok (None)
 	}
 }
+
 
