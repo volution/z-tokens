@@ -77,7 +77,7 @@ pub struct MaterialFlags {
 	pub from_environment : Vec<String>,
 	pub from_file : Vec<String>,
 	pub from_fd : Vec<u16>,
-	pub from_stdin : Vec<()>,
+	pub from_stdin : Option<bool>,
 }
 
 
@@ -160,15 +160,15 @@ impl MaterialFlags {
 				from_environment : Vec::new (),
 				from_file : Vec::new (),
 				from_fd : Vec::new (),
-				from_stdin : Vec::new (),
+				from_stdin : None,
 			};
 		Ok (_self)
 	}
 	
-	pub fn parser <'a> (
+	pub fn flags <'a> (
 				&'a mut self,
-				_parser : &mut ArgParser<'a>,
-				_short_values : &'static str,
+				_flags : &mut FlagsParserBuilder<'a>,
+				_short_values : char,
 				_long_values : &'static str,
 				_long_environment : &'static str,
 				_long_file : &'static str,
@@ -177,26 +177,29 @@ impl MaterialFlags {
 				_description : &'static str,
 			) -> FlagsResult
 	{
+		_flags.define_multiple_flag_0 (&mut self.values)
+				.with_placeholder ("string")
+				.with_flag (_short_values, _long_values)
+				.with_description (_description);
 		
-		_parser.refer (&mut self.values)
-				.metavar ("{string}")
-				.add_option (&[_short_values, _long_values], ArgPush, _description);
+		_flags.define_multiple_flag_0 (&mut self.from_environment)
+				.with_placeholder ("variable")
+				.with_flag ((), _long_environment)
+				.with_description ("from environment");
 		
-		_parser.refer (&mut self.from_environment)
-				.metavar ("{path}")
-				.add_option (&[_long_environment], ArgPush, "(from environment)");
+		_flags.define_multiple_flag_0 (&mut self.from_file)
+				.with_placeholder ("path")
+				.with_flag ((), _long_file)
+				.with_description ("from file");
 		
-		_parser.refer (&mut self.from_file)
-				.metavar ("{path}")
-				.add_option (&[_long_file], ArgPush, "(from file)");
+		_flags.define_multiple_flag_0 (&mut self.from_fd)
+				.with_placeholder ("fd")
+				.with_flag ((), _long_fd)
+				.with_description ("from file-descriptor");
 		
-		_parser.refer (&mut self.from_fd)
-				.metavar ("{fd}")
-				.add_option (&[_long_fd], ArgPush, "(from file-descriptor)");
-		
-		_parser.refer (&mut self.from_stdin)
-				.metavar ("{bool}")
-				.add_option (&[_long_stdin], ArgPushConst (()), "(from stdin)");
+		_flags.define_switch_0 (&mut self.from_stdin)
+				.with_flag ((), _long_stdin)
+				.with_description ("from stdin");
 		
 		Ok (())
 	}
@@ -215,8 +218,8 @@ impl SendersPrivateFlags {
 		Ok (Self { materials : MaterialFlags::new () ? })
 	}
 	
-	pub fn parser <'a> (&'a mut self, _parser : &mut ArgParser<'a>) -> FlagsResult {
-		self.materials.parser (_parser, "-s", "--sender", "--sender-env", "--sender-path", "--sender-fd", "--sender-stdin", "(sender private key) (multiple allowed, in any order, deduplicated)")
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		self.materials.flags (_flags, 's', "sender", "sender-env", "sender-path", "sender-fd", "sender-stdin", "sender private key (multiple allowed, in any order, deduplicated)")
 	}
 	
 	pub fn arguments (&self) -> FlagsResult<Option<()>> {
@@ -233,8 +236,8 @@ impl SendersPublicFlags {
 		Ok (Self { materials : MaterialFlags::new () ? })
 	}
 	
-	pub fn parser <'a> (&'a mut self, _parser : &mut ArgParser<'a>) -> FlagsResult {
-		self.materials.parser (_parser, "-s", "--sender", "--sender-env", "--sender-path", "--sender-fd", "--sender-stdin", "(sender public key) (multiple allowed, in any order, deduplicated)")
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		self.materials.flags (_flags, 's', "sender", "sender-env", "sender-path", "sender-fd", "sender-stdin", "sender public key (multiple allowed, in any order, deduplicated)")
 	}
 	
 	pub fn arguments (&self) -> FlagsResult<Option<()>> {
@@ -251,8 +254,8 @@ impl RecipientsPrivateFlags {
 		Ok (Self { materials : MaterialFlags::new () ? })
 	}
 	
-	pub fn parser <'a> (&'a mut self, _parser : &mut ArgParser<'a>) -> FlagsResult {
-		self.materials.parser (_parser, "-r", "--recipient", "--recipient-env", "--recipient-path", "--recipient-fd", "--recipient-stdin", "(recipient private key) (multiple allowed, in any order, deduplicated)")
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		self.materials.flags (_flags, 'r', "recipient", "recipient-env", "recipient-path", "recipient-fd", "recipient-stdin", "recipient private key (multiple allowed, in any order, deduplicated)")
 	}
 	
 	pub fn arguments (&self) -> FlagsResult<Option<()>> {
@@ -269,8 +272,8 @@ impl RecipientsPublicFlags {
 		Ok (Self { materials : MaterialFlags::new () ? })
 	}
 	
-	pub fn parser <'a> (&'a mut self, _parser : &mut ArgParser<'a>) -> FlagsResult {
-		self.materials.parser (_parser, "-r", "--recipient", "--recipient-env", "--recipient-path", "--recipient-fd", "--recipient-stdin", "(recipient public key) (multiple allowed, in any order, deduplicated)")
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		self.materials.flags (_flags, 'r', "recipient", "recipient-env", "recipient-path", "recipient-fd", "recipient-stdin", "recipient public key (multiple allowed, in any order, deduplicated)")
 	}
 	
 	pub fn arguments (&self) -> FlagsResult<Option<()>> {
@@ -287,8 +290,8 @@ impl AssociatedFlags {
 		Ok (Self { materials : MaterialFlags::new () ? })
 	}
 	
-	pub fn parser <'a> (&'a mut self, _parser : &mut ArgParser<'a>) -> FlagsResult {
-		self.materials.parser (_parser, "-a", "--associated", "--associated-env", "--associated-path", "--associated-fd", "--associated-stdin", "(associated data) (multiple allowed, **order and duplicates are significant**)")
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		self.materials.flags (_flags, 'a', "associated", "associated-env", "associated-path", "associated-fd", "associated-stdin", "associated data (multiple allowed, **order and duplicates are significant**)")
 	}
 	
 	pub fn arguments (&self) -> FlagsResult<Option<()>> {
@@ -305,8 +308,8 @@ impl SecretsFlags {
 		Ok (Self { materials : MaterialFlags::new () ? })
 	}
 	
-	pub fn parser <'a> (&'a mut self, _parser : &mut ArgParser<'a>) -> FlagsResult {
-		self.materials.parser (_parser, "-x", "--secret", "--secret-env", "--secret-path", "--secret-fd", "--secret-stdin", "(shared secret, for additional security) (multiple allowed, in any order, deduplicated)")
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		self.materials.flags (_flags, 'x', "secret", "secret-env", "secret-path", "secret-fd", "secret-stdin", "shared secret, for additional security (multiple allowed, in any order, deduplicated)")
 	}
 	
 	pub fn arguments (&self) -> FlagsResult<Option<()>> {
@@ -323,8 +326,8 @@ impl PinsFlags {
 		Ok (Self { materials : MaterialFlags::new () ? })
 	}
 	
-	pub fn parser <'a> (&'a mut self, _parser : &mut ArgParser<'a>) -> FlagsResult {
-		self.materials.parser (_parser, "-e", "--pin", "--pin-env", "--pin-path", "--pin-fd", "--pin-stdin", "(shared PIN, for **WEAK** additional security) (multiple allowed, in any order, deduplicated)")
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		self.materials.flags (_flags, 'e', "pin", "pin-env", "pin-path", "pin-fd", "pin-stdin", "shared PIN, for **WEAK** additional security (multiple allowed, in any order, deduplicated)")
 	}
 	
 	pub fn arguments (&self) -> FlagsResult<Option<()>> {
@@ -341,8 +344,8 @@ impl SeedsFlags {
 		Ok (Self { materials : MaterialFlags::new () ? })
 	}
 	
-	pub fn parser <'a> (&'a mut self, _parser : &mut ArgParser<'a>) -> FlagsResult {
-		self.materials.parser (_parser, "-e", "--seed", "--seed-env", "--seed-path", "--seed-fd", "--seed-stdin", "(shared seed, for additional security) (multiple allowed, in any order, deduplicated)")
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		self.materials.flags (_flags, 'e', "seed", "seed-env", "seed-path", "seed-fd", "seed-stdin", "shared seed, for additional security (multiple allowed, in any order, deduplicated)")
 	}
 	
 	pub fn arguments (&self) -> FlagsResult<Option<()>> {
@@ -359,8 +362,8 @@ impl BallastsFlags {
 		Ok (Self { materials : MaterialFlags::new () ? })
 	}
 	
-	pub fn parser <'a> (&'a mut self, _parser : &mut ArgParser<'a>) -> FlagsResult {
-		self.materials.parser (_parser, "-b", "--ballast", "--ballast-env", "--ballast-path", "--ballast-fd", "--ballast-stdin", "(shared ballast, for additional security) (multiple allowed, in any order, deduplicated)")
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		self.materials.flags (_flags, 'b', "ballast", "ballast-env", "ballast-path", "ballast-fd", "ballast-stdin", "shared ballast, for additional security (multiple allowed, in any order, deduplicated)")
 	}
 	
 	pub fn arguments (&self) -> FlagsResult<Option<()>> {
@@ -377,8 +380,8 @@ impl SshWrappersFlags {
 		Ok (Self { materials : MaterialFlags::new () ? })
 	}
 	
-	pub fn parser <'a> (&'a mut self, _parser : &mut ArgParser<'a>) -> FlagsResult {
-		self.materials.parser (_parser, "-S", "--ssh-wrap", "--ssh-wrap-env", "--ssh-wrap-path", "--ssh-wrap-fd", "--ssh-wrap-stdin", "(shared SSH agent key handle) (multiple allowed, in any order, deduplicated)")
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		self.materials.flags (_flags, 'S', "ssh-wrap", "ssh-wrap-env", "ssh-wrap-path", "ssh-wrap-fd", "ssh-wrap-stdin", "shared SSH agent key handle (multiple allowed, in any order, deduplicated)")
 	}
 	
 	pub fn arguments (&self) -> FlagsResult<Option<()>> {
@@ -406,17 +409,18 @@ impl EncryptFlags {
 			})
 	}
 	
-	pub fn parser <'a> (&'a mut self, _parser : &mut ArgParser<'a>) -> FlagsResult {
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
 		
-		self.senders.parser (_parser) ?;
-		self.recipients.parser (_parser) ?;
-		self.shared.parser (_parser) ?;
-		self.ssh_wrappers.parser (_parser) ?;
-		self.common.parser (_parser) ?;
+		self.senders.flags (_flags) ?;
+		self.recipients.flags (_flags) ?;
+		self.shared.flags (_flags) ?;
+		self.ssh_wrappers.flags (_flags) ?;
+		self.common.flags (_flags) ?;
 		
-		_parser.refer (&mut self.deterministic)
-				.metavar ("{bool}")
-				.add_option (&["--siv"], ArgStoreConst (Some (true)), "(deterministic output, based on SIV) (!!! CAUTION !!!)");
+		_flags.define_switch_0 (&mut self.deterministic)
+				.with_flag ((), "siv")
+				.with_description ("deterministic output, based on SIV")
+				.with_warning ("CAUTION");
 		
 		Ok (())
 	}
@@ -441,13 +445,13 @@ impl DecryptFlags {
 			})
 	}
 	
-	pub fn parser <'a> (&'a mut self, _parser : &mut ArgParser<'a>) -> FlagsResult {
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
 		
-		self.recipients.parser (_parser) ?;
-		self.senders.parser (_parser) ?;
-		self.shared.parser (_parser) ?;
-		self.ssh_wrappers.parser (_parser) ?;
-		self.common.parser (_parser) ?;
+		self.recipients.flags (_flags) ?;
+		self.senders.flags (_flags) ?;
+		self.shared.flags (_flags) ?;
+		self.ssh_wrappers.flags (_flags) ?;
+		self.common.flags (_flags) ?;
 		
 		Ok (())
 	}
@@ -472,12 +476,12 @@ impl SharedKeysFlags {
 			})
 	}
 	
-	pub fn parser <'a> (&'a mut self, _parser : &mut ArgParser<'a>) -> FlagsResult {
-		self.associated.parser (_parser) ?;
-		self.secrets.parser (_parser) ?;
-		self.pins.parser (_parser) ?;
-		self.seeds.parser (_parser) ?;
-		self.ballasts.parser (_parser) ?;
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		self.associated.flags (_flags) ?;
+		self.secrets.flags (_flags) ?;
+		self.pins.flags (_flags) ?;
+		self.seeds.flags (_flags) ?;
+		self.ballasts.flags (_flags) ?;
 		Ok (())
 	}
 	
@@ -497,12 +501,13 @@ impl CommonFlags {
 			})
 	}
 	
-	pub fn parser <'a> (&'a mut self, _parser : &mut ArgParser<'a>) -> FlagsResult {
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
 		
-		_parser.refer (&mut self.empty_is_missing)
-				.metavar ("{bool}")
-				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified) (!!! CAUTION !!!)")
-				.add_option (&["--empty-is-missing"], ArgStoreOption, "");
+		_flags.define_single_flag_0 (&mut self.empty_is_missing)
+				.with_placeholder ("bool")
+				.with_flag ((), "empty-is-missing")
+				.with_description ("treat empty arguments as unspecified")
+				.with_warning ("CAUTION");
 		
 		Ok (())
 	}

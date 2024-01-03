@@ -221,9 +221,9 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _flags = EncryptFlags::new () .else_wrap (0x0b4235a7) ?;
 	
-	let mut _parser = create_parser () .else_wrap (0x547e4207) ?;
-	_flags.parser (&mut _parser) .else_wrap (0x93da5c86) ?;
-	if execute_parser (_parser, _arguments) .else_wrap (0x2d7d23e5) ? {
+	let mut _parser = create_flags () .else_wrap (0x547e4207) ?;
+	_flags.flags (&mut _parser) .else_wrap (0x93da5c86) ?;
+	if execute_flags (_parser, _arguments) .else_wrap (0x2d7d23e5) ? {
 		return Ok (ExitCode::SUCCESS);
 	}
 	
@@ -239,9 +239,9 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _flags = DecryptFlags::new () .else_wrap (0x0185958e) ?;
 	
-	let mut _parser = create_parser () .else_wrap (0x48431e88) ?;
-	_flags.parser (&mut _parser) .else_wrap (0xe7a4f28c) ?;
-	if execute_parser (_parser, _arguments) .else_wrap (0xfc8a8c23) ? {
+	let mut _parser = create_flags () .else_wrap (0x48431e88) ?;
+	_flags.flags (&mut _parser) .else_wrap (0xe7a4f28c) ?;
+	if execute_flags (_parser, _arguments) .else_wrap (0xfc8a8c23) ? {
 		return Ok (ExitCode::SUCCESS);
 	}
 	
