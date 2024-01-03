@@ -55,7 +55,7 @@ impl RandomizerFlags {
 		Ok (())
 	}
 	
-	pub fn build (&self) -> FlagsResult<Box<dyn Randomizer>> {
+	pub fn build (self) -> FlagsResult<Box<dyn Randomizer>> {
 		let _randomizer : Box<dyn Randomizer> = match self.source {
 			RandomizerSource::Os =>
 				Box::new (OsRandomizer::from_os () .else_wrap (0x893f3ab5) ?),
@@ -110,7 +110,7 @@ impl OutputFlags {
 		Ok (())
 	}
 	
-	pub fn build (&self) -> FlagsResult<OutputOptions> {
+	pub fn build (self) -> FlagsResult<OutputOptions> {
 		
 		let mut _options = OutputOptions::default ();
 		

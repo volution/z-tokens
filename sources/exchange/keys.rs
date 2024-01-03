@@ -35,6 +35,9 @@ pub struct SharedSecret (Rb<[u8; 32]>);
 pub struct SharedSeed (Rb<[u8; 32]>);
 pub struct SharedBallast (Rb<[u8; 32]>);
 
+pub struct Associated (Rb<Vec<u8>>);
+pub struct SharedPin (Rb<Vec<u8>>);
+
 
 
 
