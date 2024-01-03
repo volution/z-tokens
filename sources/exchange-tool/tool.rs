@@ -1,22 +1,6 @@
 
 
-use ::vrl_preludes::std_plus_extras::*;
-use ::vrl_errors::*;
-use ::z_tokens_runtime::flags::*;
-
-
-use ::z_tokens_exchange::keys::*;
-use ::z_tokens_exchange::crypto::*;
-use ::z_tokens_exchange::armor::*;
-use ::z_tokens_exchange::coding::*;
-use ::z_tokens_exchange::ssh::*;
-
-
-use crate::io::*;
-
-
-
-
+use crate::prelude::*;
 
 
 
@@ -235,6 +219,46 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
+	let mut _flags = EncryptFlags::new () .else_wrap (0x0b4235a7) ?;
+	
+	let mut _parser = create_parser () .else_wrap (0x547e4207) ?;
+	_flags.parser (&mut _parser) .else_wrap (0x93da5c86) ?;
+	if execute_parser (_parser, _arguments) .else_wrap (0x2d7d23e5) ? {
+		return Ok (ExitCode::SUCCESS);
+	}
+	
+	let _arguments = _flags.arguments () .else_wrap (0xf0d0dcf3) ?;
+	
+	fail! (0x2aee71cd);
+}
+
+
+
+
+pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
+	
+	let mut _flags = DecryptFlags::new () .else_wrap (0x0185958e) ?;
+	
+	let mut _parser = create_parser () .else_wrap (0x48431e88) ?;
+	_flags.parser (&mut _parser) .else_wrap (0xe7a4f28c) ?;
+	if execute_parser (_parser, _arguments) .else_wrap (0xfc8a8c23) ? {
+		return Ok (ExitCode::SUCCESS);
+	}
+	
+	let _arguments = _flags.arguments () .else_wrap (0x867adb75) ?;
+	
+	fail! (0x4e92ce21);
+}
+
+
+
+
+
+
+
+
+pub fn main_encrypt_1 (_arguments : Vec<String>) -> MainResult<ExitCode> {
+	
 	let mut _senders_private : Vec<String> = Vec::new ();
 	let mut _recipients_public : Vec<String> = Vec::new ();
 	let mut _associated : Vec<String> = Vec::new ();
@@ -345,7 +369,7 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 
 
-pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_decrypt_1 (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _recipients_private : Vec<String> = Vec::new ();
 	let mut _senders_public : Vec<String> = Vec::new ();
