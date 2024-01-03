@@ -26,49 +26,66 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _write_comments : Option<bool> = None;
 	
 	{
-		let mut _parser = create_parser () .else_wrap (0xd885e228) ?;
+		let mut _flags = create_flags () .else_wrap (0xd885e228) ?;
 		
-		_parser.refer (&mut _sender_generate)
-				.metavar ("{enabled}")
-				.add_option (&["-s"], ArgStoreConst (Some (true)), "(generate sender key pair)")
-				.add_option (&["--sender"], ArgStoreOption, "");
+		let _flag = _flags.define_complex (&mut _sender_generate);
+		_flag.define_switch ('s', (), true);
+		_flag.define_flag_0 ()
+				.with_flag ((), "sender")
+				.with_placeholder ("enabled")
+				.with_description ("generate sender key pair");
 		
-		_parser.refer (&mut _recipient_generate)
-				.metavar ("{enabled}")
-				.add_option (&["-r"], ArgStoreConst (Some (true)), "(generate recipient key pair)")
-				.add_option (&["--recipient"], ArgStoreOption, "");
+		let _flag = _flags.define_complex (&mut _recipient_generate);
+		_flag.define_switch ('r', (), true);
+		_flag.define_flag_0 ()
+				.with_flag ((), "recipient")
+				.with_placeholder ("enabled")
+				.with_description ("generate recipient key pair");
 		
-		_parser.refer (&mut _secret_generate)
-				.metavar ("{enabled}")
-				.add_option (&["-x"], ArgStoreConst (Some (true)), "(generate shared secret)")
-				.add_option (&["--secret"], ArgStoreOption, "");
+		let _flag = _flags.define_complex (&mut _secret_generate);
+		_flag.define_switch ('x', (), true);
+		_flag.define_flag_0 ()
+				.with_flag ((), "secret")
+				.with_placeholder ("enabled")
+				.with_description ("generate shared secret");
 		
-		_parser.refer (&mut _seed_generate)
-				.metavar ("{enabled}")
-				.add_option (&["-e"], ArgStoreConst (Some (true)), "(generate shared seed)")
-				.add_option (&["--seed"], ArgStoreOption, "");
+		let _flag = _flags.define_complex (&mut _seed_generate);
+		_flag.define_switch ('e', (), true);
+		_flag.define_flag_0 ()
+				.with_flag ((), "seed")
+				.with_placeholder ("enabled")
+				.with_description ("generate shared seed");
 		
-		_parser.refer (&mut _ballast_generate)
-				.metavar ("{enabled}")
-				.add_option (&["-b"], ArgStoreConst (Some (true)), "(generate shared ballast)")
-				.add_option (&["--ballast"], ArgStoreOption, "");
+		let _flag = _flags.define_complex (&mut _ballast_generate);
+		_flag.define_switch ('b', (), true);
+		_flag.define_flag_0 ()
+				.with_flag ((), "ballast")
+				.with_placeholder ("enabled")
+				.with_description ("generate shared ballast");
 		
-		_parser.refer (&mut _pin_generate)
-				.metavar ("{enabled}")
-				.add_option (&["-p"], ArgStoreConst (Some (true)), "(generate shared PIN)")
-				.add_option (&["--pin"], ArgStoreOption, "");
+		let _flag = _flags.define_complex (&mut _pin_generate);
+		_flag.define_switch ('p', (), true);
+		_flag.define_flag_0 ()
+				.with_flag ((), "pin")
+				.with_placeholder ("enabled")
+				.with_description ("generate shared PIN");
 		
-		_parser.refer (&mut _self_generate)
-				.metavar ("{enabled}")
-				.add_option (&["-o"], ArgStoreConst (Some (true)), "generate one key, and encode it both for sending and receiving)  (!!! CAUTION !!!)")
-				.add_option (&["--self"], ArgStoreOption, "");
+		let _flag = _flags.define_complex (&mut _self_generate);
+		_flag.define_switch ('o', (), true);
+		_flag.define_flag_0 ()
+				.with_flag ((), "self")
+				.with_placeholder ("enabled")
+				.with_description ("generate one key, and encode it both for sending and receiving")
+				.with_warning ("CAUTION");
 		
-		_parser.refer (&mut _write_comments)
-				.metavar ("{enabled}")
-				.add_option (&["-c"], ArgStoreConst (Some (true)), "(output comments)")
-				.add_option (&["--comments"], ArgStoreOption, "");
+		let _flag = _flags.define_complex (&mut _write_comments);
+		_flag.define_switch ('c', (), true);
+		_flag.define_flag_0 ()
+				.with_flag ((), "comments")
+				.with_placeholder ("enabled")
+				.with_description ("output comments");
 		
-		if execute_parser (_parser, _arguments) .else_wrap (0x082760e4) ? {
+		if execute_flags (_flags, _arguments) .else_wrap (0x082760e4) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}
@@ -253,6 +270,24 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 
 
+pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
+	
+	let mut _flags = EncryptFlags::new () .else_wrap (0x078cfc03) ?;
+	
+	let mut _parser = create_flags () .else_wrap (0xf6c152eb) ?;
+	_flags.flags (&mut _parser) .else_wrap (0x67d0bd69) ?;
+	if execute_flags (_parser, _arguments) .else_wrap (0x87bc5c64) ? {
+		return Ok (ExitCode::SUCCESS);
+	}
+	
+	let _arguments = _flags.arguments () .else_wrap (0x2329b523) ?;
+	
+	fail! (0xaa3fb15c);
+}
+
+
+
+
 
 
 
@@ -271,50 +306,50 @@ pub fn main_encrypt_1 (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _deterministic : Option<bool> = None;
 	
 	{
-		let mut _parser = create_parser () .else_wrap (0x93d41b76) ?;
+		let mut _flags = create_parser () .else_wrap (0x93d41b76) ?;
 		
-		_parser.refer (&mut _senders_private)
+		_flags.refer (&mut _senders_private)
 				.metavar ("{sender}")
 				.add_option (&["-s", "--sender"], ArgPush, "(sender private key) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _recipients_public)
+		_flags.refer (&mut _recipients_public)
 				.metavar ("{recipient}")
 				.add_option (&["-r", "--recipient"], ArgPush, "(recipient public key) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _associated)
+		_flags.refer (&mut _associated)
 				.metavar ("{associated}")
 				.add_option (&["-a", "--associated"], ArgPush, "(associated data) (multiple allowed, order is important)");
 		
-		_parser.refer (&mut _secrets)
+		_flags.refer (&mut _secrets)
 				.metavar ("{secret}")
 				.add_option (&["-x", "--secret"], ArgPush, "(shared secret, for additional security) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _pins)
+		_flags.refer (&mut _pins)
 				.metavar ("{pin}")
 				.add_option (&["-p", "--pin"], ArgPush, "(shared PIN, for **WEAK** additional security) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _ssh_wrappers)
+		_flags.refer (&mut _ssh_wrappers)
 				.metavar ("{key}")
 				.add_option (&["--ssh-wrap"], ArgPush, "(shared SSH agent key handle) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _seeds)
+		_flags.refer (&mut _seeds)
 				.metavar ("{seed}")
 				.add_option (&["-e", "--seed"], ArgPush, "(shared seed, for additional security) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _ballasts)
+		_flags.refer (&mut _ballasts)
 				.metavar ("{ballast}")
 				.add_option (&["-b", "--ballast"], ArgPush, "(shared ballast, for additional security) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _empty_is_missing)
+		_flags.refer (&mut _empty_is_missing)
 				.metavar ("{bool}")
 				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified) (!!! CAUTION !!!)")
 				.add_option (&["--empty-is-missing"], ArgStoreOption, "");
 		
-		_parser.refer (&mut _deterministic)
+		_flags.refer (&mut _deterministic)
 				.metavar ("{bool}")
 				.add_option (&["--siv"], ArgStoreConst (Some (true)), "(deterministic output, based on SIV) (!!! CAUTION !!!)");
 		
-		if execute_parser (_parser, _arguments) .else_wrap (0x8a373e9a) ? {
+		if execute_parser (_flags, _arguments) .else_wrap (0x8a373e9a) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}
@@ -382,46 +417,46 @@ pub fn main_decrypt_1 (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _empty_is_missing : Option<bool> = None;
 	
 	{
-		let mut _parser = create_parser () .else_wrap (0x608139b1) ?;
+		let mut _flags = create_parser () .else_wrap (0x608139b1) ?;
 		
-		_parser.refer (&mut _recipients_private)
+		_flags.refer (&mut _recipients_private)
 				.metavar ("{sender}")
 				.add_option (&["-r", "--recipient"], ArgPush, "(recipient private key) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _senders_public)
+		_flags.refer (&mut _senders_public)
 				.metavar ("{recipient}")
 				.add_option (&["-s", "--sender"], ArgPush, "(sender public key) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _associated)
+		_flags.refer (&mut _associated)
 				.metavar ("{associated}")
 				.add_option (&["-a", "--associated"], ArgPush, "(associated data) (multiple allowed, order is important)");
 		
-		_parser.refer (&mut _secrets)
+		_flags.refer (&mut _secrets)
 				.metavar ("{secret}")
 				.add_option (&["-x", "--secret"], ArgPush, "(shared secret, for additional security) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _pins)
+		_flags.refer (&mut _pins)
 				.metavar ("{pin}")
 				.add_option (&["-p", "--pin"], ArgPush, "(shared PIN, for **WEAK** additional security) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _ssh_wrappers)
+		_flags.refer (&mut _ssh_wrappers)
 				.metavar ("{key}")
 				.add_option (&["--ssh-wrap"], ArgPush, "(shared SSH agent key handle) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _seeds)
+		_flags.refer (&mut _seeds)
 				.metavar ("{seed}")
 				.add_option (&["-e", "--seed"], ArgPush, "(shared seed, for additional security) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _ballasts)
+		_flags.refer (&mut _ballasts)
 				.metavar ("{ballast}")
 				.add_option (&["-b", "--ballast"], ArgPush, "(shared ballast, for additional security) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _empty_is_missing)
+		_flags.refer (&mut _empty_is_missing)
 				.metavar ("{bool}")
 				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified) (!!! CAUTION !!!)")
 				.add_option (&["--empty-is-missing"], ArgStoreOption, "");
 		
-		if execute_parser (_parser, _arguments) .else_wrap (0xe3a49130) ? {
+		if execute_parser (_flags, _arguments) .else_wrap (0xe3a49130) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}
@@ -474,7 +509,7 @@ pub fn main_decrypt_1 (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 
 
-pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_password_1 (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _senders_private : Vec<String> = Vec::new ();
 	let mut _recipients_public : Vec<String> = Vec::new ();
@@ -487,46 +522,46 @@ pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _empty_is_missing : Option<bool> = None;
 	
 	{
-		let mut _parser = create_parser () .else_wrap (0xb2fd613d) ?;
+		let mut _flags = create_parser () .else_wrap (0xb2fd613d) ?;
 		
-		_parser.refer (&mut _senders_private)
+		_flags.refer (&mut _senders_private)
 				.metavar ("{sender}")
 				.add_option (&["-s", "--sender"], ArgPush, "(sender private key) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _recipients_public)
+		_flags.refer (&mut _recipients_public)
 				.metavar ("{recipient}")
 				.add_option (&["-r", "--recipient"], ArgPush, "(recipient public key) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _associated)
+		_flags.refer (&mut _associated)
 				.metavar ("{associated}")
 				.add_option (&["-a", "--associated"], ArgPush, "(associated data) (multiple allowed, order is important)");
 		
-		_parser.refer (&mut _secrets)
+		_flags.refer (&mut _secrets)
 				.metavar ("{secret}")
 				.add_option (&["-x", "--secret"], ArgPush, "(shared secret, for additional security) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _pins)
+		_flags.refer (&mut _pins)
 				.metavar ("{pin}")
 				.add_option (&["-p", "--pin"], ArgPush, "(shared PIN, for **WEAK** additional security) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _ssh_wrappers)
+		_flags.refer (&mut _ssh_wrappers)
 				.metavar ("{key}")
 				.add_option (&["--ssh-wrap"], ArgPush, "(shared SSH agent key handle) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _seeds)
+		_flags.refer (&mut _seeds)
 				.metavar ("{seed}")
 				.add_option (&["-e", "--seed"], ArgPush, "(shared seed, for additional security) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _ballasts)
+		_flags.refer (&mut _ballasts)
 				.metavar ("{ballast}")
 				.add_option (&["-b", "--ballast"], ArgPush, "(shared ballast, for additional security) (multiple allowed, in any order)");
 		
-		_parser.refer (&mut _empty_is_missing)
+		_flags.refer (&mut _empty_is_missing)
 				.metavar ("{bool}")
 				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified) (!!! CAUTION !!!)")
 				.add_option (&["--empty-is-missing"], ArgStoreOption, "");
 		
-		if execute_parser (_parser, _arguments) .else_wrap (0xd3606aac) ? {
+		if execute_parser (_flags, _arguments) .else_wrap (0xd3606aac) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}
@@ -592,9 +627,9 @@ pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
 pub fn main_armor (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	{
-		let mut _parser = create_parser () .else_wrap (0x9deb1736) ?;
+		let mut _flags = create_flags () .else_wrap (0x9deb1736) ?;
 		
-		if execute_parser (_parser, _arguments) .else_wrap (0xa38080cc) ? {
+		if execute_flags (_flags, _arguments) .else_wrap (0xa38080cc) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}
@@ -617,9 +652,9 @@ pub fn main_armor (_arguments : Vec<String>) -> MainResult<ExitCode> {
 pub fn main_dearmor (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	{
-		let mut _parser = create_parser () .else_wrap (0xe46fc464) ?;
+		let mut _flags = create_flags () .else_wrap (0xe46fc464) ?;
 		
-		if execute_parser (_parser, _arguments) .else_wrap (0x222a3894) ? {
+		if execute_flags (_flags, _arguments) .else_wrap (0x222a3894) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}
@@ -646,9 +681,9 @@ pub fn main_dearmor (_arguments : Vec<String>) -> MainResult<ExitCode> {
 pub fn main_encode (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	{
-		let mut _parser = create_parser () .else_wrap (0xcb1b3482) ?;
+		let mut _flags = create_flags () .else_wrap (0xcb1b3482) ?;
 		
-		if execute_parser (_parser, _arguments) .else_wrap (0xad08f353) ? {
+		if execute_flags (_flags, _arguments) .else_wrap (0xad08f353) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}
@@ -673,9 +708,9 @@ pub fn main_encode (_arguments : Vec<String>) -> MainResult<ExitCode> {
 pub fn main_decode (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	{
-		let mut _parser = create_parser () .else_wrap (0x9235af69) ?;
+		let mut _flags = create_flags () .else_wrap (0x9235af69) ?;
 		
-		if execute_parser (_parser, _arguments) .else_wrap (0xe0737dae) ? {
+		if execute_flags (_flags, _arguments) .else_wrap (0xe0737dae) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}
@@ -704,9 +739,9 @@ pub fn main_decode (_arguments : Vec<String>) -> MainResult<ExitCode> {
 pub fn main_ssh_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	{
-		let mut _parser = create_parser () .else_wrap (0xc0f96685) ?;
+		let mut _flags = create_flags () .else_wrap (0xc0f96685) ?;
 		
-		if execute_parser (_parser, _arguments) .else_wrap (0xf17bd371) ? {
+		if execute_flags (_flags, _arguments) .else_wrap (0xf17bd371) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}
@@ -744,18 +779,20 @@ pub fn main_ssh_wrap (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _empty_is_missing : Option<bool> = None;
 	
 	{
-		let mut _parser = create_parser () .else_wrap (0xeead67de) ?;
+		let mut _flags = create_flags () .else_wrap (0xeead67de) ?;
 		
-		_parser.refer (&mut _key)
-				.metavar ("{key}")
-				.add_option (&["-k", "--key"], ArgStoreOption, "(shared SSH agent key handle)");
+		_flags.define_single_flag_0 (&mut _key)
+				.with_flag ('k', "key")
+				.with_placeholder ("key")
+				.with_description ("shared SSH agent key handle");
 		
-		_parser.refer (&mut _empty_is_missing)
-				.metavar ("{bool}")
-				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified) (!!! CAUTION !!!)")
-				.add_option (&["--empty-is-missing"], ArgStoreOption, "");
+		_flags.define_single_flag_0 (&mut _empty_is_missing)
+				.with_flag ((), "empty-is-missing")
+				.with_placeholder ("bool")
+				.with_description ("treat empty arguments as unspecified")
+				.with_warning ("CAUTION");
 		
-		if execute_parser (_parser, _arguments) .else_wrap (0x596c8a62) ? {
+		if execute_flags (_flags, _arguments) .else_wrap (0x596c8a62) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}

@@ -178,23 +178,23 @@ impl MaterialFlags {
 			) -> FlagsResult
 	{
 		_flags.define_multiple_flag_0 (&mut self.values)
-				.with_placeholder ("string")
 				.with_flag (_short_values, _long_values)
+				.with_placeholder ("string")
 				.with_description (_description);
 		
 		_flags.define_multiple_flag_0 (&mut self.from_environment)
-				.with_placeholder ("variable")
 				.with_flag ((), _long_environment)
+				.with_placeholder ("variable")
 				.with_description ("from environment");
 		
 		_flags.define_multiple_flag_0 (&mut self.from_file)
-				.with_placeholder ("path")
 				.with_flag ((), _long_file)
+				.with_placeholder ("path")
 				.with_description ("from file");
 		
 		_flags.define_multiple_flag_0 (&mut self.from_fd)
-				.with_placeholder ("fd")
 				.with_flag ((), _long_fd)
+				.with_placeholder ("fd")
 				.with_description ("from file-descriptor");
 		
 		_flags.define_switch_0 (&mut self.from_stdin)
@@ -504,8 +504,8 @@ impl CommonFlags {
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
 		
 		_flags.define_single_flag_0 (&mut self.empty_is_missing)
-				.with_placeholder ("bool")
 				.with_flag ((), "empty-is-missing")
+				.with_placeholder ("bool")
 				.with_description ("treat empty arguments as unspecified")
 				.with_warning ("CAUTION");
 		
