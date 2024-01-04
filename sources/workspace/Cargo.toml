@@ -3,8 +3,14 @@
 [workspace]
 
 members = [
+	
 	"../runtime",
 	"../runtime-flags",
+	"../runtime-random",
+	"../runtime-hashes",
+	"../runtime-crypto",
+	"../runtime-codings",
+	
 	"../patterns",
 	"../patterns-tool",
 	"../encodings",

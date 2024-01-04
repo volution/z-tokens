@@ -1,0 +1,53 @@
+
+
+[package]
+
+name = "z-tokens-runtime-crypto"
+
+workspace = "../workspace"
+
+autobins = false
+autoexamples = false
+autotests = false
+autobenches = false
+
+version.workspace = true
+publish.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+description.workspace = true
+keywords.workspace = true
+categories.workspace = true
+homepage.workspace = true
+repository.workspace = true
+documentation.workspace = true
+
+
+
+
+[lib]
+
+name = "z_tokens_runtime_crypto"
+path = "./lib.rs"
+
+
+
+
+[features]
+
+default = []
+
+development = []
+
+release = []
+
+
+
+
+[dependencies]
+
+z-tokens-runtime = { path = "../runtime", default-features = false, features = [] }
+
+

@@ -2071,10 +2071,38 @@ dependencies = [
 ]
 
 [[package]]
+name = "z-tokens-runtime-codings"
+version = "0.4.0"
+dependencies = [
+ "z-tokens-runtime",
+]
+
+[[package]]
+name = "z-tokens-runtime-crypto"
+version = "0.4.0"
+dependencies = [
+ "z-tokens-runtime",
+]
+
+[[package]]
 name = "z-tokens-runtime-flags"
 version = "0.4.0"
 dependencies = [
  "vrl-cli-arguments",
+ "z-tokens-runtime",
+]
+
+[[package]]
+name = "z-tokens-runtime-hashes"
+version = "0.4.0"
+dependencies = [
+ "z-tokens-runtime",
+]
+
+[[package]]
+name = "z-tokens-runtime-random"
+version = "0.4.0"
+dependencies = [
  "z-tokens-runtime",
 ]
 
