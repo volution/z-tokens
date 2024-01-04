@@ -38,3 +38,8 @@ pub(crate) fn read_at_most (mut _stream : impl Read, _limit : usize) -> IoResult
 }
 
 
+pub(crate) fn write_output (mut _stream : impl Write, _data : Vec<u8>) -> IoResult {
+	_stream.write (&_data) .map (|_| ()) .else_wrap (0xcd6c3a20)
+}
+
+

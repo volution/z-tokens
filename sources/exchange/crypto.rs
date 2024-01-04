@@ -191,7 +191,37 @@ define_cryptographic_purpose! (CRYPTO_PASSWORD_OUTPUT_PURPOSE, password, output)
 
 
 
-pub fn password (
+pub fn password <'a> (
+			_senders : impl Iterator<Item = &'a SenderPrivateKey>,
+			_recipients : impl Iterator<Item = &'a RecipientPublicKey>,
+			_associated : impl Iterator<Item = &'a Associated>,
+			_secret : impl Iterator<Item = &'a SharedSecret>,
+			_pin : impl Iterator<Item = &'a SharedPin>,
+			_seed : impl Iterator<Item = &'a SharedSeed>,
+			_ballast : impl Iterator<Item = &'a SharedBallast>,
+			_password_data : &[u8],
+			_password_output : &mut [u8; 32],
+			_ssh_wrappers : impl Iterator<Item = &'a mut SshWrapper>,
+		) -> CryptoResult
+{
+	password_with_raw (
+			& _senders.collect::<Vec<_>> (),
+			& _recipients.collect::<Vec<_>> (),
+			& _associated.map (Associated::access_bytes_slice) .collect::<Vec<_>> (),
+			& _secret.map (SharedSecret::access_bytes_slice) .collect::<Vec<_>> (),
+			& _pin.map (SharedPin::access_bytes_slice) .collect::<Vec<_>> (),
+			& _seed.map (SharedSeed::access_bytes_slice) .collect::<Vec<_>> (),
+			& _ballast.map (SharedBallast::access_bytes_slice) .collect::<Vec<_>> (),
+			_password_data,
+			_password_output,
+			_ssh_wrappers.collect (),
+		)
+}
+
+
+
+
+pub fn password_with_raw (
 			_senders : &[&SenderPrivateKey],
 			_recipients : &[&RecipientPublicKey],
 			_associated_inputs : &[&[u8]],
@@ -274,7 +304,39 @@ pub fn password (
 
 
 
-pub fn encrypt (
+pub fn encrypt <'a> (
+			_senders : impl Iterator<Item = &'a SenderPrivateKey>,
+			_recipients : impl Iterator<Item = &'a RecipientPublicKey>,
+			_associated : impl Iterator<Item = &'a Associated>,
+			_secret : impl Iterator<Item = &'a SharedSecret>,
+			_pin : impl Iterator<Item = &'a SharedPin>,
+			_seed : impl Iterator<Item = &'a SharedSeed>,
+			_ballast : impl Iterator<Item = &'a SharedBallast>,
+			_decrypted : &[u8],
+			_encrypted : &mut Vec<u8>,
+			_ssh_wrappers : impl Iterator<Item = &'a mut SshWrapper>,
+			_packet_salt_deterministic : bool,
+		) -> CryptoResult
+{
+	encrypt_with_raw (
+			& _senders.collect::<Vec<_>> (),
+			& _recipients.collect::<Vec<_>> (),
+			& _associated.map (Associated::access_bytes_slice) .collect::<Vec<_>> (),
+			& _secret.map (SharedSecret::access_bytes_slice) .collect::<Vec<_>> (),
+			& _pin.map (SharedPin::access_bytes_slice) .collect::<Vec<_>> (),
+			& _seed.map (SharedSeed::access_bytes_slice) .collect::<Vec<_>> (),
+			& _ballast.map (SharedBallast::access_bytes_slice) .collect::<Vec<_>> (),
+			_decrypted,
+			_encrypted,
+			_ssh_wrappers.collect (),
+			_packet_salt_deterministic,
+		)
+}
+
+
+
+
+pub fn encrypt_with_raw (
 			_senders : &[&SenderPrivateKey],
 			_recipients : &[&RecipientPublicKey],
 			_associated_inputs : &[&[u8]],
@@ -417,7 +479,37 @@ pub fn encrypt (
 
 
 
-pub fn decrypt (
+pub fn decrypt <'a> (
+			_recipients : impl Iterator<Item = &'a RecipientPrivateKey>,
+			_senders : impl Iterator<Item = &'a SenderPublicKey>,
+			_associated : impl Iterator<Item = &'a Associated>,
+			_secret : impl Iterator<Item = &'a SharedSecret>,
+			_pin : impl Iterator<Item = &'a SharedPin>,
+			_seed : impl Iterator<Item = &'a SharedSeed>,
+			_ballast : impl Iterator<Item = &'a SharedBallast>,
+			_encrypted : &[u8],
+			_decrypted : &mut Vec<u8>,
+			_ssh_wrappers : impl Iterator<Item = &'a mut SshWrapper>,
+		) -> CryptoResult
+{
+	decrypt_with_raw (
+			& _recipients.collect::<Vec<_>> (),
+			& _senders.collect::<Vec<_>> (),
+			& _associated.map (Associated::access_bytes_slice) .collect::<Vec<_>> (),
+			& _secret.map (SharedSecret::access_bytes_slice) .collect::<Vec<_>> (),
+			& _pin.map (SharedPin::access_bytes_slice) .collect::<Vec<_>> (),
+			& _seed.map (SharedSeed::access_bytes_slice) .collect::<Vec<_>> (),
+			& _ballast.map (SharedBallast::access_bytes_slice) .collect::<Vec<_>> (),
+			_encrypted,
+			_decrypted,
+			_ssh_wrappers.collect (),
+		)
+}
+
+
+
+
+pub fn decrypt_with_raw (
 			_recipients : &[&RecipientPrivateKey],
 			_senders : &[&SenderPublicKey],
 			_associated_inputs : &[&[u8]],

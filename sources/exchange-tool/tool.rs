@@ -100,7 +100,7 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _pin_generate = _pin_generate.unwrap_or (! _any_generate_explicit);
 	let _write_comments = _write_comments.unwrap_or (true);
 	
-	let mut _output = BufWriter::with_capacity (STDOUT_BUFFER_SIZE, stdout_locked ());
+	let mut _output = Vec::with_capacity (STDOUT_BUFFER_SIZE);
 	
 	let (_sender_pair, _recipient_pair) = if _self_generate {
 			
@@ -222,7 +222,80 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		writeln! (&mut _output) .else_wrap (0x10c04432) ?;
 	}
 	
-	drop (_output.into_inner () .else_replace (0x6c15be3e) ?);
+	write_output (stdout_locked (), _output) .else_wrap (0x49532780) ?;
+	
+	Ok (ExitCode::SUCCESS)
+}
+
+
+
+
+
+
+
+
+pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
+	
+	let mut _flags = PasswordFlags::new ();
+	
+	let mut _parser = create_flags () .else_wrap (0xf6c152eb) ?;
+	_flags.flags (&mut _parser) .else_wrap (0x67d0bd69) ?;
+	if execute_flags (_parser, _arguments) .else_wrap (0x87bc5c64) ? {
+		return Ok (ExitCode::SUCCESS);
+	}
+	
+	let _input = stdin_locked ();
+	let _output = stdout_locked ();
+	
+	main_password_with_flags (_flags, _input, _output)
+}
+
+
+pub fn main_password_with_flags (_flags : PasswordFlags, _input : impl Read, _output : impl Write) -> MainResult<ExitCode> {
+	let _arguments = _flags.arguments () .else_wrap (0x6a2e6e49) ?;
+	main_password_with_arguments (_arguments, _input, _output)
+}
+
+
+pub fn main_password_with_arguments (_arguments : PasswordArguments, _input : impl Read, _output : impl Write) -> MainResult<ExitCode> {
+	
+	let _senders = _arguments.senders.decode () .else_wrap (0xd5bc0620) ?;
+	let _recipients = _arguments.recipients.decode () .else_wrap (0xc20dc7fd) ?;
+	let _associated = _arguments.shared.associated.decode () .else_wrap (0x5b75b627) ?;
+	let _secrets = _arguments.shared.secrets.decode () .else_wrap (0x80159d9a) ?;
+	let _pins = _arguments.shared.pins.decode () .else_wrap (0x12ba09e4) ?;
+	let _seeds = _arguments.shared.seeds.decode () .else_wrap (0x4a0b1e18) ?;
+	let _ballasts = _arguments.shared.ballasts.decode () .else_wrap (0x7ab43c45) ?;
+	
+	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x3cae7413) ?;
+	
+	let _password_input = read_at_most (_input, CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0xab674582) ?;
+	
+	let mut _password_output = [0; 32];
+	
+	password (
+			_senders.iter (),
+			_recipients.iter (),
+			_associated.iter (),
+			_secrets.iter (),
+			_pins.iter (),
+			_seeds.iter (),
+			_ballasts.iter (),
+			&_password_input,
+			&mut _password_output,
+			_ssh_wrappers.iter_mut (),
+		) .else_wrap (0xbfae6a34) ?;
+	
+	let _password_output = PasswordOutput::new (_password_output);
+	
+	let _password_output = _password_output.access_bytes ();
+	let mut _password_encoded = String::with_capacity (_password_output.len () * 2 + 1);
+	for _password_output_byte in _password_output {
+		_password_encoded.write_fmt (format_args! ("{:02x}", _password_output_byte)) .else_wrap (0x7ed2faeb) ?;
+	}
+	_password_encoded.push ('\n');
+	
+	write_output (_output, _password_encoded.into_bytes ()) .else_wrap (0x74075ccd) ?;
 	
 	Ok (ExitCode::SUCCESS)
 }
@@ -236,7 +309,7 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
-	let mut _flags = EncryptFlags::new () .else_wrap (0x0b4235a7) ?;
+	let mut _flags = EncryptFlags::new ();
 	
 	let mut _parser = create_flags () .else_wrap (0x547e4207) ?;
 	_flags.flags (&mut _parser) .else_wrap (0x93da5c86) ?;
@@ -244,17 +317,65 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		return Ok (ExitCode::SUCCESS);
 	}
 	
-	let _arguments = _flags.arguments () .else_wrap (0xf0d0dcf3) ?;
+	let _input = stdin_locked ();
+	let _output = stdout_locked ();
 	
-	fail! (0x2aee71cd);
+	main_encrypt_with_flags (_flags, _input, _output)
 }
+
+
+pub fn main_encrypt_with_flags (_flags : EncryptFlags, _input : impl Read, _output : impl Write) -> MainResult<ExitCode> {
+	let _arguments = _flags.arguments () .else_wrap (0xe512fd1c) ?;
+	main_encrypt_with_arguments (_arguments, _input, _output)
+}
+
+
+pub fn main_encrypt_with_arguments (_arguments : EncryptArguments, _input : impl Read, _output : impl Write) -> MainResult<ExitCode> {
+	
+	let _senders = _arguments.senders.decode () .else_wrap (0xd0c0a0b3) ?;
+	let _recipients = _arguments.recipients.decode () .else_wrap (0x7ddeeef6) ?;
+	let _associated = _arguments.shared.associated.decode () .else_wrap (0x44a02372) ?;
+	let _secrets = _arguments.shared.secrets.decode () .else_wrap (0x1df8ef79) ?;
+	let _pins = _arguments.shared.pins.decode () .else_wrap (0xcc5678f0) ?;
+	let _seeds = _arguments.shared.seeds.decode () .else_wrap (0x72e6b8f5) ?;
+	let _ballasts = _arguments.shared.ballasts.decode () .else_wrap (0x92846ef7) ?;
+	let _deterministic = _arguments.deterministic;
+	
+	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x6849e6bd) ?;
+	
+	let _decrypted = read_at_most (_input, CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0x12c4b741) ?;
+	
+	let mut _encrypted = Vec::with_capacity (STDOUT_BUFFER_SIZE);
+	
+	encrypt (
+			_senders.iter (),
+			_recipients.iter (),
+			_associated.iter (),
+			_secrets.iter (),
+			_pins.iter (),
+			_seeds.iter (),
+			_ballasts.iter (),
+			&_decrypted,
+			&mut _encrypted,
+			_ssh_wrappers.iter_mut (),
+			_deterministic,
+		) .else_wrap (0xa3032303) ?;
+	
+	write_output (_output, _encrypted) .else_wrap (0x4bee2603) ?;
+	
+	Ok (ExitCode::SUCCESS)
+}
+
+
+
+
 
 
 
 
 pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
-	let mut _flags = DecryptFlags::new () .else_wrap (0x0185958e) ?;
+	let mut _flags = DecryptFlags::new ();
 	
 	let mut _parser = create_flags () .else_wrap (0x48431e88) ?;
 	_flags.flags (&mut _parser) .else_wrap (0xe7a4f28c) ?;
@@ -262,357 +383,49 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		return Ok (ExitCode::SUCCESS);
 	}
 	
-	let _arguments = _flags.arguments () .else_wrap (0x867adb75) ?;
+	let _input = stdin_locked ();
+	let _output = stdout_locked ();
 	
-	fail! (0x4e92ce21);
+	main_decrypt_with_flags (_flags, _input, _output)
 }
 
 
-
-
-pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
-	
-	let mut _flags = PasswordFlags::new () .else_wrap (0x078cfc03) ?;
-	
-	let mut _parser = create_flags () .else_wrap (0xf6c152eb) ?;
-	_flags.flags (&mut _parser) .else_wrap (0x67d0bd69) ?;
-	if execute_flags (_parser, _arguments) .else_wrap (0x87bc5c64) ? {
-		return Ok (ExitCode::SUCCESS);
-	}
-	
-	let _arguments = _flags.arguments () .else_wrap (0x2329b523) ?;
-	
-	fail! (0xaa3fb15c);
+pub fn main_decrypt_with_flags (_flags : DecryptFlags, _input : impl Read, _output : impl Write) -> MainResult<ExitCode> {
+	let _arguments = _flags.arguments () .else_wrap (0xf0d0dcf3) ?;
+	main_decrypt_with_arguments (_arguments, _input, _output)
 }
 
 
-
-
-
-
-
-
-pub fn main_encrypt_1 (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_decrypt_with_arguments (_arguments : DecryptArguments, _input : impl Read, _output : impl Write) -> MainResult<ExitCode> {
 	
-	let mut _senders_private : Vec<String> = Vec::new ();
-	let mut _recipients_public : Vec<String> = Vec::new ();
-	let mut _associated : Vec<String> = Vec::new ();
-	let mut _secrets : Vec<String> = Vec::new ();
-	let mut _seeds : Vec<String> = Vec::new ();
-	let mut _ballasts : Vec<String> = Vec::new ();
-	let mut _pins : Vec<String> = Vec::new ();
-	let mut _ssh_wrappers : Vec<String> = Vec::new ();
-	let mut _empty_is_missing : Option<bool> = None;
-	let mut _deterministic : Option<bool> = None;
+	let _recipients = _arguments.recipients.decode () .else_wrap (0xbcc50e84) ?;
+	let _senders = _arguments.senders.decode () .else_wrap (0x3a858679) ?;
+	let _associated = _arguments.shared.associated.decode () .else_wrap (0xad23f6ba) ?;
+	let _secrets = _arguments.shared.secrets.decode () .else_wrap (0x9f36e262) ?;
+	let _pins = _arguments.shared.pins.decode () .else_wrap (0x6a7572cb) ?;
+	let _seeds = _arguments.shared.seeds.decode () .else_wrap (0x22c67f58) ?;
+	let _ballasts = _arguments.shared.ballasts.decode () .else_wrap (0x11d94d7f) ?;
 	
-	{
-		let mut _flags = create_parser () .else_wrap (0x93d41b76) ?;
-		
-		_flags.refer (&mut _senders_private)
-				.metavar ("{sender}")
-				.add_option (&["-s", "--sender"], ArgPush, "(sender private key) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _recipients_public)
-				.metavar ("{recipient}")
-				.add_option (&["-r", "--recipient"], ArgPush, "(recipient public key) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _associated)
-				.metavar ("{associated}")
-				.add_option (&["-a", "--associated"], ArgPush, "(associated data) (multiple allowed, order is important)");
-		
-		_flags.refer (&mut _secrets)
-				.metavar ("{secret}")
-				.add_option (&["-x", "--secret"], ArgPush, "(shared secret, for additional security) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _pins)
-				.metavar ("{pin}")
-				.add_option (&["-p", "--pin"], ArgPush, "(shared PIN, for **WEAK** additional security) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _ssh_wrappers)
-				.metavar ("{key}")
-				.add_option (&["--ssh-wrap"], ArgPush, "(shared SSH agent key handle) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _seeds)
-				.metavar ("{seed}")
-				.add_option (&["-e", "--seed"], ArgPush, "(shared seed, for additional security) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _ballasts)
-				.metavar ("{ballast}")
-				.add_option (&["-b", "--ballast"], ArgPush, "(shared ballast, for additional security) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _empty_is_missing)
-				.metavar ("{bool}")
-				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified) (!!! CAUTION !!!)")
-				.add_option (&["--empty-is-missing"], ArgStoreOption, "");
-		
-		_flags.refer (&mut _deterministic)
-				.metavar ("{bool}")
-				.add_option (&["--siv"], ArgStoreConst (Some (true)), "(deterministic output, based on SIV) (!!! CAUTION !!!)");
-		
-		if execute_parser (_flags, _arguments) .else_wrap (0x8a373e9a) ? {
-			return Ok (ExitCode::SUCCESS);
-		}
-	}
+	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x6a4b6c2d) ?;
 	
-	let _empty_is_missing = _empty_is_missing.unwrap_or (false);
+	let _encrypted = read_at_most (_input, CRYPTO_ENCRYPTED_SIZE_MAX) .else_wrap (0x70fa9ce3) ?;
 	
-	let _senders_private = _senders_private.into_iter () .filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _senders_private = _senders_private.into_iter () .map (SenderPrivateKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x750a42c0) ?;
-	let _senders_private = _senders_private.iter () .collect::<Vec<_>> ();
+	let mut _decrypted = Vec::with_capacity (STDOUT_BUFFER_SIZE);
 	
-	let _recipients_public = _recipients_public.into_iter () .filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _recipients_public = _recipients_public.into_iter () .map (RecipientPublicKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x233175e9) ?;
-	let _recipients_public = _recipients_public.iter () .collect::<Vec<_>> ();
+	decrypt (
+			_recipients.iter (),
+			_senders.iter (),
+			_associated.iter (),
+			_secrets.iter (),
+			_pins.iter (),
+			_seeds.iter (),
+			_ballasts.iter (),
+			&_encrypted,
+			&mut _decrypted,
+			_ssh_wrappers.iter_mut (),
+		) .else_wrap (0x85879b4e) ?;
 	
-	let _ssh_wrappers = _ssh_wrappers.into_iter () .filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapperKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x6d68c3c2) ?;
-	let mut _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapper::connect) .collect::<Result<Vec<_>, _>> () .else_wrap (0xe1f9e4bf) ?;
-	let _ssh_wrappers = _ssh_wrappers.iter_mut () .collect::<Vec<_>> ();
-	
-	let _associated = _associated.into_iter () .filter (|_pin| ! (_pin.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _associated = _associated.iter () .map (String::as_bytes) .collect::<Vec<_>> ();
-	
-	let _secrets = _secrets.into_iter () .filter (|_secret| ! (_secret.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _secrets = _secrets.into_iter () .map (SharedSecret::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0xab68aede) ?;
-	let _secrets = _secrets.iter () .map (SharedSecret::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
-	
-	let _seeds = _seeds.into_iter () .filter (|_seed| ! (_seed.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _seeds = _seeds.into_iter () .map (SharedSeed::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x6a6d8fe6) ?;
-	let _seeds = _seeds.iter () .map (SharedSeed::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
-	
-	let _ballasts = _ballasts.into_iter () .filter (|_ballast| ! (_ballast.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _ballasts = _ballasts.into_iter () .map (SharedBallast::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x125f8f44) ?;
-	let _ballasts = _ballasts.iter () .map (SharedBallast::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
-	
-	let _pins = _pins.into_iter () .filter (|_pin| ! (_pin.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _pins = _pins.iter () .map (String::as_bytes) .collect::<Vec<_>> ();
-	
-	let _deterministic = _deterministic.unwrap_or (false);
-	
-	let _decrypted = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0xb0e8db93) ?;
-	
-	let mut _encrypted = Vec::new ();
-	encrypt (&_senders_private, &_recipients_public, &_associated, &_secrets, &_pins, &_seeds, &_ballasts, &_decrypted, &mut _encrypted, _ssh_wrappers, _deterministic) .else_wrap (0x38d2ce1e) ?;
-	
-	let mut _stream = stdout_locked ();
-	_stream.write (&_encrypted) .else_wrap (0x815d15bc) ?;
-	mem::drop (_stream);
-	
-	Ok (ExitCode::SUCCESS)
-}
-
-
-
-
-pub fn main_decrypt_1 (_arguments : Vec<String>) -> MainResult<ExitCode> {
-	
-	let mut _recipients_private : Vec<String> = Vec::new ();
-	let mut _senders_public : Vec<String> = Vec::new ();
-	let mut _associated : Vec<String> = Vec::new ();
-	let mut _secrets : Vec<String> = Vec::new ();
-	let mut _seeds : Vec<String> = Vec::new ();
-	let mut _ballasts : Vec<String> = Vec::new ();
-	let mut _pins : Vec<String> = Vec::new ();
-	let mut _ssh_wrappers : Vec<String> = Vec::new ();
-	let mut _empty_is_missing : Option<bool> = None;
-	
-	{
-		let mut _flags = create_parser () .else_wrap (0x608139b1) ?;
-		
-		_flags.refer (&mut _recipients_private)
-				.metavar ("{sender}")
-				.add_option (&["-r", "--recipient"], ArgPush, "(recipient private key) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _senders_public)
-				.metavar ("{recipient}")
-				.add_option (&["-s", "--sender"], ArgPush, "(sender public key) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _associated)
-				.metavar ("{associated}")
-				.add_option (&["-a", "--associated"], ArgPush, "(associated data) (multiple allowed, order is important)");
-		
-		_flags.refer (&mut _secrets)
-				.metavar ("{secret}")
-				.add_option (&["-x", "--secret"], ArgPush, "(shared secret, for additional security) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _pins)
-				.metavar ("{pin}")
-				.add_option (&["-p", "--pin"], ArgPush, "(shared PIN, for **WEAK** additional security) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _ssh_wrappers)
-				.metavar ("{key}")
-				.add_option (&["--ssh-wrap"], ArgPush, "(shared SSH agent key handle) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _seeds)
-				.metavar ("{seed}")
-				.add_option (&["-e", "--seed"], ArgPush, "(shared seed, for additional security) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _ballasts)
-				.metavar ("{ballast}")
-				.add_option (&["-b", "--ballast"], ArgPush, "(shared ballast, for additional security) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _empty_is_missing)
-				.metavar ("{bool}")
-				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified) (!!! CAUTION !!!)")
-				.add_option (&["--empty-is-missing"], ArgStoreOption, "");
-		
-		if execute_parser (_flags, _arguments) .else_wrap (0xe3a49130) ? {
-			return Ok (ExitCode::SUCCESS);
-		}
-	}
-	
-	let _empty_is_missing = _empty_is_missing.unwrap_or (false);
-	
-	let _recipients_private = _recipients_private.into_iter () .filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _recipients_private = _recipients_private.into_iter () .map (RecipientPrivateKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0xd58c9ad4) ?;
-	let _recipients_private = _recipients_private.iter () .collect::<Vec<_>> ();
-	
-	let _senders_public = _senders_public.into_iter () .filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _senders_public = _senders_public.into_iter () .map (SenderPublicKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0xbb6f004f) ?;
-	let _senders_public = _senders_public.iter () .collect::<Vec<_>> ();
-	
-	let _ssh_wrappers = _ssh_wrappers.into_iter () .filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapperKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x1fea5617) ?;
-	let mut _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapper::connect) .collect::<Result<Vec<_>, _>> () .else_wrap (0xfeda4c77) ?;
-	let _ssh_wrappers = _ssh_wrappers.iter_mut () .collect::<Vec<_>> ();
-	
-	let _associated = _associated.into_iter () .filter (|_pin| ! (_pin.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _associated = _associated.iter () .map (String::as_bytes) .collect::<Vec<_>> ();
-	
-	let _secrets = _secrets.into_iter () .filter (|_ballast| ! (_ballast.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _secrets = _secrets.into_iter () .map (SharedSecret::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x07d3b030) ?;
-	let _secrets = _secrets.iter () .map (SharedSecret::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
-	
-	let _seeds = _seeds.into_iter () .filter (|_seed| ! (_seed.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _seeds = _seeds.into_iter () .map (SharedSeed::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0xf3bdd6dc) ?;
-	let _seeds = _seeds.iter () .map (SharedSeed::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
-	
-	let _ballasts = _ballasts.into_iter () .filter (|_ballast| ! (_ballast.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _ballasts = _ballasts.into_iter () .map (SharedBallast::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0xb0bc927a) ?;
-	let _ballasts = _ballasts.iter () .map (SharedBallast::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
-	
-	let _pins = _pins.into_iter () .filter (|_pin| ! (_pin.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _pins = _pins.iter () .map (String::as_bytes) .collect::<Vec<_>> ();
-	
-	let _encrypted = read_at_most (stdin_locked (), CRYPTO_ENCRYPTED_SIZE_MAX) .else_wrap (0xf71cef7e) ?;
-	
-	let mut _decrypted = Vec::new ();
-	decrypt (&_recipients_private, &_senders_public, &_associated, &_secrets, &_pins, &_seeds, &_ballasts, &_encrypted, &mut _decrypted, _ssh_wrappers) .else_wrap (0x95273e1d) ?;
-	
-	let mut _stream = stdout_locked ();
-	_stream.write (&_decrypted) .else_wrap (0x19352ca2) ?;
-	mem::drop (_stream);
-	
-	Ok (ExitCode::SUCCESS)
-}
-
-
-
-
-pub fn main_password_1 (_arguments : Vec<String>) -> MainResult<ExitCode> {
-	
-	let mut _senders_private : Vec<String> = Vec::new ();
-	let mut _recipients_public : Vec<String> = Vec::new ();
-	let mut _associated : Vec<String> = Vec::new ();
-	let mut _secrets : Vec<String> = Vec::new ();
-	let mut _seeds : Vec<String> = Vec::new ();
-	let mut _ballasts : Vec<String> = Vec::new ();
-	let mut _pins : Vec<String> = Vec::new ();
-	let mut _ssh_wrappers : Vec<String> = Vec::new ();
-	let mut _empty_is_missing : Option<bool> = None;
-	
-	{
-		let mut _flags = create_parser () .else_wrap (0xb2fd613d) ?;
-		
-		_flags.refer (&mut _senders_private)
-				.metavar ("{sender}")
-				.add_option (&["-s", "--sender"], ArgPush, "(sender private key) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _recipients_public)
-				.metavar ("{recipient}")
-				.add_option (&["-r", "--recipient"], ArgPush, "(recipient public key) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _associated)
-				.metavar ("{associated}")
-				.add_option (&["-a", "--associated"], ArgPush, "(associated data) (multiple allowed, order is important)");
-		
-		_flags.refer (&mut _secrets)
-				.metavar ("{secret}")
-				.add_option (&["-x", "--secret"], ArgPush, "(shared secret, for additional security) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _pins)
-				.metavar ("{pin}")
-				.add_option (&["-p", "--pin"], ArgPush, "(shared PIN, for **WEAK** additional security) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _ssh_wrappers)
-				.metavar ("{key}")
-				.add_option (&["--ssh-wrap"], ArgPush, "(shared SSH agent key handle) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _seeds)
-				.metavar ("{seed}")
-				.add_option (&["-e", "--seed"], ArgPush, "(shared seed, for additional security) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _ballasts)
-				.metavar ("{ballast}")
-				.add_option (&["-b", "--ballast"], ArgPush, "(shared ballast, for additional security) (multiple allowed, in any order)");
-		
-		_flags.refer (&mut _empty_is_missing)
-				.metavar ("{bool}")
-				.add_option (&["-M"], ArgStoreConst (Some (true)), "(treat empty arguments as unspecified) (!!! CAUTION !!!)")
-				.add_option (&["--empty-is-missing"], ArgStoreOption, "");
-		
-		if execute_parser (_flags, _arguments) .else_wrap (0xd3606aac) ? {
-			return Ok (ExitCode::SUCCESS);
-		}
-	}
-	
-	let _empty_is_missing = _empty_is_missing.unwrap_or (false);
-	
-	let _senders_private = _senders_private.into_iter () .filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _senders_private = _senders_private.into_iter () .map (SenderPrivateKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0xa3edd671) ?;
-	let _senders_private = _senders_private.iter () .collect::<Vec<_>> ();
-	
-	let _recipients_public = _recipients_public.into_iter () .filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _recipients_public = _recipients_public.into_iter () .map (RecipientPublicKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x9c5d68bf) ?;
-	let _recipients_public = _recipients_public.iter () .collect::<Vec<_>> ();
-	
-	let _ssh_wrappers = _ssh_wrappers.into_iter () .filter (|_key| ! (_key.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapperKey::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x535691ae) ?;
-	let mut _ssh_wrappers = _ssh_wrappers.into_iter () .map (SshWrapper::connect) .collect::<Result<Vec<_>, _>> () .else_wrap (0x2c549ad6) ?;
-	let _ssh_wrappers = _ssh_wrappers.iter_mut () .collect::<Vec<_>> ();
-	
-	let _associated = _associated.into_iter () .filter (|_pin| ! (_pin.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _associated = _associated.iter () .map (String::as_bytes) .collect::<Vec<_>> ();
-	
-	let _secrets = _secrets.into_iter () .filter (|_secret| ! (_secret.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _secrets = _secrets.into_iter () .map (SharedSecret::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x20de63fc) ?;
-	let _secrets = _secrets.iter () .map (SharedSecret::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
-	
-	let _seeds = _seeds.into_iter () .filter (|_seed| ! (_seed.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _seeds = _seeds.into_iter () .map (SharedSeed::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0x7bc88ccf) ?;
-	let _seeds = _seeds.iter () .map (SharedSeed::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
-	
-	let _ballasts = _ballasts.into_iter () .filter (|_ballast| ! (_ballast.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _ballasts = _ballasts.into_iter () .map (SharedBallast::decode_and_zeroize) .collect::<Result<Vec<_>, _>> () .else_wrap (0xbadcd29b) ?;
-	let _ballasts = _ballasts.iter () .map (SharedBallast::access_bytes) .map (|_bytes| _bytes.as_slice ()) .collect::<Vec<_>> ();
-	
-	let _pins = _pins.into_iter () .filter (|_pin| ! (_pin.is_empty () && _empty_is_missing)) .collect::<Vec<_>> ();
-	let _pins = _pins.iter () .map (String::as_bytes) .collect::<Vec<_>> ();
-	
-	let _password_input = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0x6772b7e4) ?;
-	
-	let mut _password_output = [0u8; 32];
-	password (&_senders_private, &_recipients_public, &_associated, &_secrets, &_pins, &_seeds, &_ballasts, &_password_input, &mut _password_output, _ssh_wrappers) .else_wrap (0xec55f5c3) ?;
-	
-	let mut _password_buffer = String::with_capacity (_password_output.len () * 2 + 1);
-	for _password_output_byte in _password_output {
-		_password_buffer.write_fmt (format_args! ("{:02x}", _password_output_byte)) .else_wrap (0x3c7b44ec) ?;
-	}
-	_password_buffer.push ('\n');
-	
-	let mut _stream = stdout_locked ();
-	_stream.write (_password_buffer.as_bytes ()) .else_wrap (0x06a66fe0) ?;
-	mem::drop (_stream);
+	write_output (_output, _decrypted) .else_wrap (0xf6b34f47) ?;
 	
 	Ok (ExitCode::SUCCESS)
 }
@@ -639,9 +452,7 @@ pub fn main_armor (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _encoded = Vec::new ();
 	armor (&_decoded, &mut _encoded) .else_wrap (0x7f3ed3ae) ?;
 	
-	let mut _stream = stdout_locked ();
-	_stream.write (&_encoded) .else_wrap (0x2d673134) ?;
-	mem::drop (_stream);
+	write_output (stdout_locked (), _encoded) .else_wrap (0x2d673134) ?;
 	
 	Ok (ExitCode::SUCCESS)
 }
@@ -664,9 +475,7 @@ pub fn main_dearmor (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _decoded = Vec::new ();
 	dearmor (&_encoded, &mut _decoded) .else_wrap (0x069245f3) ?;
 	
-	let mut _stream = stdout_locked ();
-	_stream.write (&_decoded) .else_wrap (0x2d7f55d6) ?;
-	mem::drop (_stream);
+	write_output (stdout_locked (), _decoded) .else_wrap (0x2d7f55d6) ?;
 	
 	Ok (ExitCode::SUCCESS)
 }
@@ -695,9 +504,7 @@ pub fn main_encode (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	encode (&_decoded, &mut _encoded) .else_wrap (0xef489995) ?;
 	
-	let mut _stream = stdout_locked ();
-	_stream.write (&_encoded) .else_wrap (0x9ce3a5fa) ?;
-	mem::drop (_stream);
+	write_output (stdout_locked (), _encoded) .else_wrap (0x9ce3a5fa) ?;
 	
 	Ok (ExitCode::SUCCESS)
 }
@@ -722,9 +529,7 @@ pub fn main_decode (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	decode (&_encoded, &mut _decoded) .else_wrap (0xcbf8a0fd) ?;
 	
-	let mut _stream = stdout_locked ();
-	_stream.write (&_decoded) .else_wrap (0xb35cf6db) ?;
-	mem::drop (_stream);
+	write_output (stdout_locked (), _decoded) .else_wrap (0xb35cf6db) ?;
 	
 	Ok (ExitCode::SUCCESS)
 }
@@ -750,7 +555,7 @@ pub fn main_ssh_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let _keys = _agent.keys () .else_wrap (0x63ecbf4e) ?;
 	
-	let mut _output = BufWriter::with_capacity (STDOUT_BUFFER_SIZE, stdout_locked ());
+	let mut _output = Vec::with_capacity (STDOUT_BUFFER_SIZE);
 	
 	for _key in _keys.iter () {
 		
@@ -765,7 +570,7 @@ pub fn main_ssh_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		writeln! (&mut _output) .else_wrap (0x387d7ec5) ?;
 	}
 	
-	drop (_output.into_inner () .else_replace (0xc1441245) ?);
+	write_output (stdout_locked (), _output) .else_wrap (0xb6789fe6) ?;
 	
 	Ok (ExitCode::SUCCESS)
 }
@@ -818,9 +623,7 @@ pub fn main_ssh_wrap (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	}
 	_wrap_buffer.push ('\n');
 	
-	let mut _stream = stdout_locked ();
-	_stream.write (_wrap_buffer.as_bytes ()) .else_wrap (0x245ce871) ?;
-	mem::drop (_stream);
+	write_output (stdout_locked (), _wrap_buffer.into_bytes ()) .else_wrap (0x245ce871) ?;
 	
 	Ok (ExitCode::SUCCESS)
 }

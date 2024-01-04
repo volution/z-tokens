@@ -383,7 +383,7 @@ impl FlagValue for Family {}
 
 impl FlagValueDisplay for Family {
 	fn display_value (&self, _formatter : &mut Formatter) -> FlagValueDisplayResult {
-		Debug::fmt (self, _formatter) .else_wrap (0xd4eb1d49)
+		Debug::fmt (self, _formatter) .else_wrap (0x609b3f4a)
 	}
 }
 

@@ -1,5 +1,10 @@
 
 
+#![ allow (dead_code) ]
+
+
+
+
 use ::vrl_preludes::std_plus_extras::*;
 use ::vrl_errors::*;
 
@@ -37,6 +42,8 @@ pub struct SharedBallast (Rb<[u8; 32]>);
 
 pub struct Associated (Rb<Vec<u8>>);
 pub struct SharedPin (Rb<Vec<u8>>);
+
+pub struct PasswordOutput (Rb<[u8; 32]>);
 
 
 
@@ -87,6 +94,10 @@ impl SenderPrivateKey {
 		let _bytes : &[u8; 32] = unsafe { mem::transmute (_key) };
 		_bytes
 	}
+	
+	pub(crate) fn access_bytes_slice (&self) -> &[u8] {
+		self.access_bytes () .as_slice ()
+	}
 }
 
 
@@ -116,6 +127,10 @@ impl SenderPublicKey {
 	
 	pub(crate) fn access_bytes (&self) -> &[u8; 32] {
 		self.access () .as_bytes ()
+	}
+	
+	pub(crate) fn access_bytes_slice (&self) -> &[u8] {
+		self.access_bytes () .as_slice ()
 	}
 }
 
@@ -151,6 +166,10 @@ impl RecipientPrivateKey {
 		let _bytes : &[u8; 32] = unsafe { mem::transmute (_key) };
 		_bytes
 	}
+	
+	pub(crate) fn access_bytes_slice (&self) -> &[u8] {
+		self.access_bytes () .as_slice ()
+	}
 }
 
 
@@ -181,6 +200,10 @@ impl RecipientPublicKey {
 	pub(crate) fn access_bytes (&self) -> &[u8; 32] {
 		self.access () .as_bytes ()
 	}
+	
+	pub(crate) fn access_bytes_slice (&self) -> &[u8] {
+		self.access_bytes () .as_slice ()
+	}
 }
 
 
@@ -204,6 +227,10 @@ impl SharedSecret {
 	
 	pub fn access_bytes (&self) -> &[u8; 32] {
 		&self.0
+	}
+	
+	pub fn access_bytes_slice (&self) -> &[u8] {
+		self.access_bytes () .as_slice ()
 	}
 }
 
@@ -229,6 +256,10 @@ impl SharedSeed {
 	pub fn access_bytes (&self) -> &[u8; 32] {
 		&self.0
 	}
+	
+	pub fn access_bytes_slice (&self) -> &[u8] {
+		self.access_bytes () .as_slice ()
+	}
 }
 
 
@@ -252,6 +283,54 @@ impl SharedBallast {
 	
 	pub fn access_bytes (&self) -> &[u8; 32] {
 		&self.0
+	}
+	
+	pub fn access_bytes_slice (&self) -> &[u8] {
+		self.access_bytes () .as_slice ()
+	}
+}
+
+
+
+
+impl Associated {
+	
+	pub fn new (_data : Vec<u8>) -> Self {
+		Self (Rb::new (_data))
+	}
+	
+	pub fn access_bytes_slice (&self) -> &[u8] {
+		&self.0
+	}
+}
+
+
+impl SharedPin {
+	
+	pub fn new (_data : Vec<u8>) -> Self {
+		Self (Rb::new (_data))
+	}
+	
+	pub fn access_bytes_slice (&self) -> &[u8] {
+		&self.0
+	}
+}
+
+
+
+
+impl PasswordOutput {
+	
+	pub fn new (_data : [u8; 32]) -> Self {
+		Self (Rb::new (_data))
+	}
+	
+	pub fn access_bytes (&self) -> &[u8; 32] {
+		&self.0
+	}
+	
+	pub fn access_bytes_slice (&self) -> &[u8] {
+		self.access_bytes () .as_slice ()
 	}
 }
 
