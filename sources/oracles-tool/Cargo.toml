@@ -63,7 +63,6 @@ zt-oracles-pkcs11 = [
 [dependencies]
 
 z-tokens-runtime = { path = "../runtime", default-features = false, features = [
-		"zt-runtime-rpc",
 		"zt-runtime-sensitive",
 	] }
 z-tokens-runtime-flags = { path = "../runtime-flags", default-features = false, features = [] }

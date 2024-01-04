@@ -26,7 +26,4 @@ pub mod allocator;
 #[ cfg (feature = "zt-runtime-crypto") ]
 pub mod crypto;
 
-#[ cfg (feature = "zt-runtime-rpc") ]
-pub mod rpc;
-
 
