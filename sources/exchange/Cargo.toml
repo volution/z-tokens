@@ -60,18 +60,16 @@ z-tokens-runtime = { path = "../runtime", default-features = false, features = [
 		"zt-runtime-sensitive",
 	] }
 
-x25519-dalek = { version = "^2.0", default-features = false, features = [] }
-chacha20 = { version = "^0.9", default-features = false, features = ["std"] }
-blake3 = { version = "^1.3", default-features = false, features = ["std"] }
-constant_time_eq = { version = "^0.2", default-features = false, features = [] }
-bech32 = { version = "^0.9", default-features = false, features = ["std"] }
-rand = { version = "^0.8", default-features = false, features = ["std", "getrandom"] }
-brotli = { version = "^3.3", default-features = false, features = ["std"] }
-byteorder = { version = "^1.4", default-features = false, features = [] }
-bs58 = { version = "^0.4", default-features = false, features = ["std"] }
-crc-any = { version = "^2.4", default-features = false, features = [] }
-argon2 = { version = "^0.4", default-features = false, features = ["std"] }
-tokio = { version = "^1.25", default-features = false, features = ["rt", "net"] }
+z-tokens-runtime-random = { path = "../runtime-random", optional = false, default-features = false, features = [] }
+z-tokens-runtime-codings = { path = "../runtime-codings", optional = false, default-features = false, features = [] }
+
+x25519-dalek = { version = "^2.0", optional = false, default-features = false, features = [] }
+chacha20 = { version = "^0.9", optional = false, default-features = false, features = ["std"] }
+blake3 = { version = "^1.3", optional = false, default-features = false, features = ["std"] }
+constant_time_eq = { version = "^0.2", optional = false, default-features = false, features = [] }
+crc-any = { version = "^2.4", optional = false, default-features = false, features = [] }
+argon2 = { version = "^0.4", optional = false, default-features = false, features = ["std"] }
+tokio = { version = "^1.25", optional = false, default-features = false, features = ["rt", "net"] }
 
 
 

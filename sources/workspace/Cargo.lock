@@ -1936,13 +1936,8 @@ dependencies = [
 name = "z-tokens-encodings"
 version = "0.4.0"
 dependencies = [
- "bech32",
- "bs58",
- "data-encoding",
- "mnemonic",
- "qrcode",
  "z-tokens-runtime",
- "z85",
+ "z-tokens-runtime-codings",
 ]
 
 [[package]]
@@ -1959,19 +1954,16 @@ name = "z-tokens-exchange"
 version = "0.4.0"
 dependencies = [
  "argon2",
- "bech32",
  "blake3",
- "brotli",
- "bs58",
- "byteorder",
  "chacha20",
  "constant_time_eq 0.2.6",
  "crc-any",
- "rand 0.8.5",
  "russh-keys",
  "tokio",
  "x25519-dalek",
  "z-tokens-runtime",
+ "z-tokens-runtime-codings",
+ "z-tokens-runtime-random",
 ]
 
 [[package]]
@@ -2074,7 +2066,15 @@ dependencies = [
 name = "z-tokens-runtime-codings"
 version = "0.4.0"
 dependencies = [
+ "bech32",
+ "brotli",
+ "bs58",
+ "byteorder",
+ "data-encoding",
+ "mnemonic",
+ "qrcode",
  "z-tokens-runtime",
+ "z85",
 ]
 
 [[package]]

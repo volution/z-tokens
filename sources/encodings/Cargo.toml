@@ -54,13 +54,7 @@ release = [
 
 [dependencies]
 
-z-tokens-runtime = { path = "../runtime", default-features = false, features = [] }
-
-data-encoding = { version = "^2.3", default-features = false, features = ["std"] }
-bech32 = { version = "^0.9", default-features = false, features = ["std"] }
-bs58 = { version = "^0.4", default-features = false, features = ["std"] }
-z85 = { version = "^3.0", default-features = false, features = [] }
-mnemonic = { version = "^1.0", default-features = false, features = [] }
-qrcode = { version = "^0.12", default-features = false, features = [] }
+z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
+z-tokens-runtime-codings = { path = "../runtime-codings", optional = false, default-features = false, features = [] }
 
 

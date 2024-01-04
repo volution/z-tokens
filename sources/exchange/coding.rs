@@ -3,6 +3,14 @@
 use ::z_tokens_runtime::preludes::std_plus_extras::*;
 use ::z_tokens_runtime::preludes::errors::*;
 
+use ::z_tokens_runtime_codings::byteorder::{
+		BigEndian,
+		ByteOrder as _,
+	};
+
+use ::z_tokens_runtime_codings::bs58;
+use ::z_tokens_runtime_codings::brotli;
+
 
 
 
@@ -118,8 +126,8 @@ pub fn encode (_decoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResult {
 		}
 		
 		let _encode_size =
-				::bs58::encode (&_decode_buffer[..= _decoded_chunk_len])
-				.with_alphabet (::bs58::Alphabet::BITCOIN)
+				bs58::encode (&_decode_buffer[..= _decoded_chunk_len])
+				.with_alphabet (bs58::Alphabet::BITCOIN)
 				.into (_encode_buffer.as_mut_slice ())
 				.else_wrap (0xafe90906) ?;
 		
@@ -173,8 +181,8 @@ pub fn decode (_encoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResult {
 		}
 		
 		let _decode_size =
-				::bs58::decode (_encoded_chunk)
-				.with_alphabet (::bs58::Alphabet::BITCOIN)
+				bs58::decode (_encoded_chunk)
+				.with_alphabet (bs58::Alphabet::BITCOIN)
 				.into (_decode_buffer.as_mut_slice ())
 				.else_wrap (0x5bd4757f) ?;
 		
@@ -251,7 +259,7 @@ pub(crate) fn compress (_data : &[u8], _buffer : &mut Vec<u8>) -> CompressionRes
 	
 	let _buffer_capacity = _buffer.capacity ();
 	
-	let mut _encoder = ::brotli::CompressorWriter::new (_buffer, COMPRESSION_BROTLI_BLOCK, COMPRESSION_BROTLI_Q, COMPRESSION_BROTLI_LGWIN);
+	let mut _encoder = brotli::CompressorWriter::new (_buffer, COMPRESSION_BROTLI_BLOCK, COMPRESSION_BROTLI_Q, COMPRESSION_BROTLI_LGWIN);
 	
 	_encoder.write_all (_data) .else_wrap (0x7ea342b9) ?;
 	_encoder.flush () .else_wrap (0xb5560900) ?;
@@ -269,7 +277,7 @@ pub(crate) fn decompress (_data : &[u8], _buffer : &mut Vec<u8>) -> CompressionR
 	
 	let _buffer_capacity = _buffer.capacity ();
 	
-	let mut _decoder = ::brotli::Decompressor::new (_data, COMPRESSION_BROTLI_BLOCK);
+	let mut _decoder = brotli::Decompressor::new (_data, COMPRESSION_BROTLI_BLOCK);
 	
 	_decoder.read_to_end (_buffer) .else_wrap (0xf20a0822) ?;
 	
@@ -312,14 +320,12 @@ pub(crate) fn decode_u32 (_buffer : &[u8; 4]) -> u32 {
 
 
 pub(crate) fn encode_u32_slice (_value : u32, _buffer : &mut [u8]) -> () {
-	use ::byteorder::ByteOrder as _;
-	::byteorder::BigEndian::write_u32 (_buffer, _value);
+	BigEndian::write_u32 (_buffer, _value);
 }
 
 #[ must_use ]
 pub(crate) fn decode_u32_slice (_buffer : &[u8]) -> u32 {
-	use ::byteorder::ByteOrder as _;
-	::byteorder::BigEndian::read_u32 (_buffer)
+	BigEndian::read_u32 (_buffer)
 }
 
 
