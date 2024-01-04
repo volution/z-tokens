@@ -120,6 +120,7 @@ pub struct MaterialFlags {
 	pub values : Vec<OsString>,
 	pub from_environment : Vec<OsString>,
 	pub from_file : Vec<OsString>,
+	#[ cfg (unix) ]
 	pub from_fd : Vec<c_int>,
 	pub from_stdin : Option<bool>,
 }
@@ -148,6 +149,7 @@ pub enum MaterialSource<Material>
 	FromString (OsString, bool),
 	FromEnvironment (OsString, bool),
 	FromFile (PathBuf, bool),
+	#[ cfg (unix) ]
 	FromFd (OwnedFd, bool),
 	FromStdin (bool),
 }
@@ -235,6 +237,7 @@ impl MaterialFlags {
 				values : Vec::new (),
 				from_environment : Vec::new (),
 				from_file : Vec::new (),
+				#[ cfg (unix) ]
 				from_fd : Vec::new (),
 				from_stdin : None,
 			}
@@ -267,6 +270,7 @@ impl MaterialFlags {
 				.with_placeholder ("path")
 				.with_description ("from file");
 		
+		#[ cfg (unix) ]
 		_flags.define_multiple_flag_0 (&mut self.from_fd)
 				.with_flag ((), _long_fd)
 				.with_placeholder ("fd")
@@ -818,6 +822,7 @@ impl MaterialFlags {
 			_sources.push (_source);
 		}
 		
+		#[ cfg (unix) ]
 		for _descriptor in self.from_fd.iter () {
 			let _descriptor = unsafe { OwnedFd::from_raw_fd (*_descriptor) };
 			let _source = MaterialSource::FromFd (_descriptor, _empty_is_missing);
@@ -915,6 +920,7 @@ impl <Material> MaterialSource<Material>
 			MaterialSource::FromFile (_path, _empty_is_missing) =>
 				_read_to_end (File::open (_path) .else_wrap (0xd6609363) ?, _empty_is_missing) ?,
 			
+			#[ cfg (unix) ]
 			MaterialSource::FromFd (_descriptor, _empty_is_missing) =>
 				_read_to_end (File::from (_descriptor), _empty_is_missing) ?,
 			
