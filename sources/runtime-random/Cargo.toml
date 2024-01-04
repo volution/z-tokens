@@ -50,4 +50,8 @@ release = []
 
 z-tokens-runtime = { path = "../runtime", default-features = false, features = [] }
 
+vrl-random = { version = "*", optional = false, default-features = false, features = [] }
+
+rand = { version = "^0.8", optional = false, default-features = false, features = ["std", "getrandom"] }
+
 

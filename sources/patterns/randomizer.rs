@@ -3,14 +3,16 @@
 use crate::prelude::*;
 
 
-use ::rand::{
+use ::z_tokens_runtime_random::{
 		
-		RngCore,
-		SeedableRng,
+		random_usize_range_from,
+		random_u128_from,
 		
-		rngs::OsRng,
-		rngs::StdRng,
+		rand::RngCore,
+		rand::SeedableRng,
 		
+		rand::rngs::OsRng,
+		rand::rngs::StdRng,
 		
 	};
 

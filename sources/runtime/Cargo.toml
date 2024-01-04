@@ -47,10 +47,6 @@ release = [
 
 zt-runtime-memory = []
 
-zt-runtime-random = [
-	"vrl-random",
-]
-
 zt-runtime-sensitive = [
 	"zeroize",
 ]

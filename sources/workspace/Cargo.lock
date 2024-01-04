@@ -2040,8 +2040,8 @@ dependencies = [
  "num-bigint",
  "num-traits",
  "paste",
- "rand 0.8.5",
  "z-tokens-runtime",
+ "z-tokens-runtime-random",
 ]
 
 [[package]]
@@ -2103,6 +2103,8 @@ dependencies = [
 name = "z-tokens-runtime-random"
 version = "0.4.0"
 dependencies = [
+ "rand 0.8.5",
+ "vrl-random",
  "z-tokens-runtime",
 ]
 
