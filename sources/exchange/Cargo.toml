@@ -39,14 +39,20 @@ path = "./lib.rs"
 
 default = [
 	"z-tokens-runtime/default",
+	"z-tokens-runtime-random/default",
+	"z-tokens-runtime-codings/default",
 ]
 
 development = [
 	"z-tokens-runtime/development",
+	"z-tokens-runtime-random/development",
+	"z-tokens-runtime-codings/development",
 ]
 
 release = [
 	"z-tokens-runtime/release",
+	"z-tokens-runtime-random/release",
+	"z-tokens-runtime-codings/release",
 ]
 
 
@@ -54,7 +60,7 @@ release = [
 
 [dependencies]
 
-z-tokens-runtime = { path = "../runtime", default-features = false, features = [
+z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [
 		"zt-runtime-crypto",
 		"zt-runtime-memory",
 		"zt-runtime-sensitive",
@@ -75,9 +81,9 @@ tokio = { version = "^1.25", optional = false, default-features = false, feature
 
 
 [target.'cfg(any( all(target_os = "linux", target_env = "gnu"), target_os = "android" ))'.dependencies]
-russh-keys = { version = "^0.38", default-features = false, features = ["vendored-openssl"] }
+russh-keys = { version = "^0.38", optional = false, default-features = false, features = ["vendored-openssl"] }
 
 [target.'cfg(any( all(target_os = "linux", target_env = "musl"), target_os = "macos" ))'.dependencies]
-russh-keys = { version = "^0.38", default-features = false, features = [] }
+russh-keys = { version = "^0.38", optional = false, default-features = false, features = [] }
 
 

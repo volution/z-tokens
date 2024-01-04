@@ -39,14 +39,17 @@ path = "./lib.rs"
 
 default = [
 	"z-tokens-runtime/default",
+	"z-tokens-runtime-flags/default",
 ]
 
 development = [
 	"z-tokens-runtime/development",
+	"z-tokens-runtime-flags/development",
 ]
 
 release = [
 	"z-tokens-runtime/release",
+	"z-tokens-runtime-flags/release",
 ]
 
 
@@ -54,9 +57,9 @@ release = [
 
 [dependencies]
 
-z-tokens-runtime = { path = "../runtime", default-features = false, features = [] }
-z-tokens-runtime-flags = { path = "../runtime-flags", default-features = false, features = [] }
+z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
+z-tokens-runtime-flags = { path = "../runtime-flags", optional = false, default-features = false, features = [] }
 
-x25519-dalek = { version = "^2.0", default-features = false, features = [] }
+x25519-dalek = { version = "^2.0", optional = false, default-features = false, features = [] }
 
 

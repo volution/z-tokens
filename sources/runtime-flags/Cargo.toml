@@ -36,20 +36,25 @@ path = "./lib.rs"
 
 
 [features]
+default = [
+	"z-tokens-runtime/default",
+]
 
-default = []
+development = [
+	"z-tokens-runtime/development",
+]
 
-development = []
-
-release = []
+release = [
+	"z-tokens-runtime/release",
+]
 
 
 
 
 [dependencies]
 
-z-tokens-runtime = { path = "../runtime", default-features = false, features = [] }
+z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
 
-vrl-cli-arguments = { version = "*", default-features = false, features = [] }
+vrl-cli-arguments = { version = "*", optional = false, default-features = false, features = [] }
 
 

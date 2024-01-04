@@ -39,14 +39,17 @@ path = "./lib.rs"
 
 default = [
 	"z-tokens-runtime/default",
+	"z-tokens-runtime-codings/default",
 ]
 
 development = [
 	"z-tokens-runtime/development",
+	"z-tokens-runtime-codings/development",
 ]
 
 release = [
 	"z-tokens-runtime/release",
+	"z-tokens-runtime-codings/release",
 ]
 
 

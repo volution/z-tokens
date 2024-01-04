@@ -39,15 +39,18 @@ path = "./lib.rs"
 
 default = [
 	"z-tokens-runtime/default",
+	"z-tokens-runtime-flags/default",
 ]
 
 development = [
 	"z-tokens-runtime/development",
+	"z-tokens-runtime-flags/development",
 #!	"zt-oracles-pkcs11",
 ]
 
 release = [
 	"z-tokens-runtime/release",
+	"z-tokens-runtime-flags/release",
 ]
 
 zt-oracles-pkcs11 = [
@@ -62,10 +65,10 @@ zt-oracles-pkcs11 = [
 
 [dependencies]
 
-z-tokens-runtime = { path = "../runtime", default-features = false, features = [
+z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [
 		"zt-runtime-sensitive",
 	] }
-z-tokens-runtime-flags = { path = "../runtime-flags", default-features = false, features = [] }
+z-tokens-runtime-flags = { path = "../runtime-flags", optional = false, default-features = false, features = [] }
 
 ed25519-dalek = { version = "^2.1", optional = true, default-features = false, features = ["std"] }
 x25519-dalek = { version = "^2.0", optional = true, default-features = false, features = [] }

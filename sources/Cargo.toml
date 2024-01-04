@@ -84,6 +84,6 @@ release = [ "z-tokens-tools/release" ]
 
 [dependencies]
 
-z-tokens-tools = { path = "./tools", default-features = false, features = [] }
+z-tokens-tools = { path = "./tools", optional = false, default-features = false, features = [] }
 
 

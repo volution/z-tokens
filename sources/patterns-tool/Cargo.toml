@@ -40,16 +40,19 @@ path = "./lib.rs"
 default = [
 	"z-tokens-patterns/default",
 	"z-tokens-runtime/default",
+	"z-tokens-runtime-flags/default",
 ]
 
 development = [
 	"z-tokens-patterns/development",
 	"z-tokens-runtime/development",
+	"z-tokens-runtime-flags/development",
 ]
 
 release = [
 	"z-tokens-patterns/release",
 	"z-tokens-runtime/release",
+	"z-tokens-runtime-flags/release",
 ]
 
 
@@ -57,9 +60,9 @@ release = [
 
 [dependencies]
 
-z-tokens-patterns = { path = "../patterns", default-features = false, features = [] }
+z-tokens-patterns = { path = "../patterns", optional = false, default-features = false, features = [] }
 
-z-tokens-runtime = { path = "../runtime", default-features = false, features = [] }
-z-tokens-runtime-flags = { path = "../runtime-flags", default-features = false, features = [] }
+z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
+z-tokens-runtime-flags = { path = "../runtime-flags", optional = false, default-features = false, features = [] }
 
 

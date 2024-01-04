@@ -41,6 +41,7 @@ default = [
 	"zt-patterns-all",
 	
 	"z-tokens-runtime/default",
+	"z-tokens-runtime-random/default",
 ]
 
 development = [
@@ -49,6 +50,7 @@ development = [
 	"zt-patterns-basic",
 	
 	"z-tokens-runtime/development",
+	"z-tokens-runtime-random/development",
 ]
 
 release = [
@@ -56,6 +58,7 @@ release = [
 	"zt-patterns-all",
 	
 	"z-tokens-runtime/release",
+	"z-tokens-runtime-random/release",
 ]
 
 
@@ -151,16 +154,16 @@ zt-patterns-flake = []
 
 [dependencies]
 
-z-tokens-runtime = { path = "../runtime", default-features = false, features = [
+z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [
 		"zt-runtime-memory",
 		"zt-runtime-sensitive",
 	] }
-z-tokens-runtime-random = { path = "../runtime-random", default-features = false, features = [] }
+z-tokens-runtime-random = { path = "../runtime-random", optional = false, default-features = false, features = [] }
 
-num-bigint = { version = "^0.4", default-features = false, features = ["std"] }
-num-traits = { version = "^0.2", default-features = false, features = ["std"] }
-paste = { version = "^1.0", default-features = false, features = [] }
-chrono = { version = "^0.4", default-features = false, features = ["alloc", "clock"] }
-const_format = { version = "^0.2", default-features = false, features = [] }
+num-bigint = { version = "^0.4", optional = false, default-features = false, features = ["std"] }
+num-traits = { version = "^0.2", optional = false, default-features = false, features = ["std"] }
+paste = { version = "^1.0", optional = false, default-features = false, features = [] }
+chrono = { version = "^0.4", optional = false, default-features = false, features = ["alloc", "clock"] }
+const_format = { version = "^0.2", optional = false, default-features = false, features = [] }
 
 

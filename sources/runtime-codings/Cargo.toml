@@ -37,11 +37,17 @@ path = "./lib.rs"
 
 [features]
 
-default = []
+default = [
+	"z-tokens-runtime/default",
+]
 
-development = []
+development = [
+	"z-tokens-runtime/development",
+]
 
-release = []
+release = [
+	"z-tokens-runtime/release",
+]
 
 
 

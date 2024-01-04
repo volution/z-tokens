@@ -107,6 +107,6 @@ z-tokens-oracles-tool = { path = "../oracles-tool", optional = true, default-fea
 z-tokens-secrets-tool = { path = "../secrets-tool", optional = true, default-features = false, features = [] }
 z-tokens-runtime = { path = "../runtime", optional = true, default-features = false, features = [] }
 
-platform-info = { version = "^1.0", default-features = false, features = [] }
+platform-info = { version = "^1.0", optional = false, default-features = false, features = [] }
 
 
