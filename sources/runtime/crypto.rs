@@ -1,7 +1,7 @@
 
 
-use ::vrl_preludes::std_plus_extras::*;
-use ::vrl_errors::*;
+use crate::preludes::std_plus_extras::*;
+use crate::preludes::errors::*;
 
 
 use ::x25519_dalek as x25519;

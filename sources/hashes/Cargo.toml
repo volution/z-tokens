@@ -57,9 +57,6 @@ release = [
 z-tokens-runtime = { path = "../runtime", default-features = false, features = [] }
 z-tokens-runtime-flags = { path = "../runtime-flags", default-features = false, features = [] }
 
-vrl-errors = { version = "*", default-features = false, features = [] }
-vrl-preludes = { version = "*", default-features = false, features = [] }
-
 digest = { version = "^0.10", default-features = false, features = ["std", "core-api"] }
 
 blake3 = { version = "^1.3", default-features = false, features = ["std", "digest", "traits-preview"] }

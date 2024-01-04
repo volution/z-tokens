@@ -1941,8 +1941,6 @@ dependencies = [
  "data-encoding",
  "mnemonic",
  "qrcode",
- "vrl-errors",
- "vrl-preludes",
  "z-tokens-runtime",
  "z85",
 ]
@@ -1951,8 +1949,6 @@ dependencies = [
 name = "z-tokens-encodings-tool"
 version = "0.4.0"
 dependencies = [
- "vrl-errors",
- "vrl-preludes",
  "z-tokens-encodings",
  "z-tokens-runtime",
  "z-tokens-runtime-flags",
@@ -1974,8 +1970,6 @@ dependencies = [
  "rand 0.8.5",
  "russh-keys",
  "tokio",
- "vrl-errors",
- "vrl-preludes",
  "x25519-dalek",
  "z-tokens-runtime",
 ]
@@ -1984,8 +1978,6 @@ dependencies = [
 name = "z-tokens-exchange-tool"
 version = "0.4.0"
 dependencies = [
- "vrl-errors",
- "vrl-preludes",
  "z-tokens-exchange",
  "z-tokens-runtime",
  "z-tokens-runtime-flags",
@@ -2012,8 +2004,6 @@ dependencies = [
  "sha3",
  "siphasher",
  "twox-hash",
- "vrl-errors",
- "vrl-preludes",
  "z-tokens-runtime",
  "z-tokens-runtime-flags",
 ]
@@ -2022,8 +2012,6 @@ dependencies = [
 name = "z-tokens-hashes-tool"
 version = "0.4.0"
 dependencies = [
- "vrl-errors",
- "vrl-preludes",
  "z-tokens-hashes",
  "z-tokens-runtime",
  "z-tokens-runtime-flags",
@@ -2038,8 +2026,6 @@ dependencies = [
  "ed25519-dalek",
  "pkcs1",
  "rsa",
- "vrl-errors",
- "vrl-preludes",
  "x25519-dalek",
  "z-tokens-runtime",
  "z-tokens-runtime-flags",
@@ -2055,9 +2041,6 @@ dependencies = [
  "num-traits",
  "paste",
  "rand 0.8.5",
- "vrl-errors",
- "vrl-preludes",
- "vrl-random",
  "z-tokens-runtime",
 ]
 
@@ -2065,8 +2048,6 @@ dependencies = [
 name = "z-tokens-patterns-tool"
 version = "0.4.0"
 dependencies = [
- "vrl-errors",
- "vrl-preludes",
  "z-tokens-patterns",
  "z-tokens-runtime",
  "z-tokens-runtime-flags",
@@ -2084,6 +2065,7 @@ dependencies = [
  "rand 0.8.5",
  "vrl-errors",
  "vrl-preludes",
+ "vrl-random",
  "x25519-dalek",
  "zeroize",
 ]
@@ -2093,16 +2075,13 @@ name = "z-tokens-runtime-flags"
 version = "0.4.0"
 dependencies = [
  "vrl-cli-arguments",
- "vrl-errors",
- "vrl-preludes",
+ "z-tokens-runtime",
 ]
 
 [[package]]
 name = "z-tokens-secrets-tool"
 version = "0.4.0"
 dependencies = [
- "vrl-errors",
- "vrl-preludes",
  "x25519-dalek",
  "z-tokens-runtime",
  "z-tokens-runtime-flags",
@@ -2113,8 +2092,6 @@ name = "z-tokens-tools"
 version = "0.4.0"
 dependencies = [
  "platform-info",
- "vrl-errors",
- "vrl-preludes",
  "z-tokens-encodings-tool",
  "z-tokens-exchange-tool",
  "z-tokens-hashes-tool",

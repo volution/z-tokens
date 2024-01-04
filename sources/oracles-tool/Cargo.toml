@@ -67,9 +67,6 @@ z-tokens-runtime = { path = "../runtime", default-features = false, features = [
 	] }
 z-tokens-runtime-flags = { path = "../runtime-flags", default-features = false, features = [] }
 
-vrl-errors = { version = "*", default-features = false, features = [] }
-vrl-preludes = { version = "*", default-features = false, features = [] }
-
 ed25519-dalek = { version = "^2.1", optional = true, default-features = false, features = ["std"] }
 x25519-dalek = { version = "^2.0", optional = true, default-features = false, features = [] }
 

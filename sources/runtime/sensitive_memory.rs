@@ -1,6 +1,6 @@
 
 
-use ::vrl_preludes::std_plus_extras::*;
+use crate::preludes::std_plus_extras::*;
 
 use crate::sensitive::*;
 use crate::memory::*;

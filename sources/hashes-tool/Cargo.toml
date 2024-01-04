@@ -62,7 +62,4 @@ z-tokens-hashes = { path = "../hashes", default-features = false, features = [] 
 z-tokens-runtime = { path = "../runtime", default-features = false, features = [] }
 z-tokens-runtime-flags = { path = "../runtime-flags", default-features = false, features = [] }
 
-vrl-errors = { version = "*", default-features = false, features = [] }
-vrl-preludes = { version = "*", default-features = false, features = [] }
-
 

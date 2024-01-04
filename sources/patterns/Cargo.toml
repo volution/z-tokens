@@ -153,12 +153,9 @@ zt-patterns-flake = []
 
 z-tokens-runtime = { path = "../runtime", default-features = false, features = [
 		"zt-runtime-memory",
+		"zt-runtime-random",
 		"zt-runtime-sensitive",
 	] }
-
-vrl-errors = { version = "*", default-features = false, features = [] }
-vrl-preludes = { version = "*", default-features = false, features = [] }
-vrl-random = { version = "*", default-features = false, features = [] }
 
 rand = { version = "^0.8", default-features = false, features = ["std", "std_rng", "getrandom", "small_rng"] }
 num-bigint = { version = "^0.4", default-features = false, features = ["std"] }

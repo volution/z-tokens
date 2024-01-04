@@ -47,6 +47,10 @@ release = [
 
 zt-runtime-memory = []
 
+zt-runtime-random = [
+	"vrl-random",
+]
+
 zt-runtime-sensitive = [
 	"zeroize",
 ]
@@ -71,6 +75,8 @@ zt-runtime-crypto = [
 
 vrl-errors = { version = "*", default-features = false, features = [] }
 vrl-preludes = { version = "*", default-features = false, features = [] }
+
+vrl-random = { version = "*", optional = true, default-features = false, features = [] }
 
 zeroize = { version = "^1.5", optional = true, default-features = false, features = ["std", "alloc"] }
 
