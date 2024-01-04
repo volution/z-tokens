@@ -1,8 +1,7 @@
 >>  z-tokens exchange dearmor --help
 
-Usage:
-  z-tokens exchange dearmor
 
+  -v --version
 
-Optional arguments:
-  -h,--help             Show this help message and exit
+  -h --help
+

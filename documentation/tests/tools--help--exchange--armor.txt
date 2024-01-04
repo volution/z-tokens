@@ -1,8 +1,7 @@
 >>  z-tokens exchange armor --help
 
-Usage:
-  z-tokens exchange armor
 
+  -v --version
 
-Optional arguments:
-  -h,--help             Show this help message and exit
+  -h --help
+

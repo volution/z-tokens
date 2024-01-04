@@ -1,25 +1,40 @@
 >>  z-tokens exchange keys --help
 
-Usage:
-  z-tokens exchange keys [OPTIONS]
 
+  -s
+  --sender  {enabled}
+    **  generate sender key pair
 
-Optional arguments:
-  -h,--help             Show this help message and exit
-  -s                    (generate sender key pair)
-  --sender {enabled}    
-  -r                    (generate recipient key pair)
-  --recipient {enabled} 
-  -x                    (generate shared secret)
-  --secret {enabled}    
-  -e                    (generate shared seed)
-  --seed {enabled}      
-  -b                    (generate shared ballast)
-  --ballast {enabled}   
-  -p                    (generate shared PIN)
-  --pin {enabled}       
-  -o                    generate one key, and encode it both for sending and
-                        receiving) (!!! CAUTION !!!)
-  --self {enabled}      
-  -c                    (output comments)
-  --comments {enabled}  
+  -r
+  --recipient  {enabled}
+    **  generate recipient key pair
+
+  -x
+  --secret  {enabled}
+    **  generate shared secret
+
+  -e
+  --seed  {enabled}
+    **  generate shared seed
+
+  -b
+  --ballast  {enabled}
+    **  generate shared ballast
+
+  -p
+  --pin  {enabled}
+    **  generate shared PIN
+
+  -o
+  --self  {enabled}
+    **  generate one key, and encode it both for sending and receiving
+    !!  CAUTION
+
+  -c
+  --comments  {enabled}
+    **  output comments
+
+  -v --version
+
+  -h --help
+

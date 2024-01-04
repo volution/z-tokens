@@ -1,13 +1,14 @@
 >>  z-tokens exchange ssh wrap --help
 
-Usage:
-  z-tokens exchange ssh wrap [OPTIONS]
 
+  -k --key  {key}
+    **  shared SSH agent key handle
 
-Optional arguments:
-  -h,--help             Show this help message and exit
-  -k,--key {key}        (shared SSH agent key handle)
-  -M                    (treat empty arguments as unspecified) (!!! CAUTION
-                        !!!)
-  --empty-is-missing {bool}
-                        
+  --empty-is-missing  {bool}
+    **  treat empty arguments as unspecified
+    !!  CAUTION
+
+  -v --version
+
+  -h --help
+
