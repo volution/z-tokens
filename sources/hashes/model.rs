@@ -2,7 +2,7 @@
 
 use ::vrl_preludes::std_plus_extras::*;
 use ::vrl_errors::*;
-use ::z_tokens_runtime::flags::*;
+use ::z_tokens_runtime_flags::*;
 
 
 

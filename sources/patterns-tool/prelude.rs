@@ -10,13 +10,6 @@ pub(crate) use ::vrl_preludes::std_plus_extras::*;
 pub(crate) use ::vrl_errors::*;
 
 
-pub(crate) use ::z_tokens_runtime::{
-		
-		memory::*,
-		flags::*,
-	};
-
-
 pub(crate) use ::z_tokens_patterns::{
 		
 		model::*,
@@ -26,6 +19,18 @@ pub(crate) use ::z_tokens_patterns::{
 		generator::*,
 		patterns::*,
 		output::*,
+	};
+
+
+pub(crate) use ::z_tokens_runtime::{
+		
+		memory::*,
+	};
+
+
+pub(crate) use ::z_tokens_runtime_flags::{
+		
+		*,
 	};
 
 

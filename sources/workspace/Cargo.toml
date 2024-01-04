@@ -4,6 +4,7 @@
 
 members = [
 	"../runtime",
+	"../runtime-flags",
 	"../patterns",
 	"../patterns-tool",
 	"../encodings",

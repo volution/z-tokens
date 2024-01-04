@@ -3,11 +3,7 @@
 use ::vrl_preludes::std_plus_extras::*;
 use ::vrl_errors::*;
 
-
-
-
 pub use ::vrl_cli_arguments::*;
-
 
 pub use ::std::process::ExitCode;
 

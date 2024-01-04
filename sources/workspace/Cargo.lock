@@ -1974,6 +1974,7 @@ dependencies = [
  "vrl-preludes",
  "z-tokens-encodings",
  "z-tokens-runtime",
+ "z-tokens-runtime-flags",
 ]
 
 [[package]]
@@ -2006,6 +2007,7 @@ dependencies = [
  "vrl-preludes",
  "z-tokens-exchange",
  "z-tokens-runtime",
+ "z-tokens-runtime-flags",
 ]
 
 [[package]]
@@ -2032,6 +2034,7 @@ dependencies = [
  "vrl-errors",
  "vrl-preludes",
  "z-tokens-runtime",
+ "z-tokens-runtime-flags",
 ]
 
 [[package]]
@@ -2042,6 +2045,7 @@ dependencies = [
  "vrl-preludes",
  "z-tokens-hashes",
  "z-tokens-runtime",
+ "z-tokens-runtime-flags",
 ]
 
 [[package]]
@@ -2057,6 +2061,7 @@ dependencies = [
  "vrl-preludes",
  "x25519-dalek",
  "z-tokens-runtime",
+ "z-tokens-runtime-flags",
 ]
 
 [[package]]
@@ -2083,6 +2088,7 @@ dependencies = [
  "vrl-preludes",
  "z-tokens-patterns",
  "z-tokens-runtime",
+ "z-tokens-runtime-flags",
 ]
 
 [[package]]
@@ -2096,11 +2102,19 @@ dependencies = [
  "memsec",
  "nng",
  "rand 0.8.5",
- "vrl-cli-arguments",
  "vrl-errors",
  "vrl-preludes",
  "x25519-dalek",
  "zeroize",
+]
+
+[[package]]
+name = "z-tokens-runtime-flags"
+version = "0.4.0"
+dependencies = [
+ "vrl-cli-arguments",
+ "vrl-errors",
+ "vrl-preludes",
 ]
 
 [[package]]
@@ -2111,6 +2125,7 @@ dependencies = [
  "vrl-preludes",
  "x25519-dalek",
  "z-tokens-runtime",
+ "z-tokens-runtime-flags",
 ]
 
 [[package]]

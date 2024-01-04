@@ -2,7 +2,7 @@
 
 pub(crate) use ::vrl_preludes::std_plus_extras::*;
 pub(crate) use ::vrl_errors::*;
-pub(crate) use ::z_tokens_runtime::flags::*;
+pub(crate) use ::z_tokens_runtime_flags::*;
 
 
 pub(crate) use ::z_tokens_exchange::keys::*;

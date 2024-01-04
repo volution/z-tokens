@@ -2,7 +2,7 @@
 
 [package]
 
-name = "z-tokens-patterns-tool"
+name = "z-tokens-runtime-flags"
 
 workspace = "../workspace"
 
@@ -29,7 +29,7 @@ documentation.workspace = true
 
 [lib]
 
-name = "z_tokens_patterns_tool"
+name = "z_tokens_runtime_flags"
 path = "./lib.rs"
 
 
@@ -37,32 +37,19 @@ path = "./lib.rs"
 
 [features]
 
-default = [
-	"z-tokens-patterns/default",
-	"z-tokens-runtime/default",
-]
+default = []
 
-development = [
-	"z-tokens-patterns/development",
-	"z-tokens-runtime/development",
-]
+development = []
 
-release = [
-	"z-tokens-patterns/release",
-	"z-tokens-runtime/release",
-]
+release = []
 
 
 
 
 [dependencies]
 
-z-tokens-patterns = { path = "../patterns", default-features = false, features = [] }
-
-z-tokens-runtime = { path = "../runtime", default-features = false, features = [] }
-z-tokens-runtime-flags = { path = "../runtime-flags", default-features = false, features = [] }
-
 vrl-errors = { version = "*", default-features = false, features = [] }
 vrl-preludes = { version = "*", default-features = false, features = [] }
+vrl-cli-arguments = { version = "*", default-features = false, features = [] }
 
 
