@@ -10,6 +10,7 @@ members = [
 	"../runtime-hashes",
 	"../runtime-crypto",
 	"../runtime-codings",
+	"../runtime-pinentry",
 	"../runtime-lkkrs",
 	
 	"../patterns",
