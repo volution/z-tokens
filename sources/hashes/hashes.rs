@@ -6,16 +6,43 @@ use ::z_tokens_runtime::preludes::errors::*;
 use crate::model::*;
 use crate::inputs::*;
 
-use ::z_tokens_runtime::byteorder::{
-		BigEndian,
-		ByteOrder as _,
+use ::z_tokens_runtime::crates::{
+		
+		byteorder::{
+				BigEndian,
+				ByteOrder as _,
+			},
 	};
 
-use ::z_tokens_runtime_hashes::*;
-
-use ::z_tokens_runtime_hashes::{
-		digest::Digest as _,
-		digest::VariableOutput as _,
+use ::z_tokens_runtime_hashes::crates::{
+		
+		digest,
+		
+		blake2,
+		blake3,
+		
+		sha3,
+		sha2,
+		sha1,
+		
+		md5,
+		
+		siphasher,
+		seahash,
+		
+		crc,
+		adler,
+		highway,
+		twox_hash,
+		hashers,
+		
+		argon2,
+		scrypt,
+		
+		digest::{
+				Digest as _,
+				VariableOutput as _,
+			},
 	};
 
 

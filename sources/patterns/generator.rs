@@ -3,7 +3,7 @@
 use crate::prelude::*;
 
 
-use ::z_tokens_runtime::num_bigint::{
+use ::z_tokens_runtime::crates::num_bigint::{
 		BigUint,
 	};
 

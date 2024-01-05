@@ -3,26 +3,26 @@
 use ::z_tokens_runtime::preludes::std_plus_extras::*;
 use ::z_tokens_runtime::preludes::errors::*;
 
-use crate::x25519;
+use crate::crates::x25519;
 
 use ::z_tokens_runtime::{
-		byteorder::{
+		crates::byteorder::{
 				BigEndian,
 				ByteOrder as _,
 			},
-		constant_time_eq::constant_time_eq,
+		crates::constant_time_eq::constant_time_eq,
 	};
 
 use ::z_tokens_runtime_random::{
-		rand::{
+		crates::rand::{
 				rngs::OsRng,
 				RngCore as _,
 			},
 	};
 
 use ::z_tokens_runtime_hashes::{
-		blake3,
-		argon2,
+		crates::blake3,
+		crates::argon2,
 	};
 
 

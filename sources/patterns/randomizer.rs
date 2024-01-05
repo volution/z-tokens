@@ -5,19 +5,19 @@ use crate::prelude::*;
 
 use ::z_tokens_runtime_random::{
 		
-		random_usize_range_from,
-		random_u128_from,
+		crates::vrl_random::random_usize_range_from,
+		crates::vrl_random::random_u128_from,
 		
-		rand::RngCore,
-		rand::SeedableRng,
+		crates::rand::RngCore,
+		crates::rand::SeedableRng,
 		
-		rand::rngs::OsRng,
-		rand::rngs::StdRng,
+		crates::rand::rngs::OsRng,
+		crates::rand::rngs::StdRng,
 		
 	};
 
 
-use ::z_tokens_runtime::chrono;
+use ::z_tokens_runtime::crates::chrono;
 
 
 

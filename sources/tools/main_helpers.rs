@@ -8,7 +8,7 @@ use crate::embeddings::*;
 use crate::runtime::*;
 
 
-use ::z_tokens_runtime::platform_info::{
+use ::z_tokens_runtime::crates::platform_info::{
 		PlatformInfo,
 		Uname as _,
 	};

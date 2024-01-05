@@ -5,17 +5,17 @@ use ::z_tokens_runtime::preludes::errors::*;
 
 
 use ::z_tokens_runtime::{
-		constant_time_eq::constant_time_eq,
+		crates::constant_time_eq::constant_time_eq,
 	};
 
 
 use ::z_tokens_runtime_hashes::{
-		blake3,
+		crates::blake3,
 	};
 
 
 use ::z_tokens_runtime_crypto::{
-		chacha20,
+		crates::chacha20,
 		define_cryptographic_purpose,
 	};
 

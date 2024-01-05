@@ -14,15 +14,15 @@ use ::z_tokens_runtime::{
 		sensitive::zeroize_and_drop,
 	};
 
-use ::z_tokens_runtime_codings::bech32;
+use ::z_tokens_runtime_codings::crates::bech32;
 
-use ::z_tokens_runtime_random::rand::{
+use ::z_tokens_runtime_random::crates::rand::{
 		RngCore as _,
 		rngs::OsRng,
 	};
 
 
-use ::z_tokens_runtime_crypto::{
+use ::z_tokens_runtime_crypto::crates::{
 		x25519,
 	};
 
