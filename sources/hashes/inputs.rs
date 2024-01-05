@@ -3,6 +3,11 @@
 use ::z_tokens_runtime::preludes::std_plus_extras::*;
 use ::z_tokens_runtime::preludes::errors::*;
 
+use ::z_tokens_runtime_codings::byteorder::{
+		BigEndian,
+		ByteOrder as _,
+	};
+
 
 
 
@@ -226,8 +231,7 @@ impl <I : Input> Input for InputFromCanonicalization<I> {
 	fn input (&mut self) -> InputResult<Option<&[u8]>> {
 		if self.should_size {
 			self.should_size = false;
-			use ::byteorder::ByteOrder as _;
-			::byteorder::BigEndian::write_u64 (&mut self.size_buffer, self.size_value.try_into () .else_wrap (0x19f2d2bd) ?);
+			BigEndian::write_u64 (&mut self.size_buffer, self.size_value.try_into () .else_wrap (0x19f2d2bd) ?);
 			self.size_value = 0;
 			return Ok (Some (&self.size_buffer));
 		}

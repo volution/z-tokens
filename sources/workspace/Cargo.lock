@@ -1953,16 +1953,14 @@ dependencies = [
 name = "z-tokens-exchange"
 version = "0.4.0"
 dependencies = [
- "argon2",
- "blake3",
  "chacha20",
  "constant_time_eq 0.2.6",
- "crc-any",
  "russh-keys",
  "tokio",
  "x25519-dalek",
  "z-tokens-runtime",
  "z-tokens-runtime-codings",
+ "z-tokens-runtime-hashes",
  "z-tokens-runtime-random",
 ]
 
@@ -1979,25 +1977,10 @@ dependencies = [
 name = "z-tokens-hashes"
 version = "0.4.0"
 dependencies = [
- "adler",
- "argon2",
- "blake2",
- "blake3",
- "byteorder",
- "crc-any",
- "digest",
- "hashers",
- "highway",
- "md-5",
- "scrypt",
- "seahash",
- "sha1",
- "sha2",
- "sha3",
- "siphasher",
- "twox-hash",
  "z-tokens-runtime",
+ "z-tokens-runtime-codings",
  "z-tokens-runtime-flags",
+ "z-tokens-runtime-hashes",
 ]
 
 [[package]]
@@ -2096,6 +2079,22 @@ dependencies = [
 name = "z-tokens-runtime-hashes"
 version = "0.4.0"
 dependencies = [
+ "adler",
+ "argon2",
+ "blake2",
+ "blake3",
+ "crc-any",
+ "digest",
+ "hashers",
+ "highway",
+ "md-5",
+ "scrypt",
+ "seahash",
+ "sha1",
+ "sha2",
+ "sha3",
+ "siphasher",
+ "twox-hash",
  "z-tokens-runtime",
 ]
 

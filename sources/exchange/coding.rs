@@ -3,6 +3,10 @@
 use ::z_tokens_runtime::preludes::std_plus_extras::*;
 use ::z_tokens_runtime::preludes::errors::*;
 
+use ::z_tokens_runtime_hashes::{
+		crc,
+	};
+
 use ::z_tokens_runtime_codings::byteorder::{
 		BigEndian,
 		ByteOrder as _,
@@ -91,7 +95,7 @@ pub fn encode (_decoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResult {
 		_offset += _decoded_chunk_len as u32;
 		encode_u32 (_offset, &mut _crc_buffer);
 		
-		let mut _crc = ::crc_any::CRCu8::crc8 ();
+		let mut _crc = crc::CRCu8::crc8 ();
 		_crc.digest (_decoded_chunk);
 		_crc.digest (&_crc_buffer);
 		
@@ -194,7 +198,7 @@ pub fn decode (_encoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResult {
 		_offset += _decode_size as u32 - 1;
 		encode_u32 (_offset, &mut _crc_buffer);
 		
-		let mut _crc = ::crc_any::CRCu8::crc8 ();
+		let mut _crc = crc::CRCu8::crc8 ();
 		_crc.digest (&_decode_buffer[.. (_decode_size - 1)]);
 		_crc.digest (&_crc_buffer);
 		

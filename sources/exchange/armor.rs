@@ -4,6 +4,10 @@ use ::z_tokens_runtime::preludes::std_plus_extras::*;
 use ::z_tokens_runtime::preludes::errors::*;
 
 
+use ::z_tokens_runtime_hashes::{
+		blake3,
+	};
+
 use ::z_tokens_runtime::crypto::*;
 
 
@@ -256,7 +260,7 @@ fn apply_all_or_nothing_encryption (_fingerprint : &[u8; ARMOR_ENCODED_FINGERPRI
 	use ::chacha20::cipher::StreamCipher as _;
 	
 	let _key : [u8; 32] =
-			::blake3::Hasher::new_derive_key (ARMOR_AONT_KEY_PURPOSE)
+			blake3::Hasher::new_derive_key (ARMOR_AONT_KEY_PURPOSE)
 			.update (_fingerprint)
 			.finalize ()
 			.into ();
@@ -279,7 +283,7 @@ fn apply_all_or_nothing_encryption (_fingerprint : &[u8; ARMOR_ENCODED_FINGERPRI
 fn apply_all_or_nothing_mangling (_fingerprint : &mut [u8; ARMOR_ENCODED_FINGERPRINT_SIZE], _data : &[u8]) -> ArmorResult {
 	
 	let _hash =
-			::blake3::Hasher::new ()
+			blake3::Hasher::new ()
 			.update (_data)
 			.finalize ();
 	
@@ -300,7 +304,7 @@ fn apply_all_or_nothing_mangling (_fingerprint : &mut [u8; ARMOR_ENCODED_FINGERP
 fn apply_fingerprint (_data : &[u8]) -> ArmorResult<[u8; ARMOR_ENCODED_FINGERPRINT_SIZE]> {
 	
 	let _hash =
-			::blake3::Hasher::new ()
+			blake3::Hasher::new ()
 			.update (_data)
 			.finalize ();
 	
