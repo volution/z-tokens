@@ -40,25 +40,19 @@ path = "./lib.rs"
 default = [
 	"z-tokens-runtime/default",
 	"z-tokens-runtime-flags/default",
-	"z-tokens-runtime-crypto/default",
+	"z-tokens-oracles/default",
 ]
 
 development = [
 	"z-tokens-runtime/development",
 	"z-tokens-runtime-flags/development",
-	"z-tokens-runtime-crypto/development",
-#!	"zt-oracles-pkcs11",
+	"z-tokens-oracles/default",
 ]
 
 release = [
 	"z-tokens-runtime/release",
 	"z-tokens-runtime-flags/release",
-	"z-tokens-runtime-crypto/release",
-]
-
-zt-oracles-pkcs11 = [
-	"cryptoki",
-	"cryptoki-sys",
+	"z-tokens-oracles/release",
 ]
 
 
@@ -68,8 +62,5 @@ zt-oracles-pkcs11 = [
 
 z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
 z-tokens-runtime-flags = { path = "../runtime-flags", optional = false, default-features = false, features = [] }
-z-tokens-runtime-crypto = { path = "../runtime-crypto", optional = false, default-features = false, features = [] }
-
-cryptoki = { version = "^0.4", optional = true, default-features = false, features = [] }
-cryptoki-sys = { version = "^0.1", optional = true, default-features = false, features = [] }
+z-tokens-oracles = { path = "../oracles", optional = false, default-features = false, features = [] }
 

@@ -1990,13 +1990,21 @@ dependencies = [
 ]
 
 [[package]]
-name = "z-tokens-oracles-tool"
+name = "z-tokens-oracles"
 version = "0.4.0"
 dependencies = [
  "cryptoki",
  "cryptoki-sys",
  "z-tokens-runtime",
  "z-tokens-runtime-crypto",
+]
+
+[[package]]
+name = "z-tokens-oracles-tool"
+version = "0.4.0"
+dependencies = [
+ "z-tokens-oracles",
+ "z-tokens-runtime",
  "z-tokens-runtime-flags",
 ]
 
@@ -2104,11 +2112,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "z-tokens-secrets"
+version = "0.4.0"
+dependencies = [
+ "z-tokens-runtime",
+]
+
+[[package]]
 name = "z-tokens-secrets-tool"
 version = "0.4.0"
 dependencies = [
  "z-tokens-runtime",
  "z-tokens-runtime-flags",
+ "z-tokens-secrets",
 ]
 
 [[package]]
