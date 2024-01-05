@@ -1,11 +1,28 @@
 
 
-use crate::preludes::std_plus_extras::*;
-use crate::preludes::errors::*;
+use ::z_tokens_runtime::preludes::std_plus_extras::*;
+use ::z_tokens_runtime::preludes::errors::*;
 
+use crate::x25519;
 
-use ::x25519_dalek as x25519;
-use ::blake3::Hasher as Blake3;
+use ::z_tokens_runtime_random::{
+		rand::{
+				rngs::OsRng,
+				RngCore as _,
+			},
+	};
+
+use ::z_tokens_runtime_hashes::{
+		blake3,
+		argon2,
+	};
+
+use ::z_tokens_runtime_codings::{
+		byteorder::{
+				BigEndian,
+				ByteOrder as _,
+			},
+	};
 
 
 
@@ -23,7 +40,7 @@ define_error! (pub LowCryptoError, result : LowCryptoResult);
 
 
 
-include! ("./crypto_macros.in");
+include! ("./macros.in");
 
 
 
@@ -152,7 +169,7 @@ pub fn blake3_derive_key <const NF : usize, const NV : usize, WC, WO> (
 	where
 		WC : Fn ([u8; 32]) -> WO,
 {
-	let mut _hasher = Blake3::new_derive_key (_purpose);
+	let mut _hasher = blake3::Hasher::new_derive_key (_purpose);
 	
 	blake3_update (&mut _hasher, _fixed_elements, _variable_elements, _index);
 	
@@ -173,7 +190,7 @@ pub fn blake3_keyed_hash <const NF : usize, const NV : usize, WC, WO> (
 	where
 		WC : Fn ([u8; 32]) -> WO,
 {
-	let mut _hasher = Blake3::new_keyed (_key);
+	let mut _hasher = blake3::Hasher::new_keyed (_key);
 	
 	blake3_update (&mut _hasher, _fixed_elements, _variable_elements, _index);
 	
@@ -187,7 +204,7 @@ pub fn blake3_keyed_hash <const NF : usize, const NV : usize, WC, WO> (
 
 
 pub fn blake3_update <const NF : usize, const NV : usize> (
-		_hasher : &mut Blake3,
+		_hasher : &mut blake3::Hasher,
 		_fixed_elements : &[&[u8; 32]; NF],
 		_variable_elements : &[&[u8]; NV],
 		_index : Option<u32>,
@@ -196,8 +213,7 @@ pub fn blake3_update <const NF : usize, const NV : usize> (
 	if let Some (_index) = _index {
 		{
 			let mut _bytes = [0u8; 4];
-			use ::byteorder::ByteOrder as _;
-			::byteorder::BigEndian::write_u32 (&mut _bytes, _index);
+			BigEndian::write_u32 (&mut _bytes, _index);
 			_hasher.update (&_bytes);
 		}
 	}
@@ -212,8 +228,7 @@ pub fn blake3_update <const NF : usize, const NV : usize> (
 		
 		{
 			let mut _bytes = [0u8; 4];
-			use ::byteorder::ByteOrder as _;
-			::byteorder::BigEndian::write_u32 (&mut _bytes, _size);
+			BigEndian::write_u32 (&mut _bytes, _size);
 			_hasher.update (&_bytes);
 		}
 		
@@ -232,7 +247,7 @@ pub fn blake3_derive_key_join <'a, WC, WO> (
 	where
 		WC : Fn ([u8; 32]) -> WO,
 {
-	let mut _hasher = Blake3::new_derive_key (_purpose);
+	let mut _hasher = blake3::Hasher::new_derive_key (_purpose);
 	
 	for _element in _elements {
 		_hasher.update (_element);
@@ -251,8 +266,8 @@ pub fn blake3_derive_key_join <'a, WC, WO> (
 
 
 
-const ARGON_ALGORITHM : ::argon2::Algorithm = ::argon2::Algorithm::Argon2id;
-const ARGON_VERSION : ::argon2::Version = ::argon2::Version::V0x13;
+const ARGON_ALGORITHM : argon2::Algorithm = argon2::Algorithm::Argon2id;
+const ARGON_VERSION : argon2::Version = argon2::Version::V0x13;
 const ARGON_P_COST : u32 = 1;
 
 
@@ -270,14 +285,14 @@ pub fn argon_derive <WC, WO> (
 {
 	let mut _output = [0u8; 32];
 	
-	let _parameters = ::argon2::Params::new (
+	let _parameters = argon2::Params::new (
 				_m_cost,
 				_t_cost,
 				ARGON_P_COST,
 				Some (_output.len ()),
 			) .else_wrap (0xf2eebb0c) ?;
 	
-	let _hasher = ::argon2::Argon2::new (
+	let _hasher = argon2::Argon2::new (
 				ARGON_ALGORITHM,
 				ARGON_VERSION,
 				_parameters,
@@ -304,10 +319,6 @@ pub fn generate_random <WC, WO> (_wrapper : WC) -> WO
 	where
 		WC : Fn ([u8; 32]) -> WO,
 {
-	
-	use ::rand::rngs::OsRng;
-	use ::rand::RngCore as _;
-	
 	let mut _data = [0u8; 32];
 	OsRng.fill_bytes (&mut _data);
 	

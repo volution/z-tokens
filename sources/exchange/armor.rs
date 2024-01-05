@@ -8,7 +8,11 @@ use ::z_tokens_runtime_hashes::{
 		blake3,
 	};
 
-use ::z_tokens_runtime::crypto::*;
+
+use ::z_tokens_runtime_crypto::{
+		chacha20,
+		define_cryptographic_purpose,
+	};
 
 
 use crate::coding::*;
@@ -256,8 +260,8 @@ pub fn dearmor (_encoded : &[u8], _decoded : &mut Vec<u8>) -> ArmorResult {
 
 fn apply_all_or_nothing_encryption (_fingerprint : &[u8; ARMOR_ENCODED_FINGERPRINT_SIZE], _data : &mut [u8]) -> ArmorResult {
 	
-	use ::chacha20::cipher::KeyIvInit as _;
-	use ::chacha20::cipher::StreamCipher as _;
+	use chacha20::cipher::KeyIvInit as _;
+	use chacha20::cipher::StreamCipher as _;
 	
 	let _key : [u8; 32] =
 			blake3::Hasher::new_derive_key (ARMOR_AONT_KEY_PURPOSE)
@@ -267,10 +271,10 @@ fn apply_all_or_nothing_encryption (_fingerprint : &[u8; ARMOR_ENCODED_FINGERPRI
 	
 	let _nonce = [0u8; 12];
 	
-	let _key = ::chacha20::Key::from (_key);
-	let _nonce = ::chacha20::Nonce::from (_nonce);
+	let _key = chacha20::Key::from (_key);
+	let _nonce = chacha20::Nonce::from (_nonce);
 	
-	let mut _cipher = ::chacha20::ChaCha20::new (&_key, &_nonce);
+	let mut _cipher = chacha20::ChaCha20::new (&_key, &_nonce);
 	
 	assert! (_data.len () >= ARMOR_ENCODED_HEADER_SIZE, "[73aae7e5]");
 	

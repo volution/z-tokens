@@ -45,7 +45,7 @@ macro_rules! define_cryptographic_material {
 			pub const SIZE : usize = $_size;
 		}
 		
-		impl CryptographicMaterial<{ $_identifier::SIZE }> for $_identifier {
+		impl $crate::CryptographicMaterial<{ $_identifier::SIZE }> for $_identifier {
 			
 			fn consume (self) -> () {
 				// FIXME:  zeroize...
@@ -78,7 +78,7 @@ macro_rules! define_cryptographic_material {
 			}
 		}
 		
-		impl <'a> CryptographicInput<'a> for $_identifier<'a> {
+		impl <'a> $crate::CryptographicInput<'a> for $_identifier<'a> {
 			
 			fn consume (self) -> () {}
 			
@@ -92,7 +92,7 @@ macro_rules! define_cryptographic_material {
 
 
 
-pub use define_cryptographic_purpose;
-pub use define_cryptographic_material;
+// pub use define_cryptographic_purpose;
+// pub use define_cryptographic_material;
 
 

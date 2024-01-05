@@ -1953,13 +1953,12 @@ dependencies = [
 name = "z-tokens-exchange"
 version = "0.4.0"
 dependencies = [
- "chacha20",
  "constant_time_eq 0.2.6",
  "russh-keys",
  "tokio",
- "x25519-dalek",
  "z-tokens-runtime",
  "z-tokens-runtime-codings",
+ "z-tokens-runtime-crypto",
  "z-tokens-runtime-hashes",
  "z-tokens-runtime-random",
 ]
@@ -2032,16 +2031,9 @@ dependencies = [
 name = "z-tokens-runtime"
 version = "0.4.0"
 dependencies = [
- "argon2",
- "blake3",
- "byteorder",
- "constant_time_eq 0.2.6",
  "memsec",
- "rand 0.8.5",
  "vrl-errors",
  "vrl-preludes",
- "vrl-random",
- "x25519-dalek",
  "zeroize",
 ]
 
@@ -2064,7 +2056,13 @@ dependencies = [
 name = "z-tokens-runtime-crypto"
 version = "0.4.0"
 dependencies = [
+ "chacha20",
+ "constant_time_eq 0.2.6",
+ "x25519-dalek",
  "z-tokens-runtime",
+ "z-tokens-runtime-codings",
+ "z-tokens-runtime-hashes",
+ "z-tokens-runtime-random",
 ]
 
 [[package]]

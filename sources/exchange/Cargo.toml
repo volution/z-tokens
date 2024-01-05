@@ -41,6 +41,7 @@ default = [
 	"z-tokens-runtime/default",
 	"z-tokens-runtime-random/default",
 	"z-tokens-runtime-hashes/default",
+	"z-tokens-runtime-crypto/default",
 	"z-tokens-runtime-codings/default",
 ]
 
@@ -48,6 +49,7 @@ development = [
 	"z-tokens-runtime/development",
 	"z-tokens-runtime-random/development",
 	"z-tokens-runtime-hashes/development",
+	"z-tokens-runtime-crypto/development",
 	"z-tokens-runtime-codings/development",
 ]
 
@@ -55,6 +57,7 @@ release = [
 	"z-tokens-runtime/release",
 	"z-tokens-runtime-random/release",
 	"z-tokens-runtime-hashes/release",
+	"z-tokens-runtime-crypto/release",
 	"z-tokens-runtime-codings/release",
 ]
 
@@ -64,17 +67,15 @@ release = [
 [dependencies]
 
 z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [
-		"zt-runtime-crypto",
 		"zt-runtime-memory",
 		"zt-runtime-sensitive",
 	] }
 
 z-tokens-runtime-random = { path = "../runtime-random", optional = false, default-features = false, features = [] }
 z-tokens-runtime-hashes = { path = "../runtime-hashes", optional = false, default-features = false, features = [] }
+z-tokens-runtime-crypto = { path = "../runtime-crypto", optional = false, default-features = false, features = [] }
 z-tokens-runtime-codings = { path = "../runtime-codings", optional = false, default-features = false, features = [] }
 
-x25519-dalek = { version = "^2.0", optional = false, default-features = false, features = [] }
-chacha20 = { version = "^0.9", optional = false, default-features = false, features = ["std"] }
 constant_time_eq = { version = "^0.2", optional = false, default-features = false, features = [] }
 tokio = { version = "^1.25", optional = false, default-features = false, features = ["rt", "net"] }
 

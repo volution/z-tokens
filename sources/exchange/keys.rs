@@ -22,7 +22,9 @@ use ::z_tokens_runtime_random::rand::{
 	};
 
 
-use ::x25519_dalek as x25519;
+use ::z_tokens_runtime_crypto::{
+		x25519,
+	};
 
 
 

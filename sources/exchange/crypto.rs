@@ -10,14 +10,28 @@ use crate::ssh::SshWrapper;
 use crate::ssh::SshResult;
 
 
-use ::z_tokens_runtime::crypto::*;
-
 use ::z_tokens_runtime::{
 		sensitive::drop,
 	};
 
 
-use ::x25519_dalek as x25519;
+use ::z_tokens_runtime_crypto::{
+		
+		chacha20,
+		x25519,
+		
+		blake3_derive_key,
+		blake3_derive_key_join,
+		blake3_keyed_hash,
+		argon_derive,
+		generate_random,
+		
+		CryptographicMaterial as _,
+		CryptographicInput as _,
+		
+		define_cryptographic_material,
+		define_cryptographic_purpose,
+	};
 
 
 
@@ -666,15 +680,15 @@ pub fn decrypt_with_raw (
 
 fn apply_encryption (_key : InternalEncryptionKey, _data : &mut [u8]) -> CryptoResult {
 	
-	use ::chacha20::cipher::KeyIvInit as _;
-	use ::chacha20::cipher::StreamCipher as _;
+	use chacha20::cipher::KeyIvInit as _;
+	use chacha20::cipher::StreamCipher as _;
 	
 	let _nonce = [0u8; 12];
 	
-	let _key = ::chacha20::Key::from (_key.material);
-	let _nonce = ::chacha20::Nonce::from (_nonce);
+	let _key = chacha20::Key::from (_key.material);
+	let _nonce = chacha20::Nonce::from (_nonce);
 	
-	let mut _cipher = ::chacha20::ChaCha20::new (&_key, &_nonce);
+	let mut _cipher = chacha20::ChaCha20::new (&_key, &_nonce);
 	
 	assert! (_data.len () >= CRYPTO_ENCRYPTED_HEADER_SIZE, "[c9e6989f]");
 	
