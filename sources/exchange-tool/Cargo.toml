@@ -65,4 +65,9 @@ z-tokens-exchange = { path = "../exchange", optional = false, default-features =
 z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
 z-tokens-runtime-flags = { path = "../runtime-flags", optional = false, default-features = false, features = [] }
 
+z-tokens-runtime-pinentry = { path = "../runtime-pinentry", optional = false, default-features = false, features = [] }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+z-tokens-runtime-lkkrs = { path = "../runtime-lkkrs", optional = false, default-features = false, features = [] }
+
 
