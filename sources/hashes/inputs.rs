@@ -3,7 +3,7 @@
 use ::z_tokens_runtime::preludes::std_plus_extras::*;
 use ::z_tokens_runtime::preludes::errors::*;
 
-use ::z_tokens_runtime_codings::byteorder::{
+use ::z_tokens_runtime::byteorder::{
 		BigEndian,
 		ByteOrder as _,
 	};

@@ -4,6 +4,11 @@ use ::z_tokens_runtime::preludes::std_plus_extras::*;
 use ::z_tokens_runtime::preludes::errors::*;
 
 
+use ::z_tokens_runtime::{
+		constant_time_eq::constant_time_eq,
+	};
+
+
 use ::z_tokens_runtime_hashes::{
 		blake3,
 	};
@@ -191,7 +196,7 @@ pub fn dearmor (_encoded : &[u8], _decoded : &mut Vec<u8>) -> ArmorResult {
 	
 	let _fingerprint_actual = apply_fingerprint (&_intermediate_buffer) ?;
 	
-	if ! ::constant_time_eq::constant_time_eq (&_fingerprint_actual, &_fingerprint) {
+	if ! constant_time_eq (&_fingerprint_actual, &_fingerprint) {
 		fail! (0x7c3ab20d);
 	}
 	

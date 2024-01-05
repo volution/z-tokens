@@ -5,6 +5,14 @@ use ::z_tokens_runtime::preludes::errors::*;
 
 use crate::x25519;
 
+use ::z_tokens_runtime::{
+		byteorder::{
+				BigEndian,
+				ByteOrder as _,
+			},
+		constant_time_eq::constant_time_eq,
+	};
+
 use ::z_tokens_runtime_random::{
 		rand::{
 				rngs::OsRng,
@@ -15,13 +23,6 @@ use ::z_tokens_runtime_random::{
 use ::z_tokens_runtime_hashes::{
 		blake3,
 		argon2,
-	};
-
-use ::z_tokens_runtime_codings::{
-		byteorder::{
-				BigEndian,
-				ByteOrder as _,
-			},
 	};
 
 
@@ -60,7 +61,7 @@ pub trait CryptographicMaterial <const SIZE : usize> : Sized {
 	}
 	
 	fn compare_access (_left : &Self, _right : &Self) -> bool {
-		::constant_time_eq::constant_time_eq (_left.access (), _right.access ())
+		constant_time_eq (_left.access (), _right.access ())
 	}
 	
 	fn compare_consume (_left : Self, _right : Self) -> bool {

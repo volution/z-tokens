@@ -4,7 +4,6 @@
 
 
 pub use ::data_encoding;
-pub use ::byteorder;
 pub use ::brotli;
 pub use ::bech32;
 pub use ::bs58;

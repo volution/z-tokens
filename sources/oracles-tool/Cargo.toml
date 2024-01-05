@@ -65,9 +65,7 @@ zt-oracles-pkcs11 = [
 
 [dependencies]
 
-z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [
-		"zt-runtime-sensitive",
-	] }
+z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
 z-tokens-runtime-flags = { path = "../runtime-flags", optional = false, default-features = false, features = [] }
 
 ed25519-dalek = { version = "^2.1", optional = true, default-features = false, features = ["std"] }

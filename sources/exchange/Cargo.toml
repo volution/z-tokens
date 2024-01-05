@@ -66,17 +66,12 @@ release = [
 
 [dependencies]
 
-z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [
-		"zt-runtime-memory",
-		"zt-runtime-sensitive",
-	] }
-
+z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
 z-tokens-runtime-random = { path = "../runtime-random", optional = false, default-features = false, features = [] }
 z-tokens-runtime-hashes = { path = "../runtime-hashes", optional = false, default-features = false, features = [] }
 z-tokens-runtime-crypto = { path = "../runtime-crypto", optional = false, default-features = false, features = [] }
 z-tokens-runtime-codings = { path = "../runtime-codings", optional = false, default-features = false, features = [] }
 
-constant_time_eq = { version = "^0.2", optional = false, default-features = false, features = [] }
 tokio = { version = "^1.25", optional = false, default-features = false, features = ["rt", "net"] }
 
 

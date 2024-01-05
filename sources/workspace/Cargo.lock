@@ -1953,7 +1953,6 @@ dependencies = [
 name = "z-tokens-exchange"
 version = "0.4.0"
 dependencies = [
- "constant_time_eq 0.2.6",
  "russh-keys",
  "tokio",
  "z-tokens-runtime",
@@ -1977,7 +1976,6 @@ name = "z-tokens-hashes"
 version = "0.4.0"
 dependencies = [
  "z-tokens-runtime",
- "z-tokens-runtime-codings",
  "z-tokens-runtime-flags",
  "z-tokens-runtime-hashes",
 ]
@@ -2031,6 +2029,8 @@ dependencies = [
 name = "z-tokens-runtime"
 version = "0.4.0"
 dependencies = [
+ "byteorder",
+ "constant_time_eq 0.2.6",
  "memsec",
  "vrl-errors",
  "vrl-preludes",
@@ -2044,7 +2044,6 @@ dependencies = [
  "bech32",
  "brotli",
  "bs58",
- "byteorder",
  "data-encoding",
  "mnemonic",
  "qrcode",
@@ -2057,10 +2056,8 @@ name = "z-tokens-runtime-crypto"
 version = "0.4.0"
 dependencies = [
  "chacha20",
- "constant_time_eq 0.2.6",
  "x25519-dalek",
  "z-tokens-runtime",
- "z-tokens-runtime-codings",
  "z-tokens-runtime-hashes",
  "z-tokens-runtime-random",
 ]

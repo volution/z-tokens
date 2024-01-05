@@ -40,21 +40,18 @@ path = "./lib.rs"
 default = [
 	"z-tokens-runtime/default",
 	"z-tokens-runtime-flags/default",
-	"z-tokens-runtime-codings/default",
 	"z-tokens-runtime-hashes/default",
 ]
 
 development = [
 	"z-tokens-runtime/development",
 	"z-tokens-runtime-flags/development",
-	"z-tokens-runtime-codings/development",
 	"z-tokens-runtime-hashes/development",
 ]
 
 release = [
 	"z-tokens-runtime/release",
 	"z-tokens-runtime-flags/release",
-	"z-tokens-runtime-codings/release",
 	"z-tokens-runtime-hashes/release",
 ]
 
@@ -65,7 +62,6 @@ release = [
 
 z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
 z-tokens-runtime-flags = { path = "../runtime-flags", optional = false, default-features = false, features = [] }
-z-tokens-runtime-codings = { path = "../runtime-codings", optional = false, default-features = false, features = [] }
 z-tokens-runtime-hashes = { path = "../runtime-hashes", optional = false, default-features = false, features = [] }
 
 
