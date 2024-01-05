@@ -38,21 +38,21 @@ path = "./lib.rs"
 [features]
 
 default = [
+	"z-tokens-secrets/default",
 	"z-tokens-runtime/default",
 	"z-tokens-runtime-flags/default",
-	"z-tokens-secrets/default",
 ]
 
 development = [
+	"z-tokens-secrets/development",
 	"z-tokens-runtime/development",
 	"z-tokens-runtime-flags/development",
-	"z-tokens-secrets/development",
 ]
 
 release = [
+	"z-tokens-secrets/release",
 	"z-tokens-runtime/release",
 	"z-tokens-runtime-flags/release",
-	"z-tokens-secrets/release",
 ]
 
 
@@ -60,8 +60,9 @@ release = [
 
 [dependencies]
 
+z-tokens-secrets = { path = "../secrets", optional = false, default-features = false, features = [] }
+
 z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
 z-tokens-runtime-flags = { path = "../runtime-flags", optional = false, default-features = false, features = [] }
-z-tokens-secrets = { path = "../secrets", optional = false, default-features = false, features = [] }
 
 

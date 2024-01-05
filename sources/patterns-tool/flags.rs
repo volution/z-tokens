@@ -10,14 +10,14 @@ define_error! (pub MainError, result : MainResult);
 
 
 
-pub struct RandomizerFlags {
+pub(crate) struct RandomizerFlags {
 	pub source : RandomizerSource,
 }
 
 
 #[ derive (Debug) ]
 #[ derive (Copy, Clone) ]
-pub enum RandomizerSource {
+pub(crate) enum RandomizerSource {
 	Os,
 	Testing,
 }
@@ -69,7 +69,7 @@ impl RandomizerFlags {
 
 
 
-pub struct OutputFlags {
+pub(crate) struct OutputFlags {
 	pub compact : Option<bool>,
 	pub skip_separators_mandatory : Option<bool>,
 	pub skip_separators_optional : Option<bool>,

@@ -10,7 +10,7 @@ use crate::prelude::*;
 
 
 
-pub struct EncryptArguments {
+pub(crate) struct EncryptArguments {
 	pub senders : MaterialSources<SenderPrivateKey>,
 	pub recipients : MaterialSources<RecipientPublicKey>,
 	pub shared : SharedKeysArguments,
@@ -19,7 +19,7 @@ pub struct EncryptArguments {
 }
 
 
-pub struct EncryptFlags {
+pub(crate) struct EncryptFlags {
 	pub senders : SendersPrivateFlags,
 	pub recipients : RecipientsPublicFlags,
 	pub shared : SharedKeysFlags,
@@ -31,7 +31,7 @@ pub struct EncryptFlags {
 
 
 
-pub struct DecryptArguments {
+pub(crate) struct DecryptArguments {
 	pub recipients : MaterialSources<RecipientPrivateKey>,
 	pub senders : MaterialSources<SenderPublicKey>,
 	pub shared : SharedKeysArguments,
@@ -39,7 +39,7 @@ pub struct DecryptArguments {
 }
 
 
-pub struct DecryptFlags {
+pub(crate) struct DecryptFlags {
 	pub recipients : RecipientsPrivateFlags,
 	pub senders : SendersPublicFlags,
 	pub shared : SharedKeysFlags,
@@ -50,7 +50,7 @@ pub struct DecryptFlags {
 
 
 
-pub struct PasswordArguments {
+pub(crate) struct PasswordArguments {
 	pub senders : MaterialSources<SenderPrivateKey>,
 	pub recipients : MaterialSources<RecipientPublicKey>,
 	pub shared : SharedKeysArguments,
@@ -58,7 +58,7 @@ pub struct PasswordArguments {
 }
 
 
-pub struct PasswordFlags {
+pub(crate) struct PasswordFlags {
 	pub senders : SendersPrivateFlags,
 	pub recipients : RecipientsPublicFlags,
 	pub shared : SharedKeysFlags,
@@ -73,7 +73,7 @@ pub struct PasswordFlags {
 
 
 
-pub struct SharedKeysArguments {
+pub(crate) struct SharedKeysArguments {
 	pub associated : MaterialSources<Associated>,
 	pub secrets : MaterialSources<SharedSecret>,
 	pub pins : MaterialSources<SharedPin>,
@@ -82,7 +82,7 @@ pub struct SharedKeysArguments {
 }
 
 
-pub struct SharedKeysFlags {
+pub(crate) struct SharedKeysFlags {
 	pub associated : AssociatedFlags,
 	pub secrets : SecretsFlags,
 	pub pins : PinsFlags,
@@ -92,31 +92,31 @@ pub struct SharedKeysFlags {
 
 
 
-pub struct SshWrappersArguments {
+pub(crate) struct SshWrappersArguments {
 	pub keys : MaterialSources<SshWrapperKey>,
 }
 
 
-pub struct SshWrappersFlags {
+pub(crate) struct SshWrappersFlags {
 	pub keys : MaterialFlags,
 }
 
 
 
 
-pub struct CommonArguments {
+pub(crate) struct CommonArguments {
 	pub empty_is_missing : bool,
 }
 
 
-pub struct CommonFlags {
+pub(crate) struct CommonFlags {
 	pub empty_is_missing : Option<bool>,
 }
 
 
 
 
-pub struct MaterialFlags {
+pub(crate) struct MaterialFlags {
 	pub values : Vec<OsString>,
 	pub from_environment : Vec<OsString>,
 	pub from_file : Vec<OsString>,
@@ -126,7 +126,7 @@ pub struct MaterialFlags {
 }
 
 
-pub struct MaterialSources<Material>
+pub(crate) struct MaterialSources<Material>
 	where
 		Material : MaterialValue,
 {
@@ -134,14 +134,14 @@ pub struct MaterialSources<Material>
 }
 
 
-pub enum MaterialData {
+pub(crate) enum MaterialData {
 	String (String),
 	OsString (OsString),
 	Bytes (Vec<u8>),
 }
 
 
-pub enum MaterialSource<Material>
+pub(crate) enum MaterialSource<Material>
 	where
 		Material : MaterialValue,
 {
@@ -155,7 +155,7 @@ pub enum MaterialSource<Material>
 }
 
 
-pub trait MaterialValue
+pub(crate) trait MaterialValue
 	where
 		Self : Sized,
 {
@@ -186,40 +186,40 @@ pub trait MaterialValue
 
 
 
-pub struct SendersPrivateFlags {
+pub(crate) struct SendersPrivateFlags {
 	pub materials : MaterialFlags,
 }
 
-pub struct SendersPublicFlags {
+pub(crate) struct SendersPublicFlags {
 	pub materials : MaterialFlags,
 }
 
-pub struct RecipientsPrivateFlags {
+pub(crate) struct RecipientsPrivateFlags {
 	pub materials : MaterialFlags,
 }
 
-pub struct RecipientsPublicFlags {
+pub(crate) struct RecipientsPublicFlags {
 	pub materials : MaterialFlags,
 }
 
 
-pub struct AssociatedFlags {
+pub(crate) struct AssociatedFlags {
 	pub materials : MaterialFlags,
 }
 
-pub struct SecretsFlags {
+pub(crate) struct SecretsFlags {
 	pub materials : MaterialFlags,
 }
 
-pub struct PinsFlags {
+pub(crate) struct PinsFlags {
 	pub materials : MaterialFlags,
 }
 
-pub struct SeedsFlags {
+pub(crate) struct SeedsFlags {
 	pub materials : MaterialFlags,
 }
 
-pub struct BallastsFlags {
+pub(crate) struct BallastsFlags {
 	pub materials : MaterialFlags,
 }
 

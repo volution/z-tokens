@@ -251,13 +251,13 @@ pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
 }
 
 
-pub fn main_password_with_flags (_flags : PasswordFlags, _input : impl Read, _output : impl Write) -> MainResult<ExitCode> {
+pub(crate) fn main_password_with_flags (_flags : PasswordFlags, _input : impl Read, _output : impl Write) -> MainResult<ExitCode> {
 	let _arguments = _flags.arguments () .else_wrap (0x6a2e6e49) ?;
 	main_password_with_arguments (_arguments, _input, _output)
 }
 
 
-pub fn main_password_with_arguments (_arguments : PasswordArguments, _input : impl Read, _output : impl Write) -> MainResult<ExitCode> {
+pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _input : impl Read, _output : impl Write) -> MainResult<ExitCode> {
 	
 	let _senders = _arguments.senders.decode () .else_wrap (0xd5bc0620) ?;
 	let _recipients = _arguments.recipients.decode () .else_wrap (0xc20dc7fd) ?;
@@ -324,13 +324,13 @@ pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 }
 
 
-pub fn main_encrypt_with_flags (_flags : EncryptFlags, _input : impl Read, _output : impl Write) -> MainResult<ExitCode> {
+pub(crate) fn main_encrypt_with_flags (_flags : EncryptFlags, _input : impl Read, _output : impl Write) -> MainResult<ExitCode> {
 	let _arguments = _flags.arguments () .else_wrap (0xe512fd1c) ?;
 	main_encrypt_with_arguments (_arguments, _input, _output)
 }
 
 
-pub fn main_encrypt_with_arguments (_arguments : EncryptArguments, _input : impl Read, _output : impl Write) -> MainResult<ExitCode> {
+pub(crate) fn main_encrypt_with_arguments (_arguments : EncryptArguments, _input : impl Read, _output : impl Write) -> MainResult<ExitCode> {
 	
 	let _senders = _arguments.senders.decode () .else_wrap (0xd0c0a0b3) ?;
 	let _recipients = _arguments.recipients.decode () .else_wrap (0x7ddeeef6) ?;
@@ -390,13 +390,13 @@ pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
 }
 
 
-pub fn main_decrypt_with_flags (_flags : DecryptFlags, _input : impl Read, _output : impl Write) -> MainResult<ExitCode> {
+pub(crate) fn main_decrypt_with_flags (_flags : DecryptFlags, _input : impl Read, _output : impl Write) -> MainResult<ExitCode> {
 	let _arguments = _flags.arguments () .else_wrap (0xf0d0dcf3) ?;
 	main_decrypt_with_arguments (_arguments, _input, _output)
 }
 
 
-pub fn main_decrypt_with_arguments (_arguments : DecryptArguments, _input : impl Read, _output : impl Write) -> MainResult<ExitCode> {
+pub(crate) fn main_decrypt_with_arguments (_arguments : DecryptArguments, _input : impl Read, _output : impl Write) -> MainResult<ExitCode> {
 	
 	let _recipients = _arguments.recipients.decode () .else_wrap (0xbcc50e84) ?;
 	let _senders = _arguments.senders.decode () .else_wrap (0x3a858679) ?;

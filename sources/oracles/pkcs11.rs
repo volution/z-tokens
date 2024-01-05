@@ -2,10 +2,10 @@
 
 use ::z_tokens_runtime::preludes::std_plus_extras::*;
 use ::z_tokens_runtime::preludes::errors::*;
-use ::z_tokens_runtime_flags::*;
 
 
 use ::std::eprintln;
+use ::std::process::ExitCode;
 
 
 use ::z_tokens_runtime_crypto::crates::rsa;
@@ -74,7 +74,7 @@ struct RsaKey {
 
 
 
-pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_pkcs11 (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	
 	if _arguments.len () != 1 {

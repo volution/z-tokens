@@ -20,7 +20,7 @@ define_error! (pub MainError, result : MainResult);
 
 
 
-pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_experiments (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	
 	if _arguments.len () != 1 {

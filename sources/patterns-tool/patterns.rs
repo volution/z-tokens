@@ -12,7 +12,7 @@ const DEFAULT_CLASSIFY_TRIES : usize = 16;
 
 
 
-pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	
 	let mut _output_flags = OutputFlags::new () .else_wrap (0x9b1b7b70) ?;

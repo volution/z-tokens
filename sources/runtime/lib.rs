@@ -5,7 +5,7 @@
 
 
 
-#[ cfg (all (feature = "development", feature = "release")) ]
+#[ cfg (all (feature = "development", feature = "release", not (feature = "zt-runtime-do-not-enable-this"))) ]
 ::std::compile_error! ("[c63017a5]  both `development` and `release` features requested!");
 
 

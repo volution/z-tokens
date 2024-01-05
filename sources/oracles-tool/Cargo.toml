@@ -38,21 +38,21 @@ path = "./lib.rs"
 [features]
 
 default = [
+	"z-tokens-oracles/default",
 	"z-tokens-runtime/default",
 	"z-tokens-runtime-flags/default",
-	"z-tokens-oracles/default",
 ]
 
 development = [
+	"z-tokens-oracles/default",
 	"z-tokens-runtime/development",
 	"z-tokens-runtime-flags/development",
-	"z-tokens-oracles/default",
 ]
 
 release = [
+	"z-tokens-oracles/release",
 	"z-tokens-runtime/release",
 	"z-tokens-runtime-flags/release",
-	"z-tokens-oracles/release",
 ]
 
 
@@ -60,7 +60,8 @@ release = [
 
 [dependencies]
 
+z-tokens-oracles = { path = "../oracles", optional = false, default-features = false, features = [] }
+
 z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
 z-tokens-runtime-flags = { path = "../runtime-flags", optional = false, default-features = false, features = [] }
-z-tokens-oracles = { path = "../oracles", optional = false, default-features = false, features = [] }
 

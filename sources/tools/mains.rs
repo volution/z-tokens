@@ -13,48 +13,48 @@ use crate::runtime::*;
 
 #[ cfg (feature = "z-tokens-patterns-tool") ]
 use ::z_tokens_patterns_tool::{
-		patterns::main as main_patterns_list,
-		generate::main as main_patterns_generate,
+		main_list as main_patterns_list,
+		main_generate as main_patterns_generate,
 	};
 
 
 #[ cfg (feature = "z-tokens-hashes-tool") ]
 use ::z_tokens_hashes_tool::{
-		tool::main_hash as main_hashes_hash,
+		main_hash as main_hashes_hash,
 	};
 
 
 #[ cfg (feature = "z-tokens-encodings-tool") ]
 use ::z_tokens_encodings_tool::{
-		tool::main_encode as main_encodings_encode,
-		tool::main_decode as main_encodings_decode,
+		main_encode as main_encodings_encode,
+		main_decode as main_encodings_decode,
 	};
 
 
 #[ cfg (feature = "z-tokens-exchange-tool") ]
 use ::z_tokens_exchange_tool::{
-		tool::main_keys as main_exchange_keys,
-		tool::main_encrypt as main_exchange_encrypt,
-		tool::main_decrypt as main_exchange_decrypt,
-		tool::main_password as main_exchange_password,
-		tool::main_armor as main_exchange_armor,
-		tool::main_dearmor as main_exchange_dearmor,
-		tool::main_encode as main_exchange_encode,
-		tool::main_decode as main_exchange_decode,
-		tool::main_ssh_keys as main_exchange_ssh_keys,
-		tool::main_ssh_wrap as main_exchange_ssh_wrap,
+		main_keys as main_exchange_keys,
+		main_encrypt as main_exchange_encrypt,
+		main_decrypt as main_exchange_decrypt,
+		main_password as main_exchange_password,
+		main_armor as main_exchange_armor,
+		main_dearmor as main_exchange_dearmor,
+		main_encode as main_exchange_encode,
+		main_decode as main_exchange_decode,
+		main_ssh_keys as main_exchange_ssh_keys,
+		main_ssh_wrap as main_exchange_ssh_wrap,
 	};
 
 
 #[ cfg (feature = "z-tokens-oracles-tool") ]
 use ::z_tokens_oracles_tool::{
-		tool::main as main_oracles_tool,
+		main_experiments as main_oracles_tool,
 	};
 
 
 #[ cfg (feature = "z-tokens-secrets-tool") ]
 use ::z_tokens_secrets_tool::{
-		tool::main as main_secrets_tool,
+		main_experiments as main_secrets_tool,
 	};
 
 

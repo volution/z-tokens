@@ -12,7 +12,7 @@ const DEFAULT_GROUP_SIZE : usize = 10;
 
 
 
-pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_generate (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	
 	let mut _output_flags = OutputFlags::new () .else_wrap (0x86244665) ?;

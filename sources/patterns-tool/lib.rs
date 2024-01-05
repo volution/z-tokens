@@ -5,14 +5,17 @@
 
 
 
-pub mod generate;
-pub mod patterns;
+pub(crate) mod generate;
+pub use crate::generate::*;
 
-
-pub use crate::flags::{ MainError, MainResult };
-
+pub(crate) mod patterns;
+pub use crate::patterns::*;
 
 pub(crate) mod flags;
+pub use crate::flags::*;
+
+
+
 
 pub(crate) mod prelude;
 
