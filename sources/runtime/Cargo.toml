@@ -45,9 +45,7 @@ release = [
 	"zt-runtime-allocator",
 ]
 
-zt-runtime-allocator = [
-	"memsec",
-]
+zt-runtime-allocator = []
 
 
 
@@ -60,8 +58,7 @@ vrl-preludes = { version = "*", optional = false, default-features = false, feat
 constant_time_eq = { version = "^0.2", optional = false, default-features = false, features = [] }
 byteorder = { version = "^1.4", optional = false, default-features = false, features = [] }
 zeroize = { version = "^1.5", optional = false, default-features = false, features = ["std", "alloc"] }
-
-memsec = { version = "^0.6", optional = true, default-features = false, features = ["default"] }
+memsec = { version = "^0.6", optional = false, default-features = false, features = ["default"] }
 
 num-bigint = { version = "^0.4", optional = false, default-features = false, features = ["std"] }
 num-traits = { version = "^0.2", optional = false, default-features = false, features = ["std"] }

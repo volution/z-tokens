@@ -28,10 +28,12 @@ use ::std::{
 	};
 
 
+use crate::crates::memsec;
+
+
 
 
 #[ global_allocator ]
-#[ cfg (feature = "zt-runtime-allocator") ]
 pub(crate) static GLOBAL : Allocator = Allocator::new ();
 
 
@@ -48,13 +50,11 @@ pub(crate) const USE_MLOCK : bool = false;
 
 
 
-#[ cfg (feature = "zt-runtime-allocator") ]
 pub(crate) struct Allocator {
 	counters : Counters,
 }
 
 
-#[ cfg (feature = "zt-runtime-allocator") ]
 pub(crate) struct Counters {
 	
 	count_alloc : AtomicU64,
@@ -68,7 +68,6 @@ pub(crate) struct Counters {
 
 
 
-#[ cfg (feature = "zt-runtime-allocator") ]
 unsafe impl alloc::GlobalAlloc for Allocator {
 	
 	unsafe fn alloc (&self, _layout: alloc::Layout) -> *mut u8 {
@@ -93,7 +92,7 @@ unsafe impl alloc::GlobalAlloc for Allocator {
 		}
 		
 		let _pointer = if USE_MALLOC {
-				if let Some (mut _memory) = ::memsec::malloc_sized (_amount) {
+				if let Some (mut _memory) = memsec::malloc_sized (_amount) {
 					_memory.as_mut () .as_mut_ptr ()
 				} else {
 					::vrl_errors::panic! (unreachable, 0xa4ef09db);
@@ -106,7 +105,7 @@ unsafe impl alloc::GlobalAlloc for Allocator {
 		if USE_MLOCK {
 			static _PRINTED : AtomicBool = AtomicBool::new (false);
 			static _LOCKED : AtomicUsize = AtomicUsize::new (0);
-			if ! ::memsec::mlock (_pointer, _amount) {
+			if ! memsec::mlock (_pointer, _amount) {
 				let _locked = _LOCKED.fetch_add (_amount, Ordering::SeqCst);
 				if ! _PRINTED.load (Ordering::Relaxed) && _PRINTED.compare_exchange (false, true, Ordering::SeqCst, Ordering::SeqCst) .is_ok () {
 					eprintln! ("[!!] [cc90c20b]  mlock failed after {} + {} bytes;  ignoring!", _locked, _amount);
@@ -115,7 +114,7 @@ unsafe impl alloc::GlobalAlloc for Allocator {
 		}
 		
 		if USE_MEMZERO {
-			::memsec::memzero (_pointer, _amount);
+			memsec::memzero (_pointer, _amount);
 		}
 		
 		if DEBUG_ALLOC {
@@ -139,12 +138,12 @@ unsafe impl alloc::GlobalAlloc for Allocator {
 		}
 		
 		if USE_MEMZERO {
-			::memsec::memzero (_pointer, _amount);
+			memsec::memzero (_pointer, _amount);
 		}
 		
 		if USE_MALLOC {
 			let _memory = unsafe { ptr::NonNull::new_unchecked (slice::from_raw_parts_mut (_pointer, _amount)) };
-			::memsec::free (_memory)
+			memsec::free (_memory)
 		} else {
 			let _layout = unsafe { alloc::Layout::from_size_align_unchecked (_amount, _align) };
 			alloc::System.dealloc (_pointer, _layout)
@@ -155,7 +154,6 @@ unsafe impl alloc::GlobalAlloc for Allocator {
 
 
 
-#[ cfg (feature = "zt-runtime-allocator") ]
 impl Allocator {
 	
 	
@@ -249,21 +247,16 @@ impl Allocator {
 
 
 pub fn report () -> () {
-	#[ cfg (feature = "zt-runtime-allocator") ]
-	GLOBAL.report ();
+	GLOBAL.report ()
 }
 
 
 pub fn reset () -> () {
-	#[ cfg (feature = "zt-runtime-allocator") ]
-	GLOBAL.reset ();
+	GLOBAL.reset ()
 }
 
 
-pub fn is_empty () -> Option<bool> {
-	#[ cfg (feature = "zt-runtime-allocator") ]
-	return Some (GLOBAL.is_empty ());
-	#[ cfg (not (feature = "zt-runtime-allocator")) ]
-	return None;
+pub fn is_empty () -> bool {
+	GLOBAL.is_empty ()
 }
 

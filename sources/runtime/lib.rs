@@ -17,7 +17,7 @@ pub mod memory;
 
 
 pub mod sensitive;
-pub mod sensitive_memory;
+pub(crate) mod sensitive_memory;
 
 
 #[ cfg (feature = "zt-runtime-allocator") ]
@@ -28,8 +28,13 @@ pub mod allocator;
 
 pub mod crates {
 	
+	pub use ::vrl_errors;
+	pub use ::vrl_preludes;
+	
 	pub use ::byteorder;
 	pub use ::constant_time_eq;
+	pub use ::zeroize;
+	pub use ::memsec;
 	
 	pub use ::num_bigint;
 	pub use ::num_traits;

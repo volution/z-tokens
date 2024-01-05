@@ -15,7 +15,7 @@ pub trait Sensitive {
 }
 
 
-pub use ::zeroize::Zeroize;
+pub use crate::crates::zeroize::Zeroize;
 
 
 pub struct SensitiveZeroize <Value : ?Sized + Zeroize> (pub Value);

@@ -1,12 +1,15 @@
 
 
 use ::z_tokens_runtime::preludes::std_plus_extras::*;
-use ::z_tokens_runtime::errors::*;
-use ::z_tokens_runtime::flags::*;
+use ::z_tokens_runtime::preludes::errors::*;
+use ::z_tokens_runtime_flags::*;
 
 
 use ::std::eprintln;
 
+
+use ::z_tokens_runtime_crypto::crates::rsa;
+use ::z_tokens_runtime_crypto::crates::pkcs1;
 
 
 
@@ -60,7 +63,7 @@ struct RsaKey {
 	supports_encrypt : bool,
 	supports_sign : bool,
 	supports_verify : bool,
-	public_key : Option<::rsa::RsaPublicKey>,
+	public_key : Option<rsa::RsaPublicKey>,
 	public_key_pem : Option<String>,
 }
 
@@ -454,9 +457,9 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			continue;
 		}
 		
-		let _modulus = ::rsa::BigUint::from_bytes_be (&_key.modulus_data);
-		let _exponent = ::rsa::BigUint::from_bytes_be (&_key.exponent_data);
-		let _public_key = match ::rsa::RsaPublicKey::new (_modulus, _exponent) {
+		let _modulus = rsa::BigUint::from_bytes_be (&_key.modulus_data);
+		let _exponent = rsa::BigUint::from_bytes_be (&_key.exponent_data);
+		let _public_key = match rsa::RsaPublicKey::new (_modulus, _exponent) {
 			Ok (_public_key) =>
 				_public_key,
 			Err (_error) => {
@@ -467,7 +470,7 @@ pub fn main (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			}
 		};
 		
-		let _public_key_pem = ::rsa::pkcs8::EncodePublicKey::to_public_key_pem (&_public_key, ::pkcs1::LineEnding::LF) .else_wrap (0xe18a461e) ?;
+		let _public_key_pem = rsa::pkcs8::EncodePublicKey::to_public_key_pem (&_public_key, pkcs1::LineEnding::LF) .else_wrap (0xe18a461e) ?;
 		if _print_keys && _print_keys_pem {
 			eprintln! ("[>>] [16728ad7]    -> RSA public key PEM:\n{}[--]", _public_key_pem);
 		}
