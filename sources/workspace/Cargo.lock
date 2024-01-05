@@ -1995,11 +1995,8 @@ version = "0.4.0"
 dependencies = [
  "cryptoki",
  "cryptoki-sys",
- "ed25519-dalek",
- "pkcs1",
- "rsa",
- "x25519-dalek",
  "z-tokens-runtime",
+ "z-tokens-runtime-crypto",
  "z-tokens-runtime-flags",
 ]
 
@@ -2007,11 +2004,6 @@ dependencies = [
 name = "z-tokens-patterns"
 version = "0.4.0"
 dependencies = [
- "chrono",
- "const_format",
- "num-bigint",
- "num-traits",
- "paste",
  "z-tokens-runtime",
  "z-tokens-runtime-random",
 ]
@@ -2030,8 +2022,14 @@ name = "z-tokens-runtime"
 version = "0.4.0"
 dependencies = [
  "byteorder",
+ "chrono",
+ "const_format",
  "constant_time_eq 0.2.6",
  "memsec",
+ "num-bigint",
+ "num-traits",
+ "paste",
+ "platform-info",
  "vrl-errors",
  "vrl-preludes",
  "zeroize",
@@ -2056,6 +2054,9 @@ name = "z-tokens-runtime-crypto"
 version = "0.4.0"
 dependencies = [
  "chacha20",
+ "ed25519-dalek",
+ "pkcs1",
+ "rsa",
  "x25519-dalek",
  "z-tokens-runtime",
  "z-tokens-runtime-hashes",
@@ -2106,7 +2107,6 @@ dependencies = [
 name = "z-tokens-secrets-tool"
 version = "0.4.0"
 dependencies = [
- "x25519-dalek",
  "z-tokens-runtime",
  "z-tokens-runtime-flags",
 ]
@@ -2115,7 +2115,6 @@ dependencies = [
 name = "z-tokens-tools"
 version = "0.4.0"
 dependencies = [
- "platform-info",
  "z-tokens-encodings-tool",
  "z-tokens-exchange-tool",
  "z-tokens-hashes-tool",

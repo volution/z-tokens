@@ -8,6 +8,12 @@ use crate::embeddings::*;
 use crate::runtime::*;
 
 
+use ::z_tokens_runtime::platform_info::{
+		PlatformInfo,
+		Uname as _,
+	};
+
+
 
 
 
@@ -86,7 +92,7 @@ pub(crate) fn print_version_and_exit (_succeed : bool) -> MainResult<ExitCode> {
 	#[ cfg (feature = "zt-embedded-sources") ]
 	let _build_sources_hash = BUILD_SOURCES_HASH.trim_matches ('\n');
 	
-	let _uname = match ::platform_info::PlatformInfo::new () {
+	let _uname = match PlatformInfo::new () {
 			Ok (_uname) =>
 				Some (_uname),
 			Err (_error) => {
@@ -95,7 +101,6 @@ pub(crate) fn print_version_and_exit (_succeed : bool) -> MainResult<ExitCode> {
 			}
 		};
 	let (_uname_node, _uname_system, _uname_release, _uname_machine) = if let Some (_uname) = &_uname {
-			use ::platform_info::Uname as _;
 			(_uname.nodename (), _uname.sysname (), _uname.release (), _uname.machine ())
 		} else {
 			("{unknown}".into (), "{unknown}".into (), "{unknown}".into (), "{unknown}".into ())

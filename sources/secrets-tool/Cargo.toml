@@ -60,6 +60,4 @@ release = [
 z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
 z-tokens-runtime-flags = { path = "../runtime-flags", optional = false, default-features = false, features = [] }
 
-x25519-dalek = { version = "^2.0", optional = false, default-features = false, features = [] }
-
 

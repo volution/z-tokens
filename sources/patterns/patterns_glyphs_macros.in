@@ -3,7 +3,7 @@
 macro_rules! define_set {
 	
 	( $_visibility : vis $_pattern : ident, $_variant : ident, [ $( $_char : expr, )* ] ) => {
-		::paste::paste! {
+		paste! {
 			
 			$(
 				#[ allow (non_upper_case_globals) ]
@@ -30,7 +30,7 @@ macro_rules! define_set {
 macro_rules! define_integer {
 	
 	( $_visibility : vis $_pattern : ident, ( $_lower : tt ..= $_upper : tt ), $_format : expr ) => {
-		::paste::paste! {
+		paste! {
 			
 			$_visibility static [< $_pattern _GLYPH >] : &GlyphPattern = & GlyphPattern::Integer ($_lower, $_upper, $_format);
 			$_visibility static [< $_pattern _ATOM >] : &AtomPattern = & AtomPattern::Glyph (Rb::new_static ( [< $_pattern _GLYPH >] ));
@@ -49,7 +49,7 @@ macro_rules! define_bytes {
 	};
 	
 	( $_visibility : vis $_pattern : ident, $_format : expr, [ $( $_count : literal, )* ] ) => {
-		::paste::paste! {
+		paste! {
 			
 			$(
 				$_visibility static [< $_pattern _ $_count _GLYPH >] : &GlyphPattern = & GlyphPattern::Bytes ($_count, $_format);
@@ -66,7 +66,7 @@ macro_rules! define_bytes {
 macro_rules! define_timestamp {
 	
 	( $_visibility : vis $_pattern : ident, $_format : expr ) => {
-		::paste::paste! {
+		paste! {
 			
 			$_visibility static [< $_pattern _GLYPH >] : &GlyphPattern = & GlyphPattern::Timestamp ($_format);
 			$_visibility static [< $_pattern _ATOM >] : &AtomPattern = & AtomPattern::Glyph (Rb::new_static ( [< $_pattern _GLYPH >] ));

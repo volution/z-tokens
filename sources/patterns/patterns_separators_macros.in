@@ -3,7 +3,7 @@
 macro_rules! define_separator {
 	
 	( $_visibility : vis $_pattern : ident, separator, $_variant : ident, $_text : expr ) => {
-		::paste::paste! {
+		paste! {
 			
 			static [< _ $_pattern _TEXT >] : &Text = & Text::$_variant ($_text);
 			
@@ -13,7 +13,7 @@ macro_rules! define_separator {
 	};
 	
 	( $_visibility : vis $_pattern : ident, atom ) => {
-		::paste::paste! {
+		paste! {
 			
 			$_visibility static [< $_pattern _MANDATORY_ATOM >] : &AtomPattern = & AtomPattern::Separator (Rb::new_static ( [< $_pattern _MANDATORY_SEPARATOR >] ));
 			$_visibility static [< $_pattern _OPTIONAL_ATOM >] : &AtomPattern = & AtomPattern::Separator (Rb::new_static ( [< $_pattern _OPTIONAL_SEPARATOR >] ));
@@ -28,7 +28,7 @@ macro_rules! define_separator {
 	};
 	
 	( $_visibility : vis $_pattern : ident, infix, [ $( $_infix_each : literal, )* ] ) => {
-		::paste::paste! {
+		paste! {
 			
 			$_visibility static [< $_pattern _MANDATORY_INFIX_PATTERN >] : &SeparatorPattern = & SeparatorPattern::Infix (Rb::new_static ( [< $_pattern _MANDATORY_SEPARATOR >] ));
 			$_visibility static [< $_pattern _OPTIONAL_INFIX_PATTERN >] : &SeparatorPattern = & SeparatorPattern::Infix (Rb::new_static ( [< $_pattern _OPTIONAL_SEPARATOR >] ));

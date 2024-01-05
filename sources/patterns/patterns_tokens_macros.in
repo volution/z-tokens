@@ -3,7 +3,7 @@
 macro_rules! define_sequence {
 	
 	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, [ $( $_element : expr, )* ], $_separator : expr ) => {
-		::paste::paste! {
+		paste! {
 			
 			static [< _ $_pattern __SEQUENCE_0 >] : &[Rb<TokenPattern>] = &[ $(
 					Rb::new_static ($_element),
@@ -29,7 +29,7 @@ macro_rules! define_repeat {
 	};
 	
 	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, { $_element : expr => $_separator : expr }, $_transform : tt, [ $( $_count : literal, )* ] ) => {
-		::paste::paste! {
+		paste! {
 			
 			$(
 				define_named! ($_visibility [< $_pattern _ $_count >], $_labels, { number_suffixed => $_identifier, $_count, $_transform },
@@ -42,7 +42,7 @@ macro_rules! define_repeat {
 	};
 	
 	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, { ( $( $_prefix : expr, )* ), ( $_element : expr => $_separator : expr ), ( $( $_suffix : expr, )* ) }, $_transform : tt, [ $( $_count : literal, )* ] ) => {
-		::paste::paste! {
+		paste! {
 			
 			static [< _ $_pattern __PREFIX_0 >] : &[Rb<TokenPattern>] = &[
 					$( Rb::new_static ($_prefix), )*
@@ -89,7 +89,7 @@ macro_rules! define_bytes {
 	};
 	
 	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, $_glyph : ident, [ $( $_count : literal, )* ] ) => {
-		::paste::paste! {
+		paste! {
 			
 			$(
 				define_named! ($_visibility [< $_pattern _ $_count >], $_labels, { number_suffixed => $_identifier, $_count, () },
@@ -155,22 +155,22 @@ macro_rules! define_named {
 	( $_visibility : vis $_pattern : ident, $_labels : tt, { number_suffixed => ( $_identifier : literal ), $_number : expr }, $_wrapped : expr ) => {
 		define_named! ($_visibility $_pattern, $_labels,
 			{ expr =>
-				::const_format::formatcp! ( "{}:{}", $_identifier, $_number as usize )
+				formatcp! ( "{}:{}", $_identifier, $_number as usize )
 			}, $_wrapped);
 	};
 	( $_visibility : vis $_pattern : ident, $_labels : tt, { number_suffixed => ( $_identifier : literal, $_alias_1 : literal ), $_number : expr }, $_wrapped : expr ) => {
 		define_named! ($_visibility $_pattern, $_labels,
 			{ expr =>
-				::const_format::formatcp! ( "{}:{}", $_identifier, $_number as usize ),
-				::const_format::formatcp! ( "{}:{}", $_alias_1, $_number as usize )
+				formatcp! ( "{}:{}", $_identifier, $_number as usize ),
+				formatcp! ( "{}:{}", $_alias_1, $_number as usize )
 			}, $_wrapped);
 	};
 	( $_visibility : vis $_pattern : ident, $_labels : tt, { number_suffixed => ( $_identifier : literal, $_alias_1 : literal, $_alias_2 : literal ), $_number : expr }, $_wrapped : expr ) => {
 		define_named! ($_visibility $_pattern, $_labels,
 			{ expr =>
-				::const_format::formatcp! ( "{}:{}", $_identifier, $_number as usize ),
-				::const_format::formatcp! ( "{}:{}", $_alias_1, $_number as usize ),
-				::const_format::formatcp! ( "{}:{}", $_alias_2, $_number as usize )
+				formatcp! ( "{}:{}", $_identifier, $_number as usize ),
+				formatcp! ( "{}:{}", $_alias_1, $_number as usize ),
+				formatcp! ( "{}:{}", $_alias_2, $_number as usize )
 			}, $_wrapped);
 	};
 	
@@ -180,7 +180,7 @@ macro_rules! define_named {
 	
 	
 	( $_visibility : vis $_pattern : ident, $_labels : tt, { expr => $_identifier : expr }, $_wrapped : expr ) => {
-		::paste::paste! {
+		paste! {
 			
 			static [< _ $_pattern __NO_NAME >] : &TokenPattern = $_wrapped;
 			static [< _ $_pattern __TAGS >] : &TokenPatternTags = & TokenPatternTags {
@@ -193,7 +193,7 @@ macro_rules! define_named {
 		}
 	};
 	( $_visibility : vis $_pattern : ident, $_labels : tt, { expr => $_identifier : expr $( , $_alias : expr )+ }, $_wrapped : expr ) => {
-		::paste::paste! {
+		paste! {
 			
 			static [< _ $_pattern __NO_NAME >] : &TokenPattern = $_wrapped;
 			static [< _ $_pattern __ALIASES >] : &[Rb<Text>] = & [ $(
@@ -213,12 +213,12 @@ macro_rules! define_named {
 
 macro_rules! define_named_family {
 	( $_pattern : ident, () ) => {
-		::paste::paste! {
+		paste! {
 			static [< _ $_pattern __LABELS >] : &[Rb<Text>] = &[];
 		}
 	};
 	( $_pattern : ident, ( $( $_label : literal ),+ ) ) => {
-		::paste::paste! {
+		paste! {
 			static [< _ $_pattern __LABELS >] : &[Rb<Text>] = &[ $(
 					Rb::new_static (& Text::Str ($_label)),
 				)+ ];
@@ -232,7 +232,7 @@ macro_rules! define_named_family {
 macro_rules! define_all {
 	
 	( $_visibility : vis $_all : ident, [ $( $_pattern : expr, )* ] ) => {
-		::paste::paste! {
+		paste! {
 			
 			$_visibility static $_all : &[Rb<TokenPattern>] = &[
 					$(
@@ -249,7 +249,7 @@ macro_rules! define_all {
 macro_rules! define_constant {
 	
 	( $_visibility : vis $_constant : ident, $_variant : ident, $_text : expr ) => {
-		::paste::paste! {
+		paste! {
 			
 			static [< _ $_constant _TEXT >] : &Text = & Text::$_variant ($_text);
 			

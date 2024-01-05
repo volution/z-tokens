@@ -3,11 +3,11 @@
 use crate::prelude::*;
 
 
-use ::num_bigint::{
+use ::z_tokens_runtime::num_bigint::{
 		BigUint,
 	};
 
-use ::num_traits::{
+use ::z_tokens_runtime::num_traits::{
 		Zero as _,
 		One as _,
 		ToPrimitive as _,

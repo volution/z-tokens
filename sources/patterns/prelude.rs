@@ -12,6 +12,10 @@ pub(crate) use ::z_tokens_runtime::{
 		
 		memory::*,
 		sensitive::*,
+		
+		paste::paste,
+		
+		const_format::formatcp,
 	};
 
 

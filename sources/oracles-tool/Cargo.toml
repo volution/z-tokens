@@ -40,22 +40,23 @@ path = "./lib.rs"
 default = [
 	"z-tokens-runtime/default",
 	"z-tokens-runtime-flags/default",
+	"z-tokens-runtime-crypto/default",
 ]
 
 development = [
 	"z-tokens-runtime/development",
 	"z-tokens-runtime-flags/development",
+	"z-tokens-runtime-crypto/development",
 #!	"zt-oracles-pkcs11",
 ]
 
 release = [
 	"z-tokens-runtime/release",
 	"z-tokens-runtime-flags/release",
+	"z-tokens-runtime-crypto/release",
 ]
 
 zt-oracles-pkcs11 = [
-	"rsa",
-	"pkcs1",
 	"cryptoki",
 	"cryptoki-sys",
 ]
@@ -67,12 +68,7 @@ zt-oracles-pkcs11 = [
 
 z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
 z-tokens-runtime-flags = { path = "../runtime-flags", optional = false, default-features = false, features = [] }
-
-ed25519-dalek = { version = "^2.1", optional = true, default-features = false, features = ["std"] }
-x25519-dalek = { version = "^2.0", optional = true, default-features = false, features = [] }
-
-rsa = { version = "^0.8", optional = true, default-features = false, features = ["std", "pem"] }
-pkcs1 = { version = "^0.4", optional = true, default-features = false, features = ["std", "pem"] }
+z-tokens-runtime-crypto = { path = "../runtime-crypto", optional = false, default-features = false, features = [] }
 
 cryptoki = { version = "^0.4", optional = true, default-features = false, features = [] }
 cryptoki-sys = { version = "^0.1", optional = true, default-features = false, features = [] }
