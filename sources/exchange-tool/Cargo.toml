@@ -67,7 +67,7 @@ z-tokens-runtime-flags = { path = "../runtime-flags", optional = false, default-
 
 z-tokens-runtime-pinentry = { path = "../runtime-pinentry", optional = false, default-features = false, features = [] }
 
-[target.'cfg(target_os = "linux")'.dependencies]
+[target.'cfg( all( target_os = "linux", target_env = "gnu" ) )'.dependencies]
 z-tokens-runtime-lkkrs = { path = "../runtime-lkkrs", optional = false, default-features = false, features = [] }
 
 
