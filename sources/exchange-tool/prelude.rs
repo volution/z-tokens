@@ -12,6 +12,9 @@ pub(crate) use ::z_tokens_exchange::coding::*;
 pub(crate) use ::z_tokens_exchange::ssh::*;
 
 
+pub(crate) use ::z_tokens_runtime_pinentry::pinentry_password;
+
+
 pub(crate) use crate::flags::*;
 pub(crate) use crate::io::*;
 

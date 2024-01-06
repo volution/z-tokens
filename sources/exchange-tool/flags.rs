@@ -123,6 +123,7 @@ pub(crate) struct MaterialFlags {
 	#[ cfg (unix) ]
 	pub from_fd : Vec<c_int>,
 	pub from_stdin : Option<bool>,
+	pub from_pinentry : Vec<String>,
 }
 
 
@@ -152,6 +153,7 @@ pub(crate) enum MaterialSource<Material>
 	#[ cfg (unix) ]
 	FromFd (OwnedFd, bool),
 	FromStdin (bool),
+	FromPinentry (String, bool),
 }
 
 
@@ -240,6 +242,7 @@ impl MaterialFlags {
 				#[ cfg (unix) ]
 				from_fd : Vec::new (),
 				from_stdin : None,
+				from_pinentry : Vec::new (),
 			}
 	}
 	
@@ -252,6 +255,7 @@ impl MaterialFlags {
 				_long_file : &'static str,
 				_long_fd : &'static str,
 				_long_stdin : &'static str,
+				_long_pinentry : &'static str,
 				_description : &'static str,
 			) -> FlagsResult
 	{
@@ -280,6 +284,11 @@ impl MaterialFlags {
 				.with_flag ((), _long_stdin)
 				.with_description ("from stdin");
 		
+		_flags.define_multiple_flag_0 (&mut self.from_pinentry)
+				.with_flag ((), _long_pinentry)
+				.with_placeholder ("prompt")
+				.with_description ("via pinentry");
+		
 		Ok (())
 	}
 }
@@ -298,7 +307,12 @@ impl SendersPrivateFlags {
 	}
 	
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
-		self.materials.flags (_flags, 's', "sender", "sender-env", "sender-path", "sender-fd", "sender-stdin", "sender private key (multiple allowed, in any order, deduplicated)")
+		self.materials.flags (
+				_flags,
+				's',
+				"sender", "sender-env", "sender-path", "sender-fd", "sender-stdin", "sender-pinentry",
+				"sender private key (multiple allowed, in any order, deduplicated)",
+			)
 	}
 	
 	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<SenderPrivateKey>> {
@@ -324,7 +338,12 @@ impl SendersPublicFlags {
 	}
 	
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
-		self.materials.flags (_flags, 's', "sender", "sender-env", "sender-path", "sender-fd", "sender-stdin", "sender public key (multiple allowed, in any order, deduplicated)")
+		self.materials.flags (
+				_flags,
+				's',
+				"sender", "sender-env", "sender-path", "sender-fd", "sender-stdin", "sender-pinentry",
+				"sender public key (multiple allowed, in any order, deduplicated)",
+			)
 	}
 	
 	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<SenderPublicKey>> {
@@ -350,7 +369,12 @@ impl RecipientsPrivateFlags {
 	}
 	
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
-		self.materials.flags (_flags, 'r', "recipient", "recipient-env", "recipient-path", "recipient-fd", "recipient-stdin", "recipient private key (multiple allowed, in any order, deduplicated)")
+		self.materials.flags (
+				_flags,
+				'r',
+				"recipient", "recipient-env", "recipient-path", "recipient-fd", "recipient-stdin", "recipient-pinentry",
+				"recipient private key (multiple allowed, in any order, deduplicated)",
+			)
 	}
 	
 	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<RecipientPrivateKey>> {
@@ -376,7 +400,12 @@ impl RecipientsPublicFlags {
 	}
 	
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
-		self.materials.flags (_flags, 'r', "recipient", "recipient-env", "recipient-path", "recipient-fd", "recipient-stdin", "recipient public key (multiple allowed, in any order, deduplicated)")
+		self.materials.flags (
+				_flags,
+				'r',
+				"recipient", "recipient-env", "recipient-path", "recipient-fd", "recipient-stdin", "recipient-pinentry",
+				"recipient public key (multiple allowed, in any order, deduplicated)",
+			)
 	}
 	
 	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<RecipientPublicKey>> {
@@ -402,7 +431,12 @@ impl AssociatedFlags {
 	}
 	
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
-		self.materials.flags (_flags, 'a', "associated", "associated-env", "associated-path", "associated-fd", "associated-stdin", "associated data (multiple allowed, **order and duplicates are significant**)")
+		self.materials.flags (
+				_flags,
+				'a',
+				"associated", "associated-env", "associated-path", "associated-fd", "associated-stdin", "associated-pinentry",
+				"associated data (multiple allowed, **order and duplicates are significant**)",
+			)
 	}
 	
 	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<Associated>> {
@@ -432,7 +466,12 @@ impl SecretsFlags {
 	}
 	
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
-		self.materials.flags (_flags, 'x', "secret", "secret-env", "secret-path", "secret-fd", "secret-stdin", "shared secret, for additional security (multiple allowed, in any order, deduplicated)")
+		self.materials.flags (
+				_flags,
+				'x',
+				"secret", "secret-env", "secret-path", "secret-fd", "secret-stdin", "secret-pinentry",
+				"shared secret, for additional security (multiple allowed, in any order, deduplicated)",
+			)
 	}
 	
 	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<SharedSecret>> {
@@ -458,7 +497,12 @@ impl PinsFlags {
 	}
 	
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
-		self.materials.flags (_flags, 'e', "pin", "pin-env", "pin-path", "pin-fd", "pin-stdin", "shared PIN, for **WEAK** additional security (multiple allowed, in any order, deduplicated)")
+		self.materials.flags (
+				_flags,
+				'e',
+				"pin", "pin-env", "pin-path", "pin-fd", "pin-stdin", "pin-pinentry",
+				"shared PIN, for **WEAK** additional security (multiple allowed, in any order, deduplicated)",
+			)
 	}
 	
 	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<SharedPin>> {
@@ -488,7 +532,12 @@ impl SeedsFlags {
 	}
 	
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
-		self.materials.flags (_flags, 'e', "seed", "seed-env", "seed-path", "seed-fd", "seed-stdin", "shared seed, for additional security (multiple allowed, in any order, deduplicated)")
+		self.materials.flags (
+				_flags,
+				'e',
+				"seed", "seed-env", "seed-path", "seed-fd", "seed-stdin", "seed-pinentry",
+				"shared seed, for additional security (multiple allowed, in any order, deduplicated)",
+			)
 	}
 	
 	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<SharedSeed>> {
@@ -514,7 +563,12 @@ impl BallastsFlags {
 	}
 	
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
-		self.materials.flags (_flags, 'b', "ballast", "ballast-env", "ballast-path", "ballast-fd", "ballast-stdin", "shared ballast, for additional security (multiple allowed, in any order, deduplicated)")
+		self.materials.flags (
+				_flags,
+				'b',
+				"ballast", "ballast-env", "ballast-path", "ballast-fd", "ballast-stdin", "ballast-pinentry",
+				"shared ballast, for additional security (multiple allowed, in any order, deduplicated)",
+			)
 	}
 	
 	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<SharedBallast>> {
@@ -542,7 +596,12 @@ impl SshWrappersFlags {
 	}
 	
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
-		self.keys.flags (_flags, 'S', "ssh-wrap", "ssh-wrap-env", "ssh-wrap-path", "ssh-wrap-fd", "ssh-wrap-stdin", "shared SSH agent key handle (multiple allowed, in any order, deduplicated)")
+		self.keys.flags (
+				_flags,
+				'S',
+				"ssh-wrap", "ssh-wrap-env", "ssh-wrap-path", "ssh-wrap-fd", "ssh-wrap-stdin", "ssh-wrap-pinentry",
+				"shared SSH agent key handle (multiple allowed, in any order, deduplicated)",
+			)
 	}
 	
 	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<SshWrappersArguments> {
@@ -834,6 +893,14 @@ impl MaterialFlags {
 			_sources.push (_source);
 		}
 		
+		for _prompt in self.from_pinentry.iter () {
+			if _empty_is_missing && _prompt.is_empty () {
+				continue;
+			}
+			let _source = MaterialSource::FromPinentry (String::from (_prompt), _empty_is_missing);
+			_sources.push (_source);
+		}
+		
 		Ok (MaterialSources {
 				sources : _sources,
 			})
@@ -926,6 +993,24 @@ impl <Material> MaterialSource<Material>
 			
 			MaterialSource::FromStdin (_empty_is_missing) =>
 				_read_to_end (stdin_locked (), _empty_is_missing) ?,
+			
+			MaterialSource::FromPinentry (_prompt, _empty_is_missing) => {
+				let _prompt = if ! _prompt.is_empty () {
+						Some (_prompt.as_str ())
+					} else {
+						None
+					};
+				let _password = pinentry_password (_prompt, None, None) .else_wrap (0xe1aade49) ?;
+				let Some (_password) = _password
+					else {
+						fail! (0x286a7d3c);
+					};
+				if _empty_is_missing && _password.is_empty () {
+					None
+				} else {
+					Some (MaterialData::String (_password))
+				}
+			}
 		};
 		
 		if let Some (_data) = _data {
