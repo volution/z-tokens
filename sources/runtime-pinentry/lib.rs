@@ -14,6 +14,7 @@ pub use crate::utils::*;
 pub mod crates {
 	
 	pub use ::pinentry;
+	pub use ::secrecy;
 }
 
 

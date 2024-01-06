@@ -2316,6 +2316,7 @@ name = "z-tokens-runtime-pinentry"
 version = "0.4.0"
 dependencies = [
  "pinentry",
+ "secrecy",
  "z-tokens-runtime",
 ]
 
