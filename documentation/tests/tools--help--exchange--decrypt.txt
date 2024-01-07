@@ -16,6 +16,12 @@
   --recipient-stdin
     **  from stdin
 
+  --recipient-pinentry  {prompt}
+    **  via pinentry
+
+  --recipient-lkkrs  {selector}
+    **  from Linux Kernel key-retention-service
+
   -s --sender  {string}
     **  sender public key (multiple allowed, in any order, deduplicated)
 
@@ -30,6 +36,12 @@
 
   --sender-stdin
     **  from stdin
+
+  --sender-pinentry  {prompt}
+    **  via pinentry
+
+  --sender-lkkrs  {selector}
+    **  from Linux Kernel key-retention-service
 
   -a --associated  {string}
     **  associated data (multiple allowed, **order and duplicates are significant**)
@@ -46,6 +58,12 @@
   --associated-stdin
     **  from stdin
 
+  --associated-pinentry  {prompt}
+    **  via pinentry
+
+  --associated-lkkrs  {selector}
+    **  from Linux Kernel key-retention-service
+
   -x --secret  {string}
     **  shared secret, for additional security (multiple allowed, in any order, deduplicated)
 
@@ -60,6 +78,12 @@
 
   --secret-stdin
     **  from stdin
+
+  --secret-pinentry  {prompt}
+    **  via pinentry
+
+  --secret-lkkrs  {selector}
+    **  from Linux Kernel key-retention-service
 
   -e --pin  {string}
     **  shared PIN, for **WEAK** additional security (multiple allowed, in any order, deduplicated)
@@ -76,6 +100,12 @@
   --pin-stdin
     **  from stdin
 
+  --pin-pinentry  {prompt}
+    **  via pinentry
+
+  --pin-lkkrs  {selector}
+    **  from Linux Kernel key-retention-service
+
   -e --seed  {string}
     **  shared seed, for additional security (multiple allowed, in any order, deduplicated)
 
@@ -90,6 +120,12 @@
 
   --seed-stdin
     **  from stdin
+
+  --seed-pinentry  {prompt}
+    **  via pinentry
+
+  --seed-lkkrs  {selector}
+    **  from Linux Kernel key-retention-service
 
   -b --ballast  {string}
     **  shared ballast, for additional security (multiple allowed, in any order, deduplicated)
@@ -106,6 +142,12 @@
   --ballast-stdin
     **  from stdin
 
+  --ballast-pinentry  {prompt}
+    **  via pinentry
+
+  --ballast-lkkrs  {selector}
+    **  from Linux Kernel key-retention-service
+
   -S --ssh-wrap  {string}
     **  shared SSH agent key handle (multiple allowed, in any order, deduplicated)
 
@@ -120,6 +162,12 @@
 
   --ssh-wrap-stdin
     **  from stdin
+
+  --ssh-wrap-pinentry  {prompt}
+    **  via pinentry
+
+  --ssh-wrap-lkkrs  {selector}
+    **  from Linux Kernel key-retention-service
 
   --empty-is-missing  {bool}
     **  treat empty arguments as unspecified
