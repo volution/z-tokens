@@ -1,0 +1,3 @@
+>>  z-tokens hashes hash --sha3 --token 1234 --size 64 --truncate-size 30 --output-reversed
+
+780846bfca387433ffd0c711f934091b9668fbe65033dcb422a58d6860d7

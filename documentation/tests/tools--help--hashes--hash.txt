@@ -144,29 +144,29 @@
     !!  EXPERIMENTAL
 
   -s --size  {size}
-    **  hash output size in bytes
+    **  hash size in bytes
   --8b --1B
-    **  output 8 bits / 1 byte
+    **  8 bits / 1 byte
   --16b --2B
-    **  output 16 bits / 2 bytes
+    **  16 bits / 2 bytes
   --32b --4B
-    **  output 32 bits / 4 bytes
+    **  32 bits / 4 bytes
   --64b --8B
-    **  output 64 bits / 8 bytes
+    **  64 bits / 8 bytes
   --128b --16B
-    **  output 128 bits / 16 bytes
+    **  128 bits / 16 bytes
   --256b --32B
-    **  output 256 bits / 32 bytes
+    **  256 bits / 32 bytes
   --512b --64B
-    **  output 512 bits / 64 bytes
+    **  512 bits / 64 bytes
   --1024b --128B
-    **  output 1024 bits / 128 bytes
+    **  1024 bits / 128 bytes
   --2048b --256B
-    **  output 2048 bits / 256 bytes
+    **  2048 bits / 256 bytes
   --4096b --512B
-    **  output 4096 bits / 512 bytes
+    **  4096 bits / 512 bytes
   --8192b --1024B
-    **  output 8192 bits / 1024 bytes
+    **  8192 bits / 1024 bytes
 
   -t --token  {string}
     **  use this argument
@@ -184,17 +184,20 @@
     ?=  default for two or more inputs
     **  canonicalize inputs
 
-  --output-discard-right
+  --truncate-size  {size}
+    **  truncate the hash to output size in bytes
+
+  --truncate-right
     ?=  default
-    **  if needed discard bytes from the right of the hash
-  --output-discard-left
-    **  if needed discard bytes from the left of the hash
+    **  if truncating, discard bytes from the right of the hash
+  --truncate-left
+    **  if truncating, discard bytes from the left of the hash
 
   --output-left-to-right
     ?=  default
-    **  copy from left-to-right bytes from the hash
+    **  copy from left-to-right bytes from the (possibly truncated) hash
   --output-right-to-left --output-reversed
-    **  copy from right-to-left bytes from the hash
+    **  copy from right-to-left bytes from the (possibly truncated) hash
 
   -v --version
 

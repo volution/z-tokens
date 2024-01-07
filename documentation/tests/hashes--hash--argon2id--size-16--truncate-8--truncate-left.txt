@@ -1,0 +1,3 @@
+>>  z-tokens hashes hash --argon2id --token 1234 --size 16 --truncate-size 8 --truncate-left
+
+78807ddb13b2e4a2

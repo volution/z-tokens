@@ -1,0 +1,3 @@
+>>  z-tokens hashes hash --blake3 --token 1234 --size 24 --truncate-size 16 --output-reversed
+
+e9cf8a23471c398074381ef4553ae1cd

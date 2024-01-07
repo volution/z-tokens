@@ -122,15 +122,30 @@ hashes / hash / sha3 / size-16 :: hashes hash --sha3 --token 1234 --size 16
 hashes / hash / sha3 / size-20 :: hashes hash --sha3 --token 1234 --size 20
 hashes / hash / sha3 / size-24 :: hashes hash --sha3 --token 1234 --size 24
 hashes / hash / sha3 / size-28 :: hashes hash --sha3 --token 1234 --size 28
+hashes / hash / sha3 / size-30 :: hashes hash --sha3 --token 1234 --size 30
 hashes / hash / sha3 / size-32 :: hashes hash --sha3 --token 1234 --size 32
 hashes / hash / sha3 / size-40 :: hashes hash --sha3 --token 1234 --size 40
 hashes / hash / sha3 / size-48 :: hashes hash --sha3 --token 1234 --size 48
 hashes / hash / sha3 / size-56 :: hashes hash --sha3 --token 1234 --size 56
 hashes / hash / sha3 / size-64 :: hashes hash --sha3 --token 1234 --size 64
 
-hashes / hash / sha3 / size-56 / discard-right :: hashes hash --sha3 --token 1234 --size 56 --output-discard-right
-hashes / hash / sha3 / size-56 / discard-left :: hashes hash --sha3 --token 1234 --size 56 --output-discard-left
+hashes / hash / sha3 / size-30 / truncate-right :: hashes hash --sha3 --token 1234 --size 30 --truncate-right
+hashes / hash / sha3 / size-30 / truncate-left :: hashes hash --sha3 --token 1234 --size 30 --truncate-left
+hashes / hash / sha3 / size-30 / reversed :: hashes hash --sha3 --token 1234 --size 30 --output-reversed
+
+hashes / hash / sha3 / size-56 / truncate-right :: hashes hash --sha3 --token 1234 --size 56 --truncate-right
+hashes / hash / sha3 / size-56 / truncate-left :: hashes hash --sha3 --token 1234 --size 56 --truncate-left
 hashes / hash / sha3 / size-56 / reversed :: hashes hash --sha3 --token 1234 --size 56 --output-reversed
+
+hashes / hash / sha3 / size-64 / truncate-30 :: hashes hash --sha3 --token 1234 --size 64 --truncate-size 30
+hashes / hash / sha3 / size-64 / truncate-30 / truncate-right :: hashes hash --sha3 --token 1234 --size 64 --truncate-size 30 --truncate-right
+hashes / hash / sha3 / size-64 / truncate-30 / truncate-left :: hashes hash --sha3 --token 1234 --size 64 --truncate-size 30 --truncate-left
+hashes / hash / sha3 / size-64 / truncate-30 / reversed :: hashes hash --sha3 --token 1234 --size 64 --truncate-size 30 --output-reversed
+
+hashes / hash / sha3 / size-64 / truncate-56 :: hashes hash --sha3 --token 1234 --size 64 --truncate-size 56
+hashes / hash / sha3 / size-64 / truncate-56 / truncate-right :: hashes hash --sha3 --token 1234 --size 64 --truncate-size 56 --truncate-right
+hashes / hash / sha3 / size-64 / truncate-56 / truncate-left :: hashes hash --sha3 --token 1234 --size 64 --truncate-size 56 --truncate-left
+hashes / hash / sha3 / size-64 / truncate-56 / reversed :: hashes hash --sha3 --token 1234 --size 64 --truncate-size 56 --output-reversed
 
 hashes / hash / shake128 / default :: hashes hash --shake128 --token 1234
 
@@ -169,9 +184,14 @@ hashes / hash / blake3 / size-032 :: hashes hash --blake3 --token 1234 --size 32
 hashes / hash / blake3 / size-064 :: hashes hash --blake3 --token 1234 --size 64
 hashes / hash / blake3 / size-128 :: hashes hash --blake3 --token 1234 --size 128
 
-hashes / hash / blake3 / size-024 / discard-right :: hashes hash --blake3 --token 1234 --size 24 --output-discard-right
-hashes / hash / blake3 / size-024 / discard-left :: hashes hash --blake3 --token 1234 --size 24 --output-discard-left
+hashes / hash / blake3 / size-024 / truncate-right :: hashes hash --blake3 --token 1234 --size 24 --truncate-right
+hashes / hash / blake3 / size-024 / truncate-left :: hashes hash --blake3 --token 1234 --size 24 --truncate-left
 hashes / hash / blake3 / size-024 / reversed :: hashes hash --blake3 --token 1234 --size 24 --output-reversed
+
+hashes / hash / blake3 / size-024 / truncate-016 :: hashes hash --blake3 --token 1234 --size 24 --truncate-size 16
+hashes / hash / blake3 / size-024 / truncate-016 / truncate-right :: hashes hash --blake3 --token 1234 --size 24 --truncate-size 16 --truncate-right
+hashes / hash / blake3 / size-024 / truncate-016 / truncate-left :: hashes hash --blake3 --token 1234 --size 24 --truncate-size 16 --truncate-left
+hashes / hash / blake3 / size-024 / truncate-016 / reversed :: hashes hash --blake3 --token 1234 --size 24 --truncate-size 16 --output-reversed
 
 hashes / hash / siphash / default :: hashes hash --siphash --token 1234
 hashes / hash / siphash-64 / default :: hashes hash --siphash-64 --token 1234
@@ -233,6 +253,11 @@ hashes / hash / argon2 / size-16 :: hashes hash --argon2 --token 1234 --size 16
 hashes / hash / argon2d / size-16 :: hashes hash --argon2d --token 1234 --size 16
 hashes / hash / argon2i / size-16 :: hashes hash --argon2i --token 1234 --size 16
 hashes / hash / argon2id / size-16 :: hashes hash --argon2id --token 1234 --size 16
+
+hashes / hash / argon2id / size-16 / truncate-8 :: hashes hash --argon2id --token 1234 --size 16 --truncate-size 8
+hashes / hash / argon2id / size-16 / truncate-8 / truncate-right :: hashes hash --argon2id --token 1234 --size 16 --truncate-size 8 --truncate-right
+hashes / hash / argon2id / size-16 / truncate-8 / truncate-left :: hashes hash --argon2id --token 1234 --size 16 --truncate-size 8 --truncate-left
+hashes / hash / argon2id / size-16 / truncate-8 / reversed :: hashes hash --argon2id --token 1234 --size 16 --truncate-size 8 --output-reversed
 
 hashes / hash / inputs / concatenate / 1 :: hashes hash --md5 --token 1234 --inputs-concatenate
 hashes / hash / inputs / concatenate / 2 :: hashes hash --md5 --token 12 --token 34 --inputs-concatenate
