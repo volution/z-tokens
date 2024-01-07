@@ -70,6 +70,9 @@ pub(crate) fn main_unknown (_commands : Vec<String>, _arguments : Vec<String>) -
 		(&[], &["--sources-cpio"]) =>
 			dump_and_exit (BUILD_SOURCES_CPIO_GZ, true),
 		
+		(&[], &["--nop"]) =>
+			Ok (ExitCode::SUCCESS),
+		
 		(&[], _) =>
 			print_and_exit (&["[ee] [427cd93b]  expected command and arguments;  see `z-tokens help`;  aborting!", "\n"], false),
 		
