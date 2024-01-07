@@ -1,6 +1,5 @@
 >>  z-tokens generate --describe --random-testing
 
-
 **  ~~~~~~~~  cvs-lower:4
 \_  aliases:  cvs:4
 \_  labels:   cvs-lower cvs cv letters password pronounceable memorable

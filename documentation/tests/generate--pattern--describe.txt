@@ -1,6 +1,5 @@
 >>  z-tokens generate --token-pattern digits-base32-hex:32 --describe --random-testing
 
-
 **  ~~~~~~~~  digits-base32-hex:32
 \_  labels:   digits-base32-hex digits-base32 encoding password
 \_  bits:     160  (exact)

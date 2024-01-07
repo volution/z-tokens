@@ -121,13 +121,8 @@ pub fn main_generate (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		let _token = generate_token (&_pattern, _randomizer) .else_wrap (0xf2ccbc70) ?;
 		
 		if _describe && (_index == 0) {
-			
 			crate::patterns::pattern_describe (&_pattern, &_token, &_output_options, &mut _stream) ?;
-			
-			let _separator = _group_separator.as_ref () .unwrap_or (&_token_separator);
-			if ! _separator.is_empty () {
-				_stream.write (_separator.as_bytes ()) .else_wrap (0x34a60e5d) ?;
-			}
+			writeln! (&mut _stream) .else_wrap (0x028cc65f) ?;
 		}
 		
 		output_token (&_token, &mut _stream, &_output_options) .else_wrap (0x9c0fbf4f) ?;

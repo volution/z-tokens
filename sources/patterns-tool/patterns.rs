@@ -495,6 +495,8 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			
 		} else {
 			
+			writeln! (&mut _stream) .else_wrap (0x28af8876) ?;
+			
 			pattern_describe_display (
 					_pattern, _identifier, _aliases, _labels,
 					_bits, _bits_exact, _string_length,
@@ -556,8 +558,6 @@ fn pattern_describe_display (
 		mut _stream : impl Write,
 	) -> MainResult
 {
-	writeln! (&mut _stream) .else_wrap (0x28af8876) ?;
-	
 	if let Some (_identifier) = _identifier {
 		writeln! (&mut _stream, "**  ~~~~~~~~  {}", _identifier.as_ref ()) .else_wrap (0xc6bd1c82) ?;
 	}
