@@ -11,3 +11,14 @@ https://docs.rs/keyutils
 
 https://github.com/f4b6a3/tsid-creator
 
+
+https://github.com/cloudflare/gokey
+https://github.com/tytso/pwgen
+https://github.com/itoffshore/secpwgen
+https://github.com/redacted/XKCD-password-generator
+https://github.com/rmmh/abbrase
+https://github.com/sts10/tidy
+https://github.com/sts10/generated-wordlists
+https://github.com/palant/pfp
+
+
