@@ -6,6 +6,7 @@ use crate::prelude::*;
 
 
 const DEFAULT_LENGTH_MAXIMUM : usize = 40;
+const DEFAULT_STRING_MAXIMUM : usize = 40;
 const DEFAULT_DISPLAY_TRIM : usize = 80;
 const DEFAULT_CLASSIFY_TRIES : usize = 16;
 
@@ -200,10 +201,6 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		}
 	}
 	
-	if (_length_minimum.is_some () || _length_maximum.is_some ()) && _output_flags.compact.is_none () {
-		_output_flags.compact = Some (true);
-	}
-	
 	let _output_options = _output_flags.build () .else_wrap (0x3c0d75d6) ?;
 	
 	
@@ -232,27 +229,6 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _for_short_term_storage = _for_short_term_storage.unwrap_or (false);
 	let _classify_usage = _for_cryptography || _for_authentication || _for_archival_storage || _for_long_term_storage || _for_short_term_storage;
 	
-	let _length_maximum = if
-				(! _identifiers_only) && (! _select_all) && (! _select_shortest)
-				&& _identifier_prefix.is_none ()
-				&& _identifier_suffix.is_none ()
-				&& _identifier_contains.is_none ()
-				&& _entropy_minimum.is_none ()
-				&& _entropy_maximum.is_none ()
-				&& _length_minimum.is_none ()
-				&& _length_minimum.is_none ()
-				&& (! _classify_usage)
-		{
-			Some (DEFAULT_LENGTH_MAXIMUM)
-		} else {
-			_length_maximum
-		};
-	
-	let _entropy_minimum = _entropy_minimum.unwrap_or (0);
-	let _entropy_maximum = _entropy_maximum.unwrap_or (usize::MAX);
-	let _length_minimum = _length_minimum.unwrap_or (0);
-	let _length_maximum = _length_maximum.unwrap_or (usize::MAX);
-	
 	let _display_all = _display_all.unwrap_or (false);
 	let _display_aliases = _display_aliases.unwrap_or (false) || _display_all;
 	let _display_labels = _display_labels.unwrap_or (false) || _display_all;
@@ -263,6 +239,8 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _display_cards = _display_aliases || _display_labels || _display_characters || _display_security || _display_bruteforce || _display_examples >= 2;
 	
 	let _classify_chars =
+			_length_minimum.is_some () ||
+			_length_maximum.is_some () ||
 			_has_all.is_some () ||
 			_has_letters.is_some () ||
 			_has_letters_upper.is_some () ||
@@ -270,6 +248,22 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			_has_digits.is_some () ||
 			_has_symbols.is_some () ||
 			_display_characters;
+	
+	let (_length_maximum, _string_maximum) = if
+				(! _identifiers_only) && (! _select_all) && (! _select_shortest)
+				&& _identifier_prefix.is_none ()
+				&& _identifier_suffix.is_none ()
+				&& _identifier_contains.is_none ()
+				&& _entropy_minimum.is_none ()
+				&& _entropy_maximum.is_none ()
+				&& _length_minimum.is_none ()
+				&& _length_maximum.is_none ()
+				&& (! _classify_usage)
+		{
+			(Some (DEFAULT_LENGTH_MAXIMUM), Some (DEFAULT_STRING_MAXIMUM))
+		} else {
+			(_length_maximum, None)
+		};
 	
 	
 	
@@ -361,10 +355,10 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		let _entropy = entropy_token (&_pattern) .else_wrap (0x6374858a) ?;
 		let (_bits, _bits_exact) = _entropy.bits_exact ();
 		
-		if _bits < (_entropy_minimum as f64) {
+		if _bits < (_entropy_minimum.unwrap_or (0) as f64) {
 			continue '_loop;
 		}
-		if _bits > (_entropy_maximum as f64) {
+		if _bits > (_entropy_maximum.unwrap_or (usize::MAX) as f64) {
 			continue '_loop;
 		}
 		
@@ -375,10 +369,7 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		let _string = output_token_to_string (&_token, &_output_options) .else_wrap (0x36471fa6) ?;
 		let _string_length = _string.len ();
 		
-		if _string_length < _length_minimum {
-			continue '_loop;
-		}
-		if _string_length > _length_maximum {
+		if _string_length > _string_maximum.unwrap_or (usize::MAX) {
 			continue '_loop;
 		}
 		
@@ -396,13 +387,15 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 						Cow::Owned (_string)
 					};
 				let _characters_0 = pattern_classify_chars (_string.as_str ());
-				let (_letters, _letters_upper, _letters_lower, _digits, _symbols) = _characters_0;
+				let (_letters, _letters_upper, _letters_lower, _digits, _symbols, _no_spaces) = _characters_0;
 				let _matched = true
 						&& _letters >= usize::max (_has_letters.unwrap_or (0), _has_all.unwrap_or (0))
 						&& _letters_upper >= usize::max (_has_letters_upper.unwrap_or (0), _has_all.unwrap_or (0))
 						&& _letters_lower >= usize::max (_has_letters_lower.unwrap_or (0), _has_all.unwrap_or (0))
 						&& _digits >= usize::max (_has_digits.unwrap_or (0), _has_all.unwrap_or (0))
-						&& _symbols >= usize::max (_has_symbols.unwrap_or (0), _has_all.unwrap_or (0));
+						&& _symbols >= usize::max (_has_symbols.unwrap_or (0), _has_all.unwrap_or (0))
+						&& _no_spaces >= _length_minimum.unwrap_or (0)
+						&& _no_spaces <= _length_maximum.unwrap_or (usize::MAX);
 				_matched_any = _matched_any || _matched;
 				if _matched_any {
 					_characters = Some (_characters_0);
@@ -476,11 +469,13 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 				Cow::Borrowed ("<unknown>")
 			};
 			
+			let _length = _characters.map (|_characters| _characters.5) .unwrap_or (_string_length);
+			
 			if _bits_exact {
-				write! (&mut _stream, "::  {:22}  : {:4.0}  =b : {:4} c ::", _identifier.as_ref (), _bits, _string_length) .else_wrap (0x737c2a4f) ?;
+				write! (&mut _stream, "::  {:22}  : {:4.0}  =b : {:4} c ::", _identifier.as_ref (), _bits, _length) .else_wrap (0x737c2a4f) ?;
 			} else {
 				let _display_bits = (_bits * 10.0) .floor () / 10.0;
-				write! (&mut _stream, "::  {:22}  : {:6.1} b : {:4} c ::", _identifier.as_ref (), _display_bits, _string_length) .else_wrap (0xd141c5ef) ?;
+				write! (&mut _stream, "::  {:22}  : {:6.1} b : {:4} c ::", _identifier.as_ref (), _display_bits, _length) .else_wrap (0xd141c5ef) ?;
 			}
 			
 			if _display_examples > 0 {
@@ -502,7 +497,7 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			
 			pattern_describe_display (
 					_pattern, _identifier, _aliases, _labels,
-					_string_length, _bits, _bits_exact,
+					_bits, _bits_exact, _string_length,
 					_characters,
 					_estimates.as_ref (),
 					_display_aliases, _display_labels, _display_characters, _display_security, _display_bruteforce,
@@ -548,10 +543,10 @@ fn pattern_describe_display (
 		_identifier : Option<&Rb<Text>>,
 		_aliases : &[Rb<Text>],
 		_labels : &[Rb<Text>],
-		_string_length : usize,
 		_bits : f64,
 		_bits_exact : bool,
-		_characters : Option<(usize, usize, usize, usize, usize)>,
+		_string_length : usize,
+		_characters : Option<(usize, usize, usize, usize, usize, usize)>,
 		_estimates : Option<&EntropyEstimates>,
 		_display_aliases : bool,
 		_display_labels : bool,
@@ -588,12 +583,16 @@ fn pattern_describe_display (
 		let _display_bits = (_bits * 10000.0) .floor () / 10000.0;
 		writeln! (&mut _stream, "\\_  bits:     {:.4}", _display_bits) .else_wrap (0xf2b57c8b) ?;
 	}
-	writeln! (&mut _stream, "\\_  length:   {}", _string_length) .else_wrap (0x000c5aba) ?;
+	
+	writeln! (&mut _stream, "\\_  length:   {}  (with spaces)", _string_length) .else_wrap (0x000c5aba) ?;
+	if let Some (_no_spaces) = _characters.map (|_characters| _characters.5) {
+		writeln! (&mut _stream, "\\_  length:   {}  (without spaces)", _no_spaces) .else_wrap (0x6fec0066) ?;
+	}
 	
 	if _display_characters {
 		
 		let _characters = _characters.infallible (0x2b128d65);
-		let (_letters, _letters_upper, _letters_lower, _digits, _symbols) = _characters;
+		let (_letters, _letters_upper, _letters_lower, _digits, _symbols, _no_spaces) = _characters;
 		
 		writeln! (&mut _stream, "\\_  characters:") .else_wrap (0x288d7222) ?;
 		writeln! (&mut _stream, "    \\_  letters:  {}", _letters) .else_wrap (0x67382f89) ?;
@@ -601,6 +600,7 @@ fn pattern_describe_display (
 		writeln! (&mut _stream, "    \\_  l. lower: {}", _letters_lower) .else_wrap (0xba9c7438) ?;
 		writeln! (&mut _stream, "    \\_  digits:   {}", _digits) .else_wrap (0xe2d03da9) ?;
 		writeln! (&mut _stream, "    \\_  symbols:  {}", _symbols) .else_wrap (0xe2cc87c1) ?;
+		writeln! (&mut _stream, "    \\_  no space: {}", _no_spaces) .else_wrap (0x7bc302e4) ?;
 	}
 	
 	if _display_security || _display_bruteforce {
@@ -697,7 +697,7 @@ pub(crate) fn pattern_describe (_pattern : &TokenPattern, _token : &Token, _outp
 	
 	pattern_describe_display (
 			_pattern, _identifier, _aliases, _labels,
-			_string_length, _bits, _bits_exact,
+			_bits, _bits_exact, _string_length,
 			_characters,
 			_estimates.as_ref (),
 			true, true, true, true, true,
@@ -708,34 +708,44 @@ pub(crate) fn pattern_describe (_pattern : &TokenPattern, _token : &Token, _outp
 
 
 
-fn pattern_classify_chars (_string : &str) -> (usize, usize, usize, usize, usize) {
+fn pattern_classify_chars (_string : &str) -> (usize, usize, usize, usize, usize, usize) {
 	
 	let mut _letters = 0;
 	let mut _letters_upper = 0;
 	let mut _letters_lower = 0;
 	let mut _digits = 0;
 	let mut _symbols = 0;
+	let mut _no_spaces = 0;
 	
 	for _char in _string.chars () {
 		match _char {
 			'a' ..= 'z' => {
 					_letters += 1;
 					_letters_lower += 1;
+					_no_spaces += 1;
 				}
 			'A' ..= 'Z' => {
 					_letters += 1;
 					_letters_upper += 1;
+					_no_spaces += 1;
 				}
-			'0' ..= '9' =>
-				_digits += 1,
-			'!' ..= '~' =>
-				_symbols += 1,
-			_ =>
-				(),
+			'0' ..= '9' => {
+					_digits += 1;
+					_no_spaces += 1;
+				}
+			'!' ..= '~' => {
+					_symbols += 1;
+					_no_spaces += 1;
+				}
+			_ => {
+					if ! _char.is_whitespace () && ! _char.is_control () {
+						_no_spaces += 1;
+					}
+				}
 		}
 	}
 	
-	(_letters, _letters_upper, _letters_lower, _digits, _symbols)
+	(_letters, _letters_upper, _letters_lower, _digits, _symbols, _no_spaces)
 }
 
 
