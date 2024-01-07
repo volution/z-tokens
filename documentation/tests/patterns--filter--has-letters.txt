@@ -2,356 +2,356 @@
 
 ::  digits-base16:2         :    8  =b :    2 c ::    c0
 ::  digits-base16:4         :   16  =b :    4 c ::    c094
-::  digits-base16:6         :   24  =b :    7 c ::    c094 c3
-::  digits-base16:8         :   32  =b :    9 c ::    c094 c32f
-::  digits-base16:10        :   40  =b :   12 c ::    c094 c32f 72
-::  digits-base16:12        :   48  =b :   14 c ::    c094 c32f 72d3
-::  digits-base16:14        :   56  =b :   17 c ::    c094 c32f 72d3 8a
-::  digits-base16:16        :   64  =b :   19 c ::    c094 c32f 72d3 8ae1
-::  digits-base16:18        :   72  =b :   22 c ::    c094 c32f 72d3 8ae1 30
-::  digits-base16:20        :   80  =b :   24 c ::    c094 c32f 72d3 8ae1 3011
-::  digits-base16:22        :   88  =b :   27 c ::    c094 c32f 72d3 8ae1 3011 18
-::  digits-base16:24        :   96  =b :   29 c ::    c094 c32f 72d3 8ae1 3011 18c1
-::  digits-base16:26        :  104  =b :   32 c ::    c094 c32f 72d3 8ae1 3011 18c1 84
-::  digits-base16:28        :  112  =b :   34 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a
-::  digits-base16:30        :  120  =b :   37 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13
-::  digits-base16:32        :  128  =b :   39 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9
+::  digits-base16:6         :   24  =b :    6 c ::    c094 c3
+::  digits-base16:8         :   32  =b :    8 c ::    c094 c32f
+::  digits-base16:10        :   40  =b :   10 c ::    c094 c32f 72
+::  digits-base16:12        :   48  =b :   12 c ::    c094 c32f 72d3
+::  digits-base16:14        :   56  =b :   14 c ::    c094 c32f 72d3 8a
+::  digits-base16:16        :   64  =b :   16 c ::    c094 c32f 72d3 8ae1
+::  digits-base16:18        :   72  =b :   18 c ::    c094 c32f 72d3 8ae1 30
+::  digits-base16:20        :   80  =b :   20 c ::    c094 c32f 72d3 8ae1 3011
+::  digits-base16:22        :   88  =b :   22 c ::    c094 c32f 72d3 8ae1 3011 18
+::  digits-base16:24        :   96  =b :   24 c ::    c094 c32f 72d3 8ae1 3011 18c1
+::  digits-base16:26        :  104  =b :   26 c ::    c094 c32f 72d3 8ae1 3011 18c1 84
+::  digits-base16:28        :  112  =b :   28 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a
+::  digits-base16:30        :  120  =b :   30 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13
+::  digits-base16:32        :  128  =b :   32 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9
 ::  digits-base32-hex:2     :   10  =b :    2 c ::    n8
 ::  digits-base32-hex:4     :   20  =b :    4 c ::    n8pv
-::  digits-base32-hex:6     :   30  =b :    7 c ::    n8pv 47
-::  digits-base32-hex:8     :   40  =b :    9 c ::    n8pv 47gk
-::  digits-base32-hex:10    :   50  =b :   12 c ::    n8pv 47gk fs
-::  digits-base32-hex:12    :   60  =b :   14 c ::    n8pv 47gk fs2v
-::  digits-base32-hex:14    :   70  =b :   17 c ::    n8pv 47gk fs2v t0
-::  digits-base32-hex:16    :   80  =b :   19 c ::    n8pv 47gk fs2v t02p
-::  digits-base32-hex:18    :   90  =b :   22 c ::    n8pv 47gk fs2v t02p lo
-::  digits-base32-hex:20    :  100  =b :   24 c ::    n8pv 47gk fs2v t02p lobv
-::  digits-base32-hex:22    :  110  =b :   27 c ::    n8pv 47gk fs2v t02p lobv 88
-::  digits-base32-hex:24    :  120  =b :   29 c ::    n8pv 47gk fs2v t02p lobv 88lp
-::  digits-base32-hex:26    :  130  =b :   32 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k
-::  digits-base32-hex:28    :  140  =b :   34 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16
-::  digits-base32-hex:30    :  150  =b :   37 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 ab
-::  digits-base32-hex:32    :  160  =b :   39 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka
+::  digits-base32-hex:6     :   30  =b :    6 c ::    n8pv 47
+::  digits-base32-hex:8     :   40  =b :    8 c ::    n8pv 47gk
+::  digits-base32-hex:10    :   50  =b :   10 c ::    n8pv 47gk fs
+::  digits-base32-hex:12    :   60  =b :   12 c ::    n8pv 47gk fs2v
+::  digits-base32-hex:14    :   70  =b :   14 c ::    n8pv 47gk fs2v t0
+::  digits-base32-hex:16    :   80  =b :   16 c ::    n8pv 47gk fs2v t02p
+::  digits-base32-hex:18    :   90  =b :   18 c ::    n8pv 47gk fs2v t02p lo
+::  digits-base32-hex:20    :  100  =b :   20 c ::    n8pv 47gk fs2v t02p lobv
+::  digits-base32-hex:22    :  110  =b :   22 c ::    n8pv 47gk fs2v t02p lobv 88
+::  digits-base32-hex:24    :  120  =b :   24 c ::    n8pv 47gk fs2v t02p lobv 88lp
+::  digits-base32-hex:26    :  130  =b :   26 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k
+::  digits-base32-hex:28    :  140  =b :   28 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16
+::  digits-base32-hex:30    :  150  =b :   30 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 ab
+::  digits-base32-hex:32    :  160  =b :   32 c ::    n8pv 47gk fs2v t02p lobv 88lp 9k16 abka
 ::  digits-base32-rfc:2     :   10  =b :    2 c ::    xi
 ::  digits-base32-rfc:4     :   20  =b :    4 c ::    xiz7
-::  digits-base32-rfc:6     :   30  =b :    7 c ::    xiz7 eh
-::  digits-base32-rfc:8     :   40  =b :    9 c ::    xiz7 ehqu
-::  digits-base32-rfc:10    :   50  =b :   12 c ::    xiz7 ehqu p4
-::  digits-base32-rfc:12    :   60  =b :   14 c ::    xiz7 ehqu p4c7
-::  digits-base32-rfc:14    :   70  =b :   17 c ::    xiz7 ehqu p4c7 5a
-::  digits-base32-rfc:16    :   80  =b :   19 c ::    xiz7 ehqu p4c7 5acz
-::  digits-base32-rfc:18    :   90  =b :   22 c ::    xiz7 ehqu p4c7 5acz vy
-::  digits-base32-rfc:20    :  100  =b :   24 c ::    xiz7 ehqu p4c7 5acz vyl7
-::  digits-base32-rfc:22    :  110  =b :   27 c ::    xiz7 ehqu p4c7 5acz vyl7 ii
-::  digits-base32-rfc:24    :  120  =b :   29 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz
-::  digits-base32-rfc:26    :  130  =b :   32 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz ju
-::  digits-base32-rfc:28    :  140  =b :   34 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg
-::  digits-base32-rfc:30    :  150  =b :   37 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kl
-::  digits-base32-rfc:32    :  160  =b :   39 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk
+::  digits-base32-rfc:6     :   30  =b :    6 c ::    xiz7 eh
+::  digits-base32-rfc:8     :   40  =b :    8 c ::    xiz7 ehqu
+::  digits-base32-rfc:10    :   50  =b :   10 c ::    xiz7 ehqu p4
+::  digits-base32-rfc:12    :   60  =b :   12 c ::    xiz7 ehqu p4c7
+::  digits-base32-rfc:14    :   70  =b :   14 c ::    xiz7 ehqu p4c7 5a
+::  digits-base32-rfc:16    :   80  =b :   16 c ::    xiz7 ehqu p4c7 5acz
+::  digits-base32-rfc:18    :   90  =b :   18 c ::    xiz7 ehqu p4c7 5acz vy
+::  digits-base32-rfc:20    :  100  =b :   20 c ::    xiz7 ehqu p4c7 5acz vyl7
+::  digits-base32-rfc:22    :  110  =b :   22 c ::    xiz7 ehqu p4c7 5acz vyl7 ii
+::  digits-base32-rfc:24    :  120  =b :   24 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz
+::  digits-base32-rfc:26    :  130  =b :   26 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz ju
+::  digits-base32-rfc:28    :  140  =b :   28 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg
+::  digits-base32-rfc:30    :  150  =b :   30 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kl
+::  digits-base32-rfc:32    :  160  =b :   32 c ::    xiz7 ehqu p4c7 5acz vyl7 iivz jubg kluk
 ::  digits-base64-url:2     :   12  =b :    2 c ::    lx
 ::  digits-base64-url:4     :   24  =b :    4 c ::    lx-H
-::  digits-base64-url:6     :   36  =b :    7 c ::    lx-H Db
-::  digits-base64-url:8     :   48  =b :    9 c ::    lx-H Dbd7
-::  digits-base64-url:10    :   60  =b :   12 c ::    lx-H Dbd7 1N
-::  digits-base64-url:12    :   72  =b :   14 c ::    lx-H Dbd7 1Ng4
-::  digits-base64-url:14    :   84  =b :   17 c ::    lx-H Dbd7 1Ng4 E_
-::  digits-base64-url:16    :   96  =b :   19 c ::    lx-H Dbd7 1Ng4 E_rE
-::  digits-base64-url:18    :  108  =b :   22 c ::    lx-H Dbd7 1Ng4 E_rE ny
-::  digits-base64-url:20    :  120  =b :   24 c ::    lx-H Dbd7 1Ng4 E_rE nyFF
-::  digits-base64-url:22    :  132  =b :   27 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hw
-::  digits-base64-url:24    :  144  =b :   29 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh
-::  digits-base64-url:26    :  156  =b :   32 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_
-::  digits-base64-url:28    :  168  =b :   34 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC
-::  digits-base64-url:30    :  180  =b :   37 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FM
-::  digits-base64-url:32    :  192  =b :   39 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU
+::  digits-base64-url:6     :   36  =b :    6 c ::    lx-H Db
+::  digits-base64-url:8     :   48  =b :    8 c ::    lx-H Dbd7
+::  digits-base64-url:10    :   60  =b :   10 c ::    lx-H Dbd7 1N
+::  digits-base64-url:12    :   72  =b :   12 c ::    lx-H Dbd7 1Ng4
+::  digits-base64-url:14    :   84  =b :   14 c ::    lx-H Dbd7 1Ng4 E_
+::  digits-base64-url:16    :   96  =b :   16 c ::    lx-H Dbd7 1Ng4 E_rE
+::  digits-base64-url:18    :  108  =b :   18 c ::    lx-H Dbd7 1Ng4 E_rE ny
+::  digits-base64-url:20    :  120  =b :   20 c ::    lx-H Dbd7 1Ng4 E_rE nyFF
+::  digits-base64-url:22    :  132  =b :   22 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hw
+::  digits-base64-url:24    :  144  =b :   24 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh
+::  digits-base64-url:26    :  156  =b :   26 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_
+::  digits-base64-url:28    :  168  =b :   28 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC
+::  digits-base64-url:30    :  180  =b :   30 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FM
+::  digits-base64-url:32    :  192  =b :   32 c ::    lx-H Dbd7 1Ng4 E_rE nyFF hwWh Q_rC FMlU
 ::  digits-base64-rfc:2     :   12  =b :    2 c ::    lx
 ::  digits-base64-rfc:4     :   24  =b :    4 c ::    lx+H
-::  digits-base64-rfc:6     :   36  =b :    7 c ::    lx+H Db
-::  digits-base64-rfc:8     :   48  =b :    9 c ::    lx+H Dbd7
-::  digits-base64-rfc:10    :   60  =b :   12 c ::    lx+H Dbd7 1N
-::  digits-base64-rfc:12    :   72  =b :   14 c ::    lx+H Dbd7 1Ng4
-::  digits-base64-rfc:14    :   84  =b :   17 c ::    lx+H Dbd7 1Ng4 E/
-::  digits-base64-rfc:16    :   96  =b :   19 c ::    lx+H Dbd7 1Ng4 E/rE
-::  digits-base64-rfc:18    :  108  =b :   22 c ::    lx+H Dbd7 1Ng4 E/rE ny
-::  digits-base64-rfc:20    :  120  =b :   24 c ::    lx+H Dbd7 1Ng4 E/rE nyFF
-::  digits-base64-rfc:22    :  132  =b :   27 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hw
-::  digits-base64-rfc:24    :  144  =b :   29 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh
-::  digits-base64-rfc:26    :  156  =b :   32 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/
-::  digits-base64-rfc:28    :  168  =b :   34 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC
-::  digits-base64-rfc:30    :  180  =b :   37 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FM
-::  digits-base64-rfc:32    :  192  =b :   39 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU
+::  digits-base64-rfc:6     :   36  =b :    6 c ::    lx+H Db
+::  digits-base64-rfc:8     :   48  =b :    8 c ::    lx+H Dbd7
+::  digits-base64-rfc:10    :   60  =b :   10 c ::    lx+H Dbd7 1N
+::  digits-base64-rfc:12    :   72  =b :   12 c ::    lx+H Dbd7 1Ng4
+::  digits-base64-rfc:14    :   84  =b :   14 c ::    lx+H Dbd7 1Ng4 E/
+::  digits-base64-rfc:16    :   96  =b :   16 c ::    lx+H Dbd7 1Ng4 E/rE
+::  digits-base64-rfc:18    :  108  =b :   18 c ::    lx+H Dbd7 1Ng4 E/rE ny
+::  digits-base64-rfc:20    :  120  =b :   20 c ::    lx+H Dbd7 1Ng4 E/rE nyFF
+::  digits-base64-rfc:22    :  132  =b :   22 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hw
+::  digits-base64-rfc:24    :  144  =b :   24 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh
+::  digits-base64-rfc:26    :  156  =b :   26 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/
+::  digits-base64-rfc:28    :  168  =b :   28 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC
+::  digits-base64-rfc:30    :  180  =b :   30 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FM
+::  digits-base64-rfc:32    :  192  =b :   32 c ::    lx+H Dbd7 1Ng4 E/rE nyFF hwWh Q/rC FMlU
 ::  digits-base58:2         :   11.7 b :    2 c ::    jm
 ::  digits-base58:4         :   23.4 b :    4 c ::    jm2a
-::  digits-base58:6         :   35.1 b :    7 c ::    jm2a Gm
-::  digits-base58:8         :   46.8 b :    9 c ::    jm2a GmDo
-::  digits-base58:10        :   58.5 b :   12 c ::    jm2a GmDo ky
-::  digits-base58:12        :   70.2 b :   14 c ::    jm2a GmDo kyz9
-::  digits-base58:14        :   82.0 b :   17 c ::    jm2a GmDo kyz9 73
-::  digits-base58:16        :   93.7 b :   19 c ::    jm2a GmDo kyz9 73RT
-::  digits-base58:18        :  105.4 b :   22 c ::    jm2a GmDo kyz9 73RT vE
-::  digits-base58:20        :  117.1 b :   24 c ::    jm2a GmDo kyz9 73RT vEZA
-::  digits-base58:22        :  128.8 b :   27 c ::    jm2a GmDo kyz9 73RT vEZA qC
-::  digits-base58:24        :  140.5 b :   29 c ::    jm2a GmDo kyz9 73RT vEZA qCWU
-::  digits-base58:26        :  152.3 b :   32 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss
-::  digits-base58:28        :  164.0 b :   34 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z
-::  digits-base58:30        :  175.7 b :   37 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dy
-::  digits-base58:32        :  187.4 b :   39 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg
+::  digits-base58:6         :   35.1 b :    6 c ::    jm2a Gm
+::  digits-base58:8         :   46.8 b :    8 c ::    jm2a GmDo
+::  digits-base58:10        :   58.5 b :   10 c ::    jm2a GmDo ky
+::  digits-base58:12        :   70.2 b :   12 c ::    jm2a GmDo kyz9
+::  digits-base58:14        :   82.0 b :   14 c ::    jm2a GmDo kyz9 73
+::  digits-base58:16        :   93.7 b :   16 c ::    jm2a GmDo kyz9 73RT
+::  digits-base58:18        :  105.4 b :   18 c ::    jm2a GmDo kyz9 73RT vE
+::  digits-base58:20        :  117.1 b :   20 c ::    jm2a GmDo kyz9 73RT vEZA
+::  digits-base58:22        :  128.8 b :   22 c ::    jm2a GmDo kyz9 73RT vEZA qC
+::  digits-base58:24        :  140.5 b :   24 c ::    jm2a GmDo kyz9 73RT vEZA qCWU
+::  digits-base58:26        :  152.3 b :   26 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss
+::  digits-base58:28        :  164.0 b :   28 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z
+::  digits-base58:30        :  175.7 b :   30 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dy
+::  digits-base58:32        :  187.4 b :   32 c ::    jm2a GmDo kyz9 73RT vEZA qCWU ss4z Dyvg
 ::  digits-base62:2         :   11.9 b :    2 c ::    jl
 ::  digits-base62:4         :   23.8 b :    4 c ::    jl1a
-::  digits-base62:6         :   35.7 b :    7 c ::    jl1a Gl
-::  digits-base62:8         :   47.6 b :    9 c ::    jl1a GlDn
-::  digits-base62:10        :   59.5 b :   12 c ::    jl1a GlDn ky
-::  digits-base62:12        :   71.4 b :   14 c ::    jl1a GlDn kyz8
-::  digits-base62:14        :   83.3 b :   17 c ::    jl1a GlDn kyz8 x3
-::  digits-base62:16        :   95.2 b :   19 c ::    jl1a GlDn kyz8 x3QS
-::  digits-base62:18        :  107.1 b :   22 c ::    jl1a GlDn kyz8 x3QS vE
-::  digits-base62:20        :  119.0 b :   24 c ::    jl1a GlDn kyz8 x3QS vEY9
-::  digits-base62:22        :  130.9 b :   27 c ::    jl1a GlDn kyz8 x3QS vEY9 pC
-::  digits-base62:24        :  142.9 b :   29 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd
-::  digits-base62:26        :  154.8 b :   32 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts
-::  digits-base62:28        :  166.7 b :   34 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z
-::  digits-base62:30        :  178.6 b :   37 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dy
-::  digits-base62:32        :  190.5 b :   39 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0
+::  digits-base62:6         :   35.7 b :    6 c ::    jl1a Gl
+::  digits-base62:8         :   47.6 b :    8 c ::    jl1a GlDn
+::  digits-base62:10        :   59.5 b :   10 c ::    jl1a GlDn ky
+::  digits-base62:12        :   71.4 b :   12 c ::    jl1a GlDn kyz8
+::  digits-base62:14        :   83.3 b :   14 c ::    jl1a GlDn kyz8 x3
+::  digits-base62:16        :   95.2 b :   16 c ::    jl1a GlDn kyz8 x3QS
+::  digits-base62:18        :  107.1 b :   18 c ::    jl1a GlDn kyz8 x3QS vE
+::  digits-base62:20        :  119.0 b :   20 c ::    jl1a GlDn kyz8 x3QS vEY9
+::  digits-base62:22        :  130.9 b :   22 c ::    jl1a GlDn kyz8 x3QS vEY9 pC
+::  digits-base62:24        :  142.9 b :   24 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd
+::  digits-base62:26        :  154.8 b :   26 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts
+::  digits-base62:28        :  166.7 b :   28 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z
+::  digits-base62:30        :  178.6 b :   30 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dy
+::  digits-base62:32        :  190.5 b :   32 c ::    jl1a GlDn kyz8 x3QS vEY9 pCVd Ts3z Dyu0
 ::  digits-bech32:2         :   10  =b :    2 c ::    hg
 ::  digits-bech32:4         :   20  =b :    4 c ::    hgel
-::  digits-bech32:6         :   30  =b :    7 c ::    hgel y8
-::  digits-bech32:8         :   40  =b :    9 c ::    hgel y8s5
-::  digits-bech32:10        :   50  =b :   12 c ::    hgel y8s5 0u
-::  digits-bech32:12        :   60  =b :   14 c ::    hgel y8s5 0uzl
-::  digits-bech32:14        :   70  =b :   17 c ::    hgel y8s5 0uzl aq
-::  digits-bech32:16        :   80  =b :   19 c ::    hgel y8s5 0uzl aqze
-::  digits-bech32:18        :   90  =b :   22 c ::    hgel y8s5 0uzl aqze 4c
-::  digits-bech32:20        :  100  =b :   24 c ::    hgel y8s5 0uzl aqze 4ctl
-::  digits-bech32:22        :  110  =b :   27 c ::    hgel y8s5 0uzl aqze 4ctl gg
-::  digits-bech32:24        :  120  =b :   29 c ::    hgel y8s5 0uzl aqze 4ctl gg4e
-::  digits-bech32:26        :  130  =b :   32 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5
-::  digits-bech32:28        :  140  =b :   34 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px
-::  digits-bech32:30        :  150  =b :   37 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t
-::  digits-bech32:32        :  160  =b :   39 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52
+::  digits-bech32:6         :   30  =b :    6 c ::    hgel y8
+::  digits-bech32:8         :   40  =b :    8 c ::    hgel y8s5
+::  digits-bech32:10        :   50  =b :   10 c ::    hgel y8s5 0u
+::  digits-bech32:12        :   60  =b :   12 c ::    hgel y8s5 0uzl
+::  digits-bech32:14        :   70  =b :   14 c ::    hgel y8s5 0uzl aq
+::  digits-bech32:16        :   80  =b :   16 c ::    hgel y8s5 0uzl aqze
+::  digits-bech32:18        :   90  =b :   18 c ::    hgel y8s5 0uzl aqze 4c
+::  digits-bech32:20        :  100  =b :   20 c ::    hgel y8s5 0uzl aqze 4ctl
+::  digits-bech32:22        :  110  =b :   22 c ::    hgel y8s5 0uzl aqze 4ctl gg
+::  digits-bech32:24        :  120  =b :   24 c ::    hgel y8s5 0uzl aqze 4ctl gg4e
+::  digits-bech32:26        :  130  =b :   26 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5
+::  digits-bech32:28        :  140  =b :   28 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px
+::  digits-bech32:30        :  150  =b :   30 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t
+::  digits-bech32:32        :  160  =b :   32 c ::    hgel y8s5 0uzl aqze 4ctl gg4e f5px 2t52
 ::  digits-z85:5            :   32.0 b :    5 c ::    .2Nm+
-::  digits-z85:10           :   64.0 b :   11 c ::    .2Nm+ i^%9%
-::  digits-z85:15           :   96.1 b :   17 c ::    .2Nm+ i^%9% 4AD]j
-::  digits-z85:20           :  128.1 b :   23 c ::    .2Nm+ i^%9% 4AD]j Ld?hS
-::  digits-z85:25           :  160.2 b :   29 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$
-::  digits-z85:30           :  192.2 b :   35 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU
+::  digits-z85:10           :   64.0 b :   10 c ::    .2Nm+ i^%9%
+::  digits-z85:15           :   96.1 b :   15 c ::    .2Nm+ i^%9% 4AD]j
+::  digits-z85:20           :  128.1 b :   20 c ::    .2Nm+ i^%9% 4AD]j Ld?hS
+::  digits-z85:25           :  160.2 b :   25 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$
+::  digits-z85:30           :  192.2 b :   30 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU
 ::  ascii-lower:2           :    9.4 b :    2 c ::    tu
 ::  ascii-lower:4           :   18.8 b :    4 c ::    tuap
-::  ascii-lower:6           :   28.2 b :    7 c ::    tuap uf
-::  ascii-lower:8           :   37.6 b :    9 c ::    tuap ufut
-::  ascii-lower:10          :   47.0 b :   12 c ::    tuap ufut zd
-::  ascii-lower:12          :   56.4 b :   14 c ::    tuap ufut zdzb
-::  ascii-lower:14          :   65.8 b :   17 c ::    tuap ufut zdzb ly
-::  ascii-lower:16          :   75.2 b :   19 c ::    tuap ufut zdzb lyoe
-::  ascii-lower:18          :   84.6 b :   22 c ::    tuap ufut zdzb lyoe vf
-::  ascii-lower:20          :   94.0 b :   24 c ::    tuap ufut zdzb lyoe vfnq
-::  ascii-lower:22          :  103.4 b :   27 c ::    tuap ufut zdzb lyoe vfnq mw
-::  ascii-lower:24          :  112.8 b :   29 c ::    tuap ufut zdzb lyoe vfnq mwwb
-::  ascii-lower:26          :  122.2 b :   32 c ::    tuap ufut zdzb lyoe vfnq mwwb zf
-::  ascii-lower:28          :  131.6 b :   34 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr
-::  ascii-lower:30          :  141.0 b :   37 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr ab
-::  ascii-lower:32          :  150.4 b :   39 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu
+::  ascii-lower:6           :   28.2 b :    6 c ::    tuap uf
+::  ascii-lower:8           :   37.6 b :    8 c ::    tuap ufut
+::  ascii-lower:10          :   47.0 b :   10 c ::    tuap ufut zd
+::  ascii-lower:12          :   56.4 b :   12 c ::    tuap ufut zdzb
+::  ascii-lower:14          :   65.8 b :   14 c ::    tuap ufut zdzb ly
+::  ascii-lower:16          :   75.2 b :   16 c ::    tuap ufut zdzb lyoe
+::  ascii-lower:18          :   84.6 b :   18 c ::    tuap ufut zdzb lyoe vf
+::  ascii-lower:20          :   94.0 b :   20 c ::    tuap ufut zdzb lyoe vfnq
+::  ascii-lower:22          :  103.4 b :   22 c ::    tuap ufut zdzb lyoe vfnq mw
+::  ascii-lower:24          :  112.8 b :   24 c ::    tuap ufut zdzb lyoe vfnq mwwb
+::  ascii-lower:26          :  122.2 b :   26 c ::    tuap ufut zdzb lyoe vfnq mwwb zf
+::  ascii-lower:28          :  131.6 b :   28 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr
+::  ascii-lower:30          :  141.0 b :   30 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr ab
+::  ascii-lower:32          :  150.4 b :   32 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu
 ::  ascii-upper:2           :    9.4 b :    2 c ::    TU
 ::  ascii-upper:4           :   18.8 b :    4 c ::    TUAP
-::  ascii-upper:6           :   28.2 b :    7 c ::    TUAP UF
-::  ascii-upper:8           :   37.6 b :    9 c ::    TUAP UFUT
-::  ascii-upper:10          :   47.0 b :   12 c ::    TUAP UFUT ZD
-::  ascii-upper:12          :   56.4 b :   14 c ::    TUAP UFUT ZDZB
-::  ascii-upper:14          :   65.8 b :   17 c ::    TUAP UFUT ZDZB LY
-::  ascii-upper:16          :   75.2 b :   19 c ::    TUAP UFUT ZDZB LYOE
-::  ascii-upper:18          :   84.6 b :   22 c ::    TUAP UFUT ZDZB LYOE VF
-::  ascii-upper:20          :   94.0 b :   24 c ::    TUAP UFUT ZDZB LYOE VFNQ
-::  ascii-upper:22          :  103.4 b :   27 c ::    TUAP UFUT ZDZB LYOE VFNQ MW
-::  ascii-upper:24          :  112.8 b :   29 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB
-::  ascii-upper:26          :  122.2 b :   32 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZF
-::  ascii-upper:28          :  131.6 b :   34 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR
-::  ascii-upper:30          :  141.0 b :   37 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR AB
-::  ascii-upper:32          :  150.4 b :   39 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU
+::  ascii-upper:6           :   28.2 b :    6 c ::    TUAP UF
+::  ascii-upper:8           :   37.6 b :    8 c ::    TUAP UFUT
+::  ascii-upper:10          :   47.0 b :   10 c ::    TUAP UFUT ZD
+::  ascii-upper:12          :   56.4 b :   12 c ::    TUAP UFUT ZDZB
+::  ascii-upper:14          :   65.8 b :   14 c ::    TUAP UFUT ZDZB LY
+::  ascii-upper:16          :   75.2 b :   16 c ::    TUAP UFUT ZDZB LYOE
+::  ascii-upper:18          :   84.6 b :   18 c ::    TUAP UFUT ZDZB LYOE VF
+::  ascii-upper:20          :   94.0 b :   20 c ::    TUAP UFUT ZDZB LYOE VFNQ
+::  ascii-upper:22          :  103.4 b :   22 c ::    TUAP UFUT ZDZB LYOE VFNQ MW
+::  ascii-upper:24          :  112.8 b :   24 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB
+::  ascii-upper:26          :  122.2 b :   26 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZF
+::  ascii-upper:28          :  131.6 b :   28 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR
+::  ascii-upper:30          :  141.0 b :   30 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR AB
+::  ascii-upper:32          :  150.4 b :   32 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU
 ::  ascii-mixed:2           :   11.4 b :    2 c ::    MO
 ::  ascii-mixed:4           :   22.8 b :    4 c ::    MObE
-::  ascii-mixed:6           :   34.2 b :    7 c ::    MObE nO
-::  ascii-mixed:8           :   45.6 b :    9 c ::    MObE nOlP
-::  ascii-mixed:10          :   57.0 b :   12 c ::    MObE nOlP YZ
-::  ascii-mixed:12          :   68.4 b :   14 c ::    MObE nOlP YZhY
-::  ascii-mixed:14          :   79.8 b :   17 c ::    MObE nOlP YZhY cw
-::  ascii-mixed:16          :   91.2 b :   19 c ::    MObE nOlP YZhY cwWl
-::  ascii-mixed:18          :  102.6 b :   22 c ::    MObE nOlP YZhY cwWl Di
-::  ascii-mixed:20          :  114.0 b :   24 c ::    MObE nOlP YZhY cwWl DiRk
-::  ascii-mixed:22          :  125.4 b :   27 c ::    MObE nOlP YZhY cwWl DiRk AH
-::  ascii-mixed:24          :  136.8 b :   29 c ::    MObE nOlP YZhY cwWl DiRk AHTT
-::  ascii-mixed:26          :  148.2 b :   32 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZ
-::  ascii-mixed:28          :  159.6 b :   34 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY
-::  ascii-mixed:30          :  171.0 b :   37 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJ
-::  ascii-mixed:32          :  182.4 b :   39 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad
+::  ascii-mixed:6           :   34.2 b :    6 c ::    MObE nO
+::  ascii-mixed:8           :   45.6 b :    8 c ::    MObE nOlP
+::  ascii-mixed:10          :   57.0 b :   10 c ::    MObE nOlP YZ
+::  ascii-mixed:12          :   68.4 b :   12 c ::    MObE nOlP YZhY
+::  ascii-mixed:14          :   79.8 b :   14 c ::    MObE nOlP YZhY cw
+::  ascii-mixed:16          :   91.2 b :   16 c ::    MObE nOlP YZhY cwWl
+::  ascii-mixed:18          :  102.6 b :   18 c ::    MObE nOlP YZhY cwWl Di
+::  ascii-mixed:20          :  114.0 b :   20 c ::    MObE nOlP YZhY cwWl DiRk
+::  ascii-mixed:22          :  125.4 b :   22 c ::    MObE nOlP YZhY cwWl DiRk AH
+::  ascii-mixed:24          :  136.8 b :   24 c ::    MObE nOlP YZhY cwWl DiRk AHTT
+::  ascii-mixed:26          :  148.2 b :   26 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZ
+::  ascii-mixed:28          :  159.6 b :   28 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY
+::  ascii-mixed:30          :  171.0 b :   30 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJ
+::  ascii-mixed:32          :  182.4 b :   32 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad
 ::  ascii-any:2             :   13.1 b :    2 c ::    ei
 ::  ascii-any:4             :   26.2 b :    4 c ::    ei#9
-::  ascii-any:6             :   39.3 b :    7 c ::    ei#9 i5
-::  ascii-any:8             :   52.4 b :    9 c ::    ei#9 i5kg
-::  ascii-any:10            :   65.5 b :   12 c ::    ei#9 i5kg |~
-::  ascii-any:12            :   78.6 b :   14 c ::    ei#9 i5kg |~.+
-::  ascii-any:14            :   91.7 b :   17 c ::    ei#9 i5kg |~.+ {%
-::  ascii-any:16            :  104.8 b :   19 c ::    ei#9 i5kg |~.+ {%IL
-::  ascii-any:18            :  117.9 b :   22 c ::    ei#9 i5kg |~.+ {%IL 6U
-::  ascii-any:20            :  131.0 b :   24 c ::    ei#9 i5kg |~.+ {%IL 6U/o
-::  ascii-any:22            :  144.2 b :   27 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4P
-::  ascii-any:24            :  157.3 b :   29 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs
-::  ascii-any:26            :  170.4 b :   32 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w
-::  ascii-any:28            :  183.5 b :   34 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
-::  ascii-any:30            :  196.6 b :   37 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[
-::  ascii-any:32            :  209.7 b :   39 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
+::  ascii-any:6             :   39.3 b :    6 c ::    ei#9 i5
+::  ascii-any:8             :   52.4 b :    8 c ::    ei#9 i5kg
+::  ascii-any:10            :   65.5 b :   10 c ::    ei#9 i5kg |~
+::  ascii-any:12            :   78.6 b :   12 c ::    ei#9 i5kg |~.+
+::  ascii-any:14            :   91.7 b :   14 c ::    ei#9 i5kg |~.+ {%
+::  ascii-any:16            :  104.8 b :   16 c ::    ei#9 i5kg |~.+ {%IL
+::  ascii-any:18            :  117.9 b :   18 c ::    ei#9 i5kg |~.+ {%IL 6U
+::  ascii-any:20            :  131.0 b :   20 c ::    ei#9 i5kg |~.+ {%IL 6U/o
+::  ascii-any:22            :  144.2 b :   22 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4P
+::  ascii-any:24            :  157.3 b :   24 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs
+::  ascii-any:26            :  170.4 b :   26 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w
+::  ascii-any:28            :  183.5 b :   28 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
+::  ascii-any:30            :  196.6 b :   30 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[
+::  ascii-any:32            :  209.7 b :   32 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
 ::  cva-lower:1             :   13.4 b :    4 c ::    taqe
-::  cva-lower:2             :   26.8 b :    9 c ::    taqe veza
-::  cva-lower:3             :   40.2 b :   14 c ::    taqe veza zaye
-::  cva-lower:4             :   53.7 b :   19 c ::    taqe veza zaye fugi
-::  cva-lower:5             :   67.1 b :   24 c ::    taqe veza zaye fugi rixu
-::  cva-lower:6             :   80.5 b :   29 c ::    taqe veza zaye fugi rixu cezu
-::  cva-lower:7             :   93.9 b :   34 c ::    taqe veza zaye fugi rixu cezu saco
-::  cva-lower:8             :  107.4 b :   39 c ::    taqe veza zaye fugi rixu cezu saco voxa
+::  cva-lower:2             :   26.8 b :    8 c ::    taqe veza
+::  cva-lower:3             :   40.2 b :   12 c ::    taqe veza zaye
+::  cva-lower:4             :   53.7 b :   16 c ::    taqe veza zaye fugi
+::  cva-lower:5             :   67.1 b :   20 c ::    taqe veza zaye fugi rixu
+::  cva-lower:6             :   80.5 b :   24 c ::    taqe veza zaye fugi rixu cezu
+::  cva-lower:7             :   93.9 b :   28 c ::    taqe veza zaye fugi rixu cezu saco
+::  cva-lower:8             :  107.4 b :   32 c ::    taqe veza zaye fugi rixu cezu saco voxa
 ::  cva-upper:1             :   13.4 b :    4 c ::    TAQE
-::  cva-upper:2             :   26.8 b :    9 c ::    TAQE VEZA
-::  cva-upper:3             :   40.2 b :   14 c ::    TAQE VEZA ZAYE
-::  cva-upper:4             :   53.7 b :   19 c ::    TAQE VEZA ZAYE FUGI
-::  cva-upper:5             :   67.1 b :   24 c ::    TAQE VEZA ZAYE FUGI RIXU
-::  cva-upper:6             :   80.5 b :   29 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU
-::  cva-upper:7             :   93.9 b :   34 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO
-::  cva-upper:8             :  107.4 b :   39 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA
+::  cva-upper:2             :   26.8 b :    8 c ::    TAQE VEZA
+::  cva-upper:3             :   40.2 b :   12 c ::    TAQE VEZA ZAYE
+::  cva-upper:4             :   53.7 b :   16 c ::    TAQE VEZA ZAYE FUGI
+::  cva-upper:5             :   67.1 b :   20 c ::    TAQE VEZA ZAYE FUGI RIXU
+::  cva-upper:6             :   80.5 b :   24 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU
+::  cva-upper:7             :   93.9 b :   28 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO
+::  cva-upper:8             :  107.4 b :   32 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA
 ::  cva-mixed:1             :   17.4 b :    4 c ::    PaFi
-::  cva-mixed:2             :   34.8 b :    9 c ::    PaFi PiQI
-::  cva-mixed:3             :   52.2 b :   14 c ::    PaFi PiQI YayU
-::  cva-mixed:4             :   69.7 b :   19 c ::    PaFi PiQI YayU mAjO
-::  cva-mixed:5             :   87.1 b :   24 c ::    PaFi PiQI YayU mAjO lAzi
-::  cva-mixed:6             :  104.5 b :   29 c ::    PaFi PiQI YayU mAjO lAzi ZUKa
-::  cva-mixed:7             :  121.9 b :   34 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo
-::  cva-mixed:8             :  139.4 b :   39 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE
-::  cva-plus-a:2            :   26.7 b :    9 c ::    taqe 2711
-::  cva-plus-a:3            :   40.1 b :   14 c ::    taqe veza 0449
-::  cva-plus-a:4            :   53.5 b :   19 c ::    taqe veza zaye 5182
-::  cva-plus-a:5            :   67.0 b :   24 c ::    taqe veza zaye fugi 6290
-::  cva-plus-a:6            :   80.4 b :   29 c ::    taqe veza zaye fugi rixu 2906
-::  cva-plus-a:7            :   93.8 b :   34 c ::    taqe veza zaye fugi rixu cezu 0665
-::  cva-plus-a:8            :  107.2 b :   39 c ::    taqe veza zaye fugi rixu cezu saco 6573
-::  cva-plus-b:2            :   26.7 b :    9 c ::    taqe VE71
-::  cva-plus-b:3            :   40.2 b :   14 c ::    taqe veza ZA44
-::  cva-plus-b:4            :   53.6 b :   19 c ::    taqe veza zaye FU25
-::  cva-plus-b:5            :   67.0 b :   24 c ::    taqe veza zaye fugi RI29
-::  cva-plus-b:6            :   80.5 b :   29 c ::    taqe veza zaye fugi rixu CE90
-::  cva-plus-b:7            :   93.9 b :   34 c ::    taqe veza zaye fugi rixu cezu SA66
-::  cva-plus-b:8            :  107.3 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO57
-::  cva-plus-c:2            :   28.4 b :    9 c ::    taqe VE7~
-::  cva-plus-c:3            :   41.8 b :   14 c ::    taqe veza ZA4(
-::  cva-plus-c:4            :   55.3 b :   19 c ::    taqe veza zaye FU2;
-::  cva-plus-c:5            :   68.7 b :   24 c ::    taqe veza zaye fugi RI2~
-::  cva-plus-c:6            :   82.1 b :   29 c ::    taqe veza zaye fugi rixu CE9!
-::  cva-plus-c:7            :   95.6 b :   34 c ::    taqe veza zaye fugi rixu cezu SA6^
-::  cva-plus-c:8            :  109.0 b :   39 c ::    taqe veza zaye fugi rixu cezu saco VO5]
+::  cva-mixed:2             :   34.8 b :    8 c ::    PaFi PiQI
+::  cva-mixed:3             :   52.2 b :   12 c ::    PaFi PiQI YayU
+::  cva-mixed:4             :   69.7 b :   16 c ::    PaFi PiQI YayU mAjO
+::  cva-mixed:5             :   87.1 b :   20 c ::    PaFi PiQI YayU mAjO lAzi
+::  cva-mixed:6             :  104.5 b :   24 c ::    PaFi PiQI YayU mAjO lAzi ZUKa
+::  cva-mixed:7             :  121.9 b :   28 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo
+::  cva-mixed:8             :  139.4 b :   32 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE
+::  cva-plus-a:2            :   26.7 b :    8 c ::    taqe 2711
+::  cva-plus-a:3            :   40.1 b :   12 c ::    taqe veza 0449
+::  cva-plus-a:4            :   53.5 b :   16 c ::    taqe veza zaye 5182
+::  cva-plus-a:5            :   67.0 b :   20 c ::    taqe veza zaye fugi 6290
+::  cva-plus-a:6            :   80.4 b :   24 c ::    taqe veza zaye fugi rixu 2906
+::  cva-plus-a:7            :   93.8 b :   28 c ::    taqe veza zaye fugi rixu cezu 0665
+::  cva-plus-a:8            :  107.2 b :   32 c ::    taqe veza zaye fugi rixu cezu saco 6573
+::  cva-plus-b:2            :   26.7 b :    8 c ::    taqe VE71
+::  cva-plus-b:3            :   40.2 b :   12 c ::    taqe veza ZA44
+::  cva-plus-b:4            :   53.6 b :   16 c ::    taqe veza zaye FU25
+::  cva-plus-b:5            :   67.0 b :   20 c ::    taqe veza zaye fugi RI29
+::  cva-plus-b:6            :   80.5 b :   24 c ::    taqe veza zaye fugi rixu CE90
+::  cva-plus-b:7            :   93.9 b :   28 c ::    taqe veza zaye fugi rixu cezu SA66
+::  cva-plus-b:8            :  107.3 b :   32 c ::    taqe veza zaye fugi rixu cezu saco VO57
+::  cva-plus-c:2            :   28.4 b :    8 c ::    taqe VE7~
+::  cva-plus-c:3            :   41.8 b :   12 c ::    taqe veza ZA4(
+::  cva-plus-c:4            :   55.3 b :   16 c ::    taqe veza zaye FU2;
+::  cva-plus-c:5            :   68.7 b :   20 c ::    taqe veza zaye fugi RI2~
+::  cva-plus-c:6            :   82.1 b :   24 c ::    taqe veza zaye fugi rixu CE9!
+::  cva-plus-c:7            :   95.6 b :   28 c ::    taqe veza zaye fugi rixu cezu SA6^
+::  cva-plus-c:8            :  109.0 b :   32 c ::    taqe veza zaye fugi rixu cezu saco VO5]
 ::  cvs-lower:1             :   12.6 b :    4 c ::    sane
-::  cvs-lower:2             :   25.2 b :    9 c ::    sane seda
-::  cvs-lower:3             :   37.9 b :   14 c ::    sane seda zalu
-::  cvs-lower:4             :   50.5 b :   19 c ::    sane seda zalu dufi
-::  cvs-lower:5             :   63.2 b :   24 c ::    sane seda zalu dufi pivu
-::  cvs-lower:6             :   75.8 b :   29 c ::    sane seda zalu dufi pivu ceba
-::  cvs-lower:7             :   88.5 b :   34 c ::    sane seda zalu dufi pivu ceba camu
-::  cvs-lower:8             :  101.1 b :   39 c ::    sane seda zalu dufi pivu ceba camu cige
+::  cvs-lower:2             :   25.2 b :    8 c ::    sane seda
+::  cvs-lower:3             :   37.9 b :   12 c ::    sane seda zalu
+::  cvs-lower:4             :   50.5 b :   16 c ::    sane seda zalu dufi
+::  cvs-lower:5             :   63.2 b :   20 c ::    sane seda zalu dufi pivu
+::  cvs-lower:6             :   75.8 b :   24 c ::    sane seda zalu dufi pivu ceba
+::  cvs-lower:7             :   88.5 b :   28 c ::    sane seda zalu dufi pivu ceba camu
+::  cvs-lower:8             :  101.1 b :   32 c ::    sane seda zalu dufi pivu ceba camu cige
 ::  cvs-upper:1             :   12.6 b :    4 c ::    SANE
-::  cvs-upper:2             :   25.2 b :    9 c ::    SANE SEDA
-::  cvs-upper:3             :   37.9 b :   14 c ::    SANE SEDA ZALU
-::  cvs-upper:4             :   50.5 b :   19 c ::    SANE SEDA ZALU DUFI
-::  cvs-upper:5             :   63.2 b :   24 c ::    SANE SEDA ZALU DUFI PIVU
-::  cvs-upper:6             :   75.8 b :   29 c ::    SANE SEDA ZALU DUFI PIVU CEBA
-::  cvs-upper:7             :   88.5 b :   34 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU
-::  cvs-upper:8             :  101.1 b :   39 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE
+::  cvs-upper:2             :   25.2 b :    8 c ::    SANE SEDA
+::  cvs-upper:3             :   37.9 b :   12 c ::    SANE SEDA ZALU
+::  cvs-upper:4             :   50.5 b :   16 c ::    SANE SEDA ZALU DUFI
+::  cvs-upper:5             :   63.2 b :   20 c ::    SANE SEDA ZALU DUFI PIVU
+::  cvs-upper:6             :   75.8 b :   24 c ::    SANE SEDA ZALU DUFI PIVU CEBA
+::  cvs-upper:7             :   88.5 b :   28 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU
+::  cvs-upper:8             :  101.1 b :   32 c ::    SANE SEDA ZALU DUFI PIVU CEBA CAMU CIGE
 ::  cvs-mixed:1             :   16.6 b :    4 c ::    Lami
-::  cvs-mixed:2             :   33.2 b :    9 c ::    Lami NIZe
-::  cvs-mixed:3             :   49.9 b :   14 c ::    Lami NIZe lABE
-::  cvs-mixed:4             :   66.5 b :   19 c ::    Lami NIZe lABE ziZU
-::  cvs-mixed:5             :   83.2 b :   24 c ::    Lami NIZe lABE ziZU bENA
-::  cvs-mixed:6             :   99.8 b :   29 c ::    Lami NIZe lABE ziZU bENA MoZi
-::  cvs-mixed:7             :  116.5 b :   34 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE
-::  cvs-mixed:8             :  133.1 b :   39 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa
-::  cvs-plus-a:2            :   25.9 b :    9 c ::    sane 2711
-::  cvs-plus-a:3            :   38.5 b :   14 c ::    sane seda 0449
-::  cvs-plus-a:4            :   51.2 b :   19 c ::    sane seda zalu 2518
-::  cvs-plus-a:5            :   63.8 b :   24 c ::    sane seda zalu dufi 6290
-::  cvs-plus-a:6            :   76.5 b :   29 c ::    sane seda zalu dufi pivu 2906
-::  cvs-plus-a:7            :   89.1 b :   34 c ::    sane seda zalu dufi pivu ceba 6657
-::  cvs-plus-a:8            :  101.7 b :   39 c ::    sane seda zalu dufi pivu ceba camu 3526
-::  cvs-plus-b:2            :   25.6 b :    9 c ::    sane SE71
-::  cvs-plus-b:3            :   38.2 b :   14 c ::    sane seda ZA44
-::  cvs-plus-b:4            :   50.8 b :   19 c ::    sane seda zalu DU25
-::  cvs-plus-b:5            :   63.5 b :   24 c ::    sane seda zalu dufi PI29
-::  cvs-plus-b:6            :   76.1 b :   29 c ::    sane seda zalu dufi pivu CE90
-::  cvs-plus-b:7            :   88.8 b :   34 c ::    sane seda zalu dufi pivu ceba CA57
-::  cvs-plus-b:8            :  101.4 b :   39 c ::    sane seda zalu dufi pivu ceba camu CI26
-::  cvs-plus-c:2            :   27.2 b :    9 c ::    sane SE7~
-::  cvs-plus-c:3            :   39.9 b :   14 c ::    sane seda ZA4(
-::  cvs-plus-c:4            :   52.5 b :   19 c ::    sane seda zalu DU2;
-::  cvs-plus-c:5            :   65.2 b :   24 c ::    sane seda zalu dufi PI2~
-::  cvs-plus-c:6            :   77.8 b :   29 c ::    sane seda zalu dufi pivu CE9!
-::  cvs-plus-c:7            :   90.5 b :   34 c ::    sane seda zalu dufi pivu ceba CA5]
-::  cvs-plus-c:8            :  103.1 b :   39 c ::    sane seda zalu dufi pivu ceba camu CI2@
+::  cvs-mixed:2             :   33.2 b :    8 c ::    Lami NIZe
+::  cvs-mixed:3             :   49.9 b :   12 c ::    Lami NIZe lABE
+::  cvs-mixed:4             :   66.5 b :   16 c ::    Lami NIZe lABE ziZU
+::  cvs-mixed:5             :   83.2 b :   20 c ::    Lami NIZe lABE ziZU bENA
+::  cvs-mixed:6             :   99.8 b :   24 c ::    Lami NIZe lABE ziZU bENA MoZi
+::  cvs-mixed:7             :  116.5 b :   28 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE
+::  cvs-mixed:8             :  133.1 b :   32 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa
+::  cvs-plus-a:2            :   25.9 b :    8 c ::    sane 2711
+::  cvs-plus-a:3            :   38.5 b :   12 c ::    sane seda 0449
+::  cvs-plus-a:4            :   51.2 b :   16 c ::    sane seda zalu 2518
+::  cvs-plus-a:5            :   63.8 b :   20 c ::    sane seda zalu dufi 6290
+::  cvs-plus-a:6            :   76.5 b :   24 c ::    sane seda zalu dufi pivu 2906
+::  cvs-plus-a:7            :   89.1 b :   28 c ::    sane seda zalu dufi pivu ceba 6657
+::  cvs-plus-a:8            :  101.7 b :   32 c ::    sane seda zalu dufi pivu ceba camu 3526
+::  cvs-plus-b:2            :   25.6 b :    8 c ::    sane SE71
+::  cvs-plus-b:3            :   38.2 b :   12 c ::    sane seda ZA44
+::  cvs-plus-b:4            :   50.8 b :   16 c ::    sane seda zalu DU25
+::  cvs-plus-b:5            :   63.5 b :   20 c ::    sane seda zalu dufi PI29
+::  cvs-plus-b:6            :   76.1 b :   24 c ::    sane seda zalu dufi pivu CE90
+::  cvs-plus-b:7            :   88.8 b :   28 c ::    sane seda zalu dufi pivu ceba CA57
+::  cvs-plus-b:8            :  101.4 b :   32 c ::    sane seda zalu dufi pivu ceba camu CI26
+::  cvs-plus-c:2            :   27.2 b :    8 c ::    sane SE7~
+::  cvs-plus-c:3            :   39.9 b :   12 c ::    sane seda ZA4(
+::  cvs-plus-c:4            :   52.5 b :   16 c ::    sane seda zalu DU2;
+::  cvs-plus-c:5            :   65.2 b :   20 c ::    sane seda zalu dufi PI2~
+::  cvs-plus-c:6            :   77.8 b :   24 c ::    sane seda zalu dufi pivu CE9!
+::  cvs-plus-c:7            :   90.5 b :   28 c ::    sane seda zalu dufi pivu ceba CA5]
+::  cvs-plus-c:8            :  103.1 b :   32 c ::    sane seda zalu dufi pivu ceba camu CI2@
 ::  proquint-lower:1        :   16  =b :    5 c ::    sanis
-::  proquint-lower:2        :   32  =b :   11 c ::    sanis gufaz
-::  proquint-lower:3        :   48  =b :   17 c ::    sanis gufaz lofug
-::  proquint-lower:4        :   64  =b :   23 c ::    sanis gufaz lofug mudad
-::  proquint-lower:5        :   80  =b :   29 c ::    sanis gufaz lofug mudad damud
-::  proquint-lower:6        :   96  =b :   35 c ::    sanis gufaz lofug mudad damud mihup
+::  proquint-lower:2        :   32  =b :   10 c ::    sanis gufaz
+::  proquint-lower:3        :   48  =b :   15 c ::    sanis gufaz lofug
+::  proquint-lower:4        :   64  =b :   20 c ::    sanis gufaz lofug mudad
+::  proquint-lower:5        :   80  =b :   25 c ::    sanis gufaz lofug mudad damud
+::  proquint-lower:6        :   96  =b :   30 c ::    sanis gufaz lofug mudad damud mihup
 ::  proquint-upper:1        :   16  =b :    5 c ::    SANIS
-::  proquint-upper:2        :   32  =b :   11 c ::    SANIS GUFAZ
-::  proquint-upper:3        :   48  =b :   17 c ::    SANIS GUFAZ LOFUG
-::  proquint-upper:4        :   64  =b :   23 c ::    SANIS GUFAZ LOFUG MUDAD
-::  proquint-upper:5        :   80  =b :   29 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD
-::  proquint-upper:6        :   96  =b :   35 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP
+::  proquint-upper:2        :   32  =b :   10 c ::    SANIS GUFAZ
+::  proquint-upper:3        :   48  =b :   15 c ::    SANIS GUFAZ LOFUG
+::  proquint-upper:4        :   64  =b :   20 c ::    SANIS GUFAZ LOFUG MUDAD
+::  proquint-upper:5        :   80  =b :   25 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD
+::  proquint-upper:6        :   96  =b :   30 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP
 ::  koremutake-a:1          :   14  =b :    5 c ::    drobo
-::  koremutake-a:2          :   28  =b :   11 c ::    drobo stufi
-::  koremutake-a:3          :   42  =b :   17 c ::    drobo stufi stoda
-::  koremutake-a:4          :   56  =b :   23 c ::    drobo stufi stoda napru
-::  koremutake-a:5          :   70  =b :   28 c ::    drobo stufi stoda napru hyhi
-::  koremutake-a:6          :   84  =b :   33 c ::    drobo stufi stoda napru hyhi pupe
-::  koremutake-a:7          :   98  =b :   40 c ::    drobo stufi stoda napru hyhi pupe grugro
+::  koremutake-a:2          :   28  =b :   10 c ::    drobo stufi
+::  koremutake-a:3          :   42  =b :   15 c ::    drobo stufi stoda
+::  koremutake-a:4          :   56  =b :   20 c ::    drobo stufi stoda napru
+::  koremutake-a:5          :   70  =b :   24 c ::    drobo stufi stoda napru hyhi
+::  koremutake-a:6          :   84  =b :   28 c ::    drobo stufi stoda napru hyhi pupe
+::  koremutake-a:7          :   98  =b :   34 c ::    drobo stufi stoda napru hyhi pupe grugro
 ::  koremutake-b:1          :   21  =b :    8 c ::    drobostu
-::  koremutake-b:2          :   42  =b :   16 c ::    drobostu fistoda
-::  koremutake-b:3          :   63  =b :   24 c ::    drobostu fistoda napruhy
-::  koremutake-b:4          :   84  =b :   31 c ::    drobostu fistoda napruhy hipupe
-::  koremutake-b:5          :  105  =b :   40 c ::    drobostu fistoda napruhy hipupe grugrodi
+::  koremutake-b:2          :   42  =b :   15 c ::    drobostu fistoda
+::  koremutake-b:3          :   63  =b :   22 c ::    drobostu fistoda napruhy
+::  koremutake-b:4          :   84  =b :   28 c ::    drobostu fistoda napruhy hipupe
+::  koremutake-b:5          :  105  =b :   36 c ::    drobostu fistoda napruhy hipupe grugrodi
 ::  mnemonic:1              :   10.6 b :    5 c ::    arrow
-::  mnemonic:2              :   21.3 b :   13 c ::    arrow arizona
-::  mnemonic:3              :   32.0 b :   19 c ::    arrow arizona mango
-::  mnemonic:4              :   42.6 b :   26 c ::    arrow arizona mango archer
-::  mnemonic:5              :   53.3 b :   33 c ::    arrow arizona mango archer jacket
-::  mnemonic:6              :   64.0 b :   40 c ::    arrow arizona mango archer jacket bundle
+::  mnemonic:2              :   21.3 b :   12 c ::    arrow arizona
+::  mnemonic:3              :   32.0 b :   17 c ::    arrow arizona mango
+::  mnemonic:4              :   42.6 b :   23 c ::    arrow arizona mango archer
+::  mnemonic:5              :   53.3 b :   29 c ::    arrow arizona mango archer jacket
+::  mnemonic:6              :   64.0 b :   35 c ::    arrow arizona mango archer jacket bundle
 ::  bip0039:1               :   11  =b :    5 c ::    robot
-::  bip0039:2               :   22  =b :   10 c ::    robot ship
-::  bip0039:3               :   33  =b :   16 c ::    robot ship night
-::  bip0039:4               :   44  =b :   23 c ::    robot ship night shield
-::  bip0039:5               :   55  =b :   27 c ::    robot ship night shield way
-::  bip0039:6               :   66  =b :   34 c ::    robot ship night shield way yellow
+::  bip0039:2               :   22  =b :    9 c ::    robot ship
+::  bip0039:3               :   33  =b :   14 c ::    robot ship night
+::  bip0039:4               :   44  =b :   20 c ::    robot ship night shield
+::  bip0039:5               :   55  =b :   23 c ::    robot ship night shield way
+::  bip0039:6               :   66  =b :   29 c ::    robot ship night shield way yellow
 ::  skey:1                  :   11  =b :    4 c ::    mile
-::  skey:2                  :   22  =b :    9 c ::    mile noun
-::  skey:3                  :   33  =b :   14 c ::    mile noun hear
-::  skey:4                  :   44  =b :   19 c ::    mile noun hear norm
-::  skey:5                  :   55  =b :   24 c ::    mile noun hear norm wast
-::  skey:6                  :   66  =b :   29 c ::    mile noun hear norm wast yarn
-::  skey:7                  :   77  =b :   33 c ::    mile noun hear norm wast yarn led
-::  skey:8                  :   88  =b :   35 c ::    mile noun hear norm wast yarn led i
-::  skey:9                  :   99  =b :   39 c ::    mile noun hear norm wast yarn led i cur
-::  pgp:1                   :   16  =b :   19 c ::    shamrock responsive
-::  pgp:2                   :   32  =b :   35 c ::    shamrock responsive crucial revival
+::  skey:2                  :   22  =b :    8 c ::    mile noun
+::  skey:3                  :   33  =b :   12 c ::    mile noun hear
+::  skey:4                  :   44  =b :   16 c ::    mile noun hear norm
+::  skey:5                  :   55  =b :   20 c ::    mile noun hear norm wast
+::  skey:6                  :   66  =b :   24 c ::    mile noun hear norm wast yarn
+::  skey:7                  :   77  =b :   27 c ::    mile noun hear norm wast yarn led
+::  skey:8                  :   88  =b :   28 c ::    mile noun hear norm wast yarn led i
+::  skey:9                  :   99  =b :   31 c ::    mile noun hear norm wast yarn led i cur
+::  pgp:1                   :   16  =b :   18 c ::    shamrock responsive
+::  pgp:2                   :   32  =b :   32 c ::    shamrock responsive crucial revival
 ::  eff-large:1             :   12.9 b :    5 c ::    scope
-::  eff-large:2             :   25.8 b :   12 c ::    scope slacks
-::  eff-large:3             :   38.7 b :   22 c ::    scope slacks patronize
-::  eff-large:4             :   51.6 b :   31 c ::    scope slacks patronize dumpling
-::  eff-large:5             :   64.6 b :   36 c ::    scope slacks patronize dumpling deny
+::  eff-large:2             :   25.8 b :   11 c ::    scope slacks
+::  eff-large:3             :   38.7 b :   20 c ::    scope slacks patronize
+::  eff-large:4             :   51.6 b :   28 c ::    scope slacks patronize dumpling
+::  eff-large:5             :   64.6 b :   32 c ::    scope slacks patronize dumpling deny
 ::  eff-short:1             :   10.3 b :    5 c ::    shaft
-::  eff-short:2             :   20.6 b :   11 c ::    shaft sleep
-::  eff-short:3             :   31.0 b :   17 c ::    shaft sleep ankle
-::  eff-short:4             :   41.3 b :   22 c ::    shaft sleep ankle path
-::  eff-short:5             :   51.6 b :   27 c ::    shaft sleep ankle path sled
-::  eff-short:6             :   62.0 b :   32 c ::    shaft sleep ankle path sled deaf
-::  eff-short:7             :   72.3 b :   37 c ::    shaft sleep ankle path sled deaf shun
+::  eff-short:2             :   20.6 b :   10 c ::    shaft sleep
+::  eff-short:3             :   31.0 b :   15 c ::    shaft sleep ankle
+::  eff-short:4             :   41.3 b :   19 c ::    shaft sleep ankle path
+::  eff-short:5             :   51.6 b :   23 c ::    shaft sleep ankle path sled
+::  eff-short:6             :   62.0 b :   27 c ::    shaft sleep ankle path sled deaf
+::  eff-short:7             :   72.3 b :   31 c ::    shaft sleep ankle path sled deaf shun
 ::  eff-unique:1            :   10.3 b :    8 c ::    rekindle
-::  eff-unique:2            :   20.6 b :   16 c ::    rekindle satchel
-::  eff-unique:3            :   31.0 b :   26 c ::    rekindle satchel agonizing
-::  eff-unique:4            :   41.3 b :   31 c ::    rekindle satchel agonizing mule
-::  eff-unique:5            :   51.6 b :   39 c ::    rekindle satchel agonizing mule sardine
+::  eff-unique:2            :   20.6 b :   15 c ::    rekindle satchel
+::  eff-unique:3            :   31.0 b :   24 c ::    rekindle satchel agonizing
+::  eff-unique:4            :   41.3 b :   28 c ::    rekindle satchel agonizing mule
+::  eff-unique:5            :   51.6 b :   35 c ::    rekindle satchel agonizing mule sardine
 ::  pets-medium-1           :   10.0 b :    4 c ::    anoa
 ::  pets-medium-2           :   20.2 b :   13 c ::    dynamic-shark
 ::  pets-medium-3           :   30.9 b :   25 c ::    righteously-dynamic-shark
@@ -361,12 +361,12 @@
 ::  pets-small-3            :   25.6 b :   20 c ::    openly-endless-robin
 ::  pets-small-4            :   31.6 b :   28 c ::    openly-endless-sienna-donkey
 ::  nato:1                  :    5.1 b :    3 c ::    wun
-::  nato:2                  :   10.3 b :   10 c ::    wun victor
-::  nato:3                  :   15.5 b :   18 c ::    wun victor juliett
-::  nato:4                  :   20.6 b :   26 c ::    wun victor juliett foxtrot
-::  nato:5                  :   25.8 b :   31 c ::    wun victor juliett foxtrot echo
-::  nato:6                  :   31.0 b :   36 c ::    wun victor juliett foxtrot echo papa
-::  nato:7                  :   36.1 b :   40 c ::    wun victor juliett foxtrot echo papa ait
+::  nato:2                  :   10.3 b :    9 c ::    wun victor
+::  nato:3                  :   15.5 b :   16 c ::    wun victor juliett
+::  nato:4                  :   20.6 b :   23 c ::    wun victor juliett foxtrot
+::  nato:5                  :   25.8 b :   27 c ::    wun victor juliett foxtrot echo
+::  nato:6                  :   31.0 b :   31 c ::    wun victor juliett foxtrot echo papa
+::  nato:7                  :   36.1 b :   34 c ::    wun victor juliett foxtrot echo papa ait
 ::  bytes-hex:1             :    8  =b :    2 c ::    7f
 ::  bytes-hex:2             :   16  =b :    4 c ::    7f6f
 ::  bytes-hex:3             :   24  =b :    6 c ::    7f6f2c

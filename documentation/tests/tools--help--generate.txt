@@ -37,6 +37,9 @@
     **  unsafe constant generator
     !!  DO-NOT-USE
 
+  --describe
+    **  describe pattern characteristics
+
   -v --version
 
   -h --help

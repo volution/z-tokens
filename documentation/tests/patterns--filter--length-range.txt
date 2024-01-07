@@ -1,174 +1,209 @@
 >>  z-tokens patterns --length-min 40 --length-max 100 --random-testing
 
-::  cva-lower:10            :  134.2 b :   40 c ::    taqevezazayefugirixucezusacovoxakizehose
-::  cva-lower:11            :  147.7 b :   44 c ::    taqevezazayefugirixucezusacovoxakizehoserago
-::  cva-lower:12            :  161.1 b :   48 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqeko
-::  cva-lower:13            :  174.5 b :   52 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobaha
-::  cva-lower:14            :  187.9 b :   56 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwu
-::  cva-lower:15            :  201.4 b :   60 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuyuku
-::  cva-lower:16            :  214.8 b :   64 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuyukupaju
-::  cva-mixed:10            :  174.2 b :   40 c ::    PaFiPiQIYayUmAjOlAziZUKafANoZiZEcEFiroDE
-::  cva-mixed:11            :  191.7 b :   44 c ::    PaFiPiQIYayUmAjOlAziZUKafANoZiZEcEFiroDEfona
-::  cva-mixed:12            :  209.1 b :   48 c ::    PaFiPiQIYayUmAjOlAziZUKafANoZiZEcEFiroDEfonaWuGa
-::  cva-mixed:13            :  226.5 b :   52 c ::    PaFiPiQIYayUmAjOlAziZUKafANoZiZEcEFiroDEfonaWuGaQOSU
-::  cva-mixed:14            :  243.9 b :   56 c ::    PaFiPiQIYayUmAjOlAziZUKafANoZiZEcEFiroDEfonaWuGaQOSUPoVA
-::  cva-mixed:15            :  261.4 b :   60 c ::    PaFiPiQIYayUmAjOlAziZUKafANoZiZEcEFiroDEfonaWuGaQOSUPoVAgoPO
-::  cva-mixed:16            :  278.8 b :   64 c ::    PaFiPiQIYayUmAjOlAziZUKafANoZiZEcEFiroDEfonaWuGaQOSUPoVAgoPOkAle
-::  cva-plus-a:10           :  134.1 b :   40 c ::    taqevezazayefugirixucezusacovoxakize2606
-::  cva-plus-a:11           :  147.5 b :   44 c ::    taqevezazayefugirixucezusacovoxakizehose6062
-::  cva-plus-a:12           :  161.0 b :   48 c ::    taqevezazayefugirixucezusacovoxakizehoserago2335
-::  cva-plus-a:13           :  174.4 b :   52 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqeko0320
-::  cva-plus-a:14           :  187.8 b :   56 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobaha9460
-::  cva-plus-a:15           :  201.2 b :   60 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwu9351
-::  cva-plus-a:16           :  214.7 b :   64 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuyuku5138
-::  cva-plus-b:10           :  134.2 b :   40 c ::    taqevezazayefugirixucezusacovoxakizeHO60
-::  cva-plus-b:11           :  147.6 b :   44 c ::    taqevezazayefugirixucezusacovoxakizehoseRA62
-::  cva-plus-b:12           :  161.0 b :   48 c ::    taqevezazayefugirixucezusacovoxakizehoseragoQE33
-::  cva-plus-b:13           :  174.4 b :   52 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekoBA32
-::  cva-plus-b:14           :  187.9 b :   56 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahaYI60
-::  cva-plus-b:15           :  201.3 b :   60 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuYU35
-::  cva-plus-b:16           :  214.7 b :   64 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuyukuPA38
-::  cva-plus-c:10           :  135.8 b :   40 c ::    taqevezazayefugirixucezusacovoxakizeHO6"
-::  cva-plus-c:11           :  149.3 b :   44 c ::    taqevezazayefugirixucezusacovoxakizehoseRA6+
-::  cva-plus-c:12           :  162.7 b :   48 c ::    taqevezazayefugirixucezusacovoxakizehoseragoQE3,
-::  cva-plus-c:13           :  176.1 b :   52 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekoBA3"
-::  cva-plus-c:14           :  189.6 b :   56 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahaYI6_
-::  cva-plus-c:15           :  203.0 b :   60 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuYU3<
-::  cva-plus-c:16           :  216.4 b :   64 c ::    taqevezazayefugirixucezusacovoxakizehoseragoqekobahayiwuyukuPA3`
-::  cvs-lower:10            :  126.4 b :   40 c ::    sanesedazaludufipivucebacamucigepaconeho
-::  cvs-lower:11            :  139.0 b :   44 c ::    sanesedazaludufipivucebacamucigepaconehobahe
-::  cvs-lower:12            :  151.7 b :   48 c ::    sanesedazaludufipivucebacamucigepaconehobahelotu
-::  cvs-lower:13            :  164.3 b :   52 c ::    sanesedazaludufipivucebacamucigepaconehobahelotusuva
-::  cvs-lower:14            :  177.0 b :   56 c ::    sanesedazaludufipivucebacamucigepaconehobahelotusuvasuma
-::  cvs-lower:15            :  189.6 b :   60 c ::    sanesedazaludufipivucebacamucigepaconehobahelotusuvasumahetu
-::  cvs-lower:16            :  202.3 b :   64 c ::    sanesedazaludufipivucebacamucigepaconehobahelotusuvasumahetusice
-::  cvs-mixed:10            :  166.4 b :   40 c ::    LamiNIZelABEziZUbENAMoZiHEcEpoGapicUvEPO
-::  cvs-mixed:11            :  183.0 b :   44 c ::    LamiNIZelABEziZUbENAMoZiHEcEpoGapicUvEPOToCe
-::  cvs-mixed:12            :  199.7 b :   48 c ::    LamiNIZelABEziZUbENAMoZiHEcEpoGapicUvEPOToCenoRA
-::  cvs-mixed:13            :  216.3 b :   52 c ::    LamiNIZelABEziZUbENAMoZiHEcEpoGapicUvEPOToCenoRAjeno
-::  cvs-mixed:14            :  233.0 b :   56 c ::    LamiNIZelABEziZUbENAMoZiHEcEpoGapicUvEPOToCenoRAjenonoZI
-::  cvs-mixed:15            :  249.6 b :   60 c ::    LamiNIZelABEziZUbENAMoZiHEcEpoGapicUvEPOToCenoRAjenonoZILiri
-::  cvs-mixed:16            :  266.3 b :   64 c ::    LamiNIZelABEziZUbENAMoZiHEcEpoGapicUvEPOToCenoRAjenonoZILiriCePo
-::  cvs-plus-a:10           :  127.0 b :   40 c ::    sanesedazaludufipivucebacamucigepaco2335
-::  cvs-plus-a:11           :  139.7 b :   44 c ::    sanesedazaludufipivucebacamucigepaconeho0320
-::  cvs-plus-a:12           :  152.3 b :   48 c ::    sanesedazaludufipivucebacamucigepaconehobahe0946
-::  cvs-plus-a:13           :  165.0 b :   52 c ::    sanesedazaludufipivucebacamucigepaconehobahelotu9351
-::  cvs-plus-a:14           :  177.6 b :   56 c ::    sanesedazaludufipivucebacamucigepaconehobahelotusuva3851
-::  cvs-plus-a:15           :  190.3 b :   60 c ::    sanesedazaludufipivucebacamucigepaconehobahelotusuvasuma3385
-::  cvs-plus-a:16           :  202.9 b :   64 c ::    sanesedazaludufipivucebacamucigepaconehobahelotusuvasumahetu5572
-::  cvs-plus-b:10           :  126.7 b :   40 c ::    sanesedazaludufipivucebacamucigepacoNE33
-::  cvs-plus-b:11           :  139.4 b :   44 c ::    sanesedazaludufipivucebacamucigepaconehoBA32
-::  cvs-plus-b:12           :  152.0 b :   48 c ::    sanesedazaludufipivucebacamucigepaconehobaheLO08
-::  cvs-plus-b:13           :  164.6 b :   52 c ::    sanesedazaludufipivucebacamucigepaconehobahelotuSU35
-::  cvs-plus-b:14           :  177.3 b :   56 c ::    sanesedazaludufipivucebacamucigepaconehobahelotusuvaSU51
-::  cvs-plus-b:15           :  189.9 b :   60 c ::    sanesedazaludufipivucebacamucigepaconehobahelotusuvasumaHE38
-::  cvs-plus-b:16           :  202.6 b :   64 c ::    sanesedazaludufipivucebacamucigepaconehobahelotusuvasumahetuSI72
-::  cvs-plus-c:10           :  128.4 b :   40 c ::    sanesedazaludufipivucebacamucigepacoNE3,
-::  cvs-plus-c:11           :  141.0 b :   44 c ::    sanesedazaludufipivucebacamucigepaconehoBA3"
-::  cvs-plus-c:12           :  153.7 b :   48 c ::    sanesedazaludufipivucebacamucigepaconehobaheLO0_
-::  cvs-plus-c:13           :  166.3 b :   52 c ::    sanesedazaludufipivucebacamucigepaconehobahelotuSU3<
-::  cvs-plus-c:14           :  179.0 b :   56 c ::    sanesedazaludufipivucebacamucigepaconehobahelotusuvaSU5'
-::  cvs-plus-c:15           :  191.6 b :   60 c ::    sanesedazaludufipivucebacamucigepaconehobahelotusuvasumaHE3~
-::  cvs-plus-c:16           :  204.3 b :   64 c ::    sanesedazaludufipivucebacamucigepaconehobahelotusuvasumahetuSI7\
-::  proquint-lower:8        :  128  =b :   40 c ::    sanisgufazlofugmudaddamudmihupdogipbajal
-::  proquint-lower:9        :  144  =b :   45 c ::    sanisgufazlofugmudaddamudmihupdogipbajaltusiv
-::  proquint-lower:10       :  160  =b :   50 c ::    sanisgufazlofugmudaddamudmihupdogipbajaltusivsumaj
-::  proquint-lower:11       :  176  =b :   55 c ::    sanisgufazlofugmudaddamudmihupdogipbajaltusivsumajtusod
-::  proquint-lower:12       :  192  =b :   60 c ::    sanisgufazlofugmudaddamudmihupdogipbajaltusivsumajtusodsivog
-::  proquint-lower:13       :  208  =b :   65 c ::    sanisgufazlofugmudaddamudmihupdogipbajaltusivsumajtusodsivogfupol
-::  proquint-lower:14       :  224  =b :   70 c ::    sanisgufazlofugmudaddamudmihupdogipbajaltusivsumajtusodsivogfupolgohat
-::  proquint-lower:15       :  240  =b :   75 c ::    sanisgufazlofugmudaddamudmihupdogipbajaltusivsumajtusodsivogfupolgohathapab
-::  proquint-lower:16       :  256  =b :   80 c ::    sanisgufazlofugmudaddamudmihupdogipbajaltusivsumajtusodsivogfupolgohathapabkivub
-::  koremutake-a:9          :  126  =b :   45 c ::    drobostufistodanapruhyhipupegrugroditrastypro
-::  koremutake-a:10         :  140  =b :   49 c ::    drobostufistodanapruhyhipupegrugroditrastyproteve
-::  koremutake-a:11         :  154  =b :   54 c ::    drobostufistodanapruhyhipupegrugroditrastyproteveradra
-::  koremutake-a:12         :  168  =b :   59 c ::    drobostufistodanapruhyhipupegrugroditrastyproteveradragrody
-::  koremutake-a:13         :  182  =b :   64 c ::    drobostufistodanapruhyhipupegrugroditrastyproteveradragrodystyji
-::  koremutake-a:14         :  196  =b :   69 c ::    drobostufistodanapruhyhipupegrugroditrastyproteveradragrodystyjitrave
-::  koremutake-a:15         :  210  =b :   74 c ::    drobostufistodanapruhyhipupegrugroditrastyproteveradragrodystyjitravevidry
-::  koremutake-a:16         :  224  =b :   78 c ::    drobostufistodanapruhyhipupegrugroditrastyproteveradragrodystyjitravevidryketo
-::  koremutake-b:6          :  126  =b :   45 c ::    drobostufistodanapruhyhipupegrugroditrastypro
-::  koremutake-b:7          :  147  =b :   51 c ::    drobostufistodanapruhyhipupegrugroditrastyprotevera
-::  koremutake-b:8          :  168  =b :   59 c ::    drobostufistodanapruhyhipupegrugroditrastyproteveradragrody
-::  koremutake-b:9          :  189  =b :   67 c ::    drobostufistodanapruhyhipupegrugroditrastyproteveradragrodystyjitra
-::  koremutake-b:10         :  210  =b :   74 c ::    drobostufistodanapruhyhipupegrugroditrastyproteveradragrodystyjitravevidry
-::  koremutake-b:11         :  231  =b :   80 c ::    drobostufistodanapruhyhipupegrugroditrastyproteveradragrodystyjitravevidryketobu
-::  koremutake-b:12         :  252  =b :   86 c ::    drobostufistodanapruhyhipupegrugroditrastyproteveradragrodystyjitravevidryketobu [...]
-::  koremutake-b:13         :  273  =b :   92 c ::    drobostufistodanapruhyhipupegrugroditrastyproteveradragrodystyjitravevidryketobu [...]
-::  koremutake-b:14         :  294  =b :   99 c ::    drobostufistodanapruhyhipupegrugroditrastyproteveradragrodystyjitravevidryketobu [...]
+::  cva-lower:10            :  134.2 b :   40 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose
+::  cva-lower:11            :  147.7 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago
+::  cva-lower:12            :  161.1 b :   48 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko
+::  cva-lower:13            :  174.5 b :   52 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha
+::  cva-lower:14            :  187.9 b :   56 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu
+::  cva-lower:15            :  201.4 b :   60 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku
+::  cva-lower:16            :  214.8 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku paju
+::  cva-mixed:10            :  174.2 b :   40 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE
+::  cva-mixed:11            :  191.7 b :   44 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona
+::  cva-mixed:12            :  209.1 b :   48 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa
+::  cva-mixed:13            :  226.5 b :   52 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU
+::  cva-mixed:14            :  243.9 b :   56 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA
+::  cva-mixed:15            :  261.4 b :   60 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA goPO
+::  cva-mixed:16            :  278.8 b :   64 c ::    PaFi PiQI YayU mAjO lAzi ZUKa fANo ZiZE cEFi roDE fona WuGa QOSU PoVA goPO kAle
+::  cva-plus-a:10           :  134.1 b :   40 c ::    taqe veza zaye fugi rixu cezu saco voxa kize 2606
+::  cva-plus-a:11           :  147.5 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose 6062
+::  cva-plus-a:12           :  161.0 b :   48 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago 2335
+::  cva-plus-a:13           :  174.4 b :   52 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko 0320
+::  cva-plus-a:14           :  187.8 b :   56 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha 9460
+::  cva-plus-a:15           :  201.2 b :   60 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu 9351
+::  cva-plus-a:16           :  214.7 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku 5138
+::  cva-plus-b:10           :  134.2 b :   40 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO60
+::  cva-plus-b:11           :  147.6 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose RA62
+::  cva-plus-b:12           :  161.0 b :   48 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago QE33
+::  cva-plus-b:13           :  174.4 b :   52 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA32
+::  cva-plus-b:14           :  187.9 b :   56 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI60
+::  cva-plus-b:15           :  201.3 b :   60 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU35
+::  cva-plus-b:16           :  214.7 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA38
+::  cva-plus-c:10           :  135.8 b :   40 c ::    taqe veza zaye fugi rixu cezu saco voxa kize HO6"
+::  cva-plus-c:11           :  149.3 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose RA6+
+::  cva-plus-c:12           :  162.7 b :   48 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago QE3,
+::  cva-plus-c:13           :  176.1 b :   52 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko BA3"
+::  cva-plus-c:14           :  189.6 b :   56 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha YI6_
+::  cva-plus-c:15           :  203.0 b :   60 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu YU3<
+::  cva-plus-c:16           :  216.4 b :   64 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko baha yiwu yuku PA3`
+::  cvs-lower:10            :  126.4 b :   40 c ::    sane seda zalu dufi pivu ceba camu cige paco neho
+::  cvs-lower:11            :  139.0 b :   44 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe
+::  cvs-lower:12            :  151.7 b :   48 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu
+::  cvs-lower:13            :  164.3 b :   52 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva
+::  cvs-lower:14            :  177.0 b :   56 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma
+::  cvs-lower:15            :  189.6 b :   60 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu
+::  cvs-lower:16            :  202.3 b :   64 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu sice
+::  cvs-mixed:10            :  166.4 b :   40 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO
+::  cvs-mixed:11            :  183.0 b :   44 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe
+::  cvs-mixed:12            :  199.7 b :   48 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA
+::  cvs-mixed:13            :  216.3 b :   52 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno
+::  cvs-mixed:14            :  233.0 b :   56 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno noZI
+::  cvs-mixed:15            :  249.6 b :   60 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno noZI Liri
+::  cvs-mixed:16            :  266.3 b :   64 c ::    Lami NIZe lABE ziZU bENA MoZi HEcE poGa picU vEPO ToCe noRA jeno noZI Liri CePo
+::  cvs-plus-a:10           :  127.0 b :   40 c ::    sane seda zalu dufi pivu ceba camu cige paco 2335
+::  cvs-plus-a:11           :  139.7 b :   44 c ::    sane seda zalu dufi pivu ceba camu cige paco neho 0320
+::  cvs-plus-a:12           :  152.3 b :   48 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe 0946
+::  cvs-plus-a:13           :  165.0 b :   52 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu 9351
+::  cvs-plus-a:14           :  177.6 b :   56 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva 3851
+::  cvs-plus-a:15           :  190.3 b :   60 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma 3385
+::  cvs-plus-a:16           :  202.9 b :   64 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu 5572
+::  cvs-plus-b:10           :  126.7 b :   40 c ::    sane seda zalu dufi pivu ceba camu cige paco NE33
+::  cvs-plus-b:11           :  139.4 b :   44 c ::    sane seda zalu dufi pivu ceba camu cige paco neho BA32
+::  cvs-plus-b:12           :  152.0 b :   48 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe LO08
+::  cvs-plus-b:13           :  164.6 b :   52 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu SU35
+::  cvs-plus-b:14           :  177.3 b :   56 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva SU51
+::  cvs-plus-b:15           :  189.9 b :   60 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma HE38
+::  cvs-plus-b:16           :  202.6 b :   64 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu SI72
+::  cvs-plus-c:10           :  128.4 b :   40 c ::    sane seda zalu dufi pivu ceba camu cige paco NE3,
+::  cvs-plus-c:11           :  141.0 b :   44 c ::    sane seda zalu dufi pivu ceba camu cige paco neho BA3"
+::  cvs-plus-c:12           :  153.7 b :   48 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe LO0_
+::  cvs-plus-c:13           :  166.3 b :   52 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu SU3<
+::  cvs-plus-c:14           :  179.0 b :   56 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva SU5'
+::  cvs-plus-c:15           :  191.6 b :   60 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma HE3~
+::  cvs-plus-c:16           :  204.3 b :   64 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu SI7\
+::  proquint-lower:8        :  128  =b :   40 c ::    sanis gufaz lofug mudad damud mihup dogip bajal
+::  proquint-lower:9        :  144  =b :   45 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv
+::  proquint-lower:10       :  160  =b :   50 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj
+::  proquint-lower:11       :  176  =b :   55 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod
+::  proquint-lower:12       :  192  =b :   60 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog
+::  proquint-lower:13       :  208  =b :   65 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol
+::  proquint-lower:14       :  224  =b :   70 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:15       :  240  =b :   75 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:16       :  256  =b :   80 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  koremutake-a:8          :  112  =b :   41 c ::    drobo stufi stoda napru hyhi pupe grugro ditra
+::  koremutake-a:9          :  126  =b :   45 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro
+::  koremutake-a:10         :  140  =b :   49 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve
+::  koremutake-a:11         :  154  =b :   54 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra
+::  koremutake-a:12         :  168  =b :   59 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody
+::  koremutake-a:13         :  182  =b :   64 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji
+::  koremutake-a:14         :  196  =b :   69 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:15         :  210  =b :   74 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:16         :  224  =b :   78 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-b:6          :  126  =b :   45 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro
+::  koremutake-b:7          :  147  =b :   51 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera
+::  koremutake-b:8          :  168  =b :   59 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody
+::  koremutake-b:9          :  189  =b :   67 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra
+::  koremutake-b:10         :  210  =b :   74 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:11         :  231  =b :   80 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:12         :  252  =b :   86 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:13         :  273  =b :   92 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:14         :  294  =b :   99 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:15         :  315  =b :  100 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
 ::  mnemonic:6              :   64.0 b :   40 c ::    arrow arizona mango archer jacket bundle
-::  mnemonic:7              :   74.7 b :   48 c ::    arrow arizona mango archer jacket bundle telecom
-::  mnemonic:8              :   85.3 b :   54 c ::    arrow arizona mango archer jacket bundle telecom torso
-::  mnemonic:9              :   96.0 b :   61 c ::    arrow arizona mango archer jacket bundle telecom torso domino
-::  mnemonic:10             :  106.7 b :   68 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy
-::  mnemonic:11             :  117.4 b :   75 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas
-::  mnemonic:12             :  128.0 b :   81 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:13             :  138.7 b :   89 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:14             :  149.4 b :   97 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
+::  mnemonic:7              :   74.7 b :   42 c ::    arrow arizona mango archer jacket bundle telecom
+::  mnemonic:8              :   85.3 b :   47 c ::    arrow arizona mango archer jacket bundle telecom torso
+::  mnemonic:9              :   96.0 b :   53 c ::    arrow arizona mango archer jacket bundle telecom torso domino
+::  mnemonic:10             :  106.7 b :   59 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy
+::  mnemonic:11             :  117.4 b :   65 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas
+::  mnemonic:12             :  128.0 b :   70 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
+::  mnemonic:13             :  138.7 b :   77 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
+::  mnemonic:14             :  149.4 b :   84 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
+::  mnemonic:15             :  160.0 b :   90 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
+::  mnemonic:16             :  170.7 b :   96 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
+::  mnemonic:17             :  181.4 b :   98 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
+::  mnemonic:18             :  192.1 b :   99 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
 ::  bip0039:7               :   77  =b :   41 c ::    robot ship night shield way yellow casual
-::  bip0039:8               :   88  =b :   49 c ::    robot ship night shield way yellow casual brother
-::  bip0039:9               :   99  =b :   55 c ::    robot ship night shield way yellow casual brother arrow
-::  bip0039:10              :  110  =b :   62 c ::    robot ship night shield way yellow casual brother arrow invest
-::  bip0039:11              :  121  =b :   68 c ::    robot ship night shield way yellow casual brother arrow invest chief
-::  bip0039:12              :  132  =b :   74 c ::    robot ship night shield way yellow casual brother arrow invest chief sting
-::  bip0039:13              :  143  =b :   79 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar
-::  bip0039:14              :  154  =b :   86 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
-::  bip0039:15              :  165  =b :   93 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
-::  bip0039:16              :  176  =b :   97 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
-::  skey:10                 :  110  =b :   44 c ::    mile noun hear norm wast yarn led i cur doug
-::  skey:11                 :  121  =b :   47 c ::    mile noun hear norm wast yarn led i cur doug me
-::  skey:12                 :  132  =b :   52 c ::    mile noun hear norm wast yarn led i cur doug me sale
-::  skey:13                 :  143  =b :   57 c ::    mile noun hear norm wast yarn led i cur doug me sale fire
-::  skey:14                 :  154  =b :   62 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude
-::  skey:15                 :  165  =b :   67 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug
-::  skey:16                 :  176  =b :   72 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid
-::  skey:17                 :  187  =b :   76 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug
-::  skey:18                 :  198  =b :   81 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
-::  skey:19                 :  209  =b :   85 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
-::  skey:20                 :  220  =b :   90 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
-::  skey:21                 :  231  =b :   95 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
-::  skey:22                 :  242  =b :  100 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
-::  pgp:3                   :   48  =b :   50 c ::    shamrock responsive crucial revival vulcan yucatan
-::  pgp:4                   :   64  =b :   68 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer
-::  pgp:5                   :   80  =b :   85 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
-::  eff-large:6             :   77.5 b :   42 c ::    scope slacks patronize dumpling deny spill
-::  eff-large:7             :   90.4 b :   52 c ::    scope slacks patronize dumpling deny spill sharpener
-::  eff-large:8             :  103.3 b :   57 c ::    scope slacks patronize dumpling deny spill sharpener visa
-::  eff-large:9             :  116.3 b :   63 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo
-::  eff-large:10            :  129.2 b :   69 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class
-::  eff-large:11            :  142.1 b :   78 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload
-::  eff-large:12            :  155.0 b :   83 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-large:13            :  168.0 b :   93 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-short:8             :   82.7 b :   42 c ::    shaft sleep ankle path sled deaf shun zero
-::  eff-short:9             :   93.0 b :   48 c ::    shaft sleep ankle path sled deaf shun zero chunk
-::  eff-short:10            :  103.3 b :   54 c ::    shaft sleep ankle path sled deaf shun zero chunk candy
-::  eff-short:11            :  113.7 b :   60 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width
-::  eff-short:12            :  124.0 b :   66 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy
-::  eff-short:13            :  134.4 b :   72 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy
-::  eff-short:14            :  144.7 b :   78 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk
-::  eff-short:15            :  155.0 b :   84 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
-::  eff-short:16            :  165.4 b :   90 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
-::  eff-short:17            :  175.7 b :   95 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
-::  eff-short:18            :  186.1 b :  100 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
-::  eff-unique:6            :   62.0 b :   44 c ::    rekindle satchel agonizing mule sardine dibs
-::  eff-unique:7            :   72.3 b :   52 c ::    rekindle satchel agonizing mule sardine dibs riskily
-::  eff-unique:8            :   82.7 b :   62 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium
-::  eff-unique:9            :   93.0 b :   69 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot
-::  eff-unique:10           :  103.3 b :   79 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness
-::  eff-unique:11           :  113.7 b :   84 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:12           :  124.0 b :   92 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:13           :  134.4 b :   98 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  nato:7                  :   36.1 b :   40 c ::    wun victor juliett foxtrot echo papa ait
-::  nato:8                  :   41.3 b :   46 c ::    wun victor juliett foxtrot echo papa ait india
-::  nato:9                  :   46.5 b :   54 c ::    wun victor juliett foxtrot echo papa ait india uniform
-::  nato:10                 :   51.6 b :   59 c ::    wun victor juliett foxtrot echo papa ait india uniform fife
-::  nato:11                 :   56.8 b :   65 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel
-::  nato:12                 :   62.0 b :   72 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra
-::  nato:13                 :   67.2 b :   78 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo
-::  nato:14                 :   72.3 b :   82 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-::  nato:15                 :   77.5 b :   86 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-::  nato:16                 :   82.7 b :   94 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-::  nato:17                 :   87.8 b :   99 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  bip0039:8               :   88  =b :   42 c ::    robot ship night shield way yellow casual brother
+::  bip0039:9               :   99  =b :   47 c ::    robot ship night shield way yellow casual brother arrow
+::  bip0039:10              :  110  =b :   53 c ::    robot ship night shield way yellow casual brother arrow invest
+::  bip0039:11              :  121  =b :   58 c ::    robot ship night shield way yellow casual brother arrow invest chief
+::  bip0039:12              :  132  =b :   63 c ::    robot ship night shield way yellow casual brother arrow invest chief sting
+::  bip0039:13              :  143  =b :   67 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar
+::  bip0039:14              :  154  =b :   73 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
+::  bip0039:15              :  165  =b :   79 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
+::  bip0039:16              :  176  =b :   82 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
+::  bip0039:17              :  187  =b :   87 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
+::  bip0039:18              :  198  =b :   94 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
+::  bip0039:19              :  209  =b :  100 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
+::  bip0039:20              :  220  =b :   97 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
+::  skey:11                 :  121  =b :   42 c ::    mile noun hear norm wast yarn led i cur doug me
+::  skey:12                 :  132  =b :   41 c ::    mile noun hear norm wast yarn led i cur doug me sale
+::  skey:13                 :  143  =b :   45 c ::    mile noun hear norm wast yarn led i cur doug me sale fire
+::  skey:14                 :  154  =b :   49 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude
+::  skey:15                 :  165  =b :   53 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug
+::  skey:16                 :  176  =b :   57 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid
+::  skey:17                 :  187  =b :   60 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug
+::  skey:18                 :  198  =b :   64 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
+::  skey:19                 :  209  =b :   67 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
+::  skey:20                 :  220  =b :   71 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
+::  skey:21                 :  231  =b :   75 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
+::  skey:22                 :  242  =b :   79 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
+::  skey:23                 :  253  =b :   83 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
+::  skey:24                 :  264  =b :   87 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
+::  skey:25                 :  275  =b :   90 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
+::  skey:26                 :  286  =b :   94 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
+::  skey:27                 :  297  =b :   98 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
+::  skey:28                 :  308  =b :  100 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
+::  pgp:3                   :   48  =b :   45 c ::    shamrock responsive crucial revival vulcan yucatan
+::  pgp:4                   :   64  =b :   61 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer
+::  pgp:5                   :   80  =b :   76 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
+::  pgp:6                   :   96  =b :   91 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
+::  eff-large:5             :   64.6 b :   40 c ::    scope slacks patronize dumpling deny
+::  eff-large:6             :   77.5 b :   47 c ::    scope slacks patronize dumpling deny spill
+::  eff-large:7             :   90.4 b :   46 c ::    scope slacks patronize dumpling deny spill sharpener
+::  eff-large:8             :  103.3 b :   50 c ::    scope slacks patronize dumpling deny spill sharpener visa
+::  eff-large:9             :  116.3 b :   55 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo
+::  eff-large:10            :  129.2 b :   60 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class
+::  eff-large:11            :  142.1 b :   68 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload
+::  eff-large:12            :  155.0 b :   72 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
+::  eff-large:13            :  168.0 b :   81 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
+::  eff-large:14            :  180.9 b :   88 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
+::  eff-large:15            :  193.8 b :   96 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
+::  eff-large:16            :  206.7 b :   98 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
+::  eff-short:8             :   82.7 b :   40 c ::    shaft sleep ankle path sled deaf shun zero
+::  eff-short:9             :   93.0 b :   40 c ::    shaft sleep ankle path sled deaf shun zero chunk
+::  eff-short:10            :  103.3 b :   45 c ::    shaft sleep ankle path sled deaf shun zero chunk candy
+::  eff-short:11            :  113.7 b :   50 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width
+::  eff-short:12            :  124.0 b :   55 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy
+::  eff-short:13            :  134.4 b :   60 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy
+::  eff-short:14            :  144.7 b :   65 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk
+::  eff-short:15            :  155.0 b :   70 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
+::  eff-short:16            :  165.4 b :   75 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
+::  eff-short:17            :  175.7 b :   79 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
+::  eff-short:18            :  186.1 b :   83 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
+::  eff-short:19            :  196.4 b :   88 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
+::  eff-short:20            :  206.7 b :   93 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
+::  eff-short:21            :  217.1 b :   96 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
+::  eff-short:22            :  227.4 b :  100 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
+::  eff-short:23            :  237.8 b :   94 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
+::  eff-short:24            :  248.1 b :  100 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
+::  eff-unique:5            :   51.6 b :   45 c ::    rekindle satchel agonizing mule sardine
+::  eff-unique:6            :   62.0 b :   42 c ::    rekindle satchel agonizing mule sardine dibs
+::  eff-unique:7            :   72.3 b :   46 c ::    rekindle satchel agonizing mule sardine dibs riskily
+::  eff-unique:8            :   82.7 b :   55 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium
+::  eff-unique:9            :   93.0 b :   61 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot
+::  eff-unique:10           :  103.3 b :   70 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness
+::  eff-unique:11           :  113.7 b :   74 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
+::  eff-unique:12           :  124.0 b :   81 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
+::  eff-unique:13           :  134.4 b :   86 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
+::  eff-unique:14           :  144.7 b :   92 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
+::  eff-unique:15           :  155.0 b :   98 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
+::  nato:7                  :   36.1 b :   42 c ::    wun victor juliett foxtrot echo papa ait
+::  nato:8                  :   41.3 b :   40 c ::    wun victor juliett foxtrot echo papa ait india
+::  nato:9                  :   46.5 b :   46 c ::    wun victor juliett foxtrot echo papa ait india uniform
+::  nato:10                 :   51.6 b :   50 c ::    wun victor juliett foxtrot echo papa ait india uniform fife
+::  nato:11                 :   56.8 b :   55 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel
+::  nato:12                 :   62.0 b :   61 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra
+::  nato:13                 :   67.2 b :   66 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo
+::  nato:14                 :   72.3 b :   69 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:15                 :   77.5 b :   72 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:16                 :   82.7 b :   79 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:17                 :   87.8 b :   83 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:18                 :   93.0 b :   87 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:19                 :   98.2 b :   90 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:20                 :  103.3 b :   96 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:21                 :  108.5 b :  100 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:22                 :  113.7 b :   98 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:23                 :  118.9 b :  100 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
 ::  bytes-hex:20            :  160  =b :   40 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf
 ::  bytes-hex:21            :  168  =b :   42 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02
 ::  bytes-hex:22            :  176  =b :   44 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c1
@@ -200,12 +235,11 @@
 ::  bytes-hex:48            :  384  =b :   96 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
 ::  bytes-hex:49            :  392  =b :   98 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
 ::  bytes-hex:50            :  400  =b :  100 c ::    7f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de549d1d43 [...]
-::  token-hex-256           :  256  =b :   64 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f958b761dabe5f6d0069dc102cf310a16
-::  flake:128               :  128  =b :   40 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6
-::  flake:160               :  160  =b :   48 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf
-::  flake:192               :  192  =b :   56 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06
-::  flake:224               :  224  =b :   64 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab
-::  flake:256               :  256  =b :   72 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95
-::  flake:288               :  288  =b :   80 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de
-::  flake:320               :  320  =b :   88 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de [...]
-::  flake:352               :  352  =b :   96 c ::    29607b747f6f2ccdb23f2abb7b69278e947c01c6160a31cf02c19d06d0f6e5ab1d768b95117be1de [...]
+::  token-hex-256           :  256  =b :   65 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f-958b761dabe5f6d0069dc102cf310a16
+::  flake:128               :  128  =b :   44 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6
+::  flake:160               :  160  =b :   53 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf
+::  flake:192               :  192  =b :   62 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06
+::  flake:224               :  224  =b :   71 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab
+::  flake:256               :  256  =b :   80 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95
+::  flake:288               :  288  =b :   89 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]
+::  flake:320               :  320  =b :   98 c ::    29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95 [...]

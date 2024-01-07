@@ -1,0 +1,45 @@
+>>  z-tokens generate --token-pattern digits-base32-hex:32 --describe --random-testing
+
+
+**  ~~~~~~~~  digits-base32-hex:32
+\_  labels:   digits-base32-hex digits-base32 encoding password
+\_  bits:     160  (exact)
+\_  length:   39  (with spaces)
+\_  length:   32  (without spaces)
+\_  characters:
+    \_  letters:  21
+    \_  l. upper: 0
+    \_  l. lower: 21
+    \_  digits:   11
+    \_  symbols:  0
+    \_  no space: 32
+\_  usable for:
+    \_  cryptography            OK         with    +32.00  bits of margin
+    \_  authentication          OK         with   +128.00  bits of margin
+    \_  archival storage        OK         with    +59.70  bits of margin
+    \_  long term storage       OK         with    +83.16  bits of margin
+    \_  short term storage      OK         with    +90.00  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+
+n8pv 47gk fs2v t02p lobv 88lp 9k16 abka
+1teq tosb h39r g639 a9vo n8b9 sj6h 4qps
+ec8v 27sl k01l iumt 4rkf hgi4 1e3l 4m03
+s5dn lhv5 62m9 3gfv 1f67 g6lf vddh 8jlf
+k6mk 9cq9 ldgn g811 pv73 8sce 8t8h ivo6
+1585 njnp 78r1 go4c d0b1 1470 gppp hurh
+f5h7 ib32 3946 ot8k 25ea v0pv uak5 cvcs
+6mrj 9mbt qtlc fnsu 16rs 055h eov3 39r7
+hh9m beej utpb ru13 rkco jvfo g6if p4v8
+0f5e sgsm 7log 5ir7 q63g pvht ov4i 4bvh

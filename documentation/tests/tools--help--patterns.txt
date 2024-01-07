@@ -19,6 +19,9 @@
   --show-labels
     **  show labels
 
+  --show-chars
+    **  show characters count
+
   --show-security
     **  show security guess-timates
 

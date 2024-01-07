@@ -29,6 +29,7 @@ patterns / default / no-optional-separators :: patterns --all --token-skip-optio
 patterns / default / no-mandatory-separators :: patterns --all --token-skip-mandatory-separators true --token-skip-optional-separators true --random-testing
 patterns / default / show-aliases :: patterns --all --show-aliases --random-testing
 patterns / default / show-labels :: patterns --all --show-labels --random-testing
+patterns / default / show-characters :: patterns --all --show-chars --random-testing
 patterns / default / show-security :: patterns --all --show-security --random-testing
 patterns / default / show-bruteforce :: patterns --all --show-bruteforce --random-testing
 patterns / default / show-all :: patterns --all --show-all --random-testing
@@ -85,12 +86,14 @@ patterns / identifiers / show-all / shortest :: patterns --identifiers-only --al
 
 generate / default :: generate --random-testing
 generate / default / quick :: g --random-testing
+generate / default / describe :: generate --describe --random-testing
 
 
 generate / pattern / default :: generate --token-pattern digits-base32-hex:32 --random-testing
 generate / pattern / compact :: generate --token-pattern digits-base32-hex:32 --compact true --random-testing
 generate / pattern / no-optional-separators :: generate --token-pattern digits-base32-hex:32 --token-skip-optional-separators true --random-testing
 generate / pattern / no-mandatory-separators :: generate --token-pattern mnemonic:4 --token-skip-mandatory-separators true --token-skip-optional-separators true --random-testing
+generate / pattern / describe :: generate --token-pattern digits-base32-hex:32 --describe --random-testing
 
 
 
