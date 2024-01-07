@@ -9,15 +9,18 @@
 
 
 --<<.. deploy / list / variant
-	linux--x86_64
-	linux--aarch64
-	linux--armv6
+	linux--x86_64--glibc
+	linux--aarch64--glibc
+	linux--armv6--glibc
 	linux--x86_64--musl
 	linux--aarch64--musl
 	linux--armv6--musl
-	linux--x86_64--static
-	linux--aarch64--static
-	linux--armv6--static
+	linux--x86_64--glibc--static
+	linux--aarch64--glibc--static
+	linux--armv6--glibc--static
+	linux--x86_64--musl--static
+	linux--aarch64--musl--static
+	linux--armv6--musl--static
 	darwin--x86_64
 	darwin--aarch64
 	android--x86_64
