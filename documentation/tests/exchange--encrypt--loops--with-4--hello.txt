@@ -1,0 +1,13 @@
+>>  z-tokens exchange encrypt --derivation-loops 4 --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx
+
+
+#1,  3Lms6m61BZM9o ai2514tocjUU  HJYTiDEBjug9  A24yhuyzhb5N  3LBP96VRzrm3o
+#2,  Hm2JquTWgpXS  xo3H6u82oT3d  46J96vpfofhGm oRRLxdbKxipj  3nsbs1ApNaZWF
+#3,  cTcpmunmxa4Z  2ozHkFRasG6B5 2V5Xo6F5JDqMm 4AXT8FZ1LRrnk 2sShwKPci3q3C
+#4,  3xBSvPLYn58Uz 24roaVmjhjTV  46AxVHeVwMDec 2PkcCSMU69gqn nKxRhurWxrLk
+#5,  MtAVBqhksdUc  3LaZMsHcW4z2W fKeCTm8wHZ4N  3bNMY6f6Z2ZSd 2H8DUDR7Pzmqj
+#6,  3vthBnQexCDnX 2K32wrFtnZEho 3e7MszqaXxEQ2 qXF7H36WCios  3qvd6sz1Ag1rV
+#7,  ZkXQbYxSCcTa  NhdEjWkoBgH9  1NNBbpwxUJ3P  42oZZvT2aKq3q 6V51frDGw1Jp
+#8,  2HDx4zqnG34ex 3gkZmfVb4cEHX 2ZuwGkYkN9miF 2NwWZhVnwv79T 3esSaGc2RVj6o
+#9.  G1VAeBJLpb8S
+

@@ -148,6 +148,9 @@
   --ballast-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
 
+  --derivation-loops  {count}
+    **  number of derivation loops
+
   -S --ssh-wrap  {string}
     **  shared SSH agent key handle (multiple allowed, in any order, deduplicated)
 

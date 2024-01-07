@@ -317,6 +317,12 @@ exchange / password / ssh-wrap-only / hello :: exchange password --ssh-wrap ztxw
 exchange / password / ssh-wrap-only / hello / with-associated :: exchange password --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --associated testing <<< $'hello world!\n'
 exchange / password / ssh-wrap-only / notice :: exchange password --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 < ./notice.txt
 
+exchange / password / loops / none / hello :: exchange password --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx <<< $'hello world!\n'
+exchange / password / loops / with-1 / hello :: exchange password --derivation-loops 1 --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx <<< $'hello world!\n'
+exchange / password / loops / with-2 / hello :: exchange password --derivation-loops 2 --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx <<< $'hello world!\n'
+exchange / password / loops / with-3 / hello :: exchange password --derivation-loops 3 --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx <<< $'hello world!\n'
+exchange / password / loops / with-4 / hello :: exchange password --derivation-loops 4 --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx <<< $'hello world!\n'
+
 
 exchange / encrypt / x25519-self / empty :: exchange encrypt --siv --sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m < /dev/null
 exchange / encrypt / x25519-self / hello :: exchange encrypt --siv --sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m <<< $'hello world!\n'
@@ -357,6 +363,12 @@ exchange / encrypt / ssh-wrap-only / empty :: exchange encrypt --siv --ssh-wrap 
 exchange / encrypt / ssh-wrap-only / hello :: exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 <<< $'hello world!\n'
 exchange / encrypt / ssh-wrap-only / hello / with-associated :: exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --associated testing <<< $'hello world!\n'
 exchange / encrypt / ssh-wrap-only / notice :: exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 < ./notice.txt
+
+exchange / encrypt / loops / none / hello :: exchange encrypt --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx <<< $'hello world!\n'
+exchange / encrypt / loops / with-1 / hello :: exchange encrypt --derivation-loops 1 --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx <<< $'hello world!\n'
+exchange / encrypt / loops / with-2 / hello :: exchange encrypt --derivation-loops 2 --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx <<< $'hello world!\n'
+exchange / encrypt / loops / with-3 / hello :: exchange encrypt --derivation-loops 3 --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx <<< $'hello world!\n'
+exchange / encrypt / loops / with-4 / hello :: exchange encrypt --derivation-loops 4 --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx <<< $'hello world!\n'
 
 
 exchange / ssh / wrap / empty :: exchange ssh wrap --key ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 < /dev/null

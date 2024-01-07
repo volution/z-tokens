@@ -1,13 +1,13 @@
 >>  z-tokens exchange encrypt --siv --sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m
 
 
-#1,  2Fy9NoLM4CNfL gxvLwYfS45kd  47kHKrh5uHZGp 24a4aFTdBnp5Q 3wxXsXrMZTrMp
-#2,  47Ts6TPK37ZDL 26UYkhK21JqW8 31YTbT86vsNTc XRWisbq17WxE  3hbabUpXx7Lbc
-#3,  EXJRYdRCXAkX  3aHKtLemr1Ud7 u947c8mAg5A1  337BiEAzCE6x5 2VUKDh7o2K1Ud
-#4,  3nZLYZjjtvuJP rNxPo4i9zJUb  36YiCZMgGghyM 3FGMvrwRnJky9 fx6Dr31qxXPM
-#5,  umfYJBLPHHDc  3pdfAXWBYZPYy 2Cmz5Xcf5ksCF BGcKTJnfheiN  2ANKM667X76pw
-#6,  VwQT1tRNa1pg  2ygtpiytQjcmi 44ygxRaAFnvFY SkaGzPg3vKpv  3EgQEP6ee8Tuv
-#7,  3LpYCRsHiLpra 3FVoDoJY7W47H 2kLPFpxdDn2cU 2phpiksyxQSP  37z7msxQsJb6S
-#8,  2Gae8d2Hb3dwA 2cL1tUPZ4m6Yg WK4miAFct5gL  7LkBN5UmLjAt  haGbC1fpvxC3
-#9.  2Rk6W3CEc8Arq
+#1,  3Lms6mRMkFm3B 21pho6zCZbBsg ka7zfoxxawtL  292NFaVEsJDuS 3wivEGiTnYcZH
+#2,  3rkD3nq5SjMJz 3TpEU35mmhp2Z 2UkSZzbyCtyVW 2cmEpX6vHNd9n 2fSnTWEjF2RUY
+#3,  tTACCcbq7fz3  2eXQ2sdrQmrTR 3yCCAUU5y1byG 3ixf1FskXda21 zbPAGTUN5WN7
+#4,  46nHVF5eKWSPJ DEun9zfnw2Cm  2KMxYGti3kGPn 3YggQhgK1AWcm 3hQnGE7A6Dg6M
+#5,  4f8KMsrhXoFe  3HWE8zcBdgw3z aJNi4kd7fjpU  mv6LCpk95Jxe  3v75UrocvmNwg
+#6,  21QFEcCjzHSRf 2xCZpuBYNa6yT 32n61xFj8S1Ej 2bisRPTNDCb7v 2avYHh6GwHEuC
+#7,  2gDhsXJYoNSZV 21BeCKxmtiQhT 47utDuzqZafDy 2TZ1VnbJ8YTs5 3VMwiP1swAeEu
+#8,  cDYDtcjvR9ut  2tEMoVeXraG3Q 2guh2Fn317Wrg 2F4b7zczo8dqA 3iYAHeHD2RHc
+#9.  3WncSYKiUPwqA
 

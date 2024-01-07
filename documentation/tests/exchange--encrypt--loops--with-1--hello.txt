@@ -1,4 +1,4 @@
->>  z-tokens exchange encrypt --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx
+>>  z-tokens exchange encrypt --derivation-loops 1 --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx
 
 
 #1,  3Lms6mZ3BW6dt 27qScQdFab9qx 2xak1A27JUHxb 3EsiWf13D4SC4 4FTzaM49ofR4c
