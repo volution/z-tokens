@@ -165,7 +165,7 @@ pub fn blake3_derive_key <const NF : usize, const NV : usize, WC, WO> (
 		_purpose : &'static str,
 		_fixed_elements : &[&[u8; 32]; NF],
 		_variable_elements : &[&[u8]; NV],
-		_index : Option<u32>,
+		_index : Option<u64>,
 	) -> WO
 	where
 		WC : Fn ([u8; 32]) -> WO,
@@ -186,7 +186,7 @@ pub fn blake3_keyed_hash <const NF : usize, const NV : usize, WC, WO> (
 		_key : &[u8; 32],
 		_fixed_elements : &[&[u8; 32]; NF],
 		_variable_elements : &[&[u8]; NV],
-		_index : Option<u32>,
+		_index : Option<u64>,
 	) -> WO
 	where
 		WC : Fn ([u8; 32]) -> WO,
@@ -208,13 +208,13 @@ pub fn blake3_update <const NF : usize, const NV : usize> (
 		_hasher : &mut blake3::Hasher,
 		_fixed_elements : &[&[u8; 32]; NF],
 		_variable_elements : &[&[u8]; NV],
-		_index : Option<u32>,
+		_index : Option<u64>,
 	) -> ()
 {
 	if let Some (_index) = _index {
 		{
-			let mut _bytes = [0u8; 4];
-			BigEndian::write_u32 (&mut _bytes, _index);
+			let mut _bytes = [0u8; 8];
+			BigEndian::write_u64 (&mut _bytes, _index);
 			_hasher.update (&_bytes);
 		}
 	}
@@ -225,11 +225,11 @@ pub fn blake3_update <const NF : usize, const NV : usize> (
 	
 	for _variable_element in _variable_elements {
 		
-		let _size : u32 = _variable_element.len () .try_into () .else_panic (0xe5d3933d);
+		let _size : u64 = _variable_element.len () .try_into () .else_panic (0xe5d3933d);
 		
 		{
-			let mut _bytes = [0u8; 4];
-			BigEndian::write_u32 (&mut _bytes, _size);
+			let mut _bytes = [0u8; 8];
+			BigEndian::write_u64 (&mut _bytes, _size);
 			_hasher.update (&_bytes);
 		}
 		
