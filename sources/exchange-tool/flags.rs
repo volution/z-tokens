@@ -120,10 +120,12 @@ pub(crate) struct MaterialFlags {
 	pub values : Vec<OsString>,
 	pub from_environment : Vec<OsString>,
 	pub from_file : Vec<OsString>,
-	#[ cfg (unix) ]
+	#[ cfg (target_family = "unix") ]
 	pub from_fd : Vec<c_int>,
 	pub from_stdin : Option<bool>,
 	pub from_pinentry : Vec<String>,
+	#[ cfg (target_os = "linux") ]
+	pub from_lkkrs : Vec<String>,
 }
 
 
@@ -150,10 +152,12 @@ pub(crate) enum MaterialSource<Material>
 	FromString (OsString, bool),
 	FromEnvironment (OsString, bool),
 	FromFile (PathBuf, bool),
-	#[ cfg (unix) ]
+	#[ cfg (target_family = "unix") ]
 	FromFd (OwnedFd, bool),
 	FromStdin (bool),
 	FromPinentry (String, bool),
+	#[ cfg (target_os = "linux") ]
+	FromLkkrs (String, bool),
 }
 
 
@@ -239,10 +243,12 @@ impl MaterialFlags {
 				values : Vec::new (),
 				from_environment : Vec::new (),
 				from_file : Vec::new (),
-				#[ cfg (unix) ]
+				#[ cfg (target_family = "unix") ]
 				from_fd : Vec::new (),
 				from_stdin : None,
 				from_pinentry : Vec::new (),
+				#[ cfg (target_os = "linux") ]
+				from_lkkrs : Vec::new (),
 			}
 	}
 	
@@ -256,6 +262,7 @@ impl MaterialFlags {
 				_long_fd : &'static str,
 				_long_stdin : &'static str,
 				_long_pinentry : &'static str,
+				_long_lkkrs : &'static str,
 				_description : &'static str,
 			) -> FlagsResult
 	{
@@ -274,7 +281,7 @@ impl MaterialFlags {
 				.with_placeholder ("path")
 				.with_description ("from file");
 		
-		#[ cfg (unix) ]
+		#[ cfg (target_family = "unix") ]
 		_flags.define_multiple_flag_0 (&mut self.from_fd)
 				.with_flag ((), _long_fd)
 				.with_placeholder ("fd")
@@ -288,6 +295,12 @@ impl MaterialFlags {
 				.with_flag ((), _long_pinentry)
 				.with_placeholder ("prompt")
 				.with_description ("via pinentry");
+		
+		#[ cfg (target_os = "linux") ]
+		_flags.define_multiple_flag_0 (&mut self.from_lkkrs)
+				.with_flag ((), _long_lkkrs)
+				.with_placeholder ("selector")
+				.with_description ("from Linux Kernel key-retention-service");
 		
 		Ok (())
 	}
@@ -310,7 +323,7 @@ impl SendersPrivateFlags {
 		self.materials.flags (
 				_flags,
 				's',
-				"sender", "sender-env", "sender-path", "sender-fd", "sender-stdin", "sender-pinentry",
+				"sender", "sender-env", "sender-path", "sender-fd", "sender-stdin", "sender-pinentry", "sender-lkkrs",
 				"sender private key (multiple allowed, in any order, deduplicated)",
 			)
 	}
@@ -341,7 +354,7 @@ impl SendersPublicFlags {
 		self.materials.flags (
 				_flags,
 				's',
-				"sender", "sender-env", "sender-path", "sender-fd", "sender-stdin", "sender-pinentry",
+				"sender", "sender-env", "sender-path", "sender-fd", "sender-stdin", "sender-pinentry", "sender-lkkrs",
 				"sender public key (multiple allowed, in any order, deduplicated)",
 			)
 	}
@@ -372,7 +385,7 @@ impl RecipientsPrivateFlags {
 		self.materials.flags (
 				_flags,
 				'r',
-				"recipient", "recipient-env", "recipient-path", "recipient-fd", "recipient-stdin", "recipient-pinentry",
+				"recipient", "recipient-env", "recipient-path", "recipient-fd", "recipient-stdin", "recipient-pinentry", "recipient-lkkrs",
 				"recipient private key (multiple allowed, in any order, deduplicated)",
 			)
 	}
@@ -403,7 +416,7 @@ impl RecipientsPublicFlags {
 		self.materials.flags (
 				_flags,
 				'r',
-				"recipient", "recipient-env", "recipient-path", "recipient-fd", "recipient-stdin", "recipient-pinentry",
+				"recipient", "recipient-env", "recipient-path", "recipient-fd", "recipient-stdin", "recipient-pinentry", "recipient-lkkrs",
 				"recipient public key (multiple allowed, in any order, deduplicated)",
 			)
 	}
@@ -434,7 +447,7 @@ impl AssociatedFlags {
 		self.materials.flags (
 				_flags,
 				'a',
-				"associated", "associated-env", "associated-path", "associated-fd", "associated-stdin", "associated-pinentry",
+				"associated", "associated-env", "associated-path", "associated-fd", "associated-stdin", "associated-pinentry", "associated-lkkrs",
 				"associated data (multiple allowed, **order and duplicates are significant**)",
 			)
 	}
@@ -469,7 +482,7 @@ impl SecretsFlags {
 		self.materials.flags (
 				_flags,
 				'x',
-				"secret", "secret-env", "secret-path", "secret-fd", "secret-stdin", "secret-pinentry",
+				"secret", "secret-env", "secret-path", "secret-fd", "secret-stdin", "secret-pinentry", "secret-lkkrs",
 				"shared secret, for additional security (multiple allowed, in any order, deduplicated)",
 			)
 	}
@@ -500,7 +513,7 @@ impl PinsFlags {
 		self.materials.flags (
 				_flags,
 				'e',
-				"pin", "pin-env", "pin-path", "pin-fd", "pin-stdin", "pin-pinentry",
+				"pin", "pin-env", "pin-path", "pin-fd", "pin-stdin", "pin-pinentry", "pin-lkkrs",
 				"shared PIN, for **WEAK** additional security (multiple allowed, in any order, deduplicated)",
 			)
 	}
@@ -535,7 +548,7 @@ impl SeedsFlags {
 		self.materials.flags (
 				_flags,
 				'e',
-				"seed", "seed-env", "seed-path", "seed-fd", "seed-stdin", "seed-pinentry",
+				"seed", "seed-env", "seed-path", "seed-fd", "seed-stdin", "seed-pinentry", "seed-lkkrs",
 				"shared seed, for additional security (multiple allowed, in any order, deduplicated)",
 			)
 	}
@@ -566,7 +579,7 @@ impl BallastsFlags {
 		self.materials.flags (
 				_flags,
 				'b',
-				"ballast", "ballast-env", "ballast-path", "ballast-fd", "ballast-stdin", "ballast-pinentry",
+				"ballast", "ballast-env", "ballast-path", "ballast-fd", "ballast-stdin", "ballast-pinentry", "ballast-lkkrs",
 				"shared ballast, for additional security (multiple allowed, in any order, deduplicated)",
 			)
 	}
@@ -599,7 +612,7 @@ impl SshWrappersFlags {
 		self.keys.flags (
 				_flags,
 				'S',
-				"ssh-wrap", "ssh-wrap-env", "ssh-wrap-path", "ssh-wrap-fd", "ssh-wrap-stdin", "ssh-wrap-pinentry",
+				"ssh-wrap", "ssh-wrap-env", "ssh-wrap-path", "ssh-wrap-fd", "ssh-wrap-stdin", "ssh-wrap-pinentry", "ssh-wrap-lkkrs",
 				"shared SSH agent key handle (multiple allowed, in any order, deduplicated)",
 			)
 	}
@@ -881,7 +894,7 @@ impl MaterialFlags {
 			_sources.push (_source);
 		}
 		
-		#[ cfg (unix) ]
+		#[ cfg (target_family = "unix") ]
 		for _descriptor in self.from_fd.iter () {
 			let _descriptor = unsafe { OwnedFd::from_raw_fd (*_descriptor) };
 			let _source = MaterialSource::FromFd (_descriptor, _empty_is_missing);
@@ -898,6 +911,15 @@ impl MaterialFlags {
 				continue;
 			}
 			let _source = MaterialSource::FromPinentry (String::from (_prompt), _empty_is_missing);
+			_sources.push (_source);
+		}
+		
+		#[ cfg (target_os = "linux") ]
+		for _selector in self.from_lkkrs.iter () {
+			if _empty_is_missing && _selector.is_empty () {
+				continue;
+			}
+			let _source = MaterialSource::FromLkkrs (String::from (_selector), _empty_is_missing);
 			_sources.push (_source);
 		}
 		
@@ -987,7 +1009,7 @@ impl <Material> MaterialSource<Material>
 			MaterialSource::FromFile (_path, _empty_is_missing) =>
 				_read_to_end (File::open (_path) .else_wrap (0xd6609363) ?, _empty_is_missing) ?,
 			
-			#[ cfg (unix) ]
+			#[ cfg (target_family = "unix") ]
 			MaterialSource::FromFd (_descriptor, _empty_is_missing) =>
 				_read_to_end (File::from (_descriptor), _empty_is_missing) ?,
 			
@@ -1009,6 +1031,24 @@ impl <Material> MaterialSource<Material>
 					None
 				} else {
 					Some (MaterialData::String (_password))
+				}
+			}
+			
+			#[ cfg (target_os = "linux") ]
+			MaterialSource::FromLkkrs (_selector, _empty_is_missing) => {
+				let _data = lkkrs_key_read (_selector.as_str ()) .else_wrap (0xedf99975) ?;
+				if let Some (_data) = _data {
+					if _empty_is_missing && _data.is_empty () {
+						None
+					} else {
+						Some (MaterialData::Bytes (_data))
+					}
+				} else {
+					if _empty_is_missing {
+						None
+					} else {
+						fail! (0x3a7a5ec1);
+					}
 				}
 			}
 		};
