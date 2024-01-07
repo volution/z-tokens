@@ -21,7 +21,8 @@ pub const PASSWORD_SIZE_MAX : usize = 4096;
 
 #[ derive (Clone) ]
 pub struct OutputParameters {
-	pub size : usize,
+	pub hash_size : usize,
+	pub truncate_size : usize,
 	pub discard_right : bool,
 	pub reversed : bool,
 }
@@ -183,7 +184,7 @@ pub enum Algorithm {
 impl Family {
 	
 	
-	pub fn output_size_range (&self) -> (usize, usize, usize) {
+	pub fn hash_size_range (&self) -> (usize, usize, usize) {
 		match self {
 			
 			Family::MD5 => (1, 128 / 8, 128 / 8),
@@ -261,89 +262,89 @@ impl Family {
 	}
 	
 	
-	pub fn algorithm_for_output_size (&self, _output_size : usize) -> AlgorithmResult<Algorithm> {
+	pub fn algorithm_for_hash_size (&self, _hash_size : usize) -> AlgorithmResult<Algorithm> {
 		#[ allow (unused_parens) ]
 		match self {
 			
-			Family::MD5 if _output_size <= 128 / 8 => Ok (Algorithm::MD5),
+			Family::MD5 if _hash_size <= 128 / 8 => Ok (Algorithm::MD5),
 			Family::MD5 => fail! (0x7ffeffd3),
 			
-			Family::SHA1 if _output_size <= 160 / 8 => Ok (Algorithm::SHA1),
+			Family::SHA1 if _hash_size <= 160 / 8 => Ok (Algorithm::SHA1),
 			Family::SHA1 => fail! (0xe2bba0e0),
 			
-			(Family::SHA2 | Family::SHA2_224) if _output_size <= 224 / 8 => Ok (Algorithm::SHA2_224),
-			(Family::SHA2 | Family::SHA2_256) if _output_size <= 256 / 8 => Ok (Algorithm::SHA2_256),
-			(Family::SHA2 | Family::SHA2_384) if _output_size <= 384 / 8 => Ok (Algorithm::SHA2_384),
-			(Family::SHA2 | Family::SHA2_512) if _output_size <= 512 / 8 => Ok (Algorithm::SHA2_512),
+			(Family::SHA2 | Family::SHA2_224) if _hash_size <= 224 / 8 => Ok (Algorithm::SHA2_224),
+			(Family::SHA2 | Family::SHA2_256) if _hash_size <= 256 / 8 => Ok (Algorithm::SHA2_256),
+			(Family::SHA2 | Family::SHA2_384) if _hash_size <= 384 / 8 => Ok (Algorithm::SHA2_384),
+			(Family::SHA2 | Family::SHA2_512) if _hash_size <= 512 / 8 => Ok (Algorithm::SHA2_512),
 			(Family::SHA2 | Family::SHA2_224 | Family::SHA2_256 | Family::SHA2_384 | Family::SHA2_512) => fail! (0xbaab0fdf),
 			
-			(Family::SHA3 | Family::SHA3_224) if _output_size <= 224 / 8 => Ok (Algorithm::SHA3_224),
-			(Family::SHA3 | Family::SHA3_256) if _output_size <= 256 / 8 => Ok (Algorithm::SHA3_256),
-			(Family::SHA3 | Family::SHA3_384) if _output_size <= 384 / 8 => Ok (Algorithm::SHA3_384),
-			(Family::SHA3 | Family::SHA3_512) if _output_size <= 512 / 8 => Ok (Algorithm::SHA3_512),
+			(Family::SHA3 | Family::SHA3_224) if _hash_size <= 224 / 8 => Ok (Algorithm::SHA3_224),
+			(Family::SHA3 | Family::SHA3_256) if _hash_size <= 256 / 8 => Ok (Algorithm::SHA3_256),
+			(Family::SHA3 | Family::SHA3_384) if _hash_size <= 384 / 8 => Ok (Algorithm::SHA3_384),
+			(Family::SHA3 | Family::SHA3_512) if _hash_size <= 512 / 8 => Ok (Algorithm::SHA3_512),
 			(Family::SHA3 | Family::SHA3_224 | Family::SHA3_256 | Family::SHA3_384 | Family::SHA3_512) => fail! (0xfa6ca215),
 			
-			Family::Shake_128 if _output_size <= OUTPUT_SIZE_MAX => Ok (Algorithm::Shake_128),
-			Family::Shake_256 if _output_size <= OUTPUT_SIZE_MAX => Ok (Algorithm::Shake_256),
+			Family::Shake_128 if _hash_size <= OUTPUT_SIZE_MAX => Ok (Algorithm::Shake_128),
+			Family::Shake_256 if _hash_size <= OUTPUT_SIZE_MAX => Ok (Algorithm::Shake_256),
 			(Family::Shake_128 | Family::Shake_256) => fail! (0x3d8e25a8),
 			
-			Family::GitSHA1 if _output_size <= 160 / 8 => Ok (Algorithm::GitSHA1),
+			Family::GitSHA1 if _hash_size <= 160 / 8 => Ok (Algorithm::GitSHA1),
 			Family::GitSHA1 => fail! (0x8e8add74),
-			Family::GitSHA2 if _output_size <= 256 / 8 => Ok (Algorithm::GitSHA2),
+			Family::GitSHA2 if _hash_size <= 256 / 8 => Ok (Algorithm::GitSHA2),
 			Family::GitSHA2 => fail! (0x85fd3470),
 			
-			(Family::Blake2 | Family::Blake2s) if _output_size <= 32 => Ok (Algorithm::Blake2s),
-			(Family::Blake2 | Family::Blake2b) if _output_size <= 64 => Ok (Algorithm::Blake2b),
+			(Family::Blake2 | Family::Blake2s) if _hash_size <= 32 => Ok (Algorithm::Blake2s),
+			(Family::Blake2 | Family::Blake2b) if _hash_size <= 64 => Ok (Algorithm::Blake2b),
 			(Family::Blake2 | Family::Blake2s | Family::Blake2b) => fail! (0x9cd36d05),
 			
-			Family::Blake3 if _output_size <= OUTPUT_SIZE_MAX => Ok (Algorithm::Blake3),
+			Family::Blake3 if _hash_size <= OUTPUT_SIZE_MAX => Ok (Algorithm::Blake3),
 			Family::Blake3 => fail! (0x88a2c2cb),
 			
-			(Family::SipHash | Family::SipHash_64) if _output_size <= 64 / 8 => Ok (Algorithm::SipHash_64),
-			(Family::SipHash | Family::SipHash_128) if _output_size <= 128 / 8 => Ok (Algorithm::SipHash_128),
+			(Family::SipHash | Family::SipHash_64) if _hash_size <= 64 / 8 => Ok (Algorithm::SipHash_64),
+			(Family::SipHash | Family::SipHash_128) if _hash_size <= 128 / 8 => Ok (Algorithm::SipHash_128),
 			(Family::SipHash | Family::SipHash_64 | Family::SipHash_128) => fail! (0xdf55d2f8),
 			
-			Family::SeaHash if _output_size <= 64 / 8 => Ok (Algorithm::SeaHash),
+			Family::SeaHash if _hash_size <= 64 / 8 => Ok (Algorithm::SeaHash),
 			Family::SeaHash => fail! (0xba92317e),
 			
-			(Family::HighwayHash | Family::HighwayHash_64) if _output_size <= 64 / 8 => Ok (Algorithm::HighwayHash_64),
-			(Family::HighwayHash | Family::HighwayHash_128) if _output_size <= 128 / 8 => Ok (Algorithm::HighwayHash_128),
-			(Family::HighwayHash | Family::HighwayHash_256) if _output_size <= 256 / 8 => Ok (Algorithm::HighwayHash_256),
+			(Family::HighwayHash | Family::HighwayHash_64) if _hash_size <= 64 / 8 => Ok (Algorithm::HighwayHash_64),
+			(Family::HighwayHash | Family::HighwayHash_128) if _hash_size <= 128 / 8 => Ok (Algorithm::HighwayHash_128),
+			(Family::HighwayHash | Family::HighwayHash_256) if _hash_size <= 256 / 8 => Ok (Algorithm::HighwayHash_256),
 			(Family::HighwayHash | Family::HighwayHash_64 | Family::HighwayHash_128 | Family::HighwayHash_256) => fail! (0xdf7f0a14),
 			
-			(Family::XxHash | Family::XxHash_32) if _output_size <= 32 / 8 => Ok (Algorithm::XxHash_32),
-			(Family::XxHash | Family::XxHash_64) if _output_size <= 64 / 8 => Ok (Algorithm::XxHash_64),
+			(Family::XxHash | Family::XxHash_32) if _hash_size <= 32 / 8 => Ok (Algorithm::XxHash_32),
+			(Family::XxHash | Family::XxHash_64) if _hash_size <= 64 / 8 => Ok (Algorithm::XxHash_64),
 			(Family::XxHash | Family::XxHash_32 | Family::XxHash_64) => fail! (0x99f883ef),
 			
-			(Family::Xxh3 | Family::Xxh3_64) if _output_size <= 64 / 8 => Ok (Algorithm::Xxh3_64),
-			(Family::Xxh3 | Family::Xxh3_128) if _output_size <= 128 / 8 => Ok (Algorithm::Xxh3_128),
+			(Family::Xxh3 | Family::Xxh3_64) if _hash_size <= 64 / 8 => Ok (Algorithm::Xxh3_64),
+			(Family::Xxh3 | Family::Xxh3_128) if _hash_size <= 128 / 8 => Ok (Algorithm::Xxh3_128),
 			(Family::Xxh3 | Family::Xxh3_64 | Family::Xxh3_128) => fail! (0x10f1551f),
 			
-			Family::Djb2 if _output_size <= 32 / 8 => Ok (Algorithm::Djb2),
-			Family::SDBM if _output_size <= 32 / 8 => Ok (Algorithm::SDBM),
+			Family::Djb2 if _hash_size <= 32 / 8 => Ok (Algorithm::Djb2),
+			Family::SDBM if _hash_size <= 32 / 8 => Ok (Algorithm::SDBM),
 			(Family::Djb2 | Family::SDBM) => fail! (0x34e1a6df),
 			
-			(Family::FNV1a | Family::FNV1a_32) if _output_size <= 32 / 8 => Ok (Algorithm::FNV1a_32),
-			(Family::FNV1a | Family::FNV1a_64) if _output_size <= 64 / 8 => Ok (Algorithm::FNV1a_64),
+			(Family::FNV1a | Family::FNV1a_32) if _hash_size <= 32 / 8 => Ok (Algorithm::FNV1a_32),
+			(Family::FNV1a | Family::FNV1a_64) if _hash_size <= 64 / 8 => Ok (Algorithm::FNV1a_64),
 			(Family::FNV1a | Family::FNV1a_32 | Family::FNV1a_64) => fail! (0xe1307d7d),
 			
-			(Family::CRC | Family::CRC8) if _output_size <= 8 / 8 => Ok (Algorithm::CRC8),
-			(Family::CRC | Family::CRC16) if _output_size <= 16 / 8 => Ok (Algorithm::CRC16),
-			(Family::CRC | Family::CRC32) if _output_size <= 32 / 8 => Ok (Algorithm::CRC32),
-			(Family::CRC | Family::CRC64) if _output_size <= 64 / 8 => Ok (Algorithm::CRC64),
-			Family::CRC32C if _output_size <= 32 / 8 => Ok (Algorithm::CRC32C),
+			(Family::CRC | Family::CRC8) if _hash_size <= 8 / 8 => Ok (Algorithm::CRC8),
+			(Family::CRC | Family::CRC16) if _hash_size <= 16 / 8 => Ok (Algorithm::CRC16),
+			(Family::CRC | Family::CRC32) if _hash_size <= 32 / 8 => Ok (Algorithm::CRC32),
+			(Family::CRC | Family::CRC64) if _hash_size <= 64 / 8 => Ok (Algorithm::CRC64),
+			Family::CRC32C if _hash_size <= 32 / 8 => Ok (Algorithm::CRC32C),
 			(Family::CRC | Family::CRC8 | Family::CRC16 | Family::CRC32 | Family::CRC32C | Family::CRC64) => fail! (0x9df52825),
 			
-			(Family::Adler | Family::Adler32) if _output_size <= 32 / 8 => Ok (Algorithm::Adler32),
+			(Family::Adler | Family::Adler32) if _hash_size <= 32 / 8 => Ok (Algorithm::Adler32),
 			(Family::Adler | Family::Adler32) => fail! (0x1c8456b5),
 			
-			Family::Scrypt if _output_size <= PASSWORD_SIZE_MAX => Ok (Algorithm::Scrypt),
+			Family::Scrypt if _hash_size <= PASSWORD_SIZE_MAX => Ok (Algorithm::Scrypt),
 			Family::Scrypt => fail! (0x9a7484ca),
 			
-			Family::Argon2 if _output_size <= PASSWORD_SIZE_MAX => Ok (Algorithm::Argon2id),
-			Family::Argon2d if _output_size <= PASSWORD_SIZE_MAX => Ok (Algorithm::Argon2d),
-			Family::Argon2i if _output_size <= PASSWORD_SIZE_MAX => Ok (Algorithm::Argon2i),
-			Family::Argon2id if _output_size <= PASSWORD_SIZE_MAX => Ok (Algorithm::Argon2id),
+			Family::Argon2 if _hash_size <= PASSWORD_SIZE_MAX => Ok (Algorithm::Argon2id),
+			Family::Argon2d if _hash_size <= PASSWORD_SIZE_MAX => Ok (Algorithm::Argon2d),
+			Family::Argon2i if _hash_size <= PASSWORD_SIZE_MAX => Ok (Algorithm::Argon2i),
+			Family::Argon2id if _hash_size <= PASSWORD_SIZE_MAX => Ok (Algorithm::Argon2id),
 			(Family::Argon2 | Family::Argon2d | Family::Argon2i | Family::Argon2id) => fail! (0xa684303b),
 		}
 	}
@@ -352,24 +353,24 @@ impl Family {
 
 
 
-pub fn choose_algorithm (_family : Option<Family>, _output_size : Option<usize>) -> AlgorithmResult<(Algorithm, usize)> {
+pub fn choose_algorithm (_family : Option<Family>, _hash_size : Option<usize>) -> AlgorithmResult<(Algorithm, usize)> {
 	
 	let _family = _family.unwrap_or (Family::Blake3);
 	
-	let (_output_minimum, _output_maximum, _output_default) = _family.output_size_range ();
+	let (_hash_size_minimum, _hash_size_maximum, _hash_size_default) = _family.hash_size_range ();
 	
-	let _output_size = _output_size.unwrap_or (_output_default);
+	let _hash_size = _hash_size.unwrap_or (_hash_size_default);
 	
-	if _output_size < _output_minimum {
+	if _hash_size < _hash_size_minimum {
 		fail! (0xbc5e1f69);
 	}
-	if _output_size > _output_maximum {
+	if _hash_size > _hash_size_maximum {
 		fail! (0x2166c769);
 	}
 	
-	let _algorithm = _family.algorithm_for_output_size (_output_size) ?;
+	let _algorithm = _family.algorithm_for_hash_size (_hash_size) ?;
 	
-	Ok ((_algorithm, _output_size))
+	Ok ((_algorithm, _hash_size))
 }
 
 

@@ -55,14 +55,20 @@ define_error! (pub HashError, result : HashResult);
 
 pub fn hash (_algorithm : Algorithm, _input : impl Input, _output_parameters : &OutputParameters) -> HashResult<Vec<u8>> {
 	
-	if _output_parameters.size == 0 {
+	if _output_parameters.hash_size == 0 {
+		fail! (0xc54f7d98);
+	}
+	if _output_parameters.truncate_size == 0 {
 		fail! (0x93d0f3af);
 	}
-	if _output_parameters.size > OUTPUT_SIZE_MAX {
+	if _output_parameters.truncate_size > _output_parameters.hash_size {
+		fail! (0x9afe94bc);
+	}
+	if _output_parameters.truncate_size > OUTPUT_SIZE_MAX {
 		fail! (0x32c196e2);
 	}
 	
-	let mut _output = vec! [0u8; _output_parameters.size];
+	let mut _output = vec! [0u8; _output_parameters.truncate_size];
 	
 	match _algorithm {
 		
@@ -101,9 +107,9 @@ pub fn hash (_algorithm : Algorithm, _input : impl Input, _output_parameters : &
 			hash_git_sha2 (_input, &mut _output, _output_parameters) ?,
 		
 		Algorithm::Blake2s =>
-			hash_variable (blake2::Blake2sVar::new (_output_parameters.size) .else_wrap (0xfb4c3bb9) ?, _input, &mut _output, _output_parameters) ?,
+			hash_variable (blake2::Blake2sVar::new (_output_parameters.hash_size) .else_wrap (0xfb4c3bb9) ?, _input, &mut _output, _output_parameters) ?,
 		Algorithm::Blake2b =>
-			hash_variable (blake2::Blake2bVar::new (_output_parameters.size) .else_wrap (0x6e7b8e58) ?, _input, &mut _output, _output_parameters) ?,
+			hash_variable (blake2::Blake2bVar::new (_output_parameters.hash_size) .else_wrap (0x6e7b8e58) ?, _input, &mut _output, _output_parameters) ?,
 		
 		Algorithm::Blake3 =>
 			hash_extendable (blake3::Hasher::new (), _input, &mut _output, _output_parameters) ?,
@@ -195,13 +201,23 @@ fn hash_variable <Hasher> (mut _hasher : Hasher, _input : impl Input, _output : 
 {
 	hash_update_digest (&mut _hasher, _input) ?;
 	
-	_hasher.finalize_variable (_output) .else_wrap (0x52d8d078) ?;
-	
-	if _output_parameters.reversed {
-		_output.reverse ();
+	if _output.len () == _output_parameters.hash_size {
+		
+		_hasher.finalize_variable (_output) .else_wrap (0x52d8d078) ?;
+		
+		if _output_parameters.reversed {
+			_output.reverse ();
+		}
+		
+		Ok (())
+		
+	} else {
+		
+		let mut _hash = vec! [0u8; _output_parameters.hash_size];
+		_hasher.finalize_variable (&mut _hash) .else_wrap (0x5ed68bcb) ?;
+		
+		copy_output_from_slice (&_hash, _output, _output_parameters)
 	}
-	
-	Ok (())
 }
 
 
@@ -210,13 +226,23 @@ fn hash_extendable <Hasher> (mut _hasher : Hasher, _input : impl Input, _output 
 {
 	hash_update_digest (&mut _hasher, _input) ?;
 	
-	_hasher.finalize_xof_into (_output);
-	
-	if _output_parameters.reversed {
-		_output.reverse ();
+	if _output.len () == _output_parameters.hash_size {
+		
+		_hasher.finalize_xof_into (_output);
+		
+		if _output_parameters.reversed {
+			_output.reverse ();
+		}
+		
+		Ok (())
+		
+	} else {
+		
+		let mut _hash = vec! [0u8; _output_parameters.hash_size];
+		_hasher.finalize_xof_into (&mut _hash);
+		
+		copy_output_from_slice (&_hash, _output, _output_parameters)
 	}
-	
-	Ok (())
 }
 
 
@@ -591,8 +617,8 @@ fn copy_output_from_slice (_hash : &[u8], _output : &mut [u8], _output_parameter
 
 fn hash_scrypt (mut _input : impl Input, _output : &mut [u8], _output_parameters : &OutputParameters) -> HashResult {
 	
-	let _output_size = _output.len ();
-	let (_m_cost, _t_cost, _p_cost) = hash_passwords_cost (_output_size) ?;
+	let _hash_size = _output_parameters.hash_size;
+	let (_m_cost, _t_cost, _p_cost) = hash_passwords_cost (_hash_size) ?;
 	
 	// NOTE:  =>  https://words.filippo.io/the-scrypt-parameters/
 	let _r_cost = 8;
@@ -600,21 +626,18 @@ fn hash_scrypt (mut _input : impl Input, _output : &mut [u8], _output_parameters
 	let _n_cost : u32 = ((_m_cost as u64 * 1024) / _r_cost as u64 / 128) .try_into () .else_wrap (0xb9f46bf5) ? ;
 	let _n_log2_cost : u8 = _n_cost.ilog2 () .try_into () .else_wrap (0xd3015b16) ?;
 	
-	// ::std::eprintln! ("size {} {} || m {} / t {} || n {} / r {} / p {}", _output_size, _output_size * 8, _m_cost / 1024, _t_cost, _n_cost, _r_cost, _p_cost);
+	// ::std::eprintln! ("size {} {} || m {} / t {} || n {} / r {} / p {}", _hash_size, _hash_size * 8, _m_cost / 1024, _t_cost, _n_cost, _r_cost, _p_cost);
 	
 	const INPUT_HASH_SIZE : usize = 32;
 	let mut _input_hash = [0u8; INPUT_HASH_SIZE];
-	hash_fixed (sha2::Sha256::new (), _input, &mut _input_hash, & OutputParameters { size : INPUT_HASH_SIZE, discard_right : true, reversed : false, }) ?;
+	hash_fixed (sha2::Sha256::new (), _input, &mut _input_hash, & OutputParameters { hash_size : INPUT_HASH_SIZE, truncate_size : INPUT_HASH_SIZE, discard_right : true, reversed : false, }) ?;
 	
 	let _hasher_parameters = scrypt::Params::new (_n_log2_cost, _r_cost, _p_cost) .else_wrap (0x5c5ead84) ?;
 	
-	scrypt::scrypt (&_input_hash, &_input_hash, &_hasher_parameters, _output) .else_wrap (0x532d2ed3) ?;
+	let mut _hash = vec! [0u8; _hash_size];
+	scrypt::scrypt (&_input_hash, &_input_hash, &_hasher_parameters, &mut _hash) .else_wrap (0x532d2ed3) ?;
 	
-	if _output_parameters.reversed {
-		_output.reverse ();
-	}
-	
-	Ok (())
+	copy_output_from_slice (&_hash, _output, _output_parameters)
 }
 
 
@@ -622,46 +645,43 @@ fn hash_scrypt (mut _input : impl Input, _output : &mut [u8], _output_parameters
 
 fn hash_argon (_algorithm : argon2::Algorithm, mut _input : impl Input, _output : &mut [u8], _output_parameters : &OutputParameters) -> HashResult {
 	
-	let _output_size = _output.len ();
-	let (_m_cost, _t_cost, _p_cost) = hash_passwords_cost (_output_size) ?;
+	let _hash_size = _output_parameters.hash_size;
+	let (_m_cost, _t_cost, _p_cost) = hash_passwords_cost (_hash_size) ?;
 	
 	const INPUT_HASH_SIZE : usize = 64;
 	let mut _input_hash = [0u8; INPUT_HASH_SIZE];
-	hash_fixed (blake2::Blake2b512::new (), _input, &mut _input_hash, & OutputParameters { size : INPUT_HASH_SIZE, discard_right : true, reversed : false, }) ?;
+	hash_fixed (blake2::Blake2b512::new (), _input, &mut _input_hash, & OutputParameters { hash_size : INPUT_HASH_SIZE, truncate_size : INPUT_HASH_SIZE, discard_right : true, reversed : false, }) ?;
 	
-	// ::std::eprintln! ("size {} {} || m {} / t {} / p {}", _output_size, _output_size * 8, _m_cost / 1024, _t_cost, _p_cost);
+	// ::std::eprintln! ("size {} {} || m {} / t {} / p {}", _hash_size, _hash_size * 8, _m_cost / 1024, _t_cost, _p_cost);
 	
-	let _hasher_parameters = argon2::Params::new (_m_cost, _t_cost, _p_cost, Some (_output_size)) .else_wrap (0x8acd25cd) ?;
+	let _hasher_parameters = argon2::Params::new (_m_cost, _t_cost, _p_cost, Some (_hash_size)) .else_wrap (0x8acd25cd) ?;
 	let _hasher = argon2::Argon2::new (_algorithm, argon2::Version::V0x13, _hasher_parameters);
 	
-	_hasher.hash_password_into (&_input_hash, &_input_hash, _output) .else_wrap (0xce42692d) ?;
+	let mut _hash = vec! [0u8; _hash_size];
+	_hasher.hash_password_into (&_input_hash, &_input_hash, &mut _hash) .else_wrap (0xce42692d) ?;
 	
-	if _output_parameters.reversed {
-		_output.reverse ();
-	}
-	
-	Ok (())
+	copy_output_from_slice (&_hash, _output, _output_parameters)
 }
 
 
 
 
-fn hash_passwords_cost (_output_size : usize) -> HashResult<(u32, u32, u32)> {
+fn hash_passwords_cost (_hash_size : usize) -> HashResult<(u32, u32, u32)> {
 	
-	if _output_size > PASSWORD_SIZE_MAX {
+	if _hash_size > PASSWORD_SIZE_MAX {
 		fail! (0x5daf563e);
 	}
 	
-	let _output_size = usize::max (_output_size / 4, 1);
-	let _output_size : u32 = _output_size.try_into () .else_wrap (0x55109be8) ?;
+	let _hash_size = usize::max (_hash_size / 4, 1);
+	let _hash_size : u32 = _hash_size.try_into () .else_wrap (0x55109be8) ?;
 	
 	const M_COST_MAX : u32 = 1 * 1024 * 1024;
 	const M_COST_BASE : u32 = 16 * 1024;
 	const T_COST_BASE : u32 = 16;
 	const P_COST : u32 = 1;
 	
-	let _m_cost = u64::min (_output_size as u64 * M_COST_BASE as u64, M_COST_MAX as u64) as u32;
-	let _t_cost = u64::max (_output_size as u64 * T_COST_BASE as u64 / (M_COST_MAX / M_COST_BASE / 4) as u64, T_COST_BASE as u64) as u32;
+	let _m_cost = u64::min (_hash_size as u64 * M_COST_BASE as u64, M_COST_MAX as u64) as u32;
+	let _t_cost = u64::max (_hash_size as u64 * T_COST_BASE as u64 / (M_COST_MAX / M_COST_BASE / 4) as u64, T_COST_BASE as u64) as u32;
 	
 	Ok ((_m_cost, _t_cost, P_COST))
 }

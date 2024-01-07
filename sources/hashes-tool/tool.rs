@@ -25,9 +25,10 @@ const STDOUT_BUFFER_SIZE : usize = 8 * 1024;
 pub fn main_hash (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	
 	let mut _format : Option<Format> = None;
-	let mut _family : Option<Family> = None;
-	let mut _output_size : Option<usize> = None;
-	let mut _output_discard_right : Option<bool> = None;
+	let mut _hash_family : Option<Family> = None;
+	let mut _hash_size : Option<usize> = None;
+	let mut _truncate_size : Option<usize> = None;
+	let mut _truncate_discard_right : Option<bool> = None;
 	let mut _output_reversed : Option<bool> = None;
 	
 	let mut _input_sources : Vec<InputSource> = Vec::new ();
@@ -37,7 +38,7 @@ pub fn main_hash (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		let mut _flags = create_flags () .else_wrap (0x0102258d) ?;
 		
 		{
-			let _flag = _flags.define_complex (&mut _family);
+			let _flag = _flags.define_complex (&mut _hash_family);
 				
 			_flag.define_flag ('a', "algorithm") .with_placeholder ("algorithm") .with_description ("hashing algorithm");
 			
@@ -114,19 +115,19 @@ pub fn main_hash (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		}
 		
 		{
-			let _flag = _flags.define_complex (&mut _output_size);
-			_flag.define_flag ('s', "size") .with_placeholder ("size") .with_description ("hash output size in bytes");
-			_flag.define_switch ((), "8b", 1) .with_alias ((), "1B") .with_description ("output 8 bits / 1 byte");
-			_flag.define_switch ((), "16b", 2) .with_alias ((), "2B") .with_description ("output 16 bits / 2 bytes");
-			_flag.define_switch ((), "32b", 4) .with_alias ((), "4B") .with_description ("output 32 bits / 4 bytes");
-			_flag.define_switch ((), "64b", 8) .with_alias ((), "8B") .with_description ("output 64 bits / 8 bytes");
-			_flag.define_switch ((), "128b", 16) .with_alias ((), "16B") .with_description ("output 128 bits / 16 bytes");
-			_flag.define_switch ((), "256b", 32) .with_alias ((), "32B") .with_description ("output 256 bits / 32 bytes");
-			_flag.define_switch ((), "512b", 64) .with_alias ((), "64B") .with_description ("output 512 bits / 64 bytes");
-			_flag.define_switch ((), "1024b", 128) .with_alias ((), "128B") .with_description ("output 1024 bits / 128 bytes");
-			_flag.define_switch ((), "2048b", 256) .with_alias ((), "256B") .with_description ("output 2048 bits / 256 bytes");
-			_flag.define_switch ((), "4096b", 512) .with_alias ((), "512B") .with_description ("output 4096 bits / 512 bytes");
-			_flag.define_switch ((), "8192b", 1024) .with_alias ((), "1024B") .with_description ("output 8192 bits / 1024 bytes");
+			let _flag = _flags.define_complex (&mut _hash_size);
+			_flag.define_flag ('s', "size") .with_placeholder ("size") .with_description ("hash size in bytes");
+			_flag.define_switch ((), "8b", 1) .with_alias ((), "1B") .with_description ("8 bits / 1 byte");
+			_flag.define_switch ((), "16b", 2) .with_alias ((), "2B") .with_description ("16 bits / 2 bytes");
+			_flag.define_switch ((), "32b", 4) .with_alias ((), "4B") .with_description ("32 bits / 4 bytes");
+			_flag.define_switch ((), "64b", 8) .with_alias ((), "8B") .with_description ("64 bits / 8 bytes");
+			_flag.define_switch ((), "128b", 16) .with_alias ((), "16B") .with_description ("128 bits / 16 bytes");
+			_flag.define_switch ((), "256b", 32) .with_alias ((), "32B") .with_description ("256 bits / 32 bytes");
+			_flag.define_switch ((), "512b", 64) .with_alias ((), "64B") .with_description ("512 bits / 64 bytes");
+			_flag.define_switch ((), "1024b", 128) .with_alias ((), "128B") .with_description ("1024 bits / 128 bytes");
+			_flag.define_switch ((), "2048b", 256) .with_alias ((), "256B") .with_description ("2048 bits / 256 bytes");
+			_flag.define_switch ((), "4096b", 512) .with_alias ((), "512B") .with_description ("4096 bits / 512 bytes");
+			_flag.define_switch ((), "8192b", 1024) .with_alias ((), "1024B") .with_description ("8192 bits / 1024 bytes");
 		}
 		
 		{
@@ -144,15 +145,20 @@ pub fn main_hash (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		}
 		
 		{
-			let _flag = _flags.define_complex (&mut _output_discard_right);
-			_flag.define_switch ((), "output-discard-right", true) .with_description ("if needed discard bytes from the right of the hash") .with_default ("default");
-			_flag.define_switch ((), "output-discard-left", false) .with_description ("if needed discard bytes from the left of the hash");
+			let _flag = _flags.define_complex (&mut _truncate_size);
+			_flag.define_flag ((), "truncate-size") .with_placeholder ("size") .with_description ("truncate the hash to output size in bytes");
+		}
+		
+		{
+			let _flag = _flags.define_complex (&mut _truncate_discard_right);
+			_flag.define_switch ((), "truncate-right", true) .with_description ("if truncating, discard bytes from the right of the hash") .with_default ("default");
+			_flag.define_switch ((), "truncate-left", false) .with_description ("if truncating, discard bytes from the left of the hash");
 		}
 		
 		{
 			let _flag = _flags.define_complex (&mut _output_reversed);
-			_flag.define_switch ((), "output-left-to-right", false) .with_description ("copy from left-to-right bytes from the hash") .with_default ("default");
-			_flag.define_switch ((), "output-right-to-left", true) .with_alias ((), "output-reversed") .with_description ("copy from right-to-left bytes from the hash");
+			_flag.define_switch ((), "output-left-to-right", false) .with_description ("copy from left-to-right bytes from the (possibly truncated) hash") .with_default ("default");
+			_flag.define_switch ((), "output-right-to-left", true) .with_alias ((), "output-reversed") .with_description ("copy from right-to-left bytes from the (possibly truncated) hash");
 		}
 		
 		if execute_flags (_flags, _arguments) .else_wrap (0x88824ad0) ? {
@@ -160,12 +166,17 @@ pub fn main_hash (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		}
 	}
 	
+	let _truncate_size = _truncate_size.or (_hash_size);
+	
 	let _format = _format.unwrap_or (Format::Hex);
-	let (_algorithm, _output_size) = choose_algorithm (_family, _output_size) .else_wrap (0x01241ede) ?;
+	let (_hash_algorithm, _hash_size) = choose_algorithm (_hash_family, _hash_size) .else_wrap (0x01241ede) ?;
+	
+	let _truncate_size = _truncate_size.unwrap_or (_hash_size);
 	
 	let _output_parameters = OutputParameters {
-			size : _output_size,
-			discard_right : _output_discard_right.unwrap_or (true),
+			hash_size : _hash_size,
+			truncate_size : _truncate_size,
+			discard_right : _truncate_discard_right.unwrap_or (true),
 			reversed : _output_reversed.unwrap_or (false),
 		};
 	
@@ -186,7 +197,7 @@ pub fn main_hash (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			_inputs.pop () .else_panic (0xadd28f1a)
 		};
 	
-	let _hash = hash (_algorithm, &mut _input, &_output_parameters) .else_wrap (0x16112a03) ?;
+	let _hash = hash (_hash_algorithm, &mut _input, &_output_parameters) .else_wrap (0x16112a03) ?;
 	drop (_input);
 	
 	let mut _output = BufWriter::with_capacity (STDOUT_BUFFER_SIZE, stdout_locked ());
