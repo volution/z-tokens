@@ -24,6 +24,8 @@ pub fn main_generate (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _group_size : Option<usize> = None;
 	let mut _group_separator : Option<String> = None;
 	
+	let mut _describe : Option<bool> = None;
+	
 	{
 		let mut _flags = create_flags () .else_wrap (0x69fe2749) ?;
 		
@@ -62,6 +64,10 @@ pub fn main_generate (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		_output_flags.flags (&mut _flags) .else_wrap (0xc06bf3db) ?;
 		_randomizer_flags.flags (&mut _flags) .else_wrap (0x6d197cc8) ?;
 		
+		_flags.define_switch_0 (&mut _describe)
+				.with_flag ((), "describe")
+				.with_description ("describe pattern characteristics");
+		
 		if execute_flags (_flags, _arguments) .else_wrap (0xb77c0d40) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
@@ -88,6 +94,7 @@ pub fn main_generate (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _token_count = _token_count.unwrap_or (DEFAULT_TOKEN_COUNT);
 	let _token_separator = _token_separator.unwrap_or (String::from ("\n"));
 	let _group_size = _group_size.unwrap_or (DEFAULT_GROUP_SIZE);
+	let _describe = _describe.unwrap_or (false);
 	
 	let _pattern = if let Some (_pattern) = get_token_pattern (&_pattern) {
 			_pattern
@@ -112,6 +119,16 @@ pub fn main_generate (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		}
 		
 		let _token = generate_token (&_pattern, _randomizer) .else_wrap (0xf2ccbc70) ?;
+		
+		if _describe && (_index == 0) {
+			
+			crate::patterns::pattern_describe (&_pattern, &_token, &_output_options, &mut _stream) ?;
+			
+			let _separator = _group_separator.as_ref () .unwrap_or (&_token_separator);
+			if ! _separator.is_empty () {
+				_stream.write (_separator.as_bytes ()) .else_wrap (0x34a60e5d) ?;
+			}
+		}
 		
 		output_token (&_token, &mut _stream, &_output_options) .else_wrap (0x9c0fbf4f) ?;
 		

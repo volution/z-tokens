@@ -56,7 +56,7 @@ pub fn get_token_pattern (_label : &str) -> Option<Rb<TokenPattern>> {
 	for _patterns in tokens::ALL.iter () {
 		for _pattern in _patterns.iter () {
 			match _pattern.as_ref () {
-				TokenPattern::Tagged (_pattern, _tags) => {
+				TokenPattern::Tagged (_, _tags) => {
 					if let Some (ref _identifier) = _tags.identifier {
 						if _identifier.eq (_label) {
 							return Some (_pattern.clone ());

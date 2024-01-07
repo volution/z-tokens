@@ -25,6 +25,7 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _display_all : Option<bool> = None;
 	let mut _display_aliases : Option<bool> = None;
 	let mut _display_labels : Option<bool> = None;
+	let mut _display_characters : Option<bool> = None;
 	let mut _display_security : Option<bool> = None;
 	let mut _display_bruteforce : Option<bool> = None;
 	let mut _display_examples : Option<usize> = None;
@@ -77,6 +78,10 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		_flags.define_switch_0 (&mut _display_labels)
 				.with_flag ((), "show-labels")
 				.with_description ("show labels");
+		
+		_flags.define_switch_0 (&mut _display_characters)
+				.with_flag ((), "show-chars")
+				.with_description ("show characters count");
 		
 		_flags.define_switch_0 (&mut _display_security)
 				.with_flag ((), "show-security")
@@ -248,21 +253,23 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _length_minimum = _length_minimum.unwrap_or (0);
 	let _length_maximum = _length_maximum.unwrap_or (usize::MAX);
 	
+	let _display_all = _display_all.unwrap_or (false);
+	let _display_aliases = _display_aliases.unwrap_or (false) || _display_all;
+	let _display_labels = _display_labels.unwrap_or (false) || _display_all;
+	let _display_characters = _display_characters.unwrap_or (false) || _display_all;
+	let _display_security = _display_security.unwrap_or (false) || _display_all;
+	let _display_bruteforce = _display_bruteforce.unwrap_or (false) || _display_all;
+	let _display_examples = _display_examples.unwrap_or (1);
+	let _display_cards = _display_aliases || _display_labels || _display_characters || _display_security || _display_bruteforce || _display_examples >= 2;
+	
 	let _classify_chars =
 			_has_all.is_some () ||
 			_has_letters.is_some () ||
 			_has_letters_upper.is_some () ||
 			_has_letters_lower.is_some () ||
 			_has_digits.is_some () ||
-			_has_symbols.is_some ();
-	
-	let _display_all = _display_all.unwrap_or (false);
-	let _display_aliases = _display_aliases.unwrap_or (false) || _display_all;
-	let _display_labels = _display_labels.unwrap_or (false) || _display_all;
-	let _display_security = _display_security.unwrap_or (false) || _display_all;
-	let _display_bruteforce = _display_bruteforce.unwrap_or (false) || _display_all;
-	let _display_examples = _display_examples.unwrap_or (1);
-	let _display_cards = _display_aliases || _display_labels || _display_security || _display_bruteforce || _display_examples >= 2;
+			_has_symbols.is_some () ||
+			_display_characters;
 	
 	
 	
@@ -275,23 +282,32 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let mut _selected_count = 0;
 	let mut _selected_last : &[Rb<Text>] = &[];
 	
-	'_loop : for _pattern in all_token_patterns () .into_iter () {
-		let &(ref _identifier, ref _pattern) = _pattern.as_ref ();
-		let _identifier = _identifier.as_ref ();
-		let _pattern = _pattern.as_ref ();
+	'_loop : for _pattern in all_token_patterns () .into_iter () .map (|_pair| _pair.1.as_ref ()) {
 		
-		let (_aliases, _labels) = if let TokenPattern::Tagged (_, _tags) = _pattern {
+		let (_identifier, _aliases, _labels) = if let TokenPattern::Tagged (_, _tags) = _pattern {
+				let _identifier = _tags.identifier.as_ref ();
 				let _aliases = _tags.aliases.as_deref () .unwrap_or (&[]);
 				let _labels = _tags.labels.as_deref () .unwrap_or (&[]);
-				(_aliases, _labels)
+				(_identifier, _aliases, _labels)
 			} else {
-				(&[][..], &[][..])
+				(None, &[][..], &[][..])
 			};
+		
+		let _identifiers_strings =
+				Iterator::chain (
+						_identifier.into_iter (),
+						_aliases.iter ()
+					)
+					.map (Rb::as_ref)
+					.map (Text::to_string)
+					.collect::<Vec<_>> ();
 		
 		{
 			let mut _skip_any = false;
 			let mut _matched_any = false;
-			for _identifier in Some (Cow::Borrowed (_identifier)) .iter () .cloned () .chain (_aliases.iter () .map (|_alias| _alias.to_string ())) {
+			
+			for _identifier in _identifiers_strings.iter () {
+				
 				let mut _skip = false;
 				let mut _matched = true;
 				_skip = _skip || if _skip_upper {
@@ -319,15 +335,10 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		if let Some (ref _has_identifier) = _has_identifier {
 			let mut _matched_any = false;
-			if _identifier.eq (_has_identifier) {
-				_matched_any = true;
-			}
-			if !_matched_any {
-				for _alias in _aliases {
-					if _alias.eq (_has_identifier) {
-						_matched_any = true;
-						break;
-					}
+			for _identifier in _identifiers_strings {
+				if _identifier.eq (_has_identifier) {
+					_matched_any = true;
+					break;
 				}
 			}
 			if !_matched_any {
@@ -371,15 +382,11 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			continue '_loop;
 		}
 		
-		if _classify_chars {
+		let _characters = if _classify_chars {
 			let mut _string = Some (Cow::Borrowed (&_string));
 			let mut _matched_any = false;
+			let mut _characters = None;
 			for _try in 0 ..= DEFAULT_CLASSIFY_TRIES {
-				let mut _letters = 0;
-				let mut _letters_upper = 0;
-				let mut _letters_lower = 0;
-				let mut _digits = 0;
-				let mut _symbols = 0;
 				let _string = if let Some (_string) = _string.take () {
 						_string
 					} else {
@@ -388,24 +395,8 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 						let _string = output_token_to_string (&_token, &_output_options) .else_wrap (0xde6323af) ?;
 						Cow::Owned (_string)
 					};
-				for _char in _string.chars () {
-					match _char {
-						'a' ..= 'z' => {
-								_letters += 1;
-								_letters_lower += 1;
-							}
-						'A' ..= 'Z' => {
-								_letters += 1;
-								_letters_upper += 1;
-							}
-						'0' ..= '9' =>
-							_digits += 1,
-						'!' ..= '~' =>
-							_symbols += 1,
-						_ =>
-							(),
-					}
-				}
+				let _characters_0 = pattern_classify_chars (_string.as_str ());
+				let (_letters, _letters_upper, _letters_lower, _digits, _symbols) = _characters_0;
 				let _matched = true
 						&& _letters >= usize::max (_has_letters.unwrap_or (0), _has_all.unwrap_or (0))
 						&& _letters_upper >= usize::max (_has_letters_upper.unwrap_or (0), _has_all.unwrap_or (0))
@@ -414,13 +405,17 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 						&& _symbols >= usize::max (_has_symbols.unwrap_or (0), _has_all.unwrap_or (0));
 				_matched_any = _matched_any || _matched;
 				if _matched_any {
+					_characters = Some (_characters_0);
 					break;
 				}
 			}
 			if ! _matched_any {
 				continue '_loop;
 			}
-		}
+			_characters
+		} else {
+			None
+		};
 		
 		let _estimates = if _classify_usage || _display_security || _display_bruteforce {
 			
@@ -462,7 +457,9 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		_selected_last = _labels;
 		
 		if _identifiers_only {
-			writeln! (&mut _stream, "{}", _identifier) .else_wrap (0xfcdcb2ff) ?;
+			if let Some (_identifier) = _identifier {
+				writeln! (&mut _stream, "{}", _identifier.as_ref ()) .else_wrap (0xfcdcb2ff) ?;
+			}
 			if _display_aliases && ! _aliases.is_empty () {
 				for _alias in _aliases {
 					writeln! (&mut _stream, "{}", _alias.as_ref ()) .else_wrap (0xffe94769) ?;
@@ -473,11 +470,17 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		if ! _display_cards {
 			
+			let _identifier = if let Some (_identifier) = _identifier {
+				_identifier.as_ref () .to_string ()
+			} else {
+				Cow::Borrowed ("<unknown>")
+			};
+			
 			if _bits_exact {
-				write! (&mut _stream, "::  {:22}  : {:4.0}  =b : {:4} c ::", _identifier, _bits, _string_length) .else_wrap (0x737c2a4f) ?;
+				write! (&mut _stream, "::  {:22}  : {:4.0}  =b : {:4} c ::", _identifier.as_ref (), _bits, _string_length) .else_wrap (0x737c2a4f) ?;
 			} else {
 				let _display_bits = (_bits * 10.0) .floor () / 10.0;
-				write! (&mut _stream, "::  {:22}  : {:6.1} b : {:4} c ::", _identifier, _display_bits, _string_length) .else_wrap (0xd141c5ef) ?;
+				write! (&mut _stream, "::  {:22}  : {:6.1} b : {:4} c ::", _identifier.as_ref (), _display_bits, _string_length) .else_wrap (0xd141c5ef) ?;
 			}
 			
 			if _display_examples > 0 {
@@ -497,94 +500,14 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 			
 		} else {
 			
-			writeln! (&mut _stream) .else_wrap (0x28af8876) ?;
-			
-			writeln! (&mut _stream, "**  ~~~~~~~~  {}", _identifier) .else_wrap (0xc6bd1c82) ?;
-			
-			if _display_aliases && ! _aliases.is_empty () {
-				write! (&mut _stream, "\\_  aliases: ") .else_wrap (0x4b3973c7) ?;
-				for _alias in _aliases {
-					write! (&mut _stream, " {}", _alias.as_ref ()) .else_wrap (0x7275b085) ?;
-				}
-				writeln! (&mut _stream) .else_wrap (0x8dfe1e4d) ?;
-			}
-			if _display_labels && ! _labels.is_empty () {
-				write! (&mut _stream, "\\_  labels:  ") .else_wrap (0x4a4b1151) ?;
-				for _label in _labels {
-					write! (&mut _stream, " {}", _label.as_ref ()) .else_wrap (0xc3ff5175) ?;
-				}
-				writeln! (&mut _stream) .else_wrap (0x2314c8ec) ?;
-			}
-			
-			if _bits_exact {
-				writeln! (&mut _stream, "\\_  bits:     {}  (exact)", _bits) .else_wrap (0x36fc1a4b) ?;
-			} else {
-				let _display_bits = (_bits * 10000.0) .floor () / 10000.0;
-				writeln! (&mut _stream, "\\_  bits:     {:.4}", _display_bits) .else_wrap (0xf2b57c8b) ?;
-			}
-			writeln! (&mut _stream, "\\_  length:   {}", _string_length) .else_wrap (0x000c5aba) ?;
-			
-			if _display_security || _display_bruteforce {
-				
-				let _estimates = _estimates.else_panic (0xcda96bfe);
-				
-				if _display_security {
-					writeln! (&mut _stream, "\\_  usable for:") .else_wrap (0xb523c114) ?;
-					writeln! (&mut _stream, "    \\_  cryptography         {}      with  {:+8.2}  bits of margin", if _estimates.for_cryptography { "   OK   " } else { "!! NO !!" }, _estimates.for_cryptography_margin_bits) .else_wrap (0x83e2fa56) ?;
-					writeln! (&mut _stream, "    \\_  authentication       {}      with  {:+8.2}  bits of margin", if _estimates.for_authentication { "   OK   " } else { "!! NO !!" }, _estimates.for_authentication_margin_bits) .else_wrap (0x31c4f00d) ?;
-					writeln! (&mut _stream, "    \\_  archival storage     {}      with  {:+8.2}  bits of margin", if _estimates.for_archival { "   OK   " } else { "!! NO !!" }, _estimates.for_archival_margin_bits) .else_wrap (0x0332488c) ?;
-					writeln! (&mut _stream, "    \\_  long term storage    {}      with  {:+8.2}  bits of margin", if _estimates.for_long_term { "   OK   " } else { "!! NO !!" }, _estimates.for_long_term_margin_bits) .else_wrap (0xbebfa304) ?;
-					writeln! (&mut _stream, "    \\_  short term storage   {}      with  {:+8.2}  bits of margin", if _estimates.for_short_term { "   OK   " } else { "!! NO !!" }, _estimates.for_short_term_margin_bits) .else_wrap (0x19d58942) ?;
-				}
-				
-				if _display_bruteforce {
-					writeln! (&mut _stream, "\\_  bruteforce time:") .else_wrap (0xa2206100) ?;
-					for (_algorithm, _hours) in _estimates.bruteforce_hours {
-						if let Some (_hours) = _hours {
-							let (_time_value, _time_unit) = if _hours < (1.0 / 3600.0 / 10.0) {
-								(-1.0, "[0127b098]")
-							} else if _hours < (1.0 / 60.0) {
-								(_hours * 3600.0, "seconds")
-							} else if _hours < 1.0 {
-								(_hours * 60.0, "minutes")
-							} else if _hours < 24.0 {
-								(_hours, "hours")
-							} else if _hours < (24.0 * 30.5) {
-								(_hours / 24.0, "days")
-							} else if _hours < (24.0 * 365.25) {
-								(_hours / 24.0 / 30.5, "months")
-							} else if _hours < (24.0 * 365.25 * 10.0) {
-								(_hours / 24.0 / 365.25, "years")
-							} else if _hours < (24.0 * 365.25 * 100.0) {
-								(_hours / 24.0 / 365.25 / 10.0, "decades")
-							} else if _hours < (24.0 * 365.25 * 1000.0) {
-								(_hours / 24.0 / 365.25 / 100.0, "centuries")
-							} else if _hours < (24.0 * 365.25 * 1000.0 * 1000.0) {
-								(_hours / 24.0 / 365.25 / 1000.0, "millennia")
-							} else if _hours < (24.0 * 365.25 * 1_000_000_000.0) {
-								(_hours / 24.0 / 365.25 / 1_000_000.0, "millions of years")
-							} else if _hours < (24.0 * 365.25 * 1_000_000_000_000.0) {
-								(_hours / 24.0 / 365.25 / 1_000_000_000.0, "billions of years")
-							} else if _hours < (24.0 * 365.25 * 1_000_000_000_000_000.0) {
-								(_hours / 24.0 / 365.25 / 1_000_000_000_000.0, "trillions of years")
-							} else {
-								(-2.0, "[3f7db730]")
-							};
-							if _time_value >= 0.0 {
-								writeln! (&mut _stream, "    \\_  {:20}    --  {:5.1}  {}", _algorithm, _time_value, _time_unit) .else_wrap (0x78e7778c) ?;
-							} else if _time_value == -1.0 {
-								writeln! (&mut _stream, "    \\_  {:20}    --         now", _algorithm) .else_wrap (0x7cef82a9) ?;
-							} else if _time_value == -2.0 {
-								writeln! (&mut _stream, "    \\_  {:20}    --         (more than trillions of years)", _algorithm) .else_wrap (0xbe09b64a) ?;
-							} else {
-								panic! (unreachable, 0x218ff386);
-							}
-						} else {
-							writeln! (&mut _stream, "    \\_  {:20}    --         (such a large number we can't even compute)", _algorithm) .else_wrap (0x0a4d0a2c) ?;
-						};
-					}
-				}
-			}
+			pattern_describe_display (
+					_pattern, _identifier, _aliases, _labels,
+					_string_length, _bits, _bits_exact,
+					_characters,
+					_estimates.as_ref (),
+					_display_aliases, _display_labels, _display_characters, _display_security, _display_bruteforce,
+					&mut _stream,
+				) ?;
 			
 			if _display_examples == 1 {
 				writeln! (&mut _stream, "\\_  example:  {}", _string) .else_wrap (0x6ada645e) ?;
@@ -611,6 +534,208 @@ pub fn main_list (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	}
 	
 	Ok (ExitCode::SUCCESS)
+}
+
+
+
+
+
+
+
+
+fn pattern_describe_display (
+		_pattern : &TokenPattern,
+		_identifier : Option<&Rb<Text>>,
+		_aliases : &[Rb<Text>],
+		_labels : &[Rb<Text>],
+		_string_length : usize,
+		_bits : f64,
+		_bits_exact : bool,
+		_characters : Option<(usize, usize, usize, usize, usize)>,
+		_estimates : Option<&EntropyEstimates>,
+		_display_aliases : bool,
+		_display_labels : bool,
+		_display_characters : bool,
+		_display_security : bool,
+		_display_bruteforce : bool,
+		mut _stream : impl Write,
+	) -> MainResult
+{
+	writeln! (&mut _stream) .else_wrap (0x28af8876) ?;
+	
+	if let Some (_identifier) = _identifier {
+		writeln! (&mut _stream, "**  ~~~~~~~~  {}", _identifier.as_ref ()) .else_wrap (0xc6bd1c82) ?;
+	}
+	
+	if _display_aliases && ! _aliases.is_empty () {
+		write! (&mut _stream, "\\_  aliases: ") .else_wrap (0x4b3973c7) ?;
+		for _alias in _aliases {
+			write! (&mut _stream, " {}", _alias.as_ref ()) .else_wrap (0x7275b085) ?;
+		}
+		writeln! (&mut _stream) .else_wrap (0x8dfe1e4d) ?;
+	}
+	if _display_labels && ! _labels.is_empty () {
+		write! (&mut _stream, "\\_  labels:  ") .else_wrap (0x4a4b1151) ?;
+		for _label in _labels {
+			write! (&mut _stream, " {}", _label.as_ref ()) .else_wrap (0xc3ff5175) ?;
+		}
+		writeln! (&mut _stream) .else_wrap (0x2314c8ec) ?;
+	}
+	
+	if _bits_exact {
+		writeln! (&mut _stream, "\\_  bits:     {}  (exact)", _bits) .else_wrap (0x36fc1a4b) ?;
+	} else {
+		let _display_bits = (_bits * 10000.0) .floor () / 10000.0;
+		writeln! (&mut _stream, "\\_  bits:     {:.4}", _display_bits) .else_wrap (0xf2b57c8b) ?;
+	}
+	writeln! (&mut _stream, "\\_  length:   {}", _string_length) .else_wrap (0x000c5aba) ?;
+	
+	if _display_characters {
+		
+		let _characters = _characters.infallible (0x2b128d65);
+		let (_letters, _letters_upper, _letters_lower, _digits, _symbols) = _characters;
+		
+		writeln! (&mut _stream, "\\_  characters:") .else_wrap (0x288d7222) ?;
+		writeln! (&mut _stream, "    \\_  letters:  {}", _letters) .else_wrap (0x67382f89) ?;
+		writeln! (&mut _stream, "    \\_  l. upper: {}", _letters_upper) .else_wrap (0x8eafe218) ?;
+		writeln! (&mut _stream, "    \\_  l. lower: {}", _letters_lower) .else_wrap (0xba9c7438) ?;
+		writeln! (&mut _stream, "    \\_  digits:   {}", _digits) .else_wrap (0xe2d03da9) ?;
+		writeln! (&mut _stream, "    \\_  symbols:  {}", _symbols) .else_wrap (0xe2cc87c1) ?;
+	}
+	
+	if _display_security || _display_bruteforce {
+		
+		let _estimates = _estimates.infallible (0xcda96bfe);
+		
+		if _display_security {
+			writeln! (&mut _stream, "\\_  usable for:") .else_wrap (0xb523c114) ?;
+			writeln! (&mut _stream, "    \\_  cryptography         {}      with  {:+8.2}  bits of margin", if _estimates.for_cryptography { "   OK   " } else { "!! NO !!" }, _estimates.for_cryptography_margin_bits) .else_wrap (0x83e2fa56) ?;
+			writeln! (&mut _stream, "    \\_  authentication       {}      with  {:+8.2}  bits of margin", if _estimates.for_authentication { "   OK   " } else { "!! NO !!" }, _estimates.for_authentication_margin_bits) .else_wrap (0x31c4f00d) ?;
+			writeln! (&mut _stream, "    \\_  archival storage     {}      with  {:+8.2}  bits of margin", if _estimates.for_archival { "   OK   " } else { "!! NO !!" }, _estimates.for_archival_margin_bits) .else_wrap (0x0332488c) ?;
+			writeln! (&mut _stream, "    \\_  long term storage    {}      with  {:+8.2}  bits of margin", if _estimates.for_long_term { "   OK   " } else { "!! NO !!" }, _estimates.for_long_term_margin_bits) .else_wrap (0xbebfa304) ?;
+			writeln! (&mut _stream, "    \\_  short term storage   {}      with  {:+8.2}  bits of margin", if _estimates.for_short_term { "   OK   " } else { "!! NO !!" }, _estimates.for_short_term_margin_bits) .else_wrap (0x19d58942) ?;
+		}
+		
+		if _display_bruteforce {
+			writeln! (&mut _stream, "\\_  bruteforce time:") .else_wrap (0xa2206100) ?;
+			for (_algorithm, _hours) in _estimates.bruteforce_hours.iter () {
+				let _hours = *_hours;
+				if let Some (_hours) = _hours {
+					let (_time_value, _time_unit) = if _hours < (1.0 / 3600.0 / 10.0) {
+						(-1.0, "[0127b098]")
+					} else if _hours < (1.0 / 60.0) {
+						(_hours * 3600.0, "seconds")
+					} else if _hours < 1.0 {
+						(_hours * 60.0, "minutes")
+					} else if _hours < 24.0 {
+						(_hours, "hours")
+					} else if _hours < (24.0 * 30.5) {
+						(_hours / 24.0, "days")
+					} else if _hours < (24.0 * 365.25) {
+						(_hours / 24.0 / 30.5, "months")
+					} else if _hours < (24.0 * 365.25 * 10.0) {
+						(_hours / 24.0 / 365.25, "years")
+					} else if _hours < (24.0 * 365.25 * 100.0) {
+						(_hours / 24.0 / 365.25 / 10.0, "decades")
+					} else if _hours < (24.0 * 365.25 * 1000.0) {
+						(_hours / 24.0 / 365.25 / 100.0, "centuries")
+					} else if _hours < (24.0 * 365.25 * 1000.0 * 1000.0) {
+						(_hours / 24.0 / 365.25 / 1000.0, "millennia")
+					} else if _hours < (24.0 * 365.25 * 1_000_000_000.0) {
+						(_hours / 24.0 / 365.25 / 1_000_000.0, "millions of years")
+					} else if _hours < (24.0 * 365.25 * 1_000_000_000_000.0) {
+						(_hours / 24.0 / 365.25 / 1_000_000_000.0, "billions of years")
+					} else if _hours < (24.0 * 365.25 * 1_000_000_000_000_000.0) {
+						(_hours / 24.0 / 365.25 / 1_000_000_000_000.0, "trillions of years")
+					} else {
+						(-2.0, "[3f7db730]")
+					};
+					if _time_value >= 0.0 {
+						writeln! (&mut _stream, "    \\_  {:20}    --  {:5.1}  {}", _algorithm, _time_value, _time_unit) .else_wrap (0x78e7778c) ?;
+					} else if _time_value == -1.0 {
+						writeln! (&mut _stream, "    \\_  {:20}    --         now", _algorithm) .else_wrap (0x7cef82a9) ?;
+					} else if _time_value == -2.0 {
+						writeln! (&mut _stream, "    \\_  {:20}    --         (more than trillions of years)", _algorithm) .else_wrap (0xbe09b64a) ?;
+					} else {
+						panic! (unreachable, 0x218ff386);
+					}
+				} else {
+					writeln! (&mut _stream, "    \\_  {:20}    --         (such a large number we can't even compute)", _algorithm) .else_wrap (0x0a4d0a2c) ?;
+				};
+			}
+		}
+	}
+	
+	Ok (())
+}
+
+
+
+
+pub(crate) fn pattern_describe (_pattern : &TokenPattern, _token : &Token, _output_options : &OutputOptions, mut _stream : impl Write) -> MainResult {
+	
+	let (_identifier, _aliases, _labels) = if let TokenPattern::Tagged (_pattern, _tags) = _pattern {
+			let _identifier = _tags.identifier.as_ref ();
+			let _aliases = _tags.aliases.as_deref () .unwrap_or (&[]);
+			let _labels = _tags.labels.as_deref () .unwrap_or (&[]);
+			(_identifier, _aliases, _labels)
+		} else {
+			(None, &[][..], &[][..])
+		};
+	
+	let _entropy = entropy_token (&_pattern) .else_wrap (0x35aa7130) ?;
+	let (_bits, _bits_exact) = _entropy.bits_exact ();
+	
+	let _string = output_token_to_string (&_token, &_output_options) .else_wrap (0x2287d957) ?;
+	let _string_length = _string.len ();
+	
+	let _characters = pattern_classify_chars (_string.as_str ());
+	let _characters = Some (_characters);
+	
+	let _estimates = entropy_estimates (&_entropy) .else_wrap (0xa6cefbae) ?;
+	let _estimates = Some (_estimates);
+	
+	pattern_describe_display (
+			_pattern, _identifier, _aliases, _labels,
+			_string_length, _bits, _bits_exact,
+			_characters,
+			_estimates.as_ref (),
+			true, true, true, true, true,
+			&mut _stream,
+		)
+}
+
+
+
+
+fn pattern_classify_chars (_string : &str) -> (usize, usize, usize, usize, usize) {
+	
+	let mut _letters = 0;
+	let mut _letters_upper = 0;
+	let mut _letters_lower = 0;
+	let mut _digits = 0;
+	let mut _symbols = 0;
+	
+	for _char in _string.chars () {
+		match _char {
+			'a' ..= 'z' => {
+					_letters += 1;
+					_letters_lower += 1;
+				}
+			'A' ..= 'Z' => {
+					_letters += 1;
+					_letters_upper += 1;
+				}
+			'0' ..= '9' =>
+				_digits += 1,
+			'!' ..= '~' =>
+				_symbols += 1,
+			_ =>
+				(),
+		}
+	}
+	
+	(_letters, _letters_upper, _letters_lower, _digits, _symbols)
 }
 
 
