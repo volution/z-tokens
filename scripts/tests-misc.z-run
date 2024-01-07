@@ -1,0 +1,64 @@
+#!/dev/null
+
+
+
+
+<< tests / quick / specials
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect' z-tokens < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	_arguments=(
+			
+			'--nop'
+			'--version'
+			'--help'
+			'--readme'
+			
+		)
+	
+	_hyperfine_arguments=(
+			--warmup 100
+			--min-runs 100
+			--max-runs 1000
+			--shell none
+		)
+	_hyperfine_commands=()
+	
+	if false ; then
+		_hyperfine_arguments+=(
+				--command-name "true"
+			)
+		_hyperfine_commands+=(
+				"true"
+			)
+	fi
+	
+	if false ; then
+		_hyperfine_arguments+=(
+				--command-name "busybox true"
+			)
+		_hyperfine_commands+=(
+				"busybox true"
+			)
+	fi
+	
+	for _arguments in "${_arguments[@]}" ; do
+		_command=(
+				"${__OUTPUTS}/binaries/z-tokens--release--linux--native"
+			)
+		_hyperfine_arguments+=(
+				--command-name "z-tokens ${_arguments}"
+			)
+		_hyperfine_commands+=(
+				"${_command[*]@Q} ${_arguments}"
+			)
+	done
+	
+	exec -- hyperfine \
+			"${_hyperfine_arguments[@]}" \
+			-- \
+			"${_hyperfine_commands[@]}" \
+	#
+!!
+

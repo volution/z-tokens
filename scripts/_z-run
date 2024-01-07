@@ -45,6 +45,7 @@
 && _/documentation-sbom.z-run
 
 && _/tests.z-run
+&& _/tests-misc.z-run
 && _/tests-hashes.z-run
 && _/tests-exchange.z-run
 
