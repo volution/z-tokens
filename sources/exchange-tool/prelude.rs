@@ -14,7 +14,7 @@ pub(crate) use ::z_tokens_exchange::ssh::*;
 
 pub(crate) use ::z_tokens_runtime_pinentry::pinentry_password;
 
-#[ cfg (target_os = "linux") ]
+#[ cfg (all (target_os = "linux", target_env = "gnu")) ]
 pub(crate) use ::z_tokens_runtime_lkkrs::lkkrs_key_read;
 
 

@@ -124,7 +124,7 @@ pub(crate) struct MaterialFlags {
 	pub from_fd : Vec<c_int>,
 	pub from_stdin : Option<bool>,
 	pub from_pinentry : Vec<String>,
-	#[ cfg (target_os = "linux") ]
+	#[ cfg (all (target_os = "linux", target_env = "gnu")) ]
 	pub from_lkkrs : Vec<String>,
 }
 
@@ -156,7 +156,7 @@ pub(crate) enum MaterialSource<Material>
 	FromFd (OwnedFd, bool),
 	FromStdin (bool),
 	FromPinentry (String, bool),
-	#[ cfg (target_os = "linux") ]
+	#[ cfg (all (target_os = "linux", target_env = "gnu")) ]
 	FromLkkrs (String, bool),
 }
 
@@ -247,7 +247,7 @@ impl MaterialFlags {
 				from_fd : Vec::new (),
 				from_stdin : None,
 				from_pinentry : Vec::new (),
-				#[ cfg (target_os = "linux") ]
+				#[ cfg (all (target_os = "linux", target_env = "gnu")) ]
 				from_lkkrs : Vec::new (),
 			}
 	}
@@ -296,7 +296,7 @@ impl MaterialFlags {
 				.with_placeholder ("prompt")
 				.with_description ("via pinentry");
 		
-		#[ cfg (target_os = "linux") ]
+		#[ cfg (all (target_os = "linux", target_env = "gnu")) ]
 		_flags.define_multiple_flag_0 (&mut self.from_lkkrs)
 				.with_flag ((), _long_lkkrs)
 				.with_placeholder ("selector")
@@ -914,7 +914,7 @@ impl MaterialFlags {
 			_sources.push (_source);
 		}
 		
-		#[ cfg (target_os = "linux") ]
+		#[ cfg (all (target_os = "linux", target_env = "gnu")) ]
 		for _selector in self.from_lkkrs.iter () {
 			if _empty_is_missing && _selector.is_empty () {
 				continue;
@@ -1034,7 +1034,7 @@ impl <Material> MaterialSource<Material>
 				}
 			}
 			
-			#[ cfg (target_os = "linux") ]
+			#[ cfg (all (target_os = "linux", target_env = "gnu")) ]
 			MaterialSource::FromLkkrs (_selector, _empty_is_missing) => {
 				let _data = lkkrs_key_read (_selector.as_str ()) .else_wrap (0xedf99975) ?;
 				if let Some (_data) = _data {
