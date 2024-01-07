@@ -266,6 +266,7 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 	let _pins = _arguments.shared.pins.decode () .else_wrap (0x12ba09e4) ?;
 	let _seeds = _arguments.shared.seeds.decode () .else_wrap (0x4a0b1e18) ?;
 	let _ballasts = _arguments.shared.ballasts.decode () .else_wrap (0x7ab43c45) ?;
+	let _derivation_loops = _arguments.shared.derivation_loops;
 	
 	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x3cae7413) ?;
 	
@@ -281,6 +282,7 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 			_pins.iter (),
 			_seeds.iter (),
 			_ballasts.iter (),
+			_derivation_loops,
 			&_password_input,
 			&mut _password_output,
 			_ssh_wrappers.iter_mut (),
@@ -339,6 +341,7 @@ pub(crate) fn main_encrypt_with_arguments (_arguments : EncryptArguments, _input
 	let _pins = _arguments.shared.pins.decode () .else_wrap (0xcc5678f0) ?;
 	let _seeds = _arguments.shared.seeds.decode () .else_wrap (0x72e6b8f5) ?;
 	let _ballasts = _arguments.shared.ballasts.decode () .else_wrap (0x92846ef7) ?;
+	let _derivation_loops = _arguments.shared.derivation_loops;
 	let _deterministic = _arguments.deterministic;
 	
 	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x6849e6bd) ?;
@@ -355,6 +358,7 @@ pub(crate) fn main_encrypt_with_arguments (_arguments : EncryptArguments, _input
 			_pins.iter (),
 			_seeds.iter (),
 			_ballasts.iter (),
+			_derivation_loops,
 			&_decrypted,
 			&mut _encrypted,
 			_ssh_wrappers.iter_mut (),
@@ -405,6 +409,7 @@ pub(crate) fn main_decrypt_with_arguments (_arguments : DecryptArguments, _input
 	let _pins = _arguments.shared.pins.decode () .else_wrap (0x6a7572cb) ?;
 	let _seeds = _arguments.shared.seeds.decode () .else_wrap (0x22c67f58) ?;
 	let _ballasts = _arguments.shared.ballasts.decode () .else_wrap (0x11d94d7f) ?;
+	let _derivation_loops = _arguments.shared.derivation_loops;
 	
 	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x6a4b6c2d) ?;
 	
@@ -420,6 +425,7 @@ pub(crate) fn main_decrypt_with_arguments (_arguments : DecryptArguments, _input
 			_pins.iter (),
 			_seeds.iter (),
 			_ballasts.iter (),
+			_derivation_loops,
 			&_encrypted,
 			&mut _decrypted,
 			_ssh_wrappers.iter_mut (),

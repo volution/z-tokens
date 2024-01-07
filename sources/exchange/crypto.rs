@@ -217,6 +217,7 @@ pub fn password <'a> (
 			_pin : impl Iterator<Item = &'a SharedPin>,
 			_seed : impl Iterator<Item = &'a SharedSeed>,
 			_ballast : impl Iterator<Item = &'a SharedBallast>,
+			_derivation_loops : Option<NonZeroU64>,
 			_password_data : &[u8],
 			_password_output : &mut [u8; 32],
 			_ssh_wrappers : impl Iterator<Item = &'a mut SshWrapper>,
@@ -230,6 +231,7 @@ pub fn password <'a> (
 			& _pin.map (SharedPin::access_bytes_slice) .collect::<Vec<_>> (),
 			& _seed.map (SharedSeed::access_bytes_slice) .collect::<Vec<_>> (),
 			& _ballast.map (SharedBallast::access_bytes_slice) .collect::<Vec<_>> (),
+			_derivation_loops,
 			_password_data,
 			_password_output,
 			_ssh_wrappers.collect (),
@@ -247,6 +249,7 @@ pub fn password_with_raw (
 			_pin_inputs : &[&[u8]],
 			_seed_inputs : &[&[u8]],
 			_ballast_inputs : &[&[u8]],
+			_derivation_loops : Option<NonZeroU64>,
 			_password_data : &[u8],
 			_password_output : &mut [u8; 32],
 			_ssh_wrappers : Vec<&mut SshWrapper>,
@@ -290,7 +293,7 @@ pub fn password_with_raw (
 	drop! (_password_data);
 	
 	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (CRYPTO_PASSWORD_SCHEMA_V1, _partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, (_oracles, _oracle_hashes)) ?;
+			= derive_keys_phase_2 (CRYPTO_PASSWORD_SCHEMA_V1, _partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, (_oracles, _oracle_hashes), _derivation_loops) ?;
 	
 	drop! (_encryption_key, _authentication_key);
 	
@@ -330,6 +333,7 @@ pub fn encrypt <'a> (
 			_pin : impl Iterator<Item = &'a SharedPin>,
 			_seed : impl Iterator<Item = &'a SharedSeed>,
 			_ballast : impl Iterator<Item = &'a SharedBallast>,
+			_derivation_loops : Option<NonZeroU64>,
 			_decrypted : &[u8],
 			_encrypted : &mut Vec<u8>,
 			_ssh_wrappers : impl Iterator<Item = &'a mut SshWrapper>,
@@ -344,6 +348,7 @@ pub fn encrypt <'a> (
 			& _pin.map (SharedPin::access_bytes_slice) .collect::<Vec<_>> (),
 			& _seed.map (SharedSeed::access_bytes_slice) .collect::<Vec<_>> (),
 			& _ballast.map (SharedBallast::access_bytes_slice) .collect::<Vec<_>> (),
+			_derivation_loops,
 			_decrypted,
 			_encrypted,
 			_ssh_wrappers.collect (),
@@ -362,6 +367,7 @@ pub fn encrypt_with_raw (
 			_pin_inputs : &[&[u8]],
 			_seed_inputs : &[&[u8]],
 			_ballast_inputs : &[&[u8]],
+			_derivation_loops : Option<NonZeroU64>,
 			_decrypted : &[u8],
 			_encrypted : &mut Vec<u8>,
 			_ssh_wrappers : Vec<&mut SshWrapper>,
@@ -443,7 +449,7 @@ pub fn encrypt_with_raw (
 		};
 	
 	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (CRYPTO_ENCRYPTION_SCHEMA_V1, _partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, (_oracles, _oracle_hashes)) ?;
+			= derive_keys_phase_2 (CRYPTO_ENCRYPTION_SCHEMA_V1, _partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, (_oracles, _oracle_hashes), _derivation_loops) ?;
 	
 	drop! (_packet_key);
 	
@@ -505,6 +511,7 @@ pub fn decrypt <'a> (
 			_pin : impl Iterator<Item = &'a SharedPin>,
 			_seed : impl Iterator<Item = &'a SharedSeed>,
 			_ballast : impl Iterator<Item = &'a SharedBallast>,
+			_derivation_loops : Option<NonZeroU64>,
 			_encrypted : &[u8],
 			_decrypted : &mut Vec<u8>,
 			_ssh_wrappers : impl Iterator<Item = &'a mut SshWrapper>,
@@ -518,6 +525,7 @@ pub fn decrypt <'a> (
 			& _pin.map (SharedPin::access_bytes_slice) .collect::<Vec<_>> (),
 			& _seed.map (SharedSeed::access_bytes_slice) .collect::<Vec<_>> (),
 			& _ballast.map (SharedBallast::access_bytes_slice) .collect::<Vec<_>> (),
+			_derivation_loops,
 			_encrypted,
 			_decrypted,
 			_ssh_wrappers.collect (),
@@ -535,6 +543,7 @@ pub fn decrypt_with_raw (
 			_pin_inputs : &[&[u8]],
 			_seed_inputs : &[&[u8]],
 			_ballast_inputs : &[&[u8]],
+			_derivation_loops : Option<NonZeroU64>,
 			_encrypted : &[u8],
 			_decrypted : &mut Vec<u8>,
 			_ssh_wrappers : Vec<&mut SshWrapper>,
@@ -595,7 +604,7 @@ pub fn decrypt_with_raw (
 	// NOTE:  deriving keys...
 	
 	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (CRYPTO_ENCRYPTION_SCHEMA_V1, _partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, (_oracles, _oracle_hashes)) ?;
+			= derive_keys_phase_2 (CRYPTO_ENCRYPTION_SCHEMA_V1, _partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, (_oracles, _oracle_hashes), _derivation_loops) ?;
 	
 	drop! (_packet_key);
 	drop! (_packet_salt);
@@ -1073,6 +1082,7 @@ fn derive_keys_phase_2 (
 			_seed_hash : (InternalSeedHash, Vec<InternalSeedHash>),
 			_ballast_hash : (InternalBallastHash, Vec<InternalBallastHash>),
 			_oracles : (Vec<(&mut SshWrapper, InternalOracleHandle)>, InternalOracleHandle),
+			_derivation_loops : Option<NonZeroU64>,
 		) -> CryptoResult<(
 			InternalPacketKey,
 			InternalEncryptionKey,
@@ -1083,198 +1093,211 @@ fn derive_keys_phase_2 (
 	let (_pin_hash, _pin_hashes) = _pin_hash;
 	let (_seed_hash, _seed_hashes) = _seed_hash;
 	let (_ballast_hash, _ballast_hashes) = _ballast_hash;
-	let (_oracles, _oracle_hashes) = _oracles;
+	let (mut _oracles, _oracle_hashes) = _oracles;
+	
+	let _derivation_loops = _derivation_loops.map (NonZeroU64::get) .unwrap_or (1);
 	
 	// --------------------------------------------------------------------------------
-	// NOTE:  call SSH wrappers...
+	// NOTE:  initialize keys...
 	
+	let mut _packet_key = InternalPacketKey::wrap (_partial_key.material);
 	let mut _oracle_key = InternalOracleOutput::wrap (_oracle_hashes.material);
-	
-	for (_oracle_wrapper, _oracle_handle) in _oracles.into_iter () {
-		
-		let _oracle_input = blake3_derive_key (
-				InternalOracleInput::wrap,
-				CRYPTO_ORACLE_INPUT_PURPOSE,
-				&[
-					_oracle_handle.access (),
-					_oracle_key.access (),
-					_packet_salt.access (),
-					_partial_key.access (),
-				],
-				&[],
-				None,
-			);
-		
-		let mut _oracle_output = InternalOracleOutput::zero ();
-		_oracle_wrapper.wrap (Some (_schema), _oracle_input.access (), &mut _oracle_output.material) .else_wrap (0xcc07e95e) ?;
-		
-		_oracle_key = blake3_derive_key (
-				InternalOracleOutput::wrap,
-				CRYPTO_ORACLE_OUTPUT_PURPOSE,
-				&[
-					_oracle_input.access (),
-					_oracle_output.access (),
-				],
-				&[],
-				None,
-			);
-	}
-	
-	// --------------------------------------------------------------------------------
-	// NOTE:  derive ballast argon hashes...
-	
 	let mut _ballast_key = InternalBallastKey::wrap (_ballast_hash.material);
-	let _ballast_count = _ballast_hashes.len ();
-	
-	for _ballast_hash in _ballast_hashes.into_iter () {
-		
-		let _ballast_salt = blake3_derive_key (
-				InternalBallastSalt::wrap,
-				CRYPTO_BALLAST_SALT_PURPOSE,
-				&[
-					_ballast_key.access (),
-					_oracle_key.access (),
-					_packet_salt.access (),
-					_partial_key.access (),
-				],
-				&[],
-				None,
-			);
-		
-		let _ballast_argon = apply_argon_ballast (_ballast_hash, &_ballast_salt, _ballast_count) ?;
-		
-		_ballast_key = blake3_derive_key (
-				InternalBallastKey::wrap,
-				CRYPTO_BALLAST_KEY_PURPOSE,
-				&[
-					_ballast_salt.access (),
-					_ballast_argon.access (),
-				],
-				&[],
-				None,
-			);
-	}
-	
-	// --------------------------------------------------------------------------------
-	// NOTE:  derive seed argon hashes...
-	
 	let mut _seed_key = InternalSeedKey::wrap (_seed_hash.material);
-	
-	for _seed_hash in _seed_hashes.into_iter () {
-		
-		let _seed_salt = blake3_derive_key (
-				InternalSeedSalt::wrap,
-				CRYPTO_SEED_SALT_PURPOSE,
-				&[
-					_seed_key.access (),
-					_oracle_key.access (),
-					_packet_salt.access (),
-					_partial_key.access (),
-				],
-				&[],
-				None,
-			);
-		
-		let _seed_argon = apply_argon_seed (_seed_hash, &_seed_salt) ?;
-		
-		_seed_key = blake3_derive_key (
-				InternalSeedKey::wrap,
-				CRYPTO_SEED_KEY_PURPOSE,
-				&[
-					_seed_salt.access (),
-					_seed_argon.access (),
-				],
-				&[],
-				None,
-			);
-	}
-	
-	// --------------------------------------------------------------------------------
-	// NOTE:  derive secret argon hashes...
-	
 	let mut _secret_key = InternalSecretKey::wrap (_secret_hash.material);
-	
-	for _secret_hash in _secret_hashes.into_iter () {
-		
-		let _secret_salt = blake3_derive_key (
-				InternalSecretSalt::wrap,
-				CRYPTO_SECRET_SALT_PURPOSE,
-				&[
-					_secret_key.access (),
-					_oracle_key.access (),
-					_packet_salt.access (),
-					_partial_key.access (),
-				],
-				&[],
-				None,
-			);
-		
-		let _secret_argon = apply_argon_secret (_secret_hash, &_secret_salt) ?;
-		
-		_secret_key = blake3_derive_key (
-				InternalSecretKey::wrap,
-				CRYPTO_SECRET_KEY_PURPOSE,
-				&[
-					_secret_salt.access (),
-					_secret_argon.access (),
-				],
-				&[],
-				None,
-			);
-	}
-	
-	// --------------------------------------------------------------------------------
-	// NOTE:  derive pin argon hashes...
-	
 	let mut _pin_key = InternalPinKey::wrap (_pin_hash.material);
 	
-	for _pin_hash in _pin_hashes.into_iter () {
-		
-		let _pin_salt = blake3_derive_key (
-				InternalPinSalt::wrap,
-				CRYPTO_PIN_SALT_PURPOSE,
-				&[
-					_pin_key.access (),
-					_oracle_key.access (),
-					_packet_salt.access (),
-					_partial_key.access (),
-				],
-				&[],
-				None,
-			);
-		
-		let _pin_argon = apply_argon_pin (_pin_hash, &_pin_salt) ?;
-		
-		_pin_key = blake3_derive_key (
-				InternalPinKey::wrap,
-				CRYPTO_PIN_KEY_PURPOSE,
-				&[
-					_pin_salt.access (),
-					_pin_argon.access (),
-				],
-				&[],
-				None,
-			);
-	}
-	
 	// --------------------------------------------------------------------------------
-	// NOTE:  derive packet key...
+	// NOTE:  derivation loops...
 	
-	let _packet_key = blake3_derive_key (
-			InternalPacketKey::wrap,
-			CRYPTO_PACKET_KEY_PURPOSE,
-			&[
-				_oracle_key.access (),
-				_ballast_key.access (),
-				_seed_key.access (),
-				_secret_key.access (),
-				_pin_key.access (),
-				_packet_salt.access (),
-				_partial_key.access (),
-			],
-			&[],
-			None,
-		);
+	for _derivation_loop in 0 ..= _derivation_loops {
+		
+		// --------------------------------------------------------------------------------
+		// NOTE:  derive packet key...
+		
+		_packet_key = blake3_derive_key (
+				InternalPacketKey::wrap,
+				CRYPTO_PACKET_KEY_PURPOSE,
+				&[
+					_packet_salt.access (),
+					_packet_key.access (),
+					_oracle_key.access (),
+					_ballast_key.access (),
+					_seed_key.access (),
+					_secret_key.access (),
+					_pin_key.access (),
+				],
+				&[],
+				Some (_derivation_loop),
+			);
+		
+		if _derivation_loop == _derivation_loops {
+			break;
+		}
+		
+		// --------------------------------------------------------------------------------
+		// NOTE:  call SSH wrappers...
+		
+		for (_oracle_wrapper, _oracle_handle) in _oracles.iter_mut () {
+			
+			let _oracle_input = blake3_derive_key (
+					InternalOracleInput::wrap,
+					CRYPTO_ORACLE_INPUT_PURPOSE,
+					&[
+						_packet_key.access (),
+						_oracle_key.access (),
+						_oracle_handle.access (),
+					],
+					&[],
+					None,
+				);
+			
+			let mut _oracle_output = InternalOracleOutput::zero ();
+			_oracle_wrapper.wrap (Some (_schema), _oracle_input.access (), &mut _oracle_output.material) .else_wrap (0xcc07e95e) ?;
+			
+			_oracle_key = blake3_derive_key (
+					InternalOracleOutput::wrap,
+					CRYPTO_ORACLE_OUTPUT_PURPOSE,
+					&[
+						_oracle_input.access (),
+						_oracle_output.access (),
+					],
+					&[],
+					None,
+				);
+		}
+		
+		// --------------------------------------------------------------------------------
+		// NOTE:  derive ballast argon hashes...
+		
+		let _ballast_count = _ballast_hashes.len ();
+		
+		for _ballast_hash in _ballast_hashes.iter () {
+			
+			let _ballast_salt = blake3_derive_key (
+					InternalBallastSalt::wrap,
+					CRYPTO_BALLAST_SALT_PURPOSE,
+					&[
+						_packet_key.access (),
+						_oracle_key.access (),
+						_ballast_key.access (),
+					],
+					&[],
+					None,
+				);
+			
+			let _ballast_argon = apply_argon_ballast (_ballast_hash, &_ballast_salt, _ballast_count) ?;
+			
+			_ballast_key = blake3_derive_key (
+					InternalBallastKey::wrap,
+					CRYPTO_BALLAST_KEY_PURPOSE,
+					&[
+						_ballast_salt.access (),
+						_ballast_argon.access (),
+					],
+					&[],
+					None,
+				);
+		}
+		
+		// --------------------------------------------------------------------------------
+		// NOTE:  derive seed argon hashes...
+		
+		for _seed_hash in _seed_hashes.iter () {
+			
+			let _seed_salt = blake3_derive_key (
+					InternalSeedSalt::wrap,
+					CRYPTO_SEED_SALT_PURPOSE,
+					&[
+						_packet_key.access (),
+						_oracle_key.access (),
+						_seed_key.access (),
+					],
+					&[],
+					None,
+				);
+			
+			let _seed_argon = apply_argon_seed (_seed_hash, &_seed_salt) ?;
+			
+			_seed_key = blake3_derive_key (
+					InternalSeedKey::wrap,
+					CRYPTO_SEED_KEY_PURPOSE,
+					&[
+						_seed_salt.access (),
+						_seed_argon.access (),
+					],
+					&[],
+					None,
+				);
+		}
+		
+		// --------------------------------------------------------------------------------
+		// NOTE:  derive secret argon hashes...
+		
+		for _secret_hash in _secret_hashes.iter () {
+			
+			let _secret_salt = blake3_derive_key (
+					InternalSecretSalt::wrap,
+					CRYPTO_SECRET_SALT_PURPOSE,
+					&[
+						_packet_key.access (),
+						_oracle_key.access (),
+						_secret_key.access (),
+					],
+					&[],
+					None,
+				);
+			
+			let _secret_argon = apply_argon_secret (_secret_hash, &_secret_salt) ?;
+			
+			_secret_key = blake3_derive_key (
+					InternalSecretKey::wrap,
+					CRYPTO_SECRET_KEY_PURPOSE,
+					&[
+						_secret_salt.access (),
+						_secret_argon.access (),
+					],
+					&[],
+					None,
+				);
+		}
+		
+		// --------------------------------------------------------------------------------
+		// NOTE:  derive pin argon hashes...
+		
+		for _pin_hash in _pin_hashes.iter () {
+			
+			let _pin_salt = blake3_derive_key (
+					InternalPinSalt::wrap,
+					CRYPTO_PIN_SALT_PURPOSE,
+					&[
+						_packet_key.access (),
+						_oracle_key.access (),
+						_pin_key.access (),
+					],
+					&[],
+					None,
+				);
+			
+			let _pin_argon = apply_argon_pin (_pin_hash, &_pin_salt) ?;
+			
+			_pin_key = blake3_derive_key (
+					InternalPinKey::wrap,
+					CRYPTO_PIN_KEY_PURPOSE,
+					&[
+						_pin_salt.access (),
+						_pin_argon.access (),
+					],
+					&[],
+					None,
+				);
+		}
+		
+		// --------------------------------------------------------------------------------
+		// NOTE:  derive packet key...
+		
+		// NOTE:  This actually happens at the beginning of the next loop!
+	}
 	
 	// --------------------------------------------------------------------------------
 	// NOTE:  derive encryption key...
@@ -1314,7 +1337,7 @@ fn derive_keys_phase_2 (
 
 
 
-fn apply_argon_secret (_secret_hash : InternalSecretHash, _secret_salt : &InternalSecretSalt) -> CryptoResult<InternalSecretArgon> {
+fn apply_argon_secret (_secret_hash : &InternalSecretHash, _secret_salt : &InternalSecretSalt) -> CryptoResult<InternalSecretArgon> {
 	
 	argon_derive (
 			InternalSecretArgon::wrap,
@@ -1326,7 +1349,7 @@ fn apply_argon_secret (_secret_hash : InternalSecretHash, _secret_salt : &Intern
 }
 
 
-fn apply_argon_pin (_pin_hash : InternalPinHash, _pin_salt : &InternalPinSalt) -> CryptoResult<InternalPinArgon> {
+fn apply_argon_pin (_pin_hash : &InternalPinHash, _pin_salt : &InternalPinSalt) -> CryptoResult<InternalPinArgon> {
 	
 	argon_derive (
 			InternalPinArgon::wrap,
@@ -1338,7 +1361,7 @@ fn apply_argon_pin (_pin_hash : InternalPinHash, _pin_salt : &InternalPinSalt) -
 }
 
 
-fn apply_argon_seed (_seed_hash : InternalSeedHash, _seed_salt : &InternalSeedSalt) -> CryptoResult<InternalSeedArgon> {
+fn apply_argon_seed (_seed_hash : &InternalSeedHash, _seed_salt : &InternalSeedSalt) -> CryptoResult<InternalSeedArgon> {
 	
 	argon_derive (
 			InternalSeedArgon::wrap,
@@ -1350,7 +1373,7 @@ fn apply_argon_seed (_seed_hash : InternalSeedHash, _seed_salt : &InternalSeedSa
 }
 
 
-fn apply_argon_ballast (_ballast_hash : InternalBallastHash, _ballast_salt : &InternalBallastSalt, _ballast_count : usize) -> CryptoResult<InternalBallastArgon> {
+fn apply_argon_ballast (_ballast_hash : &InternalBallastHash, _ballast_salt : &InternalBallastSalt, _ballast_count : usize) -> CryptoResult<InternalBallastArgon> {
 	
 	let _ballast_count = _ballast_count as u32;
 	

@@ -79,6 +79,7 @@ pub(crate) struct SharedKeysArguments {
 	pub pins : MaterialSources<SharedPin>,
 	pub seeds : MaterialSources<SharedSeed>,
 	pub ballasts : MaterialSources<SharedBallast>,
+	pub derivation_loops : Option<NonZeroU64>,
 }
 
 
@@ -88,7 +89,9 @@ pub(crate) struct SharedKeysFlags {
 	pub pins : PinsFlags,
 	pub seeds : SeedsFlags,
 	pub ballasts : BallastsFlags,
+	pub derivation_loops : Option<u64>,
 }
+
 
 
 
@@ -797,15 +800,23 @@ impl SharedKeysFlags {
 				pins : PinsFlags::new (),
 				seeds : SeedsFlags::new (),
 				ballasts : BallastsFlags::new (),
+				derivation_loops : None,
 			}
 	}
 	
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		
 		self.associated.flags (_flags) ?;
 		self.secrets.flags (_flags) ?;
 		self.pins.flags (_flags) ?;
 		self.seeds.flags (_flags) ?;
 		self.ballasts.flags (_flags) ?;
+		
+		_flags.define_single_flag_0 (&mut self.derivation_loops)
+				.with_flag ((), "derivation-loops")
+				.with_placeholder ("count")
+				.with_description ("number of derivation loops");
+		
 		Ok (())
 	}
 	
@@ -815,12 +826,17 @@ impl SharedKeysFlags {
 		let _pins = self.pins.arguments (_empty_is_missing) ?;
 		let _seeds = self.seeds.arguments (_empty_is_missing) ?;
 		let _ballasts = self.ballasts.arguments (_empty_is_missing) ?;
+		let _derivation_loops = match self.derivation_loops {
+			Some (_loops) => NonZeroU64::new (_loops),
+			None => None,
+		};
 		Ok (SharedKeysArguments {
 				associated : _associated,
 				secrets : _secrets,
 				pins : _pins,
 				seeds : _seeds,
 				ballasts : _ballasts,
+				derivation_loops : _derivation_loops,
 			})
 	}
 }
