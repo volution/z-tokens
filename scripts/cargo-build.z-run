@@ -3,7 +3,7 @@
 
 
 
-<< cargo / debug / check
+++<< cargo / debug / check
 	export -- __META__BUILD_TARGET_TYPE=debug
 	exec -- "${ZRUN}" ':: cargo / exec' check --no-default-features --features development "${@}"
 !!
@@ -21,7 +21,7 @@
 
 
 
-<< cargo / debug / build
+++<< cargo / debug / build
 	export -- __META__BUILD_TARGET_TYPE=debug
 	exec -- "${ZRUN}" ':: cargo / exec' build --no-default-features --features development "${@}"
 !!

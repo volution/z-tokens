@@ -33,7 +33,7 @@
 
 
 
-<< test / quick / hashes / hash / scrypt & argon2 / benchmark
+<< tests / quick / hashes / hash / scrypt & argon2 / benchmark
 	test "${#}" -eq 0
 	"${ZRUN}" ':: cargo / release / build & collect' z-hashes < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
@@ -55,7 +55,7 @@
 
 
 
-<< test / quick / hashes / hash / cryptographic / benchmark
+<< tests / quick / hashes / hash / cryptographic / benchmark
 	test "${#}" -eq 0
 	"${ZRUN}" ':: cargo / release / build & collect' z-hashes < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
@@ -117,7 +117,7 @@
 
 
 
-<< test / quick / hashes / hash / checksums / benchmark
+<< tests / quick / hashes / hash / checksums / benchmark
 	test "${#}" -eq 0
 	"${ZRUN}" ':: cargo / release / build & collect' z-hashes < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
