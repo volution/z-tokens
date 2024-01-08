@@ -1772,6 +1772,7 @@ checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
 [[package]]
 name = "vrl-cli-arguments"
 version = "0.1.0"
+source = "git+https://github.com/volution/volution-rust-libraries?branch=development#6693f56dfcd05251c27a0a4147dc2735958782c5"
 dependencies = [
  "vrl-errors",
  "vrl-preludes",
@@ -1780,6 +1781,7 @@ dependencies = [
 [[package]]
 name = "vrl-errors"
 version = "0.1.0"
+source = "git+https://github.com/volution/volution-rust-libraries?branch=development#6693f56dfcd05251c27a0a4147dc2735958782c5"
 dependencies = [
  "vrl-preludes",
 ]
@@ -1787,10 +1789,12 @@ dependencies = [
 [[package]]
 name = "vrl-preludes"
 version = "0.1.0"
+source = "git+https://github.com/volution/volution-rust-libraries?branch=development#6693f56dfcd05251c27a0a4147dc2735958782c5"
 
 [[package]]
 name = "vrl-random"
 version = "0.1.0"
+source = "git+https://github.com/volution/volution-rust-libraries?branch=development#6693f56dfcd05251c27a0a4147dc2735958782c5"
 dependencies = [
  "paste",
  "rand 0.8.5",
