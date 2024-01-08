@@ -271,7 +271,7 @@
 				)
 		;;
 		
-		( tree | outdated | license | cyclonedx )
+		( tree | outdated | license | duplicates | audit | geiger | cyclonedx )
 		;;
 		
 		( collect )

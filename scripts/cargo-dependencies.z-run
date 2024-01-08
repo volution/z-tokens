@@ -54,12 +54,27 @@
 
 
 << cargo / dependencies / show / outdated
-	exec -- "${ZRUN}" ':: cargo / exec / local' outdated --aggresssive "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec / local' outdated --aggressive "${@}"
 !!
 
 
 << cargo / dependencies / show / licenses
-	exec -- "${ZRUN}" ':: cargo / exec / local' license --all-features --do-not-bundle "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec / local' license --all-features --do-not-bundle --avoid-build-deps --avoid-dev-deps "${@}"
+!!
+
+
+<< cargo / dependencies / show / duplicates
+	exec -- "${ZRUN}" ':: cargo / exec / local' duplicates "${@}"
+!!
+
+
+<< cargo / dependencies / show / audit
+	exec -- "${ZRUN}" ':: cargo / exec / local' audit "${@}"
+!!
+
+
+<< cargo / dependencies / show / geiger
+	exec -- "${ZRUN}" ':: cargo / exec / local' geiger --output-format Ascii "${@}"
 !!
 
 
