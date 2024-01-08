@@ -27,7 +27,7 @@ include! ("./patterns_tokens_macros.in");
 define_repeat! (
 		pub DIGITS_BASE10,
 		("digits-base10", "encoding", "digits", "password", "pronounceable", "memorable"),
-		("digits-base10", "d"),
+		("digits-base10", "d", "pin"),
 		{ glyphs::DIGIT_BASE10_TOKEN => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
 		(32 : 2));
 
