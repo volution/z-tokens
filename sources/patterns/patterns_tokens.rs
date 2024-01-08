@@ -911,7 +911,9 @@ define_constant! (IP_100_A_PREFIX, Str, "100");
 #[ cfg (feature = "zt-patterns-ip") ]
 define_constant! (IP_198_A_PREFIX, Str, "198");
 #[ cfg (feature = "zt-patterns-ip") ]
-define_constant! (IP_MAC_PREFIX, Str, "02");
+define_constant! (IP_MAC_02_PREFIX, Str, "02");
+#[ cfg (feature = "zt-patterns-ip") ]
+define_constant! (IP_MAC_04_PREFIX, Str, "04");
 
 #[ cfg (feature = "zt-patterns-ip") ]
 define_sequence! (
@@ -999,11 +1001,25 @@ define_sequence! (
 
 #[ cfg (feature = "zt-patterns-ip") ]
 define_sequence! (
-		pub IP_MAC,
-		("ip-mac", "networking"),
-		("ip-mac"),
+		pub IP_MAC_02,
+		("ip-mac-02", "ip-mac", "networking"),
+		("ip-mac-02", "ip-mac"),
 		[
-			IP_MAC_PREFIX_TOKEN,
+			IP_MAC_02_PREFIX_TOKEN,
+			glyphs::INTEGER_8B_HEX_TOKEN,
+			glyphs::INTEGER_8B_HEX_TOKEN,
+			glyphs::INTEGER_8B_HEX_TOKEN,
+			glyphs::INTEGER_8B_HEX_TOKEN,
+			glyphs::INTEGER_8B_HEX_TOKEN,
+		], separators::COLON_MANDATORY_INFIX_PATTERN);
+
+#[ cfg (feature = "zt-patterns-ip") ]
+define_sequence! (
+		pub IP_MAC_04,
+		("ip-mac-04", "ip-mac", "networking"),
+		("ip-mac-04"),
+		[
+			IP_MAC_04_PREFIX_TOKEN,
 			glyphs::INTEGER_8B_HEX_TOKEN,
 			glyphs::INTEGER_8B_HEX_TOKEN,
 			glyphs::INTEGER_8B_HEX_TOKEN,
@@ -1020,7 +1036,8 @@ define_all! (pub IP_ALL, [
 		IP_169,
 		IP_100,
 		IP_198,
-		IP_MAC,
+		IP_MAC_02,
+		IP_MAC_04,
 	]);
 
 
