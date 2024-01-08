@@ -40,23 +40,23 @@
 :: cargo / debug / build & collect & run / z-tokens :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' z-tokens "${@}"
 :: cargo / release / build & collect & run / z-tokens :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' z-tokens "${@}"
 
-:: cargo / debug / build & collect & run / z-patterns :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' z-patterns "${@}"
-:: cargo / release / build & collect & run / z-patterns :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' z-patterns "${@}"
+:: cargo / debug / build & collect & run / zt-patterns :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' zt-patterns "${@}"
+:: cargo / release / build & collect & run / zt-patterns :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' zt-patterns "${@}"
 
-:: cargo / debug / build & collect & run / z-hashes :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' z-hashes "${@}"
-:: cargo / release / build & collect & run / z-hashes :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' z-hashes "${@}"
+:: cargo / debug / build & collect & run / zt-hashes :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' zt-hashes "${@}"
+:: cargo / release / build & collect & run / zt-hashes :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' zt-hashes "${@}"
 
-:: cargo / debug / build & collect & run / z-encodings :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' z-encodings "${@}"
-:: cargo / release / build & collect & run / z-encodings :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' z-encodings "${@}"
+:: cargo / debug / build & collect & run / zt-encodings :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' zt-encodings "${@}"
+:: cargo / release / build & collect & run / zt-encodings :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' zt-encodings "${@}"
 
-:: cargo / debug / build & collect & run / z-exchange :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' z-exchange "${@}"
-:: cargo / release / build & collect & run / z-exchange :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' z-exchange "${@}"
+:: cargo / debug / build & collect & run / zt-exchange :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' zt-exchange "${@}"
+:: cargo / release / build & collect & run / zt-exchange :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' zt-exchange "${@}"
 
-:: cargo / debug / build & collect & run / z-oracles :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' z-oracles "${@}"
-:: cargo / release / build & collect & run / z-oracles :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' z-oracles "${@}"
+:: cargo / debug / build & collect & run / zt-oracles :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' zt-oracles "${@}"
+:: cargo / release / build & collect & run / zt-oracles :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' zt-oracles "${@}"
 
-:: cargo / debug / build & collect & run / z-secrets :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' z-secrets "${@}"
-:: cargo / release / build & collect & run / z-secrets :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' z-secrets "${@}"
+:: cargo / debug / build & collect & run / zt-secrets :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' zt-secrets "${@}"
+:: cargo / release / build & collect & run / zt-secrets :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' zt-secrets "${@}"
 
 
 --<< cargo / debug / build & collect & run / *

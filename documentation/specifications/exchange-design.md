@@ -1,6 +1,6 @@
 
 
-# `z-exchange` design document
+# `zt-exchange` design document
 
 
 

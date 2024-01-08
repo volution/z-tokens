@@ -236,17 +236,17 @@ pub fn main_patterns () -> MainResult<ExitCode> {
 		
 		
 		(&["list"], _) | (&["l"], _) => {
-			_arguments.insert (0, String::from ("z-patterns list"));
+			_arguments.insert (0, String::from ("zt-patterns list"));
 			main_patterns_list (_arguments) .else_wrap (0xd1a6fe40)
 		}
 		
 		(&["generate"], _) => {
-			_arguments.insert (0, String::from ("z-patterns generate"));
+			_arguments.insert (0, String::from ("zt-patterns generate"));
 			main_patterns_generate (_arguments) .else_wrap (0x87484b00)
 		}
 		
 		(&["g"], _) => {
-			_arguments.insert (0, String::from ("z-patterns generate"));
+			_arguments.insert (0, String::from ("zt-patterns generate"));
 			_arguments.insert (1, String::from ("--compact"));
 			_arguments.insert (2, String::from ("true"));
 			_arguments.insert (3, String::from ("--token-count"));
@@ -255,7 +255,7 @@ pub fn main_patterns () -> MainResult<ExitCode> {
 		}
 		
 		(&["g", _pattern], _) => {
-			_arguments.insert (0, String::from ("z-patterns generate"));
+			_arguments.insert (0, String::from ("zt-patterns generate"));
 			_arguments.insert (1, String::from ("--compact"));
 			_arguments.insert (2, String::from ("true"));
 			_arguments.insert (3, String::from ("--token-count"));
@@ -296,7 +296,7 @@ pub fn main_hashes () -> MainResult<ExitCode> {
 		
 		
 		(&["hash"], _) => {
-			_arguments.insert (0, String::from ("z-hashes hash"));
+			_arguments.insert (0, String::from ("zt-hashes hash"));
 			main_hashes_hash (_arguments) .else_wrap (0xf90b7753)
 		}
 		
@@ -331,11 +331,11 @@ pub fn main_encodings () -> MainResult<ExitCode> {
 		
 		
 		(&["encode"], _) => {
-			_arguments.insert (0, String::from ("z-encodings encode"));
+			_arguments.insert (0, String::from ("zt-encodings encode"));
 			main_encodings_encode (_arguments) .else_wrap (0x75298a87)
 		}
 		(&["decode"], _) => {
-			_arguments.insert (0, String::from ("z-encodings decode"));
+			_arguments.insert (0, String::from ("zt-encodings decode"));
 			main_encodings_decode (_arguments) .else_wrap (0x8f9ff25b)
 		}
 		
@@ -370,44 +370,44 @@ pub fn main_exchange () -> MainResult<ExitCode> {
 		
 		
 		(&["keys"], _) => {
-			_arguments.insert (0, String::from ("z-exchange keys"));
+			_arguments.insert (0, String::from ("zt-exchange keys"));
 			main_exchange_keys (_arguments) .else_wrap (0x7685fa9c)
 		}
 		(&["encrypt"], _) => {
-			_arguments.insert (0, String::from ("z-exchange encrypt"));
+			_arguments.insert (0, String::from ("zt-exchange encrypt"));
 			main_exchange_encrypt (_arguments) .else_wrap (0xadd1e78c)
 		}
 		(&["decrypt"], _) => {
-			_arguments.insert (0, String::from ("z-exchange decrypt"));
+			_arguments.insert (0, String::from ("zt-exchange decrypt"));
 			main_exchange_decrypt (_arguments) .else_wrap (0x46af8dea)
 		}
 		#[ cfg (feature = "z-tokens-exchange-tool") ]
 		(&["password"], _) => {
-			_arguments.insert (0, String::from ("z-tokens exchange password"));
+			_arguments.insert (0, String::from ("zt-tokens exchange password"));
 			main_exchange_password (_arguments) .else_wrap (0x7dd79a95)
 		}
 		(&["armor"], _) => {
-			_arguments.insert (0, String::from ("z-exchange armor"));
+			_arguments.insert (0, String::from ("zt-exchange armor"));
 			main_exchange_armor (_arguments) .else_wrap (0x82a1222e)
 		}
 		(&["dearmor"], _) => {
-			_arguments.insert (0, String::from ("z-exchange dearmor"));
+			_arguments.insert (0, String::from ("zt-exchange dearmor"));
 			main_exchange_dearmor (_arguments) .else_wrap (0x1008ba10)
 		}
 		(&["raw", "encode"], _) => {
-			_arguments.insert (0, String::from ("z-exchange raw encode"));
+			_arguments.insert (0, String::from ("zt-exchange raw encode"));
 			main_exchange_encode (_arguments) .else_wrap (0x71c2c1b5)
 		}
 		(&["raw", "decode"], _) => {
-			_arguments.insert (0, String::from ("z-exchange raw decode"));
+			_arguments.insert (0, String::from ("zt-exchange raw decode"));
 			main_exchange_decode (_arguments) .else_wrap (0xecdd6ca7)
 		}
 		(&["ssh", "keys"], _) => {
-			_arguments.insert (0, String::from ("z-exchange ssh keys"));
+			_arguments.insert (0, String::from ("zt-exchange ssh keys"));
 			main_exchange_ssh_keys (_arguments) .else_wrap (0x7fff2cbd)
 		}
 		(&["ssh", "wrap"], _) => {
-			_arguments.insert (0, String::from ("z-exchange ssh wrap"));
+			_arguments.insert (0, String::from ("zt-exchange ssh wrap"));
 			main_exchange_ssh_wrap (_arguments) .else_wrap (0xcb42bef7)
 		}
 		
@@ -442,7 +442,7 @@ pub fn main_oracles () -> MainResult<ExitCode> {
 		
 		
 		(&[], _) => {
-			_arguments.insert (0, String::from ("z-oracles"));
+			_arguments.insert (0, String::from ("zt-oracles"));
 			main_oracles_tool (_arguments) .else_wrap (0x65ec678f)
 		}
 		
@@ -477,7 +477,7 @@ pub fn main_secrets () -> MainResult<ExitCode> {
 		
 		
 		(&[], _) => {
-			_arguments.insert (0, String::from ("z-secrets"));
+			_arguments.insert (0, String::from ("zt-secrets"));
 			main_secrets_tool (_arguments) .else_wrap (0x0d14e404)
 		}
 		

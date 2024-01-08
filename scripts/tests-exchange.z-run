@@ -8,7 +8,7 @@
 
 
 << tests / quick / exchange / run / debug
-	"${ZRUN}" ':: cargo / debug / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / debug / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
@@ -16,13 +16,13 @@
 	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 	
 	time \
-	"${__OUTPUTS}/binaries/z-exchange--debug--linux--native" "${@}" \
+	"${__OUTPUTS}/binaries/zt-exchange--debug--linux--native" "${@}" \
 	#
 !!
 
 
 << tests / quick / exchange / run / release
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
@@ -30,7 +30,7 @@
 	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 	
 	time \
-	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" "${@}" \
+	"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" "${@}" \
 	#
 !!
 
@@ -43,13 +43,13 @@
 
 << tests / quick / exchange / armor / hello
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
 	time \
-	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			armor \
 		<<< $'hello world!\n' \
 	#
@@ -58,13 +58,13 @@
 
 << tests / quick / exchange / armor / empty
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
 	time \
-	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			armor \
 		< /dev/null \
 	#
@@ -73,13 +73,13 @@
 
 << tests / quick / exchange / armor / notice
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
 	time \
-	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			armor \
 		< ./notice.txt \
 	#
@@ -88,14 +88,14 @@
 
 << tests / quick / exchange / armor / random
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
 	time \
 	head -c 64 < /dev/urandom \
-	| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			armor \
 	#
 !!
@@ -105,16 +105,16 @@
 
 << tests / quick / exchange / armor & dearmor / hello
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
 	time \
-	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			armor \
 		<<< $'hello world!\n' \
-	| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			dearmor \
 	#
 !!
@@ -124,7 +124,7 @@
 
 << tests / quick / exchange / armor & dearmor / files
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	readarray -t -- _files \
@@ -136,10 +136,10 @@
 	time \
 	for _file in "${_files[@]}" ; do
 		
-		"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+		"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 				armor \
 			< "${_file}" \
-		| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+		| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 				dearmor \
 		| md5sum -b -- /dev/fd/5 5<&0 \
 		| md5sum -c --quiet 5< "${_file}" \
@@ -153,7 +153,7 @@
 
 << tests / quick / exchange / armor & dearmor / random
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	for _index_1 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
@@ -173,9 +173,9 @@
 		
 		time \
 		head -c "${_size}" < /dev/urandom \
-		| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+		| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 				armor \
-		| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+		| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 				dearmor \
 			> /dev/null \
 		#
@@ -192,13 +192,13 @@
 
 << tests / quick / exchange / encode / hello
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
 	time \
-	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			raw encode \
 		<<< $'hello world!\n' \
 	#
@@ -207,13 +207,13 @@
 
 << tests / quick / exchange / encode / empty
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
 	time \
-	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			raw encode \
 		< /dev/null \
 	#
@@ -222,13 +222,13 @@
 
 << tests / quick / exchange / encode / notice
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
 	time \
-	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			raw encode \
 		< ./notice.txt \
 	#
@@ -237,14 +237,14 @@
 
 << tests / quick / exchange / encode / random
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
 	time \
 	head -c 64 < /dev/urandom \
-	| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			raw encode \
 	#
 !!
@@ -254,16 +254,16 @@
 
 << tests / quick / exchange / encode & decode / hello
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
 	
 	time \
-	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			raw encode \
 		<<< $'hello world!\n' \
-	| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			raw decode \
 	#
 !!
@@ -273,7 +273,7 @@
 
 << tests / quick / exchange / encode & decode / files
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	readarray -t -- _files \
@@ -285,10 +285,10 @@
 	time \
 	for _file in "${_files[@]}" ; do
 		
-		"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+		"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 				raw encode \
 			< "${_file}" \
-		| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+		| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 				raw decode \
 		| md5sum -b -- /dev/fd/5 5<&0 \
 		| md5sum -c --quiet 5< "${_file}" \
@@ -302,7 +302,7 @@
 
 << tests / quick / exchange / encode & decode / random
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	for _index_1 in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ; do
@@ -322,9 +322,9 @@
 		
 		time \
 		head -c "${_size}" < /dev/urandom \
-		| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+		| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 				raw encode \
-		| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+		| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 				raw decode \
 			> /dev/null \
 		#
@@ -340,7 +340,7 @@
 
 
 << tests / quick / exchange / keys
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
@@ -348,14 +348,14 @@
 	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 	
 	time \
-	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			keys "${@}" \
 	#
 !!
 
 
 << tests / quick / exchange / keys / self
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
@@ -363,7 +363,7 @@
 	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 	
 	time \
-	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			keys --self true "${@}" \
 	#
 !!
@@ -372,7 +372,7 @@
 
 
 << tests / quick / exchange / ssh / keys
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
@@ -380,14 +380,14 @@
 	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 	
 	time \
-	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			ssh keys "${@}" \
 	#
 !!
 
 
 << tests / quick / exchange / ssh / wrap / hello
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
@@ -397,7 +397,7 @@
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:?}"
 	
 	time \
-	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			ssh wrap "${@}" \
 				--key "${_ssh_wrap}" \
 		<<< $'hello world!\n' \
@@ -409,7 +409,7 @@
 
 << tests / quick / exchange / password / hello
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
@@ -428,7 +428,7 @@
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
 	time \
-	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			password \
 				--sender "${_sender_private}" \
 				--recipient "${_recipient_public}" \
@@ -448,7 +448,7 @@
 
 << tests / quick / exchange / password / benchmark
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
@@ -474,7 +474,7 @@
 	_hyperfine_commands=()
 	
 	_command=(
-			"${__OUTPUTS}/binaries/z-exchange--release--linux--native"
+			"${__OUTPUTS}/binaries/zt-exchange--release--linux--native"
 				password \
 					--sender "${_sender_private}" \
 					--recipient "${_recipient_public}" \
@@ -506,7 +506,7 @@
 
 << tests / quick / exchange / encrypt / hello
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
@@ -525,7 +525,7 @@
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
 	time \
-	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			encrypt \
 				--sender "${_sender_private}" \
 				--recipient "${_recipient_public}" \
@@ -544,7 +544,7 @@
 
 << tests / quick / exchange / encrypt / empty
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
@@ -563,7 +563,7 @@
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
 	time \
-	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			encrypt \
 				--sender "${_sender_private}" \
 				--recipient "${_recipient_public}" \
@@ -582,7 +582,7 @@
 
 << tests / quick / exchange / encrypt / notice
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
@@ -601,7 +601,7 @@
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
 	time \
-	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			encrypt \
 				--sender "${_sender_private}" \
 				--recipient "${_recipient_public}" \
@@ -620,7 +620,7 @@
 
 << tests / quick / exchange / encrypt / random
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
@@ -640,7 +640,7 @@
 	
 	time \
 	head -c 64 < /dev/urandom \
-	| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			encrypt \
 				--sender "${_sender_private}" \
 				--recipient "${_recipient_public}" \
@@ -660,7 +660,7 @@
 
 << tests / quick / exchange / encrypt & decrypt / hello
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	TIMEFORMAT='[ii]    -> CPU (u/s/w):  %3lU %3lS %3lR;'
@@ -682,7 +682,7 @@
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
 	time \
-	"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			encrypt \
 				--sender "${_sender_private}" \
 				--recipient "${_recipient_public}" \
@@ -694,7 +694,7 @@
 				--ballast "${_ballast}" \
 				--empty-is-missing true \
 		<<< $'hello world!\n' \
-	| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+	| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			decrypt \
 				--sender "${_sender_public}" \
 				--recipient "${_recipient_private}" \
@@ -713,7 +713,7 @@
 
 << tests / quick / exchange / encrypt & decrypt / files
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:-}"
@@ -747,7 +747,7 @@
 		time \
 		for _file in "${_files[@]}" ; do
 		
-		"${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+		"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 				encrypt \
 					--sender "${_sender_private}" \
 					--recipient "${_recipient_public}" \
@@ -759,7 +759,7 @@
 					--ballast "${_ballast}" \
 					--empty-is-missing true \
 			< "${_file}" \
-		| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+		| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 				decrypt \
 					--sender "${_sender_public}" \
 					--recipient "${_recipient_private}" \
@@ -782,7 +782,7 @@
 
 << tests / quick / exchange / encrypt & decrypt / random
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	_sender_private="${__ZTOKENS_EXCHANGE_SENDER_PRIVATE:-}"
@@ -818,7 +818,7 @@
 		
 		time \
 		head -c "${_size}" < /dev/urandom \
-		| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+		| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 				encrypt \
 					--sender "${_sender_private}" \
 					--recipient "${_recipient_public}" \
@@ -829,7 +829,7 @@
 					--seed "${_seed}" \
 					--ballast "${_ballast}" \
 					--empty-is-missing true \
-		| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" \
+		| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 				decrypt \
 					--sender "${_sender_public}" \
 					--recipient "${_recipient_private}" \
@@ -885,7 +885,7 @@
 
 << tests / quick / exchange / encrypt & decrypt & password / cases
 	test "${#}" -eq 0
-	"${ZRUN}" ':: cargo / release / build & collect' z-exchange < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
 	export -- RUST_BACKTRACE=1
 	
 	_reports="$( exec -- readlink -e -- ./documentation/tests-exchange-cases )"
@@ -1418,7 +1418,7 @@
 				printf -- '\n\n' >> "${_output}"
 				
 				time \
-				"${__OUTPUTS}/binaries/z-exchange--release--linux--native" "${_password_command[@]}" \
+				"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" "${_password_command[@]}" \
 					< "${_file}" \
 					>> "${_output}" \
 				#
@@ -1453,9 +1453,9 @@
 				time \
 				cat \
 					< "${_file}" \
-				| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" "${_encrypt_command[@]}" \
+				| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" "${_encrypt_command[@]}" \
 				| tee -a -- /dev/stderr 2>> "${_output}" \
-				| "${__OUTPUTS}/binaries/z-exchange--release--linux--native" "${_decrypt_command[@]}" \
+				| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" "${_decrypt_command[@]}" \
 				| md5sum -b -- /dev/fd/5 5<&0 \
 				| md5sum -c --quiet 5< "${_file}" \
 				#
@@ -1507,7 +1507,7 @@
 	ssh-keygen \
 			-q \
 			-t ed25519 \
-			-C 'z-exchange ssh wrap key for testing' \
+			-C 'z-tokens exchange ssh wrap key for testing' \
 			-N '' \
 			-f "${_path}" \
 	#

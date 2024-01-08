@@ -35,38 +35,38 @@ path = "./bins/tools.rs"
 
 [[bin]]
 
-name = "z-patterns"
+name = "zt-patterns"
 path = "./bins/patterns.rs"
 
 
 [[bin]]
 
-name = "z-hashes"
+name = "zt-hashes"
 path = "./bins/hashes.rs"
 
 
 [[bin]]
 
-name = "z-encodings"
+name = "zt-encodings"
 path = "./bins/encodings.rs"
 
 
 [[bin]]
 
-name = "z-exchange"
+name = "zt-exchange"
 path = "./bins/exchange.rs"
 
 
 [[bin]]
 
-name = "z-oracles"
+name = "zt-oracles"
 path = "./bins/oracles.rs"
 required-features = ["development"]
 
 
 [[bin]]
 
-name = "z-secrets"
+name = "zt-secrets"
 path = "./bins/secrets.rs"
 required-features = ["development"]
 

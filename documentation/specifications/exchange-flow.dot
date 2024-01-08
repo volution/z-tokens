@@ -1,4 +1,4 @@
-digraph "z-exchange" {
+digraph "zt-exchange" {
 	
 	node [ shape = box ];
 	nodesep = 1;

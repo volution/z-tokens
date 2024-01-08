@@ -94,12 +94,12 @@
 		( all )
 			_bins=(
 					z-tokens
-					z-patterns
-					z-hashes
-					z-encodings
-					z-exchange
-				#!	z-oracles
-				#!	z-secrets
+					zt-patterns
+					zt-hashes
+					zt-encodings
+					zt-exchange
+				#!	zt-oracles
+				#!	zt-secrets
 				)
 		;;
 		( * )

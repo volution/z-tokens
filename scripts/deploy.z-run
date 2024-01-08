@@ -31,9 +31,9 @@
 
 --<<.. deploy / list / main
 	z-tokens
-	z-patterns
-	z-hashes
-	z-exchange
+	zt-patterns
+	zt-hashes
+	zt-exchange
 !!
 
 
