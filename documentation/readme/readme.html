@@ -6,17 +6,28 @@
 <a href=mailto:ciprian.craciun@gmail.com>email author</a>;</li><li>source code at <a href=https://github.com/volution/z-tokens>https://github.com/volution/z-tokens</a></li></ul></blockquote><hr><h2><span id=about>About</span></h2><blockquote><p>Welcome to the <code>z-tokens</code> project, available at <a href=https://github.com/volution/z-tokens>https://github.com/volution/z-tokens</a>.</p></blockquote><p>As the title says, <code>z-tokens</code> is a Rust-based tool for generating tokens
 (especially passwords and other entropy-sensitive tokens)
 and other related utilities.
-(Although, at the moment it can only generate tokens.)</p><p>This project is at its third iteration,
+(Although, at the moment it can only generate tokens, compute hashes,
+and a highly experimental encryption / encoding tool.)</p><p>This project (more exactly the token generation tool)
+is at its third iteration,
 and has its roots in a 2008 CommonLisp script that had the same purpose,
 and follows the second Python-based iteration.
 (Although the Rust-based implementation is quite more complex than the previous iterations.)</p><p>Needless to say, I've used this tool for the last 10+ years for all my password generation,
 thus I find it critical for my own use-cases.
-I just hope others also find some use in it.</p><p>In terms of types of generated tokens, here are a few of them:</p><ul><li>passwords -- from easily pronounceable (see the <code>cv-*</code> and <code>proquint-*</code> ones)
-complete random ASCII dumps;</li><li>pins -- numeric tokens with various levels of entropy (see the <code>digits-base10-*</code> ones);</li><li>raw tokens -- in various encodings (such as <code>base64</code>, <code>base32</code>, <code>z85</code>, <code>bech32</code>, etc.);
+I just hope others also find some use in it.</p><p>In terms of types of generated tokens, here are a few of them:</p><ul><li>passwords -- from easily pronounceable (see the <code>cvs:*</code> and <code>proquint:*</code> ones)
+complete random ASCII dumps;</li><li>pins -- numeric tokens with various levels of entropy (see the <code>digits-base10:*</code> ones);</li><li>raw tokens -- in various encodings (such as <code>digits-base64-url:*</code>, <code>digits-base32-hex:*</code>, <code>digits-z85:*</code>, <code>digits-bech32:*</code>, etc.);
 (please note that such tokens just use the encoding character set,
-and don't necessarily decode correctly in one of those encodings;)</li><li>bytes -- hex encoded random bytes (see <code>bytes-*</code>);</li><li>IP and MAC addresses;</li><li>UUIDv4;</li><li>timestamps in various representations;
-(not for security purposes, as they have almost 0 entropy;)</li><li>time sorted tokens with various levels of entropy (see the <code>flake-*</code> ones);</li><li>seed phrases (see the <code>mnemonic-*</code> or <code>bip0039-*</code> ones);</li></ul><p>Other related tools part of this project are:</p><ul><li><code>z-tokens hash</code> -- (EXPERIMENTAL) hash strings, stdin or files with various hashes (SHA1,2,3 families, Blake2 and Blake3, MD5, etc.);</li><li><code>z-tokens exchange</code> -- (EXPERIMENTAL) encrypt (with X25519 PKI) or armor (like Base64) stdin or files;</li><li><code>z-tokens encode</code> -- (TODO) encode / decode strings, stdin or files to / from various encodings (Base*, Bech32, Z85, etc.);</li><li><code>z-tokens secret</code> -- (TODO) storing, sharing and using security sensitive data in operational and development scripts;
-(for the gist of the idea <a href=https://scratchpad.volution.ro/ciprian/992c7f2944456f18cdde77f683f49aa7/e45fc3da.html>see this document</a>;)</li></ul><hr><h2><span id=status>Status</span></h2><p><strong>The Rust code is quite fresh and thus not thoroughly tested and reviewed.</strong></p><p>However, it relies on solid Rust libraries (like <code>rand</code>)
+and don't necessarily decode correctly in one of those encodings;)</li><li>bytes -- hex encoded random bytes (see <code>bytes-hex:*</code>);</li><li>IP and MAC addresses (see <code>ip-10</code>, <code>ip-172</code>, <code>ip-192</code>, and <code>ip-mac</code>);</li><li>UUIDv4 (see <code>uuid-v4</code>);</li><li>timestamps in various representations
+(see <code>timestamp-*</code>);
+(not for security purposes, as they have almost 0 entropy;)</li><li>time sorted tokens with various levels of entropy (see the <code>flake:*</code> ones);</li><li>seed phrases (see the <code>mnemonic:*</code>, <code>eff-*:*</code>, or <code>bip0039:*</code> ones);</li></ul><p>Other related tools part of this project are:</p><ul><li><code>z-tokens hash</code> -- <strong>!! EXPERIMENTAL !!</strong>
+-- hash strings, stdin or files with various hashes
+(SHA1/SHA2/SHA3 families, Blake2 and Blake3, MD5, various non cryptographic hashes and CRC's, etc.);</li><li><code>z-tokens exchange</code> -- <strong>!! EXPERIMENTAL !!</strong>
+-- encrypt/decrypt (with one or more X25519 PKI keys, pins, passwords, and even via the SSH agent)
+or armor/dearmor (similar to Base64 but with more features);</li><li><code>z-tokens encode</code> -- <strong>(not yet implemented)</strong>
+-- encode / decode strings, stdin or files to / from various encodings (Base*, Bech32, Z85, etc.);</li><li><code>z-tokens secrets</code> -- <strong>(not yet implemented)</strong>
+-- storing, sharing and using security sensitive data in operational and development scripts;
+(for the gist of the idea <a href=https://scratchpad.volution.ro/ciprian/992c7f2944456f18cdde77f683f49aa7/e45fc3da.html>see this document</a>;)</li><li><code>z-tokens oracles</code> -- <strong>(not yet implemented)</strong>
+-- using various techniques to implement useful "oracles";
+(<a href=https://notes.volution.ro/v1/2023/05/remarks/faf953cf/>see this article</a>;)</li></ul><hr><h2><span id=status>Status</span></h2><p><strong>The Rust code is quite fresh and thus not thoroughly tested and reviewed.</strong></p><p>However, it relies on solid Rust libraries (like <code>rand</code>)
 and it doesn't do much (like touching the file-system or talking to the network),
 thus it shouldn't break anything.</p><p>The only critical code at the moment,
 --- <strong>which could have major security implications</strong> by weakening the generated tokens ---
@@ -49,23 +60,23 @@ z-tokens --readme
 </code></pre><p>For how to install see the <a href=#install>dedicated section</a>.</p><hr><h2><span id=examples>Examples</span></h2><h3>How to generate passwords and other tokens</h3><p>Generate a few consonant-vowel passwords,
 and display for transcribing (do not copy-paste the spaces)
 (all the commands are almost equivalent):</p><pre><code>z-tokens generate
-z-tokens generate -p cv:4
-z-tokens generate -p cv-lower:4
-z-tokens generate -p cv-lower:4 -c 10
-</code></pre><pre><code>cama nera zoju liye
-yuxe nefi qahi lasa
+z-tokens generate -p cvs:4
+z-tokens generate -p cvs:4 -C
+z-tokens generate -p cvs:4 -C -c 20
+</code></pre><pre><code>hogi ruve suna dopi
+cati regi lihi zuro
 ....
 </code></pre><p>Generate a few consonant-vowel passwords,
 and output for copy-pasting
 (again all the commands are equivalent):</p><pre><code>z-tokens g
-z-tokens g cv:4
-z-tokens g cv-lower:4
-z-tokens g cv-lower:4 -c 1
+z-tokens g cvs:4
+z-tokens g cvs:4
+z-tokens g cvs:4 -c 1
 
 z-tokens generate -C -c 1
-z-tokens generate -p cv:4 -C -c 1
-z-tokens generate -p cv-lower:4 -C -c 1
-</code></pre><pre><code>nawerukuhefapeqo
+z-tokens generate -p cvs:4 -C -c 1
+z-tokens generate -p cvs:4 -C -c 1
+</code></pre><pre><code>lupoferocirejipa
 </code></pre><p>Generate one UUIDv4 token,
 and pipe it to another process:</p><pre><code>z-tokens g uuid-v4 | clipboard copy
 z-tokens generate -p uuid-v4 -C -c 1 | clipboard copy
@@ -75,154 +86,195 @@ if the number doesn't have a <code>.</code> (not even <code>.0</code>) it implie
 (or without mandatory separators if <code>-C</code> is used);</li><li>the last column is an example of such a token;
 <strong>you can safely use it</strong>, with or without spaces or separators as required
 (although without is suggested, unless these separators are mandatory);</li></ul><p>Show a selection of supported patterns (mainly those up to 40 characters in length):</p><pre><code>z-tokens patterns
-</code></pre><pre><code>::  digits-base10:16        :   53.1 b :   19 c ::    8372 2896 3577 2481
-::  digits-base2:32         :   32  =b :   35 c ::    01000111 00011111 00101001 10111010
-::  digits-base8:16         :   48  =b :   19 c ::    3526 1166 6124 4160
-::  digits-base16:16        :   64  =b :   19 c ::    9c61 b16d 2c15 c6b2
-::  digits-base32-hex:16    :   80  =b :   19 c ::    8nar 036j nhmn 9gut
-::  digits-base32-rfc:16    :   80  =b :   19 c ::    3e35 nxvg tz43 fcyq
-::  digits-base64-url:16    :   96  =b :   19 c ::    JGHe SXmF -633 BstE
-::  digits-base64-rfc:16    :   96  =b :   19 c ::    olRq gBKq TYFk WDPR
-::  digits-base58:16        :   93.7 b :   19 c ::    3e2c nqK7 8XDu EXKW
-::  digits-base62:16        :   95.2 b :   19 c ::    gs7C 0a2p KGjH Zh2G
-::  digits-bech32:16        :   80  =b :   19 c ::    37zs yvvp a3zw fh3s
-::  digits-z85:20           :  128.1 b :   23 c ::    p^6MY i5%$t 98iaN rbDT&gt;
-::  ascii-lower:16          :   75.2 b :   19 c ::    xwsl rvmg couv ksrl
-::  ascii-mixed:16          :   91.2 b :   19 c ::    xwra htbp CTmD fnbs
-::  ascii-symbols:16        :   80  =b :   19 c ::    $[%~ $?~| $:(&gt; ?&gt;~(
-::  ascii-any:16            :  104.8 b :   19 c ::    ts-c ]dwB GCWl VX&lt;~
-::  cv-lower:4              :   53.7 b :   19 c ::    yolu furi qizi poho
-::  cv-mixed:4              :   69.7 b :   19 c ::    nurO qILO pasA humi
-::  cv-plus-a:3             :   53.5 b :   19 c ::    fitu sozu nube 8237
-::  cv-plus-b:3             :   53.6 b :   19 c ::    japa caya dotu JA40
-::  cv-plus-c:3             :   55.3 b :   19 c ::    mote vaco mehi VB4:
-::  proquint-lower:4        :   64  =b :   23 c ::    lahis nipas tikim daboj
-::  koremutake-a:4          :   56  =b :   20 c ::    radry bydy hidy ryla
-::  koremutake-b:4          :   84  =b :   33 c ::    pristyfra lyprevy migruse vigrulo
-::  mnemonic:1              :   32.0 b :   23 c ::    bicycle society giraffe
-::  bip0039:1               :   33  =b :   22 c ::    scrub prosper artefact
-::  skey:1                  :   33  =b :   13 c ::    oat bloc slot
-::  pgp:1                   :   16  =b :   17 c ::    brackish bifocals
-::  eff-large:1             :   38.7 b :   20 c ::    stratus stopped stir
-::  eff-short:1             :   31.0 b :   15 c ::    juror desk undo
-::  eff-unique:1            :   31.0 b :   25 c ::    opossum unroll vulnerable
-::  nato:4                  :   20.6 b :   23 c ::    lima juliett tree oscar
-::  uuid-v4                 :  122  =b :   36 c ::    79817f78-d1e9-4d28-b819-b6de695614dd
-::  ip-127                  :   23.9 b :   14 c ::    127.138.44.178
-::  ip-10                   :   23.9 b :   12 c ::    10.45.220.97
-::  ip-172                  :   20.8 b :   13 c ::    172.6.206.246
-::  ip-192                  :   15.9 b :   14 c ::    192.168.184.54
-::  ip-mac                  :   40  =b :   17 c ::    02:0d:f5:26:2c:bf
-::  bytes-hex:16            :  128  =b :   32 c ::    e19fe700e027493457c6ae2782e183cd
-::  timestamp-date-time     :    0  =b :   19 c ::    2023-01-10-17-40-03
-::  timestamp-date          :    0  =b :   10 c ::    2023-01-10
-::  timestamp-time          :    0  =b :    8 c ::    17-40-03
-::  timestamp-sec           :    0  =b :   10 c ::    1673372403
-::  timestamp-sec-hex       :    0  =b :   10 c ::    0063bda2f3
-::  timestamp-nano          :    0  =b :   19 c ::    1673372403336003058
-::  timestamp-nano-hex      :    0  =b :   18 c ::    0017390355bdc8c512
-::  timestamp-flake         :    0  =b :    9 c ::    726687603
-::  timestamp-flake-hex     :    0  =b :    8 c ::    2b505f73
-::  flake:2                 :   64  =b :   26 c ::    2b505f73-c10e1333-c5c2da57
+</code></pre><pre><code>##  NOTE:  This output is truncated!
+::  digits-base10:10        :   33.2 b :   10 c ::    2607 2034 43
+::  digits-base2:12         :   12  =b :   12 c ::    10100011 0011
+::  digits-base8:10         :   30  =b :   10 c ::    3304 7551 40
+::  digits-base16:10        :   40  =b :   10 c ::    9cfa a090 0a
+::  digits-base32-hex:10    :   50  =b :   10 c ::    ovul 08jj 7h
+::  digits-base32-rfc:10    :   50  =b :   10 c ::    vqsp 7ekh a2
+::  digits-base64-url:10    :   60  =b :   10 c ::    0rcg 6sCj 4O
+::  digits-base64-rfc:10    :   60  =b :   10 c ::    qgrV Eieg Gf
+::  digits-base58:10        :   58.5 b :   10 c ::    6NLe 7noy ZZ
+::  digits-base62:10        :   59.5 b :   10 c ::    SlkQ XEBd wv
+::  digits-bech32:10        :   50  =b :   10 c ::    zedu z5xp 0r
+::  digits-z85:10           :   64.0 b :   10 c ::    6soh- qaITe
+::  ascii-lower:10          :   47.0 b :   10 c ::    dkso nkju tt
+::  ascii-mixed:10          :   57.0 b :   10 c ::    oRFd AGru hO
+::  ascii-symbols:10        :   50  =b :   10 c ::    ]:*} '%}+ $&gt;
+::  ascii-any:10            :   65.5 b :   10 c ::    4vKw +J]O w?
+::  cva-lower:3             :   40.2 b :   12 c ::    dago pimu maha
+::  cva-mixed:3             :   52.2 b :   12 c ::    WaPE hUmO LaHE
+::  cva-plus-a:3            :   40.1 b :   12 c ::    yeso picu 6255
+::  cva-plus-b:3            :   40.2 b :   12 c ::    nuxi fama FO92
+::  cva-plus-c:3            :   41.8 b :   12 c ::    xino xeme WI7+
+::  cvs-lower:3             :   37.9 b :   12 c ::    jitu lefe dufo
+::  cvs-mixed:3             :   49.9 b :   12 c ::    vIdU nUdO rETa
+::  cvs-plus-a:3            :   38.5 b :   12 c ::    soje mame 9380
+::  cvs-plus-b:3            :   38.2 b :   12 c ::    bini felu TU98
+::  cvs-plus-c:3            :   39.9 b :   12 c ::    tina nudo MI2`
+::  proquint-lower:2        :   32  =b :   10 c ::    purig gural
+::  koremutake-a:2          :   28  =b :   10 c ::    mesto stori
+::  koremutake-b:2          :   42  =b :   13 c ::    gepedi roprumu
+::  mnemonic:2              :   21.3 b :   10 c ::    floor minus
+::  bip0039:2               :   22  =b :   13 c ::    inquiry muffin
+::  skey:3                  :   33  =b :   12 c ::    gone lien sour
+::  pgp:1                   :   16  =b :   16 c ::    blockade universe
+::  eff-large:2             :   25.8 b :   11 c ::    sly dividend
+::  eff-short:2             :   20.6 b :   10 c ::    ride shaky
+::  eff-unique:2            :   20.6 b :   19 c ::    ergonomic vanquished
+::  pets-medium-1           :   10.0 b :   10 c ::    wasp
+::  pets-medium-2           :   20.2 b :   13 c ::    plucky-dragon
+::  pets-medium-3           :   30.9 b :   25 c ::    reputably-exceeding-pewee
+::  pets-medium-4           :   36.9 b :   21 c ::    loudly-brave-tin-grub
+::  pets-small-2            :   17.6 b :   14 c ::    content-marmot
+::  pets-small-3            :   25.6 b :   23 c ::    verbally-noble-basilisk
+::  pets-small-4            :   31.6 b :   28 c ::    cleanly-advanced-russet-mink
+::  nato:2                  :   10.3 b :   11 c ::    kilo romeo
+::  bytes-hex:5             :   40  =b :   10 c ::    bc4c68b98a
+::  token-hex-48            :   48  =b :   12 c ::    a45cd37217be
+::  token-hex-64            :   64  =b :   16 c ::    a7624d9e2ebcc557
+::  token-hex-96            :   96  =b :   24 c ::    633f32ab8f2428200396d128
+::  token-hex-128           :  128  =b :   32 c ::    554fbc4d1e9a402bc433c1330b6cda97
+::  token-hex-256           :  256  =b :   65 c ::    3496bd413a615db6be25724d23618259-5e481bb9854a06afc644a3aed60f98ba
+::  token-hex-512           :  512  =b :  131 c ::    07ef2a758f48ff61adc58fe01001f264-bc6c29d7fa066c40690b640fcbda433d-e6cdfbef9a1dee [...]
+::  uuid-v4                 :  122  =b :   36 c ::    72ca5b32-c82d-4369-a5f1-acbb44c8a35b
+::  ip-127                  :   23.9 b :   15 c ::    127.207.105.152
+::  ip-10                   :   23.9 b :   13 c ::    10.34.199.232
+::  ip-172                  :   20.8 b :   12 c ::    172.24.88.33
+::  ip-192                  :   15.9 b :   13 c ::    192.168.5.146
+::  ip-mac                  :   40  =b :   17 c ::    02:0a:49:80:33:98
+::  timestamp-date-time     :    0  =b :   19 c ::    2024-01-08-16-54-37
+::  timestamp-date          :    0  =b :   10 c ::    2024-01-08
+::  timestamp-sec           :    0  =b :   10 c ::    1704732877
+::  timestamp-sec-hex       :    0  =b :   10 c ::    00659c28cd
+::  timestamp-nano          :    0  =b :   19 c ::    1704732877803775245
+::  timestamp-nano-hex      :    0  =b :   18 c ::    0017a86d85326c6cdf
+::  flake:32                :   32  =b :   17 c ::    2d2ee54d-aea4234d
 </code></pre><p>Show only patterns that have between 64 and 90 bits of entropy:</p><pre><code>z-tokens patterns -b 64 -B 90
-</code></pre><pre><code>::  digits-base10:20        :   66.4 b :   24 c ::    5043 3734 7348 1192 0253
-::  digits-base2:64         :   64  =b :   71 c ::    00011010 10011101 10110010 10001010 11110110 11010111 00111001 00001111
-::  digits-base8:24         :   72  =b :   29 c ::    1450 2511 2733 5136 4335 7161
-::  digits-base16:16        :   64  =b :   19 c ::    3026 b4cb c74a 52a7
-::  digits-base32-hex:16    :   80  =b :   19 c ::    6mfr sfsl t893 hu9f
-::  digits-base32-rfc:16    :   80  =b :   19 c ::    ryqy k7t5 brzq d5jg
-::  digits-base64-url:12    :   72  =b :   14 c ::    RVZx hvs0 pqTb
-::  digits-base64-rfc:12    :   72  =b :   14 c ::    1s2+ ek51 PwjI
-::  digits-base58:12        :   70.2 b :   14 c ::    rTKk 32vP Zsvj
-::  digits-base62:12        :   71.4 b :   14 c ::    bLl7 zLeN xkEo
-::  digits-bech32:16        :   80  =b :   19 c ::    jah6 cmm8 x077 0p00
-::  digits-z85:10           :   64.0 b :   11 c ::    $?#$c KSD}A
-::  ascii-lower:16          :   75.2 b :   19 c ::    dnel jjlq qfgo swar
-::  ascii-mixed:12          :   68.4 b :   14 c ::    dwdF EOUO qouA
-::  ascii-symbols:16        :   80  =b :   19 c ::    &quot;*[~ ](~&amp; ;&gt;*; (}?~
-::  ascii-any:12            :   78.6 b :   14 c ::    :0d~ +`u7 ,8j:
-::  cv-lower:5              :   67.1 b :   24 c ::    ridu suxe cabu liko kulu
-::  cv-mixed:4              :   69.7 b :   19 c ::    febI PAfB CeLo CAnA
-::  cv-plus-a:4             :   67.0 b :   24 c ::    zide qutu ceyi yexo 9743
-::  cv-plus-b:4             :   67.0 b :   24 c ::    nuxo yazo wuwe zoyu MB23
-::  cv-plus-c:4             :   68.7 b :   24 c ::    giyi vika foha haha XB5-
-::  proquint-lower:4        :   64  =b :   23 c ::    digun hotap guhuv ruzal
-::  koremutake-a:5          :   70  =b :   28 c ::    fuke brydru bebe tregra vori
-::  koremutake-b:4          :   84  =b :   31 c ::    pudraky kidruhy bifrufra bipaba
-::  mnemonic:2              :   64.0 b :   41 c ::    maximum donor reflex - sugar bombay point
-::  bip0039:2               :   66  =b :   41 c ::    vendor loan bounce - media fantasy embark
-::  skey:2                  :   66  =b :   30 c ::    coat knit list - tote noah off
-::  pgp:4                   :   64  =b :   67 c ::    endow tobacco - orca pedigree - rematch component - trauma molasses
-::  eff-large:2             :   77.5 b :   49 c ::    slackness kerchief essence - wasting pelt garbage
-::  nato:13                 :   67.2 b :   74 c ::    oscar yankee romeo ait quebec six tango golf wun november foxtrot six zero
-::  bytes-hex:8             :   64  =b :   16 c ::    5fc1daf18c09e040
-::  flake:2                 :   64  =b :   26 c ::    2b50605b-027c20d4-561c870a
-...
+</code></pre><pre><code>##  NOTE:  This output is truncated!
+::  digits-base10:20        :   66.4 b :   24 c ::    1813 7864 2596 7265 4317
+::  digits-base8:22         :   66  =b :   27 c ::    0413 2005 2622 3341 0730 24
+::  digits-base16:16        :   64  =b :   19 c ::    cba6 395c c7cb 8d04
+::  digits-base32-hex:14    :   70  =b :   17 c ::    5v7k fb2q ret1 di
+::  digits-base32-rfc:14    :   70  =b :   17 c ::    wwcr fwyd f5d4 jf
+::  digits-base64-url:12    :   72  =b :   14 c ::    kwD8 EEIg 5Zlv
+::  digits-base64-rfc:12    :   72  =b :   14 c ::    pdr1 Tx2C cPbq
+::  digits-base58:12        :   70.2 b :   14 c ::    3dDa TXS3 v9cM
+::  digits-base62:12        :   71.4 b :   14 c ::    2RqQ Jys3 ss1h
+::  digits-bech32:14        :   70  =b :   17 c ::    d4rq ajdj pkcj p8
+::  digits-z85:10           :   64.0 b :   11 c ::    0R&gt;6l &gt;PAw-
+::  ascii-lower:14          :   65.8 b :   17 c ::    esbz grfr bdnd dv
+::  ascii-mixed:12          :   68.4 b :   14 c ::    uRJv CdSi EieN
+::  ascii-symbols:14        :   70  =b :   17 c ::    /&amp;:$ :)_] &amp;?%, $&amp;
+::  ascii-any:10            :   65.5 b :   12 c ::    q@7Q |Jun S=
+::  cva-lower:5             :   67.1 b :   24 c ::    feqi sebo tana quvi gexi
+::  cva-mixed:4             :   69.7 b :   19 c ::    gafi Ramu Jayu bUra
+::  cva-plus-a:5            :   67.0 b :   24 c ::    doqe gemu vaca romo 0407
+::  cva-plus-b:5            :   67.0 b :   24 c ::    depu tofu fiqe jugi TI40
+::  cva-plus-c:5            :   68.7 b :   24 c ::    pixe zaya jiri giso QA6(
+::  cvs-lower:6             :   75.8 b :   29 c ::    fibe depe jebu hizo vipa duzi
+::  cvs-mixed:4             :   66.5 b :   19 c ::    Lefu LUsU veJI dEZe
+::  cvs-plus-a:6            :   76.5 b :   29 c ::    gota zadu nube toze tovu 0989
+::  cvs-plus-b:6            :   76.1 b :   29 c ::    reda pire jiri hoju gido NE39
+::  cvs-plus-c:5            :   65.2 b :   24 c ::    jimu mehi deza cuhu RE3`
+::  proquint-lower:4        :   64  =b :   23 c ::    rosuj juduj movuj roriz
+::  koremutake-a:5          :   70  =b :   31 c ::    brana brudro dryfi studro prejo
+::  koremutake-b:4          :   84  =b :   30 c ::    brufrapa mygryvo mosyla batuhy
+::  mnemonic:6              :   64.0 b :   36 c ::    menu hilton front soda harbor quebec
+::  bip0039:6               :   66  =b :   44 c ::    grocery oval scatter execute broccoli anchor
+::  skey:6                  :   66  =b :   27 c ::    glow hear sal pew jeff nice
+::  pgp:4                   :   64  =b :   64 c ::    spearhead liberty obtuse apollo retouch torpedo waffle pocketful
+::  eff-large:5             :   64.6 b :   41 c ::    bullion elastic viselike avenue antiviral
+::  eff-short:7             :   72.3 b :   37 c ::    talon lint skid doll sting ninth walk
+::  eff-unique:7            :   72.3 b :   59 c ::    vehicle grape eliminator pretzel dyslexia alphabet hedgehog
+::  nato:13                 :   67.2 b :   81 c ::    tango niner oscar alfa juliett charlie xray sierra mike yankee uniform bravo xra [...]
+::  bytes-hex:8             :   64  =b :   16 c ::    080720ee13ea3842
+::  token-hex-64            :   64  =b :   16 c ::    da6738bf39f35716
+::  flake:64                :   64  =b :   26 c ::    2d2ee589-9bd1f65e-f10cb875
 </code></pre><p>Show only patterns that have all types of characters
 (lower and upper letters, digits, and symbols):</p><pre><code>z-tokens patterns -A
-</code></pre><pre><code>::  digits-base64-url:12    :   72  =b :   14 c ::    SJuG nGur T1Bx
-::  digits-base64-rfc:12    :   72  =b :   14 c ::    aWRp lIFz V7vf
-::  digits-z85:10           :   64.0 b :   11 c ::    }P7*O !oB2C
-::  ascii-any:12            :   78.6 b :   14 c ::    xs)7 1W|P qF{l
-::  cv-plus-c:4             :   68.7 b :   24 c ::    waqu nagu bono webo ZO8&quot;
-...
+</code></pre><pre><code>##  NOTE:  This output is truncated!
+::  digits-base64-url:4     :   24  =b :    4 c ::    cL4q
+::  digits-base64-rfc:6     :   36  =b :    6 c ::    QcGI um
+::  digits-z85:5            :   32.0 b :    5 c ::    @VYQL
+::  ascii-any:4             :   26.2 b :    4 c ::    w,nn
+::  cva-plus-c:2            :   28.4 b :    8 c ::    yiva VE4?
+::  cvs-plus-c:2            :   27.2 b :    8 c ::    lolu CU4&amp;
 </code></pre><p>Show the shortest pattern usable for authentication purposes:</p><pre><code>z-tokens patterns --label password --for-authentication --shortest
-</code></pre><pre><code>::  digits-base16:8         :   32  =b :    9 c ::    d9fc a6b1
-::  digits-base32-hex:8     :   40  =b :    9 c ::    eg3s f6ce
-::  digits-base32-rfc:8     :   40  =b :    9 c ::    67sx mkpq
-::  digits-base64-url:8     :   48  =b :    9 c ::    Z8F1 0IXM
-::  digits-base64-rfc:8     :   48  =b :    9 c ::    ijGK r6Tr
-::  digits-base58:8         :   46.8 b :    9 c ::    ZcJ5 3VGy
-::  digits-base62:8         :   47.6 b :    9 c ::    aHnQ wlrn
-::  digits-bech32:8         :   40  =b :    9 c ::    4vjw n404
-::  digits-z85:5            :   32.0 b :    5 c ::    Nm=%t
-::  ascii-lower:8           :   37.6 b :    9 c ::    pmir ijhy
-::  ascii-mixed:8           :   45.6 b :    9 c ::    ZdMZ PBLt
-::  ascii-any:8             :   52.4 b :    9 c ::    G~&amp;A =?3D
-::  cv-lower:3              :   40.2 b :   14 c ::    jizi tulo hehu
-::  cv-mixed:2              :   34.8 b :    9 c ::    WeDo QaHB
-::  cv-plus-a:2             :   40.1 b :   14 c ::    badi yogi 0016
-::  cv-plus-b:2             :   40.2 b :   14 c ::    ruvo qoxa PB87
-::  cv-plus-c:2             :   41.8 b :   14 c ::    xode quxu MU6'
-::  proquint-lower:2        :   32  =b :   11 c ::    baboh nozoz
-::  koremutake-a:3          :   42  =b :   16 c ::    pune fravy prony
-::  koremutake-b:2          :   42  =b :   13 c ::    pynoru gatudy
-::  uuid-v4                 :  122  =b :   36 c ::    898b8295-4709-49cf-9d8b-6170fd5b9e0c
-::  bytes-hex:4             :   32  =b :    8 c ::    2b96ae6c
+</code></pre><pre><code>::  digits-base10:10        :   33.2 b :   12 c ::    8543 1427 28
+::  digits-base16:8         :   32  =b :    9 c ::    0f84 6ef7
+::  digits-base32-hex:8     :   40  =b :    9 c ::    58tj pqk2
+::  digits-base32-rfc:8     :   40  =b :    9 c ::    jeig 5tnh
+::  digits-base64-url:6     :   36  =b :    7 c ::    qAsM G8
+::  digits-base64-rfc:6     :   36  =b :    7 c ::    6Rjm Xq
+::  digits-base58:6         :   35.1 b :    7 c ::    gMSG Vt
+::  digits-base62:6         :   35.7 b :    7 c ::    PKzj Uu
+::  digits-bech32:8         :   40  =b :    9 c ::    jppl c4we
+::  digits-z85:5            :   32.0 b :    5 c ::    u)4wV
+::  ascii-lower:8           :   37.6 b :    9 c ::    oklv iysm
+::  ascii-mixed:6           :   34.2 b :    7 c ::    IGIn Pj
+::  ascii-any:6             :   39.3 b :    7 c ::    n~QN ~a
+::  cva-lower:3             :   40.2 b :   14 c ::    vebu guhi mixo
+::  cva-mixed:2             :   34.8 b :    9 c ::    JEro kEfo
+::  cva-plus-a:3            :   40.1 b :   14 c ::    yahe zage 9120
+::  cva-plus-b:3            :   40.2 b :   14 c ::    nobe zovi SO24
+::  cva-plus-c:3            :   41.8 b :   14 c ::    beru covu XA1~
+::  cvs-lower:3             :   37.9 b :   14 c ::    page jave bepa
+::  cvs-mixed:2             :   33.2 b :    9 c ::    NoGa LusE
+::  cvs-plus-a:3            :   38.5 b :   14 c ::    pete pusu 3082
+::  cvs-plus-b:3            :   38.2 b :   14 c ::    zato zuci NU88
+::  cvs-plus-c:3            :   39.9 b :   14 c ::    zogu cale BO1%
+::  proquint-lower:2        :   32  =b :   11 c ::    rohop dazup
+::  koremutake-a:3          :   42  =b :   17 c ::    frysti jami fysti
+::  koremutake-b:2          :   42  =b :   16 c ::    rikabra metraste
+::  bytes-hex:4             :   32  =b :    8 c ::    048d6f93
+::  token-hex-64            :   64  =b :   16 c ::    eb2ce46f76fe28e3
+::  token-hex-96            :   96  =b :   24 c ::    19e6c477c441483642c40b9e
+::  token-hex-128           :  128  =b :   32 c ::    ac6dc428d8b9a8aab4f7cf5ac740b39f
+::  uuid-v4                 :  122  =b :   36 c ::    cd86f08f-014d-4acf-8f20-6cfee673f7f2
 </code></pre><pre><code>z-tokens patterns --label passphrase --for-authentication --shortest
-</code></pre><pre><code>::  mnemonic:1              :   32.0 b :   18 c ::    queen detail first
-::  bip0039:1               :   33  =b :   20 c ::    potato injury season
-::  skey:1                  :   33  =b :   14 c ::    hulk noah yang
-::  pgp:2                   :   32  =b :   34 c ::    topmost speculate - acme tolerance
-::  eff-large:1             :   38.7 b :   26 c ::    yearly frivolous schilling
-::  eff-short:2             :   62.0 b :   36 c ::    verse erase given - groom mumbo lazy
-::  eff-unique:2            :   62.0 b :   47 c ::    unknown nectar running - cadillac falcon enzyme
-</code></pre><p>Show all details about a certain pattern:</p><pre><code>z-tokens patterns -p cv:6 --show-all
-</code></pre><pre><code>**  ~~~~~~~~  cv-lower:6
-\_  aliases:  cv:6
-\_  labels:   cv-lower cv ascii password memorable
-\_  bits:     80.5709
-\_  length:   29
+</code></pre><pre><code>::  mnemonic:3              :   32.0 b :   20 c ::    bonus silicon client
+::  bip0039:3               :   33  =b :   19 c ::    pattern limit until
+::  skey:3                  :   33  =b :   14 c ::    stew dart gina
+::  eff-large:3             :   38.7 b :   23 c ::    alfalfa stamp outspoken
+::  eff-short:4             :   41.3 b :   21 c ::    cling aids aide widow
+::  eff-unique:4            :   41.3 b :   37 c ::    judiciary upkeep lumberjack asparagus
+</code></pre><p>Show all details about a certain pattern:</p><pre><code>z-tokens patterns -p cvs:6 --show-all
+</code></pre><pre><code>**  ~~~~~~~~  cvs-lower:6
+\_  aliases:  cvs:6
+\_  labels:   cvs-lower cvs cv letters password pronounceable memorable
+\_  bits:     75.8631
+\_  length:   29  (with spaces)
+\_  length:   24  (without spaces)
+\_  characters:
+    \_  letters:  24
+    \_  l. upper: 0
+    \_  l. lower: 24
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 24
 \_  usable for:
-    \_  cryptography         !! NO !!      with    -47.43  bits of margin
-    \_  authentication          OK         with    +48.57  bits of margin
-    \_  archival storage     !! NO !!      with    -19.72  bits of margin
-    \_  long term storage       OK         with     +3.73  bits of margin
-    \_  short term storage      OK         with    +10.58  bits of margin
+    \_  cryptography         !! NO !!      with    -52.14  bits of margin
+    \_  authentication          OK         with    +43.86  bits of margin
+    \_  archival storage     !! NO !!      with    -24.43  bits of margin
+    \_  long term storage    !! NO !!      with     -0.98  bits of margin
+    \_  short term storage      OK         with     +5.87  bits of margin
 \_  bruteforce time:
-    \_  MD4                     --    2.0  years
-    \_  MD5                     --    3.4  years
-    \_  SHA1                    --    1.1  decades
-    \_  SHA2-256                --    2.6  decades
-    \_  SHA3-256                --    1.1  centuries
-    \_  PBKDF2-HMAC-MD5         --   12.3  millennia
-    \_  PBKDF2-HMAC-SHA1        --   29.8  millennia
-    \_  PBKDF2-HMAC-SHA256      --   64.2  millennia
-    \_  PBKDF2-HMAC-SHA512      --  182.3  millennia
-    \_  scrypt                  --   79.9  millions of years
-    \_  GPG                     --   21.2  millennia
-    \_  AES-128                 --    2.6  decades
-\_  example:  fosi suwe pawu mexi tuka kavu
+    \_  MD4                     --   27.3  days
+    \_  MD5                     --    1.6  months
+    \_  SHA1                    --    5.1  months
+    \_  SHA2-256                --   11.9  months
+    \_  SHA3-256                --    4.3  years
+    \_  PBKDF2-HMAC-MD5         --    4.7  centuries
+    \_  PBKDF2-HMAC-SHA1        --    1.1  millennia
+    \_  PBKDF2-HMAC-SHA256      --    2.5  millennia
+    \_  PBKDF2-HMAC-SHA512      --    7.0  millennia
+    \_  scrypt                  --    3.1  millions of years
+    \_  GPG                     --    8.1  centuries
+    \_  AES-128                 --   11.9  months
+\_  example:  difa dana mine niho zunu reze
+
 </code></pre><p>Show all supported patterns identifiers:</p><pre><code>z-tokens patterns -i
 </code></pre><pre><code>digits-base10:...
 digits-base2:...
@@ -241,12 +293,18 @@ ascii-upper:...
 ascii-mixed:...
 ascii-symbols:...
 ascii-any:...
-cv-lower:...
-cv-upper:...
-cv-mixed:...
-cv-plus-a:...
-cv-plus-b:...
-cv-plus-c:...
+cva-lower:...
+cva-upper:...
+cva-mixed:...
+cva-plus-a:...
+cva-plus-b:...
+cva-plus-c:...
+cvs-lower:...
+cvs-upper:...
+cvs-mixed:...
+cvs-plus-a:...
+cvs-plus-b:...
+cvs-plus-c:...
 proquint-lower:...
 proquint-upper:...
 koremutake-a:...
@@ -258,14 +316,31 @@ pgp:...
 eff-large:...
 eff-short:...
 eff-unique:...
+pets-medium-1
+pets-medium-2
+pets-medium-3
+pets-medium-4
+pets-small-1
+pets-small-2
+pets-small-3
+pets-small-4
 nato:...
+bytes-hex:...
+token-hex-16
+token-hex-24
+token-hex-32
+token-hex-48
+token-hex-64
+token-hex-96
+token-hex-128
+token-hex-256
+token-hex-512
 uuid-v4
 ip-127
 ip-10
 ip-172
 ip-192
 ip-mac
-bytes-hex:...
 timestamp-date-time
 timestamp-date
 timestamp-time
@@ -278,32 +353,47 @@ timestamp-flake-hex
 flake:...
 </code></pre><hr><h2><span id=install>Installation</span></h2><p>At the moment, due to the Rust cross-compilation hurdles,
 one can install <code>z-tokens</code> by <a href=#build>building from sources</a> with <code>cargo</code>,
-or <a href=#download>downloading the already built</a> Linux or OSX binaries.</p><h3><span id=build>Building from sources</span></h3><p>At the moment <code>z-tokens</code> requires at least Rust 1.63 or later.</p><p>Use the latest development branch:</p><pre><code>cargo install --bins --git https://github.com/volution/z-tokens --force
+or <a href=#download>downloading the already built</a> Linux or OSX binaries.</p><h3><span id=build>Building from sources</span></h3><p>At the moment <code>z-tokens</code> requires at least Rust 1.75 or later.</p><p>Use the latest development branch:</p><pre><code>cargo install --bins --git https://github.com/volution/z-tokens --force
 </code></pre><p>Use the latest preview release:</p><pre><code>cargo install --bins --tag preview --git https://github.com/volution/z-tokens --force
-</code></pre><p>It should build at least on the following platforms:</p><ul><li>Linux: <code>x86_64-unknown-linux-gnu</code>, <code>x86_64-unknown-linux-musl</code>;</li><li>OSX: <code>x86_64-apple-darwin</code>, <code>aarch64-apple-darwin</code>;</li><li>Android: <code>x86_64-linux-android</code>, <code>aarch64-linux-android</code>;</li><li>FreeBSD: only <code>x86_64-unknown-freebsd</code>;</li><li>OpenBSD: not tested, but I don't see why it shouldn't build;</li><li>Windows: <code>x86_64-pc-windows-msvc</code>, <code>aarch64-pc-windows-msvc</code>;</li></ul><p>The build status was assessed by running <code>cargo check --target ...</code>.</p><h3><span id=download>Downloading pre-built binaries</span></h3><ul><li>download the executable and (optional) signature
-(replace <code>linux</code> with <code>darwin</code> (for OSX), <code>freebsd</code> or <code>openbsd</code>,
-and use <code>x86_64</code> or <code>aarch64</code> matching your processor):</li></ul><pre><code>curl -s -L -f -S \
+</code></pre><p>It should build at least on the following platforms:</p><ul><li>Linux:<ul><li><code>x86_64-unknown-linux-gnu</code>, <code>x86_64-unknown-linux-musl</code>
+(i.e. Intel and AMD 64 bits)
+(both with static and dynamic linking);</li><li><code>aarch64-unknown-linux-gnu</code>, <code>aarch64-unknown-linux-musl</code>
+(i.e. ARM 64 bits, like RaspberryPi 3-4-5)
+(both with static and dynamic linking);</li><li><code>arm-unknown-linux-gnueabihf</code>, <code>arm-unknown-linux-musleabihf</code>
+(i.e. ARM 32 bits, like Raspberry Pi 1-2)
+(both with static and dynamic linking);</li></ul></li><li>OSX: <code>x86_64-apple-darwin</code>, <code>aarch64-apple-darwin</code>;</li><li>Windows: <code>x86_64-pc-windows-msvc</code>, <code>aarch64-pc-windows-msvc</code>;</li><li>Android: <code>x86_64-linux-android</code>, <code>aarch64-linux-android</code>;
+(i.e. to be used under Termux or similar;)</li><li>FreeBSD: not tested, but I don't see why it shouldn't build;</li><li>OpenBSD: not tested, but I don't see why it shouldn't build;</li></ul><p>The build status was assessed by running <code>cargo check --target ...</code>
+and then <code>cargo build --target ...</code> (cross compiling from Linux with the required tooling installed).</p><p>Where I have access, I also run the executables under the native OS,
+and so far all of the above seem to have worked (at a certain point).</p><h3><span id=download>Downloading pre-built binaries</span></h3><ul><li>download the executable and (optional) signature
+(replace <code>linux</code> with <code>darwin</code> (for OSX), <code>freebsd</code>, <code>openbsd</code>, etc., and remove the <code>glibc</code> token,
+and use <code>x86_64</code> or <code>aarch64</code> matching your processor,
+and in case of Linux replace <code>glibc</code> with <code>musl</code> and possibly <code>glibc--static</code> and <code>musl--static</code>):</li></ul><pre><code>curl -s -L -f -S \
     -o /tmp/z-tokens \
-    https://github.com/volution/z-tokens/releases/download/preview/z-tokens--linux--x86_64--v0.3.0--preview
+    https://github.com/volution/z-tokens/releases/download/preview/z-tokens--linux--x86_64--glibc--v0.4.0--preview
 </code></pre><pre><code>curl -s -L -f -S \
-    -o /tmp/z-tokens.asc \
-    https://github.com/volution/z-tokens/releases/download/preview/z-tokens--linux--x86_64--v0.3.0--preview.asc
-</code></pre><ul><li>(optional) import my PGP key:</li></ul><pre><code>curl -s -f -S https://github.com/cipriancraciun.gpg | gpg2 --import
-</code></pre><ul><li>(optional) verify the executable:</li></ul><pre><code>gpg --verify /tmp/z-tokens.asc /tmp/z-tokens
-</code></pre><ul><li><p><strong>check that the key is <code>58FC 2194 FCC2 4783 99CB 220C 5A97 4037 A6FD 8839</code></strong>;</p></li><li><p>change the executable permissions:</p></li></ul><pre><code>chmod a=rx /tmp/z-tokens
+    -o /tmp/z-tokens.sig \
+    https://github.com/volution/z-tokens/releases/download/preview/z-tokens--linux--x86_64--glibc--v0.4.0--preview.sig
+</code></pre><ul><li>(optional) verify the executable (the <code>-P ...</code> is the public key):</li></ul><pre><code>minisign \
+    -V \
+    -P 'RWTNU8euCgU67tydQTW8Obk/C/aOiRComoFnFpiTzPwjDc39BU4R3M4g' \
+    -x /tmp/z-tokens.sig \
+    -m /tmp/z-tokens
+</code></pre><ul><li><strong>check that the output is`</strong>:</li></ul><pre><code>Signature and comment signature verified
+Trusted comment: z-tokens--linux--x86_64--glibc--v0.4.0--preview
+</code></pre><ul><li>change the executable permissions:</li></ul><pre><code>chmod a=rx /tmp/z-tokens
 </code></pre><ul><li>copy the executable on the <code>$PATH</code>:</li></ul><pre><code>sudo cp /tmp/z-tokens /usr/local/bin/z-tokens
 </code></pre><ul><li>check that it works:</li></ul><pre><code>z-tokens --version
 </code></pre><pre><code>* tool          : z-tokens
-* version       : 0.3.0
+* version       : 0.4.0
 * executable    : /usr/local/bin/z-tokens
 * executable-0  : z-tokens
 * build target  : release
-* build number  : 10166, 2023-01-06-03-46-34
+* build number  : 15721, 2024-01-08-18-09-22
 * code &amp; issues : https://github.com/volution/z-tokens
-* sources git   : 978bdd53cae95f275d78ce60c5ab41b41af24933
-* sources hash  : 0662003edbb1109000514694ea39e022
-* uname node    : linux
-* uname system  : Linux, 6.0.10-1-default, x86_64
+* sources git   : 9644b5af5f817a854523e4e837352641e5794c6a
+* sources hash  : a8d6bc01f668ff3b1b7bae6bcbfddf49
+* uname node    : my-computer
+* uname system  : Linux, 6.6.6-6-default, x86_64
 </code></pre><hr><h2><span id=license>Notice (copyright and licensing)</span></h2><h3>Notice -- short version</h3><p>The code is licensed under GPL 3 or later.</p><h3>Notice -- long version</h3><p>For details about the copyright and licensing, please consult the <a href=https://github.com/volution/z-tokens/tree/development/documentation/licensing/notice.txt><code>notice.txt</code></a> file in the <a href=https://github.com/volution/z-tokens/tree/development/documentation/licensing><code>documentation/licensing</code></a> folder.</p><p>If someone requires the sources and/or documentation to be released
 under a different license, please email the authors,
 stating the licensing requirements, accompanied by the reasons
