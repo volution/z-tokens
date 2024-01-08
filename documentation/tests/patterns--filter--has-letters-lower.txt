@@ -357,7 +357,8 @@
 ::  token-hex-96            :   96  =b :   24 c ::    8e27697bbb2a3fb2cd2c6f7f
 ::  token-hex-128           :  128  =b :   32 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f
 ::  uuid-v4                 :  122  =b :   36 c ::    c5a0ef11-f80c-41ce-8329-75e88c63a6e1
-::  ip-mac                  :   40  =b :   17 c ::    02:bb:c6:43:cb:f8
+::  ip-mac-02               :   40  =b :   17 c ::    02:bb:c6:43:cb:f8
+::  ip-mac-04               :   40  =b :   17 c ::    04:bb:c6:43:cb:f8
 ::  timestamp-sec-hex       :    0  =b :   10 c ::    0061cdbef4
 ::  timestamp-nano-hex      :    0  =b :   18 c ::    0016c58df3a287c45d
 ::  timestamp-flake-hex     :    0  =b :    8 c ::    29607b74

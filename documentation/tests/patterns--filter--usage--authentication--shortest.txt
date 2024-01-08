@@ -51,5 +51,6 @@
 ::  token-hex-256           :  256  =b :   65 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f-958b761dabe5f6d0069dc102cf310a16
 ::  token-hex-512           :  512  =b :  131 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f-958b761dabe5f6d0069dc102cf310a16-c5a0ef111f71c4 [...]
 ::  uuid-v4                 :  122  =b :   36 c ::    c5a0ef11-f80c-41ce-8329-75e88c63a6e1
-::  ip-mac                  :   40  =b :   17 c ::    02:bb:c6:43:cb:f8
+::  ip-mac-02               :   40  =b :   17 c ::    02:bb:c6:43:cb:f8
+::  ip-mac-04               :   40  =b :   17 c ::    04:bb:c6:43:cb:f8
 ::  flake:32                :   32  =b :   17 c ::    29607b74-7f6f2ccd

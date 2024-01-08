@@ -15613,7 +15613,43 @@
 \_  example:  192.168.186.196
 
 
-**  ~~~~~~~~  ip-mac
+**  ~~~~~~~~  ip-169
+\_  bits:     15.9545
+\_  length:   15  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -112.05  bits of margin
+    \_  authentication       !! NO !!      with    -16.05  bits of margin
+    \_  archival storage     !! NO !!      with    -84.34  bits of margin
+    \_  long term storage    !! NO !!      with    -60.88  bits of margin
+    \_  short term storage   !! NO !!      with    -54.04  bits of margin
+\_  example:  169.254.186.196
+
+
+**  ~~~~~~~~  ip-100
+\_  bits:     21.9545
+\_  length:   14  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -106.05  bits of margin
+    \_  authentication       !! NO !!      with    -10.05  bits of margin
+    \_  archival storage     !! NO !!      with    -78.34  bits of margin
+    \_  long term storage    !! NO !!      with    -54.88  bits of margin
+    \_  short term storage   !! NO !!      with    -48.04  bits of margin
+\_  example:  100.101.68.196
+
+
+**  ~~~~~~~~  ip-198
+\_  bits:     16.9545
+\_  length:   12  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -111.05  bits of margin
+    \_  authentication       !! NO !!      with    -15.05  bits of margin
+    \_  archival storage     !! NO !!      with    -83.34  bits of margin
+    \_  long term storage    !! NO !!      with    -59.88  bits of margin
+    \_  short term storage   !! NO !!      with    -53.04  bits of margin
+\_  example:  198.19.196.8
+
+
+**  ~~~~~~~~  ip-mac-02
 \_  bits:     40  (exact)
 \_  length:   17  (with spaces)
 \_  usable for:
@@ -15623,6 +15659,18 @@
     \_  long term storage    !! NO !!      with    -36.84  bits of margin
     \_  short term storage   !! NO !!      with    -30.00  bits of margin
 \_  example:  02:bb:c6:43:cb:f8
+
+
+**  ~~~~~~~~  ip-mac-04
+\_  bits:     40  (exact)
+\_  length:   17  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -88.00  bits of margin
+    \_  authentication          OK         with     +8.00  bits of margin
+    \_  archival storage     !! NO !!      with    -60.30  bits of margin
+    \_  long term storage    !! NO !!      with    -36.84  bits of margin
+    \_  short term storage   !! NO !!      with    -30.00  bits of margin
+\_  example:  04:bb:c6:43:cb:f8
 
 
 **  ~~~~~~~~  timestamp-date-time

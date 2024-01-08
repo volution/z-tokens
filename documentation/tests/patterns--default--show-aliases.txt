@@ -2,112 +2,112 @@
 
 
 **  ~~~~~~~~  digits-base10:2
-\_  aliases:  d:2
+\_  aliases:  d:2 pin:2
 \_  bits:     6.6438
 \_  length:   2  (with spaces)
 \_  example:  70
 
 
 **  ~~~~~~~~  digits-base10:4
-\_  aliases:  d:4
+\_  aliases:  d:4 pin:4
 \_  bits:     13.2877
 \_  length:   4  (with spaces)
 \_  example:  7022
 
 
 **  ~~~~~~~~  digits-base10:6
-\_  aliases:  d:6
+\_  aliases:  d:6 pin:6
 \_  bits:     19.9315
 \_  length:   7  (with spaces)
 \_  example:  7022 71
 
 
 **  ~~~~~~~~  digits-base10:8
-\_  aliases:  d:8
+\_  aliases:  d:8 pin:8
 \_  bits:     26.5754
 \_  length:   9  (with spaces)
 \_  example:  7022 7110
 
 
 **  ~~~~~~~~  digits-base10:10
-\_  aliases:  d:10
+\_  aliases:  d:10 pin:10
 \_  bits:     33.2192
 \_  length:   12  (with spaces)
 \_  example:  7022 7110 44
 
 
 **  ~~~~~~~~  digits-base10:12
-\_  aliases:  d:12
+\_  aliases:  d:12 pin:12
 \_  bits:     39.8631
 \_  length:   14  (with spaces)
 \_  example:  7022 7110 4492
 
 
 **  ~~~~~~~~  digits-base10:14
-\_  aliases:  d:14
+\_  aliases:  d:14 pin:14
 \_  bits:     46.5069
 \_  length:   17  (with spaces)
 \_  example:  7022 7110 4492 51
 
 
 **  ~~~~~~~~  digits-base10:16
-\_  aliases:  d:16
+\_  aliases:  d:16 pin:16
 \_  bits:     53.1508
 \_  length:   19  (with spaces)
 \_  example:  7022 7110 4492 5182
 
 
 **  ~~~~~~~~  digits-base10:18
-\_  aliases:  d:18
+\_  aliases:  d:18 pin:18
 \_  bits:     59.7947
 \_  length:   22  (with spaces)
 \_  example:  7022 7110 4492 5182 56
 
 
 **  ~~~~~~~~  digits-base10:20
-\_  aliases:  d:20
+\_  aliases:  d:20 pin:20
 \_  bits:     66.4385
 \_  length:   24  (with spaces)
 \_  example:  7022 7110 4492 5182 5629
 
 
 **  ~~~~~~~~  digits-base10:22
-\_  aliases:  d:22
+\_  aliases:  d:22 pin:22
 \_  bits:     73.0824
 \_  length:   27  (with spaces)
 \_  example:  7022 7110 4492 5182 5629 06
 
 
 **  ~~~~~~~~  digits-base10:24
-\_  aliases:  d:24
+\_  aliases:  d:24 pin:24
 \_  bits:     79.7262
 \_  length:   29  (with spaces)
 \_  example:  7022 7110 4492 5182 5629 0665
 
 
 **  ~~~~~~~~  digits-base10:26
-\_  aliases:  d:26
+\_  aliases:  d:26 pin:26
 \_  bits:     86.3701
 \_  length:   32  (with spaces)
 \_  example:  7022 7110 4492 5182 5629 0665 73
 
 
 **  ~~~~~~~~  digits-base10:28
-\_  aliases:  d:28
+\_  aliases:  d:28 pin:28
 \_  bits:     93.0139
 \_  length:   34  (with spaces)
 \_  example:  7022 7110 4492 5182 5629 0665 7352
 
 
 **  ~~~~~~~~  digits-base10:30
-\_  aliases:  d:30
+\_  aliases:  d:30 pin:30
 \_  bits:     99.6578
 \_  length:   37  (with spaces)
 \_  example:  7022 7110 4492 5182 5629 0665 7352 60
 
 
 **  ~~~~~~~~  digits-base10:32
-\_  aliases:  d:32
+\_  aliases:  d:32 pin:32
 \_  bits:     106.3016
 \_  length:   39  (with spaces)
 \_  example:  7022 7110 4492 5182 5629 0665 7352 6062
@@ -8518,10 +8518,35 @@
 \_  example:  192.168.186.196
 
 
-**  ~~~~~~~~  ip-mac
+**  ~~~~~~~~  ip-169
+\_  bits:     15.9545
+\_  length:   15  (with spaces)
+\_  example:  169.254.186.196
+
+
+**  ~~~~~~~~  ip-100
+\_  bits:     21.9545
+\_  length:   14  (with spaces)
+\_  example:  100.101.68.196
+
+
+**  ~~~~~~~~  ip-198
+\_  bits:     16.9545
+\_  length:   12  (with spaces)
+\_  example:  198.19.196.8
+
+
+**  ~~~~~~~~  ip-mac-02
+\_  aliases:  ip-mac
 \_  bits:     40  (exact)
 \_  length:   17  (with spaces)
 \_  example:  02:bb:c6:43:cb:f8
+
+
+**  ~~~~~~~~  ip-mac-04
+\_  bits:     40  (exact)
+\_  length:   17  (with spaces)
+\_  example:  04:bb:c6:43:cb:f8
 
 
 **  ~~~~~~~~  timestamp-date-time

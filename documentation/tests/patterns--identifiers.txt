@@ -1301,7 +1301,11 @@ ip-127
 ip-10
 ip-172
 ip-192
-ip-mac
+ip-169
+ip-100
+ip-198
+ip-mac-02
+ip-mac-04
 timestamp-date-time
 timestamp-date
 timestamp-time
