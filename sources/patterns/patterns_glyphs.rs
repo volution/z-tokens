@@ -863,17 +863,17 @@ define_bytes! (pub BYTES_HEX, BytesFormat::Hex, ( 512 : 1 ));
 
 // NOTE:  => https://docs.rs/chrono/latest/chrono/format/strftime/
 #[ cfg (feature = "zt-patterns-timestamp") ]
-define_timestamp! (pub TIMESTAMP_YEAR, TimestampFormat::Strftime ("%Y", true));
+define_timestamp! (pub TIMESTAMP_YEAR, TimestampFormat::Strftime ("%Y", "%Y", true));
 #[ cfg (feature = "zt-patterns-timestamp") ]
-define_timestamp! (pub TIMESTAMP_MONTH, TimestampFormat::Strftime ("%m", true));
+define_timestamp! (pub TIMESTAMP_MONTH, TimestampFormat::Strftime ("%m", "%m", true));
 #[ cfg (feature = "zt-patterns-timestamp") ]
-define_timestamp! (pub TIMESTAMP_DAY, TimestampFormat::Strftime ("%d", true));
+define_timestamp! (pub TIMESTAMP_DAY, TimestampFormat::Strftime ("%d", "%d", true));
 #[ cfg (feature = "zt-patterns-timestamp") ]
-define_timestamp! (pub TIMESTAMP_STRING_DATE, TimestampFormat::Strftime ("%Y-%m-%d", true));
+define_timestamp! (pub TIMESTAMP_STRING_DATE, TimestampFormat::Strftime ("%Y-%m-%d", "%Y%m%d", true));
 #[ cfg (feature = "zt-patterns-timestamp") ]
-define_timestamp! (pub TIMESTAMP_STRING_TIME, TimestampFormat::Strftime ("%H-%M-%S", true));
+define_timestamp! (pub TIMESTAMP_STRING_TIME, TimestampFormat::Strftime ("%H-%M-%S", "%H%M%S", true));
 #[ cfg (feature = "zt-patterns-timestamp") ]
-define_timestamp! (pub TIMESTAMP_STRING_DATETIME, TimestampFormat::Strftime ("%Y-%m-%d-%H-%M-%S", true));
+define_timestamp! (pub TIMESTAMP_STRING_DATETIME, TimestampFormat::Strftime ("%Y-%m-%d-%H-%M-%S", "%Y%m%d%H%M%S", true));
 #[ cfg (feature = "zt-patterns-timestamp") ]
 define_timestamp! (pub TIMESTAMP_SECONDS_DEC, TimestampFormat::Decimal (0, 1_000_000_000, 0, 0));
 #[ cfg (feature = "zt-patterns-timestamp") ]

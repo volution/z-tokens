@@ -124,7 +124,7 @@ pub enum BytesFormat {
 pub enum TimestampFormat {
 	Decimal (u128, u128, u128, usize),
 	Hex (u128, u128, u128, usize),
-	Strftime (&'static str, bool),
+	Strftime (&'static str, &'static str, bool),
 }
 
 

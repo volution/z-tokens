@@ -186,7 +186,7 @@ pub fn output_timestamp (_timestamp : &u128, _format : &TimestampFormat, mut _st
 						panic! (unreachable, 0xe743229c),
 				}
 			}
-		& TimestampFormat::Strftime (_format, _utc) => {
+		& TimestampFormat::Strftime (_format_with_separators, _format_without_separators, _utc) => {
 				let _seconds = _timestamp / 1_000_000_000;
 				let _subsec_nanoseconds = (_timestamp % 1_000_000_000) as u32;
 				if _seconds >= (i64::MAX as u128) {
@@ -197,6 +197,11 @@ pub fn output_timestamp (_timestamp : &u128, _format : &TimestampFormat, mut _st
 						_time
 					} else {
 						fail! (0x11f95f0e);
+					};
+				let _format = if _options.output_separators_mandatory && _options.output_separators_optional {
+						_format_with_separators
+					} else {
+						_format_without_separators
 					};
 				write! (_stream, "{}", _time.format (_format)) .else_wrap (0x35328385)
 			}
