@@ -1,4 +1,4 @@
 untrusted comment: signature from minisign secret key
-RUTNU8euCgU67l/NNogvwa3LZsm1qneXDcTzv6iihfhFWUtPdeATpPAoK77Sc6OqO2eWdGILXY6UryAho55CeJIi2ku4lTfW2A4=
-trusted comment: z-exchange--linux--x86_64--musl--v0.4.0--preview
-7axKr5xAyQ/BXAE2qVNdvtlO+Rsyyau/zCnIijv3H4QrbTp/TikTagCoyHSOcnyI49kOuFo2kh7TsuBAcdusDw==
+RUTNU8euCgU67nPcHIdJLcBDGsmKDCdMNoCJBUcXXgKfXFJ60wKScaT/L08Za3s02oanF59tV6qikeH4uBHyr8/9yTqQWeHFqAM=
+trusted comment: zt-exchange--linux--x86_64--musl--v0.4.0--preview
+uIGw2Mwz72XdxBrwKSpfUerzR6fJcIzpOKGrNSINZ4CdbjeIkCiNoejawSLkCA2oab7lFf2CIiI6f6vY2iGQCg==
