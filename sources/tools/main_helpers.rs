@@ -20,13 +20,41 @@ use ::z_tokens_runtime::crates::platform_info::{
 
 
 
-pub(crate) fn main_arguments () -> MainResult<(Vec<String>, Vec<String>)> {
+pub(crate) fn main_arguments () -> MainResult<(Option<String>, Vec<String>, Vec<String>)> {
 	
 	let mut _arguments_os : Vec<_> = env::args_os () .collect ();
-	if _arguments_os.is_empty () {
+	
+	let _executable = if _arguments_os.is_empty () {
 		fail! (0xf28dc498);
 	} else {
-		_arguments_os.remove (0);
+		PathBuf::from (_arguments_os.remove (0))
+	};
+	
+	let _executable = match _executable.file_name () {
+		Some (_name) => Some (_name),
+		None => Some (_executable.as_os_str ()),
+	};
+	let _executable = _executable.map (OsStr::to_string_lossy) .map (String::from);
+	
+	let _executable = if let Some (mut _executable) = _executable {
+		if _executable.starts_with ("[") {
+			_executable.remove (0);
+		}
+		if _executable.ends_with ("]") {
+			_executable.pop ();
+		}
+		for _separator in &["--", "__", ".", ":", "#", "%"] {
+			if let Some (_offset) = _executable.find (_separator) {
+				_executable.truncate (_offset);
+			}
+		}
+		if _executable.is_empty () {
+			None
+		} else {
+			Some (_executable)
+		}
+	} else {
+		None
 	};
 	
 	let mut _commands = Vec::with_capacity (4);
@@ -49,7 +77,7 @@ pub(crate) fn main_arguments () -> MainResult<(Vec<String>, Vec<String>)> {
 		}
 	}
 	
-	Ok ((_commands, _arguments))
+	Ok ((_executable, _commands, _arguments))
 }
 
 

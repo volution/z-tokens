@@ -66,12 +66,48 @@ use ::z_tokens_secrets_tool::{
 
 pub fn main_tools () -> MainResult<ExitCode> {
 	
-	let (mut _commands, mut _arguments) = main_arguments () ?;
+	let (_executable, mut _commands, mut _arguments) = main_arguments () ?;
 	
 	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
 	let _commands_refs = _commands_refs.as_slice ();
 	let _arguments_refs = _arguments.iter () .map (String::as_str) .collect::<Vec<_>> ();
 	let _arguments_refs = _arguments_refs.as_slice ();
+	
+	
+	
+	
+	match _executable.as_ref () .map (String::as_str) .unwrap_or ("") {
+		
+		#[ cfg (feature = "z-tokens-patterns-tool") ]
+		"zt-patterns" | "z-tokens-patterns" | "z-patterns" =>
+			return main_patterns (),
+		
+		#[ cfg (feature = "z-tokens-hashes-tool") ]
+		"zt-hashes" | "z-tokens-hashes" | "z-hashes" =>
+			return main_hashes (),
+		
+		#[ cfg (feature = "z-tokens-encodings-tool") ]
+		"zt-encodings" | "z-tokens-encodings" | "z-encodings" =>
+			return main_encodings (),
+		
+		#[ cfg (feature = "z-tokens-exchange-tool") ]
+		"zt-exchange" | "z-tokens-exchange" | "z-exchange" =>
+			return main_exchange (),
+		
+		#[ cfg (feature = "z-tokens-oracles-tool") ]
+		"zt-oracles" | "z-tokens-oracles" | "z-oracles" =>
+			return main_oracles (),
+		
+		#[ cfg (feature = "z-tokens-secrets-tool") ]
+		"zt-secrets" | "z-tokens-secrets" | "z-secrets" =>
+			return main_secrets (),
+		
+		_ =>
+			(),
+	}
+	
+	
+	
 	
 	match (_commands_refs, _arguments_refs) {
 		
@@ -223,7 +259,7 @@ pub fn main_tools () -> MainResult<ExitCode> {
 #[ cfg (feature = "z-tokens-patterns-tool") ]
 pub fn main_patterns () -> MainResult<ExitCode> {
 	
-	let (mut _commands, mut _arguments) = main_arguments () ?;
+	let (_executable, mut _commands, mut _arguments) = main_arguments () ?;
 	
 	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
 	let _commands_refs = _commands_refs.as_slice ();
@@ -283,7 +319,7 @@ pub fn main_patterns () -> MainResult<ExitCode> {
 #[ cfg (feature = "z-tokens-hashes-tool") ]
 pub fn main_hashes () -> MainResult<ExitCode> {
 	
-	let (mut _commands, mut _arguments) = main_arguments () ?;
+	let (_executable, mut _commands, mut _arguments) = main_arguments () ?;
 	
 	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
 	let _commands_refs = _commands_refs.as_slice ();
@@ -318,7 +354,7 @@ pub fn main_hashes () -> MainResult<ExitCode> {
 #[ cfg (feature = "z-tokens-encodings-tool") ]
 pub fn main_encodings () -> MainResult<ExitCode> {
 	
-	let (mut _commands, mut _arguments) = main_arguments () ?;
+	let (_executable, mut _commands, mut _arguments) = main_arguments () ?;
 	
 	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
 	let _commands_refs = _commands_refs.as_slice ();
@@ -357,7 +393,7 @@ pub fn main_encodings () -> MainResult<ExitCode> {
 #[ cfg (feature = "z-tokens-exchange-tool") ]
 pub fn main_exchange () -> MainResult<ExitCode> {
 	
-	let (mut _commands, mut _arguments) = main_arguments () ?;
+	let (_executable, mut _commands, mut _arguments) = main_arguments () ?;
 	
 	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
 	let _commands_refs = _commands_refs.as_slice ();
@@ -429,7 +465,7 @@ pub fn main_exchange () -> MainResult<ExitCode> {
 #[ cfg (feature = "z-tokens-oracles-tool") ]
 pub fn main_oracles () -> MainResult<ExitCode> {
 	
-	let (mut _commands, mut _arguments) = main_arguments () ?;
+	let (_executable, mut _commands, mut _arguments) = main_arguments () ?;
 	
 	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
 	let _commands_refs = _commands_refs.as_slice ();
@@ -464,7 +500,7 @@ pub fn main_oracles () -> MainResult<ExitCode> {
 #[ cfg (feature = "z-tokens-secrets-tool") ]
 pub fn main_secrets () -> MainResult<ExitCode> {
 	
-	let (mut _commands, mut _arguments) = main_arguments () ?;
+	let (_executable, mut _commands, mut _arguments) = main_arguments () ?;
 	
 	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
 	let _commands_refs = _commands_refs.as_slice ();
