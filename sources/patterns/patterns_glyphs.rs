@@ -822,6 +822,8 @@ define_set! (pub NATO_WORD, Str, [
 
 define_integer! (pub INTEGER_0_255, (0 ..= 255), IntegerFormat::Decimal);
 define_integer! (pub INTEGER_2_253, (2 ..= 253), IntegerFormat::Decimal);
+define_integer! (pub INTEGER_64_127, (64 ..= 127), IntegerFormat::Decimal);
+define_integer! (pub INTEGER_18_19, (18 ..= 19), IntegerFormat::Decimal);
 
 define_integer! (pub INTEGER_0_31, (0 ..= 31), IntegerFormat::Decimal);
 define_integer! (pub INTEGER_1_30, (1 ..= 30), IntegerFormat::Decimal);

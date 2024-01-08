@@ -903,6 +903,14 @@ define_constant! (IP_192_A_PREFIX, Str, "192");
 #[ cfg (feature = "zt-patterns-ip") ]
 define_constant! (IP_192_B_PREFIX, Str, "168");
 #[ cfg (feature = "zt-patterns-ip") ]
+define_constant! (IP_169_A_PREFIX, Str, "169");
+#[ cfg (feature = "zt-patterns-ip") ]
+define_constant! (IP_169_B_PREFIX, Str, "254");
+#[ cfg (feature = "zt-patterns-ip") ]
+define_constant! (IP_100_A_PREFIX, Str, "100");
+#[ cfg (feature = "zt-patterns-ip") ]
+define_constant! (IP_198_A_PREFIX, Str, "198");
+#[ cfg (feature = "zt-patterns-ip") ]
 define_constant! (IP_MAC_PREFIX, Str, "02");
 
 #[ cfg (feature = "zt-patterns-ip") ]
@@ -955,6 +963,42 @@ define_sequence! (
 
 #[ cfg (feature = "zt-patterns-ip") ]
 define_sequence! (
+		pub IP_169,
+		("ip-169", "ip", "networking"),
+		("ip-169"),
+		[
+			IP_169_A_PREFIX_TOKEN,
+			IP_169_B_PREFIX_TOKEN,
+			glyphs::INTEGER_2_253_TOKEN,
+			glyphs::INTEGER_2_253_TOKEN,
+		], separators::DOT_MANDATORY_INFIX_PATTERN);
+
+#[ cfg (feature = "zt-patterns-ip") ]
+define_sequence! (
+		pub IP_100,
+		("ip-100", "ip", "networking"),
+		("ip-100"),
+		[
+			IP_100_A_PREFIX_TOKEN,
+			glyphs::INTEGER_64_127_TOKEN,
+			glyphs::INTEGER_2_253_TOKEN,
+			glyphs::INTEGER_2_253_TOKEN,
+		], separators::DOT_MANDATORY_INFIX_PATTERN);
+
+#[ cfg (feature = "zt-patterns-ip") ]
+define_sequence! (
+		pub IP_198,
+		("ip-198", "ip", "networking"),
+		("ip-198"),
+		[
+			IP_198_A_PREFIX_TOKEN,
+			glyphs::INTEGER_18_19_TOKEN,
+			glyphs::INTEGER_2_253_TOKEN,
+			glyphs::INTEGER_2_253_TOKEN,
+		], separators::DOT_MANDATORY_INFIX_PATTERN);
+
+#[ cfg (feature = "zt-patterns-ip") ]
+define_sequence! (
 		pub IP_MAC,
 		("ip-mac", "networking"),
 		("ip-mac"),
@@ -973,6 +1017,9 @@ define_all! (pub IP_ALL, [
 		IP_10,
 		IP_172,
 		IP_192,
+		IP_169,
+		IP_100,
+		IP_198,
 		IP_MAC,
 	]);
 
