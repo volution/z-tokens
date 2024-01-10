@@ -491,20 +491,28 @@ It should build at least on the following platforms:
   * Linux:
       + x86_64-unknown-linux-gnu, x86_64-unknown-linux-musl (i.e. Intel and AMD
         64 bits) (both with static and dynamic linking);
+      + i686-unknown-linux-gnu, i686-unknown-linux-musl (i.e. Intel and AMD 32
+        bits) (both with static and dynamic linking);
       + aarch64-unknown-linux-gnu, aarch64-unknown-linux-musl (i.e. ARM 64
         bits, like RaspberryPi 3-4-5) (both with static and dynamic linking);
-      + arm-unknown-linux-gnueabihf, arm-unknown-linux-musleabihf (i.e. ARM 32
-        bits, like Raspberry Pi 1-2) (both with static and dynamic linking);
+      + armv7-unknown-linux-gnueabihf, armv7-unknown-linux-musleabihf (i.e.
+        ARMv7 32 bits) (both with static and dynamic linking);
+      + arm-unknown-linux-gnueabihf, arm-unknown-linux-musleabihf (i.e. ARMv6
+        32 bits, like Raspberry Pi 1-2) (both with static and dynamic linking);
   * OSX: x86_64-apple-darwin, aarch64-apple-darwin;
-  * Windows: x86_64-pc-windows-msvc, aarch64-pc-windows-msvc;
-  * Android: x86_64-linux-android, aarch64-linux-android; (i.e. to be used
-    under Termux or similar;)
+  * Windows: x86_64-pc-windows-gnu;
+  * Android: x86_64-linux-android, i686-linux-android, aarch64-linux-android,
+    armv7-linux-androideabi; (i.e. to be used under Termux or similar, on a
+    real Android device like a tablet or phone;)
   * FreeBSD: not tested, but I don't see why it shouldn't build;
   * OpenBSD: not tested, but I don't see why it shouldn't build;
+  * WebAssembly: wasm32-wasi (i.e. truly portable on any system that is able to
+    run a WebAssembly WASI runtime like wasmtime);
 
 The build status was assessed by running cargo check --target ... and then
 cargo build --target ... (cross compiling from Linux with the required tooling
-installed).
+installed). (Also, for all of these targets there are pre-built executables as
+described in the next section.)
 
 Where I have access, I also run the executables under the native OS, and so far
 all of the above seem to have worked (at a certain point).
@@ -514,7 +522,8 @@ Downloading pre-built binaries
   * download the executable and (optional) signature (replace linux with darwin
     (for OSX), freebsd, openbsd, etc., and remove the glibc token, and use
     x86_64 or aarch64 matching your processor, and in case of Linux replace
-    glibc with musl and possibly glibc--static and musl--static):
+    glibc with musl and possibly glibc--static and musl--static, there is even
+    support for WebAssembly WASI):
 
 curl -s -L -f -S \
     -o /tmp/z-tokens \

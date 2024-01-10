@@ -357,17 +357,24 @@ or <a href=#download>downloading the already built</a> Linux or OSX binaries.</p
 </code></pre><p>Use the latest preview release:</p><pre><code>cargo install --bins --tag preview --git https://github.com/volution/z-tokens --force
 </code></pre><p>It should build at least on the following platforms:</p><ul><li>Linux:<ul><li><code>x86_64-unknown-linux-gnu</code>, <code>x86_64-unknown-linux-musl</code>
 (i.e. Intel and AMD 64 bits)
+(both with static and dynamic linking);</li><li><code>i686-unknown-linux-gnu</code>, <code>i686-unknown-linux-musl</code>
+(i.e. Intel and AMD 32 bits)
 (both with static and dynamic linking);</li><li><code>aarch64-unknown-linux-gnu</code>, <code>aarch64-unknown-linux-musl</code>
 (i.e. ARM 64 bits, like RaspberryPi 3-4-5)
+(both with static and dynamic linking);</li><li><code>armv7-unknown-linux-gnueabihf</code>, <code>armv7-unknown-linux-musleabihf</code>
+(i.e. ARMv7 32 bits)
 (both with static and dynamic linking);</li><li><code>arm-unknown-linux-gnueabihf</code>, <code>arm-unknown-linux-musleabihf</code>
-(i.e. ARM 32 bits, like Raspberry Pi 1-2)
-(both with static and dynamic linking);</li></ul></li><li>OSX: <code>x86_64-apple-darwin</code>, <code>aarch64-apple-darwin</code>;</li><li>Windows: <code>x86_64-pc-windows-msvc</code>, <code>aarch64-pc-windows-msvc</code>;</li><li>Android: <code>x86_64-linux-android</code>, <code>aarch64-linux-android</code>;
-(i.e. to be used under Termux or similar;)</li><li>FreeBSD: not tested, but I don't see why it shouldn't build;</li><li>OpenBSD: not tested, but I don't see why it shouldn't build;</li></ul><p>The build status was assessed by running <code>cargo check --target ...</code>
-and then <code>cargo build --target ...</code> (cross compiling from Linux with the required tooling installed).</p><p>Where I have access, I also run the executables under the native OS,
+(i.e. ARMv6 32 bits, like Raspberry Pi 1-2)
+(both with static and dynamic linking);</li></ul></li><li>OSX: <code>x86_64-apple-darwin</code>, <code>aarch64-apple-darwin</code>;</li><li>Windows: <code>x86_64-pc-windows-gnu</code>;</li><li>Android: <code>x86_64-linux-android</code>, <code>i686-linux-android</code>, <code>aarch64-linux-android</code>, <code>armv7-linux-androideabi</code>;
+(i.e. to be used under Termux or similar, on a real Android device like a tablet or phone;)</li><li>FreeBSD: not tested, but I don't see why it shouldn't build;</li><li>OpenBSD: not tested, but I don't see why it shouldn't build;</li><li>WebAssembly: <code>wasm32-wasi</code>
+(i.e. truly portable on any system that is able to run a WebAssembly WASI runtime like <code>wasmtime</code>);</li></ul><p>The build status was assessed by running <code>cargo check --target ...</code>
+and then <code>cargo build --target ...</code> (cross compiling from Linux with the required tooling installed).
+(Also, for all of these targets there are pre-built executables as described in the next section.)</p><p>Where I have access, I also run the executables under the native OS,
 and so far all of the above seem to have worked (at a certain point).</p><h3><span id=download>Downloading pre-built binaries</span></h3><ul><li>download the executable and (optional) signature
 (replace <code>linux</code> with <code>darwin</code> (for OSX), <code>freebsd</code>, <code>openbsd</code>, etc., and remove the <code>glibc</code> token,
 and use <code>x86_64</code> or <code>aarch64</code> matching your processor,
-and in case of Linux replace <code>glibc</code> with <code>musl</code> and possibly <code>glibc--static</code> and <code>musl--static</code>):</li></ul><pre><code>curl -s -L -f -S \
+and in case of Linux replace <code>glibc</code> with <code>musl</code> and possibly <code>glibc--static</code> and <code>musl--static</code>,
+there is even support for WebAssembly WASI):</li></ul><pre><code>curl -s -L -f -S \
     -o /tmp/z-tokens \
     https://github.com/volution/z-tokens/releases/download/preview/z-tokens--linux--x86_64--glibc--v0.4.0--preview
 </code></pre><pre><code>curl -s -L -f -S \
