@@ -448,6 +448,7 @@
 					CC=x86_64-linux-gnu-gcc
 					CXX=x86_64-linux-gnu-g++
 					AR=x86_64-linux-gnu-ar
+					RANLIB=x86_64-linux-gnu-ranlib
 					CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=x86_64-linux-gnu-gcc
 				)
 		;;
@@ -456,6 +457,7 @@
 					CC=i686-linux-gnu-gcc
 					CXX=i686-linux-gnu-g++
 					AR=i686-linux-gnu-ar
+					RANLIB=i686-linux-gnu-ranlib
 					CARGO_TARGET_I686_UNKNOWN_LINUX_GNU_LINKER=i686-linux-gnu-gcc
 				)
 		;;
@@ -464,6 +466,7 @@
 					CC=aarch64-linux-gnu-gcc
 					CXX=aarch64-linux-gnu-g++
 					AR=aarch64-linux-gnu-ar
+					RANLIB=aarch64-linux-gnu-ranlib
 					CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-linux-gnu-gcc
 				)
 		;;
@@ -472,6 +475,7 @@
 					CC=arm-linux-gnueabihf-gcc
 					CXX=arm-linux-gnueabihf-g++
 					AR=arm-linux-gnueabihf-ar
+					RANLIB=arm-linux-gnueabihf-ranlib
 					CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_LINKER=arm-linux-gnueabihf-gcc
 				)
 		;;
@@ -480,6 +484,7 @@
 					CC=arm-linux-gnueabihf-gcc
 					CXX=arm-linux-gnueabihf-g++
 					AR=arm-linux-gnueabihf-ar
+					RANLIB=arm-linux-gnueabihf-ranlib
 					CARGO_TARGET_ARM_UNKNOWN_LINUX_GNUEABIHF_LINKER=arm-linux-gnueabihf-gcc
 				)
 		;;
@@ -489,6 +494,7 @@
 					CC=x86_64-linux-musl-gcc
 					CXX=x86_64-linux-musl-g++
 					AR=x86_64-linux-musl-ar
+					RANLIB=x86_64-linux-musl-ranlib
 					CARGO_TARGET_X86_64_UNKNOWN_LINUX_MUSL_LINKER=x86_64-linux-musl-gcc
 				)
 		;;
@@ -498,6 +504,7 @@
 					CC=i686-linux-musl-gcc
 					CXX=i686-linux-musl-g++
 					AR=i686-linux-musl-ar
+					RANLIB=i686-linux-musl-ranlib
 					CARGO_TARGET_I686_UNKNOWN_LINUX_MUSL_LINKER=i686-linux-musl-gcc
 				)
 		;;
@@ -507,6 +514,7 @@
 					CC=aarch64-linux-musl-gcc
 					CXX=aarch64-linux-musl-g++
 					AR=aarch64-linux-musl-ar
+					RANLIB=aarch64-linux-musl-ranlib
 					CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER=aarch64-linux-musl-gcc
 				)
 		;;
@@ -516,6 +524,7 @@
 					CC=armv7l-linux-musleabihf-gcc
 					CXX=armv7l-linux-musleabihf-g++
 					AR=armv7l-linux-musleabihf-ar
+					RANLIB=armv7l-linux-musleabihf-ranlib
 					CARGO_TARGET_ARMV7_UNKNOWN_LINUX_MUSLEABIHF_LINKER=armv7l-linux-musleabihf-gcc
 				)
 		;;
@@ -525,6 +534,7 @@
 					CC=armv6-linux-musleabihf-gcc
 					CXX=armv6-linux-musleabihf-g++
 					AR=armv6-linux-musleabihf-ar
+					RANLIB=armv6-linux-musleabihf-ranlib
 					CARGO_TARGET_ARM_UNKNOWN_LINUX_MUSLEABIHF_LINKER=armv6-linux-musleabihf-gcc
 				)
 		;;
@@ -534,6 +544,7 @@
 					CC=x86_64-linux-android-clang
 					CXX=x86_64-linux-android-clang++
 					AR=x86_64-linux-android-ar
+					RANLIB=x86_64-linux-android-ranlib
 					CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER=x86_64-linux-android-clang
 				)
 		;;
@@ -543,6 +554,7 @@
 					CC=i686-linux-android-clang
 					CXX=i686-linux-android-clang++
 					AR=i686-linux-android-ar
+					RANLIB=i686-linux-android-ranlib
 					CARGO_TARGET_I686_LINUX_ANDROID_LINKER=i686-linux-android-clang
 				)
 		;;
@@ -552,6 +564,7 @@
 					CC=aarch64-linux-android-clang
 					CXX=aarch64-linux-android-clang++
 					AR=aarch64-linux-android-ar
+					RANLIB=aarch64-linux-android-ranlib
 					CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER=aarch64-linux-android-clang
 				)
 		;;
@@ -561,6 +574,7 @@
 					CC=armv7a-linux-androideabi-clang
 					CXX=armv7a-linux-androideabi-clang++
 					AR=armv7a-linux-androideabi-ar
+					RANLIB=armv7a-linux-androideabi-ranlib
 					CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER=armv7a-linux-androideabi-clang
 				)
 		;;
@@ -570,6 +584,7 @@
 					CC=x86_64-apple-darwin-clang
 					CXX=x86_64-apple-darwin-clang++
 					AR=x86_64-apple-darwin-ar
+					RANLIB=x86_64-apple-darwin-ranlib
 					CARGO_TARGET_X86_64_APPLE_DARWIN_LINKER=x86_64-apple-darwin-clang
 				)
 		;;
@@ -579,6 +594,7 @@
 					CC=arm64-apple-darwin-clang
 					CXX=arm64-apple-darwin-clang++
 					AR=arm64-apple-darwin-ar
+					RANLIB=arm64-apple-darwin-ranlib
 					CARGO_TARGET_AARCH64_APPLE_DARWIN_LINKER=arm64-apple-darwin-clang
 				)
 		;;
@@ -587,6 +603,7 @@
 					CC=x86_64-w64-mingw32-gcc
 					CXX=x86_64-w64-mingw32-g++
 					AR=x86_64-w64-mingw32-ar
+					RANLIB=x86_64-w64-mingw32-ranlib
 					CARGO_TARGET_X86_64_PC_WINDOWS_GNU_LINKER=x86_64-w64-mingw32-gcc
 				)
 		;;
