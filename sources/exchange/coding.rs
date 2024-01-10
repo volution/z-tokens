@@ -129,7 +129,7 @@ pub fn encode (_decoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResult {
 		let _encode_size =
 				bs58::encode (&_decode_buffer[..= _decoded_chunk_len])
 				.with_alphabet (bs58::Alphabet::BITCOIN)
-				.into (_encode_buffer.as_mut_slice ())
+				.onto (_encode_buffer.as_mut_slice ())
 				.else_wrap (0xafe90906) ?;
 		
 		_buffer.extend_from_slice (&_encode_buffer[.. _encode_size]);
@@ -184,7 +184,7 @@ pub fn decode (_encoded : &[u8], _buffer : &mut Vec<u8>) -> EncodingResult {
 		let _decode_size =
 				bs58::decode (_encoded_chunk)
 				.with_alphabet (bs58::Alphabet::BITCOIN)
-				.into (_decode_buffer.as_mut_slice ())
+				.onto (_decode_buffer.as_mut_slice ())
 				.else_wrap (0x5bd4757f) ?;
 		
 		if _decode_size <= 1 {

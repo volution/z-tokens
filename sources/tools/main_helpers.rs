@@ -10,7 +10,8 @@ use crate::runtime::*;
 
 use ::z_tokens_runtime::crates::platform_info::{
 		PlatformInfo,
-		Uname as _,
+		PlatformInfoAPI as _,
+		UNameAPI as _,
 	};
 
 
@@ -130,7 +131,12 @@ pub(crate) fn print_version_and_exit (_succeed : bool) -> MainResult<ExitCode> {
 			}
 		};
 	let (_uname_node, _uname_system, _uname_release, _uname_machine) = if let Some (_uname) = &_uname {
-			(_uname.nodename (), _uname.sysname (), _uname.release (), _uname.machine ())
+			(
+				_uname.nodename () .to_string_lossy (),
+				_uname.sysname () .to_string_lossy (),
+				_uname.release () .to_string_lossy (),
+				_uname.machine () .to_string_lossy (),
+			)
 		} else {
 			("{unknown}".into (), "{unknown}".into (), "{unknown}".into (), "{unknown}".into ())
 		};

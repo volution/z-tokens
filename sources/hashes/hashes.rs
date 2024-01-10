@@ -632,7 +632,7 @@ fn hash_scrypt (mut _input : impl Input, _output : &mut [u8], _output_parameters
 	let mut _input_hash = [0u8; INPUT_HASH_SIZE];
 	hash_fixed (sha2::Sha256::new (), _input, &mut _input_hash, & OutputParameters { hash_size : INPUT_HASH_SIZE, truncate_size : INPUT_HASH_SIZE, discard_right : true, reversed : false, }) ?;
 	
-	let _hasher_parameters = scrypt::Params::new (_n_log2_cost, _r_cost, _p_cost) .else_wrap (0x5c5ead84) ?;
+	let _hasher_parameters = scrypt::Params::new (_n_log2_cost, _r_cost, _p_cost, scrypt::Params::RECOMMENDED_LEN) .else_wrap (0x5c5ead84) ?;
 	
 	let mut _hash = vec! [0u8; _hash_size];
 	scrypt::scrypt (&_input_hash, &_input_hash, &_hasher_parameters, &mut _hash) .else_wrap (0x532d2ed3) ?;
