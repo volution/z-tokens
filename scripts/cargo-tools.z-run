@@ -66,6 +66,7 @@
 	
 	_variant='default'
 	_bin_suffix=''
+	_bin_executable=true
 	_target_0="${_target}"
 	
 	case "${_target}" in
@@ -75,7 +76,8 @@
 		( aarch64-* ) _arch='aarch64' ;;
 		( armv7-* ) _arch='armv7' ;;
 		( arm-* ) _arch='armv6' ;;
-		( * ) false ;;
+		( wasm32-* ) _arch='wasm32' ;;
+		( * ) false -- d32511ec ;;
 	esac
 	
 	case "${_target}" in
@@ -88,8 +90,9 @@
 		( *-unknown-freebsd ) _os=freebsd ;;
 		( *-unknown-openbsd ) _os=openbsd ;;
 		( *-linux-android | *-linux-androideabi ) _os=android ;;
-		( *-pc-windows-gnu ) _os=windows ; _bin_suffix='.exe' ;;
-		( * ) false ;;
+		( *-pc-windows-gnu ) _os=windows ; _bin_suffix='.exe' ; _bin_executable=false ;;
+		( *-wasi ) _os=wasi ; _bin_suffix='.wasm' ; _bin_executable=false ;;
+		( * ) false -- 540e56ef ;;
 	esac
 	
 	case "${_bins}" in
@@ -155,20 +158,16 @@
 			_output="${_outputs}/${_bin}--${_type}--${_os}--${_arch}"
 		fi
 		
-		if true ; then
-			rsync -i -c -a --chmod F0755 -- \
-					"${_builds}/${_bin}${_bin_suffix}" \
-					"${_output}" \
-			#
+		if test "${_bin_executable}" == true ; then
+			_rsync_chmod=F0755
 		else
-			strip \
-					--strip-all \
-					--enable-deterministic-archives \
-					-o "${_output}" \
-					-- \
-					"${_builds}/${_bin}${_bin_suffix}" \
-			#
+			_rsync_chmod=F0644
 		fi
+		
+		rsync -i -c -a --chmod "${_rsync_chmod}" -- \
+				"${_builds}/${_bin}${_bin_suffix}" \
+				"${_output}" \
+		#
 		
 	done
 !!

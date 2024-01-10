@@ -44,6 +44,8 @@
 	
 	windows--x86_64
 	
+	wasi--wasm32
+	
 !!
 
 
@@ -582,6 +584,7 @@
 				( android--aarch64 ) _target=aarch64-linux-android ;;
 				( android--armv7 ) _target=armv7-linux-androideabi ;;
 				( windows--x86_64 ) _target=x86_64-pc-windows-gnu ;;
+				( wasi--wasm32 ) _target=wasm32-wasi ;;
 				( * ) false -- eec080ef ;;
 			esac
 			

@@ -231,6 +231,8 @@
 								-C strip=symbols
 							)
 					;;
+					( *-wasi )
+					;;
 					( * )
 						false -- 5cc039a0
 					;;
@@ -606,6 +608,8 @@
 					RANLIB=x86_64-w64-mingw32-ranlib
 					CARGO_TARGET_X86_64_PC_WINDOWS_GNU_LINKER=x86_64-w64-mingw32-gcc
 				)
+		;;
+		( wasm32-wasi )
 		;;
 		( * )
 			printf -- '[ee]  invalid target `%s`;  aborting!\n' "${__CARGO__TARGET}" >&2
