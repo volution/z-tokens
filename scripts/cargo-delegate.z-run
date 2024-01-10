@@ -281,7 +281,7 @@
 				)
 		;;
 		
-		( update | generate-lockfile )
+		( update | generate-lockfile | upgrade )
 		;;
 		( fetch | vendor )
 			_cargo_flags+=(

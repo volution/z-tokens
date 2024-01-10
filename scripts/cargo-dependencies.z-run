@@ -20,12 +20,17 @@
 
 
 << cargo / dependencies / update / conservative
-	exec -- "${ZRUN}" ':: cargo / exec / local' update --package z-tokens "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec / local' update "${@}"
 !!
 
 
 << cargo / dependencies / update / aggressive
-	exec -- "${ZRUN}" ':: cargo / exec / local' update --aggressive --package z-tokens "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec / local' update --aggressive "${@}"
+!!
+
+
+<< cargo / dependencies / upgrade
+	exec -- "${ZRUN}" ':: cargo / exec / local' upgrade --incompatible allow --recursive true "${@}"
 !!
 
 
