@@ -204,29 +204,39 @@
 	_targets=()
 	case "${1}" in
 		
-		( all-targets | check-targets | build-targets | release-targets )
+		( all-targets | check-targets | build-targets )
 			_targets+=(
 					
 					native
 					
 					x86_64-unknown-linux-gnu
+					i686-unknown-linux-gnu
 					aarch64-unknown-linux-gnu
+					armv7-unknown-linux-gnueabihf
 					arm-unknown-linux-gnueabihf
 					
 					x86_64-unknown-linux-gnu-static
+					i686-unknown-linux-gnu-static
 					aarch64-unknown-linux-gnu-static
+					armv7-unknown-linux-gnueabihf-static
 					arm-unknown-linux-gnueabihf-static
 					
 					x86_64-unknown-linux-musl
+					i686-unknown-linux-musl
 					aarch64-unknown-linux-musl
+					armv7-unknown-linux-musleabihf
 					arm-unknown-linux-musleabihf
 					
 					x86_64-unknown-linux-musl-static
+					i686-unknown-linux-musl-static
 					aarch64-unknown-linux-musl-static
+					armv7-unknown-linux-musleabihf-static
 					arm-unknown-linux-musleabihf-static
 					
 					x86_64-linux-android
+					i686-linux-android
 					aarch64-linux-android
+					armv7-linux-androideabi
 					
 					x86_64-apple-darwin
 					aarch64-apple-darwin
@@ -239,19 +249,22 @@
 		( all-targets | check-targets )
 			_targets+=(
 					
-				#~	x86_64-unknown-freebsd
+				#!	x86_64-unknown-freebsd
+				#!	i686-unknown-freebsd
 				#!	aarch64-unknown-freebsd
 					
 				#!	x86_64-unknown-openbsd
+				#!	i686-unknown-openbsd
 				#!	aarch64-unknown-openbsd
 					
-				#~	x86_64-pc-windows-msvc
-				#~	aarch64-pc-windows-msvc
+				#!	i686-apple-darwin
+					
+				#!	i686-pc-windows-gnu
 					
 				)
 		;;&
 		
-		( all-targets | check-targets | build-targets | release-targets )
+		( all-targets | check-targets | build-targets )
 		;;
 		
 		( * )
@@ -260,6 +273,8 @@
 		
 	esac
 	
-	printf -- '%s\n' "${_targets[@]}"
+	exec -- sort -R \
+		< <( printf -- '%s\n' "${_targets[@]}" ) \
+	#
 !!
 

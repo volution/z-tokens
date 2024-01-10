@@ -71,7 +71,9 @@
 	case "${_target}" in
 		( native ) _arch='native' ;;
 		( x86_64-* ) _arch='x86_64' ;;
+		( i686-* ) _arch='i686' ;;
 		( aarch64-* ) _arch='aarch64' ;;
+		( armv7-* ) _arch='armv7' ;;
 		( arm-* ) _arch='armv6' ;;
 		( * ) false ;;
 	esac
@@ -85,7 +87,7 @@
 		( *-apple-darwin ) _os=darwin ;;
 		( *-unknown-freebsd ) _os=freebsd ;;
 		( *-unknown-openbsd ) _os=openbsd ;;
-		( *-linux-android ) _os=android ;;
+		( *-linux-android | *-linux-androideabi ) _os=android ;;
 		( *-pc-windows-gnu ) _os=windows ; _bin_suffix='.exe' ;;
 		( * ) false ;;
 	esac

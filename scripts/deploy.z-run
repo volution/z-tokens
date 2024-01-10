@@ -8,32 +8,85 @@
 
 
 
---<<.. deploy / list / variant
+--<<.. deploy / list / variant / 0
+	
 	linux--x86_64--glibc
+	linux--i686--glibc
 	linux--aarch64--glibc
+	linux--armv7--glibc
 	linux--armv6--glibc
-	linux--x86_64--musl
-	linux--aarch64--musl
-	linux--armv6--musl
+	
 	linux--x86_64--glibc--static
+	linux--i686--glibc--static
 	linux--aarch64--glibc--static
+	linux--armv7--glibc--static
 	linux--armv6--glibc--static
+	
+	linux--x86_64--musl
+	linux--i686--musl
+	linux--aarch64--musl
+	linux--armv7--musl
+	linux--armv6--musl
+	
 	linux--x86_64--musl--static
+	linux--i686--musl--static
 	linux--aarch64--musl--static
+	linux--armv7--musl--static
 	linux--armv6--musl--static
+	
+	android--x86_64
+	android--i686
+	android--aarch64
+	android--armv7
+	
 	darwin--x86_64
 	darwin--aarch64
-	android--x86_64
-	android--aarch64
+	
 	windows--x86_64
+	
 !!
 
 
---<<.. deploy / list / main
+--<<.. deploy / list / main / 0
+	
 	z-tokens
+	
 	zt-patterns
 	zt-hashes
 	zt-exchange
+	
+!!
+
+
+
+
+<< deploy / list / variant
+	test "${#}" -eq 0
+	readarray -t -- _variants < <( exec -- "${ZRUN}" ':: deploy / list / variant / 0' )
+	for _variant in "${_variants[@]}" ; do
+		case "${_variant}" in
+			( '' ) ;;
+			( '#'* | *' ##' ) ;;
+			( * )
+				printf -- '%s\n' "${_variant}"
+			;;
+		esac
+	done
+!!
+
+
+<< deploy / list / main
+	test "${#}" -eq 0
+	readarray -t -- _variants < <( exec -- "${ZRUN}" ':: deploy / list / main / 0' )
+	for _variant in "${_variants[@]}" ; do
+		case "${_variant}" in
+			( '' ) ;;
+			( '#'* | *' ##' ) ;;
+			( * )
+				printf -- '%s\n' "${_variant}"
+			;;
+		esac
+	done
 !!
 
 
@@ -497,25 +550,37 @@
 			
 			case "${_variant}" in
 				( linux--x86_64--glibc ) _target=x86_64-unknown-linux-gnu ;;
+				( linux--i686--glibc ) _target=i686-unknown-linux-gnu ;;
 				( linux--aarch64--glibc ) _target=aarch64-unknown-linux-gnu ;;
+				( linux--armv7--glibc ) _target=armv7-unknown-linux-gnueabihf ;;
 				( linux--armv6--glibc ) _target=arm-unknown-linux-gnueabihf ;;
 				( linux--x86_64--musl ) _target=x86_64-unknown-linux-musl ;;
+				( linux--i686--musl ) _target=i686-unknown-linux-musl ;;
 				( linux--aarch64--musl ) _target=aarch64-unknown-linux-musl ;;
+				( linux--armv7--musl ) _target=armv7-unknown-linux-musleabihf ;;
 				( linux--armv6--musl ) _target=arm-unknown-linux-musleabihf ;;
 				( linux--x86_64--glibc--static ) _target=x86_64-unknown-linux-gnu-static ;;
+				( linux--i686--glibc--static ) _target=i686-unknown-linux-gnu-static ;;
 				( linux--aarch64--glibc--static ) _target=aarch64-unknown-linux-gnu-static ;;
+				( linux--armv7--glibc--static ) _target=armv7-unknown-linux-gnueabihf-static ;;
 				( linux--armv6--glibc--static ) _target=arm-unknown-linux-gnueabihf-static ;;
 				( linux--x86_64--musl--static ) _target=x86_64-unknown-linux-musl-static ;;
+				( linux--i686--musl--static ) _target=i686-unknown-linux-musl-static ;;
 				( linux--aarch64--musl--static ) _target=aarch64-unknown-linux-musl-static ;;
+				( linux--armv7--musl--static ) _target=armv7-unknown-linux-musleabihf-static ;;
 				( linux--armv6--musl--static ) _target=arm-unknown-linux-musleabihf-static ;;
 				( darwin--x86_64 ) _target=x86_64-apple-darwin ;;
 				( darwin--aarch64 ) _target=aarch64-apple-darwin ;;
 				( freebsd--x86_64 ) _target=x86_64-unknown-freebsd ;;
+				( freebsd--i686 ) _target=i686-unknown-freebsd ;;
 				( freebsd--aarch64 ) _target=aarch64-unknown-freebsd ;;
 				( openbsd--x86_64 ) _target=x86_64-unknown-openbsd ;;
+				( openbsd--i686 ) _target=i686-unknown-openbsd ;;
 				( openbsd--aarch64 ) _target=aarch64-unknown-openbsd ;;
 				( android--x86_64 ) _target=x86_64-linux-android ;;
+				( android--i686 ) _target=i686-linux-android ;;
 				( android--aarch64 ) _target=aarch64-linux-android ;;
+				( android--armv7 ) _target=armv7-linux-androideabi ;;
 				( windows--x86_64 ) _target=x86_64-pc-windows-gnu ;;
 				( * ) false -- eec080ef ;;
 			esac

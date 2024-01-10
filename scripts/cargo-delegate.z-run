@@ -108,6 +108,13 @@
 	
 	_toolchain=stable
 	
+	_release=false
+	case "${__META__BUILD_TARGET_TYPE}" in
+		( release )
+			_release=true
+		;;
+	esac
+	
 	_cross=false
 	if test "${__CARGO__CROSS:-false}" == true ; then
 		_cross=true
@@ -131,11 +138,25 @@
 	case "${_tool}" in
 		
 		( check | build | run )
+			
 			if test "${_target}" != native ; then
 				_cargo_flags+=(
 						--target "${_target%-static}"
 					)
 			fi
+			
+			if test "${_target}" == "${_target%-static}" ; then
+				_rust_flags+=(
+						-C target-feature=-crt-static
+						-C relocation-model=pic
+					)
+			else
+				_rust_flags+=(
+						-C target-feature=+crt-static
+						-C relocation-model=static
+					)
+			fi
+			
 		;;&
 		
 		( check )
@@ -151,99 +172,94 @@
 					--offline
 				)
 			
-			if test "${_target}" == "${_target%-static}" ; then
+			if test "${_release}" == true ; then
+				
+				if test "${_cross}" == false ; then
+					_rust_flags+=(
+							-C linker=clang
+							-C link-arg=-fuse-ld=lld
+						)
+				fi
 				_rust_flags+=(
-						
-						-C target-feature=-crt-static
-						-C relocation-model=pic
-						-C rpath=no
-						
-					)
-			else
-				_rust_flags+=(
-						
-						-C target-feature=+crt-static
-						-C relocation-model=static
-						
+						-C link-dead-code=no
+						-C prefer-dynamic=no
+						-C force-frame-pointers=no
 					)
 				
-			fi
-			
-			if test "${_cross}" == false ; then
+				case "${__CARGO__TARGET:-native}" in
+					( native )
+						_rust_flags+=(
+								-C target-cpu=x86-64-v2
+							)
+					;;&
+					( x86_64-* )
+						_rust_flags+=(
+								-C target-cpu=x86-64-v2
+							)
+					;;&
+					( i686-* )
+						_rust_flags+=(
+								-C target-cpu=i586
+							)
+					;;&
+					( aarch64-* | armv7-* | arm-* )
+						_rust_flags+=(
+								-C target-cpu=generic
+							)
+					;;&
+				esac
+				
+				case "${__CARGO__TARGET:-native}" in
+					( native | *-linux-* )
+						_rust_flags+=(
+								-C debuginfo=0
+								-C split-debuginfo=off
+								-C strip=symbols
+							##	-C link-arg=-Wl,--compress-debug-sections=zlib
+							)
+					;;
+					( *-apple-* )
+						_rust_flags+=(
+								-C debuginfo=0
+								-C split-debuginfo=off
+							)
+					;;
+					( *-windows-* )
+						_rust_flags+=(
+								-C debuginfo=0
+								-C split-debuginfo=off
+								-C strip=symbols
+							)
+					;;
+					( * )
+						false -- 5cc039a0
+					;;
+				esac
+				
+				case "${__CARGO__TARGET:-native}" in
+					( native )
+						_rust_flags+=(
+								-C opt-level=3
+							#!	-C lto=fat
+								-C codegen-units=1
+							#!	-C linker-plugin-lto=yes
+							)
+					;;
+					( * )
+						_rust_flags+=(
+								-C opt-level=3
+								-C lto=fat
+								-C codegen-units=1
+							#!	-C linker-plugin-lto=yes
+							)
+					;;
+				esac
 				_rust_flags+=(
-						
-						-C linker=clang
-						-C link-arg=-fuse-ld=lld
-						
-					#~	-C link-arg=-fuse-ld=mold
-					#~	-C link-arg=-Wl,--compress-debug-sections=none
-					#~	-C link-arg=-Wl,--compress-debug-sections=zstd
-					#~	-C link-arg=-Wl,--compress-debug-sections=zlib
-						
-					#?	-C link-self-contained=no
-						
-						-C link-dead-code=no
-						-C prefer-dynamic=no
-						-C force-frame-pointers=no
-						
-					)
-			else
-				_rust_flags+=(
-						
-						-C link-dead-code=no
-						-C prefer-dynamic=no
-						-C force-frame-pointers=no
-						
+						-C panic=abort
+						-C debug-assertions=no
+						-C overflow-checks=yes
 					)
 			fi
-			
-			case "${__CARGO__TARGET:-native}" in
-				( native )
-					_rust_flags+=(
-							
-						#~	-C target-cpu=native
-						#~	-C target-cpu=core2
-						#~	-C target-cpu=nocona
-							-C target-cpu=x86-64-v2
-							
-						)
-				;;&
-				( x86_64-* )
-					_rust_flags+=(
-							
-							-C target-cpu=x86-64-v2
-							
-						)
-				;;&
-				( native | *-linux-* | *-android )
-					_rust_flags+=(
-							
-							-C link-arg=-Wl,--compress-debug-sections=zlib
-							
-						)
-				;;&
-			esac
-			
-			case "${__META__BUILD_TARGET_TYPE}" in
-				( release )
-					_rust_flags+=(
-							
-							-C opt-level=2
-							
-						#?	-C lto=fat
-						#?	-C codegen-units=1
-							
-							-C debuginfo=1
-							-C split-debuginfo=off
-							-C strip=none
-							
-							-C panic=abort
-							-C debug-assertions=no
-							-C overflow-checks=yes
-							
-						)
-				;;&
-			esac
 		;;
 		
 		( doc )
@@ -435,12 +451,28 @@
 					CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=x86_64-linux-gnu-gcc
 				)
 		;;
+		( i686-unknown-linux-gnu | i686-unknown-linux-gnu-static )
+			_environment+=(
+					CC=i686-linux-gnu-gcc
+					CXX=i686-linux-gnu-g++
+					AR=i686-linux-gnu-ar
+					CARGO_TARGET_I686_UNKNOWN_LINUX_GNU_LINKER=i686-linux-gnu-gcc
+				)
+		;;
 		( aarch64-unknown-linux-gnu | aarch64-unknown-linux-gnu-static )
 			_environment+=(
 					CC=aarch64-linux-gnu-gcc
 					CXX=aarch64-linux-gnu-g++
 					AR=aarch64-linux-gnu-ar
 					CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-linux-gnu-gcc
+				)
+		;;
+		( armv7-unknown-linux-gnueabihf | armv7-unknown-linux-gnueabihf-static )
+			_environment+=(
+					CC=arm-linux-gnueabihf-gcc
+					CXX=arm-linux-gnueabihf-g++
+					AR=arm-linux-gnueabihf-ar
+					CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_LINKER=arm-linux-gnueabihf-gcc
 				)
 		;;
 		( arm-unknown-linux-gnueabihf | arm-unknown-linux-gnueabihf-static )
@@ -460,6 +492,15 @@
 					CARGO_TARGET_X86_64_UNKNOWN_LINUX_MUSL_LINKER=x86_64-linux-musl-gcc
 				)
 		;;
+		( i686-unknown-linux-musl | i686-unknown-linux-musl-static )
+			_environment+=(
+					PATH="/opt/i686-linux-musl/bin:${_path}"
+					CC=i686-linux-musl-gcc
+					CXX=i686-linux-musl-g++
+					AR=i686-linux-musl-ar
+					CARGO_TARGET_I686_UNKNOWN_LINUX_MUSL_LINKER=i686-linux-musl-gcc
+				)
+		;;
 		( aarch64-unknown-linux-musl | aarch64-unknown-linux-musl-static )
 			_environment+=(
 					PATH="/opt/aarch64-linux-musl/bin:${_path}"
@@ -467,6 +508,15 @@
 					CXX=aarch64-linux-musl-g++
 					AR=aarch64-linux-musl-ar
 					CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER=aarch64-linux-musl-gcc
+				)
+		;;
+		( armv7-unknown-linux-musleabihf | armv7-unknown-linux-musleabihf-static )
+			_environment+=(
+					PATH="/opt/armv7-linux-musl/bin:${_path}"
+					CC=armv7l-linux-musleabihf-gcc
+					CXX=armv7l-linux-musleabihf-g++
+					AR=armv7l-linux-musleabihf-ar
+					CARGO_TARGET_ARMV7_UNKNOWN_LINUX_MUSLEABIHF_LINKER=armv7l-linux-musleabihf-gcc
 				)
 		;;
 		( arm-unknown-linux-musleabihf | arm-unknown-linux-musleabihf-static )
@@ -483,8 +533,17 @@
 					PATH="/opt/android-ndk/bin:${_path}"
 					CC=x86_64-linux-android-clang
 					CXX=x86_64-linux-android-clang++
-					AR=x86_64-linux-gnu-ar
+					AR=x86_64-linux-android-ar
 					CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER=x86_64-linux-android-clang
+				)
+		;;
+		( i686-linux-android )
+			_environment+=(
+					PATH="/opt/android-ndk/bin:${_path}"
+					CC=i686-linux-android-clang
+					CXX=i686-linux-android-clang++
+					AR=i686-linux-android-ar
+					CARGO_TARGET_I686_LINUX_ANDROID_LINKER=i686-linux-android-clang
 				)
 		;;
 		( aarch64-linux-android )
@@ -492,8 +551,17 @@
 					PATH="/opt/android-ndk/bin:${_path}"
 					CC=aarch64-linux-android-clang
 					CXX=aarch64-linux-android-clang++
-					AR=aarch64-linux-gnu-ar
+					AR=aarch64-linux-android-ar
 					CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER=aarch64-linux-android-clang
+				)
+		;;
+		( armv7-linux-androideabi )
+			_environment+=(
+					PATH="/opt/android-ndk/bin:${_path}"
+					CC=armv7a-linux-androideabi-clang
+					CXX=armv7a-linux-androideabi-clang++
+					AR=armv7a-linux-androideabi-ar
+					CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER=armv7a-linux-androideabi-clang
 				)
 		;;
 		( x86_64-apple-darwin )
