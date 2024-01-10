@@ -95,6 +95,7 @@ pub(crate) fn print_version_and_exit (_succeed : bool) -> MainResult<ExitCode> {
 			Ok (_executable) =>
 				_executable,
 			Err (_error) => {
+				#[ cfg (not (target_os = "wasi")) ]
 				::std::eprintln! ("[ee] [51d238d5]  unexpected error encountered;  ignoring!  //  {}", _error);
 				PathBuf::from ("<unknown>")
 			}

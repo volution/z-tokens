@@ -28,6 +28,7 @@ use ::std::{
 	};
 
 
+#[ cfg (feature = "memsec") ]
 use crate::crates::memsec;
 
 
@@ -43,8 +44,11 @@ pub const DEBUG_REPORT : bool = false;
 
 pub(crate) const DEBUG_ALLOC : bool = false;
 
+#[ cfg (feature = "memsec") ]
 pub(crate) const USE_MALLOC : bool = false;
+#[ cfg (feature = "memsec") ]
 pub(crate) const USE_MEMZERO : bool = true;
+#[ cfg (feature = "memsec") ]
 pub(crate) const USE_MLOCK : bool = false;
 
 
@@ -91,6 +95,7 @@ unsafe impl alloc::GlobalAlloc for Allocator {
 			}
 		}
 		
+		#[ cfg (feature = "memsec") ]
 		let _pointer = if USE_MALLOC {
 				if let Some (mut _memory) = memsec::malloc_sized (_amount) {
 					_memory.as_mut () .as_mut_ptr ()
@@ -101,7 +106,13 @@ unsafe impl alloc::GlobalAlloc for Allocator {
 				let _layout = unsafe { alloc::Layout::from_size_align_unchecked (_amount, _align) };
 				alloc::System.alloc (_layout)
 			};
+		#[ cfg (not (feature = "memsec")) ]
+		let _pointer = {
+				let _layout = unsafe { alloc::Layout::from_size_align_unchecked (_amount, _align) };
+				alloc::System.alloc (_layout)
+			};
 		
+		#[ cfg (feature = "memsec") ]
 		if USE_MLOCK {
 			static _PRINTED : AtomicBool = AtomicBool::new (false);
 			static _LOCKED : AtomicUsize = AtomicUsize::new (0);
@@ -113,6 +124,7 @@ unsafe impl alloc::GlobalAlloc for Allocator {
 			}
 		}
 		
+		#[ cfg (feature = "memsec") ]
 		if USE_MEMZERO {
 			memsec::memzero (_pointer, _amount);
 		}
@@ -137,14 +149,21 @@ unsafe impl alloc::GlobalAlloc for Allocator {
 			eprintln! ("[dd] [18d32fb1]  dealloc:  {:016x}  |  {:6} = {:6} : {:2}", _pointer as usize, _amount, _size, _align);
 		}
 		
+		#[ cfg (feature = "memsec") ]
 		if USE_MEMZERO {
 			memsec::memzero (_pointer, _amount);
 		}
 		
+		#[ cfg (feature = "memsec") ]
 		if USE_MALLOC {
 			let _memory = unsafe { ptr::NonNull::new_unchecked (slice::from_raw_parts_mut (_pointer, _amount)) };
 			memsec::free (_memory)
 		} else {
+			let _layout = unsafe { alloc::Layout::from_size_align_unchecked (_amount, _align) };
+			alloc::System.dealloc (_pointer, _layout)
+		}
+		#[ cfg ( not (feature = "memsec")) ]
+		{
 			let _layout = unsafe { alloc::Layout::from_size_align_unchecked (_amount, _align) };
 			alloc::System.dealloc (_pointer, _layout)
 		}

@@ -34,6 +34,8 @@ pub mod crates {
 	pub use ::byteorder;
 	pub use ::constant_time_eq;
 	pub use ::zeroize;
+	
+	#[ cfg (feature = "memsec") ]
 	pub use ::memsec;
 	
 	pub use ::num_bigint;
