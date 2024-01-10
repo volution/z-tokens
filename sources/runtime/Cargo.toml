@@ -57,15 +57,15 @@ zt-runtime-do-not-enable-this = []
 vrl-errors = { version = "*", optional = false, default-features = false, features = [] }
 vrl-preludes = { version = "*", optional = false, default-features = false, features = [] }
 
-constant_time_eq = { version = "^0.2", optional = false, default-features = false, features = [] }
-byteorder = { version = "^1.4", optional = false, default-features = false, features = [] }
-zeroize = { version = "^1.5", optional = false, default-features = false, features = ["std", "alloc"] }
+constant_time_eq = { version = "^0.3", optional = false, default-features = false, features = [] }
+byteorder = { version = "^1.5", optional = false, default-features = false, features = [] }
+zeroize = { version = "^1.7", optional = false, default-features = false, features = ["std", "alloc"] }
 
 num-bigint = { version = "^0.4", optional = false, default-features = false, features = ["std"] }
 num-traits = { version = "^0.2", optional = false, default-features = false, features = ["std"] }
 
 chrono = { version = "^0.4", optional = false, default-features = false, features = ["alloc", "clock"] }
-platform-info = { version = "^1.0", optional = false, default-features = false, features = [] }
+platform-info = { version = "^2.0", optional = false, default-features = false, features = [] }
 
 paste = { version = "^1.0", optional = false, default-features = false, features = [] }
 const_format = { version = "^0.2", optional = false, default-features = false, features = [] }

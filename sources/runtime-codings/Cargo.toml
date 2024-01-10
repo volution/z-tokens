@@ -57,11 +57,11 @@ release = [
 z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
 
 bech32 = { version = "^0.9", optional = false, default-features = false, features = ["std"] }
-brotli = { version = "^3.3", optional = false, default-features = false, features = ["std"] }
-bs58 = { version = "^0.4", optional = false, default-features = false, features = ["std"] }
-data-encoding = { version = "^2.3", optional = false, default-features = false, features = ["std"] }
+brotli = { version = "^3.4", optional = false, default-features = false, features = ["std"] }
+bs58 = { version = "^0.5", optional = false, default-features = false, features = ["std"] }
+data-encoding = { version = "^2.5", optional = false, default-features = false, features = ["std"] }
 mnemonic = { version = "^1.0", optional = false, default-features = false, features = [] }
-qrcode = { version = "^0.12", optional = false, default-features = false, features = [] }
+qrcode = { version = "^0.13", optional = false, default-features = false, features = [] }
 z85 = { version = "^3.0", optional = false, default-features = false, features = [] }
 
 
