@@ -97,73 +97,91 @@ vrl-random = { git = "https://github.com/volution/volution-rust-libraries", bran
 [profile.dev]
 incremental = true
 codegen-units = 1024
-opt-level = 0
+opt-level = 1
 lto = "off"
-debug = 2
+debug = "full"
 debug-assertions = true
 overflow-checks = true
+strip = "none"
+split-debuginfo = "packed"
+rpath = false
 panic = "unwind"
-#! split-debuginfo = "unpacked"
+
 
 [profile.test]
 incremental = true
 codegen-units = 1024
-opt-level = 0
+opt-level = 1
 lto = "off"
-debug = 2
+debug = "full"
 debug-assertions = true
 overflow-checks = true
-#! split-debuginfo = "unpacked"
+strip = "none"
+rpath = false
+split-debuginfo = "packed"
+
 
 [profile.release]
 incremental = false
 codegen-units = 1
-opt-level = 2
+opt-level = 3
 lto = "fat"
-debug = 1
+debug = "none"
 debug-assertions = false
 overflow-checks = true
+strip = "symbols"
+split-debuginfo = "packed"
+rpath = false
 panic = "abort"
-#! split-debuginfo = "off"
+
 
 [profile.bench]
 incremental = false
 codegen-units = 1
-opt-level = 2
+opt-level = 3
 lto = "fat"
-debug = 1
+debug = "none"
 debug-assertions = false
 overflow-checks = true
-#! split-debuginfo = "unpacked"
+strip = "symbols"
+split-debuginfo = "packed"
+rpath = false
+
+
 
 
 [profile.dev.package."*"]
-incremental = false
-codegen-units = 1
+incremental = true
+codegen-units = 1024
 opt-level = 1
-debug = 2
+debug = "full"
 debug-assertions = true
 overflow-checks = true
-#! split-debuginfo = "unpacked"
+strip = "none"
+split-debuginfo = "packed"
+
+
 
 
 [profile.dev.build-override]
-incremental = false
-codegen-units = 1
-opt-level = 1
-debug = 2
+incremental = true
+codegen-units = 1024
+opt-level = 2
+debug = "full"
 debug-assertions = true
 overflow-checks = true
-#! split-debuginfo = "unpacked"
+strip = "none"
+split-debuginfo = "packed"
 
 
 [profile.release.build-override]
-incremental = false
-codegen-units = 1
-opt-level = 1
-debug = 1
+incremental = true
+codegen-units = 1024
+opt-level = 2
+debug = "none"
 debug-assertions = false
 overflow-checks = true
-#! split-debuginfo = "unpacked"
+strip = "symbols"
+split-debuginfo = "packed"
 
 
