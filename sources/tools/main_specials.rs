@@ -1,6 +1,7 @@
 
 
 use ::z_tokens_runtime::preludes::std_plus_extras::*;
+use ::z_tokens_runtime_flags::*;
 
 
 use crate::main_helpers::*;
@@ -14,11 +15,12 @@ use crate::runtime::*;
 
 
 
-pub(crate) fn main_unknown (_commands : Vec<String>, _arguments : Vec<String>) -> MainResult<ExitCode> {
+pub(crate) fn main_unknown (_arguments : Arguments) -> MainResult<ExitCode> {
 	
-	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _commands_refs = _arguments.commands.iter () .map (Cow::deref) .collect::<Vec<_>> ();
 	let _commands_refs = _commands_refs.as_slice ();
-	let _arguments_refs = _arguments.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _arguments_refs = _arguments.arguments.iter () .map (Cow::deref) .map (OsStr::to_string_lossy) .collect::<Vec<_>> ();
+	let _arguments_refs = _arguments_refs.iter () .map (Cow::deref) .collect::<Vec<_>> ();
 	let _arguments_refs = _arguments_refs.as_slice ();
 	
 	match (_commands_refs, _arguments_refs) {

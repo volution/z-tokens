@@ -22,16 +22,13 @@ pub fn create_flags <'a> () -> FlagsResult<FlagsParserBuilder<'a>> {
 
 
 
-pub fn execute_flags (mut _parser : FlagsParserBuilder, mut _arguments : Vec<String>) -> FlagsResult<bool> {
-	
-	// FIXME!
-	_arguments.remove (0);
+pub fn execute_flags <'a> (mut _parser : FlagsParserBuilder<'a>, _arguments : Arguments<'a>) -> FlagsResult<bool> {
 	
 	_parser.define_version ('v', "version");
 	_parser.define_help ('h', "help");
 	
 	let _parser = _parser.build () .else_wrap (0xf8191edb) ?;
-	let _parsed = _parser.parse_vec_string (_arguments);
+	let _parsed = _parser.parse_iterator (_arguments.arguments.into_iter (), false);
 	
 	if _parsed.is_version_requested () {
 		fail! (0xee8fb3cb);
@@ -43,6 +40,13 @@ pub fn execute_flags (mut _parser : FlagsParserBuilder, mut _arguments : Vec<Str
 	_parsed.done () .else_wrap (0x2e356555) ?;
 	
 	Ok (false)
+}
+
+
+
+
+pub fn main_arguments () -> FlagsResult<Arguments<'static>> {
+	Ok (Arguments::parse_main ())
 }
 
 

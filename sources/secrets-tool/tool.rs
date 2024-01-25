@@ -12,9 +12,9 @@ define_error! (pub MainError, result : MainResult);
 
 
 
-pub fn main_experiments (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_secrets <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
-	if ! _arguments.is_empty () {
+	if ! _arguments.arguments.is_empty () {
 		fail! (0xd4a80d9a);
 	}
 	

@@ -14,7 +14,7 @@ define_error! (pub MainError, result : MainResult);
 
 
 
-pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_keys <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
 	let mut _sender_generate : Option<bool> = None;
 	let mut _recipient_generate : Option<bool> = None;
@@ -234,7 +234,7 @@ pub fn main_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 
 
-pub fn main_password (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_password <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
 	let mut _flags = PasswordFlags::new ();
 	
@@ -309,7 +309,7 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 
 
 
-pub fn main_encrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_encrypt <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
 	let mut _flags = EncryptFlags::new ();
 	
@@ -377,7 +377,7 @@ pub(crate) fn main_encrypt_with_arguments (_arguments : EncryptArguments, _input
 
 
 
-pub fn main_decrypt (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_decrypt <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
 	let mut _flags = DecryptFlags::new ();
 	
@@ -443,7 +443,7 @@ pub(crate) fn main_decrypt_with_arguments (_arguments : DecryptArguments, _input
 
 
 
-pub fn main_armor (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_armor <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
 	{
 		let mut _flags = create_flags () .else_wrap (0x9deb1736) ?;
@@ -466,7 +466,7 @@ pub fn main_armor (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 
 
-pub fn main_dearmor (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_dearmor <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
 	{
 		let mut _flags = create_flags () .else_wrap (0xe46fc464) ?;
@@ -493,7 +493,7 @@ pub fn main_dearmor (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 
 
-pub fn main_encode (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_encode <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
 	{
 		let mut _flags = create_flags () .else_wrap (0xcb1b3482) ?;
@@ -518,7 +518,7 @@ pub fn main_encode (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 
 
-pub fn main_decode (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_decode <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
 	{
 		let mut _flags = create_flags () .else_wrap (0x9235af69) ?;
@@ -547,7 +547,7 @@ pub fn main_decode (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 
 
-pub fn main_ssh_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_ssh_keys <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
 	{
 		let mut _flags = create_flags () .else_wrap (0xc0f96685) ?;
@@ -584,7 +584,7 @@ pub fn main_ssh_keys (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 
 
-pub fn main_ssh_wrap (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_ssh_wrap <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
 	let mut _key : Option<String> = None;
 	let mut _empty_is_missing : Option<bool> = None;

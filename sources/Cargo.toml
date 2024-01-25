@@ -6,6 +6,8 @@ name = "z-tokens"
 
 workspace = "./workspace"
 
+default-run = "z-tokens"
+
 autobins = false
 autoexamples = false
 autotests = false

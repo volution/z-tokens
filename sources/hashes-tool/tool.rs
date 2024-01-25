@@ -22,7 +22,7 @@ const STDOUT_BUFFER_SIZE : usize = 8 * 1024;
 
 
 
-pub fn main_hash (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_hash <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
 	let mut _format : Option<Format> = None;
 	let mut _hash_family : Option<Family> = None;

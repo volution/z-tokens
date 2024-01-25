@@ -2,10 +2,10 @@
 
 use ::z_tokens_runtime::preludes::std_plus_extras::*;
 use ::z_tokens_runtime::preludes::errors::*;
+use ::z_tokens_runtime_flags::*;
 
 
 use crate::main_specials::*;
-use crate::main_helpers::*;
 use crate::runtime::*;
 
 
@@ -54,7 +54,7 @@ use ::z_tokens_oracles_tool::{
 
 #[ cfg (feature = "z-tokens-secrets-tool") ]
 use ::z_tokens_secrets_tool::{
-		main_experiments as main_secrets_tool,
+		main_secrets as main_secrets_tool,
 	};
 
 
@@ -66,17 +66,18 @@ use ::z_tokens_secrets_tool::{
 
 pub fn main_tools () -> MainResult<ExitCode> {
 	
-	let (_executable, mut _commands, mut _arguments) = main_arguments () ?;
+	let mut _arguments = main_arguments () .else_wrap (0x0da1ecf8) ?;
 	
-	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _executable = _arguments.command_0.as_ref () .map (Cow::deref) .unwrap_or ("");
+	
+	let _commands_refs = _arguments.commands.clone ();
+	let _commands_refs = _commands_refs.iter () .map (Cow::deref) .collect::<Vec<_>> ();
 	let _commands_refs = _commands_refs.as_slice ();
-	let _arguments_refs = _arguments.iter () .map (String::as_str) .collect::<Vec<_>> ();
-	let _arguments_refs = _arguments_refs.as_slice ();
 	
 	
 	
 	
-	match _executable.as_ref () .map (String::as_str) .unwrap_or ("") {
+	match _executable {
 		
 		#[ cfg (feature = "z-tokens-patterns-tool") ]
 		"zt-patterns" | "z-tokens-patterns" | "z-patterns" =>
@@ -109,144 +110,123 @@ pub fn main_tools () -> MainResult<ExitCode> {
 	
 	
 	
-	match (_commands_refs, _arguments_refs) {
+	match _commands_refs {
 		
 		
 		
 		
 		#[ cfg (feature = "z-tokens-patterns-tool") ]
-		(&["patterns"], _) | (&["p"], _) => {
-			_arguments.insert (0, String::from ("z-tokens patterns"));
-			main_patterns_list (_arguments) .else_wrap (0x9093f429)
+		&["patterns"] | &["p"] =>
+			return main_patterns_list (_arguments) .else_wrap (0x9093f429),
+		
+		#[ cfg (feature = "z-tokens-patterns-tool") ]
+		&["generate"] =>
+			return main_patterns_generate (_arguments) .else_wrap (0x7565abe0),
+		
+		#[ cfg (feature = "z-tokens-patterns-tool") ]
+		&["g"] => {
+			_arguments.arguments.insert (0, OsStr::new ("--compact") .into ());
+			_arguments.arguments.insert (1, OsStr::new ("true") .into ());
+			_arguments.arguments.insert (2, OsStr::new ("--token-count") .into ());
+			_arguments.arguments.insert (3, OsStr::new ("1") .into ());
+			return main_patterns_generate (_arguments) .else_wrap (0x6a8d26ca);
 		}
+		
 		#[ cfg (feature = "z-tokens-patterns-tool") ]
-		(&["generate"], _) => {
-			_arguments.insert (0, String::from ("z-tokens generate"));
-			main_patterns_generate (_arguments) .else_wrap (0x7565abe0)
-		}
-		#[ cfg (feature = "z-tokens-patterns-tool") ]
-		(&["g"], _) => {
-			_arguments.insert (0, String::from ("z-tokens generate"));
-			_arguments.insert (1, String::from ("--compact"));
-			_arguments.insert (2, String::from ("true"));
-			_arguments.insert (3, String::from ("--token-count"));
-			_arguments.insert (4, String::from ("1"));
-			main_patterns_generate (_arguments) .else_wrap (0x6a8d26ca)
-		}
-		#[ cfg (feature = "z-tokens-patterns-tool") ]
-		(&["g", _pattern], _) => {
-			_arguments.insert (0, String::from ("z-tokens generate"));
-			_arguments.insert (1, String::from ("--compact"));
-			_arguments.insert (2, String::from ("true"));
-			_arguments.insert (3, String::from ("--token-count"));
-			_arguments.insert (4, String::from ("1"));
-			_arguments.insert (5, String::from ("--token-pattern"));
-			_arguments.insert (6, String::from (_pattern));
-			main_patterns_generate (_arguments) .else_wrap (0x284c1286)
+		&["g", _pattern] => {
+			_arguments.arguments.insert (0, OsStr::new ("--compact") .into ());
+			_arguments.arguments.insert (1, OsStr::new ("true") .into ());
+			_arguments.arguments.insert (2, OsStr::new ("--token-count") .into ());
+			_arguments.arguments.insert (3, OsStr::new ("1") .into ());
+			_arguments.arguments.insert (4, OsStr::new ("--token-pattern") .into ());
+			_arguments.arguments.insert (5, OsStr::new (_pattern) .into ());
+			return main_patterns_generate (_arguments) .else_wrap (0x284c1286);
 		}
 		
 		
 		
 		
 		#[ cfg (feature = "z-tokens-hashes-tool") ]
-		(&["hash"], _) |
-		(&["hashes", "hash"], _) => {
-			_arguments.insert (0, String::from ("z-tokens hashes hash"));
-			main_hashes_hash (_arguments) .else_wrap (0xff8dcc61)
-		}
+		&["hash"] |
+		&["hashes", "hash"] =>
+			return main_hashes_hash (_arguments) .else_wrap (0xff8dcc61),
 		
 		
 		
 		
 		#[ cfg (feature = "z-tokens-encodings-tool") ]
-		(&["encodings", "encode"], _) => {
-			_arguments.insert (0, String::from ("z-tokens encodings encode"));
-			main_encodings_encode (_arguments) .else_wrap (0xdb709271)
-		}
+		&["encodings", "encode"] =>
+			return main_encodings_encode (_arguments) .else_wrap (0xdb709271),
+		
 		#[ cfg (feature = "z-tokens-encodings-tool") ]
-		(&["encodings", "decode"], _) => {
-			_arguments.insert (0, String::from ("z-tokens encodings decode"));
-			main_encodings_decode (_arguments) .else_wrap (0x19ef259a)
-		}
+		&["encodings", "decode"] =>
+			return main_encodings_decode (_arguments) .else_wrap (0x19ef259a),
 		
 		
 		
 		
 		#[ cfg (feature = "z-tokens-exchange-tool") ]
-		(&["exchange", "keys"], _) => {
-			_arguments.insert (0, String::from ("z-tokens exchange keys"));
-			main_exchange_keys (_arguments) .else_wrap (0x0df94b2b)
-		}
+		&["exchange", "keys"] =>
+			return main_exchange_keys (_arguments) .else_wrap (0x0df94b2b),
+		
 		#[ cfg (feature = "z-tokens-exchange-tool") ]
-		(&["exchange", "encrypt"], _) => {
-			_arguments.insert (0, String::from ("z-tokens exchange encrypt"));
-			main_exchange_encrypt (_arguments) .else_wrap (0xef766e05)
-		}
+		&["exchange", "encrypt"] =>
+			return main_exchange_encrypt (_arguments) .else_wrap (0xef766e05),
+		
 		#[ cfg (feature = "z-tokens-exchange-tool") ]
-		(&["exchange", "decrypt"], _) => {
-			_arguments.insert (0, String::from ("z-tokens exchange decrypt"));
-			main_exchange_decrypt (_arguments) .else_wrap (0xa73d3123)
-		}
+		&["exchange", "decrypt"] =>
+			return main_exchange_decrypt (_arguments) .else_wrap (0xa73d3123),
+		
 		#[ cfg (feature = "z-tokens-exchange-tool") ]
-		(&["exchange", "password"], _) => {
-			_arguments.insert (0, String::from ("z-tokens exchange password"));
-			main_exchange_password (_arguments) .else_wrap (0x07f0d87b)
-		}
+		&["exchange", "password"] =>
+			return main_exchange_password (_arguments) .else_wrap (0x07f0d87b),
+		
 		#[ cfg (feature = "z-tokens-exchange-tool") ]
-		(&["exchange", "armor"], _) => {
-			_arguments.insert (0, String::from ("z-tokens exchange armor"));
-			main_exchange_armor (_arguments) .else_wrap (0xcc846bd9)
-		}
+		&["exchange", "armor"] =>
+			return main_exchange_armor (_arguments) .else_wrap (0xcc846bd9),
+		
 		#[ cfg (feature = "z-tokens-exchange-tool") ]
-		(&["exchange", "dearmor"], _) => {
-			_arguments.insert (0, String::from ("z-tokens exchange dearmor"));
-			main_exchange_dearmor (_arguments) .else_wrap (0x605c4c42)
-		}
+		&["exchange", "dearmor"] =>
+			return main_exchange_dearmor (_arguments) .else_wrap (0x605c4c42),
+		
 		#[ cfg (feature = "z-tokens-exchange-tool") ]
-		(&["exchange", "raw", "encode"], _) => {
-			_arguments.insert (0, String::from ("z-tokens exchange raw encode"));
-			main_exchange_encode (_arguments) .else_wrap (0x0f6f25f9)
-		}
+		&["exchange", "raw", "encode"] =>
+			return main_exchange_encode (_arguments) .else_wrap (0x0f6f25f9),
+		
 		#[ cfg (feature = "z-tokens-exchange-tool") ]
-		(&["exchange", "raw", "decode"], _) => {
-			_arguments.insert (0, String::from ("z-tokens exchange raw decode"));
-			main_exchange_decode (_arguments) .else_wrap (0x4ea46e82)
-		}
+		&["exchange", "raw", "decode"] =>
+			return main_exchange_decode (_arguments) .else_wrap (0x4ea46e82),
+		
 		#[ cfg (feature = "z-tokens-exchange-tool") ]
-		(&["exchange", "ssh", "keys"], _) => {
-			_arguments.insert (0, String::from ("z-tokens exchange ssh keys"));
-			main_exchange_ssh_keys (_arguments) .else_wrap (0xfe84133d)
-		}
+		&["exchange", "ssh", "keys"] =>
+			return main_exchange_ssh_keys (_arguments) .else_wrap (0xfe84133d),
+		
 		#[ cfg (feature = "z-tokens-exchange-tool") ]
-		(&["exchange", "ssh", "wrap"], _) => {
-			_arguments.insert (0, String::from ("z-tokens exchange ssh wrap"));
-			main_exchange_ssh_wrap (_arguments) .else_wrap (0x3108dc57)
-		}
+		&["exchange", "ssh", "wrap"] =>
+			return main_exchange_ssh_wrap (_arguments) .else_wrap (0x3108dc57),
 		
 		
 		
 		
 		#[ cfg (feature = "z-tokens-oracles-tool") ]
-		(&["oracles"], _) => {
-			_arguments.insert (0, String::from ("z-tokens oracles"));
-			main_oracles_tool (_arguments) .else_wrap (0xf41acddd)
-		}
+		&["oracles"] =>
+			return main_oracles_tool (_arguments) .else_wrap (0xf41acddd),
 		
 		
 		
 		
 		#[ cfg (feature = "z-tokens-secrets-tool") ]
-		(&["secrets"], _) => {
-			_arguments.insert (0, String::from ("z-tokens secrets"));
-			main_secrets_tool (_arguments) .else_wrap (0x7f006d5d)
-		}
+		&["secrets"] =>
+			return main_secrets_tool (_arguments) .else_wrap (0x7f006d5d),
 		
 		
 		
 		
 		_ =>
-			main_unknown (_commands, _arguments),
+			return main_unknown (_arguments),
 	}
+	
+	; // NOP
 }
 
 
@@ -259,54 +239,49 @@ pub fn main_tools () -> MainResult<ExitCode> {
 #[ cfg (feature = "z-tokens-patterns-tool") ]
 pub fn main_patterns () -> MainResult<ExitCode> {
 	
-	let (_executable, mut _commands, mut _arguments) = main_arguments () ?;
+	let mut _arguments = main_arguments () .else_wrap (0xd932a3b8) ?;
 	
-	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _commands_refs = _arguments.commands.clone ();
+	let _commands_refs = _commands_refs.iter () .map (Cow::deref) .collect::<Vec<_>> ();
 	let _commands_refs = _commands_refs.as_slice ();
-	let _arguments_refs = _arguments.iter () .map (String::as_str) .collect::<Vec<_>> ();
-	let _arguments_refs = _arguments_refs.as_slice ();
 	
-	match (_commands_refs, _arguments_refs) {
+	match _commands_refs {
 		
 		
 		
 		
-		(&["list"], _) | (&["l"], _) => {
-			_arguments.insert (0, String::from ("zt-patterns list"));
-			main_patterns_list (_arguments) .else_wrap (0xd1a6fe40)
+		&["list"] | &["l"] =>
+			return main_patterns_list (_arguments) .else_wrap (0xd1a6fe40),
+		
+		&["generate"] =>
+			return main_patterns_generate (_arguments) .else_wrap (0x87484b00),
+		
+		&["g"] => {
+			_arguments.arguments.insert (0, OsStr::new ("--compact") .into ());
+			_arguments.arguments.insert (1, OsStr::new ("true") .into ());
+			_arguments.arguments.insert (2, OsStr::new ("--token-count") .into ());
+			_arguments.arguments.insert (3, OsStr::new ("1") .into ());
+			return main_patterns_generate (_arguments) .else_wrap (0xba4528d0);
 		}
 		
-		(&["generate"], _) => {
-			_arguments.insert (0, String::from ("zt-patterns generate"));
-			main_patterns_generate (_arguments) .else_wrap (0x87484b00)
-		}
-		
-		(&["g"], _) => {
-			_arguments.insert (0, String::from ("zt-patterns generate"));
-			_arguments.insert (1, String::from ("--compact"));
-			_arguments.insert (2, String::from ("true"));
-			_arguments.insert (3, String::from ("--token-count"));
-			_arguments.insert (4, String::from ("1"));
-			main_patterns_generate (_arguments) .else_wrap (0xba4528d0)
-		}
-		
-		(&["g", _pattern], _) => {
-			_arguments.insert (0, String::from ("zt-patterns generate"));
-			_arguments.insert (1, String::from ("--compact"));
-			_arguments.insert (2, String::from ("true"));
-			_arguments.insert (3, String::from ("--token-count"));
-			_arguments.insert (4, String::from ("1"));
-			_arguments.insert (5, String::from ("--token-pattern"));
-			_arguments.insert (6, String::from (_pattern));
-			main_patterns_generate (_arguments) .else_wrap (0x7cdbc803)
+		&["g", _pattern] => {
+			_arguments.arguments.insert (0, OsStr::new ("--compact") .into ());
+			_arguments.arguments.insert (1, OsStr::new ("true") .into ());
+			_arguments.arguments.insert (2, OsStr::new ("--token-count") .into ());
+			_arguments.arguments.insert (3, OsStr::new ("1") .into ());
+			_arguments.arguments.insert (4, OsStr::new ("--token-pattern") .into ());
+			_arguments.arguments.insert (5, OsStr::new (_pattern) .into ());
+			return main_patterns_generate (_arguments) .else_wrap (0x7cdbc803);
 		}
 		
 		
 		
 		
 		_ =>
-			main_unknown (_commands, _arguments),
+			return main_unknown (_arguments),
 	}
+	
+	; // NOP
 }
 
 
@@ -319,29 +294,28 @@ pub fn main_patterns () -> MainResult<ExitCode> {
 #[ cfg (feature = "z-tokens-hashes-tool") ]
 pub fn main_hashes () -> MainResult<ExitCode> {
 	
-	let (_executable, mut _commands, mut _arguments) = main_arguments () ?;
+	let _arguments = main_arguments () .else_wrap (0x384b7517) ?;
 	
-	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _commands_refs = _arguments.commands.clone ();
+	let _commands_refs = _commands_refs.iter () .map (Cow::deref) .collect::<Vec<_>> ();
 	let _commands_refs = _commands_refs.as_slice ();
-	let _arguments_refs = _arguments.iter () .map (String::as_str) .collect::<Vec<_>> ();
-	let _arguments_refs = _arguments_refs.as_slice ();
 	
-	match (_commands_refs, _arguments_refs) {
+	match _commands_refs {
 		
 		
 		
 		
-		(&["hash"], _) => {
-			_arguments.insert (0, String::from ("zt-hashes hash"));
-			main_hashes_hash (_arguments) .else_wrap (0xf90b7753)
-		}
+		&["hash"] =>
+			return main_hashes_hash (_arguments) .else_wrap (0xf90b7753),
 		
 		
 		
 		
 		_ =>
-			main_unknown (_commands, _arguments),
+			return main_unknown (_arguments),
 	}
+	
+	; // NOP
 }
 
 
@@ -354,33 +328,31 @@ pub fn main_hashes () -> MainResult<ExitCode> {
 #[ cfg (feature = "z-tokens-encodings-tool") ]
 pub fn main_encodings () -> MainResult<ExitCode> {
 	
-	let (_executable, mut _commands, mut _arguments) = main_arguments () ?;
+	let _arguments = main_arguments () .else_wrap (0xa79b72a0) ?;
 	
-	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _commands_refs = _arguments.commands.clone ();
+	let _commands_refs = _commands_refs.iter () .map (Cow::deref) .collect::<Vec<_>> ();
 	let _commands_refs = _commands_refs.as_slice ();
-	let _arguments_refs = _arguments.iter () .map (String::as_str) .collect::<Vec<_>> ();
-	let _arguments_refs = _arguments_refs.as_slice ();
 	
-	match (_commands_refs, _arguments_refs) {
+	match _commands_refs {
 		
 		
 		
 		
-		(&["encode"], _) => {
-			_arguments.insert (0, String::from ("zt-encodings encode"));
-			main_encodings_encode (_arguments) .else_wrap (0x75298a87)
-		}
-		(&["decode"], _) => {
-			_arguments.insert (0, String::from ("zt-encodings decode"));
-			main_encodings_decode (_arguments) .else_wrap (0x8f9ff25b)
-		}
+		&["encode"] =>
+			return main_encodings_encode (_arguments) .else_wrap (0x75298a87),
+		
+		&["decode"] =>
+			return main_encodings_decode (_arguments) .else_wrap (0x8f9ff25b),
 		
 		
 		
 		
 		_ =>
-			main_unknown (_commands, _arguments),
+			return main_unknown (_arguments),
 	}
+	
+	; // NOP
 }
 
 
@@ -393,66 +365,56 @@ pub fn main_encodings () -> MainResult<ExitCode> {
 #[ cfg (feature = "z-tokens-exchange-tool") ]
 pub fn main_exchange () -> MainResult<ExitCode> {
 	
-	let (_executable, mut _commands, mut _arguments) = main_arguments () ?;
+	let _arguments = main_arguments () .else_wrap (0x00fc937a) ?;
 	
-	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _commands_refs = _arguments.commands.clone ();
+	let _commands_refs = _commands_refs.iter () .map (Cow::deref) .collect::<Vec<_>> ();
 	let _commands_refs = _commands_refs.as_slice ();
-	let _arguments_refs = _arguments.iter () .map (String::as_str) .collect::<Vec<_>> ();
-	let _arguments_refs = _arguments_refs.as_slice ();
 	
-	match (_commands_refs, _arguments_refs) {
+	match _commands_refs {
 		
 		
 		
 		
-		(&["keys"], _) => {
-			_arguments.insert (0, String::from ("zt-exchange keys"));
-			main_exchange_keys (_arguments) .else_wrap (0x7685fa9c)
-		}
-		(&["encrypt"], _) => {
-			_arguments.insert (0, String::from ("zt-exchange encrypt"));
-			main_exchange_encrypt (_arguments) .else_wrap (0xadd1e78c)
-		}
-		(&["decrypt"], _) => {
-			_arguments.insert (0, String::from ("zt-exchange decrypt"));
-			main_exchange_decrypt (_arguments) .else_wrap (0x46af8dea)
-		}
+		&["keys"] =>
+			return main_exchange_keys (_arguments) .else_wrap (0x7685fa9c),
+		
+		&["encrypt"] =>
+			return main_exchange_encrypt (_arguments) .else_wrap (0xadd1e78c),
+		
+		&["decrypt"] =>
+			return main_exchange_decrypt (_arguments) .else_wrap (0x46af8dea),
+		
 		#[ cfg (feature = "z-tokens-exchange-tool") ]
-		(&["password"], _) => {
-			_arguments.insert (0, String::from ("zt-tokens exchange password"));
-			main_exchange_password (_arguments) .else_wrap (0x7dd79a95)
-		}
-		(&["armor"], _) => {
-			_arguments.insert (0, String::from ("zt-exchange armor"));
-			main_exchange_armor (_arguments) .else_wrap (0x82a1222e)
-		}
-		(&["dearmor"], _) => {
-			_arguments.insert (0, String::from ("zt-exchange dearmor"));
-			main_exchange_dearmor (_arguments) .else_wrap (0x1008ba10)
-		}
-		(&["raw", "encode"], _) => {
-			_arguments.insert (0, String::from ("zt-exchange raw encode"));
-			main_exchange_encode (_arguments) .else_wrap (0x71c2c1b5)
-		}
-		(&["raw", "decode"], _) => {
-			_arguments.insert (0, String::from ("zt-exchange raw decode"));
-			main_exchange_decode (_arguments) .else_wrap (0xecdd6ca7)
-		}
-		(&["ssh", "keys"], _) => {
-			_arguments.insert (0, String::from ("zt-exchange ssh keys"));
-			main_exchange_ssh_keys (_arguments) .else_wrap (0x7fff2cbd)
-		}
-		(&["ssh", "wrap"], _) => {
-			_arguments.insert (0, String::from ("zt-exchange ssh wrap"));
-			main_exchange_ssh_wrap (_arguments) .else_wrap (0xcb42bef7)
-		}
+		&["password"] =>
+			return main_exchange_password (_arguments) .else_wrap (0x7dd79a95),
+		
+		&["armor"] =>
+			return main_exchange_armor (_arguments) .else_wrap (0x82a1222e),
+		
+		&["dearmor"] =>
+			return main_exchange_dearmor (_arguments) .else_wrap (0x1008ba10),
+		
+		&["raw", "encode"] =>
+			return main_exchange_encode (_arguments) .else_wrap (0x71c2c1b5),
+		
+		&["raw", "decode"] =>
+			return main_exchange_decode (_arguments) .else_wrap (0xecdd6ca7),
+		
+		&["ssh", "keys"] =>
+			return main_exchange_ssh_keys (_arguments) .else_wrap (0x7fff2cbd),
+		
+		&["ssh", "wrap"] =>
+			return main_exchange_ssh_wrap (_arguments) .else_wrap (0xcb42bef7),
 		
 		
 		
 		
 		_ =>
-			main_unknown (_commands, _arguments),
+			return main_unknown (_arguments),
 	}
+	
+	; // NOP
 }
 
 
@@ -465,29 +427,28 @@ pub fn main_exchange () -> MainResult<ExitCode> {
 #[ cfg (feature = "z-tokens-oracles-tool") ]
 pub fn main_oracles () -> MainResult<ExitCode> {
 	
-	let (_executable, mut _commands, mut _arguments) = main_arguments () ?;
+	let _arguments = main_arguments () .else_wrap (0xc9159f26) ?;
 	
-	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _commands_refs = _arguments.commands.clone ();
+	let _commands_refs = _commands_refs.iter () .map (Cow::deref) .collect::<Vec<_>> ();
 	let _commands_refs = _commands_refs.as_slice ();
-	let _arguments_refs = _arguments.iter () .map (String::as_str) .collect::<Vec<_>> ();
-	let _arguments_refs = _arguments_refs.as_slice ();
 	
-	match (_commands_refs, _arguments_refs) {
+	match _commands_refs {
 		
 		
 		
 		
-		(&[], _) => {
-			_arguments.insert (0, String::from ("zt-oracles"));
-			main_oracles_tool (_arguments) .else_wrap (0x65ec678f)
-		}
+		&[] =>
+			return main_oracles_tool (_arguments) .else_wrap (0x65ec678f),
 		
 		
 		
 		
 		_ =>
-			main_unknown (_commands, _arguments),
+			return main_unknown (_arguments),
 	}
+	
+	; // NOP
 }
 
 
@@ -500,29 +461,28 @@ pub fn main_oracles () -> MainResult<ExitCode> {
 #[ cfg (feature = "z-tokens-secrets-tool") ]
 pub fn main_secrets () -> MainResult<ExitCode> {
 	
-	let (_executable, mut _commands, mut _arguments) = main_arguments () ?;
+	let _arguments = main_arguments () .else_wrap (0xb8fd5238) ?;
 	
-	let _commands_refs = _commands.iter () .map (String::as_str) .collect::<Vec<_>> ();
+	let _commands_refs = _arguments.commands.clone ();
+	let _commands_refs = _commands_refs.iter () .map (Cow::deref) .collect::<Vec<_>> ();
 	let _commands_refs = _commands_refs.as_slice ();
-	let _arguments_refs = _arguments.iter () .map (String::as_str) .collect::<Vec<_>> ();
-	let _arguments_refs = _arguments_refs.as_slice ();
 	
-	match (_commands_refs, _arguments_refs) {
+	match _commands_refs {
 		
 		
 		
 		
-		(&[], _) => {
-			_arguments.insert (0, String::from ("zt-secrets"));
-			main_secrets_tool (_arguments) .else_wrap (0x0d14e404)
-		}
+		&[] =>
+			return main_secrets_tool (_arguments) .else_wrap (0x0d14e404),
 		
 		
 		
 		
 		_ =>
-			main_unknown (_commands, _arguments),
+			return main_unknown (_arguments),
 	}
+	
+	; // NOP
 }
 
 

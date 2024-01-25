@@ -49,6 +49,7 @@ default = [
 	"z-tokens-oracles-tool/default",
 	"z-tokens-secrets-tool/default",
 	"z-tokens-runtime/default",
+	"z-tokens-runtime-flags/default",
 ]
 
 development = [
@@ -60,6 +61,7 @@ development = [
 	"z-tokens-oracles-tool/development",
 	"z-tokens-secrets-tool/development",
 	"z-tokens-runtime/development",
+	"z-tokens-runtime-flags/development",
 ]
 
 release = [
@@ -73,6 +75,7 @@ release = [
 #!	"z-tokens-oracles-tool/release",
 #!	"z-tokens-secrets-tool/release",
 	"z-tokens-runtime/release",
+	"z-tokens-runtime-flags/release",
 ]
 
 
@@ -106,5 +109,6 @@ z-tokens-exchange-tool = { path = "../exchange-tool", optional = true, default-f
 z-tokens-oracles-tool = { path = "../oracles-tool", optional = true, default-features = false, features = [] }
 z-tokens-secrets-tool = { path = "../secrets-tool", optional = true, default-features = false, features = [] }
 z-tokens-runtime = { path = "../runtime", optional = true, default-features = false, features = [] }
+z-tokens-runtime-flags = { path = "../runtime-flags", optional = true, default-features = false, features = [] }
 
 

@@ -12,7 +12,7 @@ define_error! (pub MainError, result : MainResult);
 
 
 
-pub fn main_encode (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_encode <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
 	{
 		let mut _flags = create_flags () .else_wrap (0x2e40868a) ?;
@@ -28,7 +28,7 @@ pub fn main_encode (_arguments : Vec<String>) -> MainResult<ExitCode> {
 
 
 
-pub fn main_decode (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_decode <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
 	{
 		let mut _flags = create_flags () .else_wrap (0xe6cc7904) ?;

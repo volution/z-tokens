@@ -20,10 +20,10 @@ define_error! (pub MainError, result : MainResult);
 
 
 
-pub fn main_experiments (_arguments : Vec<String>) -> MainResult<ExitCode> {
+pub fn main_experiments <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
 	
-	if _arguments.len () != 1 {
+	if ! _arguments.arguments.is_empty () {
 		fail! (0xb5340b89);
 	}
 	
