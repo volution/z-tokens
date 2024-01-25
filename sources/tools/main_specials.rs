@@ -17,9 +17,9 @@ use crate::runtime::*;
 
 pub(crate) fn main_unknown (_arguments : Arguments) -> MainResult<ExitCode> {
 	
-	let _commands_refs = _arguments.commands.iter () .map (Cow::deref) .collect::<Vec<_>> ();
+	let _commands_refs = _arguments.commands_deref_vec ();
 	let _commands_refs = _commands_refs.as_slice ();
-	let _arguments_refs = _arguments.arguments.iter () .map (Cow::deref) .map (OsStr::to_string_lossy) .collect::<Vec<_>> ();
+	let _arguments_refs = _arguments.arguments_cloned_vec_to_string_lossy ();
 	let _arguments_refs = _arguments_refs.iter () .map (Cow::deref) .collect::<Vec<_>> ();
 	let _arguments_refs = _arguments_refs.as_slice ();
 	

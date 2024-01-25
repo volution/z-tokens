@@ -28,7 +28,7 @@ pub fn execute_flags <'a> (mut _parser : FlagsParserBuilder<'a>, _arguments : Ar
 	_parser.define_help ('h', "help");
 	
 	let _parser = _parser.build () .else_wrap (0xf8191edb) ?;
-	let _parsed = _parser.parse_iterator (_arguments.arguments.into_iter (), false);
+	let _parsed = _parser.parse_iterator (_arguments.arguments_into_iter (), false);
 	
 	if _parsed.is_version_requested () {
 		fail! (0xee8fb3cb);

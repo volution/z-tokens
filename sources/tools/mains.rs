@@ -68,49 +68,45 @@ pub fn main_tools () -> MainResult<ExitCode> {
 	
 	let mut _arguments = main_arguments () .else_wrap (0x0da1ecf8) ?;
 	
-	let _executable = _arguments.command_0.as_ref () .map (Cow::deref) .unwrap_or ("");
-	
-	let _commands_refs = _arguments.commands.clone ();
-	let _commands_refs = _commands_refs.iter () .map (Cow::deref) .collect::<Vec<_>> ();
-	let _commands_refs = _commands_refs.as_slice ();
 	
 	
 	
-	
-	match _executable {
-		
-		#[ cfg (feature = "z-tokens-patterns-tool") ]
-		"zt-patterns" | "z-tokens-patterns" | "z-patterns" =>
-			return main_patterns (),
-		
-		#[ cfg (feature = "z-tokens-hashes-tool") ]
-		"zt-hashes" | "z-tokens-hashes" | "z-hashes" =>
-			return main_hashes (),
-		
-		#[ cfg (feature = "z-tokens-encodings-tool") ]
-		"zt-encodings" | "z-tokens-encodings" | "z-encodings" =>
-			return main_encodings (),
-		
-		#[ cfg (feature = "z-tokens-exchange-tool") ]
-		"zt-exchange" | "z-tokens-exchange" | "z-exchange" =>
-			return main_exchange (),
-		
-		#[ cfg (feature = "z-tokens-oracles-tool") ]
-		"zt-oracles" | "z-tokens-oracles" | "z-oracles" =>
-			return main_oracles (),
-		
-		#[ cfg (feature = "z-tokens-secrets-tool") ]
-		"zt-secrets" | "z-tokens-secrets" | "z-secrets" =>
-			return main_secrets (),
-		
-		_ =>
-			(),
+	if let Some (_command_0) = _arguments.command_0_deref () {
+		match _command_0 {
+			
+			#[ cfg (feature = "z-tokens-patterns-tool") ]
+			"zt-patterns" | "z-tokens-patterns" | "z-patterns" =>
+				return main_patterns (),
+			
+			#[ cfg (feature = "z-tokens-hashes-tool") ]
+			"zt-hashes" | "z-tokens-hashes" | "z-hashes" =>
+				return main_hashes (),
+			
+			#[ cfg (feature = "z-tokens-encodings-tool") ]
+			"zt-encodings" | "z-tokens-encodings" | "z-encodings" =>
+				return main_encodings (),
+			
+			#[ cfg (feature = "z-tokens-exchange-tool") ]
+			"zt-exchange" | "z-tokens-exchange" | "z-exchange" =>
+				return main_exchange (),
+			
+			#[ cfg (feature = "z-tokens-oracles-tool") ]
+			"zt-oracles" | "z-tokens-oracles" | "z-oracles" =>
+				return main_oracles (),
+			
+			#[ cfg (feature = "z-tokens-secrets-tool") ]
+			"zt-secrets" | "z-tokens-secrets" | "z-secrets" =>
+				return main_secrets (),
+			
+			_ =>
+				(),
+		}
 	}
 	
 	
 	
 	
-	match _commands_refs {
+	match _arguments.commands_deref_vec () .as_slice () {
 		
 		
 		
@@ -125,21 +121,14 @@ pub fn main_tools () -> MainResult<ExitCode> {
 		
 		#[ cfg (feature = "z-tokens-patterns-tool") ]
 		&["g"] => {
-			_arguments.arguments.insert (0, OsStr::new ("--compact") .into ());
-			_arguments.arguments.insert (1, OsStr::new ("true") .into ());
-			_arguments.arguments.insert (2, OsStr::new ("--token-count") .into ());
-			_arguments.arguments.insert (3, OsStr::new ("1") .into ());
+			_arguments.arguments_prepend_all (["--compact", "true", "--token-count", "1"] .iter () .map (OsStr::new));
 			return main_patterns_generate (_arguments) .else_wrap (0x6a8d26ca);
 		}
 		
 		#[ cfg (feature = "z-tokens-patterns-tool") ]
 		&["g", _pattern] => {
-			_arguments.arguments.insert (0, OsStr::new ("--compact") .into ());
-			_arguments.arguments.insert (1, OsStr::new ("true") .into ());
-			_arguments.arguments.insert (2, OsStr::new ("--token-count") .into ());
-			_arguments.arguments.insert (3, OsStr::new ("1") .into ());
-			_arguments.arguments.insert (4, OsStr::new ("--token-pattern") .into ());
-			_arguments.arguments.insert (5, OsStr::new (_pattern) .into ());
+			_arguments.arguments_prepend (OsString::from (_pattern));
+			_arguments.arguments_prepend_all (["--compact", "true", "--token-count", "1", "--token-pattern"] .iter () .map (OsStr::new));
 			return main_patterns_generate (_arguments) .else_wrap (0x284c1286);
 		}
 		
@@ -241,11 +230,7 @@ pub fn main_patterns () -> MainResult<ExitCode> {
 	
 	let mut _arguments = main_arguments () .else_wrap (0xd932a3b8) ?;
 	
-	let _commands_refs = _arguments.commands.clone ();
-	let _commands_refs = _commands_refs.iter () .map (Cow::deref) .collect::<Vec<_>> ();
-	let _commands_refs = _commands_refs.as_slice ();
-	
-	match _commands_refs {
+	match _arguments.commands_deref_vec () .as_slice () {
 		
 		
 		
@@ -257,20 +242,13 @@ pub fn main_patterns () -> MainResult<ExitCode> {
 			return main_patterns_generate (_arguments) .else_wrap (0x87484b00),
 		
 		&["g"] => {
-			_arguments.arguments.insert (0, OsStr::new ("--compact") .into ());
-			_arguments.arguments.insert (1, OsStr::new ("true") .into ());
-			_arguments.arguments.insert (2, OsStr::new ("--token-count") .into ());
-			_arguments.arguments.insert (3, OsStr::new ("1") .into ());
+			_arguments.arguments_prepend_all (["--compact", "true", "--token-count", "1"] .iter () .map (OsStr::new));
 			return main_patterns_generate (_arguments) .else_wrap (0xba4528d0);
 		}
 		
 		&["g", _pattern] => {
-			_arguments.arguments.insert (0, OsStr::new ("--compact") .into ());
-			_arguments.arguments.insert (1, OsStr::new ("true") .into ());
-			_arguments.arguments.insert (2, OsStr::new ("--token-count") .into ());
-			_arguments.arguments.insert (3, OsStr::new ("1") .into ());
-			_arguments.arguments.insert (4, OsStr::new ("--token-pattern") .into ());
-			_arguments.arguments.insert (5, OsStr::new (_pattern) .into ());
+			_arguments.arguments_prepend (OsString::from (_pattern));
+			_arguments.arguments_prepend_all (["--compact", "true", "--token-count", "1", "--token-pattern"] .iter () .map (OsStr::new));
 			return main_patterns_generate (_arguments) .else_wrap (0x7cdbc803);
 		}
 		
@@ -296,11 +274,7 @@ pub fn main_hashes () -> MainResult<ExitCode> {
 	
 	let _arguments = main_arguments () .else_wrap (0x384b7517) ?;
 	
-	let _commands_refs = _arguments.commands.clone ();
-	let _commands_refs = _commands_refs.iter () .map (Cow::deref) .collect::<Vec<_>> ();
-	let _commands_refs = _commands_refs.as_slice ();
-	
-	match _commands_refs {
+	match _arguments.commands_deref_vec () .as_slice () {
 		
 		
 		
@@ -330,11 +304,7 @@ pub fn main_encodings () -> MainResult<ExitCode> {
 	
 	let _arguments = main_arguments () .else_wrap (0xa79b72a0) ?;
 	
-	let _commands_refs = _arguments.commands.clone ();
-	let _commands_refs = _commands_refs.iter () .map (Cow::deref) .collect::<Vec<_>> ();
-	let _commands_refs = _commands_refs.as_slice ();
-	
-	match _commands_refs {
+	match _arguments.commands_deref_vec () .as_slice () {
 		
 		
 		
@@ -367,11 +337,7 @@ pub fn main_exchange () -> MainResult<ExitCode> {
 	
 	let _arguments = main_arguments () .else_wrap (0x00fc937a) ?;
 	
-	let _commands_refs = _arguments.commands.clone ();
-	let _commands_refs = _commands_refs.iter () .map (Cow::deref) .collect::<Vec<_>> ();
-	let _commands_refs = _commands_refs.as_slice ();
-	
-	match _commands_refs {
+	match _arguments.commands_deref_vec () .as_slice () {
 		
 		
 		
@@ -429,11 +395,7 @@ pub fn main_oracles () -> MainResult<ExitCode> {
 	
 	let _arguments = main_arguments () .else_wrap (0xc9159f26) ?;
 	
-	let _commands_refs = _arguments.commands.clone ();
-	let _commands_refs = _commands_refs.iter () .map (Cow::deref) .collect::<Vec<_>> ();
-	let _commands_refs = _commands_refs.as_slice ();
-	
-	match _commands_refs {
+	match _arguments.commands_deref_vec () .as_slice () {
 		
 		
 		
@@ -463,11 +425,7 @@ pub fn main_secrets () -> MainResult<ExitCode> {
 	
 	let _arguments = main_arguments () .else_wrap (0xb8fd5238) ?;
 	
-	let _commands_refs = _arguments.commands.clone ();
-	let _commands_refs = _commands_refs.iter () .map (Cow::deref) .collect::<Vec<_>> ();
-	let _commands_refs = _commands_refs.as_slice ();
-	
-	match _commands_refs {
+	match _arguments.commands_deref_vec () .as_slice () {
 		
 		
 		
