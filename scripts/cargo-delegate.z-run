@@ -649,6 +649,7 @@
 			--volume "${_scratch}/cross/target":/rust/target:rw \
 			--volume "${_scratch}/cross/registry":/rust/registry:rw \
 			--env TERM \
+			--runtime runc \
 			--network host \
 			--storage-opt overlay.mount_program=/usr/bin/fuse-overlayfs \
 			--events-backend none \
