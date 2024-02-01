@@ -67,6 +67,7 @@ sha1 = { version = "^0.10", optional = false, default-features = false, features
 
 md-5 = { version = "^0.10", optional = false, default-features = false, features = ["std", "asm"] }
 
+xxhash-rust = { version = "^0.8", optional = false, default-features = false, features = ["xxh3"] }
 twox-hash = { version = "^1.6", optional = false, default-features = false, features = [] }
 siphasher = { version = "^1.0", optional = false, default-features = false, features = [] }
 seahash = { version = "^4.1", optional = false, default-features = false, features = [] }

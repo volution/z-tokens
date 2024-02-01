@@ -2192,6 +2192,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "xxhash-rust"
+version = "0.8.8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "53be06678ed9e83edb1745eb72efc0bbcd7b5c3c35711a860906aed827a13d61"
+
+[[package]]
 name = "yasna"
 version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2377,6 +2383,7 @@ dependencies = [
  "sha3",
  "siphasher",
  "twox-hash",
+ "xxhash-rust",
  "z-tokens-runtime",
 ]
 

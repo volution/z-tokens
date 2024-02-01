@@ -18,6 +18,7 @@ pub mod crates {
 	
 	pub use ::md5;
 	
+	pub use ::xxhash_rust as xxhash;
 	pub use ::twox_hash;
 	pub use ::siphasher;
 	pub use ::seahash;

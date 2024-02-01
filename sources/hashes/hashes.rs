@@ -33,6 +33,7 @@ use ::z_tokens_runtime_hashes::crates::{
 		crc,
 		adler,
 		highway,
+		xxhash,
 		twox_hash,
 		hashers,
 		
@@ -342,9 +343,9 @@ fn hash_xxhash_64 (_input : impl Input, _output : &mut [u8], _output_parameters 
 
 fn hash_xxh3_64 (_input : impl Input, _output : &mut [u8], _output_parameters : &OutputParameters) -> HashResult {
 	
-	let mut _hasher = twox_hash::Xxh3Hash64::with_seed (0);
+	let mut _hasher = xxhash::xxh3::Xxh3::with_seed (0);
 	hash_update_std (&mut _hasher, _input) ?;
-	let _hash_value = Hasher::finish (&_hasher);
+	let _hash_value = xxhash::xxh3::Xxh3::digest (&_hasher);
 	
 	copy_output_from_u64 (_hash_value, _output, _output_parameters)
 }
@@ -352,9 +353,9 @@ fn hash_xxh3_64 (_input : impl Input, _output : &mut [u8], _output_parameters : 
 
 fn hash_xxh3_128 (_input : impl Input, _output : &mut [u8], _output_parameters : &OutputParameters) -> HashResult {
 	
-	let mut _hasher = twox_hash::Xxh3Hash128::with_seed (0);
+	let mut _hasher = xxhash::xxh3::Xxh3::with_seed (0);
 	hash_update_std (&mut _hasher, _input) ?;
-	let _hash_value = twox_hash::xxh3::HasherExt::finish_ext (&_hasher);
+	let _hash_value = xxhash::xxh3::Xxh3::digest128 (&_hasher);
 	
 	copy_output_from_u128 (_hash_value, _output, _output_parameters)
 }
