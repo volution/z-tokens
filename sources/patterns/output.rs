@@ -43,6 +43,23 @@ pub fn output_token_to_string (_token : impl AsRef<Token>, _options : &OutputOpt
 
 
 
+pub fn output_token_to_hasher <Hasher_ : Hasher> (_token : impl AsRef<Token>, _hasher : Hasher_, _options : &OutputOptions) -> OutputResult {
+	
+	struct Writer <Hasher_ : Hasher> (Hasher_);
+	
+	impl <Hasher_ : Hasher> Write for Writer<Hasher_> {
+		fn write (&mut self, _buffer : &[u8]) -> StdIoResult<usize> {
+			self.0.write (_buffer);
+			Ok (_buffer.len ())
+		}
+		fn flush (&mut self) -> StdIoResult { Ok (()) }
+	}
+	
+	output_token (_token, Writer (_hasher), _options)
+}
+
+
+
 pub fn output_token (_token : impl AsRef<Token>, mut _stream : impl Write, _options : &OutputOptions) -> OutputResult {
 	let _token = _token.as_ref ();
 	for _atom in _token.atoms.iter () {
