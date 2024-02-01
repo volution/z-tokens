@@ -20,6 +20,29 @@
   --group-separator  {separator}
     **  separator between each group
 
+  --output-flush
+    **  flush output after each token
+
+  --hash-filter
+    **  acceptance hash enabled (currently xxh3-64)
+    **  UNSTABLE
+
+  --hash-seed  {hash-seed}
+    **  acceptance hash seed
+    **  UNSTABLE
+
+  --hash-mask-value  {u64}
+    **  acceptance hash mask value
+    **  UNSTABLE
+
+  --hash-mask-bits  {u8}
+    **  acceptance hash mask bits
+    **  UNSTABLE
+
+  --hash-expected  {hash-expected}
+    **  acceptance hash expected
+    **  UNSTABLE
+
   -C
     **  compact output, skip optional separators and groups
   --compact  {boolean}
