@@ -79,13 +79,13 @@
 
 << deploy / list / main
 	test "${#}" -eq 0
-	readarray -t -- _variants < <( exec -- "${ZRUN}" ':: deploy / list / main / 0' )
-	for _variant in "${_variants[@]}" ; do
-		case "${_variant}" in
+	readarray -t -- _mains < <( exec -- "${ZRUN}" ':: deploy / list / main / 0' )
+	for _main in "${_mains[@]}" ; do
+		case "${_main}" in
 			( '' ) ;;
 			( '#'* | *' ##' ) ;;
 			( * )
-				printf -- '%s\n' "${_variant}"
+				printf -- '%s\n' "${_main}"
 			;;
 		esac
 	done
@@ -614,7 +614,7 @@
 		printf -- ':: deploy / publish / %s / all :: exec -- "${ZRUN}" ":: deploy / publish" %q "${@}"\n' "${_main}" "${_main}"
 		printf -- ':: deploy / publish / %s / all / no-github :: exec -- "${ZRUN}" ":: deploy / publish / no-github" %q "${@}"\n' "${_main}" "${_main}"
 		
-		printf -- ':: deploy / release / %s / all :: exec -- "${ZRUN}" ":: deploy / release" %q %q "${@}"\n' "${_main}" all "${_main}"
+		printf -- ':: deploy / release / %s / all :: exec -- "${ZRUN}" ":: deploy / release" %q "${@}"\n' "${_main}" "${_main}"
 		
 		for _variant in "${_variants[@]}" ; do
 			printf -- ':: deploy / rsync / %s / %s :: exec -- "${ZRUN}" ":: deploy / rsync / *" %q %q "${@}"\n' "${_main}" "${_variant}" "${_main}" "${_variant}"
