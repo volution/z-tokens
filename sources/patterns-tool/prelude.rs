@@ -33,6 +33,12 @@ pub(crate) use ::z_tokens_runtime_flags::{
 	};
 
 
+pub(crate) use ::z_tokens_runtime_hashes::{
+		
+		crates::xxhash,
+	};
+
+
 
 
 pub(crate) use crate::flags::*;

@@ -23,6 +23,13 @@ pub fn main_generate <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	let mut _token_separator : Option<String> = None;
 	let mut _group_size : Option<usize> = None;
 	let mut _group_separator : Option<String> = None;
+	let mut _output_flush : Option<bool> = None;
+	
+	let mut _hash_filter : Option<bool> = None;
+	let mut _hash_seed : Option<u64> = None;
+	let mut _hash_mask_value : Option<u64> = None;
+	let mut _hash_mask_bits : Option<u8> = None;
+	let mut _hash_expected : Option<u64> = None;
 	
 	let mut _describe : Option<bool> = None;
 	
@@ -60,6 +67,39 @@ pub fn main_generate <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 				.with_flag ((), "group-separator")
 				.with_placeholder ("separator")
 				.with_description ("separator between each group");
+		
+		_flags.define_switch_0 (&mut _output_flush)
+				.with_flag ((), "output-flush")
+				.with_description ("flush output after each token");
+		
+		_flags.define_switch_0 (&mut _hash_filter)
+				.with_flag ((), "hash-filter")
+				.with_description ("acceptance hash enabled (currently xxh3-64)")
+				.with_description ("UNSTABLE");
+		
+		_flags.define_single_flag_0 (&mut _hash_seed)
+				.with_flag ((), "hash-seed")
+				.with_placeholder ("hash-seed")
+				.with_description ("acceptance hash seed")
+				.with_description ("UNSTABLE");
+		
+		_flags.define_single_flag_0 (&mut _hash_mask_value)
+				.with_flag ((), "hash-mask-value")
+				.with_placeholder ("u64")
+				.with_description ("acceptance hash mask value")
+				.with_description ("UNSTABLE");
+		
+		_flags.define_single_flag_0 (&mut _hash_mask_bits)
+				.with_flag ((), "hash-mask-bits")
+				.with_placeholder ("u8")
+				.with_description ("acceptance hash mask bits")
+				.with_description ("UNSTABLE");
+		
+		_flags.define_single_flag_0 (&mut _hash_expected)
+				.with_flag ((), "hash-expected")
+				.with_placeholder ("hash-expected")
+				.with_description ("acceptance hash expected")
+				.with_description ("UNSTABLE");
 		
 		_output_flags.flags (&mut _flags) .else_wrap (0xc06bf3db) ?;
 		_randomizer_flags.flags (&mut _flags) .else_wrap (0x6d197cc8) ?;
@@ -105,6 +145,27 @@ pub fn main_generate <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	let mut _randomizer = _randomizer_flags.build () .else_wrap (0x8de520fa) ?;
 	let _randomizer = _randomizer.deref_mut ();
 	
+	let mut _hash_filter = _hash_filter.unwrap_or (false) || _hash_seed.is_some () || _hash_mask_value.is_some () || _hash_mask_bits.is_some () || _hash_expected.is_some ();
+	let (_hash_seed, _hash_mask, _hash_expected) = if _hash_filter {
+			let _hash_seed = _hash_seed.unwrap_or (0);
+			let _hash_expected = _hash_expected.unwrap_or (0);
+			let _hash_mask = match (_hash_mask_value, _hash_mask_bits) {
+					(Some (_mask_value), None) =>
+						_mask_value,
+					(None, Some (_mask_bits)) =>
+						(1 << _mask_bits) - 1,
+					(None, None) =>
+						0xffff,
+					(Some (_), Some (_)) =>
+						fail! (0x24df57e8),
+				};
+			(_hash_seed, _hash_mask, _hash_expected)
+		} else {
+			Default::default ()
+		};
+	
+	let _output_flush = _output_flush.unwrap_or (_hash_filter);
+	
 	let mut _stream = BufWriter::with_capacity (IO_BUFFER_SIZE, stdout_locked ());
 	
 	_randomizer.reset () .else_wrap (0x3e9a73ab) ?;
@@ -115,20 +176,44 @@ pub fn main_generate <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 			let _separator = _group_separator.as_ref () .unwrap_or (&_token_separator);
 			if ! _separator.is_empty () {
 				_stream.write (_separator.as_bytes ()) .else_wrap (0x76565a9f) ?;
+				if _output_flush {
+					_stream.flush () .else_wrap (0x329a9fe3) ?;
+				}
 			}
 		}
 		
-		let _token = generate_token (&_pattern, _randomizer) .else_wrap (0xf2ccbc70) ?;
+		let _token = loop {
+			
+			let _token = generate_token (&_pattern, _randomizer) .else_wrap (0xf2ccbc70) ?;
+			
+			if _hash_filter {
+				let mut _hasher = xxhash::xxh3::Xxh3::with_seed (_hash_seed);
+				output_token_to_hasher (&_token, &mut _hasher, &_output_options) .else_wrap (0x7be75b36) ?;
+				let _hash_value = _hasher.digest ();
+				let _hash_value = _hash_value & _hash_mask;
+				if _hash_value != _hash_expected {
+					continue;
+				}
+			}
+			
+			break _token;
+		};
 		
 		if _describe && (_index == 0) {
 			crate::patterns::pattern_describe (&_pattern, &_token, &_output_options, &mut _stream) ?;
 			writeln! (&mut _stream) .else_wrap (0x028cc65f) ?;
+			if _output_flush {
+				_stream.flush () .else_wrap (0x2659c3ac) ?;
+			}
 		}
 		
 		output_token (&_token, &mut _stream, &_output_options) .else_wrap (0x9c0fbf4f) ?;
 		
 		if ! _token_separator.is_empty () {
 			_stream.write (_token_separator.as_bytes ()) .else_wrap (0xdd5337ae) ?;
+			if _output_flush {
+				_stream.flush () .else_wrap (0x31b962eb) ?;
+			}
 		}
 		
 		_randomizer.advance () .else_wrap (0x39297684) ?;

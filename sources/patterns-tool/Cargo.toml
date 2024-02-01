@@ -41,18 +41,21 @@ default = [
 	"z-tokens-patterns/default",
 	"z-tokens-runtime/default",
 	"z-tokens-runtime-flags/default",
+	"z-tokens-runtime-hashes/default",
 ]
 
 development = [
 	"z-tokens-patterns/development",
 	"z-tokens-runtime/development",
 	"z-tokens-runtime-flags/development",
+	"z-tokens-runtime-hashes/default",
 ]
 
 release = [
 	"z-tokens-patterns/release",
 	"z-tokens-runtime/release",
 	"z-tokens-runtime-flags/release",
+	"z-tokens-runtime-hashes/default",
 ]
 
 
@@ -64,5 +67,6 @@ z-tokens-patterns = { path = "../patterns", optional = false, default-features =
 
 z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
 z-tokens-runtime-flags = { path = "../runtime-flags", optional = false, default-features = false, features = [] }
+z-tokens-runtime-hashes = { path = "../runtime-hashes", optional = false, default-features = false, features = [] }
 
 

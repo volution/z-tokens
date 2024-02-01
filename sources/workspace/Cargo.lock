@@ -2307,6 +2307,7 @@ dependencies = [
  "z-tokens-patterns",
  "z-tokens-runtime",
  "z-tokens-runtime-flags",
+ "z-tokens-runtime-hashes",
 ]
 
 [[package]]
