@@ -18,6 +18,7 @@
 			--ssh-export=__META__BUILD_SOURCES_HASH \
 			--ssh-export=__META__BUILD_GIT_HASH \
 			--ssh-export=__META__BUILD_TARGET_TYPE \
+			--ssh-option=RequestTTY=no \
 			':: cargo / exec / remote / delegate' \
 			"${@}" \
 	#
