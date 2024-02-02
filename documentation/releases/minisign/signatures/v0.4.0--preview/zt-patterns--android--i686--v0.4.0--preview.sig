@@ -1,4 +1,4 @@
 untrusted comment: signature from minisign secret key
-RUTNU8euCgU67vMQVij7LFy9qe0Uscm2G0c8LfBSIpOoZFApmD974VF+gD2/6s1dmmOILLWCV0AWpUCjd2TL8xExTsTdPjVDdQ4=
+RUTNU8euCgU67j69U9l09ly3aahVNtwVtJDH5RczuHqGyo7jcp4vPyG+AuCtIqIWf1ScbRPv31TV4znGcLx20PwXhz2UE4iAyA8=
 trusted comment: zt-patterns--android--i686--v0.4.0--preview
-70zyoNE6xpLRBLRlx+MUh8VGMdmmQeDvU0fsOHgrhIIbzBTOlVoCbeExUroMIxJx3/j43L04JOPPbuVAGf0OAg==
+kVuhEXHdZERwbNHwI9u7OmSMlInt3e0ieHiKa6LNjNsfg/bW66hNHFyYq6DyoZKEv66TI9YFDjovCpDo6LLPCw==
