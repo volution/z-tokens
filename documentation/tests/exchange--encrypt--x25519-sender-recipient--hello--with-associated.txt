@@ -1,13 +1,13 @@
 >>  z-tokens exchange encrypt --siv --sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 --recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah --associated testing
 
 
-#1,  3Lms6m5waWEyc eNcnfsjA792E  21LVHtZWcauWr 38QJ1gxKRaDX  3vKQ9uFfFe6e9
-#2,  33vFqxbiZLZRf d8nf1iWYJTpN  BuSpep9jvoQK  2iB6wdJu1aX75 4y8RZibwiQgt
-#3,  3Usy8R4niqDPM 3Zw3v2zu31JEs 2u73tNJEgRF4k SgNNBXGDwWxk  Ffjkr1syUwzb
-#4,  3BHb9p3EzNFpT Q7eHHBEzHnTd  3PSisa3Aon2ky 4FjprHVFh7mvW 21bGDUEeZCNYs
-#5,  2PAPmK44M2HY2 2HxbGCmYtyCJo BqHPa5xB41Sm  3s7Z51j6nHXrn 2DDSPRmwTjF2G
-#6,  2muGaoqT5PA7s 28VrroCxazUaN 2LjJcdt2bWde5 yiNyuabJebfp  Kap5gKjwWybd
-#7,  25GDXSK5g2irw TEq38vBPpruh  VwPvED6hwVXq  2RRDc3EtwKhej YLMLyYuywXnT
-#8,  4BoVagUzUNtZF 3xBc5G8Kn7cqy 3uYMovVygNpYd psJKgUhWbqbR  2bSV2TYL6fowb
-#9.  3ewpKM58m5pPP
+#1,  3Lms6mHvW5SPj 2tncL75T3YMej 2x4b5xEHFwQSB 3h54sD5UWi3LK 3g5KchdY18tgq
+#2,  2nAP1uPjy2Jpd 3JGNJ96fjrNhB 3Kifsm8RwpRw  BJaoqgZdXeGd  2ufMhz2WBynQj
+#3,  3UPdY3vzD7rZM derTFrFmGu6F  2AoBpaBBcAe1s 3iutmPwhSWEQQ 3R7hk638fSfjd
+#4,  3genDyhAbhsSF gcXk67JGAYnw  29aduJQFa8sup 2tm5esYsgJtzF 412YNm7D41iLB
+#5,  k1DJhCnEjt4A  3ZpwCkRaimZiX 3kkGA1sPWV3aC 2MCPG4Eio1HF5 RDFyCJoCktMA
+#6,  3W1Po56GKNt2S 3dtcQ77kqX3dt 49anhaBHAdzma 2eK4vug1wp16M 21raPvR1UiVSH
+#7,  xvz6BvT3EG3e  338R9CRK81YkY DazJ6Q3cZrDr  2guk9fT5qAVBZ StkuXE3ncmKp
+#8,  3eotUZu12J8BE 229kc7xTsh1Z3 2xWA7jECUkUY6 kLyXmErwZmmc  a7Uc7yZgjpza
+#9.  3pcMCJJVH27oG
 
