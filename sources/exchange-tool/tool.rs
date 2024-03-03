@@ -589,45 +589,35 @@ pub fn main_ssh_keys <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 
 pub fn main_ssh_wrap <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
-	let (_key, _inputs) = {
+	let (mut _wrapper, _inputs) = {
 		
-		let mut _key : Option<String> = None;
+		let mut _ssh_wrappers = SshWrappersFlags::new ();
 		let mut _inputs = InputsFlags::new ();
-		let mut _empty_is_missing : Option<bool> = None;
+		let mut _common = CommonFlags::new ();
 		
 		let mut _flags = create_flags () .else_wrap (0xeead67de) ?;
 		
-		_flags.define_single_flag_0 (&mut _key)
-				.with_flag ('k', "key")
-				.with_placeholder ("key")
-				.with_description ("shared SSH agent key handle");
-		
+		_ssh_wrappers.flags (&mut _flags) .else_wrap (0x0f0189b0) ?;
 		_inputs.flags (&mut _flags) .else_wrap (0x05442fc2) ?;
-		
-		_flags.define_single_flag_0 (&mut _empty_is_missing)
-				.with_flag ((), "empty-is-missing")
-				.with_placeholder ("bool")
-				.with_description ("treat empty arguments as unspecified")
-				.with_warning ("CAUTION");
+		_common.flags (&mut _flags) .else_wrap (0xe2f22706) ?;
 		
 		if execute_flags (_flags, _arguments) .else_wrap (0x596c8a62) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 		
-		let _empty_is_missing = _empty_is_missing.unwrap_or (false);
+		let _common = _common.arguments () .else_wrap (0xa66f4eb3) ?;
+		let _ssh_wrappers = _ssh_wrappers.arguments (_common.empty_is_missing) .else_wrap (0xc867ac9a) ?;
+		let _inputs = _inputs.arguments (_common.empty_is_missing) .else_wrap (0xc78c58a6) ?;
 		
-		let _key = _key.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
-		let _key = _key.else_wrap (0x76dd6a4e) ?;
+		let _ssh_wrappers = _ssh_wrappers.wrappers () .else_wrap (0xc76d8940) ?;
+		let _ssh_wrapper = if _ssh_wrappers.len () != 1 {
+				fail! (0x763fbeb8);
+			} else {
+				_ssh_wrappers.into_iter () .next () .infallible (0x6557ad56)
+			};
 		
-		let _key = SshWrapperKey::decode_and_zeroize (_key) .else_wrap (0xf183991d) ?;
-		
-		let _inputs = _inputs.arguments (_empty_is_missing) .else_wrap (0xc78c58a6) ?;
-		
-		(_key, _inputs)
+		(_ssh_wrapper, _inputs)
 	};
-	
-	let mut _agent = SshWrapperAgent::connect () .else_wrap (0x3031a84a) ?;
-	let mut _wrapper = SshWrapper::new (_key, _agent) .else_wrap (0x373fe104) ?;
 	
 	let _wrap_input = _inputs.data () .else_wrap (0x99ffad05) ?;
 	
