@@ -32,15 +32,19 @@
 		printf -- ':: tests / run / %s :: test "${#}" -eq 0 ; exec -- "${ZRUN}" ":: tests / run / *" %q %s\n' "${_label}" "${_identifier}" "${_command}"
 	done
 	printf -- '++<< tests / run / all\n'
-	printf -- '\ttest "${#}" -eq 0\n'
+	printf -- '\tif test "${#}" -eq 0 ; then\n'
 	printf -- '\t"${ZRUN}" ":: tests / run / clean"\n'
+	printf -- '\tfi\n'
 	printf -- '\t"${ZRUN}" ":: cargo / release / build" --bin z-tokens\n'
 	printf -- '\t"${ZRUN}" ":: cargo / release / collect" --bin z-tokens\n'
 	printf -- '\texport -- __TESTS__NO_BUILD=true\n'
 	for _label in "${_labels[@]}" ; do
+		printf -- '\t_test=false ; if test "${#}" -eq 0 ; then _test=true ; else for _pattern in "${@}" ; do if [[ %q =~ "${_pattern}" ]] ; then _test=true ; fi ; done ; fi\n' "${_label}"
+		printf -- '\tif test "${_test}" == true ; then\n'
 		printf -- '\tprintf -- '\''[--]\\n\\n'\'' >&2\n'
 		printf -- '\t${ZRUN} ":: tests / run / "%q\n' "${_label}"
 		printf -- '\tprintf -- '\''\\n[--]\\n'\'' >&2\n'
+		printf -- '\tfi\n'
 	done
 	printf -- '!!\n'
 !!
