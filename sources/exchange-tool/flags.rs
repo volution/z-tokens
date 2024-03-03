@@ -51,6 +51,7 @@ pub(crate) struct DecryptFlags {
 
 
 pub(crate) struct PasswordArguments {
+	pub inputs : InputsArguments,
 	pub senders : MaterialSources<SenderPrivateKey>,
 	pub recipients : MaterialSources<RecipientPublicKey>,
 	pub shared : SharedKeysArguments,
@@ -59,11 +60,26 @@ pub(crate) struct PasswordArguments {
 
 
 pub(crate) struct PasswordFlags {
+	pub inputs : InputsFlags,
 	pub senders : SendersPrivateFlags,
 	pub recipients : RecipientsPublicFlags,
 	pub shared : SharedKeysFlags,
 	pub ssh_wrappers : SshWrappersFlags,
 	pub common : CommonFlags,
+}
+
+
+
+
+pub(crate) struct InputsArguments {
+	pub inputs : MaterialSources<Vec<u8>>,
+	pub canonicalize : Option<bool>,
+}
+
+
+pub(crate) struct InputsFlags {
+	pub inputs : MaterialFlags,
+	pub canonicalize : Option<bool>,
 }
 
 
@@ -651,6 +667,102 @@ impl SshWrappersArguments {
 
 
 
+impl InputsFlags {
+	
+	pub fn new () -> Self {
+		Self {
+				inputs : MaterialFlags::new (),
+				canonicalize : None,
+			}
+	}
+	
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		
+		self.inputs.flags (
+				_flags,
+				'i',
+				"input", "input-env", "input-path", "input-fd", "input-stdin", "input-pinentry", "input-lkkrs",
+				"inputs used in key derivation (multiple allowed, **order and duplicates are significant**)",
+			) ?;
+		
+		let _flag = _flags.define_complex (&mut self.canonicalize);
+		_flag.define_switch_0 (true)
+				.with_flag ((), "inputs-canonicalize")
+				.with_description ("canonicalize inputs");
+		_flag.define_switch_0 (false)
+				.with_flag ((), "inputs-concatenate")
+				.with_description ("concatenate inputs")
+				.with_warning ("CAUTION");
+		
+		Ok (())
+	}
+	
+	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<InputsArguments> {
+		Ok (InputsArguments {
+				inputs : self.inputs.collect (_empty_is_missing) ?,
+				canonicalize : self.canonicalize,
+			})
+	}
+}
+
+
+impl InputsArguments {
+	
+	pub fn data (self) -> FlagsResult<Vec<u8>> {
+		
+		let _inputs = self.inputs.decode () ?;
+		
+		let _inputs_count = _inputs.len ();
+		let _canonicalize = self.canonicalize.unwrap_or (_inputs_count > 1);
+		
+		let _data_size = _inputs.iter () .map (Vec::len) .sum::<usize> ();
+		let _data_extra = if _canonicalize {
+				mem::size_of::<u64> () * (1 + _inputs_count)
+			} else {
+				0
+			};
+		
+		let mut _data = Vec::with_capacity (_data_size + _data_extra);
+		
+		if _canonicalize {
+			_data.write_u64::<BigEndian> (_inputs_count.try_into () .infallible (0x0f81e826)) .infallible (0x43c8e08b);
+		}
+		for mut _input in _inputs.into_iter () {
+			if _canonicalize {
+				_data.write_u64::<BigEndian> (_input.len () .try_into () .infallible (0xf2a4f6a1)) .infallible (0x309615c5);
+			}
+			_data.append (&mut _input);
+		}
+		
+		Ok (_data)
+	}
+}
+
+
+
+
+
+
+
+
+impl MaterialValue for Vec<u8> {
+	
+	fn decode_string (_string : String) -> FlagsResult<Self> {
+		Ok (_string.into_bytes ())
+	}
+	
+	fn decode_bytes (_bytes : Vec<u8>) -> FlagsResult<Self> {
+		Ok (_bytes)
+	}
+}
+
+
+
+
+
+
+
+
 impl EncryptFlags {
 	
 	pub fn new () -> Self {
@@ -748,6 +860,7 @@ impl PasswordFlags {
 	
 	pub fn new () -> Self {
 		Self {
+				inputs : InputsFlags::new (),
 				senders : SendersPrivateFlags::new (),
 				recipients : RecipientsPublicFlags::new (),
 				shared : SharedKeysFlags::new (),
@@ -758,6 +871,7 @@ impl PasswordFlags {
 	
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
 		
+		self.inputs.flags (_flags) ?;
 		self.senders.flags (_flags) ?;
 		self.recipients.flags (_flags) ?;
 		self.shared.flags (_flags) ?;
@@ -770,12 +884,14 @@ impl PasswordFlags {
 	pub fn arguments (self) -> FlagsResult<PasswordArguments> {
 		
 		let _common = self.common.arguments () ?;
+		let _inputs = self.inputs.arguments (_common.empty_is_missing) ?;
 		let _senders = self.senders.arguments (_common.empty_is_missing) ?;
 		let _recipients = self.recipients.arguments (_common.empty_is_missing) ?;
 		let _shared = self.shared.arguments (_common.empty_is_missing) ?;
 		let _ssh_wrappers = self.ssh_wrappers.arguments (_common.empty_is_missing) ?;
 		
 		Ok (PasswordArguments {
+				inputs : _inputs,
 				senders : _senders,
 				recipients : _recipients,
 				shared : _shared,

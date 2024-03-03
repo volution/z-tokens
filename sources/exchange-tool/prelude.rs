@@ -18,6 +18,14 @@ pub(crate) use ::z_tokens_runtime_pinentry::pinentry_password;
 pub(crate) use ::z_tokens_runtime_lkkrs::lkkrs_key_read;
 
 
+pub(crate) use ::z_tokens_runtime::crates::{
+		byteorder::{
+				BigEndian,
+				WriteBytesExt as _,
+			},
+	};
+
+
 pub(crate) use crate::flags::*;
 pub(crate) use crate::io::*;
 

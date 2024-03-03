@@ -244,7 +244,8 @@ pub fn main_password <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 		return Ok (ExitCode::SUCCESS);
 	}
 	
-	let _input = stdin_locked ();
+	// FIXME:  Fix exclusivity of `stdin` for flags and input!
+	let _input = stdin ();
 	let _output = stdout_locked ();
 	
 	main_password_with_flags (_flags, _input, _output)
@@ -270,7 +271,7 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 	
 	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x3cae7413) ?;
 	
-	let _password_input = read_at_most (_input, CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0xab674582) ?;
+	let _password_input = _arguments.inputs.data () .else_wrap (0x5d90db8d) ?;
 	
 	let mut _password_output = [0; 32];
 	
@@ -319,7 +320,8 @@ pub fn main_encrypt <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 		return Ok (ExitCode::SUCCESS);
 	}
 	
-	let _input = stdin_locked ();
+	// FIXME:  Fix exclusivity of `stdin` for flags and input!
+	let _input = stdin ();
 	let _output = stdout_locked ();
 	
 	main_encrypt_with_flags (_flags, _input, _output)
@@ -387,7 +389,8 @@ pub fn main_decrypt <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 		return Ok (ExitCode::SUCCESS);
 	}
 	
-	let _input = stdin_locked ();
+	// FIXME:  Fix exclusivity of `stdin` for flags and input!
+	let _input = stdin ();
 	let _output = stdout_locked ();
 	
 	main_decrypt_with_flags (_flags, _input, _output)
@@ -586,16 +589,20 @@ pub fn main_ssh_keys <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 
 pub fn main_ssh_wrap <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
-	let mut _key : Option<String> = None;
-	let mut _empty_is_missing : Option<bool> = None;
-	
-	{
+	let (_key, _inputs) = {
+		
+		let mut _key : Option<String> = None;
+		let mut _inputs = InputsFlags::new ();
+		let mut _empty_is_missing : Option<bool> = None;
+		
 		let mut _flags = create_flags () .else_wrap (0xeead67de) ?;
 		
 		_flags.define_single_flag_0 (&mut _key)
 				.with_flag ('k', "key")
 				.with_placeholder ("key")
 				.with_description ("shared SSH agent key handle");
+		
+		_inputs.flags (&mut _flags) .else_wrap (0x05442fc2) ?;
 		
 		_flags.define_single_flag_0 (&mut _empty_is_missing)
 				.with_flag ((), "empty-is-missing")
@@ -606,19 +613,23 @@ pub fn main_ssh_wrap <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 		if execute_flags (_flags, _arguments) .else_wrap (0x596c8a62) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
-	}
+		
+		let _empty_is_missing = _empty_is_missing.unwrap_or (false);
+		
+		let _key = _key.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
+		let _key = _key.else_wrap (0x76dd6a4e) ?;
+		
+		let _key = SshWrapperKey::decode_and_zeroize (_key) .else_wrap (0xf183991d) ?;
+		
+		let _inputs = _inputs.arguments (_empty_is_missing) .else_wrap (0xc78c58a6) ?;
+		
+		(_key, _inputs)
+	};
 	
 	let mut _agent = SshWrapperAgent::connect () .else_wrap (0x3031a84a) ?;
-	
-	let _empty_is_missing = _empty_is_missing.unwrap_or (false);
-	
-	let _key = _key.filter (|_key| ! (_key.is_empty () && _empty_is_missing));
-	let _key = _key.else_wrap (0x76dd6a4e) ?;
-	
-	let _key = SshWrapperKey::decode_and_zeroize (_key) .else_wrap (0xf183991d) ?;
 	let mut _wrapper = SshWrapper::new (_key, _agent) .else_wrap (0x373fe104) ?;
 	
-	let _wrap_input = read_at_most (stdin_locked (), CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0x3be3690b) ?;
+	let _wrap_input = _inputs.data () .else_wrap (0x99ffad05) ?;
 	
 	let mut _wrap_output = [0u8; 32];
 	_wrapper.wrap (None, &_wrap_input, &mut _wrap_output) .else_wrap (0xe5926524) ?;
