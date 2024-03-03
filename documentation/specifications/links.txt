@@ -1,4 +1,8 @@
 
+https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/
+https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/concepts.html
+https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/crypto-cli.html
+
 https://blog.cloudflare.com/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application/
 
 https://github.com/landhb/linux-keyutils
@@ -21,4 +25,6 @@ https://github.com/sts10/tidy
 https://github.com/sts10/generated-wordlists
 https://github.com/palant/pfp
 
+
+https://github.com/Tarsnap/spiped/blob/master/DESIGN.md
 
