@@ -1,38 +1,42 @@
 >>  z-tokens exchange keys --help
 
 
-  -s
-  --sender  {enabled}
+  -s --sender
+  --senders  {count}
     **  generate sender key pair
 
-  -r
-  --recipient  {enabled}
+  -r --recipient
+  --recipients  {count}
     **  generate recipient key pair
 
-  -x
-  --secret  {enabled}
+  -x --secret
+  --secrets  {count}
     **  generate shared secret
 
-  -e
-  --seed  {enabled}
+  -e --seed
+  --seeds  {count}
     **  generate shared seed
 
-  -b
-  --ballast  {enabled}
+  -b --ballast
+  --ballasts  {count}
     **  generate shared ballast
 
-  -p
-  --pin  {enabled}
+  -p --pin
+  --pins  {count}
     **  generate shared PIN
 
   -o
   --self  {enabled}
-    **  generate one key, and encode it both for sending and receiving
+    **  generate one key pair, and encode it both for sending and receiving
     !!  CAUTION
 
-  -c
+  -q --no-comments
   --comments  {enabled}
     **  output comments
+
+  --no-separators
+  --separators  {enabled}
+    **  output separators
 
   -v --version
 

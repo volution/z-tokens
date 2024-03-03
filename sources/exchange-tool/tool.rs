@@ -16,58 +16,59 @@ define_error! (pub MainError, result : MainResult);
 
 pub fn main_keys <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
-	let mut _sender_generate : Option<bool> = None;
-	let mut _recipient_generate : Option<bool> = None;
-	let mut _secret_generate : Option<bool> = None;
-	let mut _seed_generate : Option<bool> = None;
-	let mut _ballast_generate : Option<bool> = None;
-	let mut _pin_generate : Option<bool> = None;
+	let mut _sender_count : Option<usize> = None;
+	let mut _recipient_count : Option<usize> = None;
+	let mut _secret_count : Option<usize> = None;
+	let mut _seed_count : Option<usize> = None;
+	let mut _ballast_count : Option<usize> = None;
+	let mut _pin_count : Option<usize> = None;
 	let mut _self_generate : Option<bool> = None;
 	let mut _write_comments : Option<bool> = None;
+	let mut _write_separators : Option<bool> = None;
 	
 	{
 		let mut _flags = create_flags () .else_wrap (0xd885e228) ?;
 		
-		let _flag = _flags.define_complex (&mut _sender_generate);
-		_flag.define_switch ('s', (), true);
+		let _flag = _flags.define_complex (&mut _sender_count);
+		_flag.define_switch ('s', "sender", 1);
 		_flag.define_flag_0 ()
-				.with_flag ((), "sender")
-				.with_placeholder ("enabled")
+				.with_flag ((), "senders")
+				.with_placeholder ("count")
 				.with_description ("generate sender key pair");
 		
-		let _flag = _flags.define_complex (&mut _recipient_generate);
-		_flag.define_switch ('r', (), true);
+		let _flag = _flags.define_complex (&mut _recipient_count);
+		_flag.define_switch ('r', "recipient", 1);
 		_flag.define_flag_0 ()
-				.with_flag ((), "recipient")
-				.with_placeholder ("enabled")
+				.with_flag ((), "recipients")
+				.with_placeholder ("count")
 				.with_description ("generate recipient key pair");
 		
-		let _flag = _flags.define_complex (&mut _secret_generate);
-		_flag.define_switch ('x', (), true);
+		let _flag = _flags.define_complex (&mut _secret_count);
+		_flag.define_switch ('x', "secret", 1);
 		_flag.define_flag_0 ()
-				.with_flag ((), "secret")
-				.with_placeholder ("enabled")
+				.with_flag ((), "secrets")
+				.with_placeholder ("count")
 				.with_description ("generate shared secret");
 		
-		let _flag = _flags.define_complex (&mut _seed_generate);
-		_flag.define_switch ('e', (), true);
+		let _flag = _flags.define_complex (&mut _seed_count);
+		_flag.define_switch ('e', "seed", 1);
 		_flag.define_flag_0 ()
-				.with_flag ((), "seed")
-				.with_placeholder ("enabled")
+				.with_flag ((), "seeds")
+				.with_placeholder ("count")
 				.with_description ("generate shared seed");
 		
-		let _flag = _flags.define_complex (&mut _ballast_generate);
-		_flag.define_switch ('b', (), true);
+		let _flag = _flags.define_complex (&mut _ballast_count);
+		_flag.define_switch ('b', "ballast", 1);
 		_flag.define_flag_0 ()
-				.with_flag ((), "ballast")
-				.with_placeholder ("enabled")
+				.with_flag ((), "ballasts")
+				.with_placeholder ("count")
 				.with_description ("generate shared ballast");
 		
-		let _flag = _flags.define_complex (&mut _pin_generate);
-		_flag.define_switch ('p', (), true);
+		let _flag = _flags.define_complex (&mut _pin_count);
+		_flag.define_switch ('p', "pin", 1);
 		_flag.define_flag_0 ()
-				.with_flag ((), "pin")
-				.with_placeholder ("enabled")
+				.with_flag ((), "pins")
+				.with_placeholder ("count")
 				.with_description ("generate shared PIN");
 		
 		let _flag = _flags.define_complex (&mut _self_generate);
@@ -75,151 +76,235 @@ pub fn main_keys <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 		_flag.define_flag_0 ()
 				.with_flag ((), "self")
 				.with_placeholder ("enabled")
-				.with_description ("generate one key, and encode it both for sending and receiving")
+				.with_description ("generate one key pair, and encode it both for sending and receiving")
 				.with_warning ("CAUTION");
 		
 		let _flag = _flags.define_complex (&mut _write_comments);
-		_flag.define_switch ('c', (), true);
+		_flag.define_switch ('q', "no-comments", false);
 		_flag.define_flag_0 ()
 				.with_flag ((), "comments")
 				.with_placeholder ("enabled")
 				.with_description ("output comments");
+		
+		let _flag = _flags.define_complex (&mut _write_separators);
+		_flag.define_switch ((), "no-separators", false);
+		_flag.define_flag_0 ()
+				.with_flag ((), "separators")
+				.with_placeholder ("enabled")
+				.with_description ("output separators");
 		
 		if execute_flags (_flags, _arguments) .else_wrap (0x082760e4) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}
 	
-	let _any_generate_explicit = _sender_generate.is_some () || _recipient_generate.is_some () || _self_generate.is_some () || _secret_generate.is_some () || _seed_generate.is_some () || _ballast_generate.is_some () || _pin_generate.is_some ();
+	let _any_explicit =
+			_self_generate.is_some ()
+			|| _sender_count.is_some ()
+			|| _recipient_count.is_some ()
+			|| _secret_count.is_some ()
+			|| _seed_count.is_some ()
+			|| _ballast_count.is_some ()
+			|| _pin_count.is_some ();
+	
 	let _self_generate = _self_generate.unwrap_or (false);
-	let _sender_generate = _sender_generate.unwrap_or (! _any_generate_explicit || _self_generate);
-	let _recipient_generate = _recipient_generate.unwrap_or (! _any_generate_explicit || _self_generate);
-	let _secret_generate = _secret_generate.unwrap_or (! _any_generate_explicit);
-	let _seed_generate = _seed_generate.unwrap_or (! _any_generate_explicit);
-	let _ballast_generate = _ballast_generate.unwrap_or (! _any_generate_explicit);
-	let _pin_generate = _pin_generate.unwrap_or (! _any_generate_explicit);
-	let _write_comments = _write_comments.unwrap_or (true);
+	let _sender_count = _sender_count.unwrap_or (if ! _any_explicit || _self_generate { 1 } else { 0 });
+	let _recipient_count = _recipient_count.unwrap_or (if ! _any_explicit || _self_generate { 1 } else { 0 });
+	if _self_generate && (_sender_count != _recipient_count) {
+		fail! (0xb3673cb1);
+	}
+	let _keys_count = if _self_generate { _sender_count } else { _sender_count + _recipient_count };
+	
+	let _secret_count = _secret_count.unwrap_or (if ! _any_explicit { 1 } else { 0 });
+	let _seed_count = _seed_count.unwrap_or (if ! _any_explicit { 1 } else { 0 });
+	let _ballast_count = _ballast_count.unwrap_or (if ! _any_explicit { 1 } else { 0 });
+	let _pin_count = _pin_count.unwrap_or (if ! _any_explicit { 1 } else { 0 });
+	
+	let _all_count = _keys_count + _secret_count + _seed_count + _ballast_count + _pin_count;
+	if _all_count == 0 {
+		fail! (0x3c773ab0);
+	}
+	
+	let _group_count =
+			if _self_generate { 1 } else { (if _sender_count > 0 { 1 } else { 0 }) + (if _recipient_count > 0 { 1 } else { 0 }) }
+			+ if _secret_count > 0 { 1 } else { 0 }
+			+ if _seed_count > 0 { 1 } else { 0 }
+			+ if _ballast_count > 0 { 1 } else { 0 }
+			+ if _pin_count > 0 { 1 } else { 0 };
+	
+	let _write_comments = _write_comments.unwrap_or (_group_count > 1);
+	let _write_separators = _write_separators.unwrap_or (_write_comments);
+	let _write_groups = _write_separators && (_group_count > 1);
 	
 	let mut _output = Vec::with_capacity (STDOUT_BUFFER_SIZE);
 	
-	let (_sender_pair, _recipient_pair) = if _self_generate {
+	if _write_separators {
+		writeln! (&mut _output) .else_wrap (0x8f91ace9) ?;
+	}
+	if _write_groups {
+		writeln! (&mut _output) .else_wrap (0x43513292) ?;
+	}
+	
+	let (_sender_pairs, _recipient_pairs) = if _self_generate {
 			
-			let (_sender_private, _sender_public) = create_sender_pair () .else_wrap (0x82797f52) ?;
+			let mut _sender_pairs = Vec::with_capacity (_sender_count);
+			let mut _recipient_pairs = Vec::with_capacity (_sender_count);
 			
-			let _recipient_private = _sender_private.to_recipient ();
-			let _recipient_public = _sender_public.to_recipient ();
+			for _ in 0 .. _sender_count {
+				
+				let (_sender_private, _sender_public) = create_sender_pair () .else_wrap (0x82797f52) ?;
+				
+				let _recipient_private = _sender_private.to_recipient ();
+				let _recipient_public = _sender_public.to_recipient ();
+				
+				_sender_pairs.push ((_sender_private, _sender_public));
+				_recipient_pairs.push ((_recipient_private, _recipient_public));
+			}
 			
-			(
-				Some ((_sender_private, _sender_public)),
-				Some ((_recipient_private, _recipient_public)),
-			)
+			(_sender_pairs, _recipient_pairs)
 			
 		} else {
-			(
-				if _sender_generate {
-						
-						let _sender_pair = create_sender_pair () .else_wrap (0xd13990c4) ?;
-						
-						Some (_sender_pair)
-					} else { None },
-				
-				if _recipient_generate {
-						
-						let _recipient_pair = create_recipient_pair () .else_wrap (0x32a9769f) ?;
-						
-						Some (_recipient_pair)
-					} else { None },
-			)
+			
+			let mut _sender_pairs = Vec::with_capacity (_sender_count);
+			let mut _recipient_pairs = Vec::with_capacity (_recipient_count);
+			
+			for _ in 0 .. _sender_count {
+				let _sender_pair = create_sender_pair () .else_wrap (0xd13990c4) ?;
+				_sender_pairs.push (_sender_pair);
+			}
+			
+			for _ in 0 .. _recipient_count {
+				let _recipient_pair = create_recipient_pair () .else_wrap (0x32a9769f) ?;
+				_recipient_pairs.push (_recipient_pair);
+			}
+			
+			(_sender_pairs, _recipient_pairs)
 		};
 	
-	if let Some ((_sender_private, _sender_public)) = _sender_pair {
+	for (_index, (_sender_private, _sender_public)) in _sender_pairs.into_iter () .enumerate () {
 		
 		let _sender_private = _sender_private.encode () .else_wrap (0xa52ca3bc) ?;
 		let _sender_public = _sender_public.encode () .else_wrap (0x92094072) ?;
 		
 		if _write_comments {
-			writeln! (&mut _output, "## sender private key") .else_wrap (0x75658618) ?;
+			writeln! (&mut _output, "## sender private key ({})", _index + 1) .else_wrap (0x75658618) ?;
 		}
 		writeln! (&mut _output, "{}", _sender_private.deref ()) .else_wrap (0x91a2fad1) ?;
 		
 		if _write_comments {
-			writeln! (&mut _output, "## sender public key") .else_wrap (0x6cfa2380) ?;
+			writeln! (&mut _output, "## sender public key ({})", _index + 1) .else_wrap (0x6cfa2380) ?;
 		}
 		writeln! (&mut _output, "{}", _sender_public.deref ()) .else_wrap (0xd2699fde) ?;
 		
-		writeln! (&mut _output) .else_wrap (0xd2b185da) ?;
+		if _write_separators {
+			writeln! (&mut _output) .else_wrap (0xd2b185da) ?;
+		}
 	}
 	
-	if let Some ((_recipient_private, _recipient_public)) = _recipient_pair {
+	if _write_groups && (_sender_count >= 1) {
+		writeln! (&mut _output) .else_wrap (0xae1f1369) ?;
+	}
+	
+	for (_index, (_recipient_private, _recipient_public)) in _recipient_pairs.into_iter () .enumerate () {
 		
 		let _recipient_private = _recipient_private.encode () .else_wrap (0x9845b620) ?;
 		let _recipient_public = _recipient_public.encode () .else_wrap (0x7262954a) ?;
 		
 		if _write_comments {
-			writeln! (&mut _output, "## recipient private key") .else_wrap (0xad864cff) ?;
+			writeln! (&mut _output, "## recipient private key ({})", _index + 1) .else_wrap (0xad864cff) ?;
 		}
 		writeln! (&mut _output, "{}", _recipient_private.deref ()) .else_wrap (0x8f499bee) ?;
 		
 		if _write_comments {
-			writeln! (&mut _output, "## recipient public key") .else_wrap (0xc7fa9e1b) ?;
+			writeln! (&mut _output, "## recipient public key ({})", _index + 1) .else_wrap (0xc7fa9e1b) ?;
 		}
 		writeln! (&mut _output, "{}", _recipient_public.deref ()) .else_wrap (0x71da88be) ?;
 		
-		writeln! (&mut _output) .else_wrap (0xf9be83e3) ?;
+		if _write_separators {
+			writeln! (&mut _output) .else_wrap (0xf9be83e3) ?;
+		}
 	}
 	
-	if _secret_generate {
+	if _write_groups && (_recipient_count >= 1) {
+		writeln! (&mut _output) .else_wrap (0x68cdf030) ?;
+	}
+	
+	for _index in 0 .. _secret_count {
 		
 		let _secret = create_shared_secret () .else_wrap (0xf61895cb) ?;
 		
 		let _secret = _secret.encode () .else_wrap (0x1a9d778c) ?;
 		
 		if _write_comments {
-			writeln! (&mut _output, "## shared secret (optional)") .else_wrap (0xa95dbf57) ?;
+			writeln! (&mut _output, "## shared secret ({}) (optional)", _index + 1) .else_wrap (0xa95dbf57) ?;
 		}
 		writeln! (&mut _output, "{}", _secret.deref ()) .else_wrap (0x6c8c9dd9) ?;
 		
-		writeln! (&mut _output) .else_wrap (0x5cd3e5be) ?;
+		if _write_separators {
+			writeln! (&mut _output) .else_wrap (0x5cd3e5be) ?;
+		}
 	}
 	
-	if _seed_generate {
+	if _write_groups && (_secret_count >= 1) {
+		writeln! (&mut _output) .else_wrap (0xd4a7ca9b) ?;
+	}
+	
+	for _index in 0 .. _seed_count {
 		
 		let _seed = create_shared_seed () .else_wrap (0xacea5a06) ?;
 		
 		let _seed = _seed.encode () .else_wrap (0x4041ce91) ?;
 		
 		if _write_comments {
-			writeln! (&mut _output, "## shared seed (optional)") .else_wrap (0xefc86968) ?;
+			writeln! (&mut _output, "## shared seed ({}) (optional)", _index + 1) .else_wrap (0xefc86968) ?;
 		}
 		writeln! (&mut _output, "{}", _seed.deref ()) .else_wrap (0x499fe0ab) ?;
 		
-		writeln! (&mut _output) .else_wrap (0x9ebb97fe) ?;
+		if _write_separators {
+			writeln! (&mut _output) .else_wrap (0x9ebb97fe) ?;
+		}
 	}
 	
-	if _ballast_generate {
+	if _write_groups && (_seed_count >= 1) {
+		writeln! (&mut _output) .else_wrap (0x6b96f588) ?;
+	}
+	
+	for _index in 0 .. _ballast_count {
 		
 		let _ballast = create_shared_ballast () .else_wrap (0x19447431) ?;
 		
 		let _ballast = _ballast.encode () .else_wrap (0xb0ec6fff) ?;
 		
 		if _write_comments {
-			writeln! (&mut _output, "## shared ballast (optional)") .else_wrap (0xca1ddde6) ?;
+			writeln! (&mut _output, "## shared ballast ({}) (optional)", _index + 1) .else_wrap (0xca1ddde6) ?;
 		}
 		writeln! (&mut _output, "{}", _ballast.deref ()) .else_wrap (0xf4f11e97) ?;
 		
-		writeln! (&mut _output) .else_wrap (0x5f77d760) ?;
+		if _write_separators {
+			writeln! (&mut _output) .else_wrap (0x5f77d760) ?;
+		}
 	}
 	
-	if _pin_generate {
+	if _write_groups && (_ballast_count >= 1) {
+		writeln! (&mut _output) .else_wrap (0x88f90df3) ?;
+	}
+	
+	for _index in 0 .. _pin_count {
 		
 		let _pin = create_shared_pin () .else_wrap (0xcee02c7f) ?;
 		
 		if _write_comments {
-			writeln! (&mut _output, "## shared pin (optional)") .else_wrap (0x4ba07df1) ?;
+			writeln! (&mut _output, "## shared pin ({}) (optional)", _index + 1) .else_wrap (0x4ba07df1) ?;
 		}
 		writeln! (&mut _output, "{}", _pin.deref ()) .else_wrap (0x61fd4511) ?;
 		
-		writeln! (&mut _output) .else_wrap (0x10c04432) ?;
+		if _write_separators {
+			writeln! (&mut _output) .else_wrap (0x10c04432) ?;
+		}
+	}
+	
+	if _write_groups && (_pin_count >= 1) {
+		writeln! (&mut _output) .else_wrap (0x64ce63bd) ?;
 	}
 	
 	write_output (stdout_locked (), _output) .else_wrap (0x49532780) ?;
