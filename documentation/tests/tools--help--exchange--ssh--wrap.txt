@@ -1,8 +1,26 @@
 >>  z-tokens exchange ssh wrap --help
 
 
-  -k --key  {key}
-    **  shared SSH agent key handle
+  -S --ssh-wrap  {string}
+    **  shared SSH agent key handle (multiple allowed, in any order, deduplicated)
+
+  --ssh-wrap-env  {variable}
+    **  from environment
+
+  --ssh-wrap-path  {path}
+    **  from file
+
+  --ssh-wrap-fd  {fd}
+    **  from file-descriptor
+
+  --ssh-wrap-stdin
+    **  from stdin
+
+  --ssh-wrap-pinentry  {prompt}
+    **  via pinentry
+
+  --ssh-wrap-lkkrs  {selector}
+    **  from Linux Kernel key-retention-service
 
   -i --input  {string}
     **  inputs used in key derivation (multiple allowed, **order and duplicates are significant**)

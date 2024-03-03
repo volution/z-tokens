@@ -1,3 +1,3 @@
->>  z-tokens exchange ssh wrap --key ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input $'hello world!\n'
+>>  z-tokens exchange ssh wrap --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input $'hello world!\n'
 
 5c0bb4cb26ceebec42ca90cef03ff9b7824e989f5f34f15f869e562f978a4804

@@ -1,3 +1,3 @@
->>  z-tokens exchange ssh wrap --key ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input-path /dev/null
+>>  z-tokens exchange ssh wrap --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input-path /dev/null
 
 ee872af63d54b47416f28e71aed5351fd1f54ffe4038f57b61dbece99a41cf5d
