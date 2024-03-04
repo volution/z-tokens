@@ -1377,14 +1377,15 @@ fn apply_argon_ballast (_ballast_hash : &InternalBallastHash, _ballast_salt : &I
 	
 	let _ballast_count = _ballast_count as u32;
 	
-	let _m_cost_factor = 1 + _ballast_count.ilog2 ();
+	let _m_cost_factor = _ballast_count;
+	let _t_cost_factor = _ballast_count;
 	
 	argon_derive (
 			InternalBallastArgon::wrap,
 			_ballast_hash.access (),
 			_ballast_salt.access (),
 			CRYPTO_BALLAST_ARGON_M_COST * _m_cost_factor,
-			CRYPTO_BALLAST_ARGON_T_COST,
+			CRYPTO_BALLAST_ARGON_T_COST * _t_cost_factor,
 		) .else_wrap (0x5e8b2b57)
 }
 
