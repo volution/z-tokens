@@ -43,6 +43,14 @@ impl <Value : Sized + 'static> RbRef<Value> {
 		RbRef::Static (_value)
 	}
 	
+	pub fn new_copy (_value : &Value) -> Self where Value : Copy {
+		RbRef::new (*_value)
+	}
+	
+	pub fn new_clone (_value : &Value) -> Self where Value : Clone {
+		RbRef::new (Clone::clone (_value))
+	}
+	
 	pub fn clone (&self) -> Self {
 		match self {
 			RbRef::Static (_value) =>
@@ -101,6 +109,14 @@ impl <Value : Sized + 'static> Rb<Value> {
 	
 	pub const fn new_static (_value : &'static Value) -> Self {
 		Self (RbRef::new_static (_value))
+	}
+	
+	pub fn new_copy (_value : &Value) -> Self where Value : Copy {
+		Self (RbRef::new_copy (_value))
+	}
+	
+	pub fn new_clone (_value : &Value) -> Self where Value : Clone {
+		Self (RbRef::new_clone (_value))
 	}
 	
 	pub fn clone (&self) -> Self {
