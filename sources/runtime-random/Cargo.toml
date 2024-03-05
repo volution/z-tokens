@@ -59,5 +59,6 @@ z-tokens-runtime = { path = "../runtime", optional = false, default-features = f
 vrl-random = { version = "*", optional = false, default-features = false, features = [] }
 
 rand = { version = "^0.8", optional = false, default-features = false, features = ["std", "getrandom"] }
+rand_chacha = { version = "^0.3", optional = false, default-features = false, features = [] }
 
 

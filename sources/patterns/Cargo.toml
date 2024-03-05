@@ -156,5 +156,6 @@ zt-patterns-flake = []
 
 z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
 z-tokens-runtime-random = { path = "../runtime-random", optional = false, default-features = false, features = [] }
+z-tokens-runtime-hashes = { path = "../runtime-hashes", optional = false, default-features = false, features = [] }
 
 

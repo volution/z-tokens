@@ -2297,6 +2297,7 @@ name = "z-tokens-patterns"
 version = "0.4.0"
 dependencies = [
  "z-tokens-runtime",
+ "z-tokens-runtime-hashes",
  "z-tokens-runtime-random",
 ]
 
@@ -2410,6 +2411,7 @@ name = "z-tokens-runtime-random"
 version = "0.4.0"
 dependencies = [
  "rand 0.8.5",
+ "rand_chacha 0.3.1",
  "vrl-random",
  "z-tokens-runtime",
 ]

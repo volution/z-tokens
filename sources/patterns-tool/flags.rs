@@ -16,10 +16,11 @@ pub(crate) struct RandomizerFlags {
 
 
 #[ derive (Debug) ]
-#[ derive (Copy, Clone) ]
+#[ derive (Clone) ]
 pub(crate) enum RandomizerSource {
 	Os,
 	Testing,
+	ChaCha20 (String),
 }
 
 impl FlagValue for RandomizerSource {}
@@ -52,6 +53,11 @@ impl RandomizerFlags {
 				.with_flag ((), "random-testing")
 				.with_description ("unsafe constant generator")
 				.with_warning ("DO-NOT-USE");
+		_flag.define_flag_with_wrapper_0 (RandomizerSource::ChaCha20)
+				.with_flag ((), "random-chacha20")
+				.with_placeholder ("key")
+				.with_description ("deterministic generator")
+				.with_warning ("EXPERIMENTAL");
 		Ok (())
 	}
 	
@@ -61,6 +67,8 @@ impl RandomizerFlags {
 				Box::new (OsRandomizer::from_os () .else_wrap (0x893f3ab5) ?),
 			RandomizerSource::Testing =>
 				Box::new (SeedRandomizer::for_testing () .else_wrap (0x07578413) ?),
+			RandomizerSource::ChaCha20 (_key) =>
+				Box::new (ChaCha20Randomizer::new_with_key (_key.as_bytes ()) .else_wrap (0x07578413) ?),
 		};
 		Ok (_randomizer)
 	}

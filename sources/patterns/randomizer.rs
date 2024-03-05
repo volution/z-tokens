@@ -10,9 +10,17 @@ use ::z_tokens_runtime_random::{
 		
 		crates::rand::RngCore,
 		crates::rand::SeedableRng,
+		crates::rand_chacha::ChaCha20Rng,
 		
 		crates::rand::rngs::OsRng,
 		crates::rand::rngs::StdRng,
+		
+	};
+
+
+use ::z_tokens_runtime_hashes::{
+		
+		crates::blake3::hash as blake3_hash,
 		
 	};
 
@@ -53,6 +61,12 @@ pub struct OsRandomizer {
 pub struct SeedRandomizer {
 	delegate : RngRandomizer<StdRng>,
 	seed : u64,
+}
+
+
+pub struct ChaCha20Randomizer {
+	delegate : RngRandomizer<ChaCha20Rng>,
+	seed : [u8; 32],
 }
 
 
@@ -150,6 +164,58 @@ impl Randomizer for SeedRandomizer {
 	
 	fn reset (&mut self) -> RandomResult {
 		self.delegate.rng = StdRng::seed_from_u64 (self.seed);
+		Ok (())
+	}
+	
+	fn advance (&mut self) -> RandomResult {
+		Ok (())
+	}
+}
+
+
+
+
+impl ChaCha20Randomizer {
+	
+	pub fn new_with_key (_key : &[u8]) -> RandomResult<Self> {
+		let _seed = blake3_hash (_key) .as_bytes () .clone ();
+		Self::new_with_seed (_seed)
+	}
+	
+	pub fn new_with_seed (_seed : [u8; 32]) -> RandomResult<Self> {
+		let _delegate = RngRandomizer {
+				rng : ChaCha20Rng::from_seed (_seed),
+				timestamp : None,
+			};
+		let _self = Self {
+				delegate : _delegate,
+				seed : _seed,
+			};
+		Ok (_self)
+	}
+}
+
+
+impl Randomizer for ChaCha20Randomizer {
+	
+	fn choose (&mut self, _count : usize) -> RandomResult<usize> {
+		self.delegate.choose (_count)
+	}
+	
+	fn bytes (&mut self, _buffer : &mut [u8]) -> RandomResult {
+		self.delegate.bytes (_buffer)
+	}
+	
+	fn value_u128 (&mut self) -> RandomResult<u128> {
+		self.delegate.value_u128 ()
+	}
+	
+	fn timestamp (&mut self) -> RandomResult<u128> {
+		self.delegate.timestamp ()
+	}
+	
+	fn reset (&mut self) -> RandomResult {
+		self.delegate.rng = ChaCha20Rng::from_seed (self.seed);
 		Ok (())
 	}
 	
