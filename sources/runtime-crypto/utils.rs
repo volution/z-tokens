@@ -138,7 +138,7 @@ pub fn x25519_dhe <WC, WO> (
 	let _sender_public = if _encryption { _private_public.as_bytes () } else { _public.as_bytes () };
 	let _recipient_public = if _encryption { _public.as_bytes () } else { _private_public.as_bytes () };
 	
-	let _shared_key = blake3_derive_key (
+	let _shared_key = blake3_hash (
 			_wrapper,
 			_purpose,
 			&[
@@ -147,7 +147,6 @@ pub fn x25519_dhe <WC, WO> (
 				_recipient_public,
 			],
 			&[],
-			None,
 		);
 	
 	Ok (_shared_key)
@@ -160,25 +159,40 @@ pub fn x25519_dhe <WC, WO> (
 
 
 
-pub fn blake3_derive_key <const NF : usize, const NV : usize, WC, WO> (
+pub fn blake3_hash <const NF : usize, const NV : usize, WC, WO> (
 		_wrapper : WC,
 		_purpose : &'static str,
 		_fixed_elements : &[&[u8; 32]; NF],
 		_variable_elements : &[&[u8]; NV],
-		_index : Option<u64>,
 	) -> WO
 	where
 		WC : Fn ([u8; 32]) -> WO,
 {
 	let mut _hasher = blake3::Hasher::new_derive_key (_purpose);
 	
-	blake3_update (&mut _hasher, _fixed_elements, _variable_elements, _index);
+	blake3_update_fixed (&mut _hasher, _fixed_elements.iter () .cloned ());
+	blake3_update_variable (&mut _hasher, _variable_elements.iter () .cloned ());
 	
-	let _hash : [u8; 32] = _hasher.finalize () .into ();
-	
-	let _wrapped = _wrapper (_hash);
-	_wrapped
+	blake3_finalize (_hasher, _wrapper)
 }
+
+
+pub fn blake3_hash_join <'a, WC, WO> (
+		_wrapper : WC,
+		_purpose : &'static str,
+		_elements : impl Iterator<Item = &'a [u8; 32]>,
+	) -> WO
+	where
+		WC : Fn ([u8; 32]) -> WO,
+{
+	let mut _hasher = blake3::Hasher::new_derive_key (_purpose);
+	
+	blake3_update_fixed (&mut _hasher, _elements);
+	
+	blake3_finalize (_hasher, _wrapper)
+}
+
+
 
 
 pub fn blake3_keyed_hash <const NF : usize, const NV : usize, WC, WO> (
@@ -186,43 +200,53 @@ pub fn blake3_keyed_hash <const NF : usize, const NV : usize, WC, WO> (
 		_key : &[u8; 32],
 		_fixed_elements : &[&[u8; 32]; NF],
 		_variable_elements : &[&[u8]; NV],
-		_index : Option<u64>,
 	) -> WO
 	where
 		WC : Fn ([u8; 32]) -> WO,
 {
 	let mut _hasher = blake3::Hasher::new_keyed (_key);
 	
-	blake3_update (&mut _hasher, _fixed_elements, _variable_elements, _index);
+	blake3_update_fixed (&mut _hasher, _fixed_elements.iter () .cloned ());
+	blake3_update_variable (&mut _hasher, _variable_elements.iter () .cloned ());
 	
-	let _hash : [u8; 32] = _hasher.finalize () .into ();
+	blake3_finalize (_hasher, _wrapper)
+}
+
+
+pub fn blake3_keyed_hash_join <'a, WC, WO> (
+		_wrapper : WC,
+		_key : &[u8; 32],
+		_elements : impl Iterator<Item = &'a [u8; 32]>,
+	) -> WO
+	where
+		WC : Fn ([u8; 32]) -> WO,
+{
+	let mut _hasher = blake3::Hasher::new_keyed (_key);
 	
-	let _wrapped = _wrapper (_hash);
-	_wrapped
+	blake3_update_fixed (&mut _hasher, _elements);
+	
+	blake3_finalize (_hasher, _wrapper)
 }
 
 
 
 
-pub fn blake3_update <const NF : usize, const NV : usize> (
+fn blake3_update_fixed <'a> (
 		_hasher : &mut blake3::Hasher,
-		_fixed_elements : &[&[u8; 32]; NF],
-		_variable_elements : &[&[u8]; NV],
-		_index : Option<u64>,
+		_fixed_elements : impl Iterator<Item = &'a [u8; 32]>,
 	) -> ()
 {
-	if let Some (_index) = _index {
-		{
-			let mut _bytes = [0u8; 8];
-			BigEndian::write_u64 (&mut _bytes, _index);
-			_hasher.update (&_bytes);
-		}
-	}
-	
 	for _fixed_element in _fixed_elements {
 		_hasher.update (_fixed_element.as_slice ());
 	}
-	
+}
+
+
+fn blake3_update_variable <'a> (
+		_hasher : &mut blake3::Hasher,
+		_variable_elements : impl Iterator<Item = &'a [u8]>,
+	) -> ()
+{
 	for _variable_element in _variable_elements {
 		
 		let _size : u64 = _variable_element.len () .try_into () .else_panic (0xe5d3933d);
@@ -240,20 +264,13 @@ pub fn blake3_update <const NF : usize, const NV : usize> (
 
 
 
-pub fn blake3_derive_key_join <'a, WC, WO> (
+fn blake3_finalize <WC, WO> (
+		_hasher : blake3::Hasher,
 		_wrapper : WC,
-		_purpose : &'static str,
-		_elements : impl Iterator<Item = &'a [u8; 32]>,
 	) -> WO
 	where
 		WC : Fn ([u8; 32]) -> WO,
 {
-	let mut _hasher = blake3::Hasher::new_derive_key (_purpose);
-	
-	for _element in _elements {
-		_hasher.update (_element);
-	}
-	
 	let _hash : [u8; 32] = _hasher.finalize () .into ();
 	
 	let _wrapped = _wrapper (_hash);

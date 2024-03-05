@@ -52,7 +52,7 @@ use crate::keys::{
 
 use ::z_tokens_runtime_crypto::{
 		
-		blake3_derive_key,
+		blake3_hash,
 		
 		CryptographicMaterial as _,
 		CryptographicInput as _,
@@ -229,15 +229,14 @@ impl SshWrapper {
 		
 		let _key_hash = &_key.key_hash;
 		
-		let _schema_hash = blake3_derive_key (
+		let _schema_hash = blake3_hash (
 				InternalSshWrapSchemaHash::wrap,
 				_schema.unwrap_or (SSH_WRAP_SCHEMA_UNDEFINED),
 				&[],
 				&[],
-				None,
 			);
 		
-		let _input_hash = blake3_derive_key (
+		let _input_hash = blake3_hash (
 				InternalSshWrapInputHash::wrap,
 				SSH_WRAP_INPUT_HASH_PURPOSE,
 				&[
@@ -247,7 +246,6 @@ impl SshWrapper {
 				&[
 					_input.access (),
 				],
-				None,
 			);
 		
 		let _outcome = {
@@ -292,7 +290,7 @@ impl SshWrapper {
 		
 		drop! (_key);
 		
-		let _output_hash = blake3_derive_key (
+		let _output_hash = blake3_hash (
 				InternalSshWrapOutputHash::wrap,
 				SSH_WRAP_OUTPUT_HASH_PURPOSE,
 				&[
@@ -303,7 +301,6 @@ impl SshWrapper {
 				&[
 					&_signature_bytes,
 				],
-				None,
 			);
 		
 		_output.copy_from_slice (_output_hash.access ());
@@ -515,7 +512,7 @@ impl SshWrapperAgent {
 
 fn key_hash (_key_algorithm : &KeyAlgorithm, _signature_algorithm : &SignatureAlgorithm, _public_key_bytes : &[u8]) -> InternalSshWrapKeyHash {
 	
-	let _key_hash = blake3_derive_key (
+	let _key_hash = blake3_hash (
 			InternalSshWrapKeyHash::wrap,
 			SSH_WRAP_KEY_HASH_PURPOSE,
 			&[],
@@ -524,7 +521,6 @@ fn key_hash (_key_algorithm : &KeyAlgorithm, _signature_algorithm : &SignatureAl
 				_signature_algorithm.identifier () .as_bytes (),
 				_public_key_bytes,
 			],
-			None,
 		);
 	
 	_key_hash
