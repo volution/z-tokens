@@ -27,6 +27,7 @@ mod crtk {
 			object::ObjectClass,
 			object::ObjectHandle,
 			mechanism::Mechanism,
+			types::AuthPin,
 		};
 	
 	pub(super) use ::cryptoki_sys::{
@@ -99,7 +100,9 @@ pub fn main_pkcs11 (_arguments : Vec<String>) -> MainResult<ExitCode> {
 	let _provider_library = Path::new ("/usr/lib64/pkcs11/libsofthsm2.so");
 	// let _provider_library = Path::new ("/usr/lib64/pkcs11/opensc-pkcs11.so");
 	// let _provider_library = Path::new ("/usr/lib64/libp11-kit.so.0");
+	
 	let _slot_pin = "0000";
+	let _slot_pin = crtk::AuthPin::from_str (_slot_pin) .infallible (0xdb35e653);
 	
 	
 	let mut _provider = crtk::Provider::new (_provider_library) .else_wrap (0xfef3d2da) ?;
@@ -188,7 +191,7 @@ pub fn main_pkcs11 (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		let mut _session = _provider.open_ro_session (_slot) .else_wrap (0x61eeccf1) ?;
 		
-		_session.login (crtk::UserType::User, Some (_slot_pin)) .else_wrap (0xe928680a) ?;
+		_session.login (crtk::UserType::User, Some (&_slot_pin)) .else_wrap (0xe928680a) ?;
 		
 		
 		let _objects = _session.find_objects (&[]) .else_wrap (0x9e90942c) ?;
@@ -502,7 +505,7 @@ pub fn main_pkcs11 (_arguments : Vec<String>) -> MainResult<ExitCode> {
 		
 		let mut _session = _provider.open_ro_session (_slot) .else_wrap (0x49a812d6) ?;
 		
-		_session.login (crtk::UserType::User, Some (_slot_pin)) .else_wrap (0x12efc15f) ?;
+		_session.login (crtk::UserType::User, Some (&_slot_pin)) .else_wrap (0x12efc15f) ?;
 		
 		
 		let mut _private_attributes = vec! [
