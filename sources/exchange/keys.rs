@@ -49,10 +49,29 @@ pub struct SharedSecret (Rb<[u8; 32]>);
 pub struct SharedSeed (Rb<[u8; 32]>);
 pub struct SharedBallast (Rb<[u8; 32]>);
 
+pub struct SharedSecretRaw (Rb<Vec<u8>>);
+pub struct SharedSeedRaw (Rb<Vec<u8>>);
+pub struct SharedBallastRaw (Rb<Vec<u8>>);
+
 pub struct Associated (Rb<Vec<u8>>);
 pub struct SharedPin (Rb<Vec<u8>>);
 
 pub struct PasswordOutput (Rb<[u8; 32]>);
+
+
+
+
+pub trait SharedSecretTrait {
+	fn access_bytes_slice (&self) -> &[u8];
+}
+
+pub trait SharedSeedTrait {
+	fn access_bytes_slice (&self) -> &[u8];
+}
+
+pub trait SharedBallastTrait {
+	fn access_bytes_slice (&self) -> &[u8];
+}
 
 
 
@@ -218,6 +237,10 @@ impl RecipientPublicKey {
 
 
 
+
+
+
+
 impl SharedSecret {
 	
 	pub fn decode_and_zeroize (_string : String) -> KeyEncodingResult<Self> {
@@ -298,6 +321,73 @@ impl SharedBallast {
 		self.access_bytes () .as_slice ()
 	}
 }
+
+
+
+
+impl SharedSecretRaw {
+	
+	pub fn new (_data : Vec<u8>) -> Self {
+		Self (Rb::new (_data))
+	}
+	
+	pub fn access_bytes_slice (&self) -> &[u8] {
+		&self.0
+	}
+}
+
+
+impl SharedSeedRaw {
+	
+	pub fn new (_data : Vec<u8>) -> Self {
+		Self (Rb::new (_data))
+	}
+	
+	pub fn access_bytes_slice (&self) -> &[u8] {
+		&self.0
+	}
+}
+
+
+impl SharedBallastRaw {
+	
+	pub fn new (_data : Vec<u8>) -> Self {
+		Self (Rb::new (_data))
+	}
+	
+	pub fn access_bytes_slice (&self) -> &[u8] {
+		&self.0
+	}
+}
+
+
+
+
+impl SharedSecretTrait for SharedSecret {
+	fn access_bytes_slice (&self) -> &[u8] { self.access_bytes_slice () }
+}
+impl SharedSecretTrait for SharedSecretRaw {
+	fn access_bytes_slice (&self) -> &[u8] { self.access_bytes_slice () }
+}
+
+
+impl SharedSeedTrait for SharedSeed {
+	fn access_bytes_slice (&self) -> &[u8] { self.access_bytes_slice () }
+}
+impl SharedSeedTrait for SharedSeedRaw {
+	fn access_bytes_slice (&self) -> &[u8] { self.access_bytes_slice () }
+}
+
+
+impl SharedBallastTrait for SharedBallast {
+	fn access_bytes_slice (&self) -> &[u8] { self.access_bytes_slice () }
+}
+impl SharedBallastTrait for SharedBallastRaw {
+	fn access_bytes_slice (&self) -> &[u8] { self.access_bytes_slice () }
+}
+
+
+
 
 
 

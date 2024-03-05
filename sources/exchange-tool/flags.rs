@@ -90,11 +90,11 @@ pub(crate) struct InputsFlags {
 
 
 pub(crate) struct SharedKeysArguments {
-	pub associated : MaterialSources<Associated>,
-	pub secrets : MaterialSources<SharedSecret>,
-	pub pins : MaterialSources<SharedPin>,
-	pub seeds : MaterialSources<SharedSeed>,
-	pub ballasts : MaterialSources<SharedBallast>,
+	pub associated : AssociatedArguments,
+	pub secrets : SecretsArguments,
+	pub pins : PinsArguments,
+	pub seeds : SeedsArguments,
+	pub ballasts : BallastsArguments,
 	pub derivation_loops : Option<NonZeroU64>,
 }
 
@@ -228,24 +228,56 @@ pub(crate) struct RecipientsPublicFlags {
 }
 
 
+
+
+pub(crate) struct AssociatedArguments {
+	pub tokens : MaterialSources<Associated>,
+}
+
 pub(crate) struct AssociatedFlags {
 	pub materials : MaterialFlags,
 }
 
+
+pub(crate) struct SecretsArguments {
+	pub encoded : MaterialSources<SharedSecret>,
+	pub raw : MaterialSources<SharedSecretRaw>,
+}
+
 pub(crate) struct SecretsFlags {
 	pub materials : MaterialFlags,
+	pub materials_raw : MaterialFlags,
+}
+
+
+pub(crate) struct PinsArguments {
+	pub tokens : MaterialSources<SharedPin>,
 }
 
 pub(crate) struct PinsFlags {
 	pub materials : MaterialFlags,
 }
 
+
+pub(crate) struct SeedsArguments {
+	pub encoded : MaterialSources<SharedSeed>,
+	pub raw : MaterialSources<SharedSeedRaw>,
+}
+
 pub(crate) struct SeedsFlags {
 	pub materials : MaterialFlags,
+	pub materials_raw : MaterialFlags,
+}
+
+
+pub(crate) struct BallastsArguments {
+	pub encoded : MaterialSources<SharedBallast>,
+	pub raw : MaterialSources<SharedBallastRaw>,
 }
 
 pub(crate) struct BallastsFlags {
 	pub materials : MaterialFlags,
+	pub materials_raw : MaterialFlags,
 }
 
 
@@ -274,7 +306,7 @@ impl MaterialFlags {
 	pub fn flags <'a> (
 				&'a mut self,
 				_flags : &mut FlagsParserBuilder<'a>,
-				_short_values : char,
+				_short_values : Option<char>,
 				_long_values : &'static str,
 				_long_environment : &'static str,
 				_long_file : &'static str,
@@ -341,7 +373,7 @@ impl SendersPrivateFlags {
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
 		self.materials.flags (
 				_flags,
-				's',
+				Some ('s'),
 				"sender", "sender-env", "sender-path", "sender-fd", "sender-stdin", "sender-pinentry", "sender-lkkrs",
 				"sender private key (multiple allowed, in any order, deduplicated)",
 			)
@@ -372,7 +404,7 @@ impl SendersPublicFlags {
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
 		self.materials.flags (
 				_flags,
-				's',
+				Some ('s'),
 				"sender", "sender-env", "sender-path", "sender-fd", "sender-stdin", "sender-pinentry", "sender-lkkrs",
 				"sender public key (multiple allowed, in any order, deduplicated)",
 			)
@@ -403,7 +435,7 @@ impl RecipientsPrivateFlags {
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
 		self.materials.flags (
 				_flags,
-				'r',
+				Some ('r'),
 				"recipient", "recipient-env", "recipient-path", "recipient-fd", "recipient-stdin", "recipient-pinentry", "recipient-lkkrs",
 				"recipient private key (multiple allowed, in any order, deduplicated)",
 			)
@@ -434,7 +466,7 @@ impl RecipientsPublicFlags {
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
 		self.materials.flags (
 				_flags,
-				'r',
+				Some ('r'),
 				"recipient", "recipient-env", "recipient-path", "recipient-fd", "recipient-stdin", "recipient-pinentry", "recipient-lkkrs",
 				"recipient public key (multiple allowed, in any order, deduplicated)",
 			)
@@ -456,6 +488,14 @@ impl MaterialValue for RecipientPublicKey {
 
 
 
+impl AssociatedArguments {
+	
+	pub fn collect (self) -> FlagsResult<Vec<Associated>> {
+		self.tokens.decode ()
+	}
+}
+
+
 impl AssociatedFlags {
 	
 	pub fn new () -> Self {
@@ -465,14 +505,17 @@ impl AssociatedFlags {
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
 		self.materials.flags (
 				_flags,
-				'a',
+				Some ('a'),
 				"associated", "associated-env", "associated-path", "associated-fd", "associated-stdin", "associated-pinentry", "associated-lkkrs",
 				"associated data (multiple allowed, **order and duplicates are significant**)",
 			)
 	}
 	
-	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<Associated>> {
-		self.materials.collect (_empty_is_missing)
+	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<AssociatedArguments> {
+		let _tokens = self.materials.collect (_empty_is_missing) ?;
+		Ok (AssociatedArguments {
+				tokens : _tokens,
+			})
 	}
 }
 
@@ -491,23 +534,55 @@ impl MaterialValue for Associated {
 
 
 
+impl SecretsArguments {
+	
+	pub fn collect (self) -> FlagsResult<Vec<Box<dyn SharedSecretTrait>>> {
+		let _encoded = self.encoded.decode () ?;
+		let _raw = self.raw.decode () ?;
+		let _merged = Iterator::chain (
+				_encoded.into_iter () .map (|_value| Box::new (_value) as Box<dyn SharedSecretTrait>),
+				_raw.into_iter () .map (|_value| Box::new (_value) as Box<dyn SharedSecretTrait>),
+			);
+		Ok (_merged.collect ())
+	}
+}
+
+
 impl SecretsFlags {
 	
 	pub fn new () -> Self {
-		Self { materials : MaterialFlags::new () }
+		Self {
+				materials : MaterialFlags::new (),
+				materials_raw : MaterialFlags::new (),
+			 }
 	}
 	
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		
 		self.materials.flags (
 				_flags,
-				'x',
+				Some ('x'),
 				"secret", "secret-env", "secret-path", "secret-fd", "secret-stdin", "secret-pinentry", "secret-lkkrs",
 				"shared secret, for additional security (multiple allowed, in any order, deduplicated)",
-			)
+			) ?;
+		
+		self.materials_raw.flags (
+				_flags,
+				None,
+				"raw-secret", "raw-secret-env", "raw-secret-path", "raw-secret-fd", "raw-secret-stdin", "raw-secret-pinentry", "raw-secret-lkkrs",
+				"(raw) shared secret, for additional security (multiple allowed, in any order, deduplicated)",
+			) ?;
+		
+		Ok (())
 	}
 	
-	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<SharedSecret>> {
-		self.materials.collect (_empty_is_missing)
+	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<SecretsArguments> {
+		let _encoded = self.materials.collect (_empty_is_missing) ?;
+		let _raw = self.materials_raw.collect (_empty_is_missing) ?;
+		Ok (SecretsArguments {
+				encoded : _encoded,
+				raw : _raw,
+			})
 	}
 }
 
@@ -520,6 +595,26 @@ impl MaterialValue for SharedSecret {
 }
 
 
+impl MaterialValue for SharedSecretRaw {
+	
+	fn decode_string (_string : String) -> FlagsResult<Self> {
+		Self::decode_bytes (_string.into_bytes ())
+	}
+	
+	fn decode_bytes (_bytes : Vec<u8>) -> FlagsResult<Self> {
+		Ok (Self::new (_bytes))
+	}
+}
+
+
+
+
+impl PinsArguments {
+	
+	pub fn collect (self) -> FlagsResult<Vec<SharedPin>> {
+		self.tokens.decode ()
+	}
+}
 
 
 impl PinsFlags {
@@ -531,14 +626,17 @@ impl PinsFlags {
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
 		self.materials.flags (
 				_flags,
-				'e',
+				Some ('e'),
 				"pin", "pin-env", "pin-path", "pin-fd", "pin-stdin", "pin-pinentry", "pin-lkkrs",
 				"shared PIN, for **WEAK** additional security (multiple allowed, in any order, deduplicated)",
 			)
 	}
 	
-	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<SharedPin>> {
-		self.materials.collect (_empty_is_missing)
+	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<PinsArguments> {
+		let _tokens = self.materials.collect (_empty_is_missing) ?;
+		Ok (PinsArguments {
+				tokens : _tokens,
+			})
 	}
 }
 
@@ -557,23 +655,55 @@ impl MaterialValue for SharedPin {
 
 
 
+impl SeedsArguments {
+	
+	pub fn collect (self) -> FlagsResult<Vec<Box<dyn SharedSeedTrait>>> {
+		let _encoded = self.encoded.decode () ?;
+		let _raw = self.raw.decode () ?;
+		let _merged = Iterator::chain (
+				_encoded.into_iter () .map (|_value| Box::new (_value) as Box<dyn SharedSeedTrait>),
+				_raw.into_iter () .map (|_value| Box::new (_value) as Box<dyn SharedSeedTrait>),
+			);
+		Ok (_merged.collect ())
+	}
+}
+
+
 impl SeedsFlags {
 	
 	pub fn new () -> Self {
-		Self { materials : MaterialFlags::new () }
+		Self {
+				materials : MaterialFlags::new (),
+				materials_raw : MaterialFlags::new (),
+			}
 	}
 	
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		
 		self.materials.flags (
 				_flags,
-				'e',
+				Some ('e'),
 				"seed", "seed-env", "seed-path", "seed-fd", "seed-stdin", "seed-pinentry", "seed-lkkrs",
 				"shared seed, for additional security (multiple allowed, in any order, deduplicated)",
-			)
+			) ?;
+		
+		self.materials_raw.flags (
+				_flags,
+				None,
+				"raw-seed", "raw-seed-env", "raw-seed-path", "raw-seed-fd", "raw-seed-stdin", "raw-seed-pinentry", "raw-seed-lkkrs",
+				"(raw) shared seed, for additional security (multiple allowed, in any order, deduplicated)",
+			) ?;
+		
+		Ok (())
 	}
 	
-	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<SharedSeed>> {
-		self.materials.collect (_empty_is_missing)
+	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<SeedsArguments> {
+		let _encoded = self.materials.collect (_empty_is_missing) ?;
+		let _raw = self.materials_raw.collect (_empty_is_missing) ?;
+		Ok (SeedsArguments {
+				encoded : _encoded,
+				raw : _raw,
+			})
 	}
 }
 
@@ -586,25 +716,69 @@ impl MaterialValue for SharedSeed {
 }
 
 
+impl MaterialValue for SharedSeedRaw {
+	
+	fn decode_string (_string : String) -> FlagsResult<Self> {
+		Self::decode_bytes (_string.into_bytes ())
+	}
+	
+	fn decode_bytes (_bytes : Vec<u8>) -> FlagsResult<Self> {
+		Ok (Self::new (_bytes))
+	}
+}
+
+
+
+
+impl BallastsArguments {
+	
+	pub fn collect (self) -> FlagsResult<Vec<Box<dyn SharedBallastTrait>>> {
+		let _encoded = self.encoded.decode () ?;
+		let _raw = self.raw.decode () ?;
+		let _merged = Iterator::chain (
+				_encoded.into_iter () .map (|_value| Box::new (_value) as Box<dyn SharedBallastTrait>),
+				_raw.into_iter () .map (|_value| Box::new (_value) as Box<dyn SharedBallastTrait>),
+			);
+		Ok (_merged.collect ())
+	}
+}
 
 
 impl BallastsFlags {
 	
 	pub fn new () -> Self {
-		Self { materials : MaterialFlags::new () }
+		Self {
+				materials : MaterialFlags::new (),
+				materials_raw : MaterialFlags::new (),
+			}
 	}
 	
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		
 		self.materials.flags (
 				_flags,
-				'b',
+				Some ('b'),
 				"ballast", "ballast-env", "ballast-path", "ballast-fd", "ballast-stdin", "ballast-pinentry", "ballast-lkkrs",
 				"shared ballast, for additional security (multiple allowed, in any order, deduplicated)",
-			)
+			) ?;
+		
+		self.materials_raw.flags (
+				_flags,
+				None,
+				"raw-ballast", "raw-ballast-env", "raw-ballast-path", "raw-ballast-fd", "raw-ballast-stdin", "raw-ballast-pinentry", "raw-ballast-lkkrs",
+				"(raw) shared ballast, for additional security (multiple allowed, in any order, deduplicated)",
+			) ?;
+		
+		Ok (())
 	}
 	
-	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<SharedBallast>> {
-		self.materials.collect (_empty_is_missing)
+	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<BallastsArguments> {
+		let _encoded = self.materials.collect (_empty_is_missing) ?;
+		let _raw = self.materials_raw.collect (_empty_is_missing) ?;
+		Ok (BallastsArguments {
+				encoded : _encoded,
+				raw : _raw,
+			})
 	}
 }
 
@@ -613,6 +787,18 @@ impl MaterialValue for SharedBallast {
 	
 	fn decode_string (_string : String) -> FlagsResult<Self> {
 		Self::decode_and_zeroize (_string) .else_wrap (0xfe1c8e20)
+	}
+}
+
+
+impl MaterialValue for SharedBallastRaw {
+	
+	fn decode_string (_string : String) -> FlagsResult<Self> {
+		Self::decode_bytes (_string.into_bytes ())
+	}
+	
+	fn decode_bytes (_bytes : Vec<u8>) -> FlagsResult<Self> {
+		Ok (Self::new (_bytes))
 	}
 }
 
@@ -630,7 +816,7 @@ impl SshWrappersFlags {
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
 		self.keys.flags (
 				_flags,
-				'S',
+				Some ('S'),
 				"ssh-wrap", "ssh-wrap-env", "ssh-wrap-path", "ssh-wrap-fd", "ssh-wrap-stdin", "ssh-wrap-pinentry", "ssh-wrap-lkkrs",
 				"shared SSH agent key handle (multiple allowed, in any order, deduplicated)",
 			)
@@ -680,7 +866,7 @@ impl InputsFlags {
 		
 		self.inputs.flags (
 				_flags,
-				'i',
+				Some ('i'),
 				"input", "input-env", "input-path", "input-fd", "input-stdin", "input-pinentry", "input-lkkrs",
 				"inputs used in key derivation (multiple allowed, **order and duplicates are significant**)",
 			) ?;

@@ -347,11 +347,11 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 	
 	let _senders = _arguments.senders.decode () .else_wrap (0xd5bc0620) ?;
 	let _recipients = _arguments.recipients.decode () .else_wrap (0xc20dc7fd) ?;
-	let _associated = _arguments.shared.associated.decode () .else_wrap (0x5b75b627) ?;
-	let _secrets = _arguments.shared.secrets.decode () .else_wrap (0x80159d9a) ?;
-	let _pins = _arguments.shared.pins.decode () .else_wrap (0x12ba09e4) ?;
-	let _seeds = _arguments.shared.seeds.decode () .else_wrap (0x4a0b1e18) ?;
-	let _ballasts = _arguments.shared.ballasts.decode () .else_wrap (0x7ab43c45) ?;
+	let _associated = _arguments.shared.associated.collect () .else_wrap (0x5b75b627) ?;
+	let _secrets = _arguments.shared.secrets.collect () .else_wrap (0x80159d9a) ?;
+	let _pins = _arguments.shared.pins.collect () .else_wrap (0x12ba09e4) ?;
+	let _seeds = _arguments.shared.seeds.collect () .else_wrap (0x4a0b1e18) ?;
+	let _ballasts = _arguments.shared.ballasts.collect () .else_wrap (0x7ab43c45) ?;
 	let _derivation_loops = _arguments.shared.derivation_loops;
 	
 	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x3cae7413) ?;
@@ -365,10 +365,10 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 			_senders.iter (),
 			_recipients.iter (),
 			_associated.iter (),
-			_secrets.iter (),
+			_secrets.iter () .map (Box::deref),
 			_pins.iter (),
-			_seeds.iter (),
-			_ballasts.iter (),
+			_seeds.iter () .map (Box::deref),
+			_ballasts.iter () .map (Box::deref),
 			_derivation_loops,
 			&_password_input,
 			&mut _password_output,
@@ -424,11 +424,11 @@ pub(crate) fn main_encrypt_with_arguments (_arguments : EncryptArguments, _input
 	
 	let _senders = _arguments.senders.decode () .else_wrap (0xd0c0a0b3) ?;
 	let _recipients = _arguments.recipients.decode () .else_wrap (0x7ddeeef6) ?;
-	let _associated = _arguments.shared.associated.decode () .else_wrap (0x44a02372) ?;
-	let _secrets = _arguments.shared.secrets.decode () .else_wrap (0x1df8ef79) ?;
-	let _pins = _arguments.shared.pins.decode () .else_wrap (0xcc5678f0) ?;
-	let _seeds = _arguments.shared.seeds.decode () .else_wrap (0x72e6b8f5) ?;
-	let _ballasts = _arguments.shared.ballasts.decode () .else_wrap (0x92846ef7) ?;
+	let _associated = _arguments.shared.associated.collect () .else_wrap (0x44a02372) ?;
+	let _secrets = _arguments.shared.secrets.collect () .else_wrap (0x1df8ef79) ?;
+	let _pins = _arguments.shared.pins.collect () .else_wrap (0xcc5678f0) ?;
+	let _seeds = _arguments.shared.seeds.collect () .else_wrap (0x72e6b8f5) ?;
+	let _ballasts = _arguments.shared.ballasts.collect () .else_wrap (0x92846ef7) ?;
 	let _derivation_loops = _arguments.shared.derivation_loops;
 	let _deterministic = _arguments.deterministic;
 	
@@ -443,10 +443,10 @@ pub(crate) fn main_encrypt_with_arguments (_arguments : EncryptArguments, _input
 			_senders.iter (),
 			_recipients.iter (),
 			_associated.iter (),
-			_secrets.iter (),
+			_secrets.iter () .map (Box::deref),
 			_pins.iter (),
-			_seeds.iter (),
-			_ballasts.iter (),
+			_seeds.iter () .map (Box::deref),
+			_ballasts.iter () .map (Box::deref),
 			_derivation_loops,
 			&_decrypted,
 			&mut _encrypted,
@@ -494,11 +494,11 @@ pub(crate) fn main_decrypt_with_arguments (_arguments : DecryptArguments, _input
 	
 	let _recipients = _arguments.recipients.decode () .else_wrap (0xbcc50e84) ?;
 	let _senders = _arguments.senders.decode () .else_wrap (0x3a858679) ?;
-	let _associated = _arguments.shared.associated.decode () .else_wrap (0xad23f6ba) ?;
-	let _secrets = _arguments.shared.secrets.decode () .else_wrap (0x9f36e262) ?;
-	let _pins = _arguments.shared.pins.decode () .else_wrap (0x6a7572cb) ?;
-	let _seeds = _arguments.shared.seeds.decode () .else_wrap (0x22c67f58) ?;
-	let _ballasts = _arguments.shared.ballasts.decode () .else_wrap (0x11d94d7f) ?;
+	let _associated = _arguments.shared.associated.collect () .else_wrap (0xad23f6ba) ?;
+	let _secrets = _arguments.shared.secrets.collect () .else_wrap (0x9f36e262) ?;
+	let _pins = _arguments.shared.pins.collect () .else_wrap (0x6a7572cb) ?;
+	let _seeds = _arguments.shared.seeds.collect () .else_wrap (0x22c67f58) ?;
+	let _ballasts = _arguments.shared.ballasts.collect () .else_wrap (0x11d94d7f) ?;
 	let _derivation_loops = _arguments.shared.derivation_loops;
 	
 	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x6a4b6c2d) ?;
@@ -512,10 +512,10 @@ pub(crate) fn main_decrypt_with_arguments (_arguments : DecryptArguments, _input
 			_recipients.iter (),
 			_senders.iter (),
 			_associated.iter (),
-			_secrets.iter (),
+			_secrets.iter () .map (Box::deref),
 			_pins.iter (),
-			_seeds.iter (),
-			_ballasts.iter (),
+			_seeds.iter () .map (Box::deref),
+			_ballasts.iter () .map (Box::deref),
 			_derivation_loops,
 			&_encrypted,
 			&mut _decrypted,
