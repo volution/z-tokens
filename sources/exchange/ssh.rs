@@ -78,12 +78,12 @@ pub const SSH_WRAPPER_KEY_ENCODED_PREFIX : &str = "ztxws";
 
 define_cryptographic_material! (InternalSshWrapInput, input, slice);
 define_cryptographic_material! (InternalSshWrapKeyHash, 32);
-define_cryptographic_material! (InternalSshWrapSchemaHash, 32);
+define_cryptographic_material! (InternalSshWrapNamespaceHash, 32);
 define_cryptographic_material! (InternalSshWrapInputHash, 32);
 define_cryptographic_material! (InternalSshWrapOutputHash, 32);
 
 
-define_cryptographic_purpose! (SSH_WRAP_SCHEMA_UNDEFINED, ssh_wrap, schema_undefined);
+define_cryptographic_purpose! (SSH_WRAP_NAMESPACE_HASH_PURPOSE, ssh_wrap, namespace_hash);
 define_cryptographic_purpose! (SSH_WRAP_KEY_HASH_PURPOSE, ssh_wrap, key_hash);
 define_cryptographic_purpose! (SSH_WRAP_INPUT_HASH_PURPOSE, ssh_wrap, input_hash);
 define_cryptographic_purpose! (SSH_WRAP_OUTPUT_HASH_PURPOSE, ssh_wrap, output_hash);
@@ -221,7 +221,7 @@ impl SshWrapper {
 	}
 	
 	
-	pub fn wrap (&mut self, _schema : Option<&'static str>, _input : &[u8], _output : &mut [u8; 32]) -> SshResult {
+	pub fn wrap (&mut self, _namespace : Option<&str>, _input : &[u8], _output : &mut [u8; 32]) -> SshResult {
 		
 		let _input = InternalSshWrapInput::wrap (_input);
 		
@@ -229,18 +229,20 @@ impl SshWrapper {
 		
 		let _key_hash = &_key.key_hash;
 		
-		let _schema_hash = blake3_hash (
-				InternalSshWrapSchemaHash::wrap,
-				_schema.unwrap_or (SSH_WRAP_SCHEMA_UNDEFINED),
+		let _namespace_hash = blake3_hash (
+				InternalSshWrapNamespaceHash::wrap,
+				SSH_WRAP_NAMESPACE_HASH_PURPOSE,
 				&[],
-				&[],
+				&[
+					_namespace.unwrap_or ("") .as_bytes (),
+				],
 			);
 		
 		let _input_hash = blake3_hash (
 				InternalSshWrapInputHash::wrap,
 				SSH_WRAP_INPUT_HASH_PURPOSE,
 				&[
-					_schema_hash.access (),
+					_namespace_hash.access (),
 					_key_hash.access (),
 				],
 				&[
@@ -294,7 +296,7 @@ impl SshWrapper {
 				InternalSshWrapOutputHash::wrap,
 				SSH_WRAP_OUTPUT_HASH_PURPOSE,
 				&[
-					_schema_hash.access (),
+					_namespace_hash.access (),
 					_key_hash.access (),
 					_input_hash.access (),
 				],

@@ -47,7 +47,7 @@ impl SshWrapper {
 		panic! (unimplemented, 0x0e2fae2c);
 	}
 	
-	pub fn wrap (&mut self, _schema : Option<&'static str>, _input : &[u8], _output : &mut [u8; 32]) -> SshResult {
+	pub fn wrap (&mut self, _namespace : Option<&str>, _input : &[u8], _output : &mut [u8; 32]) -> SshResult {
 		panic! (unimplemented, 0x27e97836);
 	}
 	
