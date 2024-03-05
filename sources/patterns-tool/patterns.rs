@@ -30,6 +30,7 @@ pub fn main_list <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	let mut _display_security : Option<bool> = None;
 	let mut _display_bruteforce : Option<bool> = None;
 	let mut _display_examples : Option<usize> = None;
+	let mut _display_trim : Option<usize> = None;
 	
 	let mut _identifier_prefix : Option<String> = None;
 	let mut _identifier_suffix : Option<String> = None;
@@ -95,6 +96,11 @@ pub fn main_list <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 				.with_flag ('e', "show-examples")
 				.with_placeholder ("count")
 				.with_description ("show these many examples");
+		
+		_flags.define_single_flag_0 (&mut _display_trim)
+				.with_flag ((), "trim-examples")
+				.with_placeholder ("length")
+				.with_description ("show these many characters for each example");
 		
 		_flags.define_single_flag_0 (&mut _identifier_prefix)
 				.with_flag ((), "identifier-prefix")
@@ -236,7 +242,8 @@ pub fn main_list <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	let _display_security = _display_security.unwrap_or (false) || _display_all;
 	let _display_bruteforce = _display_bruteforce.unwrap_or (false) || _display_all;
 	let _display_examples = _display_examples.unwrap_or (1);
-	let _display_cards = _display_aliases || _display_labels || _display_characters || _display_security || _display_bruteforce || _display_examples >= 2;
+	let _display_trim = _display_trim.unwrap_or (if _display_all { 0 } else { DEFAULT_DISPLAY_TRIM });
+	let _display_cards = _display_aliases || _display_labels || _display_characters || _display_security || _display_bruteforce || (_display_examples >= 2);
 	
 	let _classify_chars =
 			_length_minimum.is_some () ||
@@ -479,12 +486,11 @@ pub fn main_list <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 			}
 			
 			if _display_examples > 0 {
-				let _display_string_max = DEFAULT_DISPLAY_TRIM;
-				let _display_string = if _string_length <= _display_string_max {
+				let _display_string = if (_display_trim == 0) || (_string_length <= _display_trim) {
 						Cow::Borrowed (&_string)
 					} else {
-						let mut _buffer = String::with_capacity (_display_string_max + 10);
-						_buffer.push_str (&_string[0 .. _display_string_max]);
+						let mut _buffer = String::with_capacity (_display_trim + 10);
+						_buffer.push_str (&_string[0 .. _display_trim]);
 						_buffer.push_str (" [...]");
 						Cow::Owned (_buffer)
 					};
