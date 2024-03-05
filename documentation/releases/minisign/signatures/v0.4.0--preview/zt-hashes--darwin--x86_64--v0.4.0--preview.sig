@@ -1,4 +1,4 @@
 untrusted comment: signature from minisign secret key
-RUTNU8euCgU67jfJtITnI5W1cKPnt+2rYSUNSfVqqUbiTq0YSB4lamzcXzFP9YL6ygFCoPl6rdl6wfDakdcCCYxK+pG8xqJxyws=
+RUTNU8euCgU67pXg0jTytq4gUHRdhV7F2V/gfjRENaZHSfAiQIIANEXP/szNwyJyq2dJbYnwFXwUsN0xiTBN8zJ1Lkb1fXu34g4=
 trusted comment: zt-hashes--darwin--x86_64--v0.4.0--preview
-VCr7D9OFmaweHd6ONqeGCb1JbrZOuFnMMvaK5lZ5cdGddfsn7babUfpcz+7RkMzIoYOuHvKkFyBhxGynuxeSBA==
+VMmYF7tzgfa06Y+1YOxf9yqx4HTq5nzRguEgmKB0sBOGEdS0v48SBOXOiiA+sgeYFnuabhwLjHIQ589ZkFVgAg==
