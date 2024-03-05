@@ -151,6 +151,8 @@ define_cryptographic_material! (InternalBallastArgon, 32);
 define_cryptographic_material! (InternalBallastKey, 32);
 
 define_cryptographic_material! (InternalOracleHandle, 32);
+define_cryptographic_material! (InternalOracleHash, 32);
+define_cryptographic_material! (InternalOracleSorter, 32);
 define_cryptographic_material! (InternalOracleInput, 32);
 define_cryptographic_material! (InternalOracleOutput, 32);
 define_cryptographic_material! (InternalOracleKey, 32);
@@ -170,6 +172,7 @@ define_cryptographic_purpose! (CRYPTO_PASSWORD_SCHEMA_V1, password, schema_v1);
 define_cryptographic_purpose! (CRYPTO_DHE_KEY_PURPOSE, encryption, dhe_key);
 define_cryptographic_purpose! (CRYPTO_PARTIAL_KEY_PURPOSE, encryption, partial_key);
 define_cryptographic_purpose! (CRYPTO_AONT_KEY_PURPOSE, encryption, aont_key);
+define_cryptographic_purpose! (CRYPTO_ORACLE_SORTER_PURPOSE, encryption, oracle_sorter);
 
 define_cryptographic_purpose! (CRYPTO_PACKET_SALT_PURPOSE, encryption, packet_salt);
 define_cryptographic_purpose! (CRYPTO_PACKET_KEY_PURPOSE, encryption, packet_key);
@@ -256,7 +259,7 @@ pub fn password_with_raw (
 {
 	let (_senders, _recipients) = wrap_senders_and_recipients_inputs (_senders, _recipients) ?;
 	let (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) ?;
-	let (_oracles, _oracle_handles) = wrap_oracles (_oracles) ?;
+	let (_oracles, _oracle_handles) = wrap_oracles_phase_1 (_oracles) ?;
 	
 	let _password_data = InternalPasswordData::wrap (_password_data);
 	let _password_data_len = _password_data.size ();
@@ -270,8 +273,10 @@ pub fn password_with_raw (
 	
 	// NOTE:  deriving keys...
 	
-	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, _oracle_hashes)
+	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, _oracle_hashes, _oracle_sorter)
 			= derive_keys_phase_1 (CRYPTO_PASSWORD_SCHEMA_V1, _senders, _recipients, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, true) ?;
+	
+	let _oracles = wrap_oracles_phase_2 (_oracles, _oracle_sorter) ?;
 	
 	drop! (_aont_key);
 	
@@ -375,7 +380,7 @@ pub fn encrypt_with_raw (
 {
 	let (_senders, _recipients) = wrap_senders_and_recipients_inputs (_senders, _recipients) ?;
 	let (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) ?;
-	let (_oracles, _oracle_handles) = wrap_oracles (_oracles) ?;
+	let (_oracles, _oracle_handles) = wrap_oracles_phase_1 (_oracles) ?;
 	
 	let _decrypted = InternalDecryptedData::wrap (_decrypted);
 	let _decrypted_len = _decrypted.size ();
@@ -423,8 +428,10 @@ pub fn encrypt_with_raw (
 	
 	// NOTE:  deriving keys...
 	
-	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, _oracle_hashes)
+	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, _oracle_hashes, _oracle_sorter)
 			= derive_keys_phase_1 (CRYPTO_ENCRYPTION_SCHEMA_V1, _senders, _recipients, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, true) ?;
+	
+	let _oracles = wrap_oracles_phase_2 (_oracles, _oracle_sorter) ?;
 	
 	// NOTE:  salting...
 	
@@ -550,7 +557,7 @@ pub fn decrypt_with_raw (
 {
 	let (_recipients, _senders) = wrap_recipients_and_senders_inputs (_recipients, _senders) ?;
 	let (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) ?;
-	let (_oracles, _oracle_handles) = wrap_oracles (_oracles) ?;
+	let (_oracles, _oracle_handles) = wrap_oracles_phase_1 (_oracles) ?;
 	
 	let _encrypted = InternalEncryptedData::wrap (_encrypted);
 	let _encrypted_len = _encrypted.size ();
@@ -590,8 +597,10 @@ pub fn decrypt_with_raw (
 	
 	// NOTE:  deriving keys...
 	
-	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, _oracle_hashes)
+	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, _oracle_hashes, _oracle_sorter)
 			= derive_keys_phase_1 (CRYPTO_ENCRYPTION_SCHEMA_V1, _recipients, _senders, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, false) ?;
+	
+	let _oracles = wrap_oracles_phase_2 (_oracles, _oracle_sorter) ?;
 	
 	// NOTE:  all-or-nothing and salting...
 	
@@ -778,7 +787,7 @@ fn derive_keys_phase_1 (
 			(InternalPinHash, Vec<InternalPinHash>),
 			(InternalSeedHash, Vec<InternalSeedHash>),
 			(InternalBallastHash, Vec<InternalBallastHash>),
-			InternalOracleHandle,
+			InternalOracleHash, InternalOracleSorter,
 		)>
 {
 	// --------------------------------------------------------------------------------
@@ -930,7 +939,7 @@ fn derive_keys_phase_1 (
 	// NOTE:  derive oracle hashes...
 	
 	let _oracle_hash = blake3_derive_key_join (
-			InternalOracleHandle::wrap,
+			InternalOracleHash::wrap,
 			CRYPTO_ORACLE_HANDLE_PURPOSE,
 			_oracle_handles.iter () .map (InternalOracleHandle::access),
 		);
@@ -1053,6 +1062,19 @@ fn derive_keys_phase_1 (
 		);
 	
 	// --------------------------------------------------------------------------------
+	// NOTE:  derive oracles sorter...
+	
+	let _oracle_sorter = blake3_derive_key (
+			InternalOracleSorter::wrap,
+			CRYPTO_ORACLE_SORTER_PURPOSE,
+			&[
+				_partial_key.access (),
+			],
+			&[],
+			None,
+		);
+	
+	// --------------------------------------------------------------------------------
 	
 	Ok ((
 			_partial_key,
@@ -1061,7 +1083,7 @@ fn derive_keys_phase_1 (
 			(_pin_hash, _pin_hashes),
 			(_seed_hash, _seed_hashes),
 			(_ballast_hash, _ballast_hashes),
-			_oracle_hash,
+			_oracle_hash, _oracle_sorter,
 		))
 }
 
@@ -1080,7 +1102,7 @@ fn derive_keys_phase_2 (
 			_pin_hash : (InternalPinHash, Vec<InternalPinHash>),
 			_seed_hash : (InternalSeedHash, Vec<InternalSeedHash>),
 			_ballast_hash : (InternalBallastHash, Vec<InternalBallastHash>),
-			_oracles : (Vec<(&mut dyn Oracle, InternalOracleHandle)>, InternalOracleHandle),
+			_oracles : (Vec<(&mut dyn Oracle, InternalOracleHandle)>, InternalOracleHash),
 			_derivation_loops : Option<NonZeroU64>,
 		) -> CryptoResult<(
 			InternalPacketKey,
@@ -1506,12 +1528,41 @@ fn wrap_associated_and_secrets_and_pins_inputs <'a> (
 
 
 
-fn wrap_oracles <'a> (
+
+
+
+
+fn wrap_oracles_phase_1 <'a> (
 			_oracles : Vec<&'a mut dyn Oracle>,
 		) -> CryptoResult<(
-			Vec<(&'a mut dyn Oracle, InternalOracleHandle)>,
+			Vec<&'a mut dyn Oracle>,
 			Vec<InternalOracleHandle>,
 		)>
+{
+	let _oracles_with_handles = wrap_oracles_internal (_oracles, None) ?;
+	let (_oracles, _oracle_handles) = _oracles_with_handles.into_iter () .unzip ();
+	Ok ((_oracles, _oracle_handles))
+}
+
+
+fn wrap_oracles_phase_2 <'a> (
+			_oracles : Vec<&'a mut dyn Oracle>,
+			_sorter : InternalOracleSorter,
+		) -> CryptoResult<
+			Vec<(&'a mut dyn Oracle, InternalOracleHandle)>,
+		>
+{
+	let _oracles_with_handles = wrap_oracles_internal (_oracles, Some (_sorter)) ?;
+	Ok (_oracles_with_handles)
+}
+
+
+fn wrap_oracles_internal <'a> (
+			_oracles : Vec<&'a mut dyn Oracle>,
+			_sorter : Option<InternalOracleSorter>,
+		) -> CryptoResult<
+			Vec<(&'a mut dyn Oracle, InternalOracleHandle)>,
+		>
 {
 	debug_assert! (CRYPTO_ORACLE_COUNT_MAX <= (u32::MAX as usize), "[8d49c9e0]");
 	
@@ -1519,21 +1570,31 @@ fn wrap_oracles <'a> (
 		fail! (0x22fb37e2);
 	}
 	
-	let mut _oracles : Vec<_> = _oracles.into_iter ()
+	let mut _oracles_with_handles : Vec<_> = _oracles.into_iter ()
 			.map (
 				|_oracle| {
 					let _oracle_handle = _oracle.handle () .as_raw ();
-					let _oracle_handle = InternalOracleHandle::wrap_copy (_oracle_handle);
+					let _oracle_handle = if let Some (_sorter) = &_sorter {
+							blake3_keyed_hash (
+									InternalOracleHandle::wrap,
+									_sorter.access (),
+									&[
+										_oracle_handle,
+									],
+									&[],
+									None,
+								)
+						} else {
+							InternalOracleHandle::wrap_copy (_oracle_handle)
+						};
 					(_oracle, _oracle_handle)
 				})
 			.collect ();
 	
-	_oracles.sort_by (|_left, _right| Ord::cmp (_left.1.access (), _right.1.access ()));
-	_oracles.dedup_by (|_left, _right| PartialEq::eq (_left.1.access (), _right.1.access ()));
+	_oracles_with_handles.sort_by (|_left, _right| Ord::cmp (_left.1.access (), _right.1.access ()));
+	_oracles_with_handles.dedup_by (|_left, _right| PartialEq::eq (_left.1.access (), _right.1.access ()));
 	
-	let _oracle_handles = _oracles.iter () .map (|_pair| InternalOracleHandle::wrap_copy (_pair.1.access ())) .collect ();
-	
-	Ok ((_oracles, _oracle_handles))
+	Ok (_oracles_with_handles)
 }
 
 
