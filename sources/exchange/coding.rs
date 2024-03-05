@@ -303,12 +303,14 @@ pub(crate) fn compress_capacity_max (_uncompressed_len : usize) -> CompressionRe
 
 
 #[ allow (dead_code) ]
+#[ must_use ]
 pub(crate) fn encode_u32_into (_value : u32) -> [u8; 4] {
 	let mut _buffer = [0u8; 4];
 	encode_u32 (_value, &mut _buffer);
 	_buffer
 }
 
+#[ allow (dead_code) ]
 pub(crate) fn encode_u32 (_value : u32, _buffer : &mut [u8; 4]) -> () {
 	encode_u32_slice (_value, _buffer.as_mut_slice ())
 }
@@ -320,22 +322,26 @@ pub(crate) fn decode_u32 (_buffer : &[u8; 4]) -> u32 {
 }
 
 
+#[ allow (dead_code) ]
 pub(crate) fn encode_u32_slice (_value : u32, _buffer : &mut [u8]) -> () {
 	BigEndian::write_u32 (_buffer, _value);
 }
 
+#[ allow (dead_code) ]
 #[ must_use ]
 pub(crate) fn decode_u32_slice (_buffer : &[u8]) -> u32 {
 	BigEndian::read_u32 (_buffer)
 }
 
 
+#[ allow (dead_code) ]
 pub(crate) fn encode_u32_push (_value : u32, _buffer : &mut Vec<u8>) -> () {
 	_buffer.push (0); _buffer.push (0); _buffer.push (0); _buffer.push (0);
 	let _buffer_len = _buffer.len ();
 	encode_u32_slice (_value, &mut _buffer[_buffer_len - 4 ..]);
 }
 
+#[ allow (dead_code) ]
 #[ must_use ]
 pub(crate) fn decode_u32_pop (_buffer : &mut Vec<u8>) -> Option<u32> {
 	
@@ -347,6 +353,65 @@ pub(crate) fn decode_u32_pop (_buffer : &mut Vec<u8>) -> Option<u32> {
 	let _value = decode_u32_slice (&_buffer[_buffer_len - 4 ..]);
 	
 	_buffer.truncate (_buffer_len - 4);
+	
+	Some (_value)
+}
+
+
+
+
+#[ allow (dead_code) ]
+#[ must_use ]
+pub(crate) fn encode_u64_into (_value : u64) -> [u8; 8] {
+	let mut _buffer = [0u8; 8];
+	encode_u64 (_value, &mut _buffer);
+	_buffer
+}
+
+#[ allow (dead_code) ]
+pub(crate) fn encode_u64 (_value : u64, _buffer : &mut [u8; 8]) -> () {
+	encode_u64_slice (_value, _buffer.as_mut_slice ())
+}
+
+#[ allow (dead_code) ]
+#[ must_use ]
+pub(crate) fn decode_u64 (_buffer : &[u8; 8]) -> u64 {
+	decode_u64_slice (_buffer.as_slice ())
+}
+
+
+#[ allow (dead_code) ]
+pub(crate) fn encode_u64_slice (_value : u64, _buffer : &mut [u8]) -> () {
+	BigEndian::write_u64 (_buffer, _value);
+}
+
+#[ allow (dead_code) ]
+#[ must_use ]
+pub(crate) fn decode_u64_slice (_buffer : &[u8]) -> u64 {
+	BigEndian::read_u64 (_buffer)
+}
+
+
+#[ allow (dead_code) ]
+pub(crate) fn encode_u64_push (_value : u64, _buffer : &mut Vec<u8>) -> () {
+	_buffer.push (0); _buffer.push (0); _buffer.push (0); _buffer.push (0);
+	_buffer.push (0); _buffer.push (0); _buffer.push (0); _buffer.push (0);
+	let _buffer_len = _buffer.len ();
+	encode_u64_slice (_value, &mut _buffer[_buffer_len - 8 ..]);
+}
+
+#[ allow (dead_code) ]
+#[ must_use ]
+pub(crate) fn decode_u64_pop (_buffer : &mut Vec<u8>) -> Option<u64> {
+	
+	let _buffer_len = _buffer.len ();
+	if _buffer_len < 8 {
+		return None;
+	}
+	
+	let _value = decode_u64_slice (&_buffer[_buffer_len - 8 ..]);
+	
+	_buffer.truncate (_buffer_len - 8);
 	
 	Some (_value)
 }
