@@ -96,6 +96,7 @@ pub(crate) struct SharedKeysArguments {
 	pub seeds : SeedsArguments,
 	pub ballasts : BallastsArguments,
 	pub derivation_loops : Option<NonZeroU64>,
+	pub namespace : Option<String>,
 }
 
 
@@ -106,6 +107,7 @@ pub(crate) struct SharedKeysFlags {
 	pub seeds : SeedsFlags,
 	pub ballasts : BallastsFlags,
 	pub derivation_loops : Option<u64>,
+	pub namespace : Option<String>,
 }
 
 
@@ -1103,6 +1105,7 @@ impl SharedKeysFlags {
 				seeds : SeedsFlags::new (),
 				ballasts : BallastsFlags::new (),
 				derivation_loops : None,
+				namespace : None,
 			}
 	}
 	
@@ -1119,6 +1122,11 @@ impl SharedKeysFlags {
 				.with_placeholder ("count")
 				.with_description ("number of derivation loops");
 		
+		_flags.define_single_flag_0 (&mut self.namespace)
+				.with_flag ((), "namespace")
+				.with_placeholder ("string")
+				.with_description ("token used for cryptography domain separation");
+		
 		Ok (())
 	}
 	
@@ -1132,6 +1140,7 @@ impl SharedKeysFlags {
 			Some (_loops) => NonZeroU64::new (_loops),
 			None => None,
 		};
+		let _namespace = self.namespace;
 		Ok (SharedKeysArguments {
 				associated : _associated,
 				secrets : _secrets,
@@ -1139,6 +1148,7 @@ impl SharedKeysFlags {
 				seeds : _seeds,
 				ballasts : _ballasts,
 				derivation_loops : _derivation_loops,
+				namespace : _namespace,
 			})
 	}
 }

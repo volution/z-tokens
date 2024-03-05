@@ -235,6 +235,7 @@ pub fn password <'a> (
 			_seed : impl Iterator<Item = &'a dyn SharedSeedTrait>,
 			_ballast : impl Iterator<Item = &'a dyn SharedBallastTrait>,
 			_derivation_loops : Option<NonZeroU64>,
+			_namespace : Option<&str>,
 			_password_data : &[u8],
 			_password_output : &mut [u8; 32],
 			_oracles : impl Iterator<Item = &'a mut dyn Oracle>,
@@ -249,6 +250,7 @@ pub fn password <'a> (
 			& _seed.map (SharedSeedTrait::access_bytes_slice) .collect::<Vec<_>> (),
 			& _ballast.map (SharedBallastTrait::access_bytes_slice) .collect::<Vec<_>> (),
 			_derivation_loops,
+			_namespace,
 			_password_data,
 			_password_output,
 			_oracles.collect (),
@@ -267,6 +269,7 @@ pub fn password_with_raw (
 			_seed_inputs : &[&[u8]],
 			_ballast_inputs : &[&[u8]],
 			_derivation_loops : Option<NonZeroU64>,
+			_namespace : Option<&str>,
 			_password_data : &[u8],
 			_password_output : &mut [u8; 32],
 			_oracles : Vec<&mut dyn Oracle>,
@@ -289,7 +292,7 @@ pub fn password_with_raw (
 	// NOTE:  deriving keys...
 	
 	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, _oracle_merge, _oracle_sorter, _derivation_loops)
-			= derive_keys_phase_1 (CRYPTO_PASSWORD_SCHEMA_V1, _senders, _recipients, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, _derivation_loops, true) ?;
+			= derive_keys_phase_1 (CRYPTO_PASSWORD_SCHEMA_V1, _senders, _recipients, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, _derivation_loops, _namespace, true) ?;
 	
 	let _oracles = wrap_oracles_phase_2 (_oracles, _oracle_sorter) ?;
 	
@@ -351,6 +354,7 @@ pub fn encrypt <'a> (
 			_seed : impl Iterator<Item = &'a dyn SharedSeedTrait>,
 			_ballast : impl Iterator<Item = &'a dyn SharedBallastTrait>,
 			_derivation_loops : Option<NonZeroU64>,
+			_namespace : Option<&str>,
 			_decrypted : &[u8],
 			_encrypted : &mut Vec<u8>,
 			_oracles : impl Iterator<Item = &'a mut dyn Oracle>,
@@ -366,6 +370,7 @@ pub fn encrypt <'a> (
 			& _seed.map (SharedSeedTrait::access_bytes_slice) .collect::<Vec<_>> (),
 			& _ballast.map (SharedBallastTrait::access_bytes_slice) .collect::<Vec<_>> (),
 			_derivation_loops,
+			_namespace,
 			_decrypted,
 			_encrypted,
 			_oracles.collect (),
@@ -385,6 +390,7 @@ pub fn encrypt_with_raw (
 			_seed_inputs : &[&[u8]],
 			_ballast_inputs : &[&[u8]],
 			_derivation_loops : Option<NonZeroU64>,
+			_namespace : Option<&str>,
 			_decrypted : &[u8],
 			_encrypted : &mut Vec<u8>,
 			_oracles : Vec<&mut dyn Oracle>,
@@ -442,7 +448,7 @@ pub fn encrypt_with_raw (
 	// NOTE:  deriving keys...
 	
 	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, _oracle_merge, _oracle_sorter, _derivation_loops)
-			= derive_keys_phase_1 (CRYPTO_ENCRYPTION_SCHEMA_V1, _senders, _recipients, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, _derivation_loops, true) ?;
+			= derive_keys_phase_1 (CRYPTO_ENCRYPTION_SCHEMA_V1, _senders, _recipients, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, _derivation_loops, _namespace, true) ?;
 	
 	let _oracles = wrap_oracles_phase_2 (_oracles, _oracle_sorter) ?;
 	
@@ -530,6 +536,7 @@ pub fn decrypt <'a> (
 			_seed : impl Iterator<Item = &'a dyn SharedSeedTrait>,
 			_ballast : impl Iterator<Item = &'a dyn SharedBallastTrait>,
 			_derivation_loops : Option<NonZeroU64>,
+			_namespace : Option<&str>,
 			_encrypted : &[u8],
 			_decrypted : &mut Vec<u8>,
 			_oracles : impl Iterator<Item = &'a mut dyn Oracle>,
@@ -544,6 +551,7 @@ pub fn decrypt <'a> (
 			& _seed.map (SharedSeedTrait::access_bytes_slice) .collect::<Vec<_>> (),
 			& _ballast.map (SharedBallastTrait::access_bytes_slice) .collect::<Vec<_>> (),
 			_derivation_loops,
+			_namespace,
 			_encrypted,
 			_decrypted,
 			_oracles.collect (),
@@ -562,6 +570,7 @@ pub fn decrypt_with_raw (
 			_seed_inputs : &[&[u8]],
 			_ballast_inputs : &[&[u8]],
 			_derivation_loops : Option<NonZeroU64>,
+			_namespace : Option<&str>,
 			_encrypted : &[u8],
 			_decrypted : &mut Vec<u8>,
 			_oracles : Vec<&mut dyn Oracle>,
@@ -610,7 +619,7 @@ pub fn decrypt_with_raw (
 	// NOTE:  deriving keys...
 	
 	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, _oracle_merge, _oracle_sorter, _derivation_loops)
-			= derive_keys_phase_1 (CRYPTO_ENCRYPTION_SCHEMA_V1, _recipients, _senders, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, _derivation_loops, false) ?;
+			= derive_keys_phase_1 (CRYPTO_ENCRYPTION_SCHEMA_V1, _recipients, _senders, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, _derivation_loops, _namespace, false) ?;
 	
 	let _oracles = wrap_oracles_phase_2 (_oracles, _oracle_sorter) ?;
 	
@@ -790,6 +799,7 @@ fn derive_keys_phase_1 (
 			_ballast_inputs : Vec<InternalBallastInput>,
 			_oracle_handles : Vec<InternalOracleHandle>,
 			_derivation_loops : Option<NonZeroU64>,
+			_namespace : Option<&str>,
 			_encryption : bool,
 		) -> CryptoResult<(
 			InternalPartialKey,
@@ -806,6 +816,8 @@ fn derive_keys_phase_1 (
 	let _derivation_loops = _derivation_loops.map (NonZeroU64::get) .unwrap_or (1);
 	let _derivation_loops_0 = NonZeroU64::new (_derivation_loops) .infallible (0x794c53db);
 	
+	let _namespace = _namespace.unwrap_or ("");
+	
 	// --------------------------------------------------------------------------------
 	// NOTE:  derive parameters hash...
 	
@@ -816,6 +828,7 @@ fn derive_keys_phase_1 (
 			&[
 				_schema.as_bytes (),
 				& encode_u64_into (_derivation_loops),
+				_namespace.as_bytes (),
 			],
 		);
 	

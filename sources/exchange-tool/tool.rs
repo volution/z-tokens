@@ -353,6 +353,7 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 	let _seeds = _arguments.shared.seeds.collect () .else_wrap (0x4a0b1e18) ?;
 	let _ballasts = _arguments.shared.ballasts.collect () .else_wrap (0x7ab43c45) ?;
 	let _derivation_loops = _arguments.shared.derivation_loops;
+	let _namespace = _arguments.shared.namespace.as_ref () .map (String::as_ref);
 	
 	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x3cae7413) ?;
 	let mut _oracles = _ssh_wrappers.iter_mut () .map (|_ssh_wrapper| _ssh_wrapper as &mut dyn Oracle);
@@ -370,6 +371,7 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 			_seeds.iter () .map (Box::deref),
 			_ballasts.iter () .map (Box::deref),
 			_derivation_loops,
+			_namespace,
 			&_password_input,
 			&mut _password_output,
 			_oracles,
@@ -430,6 +432,7 @@ pub(crate) fn main_encrypt_with_arguments (_arguments : EncryptArguments, _input
 	let _seeds = _arguments.shared.seeds.collect () .else_wrap (0x72e6b8f5) ?;
 	let _ballasts = _arguments.shared.ballasts.collect () .else_wrap (0x92846ef7) ?;
 	let _derivation_loops = _arguments.shared.derivation_loops;
+	let _namespace = _arguments.shared.namespace.as_ref () .map (String::as_ref);
 	let _deterministic = _arguments.deterministic;
 	
 	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x6849e6bd) ?;
@@ -448,6 +451,7 @@ pub(crate) fn main_encrypt_with_arguments (_arguments : EncryptArguments, _input
 			_seeds.iter () .map (Box::deref),
 			_ballasts.iter () .map (Box::deref),
 			_derivation_loops,
+			_namespace,
 			&_decrypted,
 			&mut _encrypted,
 			_oracles,
@@ -500,6 +504,7 @@ pub(crate) fn main_decrypt_with_arguments (_arguments : DecryptArguments, _input
 	let _seeds = _arguments.shared.seeds.collect () .else_wrap (0x22c67f58) ?;
 	let _ballasts = _arguments.shared.ballasts.collect () .else_wrap (0x11d94d7f) ?;
 	let _derivation_loops = _arguments.shared.derivation_loops;
+	let _namespace = _arguments.shared.namespace.as_ref () .map (String::as_ref);
 	
 	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x6a4b6c2d) ?;
 	let mut _oracles = _ssh_wrappers.iter_mut () .map (|_ssh_wrapper| _ssh_wrapper as &mut dyn Oracle);
@@ -517,6 +522,7 @@ pub(crate) fn main_decrypt_with_arguments (_arguments : DecryptArguments, _input
 			_seeds.iter () .map (Box::deref),
 			_ballasts.iter () .map (Box::deref),
 			_derivation_loops,
+			_namespace,
 			&_encrypted,
 			&mut _decrypted,
 			_oracles,
