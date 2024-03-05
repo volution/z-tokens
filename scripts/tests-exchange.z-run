@@ -1598,6 +1598,20 @@
 !!
 
 
+<< tests / quick / exchange / ssh / agent & load
+	test "${#}" -eq 0
+	
+	(
+		exec < /dev/null > /dev/null 2> /dev/null
+		sleep -- 1s
+		"${ZRUN}" ':: tests / quick / exchange / ssh / load / testing-1'
+		"${ZRUN}" ':: tests / quick / exchange / ssh / load / testing-2'
+	) &
+	
+	exec -- "${ZRUN}" ':: tests / quick / exchange / ssh / agent'
+!!
+
+
 
 
 
