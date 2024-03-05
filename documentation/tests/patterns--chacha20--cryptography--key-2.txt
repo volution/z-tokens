@@ -1,0 +1,44 @@
+>>  z-tokens patterns --all --for-cryptography --shortest --random-chacha20 key-2
+
+::  digits-base16:32        :  128  =b :   39 c ::    c947 df96 6ef7 d08e 27e5 85ef 84ad b432
+::  digits-base32-hex:26    :  130  =b :   32 c ::    ri8e 9qui thn7 hueh gs4l esgv r3
+::  digits-base32-rfc:26    :  130  =b :   32 c ::    3sio j26s 5rxh r6or q4ev o4q7 3d
+::  digits-base64-url:22    :  132  =b :   27 c ::    2zQj jj8Z OTi8 cgnV gj24 mg
+::  digits-base64-rfc:22    :  132  =b :   27 c ::    2zQj jj8Z OTi8 cgnV gj24 mg
+::  digits-base58:22        :  128.8 b :   27 c ::    raoF ZSHZ Ypwa gvYj EQuJ Yw
+::  digits-base62:22        :  130.9 b :   27 c ::    mqZn FYRH YXpw ZOgu XjDO uI
+::  digits-bech32:26        :  130  =b :   32 c ::    mjgw f67j a3h8 37w3 suy4 wusl mr
+::  digits-z85:20           :  128.1 b :   23 c ::    &M!lo LK*Nx WK.jy pJ}-K
+::  ascii-lower:28          :  131.6 b :   34 c ::    uwgo lhoo vykr xotk xhyt lova nxdr
+::  ascii-upper:28          :  131.6 b :   34 c ::    UWGO LHOO VYKR XOTK XHYT LOVA NXDR
+::  ascii-mixed:24          :  136.8 b :   29 c ::    OSDn CxpC CWuJ VCMl pXMx CRbA
+::  ascii-symbols:26        :  130  =b :   32 c ::    `=)/ *_}= |<\( <}/< ;{%@ /{;~ `$
+::  ascii-any:20            :  131.0 b :   24 c ::    Vl8< UTny WFaT 6F=S ygT#
+::  cva-lower:10            :  134.2 b :   49 c ::    vuhi juqo yelu jipu bixo sixi kudu qino howo tohu
+::  cva-upper:10            :  134.2 b :   49 c ::    VUHI JUQO YELU JIPU BIXO SIXI KUDU QINO HOWO TOHU
+::  cva-mixed:8             :  139.4 b :   39 c ::    POnA qARU FUmu qAXI SaBe KuVo BoZA SeVA
+::  cva-plus-a:10           :  134.1 b :   49 c ::    vuhi juqo yelu jipu bixo sixi kudu qino howo 7299
+::  cva-plus-b:10           :  134.2 b :   49 c ::    vuhi juqo yelu jipu bixo sixi kudu qino howo TO29
+::  cva-plus-c:10           :  135.8 b :   49 c ::    vuhi juqo yelu jipu bixo sixi kudu qino howo TO2|
+::  cvs-lower:11            :  139.0 b :   54 c ::    sunu gito juzi tamu dolu hihu vigo toro gefo tila zobi
+::  cvs-upper:11            :  139.0 b :   54 c ::    SUNU GITO JUZI TAMU DOLU HIHU VIGO TORO GEFO TILA ZOBI
+::  cvs-mixed:8             :  133.1 b :   39 c ::    ROmA vAPU DUCI luCU vABe HuSo BoZA ReSA
+::  cvs-plus-a:11           :  139.7 b :   54 c ::    sunu gito juzi tamu dolu hihu vigo toro gefo tila 3609
+::  cvs-plus-b:11           :  139.4 b :   54 c ::    sunu gito juzi tamu dolu hihu vigo toro gefo tila ZO09
+::  cvs-plus-c:10           :  128.4 b :   49 c ::    sunu gito juzi tamu dolu hihu vigo toro gefo TI4,
+::  proquint-lower:8        :  128  =b :   47 c ::    sunuh litok kizot bovol vimiv zohur hokoz ritol
+::  proquint-upper:8        :  128  =b :   47 c ::    SUNUH LITOK KIZOT BOVOL VIMIV ZOHUR HOKOZ RITOL
+::  koremutake-a:10         :  140  =b :   56 c ::    drose jino keru stapro moki bryfry bogry fyta grysu pogi
+::  koremutake-b:7          :  147  =b :   55 c ::    droseji nokeru stapromo kibryfry bogryfy tagrysu pogipa
+::  mnemonic:12             :  128.0 b :   78 c ::    austin halt mailbox clever logo genesis tourist modular gold fast scale mother
+::  bip0039:12              :  132  =b :   83 c ::    shock mirror improve energy misery useless pyramid menu define grocery matter va [...]
+::  skey:12                 :  132  =b :   58 c ::    nude goad defy aids goal trot lila gift run cite garb turn
+::  pgp:8                   :  128  =b :  143 c ::    southward supportive physique dakota highchair direction offload sociable uneart [...]
+::  eff-large:10            :  129.2 b :   79 c ::    slashing swiftly pagan squealing dotted outlet jaybird energize outmost operate
+::  eff-short:13            :  134.4 b :   70 c ::    outer dose net ivory next nap stash vest rogue nacho shaky decay growl
+::  eff-unique:13           :  134.4 b :  110 c ::    mobilize dwindling lunchbox ignition luridness lubricant sponge vertebrae plank  [...]
+::  nato:25                 :  129.2 b :  159 c ::    uniform juliett quebec kilo oscar wun india oscar seven tango fife sierra whiske [...]
+::  bytes-hex:16            :  128  =b :   32 c ::    a1440448905944c60607fa92545476d9
+::  token-hex-128           :  128  =b :   32 c ::    d976545492fa0706c6445990480444a1
+::  token-hex-256           :  256  =b :   65 c ::    d976545492fa0706c6445990480444a1-cdf4aaf8cdddc3fc9211998495ad29c7
+::  token-hex-512           :  512  =b :  131 c ::    d976545492fa0706c6445990480444a1-cdf4aaf8cdddc3fc9211998495ad29c7-8d84f98d9ac8c4 [...]

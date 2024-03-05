@@ -1,0 +1,55 @@
+>>  z-tokens patterns --all --for-authentication --shortest --random-chacha20 key-1
+
+::  digits-base10:10        :   33.2 b :   12 c ::    4979 6484 07
+::  digits-base2:32         :   32  =b :   35 c ::    01010010 10001010 11101111 01011110
+::  digits-base8:12         :   36  =b :   14 c ::    3531 3001 2035
+::  digits-base16:8         :   32  =b :    9 c ::    1f3f a3d9
+::  digits-base32-hex:8     :   40  =b :    9 c ::    un6u 6524
+::  digits-base32-rfc:8     :   40  =b :    9 c ::    6xg6 gfce
+::  digits-base64-url:6     :   36  =b :    7 c ::    Fb8M Mb
+::  digits-base64-rfc:6     :   36  =b :    7 c ::    Fb8M Mb
+::  digits-base58:6         :   35.1 b :    7 c ::    5Rwj Cx
+::  digits-base62:6         :   35.7 b :    7 c ::    4Qwj Bw
+::  digits-bech32:8         :   40  =b :    9 c ::    7hx7 x9zy
+::  digits-z85:5            :   32.0 b :    5 c ::    A}gTg
+::  ascii-lower:8           :   37.6 b :    9 c ::    clyf ylvz
+::  ascii-upper:8           :   37.6 b :    9 c ::    CLYF YLVZ
+::  ascii-mixed:6           :   34.2 b :    7 c ::    ewXL kX
+::  ascii-symbols:8         :   40  =b :    9 c ::    }\'} '&#%
+::  ascii-any:6             :   39.3 b :    7 c ::    (Ie3 z^
+::  cva-lower:3             :   40.2 b :   14 c ::    cito wiqa cice
+::  cva-upper:3             :   40.2 b :   14 c ::    CITO WIQA CICE
+::  cva-mixed:2             :   34.8 b :    9 c ::    fuMU JuSu
+::  cva-plus-a:3            :   40.1 b :   14 c ::    cito wiqa 7018
+::  cva-plus-b:3            :   40.2 b :   14 c ::    cito wiqa CI18
+::  cva-plus-c:3            :   41.8 b :   14 c ::    cito wiqa CI1_
+::  cvs-lower:3             :   37.9 b :   14 c ::    cizo fiti nace
+::  cvs-upper:3             :   37.9 b :   14 c ::    CIZO FITI NACE
+::  cvs-mixed:2             :   33.2 b :    9 c ::    VIjU juhu
+::  cvs-plus-a:3            :   38.5 b :   14 c ::    cizo fiti 0701
+::  cvs-plus-b:3            :   38.2 b :   14 c ::    cizo fiti NA70
+::  cvs-plus-c:3            :   39.9 b :   14 c ::    cizo fiti NA7#
+::  proquint-lower:2        :   32  =b :   11 c ::    dunad fitop
+::  proquint-upper:2        :   32  =b :   11 c ::    DUNAD FITOP
+::  koremutake-a:3          :   42  =b :   15 c ::    duna broty hana
+::  koremutake-b:2          :   42  =b :   14 c ::    dunabro tyhana
+::  mnemonic:3              :   32.0 b :   18 c ::    chaos subject side
+::  bip0039:3               :   33  =b :   22 c ::    before vehicle veteran
+::  skey:3                  :   33  =b :   13 c ::    fit twit vale
+::  pgp:2                   :   32  =b :   30 c ::    baboon puberty chatter vertigo
+::  eff-large:3             :   38.7 b :   25 c ::    bonelike hybrid unvarying
+::  eff-short:4             :   41.3 b :   18 c ::    bonus hers set wad
+::  eff-unique:4            :   41.3 b :   36 c ::    asymmetric henceforth refinery vixen
+::  pets-medium-4           :   36.9 b :   32 c ::    bountifully-uppermost-red-coyote
+::  nato:7                  :   36.1 b :   35 c ::    papa niner wun niner xray papa fife
+::  bytes-hex:4             :   32  =b :    8 c ::    0c0ba314
+::  token-hex-32            :   32  =b :    8 c ::    14273fdd
+::  token-hex-48            :   48  =b :   12 c ::    14273fdd14a3
+::  token-hex-64            :   64  =b :   16 c ::    14273fdd14a30b0c
+::  token-hex-96            :   96  =b :   24 c ::    be347d8814273fdd14a30b0c
+::  token-hex-128           :  128  =b :   32 c ::    6cf6b427be347d8814273fdd14a30b0c
+::  token-hex-256           :  256  =b :   65 c ::    6cf6b427be347d8814273fdd14a30b0c-ba13acb1dab8e215f1ea015b72f9f69d
+::  token-hex-512           :  512  =b :  131 c ::    6cf6b427be347d8814273fdd14a30b0c-ba13acb1dab8e215f1ea015b72f9f69d-f32c33de69df64 [...]
+::  uuid-v4                 :  122  =b :   36 c ::    14273fdd-f1ea-4ba1-bccb-a6e254783538
+::  ip-mac-02               :   40  =b :   17 c ::    02:14:ba:31:f3:30
+::  ip-mac-04               :   40  =b :   17 c ::    04:14:ba:31:f3:30

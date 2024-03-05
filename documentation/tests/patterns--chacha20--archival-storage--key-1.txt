@@ -1,0 +1,46 @@
+>>  z-tokens patterns --all --for-archival-storage --shortest --random-chacha20 key-1
+
+::  digits-base10:32        :  106.3 b :   39 c ::    4979 6484 0701 8046 2623 9777 0692 6968
+::  digits-base16:26        :  104  =b :   32 c ::    1f3f a3d9 0124 d9a9 9a5b 93fa aa
+::  digits-base32-hex:22    :  110  =b :   27 c ::    un6u 6524 qii7 nin1 jtrv dk
+::  digits-base32-rfc:22    :  110  =b :   27 c ::    6xg6 gfce 2ssh xsxb t537 nu
+::  digits-base64-url:18    :  108  =b :   22 c ::    Fb8M Mb_b BfE0 DbPu Cm
+::  digits-base64-rfc:18    :  108  =b :   22 c ::    Fb8M Mb/b BfE0 DbPu Cm
+::  digits-base58:18        :  105.4 b :   22 c ::    5Rwj CxeR qzAR b2k4 VG
+::  digits-base62:18        :  107.1 b :   22 c ::    4Qwj BweB QpzA Qa1k 3U
+::  digits-bech32:22        :  110  =b :   27 c ::    7hx7 x9zy 6jj8 hjhp naml d5
+::  digits-z85:20           :  128.1 b :   23 c ::    A}gTg ?#eAO -5Fn/ 4ATTj
+::  ascii-lower:22          :  103.4 b :   27 c ::    clyf ylvz elpa tbmb dhvp bl
+::  ascii-upper:22          :  103.4 b :   27 c ::    CLYF YLVZ ELPA TBMB DHVP BL
+::  ascii-mixed:18          :  102.6 b :   22 c ::    ewXL kXwR Ziwb dzdh oQ
+::  ascii-symbols:22        :  110  =b :   27 c ::    }\'} '&#% _==( \=\" >|`~ .?
+::  ascii-any:16            :  104.8 b :   19 c ::    (Ie3 z^o~ 0IX# g&N'
+::  cva-lower:8             :  107.4 b :   39 c ::    cito wiqa cice waqo koto qugo zozi koxi
+::  cva-upper:8             :  107.4 b :   39 c ::    CITO WIQA CICE WAQO KOTO QUGO ZOZI KOXI
+::  cva-mixed:6             :  104.5 b :   29 c ::    fuMU JuSu Naze pOJi FEsU MIFI
+::  cva-plus-a:8            :  107.2 b :   39 c ::    cito wiqa cice waqo koto qugo zozi 6942
+::  cva-plus-b:8            :  107.3 b :   39 c ::    cito wiqa cice waqo koto qugo zozi KO94
+::  cva-plus-c:8            :  109.0 b :   39 c ::    cito wiqa cice waqo koto qugo zozi KO9'
+::  cvs-lower:8             :  101.1 b :   39 c ::    cizo fiti nace tape noho nofo zopi pufi
+::  cvs-upper:8             :  101.1 b :   39 c ::    CIZO FITI NACE TAPE NOHO NOFO ZOPI PUFI
+::  cvs-mixed:7             :  116.5 b :   34 c ::    VIjU juhu dePa DElo LIcE TiRE ZuGU
+::  cvs-plus-a:8            :  101.7 b :   39 c ::    cizo fiti nace tape noho nofo zopi 6942
+::  cvs-plus-b:8            :  101.4 b :   39 c ::    cizo fiti nace tape noho nofo zopi PU94
+::  cvs-plus-c:8            :  103.1 b :   39 c ::    cizo fiti nace tape noho nofo zopi PU9'
+::  proquint-lower:7        :  112  =b :   41 c ::    dunad fitop nopir nagoz pupip vupik susur
+::  proquint-upper:7        :  112  =b :   41 c ::    DUNAD FITOP NOPIR NAGOZ PUPIP VUPIK SUSUR
+::  koremutake-a:8          :  112  =b :   42 c ::    duna broty hana frygo pijy friso dana tyja
+::  koremutake-b:5          :  105  =b :   37 c ::    dunabro tyhana frygopi jyfriso danaty
+::  mnemonic:10             :  106.7 b :   64 c ::    chaos subject side sofia begin genius game quebec fiction sultan
+::  bip0039:10              :  110  =b :   62 c ::    before vehicle veteran plunge stool worry honey oak alarm lady
+::  skey:10                 :  110  =b :   47 c ::    fit twit vale kirk sand work cuff hide bam eyed
+::  pgp:7                   :  112  =b :  124 c ::    baboon puberty chatter vertigo chairlift handiwork stockman chambermaid goggles  [...]
+::  eff-large:8             :  103.3 b :   65 c ::    bonelike hybrid unvarying scalping curve upheaval ramble cufflink
+::  eff-short:10            :  103.3 b :   52 c ::    bonus hers set wad creme hefty stoop coast hub petri
+::  eff-unique:10           :  103.3 b :   89 c ::    asymmetric henceforth refinery vixen cybernetic heinously sugar coexistent herbs [...]
+::  nato:20                 :  103.3 b :  114 c ::    papa niner wun niner xray papa fife papa victor charlie romeo charlie fower vict [...]
+::  bytes-hex:13            :  104  =b :   26 c ::    0c0ba314dd3f2714887d34be27
+::  token-hex-128           :  128  =b :   32 c ::    6cf6b427be347d8814273fdd14a30b0c
+::  token-hex-256           :  256  =b :   65 c ::    6cf6b427be347d8814273fdd14a30b0c-ba13acb1dab8e215f1ea015b72f9f69d
+::  token-hex-512           :  512  =b :  131 c ::    6cf6b427be347d8814273fdd14a30b0c-ba13acb1dab8e215f1ea015b72f9f69d-f32c33de69df64 [...]
+::  uuid-v4                 :  122  =b :   36 c ::    14273fdd-f1ea-4ba1-bccb-a6e254783538

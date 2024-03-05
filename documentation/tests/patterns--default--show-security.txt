@@ -15786,7 +15786,7 @@
 \_  length:   17  (with spaces)
 \_  usable for:
     \_  cryptography         !! NO !!      with    -96.00  bits of margin
-    \_  authentication          OK         with     +0.00  bits of margin
+    \_  authentication       !! NO !!      with     +0.00  bits of margin
     \_  archival storage     !! NO !!      with    -68.30  bits of margin
     \_  long term storage    !! NO !!      with    -44.84  bits of margin
     \_  short term storage   !! NO !!      with    -38.00  bits of margin
@@ -15798,7 +15798,7 @@
 \_  length:   26  (with spaces)
 \_  usable for:
     \_  cryptography         !! NO !!      with    -64.00  bits of margin
-    \_  authentication          OK         with    +32.00  bits of margin
+    \_  authentication       !! NO !!      with    +32.00  bits of margin
     \_  archival storage     !! NO !!      with    -36.30  bits of margin
     \_  long term storage    !! NO !!      with    -12.84  bits of margin
     \_  short term storage   !! NO !!      with     -6.00  bits of margin
@@ -15810,10 +15810,10 @@
 \_  length:   35  (with spaces)
 \_  usable for:
     \_  cryptography         !! NO !!      with    -32.00  bits of margin
-    \_  authentication          OK         with    +64.00  bits of margin
+    \_  authentication       !! NO !!      with    +64.00  bits of margin
     \_  archival storage     !! NO !!      with     -4.30  bits of margin
-    \_  long term storage       OK         with    +19.16  bits of margin
-    \_  short term storage      OK         with    +26.00  bits of margin
+    \_  long term storage    !! NO !!      with    +19.16  bits of margin
+    \_  short term storage   !! NO !!      with    +26.00  bits of margin
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e
 
 
@@ -15821,11 +15821,11 @@
 \_  bits:     128  (exact)
 \_  length:   44  (with spaces)
 \_  usable for:
-    \_  cryptography            OK         with     +0.00  bits of margin
-    \_  authentication          OK         with    +96.00  bits of margin
-    \_  archival storage        OK         with    +27.70  bits of margin
-    \_  long term storage       OK         with    +51.16  bits of margin
-    \_  short term storage      OK         with    +58.00  bits of margin
+    \_  cryptography         !! NO !!      with     +0.00  bits of margin
+    \_  authentication       !! NO !!      with    +96.00  bits of margin
+    \_  archival storage     !! NO !!      with    +27.70  bits of margin
+    \_  long term storage    !! NO !!      with    +51.16  bits of margin
+    \_  short term storage   !! NO !!      with    +58.00  bits of margin
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6
 
 
@@ -15833,11 +15833,11 @@
 \_  bits:     160  (exact)
 \_  length:   53  (with spaces)
 \_  usable for:
-    \_  cryptography            OK         with    +32.00  bits of margin
-    \_  authentication          OK         with   +128.00  bits of margin
-    \_  archival storage        OK         with    +59.70  bits of margin
-    \_  long term storage       OK         with    +83.16  bits of margin
-    \_  short term storage      OK         with    +90.00  bits of margin
+    \_  cryptography         !! NO !!      with    +32.00  bits of margin
+    \_  authentication       !! NO !!      with   +128.00  bits of margin
+    \_  archival storage     !! NO !!      with    +59.70  bits of margin
+    \_  long term storage    !! NO !!      with    +83.16  bits of margin
+    \_  short term storage   !! NO !!      with    +90.00  bits of margin
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf
 
 
@@ -15845,11 +15845,11 @@
 \_  bits:     192  (exact)
 \_  length:   62  (with spaces)
 \_  usable for:
-    \_  cryptography            OK         with    +64.00  bits of margin
-    \_  authentication          OK         with   +160.00  bits of margin
-    \_  archival storage        OK         with    +91.70  bits of margin
-    \_  long term storage       OK         with   +115.16  bits of margin
-    \_  short term storage      OK         with   +122.00  bits of margin
+    \_  cryptography         !! NO !!      with    +64.00  bits of margin
+    \_  authentication       !! NO !!      with   +160.00  bits of margin
+    \_  archival storage     !! NO !!      with    +91.70  bits of margin
+    \_  long term storage    !! NO !!      with   +115.16  bits of margin
+    \_  short term storage   !! NO !!      with   +122.00  bits of margin
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06
 
 
@@ -15857,11 +15857,11 @@
 \_  bits:     224  (exact)
 \_  length:   71  (with spaces)
 \_  usable for:
-    \_  cryptography            OK         with    +96.00  bits of margin
-    \_  authentication          OK         with   +192.00  bits of margin
-    \_  archival storage        OK         with   +123.70  bits of margin
-    \_  long term storage       OK         with   +147.16  bits of margin
-    \_  short term storage      OK         with   +154.00  bits of margin
+    \_  cryptography         !! NO !!      with    +96.00  bits of margin
+    \_  authentication       !! NO !!      with   +192.00  bits of margin
+    \_  archival storage     !! NO !!      with   +123.70  bits of margin
+    \_  long term storage    !! NO !!      with   +147.16  bits of margin
+    \_  short term storage   !! NO !!      with   +154.00  bits of margin
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab
 
 
@@ -15869,11 +15869,11 @@
 \_  bits:     256  (exact)
 \_  length:   80  (with spaces)
 \_  usable for:
-    \_  cryptography            OK         with   +128.00  bits of margin
-    \_  authentication          OK         with   +224.00  bits of margin
-    \_  archival storage        OK         with   +155.70  bits of margin
-    \_  long term storage       OK         with   +179.16  bits of margin
-    \_  short term storage      OK         with   +186.00  bits of margin
+    \_  cryptography         !! NO !!      with   +128.00  bits of margin
+    \_  authentication       !! NO !!      with   +224.00  bits of margin
+    \_  archival storage     !! NO !!      with   +155.70  bits of margin
+    \_  long term storage    !! NO !!      with   +179.16  bits of margin
+    \_  short term storage   !! NO !!      with   +186.00  bits of margin
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95
 
 
@@ -15881,11 +15881,11 @@
 \_  bits:     288  (exact)
 \_  length:   89  (with spaces)
 \_  usable for:
-    \_  cryptography            OK         with   +160.00  bits of margin
-    \_  authentication          OK         with   +256.00  bits of margin
-    \_  archival storage        OK         with   +187.70  bits of margin
-    \_  long term storage       OK         with   +211.16  bits of margin
-    \_  short term storage      OK         with   +218.00  bits of margin
+    \_  cryptography         !! NO !!      with   +160.00  bits of margin
+    \_  authentication       !! NO !!      with   +256.00  bits of margin
+    \_  archival storage     !! NO !!      with   +187.70  bits of margin
+    \_  long term storage    !! NO !!      with   +211.16  bits of margin
+    \_  short term storage   !! NO !!      with   +218.00  bits of margin
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de
 
 
@@ -15893,11 +15893,11 @@
 \_  bits:     320  (exact)
 \_  length:   98  (with spaces)
 \_  usable for:
-    \_  cryptography            OK         with   +192.00  bits of margin
-    \_  authentication          OK         with   +288.00  bits of margin
-    \_  archival storage        OK         with   +219.70  bits of margin
-    \_  long term storage       OK         with   +243.16  bits of margin
-    \_  short term storage      OK         with   +250.00  bits of margin
+    \_  cryptography         !! NO !!      with   +192.00  bits of margin
+    \_  authentication       !! NO !!      with   +288.00  bits of margin
+    \_  archival storage     !! NO !!      with   +219.70  bits of margin
+    \_  long term storage    !! NO !!      with   +243.16  bits of margin
+    \_  short term storage   !! NO !!      with   +250.00  bits of margin
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de-549d1d43
 
 
@@ -15905,11 +15905,11 @@
 \_  bits:     352  (exact)
 \_  length:   107  (with spaces)
 \_  usable for:
-    \_  cryptography            OK         with   +224.00  bits of margin
-    \_  authentication          OK         with   +320.00  bits of margin
-    \_  archival storage        OK         with   +251.70  bits of margin
-    \_  long term storage       OK         with   +275.16  bits of margin
-    \_  short term storage      OK         with   +282.00  bits of margin
+    \_  cryptography         !! NO !!      with   +224.00  bits of margin
+    \_  authentication       !! NO !!      with   +320.00  bits of margin
+    \_  archival storage     !! NO !!      with   +251.70  bits of margin
+    \_  long term storage    !! NO !!      with   +275.16  bits of margin
+    \_  short term storage   !! NO !!      with   +282.00  bits of margin
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de-549d1d43-22c4711f
 
 
@@ -15917,11 +15917,11 @@
 \_  bits:     384  (exact)
 \_  length:   116  (with spaces)
 \_  usable for:
-    \_  cryptography            OK         with   +256.00  bits of margin
-    \_  authentication          OK         with   +352.00  bits of margin
-    \_  archival storage        OK         with   +283.70  bits of margin
-    \_  long term storage       OK         with   +307.16  bits of margin
-    \_  short term storage      OK         with   +314.00  bits of margin
+    \_  cryptography         !! NO !!      with   +256.00  bits of margin
+    \_  authentication       !! NO !!      with   +352.00  bits of margin
+    \_  archival storage     !! NO !!      with   +283.70  bits of margin
+    \_  long term storage    !! NO !!      with   +307.16  bits of margin
+    \_  short term storage   !! NO !!      with   +314.00  bits of margin
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de-549d1d43-22c4711f-11efa0c5
 
 
@@ -15929,11 +15929,11 @@
 \_  bits:     416  (exact)
 \_  length:   125  (with spaces)
 \_  usable for:
-    \_  cryptography            OK         with   +288.00  bits of margin
-    \_  authentication          OK         with   +384.00  bits of margin
-    \_  archival storage        OK         with   +315.70  bits of margin
-    \_  long term storage       OK         with   +339.16  bits of margin
-    \_  short term storage      OK         with   +346.00  bits of margin
+    \_  cryptography         !! NO !!      with   +288.00  bits of margin
+    \_  authentication       !! NO !!      with   +384.00  bits of margin
+    \_  archival storage     !! NO !!      with   +315.70  bits of margin
+    \_  long term storage    !! NO !!      with   +339.16  bits of margin
+    \_  short term storage   !! NO !!      with   +346.00  bits of margin
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de-549d1d43-22c4711f-11efa0c5-13790312
 
 
@@ -15941,11 +15941,11 @@
 \_  bits:     448  (exact)
 \_  length:   134  (with spaces)
 \_  usable for:
-    \_  cryptography            OK         with   +320.00  bits of margin
-    \_  authentication          OK         with   +416.00  bits of margin
-    \_  archival storage        OK         with   +347.70  bits of margin
-    \_  long term storage       OK         with   +371.16  bits of margin
-    \_  short term storage      OK         with   +378.00  bits of margin
+    \_  cryptography         !! NO !!      with   +320.00  bits of margin
+    \_  authentication       !! NO !!      with   +416.00  bits of margin
+    \_  archival storage     !! NO !!      with   +347.70  bits of margin
+    \_  long term storage    !! NO !!      with   +371.16  bits of margin
+    \_  short term storage   !! NO !!      with   +378.00  bits of margin
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de-549d1d43-22c4711f-11efa0c5-13790312-4f85fc37
 
 
@@ -15953,11 +15953,11 @@
 \_  bits:     480  (exact)
 \_  length:   143  (with spaces)
 \_  usable for:
-    \_  cryptography            OK         with   +352.00  bits of margin
-    \_  authentication          OK         with   +448.00  bits of margin
-    \_  archival storage        OK         with   +379.70  bits of margin
-    \_  long term storage       OK         with   +403.16  bits of margin
-    \_  short term storage      OK         with   +410.00  bits of margin
+    \_  cryptography         !! NO !!      with   +352.00  bits of margin
+    \_  authentication       !! NO !!      with   +448.00  bits of margin
+    \_  archival storage     !! NO !!      with   +379.70  bits of margin
+    \_  long term storage    !! NO !!      with   +403.16  bits of margin
+    \_  short term storage   !! NO !!      with   +410.00  bits of margin
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de-549d1d43-22c4711f-11efa0c5-13790312-4f85fc37-c761ffc9
 
 
@@ -15965,10 +15965,10 @@
 \_  bits:     512  (exact)
 \_  length:   152  (with spaces)
 \_  usable for:
-    \_  cryptography            OK         with   +384.00  bits of margin
-    \_  authentication          OK         with   +480.00  bits of margin
-    \_  archival storage        OK         with   +411.70  bits of margin
-    \_  long term storage       OK         with   +435.16  bits of margin
-    \_  short term storage      OK         with   +442.00  bits of margin
+    \_  cryptography         !! NO !!      with   +384.00  bits of margin
+    \_  authentication       !! NO !!      with   +480.00  bits of margin
+    \_  archival storage     !! NO !!      with   +411.70  bits of margin
+    \_  long term storage    !! NO !!      with   +435.16  bits of margin
+    \_  short term storage   !! NO !!      with   +442.00  bits of margin
 \_  example:  29607b74-7f6f2ccd-b23f2abb-7b69278e-947c01c6-160a31cf-02c19d06-d0f6e5ab-1d768b95-117be1de-549d1d43-22c4711f-11efa0c5-13790312-4f85fc37-c761ffc9-1ace30cb
 

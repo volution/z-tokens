@@ -1,0 +1,48 @@
+>>  z-tokens patterns --all --for-long-term-storage --shortest --random-chacha20 key-2
+
+::  digits-base10:24        :   79.7 b :   29 c ::    8825 4558 9957 2495 9745 8051
+::  digits-base8:26         :   78  =b :   32 c ::    6624 2443 5743 7244 0471 5744 74
+::  digits-base16:20        :   80  =b :   24 c ::    c947 df96 6ef7 d08e 27e5
+::  digits-base32-hex:16    :   80  =b :   19 c ::    ri8e 9qui thn7 hueh
+::  digits-base32-rfc:16    :   80  =b :   19 c ::    3sio j26s 5rxh r6or
+::  digits-base64-url:14    :   84  =b :   17 c ::    2zQj jj8Z OTi8 cg
+::  digits-base64-rfc:14    :   84  =b :   17 c ::    2zQj jj8Z OTi8 cg
+::  digits-base58:14        :   82.0 b :   17 c ::    raoF ZSHZ Ypwa gv
+::  digits-base62:14        :   83.3 b :   17 c ::    mqZn FYRH YXpw ZO
+::  digits-bech32:16        :   80  =b :   19 c ::    mjgw f67j a3h8 37w3
+::  digits-z85:15           :   96.1 b :   17 c ::    &M!lo LK*Nx WK.jy
+::  ascii-lower:18          :   84.6 b :   22 c ::    uwgo lhoo vykr xotk xh
+::  ascii-upper:18          :   84.6 b :   22 c ::    UWGO LHOO VYKR XOTK XH
+::  ascii-mixed:14          :   79.8 b :   17 c ::    OSDn CxpC CWuJ VC
+::  ascii-symbols:16        :   80  =b :   19 c ::    `=)/ *_}= |<\( <}/<
+::  ascii-any:12            :   78.6 b :   14 c ::    Vl8< UTny WFaT
+::  cva-lower:6             :   80.5 b :   29 c ::    vuhi juqo yelu jipu bixo sixi
+::  cva-upper:6             :   80.5 b :   29 c ::    VUHI JUQO YELU JIPU BIXO SIXI
+::  cva-mixed:5             :   87.1 b :   24 c ::    POnA qARU FUmu qAXI SaBe
+::  cva-plus-a:6            :   80.4 b :   29 c ::    vuhi juqo yelu jipu bixo 4353
+::  cva-plus-b:6            :   80.5 b :   29 c ::    vuhi juqo yelu jipu bixo SI35
+::  cva-plus-c:6            :   82.1 b :   29 c ::    vuhi juqo yelu jipu bixo SI3;
+::  cvs-lower:7             :   88.5 b :   34 c ::    sunu gito juzi tamu dolu hihu vigo
+::  cvs-upper:7             :   88.5 b :   34 c ::    SUNU GITO JUZI TAMU DOLU HIHU VIGO
+::  cvs-mixed:5             :   83.2 b :   24 c ::    ROmA vAPU DUCI luCU vABe
+::  cvs-plus-a:7            :   89.1 b :   34 c ::    sunu gito juzi tamu dolu hihu 1516
+::  cvs-plus-b:7            :   88.8 b :   34 c ::    sunu gito juzi tamu dolu hihu VI16
+::  cvs-plus-c:6            :   77.8 b :   29 c ::    sunu gito juzi tamu dolu HI3~
+::  proquint-lower:5        :   80  =b :   29 c ::    sunuh litok kizot bovol vimiv
+::  proquint-upper:5        :   80  =b :   29 c ::    SUNUH LITOK KIZOT BOVOL VIMIV
+::  koremutake-a:6          :   84  =b :   34 c ::    drose jino keru stapro moki bryfry
+::  koremutake-b:4          :   84  =b :   32 c ::    droseji nokeru stapromo kibryfry
+::  mnemonic:8              :   85.3 b :   55 c ::    austin halt mailbox clever logo genesis tourist modular
+::  bip0039:7               :   77  =b :   50 c ::    shock mirror improve energy misery useless pyramid
+::  skey:7                  :   77  =b :   34 c ::    nude goad defy aids goal trot lila
+::  pgp:5                   :   80  =b :   90 c ::    southward supportive physique dakota highchair direction offload sociable uneart [...]
+::  eff-large:6             :   77.5 b :   46 c ::    slashing swiftly pagan squealing dotted outlet
+::  eff-short:8             :   82.7 b :   40 c ::    outer dose net ivory next nap stash vest
+::  eff-unique:8            :   82.7 b :   73 c ::    mobilize dwindling lunchbox ignition luridness lubricant sponge vertebrae
+::  nato:15                 :   77.5 b :   95 c ::    uniform juliett quebec kilo oscar wun india oscar seven tango fife sierra whiske [...]
+::  bytes-hex:10            :   80  =b :   20 c ::    a1440448905944c60607
+::  token-hex-96            :   96  =b :   24 c ::    92fa0706c6445990480444a1
+::  token-hex-128           :  128  =b :   32 c ::    d976545492fa0706c6445990480444a1
+::  token-hex-256           :  256  =b :   65 c ::    d976545492fa0706c6445990480444a1-cdf4aaf8cdddc3fc9211998495ad29c7
+::  token-hex-512           :  512  =b :  131 c ::    d976545492fa0706c6445990480444a1-cdf4aaf8cdddc3fc9211998495ad29c7-8d84f98d9ac8c4 [...]
+::  uuid-v4                 :  122  =b :   36 c ::    c6445990-d976-4921-b37d-4034cc7d390a

@@ -1,0 +1,48 @@
+>>  z-tokens patterns --all --for-short-term-storage --shortest --random-chacha20 key-2
+
+::  digits-base10:22        :   73.0 b :   27 c ::    8825 4558 9957 2495 9745 80
+::  digits-base8:24         :   72  =b :   29 c ::    6624 2443 5743 7244 0471 5744
+::  digits-base16:18        :   72  =b :   22 c ::    c947 df96 6ef7 d08e 27
+::  digits-base32-hex:14    :   70  =b :   17 c ::    ri8e 9qui thn7 hu
+::  digits-base32-rfc:14    :   70  =b :   17 c ::    3sio j26s 5rxh r6
+::  digits-base64-url:12    :   72  =b :   14 c ::    2zQj jj8Z OTi8
+::  digits-base64-rfc:12    :   72  =b :   14 c ::    2zQj jj8Z OTi8
+::  digits-base58:12        :   70.2 b :   14 c ::    raoF ZSHZ Ypwa
+::  digits-base62:12        :   71.4 b :   14 c ::    mqZn FYRH YXpw
+::  digits-bech32:14        :   70  =b :   17 c ::    mjgw f67j a3h8 37
+::  digits-z85:15           :   96.1 b :   17 c ::    &M!lo LK*Nx WK.jy
+::  ascii-lower:16          :   75.2 b :   19 c ::    uwgo lhoo vykr xotk
+::  ascii-upper:16          :   75.2 b :   19 c ::    UWGO LHOO VYKR XOTK
+::  ascii-mixed:14          :   79.8 b :   17 c ::    OSDn CxpC CWuJ VC
+::  ascii-symbols:14        :   70  =b :   17 c ::    `=)/ *_}= |<\( <}
+::  ascii-any:12            :   78.6 b :   14 c ::    Vl8< UTny WFaT
+::  cva-lower:6             :   80.5 b :   29 c ::    vuhi juqo yelu jipu bixo sixi
+::  cva-upper:6             :   80.5 b :   29 c ::    VUHI JUQO YELU JIPU BIXO SIXI
+::  cva-mixed:5             :   87.1 b :   24 c ::    POnA qARU FUmu qAXI SaBe
+::  cva-plus-a:6            :   80.4 b :   29 c ::    vuhi juqo yelu jipu bixo 4353
+::  cva-plus-b:6            :   80.5 b :   29 c ::    vuhi juqo yelu jipu bixo SI35
+::  cva-plus-c:6            :   82.1 b :   29 c ::    vuhi juqo yelu jipu bixo SI3;
+::  cvs-lower:6             :   75.8 b :   29 c ::    sunu gito juzi tamu dolu hihu
+::  cvs-upper:6             :   75.8 b :   29 c ::    SUNU GITO JUZI TAMU DOLU HIHU
+::  cvs-mixed:5             :   83.2 b :   24 c ::    ROmA vAPU DUCI luCU vABe
+::  cvs-plus-a:6            :   76.5 b :   29 c ::    sunu gito juzi tamu dolu 3535
+::  cvs-plus-b:6            :   76.1 b :   29 c ::    sunu gito juzi tamu dolu HI35
+::  cvs-plus-c:6            :   77.8 b :   29 c ::    sunu gito juzi tamu dolu HI3~
+::  proquint-lower:5        :   80  =b :   29 c ::    sunuh litok kizot bovol vimiv
+::  proquint-upper:5        :   80  =b :   29 c ::    SUNUH LITOK KIZOT BOVOL VIMIV
+::  koremutake-a:5          :   70  =b :   27 c ::    drose jino keru stapro moki
+::  koremutake-b:4          :   84  =b :   32 c ::    droseji nokeru stapromo kibryfry
+::  mnemonic:7              :   74.7 b :   47 c ::    austin halt mailbox clever logo genesis tourist
+::  bip0039:7               :   77  =b :   50 c ::    shock mirror improve energy misery useless pyramid
+::  skey:7                  :   77  =b :   34 c ::    nude goad defy aids goal trot lila
+::  pgp:5                   :   80  =b :   90 c ::    southward supportive physique dakota highchair direction offload sociable uneart [...]
+::  eff-large:6             :   77.5 b :   46 c ::    slashing swiftly pagan squealing dotted outlet
+::  eff-short:7             :   72.3 b :   35 c ::    outer dose net ivory next nap stash
+::  eff-unique:7            :   72.3 b :   63 c ::    mobilize dwindling lunchbox ignition luridness lubricant sponge
+::  nato:14                 :   72.3 b :   88 c ::    uniform juliett quebec kilo oscar wun india oscar seven tango fife sierra whiske [...]
+::  bytes-hex:9             :   72  =b :   18 c ::    a1440448905944c606
+::  token-hex-96            :   96  =b :   24 c ::    92fa0706c6445990480444a1
+::  token-hex-128           :  128  =b :   32 c ::    d976545492fa0706c6445990480444a1
+::  token-hex-256           :  256  =b :   65 c ::    d976545492fa0706c6445990480444a1-cdf4aaf8cdddc3fc9211998495ad29c7
+::  token-hex-512           :  512  =b :  131 c ::    d976545492fa0706c6445990480444a1-cdf4aaf8cdddc3fc9211998495ad29c7-8d84f98d9ac8c4 [...]
+::  uuid-v4                 :  122  =b :   36 c ::    c6445990-d976-4921-b37d-4034cc7d390a

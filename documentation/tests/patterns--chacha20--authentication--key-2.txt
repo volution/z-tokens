@@ -1,0 +1,55 @@
+>>  z-tokens patterns --all --for-authentication --shortest --random-chacha20 key-2
+
+::  digits-base10:10        :   33.2 b :   12 c ::    8825 4558 99
+::  digits-base2:32         :   32  =b :   35 c ::    11111111 01110101 11101110 11110001
+::  digits-base8:12         :   36  =b :   14 c ::    6624 2443 5743
+::  digits-base16:8         :   32  =b :    9 c ::    c947 df96
+::  digits-base32-hex:8     :   40  =b :    9 c ::    ri8e 9qui
+::  digits-base32-rfc:8     :   40  =b :    9 c ::    3sio j26s
+::  digits-base64-url:6     :   36  =b :    7 c ::    2zQj jj
+::  digits-base64-rfc:6     :   36  =b :    7 c ::    2zQj jj
+::  digits-base58:6         :   35.1 b :    7 c ::    raoF ZS
+::  digits-base62:6         :   35.7 b :    7 c ::    mqZn FY
+::  digits-bech32:8         :   40  =b :    9 c ::    mjgw f67j
+::  digits-z85:5            :   32.0 b :    5 c ::    &M!lo
+::  ascii-lower:8           :   37.6 b :    9 c ::    uwgo lhoo
+::  ascii-upper:8           :   37.6 b :    9 c ::    UWGO LHOO
+::  ascii-mixed:6           :   34.2 b :    7 c ::    OSDn Cx
+::  ascii-symbols:8         :   40  =b :    9 c ::    `=)/ *_}=
+::  ascii-any:6             :   39.3 b :    7 c ::    Vl8< UT
+::  cva-lower:3             :   40.2 b :   14 c ::    vuhi juqo yelu
+::  cva-upper:3             :   40.2 b :   14 c ::    VUHI JUQO YELU
+::  cva-mixed:2             :   34.8 b :    9 c ::    POnA qARU
+::  cva-plus-a:3            :   40.1 b :   14 c ::    vuhi juqo 9572
+::  cva-plus-b:3            :   40.2 b :   14 c ::    vuhi juqo YE49
+::  cva-plus-c:3            :   41.8 b :   14 c ::    vuhi juqo YE4<
+::  cvs-lower:3             :   37.9 b :   14 c ::    sunu gito juzi
+::  cvs-upper:3             :   37.9 b :   14 c ::    SUNU GITO JUZI
+::  cvs-mixed:2             :   33.2 b :    9 c ::    ROmA vAPU
+::  cvs-plus-a:3            :   38.5 b :   14 c ::    sunu gito 9572
+::  cvs-plus-b:3            :   38.2 b :   14 c ::    sunu gito JU59
+::  cvs-plus-c:3            :   39.9 b :   14 c ::    sunu gito JU5}
+::  proquint-lower:2        :   32  =b :   11 c ::    sunuh litok
+::  proquint-upper:2        :   32  =b :   11 c ::    SUNUH LITOK
+::  koremutake-a:3          :   42  =b :   15 c ::    drose jino keru
+::  koremutake-b:2          :   42  =b :   14 c ::    droseji nokeru
+::  mnemonic:3              :   32.0 b :   19 c ::    austin halt mailbox
+::  bip0039:3               :   33  =b :   20 c ::    shock mirror improve
+::  skey:3                  :   33  =b :   14 c ::    nude goad defy
+::  pgp:2                   :   32  =b :   36 c ::    southward supportive physique dakota
+::  eff-large:3             :   38.7 b :   22 c ::    slashing swiftly pagan
+::  eff-short:4             :   41.3 b :   20 c ::    outer dose net ivory
+::  eff-unique:4            :   41.3 b :   36 c ::    mobilize dwindling lunchbox ignition
+::  pets-medium-4           :   36.9 b :   31 c ::    sheepishly-mighty-snow-kingbird
+::  nato:7                  :   36.1 b :   43 c ::    uniform juliett quebec kilo oscar wun india
+::  bytes-hex:4             :   32  =b :    8 c ::    a1440448
+::  token-hex-32            :   32  =b :    8 c ::    c6445990
+::  token-hex-48            :   48  =b :   12 c ::    c64459904804
+::  token-hex-64            :   64  =b :   16 c ::    c6445990480444a1
+::  token-hex-96            :   96  =b :   24 c ::    92fa0706c6445990480444a1
+::  token-hex-128           :  128  =b :   32 c ::    d976545492fa0706c6445990480444a1
+::  token-hex-256           :  256  =b :   65 c ::    d976545492fa0706c6445990480444a1-cdf4aaf8cdddc3fc9211998495ad29c7
+::  token-hex-512           :  512  =b :  131 c ::    d976545492fa0706c6445990480444a1-cdf4aaf8cdddc3fc9211998495ad29c7-8d84f98d9ac8c4 [...]
+::  uuid-v4                 :  122  =b :   36 c ::    c6445990-d976-4921-b37d-4034cc7d390a
+::  ip-mac-02               :   40  =b :   17 c ::    02:c6:d9:92:40:72
+::  ip-mac-04               :   40  =b :   17 c ::    04:c6:d9:92:40:72

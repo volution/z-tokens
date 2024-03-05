@@ -1,0 +1,46 @@
+>>  z-tokens patterns --all --for-archival-storage --shortest --random-chacha20 key-2
+
+::  digits-base10:32        :  106.3 b :   39 c ::    8825 4558 9957 2495 9745 8051 6435 3581
+::  digits-base16:26        :  104  =b :   32 c ::    c947 df96 6ef7 d08e 27e5 85ef 84
+::  digits-base32-hex:22    :  110  =b :   27 c ::    ri8e 9qui thn7 hueh gs4l es
+::  digits-base32-rfc:22    :  110  =b :   27 c ::    3sio j26s 5rxh r6or q4ev o4
+::  digits-base64-url:18    :  108  =b :   22 c ::    2zQj jj8Z OTi8 cgnV gj
+::  digits-base64-rfc:18    :  108  =b :   22 c ::    2zQj jj8Z OTi8 cgnV gj
+::  digits-base58:18        :  105.4 b :   22 c ::    raoF ZSHZ Ypwa gvYj EQ
+::  digits-base62:18        :  107.1 b :   22 c ::    mqZn FYRH YXpw ZOgu Xj
+::  digits-bech32:22        :  110  =b :   27 c ::    mjgw f67j a3h8 37w3 suy4 wu
+::  digits-z85:20           :  128.1 b :   23 c ::    &M!lo LK*Nx WK.jy pJ}-K
+::  ascii-lower:22          :  103.4 b :   27 c ::    uwgo lhoo vykr xotk xhyt lo
+::  ascii-upper:22          :  103.4 b :   27 c ::    UWGO LHOO VYKR XOTK XHYT LO
+::  ascii-mixed:18          :  102.6 b :   22 c ::    OSDn CxpC CWuJ VCMl pX
+::  ascii-symbols:22        :  110  =b :   27 c ::    `=)/ *_}= |<\( <}/< ;{%@ /{
+::  ascii-any:16            :  104.8 b :   19 c ::    Vl8< UTny WFaT 6F=S
+::  cva-lower:8             :  107.4 b :   39 c ::    vuhi juqo yelu jipu bixo sixi kudu qino
+::  cva-upper:8             :  107.4 b :   39 c ::    VUHI JUQO YELU JIPU BIXO SIXI KUDU QINO
+::  cva-mixed:6             :  104.5 b :   29 c ::    POnA qARU FUmu qAXI SaBe KuVo
+::  cva-plus-a:8            :  107.2 b :   39 c ::    vuhi juqo yelu jipu bixo sixi kudu 5168
+::  cva-plus-b:8            :  107.3 b :   39 c ::    vuhi juqo yelu jipu bixo sixi kudu QI16
+::  cva-plus-c:8            :  109.0 b :   39 c ::    vuhi juqo yelu jipu bixo sixi kudu QI1?
+::  cvs-lower:8             :  101.1 b :   39 c ::    sunu gito juzi tamu dolu hihu vigo toro
+::  cvs-upper:8             :  101.1 b :   39 c ::    SUNU GITO JUZI TAMU DOLU HIHU VIGO TORO
+::  cvs-mixed:7             :  116.5 b :   34 c ::    ROmA vAPU DUCI luCU vABe HuSo BoZA
+::  cvs-plus-a:8            :  101.7 b :   39 c ::    sunu gito juzi tamu dolu hihu vigo 8729
+::  cvs-plus-b:8            :  101.4 b :   39 c ::    sunu gito juzi tamu dolu hihu vigo TO72
+::  cvs-plus-c:8            :  103.1 b :   39 c ::    sunu gito juzi tamu dolu hihu vigo TO7|
+::  proquint-lower:7        :  112  =b :   41 c ::    sunuh litok kizot bovol vimiv zohur hokoz
+::  proquint-upper:7        :  112  =b :   41 c ::    SUNUH LITOK KIZOT BOVOL VIMIV ZOHUR HOKOZ
+::  koremutake-a:8          :  112  =b :   45 c ::    drose jino keru stapro moki bryfry bogry fyta
+::  koremutake-b:5          :  105  =b :   40 c ::    droseji nokeru stapromo kibryfry bogryfy
+::  mnemonic:10             :  106.7 b :   65 c ::    austin halt mailbox clever logo genesis tourist modular gold fast
+::  bip0039:10              :  110  =b :   70 c ::    shock mirror improve energy misery useless pyramid menu define grocery
+::  skey:10                 :  110  =b :   48 c ::    nude goad defy aids goal trot lila gift run cite
+::  pgp:7                   :  112  =b :  124 c ::    southward supportive physique dakota highchair direction offload sociable uneart [...]
+::  eff-large:8             :  103.3 b :   63 c ::    slashing swiftly pagan squealing dotted outlet jaybird energize
+::  eff-short:10            :  103.3 b :   52 c ::    outer dose net ivory next nap stash vest rogue nacho
+::  eff-unique:10           :  103.3 b :   86 c ::    mobilize dwindling lunchbox ignition luridness lubricant sponge vertebrae plank  [...]
+::  nato:20                 :  103.3 b :  124 c ::    uniform juliett quebec kilo oscar wun india oscar seven tango fife sierra whiske [...]
+::  bytes-hex:13            :  104  =b :   26 c ::    a1440448905944c60607fa9254
+::  token-hex-128           :  128  =b :   32 c ::    d976545492fa0706c6445990480444a1
+::  token-hex-256           :  256  =b :   65 c ::    d976545492fa0706c6445990480444a1-cdf4aaf8cdddc3fc9211998495ad29c7
+::  token-hex-512           :  512  =b :  131 c ::    d976545492fa0706c6445990480444a1-cdf4aaf8cdddc3fc9211998495ad29c7-8d84f98d9ac8c4 [...]
+::  uuid-v4                 :  122  =b :   36 c ::    c6445990-d976-4921-b37d-4034cc7d390a

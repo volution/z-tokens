@@ -1,0 +1,48 @@
+>>  z-tokens patterns --all --for-short-term-storage --shortest --random-chacha20 key-1
+
+::  digits-base10:22        :   73.0 b :   27 c ::    4979 6484 0701 8046 2623 97
+::  digits-base8:24         :   72  =b :   29 c ::    3531 3001 2035 5707 5535 7752
+::  digits-base16:18        :   72  =b :   22 c ::    1f3f a3d9 0124 d9a9 9a
+::  digits-base32-hex:14    :   70  =b :   17 c ::    un6u 6524 qii7 ni
+::  digits-base32-rfc:14    :   70  =b :   17 c ::    6xg6 gfce 2ssh xs
+::  digits-base64-url:12    :   72  =b :   14 c ::    Fb8M Mb_b BfE0
+::  digits-base64-rfc:12    :   72  =b :   14 c ::    Fb8M Mb/b BfE0
+::  digits-base58:12        :   70.2 b :   14 c ::    5Rwj CxeR qzAR
+::  digits-base62:12        :   71.4 b :   14 c ::    4Qwj BweB QpzA
+::  digits-bech32:14        :   70  =b :   17 c ::    7hx7 x9zy 6jj8 hj
+::  digits-z85:15           :   96.1 b :   17 c ::    A}gTg ?#eAO -5Fn/
+::  ascii-lower:16          :   75.2 b :   19 c ::    clyf ylvz elpa tbmb
+::  ascii-upper:16          :   75.2 b :   19 c ::    CLYF YLVZ ELPA TBMB
+::  ascii-mixed:14          :   79.8 b :   17 c ::    ewXL kXwR Ziwb dz
+::  ascii-symbols:14        :   70  =b :   17 c ::    }\'} '&#% _==( \=
+::  ascii-any:12            :   78.6 b :   14 c ::    (Ie3 z^o~ 0IX#
+::  cva-lower:6             :   80.5 b :   29 c ::    cito wiqa cice waqo koto qugo
+::  cva-upper:6             :   80.5 b :   29 c ::    CITO WIQA CICE WAQO KOTO QUGO
+::  cva-mixed:5             :   87.1 b :   24 c ::    fuMU JuSu Naze pOJi FEsU
+::  cva-plus-a:6            :   80.4 b :   29 c ::    cito wiqa cice waqo koto 0692
+::  cva-plus-b:6            :   80.5 b :   29 c ::    cito wiqa cice waqo koto QU26
+::  cva-plus-c:6            :   82.1 b :   29 c ::    cito wiqa cice waqo koto QU2`
+::  cvs-lower:6             :   75.8 b :   29 c ::    cizo fiti nace tape noho nofo
+::  cvs-upper:6             :   75.8 b :   29 c ::    CIZO FITI NACE TAPE NOHO NOFO
+::  cvs-mixed:5             :   83.2 b :   24 c ::    VIjU juhu dePa DElo LIcE
+::  cvs-plus-a:6            :   76.5 b :   29 c ::    cizo fiti nace tape noho 7706
+::  cvs-plus-b:6            :   76.1 b :   29 c ::    cizo fiti nace tape noho NO06
+::  cvs-plus-c:6            :   77.8 b :   29 c ::    cizo fiti nace tape noho NO0>
+::  proquint-lower:5        :   80  =b :   29 c ::    dunad fitop nopir nagoz pupip
+::  proquint-upper:5        :   80  =b :   29 c ::    DUNAD FITOP NOPIR NAGOZ PUPIP
+::  koremutake-a:5          :   70  =b :   26 c ::    duna broty hana frygo pijy
+::  koremutake-b:4          :   84  =b :   30 c ::    dunabro tyhana frygopi jyfriso
+::  mnemonic:7              :   74.7 b :   42 c ::    chaos subject side sofia begin genius game
+::  bip0039:7               :   77  =b :   47 c ::    before vehicle veteran plunge stool worry honey
+::  skey:7                  :   77  =b :   33 c ::    fit twit vale kirk sand work cuff
+::  pgp:5                   :   80  =b :   89 c ::    baboon puberty chatter vertigo chairlift handiwork stockman chambermaid goggles  [...]
+::  eff-large:6             :   77.5 b :   49 c ::    bonelike hybrid unvarying scalping curve upheaval
+::  eff-short:7             :   72.3 b :   36 c ::    bonus hers set wad creme hefty stoop
+::  eff-unique:7            :   72.3 b :   63 c ::    asymmetric henceforth refinery vixen cybernetic heinously sugar
+::  nato:14                 :   72.3 b :   82 c ::    papa niner wun niner xray papa fife papa victor charlie romeo charlie fower vict [...]
+::  bytes-hex:9             :   72  =b :   18 c ::    0c0ba314dd3f271488
+::  token-hex-96            :   96  =b :   24 c ::    be347d8814273fdd14a30b0c
+::  token-hex-128           :  128  =b :   32 c ::    6cf6b427be347d8814273fdd14a30b0c
+::  token-hex-256           :  256  =b :   65 c ::    6cf6b427be347d8814273fdd14a30b0c-ba13acb1dab8e215f1ea015b72f9f69d
+::  token-hex-512           :  512  =b :  131 c ::    6cf6b427be347d8814273fdd14a30b0c-ba13acb1dab8e215f1ea015b72f9f69d-f32c33de69df64 [...]
+::  uuid-v4                 :  122  =b :   36 c ::    14273fdd-f1ea-4ba1-bccb-a6e254783538

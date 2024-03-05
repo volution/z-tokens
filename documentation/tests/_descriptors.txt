@@ -81,6 +81,18 @@ patterns / identifiers / all / shortest :: patterns --identifiers-only --all --s
 patterns / identifiers / show-all :: patterns --identifiers-only --all --show-all --random-testing
 patterns / identifiers / show-all / shortest :: patterns --identifiers-only --all --show-all --shortest --random-testing
 
+patterns / chacha20 / cryptography / key-1 :: patterns --all --for-cryptography --shortest --random-chacha20 key-1
+patterns / chacha20 / authentication / key-1 :: patterns --all --for-authentication --shortest --random-chacha20 key-1
+patterns / chacha20 / archival-storage / key-1 :: patterns --all --for-archival-storage --shortest --random-chacha20 key-1
+patterns / chacha20 / long-term-storage / key-1 :: patterns --all --for-long-term-storage --shortest --random-chacha20 key-1
+patterns / chacha20 / short-term-storage / key-1 :: patterns --all --for-short-term-storage --shortest --random-chacha20 key-1
+
+patterns / chacha20 / cryptography / key-2 :: patterns --all --for-cryptography --shortest --random-chacha20 key-2
+patterns / chacha20 / authentication / key-2 :: patterns --all --for-authentication --shortest --random-chacha20 key-2
+patterns / chacha20 / archival-storage / key-2 :: patterns --all --for-archival-storage --shortest --random-chacha20 key-2
+patterns / chacha20 / long-term-storage / key-2 :: patterns --all --for-long-term-storage --shortest --random-chacha20 key-2
+patterns / chacha20 / short-term-storage / key-2 :: patterns --all --for-short-term-storage --shortest --random-chacha20 key-2
+
 
 
 
