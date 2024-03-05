@@ -85,6 +85,27 @@
   --secret-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
 
+  --raw-secret  {string}
+    **  (raw) shared secret, for additional security (multiple allowed, in any order, deduplicated)
+
+  --raw-secret-env  {variable}
+    **  from environment
+
+  --raw-secret-path  {path}
+    **  from file
+
+  --raw-secret-fd  {fd}
+    **  from file-descriptor
+
+  --raw-secret-stdin
+    **  from stdin
+
+  --raw-secret-pinentry  {prompt}
+    **  via pinentry
+
+  --raw-secret-lkkrs  {selector}
+    **  from Linux Kernel key-retention-service
+
   -e --pin  {string}
     **  shared PIN, for **WEAK** additional security (multiple allowed, in any order, deduplicated)
 
@@ -127,6 +148,27 @@
   --seed-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
 
+  --raw-seed  {string}
+    **  (raw) shared seed, for additional security (multiple allowed, in any order, deduplicated)
+
+  --raw-seed-env  {variable}
+    **  from environment
+
+  --raw-seed-path  {path}
+    **  from file
+
+  --raw-seed-fd  {fd}
+    **  from file-descriptor
+
+  --raw-seed-stdin
+    **  from stdin
+
+  --raw-seed-pinentry  {prompt}
+    **  via pinentry
+
+  --raw-seed-lkkrs  {selector}
+    **  from Linux Kernel key-retention-service
+
   -b --ballast  {string}
     **  shared ballast, for additional security (multiple allowed, in any order, deduplicated)
 
@@ -146,6 +188,27 @@
     **  via pinentry
 
   --ballast-lkkrs  {selector}
+    **  from Linux Kernel key-retention-service
+
+  --raw-ballast  {string}
+    **  (raw) shared ballast, for additional security (multiple allowed, in any order, deduplicated)
+
+  --raw-ballast-env  {variable}
+    **  from environment
+
+  --raw-ballast-path  {path}
+    **  from file
+
+  --raw-ballast-fd  {fd}
+    **  from file-descriptor
+
+  --raw-ballast-stdin
+    **  from stdin
+
+  --raw-ballast-pinentry  {prompt}
+    **  via pinentry
+
+  --raw-ballast-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
 
   --derivation-loops  {count}
