@@ -3,6 +3,13 @@
 
 
 
+<< cargo / dependencies / refresh + fetch
+	"${ZRUN}" ':: cargo / dependencies / refresh'
+	"${ZRUN}" ':: cargo / dependencies / fetch'
+	"${ZRUN}" ':: cargo / dependencies / fetch / cross'
+!!
+
+
 << cargo / dependencies / update + fetch / conservative
 	"${ZRUN}" ':: cargo / dependencies / update / conservative'
 	"${ZRUN}" ':: cargo / dependencies / fetch'
@@ -17,6 +24,11 @@
 !!
 
 
+
+
+<< cargo / dependencies / refresh
+	exec -- "${ZRUN}" ':: cargo / exec / local' generate-lockfile "${@}"
+!!
 
 
 << cargo / dependencies / update / conservative
