@@ -1,13 +1,13 @@
 >>  z-tokens exchange encrypt --siv --sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m --associated testing
 
 
-#1,  3Lms6mB3tJ5bU 3wPiH6Hpv22tW 9QEQ2SnUYN25  YFcqm211MFQs  2XjupAFWrHsju
-#2,  3iYHjsodPaUxg 2JP5m1TUfTEhH HtPQj2FYcfFy  2HjjR4YCjMXng 2eZ695nAdacZU
-#3,  2PTn4B98oDadC 3V2HNPvPsTVzi MVmTV5iSr4fK  3Q7RRmtNYuQjC 3fCY94s2vc9G1
-#4,  2zVDXJB2VHRGs ApCeMyEgNjC9  3FgcXaQq9hFvc 29TRB5jX4gg12 2by2pBbTjD1hV
-#5,  epnzZxQRo7b6  ZyfzKmDgVXXD  3FaVtciS1DVie 2nib74RSDZmqA 48uSVSY2HowcV
-#6,  3L4m1j3TisWPa RndNcZ6WMfgr  YPNu4W7iGGE6  aKZWtfnFnV7d  2prBQqkRyWbfb
-#7,  2YSnj9RKqTkfH 3MT4zufmLy91m 3A5M2ADWsUCqo 3sMFry9s4frYC 346MgbPUmWby2
-#8,  eMC55THahRw5  SHhkRyf3zmr4  HFchnFRX5DTk  EKiASXvzQ3TP  2hV8LQBe2x2tJ
-#9.  2KMdeRtAg8STo
+#1,  3Lms6mW7YEmfS vGwasNKGotey  2ALZAXwb1vugh 3VuddFiUzbD4N 39LMrEgBUyMrK
+#2,  3zShj3BJZ4MM1 gigsrrpFzPSx  2F57v4ac17Bxu cFofKWikNTUh  3hw2FKWXhHJaz
+#3,  415MWPUyuezwq 3FSSnPvLzpvmx aaUyNgCZueQq  36HqARc1SVSHw 42k444dsa6tb2
+#4,  2KugtbaUGpJNb 3JgpTVVVfm9Mi 2dwuqLeFLcMdc 3k5PGdpYuMSPf 2RcyUjtXQyzNb
+#5,  2FDXHd4vrKEar 2aVmWB2svcuho n8o1a89BnAnm  2k8tQFFFoVoRs 2rjyc3PqBd2Qw
+#6,  3QADyZYBjBMd3 2999g1yBBeswN 3eb3ZZeagTrRV PaS6rpSyygyw  324XeHQUqVACT
+#7,  2fuU5iqL7TLjD HGewZrfyv6Tf  2h3yuH1h1KTAC 2KGThqvrepCcv 2RTfVaJBtTL2i
+#8,  2TodNeVPkVY7G 2iETcxsW9JZxq e2cN4fASWCzN  2Qff9MFnL4Pz8 2YaXjZZEH8hAf
+#9.  SAsdBvYWG9NQ
 

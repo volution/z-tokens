@@ -1,13 +1,13 @@
 >>  z-tokens exchange encrypt --derivation-loops 2 --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx
 
 
-#1,  3Lms6mW4REpsH pxxmRTSWwsKM  2yhSVWMzJuaiA o3s9YHhZrW13  bP2rmmrVnq74
-#2,  2GcahfiwRpnX7 49CEhmbSGze5p CH4ZG1Db8VNA  2CCpV7qCUZKf4 2rBLEuBYUfmMH
-#3,  3uV4euUVmCk3K 454vQDQ2S8yjQ 2KfADvJ421Tqb 2wPsAYqtTRnBM 42bVmaKSSwbUc
-#4,  3zqJ4STGkSxip 2d7qpSfApWdSF 34douWiP5MHtq 3xaA4APQJvBVB 3t6aG5mEBaxDr
-#5,  Svpxctquibnr  2GHR8qSoTjBdc uhWn3Mm7iG1L  25Ka6SDv3Xrii PD8kCxRB8MhJ
-#6,  2uRQLXf4dbfpa 31dueCg33eW8b B11p3E8UfdMe  2HQKFprNMt6nW 2o7JoMbgtxikq
-#7,  hCSCSpLP26mW  i9yNds22Z1jX  44ihzi3PvTgiC 2nJjycutc7ev1 EH4cTUkMVZLv
-#8,  258XM1qaCJRBT 2AfxBP5D7KnAs J22v8AusZQ73  mGaczxYfp3pV  267AVRbUypZGn
-#9.  uqZQJQAR799U
+#1,  3Lms6mNDmXfz6 3Vt1nvQarAU9t LEnE6gK8SRV3  2dCt6rhquAzwr FnPgxATxjDgr
+#2,  TXniuR5JXXsM  2qSJ484nczkoM 5xsxqZjLL3E2  48mT2XsFFAwLG 3bHBoACQiYXCh
+#3,  2ksLkQhvsCh4K XMVAqdjRcQCu  vTmpYmMh5yN5  BA1fEMd3rhcE  49WBo7FoNivUU
+#4,  NxyWgsfabFwm  2Psm9LPPc49T4 24jd7TyTMK6Uw 38EAA1ZGS99BM 3iMvWpmtaKWFw
+#5,  3zV27xy2BjWq3 fLMc9eAbUZ5s  3tptNzRCmSuTx 2qvqY2wb6d9ua tJcekrHYK3h6
+#6,  4B4NaYKt8BLtK Zov1SmhFJ1XS  48wpCZH8URsQj ZUhKEk8szwjw  gLHhp7UAdo5V
+#7,  3KbUousEY4P6i 3Ut1vjzrfrhrA 24njwiP7scjqq 2fP6sFi3rBQxU 3XcE6iu94otDm
+#8,  FB1TtS6MPovU  3iXzHvkK1nBqp 341LBTsFVy4ia 2eZBL8MihjpoY 2VMFV5Zwasmoo
+#9.  2p7zETwDmWfz2
 
