@@ -59,6 +59,9 @@
   --random-testing
     **  unsafe constant generator
     !!  DO-NOT-USE
+  --random-chacha20  {key}
+    **  deterministic generator
+    !!  EXPERIMENTAL
 
   --describe
     **  describe pattern characteristics
