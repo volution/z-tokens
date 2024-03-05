@@ -3,6 +3,8 @@
 use ::z_tokens_runtime::preludes::std_plus_extras::*;
 use ::z_tokens_runtime::preludes::errors::*;
 
+use crate::oracles::*;
+
 
 pub(crate) mod ssh {
 	
@@ -121,6 +123,8 @@ struct SshWrapperKeyInternals {
 	public_key_bytes : Vec<u8>,
 	
 	key_hash : InternalSshWrapKeyHash,
+	
+	handle : OracleHandle,
 }
 
 
@@ -308,20 +312,8 @@ impl SshWrapper {
 	}
 	
 	
-	pub fn handle (&self) -> SshResult<&[u8; 32]> {
-		self.key.handle ()
-	}
-	
-	
-	pub fn cmp_by_keys (_left : &Self, _right : &Self) -> Ordering {
-		
-		let _left = _left.key.0.deref ();
-		let _right = _right.key.0.deref ();
-		
-		Ordering::Equal
-				.then_with (|| Ord::cmp (_left.key_algorithm.identifier (), _right.key_algorithm.identifier ()))
-				.then_with (|| Ord::cmp (_left.signature_algorithm.identifier (), _right.signature_algorithm.identifier ()))
-				.then_with (|| Ord::cmp (&_left.public_key_bytes, &_right.public_key_bytes))
+	pub fn key (&self) -> &SshWrapperKey {
+		&self.key
 	}
 }
 
@@ -391,30 +383,45 @@ impl SshWrapperKey {
 		
 		let _key_hash = key_hash (&_key_algorithm, &_signature_algorithm, &_serialized);
 		
+		let _handle = OracleHandle::from_raw (_key_hash.access ());
+		
 		let _wrapper_key = SshWrapperKeyInternals {
 				key_algorithm : _key_algorithm,
 				signature_algorithm : _signature_algorithm,
 				public_key_bytes : _serialized,
 				public_key : _public_key,
 				key_hash : _key_hash,
+				handle : _handle,
 			};
 		
 		Ok (SshWrapperKey (Rb::new (_wrapper_key)))
 	}
 	
 	
-	pub fn handle (&self) -> SshResult<&[u8; 32]> {
+	pub fn handle (&self) -> &OracleHandle {
 		let _key = &self.0;
-		Ok (_key.key_hash.access ())
+		&_key.handle
 	}
 	
 	
 	pub fn description (&self) -> SshResult<Rb<String>> {
 		let _key = &self.0;
-		let _ssh_fingerprint = _key.public_key.fingerprint ();
-		let _handle = format! ("[{}:{}:{}]", _key.key_algorithm.identifier (), _key.signature_algorithm.identifier (), _ssh_fingerprint);
-		zeroize_and_drop (_ssh_fingerprint);
-		Ok (Rb::new (_handle))
+		let _fingerprint = _key.public_key.fingerprint ();
+		let _description = format! ("[{}:{}:{}]", _key.key_algorithm.identifier (), _key.signature_algorithm.identifier (), _fingerprint);
+		zeroize_and_drop (_fingerprint);
+		Ok (Rb::new (_description))
+	}
+	
+	
+	pub fn cmp (_left : &Self, _right : &Self) -> Ordering {
+		
+		let _left = _left.0.deref ();
+		let _right = _right.0.deref ();
+		
+		Ordering::Equal
+				.then_with (|| Ord::cmp (_left.key_algorithm.identifier (), _right.key_algorithm.identifier ()))
+				.then_with (|| Ord::cmp (_left.signature_algorithm.identifier (), _right.signature_algorithm.identifier ()))
+				.then_with (|| Ord::cmp (&_left.public_key_bytes, &_right.public_key_bytes))
 	}
 }
 
@@ -475,6 +482,8 @@ impl SshWrapperAgent {
 				
 				let _key_hash = key_hash (&_key_algorithm, &_signature_algorithm, &_public_key_bytes);
 				
+				let _handle = OracleHandle::from_raw (_key_hash.access ());
+				
 				let _wrapper_key = SshWrapperKeyInternals {
 						
 						key_algorithm : _key_algorithm.clone (),
@@ -484,6 +493,7 @@ impl SshWrapperAgent {
 						public_key : _public_key,
 						
 						key_hash : _key_hash,
+						handle : _handle,
 					};
 				
 				let _wrapper_key = SshWrapperKey (Rb::new (_wrapper_key));

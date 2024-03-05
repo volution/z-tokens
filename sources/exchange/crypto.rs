@@ -1523,7 +1523,7 @@ fn wrap_oracles <'a> (
 	let mut _oracles : Vec<_> = _ssh_wrappers.into_iter ()
 			.map (
 				|_ssh_wrapper| {
-					let _ssh_wrapper_handle = _ssh_wrapper.handle () ?;
+					let _ssh_wrapper_handle = _ssh_wrapper.key () .handle () .as_raw ();
 					let _oracle_handle = InternalOracleHandle::wrap_copy (_ssh_wrapper_handle);
 					Ok ((_ssh_wrapper, _oracle_handle))
 				})
