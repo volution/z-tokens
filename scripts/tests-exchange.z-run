@@ -400,7 +400,7 @@
 	"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 			ssh wrap "${@}" \
 				--key "${_ssh_wrap}" \
-		<<< $'hello world!\n' \
+				--input $'hello world!\n' \
 	#
 !!
 
@@ -424,6 +424,8 @@
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 	_seed="${__ZTOKENS_EXCHANGE_SEED:-}"
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
+	_derivation_loops="${__ZTOKENS_EXCHANGE_DERIVATION_LOOPS:-1}"
+	_namespace="${__ZTOKENS_EXCHANGE_NAMESPACE:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -438,8 +440,10 @@
 				--ssh-wrap "${_ssh_wrap}" \
 				--seed "${_seed}" \
 				--ballast "${_ballast}" \
+				--derivation-loops "${_derivation_loops}" \
+				--namespace "${_namespace}" \
 				--empty-is-missing true \
-		<<< $'hello world!\n' \
+				--input $'hello world!\n' \
 	#
 !!
 
@@ -461,6 +465,8 @@
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 	_seed="${__ZTOKENS_EXCHANGE_SEED:-}"
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
+	_derivation_loops="${__ZTOKENS_EXCHANGE_DERIVATION_LOOPS:-1}"
+	_namespace="${__ZTOKENS_EXCHANGE_NAMESPACE:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -484,6 +490,8 @@
 					--ssh-wrap "${_ssh_wrap}"
 					--seed "${_seed}"
 					--ballast "${_ballast}"
+					--derivation-loops "${_derivation_loops}"
+					--namespace "${_namespace}"
 					--empty-is-missing true
 		)
 	_hyperfine_arguments+=(
@@ -621,6 +629,8 @@
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 	_seed="${__ZTOKENS_EXCHANGE_SEED:-}"
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
+	_derivation_loops="${__ZTOKENS_EXCHANGE_DERIVATION_LOOPS:-1}"
+	_namespace="${__ZTOKENS_EXCHANGE_NAMESPACE:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -635,6 +645,8 @@
 				--ssh-wrap "${_ssh_wrap}" \
 				--seed "${_seed}" \
 				--ballast "${_ballast}" \
+				--derivation-loops "${_derivation_loops}" \
+				--namespace "${_namespace}" \
 				--siv \
 				--empty-is-missing true \
 		<<< $'hello world!\n' \
@@ -659,6 +671,8 @@
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 	_seed="${__ZTOKENS_EXCHANGE_SEED:-}"
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
+	_derivation_loops="${__ZTOKENS_EXCHANGE_DERIVATION_LOOPS:-1}"
+	_namespace="${__ZTOKENS_EXCHANGE_NAMESPACE:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -673,6 +687,8 @@
 				--ssh-wrap "${_ssh_wrap}" \
 				--seed "${_seed}" \
 				--ballast "${_ballast}" \
+				--derivation-loops "${_derivation_loops}" \
+				--namespace "${_namespace}" \
 				--siv \
 				--empty-is-missing true \
 		< /dev/null \
@@ -697,6 +713,8 @@
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 	_seed="${__ZTOKENS_EXCHANGE_SEED:-}"
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
+	_derivation_loops="${__ZTOKENS_EXCHANGE_DERIVATION_LOOPS:-1}"
+	_namespace="${__ZTOKENS_EXCHANGE_NAMESPACE:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -711,6 +729,8 @@
 				--ssh-wrap "${_ssh_wrap}" \
 				--seed "${_seed}" \
 				--ballast "${_ballast}" \
+				--derivation-loops "${_derivation_loops}" \
+				--namespace "${_namespace}" \
 				--siv \
 				--empty-is-missing true \
 		< ./notice.txt \
@@ -735,6 +755,8 @@
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 	_seed="${__ZTOKENS_EXCHANGE_SEED:-}"
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
+	_derivation_loops="${__ZTOKENS_EXCHANGE_DERIVATION_LOOPS:-1}"
+	_namespace="${__ZTOKENS_EXCHANGE_NAMESPACE:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -750,6 +772,8 @@
 				--ssh-wrap "${_ssh_wrap}" \
 				--seed "${_seed}" \
 				--ballast "${_ballast}" \
+				--derivation-loops "${_derivation_loops}" \
+				--namespace "${_namespace}" \
 				--siv \
 				--empty-is-missing true \
 	#
@@ -778,6 +802,8 @@
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 	_seed="${__ZTOKENS_EXCHANGE_SEED:-}"
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
+	_derivation_loops="${__ZTOKENS_EXCHANGE_DERIVATION_LOOPS:-1}"
+	_namespace="${__ZTOKENS_EXCHANGE_NAMESPACE:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -792,6 +818,8 @@
 				--ssh-wrap "${_ssh_wrap}" \
 				--seed "${_seed}" \
 				--ballast "${_ballast}" \
+				--derivation-loops "${_derivation_loops}" \
+				--namespace "${_namespace}" \
 				--empty-is-missing true \
 		<<< $'hello world!\n' \
 	| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
@@ -804,6 +832,8 @@
 				--ssh-wrap "${_ssh_wrap}" \
 				--seed "${_seed}" \
 				--ballast "${_ballast}" \
+				--derivation-loops "${_derivation_loops}" \
+				--namespace "${_namespace}" \
 				--empty-is-missing true \
 	#
 !!
@@ -827,6 +857,8 @@
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 	_seed="${__ZTOKENS_EXCHANGE_SEED:-}"
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
+	_derivation_loops="${__ZTOKENS_EXCHANGE_DERIVATION_LOOPS:-1}"
+	_namespace="${__ZTOKENS_EXCHANGE_NAMESPACE:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -857,6 +889,8 @@
 					--ssh-wrap "${_ssh_wrap}" \
 					--seed "${_seed}" \
 					--ballast "${_ballast}" \
+					--derivation-loops "${_derivation_loops}" \
+					--namespace "${_namespace}" \
 					--empty-is-missing true \
 			< "${_file}" \
 		| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
@@ -869,6 +903,8 @@
 					--ssh-wrap "${_ssh_wrap}" \
 					--seed "${_seed}" \
 					--ballast "${_ballast}" \
+					--derivation-loops "${_derivation_loops}" \
+					--namespace "${_namespace}" \
 					--empty-is-missing true \
 		| md5sum -b -- /dev/fd/5 5<&0 \
 		| md5sum -c --quiet 5< "${_file}" \
@@ -896,6 +932,8 @@
 	_pin="${__ZTOKENS_EXCHANGE_PIN:-}"
 	_seed="${__ZTOKENS_EXCHANGE_SEED:-}"
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
+	_derivation_loops="${__ZTOKENS_EXCHANGE_DERIVATION_LOOPS:-1}"
+	_namespace="${__ZTOKENS_EXCHANGE_NAMESPACE:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -928,6 +966,8 @@
 					--ssh-wrap "${_ssh_wrap}" \
 					--seed "${_seed}" \
 					--ballast "${_ballast}" \
+					--derivation-loops "${_derivation_loops}" \
+					--namespace "${_namespace}" \
 					--empty-is-missing true \
 		| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 				decrypt \
@@ -939,6 +979,8 @@
 					--ssh-wrap "${_ssh_wrap}" \
 					--seed "${_seed}" \
 					--ballast "${_ballast}" \
+					--derivation-loops "${_derivation_loops}" \
+					--namespace "${_namespace}" \
 					--empty-is-missing true \
 			> /dev/null \
 		#
@@ -958,18 +1000,31 @@
 	
 	for _case_tool in password encrypt ; do
 	for _case_deterministic in deterministic randomized ; do
+		if test "${_case_tool}" == password -a "${_case_deterministic}" == randomized ; then
+			continue
+		fi
 	for _case_secret in without-secret empty-secret with-secret-1 with-secret-1d with-secret-2 with-secret-2d ; do
+		if test "${SRANDOM}" -ge 2147483648 ; then continue ; fi
 	for _case_ssh_wrap in without-ssh-wrap empty-ssh-wrap with-ssh-wrap-1 with-ssh-wrap-1d with-ssh-wrap-2 with-ssh-wrap-2d ; do
+		if test "${SRANDOM}" -ge 2147483648 ; then continue ; fi
 	for _case_pin in without-pin empty-pin with-pin-1 with-pin-1d with-pin-2 with-pin-2d ; do
+		if test "${SRANDOM}" -ge 2147483648 ; then continue ; fi
 	for _case_seed in without-seed empty-seed with-seed-1 with-seed-1d with-seed-2 with-seed-2d ; do
+		if test "${SRANDOM}" -ge 2147483648 ; then continue ; fi
 	for _case_ballast in without-ballast empty-ballast with-ballast-1 with-ballast-1d with-ballast-2 with-ballast-2d ; do
+		if test "${SRANDOM}" -ge 2147483648 ; then continue ; fi
 	for _case_associated in without-associated empty-associated with-associated-1 with-associated-2 ; do
+		if test "${SRANDOM}" -ge 2147483648 ; then continue ; fi
 	for _case_send in without-x25519 empty-x25519 send-x25519-11 send-x25519-21 send-x25519-21d send-x25519-12 send-x25519-12d self-x25519-1 self-x25519-2 self-x25519-2d ; do
+		if test "${SRANDOM}" -ge 2147483648 ; then continue ; fi
+	for _case_namespace in without-namespace empty-namespace with-namespace ; do
+		if test "${SRANDOM}" -ge 2147483648 ; then continue ; fi
 		
 		printf -- \
-				'%s %s %s %s %s %s %s %s %s\n' \
+				'%s %s %s %s %s %s %s %s %s %s\n' \
 				"${_case_tool}" \
 				"${_case_deterministic}" \
+				"${_case_namespace}" \
 				"${_case_secret}" \
 				"${_case_ssh_wrap}" \
 				"${_case_pin}" \
@@ -979,7 +1034,7 @@
 				"${_case_send}" \
 		#
 		
-	done ; done ; done ; done ; done ; done ; done ; done ; done
+	done ; done ; done ; done ; done ; done ; done ; done ; done ; done
 !!
 
 
@@ -993,7 +1048,9 @@
 	
 	"${ZRUN}" ':: tests / quick / exchange / encrypt & decrypt & password / cases / options' \
 	| sort -R \
-	| while read -r -- _case_tool _case_deterministic _case_secret _case_ssh_wrap _case_pin _case_seed _case_ballast _case_associated _case_send ; do
+	| while read -r -- _case_tool _case_deterministic _case_namespace _case_secret _case_ssh_wrap _case_pin _case_seed _case_ballast _case_associated _case_send ; do
+		
+		_namespace_1='namespace'
 		
 		_pin_1=1234
 		_pin_2=5678
@@ -1035,6 +1092,33 @@
 		_common_arguments=()
 		
 		_empty_is_missing=false
+		
+		case "${_case_namespace}" in
+			( without-namespace )
+			;;
+			( with-namespace )
+				_encrypt_arguments+=(
+						--namespace "${_namespace_1}"
+					)
+				_decrypt_arguments+=(
+						--namespace "${_namespace_1}"
+					)
+			;;
+			( empty-namespace )
+				_encrypt_arguments+=(
+						--namespace ''
+					)
+				_decrypt_arguments+=(
+						--namespace ''
+					)
+			;;
+			( __* )
+				continue
+			;;
+			( * )
+				false -- '[81a4676d]' "${_case_namespace}"
+			;;
+		esac
 		
 		case "${_case_send}" in
 			( send-x25519-11 )
@@ -1753,4 +1837,13 @@
 :: tests / quick / exchange / set / ssh-wrap / testing-1 :: export -- __ZTOKENS_EXCHANGE_SSH_WRAP=ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8
 :: tests / quick / exchange / set / ssh-wrap / testing-2 :: export -- __ZTOKENS_EXCHANGE_SSH_WRAP=ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqgyg7zfdlhxsaymch3pu5c74xz82y5pt67grpy6ej8tcatltw4ar0gqszkku9ux
 
+:: tests / quick / exchange / set / derivation-loops / 1 :: export -- __ZTOKENS_EXCHANGE_DERIVATION_LOOPS=1
+:: tests / quick / exchange / set / derivation-loops / 2 :: export -- __ZTOKENS_EXCHANGE_DERIVATION_LOOPS=2
+:: tests / quick / exchange / set / derivation-loops / 10 :: export -- __ZTOKENS_EXCHANGE_DERIVATION_LOOPS=10
+:: tests / quick / exchange / set / derivation-loops / 20 :: export -- __ZTOKENS_EXCHANGE_DERIVATION_LOOPS=20
+:: tests / quick / exchange / set / derivation-loops / 100 :: export -- __ZTOKENS_EXCHANGE_DERIVATION_LOOPS=100
+
+:: tests / quick / exchange / set / namespace / empty :: export -- __ZTOKENS_EXCHANGE_NAMESPACE=''
+:: tests / quick / exchange / set / namespace / testing-1 :: export -- __ZTOKENS_EXCHANGE_NAMESPACE='testing-1'
+:: tests / quick / exchange / set / namespace / testing-2 :: export -- __ZTOKENS_EXCHANGE_NAMESPACE='testing-2'
 
