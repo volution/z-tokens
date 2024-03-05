@@ -526,6 +526,7 @@
 	_ballast_1='ztxbl1ah428t6ux086pfdgv5d5z8fle06rll5azaglg8gcnvd65mup65qqckq348'
 	_ballast_2='ztxbl1y00yn7a4jjqeyxke8u6hfqks7fhjadtamny4mmp6nc43qa9ra3mqu4swle'
 	_ballast_3='ztxbl1k56j57c4s3tj8ccrcrjg0l3eecjqwy3nnatjnnzh5lnapykvzanszfg4e0'
+	_ballast_4='ztxbl1uqsdymrpckfv9d6dfw80tk4jxn26ntaxdjd7xtma7tkygf9c9ffswwvn5c'
 	
 	_ssh_wrap_1='ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8'
 	_ssh_wrap_2='ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqgyg7zfdlhxsaymch3pu5c74xz82y5pt67grpy6ej8tcatltw4ar0gqszkku9ux'
@@ -543,6 +544,9 @@
 			"${__OUTPUTS}/binaries/zt-exchange--release--linux--native"
 				password
 		)
+	
+	_hyperfine_arguments+=( --command-name "associated:1" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --associated NA" )
 	
 	_hyperfine_arguments+=( --command-name "seed:1" )
 	_hyperfine_commands+=( "${_command_base[*]@Q} --seed ${_seed_1@Q}" )
@@ -579,6 +583,9 @@
 	
 	_hyperfine_arguments+=( --command-name "ballast:3" )
 	_hyperfine_commands+=( "${_command_base[*]@Q} --ballast ${_ballast_1@Q} --ballast ${_ballast_2@Q} --ballast ${_ballast_3@Q}" )
+	
+	_hyperfine_arguments+=( --command-name "ballast:4" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --ballast ${_ballast_1@Q} --ballast ${_ballast_2@Q} --ballast ${_ballast_3@Q} --ballast ${_ballast_4@Q}" )
 	
 	_hyperfine_arguments+=( --command-name "ssh-wrap:1" )
 	_hyperfine_commands+=( "${_command_base[*]@Q} --ssh-wrap ${_ssh_wrap_1@Q}" )
