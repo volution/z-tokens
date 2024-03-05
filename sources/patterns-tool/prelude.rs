@@ -16,8 +16,13 @@ pub(crate) use ::z_tokens_patterns::{
 		entropy::*,
 		entropy_estimates::*,
 		generator::*,
-		patterns::*,
 		output::*,
+	};
+
+
+pub(crate) use ::z_tokens_patterns_definitions::{
+		
+		all::*,
 	};
 
 

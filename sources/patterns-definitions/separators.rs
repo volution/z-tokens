@@ -3,10 +3,10 @@
 use crate::prelude::*;
 
 
-use crate::patterns_macros as macros;
+use crate::macros as macros;
 
 
-include! ("./patterns_separators_macros.in");
+include! ("./separators_macros.in");
 
 
 

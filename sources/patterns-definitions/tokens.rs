@@ -9,12 +9,12 @@
 use crate::prelude::*;
 
 
-use crate::patterns_glyphs as glyphs;
-use crate::patterns_separators as separators;
-use crate::patterns_macros as macros;
+use crate::glyphs as glyphs;
+use crate::separators as separators;
+use crate::macros as macros;
 
 
-include! ("./patterns_tokens_macros.in");
+include! ("./tokens_macros.in");
 
 
 

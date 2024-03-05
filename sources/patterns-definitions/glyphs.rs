@@ -10,34 +10,34 @@
 use crate::prelude::*;
 
 
-use crate::patterns_macros as macros;
+use crate::macros as macros;
 
 
-use crate::patterns_consts::ascii::*;
+use crate::consts::ascii::*;
 
 #[ cfg (feature = "zt-patterns-mnemonic") ]
-use crate::patterns_consts::mnemonic::*;
+use crate::consts::mnemonic::*;
 #[ cfg (feature = "zt-patterns-bip0039") ]
-use crate::patterns_consts::bip0039::*;
+use crate::consts::bip0039::*;
 #[ cfg (feature = "zt-patterns-skey") ]
-use crate::patterns_consts::skey::*;
+use crate::consts::skey::*;
 #[ cfg (feature = "zt-patterns-pgp") ]
-use crate::patterns_consts::pgp::*;
+use crate::consts::pgp::*;
 #[ cfg (feature = "zt-patterns-eff-large") ]
-use crate::patterns_consts::eff_large::*;
+use crate::consts::eff_large::*;
 #[ cfg (feature = "zt-patterns-eff-short") ]
-use crate::patterns_consts::eff_short::*;
+use crate::consts::eff_short::*;
 #[ cfg (feature = "zt-patterns-eff-unique") ]
-use crate::patterns_consts::eff_unique::*;
+use crate::consts::eff_unique::*;
 #[ cfg (feature = "zt-patterns-pets-medium") ]
-use crate::patterns_consts::pets_medium::*;
+use crate::consts::pets_medium::*;
 #[ cfg (feature = "zt-patterns-pets-small") ]
-use crate::patterns_consts::pets_small::*;
+use crate::consts::pets_small::*;
 #[ cfg (any (feature = "zt-patterns-pets-medium", feature = "zt-patterns-pets-small")) ]
-use crate::patterns_consts::pets_common::*;
+use crate::consts::pets_common::*;
 
 
-include! ("./patterns_glyphs_macros.in");
+include! ("./glyphs_macros.in");
 
 
 

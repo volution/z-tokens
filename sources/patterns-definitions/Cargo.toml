@@ -1,0 +1,161 @@
+
+[package]
+
+name = "z-tokens-patterns-definitions"
+
+workspace = "../workspace"
+
+autobins = false
+autoexamples = false
+autotests = false
+autobenches = false
+
+version.workspace = true
+publish.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+description.workspace = true
+keywords.workspace = true
+categories.workspace = true
+homepage.workspace = true
+repository.workspace = true
+documentation.workspace = true
+
+
+
+
+[lib]
+
+name = "z_tokens_patterns_definitions"
+path = "./lib.rs"
+
+
+
+
+[features]
+
+default = [
+	
+	"zt-patterns-all",
+	
+	"z-tokens-patterns/default",
+	"z-tokens-runtime/default",
+]
+
+development = [
+	
+	"zt-patterns-all",
+	"zt-patterns-basic",
+	
+	"z-tokens-patterns/development",
+	"z-tokens-runtime/development",
+]
+
+release = [
+	
+	"zt-patterns-all",
+	
+	"z-tokens-patterns/release",
+	"z-tokens-runtime/release",
+]
+
+
+zt-patterns-all = [
+	"zt-patterns-basic",
+	"zt-patterns-extra",
+]
+zt-patterns-basic = [
+	"zt-patterns-digits-basic",
+	"zt-patterns-ascii",
+]
+zt-patterns-extra = [
+	"zt-patterns-digits-extra",
+	"zt-patterns-consonant-vowel",
+	"zt-patterns-proquint",
+	"zt-patterns-koremutake",
+	"zt-patterns-mnemonic",
+	"zt-patterns-bip0039",
+	"zt-patterns-skey",
+	"zt-patterns-pgp",
+	"zt-patterns-eff-all",
+	"zt-patterns-pets-all",
+	"zt-patterns-nato",
+	"zt-patterns-tokens",
+	"zt-patterns-uuid",
+	"zt-patterns-ip",
+	"zt-patterns-bytes",
+	"zt-patterns-timestamp",
+	"zt-patterns-flake",
+]
+
+zt-patterns-digits-all = [
+	"zt-patterns-digits-basic",
+	"zt-patterns-digits-extra",
+]
+zt-patterns-digits-basic = [
+	"zt-patterns-digits-base10",
+	"zt-patterns-digits-base16",
+]
+zt-patterns-digits-extra = [
+	"zt-patterns-digits-base2",
+	"zt-patterns-digits-base8",
+	"zt-patterns-digits-base32",
+	"zt-patterns-digits-base64",
+	"zt-patterns-digits-base58",
+	"zt-patterns-digits-base62",
+	"zt-patterns-digits-bech32",
+	"zt-patterns-digits-z85",
+]
+zt-patterns-digits-base10 = []
+zt-patterns-digits-base2 = []
+zt-patterns-digits-base8 = []
+zt-patterns-digits-base16 = []
+zt-patterns-digits-base32 = []
+zt-patterns-digits-base64 = []
+zt-patterns-digits-base58 = []
+zt-patterns-digits-base62 = []
+zt-patterns-digits-bech32 = []
+zt-patterns-digits-z85 = []
+
+zt-patterns-ascii = []
+zt-patterns-consonant-vowel = []
+zt-patterns-proquint = []
+zt-patterns-koremutake = []
+zt-patterns-mnemonic = []
+zt-patterns-bip0039 = []
+zt-patterns-skey = []
+zt-patterns-pgp = []
+zt-patterns-eff-all = [
+	"zt-patterns-eff-large",
+	"zt-patterns-eff-short",
+	"zt-patterns-eff-unique",
+]
+zt-patterns-eff-large = []
+zt-patterns-eff-short = []
+zt-patterns-eff-unique = []
+zt-patterns-pets-all = [
+	"zt-patterns-pets-medium",
+	"zt-patterns-pets-small",
+]
+zt-patterns-pets-medium = []
+zt-patterns-pets-small = []
+zt-patterns-nato = []
+zt-patterns-tokens = []
+zt-patterns-uuid = []
+zt-patterns-ip = []
+zt-patterns-bytes = []
+zt-patterns-timestamp = []
+zt-patterns-flake = []
+
+
+
+
+[dependencies]
+
+z-tokens-patterns = { path = "../patterns", optional = false, default-features = false, features = [] }
+
+z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
+
+

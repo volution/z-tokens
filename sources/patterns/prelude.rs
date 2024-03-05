@@ -28,12 +28,9 @@ pub(crate) use crate::entropy::*;
 pub(crate) use crate::entropy_estimates::*;
 pub(crate) use crate::output::*;
 
-pub(crate) use crate::patterns;
 
 
 
-
-pub(crate) const TOKEN_VEC_CAPACITY : usize = 4096;
 pub(crate) const TOKEN_STRING_CAPACITY : usize = 128;
 pub(crate) const ATOM_VEC_CAPACITY : usize = 16;
 

@@ -5,26 +5,11 @@ use crate::prelude::*;
 
 
 
-pub mod tokens {
-	pub use crate::patterns_tokens::*;
-}
-
-pub mod glyphs {
-	pub use crate::patterns_glyphs::*;
-}
-
-pub mod separators {
-	pub use crate::patterns_separators::*;
-}
-
-
-
-
 pub fn all_token_patterns () -> RbList<(Cow<'static, str>, Rb<TokenPattern>)> {
 	
 	let mut _collector = Vec::with_capacity (TOKEN_VEC_CAPACITY);
 	
-	for _patterns in tokens::ALL.iter () {
+	for _patterns in crate::tokens::ALL.iter () {
 		for _pattern in _patterns.iter () {
 			match _pattern.as_ref () {
 				TokenPattern::Tagged (_, _tags) => {
@@ -53,7 +38,7 @@ pub fn all_token_patterns () -> RbList<(Cow<'static, str>, Rb<TokenPattern>)> {
 
 pub fn get_token_pattern (_label : &str) -> Option<Rb<TokenPattern>> {
 	
-	for _patterns in tokens::ALL.iter () {
+	for _patterns in crate::tokens::ALL.iter () {
 		for _pattern in _patterns.iter () {
 			match _pattern.as_ref () {
 				TokenPattern::Tagged (_, _tags) => {
