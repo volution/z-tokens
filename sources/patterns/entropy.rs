@@ -25,6 +25,7 @@ define_error! (pub EntroyError, result : EntropyResult);
 pub struct Entropy {
 	accumulator : BigUint,
 	accumulator_log2 : f64,
+	timestamp : bool,
 }
 
 
@@ -34,7 +35,14 @@ impl Entropy {
 		Self {
 				accumulator : BigUint::zero (),
 				accumulator_log2 : 0.0,
+				timestamp : false,
 			}
+	}
+	
+	pub fn timestamp () -> Self {
+		let mut _self = Self::none ();
+		_self.timestamp = true;
+		_self
 	}
 	
 	pub fn for_bits (_count : usize) -> Self {
@@ -44,6 +52,7 @@ impl Entropy {
 		Self {
 				accumulator : BigUint::one () << _count,
 				accumulator_log2 : _count as f64,
+				timestamp : false,
 			}
 	}
 	
@@ -54,6 +63,7 @@ impl Entropy {
 		Self {
 				accumulator : BigUint::from (_count),
 				accumulator_log2 : (_count as f64) .log2 (),
+				timestamp : false,
 			}
 	}
 	
@@ -67,6 +77,7 @@ impl Entropy {
 		Self {
 				accumulator : BigUint::from (_count) .pow (_repeats),
 				accumulator_log2 : ((_count as f64) * (_repeats as f64)) .log2 (),
+				timestamp : false,
 			}
 	}
 	
@@ -79,6 +90,9 @@ impl Entropy {
 		} else {
 			self.accumulator *= &_other.accumulator;
 			self.accumulator_log2 += _other.accumulator_log2;
+		}
+		if _other.timestamp {
+			self.timestamp = true;
 		}
 		Ok (())
 	}
@@ -124,6 +138,10 @@ impl Entropy {
 		} else {
 			(self.bits (), false)
 		}
+	}
+	
+	pub fn is_timestamp (&self) -> bool {
+		self.timestamp
 	}
 }
 
@@ -218,7 +236,7 @@ pub fn entropy_glyph (_pattern : impl AsRef<GlyphPattern>) -> EntropyResult<Entr
 			Ok (Entropy::for_choice_repeat (256, *_size)),
 		
 		GlyphPattern::Timestamp (_) =>
-			Ok (Entropy::none ()),
+			Ok (Entropy::timestamp ()),
 	}
 }
 

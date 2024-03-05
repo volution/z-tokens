@@ -107,6 +107,7 @@ pub fn entropy_estimates (_entropy : &Entropy) -> EntropyResult<EntropyEstimates
 	
 	
 	let _entropy_bits = _entropy.bits ();
+	let _is_timestamp = _entropy.is_timestamp ();
 	
 	
 	
@@ -207,7 +208,7 @@ pub fn entropy_estimates (_entropy : &Entropy) -> EntropyResult<EntropyEstimates
 	
 	
 	
-	let _estimates = EntropyEstimates {
+	let mut _estimates = EntropyEstimates {
 			
 			entropy_bits : _entropy_bits,
 			
@@ -229,6 +230,14 @@ pub fn entropy_estimates (_entropy : &Entropy) -> EntropyResult<EntropyEstimates
 			bruteforce_hours : _bruteforce_hours,
 		};
 	
+	
+	if _is_timestamp {
+		_estimates.for_cryptography = false;
+		_estimates.for_authentication = false;
+		_estimates.for_archival = false;
+		_estimates.for_long_term = false;
+		_estimates.for_short_term = false;
+	}
 	
 	Ok (_estimates)
 }
