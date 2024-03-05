@@ -465,9 +465,9 @@
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
 	_hyperfine_arguments=(
-			--warmup 2
-			--min-runs 10
-			--max-runs 100
+			--warmup 0
+			--min-runs 1
+			--max-runs 10000
 			--shell none
 		##	--show-output
 		)
@@ -475,16 +475,16 @@
 	
 	_command=(
 			"${__OUTPUTS}/binaries/zt-exchange--release--linux--native"
-				password \
-					--sender "${_sender_private}" \
-					--recipient "${_recipient_public}" \
-					--associated "${_associated}" \
-					--secret "${_secret}" \
-					--pin "${_pin}" \
-					--ssh-wrap "${_ssh_wrap}" \
-					--seed "${_seed}" \
-					--ballast "${_ballast}" \
-					--empty-is-missing true \
+				password
+					--sender "${_sender_private}"
+					--recipient "${_recipient_public}"
+					--associated "${_associated}"
+					--secret "${_secret}"
+					--pin "${_pin}"
+					--ssh-wrap "${_ssh_wrap}"
+					--seed "${_seed}"
+					--ballast "${_ballast}"
+					--empty-is-missing true
 		)
 	_hyperfine_arguments+=(
 			--command-name "password sender:${_sender_private:+Y} recipient:${_recipient_public:+Y} associated:${_associated:+Y} secret:${_secret:+Y} pin:${_pin:+Y} ssh-wrap:${_ssh_wrap:+Y} seed:${_seed:+Y} ballast:${_ballast:+Y}"
@@ -492,6 +492,99 @@
 	_hyperfine_commands+=(
 			"${_command[*]@Q}"
 		)
+	
+	exec -- hyperfine \
+			"${_hyperfine_arguments[@]}" \
+			-- \
+			"${_hyperfine_commands[@]}" \
+		< /dev/null \
+	#
+!!
+
+
+
+
+<< tests / quick / exchange / password / benchmark / overhead
+	test "${#}" -eq 0
+	"${ZRUN}" ':: cargo / release / build & collect' zt-exchange < /dev/null > /dev/null
+	export -- RUST_BACKTRACE=1
+	
+	export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
+	
+	_pin_1=1234
+	_pin_2=5678
+	_pin_3=0990
+	
+	_secret_1='ztxcs1qvjhy8ftc7fjajtky3mcrgxdlacer2m6sj8hyxcaa2segdcnhjnqj7ylhm'
+	_secret_2='ztxcs1zw32errd0vu44rvt2h6vnmfecjtp20aacyzpxcyg9dq3szerw0sswvu32a'
+	_secret_3='ztxcs1lzq6pp0xx20apeyjl6rxxu3fxzg92uwnpa2x7zwxhaau63xz062qsrlr88'
+	
+	_seed_1='ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx'
+	_seed_2='ztxsd1ggthngksghaqtnqegmdkn5jv53fw5ptv8wswa08ws7r2w9vs03js74k5ga'
+	_seed_3='ztxsd1yvxe45zfwn8n6quud6hn88u700sr04ya07qldglsn3x5gg45nslq9wzgwv'
+	
+	_ballast_1='ztxbl1ah428t6ux086pfdgv5d5z8fle06rll5azaglg8gcnvd65mup65qqckq348'
+	_ballast_2='ztxbl1y00yn7a4jjqeyxke8u6hfqks7fhjadtamny4mmp6nc43qa9ra3mqu4swle'
+	_ballast_3='ztxbl1k56j57c4s3tj8ccrcrjg0l3eecjqwy3nnatjnnzh5lnapykvzanszfg4e0'
+	
+	_ssh_wrap_1='ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8'
+	_ssh_wrap_2='ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqgyg7zfdlhxsaymch3pu5c74xz82y5pt67grpy6ej8tcatltw4ar0gqszkku9ux'
+	
+	_hyperfine_arguments=(
+			--warmup 0
+			--min-runs 1
+			--max-runs 10000
+			--shell none
+		##	--show-output
+		)
+	_hyperfine_commands=()
+	
+	_command_base=(
+			"${__OUTPUTS}/binaries/zt-exchange--release--linux--native"
+				password
+		)
+	
+	_hyperfine_arguments+=( --command-name "seed:1" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --seed ${_seed_1@Q}" )
+	
+	_hyperfine_arguments+=( --command-name "seed:2" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --seed ${_seed_1@Q} --seed ${_seed_2@Q}" )
+	
+	_hyperfine_arguments+=( --command-name "seed:3" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --seed ${_seed_1@Q} --seed ${_seed_2@Q} --seed ${_seed_3@Q}" )
+	
+	_hyperfine_arguments+=( --command-name "pin:1" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --pin ${_pin_1@Q}" )
+	
+	_hyperfine_arguments+=( --command-name "pin:2" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --pin ${_pin_1@Q} --pin ${_pin_2@Q}" )
+	
+	_hyperfine_arguments+=( --command-name "pin:3" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --pin ${_pin_1@Q} --pin ${_pin_2@Q} --pin ${_pin_3@Q}" )
+	
+	_hyperfine_arguments+=( --command-name "secret:1" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --secret ${_secret_1@Q}" )
+	
+	_hyperfine_arguments+=( --command-name "secret:2" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --secret ${_secret_1@Q} --secret ${_secret_2@Q}" )
+	
+	_hyperfine_arguments+=( --command-name "secret:3" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --secret ${_secret_1@Q} --secret ${_secret_2@Q} --secret ${_secret_3@Q}" )
+	
+	_hyperfine_arguments+=( --command-name "ballast:1" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --ballast ${_ballast_1@Q}" )
+	
+	_hyperfine_arguments+=( --command-name "ballast:2" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --ballast ${_ballast_1@Q} --ballast ${_ballast_2@Q}" )
+	
+	_hyperfine_arguments+=( --command-name "ballast:3" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --ballast ${_ballast_1@Q} --ballast ${_ballast_2@Q} --ballast ${_ballast_3@Q}" )
+	
+	_hyperfine_arguments+=( --command-name "ssh-wrap:1" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --ssh-wrap ${_ssh_wrap_1@Q}" )
+	
+	_hyperfine_arguments+=( --command-name "ssh-wrap:2" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --ssh-wrap ${_ssh_wrap_1@Q} --ssh-wrap ${_ssh_wrap_2@Q}" )
 	
 	exec -- hyperfine \
 			"${_hyperfine_arguments[@]}" \
@@ -867,7 +960,7 @@
 	for _case_send in without-x25519 empty-x25519 send-x25519-11 send-x25519-21 send-x25519-21d send-x25519-12 send-x25519-12d self-x25519-1 self-x25519-2 self-x25519-2d ; do
 		
 		printf -- \
-				'%s %s %s %s %s %s %s %s\n' \
+				'%s %s %s %s %s %s %s %s %s\n' \
 				"${_case_tool}" \
 				"${_case_deterministic}" \
 				"${_case_secret}" \
@@ -879,7 +972,7 @@
 				"${_case_send}" \
 		#
 		
-	done ; done ; done ; done ; done ; done ; done ; done
+	done ; done ; done ; done ; done ; done ; done ; done ; done
 !!
 
 
