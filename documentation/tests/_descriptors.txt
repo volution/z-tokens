@@ -24,6 +24,7 @@ tools / help / exchange / ssh / wrap :: exchange ssh wrap --help
 
 patterns / default :: patterns --random-testing
 patterns / default / all :: patterns --all --random-testing
+patterns / default / all / no-trim :: patterns --all --trim-examples 0 --random-testing
 patterns / default / compact :: patterns --all --compact true --random-testing
 patterns / default / no-optional-separators :: patterns --all --token-skip-optional-separators true --random-testing
 patterns / default / no-mandatory-separators :: patterns --all --token-skip-mandatory-separators true --token-skip-optional-separators true --random-testing

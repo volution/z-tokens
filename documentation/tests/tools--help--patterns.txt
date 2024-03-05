@@ -31,6 +31,9 @@
   -e --show-examples  {count}
     **  show these many examples
 
+  --trim-examples  {length}
+    **  show these many characters for each example
+
   --identifier-prefix  {prefix}
     **  filter if identifier has prefix
 
