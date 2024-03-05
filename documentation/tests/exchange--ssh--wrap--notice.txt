@@ -1,3 +1,3 @@
 >>  z-tokens exchange ssh wrap --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input-path ./notice.txt
 
-9f54bb80921ab45fad9cb5fb981a0a714a53755cc6ae1bcda3c5a38ac308795c
+37b93522c07ecb0419ae85bdb66c365d1a0303b31a1485609d51a596f93a1e4e

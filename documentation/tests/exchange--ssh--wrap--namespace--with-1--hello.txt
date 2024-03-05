@@ -1,0 +1,3 @@
+>>  z-tokens exchange ssh wrap --namespace namespace-1 --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input $'hello world!\n'
+
+033ecb3d4ef33b3af2b83fca63c9155bca9f66c09cde7b840274cc8696707f06

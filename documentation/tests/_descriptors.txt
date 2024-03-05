@@ -326,6 +326,11 @@ exchange / password / loops / with-2 / hello :: exchange password --derivation-l
 exchange / password / loops / with-3 / hello :: exchange password --derivation-loops 3 --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx --input $'hello world!\n'
 exchange / password / loops / with-4 / hello :: exchange password --derivation-loops 4 --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx --input $'hello world!\n'
 
+exchange / password / namespaces / none / hello :: exchange password --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx --input $'hello world!\n'
+exchange / password / namespaces / empty / hello :: exchange password --namespace '' --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx --input $'hello world!\n'
+exchange / password / namespaces / with-1 / hello :: exchange password --namespace 'namespace-1' --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx --input $'hello world!\n'
+exchange / password / namespaces / with-2 / hello :: exchange password --namespace 'namespace-2' --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx --input $'hello world!\n'
+
 
 exchange / encrypt / x25519-self / empty :: exchange encrypt --siv --sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m < /dev/null
 exchange / encrypt / x25519-self / hello :: exchange encrypt --siv --sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m <<< $'hello world!'
@@ -373,8 +378,18 @@ exchange / encrypt / loops / with-2 / hello :: exchange encrypt --derivation-loo
 exchange / encrypt / loops / with-3 / hello :: exchange encrypt --derivation-loops 3 --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx <<< $'hello world!'
 exchange / encrypt / loops / with-4 / hello :: exchange encrypt --derivation-loops 4 --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx <<< $'hello world!'
 
+exchange / encrypt / namespaces / none / hello :: exchange encrypt --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx <<< $'hello world!'
+exchange / encrypt / namespaces / empty / hello :: exchange encrypt --namespace '' --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx <<< $'hello world!'
+exchange / encrypt / namespaces / with-1 / hello :: exchange encrypt --namespace 'namespace-1' --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx <<< $'hello world!'
+exchange / encrypt / namespaces / with-2 / hello :: exchange encrypt --namespace 'namespace-2' --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx <<< $'hello world!'
+
 
 exchange / ssh / wrap / empty :: exchange ssh wrap --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input-path /dev/null
 exchange / ssh / wrap / hello :: exchange ssh wrap --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input $'hello world!\n'
 exchange / ssh / wrap / notice :: exchange ssh wrap --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input-path ./notice.txt
+
+exchange / ssh / wrap / namespace / none / hello :: exchange ssh wrap --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input $'hello world!\n'
+exchange / ssh / wrap / namespace / empty / hello :: exchange ssh wrap --namespace '' --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input $'hello world!\n'
+exchange / ssh / wrap / namespace / with-1 / hello :: exchange ssh wrap --namespace 'namespace-1' --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input $'hello world!\n'
+exchange / ssh / wrap / namespace / with-2 / hello :: exchange ssh wrap --namespace 'namespace-2' --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input $'hello world!\n'
 

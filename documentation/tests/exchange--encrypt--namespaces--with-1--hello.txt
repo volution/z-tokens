@@ -1,0 +1,13 @@
+>>  z-tokens exchange encrypt --namespace namespace-1 --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx
+
+
+#1,  3Lms6m7hyacbt 39rH2tBJA3hgn 4EF3fTv4jzPpC 2ZwoSmTz9kLuD 2NReZRzNhaKeV
+#2,  GHrdFtSyJNZC  6Hh6gN9BKodF  iK7n8T8dwPXA  2wVsb1s5QZgGK 2oaoLHy74MT56
+#3,  3x2DGoLjSuHeX 3YR5yQ7TUgxZw 3ZkuhPscZcULs 2qDqXsVJNTTv8 s9RXgbSWAc5d
+#4,  2NbTuGEauLVeR 2hW8Lf7J5Kd6h K3pMQtynQvEf  2a7ZbCcKjVeJ  34VPaV7Z38cSx
+#5,  2oWcwBvrRTK7B 2kV6jomo6KK1o g1qftDY4LxWf  3fxyi3GYnryF5 Jksk7scUUYVc
+#6,  fsoqZZthBtQL  2u1VJGPyHHC6y qxbZVbRm2Ea3  3t61ujfyHLxcD SvdvZpHrEtLG
+#7,  3KkrX6uwspukd 338cJiF4wX2vT STDee3BkRJWn  2k61KYsdxYStN 2trwQCmyY1vXU
+#8,  3P8QdNdCMYkJ7 3x5dDkcSEiwMy 3qg2Wm4Kfd9MS 2Hhgx8jnWJRB8 2HADBk181wCB9
+#9.  2qeM1PL5gCPN3
+

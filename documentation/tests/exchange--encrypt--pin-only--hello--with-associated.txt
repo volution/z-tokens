@@ -1,13 +1,13 @@
 >>  z-tokens exchange encrypt --siv --pin 1234 --associated testing
 
 
-#1,  3Lms6mGcHnqLR 3CazM4GYg2HSa 7ZrsvXty7QSU  2shkpD1ghXP74 2D5s8pX4nJ7km
-#2,  46JianwDWDoq7 3ZanfsuFRdH1R 3BZtpuJ1FWnc1 3gieXGvZH81MA 3nRFwDQw9BftS
-#3,  2HnkHi1Vr8RYh 3ZjvSTt19CTBL 2viAKKZzavRtB 2tMzsHftPFAZL 45SeZBmAZ2fEU
-#4,  2owXQEEebXxH1 2jQUTPDkW4gbr 49LFBmhxhqmPS 2fAEsAJ9Jm22q VM7dcPNoGymE
-#5,  3p7PPXSQqNb27 3Sgaa2wipGfgF 2VQ7MsnkaV66X ZUSNYgiBpuUC  6t8w7S31fkv3
-#6,  4EmmCjbk94exj 2k1yt2YqsCJDc 37zM5EggXdYfW EULKYPzqmby2  3izFAnpuDnboH
-#7,  2SzQkXceA1Yxb gEgdxPwZhozD  3VBi32M646c9F 3ZzuyY6GbQN87 3HNztcVmCsqMQ
-#8,  DYaaanoERwh9  4AKam91SeFLZt 2JGQbEpDmg63g B72uJeCBQV7B  byNmaLsiqJuy
-#9.  47WwdwEG3wYDB
+#1,  3Lms6mTmuzuw5 2BZsMwB7pRcUF 2pJEvzwR4FaEB 3caiyFCgK8NkU 2GfG1dXe9WDWX
+#2,  yqXdv8LU2VXb  2Gm4gtvEYZvdQ 8g57ivvsS4mj  3DkFEjeqrPNT1 3FG8wJfUR8qyZ
+#3,  27RCUqQpTbQbo 2RL7PArBoJnwn 3ffg35KL1CzKE tAP1CsYgrFXw  2hFytxYjDiFAm
+#4,  BZNEatHkXzYq  3qsGe5QjnRnS  DAHEBExiJLF1  2zc9AUayGnxhN 2HMHDF8cCtbxY
+#5,  35KvxqsrhGwZb 3z7uvu1G3mhz9 2PG3DSoxSN4aP 4BxPaqWjMKM3N W9c9yzknL4Uz
+#6,  2hC35prqDe6PT 33XehMxdmzQbr 4hhHi74n743E  2ctGa6yid44Z5 3EKPSs7cKfcPw
+#7,  8wWynhKSoNxv  3aXoGKqTVAEWv 2huGiDxoSTZkz 3YSgu1CEDn8Tn vEL1sHCpwUxz
+#8,  3r1z2eRyus8pc JsWmxVsm6pHM  RmkKyQ9M18oS  2zZEtpTTuofyd TUXj6FjZzfC9
+#9.  2U6SsqWwbHK8o
 

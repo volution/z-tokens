@@ -1,13 +1,13 @@
 >>  z-tokens exchange encrypt --siv --associated context --associated testing
 
 
-#1,  3Lms6mCkYJEtN 46yFtU2X1DtQZ 2vWxj8snkimb  SJsS7fn2PcwL  2CoNq7arsYgt3
-#2,  b5c5LssHGEbp  3pySkWY14g6a6 EB59HuR3aAU5  bAoCi9asUXLL  49teFYQtsgrQA
-#3,  5aV44UJKGN4s  3uR2CQouA4gXi 2W8qzFSrLE4aZ 3rQk5zFyFuuo8 3Cswgr3RMjtcS
-#4,  3kkj5H5GEjhwF qPpxCwrMPQUA  2WsmbjMFhVzS5 2bYAtE3QbWoYQ 48cNsJKbrYhKq
-#5,  2bXrpcaoHxCUM 38JNn7bW6Hsh6 3oEQ3GAqhewGP 2yshvjjmjCKUA 37rK93fnbickc
-#6,  TQD2nL8Y7fze  2oPdFWqiycngk ide8nHjYB87M  gNqHZptpHfCi  3JPYwNy4mfc1b
-#7,  4FGtbWrKsyWQv 3keCbhx7Bmaf2 2XL1pVneyWCqt 2PR6LJrDCJTUA 2JDSqHEukE9Ha
-#8,  2iesfikHnzdJr 2y9G1fRfXK1Fj 4D2QPWtA5nsNn 2HR93MPGbdp5T 6JAmVzYcutMs
-#9.  2ZLihASMHwZSY
+#1,  3Lms6mWDxu7Qp 3e5umfJvHLudW 42YDgnLnfhWJ2 3TeotZXasdxXY 3BdVBeQFKTDX9
+#2,  4ACmTWUeVmdgQ 3tc9PB1eAB6kG L1NAHjA2VDmL  3JmMag1Xupfcv PuebcHmxgeLo
+#3,  2wrNahJW6s2tV 2ZVHRsZMSkERg 2zHFapZ7zgg8G 2Xa7Cp78GbLkB 2QHGDFKHWjkAz
+#4,  42avG2o8nvusc 46ipCFuw8AV4T 24kR46Ts3G9rV 4E4dCuLxK9Kof 24xSfdy7tKJrw
+#5,  RjTDYjfkfqf2  3Nhis97WRWrF7 3Qjza9ZB3Juig 2Fx3ZDvb8Q7V4 cZV5xnRXV5NS
+#6,  2hPCRfpVpG93j 28KXUnCoyvUjM 2gRVAktte14ot 2BWVqgNCpeP27 23uYS5wLeHhX7
+#7,  C1faKq7FPc9e  2yGnMQygrzzM9 478EK851v7dnv tzFm5grmENeH  d4w1TEEs5q96
+#8,  3mkJDmHjeM1bQ 2t7ayXkzNCr5f 2Kg2Xga7VzK5i 48wfTFyQxRPgp 27MgS396ysLY1
+#9.  45vDPccWmWbQ7
 

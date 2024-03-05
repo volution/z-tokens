@@ -49,6 +49,9 @@
     **  concatenate inputs
     !!  CAUTION
 
+  --namespace  {string}
+    **  token used for cryptography domain separation
+
   --empty-is-missing  {bool}
     **  treat empty arguments as unspecified
     !!  CAUTION
