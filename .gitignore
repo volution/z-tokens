@@ -5,8 +5,9 @@
 !.z-run
 
 /embedded/build/sources.cpio.gz
-
 /target
+
+/documentation/tests-exchange-cases
 
 *~
 *#
