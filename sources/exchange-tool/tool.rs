@@ -353,7 +353,7 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 	let _seeds = _arguments.shared.seeds.collect () .else_wrap (0x4a0b1e18) ?;
 	let _ballasts = _arguments.shared.ballasts.collect () .else_wrap (0x7ab43c45) ?;
 	let _derivation_loops = _arguments.shared.derivation_loops;
-	let _namespace = _arguments.shared.namespace.as_ref () .map (String::as_ref);
+	let _namespace = _arguments.common.namespace.as_ref () .map (String::as_ref);
 	
 	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x3cae7413) ?;
 	let mut _oracles = _ssh_wrappers.iter_mut () .map (|_ssh_wrapper| _ssh_wrapper as &mut dyn Oracle);
@@ -432,7 +432,7 @@ pub(crate) fn main_encrypt_with_arguments (_arguments : EncryptArguments, _input
 	let _seeds = _arguments.shared.seeds.collect () .else_wrap (0x72e6b8f5) ?;
 	let _ballasts = _arguments.shared.ballasts.collect () .else_wrap (0x92846ef7) ?;
 	let _derivation_loops = _arguments.shared.derivation_loops;
-	let _namespace = _arguments.shared.namespace.as_ref () .map (String::as_ref);
+	let _namespace = _arguments.common.namespace.as_ref () .map (String::as_ref);
 	let _deterministic = _arguments.deterministic;
 	
 	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x6849e6bd) ?;
@@ -504,7 +504,7 @@ pub(crate) fn main_decrypt_with_arguments (_arguments : DecryptArguments, _input
 	let _seeds = _arguments.shared.seeds.collect () .else_wrap (0x22c67f58) ?;
 	let _ballasts = _arguments.shared.ballasts.collect () .else_wrap (0x11d94d7f) ?;
 	let _derivation_loops = _arguments.shared.derivation_loops;
-	let _namespace = _arguments.shared.namespace.as_ref () .map (String::as_ref);
+	let _namespace = _arguments.common.namespace.as_ref () .map (String::as_ref);
 	
 	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x6a4b6c2d) ?;
 	let mut _oracles = _ssh_wrappers.iter_mut () .map (|_ssh_wrapper| _ssh_wrapper as &mut dyn Oracle);
@@ -683,7 +683,7 @@ pub fn main_ssh_keys <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 
 pub fn main_ssh_wrap <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
-	let (mut _wrapper, _inputs) = {
+	let (mut _wrapper, _inputs, _namespace) = {
 		
 		let mut _ssh_wrappers = SshWrappersFlags::new ();
 		let mut _inputs = InputsFlags::new ();
@@ -702,6 +702,7 @@ pub fn main_ssh_wrap <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 		let _common = _common.arguments () .else_wrap (0xa66f4eb3) ?;
 		let _ssh_wrappers = _ssh_wrappers.arguments (_common.empty_is_missing) .else_wrap (0xc867ac9a) ?;
 		let _inputs = _inputs.arguments (_common.empty_is_missing) .else_wrap (0xc78c58a6) ?;
+		let _namespace = _common.namespace;
 		
 		let _ssh_wrappers = _ssh_wrappers.wrappers () .else_wrap (0xc76d8940) ?;
 		let _ssh_wrapper = if _ssh_wrappers.len () != 1 {
@@ -710,13 +711,15 @@ pub fn main_ssh_wrap <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 				_ssh_wrappers.into_iter () .next () .infallible (0x6557ad56)
 			};
 		
-		(_ssh_wrapper, _inputs)
+		(_ssh_wrapper, _inputs, _namespace)
 	};
+	
+	let _namespace = _namespace.as_ref () .map (String::as_ref);
 	
 	let _wrap_input = _inputs.data () .else_wrap (0x99ffad05) ?;
 	
 	let mut _wrap_output = [0u8; 32];
-	_wrapper.wrap (None, &_wrap_input, &mut _wrap_output) .else_wrap (0xe5926524) ?;
+	_wrapper.wrap (_namespace, &_wrap_input, &mut _wrap_output) .else_wrap (0xe5926524) ?;
 	
 	let mut _wrap_buffer = String::with_capacity (_wrap_output.len () * 2 + 1);
 	for _wrap_output_byte in _wrap_output {

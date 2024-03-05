@@ -15,6 +15,7 @@ pub(crate) struct EncryptArguments {
 	pub recipients : MaterialSources<RecipientPublicKey>,
 	pub shared : SharedKeysArguments,
 	pub ssh_wrappers : SshWrappersArguments,
+	pub common : CommonArguments,
 	pub deterministic : bool,
 }
 
@@ -36,6 +37,7 @@ pub(crate) struct DecryptArguments {
 	pub senders : MaterialSources<SenderPublicKey>,
 	pub shared : SharedKeysArguments,
 	pub ssh_wrappers : SshWrappersArguments,
+	pub common : CommonArguments,
 }
 
 
@@ -56,6 +58,7 @@ pub(crate) struct PasswordArguments {
 	pub recipients : MaterialSources<RecipientPublicKey>,
 	pub shared : SharedKeysArguments,
 	pub ssh_wrappers : SshWrappersArguments,
+	pub common : CommonArguments,
 }
 
 
@@ -96,7 +99,6 @@ pub(crate) struct SharedKeysArguments {
 	pub seeds : SeedsArguments,
 	pub ballasts : BallastsArguments,
 	pub derivation_loops : Option<NonZeroU64>,
-	pub namespace : Option<String>,
 }
 
 
@@ -107,7 +109,6 @@ pub(crate) struct SharedKeysFlags {
 	pub seeds : SeedsFlags,
 	pub ballasts : BallastsFlags,
 	pub derivation_loops : Option<u64>,
-	pub namespace : Option<String>,
 }
 
 
@@ -126,11 +127,13 @@ pub(crate) struct SshWrappersFlags {
 
 
 pub(crate) struct CommonArguments {
+	pub namespace : Option<String>,
 	pub empty_is_missing : bool,
 }
 
 
 pub(crate) struct CommonFlags {
+	pub namespace : Option<String>,
 	pub empty_is_missing : Option<bool>,
 }
 
@@ -993,6 +996,7 @@ impl EncryptFlags {
 				recipients : _recipients,
 				shared : _shared,
 				ssh_wrappers : _ssh_wrappers,
+				common : _common,
 				deterministic : self.deterministic.unwrap_or (false),
 			})
 	}
@@ -1037,6 +1041,7 @@ impl DecryptFlags {
 				senders : _senders,
 				shared : _shared,
 				ssh_wrappers : _ssh_wrappers,
+				common : _common,
 			})
 	}
 }
@@ -1084,6 +1089,7 @@ impl PasswordFlags {
 				recipients : _recipients,
 				shared : _shared,
 				ssh_wrappers : _ssh_wrappers,
+				common : _common,
 			})
 	}
 }
@@ -1105,7 +1111,6 @@ impl SharedKeysFlags {
 				seeds : SeedsFlags::new (),
 				ballasts : BallastsFlags::new (),
 				derivation_loops : None,
-				namespace : None,
 			}
 	}
 	
@@ -1122,11 +1127,6 @@ impl SharedKeysFlags {
 				.with_placeholder ("count")
 				.with_description ("number of derivation loops");
 		
-		_flags.define_single_flag_0 (&mut self.namespace)
-				.with_flag ((), "namespace")
-				.with_placeholder ("string")
-				.with_description ("token used for cryptography domain separation");
-		
 		Ok (())
 	}
 	
@@ -1140,7 +1140,6 @@ impl SharedKeysFlags {
 			Some (_loops) => NonZeroU64::new (_loops),
 			None => None,
 		};
-		let _namespace = self.namespace;
 		Ok (SharedKeysArguments {
 				associated : _associated,
 				secrets : _secrets,
@@ -1148,7 +1147,6 @@ impl SharedKeysFlags {
 				seeds : _seeds,
 				ballasts : _ballasts,
 				derivation_loops : _derivation_loops,
-				namespace : _namespace,
 			})
 	}
 }
@@ -1160,11 +1158,17 @@ impl CommonFlags {
 	
 	pub fn new () -> Self {
 		Self {
+				namespace : None,
 				empty_is_missing : None,
 			}
 	}
 	
 	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		
+		_flags.define_single_flag_0 (&mut self.namespace)
+				.with_flag ((), "namespace")
+				.with_placeholder ("string")
+				.with_description ("token used for cryptography domain separation");
 		
 		_flags.define_single_flag_0 (&mut self.empty_is_missing)
 				.with_flag ((), "empty-is-missing")
@@ -1177,6 +1181,7 @@ impl CommonFlags {
 	
 	pub fn arguments (&self) -> FlagsResult<CommonArguments> {
 		Ok (CommonArguments {
+				namespace : self.namespace.clone (),
 				empty_is_missing : self.empty_is_missing.unwrap_or (false),
 			})
 	}
