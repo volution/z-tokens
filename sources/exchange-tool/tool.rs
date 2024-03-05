@@ -355,6 +355,7 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 	let _derivation_loops = _arguments.shared.derivation_loops;
 	
 	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x3cae7413) ?;
+	let mut _oracles = _ssh_wrappers.iter_mut () .map (|_ssh_wrapper| _ssh_wrapper as &mut dyn Oracle);
 	
 	let _password_input = _arguments.inputs.data () .else_wrap (0x5d90db8d) ?;
 	
@@ -371,7 +372,7 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 			_derivation_loops,
 			&_password_input,
 			&mut _password_output,
-			_ssh_wrappers.iter_mut (),
+			_oracles,
 		) .else_wrap (0xbfae6a34) ?;
 	
 	let _password_output = PasswordOutput::new (_password_output);
@@ -432,6 +433,7 @@ pub(crate) fn main_encrypt_with_arguments (_arguments : EncryptArguments, _input
 	let _deterministic = _arguments.deterministic;
 	
 	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x6849e6bd) ?;
+	let mut _oracles = _ssh_wrappers.iter_mut () .map (|_ssh_wrapper| _ssh_wrapper as &mut dyn Oracle);
 	
 	let _decrypted = read_at_most (_input, CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0x12c4b741) ?;
 	
@@ -448,7 +450,7 @@ pub(crate) fn main_encrypt_with_arguments (_arguments : EncryptArguments, _input
 			_derivation_loops,
 			&_decrypted,
 			&mut _encrypted,
-			_ssh_wrappers.iter_mut (),
+			_oracles,
 			_deterministic,
 		) .else_wrap (0xa3032303) ?;
 	
@@ -500,6 +502,7 @@ pub(crate) fn main_decrypt_with_arguments (_arguments : DecryptArguments, _input
 	let _derivation_loops = _arguments.shared.derivation_loops;
 	
 	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x6a4b6c2d) ?;
+	let mut _oracles = _ssh_wrappers.iter_mut () .map (|_ssh_wrapper| _ssh_wrapper as &mut dyn Oracle);
 	
 	let _encrypted = read_at_most (_input, CRYPTO_ENCRYPTED_SIZE_MAX) .else_wrap (0x70fa9ce3) ?;
 	
@@ -516,7 +519,7 @@ pub(crate) fn main_decrypt_with_arguments (_arguments : DecryptArguments, _input
 			_derivation_loops,
 			&_encrypted,
 			&mut _decrypted,
-			_ssh_wrappers.iter_mut (),
+			_oracles,
 		) .else_wrap (0x85879b4e) ?;
 	
 	write_output (_output, _decrypted) .else_wrap (0xf6b34f47) ?;

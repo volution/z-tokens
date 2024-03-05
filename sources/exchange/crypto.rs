@@ -6,8 +6,7 @@ use ::z_tokens_runtime::preludes::errors::*;
 
 use crate::keys::*;
 use crate::coding::*;
-use crate::ssh::SshWrapper;
-use crate::ssh::SshResult;
+use crate::oracles::*;
 
 
 use ::z_tokens_runtime::{
@@ -220,7 +219,7 @@ pub fn password <'a> (
 			_derivation_loops : Option<NonZeroU64>,
 			_password_data : &[u8],
 			_password_output : &mut [u8; 32],
-			_ssh_wrappers : impl Iterator<Item = &'a mut SshWrapper>,
+			_oracles : impl Iterator<Item = &'a mut dyn Oracle>,
 		) -> CryptoResult
 {
 	password_with_raw (
@@ -234,7 +233,7 @@ pub fn password <'a> (
 			_derivation_loops,
 			_password_data,
 			_password_output,
-			_ssh_wrappers.collect (),
+			_oracles.collect (),
 		)
 }
 
@@ -252,12 +251,12 @@ pub fn password_with_raw (
 			_derivation_loops : Option<NonZeroU64>,
 			_password_data : &[u8],
 			_password_output : &mut [u8; 32],
-			_ssh_wrappers : Vec<&mut SshWrapper>,
+			_oracles : Vec<&mut dyn Oracle>,
 		) -> CryptoResult
 {
 	let (_senders, _recipients) = wrap_senders_and_recipients_inputs (_senders, _recipients) ?;
 	let (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) ?;
-	let (_oracles, _oracle_handles) = wrap_oracles (_ssh_wrappers) ?;
+	let (_oracles, _oracle_handles) = wrap_oracles (_oracles) ?;
 	
 	let _password_data = InternalPasswordData::wrap (_password_data);
 	let _password_data_len = _password_data.size ();
@@ -336,7 +335,7 @@ pub fn encrypt <'a> (
 			_derivation_loops : Option<NonZeroU64>,
 			_decrypted : &[u8],
 			_encrypted : &mut Vec<u8>,
-			_ssh_wrappers : impl Iterator<Item = &'a mut SshWrapper>,
+			_oracles : impl Iterator<Item = &'a mut dyn Oracle>,
 			_packet_salt_deterministic : bool,
 		) -> CryptoResult
 {
@@ -351,7 +350,7 @@ pub fn encrypt <'a> (
 			_derivation_loops,
 			_decrypted,
 			_encrypted,
-			_ssh_wrappers.collect (),
+			_oracles.collect (),
 			_packet_salt_deterministic,
 		)
 }
@@ -370,13 +369,13 @@ pub fn encrypt_with_raw (
 			_derivation_loops : Option<NonZeroU64>,
 			_decrypted : &[u8],
 			_encrypted : &mut Vec<u8>,
-			_ssh_wrappers : Vec<&mut SshWrapper>,
+			_oracles : Vec<&mut dyn Oracle>,
 			_packet_salt_deterministic : bool,
 		) -> CryptoResult
 {
 	let (_senders, _recipients) = wrap_senders_and_recipients_inputs (_senders, _recipients) ?;
 	let (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) ?;
-	let (_oracles, _oracle_handles) = wrap_oracles (_ssh_wrappers) ?;
+	let (_oracles, _oracle_handles) = wrap_oracles (_oracles) ?;
 	
 	let _decrypted = InternalDecryptedData::wrap (_decrypted);
 	let _decrypted_len = _decrypted.size ();
@@ -514,7 +513,7 @@ pub fn decrypt <'a> (
 			_derivation_loops : Option<NonZeroU64>,
 			_encrypted : &[u8],
 			_decrypted : &mut Vec<u8>,
-			_ssh_wrappers : impl Iterator<Item = &'a mut SshWrapper>,
+			_oracles : impl Iterator<Item = &'a mut dyn Oracle>,
 		) -> CryptoResult
 {
 	decrypt_with_raw (
@@ -528,7 +527,7 @@ pub fn decrypt <'a> (
 			_derivation_loops,
 			_encrypted,
 			_decrypted,
-			_ssh_wrappers.collect (),
+			_oracles.collect (),
 		)
 }
 
@@ -546,12 +545,12 @@ pub fn decrypt_with_raw (
 			_derivation_loops : Option<NonZeroU64>,
 			_encrypted : &[u8],
 			_decrypted : &mut Vec<u8>,
-			_ssh_wrappers : Vec<&mut SshWrapper>,
+			_oracles : Vec<&mut dyn Oracle>,
 		) -> CryptoResult
 {
 	let (_recipients, _senders) = wrap_recipients_and_senders_inputs (_recipients, _senders) ?;
 	let (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) ?;
-	let (_oracles, _oracle_handles) = wrap_oracles (_ssh_wrappers) ?;
+	let (_oracles, _oracle_handles) = wrap_oracles (_oracles) ?;
 	
 	let _encrypted = InternalEncryptedData::wrap (_encrypted);
 	let _encrypted_len = _encrypted.size ();
@@ -1081,7 +1080,7 @@ fn derive_keys_phase_2 (
 			_pin_hash : (InternalPinHash, Vec<InternalPinHash>),
 			_seed_hash : (InternalSeedHash, Vec<InternalSeedHash>),
 			_ballast_hash : (InternalBallastHash, Vec<InternalBallastHash>),
-			_oracles : (Vec<(&mut SshWrapper, InternalOracleHandle)>, InternalOracleHandle),
+			_oracles : (Vec<(&mut dyn Oracle, InternalOracleHandle)>, InternalOracleHandle),
 			_derivation_loops : Option<NonZeroU64>,
 		) -> CryptoResult<(
 			InternalPacketKey,
@@ -1136,7 +1135,7 @@ fn derive_keys_phase_2 (
 		}
 		
 		// --------------------------------------------------------------------------------
-		// NOTE:  call SSH wrappers...
+		// NOTE:  call oracles...
 		
 		for (_oracle_wrapper, _oracle_handle) in _oracles.iter_mut () {
 			
@@ -1153,7 +1152,7 @@ fn derive_keys_phase_2 (
 				);
 			
 			let mut _oracle_output = InternalOracleOutput::zero ();
-			_oracle_wrapper.wrap (Some (_schema), _oracle_input.access (), &mut _oracle_output.material) .else_wrap (0xcc07e95e) ?;
+			_oracle_wrapper.derive (Some (_schema), _oracle_input.access (), &mut _oracle_output.material) .else_wrap (0xcc07e95e) ?;
 			
 			_oracle_key = blake3_derive_key (
 					InternalOracleOutput::wrap,
@@ -1508,26 +1507,26 @@ fn wrap_associated_and_secrets_and_pins_inputs <'a> (
 
 
 fn wrap_oracles <'a> (
-			_ssh_wrappers : Vec<&'a mut SshWrapper>,
+			_oracles : Vec<&'a mut dyn Oracle>,
 		) -> CryptoResult<(
-			Vec<(&'a mut SshWrapper, InternalOracleHandle)>,
+			Vec<(&'a mut dyn Oracle, InternalOracleHandle)>,
 			Vec<InternalOracleHandle>,
 		)>
 {
 	debug_assert! (CRYPTO_ORACLE_COUNT_MAX <= (u32::MAX as usize), "[8d49c9e0]");
 	
-	if _ssh_wrappers.len () > CRYPTO_ORACLE_COUNT_MAX {
+	if _oracles.len () > CRYPTO_ORACLE_COUNT_MAX {
 		fail! (0x22fb37e2);
 	}
 	
-	let mut _oracles : Vec<_> = _ssh_wrappers.into_iter ()
+	let mut _oracles : Vec<_> = _oracles.into_iter ()
 			.map (
-				|_ssh_wrapper| {
-					let _ssh_wrapper_handle = _ssh_wrapper.key () .handle () .as_raw ();
-					let _oracle_handle = InternalOracleHandle::wrap_copy (_ssh_wrapper_handle);
-					Ok ((_ssh_wrapper, _oracle_handle))
+				|_oracle| {
+					let _oracle_handle = _oracle.handle () .as_raw ();
+					let _oracle_handle = InternalOracleHandle::wrap_copy (_oracle_handle);
+					(_oracle, _oracle_handle)
 				})
-			.collect::<SshResult<_>> () .else_wrap (0xa0911f9c) ?;
+			.collect ();
 	
 	_oracles.sort_by (|_left, _right| Ord::cmp (_left.1.access (), _right.1.access ()));
 	_oracles.dedup_by (|_left, _right| PartialEq::eq (_left.1.access (), _right.1.access ()));
