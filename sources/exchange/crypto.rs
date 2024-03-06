@@ -111,6 +111,7 @@ const CRYPTO_BALLAST_ARGON_T_COST : u32 = 8;
 
 
 define_cryptographic_material! (InternalDheKey, 32);
+define_cryptographic_material! (InternalPqKey, 32);
 define_cryptographic_material! (InternalPartialKey, 32);
 define_cryptographic_material! (InternalAontKey, 32);
 define_cryptographic_material! (InternalParametersHash, 32);
@@ -971,7 +972,7 @@ fn derive_keys_phase_1 (
 		);
 	
 	// --------------------------------------------------------------------------------
-	// NOTE:  derive X25519 DHE...
+	// NOTE:  derive X25519 key...
 	
 	let _dhe_key = match (_private_keys.len (), _public_keys.len ()) {
 		
@@ -1055,6 +1056,11 @@ fn derive_keys_phase_1 (
 	};
 	
 	// --------------------------------------------------------------------------------
+	// NOTE:  derive PQ key...
+	
+	let _pq_key = InternalPqKey::zero ();
+	
+	// --------------------------------------------------------------------------------
 	// NOTE:  derive partial key (for the entire transaction)...
 	
 	let _partial_key = blake3_hash (
@@ -1066,9 +1072,10 @@ fn derive_keys_phase_1 (
 				_oracle_merge.access (),
 				_ballast_merge.access (),
 				_seed_merge.access (),
+				_pq_key.access (),
+				_dhe_key.access (),
 				_secret_merge.access (),
 				_pin_merge.access (),
-				_dhe_key.access (),
 			],
 			&[],
 		);
