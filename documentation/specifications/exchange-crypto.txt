@@ -1,0 +1,544 @@
+
+
+
+
+begin inputs
+	
+	_schema as [u8] = "zt-exchange-encryption-v1"
+	_namespace as [u8] = "application-x / repository-hooks"
+	
+	_associated_inputs as list of [u8] = ["receive-hook"]
+	
+	_secret_inputs as set of [u8] = ...
+	_pin_inputs as set of [u8] = ...
+	_seed_inputs as set of [u8] = ...
+	_ballast_inputs as set of [u8] = ...
+	
+	_x25519_public_keys as set of X25519_PublicKey = ...
+	_x25519_private_keys as set of X25519_PrivateKey = ...
+	
+	_oracles as set of Oracle = ...
+	
+	_loops as positive u64 = 1
+	
+end
+
+
+
+
+
+
+
+
+begin parameters
+	
+	//  NOTE:  These are considered as part of the implementation.
+	//         (Thus the user can't choose these.)
+	
+	let _secret_memory_cost = ...
+	let _secret_time_cost = ...
+	
+	let _pin_memory_cost = ...
+	let _pin_time_cost = ...
+	
+	let _seed_memory_cost = ...
+	let _seed_time_cost = ...
+	
+	let _ballast_memory_cost = ...
+	let _ballast_time_cost = ...
+	
+end
+
+
+
+
+
+
+
+
+let _loops_be as [u8; 8] = encode_to_big_endian (_loops)
+
+
+
+
+
+
+
+
+//  NOTE:  Hash the "schema", "namespace" and "loops" together.
+//  NOTE:  Empty value for "namespace" is allowed.
+
+~~ (fixed : [], variable : [_schema, _loops_be, _namespace])
+|> blake3_hash (purpose : "parameters-hash")
+>> _parameters_hash as [u8; 32]
+
+
+
+
+
+
+
+
+//  NOTE:  Hash each "associated" input independently, then hash together the hashes.
+//  NOTE:  Empty values (or no values) for "associated" inputs are allowed.
+//  NOTE:  No sorting or deduplication is applied.
+
+~~ _associated_inputs
+|> iterate (_associated_input)
+	~~ (fixed : [_parameters_hash], variable : [_associated_input])
+	|> blake3_hash (purpose : "associated-hash")
+	>> _associated_hash as [u8; 32]
+>| collect (_associated_hash)
+>> _associated_hashes as list of [u8; 32]
+
+~~ (fixed : _associated_hashes, variable : [])
+|> blake3_hash ("associated-merge")
+>> _associated_merge as [u8; 32]
+
+
+
+
+//  NOTE:  Hash each "secret" input independently, then hash together the hashes.
+//  NOTE:  Empty values (or no values) for "secret" inputs are allowed.
+//  NOTE:  SORTING and DEDUPLICATION is applied.
+//  NOTE:  Argon2 is applied at a later phase.
+
+
+~~ _secret_inputs
+|> iterate (_secret_input)
+	~~ (fixed : [_parameters_hash], variable : [_secret_input])
+	|> blake3_hash (purpose : "secret-hash")
+	>> _secret_hash as [u8; 32]
+|> collect (_secret_hash)
+|> sort
+|> unique
+>> _secret_hashes as [u8; 32]
+
+~~ (fixed : _secret_hashes, variable : [])
+|> blake3_hash (purpose : "secret-merge")
+>> _secret_merge as [u8; 32]
+
+
+
+
+//  NOTE:  The same as for "secret" inputs also applies to "pin" inputs.
+
+~~ _pin_inputs
+|> iterate (_pin_input)
+	~~ (fixed : [_parameters_hash], variable : [_pin_input])
+	|> blake3_hash (purpose : "pin-hash")
+	>> _pin_hash as [u8; 32]
+|> collect (_pin_hash)
+|> sort
+|> unique
+>> _pin_hashes as list of [u8; 32]
+
+~~ (fixed : _pin_hashes, variable : [])
+|> blake3_hash (purpose : "pin-merge")
+>> _pin_merge as [u8; 32]
+
+
+
+
+//  NOTE:  The same as for "secret" inputs also applies to "seed" inputs.
+
+~~ _seed_inputs
+|> iterate (_seed_input)
+	~~ (fixed : [_parameters_hash], variable : [_seed_input])
+	|> blake3_hash (purpose : "seed-hash")
+	>> _seed_hash as [u8; 32]
+|> collect (_seed_hash)
+|> sort
+|> unique
+>> _seed_hashes as list of [u8; 32]
+
+~~ (fixed : _seed_hashes, variable : [])
+|> blake3_hash (purpose : "seed-merge")
+>> _seed_merge as [u8; 32]
+
+
+
+
+//  NOTE:  The same as for "secret" inputs also applies to "ballast" inputs.
+
+~~ _ballast_inputs
+|> iterate (_ballast_input)
+	~~ (fixed : [_parameters_hash], variable : [_ballast_input])
+	|> blake3_hash (purpose : "ballast-hash")
+	>> _ballast_hash as [u8; 32]
+|> collect (_ballast_hash)
+|> sort
+|> unique
+>> _ballast_hashes as list of [u8; 32]
+
+~~ (fixed : _ballast_hashes, variable : [])
+|> blake3_hash (purpose : "ballast-merge")
+>> _ballast_merge as [u8; 32]
+
+
+
+
+//  NOTE:  Hash together each "oracle" identifier.
+//  NOTE:  Oracle identifiers should be universally unique, regardless of oracle implementation.
+//  NOTE:  No oracles are allowed.
+
+~~ _oracles
+|> iterate (_oracle)
+|> collect (_oracle.identifier as [u8; 32])
+|> sort
+|> unique
+>> _oracle_hashes_1 as list of [u8; 32]
+
+~~ (fixed : _oracle_hashes_1, variable : [])
+|> blake3_hash (purpose : "oracle-merge")
+>> _oracle_merge as [u8; 32]
+
+
+
+
+
+
+
+
+~~ (_x25519_private_keys, _x25519_public_keys)
+|> zip_cross
+|> iterate (_x25519_private, _x25519_public)
+	~~ (_x25519_private, _x25519_public)
+	|> x25519_diffie_hellman
+	>> _x25519_shared as [u8; 32]
+|> collect (_x25519_shared)
+|> sort
+|> unique
+>> _x25519_shared_list as list of [u8; 32]
+
+~~ (fixed : _x25519_shared_list, variable : [])
+|> blake3_hash (purpose : "dhe-shared-merge")
+>> _x25519_shared_merge as [u8; 32]
+
+
+//  NOTE:  Here we assume the encryption (i.e. sender side),
+//         for decryption (i.e. recipient side) we swap.
+
+
+~~ _x25519_private_keys
+|> iterate (_x25519_private)
+|> collect (_x25519_private.public)
+|> sort
+|> unique
+>> _x25519_senders_list as list of [u8; 32]
+
+~~ _x25519_public_keys
+|> sort
+|> unique
+>> _x25519_recipients_list as list of [u8; 32]
+
+
+~~ {fixed : _x25519_senders_list, variable : []}
+|> blake3_hash (purpose : "dhe-public-merge")
+>> _x25519_senders_merge as [u8; 32]
+
+~~ {fixed : _x25519_recipients_list, variable : []}
+|> blake3_hash (purpose : "dhe-public-merge")
+>> _x25519_recipients_merge as [u8; 32]
+
+
+//  NOTE:  If no X25519 keys are used, then the `_dhe_key` is all zeroes.
+
+~~ (
+	fixed : [
+		_parameters_hash,
+		_x25519_senders_merge,
+		_x25519_recipients_merge,
+		_x25519_shared_merge,
+	],
+	variable : []
+)
+|> blake3_hash (purpose : "dhe-key")
+>> _dhe_key
+
+
+
+
+
+
+
+
+//  NOTE:  At the moment no PQ KEM is implemented;
+//         however we implement something similar to DHE,
+//         and include for the moment an all zeroes `_pq_key`.
+
+...
+>> _pq_key as [u8; 32]
+
+
+
+
+
+
+
+
+//  NOTE:  The order is not important;
+//         however if most use only secrets and/or pins,
+//         then one could pre-compute the Blake3 hash state
+//         up-until the secrets and/or pins need to be fed into the hasher.
+
+
+~~ (
+	fixed : [
+		_parameters_hash,
+		_associated_merge,
+		_oracle_merge,
+		_ballast_merge,
+		_seed_merge,
+		_pq_key,
+		_dhe_key,
+		_secret_merge,
+		_pin_merge,
+	],
+	variable : []
+)
+|> blake3_hash (purpose : "partial-key")
+>> _partial_key as [u8; 32]
+
+
+
+
+
+
+
+
+~~ (fixed : [_partial_key], variable : [])
+|> blake3_hash (purpose : "oracle-sorter")
+>> _oracle_sorter as [u8; 32]
+
+
+~~ _oracles
+|> iterate (_oracle)
+	~~ (fixed : [_oracle.identifier], variable : [])
+	|> blake3_keyed (key : _oracle_sorter)
+	>> _oracle_hash as [u8; 32]
+|> collect ((_oracle_hash, _oracle))
+|> sort
+|> unique
+>> _oracles_with_hashes as list of ([u8; 32], Oracle)
+
+
+
+
+
+
+
+
+let _packet_salt as [u8; 32] = generate_random ()
+
+
+
+
+
+
+
+
+//  NOTE:  Like with the `_partial_key` the order is not important.
+
+~~ (
+	fixed : [
+		_packet_salt,
+		_partial_key,
+		_oracle_merge,
+		_ballast_merge,
+		_seed_merge,
+		_secret_merge,
+		_pin_merge,
+	],
+	variable : [],
+)
+|> blake3_hash (purpose : "packet-key")
+>> _packet_key as [u8; 32]
+
+
+
+
+let _oracle_key = _oracle_merge
+let _ballast_key = _ballast_merge
+let _seed_key = _seed_merge
+let _secret_key = _secret_merge
+let _pin_key = _pin_merge
+
+
+
+
+for _iteration in range 0 to _loops do
+	
+	
+	
+	
+	//  NOTE:  As we iterate over the oracles,
+	//         we update the `_oracle_key` sequentially.
+	
+	//  NOTE:  Because we use `_packet_key` as part of the input,
+	//         Argon2 derivations from previous iterations
+	//         feed into the new oracle round of queries.
+	
+	~~ _oracles_with_hashes
+	|> iterate ((_oracle_hash as [u8; 32], _oracle as Oracle))
+		
+		~~ (fixed : [_packet_key, _oracle_key, _oracle_hash], variable : [])
+		|> blake3_hash (purpose : "oracle-input")
+		>> _oracle_input as [u8; 32]
+		
+		~~ _oracle_input
+		|> oracle.query (schema : _schema)
+		>> _oracle_output as [u8; 32]
+		
+		~~ (fixed : [_oracle_input, _oracle_output], variable : [])
+		|> blake3_hash (purpose : "oracle-key")
+		>> _oracle_key as [u8; 32] overwrite
+	
+	
+	
+	
+	//  NOTE:  After querying the oracle, ballasts, seeds, secrets and pins,
+	//         can be derived independently (as a block) for this round.
+	
+	//  NOTE:  However, individual ballasts, seeds, secrets or pins,
+	//         must be derived sequentially, the one-after-another.
+	
+	
+	
+	
+	//  NOTE:  As we iterate over the ballasts,
+	//         we update the `_ballast_key` sequentially.
+	
+	~~ _ballast_hashes
+	|> iterate (_ballast_hash)
+		
+		~~ (fixed : [_packet_key, _oracle_key, _ballast_key], variable : [])
+		|> blake3_hash (purpose : "ballast-salt")
+		>> _ballast_salt as [u8; 32]
+		
+		~~ (input : _ballast_hash, salt : _ballast_salt)
+		|> argon2_id (memory : _ballast_memory_cost, time : _ballast_time_cost)
+		>> _ballast_argon as [u8; 32]
+		
+		~~ (fixed : [_ballast_salt, _ballast_argon], variable : [])
+		|> blake3_hash (purpose : "ballast-key")
+		>> _ballast_key as [u8; 32] overwrite
+	
+	
+	
+	
+	//  NOTE:  Like with "ballasts", we update the `_seed_key` sequentially.
+	
+	~~ _seed_hashes
+	|> iterate (_seed_hash)
+		
+		~~ (fixed : [_packet_key, _oracle_key, _seed_key], variable : [])
+		|> blake3_hash (purpose : "seed-salt")
+		>> _seed_salt as [u8; 32]
+		
+		~~ (input : _seed_hash, salt : _seed_salt)
+		|> argon2_id (memory : _seed_memory_cost, time : _seed_time_cost)
+		>> _seed_argon as [u8; 32]
+		
+		~~ (fixed : [_seed_salt, _seed_argon], variable : [])
+		|> blake3_hash (purpose : "seed-key")
+		>> _seed_key as [u8; 32] overwrite
+	
+	
+	
+	
+	//  NOTE:  Like with "ballasts", we update the `_secret_key` sequentially.
+	
+	~~ _secret_hashes
+	|> iterate (_secret_hash)
+		
+		~~ (fixed : [_packet_key, _oracle_key, _secret_key])
+		|> blake3_hash (purpose : "secret-salt")
+		>> _secret_salt as [u8; 32]
+		
+		~~ (input : _secret_hash, salt : _secret_salt)
+		|> argon2_id (memory : _secret_memory_cost, time : _secret_time_cost)
+		>> _secret_argon as [u8; 32]
+		
+		~~ (fixed : [_secret_salt, _secret_argon], variable : [])
+		|> blake3_hash (purpose : "secret-key")
+		>> _secret_key as [u8; 32] overwrite
+	
+	
+	
+	
+	//  NOTE:  Like with "secrets", we update the `_pin_key` sequentially.
+	
+	~~ _pin_hashes
+	|> iterate (_pin_hash)
+		
+		~~ (fixed : [_packet_key, _oracle_key, _pin_key])
+		|> blake3_hash (purpose : "pin-salt")
+		>> _pin_salt as [u8; 32]
+		
+		~~ (input : _pin_hash, salt : _pin_salt)
+		|> argon2_id (memory : _pin_memory_cost, time : _pin_time_cost)
+		>> _pin_argon as [u8; 32]
+		
+		~~ (fixed : [_pin_salt, _pin_argon], variable : [])
+		|> blake3_hash (purpose : "pin-key")
+		>> _pin_key as [u8; 32] overwrite
+	
+	
+	
+	
+	//  NOTE:  Merge current derivations into the new `_packet_key`.
+	
+	//  NOTE:  This construct is exactly as the initial `_packet_key` calculation one.
+	
+	~~ (
+		fixed : [
+			_packet_salt,
+			_packet_key,
+			_oracle_key,
+			_ballast_key,
+			_seed_key,
+			_secret_key,
+			_pin_key,
+		]
+	)
+	|> blake3_hash (purpose : "packet-key")
+	>> _packet_key as [u8; 32] overwrite
+	
+end
+
+
+
+
+~~ (fixed : [_packet_key], variable : [])
+|> blake3_hash (purpose : "encryption-key")
+>> _packet_encryption_key as [u8; 32]
+
+~~ (fixed : [_packet_key], variable : [])
+|> blake3_hash (purpose : "authentication-key")
+>> _packet_authentication_key as [u8; 32]
+
+
+
+
+//  NOTE:  This one is based on the `_partial_key`.
+
+~~ (fixed : [_partial_key], variable : [])
+|> blake3_hash (purpose : "aont-key")
+>> _packet_aont_key as [u8; 32]
+
+
+
+
+
+
+
+
+begin outputs
+	
+	_packet_encryption_key as [u8; 32]
+	_packet_authentication_key as [u8; 32]
+	_packet_aont_key as [u8; 32]
+	
+end
+
