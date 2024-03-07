@@ -215,7 +215,7 @@ define_cryptographic_purpose! (CRYPTO_BALLAST_KEY_PURPOSE, encryption, ballast_k
 define_cryptographic_purpose! (CRYPTO_ORACLE_MERGE_PURPOSE, encryption, oracle_merge);
 define_cryptographic_purpose! (CRYPTO_ORACLE_SORTER_PURPOSE, encryption, oracle_sorter);
 define_cryptographic_purpose! (CRYPTO_ORACLE_INPUT_PURPOSE, encryption, oracle_input);
-define_cryptographic_purpose! (CRYPTO_ORACLE_OUTPUT_PURPOSE, encryption, oracle_output);
+define_cryptographic_purpose! (CRYPTO_ORACLE_KEY_PURPOSE, encryption, oracle_key);
 
 define_cryptographic_purpose! (CRYPTO_PASSWORD_SALT_PURPOSE, password, salt);
 define_cryptographic_purpose! (CRYPTO_PASSWORD_OUTPUT_PURPOSE, password, output);
@@ -1211,7 +1211,7 @@ fn derive_keys_phase_2 (
 			
 			_oracle_key = blake3_hash (
 					InternalOracleOutput::wrap,
-					CRYPTO_ORACLE_OUTPUT_PURPOSE,
+					CRYPTO_ORACLE_KEY_PURPOSE,
 					&[
 						_oracle_input.access (),
 						_oracle_output.access (),
