@@ -539,11 +539,18 @@
 	_ssh_wrap_1='ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8'
 	_ssh_wrap_2='ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqgyg7zfdlhxsaymch3pu5c74xz82y5pt67grpy6ej8tcatltw4ar0gqszkku9ux'
 	
+	_x25519_1_sender_private='ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920'
+	_x25519_2_sender_private='ztxsk1jz7yrht80clxjz85puk9gegnq2y9zhcnww9z8kqx2zml707rcfssgqppwg'
+	
+	_x25519_1_recipient_public='ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah'
+	_x25519_2_recipient_public='ztxrp1fpay0z3f2sdyrj8c57yvfde9v3lf8pgj6532shuks26hstncng2qmy2dny'
+	
 	_hyperfine_arguments=(
 			--warmup 0
 			--min-runs 1
 			--max-runs 10000
 			--shell none
+			--sort command
 		##	--show-output
 		)
 	_hyperfine_commands=()
@@ -553,35 +560,62 @@
 				password
 		)
 	
-	_hyperfine_arguments+=( --command-name "associated:1" )
-	_hyperfine_commands+=( "${_command_base[*]@Q} --associated NA" )
+	# _hyperfine_arguments+=( --command-name "version" )
+	# _hyperfine_commands+=( "${_command_base[*]@Q} --help" )
 	
-	_hyperfine_arguments+=( --command-name "seed:1" )
-	_hyperfine_commands+=( "${_command_base[*]@Q} --seed ${_seed_1@Q}" )
+	_hyperfine_arguments+=( --command-name "associated:1x100k" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --associated NA --derivation-loops 100000" )
 	
-	_hyperfine_arguments+=( --command-name "seed:2" )
-	_hyperfine_commands+=( "${_command_base[*]@Q} --seed ${_seed_1@Q} --seed ${_seed_2@Q}" )
+	_hyperfine_arguments+=( --command-name "associated:2x100k" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --associated NA --associated NA --derivation-loops 100000" )
 	
-	_hyperfine_arguments+=( --command-name "seed:3" )
-	_hyperfine_commands+=( "${_command_base[*]@Q} --seed ${_seed_1@Q} --seed ${_seed_2@Q} --seed ${_seed_3@Q}" )
+	_hyperfine_arguments+=( --command-name "associated:3x100k" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --associated NA --associated NA --associated NA --derivation-loops 100000" )
 	
-	_hyperfine_arguments+=( --command-name "pin:1" )
-	_hyperfine_commands+=( "${_command_base[*]@Q} --pin ${_pin_1@Q}" )
+	_hyperfine_arguments+=( --command-name "seed:1x100k" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --seed ${_seed_1@Q} --derivation-loops 100000" )
 	
-	_hyperfine_arguments+=( --command-name "pin:2" )
-	_hyperfine_commands+=( "${_command_base[*]@Q} --pin ${_pin_1@Q} --pin ${_pin_2@Q}" )
+	_hyperfine_arguments+=( --command-name "seed:2x100k" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --seed ${_seed_1@Q} --seed ${_seed_2@Q} --derivation-loops 100000" )
 	
-	_hyperfine_arguments+=( --command-name "pin:3" )
-	_hyperfine_commands+=( "${_command_base[*]@Q} --pin ${_pin_1@Q} --pin ${_pin_2@Q} --pin ${_pin_3@Q}" )
+	_hyperfine_arguments+=( --command-name "seed:3x100k" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --seed ${_seed_1@Q} --seed ${_seed_2@Q} --seed ${_seed_3@Q} --derivation-loops 100000" )
 	
-	_hyperfine_arguments+=( --command-name "secret:1" )
-	_hyperfine_commands+=( "${_command_base[*]@Q} --secret ${_secret_1@Q}" )
+	_hyperfine_arguments+=( --command-name "x25519:1x100k" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --sender ${_x25519_1_sender_private@Q} --recipient ${_x25519_1_recipient_public} --derivation-loops 100000" )
 	
-	_hyperfine_arguments+=( --command-name "secret:2" )
-	_hyperfine_commands+=( "${_command_base[*]@Q} --secret ${_secret_1@Q} --secret ${_secret_2@Q}" )
+	_hyperfine_arguments+=( --command-name "x25519:2x100k" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --sender ${_x25519_1_sender_private@Q} --recipient ${_x25519_1_recipient_public} --sender ${_x25519_2_sender_private@Q} --recipient ${_x25519_2_recipient_public} --derivation-loops 100000" )
 	
-	_hyperfine_arguments+=( --command-name "secret:3" )
-	_hyperfine_commands+=( "${_command_base[*]@Q} --secret ${_secret_1@Q} --secret ${_secret_2@Q} --secret ${_secret_3@Q}" )
+	_hyperfine_arguments+=( --command-name "ssh-wrap:1x100" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --ssh-wrap ${_ssh_wrap_1@Q} --derivation-loops 100" )
+	
+	_hyperfine_arguments+=( --command-name "ssh-wrap:2x100" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --ssh-wrap ${_ssh_wrap_1@Q} --ssh-wrap ${_ssh_wrap_2@Q} --derivation-loops 100" )
+	
+	_hyperfine_arguments+=( --command-name "pin:1x1" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --pin ${_pin_1@Q} --derivation-loops 1" )
+	
+	_hyperfine_arguments+=( --command-name "pin:1x100" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --pin ${_pin_1@Q} --derivation-loops 100" )
+	
+	_hyperfine_arguments+=( --command-name "pin:2x100" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --pin ${_pin_1@Q} --pin ${_pin_2@Q} --derivation-loops 100" )
+	
+	_hyperfine_arguments+=( --command-name "pin:3x100" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --pin ${_pin_1@Q} --pin ${_pin_2@Q} --pin ${_pin_3@Q} --derivation-loops 100" )
+	
+	_hyperfine_arguments+=( --command-name "secret:1x1" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --secret ${_secret_1@Q} --derivation-loops 1" )
+	
+	_hyperfine_arguments+=( --command-name "secret:1x10" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --secret ${_secret_1@Q} --derivation-loops 10" )
+	
+	_hyperfine_arguments+=( --command-name "secret:2x10" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --secret ${_secret_1@Q} --secret ${_secret_2@Q} --derivation-loops 10" )
+	
+	_hyperfine_arguments+=( --command-name "secret:3x10" )
+	_hyperfine_commands+=( "${_command_base[*]@Q} --secret ${_secret_1@Q} --secret ${_secret_2@Q} --secret ${_secret_3@Q} --derivation-loops 10" )
 	
 	_hyperfine_arguments+=( --command-name "ballast:1" )
 	_hyperfine_commands+=( "${_command_base[*]@Q} --ballast ${_ballast_1@Q}" )
@@ -594,12 +628,6 @@
 	
 	_hyperfine_arguments+=( --command-name "ballast:4" )
 	_hyperfine_commands+=( "${_command_base[*]@Q} --ballast ${_ballast_1@Q} --ballast ${_ballast_2@Q} --ballast ${_ballast_3@Q} --ballast ${_ballast_4@Q}" )
-	
-	_hyperfine_arguments+=( --command-name "ssh-wrap:1" )
-	_hyperfine_commands+=( "${_command_base[*]@Q} --ssh-wrap ${_ssh_wrap_1@Q}" )
-	
-	_hyperfine_arguments+=( --command-name "ssh-wrap:2" )
-	_hyperfine_commands+=( "${_command_base[*]@Q} --ssh-wrap ${_ssh_wrap_1@Q} --ssh-wrap ${_ssh_wrap_2@Q}" )
 	
 	exec -- hyperfine \
 			"${_hyperfine_arguments[@]}" \
