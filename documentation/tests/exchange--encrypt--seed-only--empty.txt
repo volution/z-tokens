@@ -1,13 +1,13 @@
 >>  z-tokens exchange encrypt --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx
 
 
-#1,  3Lms6mFAcQ9cd 2zao2eX5jE1Jn 5WHpvBgMKHhS  2SzgD3VGkGPAG 38tRQsUCWDxgx
-#2,  4ENtvGf6aLR1p 33p5fykqYWsyb 3DouggHN5Ff5y LKyekS5AmC8N  3KqtCtrnHBEb1
-#3,  tobps7iNzQ49  qowyQjgCFVbp  uqmXEbTRVBUu  3yUgJ7f15ASdb 3R6pxvZpuaYLF
-#4,  KDe1mMsZefwS  VqPQnYF4Zq9G  3SzSanX5ruucW 4CCo49bY4Z8jz 2fhd9XELfdPv8
-#5,  3uxAzzs5R6xa  2MgLtfHnWWJ8x 3Yo66VGbyeyYd 2gcBegzJHufhZ XehrmpauJKGH
-#6,  YWjRf1BtSzty  3KALTECQh8y4Z 3L6aH9ASWbbo8 t23ECCMP1sAg  239bkfb1QDrk7
-#7,  4DpUGA6fUy5pX B35zJwjn7sgd  SrQWRiWzQWT2  3ZbrezWjWXcAm 3Cc5EQdfS7QH1
-#8,  K8kwgMgWrL6b  kFxHwJxqFSE   3gEfpxmqVfJYz 5L49PDqukV3v  EYrJgHbUMvv2
-#9.  xzHP6PXs1nM3
+#1,  3Lms6mWFJCReQ 86y5bvDEBTec  42T2Nvv2xN3Zg Wj82xBz3P5b1  2pn39N9edmrbz
+#2,  2JBuf1j1XhXQL 2N6z2qGaBQJEy Gtzr748EGQnE  d1MuvF6hF9si  2Rz1U7VJ3VYdd
+#3,  2ScAPb633sX1r dtg3hnt8mxCY  48WP6N23pTGcy 2rXzfXKJthDJK 6kNmJgNhHS8E
+#4,  FaXRsKqu37Tz  2hSurMo83AYre 2XdUKiyqEJJER 3cJQi2nvXLp4G 2X2wVthhtsCtS
+#5,  49deEwQYeh4f3 2YAy7WPE8cawp 3rT3UozyTAUkW 2LZwSCsbgwALY xAEQ9nqKRAp6
+#6,  25uTYpWVUxtMU PjQovxgPnhce  Q4fPBJgrG5SK  2QPbXcPjn622h ihvxWh6EDZ1J
+#7,  314FCk4QNJVWW 3RT78cb6zsM5X 4CovVMZ51k4Uw 2yzPjk69C79NN 6mnfWvxZQhTi
+#8,  2qVwf3yhjgFV4 n5tVngdXTRSW  2mevRdjfJpgKc 2B594547ZqVAr NSeH6aMdnnhM
+#9.  52F3MweX68YB
 
