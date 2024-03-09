@@ -1056,11 +1056,6 @@ fn derive_keys_phase_1 (
 	};
 	
 	// --------------------------------------------------------------------------------
-	// NOTE:  derive PQ key...
-	
-	let _pq_key = InternalPqKey::zero ();
-	
-	// --------------------------------------------------------------------------------
 	// NOTE:  derive partial key (for the entire transaction)...
 	
 	let _partial_key = blake3_hash (
@@ -1072,7 +1067,6 @@ fn derive_keys_phase_1 (
 				_oracle_merge.access (),
 				_ballast_merge.access (),
 				_seed_merge.access (),
-				_pq_key.access (),
 				_dhe_key.access (),
 				_secret_merge.access (),
 				_pin_merge.access (),
