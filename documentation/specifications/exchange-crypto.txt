@@ -41,9 +41,6 @@ begin parameters
 	let _pin_memory_cost = ...
 	let _pin_time_cost = ...
 	
-	let _seed_memory_cost = ...
-	let _seed_time_cost = ...
-	
 	let _ballast_memory_cost = ...
 	let _ballast_time_cost = ...
 	
@@ -82,6 +79,7 @@ let _loops_be as [u8; 8] = encode_to_big_endian (_loops)
 //  NOTE:  Hash each "associated" input independently, then hash together the hashes.
 //  NOTE:  Empty values (or no values) for "associated" inputs are allowed.
 //  NOTE:  No sorting or deduplication is applied.
+//  NOTE:  No Argon2 (or similar) is applied at all at any phase.
 
 ~~ _associated_inputs
 |> iterate (_associated_input)
@@ -141,6 +139,7 @@ let _loops_be as [u8; 8] = encode_to_big_endian (_loops)
 
 
 //  NOTE:  The same as for "secret" inputs also applies to "seed" inputs.
+//  NOTE:  No Argon2 (or similar) is applied at all at any phase.
 
 ~~ _seed_inputs
 |> iterate (_seed_input)
@@ -263,20 +262,6 @@ let _loops_be as [u8; 8] = encode_to_big_endian (_loops)
 
 
 
-//  NOTE:  At the moment no PQ KEM is implemented;
-//         however we implement something similar to DHE,
-//         and include for the moment an all zeroes `_pq_key`.
-
-...
->> _pq_key as [u8; 32]
-
-
-
-
-
-
-
-
 //  NOTE:  The order is not important;
 //         however if most use only secrets and/or pins,
 //         then one could pre-compute the Blake3 hash state
@@ -290,7 +275,6 @@ let _loops_be as [u8; 8] = encode_to_big_endian (_loops)
 		_oracle_merge,
 		_ballast_merge,
 		_seed_merge,
-		_pq_key,
 		_dhe_key,
 		_secret_merge,
 		_pin_merge,
@@ -346,7 +330,6 @@ let _packet_salt as [u8; 32] = generate_random ()
 		_partial_key,
 		_oracle_merge,
 		_ballast_merge,
-		_seed_merge,
 		_secret_merge,
 		_pin_merge,
 	],
@@ -360,7 +343,6 @@ let _packet_salt as [u8; 32] = generate_random ()
 
 let _oracle_key = _oracle_merge
 let _ballast_key = _ballast_merge
-let _seed_key = _seed_merge
 let _secret_key = _secret_merge
 let _pin_key = _pin_merge
 
@@ -397,10 +379,10 @@ for _iteration in range 0 to _loops do
 	
 	
 	
-	//  NOTE:  After querying the oracle, ballasts, seeds, secrets and pins,
+	//  NOTE:  After querying the oracle, ballasts, secrets and pins,
 	//         can be derived independently (as a block) for this round.
 	
-	//  NOTE:  However, individual ballasts, seeds, secrets or pins,
+	//  NOTE:  However, individual ballasts, secrets or pins,
 	//         must be derived sequentially, the one-after-another.
 	
 	
@@ -423,26 +405,6 @@ for _iteration in range 0 to _loops do
 		~~ (fixed : [_ballast_salt, _ballast_argon], variable : [])
 		|> blake3_hash (purpose : "ballast-key")
 		>> _ballast_key as [u8; 32] overwrite
-	
-	
-	
-	
-	//  NOTE:  Like with "ballasts", we update the `_seed_key` sequentially.
-	
-	~~ _seed_hashes
-	|> iterate (_seed_hash)
-		
-		~~ (fixed : [_packet_key, _oracle_key, _seed_key], variable : [])
-		|> blake3_hash (purpose : "seed-salt")
-		>> _seed_salt as [u8; 32]
-		
-		~~ (input : _seed_hash, salt : _seed_salt)
-		|> argon2_id (memory : _seed_memory_cost, time : _seed_time_cost)
-		>> _seed_argon as [u8; 32]
-		
-		~~ (fixed : [_seed_salt, _seed_argon], variable : [])
-		|> blake3_hash (purpose : "seed-key")
-		>> _seed_key as [u8; 32] overwrite
 	
 	
 	
@@ -497,7 +459,6 @@ for _iteration in range 0 to _loops do
 			_packet_key,
 			_oracle_key,
 			_ballast_key,
-			_seed_key,
 			_secret_key,
 			_pin_key,
 		]
