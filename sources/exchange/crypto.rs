@@ -93,12 +93,15 @@ pub const CRYPTO_SCHEMA_V1_VALUE : u32 = 0xb7e8bc01;
 
 const CRYPTO_SECRET_ARGON_M_COST : u32 = 64 * 1024;
 const CRYPTO_SECRET_ARGON_T_COST : u32 = 4;
+const CRYPTO_SECRET_ARGON_P_COST : u32 = 1;
 
 const CRYPTO_PIN_ARGON_M_COST : u32 = 8 * 1024;
 const CRYPTO_PIN_ARGON_T_COST : u32 = 1;
+const CRYPTO_PIN_ARGON_P_COST : u32 = 1;
 
 const CRYPTO_BALLAST_ARGON_M_COST : u32 = 256 * 1024;
 const CRYPTO_BALLAST_ARGON_T_COST : u32 = 8;
+const CRYPTO_BALLAST_ARGON_P_COST : u32 = 1;
 
 
 
@@ -1339,6 +1342,7 @@ fn apply_argon_secret (_secret_hash : &InternalSecretHash, _secret_salt : &Inter
 			_secret_salt.access (),
 			CRYPTO_SECRET_ARGON_M_COST,
 			CRYPTO_SECRET_ARGON_T_COST,
+			CRYPTO_SECRET_ARGON_P_COST,
 		) .else_wrap (0xd26ab4d1)
 }
 
@@ -1351,6 +1355,7 @@ fn apply_argon_pin (_pin_hash : &InternalPinHash, _pin_salt : &InternalPinSalt) 
 			_pin_salt.access (),
 			CRYPTO_PIN_ARGON_M_COST,
 			CRYPTO_PIN_ARGON_T_COST,
+			CRYPTO_PIN_ARGON_P_COST,
 		) .else_wrap (0xc396c6f6)
 }
 
@@ -1361,6 +1366,7 @@ fn apply_argon_ballast (_ballast_hash : &InternalBallastHash, _ballast_salt : &I
 	
 	let _m_cost_factor = _ballast_count;
 	let _t_cost_factor = _ballast_count;
+	let _p_cost_factor = 1;
 	
 	argon_derive (
 			InternalBallastArgon::wrap,
@@ -1368,6 +1374,7 @@ fn apply_argon_ballast (_ballast_hash : &InternalBallastHash, _ballast_salt : &I
 			_ballast_salt.access (),
 			CRYPTO_BALLAST_ARGON_M_COST * _m_cost_factor,
 			CRYPTO_BALLAST_ARGON_T_COST * _t_cost_factor,
+			CRYPTO_BALLAST_ARGON_P_COST * _p_cost_factor,
 		) .else_wrap (0x5e8b2b57)
 }
 

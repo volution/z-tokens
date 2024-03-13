@@ -286,7 +286,6 @@ fn blake3_finalize <WC, WO> (
 
 const ARGON_ALGORITHM : argon2::Algorithm = argon2::Algorithm::Argon2id;
 const ARGON_VERSION : argon2::Version = argon2::Version::V0x13;
-const ARGON_P_COST : u32 = 1;
 
 
 
@@ -297,6 +296,7 @@ pub fn argon_derive <WC, WO> (
 		_salt : &[u8; 32],
 		_m_cost : u32,
 		_t_cost : u32,
+		_p_cost : u32,
 	) -> LowCryptoResult<WO>
 	where
 		WC : Fn ([u8; 32]) -> WO,
@@ -306,7 +306,7 @@ pub fn argon_derive <WC, WO> (
 	let _parameters = argon2::Params::new (
 				_m_cost,
 				_t_cost,
-				ARGON_P_COST,
+				_p_cost,
 				Some (_output.len ()),
 			) .else_wrap (0xf2eebb0c) ?;
 	
