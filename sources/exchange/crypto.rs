@@ -145,6 +145,7 @@ define_cryptographic_material! (InternalPinKey, 32);
 define_cryptographic_material! (InternalSeedInput, input, slice);
 define_cryptographic_material! (InternalSeedHash, 32);
 define_cryptographic_material! (InternalSeedMerge, 32);
+define_cryptographic_material! (InternalSeedKey, 32);
 
 define_cryptographic_material! (InternalBallastInput, input, slice);
 define_cryptographic_material! (InternalBallastHash, 32);
@@ -201,6 +202,7 @@ define_cryptographic_purpose! (CRYPTO_PIN_KEY_PURPOSE, encryption, pin_key);
 
 define_cryptographic_purpose! (CRYPTO_SEED_HASH_PURPOSE, encryption, seed_hash);
 define_cryptographic_purpose! (CRYPTO_SEED_MERGE_PURPOSE, encryption, seed_merge);
+define_cryptographic_purpose! (CRYPTO_SEED_KEY_PURPOSE, encryption, seed_key);
 
 define_cryptographic_purpose! (CRYPTO_BALLAST_HASH_PURPOSE, encryption, ballast_hash);
 define_cryptographic_purpose! (CRYPTO_BALLAST_MERGE_PURPOSE, encryption, ballast_merge);
@@ -287,7 +289,7 @@ pub fn password_with_raw (
 	
 	// NOTE:  deriving keys...
 	
-	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _ballast_hashes, _oracle_merge, _oracle_sorter, _derivation_loops)
+	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, _oracle_merge, _oracle_sorter, _derivation_loops)
 			= derive_keys_phase_1 (CRYPTO_PASSWORD_SCHEMA_V1, _senders, _recipients, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, _derivation_loops, _namespace, true) ?;
 	
 	let _oracles = wrap_oracles_phase_2 (_oracles, _oracle_sorter) ?;
@@ -310,7 +312,7 @@ pub fn password_with_raw (
 	drop! (_password_data);
 	
 	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (CRYPTO_PASSWORD_SCHEMA_V1, _partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _ballast_hashes, (_oracle_merge, _oracles), _derivation_loops) ?;
+			= derive_keys_phase_2 (CRYPTO_PASSWORD_SCHEMA_V1, _partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, (_oracle_merge, _oracles), _derivation_loops) ?;
 	
 	drop! (_encryption_key, _authentication_key);
 	
@@ -443,7 +445,7 @@ pub fn encrypt_with_raw (
 	
 	// NOTE:  deriving keys...
 	
-	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _ballast_hashes, _oracle_merge, _oracle_sorter, _derivation_loops)
+	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, _oracle_merge, _oracle_sorter, _derivation_loops)
 			= derive_keys_phase_1 (CRYPTO_ENCRYPTION_SCHEMA_V1, _senders, _recipients, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, _derivation_loops, _namespace, true) ?;
 	
 	let _oracles = wrap_oracles_phase_2 (_oracles, _oracle_sorter) ?;
@@ -469,7 +471,7 @@ pub fn encrypt_with_raw (
 		};
 	
 	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (CRYPTO_ENCRYPTION_SCHEMA_V1, _partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _ballast_hashes, (_oracle_merge, _oracles), _derivation_loops) ?;
+			= derive_keys_phase_2 (CRYPTO_ENCRYPTION_SCHEMA_V1, _partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, (_oracle_merge, _oracles), _derivation_loops) ?;
 	
 	drop! (_packet_key);
 	
@@ -614,7 +616,7 @@ pub fn decrypt_with_raw (
 	
 	// NOTE:  deriving keys...
 	
-	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _ballast_hashes, _oracle_merge, _oracle_sorter, _derivation_loops)
+	let (_partial_key, _aont_key, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, _oracle_merge, _oracle_sorter, _derivation_loops)
 			= derive_keys_phase_1 (CRYPTO_ENCRYPTION_SCHEMA_V1, _recipients, _senders, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, _derivation_loops, _namespace, false) ?;
 	
 	let _oracles = wrap_oracles_phase_2 (_oracles, _oracle_sorter) ?;
@@ -629,7 +631,7 @@ pub fn decrypt_with_raw (
 	// NOTE:  deriving keys...
 	
 	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (CRYPTO_ENCRYPTION_SCHEMA_V1, _partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _ballast_hashes, (_oracle_merge, _oracles), _derivation_loops) ?;
+			= derive_keys_phase_2 (CRYPTO_ENCRYPTION_SCHEMA_V1, _partial_key, &_packet_salt, _secret_hashes, _pin_hashes, _seed_hashes, _ballast_hashes, (_oracle_merge, _oracles), _derivation_loops) ?;
 	
 	drop! (_packet_key);
 	drop! (_packet_salt);
@@ -802,6 +804,7 @@ fn derive_keys_phase_1 (
 			InternalAontKey,
 			(InternalSecretMerge, Vec<InternalSecretHash>),
 			(InternalPinMerge, Vec<InternalPinHash>),
+			(InternalSeedMerge, Vec<InternalSeedHash>),
 			(InternalBallastMerge, Vec<InternalBallastHash>),
 			InternalOracleMerge,
 			InternalOracleSorter,
@@ -1101,6 +1104,7 @@ fn derive_keys_phase_1 (
 			_aont_key,
 			(_secret_merge, _secret_hashes),
 			(_pin_merge, _pin_hashes),
+			(_seed_merge, _seed_hashes),
 			(_ballast_merge, _ballast_hashes),
 			_oracle_merge, _oracle_sorter,
 			_derivation_loops_0,
@@ -1120,6 +1124,7 @@ fn derive_keys_phase_2 (
 			_packet_salt : &InternalPacketSalt,
 			_secret_hash : (InternalSecretMerge, Vec<InternalSecretHash>),
 			_pin_hash : (InternalPinMerge, Vec<InternalPinHash>),
+			_seed_hash : (InternalSeedMerge, Vec<InternalSeedHash>),
 			_ballast_hash : (InternalBallastMerge, Vec<InternalBallastHash>),
 			_oracles : (InternalOracleMerge, Vec<(&mut dyn Oracle, InternalOracleHandle)>),
 			_derivation_loops : NonZeroU64,
@@ -1131,6 +1136,7 @@ fn derive_keys_phase_2 (
 {
 	let (_secret_merge, _secret_hashes) = _secret_hash;
 	let (_pin_merge, _pin_hashes) = _pin_hash;
+	let (_seed_merge, _seed_hashes) = _seed_hash;
 	let (_ballast_merge, _ballast_hashes) = _ballast_hash;
 	let (_oracle_merge, mut _oracles) = _oracles;
 	
@@ -1140,6 +1146,7 @@ fn derive_keys_phase_2 (
 	let mut _packet_key = InternalPacketKey::wrap (_partial_key.material);
 	let mut _oracle_key = InternalOracleOutput::wrap (_oracle_merge.material);
 	let mut _ballast_key = InternalBallastKey::wrap (_ballast_merge.material);
+	let mut _seed_key = InternalSeedKey::wrap (_seed_merge.material);
 	let mut _secret_key = InternalSecretKey::wrap (_secret_merge.material);
 	let mut _pin_key = InternalPinKey::wrap (_pin_merge.material);
 	
@@ -1163,6 +1170,7 @@ fn derive_keys_phase_2 (
 					_packet_key.access (),
 					_oracle_key.access (),
 					_ballast_key.access (),
+					_seed_key.access (),
 					_secret_key.access (),
 					_pin_key.access (),
 				],
@@ -1229,6 +1237,24 @@ fn derive_keys_phase_2 (
 					&[
 						_ballast_salt.access (),
 						_ballast_argon.access (),
+					],
+					&[],
+				);
+		}
+		
+		// --------------------------------------------------------------------------------
+		// NOTE:  derive seed argon hashes...
+		
+		for _seed_hash in _seed_hashes.iter () {
+			
+			_seed_key = blake3_hash (
+					InternalSeedKey::wrap,
+					CRYPTO_SEED_KEY_PURPOSE,
+					&[
+						_packet_key.access (),
+						_oracle_key.access (),
+						_seed_key.access (),
+						_seed_hash.access (),
 					],
 					&[],
 				);
