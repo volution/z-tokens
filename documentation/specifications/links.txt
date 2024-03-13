@@ -1,4 +1,14 @@
 
+
+https://www.rfc-editor.org/rfc/rfc9106
+https://www.rfc-editor.org/rfc/rfc7914
+https://www.rfc-editor.org/rfc/rfc2898
+https://www.rfc-editor.org/rfc/rfc2104
+
+https://www.rfc-editor.org/rfc/rfc7693
+https://www.rfc-editor.org/rfc/rfc6234
+
+
 https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/
 https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/concepts.html
 https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/crypto-cli.html
@@ -27,4 +37,11 @@ https://github.com/palant/pfp
 
 
 https://github.com/Tarsnap/spiped/blob/master/DESIGN.md
+
+
+
+
+https://github.com/BLAKE3-team/BLAKE3/blob/master/reference_impl/reference_impl.rs
+https://github.com/oconnor663/pure_python_blake3/blob/main/pure_blake3.py
+
 

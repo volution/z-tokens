@@ -10,10 +10,53 @@
 
 
 
+## About
+
+`zt-exchange` is a low-level tool,
+sort of a "data exchange facilitator",
+that is meant to be used or wrapped
+by other applications or scripts.
+
+It supports a custom armoring / dearmoring format,
+and because it's part of the larger `z-tokens` project
+(that deals with passwords and other related topics)
+it also supports pasword generation
+and a encryption / decryption format.
+(See more in the use cases section.)
+
+It is not meant as a replacement
+for a generic encryption tool like GnuPG, Age or S/MIME.
+
+However, at least with regard to encryption / decryption,
+in comparison with existing tools (GnuPG, Age, etc.)
+it focuses:
+
+* on ease of integration in other scripts or applications;
+* eliminating (or easing the elimination) some foot-guns;
+
+In this document we'll focus on the encryption / decryption aspects.
+
+
+
+
+----
+
+
+
+
 ## Use cases
 
-...
 
+* armoring / dearmoring arbitrary binary data;
+  (out-of-scope for this document;)
+
+* encrypting / decrypting arbitrary binary data;
+
+* generating a shared (deterministic) password
+  to be used by other tools or systems;
+  (like for example generating the password for full-disk-encryption;)
+
+Thus
 
 
 
@@ -247,6 +290,13 @@ that calls this tool.)
 
 
 
+### Seed
+
+
+TBD
+
+
+
 ----
 
 
@@ -269,17 +319,17 @@ The current design uses the following well-known algorithms:
 
 
 
-##### `blake3_derive_key` and `blake3_keyed_hash`
+##### `blake3_hash` and `blake3_keyed_hash`
 
 ~~~~
-fn blake3_derive_key (
-		_purpose : const_string,
+fn blake3_hash (
+		_purpose : ConstantString,
 		_fixed_inputs : Vec<[u8; 32]>,
 		_variable_inputs : Vec<[u8]>,
 	) -> [u8; 32]
 
 fn blake3_keyed_hash (
-		_purpose : const_string,
+		_purpose : ConstantString,
 		_fixed_inputs : Vec<[u8; 32]>,
 		_variable_inputs : Vec<[u8]>,
 	) -> [u8; 32]
@@ -292,15 +342,10 @@ fn blake3_keyed_hash (
   (thus hard-coded in the code);
 * either the fixed or variable inputs are optional;
 
-
-
-
-##### `blake3_derive_key_join`
-
 ~~~~
-fn blake3_derive_key_join (
-		_purpose : const_string,
-		_fixed_inputs : Vec<[u8; 32]>,
+fn blake3_hash_join (
+		_purpose : ConstantString,
+		_fixed_inputs : Iterator<[u8; 32]>,
 	) -> [u8; 32]
 ~~~~
 
@@ -366,111 +411,14 @@ _public_keys.sort (|_key| _key.as_big_endian_bytes_vec());
 
 
 
-#### Secrets, PINs and ballasts
+#### Secrets, PINs, ballasts and seeds
 
-> ###### Note
-> All of the following snippets
-> are almost identical,
-> with the exception of purpose constant string
-> and not sorting / deduplicating associated data.
-
-> ###### Note
-> In the following snippets,
-> each input is hashed (so we can work with fixed length data),
-> and then a compound hash of all the inputs (of the same type) is computed.
-> This compound hash is only used as an intermediary step,
-> so that changing one input forces the re-derivation of everything else,
-> and further derivation is executed over each individual input hash.
-
-~~~~
-let _secret_inputs : Vec<[u8]> = ...;
-let _pin_inputs : Vec<[u8]> = ...;
-let _ballast_inputs : Vec<[u8]> = ...;
-let _associated_inputs : Vec<[u8]> = ...;
-~~~~
-
-~~~~
-let _secret_hashes : Vec<[u8; 32]>
-	= _secret_inputs.map (|_secret_input|
-		blake3_derive_key (
-			purpose : SECRET_HASH_PURPOSE,
-			fixed_inputs : [],
-			variable_inputs : [_secret_input],
-		));
-
-_secret_hashes.secure_sort ();
-_secret_hashes.secure_deduplicate ();
-
-_secrets_hash : [u8; 32] = blake3_derive_key_join (
-		purpose : SECRET_HASH_PURPOSE,
-		fixed_inputs : _secret_hashes,
-	);
-~~~~
-
-~~~~
-let _pin_hashes : Vec<[u8; 32]>
-	= _pin_inputs.map (|_pin_input|
-		blake3_derive_key (
-			purpose : PIN_HASH_PURPOSE,
-			fixed_inputs : [],
-			variable_inputs : [_pin_input],
-		));
-
-_pin_hashes.secure_sort ();
-_pin_hashes.secure_deduplicate ();
-
-_pin_hash : [u8; 32] = blake3_derive_key_join (
-		purpose : PIN_HASH_PURPOSE,
-		fixed_inputs : _pin_hashes,
-	);
-~~~~
-
-~~~~
-let _ballast_hashes : Vec<[u8; 32]>
-	= _ballast_inputs.map (|_ballast_input|
-		blake3_derive_key (
-			purpose : BALLAST_HASH_PURPOSE,
-			fixed_inputs : [],
-			variable_inputs : [_ballast_input],
-		));
-
-_ballast_hashes.secure_sort ();
-_ballast_hashes.secure_deduplicate ();
-
-_ballast_hash : [u8; 32] = blake3_derive_key_join (
-		purpose : BALLAST_HASH_PURPOSE,
-		fixed_inputs : _ballast_hashes,
-	);
-~~~~
-
-~~~~
-let _associated_hashes : Vec<[u8; 32]>
-	= _associated_inputs.map (|_associated_input|
-		blake3_derive_key (
-			purpose : ASSOCIATED_HASH_PURPOSE,
-			fixed_inputs : [],
-			variable_inputs : [_associated_input],
-		));
-
-//  NOTE:  No sorting or deduplication!
-
-_associated_hash : [u8; 32] = blake3_derive_key_join (
-		purpose : ASSOCIATED_HASH_PURPOSE,
-		fixed_inputs : _associated_hashes,
-	);
-~~~~
+TBD (see `exchange-crypto.txt`)
 
 > ###### Question
 > How should we implement secure sorting and deduplication?
 > Just using constant comparisons shouldn't be enough.
 > Perhaps something like selection sort?
-
-> ###### Question
-> We re-use the same purpose twice:
-> once for computing an individual input hash;
-> and a second time when computing the compounded hash for all inputs (of the same type).
-> Is this a weakening of the scheme?
-> I don't believe so because the scheme is "canonical" (i.e. you always do the same steps).
 
 
 
