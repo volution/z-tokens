@@ -51,8 +51,17 @@ macro_rules! define_cryptographic_material {
 				// FIXME:  zeroize...
 			}
 			
+			fn unwrap (self) -> [u8; $_identifier::SIZE] {
+				// FIXME:  zeroize...
+				self.material
+			}
+			
 			fn access (&self) -> &[u8; $_identifier::SIZE] {
 				&self.material
+			}
+			
+			fn access_mut (&mut self) -> &mut [u8; $_identifier::SIZE] {
+				&mut self.material
 			}
 		}
 	};
@@ -81,6 +90,10 @@ macro_rules! define_cryptographic_material {
 		impl <'a> $crate::CryptographicInput<'a> for $_identifier<'a> {
 			
 			fn consume (self) -> () {}
+			
+			fn unwrap (self) -> &'a [u8] {
+				self.material
+			}
 			
 			fn access (&self) -> &'a [u8] {
 				self.material

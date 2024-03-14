@@ -54,7 +54,11 @@ pub trait CryptographicMaterial <const SIZE : usize> : Sized {
 	
 	fn consume (self) -> ();
 	
+	fn unwrap (self) -> [u8; SIZE];
+	
 	fn access (&self) -> &[u8; SIZE];
+	
+	fn access_mut (&mut self) -> &mut [u8; SIZE];
 	
 	fn access_slice (&self) -> &[u8] {
 		Self::access (self) .as_slice ()
@@ -85,13 +89,9 @@ pub trait CryptographicInput <'a> : Sized {
 	
 	fn consume (self) -> ();
 	
-	fn access (&self) -> &'a [u8];
+	fn unwrap (self) -> &'a [u8];
 	
-	fn access_consume (self) -> &'a [u8] {
-		let _material = self.access ();
-		self.consume ();
-		_material
-	}
+	fn access (&self) -> &'a [u8];
 	
 	fn size (&self) -> usize {
 		self.access () .len ()
