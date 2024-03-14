@@ -24,9 +24,6 @@ use ::z_tokens_runtime_crypto::{
 		
 		CryptographicMaterial as _,
 		CryptographicInput as _,
-		
-		define_cryptographic_material,
-		define_cryptographic_purpose,
 	};
 
 
@@ -43,179 +40,15 @@ use ::z_tokens_runtime_crypto::crates::{
 
 
 
-define_error! (pub CryptoError, result : CryptoResult);
+#[ path = "./crypto_defs.rs" ]
+mod definitions;
 
+use definitions::*;
 
-
-
-pub const CRYPTO_DECRYPTED_SIZE_MAX : usize = 128 * 1024 * 1024;
-
-pub const CRYPTO_ENCRYPTED_SIZE_MAX : usize =
-		(
-			(
-				(
-					CRYPTO_DECRYPTED_SIZE_MAX
-					+ CRYPTO_ENCRYPTED_HEADER_SIZE
-					+ CRYPTO_ENCRYPTED_PADDING_SIZE
-					+ CRYPTO_ENCRYPTED_TRAILER_SIZE
-				) / CODING_CHUNK_DECODED_SIZE
-				+ 1
-			) / CODING_CHUNKS_PER_LINE
-			+ 1
-		) * (
-			9 + 4 + 1
-			+ CODING_CHUNKS_PER_LINE * (CODING_CHUNKS_PER_LINE + CODING_CHUNK_ENCODED_SIZE + 1)
-		);
-
-
-pub const CRYPTO_X25519_COUNT_MAX : usize = 1024;
-pub const CRYPTO_ASSOCIATED_COUNT_MAX : usize = 1024;
-pub const CRYPTO_SECRET_COUNT_MAX : usize = 1024;
-pub const CRYPTO_PIN_COUNT_MAX : usize = 1024;
-pub const CRYPTO_SEED_COUNT_MAX : usize = 1024;
-pub const CRYPTO_BALLAST_COUNT_MAX : usize = 1024;
-pub const CRYPTO_ORACLE_COUNT_MAX : usize = 1024;
-
-
-const CRYPTO_ENCRYPTED_SCHEMA_SIZE : usize = 4;
-const CRYPTO_ENCRYPTED_LENGTH_SIZE : usize = 4;
-const CRYPTO_ENCRYPTED_PADDING_SIZE : usize = 256;
-const CRYPTO_ENCRYPTED_SALT_SIZE : usize = InternalPacketSalt::SIZE;
-const CRYPTO_ENCRYPTED_MAC_SIZE : usize = InternalAuthenticationMac::SIZE;
-
-
-const CRYPTO_ENCRYPTED_HEADER_SIZE : usize = CRYPTO_ENCRYPTED_SCHEMA_SIZE + CRYPTO_ENCRYPTED_LENGTH_SIZE;
-const CRYPTO_ENCRYPTED_TRAILER_SIZE : usize = CRYPTO_ENCRYPTED_SALT_SIZE + CRYPTO_ENCRYPTED_MAC_SIZE;
-
-
-pub const CRYPTO_SCHEMA_V1_VALUE : u32 = 0xb7e8bc01;
-
-
-const CRYPTO_SECRET_ARGON_M_COST : u32 = 64 * 1024;
-const CRYPTO_SECRET_ARGON_T_COST : u32 = 4;
-const CRYPTO_SECRET_ARGON_P_COST : u32 = 1;
-
-const CRYPTO_PIN_ARGON_M_COST : u32 = 8 * 1024;
-const CRYPTO_PIN_ARGON_T_COST : u32 = 1;
-const CRYPTO_PIN_ARGON_P_COST : u32 = 1;
-
-const CRYPTO_BALLAST_ARGON_M_COST : u32 = 256 * 1024;
-const CRYPTO_BALLAST_ARGON_T_COST : u32 = 8;
-const CRYPTO_BALLAST_ARGON_P_COST : u32 = 1;
-
-
-
-
-
-
-
-
-define_cryptographic_material! (InternalDheKey, 32);
-define_cryptographic_material! (InternalPqKey, 32);
-define_cryptographic_material! (InternalPartialKey, 32);
-define_cryptographic_material! (InternalAontKey, 32);
-define_cryptographic_material! (InternalParametersHash, 32);
-
-define_cryptographic_material! (InternalPacketSalt, 32);
-define_cryptographic_material! (InternalPacketKey, 32);
-
-define_cryptographic_material! (InternalEncryptionKey, 32);
-
-define_cryptographic_material! (InternalAuthenticationKey, 32);
-define_cryptographic_material! (InternalAuthenticationMac, 32);
-
-define_cryptographic_material! (InternalAssociatedInput, input, slice);
-define_cryptographic_material! (InternalAssociatedHash, 32);
-define_cryptographic_material! (InternalAssociatedMerge, 32);
-
-define_cryptographic_material! (InternalSecretInput, input, slice);
-define_cryptographic_material! (InternalSecretHash, 32);
-define_cryptographic_material! (InternalSecretMerge, 32);
-define_cryptographic_material! (InternalSecretSalt, 32);
-define_cryptographic_material! (InternalSecretArgon, 32);
-define_cryptographic_material! (InternalSecretKey, 32);
-
-define_cryptographic_material! (InternalPinInput, input, slice);
-define_cryptographic_material! (InternalPinHash, 32);
-define_cryptographic_material! (InternalPinMerge, 32);
-define_cryptographic_material! (InternalPinSalt, 32);
-define_cryptographic_material! (InternalPinArgon, 32);
-define_cryptographic_material! (InternalPinKey, 32);
-
-define_cryptographic_material! (InternalSeedInput, input, slice);
-define_cryptographic_material! (InternalSeedHash, 32);
-define_cryptographic_material! (InternalSeedMerge, 32);
-define_cryptographic_material! (InternalSeedKey, 32);
-
-define_cryptographic_material! (InternalBallastInput, input, slice);
-define_cryptographic_material! (InternalBallastHash, 32);
-define_cryptographic_material! (InternalBallastMerge, 32);
-define_cryptographic_material! (InternalBallastSalt, 32);
-define_cryptographic_material! (InternalBallastArgon, 32);
-define_cryptographic_material! (InternalBallastKey, 32);
-
-define_cryptographic_material! (InternalOracleHandle, 32);
-define_cryptographic_material! (InternalOracleMerge, 32);
-define_cryptographic_material! (InternalOracleSorter, 32);
-define_cryptographic_material! (InternalOracleInput, 32);
-define_cryptographic_material! (InternalOracleOutput, 32);
-define_cryptographic_material! (InternalOracleKey, 32);
-
-define_cryptographic_material! (InternalDecryptedData, input, slice);
-define_cryptographic_material! (InternalEncryptedData, input, slice);
-
-define_cryptographic_material! (InternalPasswordData, input, slice);
-define_cryptographic_material! (InternalPasswordOutput, 32);
-
-
-
-
-define_cryptographic_purpose! (CRYPTO_ENCRYPTION_SCHEMA_V1, encryption, schema_v1);
-define_cryptographic_purpose! (CRYPTO_PASSWORD_SCHEMA_V1, password, schema_v1);
-
-define_cryptographic_purpose! (CRYPTO_PARAMETERS_HASH_PURPOSE, encryption, parameters_hash);
-
-define_cryptographic_purpose! (CRYPTO_DHE_PUBLIC_MERGE_PURPOSE, encryption, dhe_public_merge);
-define_cryptographic_purpose! (CRYPTO_DHE_SHARED_MERGE_PURPOSE, encryption, dhe_shared_merge);
-define_cryptographic_purpose! (CRYPTO_DHE_KEY_PURPOSE, encryption, dhe_key);
-
-define_cryptographic_purpose! (CRYPTO_PARTIAL_KEY_PURPOSE, encryption, partial_key);
-define_cryptographic_purpose! (CRYPTO_AONT_KEY_PURPOSE, encryption, aont_key);
-
-define_cryptographic_purpose! (CRYPTO_PACKET_SALT_PURPOSE, encryption, packet_salt);
-define_cryptographic_purpose! (CRYPTO_PACKET_KEY_PURPOSE, encryption, packet_key);
-define_cryptographic_purpose! (CRYPTO_ENCRYPTION_KEY_PURPOSE, encryption, encryption_key);
-define_cryptographic_purpose! (CRYPTO_AUTHENTICATION_KEY_PURPOSE, encryption, authentication_key);
-
-define_cryptographic_purpose! (CRYPTO_ASSOCIATED_HASH_PURPOSE, encryption, associated_hash);
-define_cryptographic_purpose! (CRYPTO_ASSOCIATED_MERGE_PURPOSE, encryption, associated_merge);
-
-define_cryptographic_purpose! (CRYPTO_SECRET_HASH_PURPOSE, encryption, secret_hash);
-define_cryptographic_purpose! (CRYPTO_SECRET_MERGE_PURPOSE, encryption, secret_merge);
-define_cryptographic_purpose! (CRYPTO_SECRET_SALT_PURPOSE, encryption, secret_salt);
-define_cryptographic_purpose! (CRYPTO_SECRET_KEY_PURPOSE, encryption, secret_key);
-
-define_cryptographic_purpose! (CRYPTO_PIN_HASH_PURPOSE, encryption, pin_hash);
-define_cryptographic_purpose! (CRYPTO_PIN_MERGE_PURPOSE, encryption, pin_merge);
-define_cryptographic_purpose! (CRYPTO_PIN_SALT_PURPOSE, encryption, pin_salt);
-define_cryptographic_purpose! (CRYPTO_PIN_KEY_PURPOSE, encryption, pin_key);
-
-define_cryptographic_purpose! (CRYPTO_SEED_HASH_PURPOSE, encryption, seed_hash);
-define_cryptographic_purpose! (CRYPTO_SEED_MERGE_PURPOSE, encryption, seed_merge);
-define_cryptographic_purpose! (CRYPTO_SEED_KEY_PURPOSE, encryption, seed_key);
-
-define_cryptographic_purpose! (CRYPTO_BALLAST_HASH_PURPOSE, encryption, ballast_hash);
-define_cryptographic_purpose! (CRYPTO_BALLAST_MERGE_PURPOSE, encryption, ballast_merge);
-define_cryptographic_purpose! (CRYPTO_BALLAST_SALT_PURPOSE, encryption, ballast_salt);
-define_cryptographic_purpose! (CRYPTO_BALLAST_KEY_PURPOSE, encryption, ballast_key);
-
-define_cryptographic_purpose! (CRYPTO_ORACLE_MERGE_PURPOSE, encryption, oracle_merge);
-define_cryptographic_purpose! (CRYPTO_ORACLE_SORTER_PURPOSE, encryption, oracle_sorter);
-define_cryptographic_purpose! (CRYPTO_ORACLE_INPUT_PURPOSE, encryption, oracle_input);
-define_cryptographic_purpose! (CRYPTO_ORACLE_KEY_PURPOSE, encryption, oracle_key);
-
-define_cryptographic_purpose! (CRYPTO_PASSWORD_SALT_PURPOSE, password, salt);
-define_cryptographic_purpose! (CRYPTO_PASSWORD_OUTPUT_PURPOSE, password, output);
+pub use definitions::{
+		CRYPTO_ENCRYPTED_SIZE_MAX,
+		CRYPTO_DECRYPTED_SIZE_MAX,
+	};
 
 
 
@@ -725,7 +558,7 @@ fn apply_encryption (_key : InternalEncryptionKey, _data : &mut [u8]) -> CryptoR
 	
 	let _nonce = [0u8; 12];
 	
-	let _key = chacha20::Key::from (_key.material);
+	let _key = chacha20::Key::from (_key.unwrap ());
 	let _nonce = chacha20::Nonce::from (_nonce);
 	
 	let mut _cipher = chacha20::ChaCha20::new (&_key, &_nonce);
@@ -770,7 +603,7 @@ fn apply_all_or_nothing_mangling (_key : InternalAontKey, _packet_salt : &mut In
 			],
 		);
 	
-	let _packet_salt = &mut _packet_salt.material;
+	let _packet_salt = &mut _packet_salt.access_mut ();
 	
 	for _index in 0 .. _SIZE {
 		_packet_salt[_index] ^= _hash[_index];
@@ -842,7 +675,7 @@ fn derive_keys_phase_1 <'a> (
 								_parameters_hash.access (),
 							],
 							&[
-								_associated_input.access_consume (),
+								_associated_input.unwrap (),
 							],
 						)
 		) .collect ();
@@ -1159,12 +992,12 @@ fn derive_keys_phase_2 (
 	// --------------------------------------------------------------------------------
 	// NOTE:  initialize keys...
 	
-	let mut _packet_key = InternalPacketKey::wrap (_partial_key.material);
-	let mut _oracle_key = InternalOracleOutput::wrap (_oracle_merge.material);
-	let mut _ballast_key = InternalBallastKey::wrap (_ballast_merge.material);
-	let mut _seed_key = InternalSeedKey::wrap (_seed_merge.material);
-	let mut _secret_key = InternalSecretKey::wrap (_secret_merge.material);
-	let mut _pin_key = InternalPinKey::wrap (_pin_merge.material);
+	let mut _packet_key = InternalPacketKey::wrap (_partial_key.unwrap ());
+	let mut _oracle_key = InternalOracleOutput::wrap (_oracle_merge.unwrap ());
+	let mut _ballast_key = InternalBallastKey::wrap (_ballast_merge.unwrap ());
+	let mut _seed_key = InternalSeedKey::wrap (_seed_merge.unwrap ());
+	let mut _secret_key = InternalSecretKey::wrap (_secret_merge.unwrap ());
+	let mut _pin_key = InternalPinKey::wrap (_pin_merge.unwrap ());
 	
 	// --------------------------------------------------------------------------------
 	// NOTE:  derivation loops...
@@ -1214,7 +1047,7 @@ fn derive_keys_phase_2 (
 				);
 			
 			let mut _oracle_output = InternalOracleOutput::zero ();
-			_oracle_wrapper.derive (Some (_schema), _oracle_input.access (), &mut _oracle_output.material) .else_wrap (0xcc07e95e) ?;
+			_oracle_wrapper.derive (Some (_schema), _oracle_input.access (), _oracle_output.access_mut ()) .else_wrap (0xcc07e95e) ?;
 			
 			_oracle_key = blake3_hash (
 					InternalOracleOutput::wrap,
