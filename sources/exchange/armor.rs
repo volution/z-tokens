@@ -54,18 +54,18 @@ pub const ARMOR_ENCODED_SIZE_MAX : usize =
 		);
 
 
-const ARMOR_ENCODED_SCHEMA_SIZE : usize = 4;
-const ARMOR_ENCODED_LENGTH_SIZE : usize = 4;
-const ARMOR_ENCODED_FINGERPRINT_SIZE : usize = 16;
+pub(crate) const ARMOR_ENCODED_SCHEMA_SIZE : usize = 4;
+pub(crate) const ARMOR_ENCODED_LENGTH_SIZE : usize = 4;
+pub(crate) const ARMOR_ENCODED_FINGERPRINT_SIZE : usize = 16;
 
 
-const ARMOR_ENCODED_HEADER_SIZE : usize = ARMOR_ENCODED_SCHEMA_SIZE + ARMOR_ENCODED_LENGTH_SIZE;
-const ARMOR_ENCODED_TRAILER_SIZE : usize = ARMOR_ENCODED_FINGERPRINT_SIZE;
+pub(crate) const ARMOR_ENCODED_HEADER_SIZE : usize = ARMOR_ENCODED_SCHEMA_SIZE + ARMOR_ENCODED_LENGTH_SIZE;
+pub(crate) const ARMOR_ENCODED_TRAILER_SIZE : usize = ARMOR_ENCODED_FINGERPRINT_SIZE;
 
-pub const ARMOR_SCHEMA_V1_VALUE : u32 = 0x51c8e38b;
+pub(crate) const ARMOR_SCHEMA_V1_VALUE : u32 = 0x51c8e38b;
 
 
-define_cryptographic_purpose! (ARMOR_AONT_KEY_PURPOSE, armor, aont_key);
+define_cryptographic_purpose! (pub(crate) ARMOR_AONT_KEY_PURPOSE, armor, aont_key);
 
 
 
@@ -263,7 +263,7 @@ pub fn dearmor (_encoded : &[u8], _decoded : &mut Vec<u8>) -> ArmorResult {
 
 
 
-fn apply_all_or_nothing_encryption (_fingerprint : &[u8; ARMOR_ENCODED_FINGERPRINT_SIZE], _data : &mut [u8]) -> ArmorResult {
+pub(crate) fn apply_all_or_nothing_encryption (_fingerprint : &[u8; ARMOR_ENCODED_FINGERPRINT_SIZE], _data : &mut [u8]) -> ArmorResult {
 	
 	use chacha20::cipher::KeyIvInit as _;
 	use chacha20::cipher::StreamCipher as _;
@@ -289,7 +289,7 @@ fn apply_all_or_nothing_encryption (_fingerprint : &[u8; ARMOR_ENCODED_FINGERPRI
 }
 
 
-fn apply_all_or_nothing_mangling (_fingerprint : &mut [u8; ARMOR_ENCODED_FINGERPRINT_SIZE], _data : &[u8]) -> ArmorResult {
+pub(crate) fn apply_all_or_nothing_mangling (_fingerprint : &mut [u8; ARMOR_ENCODED_FINGERPRINT_SIZE], _data : &[u8]) -> ArmorResult {
 	
 	let _hash =
 			blake3::Hasher::new ()
@@ -310,7 +310,7 @@ fn apply_all_or_nothing_mangling (_fingerprint : &mut [u8; ARMOR_ENCODED_FINGERP
 
 
 
-fn apply_fingerprint (_data : &[u8]) -> ArmorResult<[u8; ARMOR_ENCODED_FINGERPRINT_SIZE]> {
+pub(crate) fn apply_fingerprint (_data : &[u8]) -> ArmorResult<[u8; ARMOR_ENCODED_FINGERPRINT_SIZE]> {
 	
 	let _hash =
 			blake3::Hasher::new ()

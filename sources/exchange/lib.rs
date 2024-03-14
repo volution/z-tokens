@@ -17,6 +17,6 @@ pub mod ssh;
 #[ path = "./ssh_no.rs" ]
 pub mod ssh;
 
-pub mod ssh_oracle;
+pub(crate) mod ssh_oracle;
 
 
