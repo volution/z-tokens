@@ -1,29 +1,132 @@
 
 
+
+
+## Pre-hashing large password files used with PBKDFs
+https://notes.volution.ro/v1/2024/03/remarks/810d7404/
+https://lobste.rs/s/b7vyev/
+
+## Misusing random oracles for practical purposes
+https://notes.volution.ro/v1/2023/05/remarks/faf953cf/
+
+## Experimenting with multi-factor encryption
+https://notes.volution.ro/v1/2023/05/remarks/e175b2ef/
+https://lobste.rs/s/azphsq/
+
+## Another take on the binary to text encoding
+https://notes.volution.ro/v1/2023/02/notes/9f31f54c/
+
+## Binary to text encoding -- state of the art and missed opportunities
+https://notes.volution.ro/v1/2023/02/notes/0a9aaa3a/
+https://lobste.rs/s/swkp6b/
+
+## Debating deterministic passwords
+https://notes.volution.ro/v1/2023/01/remarks/bd180ff7/
+
+
+
+
+## Passwords in deployment or development scripts?
+https://notes.volution.ro/v1/2023/01/remarks/723c5a6a/
+https://lobste.rs/s/wi1r4a/
+
+## Memorable password schemes and patterns?
+https://notes.volution.ro/v1/2023/01/remarks/5a7d0ba2/
+https://lobste.rs/s/g5ypwf/
+
+## Password strength for offline storage?
+https://notes.volution.ro/v1/2023/01/remarks/456a2274/
+https://lobste.rs/s/wlq6nm/
+
+## OpenPGP / GnuPG notepad recommendations?
+https://lobste.rs/s/vhp170/openpgp_gnupg_notepad_recommendations
+
+## Other cryptographic agents outside `ssh-agent` / `gpg-agent`?
+https://lobste.rs/s/oasqtt/other_cryptographic_agents_outside_ssh
+
+## Suggestions for all-or-nothing transform with stream ciphers
+https://lobste.rs/s/ulzt2t/suggestions_for_all_nothing_transform
+
+
+
+
+
+
+
+
+## RFC 9106 -- Argon2 Memory-Hard Function for Password Hashing and Proof-of-Work Applications
 https://www.rfc-editor.org/rfc/rfc9106
+
+## RFC 7914 -- The scrypt Password-Based Key Derivation Function
 https://www.rfc-editor.org/rfc/rfc7914
+
+## RFC 2898 -- PKCS #5: Password-Based Cryptography Specification Version 2.0
 https://www.rfc-editor.org/rfc/rfc2898
+
+## RFC 2104 -- HMAC: Keyed-Hashing for Message Authentication
 https://www.rfc-editor.org/rfc/rfc2104
 
+## RFC 7693 -- The BLAKE2 Cryptographic Hash and Message Authentication Code (MAC)
 https://www.rfc-editor.org/rfc/rfc7693
+
+## RFC 6234 -- US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)
 https://www.rfc-editor.org/rfc/rfc6234
 
 
+
+
+## Intrusion-Resilience via the Bounded-Storage Model (2005)
+https://eprint.iacr.org/2005/179
+
+## Perfectly Secure Password Protocols in the Bounded Retrieval Model (2006)
+https://www.iacr.org/cryptodb/data/paper.php?pubkey=3622
+https://dx.doi.org/10.1007/11681878_12
+
+## On Forward-Secure Storage (2006)
+https://www.iacr.org/cryptodb/data/paper.php?pubkey=1898
+https://dx.doi.org/10.1007/11818175_15
+
+## Intrusion-Resilient Secret Sharing (2007)
+https://eprint.iacr.org/2007/359
+
+## Survey: Leakage Resilience and the Bounded Retrieval Model (2009)
+https://crypto.ethz.ch/publications/AlDoWi09.html
+
+## All-or-nothing encryption and the package transform (1997)
+https://link.springer.com/chapter/10.1007/BFb0052348
+
+
+
+
+## OpenBSD Journal -- SSH gets protection against side channel attacks
+https://www.undeadly.org/cgi?action=article;sid=20190621081455
+
+## Tarsnap -- `spiped` design
+https://github.com/Tarsnap/spiped/blob/master/DESIGN.md
+
+## AWS Encryption SDK
 https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/
 https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/concepts.html
 https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/crypto-cli.html
 
-https://blog.cloudflare.com/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application/
 
-https://github.com/landhb/linux-keyutils
-https://crates.io/crates/linux-keyutils
-https://docs.rs/linux-keyutils
 
-https://github.com/mathstuf/rust-keyutils
-https://crates.io/crates/keyutils
-https://docs.rs/keyutils
 
-https://github.com/f4b6a3/tsid-creator
+
+
+
+
+## Blake3 -- (simple) Rust implementation
+https://github.com/BLAKE3-team/BLAKE3/blob/master/reference_impl/reference_impl.rs
+
+## Blake3 -- (simple) Python implementation
+https://github.com/oconnor663/pure_python_blake3/blob/main/pure_blake3.py
+
+
+
+
+
+
 
 
 https://github.com/cloudflare/gokey
@@ -34,14 +137,6 @@ https://github.com/rmmh/abbrase
 https://github.com/sts10/tidy
 https://github.com/sts10/generated-wordlists
 https://github.com/palant/pfp
-
-
-https://github.com/Tarsnap/spiped/blob/master/DESIGN.md
-
-
-
-
-https://github.com/BLAKE3-team/BLAKE3/blob/master/reference_impl/reference_impl.rs
-https://github.com/oconnor663/pure_python_blake3/blob/main/pure_blake3.py
+https://github.com/f4b6a3/tsid-creator
 
 
