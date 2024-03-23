@@ -138,5 +138,10 @@ https://github.com/sts10/tidy
 https://github.com/sts10/generated-wordlists
 https://github.com/palant/pfp
 https://github.com/f4b6a3/tsid-creator
+https://github.com/matiaskorhonen/paper-age
+https://github.com/cyphar/paperback
+
+https://www.passwordcard.org/
+https://www.passwordcard.org/algorithm.html
 
 
