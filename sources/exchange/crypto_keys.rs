@@ -430,8 +430,6 @@ pub(crate) fn derive_keys_phase_2 (
 		// --------------------------------------------------------------------------------
 		// NOTE:  derive packet key...
 		
-		// FIXME:  Include `_derivation_loop` in `_packet_key`?
-		
 		_packet_key = blake3_hash (
 				InternalPacketKey::wrap,
 				CRYPTO_PACKET_KEY_PURPOSE,
