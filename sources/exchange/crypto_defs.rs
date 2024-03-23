@@ -122,6 +122,7 @@ define_cryptographic_material! (pub(crate) InternalPinKey, 32);
 define_cryptographic_material! (pub(crate) InternalSeedInput, input, slice);
 define_cryptographic_material! (pub(crate) InternalSeedHash, 32);
 define_cryptographic_material! (pub(crate) InternalSeedMerge, 32);
+define_cryptographic_material! (pub(crate) InternalSeedSalt, 32);
 define_cryptographic_material! (pub(crate) InternalSeedKey, 32);
 
 define_cryptographic_material! (pub(crate) InternalBallastInput, input, slice);
@@ -179,6 +180,7 @@ define_cryptographic_purpose! (pub(crate) CRYPTO_PIN_KEY_PURPOSE, encryption, pi
 
 define_cryptographic_purpose! (pub(crate) CRYPTO_SEED_HASH_PURPOSE, encryption, seed_hash);
 define_cryptographic_purpose! (pub(crate) CRYPTO_SEED_MERGE_PURPOSE, encryption, seed_merge);
+define_cryptographic_purpose! (pub(crate) CRYPTO_SEED_SALT_PURPOSE, encryption, seed_salt);
 define_cryptographic_purpose! (pub(crate) CRYPTO_SEED_KEY_PURPOSE, encryption, seed_key);
 
 define_cryptographic_purpose! (pub(crate) CRYPTO_BALLAST_HASH_PURPOSE, encryption, ballast_hash);

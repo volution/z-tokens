@@ -527,17 +527,34 @@ pub(crate) fn derive_keys_phase_2 (
 		
 		for _seed_input in _seed_inputs.iter () {
 			
-			_seed_key = blake3_hash (
-					InternalSeedKey::wrap,
-					CRYPTO_SEED_KEY_PURPOSE,
+			let _seed_salt = blake3_hash (
+					InternalSeedSalt::wrap,
+					CRYPTO_SEED_SALT_PURPOSE,
 					&[
 						_packet_key.access (),
 						_oracle_key.access (),
 						_seed_key.access (),
 					],
+					&[],
+				);
+			
+			let _seed_hash = blake3_keyed_hash (
+					InternalSeedHash::wrap,
+					_seed_salt.access (),
+					&[],
 					&[
 						_seed_input.access (),
+					]
+				);
+			
+			_seed_key = blake3_hash (
+					InternalSeedKey::wrap,
+					CRYPTO_SEED_KEY_PURPOSE,
+					&[
+						_seed_salt.access (),
+						_seed_hash.access (),
 					],
+					&[],
 				);
 		}
 		
