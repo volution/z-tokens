@@ -72,23 +72,7 @@ z-tokens-runtime-hashes = { path = "../runtime-hashes", optional = false, defaul
 z-tokens-runtime-crypto = { path = "../runtime-crypto", optional = false, default-features = false, features = [] }
 z-tokens-runtime-codings = { path = "../runtime-codings", optional = false, default-features = false, features = [] }
 
-[target.'cfg( all( target_os = "linux", target_env = "gnu" ) )'.dependencies]
-russh-keys = { version = "^0.45", optional = false, default-features = false, features = ["vendored-openssl"] }
-tokio = { version = "^1.40", optional = false, default-features = false, features = ["rt", "net"] }
-
-[target.'cfg( all( target_os = "linux", target_env = "musl" ) )'.dependencies]
-russh-keys = { version = "^0.45", optional = false, default-features = false, features = [] }
-tokio = { version = "^1.40", optional = false, default-features = false, features = ["rt", "net"] }
-
-[target.'cfg( all( target_os = "android", not (target_arch = "x86") ) )'.dependencies]
-russh-keys = { version = "^0.45", optional = false, default-features = false, features = ["vendored-openssl"] }
-tokio = { version = "^1.40", optional = false, default-features = false, features = ["rt", "net"] }
-
-[target.'cfg( all( target_os = "android", target_arch = "x86") )'.dependencies]
-russh-keys = { version = "^0.45", optional = false, default-features = false, features = [] }
-tokio = { version = "^1.40", optional = false, default-features = false, features = ["rt", "net"] }
-
-[target.'cfg( any( target_os = "macos" ) )'.dependencies]
+[target.'cfg( not( any( target_os = "wasi", target_os = "windows" ) ) )'.dependencies]
 russh-keys = { version = "^0.45", optional = false, default-features = false, features = [] }
 tokio = { version = "^1.40", optional = false, default-features = false, features = ["rt", "net"] }
 

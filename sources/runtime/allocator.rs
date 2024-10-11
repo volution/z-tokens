@@ -162,7 +162,7 @@ unsafe impl alloc::GlobalAlloc for Allocator {
 			let _layout = unsafe { alloc::Layout::from_size_align_unchecked (_amount, _align) };
 			alloc::System.dealloc (_pointer, _layout)
 		}
-		#[ cfg ( not (feature = "memsec")) ]
+		#[ cfg (not (feature = "memsec")) ]
 		{
 			let _layout = unsafe { alloc::Layout::from_size_align_unchecked (_amount, _align) };
 			alloc::System.dealloc (_pointer, _layout)

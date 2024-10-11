@@ -10,10 +10,10 @@ pub mod coding;
 pub mod oracles;
 
 
-#[ cfg (any (target_os = "linux", target_os = "android", target_os = "openbsd", target_os = "freebsd", target_os = "netbsd", target_os = "macos")) ]
+#[ cfg (not (any (target_os = "wasi", target_os = "windows"))) ]
 pub mod ssh;
 
-#[ cfg (any (target_os = "windows", target_os = "wasi")) ]
+#[ cfg (any (target_os = "wasi", target_os = "windows")) ]
 #[ path = "./ssh_no.rs" ]
 pub mod ssh;
 
