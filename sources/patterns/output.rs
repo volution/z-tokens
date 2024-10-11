@@ -209,7 +209,7 @@ pub fn output_timestamp (_timestamp : &u128, _format : &TimestampFormat, mut _st
 				if _seconds >= (i64::MAX as u128) {
 					fail! (0xfd667988);
 				}
-				let _time = chrono::NaiveDateTime::from_timestamp_opt (_seconds as i64, _subsec_nanoseconds) .else_wrap (0xdcc5d13b) ?;
+				let _time = chrono::DateTime::from_timestamp (_seconds as i64, _subsec_nanoseconds) .else_wrap (0xdcc5d13b) ?;
 				let _time = if _utc {
 						_time
 					} else {

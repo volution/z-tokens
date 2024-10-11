@@ -245,7 +245,7 @@ impl <Core : RngCore> RngRandomizer<Core> {
 		if let Some (_timestamp) = self.timestamp {
 			Ok (_timestamp)
 		} else {
-			let _time = chrono::Utc::now () .naive_utc ();
+			let _time = chrono::Utc::now ();
 			let _seconds = _time.timestamp () as u128;
 			let _subsec_nanoseconds = _time.timestamp_subsec_nanos () as u128;
 			let _timestamp = (_seconds * 1_000_000_000) + _subsec_nanoseconds;

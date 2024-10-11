@@ -278,7 +278,7 @@ impl SshWrapper {
 					ssh::SignatureHash::SHA2_512 =>
 						(SignatureAlgorithm::RSA_SHA2_512, _bytes.as_slice ()),
 				}
-			ssh::Signature::P256 (_) =>
+			ssh::Signature::ECDSA { .. } =>
 				fail! (0xb478d87e),
 		};
 		
