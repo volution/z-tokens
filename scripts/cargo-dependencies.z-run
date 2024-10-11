@@ -31,6 +31,11 @@
 !!
 
 
+<< cargo / dependencies / update / check
+	exec -- "${ZRUN}" ':: cargo / exec / local' update --locked --check "${@}"
+!!
+
+
 << cargo / dependencies / update / conservative
 	exec -- "${ZRUN}" ':: cargo / exec / local' update "${@}"
 !!
