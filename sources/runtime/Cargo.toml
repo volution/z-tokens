@@ -71,4 +71,7 @@ const_format = { version = "^0.2", optional = false, default-features = false, f
 [target.'cfg( not( target_os = "wasi" ) )'.dependencies]
 memsec = { version = "^0.6", optional = false, default-features = false, features = ["default"] }
 
+[target.'cfg( target_os = "wasi" )'.dependencies]
+memsec = { version = "^0.6", optional = true, default-features = false, features = ["default"] }
+
 
