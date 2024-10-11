@@ -516,19 +516,20 @@ pub(crate) fn decode_raw (_prefix : &str, _encoded : &str, _data : &mut [u8]) ->
 pub(crate) fn decode_raw_vec (_prefix : &str, _encoded : &str) -> KeyEncodingResult<Vec<u8>> {
 	
 	// FIXME:  Find a way to eliminate allocations!
-	let (_prefix_actual, _bech_nibles, _bech_variant) = bech32::decode (_encoded) .else_wrap (0x2ba31a69) ?;
 	
-	if _prefix_actual != _prefix {
+	use bech32::{
+			Bech32m,
+			primitives::decode::CheckedHrpstring,
+		};
+	
+	let _decoded = CheckedHrpstring::new::<Bech32m> (_encoded) .else_wrap (0x2ba31a69) ?;
+	
+	let _prefix_actual = _decoded.hrp ();
+	if _prefix_actual.as_str () != _prefix {
 		fail! (0x4a4fe470);
 	}
-	if _bech_variant != bech32::Variant::Bech32m {
-		fail! (0xcbd4e755);
-	}
 	
-	let _data = bech32::FromBase32::from_base32 (&_bech_nibles) .else_wrap (0x799c1726) ?;
-	
-	let _bech_nibles : Vec<u8> = unsafe { mem::transmute (_bech_nibles) };
-	zeroize_and_drop (_bech_nibles);
+	let _data = _decoded.byte_iter () .collect ();
 	
 	Ok (_data)
 }
@@ -580,22 +581,19 @@ pub fn encode_shared_ballast (_key : &SharedBallast) -> KeyEncodingResult<Rb<Str
 
 pub(crate) fn encode_raw (_prefix : &str, _data : &[u8]) -> KeyEncodingResult<Rb<String>> {
 	
-	let _bech_nibles_capacity = _data.len () * 8 / 5 + 1;
-	let _bech_string_capacity = _prefix.len () + 1 + _bech_nibles_capacity;
+	// FIXME:  Find a way to eliminate allocations!
 	
-	let mut _bech_nibles = Vec::with_capacity (_bech_nibles_capacity);
-	bech32::ToBase32::write_base32 (&_data, &mut _bech_nibles) .else_replace (0xd5ea985b) ?;
-	assert! (_bech_nibles_capacity == _bech_nibles.capacity (), "[5e22b060]  {} == {}", _bech_nibles_capacity, _bech_nibles.capacity ());
+	use bech32::{
+			Bech32m,
+			Hrp,
+			encode_lower,
+		};
 	
-	let mut _bech_string = String::with_capacity (_bech_string_capacity);
-	assert! (_bech_string_capacity == _bech_string.capacity (), "[9549d10e]  {} == {}", _bech_string_capacity, _bech_string.capacity ());
+	let _prefix = Hrp::parse (_prefix) .else_wrap (0x21b86a70) ?;
 	
-	bech32::encode_to_fmt (&mut _bech_string, _prefix, &_bech_nibles, bech32::Variant::Bech32m) .else_wrap (0x9ee94010) ? .else_wrap (0x49c6b0af) ?;
+	let _encoded = encode_lower::<Bech32m> (_prefix, _data) .else_wrap (0x852b53d0) ?;
 	
-	let _bech_nibles : Vec<u8> = unsafe { mem::transmute (_bech_nibles) };
-	zeroize_and_drop (_bech_nibles);
-	
-	Ok (Rb::new (_bech_string))
+	Ok (Rb::new (_encoded))
 }
 
 
