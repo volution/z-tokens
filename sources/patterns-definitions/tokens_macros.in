@@ -19,6 +19,78 @@ macro_rules! define_sequence {
 
 
 
+macro_rules! define_choice {
+	
+	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, [ $( $_element : expr, )* ] ) => {
+		paste! {
+			
+			static [< _ $_pattern __CHOICE_0 >] : &[Rb<TokenPattern>] = &[ $(
+					Rb::new_static ($_element),
+				)* ];
+			
+			define_named! ($_visibility $_pattern, $_labels, $_identifier,
+					& TokenPattern::Choice (RbList::from_static ( [< _ $_pattern __CHOICE_0 >] ))
+				);
+		}
+	};
+}
+
+
+
+
+macro_rules! define_permutation {
+	
+	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, [ $_element_1 : expr,  $_element_2 : expr,  $_element_3 : expr, ], $_separator : expr ) => {
+		paste! {
+			
+			static [< _ $_pattern __PERMUTATION_123_0 >] : &[Rb<TokenPattern>] = &[
+					Rb::new_static ($_element_1), Rb::new_static ($_element_2), Rb::new_static ($_element_3),
+				];
+			static [< _ $_pattern __PERMUTATION_132_0 >] : &[Rb<TokenPattern>] = &[
+					Rb::new_static ($_element_1), Rb::new_static ($_element_3), Rb::new_static ($_element_2),
+				];
+			static [< _ $_pattern __PERMUTATION_213_0 >] : &[Rb<TokenPattern>] = &[
+					Rb::new_static ($_element_2), Rb::new_static ($_element_1), Rb::new_static ($_element_3),
+				];
+			static [< _ $_pattern __PERMUTATION_231_0 >] : &[Rb<TokenPattern>] = &[
+					Rb::new_static ($_element_2), Rb::new_static ($_element_3), Rb::new_static ($_element_1),
+				];
+			static [< _ $_pattern __PERMUTATION_312_0 >] : &[Rb<TokenPattern>] = &[
+					Rb::new_static ($_element_3), Rb::new_static ($_element_1), Rb::new_static ($_element_2),
+				];
+			static [< _ $_pattern __PERMUTATION_321_0 >] : &[Rb<TokenPattern>] = &[
+					Rb::new_static ($_element_3), Rb::new_static ($_element_2), Rb::new_static ($_element_1),
+				];
+			
+			static [< _ $_pattern __PERMUTATION_123 >] : &TokenPattern =
+					& TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern __PERMUTATION_123_0 >] ), Rb::new_static ($_separator));
+			static [< _ $_pattern __PERMUTATION_132 >] : &TokenPattern =
+					& TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern __PERMUTATION_132_0 >] ), Rb::new_static ($_separator));
+			static [< _ $_pattern __PERMUTATION_213 >] : &TokenPattern =
+					& TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern __PERMUTATION_213_0 >] ), Rb::new_static ($_separator));
+			static [< _ $_pattern __PERMUTATION_231 >] : &TokenPattern =
+					& TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern __PERMUTATION_231_0 >] ), Rb::new_static ($_separator));
+			static [< _ $_pattern __PERMUTATION_312 >] : &TokenPattern =
+					& TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern __PERMUTATION_312_0 >] ), Rb::new_static ($_separator));
+			static [< _ $_pattern __PERMUTATION_321 >] : &TokenPattern =
+					& TokenPattern::Sequence (RbList::from_static ( [< _ $_pattern __PERMUTATION_321_0 >] ), Rb::new_static ($_separator));
+			
+			define_choice! ($_visibility $_pattern, $_labels, $_identifier,
+				[
+					[< _ $_pattern __PERMUTATION_123 >],
+					[< _ $_pattern __PERMUTATION_132 >],
+					[< _ $_pattern __PERMUTATION_213 >],
+					[< _ $_pattern __PERMUTATION_231 >],
+					[< _ $_pattern __PERMUTATION_312 >],
+					[< _ $_pattern __PERMUTATION_321 >],
+				]);
+		}
+	};
+}
+
+
+
+
 macro_rules! define_repeat {
 	
 	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, $_elements : tt, ( $_length : tt : $_each : tt ) ) => {
