@@ -9,19 +9,30 @@
 		"${ZRUN}" ':: cargo / exec / remote / synchronize'
 	fi
 	
-	exec -- "${ZRUN}" \
-			--ssh \
-			--ssh-target="${__CARGO_REMOTE__SSH_TARGET}" \
-			--ssh-workspace=/var/lib/empty \
-			--ssh-export=__CARGO__CROSS \
-			--ssh-export=__CARGO__TARGET \
-			--ssh-export=__META__BUILD_SOURCES_HASH \
-			--ssh-export=__META__BUILD_GIT_HASH \
-			--ssh-export=__META__BUILD_TARGET_TYPE \
-			--ssh-option=RequestTTY=no \
-			':: cargo / exec / remote / delegate' \
-			"${@}" \
-	#
+	if test "${__CARGO_REMOTE__SSH_TARGET}" == __local__ ; then
+		
+		exec -- "${ZRUN}" \
+				':: cargo / exec / remote / delegate' \
+				"${@}" \
+		#
+		
+	else
+		
+		exec -- "${ZRUN}" \
+				--ssh \
+				--ssh-target="${__CARGO_REMOTE__SSH_TARGET}" \
+				--ssh-workspace=/var/lib/empty \
+				--ssh-export=__CARGO__CROSS \
+				--ssh-export=__CARGO__TARGET \
+				--ssh-export=__META__BUILD_SOURCES_HASH \
+				--ssh-export=__META__BUILD_GIT_HASH \
+				--ssh-export=__META__BUILD_TARGET_TYPE \
+				--ssh-option=RequestTTY=no \
+				':: cargo / exec / remote / delegate' \
+				"${@}" \
+		#
+		
+	fi
 !!
 
 
@@ -30,14 +41,24 @@
 --<< cargo / exec / remote / synchronize
 	test "${#}" -eq 0
 	
-	"${ZRUN}" \
-			--ssh \
-			--ssh-target="${__CARGO_REMOTE__SSH_TARGET}" \
-			--ssh-workspace=/var/lib/empty \
-			':: cargo / exec / remote / prepare' \
-	#
+	if test "${__CARGO_REMOTE__SSH_TARGET}" == __local__ ; then
+		
+		"${ZRUN}" \
+				':: cargo / exec / remote / prepare' \
+		#
+		
+	else
+		
+		"${ZRUN}" \
+				--ssh \
+				--ssh-target="${__CARGO_REMOTE__SSH_TARGET}" \
+				--ssh-workspace=/var/lib/empty \
+				':: cargo / exec / remote / prepare' \
+		#
+		
+	fi
 	
-	"${ZRUN}" \
+	exec -- "${ZRUN}" \
 			':: cargo / exec / remote / synchronize / push' \
 	#
 !!
@@ -90,13 +111,19 @@
 			
 		)
 	
+	if test "${__CARGO_REMOTE__SSH_TARGET}" == __local__ ; then
+		_remote_prefix=''
+	else
+		_remote_prefix="${__CARGO_REMOTE__SSH_TARGET}:"
+	fi
+	
 	rsync \
 			--delete \
 			--copy-links \
 			"${_rsync_arguments[@]}" \
 			-- \
 			"${_local_sources}/" \
-			"${__CARGO_REMOTE__SSH_TARGET}:${_remote_sources}/" \
+			"${_remote_prefix}${_remote_sources}/" \
 	#
 	
 	rsync \
@@ -104,7 +131,7 @@
 			"${_rsync_arguments[@]}" \
 			-- \
 			"${_local_dependencies}/" \
-			"${__CARGO_REMOTE__SSH_TARGET}:${_remote_dependencies}/" \
+			"${_remote_prefix}${_remote_dependencies}/" \
 	#
 !!
 
