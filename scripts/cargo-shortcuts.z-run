@@ -18,6 +18,21 @@
 
 
 
+<< cargo / release / check / less
+	exec -- "${ZRUN}" ':: less / exec' ':: cargo / release / check' --color always "${@}"
+!!
+
+<< cargo / release / build / less
+	exec -- "${ZRUN}" ':: less / exec' ':: cargo / release / build' --color always "${@}"
+!!
+
+<< cargo / release / run / less
+	exec -- "${ZRUN}" ':: less / exec' ':: cargo / release / run' --color always "${@}"
+!!
+
+
+
+
 << cargo / debug / build & collect
 	if test "${#}" -ge 1 ; then _tool="${1}" ; shift -- 1 ; else _tool=all ; fi
 	test "${#}" -eq 0
