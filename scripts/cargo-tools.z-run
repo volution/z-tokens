@@ -84,14 +84,14 @@
 		( native ) _os="${ZRUN_OS}" ;;
 		( *-unknown-linux-gnu | *-unknown-linux-gnueabihf ) _os=linux ; _variant=glibc ;;
 		( *-unknown-linux-musl | *-unknown-linux-musleabihf ) _os=linux ; _variant=musl ;;
-		( *-unknown-linux-gnu-static | *-unknown-linux-gnueabihf-static ) _os=linux ; _variant=glibc--static ; _target_0="${_target%-static}" ;;
-		( *-unknown-linux-musl-static | *-unknown-linux-musleabihf-static ) _os=linux ; _variant=musl--static ; _target_0="${_target%-static}" ;;
+		( *-unknown-linux-gnu-static | *-unknown-linux-gnueabihf-static ) _os=linux ; _variant=glibc--static ; _target_0="${_target_0%-static}" ;;
+		( *-unknown-linux-musl-static | *-unknown-linux-musleabihf-static ) _os=linux ; _variant=musl--static ; _target_0="${_target_0%-static}" ;;
 		( *-apple-darwin ) _os=darwin ;;
 		( *-unknown-freebsd ) _os=freebsd ;;
 		( *-unknown-openbsd ) _os=openbsd ;;
 		( *-linux-android | *-linux-androideabi ) _os=android ;;
 		( *-pc-windows-gnu ) _os=windows ; _bin_suffix='.exe' ; _bin_executable=false ;;
-		( *-wasi ) _os=wasi ; _bin_suffix='.wasm' ; _bin_executable=false ;;
+		( *-wasip1 ) _os=wasi ; _bin_suffix='.wasm' ; _bin_executable=false ;;
 		( * ) false -- 540e56ef ;;
 	esac
 	
@@ -129,7 +129,9 @@
 		_builds="${_builds}/target"
 		test -d "${_builds}"
 	else
-		_builds="${_builds}/cross/target"
+		_identifier="$( exec -- md5sum -b <<< "${_type} -- ${_target} -- ${_scratch}" )"
+		_identifier="${_identifier%% *}"
+		_builds="${_builds}/cross/target--${_identifier}"
 		test -d "${_builds}"
 	fi
 	

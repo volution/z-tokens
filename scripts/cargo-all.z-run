@@ -12,11 +12,13 @@
 	fi
 	export -- __SOURCES__PREPARED=true
 	
-	if test "${__CARGO_REMOTE__SYNCHRONIZE:-true}" == true ; then
-		printf -- '[ii]  synchronizing sources...\n' >&2
-		"${ZRUN}" ':: cargo / exec / remote / synchronize'
+	if test "${__CARGO__SWITCH}" == remote ; then
+		if test "${__CARGO_REMOTE__SYNCHRONIZE:-true}" == true ; then
+			printf -- '[ii]  synchronizing sources...\n' >&2
+			"${ZRUN}" ':: cargo / exec / remote / synchronize'
+		fi
+		export -- __CARGO_REMOTE__SYNCHRONIZE=false
 	fi
-	export -- __CARGO_REMOTE__SYNCHRONIZE=false
 	
 	for _type in debug release install ; do
 		
@@ -44,11 +46,13 @@
 	fi
 	export -- __SOURCES__PREPARED=true
 	
-	if test "${__CARGO_REMOTE__SYNCHRONIZE:-true}" == true ; then
-		printf -- '[ii]  synchronizing sources...\n' >&2
-		"${ZRUN}" ':: cargo / exec / remote / synchronize'
+	if test "${__CARGO__SWITCH}" == remote ; then
+		if test "${__CARGO_REMOTE__SYNCHRONIZE:-true}" == true ; then
+			printf -- '[ii]  synchronizing sources...\n' >&2
+			"${ZRUN}" ':: cargo / exec / remote / synchronize'
+		fi
+		export -- __CARGO_REMOTE__SYNCHRONIZE=false
 	fi
-	export -- __CARGO_REMOTE__SYNCHRONIZE=false
 	
 	for _type in debug release install ; do
 		

@@ -49,11 +49,11 @@
 	_scratch="$( exec -- "${ZRUN}" ':: workbench / scratch' )"
 	_executable="${__CARGO_LOCAL__EXECUTABLE}"
 	
-	if test ! -e "${_scratch}/target" ; then
-		mkdir -m 00700 -- "${_scratch}/target"
-	fi
 	if test ! -e "${_scratch}/sources" ; then
 		ln -s -T -- "$( exec -- readlink -e -- ./sources )" "${_scratch}/sources"
+	fi
+	if test ! -e "${_scratch}/target" ; then
+		mkdir -m 00700 -- "${_scratch}/target"
 	fi
 	
 	test "${_scratch}/sources" -ef ./sources
@@ -641,37 +641,61 @@
 		;;
 		( wasm32-wasip1 )
 		;;
+		( *-freebsd | *-openbsd | *-darwin | *-windows-msvc | *-windows-gnu | *-windows-gnullvm )
+			printf -- '[ww]  unsupported target `%s`;  continuing!\n' "${__CARGO__TARGET}" >&2
+		;;
 		( * )
 			printf -- '[ee]  invalid target `%s`;  aborting!\n' "${__CARGO__TARGET}" >&2
 			exit -- 1
 		;;
 	esac
 	
+	_identifier="$( exec -- md5sum -b <<< "${__META__BUILD_TARGET_TYPE} -- ${__CARGO__TARGET} -- ${_scratch}" )"
+	_identifier="${_identifier%% *}"
+	
 	test -d "${_scratch}"
 	test -d "${_scratch}/sources"
 	
-	if test ! -e "${_scratch}/cross" ; then
-		mkdir -- "${_scratch}/cross"
-		mkdir -- "${_scratch}/cross/target"
-		mkdir -- "${_scratch}/cross/registry"
-		mkdir -- "${_scratch}/cross/registry/git"
-		mkdir -- "${_scratch}/cross/tmp"
-	fi
+	_cross_folders=(
+			"${_scratch}/cross"
+			"${_scratch}/cross/sources--${_identifier}"
+			"${_scratch}/cross/target--${_identifier}"
+			"${_scratch}/cross/registry"
+			"${_scratch}/cross/registry/git"
+		)
+	for _cross_folder in "${_cross_folders[@]}" ; do
+		if test ! -e "${_cross_folder}" ; then
+			mkdir -- "${_cross_folder}"
+		else
+			test -d "${_cross_folder}"
+		fi
+	done
 	
-	test -d "${_scratch}/cross/target"
-	test -d "${_scratch}/cross/registry"
-	test -d "${_scratch}/cross/registry/git"
+	rsync \
+			--delete \
+			--recursive \
+			--copy-links \
+			--checksum --checksum-choice md5 \
+			--times --perms \
+			--chmod D00555,F00444 \
+			--exclude '.git' \
+			--exclude 'target' \
+			-- \
+			"${_scratch}/sources/" \
+			"${_scratch}/cross/sources--${_identifier}/" \
+	#
 	
 	exec -- \
 	\
 		podman container run \
+			--name "rust-cross--${_identifier}" \
 			--rm \
 			--interactive \
 			--tty \
 			--init \
 			--workdir /rust/sources \
-			--volume "${_scratch}/sources":/rust/sources:ro \
-			--volume "${_scratch}/cross/target":/rust/target:rw \
+			--volume "${_scratch}/cross/sources--${_identifier}":/rust/sources:ro \
+			--volume "${_scratch}/cross/target--${_identifier}":/rust/target:rw \
 			--volume "${_scratch}/cross/registry":/rust/registry:rw \
 			--env TERM \
 			--runtime runc \

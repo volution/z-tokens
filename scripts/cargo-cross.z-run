@@ -3,7 +3,7 @@
 
 
 
-:: cargo / cross / targets :: exec "${ZRUN}" ':: cargo / cross / exec / targets' all-targets
+:: cargo / cross / targets :: exec "${ZRUN}" ':: cargo / cross / exec / targets' all-targets-unsorted "${@}"
 
 :: cargo / debug / check / cross / one :: exec "${ZRUN}" ':: cargo / cross / exec / one' ':: cargo / debug / check' "${@}"
 :: cargo / release / check / cross / one :: exec "${ZRUN}" ':: cargo / cross / exec / one' ':: cargo / release / check' "${@}"
@@ -39,7 +39,7 @@
 
 << cargo / debug / check / cross / all
 	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
-			check-targets \
+			check-targets-randomized \
 			':: cargo / debug / check' "${@}" \
 	#
 !!
@@ -47,7 +47,7 @@
 
 << cargo / release / check / cross / all
 	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
-			check-targets \
+			check-targets-randomized \
 			':: cargo / release / check' "${@}" \
 	#
 !!
@@ -55,7 +55,7 @@
 
 << cargo / install / check / cross / all
 	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
-			check-targets \
+			check-targets-randomized \
 			':: cargo / install / check' "${@}" \
 	#
 !!
@@ -65,7 +65,7 @@
 
 << cargo / debug / build / cross / all
 	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
-			build-targets \
+			build-targets-unsorted \
 			':: cargo / debug / build' "${@}" \
 	#
 !!
@@ -73,7 +73,7 @@
 
 << cargo / release / build / cross / all
 	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
-			build-targets \
+			build-targets-unsorted \
 			':: cargo / release / build' "${@}" \
 	#
 !!
@@ -81,7 +81,7 @@
 
 << cargo / install / build / cross / all
 	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
-			build-targets \
+			build-targets-unsorted \
 			':: cargo / install / build' "${@}" \
 	#
 !!
@@ -92,7 +92,7 @@
 << cargo / debug / collect / cross / all
 	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
 			no-fetch \
-			build-targets \
+			build-targets-unsorted \
 			':: cargo / debug / collect' "${@}" \
 	#
 !!
@@ -101,7 +101,7 @@
 << cargo / release / collect / cross / all
 	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
 			no-fetch \
-			build-targets \
+			build-targets-unsorted \
 			':: cargo / release / collect' "${@}" \
 	#
 !!
@@ -112,7 +112,7 @@
 << cargo / debug / build & collect / cross / all
 	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
 			no-fetch \
-			build-targets \
+			build-targets-unsorted \
 			':: cargo / debug / build & collect' "${@}" \
 	#
 !!
@@ -121,7 +121,7 @@
 << cargo / release / build & collect / cross / all
 	exec -- "${ZRUN}" ':: cargo / cross / exec / all' \
 			no-fetch \
-			build-targets \
+			build-targets-unsorted \
 			':: cargo / release / build & collect' "${@}" \
 	#
 !!
@@ -165,11 +165,15 @@
 	fi
 	export -- __SOURCES__PREPARED=true
 	
-	if test "${_synchronize}" == true -a "${__CARGO_REMOTE__SYNCHRONIZE:-true}" == true ; then
-		printf -- '[ii]  synchronizing sources...\n' >&2
-		"${ZRUN}" ':: cargo / exec / remote / synchronize'
+	if test "${_synchronize}" == true ; then
+		if test "${__CARGO__SWITCH}" == remote ; then
+			if "${__CARGO_REMOTE__SYNCHRONIZE:-true}" == true ; then
+				printf -- '[ii]  synchronizing sources...\n' >&2
+				"${ZRUN}" ':: cargo / exec / remote / synchronize'
+			fi
+			export -- __CARGO_REMOTE__SYNCHRONIZE=false
+		fi
 	fi
-	export -- __CARGO_REMOTE__SYNCHRONIZE=false
 	
 	if test "${_fetch}" == true ; then
 		printf -- '[ii]  fetching dependencies...\n' >&2
@@ -199,10 +203,29 @@
 
 
 --<< cargo / cross / exec / targets
+	
 	test "${#}" -eq 1
+	_selector="${1}"
+	shift -- 1
+	
+	_sort=unsorted
+	case "${_selector}" in
+		( *-unsorted )
+			_selector="${_selector%-unsorted}"
+			_sort=unsorted
+		;;
+		( *-sorted )
+			_selector="${_selector%-sorted}"
+			_sort=sorted
+		;;
+		( *-randomized )
+			_selector="${_selector%-randomized}"
+			_sort=randomized
+		;;
+	esac
 	
 	_targets=()
-	case "${1}" in
+	case "${_selector}" in
 		
 		( all-targets | check-targets | build-targets )
 			_targets+=(
@@ -251,22 +274,39 @@
 		( all-targets | check-targets )
 			_targets+=(
 					
-				#!	x86_64-unknown-freebsd
-				#!	i686-unknown-freebsd
-				#!	aarch64-unknown-freebsd
+					x86_64-unknown-freebsd
 					
-				#!	x86_64-unknown-openbsd
-				#!	i686-unknown-openbsd
-				#!	aarch64-unknown-openbsd
+					i686-pc-windows-gnu
 					
-				#!	i686-apple-darwin
-					
-				#!	i686-pc-windows-gnu
+					x86_64-pc-windows-gnullvm
 					
 				)
 		;;&
 		
-		( all-targets | check-targets | build-targets )
+		( all-targets | broken-targets )
+			_targets+=(
+					
+					i686-unknown-freebsd
+					aarch64-unknown-freebsd
+					armv7-unknown-freebsd
+					
+					x86_64-unknown-openbsd
+					i686-unknown-openbsd
+					aarch64-unknown-openbsd
+					
+					i686-apple-darwin
+					
+					i686-pc-windows-gnullvm
+					aarch64-pc-windows-gnullvm
+					
+					x86_64-pc-windows-msvc
+					i686-pc-windows-msvc
+					aarch64-pc-windows-msvc
+					
+				)
+		;;&
+		
+		( all-targets | check-targets | build-targets | broken-targets )
 		;;
 		
 		( * )
@@ -275,8 +315,23 @@
 		
 	esac
 	
-	exec -- sort -R \
-		< <( printf -- '%s\n' "${_targets[@]}" ) \
-	#
+	case "${_sort}" in
+		( unsorted )
+			printf -- '%s\n' "${_targets[@]}"
+		;;
+		( sorted )
+			exec -- sort \
+				< <( printf -- '%s\n' "${_targets[@]}" ) \
+			#
+		;;
+		( randomized )
+			exec -- sort -R \
+				< <( printf -- '%s\n' "${_targets[@]}" ) \
+			#
+		;;
+		( * )
+			false -- cb8c8fdf
+		;;
+	esac
 !!
 

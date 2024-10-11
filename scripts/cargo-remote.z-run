@@ -5,6 +5,10 @@
 
 --<< cargo / exec / remote
 	
+	if test "${__CARGO__SWITCH}" != remote ; then
+		exit -- 1
+	fi
+	
 	if test "${__CARGO_REMOTE__SYNCHRONIZE:-true}" == true ; then
 		"${ZRUN}" ':: cargo / exec / remote / synchronize'
 	fi
@@ -39,6 +43,11 @@
 
 
 --<< cargo / exec / remote / synchronize
+	
+	if test "${__CARGO__SWITCH}" != remote ; then
+		exit -- 1
+	fi
+	
 	test "${#}" -eq 0
 	
 	if test "${__CARGO_REMOTE__SSH_TARGET}" == __local__ ; then
@@ -68,6 +77,10 @@
 
 --<< cargo / exec / remote / prepare
 	
+	if test "${__CARGO__SWITCH}" != remote ; then
+		exit -- 1
+	fi
+	
 	test "${#}" -eq 0
 	
 	test -d "${__CARGO_REMOTE__SCRATCH}"
@@ -77,7 +90,6 @@
 		mkdir -m 00700 -- "${_scratch}"
 		mkdir -m 00700 -- "${_scratch}/sources"
 		mkdir -m 00700 -- "${_scratch}/target"
-		mkdir -m 00700 -- "${_scratch}/.dependencies"
 	fi
 !!
 
@@ -86,6 +98,10 @@
 
 --<< cargo / exec / remote / synchronize / push
 	
+	if test "${__CARGO__SWITCH}" != remote ; then
+		exit -- 1
+	fi
+	
 	test "${#}" -eq 0
 	
 	_scratch="${__CARGO_REMOTE__SCRATCH}/${__CARGO_REMOTE__IDENTIFIER}"
@@ -93,45 +109,25 @@
 	_local_sources=./sources
 	_remote_sources="${_scratch}/sources"
 	
-	_local_dependencies=./.dependencies
-	_remote_dependencies="${_scratch}/.dependencies"
-	
-	_rsync_arguments=(
-			
-			--recursive
-			--copy-unsafe-links
-			
-			--checksum --checksum-choice md5
-			--times --perms
-			--chmod D00555,F00444
-		#	--itemize-changes
-			
-			--exclude '.git'
-			--exclude 'target'
-			
-		)
-	
 	if test "${__CARGO_REMOTE__SSH_TARGET}" == __local__ ; then
 		_remote_prefix=''
 	else
 		_remote_prefix="${__CARGO_REMOTE__SSH_TARGET}:"
 	fi
 	
-	rsync \
+	exec -- rsync \
 			--delete \
+			--recursive \
 			--copy-links \
-			"${_rsync_arguments[@]}" \
+			--checksum --checksum-choice md5 \
+			--times --perms \
+			--chmod D00555,F00444 \
+			--exclude '.git' \
+			--exclude 'target' \
 			-- \
 			"${_local_sources}/" \
 			"${_remote_prefix}${_remote_sources}/" \
 	#
-	
-	rsync \
-			--delete \
-			"${_rsync_arguments[@]}" \
-			-- \
-			"${_local_dependencies}/" \
-			"${_remote_prefix}${_remote_dependencies}/" \
-	#
 !!
+
 
