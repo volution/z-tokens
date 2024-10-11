@@ -185,6 +185,17 @@ pub fn entropy_token_push (_pattern : impl AsRef<TokenPattern>, _collector : &mu
 			Ok (())
 		}
 		
+		TokenPattern::Choice (_patterns) => {
+			let mut _entropy_sum = Entropy::none ();
+			for _pattern in _patterns.iter () {
+				let mut _entropy = Entropy::none ();
+				entropy_token_push (_pattern, &mut _entropy) ?;
+				_entropy_sum.addition (&_entropy) ?;
+			}
+			_collector.multiply (&_entropy_sum) ?;
+			Ok (())
+		}
+		
 		TokenPattern::Empty =>
 			Ok (()),
 	}

@@ -84,6 +84,13 @@ pub fn generate_token_push (_pattern : impl AsRef<TokenPattern>, _randomizer : &
 			Ok (())
 		}
 		
+		TokenPattern::Choice (_patterns) => {
+			let _count = _patterns.len ();
+			let _index = _randomizer.choose (_count) .else_wrap (0x57deb750) ?;
+			let _pattern = _patterns[_index] .as_ref ();
+			generate_token_push (_pattern, _randomizer, _accumulator)
+		}
+		
 		TokenPattern::Empty =>
 			Ok (()),
 	}
