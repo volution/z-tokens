@@ -29,6 +29,9 @@
 ::  cvs-plus-a:3            :   38.5 b :   14 c ::    cizo fiti 0701
 ::  cvs-plus-b:3            :   38.2 b :   14 c ::    cizo fiti NA70
 ::  cvs-plus-c:3            :   39.9 b :   14 c ::    cizo fiti NA7#
+::  apple-original          :   73.0 b :   20 c ::    myzrem-fobTan-huqmo2
+::  apple-lower             :   67.8 b :   20 c ::    cyzrem-fobtan-cuqmog
+::  apple-variant-a         :   66.8 b :   20 c ::    Cyzre4-fobtan-cuqmog
 ::  proquint-lower:2        :   32  =b :   11 c ::    dunad fitop
 ::  proquint-upper:2        :   32  =b :   11 c ::    DUNAD FITOP
 ::  koremutake-a:3          :   42  =b :   15 c ::    duna broty hana

@@ -2817,6 +2817,27 @@
 \_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu SI7\
 
 
+**  ~~~~~~~~  apple-original
+\_  aliases:  apple
+\_  bits:     73.0631
+\_  length:   20  (with spaces)
+\_  example:  qegvu1-dymxen-wagZyb
+
+
+**  ~~~~~~~~  apple-lower
+\_  aliases:  apple-l
+\_  bits:     67.8192
+\_  length:   20  (with spaces)
+\_  example:  bogvuz-dymxen-rlwcez
+
+
+**  ~~~~~~~~  apple-variant-a
+\_  aliases:  apple-a
+\_  bits:     66.8932
+\_  length:   20  (with spaces)
+\_  example:  Bogvu1-dymxen-rlwcez
+
+
 **  ~~~~~~~~  proquint-lower:1
 \_  aliases:  proquint:1
 \_  bits:     16  (exact)

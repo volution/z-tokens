@@ -441,6 +441,9 @@ cvs-plus-c:13
 cvs-plus-c:14
 cvs-plus-c:15
 cvs-plus-c:16
+apple-original
+apple-lower
+apple-variant-a
 proquint-lower:1
 proquint-lower:2
 proquint-lower:3

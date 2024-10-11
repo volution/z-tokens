@@ -15165,6 +15165,111 @@
 \_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu SI7\
 
 
+**  ~~~~~~~~  apple-original
+\_  aliases:  apple
+\_  labels:   apple-original apple cva-plus cv-plus cva cv password pronounceable memorable
+\_  bits:     73.0631
+\_  length:   20  (with spaces)
+\_  length:   20  (without spaces)
+\_  characters:
+    \_  letters:  17
+    \_  l. upper: 1
+    \_  l. lower: 16
+    \_  digits:   1
+    \_  symbols:  2
+    \_  no space: 20
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -54.94  bits of margin
+    \_  authentication          OK         with    +41.06  bits of margin
+    \_  archival storage     !! NO !!      with    -27.23  bits of margin
+    \_  long term storage    !! NO !!      with     -3.78  bits of margin
+    \_  short term storage      OK         with     +3.07  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --    3.9  days
+    \_  MD5                     --    6.9  days
+    \_  SHA1                    --   22.4  days
+    \_  SHA2-256                --    1.7  months
+    \_  SHA3-256                --    7.4  months
+    \_  PBKDF2-HMAC-MD5         --    6.8  decades
+    \_  PBKDF2-HMAC-SHA1        --    1.6  centuries
+    \_  PBKDF2-HMAC-SHA256      --    3.5  centuries
+    \_  PBKDF2-HMAC-SHA512      --    1.0  millennia
+    \_  scrypt                  --  438.8  millennia
+    \_  GPG                     --    1.2  centuries
+    \_  AES-128                 --    1.7  months
+\_  example:  qegvu1-dymxen-wagZyb
+
+
+**  ~~~~~~~~  apple-lower
+\_  aliases:  apple-l
+\_  labels:   apple-lower apple-variant apple cva cv password pronounceable memorable
+\_  bits:     67.8192
+\_  length:   20  (with spaces)
+\_  length:   20  (without spaces)
+\_  characters:
+    \_  letters:  18
+    \_  l. upper: 0
+    \_  l. lower: 18
+    \_  digits:   0
+    \_  symbols:  2
+    \_  no space: 20
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -60.18  bits of margin
+    \_  authentication          OK         with    +35.82  bits of margin
+    \_  archival storage     !! NO !!      with    -32.48  bits of margin
+    \_  long term storage    !! NO !!      with     -9.02  bits of margin
+    \_  short term storage   !! NO !!      with     -2.18  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --    2.5  hours
+    \_  MD5                     --    4.4  hours
+    \_  SHA1                    --   14.2  hours
+    \_  SHA2-256                --    1.4  days
+    \_  SHA3-256                --    6.0  days
+    \_  PBKDF2-HMAC-MD5         --    1.8  years
+    \_  PBKDF2-HMAC-SHA1        --    4.3  years
+    \_  PBKDF2-HMAC-SHA256      --    9.3  years
+    \_  PBKDF2-HMAC-SHA512      --    2.6  decades
+    \_  scrypt                  --   11.6  millennia
+    \_  GPG                     --    3.1  years
+    \_  AES-128                 --    1.4  days
+\_  example:  bogvuz-dymxen-rlwcez
+
+
+**  ~~~~~~~~  apple-variant-a
+\_  aliases:  apple-a
+\_  labels:   apple-variant-a apple-variant apple cva-plus cv-plus cva cv password pronounceable memorable
+\_  bits:     66.8932
+\_  length:   20  (with spaces)
+\_  length:   20  (without spaces)
+\_  characters:
+    \_  letters:  17
+    \_  l. upper: 1
+    \_  l. lower: 16
+    \_  digits:   1
+    \_  symbols:  2
+    \_  no space: 20
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -61.11  bits of margin
+    \_  authentication          OK         with    +34.89  bits of margin
+    \_  archival storage     !! NO !!      with    -33.40  bits of margin
+    \_  long term storage    !! NO !!      with     -9.95  bits of margin
+    \_  short term storage   !! NO !!      with     -3.10  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --    1.3  hours
+    \_  MD5                     --    2.3  hours
+    \_  SHA1                    --    7.5  hours
+    \_  SHA2-256                --   17.3  hours
+    \_  SHA3-256                --    3.1  days
+    \_  PBKDF2-HMAC-MD5         --   11.3  months
+    \_  PBKDF2-HMAC-SHA1        --    2.3  years
+    \_  PBKDF2-HMAC-SHA256      --    4.9  years
+    \_  PBKDF2-HMAC-SHA512      --    1.4  decades
+    \_  scrypt                  --    6.1  millennia
+    \_  GPG                     --    1.6  years
+    \_  AES-128                 --   17.4  hours
+\_  example:  Bogvu1-dymxen-rlwcez
+
+
 **  ~~~~~~~~  proquint-lower:1
 \_  aliases:  proquint:1
 \_  labels:   proquint-lower proquint letters password pronounceable memorable encoding

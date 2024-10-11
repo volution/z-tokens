@@ -5293,6 +5293,42 @@
 \_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu SI7\
 
 
+**  ~~~~~~~~  apple-original
+\_  bits:     73.0631
+\_  length:   20  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -54.94  bits of margin
+    \_  authentication          OK         with    +41.06  bits of margin
+    \_  archival storage     !! NO !!      with    -27.23  bits of margin
+    \_  long term storage    !! NO !!      with     -3.78  bits of margin
+    \_  short term storage      OK         with     +3.07  bits of margin
+\_  example:  qegvu1-dymxen-wagZyb
+
+
+**  ~~~~~~~~  apple-lower
+\_  bits:     67.8192
+\_  length:   20  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -60.18  bits of margin
+    \_  authentication          OK         with    +35.82  bits of margin
+    \_  archival storage     !! NO !!      with    -32.48  bits of margin
+    \_  long term storage    !! NO !!      with     -9.02  bits of margin
+    \_  short term storage   !! NO !!      with     -2.18  bits of margin
+\_  example:  bogvuz-dymxen-rlwcez
+
+
+**  ~~~~~~~~  apple-variant-a
+\_  bits:     66.8932
+\_  length:   20  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -61.11  bits of margin
+    \_  authentication          OK         with    +34.89  bits of margin
+    \_  archival storage     !! NO !!      with    -33.40  bits of margin
+    \_  long term storage    !! NO !!      with     -9.95  bits of margin
+    \_  short term storage   !! NO !!      with     -3.10  bits of margin
+\_  example:  Bogvu1-dymxen-rlwcez
+
+
 **  ~~~~~~~~  proquint-lower:1
 \_  bits:     16  (exact)
 \_  length:   5  (with spaces)

@@ -3088,6 +3088,27 @@
 \_  example:  sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu SI7\
 
 
+**  ~~~~~~~~  apple-original
+\_  labels:   apple-original apple cva-plus cv-plus cva cv password pronounceable memorable
+\_  bits:     73.0631
+\_  length:   20  (with spaces)
+\_  example:  qegvu1-dymxen-wagZyb
+
+
+**  ~~~~~~~~  apple-lower
+\_  labels:   apple-lower apple-variant apple cva cv password pronounceable memorable
+\_  bits:     67.8192
+\_  length:   20  (with spaces)
+\_  example:  bogvuz-dymxen-rlwcez
+
+
+**  ~~~~~~~~  apple-variant-a
+\_  labels:   apple-variant-a apple-variant apple cva-plus cv-plus cva cv password pronounceable memorable
+\_  bits:     66.8932
+\_  length:   20  (with spaces)
+\_  example:  Bogvu1-dymxen-rlwcez
+
+
 **  ~~~~~~~~  proquint-lower:1
 \_  labels:   proquint-lower proquint letters password pronounceable memorable encoding
 \_  bits:     16  (exact)

@@ -28,6 +28,7 @@
 ::  cvs-plus-a:6            :   76.5 b :   29 c ::    sunu gito juzi tamu dolu 3535
 ::  cvs-plus-b:6            :   76.1 b :   29 c ::    sunu gito juzi tamu dolu HI35
 ::  cvs-plus-c:6            :   77.8 b :   29 c ::    sunu gito juzi tamu dolu HI3~
+::  apple-original          :   73.0 b :   20 c ::    8plhpl-koxpug-xIptlp
 ::  proquint-lower:5        :   80  =b :   29 c ::    sunuh litok kizot bovol vimiv
 ::  proquint-upper:5        :   80  =b :   29 c ::    SUNUH LITOK KIZOT BOVOL VIMIV
 ::  koremutake-a:5          :   70  =b :   27 c ::    drose jino keru stapro moki

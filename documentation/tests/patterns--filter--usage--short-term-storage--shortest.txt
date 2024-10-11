@@ -28,6 +28,7 @@
 ::  cvs-plus-a:6            :   76.5 b :   29 c ::    sane seda zalu dufi pivu 2906
 ::  cvs-plus-b:6            :   76.1 b :   29 c ::    sane seda zalu dufi pivu CE90
 ::  cvs-plus-c:6            :   77.8 b :   29 c ::    sane seda zalu dufi pivu CE9!
+::  apple-original          :   73.0 b :   20 c ::    qegvu1-dymxen-wagZyb
 ::  proquint-lower:5        :   80  =b :   29 c ::    sanis gufaz lofug mudad damud
 ::  proquint-upper:5        :   80  =b :   29 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD
 ::  koremutake-a:5          :   70  =b :   28 c ::    drobo stufi stoda napru hyhi

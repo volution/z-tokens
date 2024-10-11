@@ -281,6 +281,7 @@
 ::  cvs-plus-c:14           :  179.0 b :   69 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva SU5'
 ::  cvs-plus-c:15           :  191.6 b :   74 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma HE3~
 ::  cvs-plus-c:16           :  204.3 b :   79 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu SI7\
+::  apple-original          :   73.0 b :   20 c ::    qegvu1-dymxen-wagZyb
 ::  proquint-lower:5        :   80  =b :   29 c ::    sanis gufaz lofug mudad damud
 ::  proquint-lower:6        :   96  =b :   35 c ::    sanis gufaz lofug mudad damud mihup
 ::  proquint-lower:7        :  112  =b :   41 c ::    sanis gufaz lofug mudad damud mihup dogip

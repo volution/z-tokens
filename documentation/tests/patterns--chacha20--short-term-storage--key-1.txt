@@ -28,6 +28,7 @@
 ::  cvs-plus-a:6            :   76.5 b :   29 c ::    cizo fiti nace tape noho 7706
 ::  cvs-plus-b:6            :   76.1 b :   29 c ::    cizo fiti nace tape noho NO06
 ::  cvs-plus-c:6            :   77.8 b :   29 c ::    cizo fiti nace tape noho NO0>
+::  apple-original          :   73.0 b :   20 c ::    myzrem-fobTan-huqmo2
 ::  proquint-lower:5        :   80  =b :   29 c ::    dunad fitop nopir nagoz pupip
 ::  proquint-upper:5        :   80  =b :   29 c ::    DUNAD FITOP NOPIR NAGOZ PUPIP
 ::  koremutake-a:5          :   70  =b :   26 c ::    duna broty hana frygo pijy

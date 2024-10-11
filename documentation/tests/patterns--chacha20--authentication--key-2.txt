@@ -29,6 +29,9 @@
 ::  cvs-plus-a:3            :   38.5 b :   14 c ::    sunu gito 9572
 ::  cvs-plus-b:3            :   38.2 b :   14 c ::    sunu gito JU59
 ::  cvs-plus-c:3            :   39.9 b :   14 c ::    sunu gito JU5}
+::  apple-original          :   73.0 b :   20 c ::    8plhpl-koxpug-xIptlp
+::  apple-lower             :   67.8 b :   20 c ::    wupmip-pukxlg-xiptlp
+::  apple-variant-a         :   66.8 b :   20 c ::    Wupmi5-pukxlg-xiptlp
 ::  proquint-lower:2        :   32  =b :   11 c ::    sunuh litok
 ::  proquint-upper:2        :   32  =b :   11 c ::    SUNUH LITOK
 ::  koremutake-a:3          :   42  =b :   15 c ::    drose jino keru

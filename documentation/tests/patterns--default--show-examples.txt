@@ -7057,6 +7057,54 @@
     \_        buri gine heho pupi vuge boro cala viro febo fefe mugu jufe zecu nusa nadu NA2`
 
 
+**  ~~~~~~~~  apple-original
+\_  bits:     73.0631
+\_  length:   20  (with spaces)
+\_  examples:
+    \_        qegvu1-dymxen-wagZyb
+    \_        tyfzev-Cerqeg-6bajxl
+    \_        Vuxtyp-hiwfl1-hihwyn
+    \_        cyTguf-2pldry-qlgkoc
+    \_        darbak-jysroW-tarpy6
+    \_        syswon-namnOm-dojqo0
+    \_        batxy1-fupzym-xavsuH
+    \_        Niznem-gegzi4-peqryk
+    \_        pogsoH-kuchij-mospu5
+    \_        0zehny-jegkam-wexpoZ
+
+
+**  ~~~~~~~~  apple-lower
+\_  bits:     67.8192
+\_  length:   20  (with spaces)
+\_  examples:
+    \_        bogvuz-dymxen-rlwcez
+    \_        xobcot-wafzev-hocrof
+    \_        giprac-jexmov-vytpah
+    \_        wedhih-wynpuc-zugfej
+    \_        hyqpld-ryqmek-poccud
+    \_        harbak-gisrow-bitrip
+    \_        zosxow-rlpnam-nomdoj
+    \_        qoscat-xyffup-zymfex
+    \_        cushon-zanhem-begglz
+    \_        jlzpeq-rykjep-regsoh
+
+
+**  ~~~~~~~~  apple-variant-a
+\_  bits:     66.8932
+\_  length:   20  (with spaces)
+\_  examples:
+    \_        Bogvu1-dymxen-rlwcez
+    \_        Xobco6-tyfzev-hocrof
+    \_        Gipra3-xlqvux-typdiw
+    \_        Fldhi3-wynpuc-zugfej
+    \_        Hyqpl1-ryqmek-poccud
+    \_        Harba2-jysrow-bitrip
+    \_        Zosxo1-wonplm-nomdoj
+    \_        Qosca1-texfuf-pyxmex
+    \_        Cusho5-niznem-begglz
+    \_        Jlzpe4-qozkej-flpreg
+
+
 **  ~~~~~~~~  proquint-lower:1
 \_  bits:     16  (exact)
 \_  length:   5  (with spaces)

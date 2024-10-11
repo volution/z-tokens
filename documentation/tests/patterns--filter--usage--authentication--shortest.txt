@@ -29,6 +29,9 @@
 ::  cvs-plus-a:3            :   38.5 b :   14 c ::    sane seda 0449
 ::  cvs-plus-b:3            :   38.2 b :   14 c ::    sane seda ZA44
 ::  cvs-plus-c:3            :   39.9 b :   14 c ::    sane seda ZA4(
+::  apple-original          :   73.0 b :   20 c ::    qegvu1-dymxen-wagZyb
+::  apple-lower             :   67.8 b :   20 c ::    bogvuz-dymxen-rlwcez
+::  apple-variant-a         :   66.8 b :   20 c ::    Bogvu1-dymxen-rlwcez
 ::  proquint-lower:2        :   32  =b :   11 c ::    sanis gufaz
 ::  proquint-upper:2        :   32  =b :   11 c ::    SANIS GUFAZ
 ::  koremutake-a:3          :   42  =b :   17 c ::    drobo stufi stoda

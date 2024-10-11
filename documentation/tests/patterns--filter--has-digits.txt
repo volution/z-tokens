@@ -232,6 +232,8 @@
 ::  cvs-plus-c:6            :   77.8 b :   24 c ::    sane seda zalu dufi pivu CE9!
 ::  cvs-plus-c:7            :   90.5 b :   28 c ::    sane seda zalu dufi pivu ceba CA5]
 ::  cvs-plus-c:8            :  103.1 b :   32 c ::    sane seda zalu dufi pivu ceba camu CI2@
+::  apple-original          :   73.0 b :   20 c ::    qegvu1-dymxen-wagZyb
+::  apple-variant-a         :   66.8 b :   20 c ::    Bogvu1-dymxen-rlwcez
 ::  bytes-hex:1             :    8  =b :    2 c ::    7f
 ::  bytes-hex:2             :   16  =b :    4 c ::    7f6f
 ::  bytes-hex:3             :   24  =b :    6 c ::    7f6f2c

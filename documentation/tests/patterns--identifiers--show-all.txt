@@ -627,6 +627,12 @@ cvs-plus-c:15
 cvspc:15
 cvs-plus-c:16
 cvspc:16
+apple-original
+apple
+apple-lower
+apple-l
+apple-variant-a
+apple-a
 proquint-lower:1
 proquint:1
 proquint-lower:2

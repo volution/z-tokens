@@ -441,6 +441,9 @@
 ::  cvs-plus-c:14           :  179.0 b :   56 c ::    sanesedazaludufipivucebacamucigepaconehobahelotusuvaSU5'
 ::  cvs-plus-c:15           :  191.6 b :   60 c ::    sanesedazaludufipivucebacamucigepaconehobahelotusuvasumaHE3~
 ::  cvs-plus-c:16           :  204.3 b :   64 c ::    sanesedazaludufipivucebacamucigepaconehobahelotusuvasumahetuSI7\
+::  apple-original          :   73.0 b :   18 c ::    qegvu1dymxenwagZyb
+::  apple-lower             :   67.8 b :   18 c ::    bogvuzdymxenrlwcez
+::  apple-variant-a         :   66.8 b :   18 c ::    Bogvu1dymxenrlwcez
 ::  proquint-lower:1        :   16  =b :    5 c ::    sanis
 ::  proquint-lower:2        :   32  =b :   10 c ::    sanisgufaz
 ::  proquint-lower:3        :   48  =b :   15 c ::    sanisgufazlofug

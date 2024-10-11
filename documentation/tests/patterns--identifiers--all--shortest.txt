@@ -29,6 +29,9 @@ cvs-mixed:1
 cvs-plus-a:2
 cvs-plus-b:2
 cvs-plus-c:2
+apple-original
+apple-lower
+apple-variant-a
 proquint-lower:1
 proquint-upper:1
 koremutake-a:1
