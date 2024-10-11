@@ -32,7 +32,7 @@
 
 
 << cargo / dependencies / update / check
-	exec -- "${ZRUN}" ':: cargo / exec / local' update --locked --check "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec / local' update --locked --verbose "${@}"
 !!
 
 
