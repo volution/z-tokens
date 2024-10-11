@@ -63,9 +63,9 @@ blake2 = { version = "^0.10", optional = false, default-features = false, featur
 
 sha3 = { version = "^0.10", optional = false, default-features = false, features = ["std"] }
 sha2 = { version = "^0.10", optional = false, default-features = false, features = ["std"] }
-sha1 = { version = "^0.10", optional = false, default-features = false, features = ["std", "asm"] }
+sha1 = { version = "^0.10", optional = false, default-features = false, features = ["std"] }
 
-md-5 = { version = "^0.10", optional = false, default-features = false, features = ["std", "asm"] }
+md-5 = { version = "^0.10", optional = false, default-features = false, features = ["std"] }
 
 xxhash-rust = { version = "^0.8", optional = false, default-features = false, features = ["xxh3"] }
 twox-hash = { version = "^1.6", optional = false, default-features = false, features = [] }
