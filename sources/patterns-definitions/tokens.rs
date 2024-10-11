@@ -478,6 +478,224 @@ define_repeat! (
 
 
 
+// NOTE:  =>  <https://rmondello.com/2024/10/07/apple-passwords-generated-strong-password-format/>
+
+
+#[ cfg (feature = "zt-patterns-apple") ]
+define_sequence! (
+		pub APPLE_WORD_1,
+		(),
+		(),
+		[
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_VOWEL_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_VOWEL_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+		], separators::NONE_PATTERN);
+
+
+#[ cfg (feature = "zt-patterns-apple") ]
+define_sequence! (
+		pub APPLE_WORD_2A,
+		(),
+		(),
+		[
+			glyphs::APPLE_CONSONANT_UPPER_TOKEN,
+			glyphs::APPLE_VOWEL_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_VOWEL_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+		], separators::NONE_PATTERN);
+
+#[ cfg (feature = "zt-patterns-apple") ]
+define_sequence! (
+		pub APPLE_WORD_2B,
+		(),
+		(),
+		[
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_VOWEL_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_VOWEL_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_UPPER_TOKEN,
+		], separators::NONE_PATTERN);
+
+#[ cfg (feature = "zt-patterns-apple") ]
+define_sequence! (
+		pub APPLE_WORD_2C,
+		(),
+		(),
+		[
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_VOWEL_UPPER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_VOWEL_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+		], separators::NONE_PATTERN);
+
+#[ cfg (feature = "zt-patterns-apple") ]
+define_sequence! (
+		pub APPLE_WORD_2D,
+		(),
+		(),
+		[
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_VOWEL_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_VOWEL_UPPER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+		], separators::NONE_PATTERN);
+
+#[ cfg (feature = "zt-patterns-apple") ]
+define_sequence! (
+		pub APPLE_WORD_2E,
+		(),
+		(),
+		[
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_VOWEL_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_UPPER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_VOWEL_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+		], separators::NONE_PATTERN);
+
+#[ cfg (feature = "zt-patterns-apple") ]
+define_sequence! (
+		pub APPLE_WORD_2F,
+		(),
+		(),
+		[
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_VOWEL_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_UPPER_TOKEN,
+			glyphs::APPLE_VOWEL_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+		], separators::NONE_PATTERN);
+
+#[ cfg (feature = "zt-patterns-apple") ]
+define_choice! (
+		pub APPLE_WORD_2,
+		(),
+		(),
+		[
+			APPLE_WORD_2A,
+			APPLE_WORD_2B,
+			APPLE_WORD_2C,
+			APPLE_WORD_2D,
+			APPLE_WORD_2E,
+			APPLE_WORD_2F,
+		]);
+
+
+#[ cfg (feature = "zt-patterns-apple") ]
+define_sequence! (
+		pub APPLE_WORD_3A,
+		(),
+		(),
+		[
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_VOWEL_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_VOWEL_LOWER_TOKEN,
+			glyphs::DIGIT_BASE10_TOKEN,
+		], separators::NONE_PATTERN);
+
+#[ cfg (feature = "zt-patterns-apple") ]
+define_sequence! (
+		pub APPLE_WORD_3B,
+		(),
+		(),
+		[
+			glyphs::DIGIT_BASE10_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_VOWEL_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_VOWEL_LOWER_TOKEN,
+		], separators::NONE_PATTERN);
+
+#[ cfg (feature = "zt-patterns-apple") ]
+define_choice! (
+		pub APPLE_WORD_3,
+		(),
+		(),
+		[
+			APPLE_WORD_3A,
+			APPLE_WORD_3B,
+		]);
+
+
+#[ cfg (feature = "zt-patterns-apple") ]
+define_sequence! (
+		pub APPLE_WORD_4,
+		(),
+		(),
+		[
+			glyphs::APPLE_CONSONANT_UPPER_TOKEN,
+			glyphs::APPLE_VOWEL_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_CONSONANT_LOWER_TOKEN,
+			glyphs::APPLE_VOWEL_LOWER_TOKEN,
+			glyphs::DIGIT_BASE10_TOKEN,
+		], separators::NONE_PATTERN);
+
+
+#[ cfg (feature = "zt-patterns-apple") ]
+define_permutation! (
+		pub APPLE_ORIGINAL,
+		("apple-original", "apple", "cva-plus", "cv-plus", "cva", "cv", "password", "pronounceable", "memorable"),
+		("apple-original", "apple"),
+		[
+			APPLE_WORD_1,
+			APPLE_WORD_2,
+			APPLE_WORD_3,
+		], separators::HYPHEN_MANDATORY_INFIX_PATTERN);
+
+#[ cfg (feature = "zt-patterns-apple") ]
+define_sequence! (
+		pub APPLE_LOWER,
+		("apple-lower", "apple-variant", "apple", "cva", "cv", "password", "pronounceable", "memorable"),
+		("apple-lower", "apple-l"),
+		[
+			APPLE_WORD_1,
+			APPLE_WORD_1,
+			APPLE_WORD_1,
+		], separators::HYPHEN_MANDATORY_INFIX_PATTERN);
+
+#[ cfg (feature = "zt-patterns-apple") ]
+define_sequence! (
+		pub APPLE_VARIANT_A,
+		("apple-variant-a", "apple-variant", "apple", "cva-plus", "cv-plus", "cva", "cv", "password", "pronounceable", "memorable"),
+		("apple-variant-a", "apple-a"),
+		[
+			APPLE_WORD_4,
+			APPLE_WORD_1,
+			APPLE_WORD_1,
+		], separators::HYPHEN_MANDATORY_INFIX_PATTERN);
+
+#[ cfg (feature = "zt-patterns-apple") ]
+define_all! (pub APPLE_ALL, [
+		APPLE_ORIGINAL,
+		APPLE_LOWER,
+		APPLE_VARIANT_A,
+	]);
+
+
+
+
+
+
+
+
 #[ cfg (feature = "zt-patterns-proquint") ]
 define_sequence! (
 		pub PROQUINT_LOWER_WORD,
@@ -1211,6 +1429,9 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		SIMPLE_CONSONANT_VOWEL_PLUS_B_ALL,
 		#[ cfg (feature = "zt-patterns-consonant-vowel") ]
 		SIMPLE_CONSONANT_VOWEL_PLUS_C_ALL,
+		
+		#[ cfg (feature = "zt-patterns-apple") ]
+		APPLE_ALL,
 		
 		#[ cfg (feature = "zt-patterns-proquint") ]
 		PROQUINT_LOWER_ALL,

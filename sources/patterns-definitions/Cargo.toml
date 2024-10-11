@@ -46,7 +46,6 @@ default = [
 
 development = [
 	
-	"zt-patterns-all",
 	"zt-patterns-basic",
 	
 	"z-tokens-patterns/development",
@@ -73,6 +72,7 @@ zt-patterns-basic = [
 zt-patterns-extra = [
 	"zt-patterns-digits-extra",
 	"zt-patterns-consonant-vowel",
+	"zt-patterns-apple",
 	"zt-patterns-proquint",
 	"zt-patterns-koremutake",
 	"zt-patterns-mnemonic",
@@ -121,6 +121,7 @@ zt-patterns-digits-z85 = []
 
 zt-patterns-ascii = []
 zt-patterns-consonant-vowel = []
+zt-patterns-apple = []
 zt-patterns-proquint = []
 zt-patterns-koremutake = []
 zt-patterns-mnemonic = []

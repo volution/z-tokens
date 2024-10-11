@@ -242,6 +242,30 @@ define_set! (pub SIMPLE_CONSONANT_MIXED, Char, [
 
 
 
+#[ cfg (feature = "zt-patterns-apple") ]
+// NOTE:  #>  python -c 'print (", ".join ([ repr(c) for c in r""" aeilouy """ if c != " " ]))'
+define_set! (pub APPLE_VOWEL_LOWER, Char, [
+		'a', 'e', 'i', 'l', 'o', 'u', 'y',
+	]);
+#[ cfg (feature = "zt-patterns-apple") ]
+define_set! (pub APPLE_VOWEL_UPPER, Char, [
+		'A', 'E', 'I', 'L', 'O', 'U', 'Y',
+	]);
+
+
+#[ cfg (feature = "zt-patterns-apple") ]
+// NOTE:  #>  python -c 'print (", ".join ([ repr(c) for c in r""" bcdfghjkmnpqrstvwxz """ if c != " " ]))'
+define_set! (pub APPLE_CONSONANT_LOWER, Char, [
+		'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z',
+	]);
+#[ cfg (feature = "zt-patterns-apple") ]
+define_set! (pub APPLE_CONSONANT_UPPER, Char, [
+		'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Z',
+	]);
+
+
+
+
 // NOTE:  =>  https://github.com/dsw/proquint/blob/master/proquint-proposal.txt
 
 #[ cfg (feature = "zt-patterns-proquint") ]
