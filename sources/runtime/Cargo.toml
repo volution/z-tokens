@@ -41,9 +41,7 @@ default = []
 
 development = []
 
-release = [
-	"zt-runtime-allocator",
-]
+release = []
 
 zt-runtime-allocator = []
 

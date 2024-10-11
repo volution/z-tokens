@@ -67,6 +67,7 @@ development = [
 release = [
 	
 	"zt-embedded-all",
+	"zt-runtime-allocator",
 	
 	"z-tokens-patterns-tool/release",
 	"z-tokens-hashes-tool/release",
@@ -78,6 +79,10 @@ release = [
 	"z-tokens-runtime-flags/release",
 ]
 
+
+zt-runtime-allocator = [
+	"z-tokens-runtime/zt-runtime-allocator",
+]
 
 zt-embedded-all = [
 	"zt-embedded-basic",

@@ -6,7 +6,7 @@ use ::z_tokens_runtime::preludes::errors::*;
 
 
 #[ cfg (feature = "zt-runtime-allocator") ]
-use ::z_tokens_runtime::allocator;
+pub(crate) use ::z_tokens_runtime::allocator;
 
 
 pub(crate) use ::std::process::ExitCode;
