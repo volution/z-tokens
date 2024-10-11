@@ -97,6 +97,29 @@ impl Entropy {
 		Ok (())
 	}
 	
+	pub fn addition (&mut self, _other : &Entropy) -> EntropyResult {
+		if self.accumulator.is_zero () {
+			self.accumulator = _other.accumulator.clone ();
+			self.accumulator_log2 = _other.accumulator_log2;
+		} else if _other.accumulator.is_zero () {
+			// NOP
+		} else if self.accumulator == _other.accumulator {
+			self.accumulator <<= 1;
+			self.accumulator_log2 += 1.0;
+		} else {
+			self.accumulator += &_other.accumulator;
+			// NOTE:  =>  <https://cdsmithus.medium.com/the-logarithm-of-a-sum-69dd76199790>
+			let x = f64::max (self.accumulator_log2, _other.accumulator_log2);
+			let y = f64::min (self.accumulator_log2, _other.accumulator_log2);
+			let s = x + f64::log2 (1.0 + f64::exp2 (y - x));
+			self.accumulator_log2 = s;
+		}
+		if _other.timestamp {
+			self.timestamp = true;
+		}
+		Ok (())
+	}
+	
 	pub fn bits (&self) -> f64 {
 		if self.accumulator.is_zero () {
 			return 0.0;
