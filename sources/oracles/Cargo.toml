@@ -66,7 +66,7 @@ zt-oracles-pkcs11 = [
 z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
 z-tokens-runtime-crypto = { path = "../runtime-crypto", optional = false, default-features = false, features = [] }
 
-cryptoki = { version = "^0.6", optional = true, default-features = false, features = [] }
+cryptoki = { version = "^0.7", optional = true, default-features = false, features = [] }
 cryptoki-sys = { version = "^0.1", optional = true, default-features = false, features = [] }
 
 

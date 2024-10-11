@@ -71,9 +71,9 @@ xxhash-rust = { version = "^0.8", optional = false, default-features = false, fe
 twox-hash = { version = "^1.6", optional = false, default-features = false, features = [] }
 siphasher = { version = "^1.0", optional = false, default-features = false, features = [] }
 seahash = { version = "^4.1", optional = false, default-features = false, features = [] }
-highway = { version = "^1.1", optional = false, default-features = false, features = ["std"] }
+highway = { version = "^1.2", optional = false, default-features = false, features = ["std"] }
 
-crc-any = { version = "^2.4", optional = false, default-features = false, features = [] }
+crc-any = { version = "^2.5", optional = false, default-features = false, features = [] }
 adler = { version = "^1.0", optional = false, default-features = false, features = [] }
 hashers = { version = "^1.0", optional = false, default-features = false, features = [] }
 

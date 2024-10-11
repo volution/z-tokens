@@ -57,7 +57,7 @@ vrl-preludes = { version = "*", optional = false, default-features = false, feat
 
 constant_time_eq = { version = "^0.3", optional = false, default-features = false, features = [] }
 byteorder = { version = "^1.5", optional = false, default-features = false, features = [] }
-zeroize = { version = "^1.7", optional = false, default-features = false, features = ["std", "alloc"] }
+zeroize = { version = "^1.8", optional = false, default-features = false, features = ["std", "alloc"] }
 
 num-bigint = { version = "^0.4", optional = false, default-features = false, features = ["std"] }
 num-traits = { version = "^0.2", optional = false, default-features = false, features = ["std"] }
@@ -69,9 +69,9 @@ paste = { version = "^1.0", optional = false, default-features = false, features
 const_format = { version = "^0.2", optional = false, default-features = false, features = [] }
 
 [target.'cfg( not( target_os = "wasi" ) )'.dependencies]
-memsec = { version = "^0.6", optional = false, default-features = false, features = ["default"] }
+memsec = { version = "^0.7", optional = false, default-features = false, features = ["default"] }
 
 [target.'cfg( target_os = "wasi" )'.dependencies]
-memsec = { version = "^0.6", optional = true, default-features = false, features = ["default"] }
+memsec = { version = "^0.7", optional = true, default-features = false, features = ["default"] }
 
 
