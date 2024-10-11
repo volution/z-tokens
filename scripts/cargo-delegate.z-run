@@ -228,7 +228,7 @@
 								-C strip=symbols
 							)
 					;;
-					( *-wasi )
+					( *-wasip1 )
 					;;
 					( * )
 						false -- 5cc039a0
