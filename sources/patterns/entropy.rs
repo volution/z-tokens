@@ -56,7 +56,7 @@ impl Entropy {
 			}
 	}
 	
-	pub fn for_choice (_count : u128) -> Self {
+	pub fn for_set (_count : u128) -> Self {
 		if _count == 0 {
 			return Self::none ();
 		}
@@ -67,12 +67,12 @@ impl Entropy {
 			}
 	}
 	
-	pub fn for_choice_repeat (_count : usize, _repeats : usize) -> Self {
+	pub fn for_set_repeat (_count : usize, _repeats : usize) -> Self {
 		if (_count == 0) || (_repeats == 0) {
 			return Self::none ();
 		}
 		if _repeats == 1 {
-			return Self::for_choice (_count as u128);
+			return Self::for_set (_count as u128);
 		}
 		Self {
 				accumulator : BigUint::from (_count) .pow (_repeats),
@@ -228,7 +228,7 @@ pub fn entropy_glyph (_pattern : impl AsRef<GlyphPattern>) -> EntropyResult<Entr
 	match _pattern {
 		
 		GlyphPattern::Set (_patterns) =>
-			Ok (Entropy::for_choice (_patterns.len () as u128)),
+			Ok (Entropy::for_set (_patterns.len () as u128)),
 		
 		GlyphPattern::Integer (_lower, _upper, _format) => {
 			let (_lower, _upper) = (*_lower, *_upper);
@@ -239,12 +239,12 @@ pub fn entropy_glyph (_pattern : impl AsRef<GlyphPattern>) -> EntropyResult<Entr
 			if _delta == u128::MAX {
 				Ok (Entropy::for_bits (128))
 			} else {
-				Ok (Entropy::for_choice (_delta + 1))
+				Ok (Entropy::for_set (_delta + 1))
 			}
 		}
 		
 		GlyphPattern::Bytes (_size, _format) =>
-			Ok (Entropy::for_choice_repeat (256, *_size)),
+			Ok (Entropy::for_set_repeat (256, *_size)),
 		
 		GlyphPattern::Timestamp (_) =>
 			Ok (Entropy::timestamp ()),
