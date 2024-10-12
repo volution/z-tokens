@@ -35,8 +35,45 @@ pub const SSH_WRAPPER_HANDLE_ENCODED_PREFIX : &str = "ztxwh";
 
 
 
+pub struct SshWrapper {
+	pub(crate) key : SshWrapperKey,
+	pub(crate) agent : SshWrapperAgent,
+}
+
+
 pub struct SshWrapperHandle {
 	pub(crate) handle : OracleHandle,
+}
+
+
+
+
+
+
+
+
+impl SshWrapper {
+	
+	pub fn new (_key : SshWrapperKey, _agent : SshWrapperAgent) -> SshResult<SshWrapper> {
+		let _self = SshWrapper {
+				key : _key,
+				agent : _agent,
+			};
+		Ok (_self)
+	}
+	
+	pub fn into_agent (self) -> SshResult<SshWrapperAgent> {
+		Ok (self.agent)
+	}
+	
+	pub fn connect (_key : SshWrapperKey) -> SshResult<SshWrapper> {
+		let _agent = SshWrapperAgent::connect () ?;
+		Self::new (_key, _agent)
+	}
+	
+	pub fn key (&self) -> &SshWrapperKey {
+		&self.key
+	}
 }
 
 
@@ -74,6 +111,7 @@ impl SshWrapperHandle {
 			}
 	}
 	
+	#[ allow (dead_code) ]
 	pub(crate) fn copy_raw (_raw : &[u8; 32]) -> Self {
 		Self {
 				handle : OracleHandle::copy_raw (_raw),

@@ -3,7 +3,7 @@
 use ::z_tokens_runtime::preludes::std_plus_extras::*;
 use ::z_tokens_runtime::preludes::errors::*;
 
-pub use crate::ssh_oracle::*;
+pub use crate::ssh_common::*;
 
 
 pub(crate) mod ssh {
@@ -87,14 +87,6 @@ define_cryptographic_purpose! (SSH_WRAP_OUTPUT_HASH_PURPOSE, ssh_wrap, output_ha
 
 
 
-pub struct SshWrapper {
-	key : SshWrapperKey,
-	agent : SshWrapperAgent,
-}
-
-
-
-
 pub struct SshWrapperAgent {
 	runtime : Runtime,
 	client : Option<ssh::AgentClient<UnixStream>>,
@@ -122,6 +114,10 @@ struct SshWrapperKeyInternals {
 
 
 
+
+
+
+
 #[ derive (Copy, Clone, Eq, PartialEq) ]
 #[ allow (non_camel_case_types) ]
 pub(crate) enum KeyAlgorithm {
@@ -142,7 +138,7 @@ pub(crate) enum SignatureAlgorithm {
 
 impl KeyAlgorithm {
 	
-	pub fn identifier (&self) -> &'static str {
+	pub(crate) fn identifier (&self) -> &'static str {
 		match self {
 			KeyAlgorithm::Ed25519 => "key-SSH-Ed25519",
 			KeyAlgorithm::RSA => "key-SSH-RSA",
@@ -150,7 +146,7 @@ impl KeyAlgorithm {
 	}
 	
 	#[ allow (dead_code) ]
-	pub fn ssh_name (&self) -> &'static str {
+	pub(crate) fn ssh_name (&self) -> &'static str {
 		match self {
 			KeyAlgorithm::Ed25519 => ssh::KEY_ED25519.as_ref (),
 			KeyAlgorithm::RSA => ssh::KEY_RSA.as_ref (),
@@ -161,7 +157,7 @@ impl KeyAlgorithm {
 
 impl SignatureAlgorithm {
 	
-	pub fn identifier (&self) -> &'static str {
+	pub(crate) fn identifier (&self) -> &'static str {
 		match self {
 			SignatureAlgorithm::Ed25519 => "sig-SSH-Ed25519",
 			SignatureAlgorithm::RSA_SHA1 => "sig-SSH-RSA-SHA1",
@@ -171,7 +167,7 @@ impl SignatureAlgorithm {
 	}
 	
 	#[ allow (dead_code) ]
-	pub fn ssh_name (&self) -> &'static str {
+	pub(crate) fn ssh_name (&self) -> &'static str {
 		match self {
 			SignatureAlgorithm::Ed25519 => ssh::SIG_ED25519.as_ref (),
 			SignatureAlgorithm::RSA_SHA1 => ssh::SIG_RSA_SHA1.as_ref (),
@@ -189,28 +185,6 @@ impl SignatureAlgorithm {
 
 
 impl SshWrapper {
-	
-	
-	pub fn new (_key : SshWrapperKey, _agent : SshWrapperAgent) -> SshResult<SshWrapper> {
-		let _key = _key.into ();
-		let _self = SshWrapper {
-				key : _key,
-				agent : _agent,
-			};
-		Ok (_self)
-	}
-	
-	
-	pub fn into_agent (self) -> SshResult<SshWrapperAgent> {
-		Ok (self.agent)
-	}
-	
-	
-	pub fn connect (_key : SshWrapperKey) -> SshResult<SshWrapper> {
-		
-		let _agent = SshWrapperAgent::connect () ?;
-		Self::new (_key, _agent)
-	}
 	
 	
 	pub fn wrap (&mut self, _namespace : Option<&str>, _input : &[u8], _output : &mut [u8; 32]) -> SshResult {
@@ -301,11 +275,6 @@ impl SshWrapper {
 		
 		Ok (())
 	}
-	
-	
-	pub fn key (&self) -> &SshWrapperKey {
-		&self.key
-	}
 }
 
 
@@ -316,6 +285,12 @@ impl SshWrapper {
 
 
 impl SshWrapperKey {
+	
+	
+	pub fn handle (&self) -> &SshWrapperHandle {
+		let _key = &self.0;
+		&_key.handle
+	}
 	
 	
 	pub fn encode (&self) -> SshResult<Rb<String>> {
@@ -386,12 +361,6 @@ impl SshWrapperKey {
 			};
 		
 		Ok (SshWrapperKey (Rb::new (_wrapper_key)))
-	}
-	
-	
-	pub fn handle (&self) -> &SshWrapperHandle {
-		let _key = &self.0;
-		&_key.handle
 	}
 	
 	
@@ -521,10 +490,6 @@ fn key_hash (_key_algorithm : &KeyAlgorithm, _signature_algorithm : &SignatureAl
 	
 	_key_hash
 }
-
-
-
-
 
 
 
