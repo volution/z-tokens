@@ -1,0 +1,8 @@
+>>  z-tokens exchange ssh keys --no-all
+
+
+## [key-SSH-Ed25519:sig-SSH-Ed25519:WRjxd4AByQpJgIqT24dkBU0gUQzmX+3iHnMwoiE9PRE]
+
+
+## [key-SSH-Ed25519:sig-SSH-Ed25519:ro0s5DyFq2CE4LuWiWLL9TAfT7Uy+kM2+VLjteCHBIc]
+

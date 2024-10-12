@@ -1,6 +1,34 @@
 >>  z-tokens exchange ssh keys --help
 
 
+  -a --yes-all
+  -A --no-all
+  --show-all  {enabled}
+    **  output all available information
+
+  -k --yes-keys
+  -K --no-keys
+  --show-keys  {enabled}
+    **  output ssh wrapper keys (long format)
+
+  -n --yes-handles
+  -N --no-handles
+  --show-handles  {enabled}
+    **  output ssh wrapper handles (short format)
+
+  -d --yes-descriptions
+  -D --no-descriptions
+  --show-descriptions  {enabled}
+    **  output ssh wrapper descriptions (key type, signature type, public key hash)
+
+  -q --no-comments
+  --comments  {enabled}
+    **  output comments
+
+  --no-separators
+  --separators  {enabled}
+    **  output separators
+
   -v --version
 
   -h --help
