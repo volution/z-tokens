@@ -338,10 +338,10 @@ exchange / password / associated-only / hello :: exchange password --associated 
 exchange / password / associated-only / hello / with-associated :: exchange password --associated context --associated testing --input $'hello world!\n'
 exchange / password / associated-only / notice :: exchange password --associated context --input-path ./notice.txt
 
-exchange / password / ssh-wrap-only / empty :: exchange password --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input-path /dev/null
-exchange / password / ssh-wrap-only / hello :: exchange password --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input $'hello world!\n'
-exchange / password / ssh-wrap-only / hello / with-associated :: exchange password --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --associated testing --input $'hello world!\n'
-exchange / password / ssh-wrap-only / notice :: exchange password --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input-path ./notice.txt
+exchange / password / ssh-wrap-only / empty :: exchange password --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7 --input-path /dev/null
+exchange / password / ssh-wrap-only / hello :: exchange password --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7 --input $'hello world!\n'
+exchange / password / ssh-wrap-only / hello / with-associated :: exchange password --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7 --associated testing --input $'hello world!\n'
+exchange / password / ssh-wrap-only / notice :: exchange password --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7 --input-path ./notice.txt
 
 exchange / password / loops / none / hello :: exchange password --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx --input $'hello world!\n'
 exchange / password / loops / with-1 / hello :: exchange password --derivation-loops 1 --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx --input $'hello world!\n'
@@ -393,10 +393,10 @@ exchange / encrypt / associated-only / hello :: exchange encrypt --siv --associa
 exchange / encrypt / associated-only / hello / with-associated :: exchange encrypt --siv --associated context --associated testing <<< $'hello world!'
 exchange / encrypt / associated-only / notice :: exchange encrypt --siv --associated context < ./notice.txt
 
-exchange / encrypt / ssh-wrap-only / empty :: exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 < /dev/null
-exchange / encrypt / ssh-wrap-only / hello :: exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 <<< $'hello world!'
-exchange / encrypt / ssh-wrap-only / hello / with-associated :: exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --associated testing <<< $'hello world!'
-exchange / encrypt / ssh-wrap-only / notice :: exchange encrypt --siv --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 < ./notice.txt
+exchange / encrypt / ssh-wrap-only / empty :: exchange encrypt --siv --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7 < /dev/null
+exchange / encrypt / ssh-wrap-only / hello :: exchange encrypt --siv --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7 <<< $'hello world!'
+exchange / encrypt / ssh-wrap-only / hello / with-associated :: exchange encrypt --siv --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7 --associated testing <<< $'hello world!'
+exchange / encrypt / ssh-wrap-only / notice :: exchange encrypt --siv --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7 < ./notice.txt
 
 exchange / encrypt / loops / none / hello :: exchange encrypt --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx <<< $'hello world!'
 exchange / encrypt / loops / with-1 / hello :: exchange encrypt --derivation-loops 1 --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx <<< $'hello world!'
@@ -410,12 +410,18 @@ exchange / encrypt / namespaces / with-1 / hello :: exchange encrypt --namespace
 exchange / encrypt / namespaces / with-2 / hello :: exchange encrypt --namespace 'namespace-2' --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx <<< $'hello world!'
 
 
-exchange / ssh / wrap / empty :: exchange ssh wrap --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input-path /dev/null
-exchange / ssh / wrap / hello :: exchange ssh wrap --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input $'hello world!\n'
-exchange / ssh / wrap / notice :: exchange ssh wrap --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input-path ./notice.txt
+exchange / ssh / wrap / empty :: exchange ssh wrap --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7 --input-path /dev/null
+exchange / ssh / wrap / hello :: exchange ssh wrap --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7 --input $'hello world!\n'
+exchange / ssh / wrap / notice :: exchange ssh wrap --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7 --input-path ./notice.txt
 
-exchange / ssh / wrap / namespace / none / hello :: exchange ssh wrap --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input $'hello world!\n'
-exchange / ssh / wrap / namespace / empty / hello :: exchange ssh wrap --namespace '' --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input $'hello world!\n'
-exchange / ssh / wrap / namespace / with-1 / hello :: exchange ssh wrap --namespace 'namespace-1' --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input $'hello world!\n'
-exchange / ssh / wrap / namespace / with-2 / hello :: exchange ssh wrap --namespace 'namespace-2' --ssh-wrap ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8 --input $'hello world!\n'
+exchange / ssh / wrap / namespace / none / hello :: exchange ssh wrap --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7 --input $'hello world!\n'
+exchange / ssh / wrap / namespace / empty / hello :: exchange ssh wrap --namespace '' --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7 --input $'hello world!\n'
+exchange / ssh / wrap / namespace / with-1 / hello :: exchange ssh wrap --namespace 'namespace-1' --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7 --input $'hello world!\n'
+exchange / ssh / wrap / namespace / with-2 / hello :: exchange ssh wrap --namespace 'namespace-2' --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7 --input $'hello world!\n'
+
+exchange / ssh / keys / default :: exchange ssh keys
+exchange / ssh / keys / all-yes :: exchange ssh keys --yes-all
+exchange / ssh / keys / all-no :: exchange ssh keys --no-all
+exchange / ssh / keys / only-handles :: exchange ssh keys --no-all --yes-handles
+exchange / ssh / keys / only-keys :: exchange ssh keys --no-all --yes-keys
 

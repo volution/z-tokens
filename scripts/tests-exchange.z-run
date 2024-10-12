@@ -536,8 +536,8 @@
 	_ballast_3='ztxbl1k56j57c4s3tj8ccrcrjg0l3eecjqwy3nnatjnnzh5lnapykvzanszfg4e0'
 	_ballast_4='ztxbl1uqsdymrpckfv9d6dfw80tk4jxn26ntaxdjd7xtma7tkygf9c9ffswwvn5c'
 	
-	_ssh_wrap_1='ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8'
-	_ssh_wrap_2='ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqgyg7zfdlhxsaymch3pu5c74xz82y5pt67grpy6ej8tcatltw4ar0gqszkku9ux'
+	_ssh_wrap_1='ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7'
+	_ssh_wrap_2='ztxoh1sdr6lc4380ml33hvl0pnln7ag27qt5g26rz9lakcgm70xthxulvqvms7cy'
 	
 	_x25519_1_sender_private='ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920'
 	_x25519_2_sender_private='ztxsk1jz7yrht80clxjz85puk9gegnq2y9zhcnww9z8kqx2zml707rcfssgqppwg'
@@ -1095,8 +1095,8 @@
 		_ballast_1='ztxbl1ah428t6ux086pfdgv5d5z8fle06rll5azaglg8gcnvd65mup65qqckq348'
 		_ballast_2='ztxbl1y00yn7a4jjqeyxke8u6hfqks7fhjadtamny4mmp6nc43qa9ra3mqu4swle'
 		
-		_ssh_wrap_1='ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8'
-		_ssh_wrap_2='ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqgyg7zfdlhxsaymch3pu5c74xz82y5pt67grpy6ej8tcatltw4ar0gqszkku9ux'
+		_ssh_wrap_1='ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7'
+		_ssh_wrap_2='ztxoh1sdr6lc4380ml33hvl0pnln7ag27qt5g26rz9lakcgm70xthxulvqvms7cy'
 		
 		_x25519_1_sender_private='ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920'
 		_x25519_1_sender_public='ztxsp1m6f9fwz0ukd7agd3udrlqsu8j0ltc8evfpzw7n040yjatkr4u4nq38he88'
@@ -1748,7 +1748,7 @@
 	test "${#}" -eq 0
 	
 	printf -- '[ii]  loading `%s`...\n' \
-			'ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8' \
+			'ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7' \
 			'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILks11YhvsahVaN5xI+rOCkMvThOfJCBpNVVjL6mZwQc' \
 			'SHA256:ro0s5DyFq2CE4LuWiWLL9TAfT7Uy+kM2+VLjteCHBIc' \
 		>&2 \
@@ -1773,7 +1773,7 @@
 	test "${#}" -eq 0
 	
 	printf -- '[ii]  loading `%s`...\n' \
-			'ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqgyg7zfdlhxsaymch3pu5c74xz82y5pt67grpy6ej8tcatltw4ar0gqszkku9ux' \
+			'ztxoh1sdr6lc4380ml33hvl0pnln7ag27qt5g26rz9lakcgm70xthxulvqvms7cy' \
 			'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIjwkt/c0Ok3i8Q8pj1TCOolAr15Awk1mR146v63V6N6' \
 			'SHA256:WRjxd4AByQpJgIqT24dkBU0gUQzmX+3iHnMwoiE9PRE' \
 		>&2 \
@@ -1865,8 +1865,8 @@
 :: tests / quick / exchange / set / pin / random :: export -- __ZTOKENS_EXCHANGE_PIN="${SRANDOM}"
 
 :: tests / quick / exchange / set / ssh-wrap / empty :: export -- __ZTOKENS_EXCHANGE_SSH_WRAP=''
-:: tests / quick / exchange / set / ssh-wrap / testing-1 :: export -- __ZTOKENS_EXCHANGE_SSH_WRAP=ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqg9e9nt4vgd7c6s4tgmecj86kwpfpj7nsnnujzq6f4243jl2vecyrsqszf8qds8
-:: tests / quick / exchange / set / ssh-wrap / testing-2 :: export -- __ZTOKENS_EXCHANGE_SSH_WRAP=ztxws1qqqqqzmnwd5z6etyxg6n2vfeqqqqqgyg7zfdlhxsaymch3pu5c74xz82y5pt67grpy6ej8tcatltw4ar0gqszkku9ux
+:: tests / quick / exchange / set / ssh-wrap / testing-1 :: export -- __ZTOKENS_EXCHANGE_SSH_WRAP=ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7
+:: tests / quick / exchange / set / ssh-wrap / testing-2 :: export -- __ZTOKENS_EXCHANGE_SSH_WRAP=ztxoh1sdr6lc4380ml33hvl0pnln7ag27qt5g26rz9lakcgm70xthxulvqvms7cy
 
 :: tests / quick / exchange / set / derivation-loops / 1 :: export -- __ZTOKENS_EXCHANGE_DERIVATION_LOOPS=1
 :: tests / quick / exchange / set / derivation-loops / 2 :: export -- __ZTOKENS_EXCHANGE_DERIVATION_LOOPS=2
