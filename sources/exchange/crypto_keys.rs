@@ -19,6 +19,8 @@ use ::z_tokens_runtime_crypto::{
 		blake3_hash_join,
 		blake3_keyed_hash,
 		
+		generate_random,
+		
 		CryptographicMaterial as _,
 		CryptographicInput as _,
 	};
@@ -667,6 +669,43 @@ pub(crate) fn derive_keys_phase_2 (
 	// --------------------------------------------------------------------------------
 	
 	Ok ((_packet_key, _encryption_key, _authentication_key))
+}
+
+
+
+
+
+
+
+
+pub(crate) fn derive_packet_salt (
+			_purpose : &'static str,
+			_partial_key : &InternalPartialKey,
+			_data : &[u8],
+			_deterministic : bool,
+		) -> CryptoResult<
+			InternalPacketSalt
+		>
+{
+	let _packet_salt = if _deterministic {
+			
+			blake3_hash (
+					InternalPacketSalt::wrap,
+					_purpose,
+					&[
+						_partial_key.access (),
+					],
+					&[
+						&_data,
+					],
+				)
+			
+		} else {
+			
+			generate_random (InternalPacketSalt::wrap)
+		};
+	
+	Ok (_packet_salt)
 }
 
 

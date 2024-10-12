@@ -17,7 +17,6 @@ use ::z_tokens_runtime::{
 use ::z_tokens_runtime_crypto::{
 		
 		blake3_hash,
-		generate_random,
 		
 		CryptographicMaterial as _,
 		CryptographicInput as _,
@@ -133,16 +132,7 @@ pub fn password_with_raw (
 	
 	// NOTE:  salting...
 	
-	let _packet_salt = blake3_hash (
-			InternalPacketSalt::wrap,
-			CRYPTO_PASSWORD_SALT_PURPOSE,
-			&[
-				_partial_key.access (),
-			],
-			&[
-				_password_data.access (),
-			],
-		);
+	let _packet_salt = derive_packet_salt (CRYPTO_PASSWORD_SALT_PURPOSE, &_partial_key, _password_data.access (), true) ?;
 	
 	drop! (_password_data);
 	
@@ -287,23 +277,7 @@ pub fn encrypt_with_raw (
 	
 	// NOTE:  salting...
 	
-	let mut _packet_salt = if _packet_salt_deterministic {
-			
-			blake3_hash (
-					InternalPacketSalt::wrap,
-					CRYPTO_PACKET_SALT_PURPOSE,
-					&[
-						_partial_key.access (),
-					],
-					&[
-						&_intermediate_buffer,
-					],
-				)
-			
-		} else {
-			
-			generate_random (InternalPacketSalt::wrap)
-		};
+	let _packet_salt = derive_packet_salt (CRYPTO_PACKET_SALT_PURPOSE, &_partial_key, &_intermediate_buffer, _packet_salt_deterministic) ?;
 	
 	let (_packet_key, _encryption_key, _authentication_key)
 			= derive_keys_phase_2 (CRYPTO_ENCRYPTION_SCHEMA_V1, _partial_key, &_packet_salt, _secret_data, _pin_data, _seed_data, _ballast_data, (_oracle_merge, _oracles), _derivation_loops) ?;
@@ -324,6 +298,7 @@ pub fn encrypt_with_raw (
 	
 	// NOTE:  all-or-nothing...
 	
+	let mut _packet_salt = _packet_salt;
 	apply_all_or_nothing_mangling (_aont_key, &mut _packet_salt, &_intermediate_buffer) ?;
 	
 	_intermediate_buffer.extend_from_slice (_packet_salt.access ());
