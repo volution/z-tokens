@@ -38,23 +38,21 @@ use ::z_tokens_runtime::{
 
 
 pub(crate) fn password_backend (
-			_private_keys : Vec<&x25519::StaticSecret>,
-			_public_keys : Vec<&x25519::PublicKey>,
-			_associated_inputs : &[&[u8]],
-			_secret_inputs : &[&[u8]],
-			_pin_inputs : &[&[u8]],
-			_seed_inputs : &[&[u8]],
-			_ballast_inputs : &[&[u8]],
-			_derivation_loops : Option<NonZeroU64>,
-			_namespace : Option<&str>,
+			_private_keys : &[&x25519::StaticSecret],
+			_public_keys : &[&x25519::PublicKey],
+			_symmetric : &SymmetricParametersRawRefs,
 			_password_data : &[u8],
 			_password_output : &mut [u8; 32],
 			_oracles : Vec<&mut dyn Oracle>,
 			_send : bool,
 		) -> CryptoResult
 {
-	let (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) ?;
+	let _private_keys = _private_keys.to_vec ();
+	let _public_keys = _public_keys.to_vec ();
+	
+	let (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_symmetric.associated, _symmetric.secrets, _symmetric.pins, _symmetric.seeds, _symmetric.ballasts) ?;
 	let (_oracles, _oracle_handles) = wrap_oracles_phase_1 (_oracles) ?;
+	let (_derivation_loops, _namespace) = (_symmetric.derivation_loops, _symmetric.namespace);
 	
 	let _password_data = InternalPasswordData::wrap (_password_data);
 	let _password_data_len = _password_data.size ();
@@ -116,13 +114,7 @@ pub(crate) fn password_backend (
 pub fn encrypt_with_raw (
 			_senders : &[&SenderPrivateKey],
 			_recipients : &[&RecipientPublicKey],
-			_associated_inputs : &[&[u8]],
-			_secret_inputs : &[&[u8]],
-			_pin_inputs : &[&[u8]],
-			_seed_inputs : &[&[u8]],
-			_ballast_inputs : &[&[u8]],
-			_derivation_loops : Option<NonZeroU64>,
-			_namespace : Option<&str>,
+			_symmetric : &SymmetricParametersRawRefs,
 			_decrypted : &[u8],
 			_encrypted : &mut Vec<u8>,
 			_oracles : Vec<&mut dyn Oracle>,
@@ -130,8 +122,9 @@ pub fn encrypt_with_raw (
 		) -> CryptoResult
 {
 	let (_senders, _recipients) = wrap_senders_and_recipients_inputs (_senders, _recipients) ?;
-	let (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) ?;
+	let (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_symmetric.associated, _symmetric.secrets, _symmetric.pins, _symmetric.seeds, _symmetric.ballasts) ?;
 	let (_oracles, _oracle_handles) = wrap_oracles_phase_1 (_oracles) ?;
+	let (_derivation_loops, _namespace) = (_symmetric.derivation_loops, _symmetric.namespace);
 	
 	let _decrypted = InternalDecryptedData::wrap (_decrypted);
 	let _decrypted_len = _decrypted.size ();
@@ -247,21 +240,16 @@ pub fn encrypt_with_raw (
 pub fn decrypt_with_raw (
 			_recipients : &[&RecipientPrivateKey],
 			_senders : &[&SenderPublicKey],
-			_associated_inputs : &[&[u8]],
-			_secret_inputs : &[&[u8]],
-			_pin_inputs : &[&[u8]],
-			_seed_inputs : &[&[u8]],
-			_ballast_inputs : &[&[u8]],
-			_derivation_loops : Option<NonZeroU64>,
-			_namespace : Option<&str>,
+			_symmetric : &SymmetricParametersRawRefs,
 			_encrypted : &[u8],
 			_decrypted : &mut Vec<u8>,
 			_oracles : Vec<&mut dyn Oracle>,
 		) -> CryptoResult
 {
 	let (_recipients, _senders) = wrap_recipients_and_senders_inputs (_recipients, _senders) ?;
-	let (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) ?;
+	let (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_symmetric.associated, _symmetric.secrets, _symmetric.pins, _symmetric.seeds, _symmetric.ballasts) ?;
 	let (_oracles, _oracle_handles) = wrap_oracles_phase_1 (_oracles) ?;
+	let (_derivation_loops, _namespace) = (_symmetric.derivation_loops, _symmetric.namespace);
 	
 	let _encrypted = InternalEncryptedData::wrap (_encrypted);
 	let _encrypted_len = _encrypted.size ();
