@@ -38,6 +38,7 @@ path = "./lib.rs"
 [features]
 
 default = [
+	"zt-exchange-ssh",
 	"z-tokens-runtime/default",
 	"z-tokens-runtime-random/default",
 	"z-tokens-runtime-hashes/default",
@@ -46,6 +47,7 @@ default = [
 ]
 
 development = [
+	"zt-exchange-ssh",
 	"z-tokens-runtime/development",
 	"z-tokens-runtime-random/development",
 	"z-tokens-runtime-hashes/development",
@@ -54,12 +56,15 @@ development = [
 ]
 
 release = [
+	"zt-exchange-ssh",
 	"z-tokens-runtime/release",
 	"z-tokens-runtime-random/release",
 	"z-tokens-runtime-hashes/release",
 	"z-tokens-runtime-crypto/release",
 	"z-tokens-runtime-codings/release",
 ]
+
+zt-exchange-ssh = []
 
 
 
