@@ -30,7 +30,7 @@ define_error! (pub SshError, result : SshResult);
 
 
 pub const SSH_WRAPPER_KEY_ENCODED_PREFIX : &str = "ztxws";
-pub const SSH_WRAPPER_HANDLE_ENCODED_PREFIX : &str = "ztxwh";
+pub const SSH_WRAPPER_HANDLE_ENCODED_PREFIX : &str = "ztxoh";
 
 
 
