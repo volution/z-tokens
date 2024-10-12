@@ -1,13 +1,13 @@
 >>  z-tokens exchange encrypt --siv --pin 1234
 
 
-#1,  3Lms6mZcdsWSy 3wdvVPVbZZCDz 3TtLU47c8MCJR D7ESZi1dqPGV  up37wcvWaGBm
-#2,  4wSrPwYu8R39  D5zjkSkxtBKQ  2SFyQTCa9PbSt dW3gd18JJRjq  2v4kHXCCMUYGH
-#3,  3m1CbTFNqCxGH 2nhcTkie7FUKT 2ZfaJusiLM8vW 3xgbx8CLTBAEj 3ttDKyRj4Esvr
-#4,  3JuR2eHRbqR2n 3Bmn4Z3ad12WQ 2LYqRM1xy6umV 2FLHfB2oC6Kvt 2B54fqT79MJV
-#5,  35hXmPmf7xnKD 3ZecB8TWAipVH uz3DKxKB5Ukx  3anBHZ1LNcj2d 3YJBA7YUYDj1R
-#6,  2vSAtfhSyxv42 3xQTniZK5oz3w 2ckLZrtpYUM48 4DcPCqeQbBiFF 2f5WG5nUPtWSF
-#7,  4FfWnKa1bJxWt 492vZWzEu5aU  cxhvTTBH46DS  AvoiMXx2NHEB  7F8t1uu57dai
-#8,  3RMLchpUTePwR 3vXJCvwbsjzyh 23fdDcJt6Fh8L 7pXm2yktpLff  221AtLjGE9Hz
-#9.  3evakVGAAM1Zz
+#1,  3Lms6mFti5Cme 3VR71mrGTzE5P 2M2vhErk36MqA 2tWt62GNYuXir 3KwVoHnpeGuBs
+#2,  2BmkNk3d6S4r3 ENQpQeryqd7b  iUoSsyNDvQ9s  3SzD8LFPZTttj 3qjCF7QiN48DU
+#3,  f9zde2QvqgsJ  tcdPijnC34zk  6BrtsFNVnv5u  Jis4qN6kSf5N  3pjqAZr1BP7jw
+#4,  2GaZ26K6PV33d 2RoFKnLrboCZy 2qH1iqiYfk2Wg Dh19PMLxN4j5  cQmiy7eUW9zv
+#5,  2cAiai5ixTEea 2fVD6xCDYG1YX 2rkpopg1MdCmH 2vSYPi6z88NTx 2A5YmSrTsdHDB
+#6,  cbgMA8pqgfxD  QxmiUkmZNbjU  21XFDEUYnFBmL 2zVeZPsw4W3s7 2tTheCZLRUeG9
+#7,  2cd1u5sCAd6ej 2mq51rmYpGMAA 31VHvgjYm5P8D 4CunhHbN3GhRH 26hEjADsjRMjV
+#8,  2ciFiaJhCZNNr oQzcxzeg21KT  2nMhGeHWdZcWs 3yTsokmZZj7zY 2NxSrDzKKi5wV
+#9.  ARbH9mQjtETP
 

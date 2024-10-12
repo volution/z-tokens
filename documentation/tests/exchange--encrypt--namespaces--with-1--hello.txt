@@ -1,13 +1,13 @@
 >>  z-tokens exchange encrypt --namespace namespace-1 --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx
 
 
-#1,  3Lms6mUBQBBfJ 3Y1ibqSeQf7dU 2FLQ2iakTY6zb 3MAHzBVGkcVG  3TAShJon12yvJ
-#2,  3TMjVmybk7mrz 3Y9WrkQSxPnLu 4Ajcph2PWasCa 3MG3FsF2KLUGz 222NFFrtiixNt
-#3,  3VqeX2mA4Y3b5 2sZToHLhtgUWJ 3y2F8FaQBx8ca 2ehmRdeif6Lz7 3EyBE93DayGix
-#4,  3YBXJYDR4NZnd 25T7YJzj4Bs5j 3ey58QsjaUQkg aEqtUqvk3UTc  23fy6cBBX2cRy
-#5,  oJ2mZjCiYFoS  2oJSLX7PNjhAd 2b7UDHU8kjdE3 472DUxbCgbe5D 48ijWDH24dEdu
-#6,  3VJgr1ciQDFhg cKCXGmMP8Uzr  3bor3P6fidU8g 2KSQBcyCrwS8M yRQyPGFYi396
-#7,  8NPyHmY8W9kQ  2G56i5zrEkSft 3hm4NtQGNz7uR 49ZyU9ptsV5Gu 3S1WySwkFWpsu
-#8,  B1wuMhvJVYWH  29ggLc8fWGUFm LPhg5LeGtR2w  2haHMA8pAunoR 3gHQotqBiZGbc
-#9.  hsdWLKbPFpMd
+#1,  3Lms6mGrNz3U1 2upDyjWLAiBTS 3UBDuagc9XMK  3QxkMXE2qjMzx 3D687Ja8RJitc
+#2,  2rdyHGTnSabqx 2jrduaU8LADeQ 1e3RCfvijhAs  2ij9tMv4pDNnG 2Np7GZmsjj1hX
+#3,  3shkcEQKEnXs5 3U2WgyQNRvsML 4DJVuxc5YkryX 2Xu9WCart1B9x 3GBXGEvT1M3mB
+#4,  34n3scnrNZAYs 3FGyeN366hYnw 29VUZAbEGiM5c 26jbxFizu4fGq 3N1aUZbCyaYUz
+#5,  19jixQD1Xi6U  2bE2CZBX3aFtj 3x3VwPgZtPSpd 2wYZW1mDWaZ8J 2FX4CWJdcT4yD
+#6,  3ASkt6PkmQKgy F4NTJxAXoxyz  2AbqDFEZT936g 45C2fd8TWPCJ6 3by7Bx5PwXRd2
+#7,  KjoKjL5JnCsA  3eat66BkFHSC3 21WMbQ5jKRReJ 3X3MEs4KMEznU Yj7xo9R3cVox
+#8,  2orMfY6EAuJrM 2RwqVdVipkGs1 cEhesQu6nZvK  2iPchfkQm9XQw 4EcaRwR28tEnD
+#9.  3hcv8MaRF8E93
 
