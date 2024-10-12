@@ -11,12 +11,13 @@ pub mod oracles;
 
 
 #[ cfg (not (any (target_os = "wasi", target_os = "windows"))) ]
+#[ path = "./ssh_enabled.rs" ]
 pub mod ssh;
 
 #[ cfg (any (target_os = "wasi", target_os = "windows")) ]
-#[ path = "./ssh_no.rs" ]
+#[ path = "./ssh_disabled.rs" ]
 pub mod ssh;
 
-pub(crate) mod ssh_oracle;
+pub(crate) mod ssh_common;
 
 
