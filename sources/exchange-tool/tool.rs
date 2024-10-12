@@ -699,13 +699,75 @@ pub fn main_decode <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 
 pub fn main_ssh_keys <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
+	let mut _write_keys : Option<bool> = None;
+	let mut _write_handles : Option<bool> = None;
+	let mut _write_descriptions : Option<bool> = None;
+	let mut _write_comments : Option<bool> = None;
+	let mut _write_separators : Option<bool> = None;
+	let mut _write_all : Option<bool> = None;
+	
 	{
 		let mut _flags = create_flags () .else_wrap (0xc0f96685) ?;
+		
+		let _flag = _flags.define_complex (&mut _write_all);
+		_flag.define_switch ('a', "yes-all", true);
+		_flag.define_switch ('A', "no-all", false);
+		_flag.define_flag_0 ()
+				.with_flag ((), "show-all")
+				.with_placeholder ("enabled")
+				.with_description ("output all available information");
+		
+		let _flag = _flags.define_complex (&mut _write_keys);
+		_flag.define_switch ('k', "yes-keys", true);
+		_flag.define_switch ('K', "no-keys", false);
+		_flag.define_flag_0 ()
+				.with_flag ((), "show-keys")
+				.with_placeholder ("enabled")
+				.with_description ("output ssh wrapper keys (long format)");
+		
+		let _flag = _flags.define_complex (&mut _write_handles);
+		_flag.define_switch ('n', "yes-handles", true);
+		_flag.define_switch ('N', "no-handles", false);
+		_flag.define_flag_0 ()
+				.with_flag ((), "show-handles")
+				.with_placeholder ("enabled")
+				.with_description ("output ssh wrapper handles (short format)");
+		
+		let _flag = _flags.define_complex (&mut _write_descriptions);
+		_flag.define_switch ('d', "yes-descriptions", true);
+		_flag.define_switch ('D', "no-descriptions", false);
+		_flag.define_flag_0 ()
+				.with_flag ((), "show-descriptions")
+				.with_placeholder ("enabled")
+				.with_description ("output ssh wrapper descriptions (key type, signature type, public key hash)");
+		
+		let _flag = _flags.define_complex (&mut _write_comments);
+		_flag.define_switch ('q', "no-comments", false);
+		_flag.define_flag_0 ()
+				.with_flag ((), "comments")
+				.with_placeholder ("enabled")
+				.with_description ("output comments");
+		
+		let _flag = _flags.define_complex (&mut _write_separators);
+		_flag.define_switch ((), "no-separators", false);
+		_flag.define_flag_0 ()
+				.with_flag ((), "separators")
+				.with_placeholder ("enabled")
+				.with_description ("output separators");
 		
 		if execute_flags (_flags, _arguments) .else_wrap (0xf17bd371) ? {
 			return Ok (ExitCode::SUCCESS);
 		}
 	}
+	
+	let _any_explicit = _write_keys.is_some () || _write_handles.is_some () || _write_all.is_some ();
+	let _write_all = _write_all.unwrap_or (false);
+	let _write_descriptions = _write_descriptions.unwrap_or (true || _write_all);
+	let _write_keys = _write_keys.unwrap_or (if _any_explicit { false } else { false } || _write_all);
+	let _write_handles = _write_handles.unwrap_or (if _any_explicit { false } else { true } || _write_all);
+	
+	let _write_comments = _write_comments.unwrap_or (if _any_explicit { false } else { true } || _write_all);
+	let _write_separators = _write_separators.unwrap_or (_write_comments || _write_descriptions || _write_all);
 	
 	let mut _agent = SshWrapperAgent::connect () .else_wrap (0x4e058c28) ?;
 	
@@ -713,19 +775,38 @@ pub fn main_ssh_keys <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
 	let mut _output = Vec::with_capacity (STDOUT_BUFFER_SIZE);
 	
-	for _key in _keys.iter () {
+	for (_index, _key) in _keys.iter () .enumerate () {
 		
 		let _key_description = _key.description () .else_wrap (0x77ed1b9e) ?;
 		let _key_encoded = _key.encode () .else_wrap (0xe0a1a54a) ?;
 		let _handle_encoded = _key.handle () .encode () .else_wrap (0xcf1d8f7a) ?;
 		
-		writeln! (&mut _output) .else_wrap (0x4d2a1a9f) ?;
+		if _write_separators {
+			writeln! (&mut _output) .else_wrap (0x4d2a1a9f) ?;
+		}
 		
-		writeln! (&mut _output, "## {}", _key_description.deref ()) .else_wrap (0x2fc50e68) ?;
-		writeln! (&mut _output, "{}", _handle_encoded.deref ()) .else_wrap (0x5398e140) ?;
-		writeln! (&mut _output, "{}", _key_encoded.deref ()) .else_wrap (0xeb977277) ?;
+		if _write_descriptions {
+			if _write_comments {
+				writeln! (&mut _output, "## description ({})", _index + 1) .else_wrap (0x7e110db5) ?;
+			}
+			writeln! (&mut _output, "## {}", _key_description.deref ()) .else_wrap (0x2fc50e68) ?;
+		}
+		if _write_handles {
+			if _write_comments {
+				writeln! (&mut _output, "## handle ({})", _index + 1) .else_wrap (0xf48105ff) ?;
+			}
+			writeln! (&mut _output, "{}", _handle_encoded.deref ()) .else_wrap (0x5398e140) ?;
+		}
+		if _write_keys {
+			if _write_comments {
+				writeln! (&mut _output, "## key ({})", _index + 1) .else_wrap (0xefc7de65) ?;
+			}
+			writeln! (&mut _output, "{}", _key_encoded.deref ()) .else_wrap (0xeb977277) ?;
+		}
 		
-		writeln! (&mut _output) .else_wrap (0x387d7ec5) ?;
+		if _write_separators {
+			writeln! (&mut _output) .else_wrap (0x387d7ec5) ?;
+		}
 	}
 	
 	write_output (stdout_locked (), _output) .else_wrap (0xb6789fe6) ?;
