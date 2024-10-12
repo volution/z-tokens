@@ -3,7 +3,7 @@
 use ::z_tokens_runtime::preludes::std_plus_extras::*;
 use ::z_tokens_runtime::preludes::errors::*;
 
-use crate::oracles::*;
+pub use crate::ssh_oracle::*;
 
 
 pub(crate) mod ssh {
@@ -68,14 +68,6 @@ use ::z_tokens_runtime_crypto::{
 
 
 
-define_error! (pub SshError, result : SshResult);
-
-
-
-
-pub const SSH_WRAPPER_KEY_ENCODED_PREFIX : &str = "ztxws";
-
-
 define_cryptographic_material! (InternalSshWrapInput, input, slice);
 define_cryptographic_material! (InternalSshWrapKeyHash, 32);
 define_cryptographic_material! (InternalSshWrapNamespaceHash, 32);
@@ -124,7 +116,7 @@ struct SshWrapperKeyInternals {
 	
 	key_hash : InternalSshWrapKeyHash,
 	
-	handle : OracleHandle,
+	handle : SshWrapperHandle,
 }
 
 
@@ -382,7 +374,7 @@ impl SshWrapperKey {
 		
 		let _key_hash = key_hash (&_key_algorithm, &_signature_algorithm, &_serialized);
 		
-		let _handle = OracleHandle::from_raw (_key_hash.access ());
+		let _handle = SshWrapperHandle::copy_raw (_key_hash.access ());
 		
 		let _wrapper_key = SshWrapperKeyInternals {
 				key_algorithm : _key_algorithm,
@@ -397,7 +389,7 @@ impl SshWrapperKey {
 	}
 	
 	
-	pub fn handle (&self) -> &OracleHandle {
+	pub fn handle (&self) -> &SshWrapperHandle {
 		let _key = &self.0;
 		&_key.handle
 	}
@@ -412,7 +404,7 @@ impl SshWrapperKey {
 	}
 	
 	
-	pub fn cmp (_left : &Self, _right : &Self) -> Ordering {
+	pub(crate) fn cmp (_left : &Self, _right : &Self) -> Ordering {
 		
 		let _left = _left.0.deref ();
 		let _right = _right.0.deref ();
@@ -481,7 +473,7 @@ impl SshWrapperAgent {
 				
 				let _key_hash = key_hash (&_key_algorithm, &_signature_algorithm, &_public_key_bytes);
 				
-				let _handle = OracleHandle::from_raw (_key_hash.access ());
+				let _handle = SshWrapperHandle::copy_raw (_key_hash.access ());
 				
 				let _wrapper_key = SshWrapperKeyInternals {
 						
@@ -500,6 +492,8 @@ impl SshWrapperAgent {
 				_wrapper_keys.push (_wrapper_key);
 			}
 		}
+		
+		_wrapper_keys.sort_by (SshWrapperKey::cmp);
 		
 		Ok (_wrapper_keys)
 	}

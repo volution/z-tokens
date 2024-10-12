@@ -715,12 +715,14 @@ pub fn main_ssh_keys <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
 	for _key in _keys.iter () {
 		
-		let _key_handle = _key.description () .else_wrap (0x77ed1b9e) ?;
+		let _key_description = _key.description () .else_wrap (0x77ed1b9e) ?;
 		let _key_encoded = _key.encode () .else_wrap (0xe0a1a54a) ?;
+		let _handle_encoded = _key.handle () .encode () .else_wrap (0xcf1d8f7a) ?;
 		
 		writeln! (&mut _output) .else_wrap (0x4d2a1a9f) ?;
 		
-		writeln! (&mut _output, "## {}", _key_handle.deref ()) .else_wrap (0x2fc50e68) ?;
+		writeln! (&mut _output, "## {}", _key_description.deref ()) .else_wrap (0x2fc50e68) ?;
+		writeln! (&mut _output, "{}", _handle_encoded.deref ()) .else_wrap (0x5398e140) ?;
 		writeln! (&mut _output, "{}", _key_encoded.deref ()) .else_wrap (0xeb977277) ?;
 		
 		writeln! (&mut _output) .else_wrap (0x387d7ec5) ?;

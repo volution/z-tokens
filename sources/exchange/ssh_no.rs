@@ -4,6 +4,7 @@ use ::z_tokens_runtime::preludes::std_plus_extras::*;
 use ::z_tokens_runtime::preludes::errors::*;
 
 use crate::oracles::*;
+pub use crate::ssh_oracle::*;
 
 
 use ::z_tokens_runtime::{
@@ -13,11 +14,6 @@ use ::z_tokens_runtime::{
 
 
 
-
-
-
-
-define_error! (pub SshError, result : SshResult);
 
 
 
@@ -73,16 +69,12 @@ impl SshWrapperKey {
 		panic! (unimplemented, 0xec629e9f);
 	}
 	
-	pub fn handle (&self) -> &OracleHandle {
+	pub fn handle (&self) -> &SshWrapperHandle {
 		panic! (unimplemented, 0x3c821ea8);
 	}
 	
 	pub fn description (&self) -> SshResult<Rb<String>> {
 		panic! (unimplemented, 0xbec36a24);
-	}
-	
-	pub fn cmp (_left : &Self, _right : &Self) -> Ordering {
-		panic! (unimplemented, 0x252e1474);
 	}
 }
 

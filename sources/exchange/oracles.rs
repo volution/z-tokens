@@ -31,7 +31,11 @@ pub struct OracleHandle (Rb<[u8; 32]>);
 
 impl OracleHandle {
 	
-	pub fn from_raw (_raw : &[u8; 32]) -> Self {
+	pub fn from_raw (_raw : [u8; 32]) -> Self {
+		Self (Rb::new (_raw))
+	}
+	
+	pub fn copy_raw (_raw : &[u8; 32]) -> Self {
 		Self (Rb::new_copy (_raw))
 	}
 	
