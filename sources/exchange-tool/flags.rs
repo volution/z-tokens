@@ -115,7 +115,7 @@ pub(crate) struct SharedKeysFlags {
 
 
 pub(crate) struct SshWrappersArguments {
-	pub keys : MaterialSources<SshWrapperKey>,
+	pub keys : MaterialSources<SshWrapperKeyOrHandle>,
 }
 
 
@@ -905,7 +905,7 @@ impl SshWrappersFlags {
 }
 
 
-impl MaterialValue for SshWrapperKey {
+impl MaterialValue for SshWrapperKeyOrHandle {
 	
 	fn decode_string (_string : String) -> FlagsResult<Self> {
 		Self::decode_and_zeroize (_string) .else_wrap (0x1c720b43)
@@ -917,7 +917,7 @@ impl SshWrappersArguments {
 	
 	pub fn wrappers (self) -> SshResult<Vec<SshWrapper>> {
 		let _keys = self.keys.decode () .else_wrap (0x42f1fa1d) ?;
-		_keys.into_iter () .map (SshWrapper::connect) .collect ()
+		_keys.into_iter () .map (|_key| { let _agent = SshWrapperAgent::connect () ?; SshWrapper::new_with_key_or_handle (_key, _agent) }) .collect ()
 	}
 }
 
