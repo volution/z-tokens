@@ -687,23 +687,23 @@ pub(crate) fn derive_packet_salt (
 			InternalPacketSalt
 		>
 {
-	let _packet_salt = if _deterministic {
-			
-			blake3_hash (
-					InternalPacketSalt::wrap,
-					_purpose,
-					&[
-						_partial_key.access (),
-					],
-					&[
-						&_data,
-					],
-				)
-			
+	let _random_salt = if _deterministic {
+			InternalPacketSalt::zero ()
 		} else {
-			
 			generate_random (InternalPacketSalt::wrap)
 		};
+	
+	let _packet_salt = blake3_hash (
+			InternalPacketSalt::wrap,
+			_purpose,
+			&[
+				_random_salt.access (),
+				_partial_key.access (),
+			],
+			&[
+				_data,
+			],
+		);
 	
 	Ok (_packet_salt)
 }
