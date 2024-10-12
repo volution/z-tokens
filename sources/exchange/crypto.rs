@@ -23,6 +23,12 @@ use ::z_tokens_runtime_crypto::{
 	};
 
 
+use ::z_tokens_runtime_crypto::crates::{
+		
+		x25519,
+	};
+
+
 
 
 
@@ -58,7 +64,54 @@ use derivations::*;
 
 
 
-pub fn password <'a> (
+pub fn password_symmetric <'a> (
+			_associated : impl Iterator<Item = &'a Associated>,
+			_secret : impl Iterator<Item = &'a dyn SharedSecretTrait>,
+			_pin : impl Iterator<Item = &'a SharedPin>,
+			_seed : impl Iterator<Item = &'a dyn SharedSeedTrait>,
+			_ballast : impl Iterator<Item = &'a dyn SharedBallastTrait>,
+			_derivation_loops : Option<NonZeroU64>,
+			_namespace : Option<&str>,
+			_password_data : &[u8],
+			_password_output : &mut [u8; 32],
+			_oracles : impl Iterator<Item = &'a mut dyn Oracle>,
+		) -> CryptoResult
+{
+	password_symmetric_with_raw (
+			& _associated.map (Associated::access_bytes_slice) .collect::<Vec<_>> (),
+			& _secret.map (SharedSecretTrait::access_bytes_slice) .collect::<Vec<_>> (),
+			& _pin.map (SharedPin::access_bytes_slice) .collect::<Vec<_>> (),
+			& _seed.map (SharedSeedTrait::access_bytes_slice) .collect::<Vec<_>> (),
+			& _ballast.map (SharedBallastTrait::access_bytes_slice) .collect::<Vec<_>> (),
+			_derivation_loops,
+			_namespace,
+			_password_data,
+			_password_output,
+			_oracles.collect (),
+		)
+}
+
+
+pub fn password_symmetric_with_raw (
+			_associated_inputs : &[&[u8]],
+			_secret_inputs : &[&[u8]],
+			_pin_inputs : &[&[u8]],
+			_seed_inputs : &[&[u8]],
+			_ballast_inputs : &[&[u8]],
+			_derivation_loops : Option<NonZeroU64>,
+			_namespace : Option<&str>,
+			_password_data : &[u8],
+			_password_output : &mut [u8; 32],
+			_oracles : Vec<&mut dyn Oracle>,
+		) -> CryptoResult
+{
+	password_backend (Vec::new (), Vec::new (), _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _derivation_loops, _namespace, _password_data, _password_output, _oracles, true)
+}
+
+
+
+
+pub fn password_send <'a> (
 			_senders : impl Iterator<Item = &'a SenderPrivateKey>,
 			_recipients : impl Iterator<Item = &'a RecipientPublicKey>,
 			_associated : impl Iterator<Item = &'a Associated>,
@@ -73,7 +126,7 @@ pub fn password <'a> (
 			_oracles : impl Iterator<Item = &'a mut dyn Oracle>,
 		) -> CryptoResult
 {
-	password_with_raw (
+	password_send_with_raw (
 			& _senders.collect::<Vec<_>> (),
 			& _recipients.collect::<Vec<_>> (),
 			& _associated.map (Associated::access_bytes_slice) .collect::<Vec<_>> (),
@@ -90,9 +143,7 @@ pub fn password <'a> (
 }
 
 
-
-
-pub fn password_with_raw (
+pub fn password_send_with_raw (
 			_senders : &[&SenderPrivateKey],
 			_recipients : &[&RecipientPublicKey],
 			_associated_inputs : &[&[u8]],
@@ -108,6 +159,86 @@ pub fn password_with_raw (
 		) -> CryptoResult
 {
 	let (_senders, _recipients) = wrap_senders_and_recipients_inputs (_senders, _recipients) ?;
+	password_backend (_senders, _recipients, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _derivation_loops, _namespace, _password_data, _password_output, _oracles, true)
+}
+
+
+
+
+pub fn password_receive <'a> (
+			_recipients : impl Iterator<Item = &'a RecipientPrivateKey>,
+			_senders : impl Iterator<Item = &'a SenderPublicKey>,
+			_associated : impl Iterator<Item = &'a Associated>,
+			_secret : impl Iterator<Item = &'a dyn SharedSecretTrait>,
+			_pin : impl Iterator<Item = &'a SharedPin>,
+			_seed : impl Iterator<Item = &'a dyn SharedSeedTrait>,
+			_ballast : impl Iterator<Item = &'a dyn SharedBallastTrait>,
+			_derivation_loops : Option<NonZeroU64>,
+			_namespace : Option<&str>,
+			_password_data : &[u8],
+			_password_output : &mut [u8; 32],
+			_oracles : impl Iterator<Item = &'a mut dyn Oracle>,
+		) -> CryptoResult
+{
+	password_receive_with_raw (
+			& _recipients.collect::<Vec<_>> (),
+			& _senders.collect::<Vec<_>> (),
+			& _associated.map (Associated::access_bytes_slice) .collect::<Vec<_>> (),
+			& _secret.map (SharedSecretTrait::access_bytes_slice) .collect::<Vec<_>> (),
+			& _pin.map (SharedPin::access_bytes_slice) .collect::<Vec<_>> (),
+			& _seed.map (SharedSeedTrait::access_bytes_slice) .collect::<Vec<_>> (),
+			& _ballast.map (SharedBallastTrait::access_bytes_slice) .collect::<Vec<_>> (),
+			_derivation_loops,
+			_namespace,
+			_password_data,
+			_password_output,
+			_oracles.collect (),
+		)
+}
+
+
+pub fn password_receive_with_raw (
+			_recipients : &[&RecipientPrivateKey],
+			_senders : &[&SenderPublicKey],
+			_associated_inputs : &[&[u8]],
+			_secret_inputs : &[&[u8]],
+			_pin_inputs : &[&[u8]],
+			_seed_inputs : &[&[u8]],
+			_ballast_inputs : &[&[u8]],
+			_derivation_loops : Option<NonZeroU64>,
+			_namespace : Option<&str>,
+			_password_data : &[u8],
+			_password_output : &mut [u8; 32],
+			_oracles : Vec<&mut dyn Oracle>,
+		) -> CryptoResult
+{
+	let (_recipients, _senders) = wrap_recipients_and_senders_inputs (_recipients, _senders) ?;
+	password_backend (_recipients, _senders, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _derivation_loops, _namespace, _password_data, _password_output, _oracles, false)
+}
+
+
+
+
+
+
+
+
+fn password_backend (
+			_private_keys : Vec<&x25519::StaticSecret>,
+			_public_keys : Vec<&x25519::PublicKey>,
+			_associated_inputs : &[&[u8]],
+			_secret_inputs : &[&[u8]],
+			_pin_inputs : &[&[u8]],
+			_seed_inputs : &[&[u8]],
+			_ballast_inputs : &[&[u8]],
+			_derivation_loops : Option<NonZeroU64>,
+			_namespace : Option<&str>,
+			_password_data : &[u8],
+			_password_output : &mut [u8; 32],
+			_oracles : Vec<&mut dyn Oracle>,
+			_send : bool,
+		) -> CryptoResult
+{
 	let (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) ?;
 	let (_oracles, _oracle_handles) = wrap_oracles_phase_1 (_oracles) ?;
 	
@@ -124,7 +255,7 @@ pub fn password_with_raw (
 	// NOTE:  deriving keys...
 	
 	let (_partial_key, _aont_key, _secret_data, _pin_data, _seed_data, _ballast_data, _oracle_merge, _oracle_sorter, _derivation_loops)
-			= derive_keys_phase_1 (CRYPTO_PASSWORD_SCHEMA_V1, _senders, _recipients, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, _derivation_loops, _namespace, true) ?;
+			= derive_keys_phase_1 (CRYPTO_PASSWORD_SCHEMA_V1, _private_keys, _public_keys, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, _derivation_loops, _namespace, _send) ?;
 	
 	let _oracles = wrap_oracles_phase_2 (_oracles, _oracle_sorter) ?;
 	

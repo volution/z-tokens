@@ -66,7 +66,7 @@ impl RandomizerFlags {
 			RandomizerSource::Os =>
 				Box::new (OsRandomizer::from_os () .else_wrap (0x893f3ab5) ?),
 			RandomizerSource::Testing =>
-				Box::new (SeedRandomizer::for_testing () .else_wrap (0x07578413) ?),
+				Box::new (SeedRandomizer::for_testing () .else_wrap (0x92985de0) ?),
 			RandomizerSource::ChaCha20 (_key) =>
 				Box::new (ChaCha20Randomizer::new_with_key (_key.as_bytes ()) .else_wrap (0x07578413) ?),
 		};

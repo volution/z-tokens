@@ -59,6 +59,17 @@ pub struct SharedPin (Rb<Vec<u8>>);
 pub struct PasswordOutput (Rb<[u8; 32]>);
 
 
+pub enum SenderPublicOrPrivateKey {
+	Public (SenderPublicKey),
+	Private (SenderPrivateKey),
+}
+
+pub enum RecipientPublicOrPrivateKey {
+	Public (RecipientPublicKey),
+	Private (RecipientPrivateKey),
+}
+
+
 
 
 pub trait SharedSecretTrait {
@@ -79,8 +90,8 @@ pub trait SharedBallastTrait {
 pub const SENDER_PRIVATE_KEY_ENCODED_PREFIX : &str = "ztxsk";
 pub const SENDER_PUBLIC_KEY_ENCODED_PREFIX : &str = "ztxsp";
 
-pub const RECEIVER_PRIVATE_KEY_ENCODED_PREFIX : &str = "ztxrk";
-pub const RECEIVER_PUBLIC_KEY_ENCODED_PREFIX : &str = "ztxrp";
+pub const RECIPIENT_PRIVATE_KEY_ENCODED_PREFIX : &str = "ztxrk";
+pub const RECIPIENT_PUBLIC_KEY_ENCODED_PREFIX : &str = "ztxrp";
 
 pub const SHARED_SECRET_ENCODED_PREFIX : &str = "ztxcs";
 pub const SHARED_SEED_ENCODED_PREFIX : &str = "ztxsd";
@@ -231,6 +242,82 @@ impl RecipientPublicKey {
 	
 	pub(crate) fn access_bytes_slice (&self) -> &[u8] {
 		self.access_bytes () .as_slice ()
+	}
+}
+
+
+
+
+
+
+
+
+impl SenderPublicOrPrivateKey {
+	
+	pub fn decode_and_zeroize (_string : String) -> KeyEncodingResult<Self> {
+		let _outcome = Self::decode (&_string);
+		zeroize_and_drop (_string);
+		_outcome
+	}
+	
+	pub fn decode (_string : &str) -> KeyEncodingResult<Self> {
+		if _string.starts_with (SENDER_PUBLIC_KEY_ENCODED_PREFIX) {
+			Ok (Self::Public (SenderPublicKey::decode (_string) ?))
+		} else if _string.starts_with (SENDER_PRIVATE_KEY_ENCODED_PREFIX) {
+			Ok (Self::Private (SenderPrivateKey::decode (_string) ?))
+		} else {
+			fail! (0x431002d1);
+		}
+	}
+	
+	pub fn encode (&self) -> KeyEncodingResult<Rb<String>> {
+		match self {
+			Self::Public (_key) => _key.encode (),
+			Self::Private (_key) => _key.encode (),
+		}
+	}
+	
+	pub fn to_recipient (&self) -> RecipientPublicOrPrivateKey {
+		match self {
+			Self::Public (_key) => RecipientPublicOrPrivateKey::Public (_key.to_recipient ()),
+			Self::Private (_key) => RecipientPublicOrPrivateKey::Private (_key.to_recipient ()),
+		}
+	}
+}
+
+
+
+
+impl RecipientPublicOrPrivateKey {
+	
+	pub fn decode_and_zeroize (_string : String) -> KeyEncodingResult<Self> {
+		let _outcome = Self::decode (&_string);
+		zeroize_and_drop (_string);
+		_outcome
+	}
+	
+	pub fn decode (_string : &str) -> KeyEncodingResult<Self> {
+		if _string.starts_with (RECIPIENT_PUBLIC_KEY_ENCODED_PREFIX) {
+			Ok (Self::Public (RecipientPublicKey::decode (_string) ?))
+		} else if _string.starts_with (RECIPIENT_PRIVATE_KEY_ENCODED_PREFIX) {
+			Ok (Self::Private (RecipientPrivateKey::decode (_string) ?))
+		} else {
+			fail! (0xbc0246d3);
+		}
+	}
+	
+	pub fn encode (&self) -> KeyEncodingResult<Rb<String>> {
+		match self {
+			Self::Public (_key) => _key.encode (),
+			Self::Private (_key) => _key.encode (),
+		}
+	}
+	
+	pub fn to_sender (&self) -> SenderPublicOrPrivateKey {
+		match self {
+			Self::Public (_key) => SenderPublicOrPrivateKey::Public (_key.to_sender ()),
+			Self::Private (_key) => SenderPublicOrPrivateKey::Private (_key.to_sender ()),
+		}
 	}
 }
 
@@ -460,7 +547,7 @@ pub fn decode_sender_public_key (_string : &str) -> KeyEncodingResult<SenderPubl
 
 pub fn decode_recipient_private_key (_string : &str) -> KeyEncodingResult<RecipientPrivateKey> {
 	let mut _key_data = [0u8; 32];
-	decode_raw (RECEIVER_PRIVATE_KEY_ENCODED_PREFIX, _string, &mut _key_data) ?;
+	decode_raw (RECIPIENT_PRIVATE_KEY_ENCODED_PREFIX, _string, &mut _key_data) ?;
 	let _key = x25519::StaticSecret::from (_key_data);
 	zeroize_and_drop (_key_data);
 	Ok (RecipientPrivateKey (Rb::new (_key)))
@@ -469,7 +556,7 @@ pub fn decode_recipient_private_key (_string : &str) -> KeyEncodingResult<Recipi
 
 pub fn decode_recipient_public_key (_string : &str) -> KeyEncodingResult<RecipientPublicKey> {
 	let mut _key_data = [0u8; 32];
-	decode_raw (RECEIVER_PUBLIC_KEY_ENCODED_PREFIX, _string, &mut _key_data) ?;
+	decode_raw (RECIPIENT_PUBLIC_KEY_ENCODED_PREFIX, _string, &mut _key_data) ?;
 	let _key = x25519::PublicKey::from (_key_data);
 	zeroize_and_drop (_key_data);
 	Ok (RecipientPublicKey (Rb::new (_key)))
@@ -551,13 +638,13 @@ pub fn encode_sender_public_key (_key : &SenderPublicKey) -> KeyEncodingResult<R
 
 pub fn encode_recipient_private_key (_key : &RecipientPrivateKey) -> KeyEncodingResult<Rb<String>> {
 	let _bytes = _key.access_bytes ();
-	encode_raw (RECEIVER_PRIVATE_KEY_ENCODED_PREFIX, _bytes)
+	encode_raw (RECIPIENT_PRIVATE_KEY_ENCODED_PREFIX, _bytes)
 }
 
 
 pub fn encode_recipient_public_key (_key : &RecipientPublicKey) -> KeyEncodingResult<Rb<String>> {
 	let _bytes = _key.access_bytes ();
-	encode_raw (RECEIVER_PUBLIC_KEY_ENCODED_PREFIX, _bytes)
+	encode_raw (RECIPIENT_PUBLIC_KEY_ENCODED_PREFIX, _bytes)
 }
 
 

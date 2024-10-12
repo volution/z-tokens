@@ -54,8 +54,8 @@ pub(crate) struct DecryptFlags {
 
 pub(crate) struct PasswordArguments {
 	pub inputs : InputsArguments,
-	pub senders : MaterialSources<SenderPrivateKey>,
-	pub recipients : MaterialSources<RecipientPublicKey>,
+	pub senders : MaterialSources<SenderPublicOrPrivateKey>,
+	pub recipients : MaterialSources<RecipientPublicOrPrivateKey>,
 	pub shared : SharedKeysArguments,
 	pub ssh_wrappers : SshWrappersArguments,
 	pub common : CommonArguments,
@@ -64,8 +64,8 @@ pub(crate) struct PasswordArguments {
 
 pub(crate) struct PasswordFlags {
 	pub inputs : InputsFlags,
-	pub senders : SendersPrivateFlags,
-	pub recipients : RecipientsPublicFlags,
+	pub senders : SendersPublicOrPrivateFlags,
+	pub recipients : RecipientsPublicOrPrivateFlags,
 	pub shared : SharedKeysFlags,
 	pub ssh_wrappers : SshWrappersFlags,
 	pub common : CommonFlags,
@@ -224,11 +224,19 @@ pub(crate) struct SendersPublicFlags {
 	pub materials : MaterialFlags,
 }
 
+pub(crate) struct SendersPublicOrPrivateFlags {
+	pub materials : MaterialFlags,
+}
+
 pub(crate) struct RecipientsPrivateFlags {
 	pub materials : MaterialFlags,
 }
 
 pub(crate) struct RecipientsPublicFlags {
+	pub materials : MaterialFlags,
+}
+
+pub(crate) struct RecipientsPublicOrPrivateFlags {
 	pub materials : MaterialFlags,
 }
 
@@ -431,6 +439,37 @@ impl MaterialValue for SenderPublicKey {
 
 
 
+impl SendersPublicOrPrivateFlags {
+	
+	pub fn new () -> Self {
+		Self { materials : MaterialFlags::new () }
+	}
+	
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		self.materials.flags (
+				_flags,
+				Some ('s'),
+				"sender", "sender-env", "sender-path", "sender-fd", "sender-stdin", "sender-pinentry", "sender-lkkrs",
+				"sender public or private key (multiple allowed, in any order, deduplicated)",
+			)
+	}
+	
+	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<SenderPublicOrPrivateKey>> {
+		self.materials.collect (_empty_is_missing)
+	}
+}
+
+
+impl MaterialValue for SenderPublicOrPrivateKey {
+	
+	fn decode_string (_string : String) -> FlagsResult<Self> {
+		Self::decode_and_zeroize (_string) .else_wrap (0x764f3b24)
+	}
+}
+
+
+
+
 impl RecipientsPrivateFlags {
 	
 	pub fn new () -> Self {
@@ -487,6 +526,37 @@ impl MaterialValue for RecipientPublicKey {
 	
 	fn decode_string (_string : String) -> FlagsResult<Self> {
 		Self::decode_and_zeroize (_string) .else_wrap (0x8a455c2a)
+	}
+}
+
+
+
+
+impl RecipientsPublicOrPrivateFlags {
+	
+	pub fn new () -> Self {
+		Self { materials : MaterialFlags::new () }
+	}
+	
+	pub fn flags <'a> (&'a mut self, _flags : &mut FlagsParserBuilder<'a>) -> FlagsResult {
+		self.materials.flags (
+				_flags,
+				Some ('r'),
+				"recipient", "recipient-env", "recipient-path", "recipient-fd", "recipient-stdin", "recipient-pinentry", "recipient-lkkrs",
+				"recipient public or private key (multiple allowed, in any order, deduplicated)",
+			)
+	}
+	
+	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<RecipientPublicOrPrivateKey>> {
+		self.materials.collect (_empty_is_missing)
+	}
+}
+
+
+impl MaterialValue for RecipientPublicOrPrivateKey {
+	
+	fn decode_string (_string : String) -> FlagsResult<Self> {
+		Self::decode_and_zeroize (_string) .else_wrap (0x9999c378)
 	}
 }
 
@@ -1054,8 +1124,8 @@ impl PasswordFlags {
 	pub fn new () -> Self {
 		Self {
 				inputs : InputsFlags::new (),
-				senders : SendersPrivateFlags::new (),
-				recipients : RecipientsPublicFlags::new (),
+				senders : SendersPublicOrPrivateFlags::new (),
+				recipients : RecipientsPublicOrPrivateFlags::new (),
 				shared : SharedKeysFlags::new (),
 				ssh_wrappers : SshWrappersFlags::new (),
 				common : CommonFlags::new (),

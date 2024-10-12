@@ -362,20 +362,73 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 	
 	let mut _password_output = [0; 32];
 	
-	password (
-			_senders.iter (),
-			_recipients.iter (),
-			_associated.iter (),
-			_secrets.iter () .map (Box::deref),
-			_pins.iter (),
-			_seeds.iter () .map (Box::deref),
-			_ballasts.iter () .map (Box::deref),
-			_derivation_loops,
-			_namespace,
-			&_password_input,
-			&mut _password_output,
-			_oracles,
-		) .else_wrap (0xbfae6a34) ?;
+	if _senders.is_empty () && _recipients.is_empty () {
+		
+		password_symmetric (
+				_associated.iter (),
+				_secrets.iter () .map (Box::deref),
+				_pins.iter (),
+				_seeds.iter () .map (Box::deref),
+				_ballasts.iter () .map (Box::deref),
+				_derivation_loops,
+				_namespace,
+				&_password_input,
+				&mut _password_output,
+				_oracles,
+			) .else_wrap (0xbfae6a34) ?;
+		
+	} else {
+		
+		let _senders_private : Vec<_> = _senders.iter () .filter_map (|_key| if let SenderPublicOrPrivateKey::Private (_key) = _key { Some (_key) } else { None }) .collect ();
+		let _senders_public : Vec<_> = _senders.iter () .filter_map (|_key| if let SenderPublicOrPrivateKey::Public (_key) = _key { Some (_key) } else { None }) .collect ();
+		
+		let _recipients_private : Vec<_> = _recipients.iter () .filter_map (|_key| if let RecipientPublicOrPrivateKey::Private (_key) = _key { Some (_key) } else { None }) .collect ();
+		let _recipients_public : Vec<_> = _recipients.iter () .filter_map (|_key| if let RecipientPublicOrPrivateKey::Public (_key) = _key { Some (_key) } else { None }) .collect ();
+		
+		if ! _senders_private.is_empty () {
+			if ! _senders_public.is_empty () || ! _recipients_private.is_empty () {
+				fail! (0x16817952);
+			}
+			
+			password_send (
+					_senders_private.into_iter (),
+					_recipients_public.into_iter (),
+					_associated.iter (),
+					_secrets.iter () .map (Box::deref),
+					_pins.iter (),
+					_seeds.iter () .map (Box::deref),
+					_ballasts.iter () .map (Box::deref),
+					_derivation_loops,
+					_namespace,
+					&_password_input,
+					&mut _password_output,
+					_oracles,
+				) .else_wrap (0x1c177f6e) ?;
+			
+		} else if ! _recipients_private.is_empty () {
+			if ! _recipients_public.is_empty () || ! _senders_private.is_empty () {
+				fail! (0x34daeda9);
+			}
+			
+			password_receive (
+					_recipients_private.into_iter (),
+					_senders_public.into_iter (),
+					_associated.iter (),
+					_secrets.iter () .map (Box::deref),
+					_pins.iter (),
+					_seeds.iter () .map (Box::deref),
+					_ballasts.iter () .map (Box::deref),
+					_derivation_loops,
+					_namespace,
+					&_password_input,
+					&mut _password_output,
+					_oracles,
+				) .else_wrap (0x08f6442c) ?;
+			
+		} else {
+			fail! (0xb80690a3);
+		}
+	}
 	
 	let _password_output = PasswordOutput::new (_password_output);
 	
