@@ -16,6 +16,11 @@
 ::  digits-base10:28        :   93.0 b :   34 c ::    7022 7110 4492 5182 5629 0665 7352
 ::  digits-base10:30        :   99.6 b :   37 c ::    7022 7110 4492 5182 5629 0665 7352 60
 ::  digits-base10:32        :  106.3 b :   39 c ::    7022 7110 4492 5182 5629 0665 7352 6062
+::  digits-base10-perm      :   21.7 b :   11 c ::    93648 15207
+::  digits-base10-shuf:2    :    6.4 b :    2 c ::    93
+::  digits-base10-shuf:4    :   12.2 b :    4 c ::    9364
+::  digits-base10-shuf:6    :   17.2 b :    7 c ::    9364 81
+::  digits-base10-shuf:8    :   20.7 b :    9 c ::    9364 8152
 ::  cva-lower:1             :   13.4 b :    4 c ::    taqe
 ::  cva-lower:2             :   26.8 b :    9 c ::    taqe veza
 ::  cva-lower:3             :   40.2 b :   14 c ::    taqe veza zaye
@@ -138,7 +143,7 @@
 ::  cvs-plus-c:14           :  179.0 b :   69 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva SU5'
 ::  cvs-plus-c:15           :  191.6 b :   74 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma HE3~
 ::  cvs-plus-c:16           :  204.3 b :   79 c ::    sane seda zalu dufi pivu ceba camu cige paco neho bahe lotu suva suma hetu SI7\
-::  apple-original          :   73.0 b :   20 c ::    qegvu1-dymxen-wagZyb
+::  apple-original          :   73.0 b :   20 c ::    gutzAz-mlxgen-2zybco
 ::  apple-lower             :   67.8 b :   20 c ::    bogvuz-dymxen-rlwcez
 ::  apple-variant-a         :   66.8 b :   20 c ::    Bogvu1-dymxen-rlwcez
 ::  proquint-lower:1        :   16  =b :    5 c ::    sanis

@@ -182,6 +182,21 @@
 ::  ascii-any:28            :  183.5 b :   28 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
 ::  ascii-any:30            :  196.6 b :   30 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[
 ::  ascii-any:32            :  209.7 b :   32 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
+::  ascii-lower-perm        :   88.3 b :   26 c ::    lbeq doxk vwfh gpmy jisc urna zt
+::  ascii-lower-shuf:4      :   18.4 b :    4 c ::    lbeq
+::  ascii-lower-shuf:8      :   35.8 b :    8 c ::    lbeq doxk
+::  ascii-lower-shuf:12     :   52.0 b :   12 c ::    lbeq doxk vwfh
+::  ascii-lower-shuf:16     :   66.5 b :   16 c ::    lbeq doxk vwfh gpmy
+::  ascii-lower-shuf:20     :   78.8 b :   20 c ::    lbeq doxk vwfh gpmy jisc
+::  ascii-lower-shuf:24     :   87.3 b :   24 c ::    lbeq doxk vwfh gpmy jisc urna
+::  ascii-mixed-shuf:4      :   22.6 b :    4 c ::    ipSn
+::  ascii-mixed-shuf:8      :   44.7 b :    8 c ::    ipSn fozI
+::  ascii-mixed-shuf:12     :   66.4 b :   12 c ::    ipSn fozI jdyV
+::  ascii-mixed-shuf:16     :   87.4 b :   16 c ::    ipSn fozI jdyV xXEL
+::  ascii-mixed-shuf:20     :  107.9 b :   20 c ::    ipSn fozI jdyV xXEL leJT
+::  ascii-mixed-shuf:24     :  127.6 b :   24 c ::    ipSn fozI jdyV xXEL leJT ZtBG
+::  ascii-mixed-shuf:28     :  146.5 b :   28 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO
+::  ascii-mixed-shuf:32     :  164.5 b :   32 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF
 ::  cva-lower:1             :   13.4 b :    4 c ::    taqe
 ::  cva-lower:2             :   26.8 b :    8 c ::    taqe veza
 ::  cva-lower:3             :   40.2 b :   12 c ::    taqe veza zaye
@@ -256,7 +271,7 @@
 ::  cvs-plus-c:6            :   77.8 b :   24 c ::    sane seda zalu dufi pivu CE9!
 ::  cvs-plus-c:7            :   90.5 b :   28 c ::    sane seda zalu dufi pivu ceba CA5]
 ::  cvs-plus-c:8            :  103.1 b :   32 c ::    sane seda zalu dufi pivu ceba camu CI2@
-::  apple-original          :   73.0 b :   20 c ::    qegvu1-dymxen-wagZyb
+::  apple-original          :   73.0 b :   20 c ::    gutzAz-mlxgen-2zybco
 ::  apple-lower             :   67.8 b :   20 c ::    bogvuz-dymxen-rlwcez
 ::  apple-variant-a         :   66.8 b :   20 c ::    Bogvu1-dymxen-rlwcez
 ::  proquint-lower:1        :   16  =b :    5 c ::    sanis

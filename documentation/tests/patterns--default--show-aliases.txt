@@ -1083,6 +1083,41 @@
 \_  example:  .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I
 
 
+**  ~~~~~~~~  digits-base10-perm
+\_  aliases:  dp
+\_  bits:     21.7910
+\_  length:   11  (with spaces)
+\_  example:  93648 15207
+
+
+**  ~~~~~~~~  digits-base10-shuf:2
+\_  aliases:  ds:2
+\_  bits:     6.4918
+\_  length:   2  (with spaces)
+\_  example:  93
+
+
+**  ~~~~~~~~  digits-base10-shuf:4
+\_  aliases:  ds:4
+\_  bits:     12.2992
+\_  length:   4  (with spaces)
+\_  example:  9364
+
+
+**  ~~~~~~~~  digits-base10-shuf:6
+\_  aliases:  ds:6
+\_  bits:     17.2060
+\_  length:   7  (with spaces)
+\_  example:  9364 81
+
+
+**  ~~~~~~~~  digits-base10-shuf:8
+\_  aliases:  ds:8
+\_  bits:     20.7910
+\_  length:   9  (with spaces)
+\_  example:  9364 8152
+
+
 **  ~~~~~~~~  ascii-lower:2
 \_  bits:     9.4008
 \_  length:   2  (with spaces)
@@ -1577,6 +1612,168 @@
 \_  bits:     209.7468
 \_  length:   39  (with spaces)
 \_  example:  ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
+
+
+**  ~~~~~~~~  ascii-lower-perm
+\_  bits:     88.3819
+\_  length:   32  (with spaces)
+\_  example:  lbeq doxk vwfh gpmy jisc urna zt
+
+
+**  ~~~~~~~~  ascii-upper-perm
+\_  bits:     88.3819
+\_  length:   32  (with spaces)
+\_  example:  LBEQ DOXK VWFH GPMY JISC URNA ZT
+
+
+**  ~~~~~~~~  ascii-mixed-perm
+\_  bits:     225.5810
+\_  length:   64  (with spaces)
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM
+
+
+**  ~~~~~~~~  ascii-lower-shuf:4
+\_  bits:     18.4528
+\_  length:   4  (with spaces)
+\_  example:  lbeq
+
+
+**  ~~~~~~~~  ascii-lower-shuf:8
+\_  bits:     35.8744
+\_  length:   9  (with spaces)
+\_  example:  lbeq doxk
+
+
+**  ~~~~~~~~  ascii-lower-shuf:12
+\_  bits:     52.0387
+\_  length:   14  (with spaces)
+\_  example:  lbeq doxk vwfh
+
+
+**  ~~~~~~~~  ascii-lower-shuf:16
+\_  bits:     66.5908
+\_  length:   19  (with spaces)
+\_  example:  lbeq doxk vwfh gpmy
+
+
+**  ~~~~~~~~  ascii-lower-shuf:20
+\_  bits:     78.8901
+\_  length:   24  (with spaces)
+\_  example:  lbeq doxk vwfh gpmy jisc
+
+
+**  ~~~~~~~~  ascii-lower-shuf:24
+\_  bits:     87.3819
+\_  length:   29  (with spaces)
+\_  example:  lbeq doxk vwfh gpmy jisc urna
+
+
+**  ~~~~~~~~  ascii-upper-shuf:4
+\_  bits:     18.4528
+\_  length:   4  (with spaces)
+\_  example:  LBEQ
+
+
+**  ~~~~~~~~  ascii-upper-shuf:8
+\_  bits:     35.8744
+\_  length:   9  (with spaces)
+\_  example:  LBEQ DOXK
+
+
+**  ~~~~~~~~  ascii-upper-shuf:12
+\_  bits:     52.0387
+\_  length:   14  (with spaces)
+\_  example:  LBEQ DOXK VWFH
+
+
+**  ~~~~~~~~  ascii-upper-shuf:16
+\_  bits:     66.5908
+\_  length:   19  (with spaces)
+\_  example:  LBEQ DOXK VWFH GPMY
+
+
+**  ~~~~~~~~  ascii-upper-shuf:20
+\_  bits:     78.8901
+\_  length:   24  (with spaces)
+\_  example:  LBEQ DOXK VWFH GPMY JISC
+
+
+**  ~~~~~~~~  ascii-upper-shuf:24
+\_  bits:     87.3819
+\_  length:   29  (with spaces)
+\_  example:  LBEQ DOXK VWFH GPMY JISC URNA
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:4
+\_  bits:     22.6314
+\_  length:   4  (with spaces)
+\_  example:  ipSn
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:8
+\_  bits:     44.7863
+\_  length:   9  (with spaces)
+\_  example:  ipSn fozI
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:12
+\_  bits:     66.4219
+\_  length:   14  (with spaces)
+\_  example:  ipSn fozI jdyV
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:16
+\_  bits:     87.4866
+\_  length:   19  (with spaces)
+\_  example:  ipSn fozI jdyV xXEL
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:20
+\_  bits:     107.9177
+\_  length:   24  (with spaces)
+\_  example:  ipSn fozI jdyV xXEL leJT
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:24
+\_  bits:     127.6368
+\_  length:   29  (with spaces)
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:28
+\_  bits:     146.5433
+\_  length:   34  (with spaces)
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:32
+\_  bits:     164.5036
+\_  length:   39  (with spaces)
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:36
+\_  bits:     181.3308
+\_  length:   44  (with spaces)
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:40
+\_  bits:     196.7455
+\_  length:   49  (with spaces)
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:44
+\_  bits:     210.2817
+\_  length:   54  (with spaces)
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:48
+\_  bits:     220.9960
+\_  length:   59  (with spaces)
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm
 
 
 **  ~~~~~~~~  cva-lower:1
@@ -2821,7 +3018,7 @@
 \_  aliases:  apple
 \_  bits:     73.0631
 \_  length:   20  (with spaces)
-\_  example:  qegvu1-dymxen-wagZyb
+\_  example:  gutzAz-mlxgen-2zybco
 
 
 **  ~~~~~~~~  apple-lower

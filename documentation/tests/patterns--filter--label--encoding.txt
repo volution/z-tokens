@@ -175,6 +175,11 @@
 ::  digits-z85:25           :  160.2 b :   29 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$
 ::  digits-z85:30           :  192.2 b :   35 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU
 ::  digits-z85:35           :  224.3 b :   41 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I
+::  digits-base10-perm      :   21.7 b :   11 c ::    93648 15207
+::  digits-base10-shuf:2    :    6.4 b :    2 c ::    93
+::  digits-base10-shuf:4    :   12.2 b :    4 c ::    9364
+::  digits-base10-shuf:6    :   17.2 b :    7 c ::    9364 81
+::  digits-base10-shuf:8    :   20.7 b :    9 c ::    9364 8152
 ::  proquint-lower:1        :   16  =b :    5 c ::    sanis
 ::  proquint-lower:2        :   32  =b :   11 c ::    sanis gufaz
 ::  proquint-lower:3        :   48  =b :   17 c ::    sanis gufaz lofug

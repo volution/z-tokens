@@ -174,6 +174,11 @@
 ::  digits-z85:20           :  128.1 b :   20 c ::    .2Nm+ i^%9% 4AD]j Ld?hS
 ::  digits-z85:25           :  160.2 b :   25 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$
 ::  digits-z85:30           :  192.2 b :   30 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU
+::  digits-base10-perm      :   21.7 b :   10 c ::    93648 15207
+::  digits-base10-shuf:2    :    6.4 b :    2 c ::    93
+::  digits-base10-shuf:4    :   12.2 b :    4 c ::    9364
+::  digits-base10-shuf:6    :   17.2 b :    6 c ::    9364 81
+::  digits-base10-shuf:8    :   20.7 b :    8 c ::    9364 8152
 ::  ascii-any:2             :   13.1 b :    2 c ::    ei
 ::  ascii-any:4             :   26.2 b :    4 c ::    ei#9
 ::  ascii-any:6             :   39.3 b :    6 c ::    ei#9 i5
@@ -232,7 +237,7 @@
 ::  cvs-plus-c:6            :   77.8 b :   24 c ::    sane seda zalu dufi pivu CE9!
 ::  cvs-plus-c:7            :   90.5 b :   28 c ::    sane seda zalu dufi pivu ceba CA5]
 ::  cvs-plus-c:8            :  103.1 b :   32 c ::    sane seda zalu dufi pivu ceba camu CI2@
-::  apple-original          :   73.0 b :   20 c ::    qegvu1-dymxen-wagZyb
+::  apple-original          :   73.0 b :   20 c ::    gutzAz-mlxgen-2zybco
 ::  apple-variant-a         :   66.8 b :   20 c ::    Bogvu1-dymxen-rlwcez
 ::  bytes-hex:1             :    8  =b :    2 c ::    7f
 ::  bytes-hex:2             :   16  =b :    4 c ::    7f6f

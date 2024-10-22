@@ -94,6 +94,15 @@
 ::  ascii-any:28            :  183.5 b :   34 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
 ::  ascii-any:30            :  196.6 b :   37 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[
 ::  ascii-any:32            :  209.7 b :   39 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
+::  ascii-mixed-perm        :  225.5 b :   64 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM
+::  ascii-mixed-shuf:20     :  107.9 b :   24 c ::    ipSn fozI jdyV xXEL leJT
+::  ascii-mixed-shuf:24     :  127.6 b :   29 c ::    ipSn fozI jdyV xXEL leJT ZtBG
+::  ascii-mixed-shuf:28     :  146.5 b :   34 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO
+::  ascii-mixed-shuf:32     :  164.5 b :   39 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF
+::  ascii-mixed-shuf:36     :  181.3 b :   44 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY
+::  ascii-mixed-shuf:40     :  196.7 b :   49 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs
+::  ascii-mixed-shuf:44     :  210.2 b :   54 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg
+::  ascii-mixed-shuf:48     :  220.9 b :   59 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm
 ::  cva-lower:8             :  107.4 b :   39 c ::    taqe veza zaye fugi rixu cezu saco voxa
 ::  cva-lower:9             :  120.8 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa kize
 ::  cva-lower:10            :  134.2 b :   49 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose

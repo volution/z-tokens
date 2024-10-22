@@ -16,6 +16,12 @@
 ::  ascii-mixed:14          :   79.8 b :   17 c ::    OSDn CxpC CWuJ VC
 ::  ascii-symbols:16        :   80  =b :   19 c ::    `=)/ *_}= |<\( <}/<
 ::  ascii-any:12            :   78.6 b :   14 c ::    Vl8< UTny WFaT
+::  ascii-lower-perm        :   88.3 b :   32 c ::    qchb tdro aipy mexg jwkz lfsn vu
+::  ascii-upper-perm        :   88.3 b :   32 c ::    QCHB TDRO AIPY MEXG JWKZ LFSN VU
+::  ascii-mixed-perm        :  225.5 b :   64 c ::    aFEg fdbp UuoX Plhk DMjJ cIwA LxVG reWQ sTYt HivB qSZK yznm NCRO
+::  ascii-lower-shuf:20     :   78.8 b :   24 c ::    qchb tdro aipy mexg jwkz
+::  ascii-upper-shuf:20     :   78.8 b :   24 c ::    QCHB TDRO AIPY MEXG JWKZ
+::  ascii-mixed-shuf:16     :   87.4 b :   19 c ::    aFEg fdbp UuoX Plhk
 ::  cva-lower:6             :   80.5 b :   29 c ::    vuhi juqo yelu jipu bixo sixi
 ::  cva-upper:6             :   80.5 b :   29 c ::    VUHI JUQO YELU JIPU BIXO SIXI
 ::  cva-mixed:5             :   87.1 b :   24 c ::    POnA qARU FUmu qAXI SaBe

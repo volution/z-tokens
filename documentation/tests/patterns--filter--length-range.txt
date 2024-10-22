@@ -1,5 +1,9 @@
 >>  z-tokens patterns --length-min 40 --length-max 100 --random-testing
 
+::  ascii-mixed-perm        :  225.5 b :   52 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM
+::  ascii-mixed-shuf:40     :  196.7 b :   40 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs
+::  ascii-mixed-shuf:44     :  210.2 b :   44 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg
+::  ascii-mixed-shuf:48     :  220.9 b :   48 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm
 ::  cva-lower:10            :  134.2 b :   40 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose
 ::  cva-lower:11            :  147.7 b :   44 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago
 ::  cva-lower:12            :  161.1 b :   48 c ::    taqe veza zaye fugi rixu cezu saco voxa kize hose rago qeko

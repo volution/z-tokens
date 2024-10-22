@@ -15,6 +15,8 @@
 ::  ascii-mixed:18          :  102.6 b :   22 c ::    MObE nOlP YZhY cwWl Di
 ::  ascii-symbols:22        :  110  =b :   27 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))
 ::  ascii-any:16            :  104.8 b :   19 c ::    ei#9 i5kg |~.+ {%IL
+::  ascii-mixed-perm        :  225.5 b :   64 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM
+::  ascii-mixed-shuf:20     :  107.9 b :   24 c ::    ipSn fozI jdyV xXEL leJT
 ::  cva-lower:8             :  107.4 b :   39 c ::    taqe veza zaye fugi rixu cezu saco voxa
 ::  cva-upper:8             :  107.4 b :   39 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA
 ::  cva-mixed:6             :  104.5 b :   29 c ::    PaFi PiQI YayU mAjO lAzi ZUKa

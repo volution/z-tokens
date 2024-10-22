@@ -12,10 +12,14 @@
 ::  digits-base62:2         :   11.9 b :    2 c ::    jl
 ::  digits-bech32:2         :   10  =b :    2 c ::    hg
 ::  digits-z85:5            :   32.0 b :    5 c ::    .2Nm+
+::  digits-base10-perm      :   21.7 b :   11 c ::    93648 15207
+::  digits-base10-shuf:2    :    6.4 b :    2 c ::    93
 ::  ascii-lower:2           :    9.4 b :    2 c ::    tu
 ::  ascii-mixed:2           :   11.4 b :    2 c ::    MO
 ::  ascii-symbols:2         :   10  =b :    2 c ::    \)
 ::  ascii-any:2             :   13.1 b :    2 c ::    ei
+::  ascii-lower-shuf:4      :   18.4 b :    4 c ::    lbeq
+::  ascii-mixed-shuf:4      :   22.6 b :    4 c ::    ipSn
 ::  cva-lower:1             :   13.4 b :    4 c ::    taqe
 ::  cva-mixed:1             :   17.4 b :    4 c ::    PaFi
 ::  cva-plus-a:2            :   26.7 b :    9 c ::    taqe 2711

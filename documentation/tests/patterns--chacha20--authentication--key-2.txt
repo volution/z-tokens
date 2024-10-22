@@ -17,6 +17,12 @@
 ::  ascii-mixed:6           :   34.2 b :    7 c ::    OSDn Cx
 ::  ascii-symbols:8         :   40  =b :    9 c ::    `=)/ *_}=
 ::  ascii-any:6             :   39.3 b :    7 c ::    Vl8< UT
+::  ascii-lower-perm        :   88.3 b :   32 c ::    qchb tdro aipy mexg jwkz lfsn vu
+::  ascii-upper-perm        :   88.3 b :   32 c ::    QCHB TDRO AIPY MEXG JWKZ LFSN VU
+::  ascii-mixed-perm        :  225.5 b :   64 c ::    aFEg fdbp UuoX Plhk DMjJ cIwA LxVG reWQ sTYt HivB qSZK yznm NCRO
+::  ascii-lower-shuf:8      :   35.8 b :    9 c ::    qchb tdro
+::  ascii-upper-shuf:8      :   35.8 b :    9 c ::    QCHB TDRO
+::  ascii-mixed-shuf:8      :   44.7 b :    9 c ::    aFEg fdbp
 ::  cva-lower:3             :   40.2 b :   14 c ::    vuhi juqo yelu
 ::  cva-upper:3             :   40.2 b :   14 c ::    VUHI JUQO YELU
 ::  cva-mixed:2             :   34.8 b :    9 c ::    POnA qARU
@@ -29,7 +35,7 @@
 ::  cvs-plus-a:3            :   38.5 b :   14 c ::    sunu gito 9572
 ::  cvs-plus-b:3            :   38.2 b :   14 c ::    sunu gito JU59
 ::  cvs-plus-c:3            :   39.9 b :   14 c ::    sunu gito JU5}
-::  apple-original          :   73.0 b :   20 c ::    8plhpl-koxpug-xIptlp
+::  apple-original          :   73.0 b :   20 c ::    vepmip-koxpUg-9tlpbl
 ::  apple-lower             :   67.8 b :   20 c ::    wupmip-pukxlg-xiptlp
 ::  apple-variant-a         :   66.8 b :   20 c ::    Wupmi5-pukxlg-xiptlp
 ::  proquint-lower:2        :   32  =b :   11 c ::    sunuh litok

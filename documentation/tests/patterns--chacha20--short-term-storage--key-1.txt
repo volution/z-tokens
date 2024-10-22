@@ -16,6 +16,12 @@
 ::  ascii-mixed:14          :   79.8 b :   17 c ::    ewXL kXwR Ziwb dz
 ::  ascii-symbols:14        :   70  =b :   17 c ::    }\'} '&#% _==( \=
 ::  ascii-any:12            :   78.6 b :   14 c ::    (Ie3 z^o~ 0IX#
+::  ascii-lower-perm        :   88.3 b :   32 c ::    gmjl nspf ovuh ytzx baid reqw kc
+::  ascii-upper-perm        :   88.3 b :   32 c ::    GMJL NSPF OVUH YTZX BAID REQW KC
+::  ascii-mixed-perm        :  225.5 b :   64 c ::    nOxr bZPB CadX mKlg ywsI uoAz MpHq DGLQ WNTY EkfU cFhR tiSj JVve
+::  ascii-lower-shuf:20     :   78.8 b :   24 c ::    gmjl nspf ovuh ytzx baid
+::  ascii-upper-shuf:20     :   78.8 b :   24 c ::    GMJL NSPF OVUH YTZX BAID
+::  ascii-mixed-shuf:16     :   87.4 b :   19 c ::    nOxr bZPB CadX mKlg
 ::  cva-lower:6             :   80.5 b :   29 c ::    cito wiqa cice waqo koto qugo
 ::  cva-upper:6             :   80.5 b :   29 c ::    CITO WIQA CICE WAQO KOTO QUGO
 ::  cva-mixed:5             :   87.1 b :   24 c ::    fuMU JuSu Naze pOJi FEsU
@@ -28,7 +34,7 @@
 ::  cvs-plus-a:6            :   76.5 b :   29 c ::    cizo fiti nace tape noho 7706
 ::  cvs-plus-b:6            :   76.1 b :   29 c ::    cizo fiti nace tape noho NO06
 ::  cvs-plus-c:6            :   77.8 b :   29 c ::    cizo fiti nace tape noho NO0>
-::  apple-original          :   73.0 b :   20 c ::    myzrem-fobTan-huqmo2
+::  apple-original          :   73.0 b :   20 c ::    zofmu4-bucnAh-vomrer
 ::  proquint-lower:5        :   80  =b :   29 c ::    dunad fitop nopir nagoz pupip
 ::  proquint-upper:5        :   80  =b :   29 c ::    DUNAD FITOP NOPIR NAGOZ PUPIP
 ::  koremutake-a:5          :   70  =b :   26 c ::    duna broty hana frygo pijy

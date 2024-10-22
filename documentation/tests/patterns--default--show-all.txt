@@ -5983,6 +5983,181 @@
 \_  example:  .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I
 
 
+**  ~~~~~~~~  digits-base10-perm
+\_  aliases:  dp
+\_  labels:   digits-base10-perm digits-base10 permutation encoding digits password pronounceable memorable
+\_  bits:     21.7910
+\_  length:   11  (with spaces)
+\_  length:   10  (without spaces)
+\_  characters:
+    \_  letters:  0
+    \_  l. upper: 0
+    \_  l. lower: 0
+    \_  digits:   10
+    \_  symbols:  0
+    \_  no space: 10
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -106.21  bits of margin
+    \_  authentication       !! NO !!      with    -10.21  bits of margin
+    \_  archival storage     !! NO !!      with    -78.50  bits of margin
+    \_  long term storage    !! NO !!      with    -55.05  bits of margin
+    \_  short term storage   !! NO !!      with    -48.20  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  93648 15207
+
+
+**  ~~~~~~~~  digits-base10-shuf:2
+\_  aliases:  ds:2
+\_  labels:   digits-base10-shuf digits-base10 shuffle encoding digits password pronounceable memorable
+\_  bits:     6.4918
+\_  length:   2  (with spaces)
+\_  length:   2  (without spaces)
+\_  characters:
+    \_  letters:  0
+    \_  l. upper: 0
+    \_  l. lower: 0
+    \_  digits:   2
+    \_  symbols:  0
+    \_  no space: 2
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -121.51  bits of margin
+    \_  authentication       !! NO !!      with    -25.51  bits of margin
+    \_  archival storage     !! NO !!      with    -93.80  bits of margin
+    \_  long term storage    !! NO !!      with    -70.35  bits of margin
+    \_  short term storage   !! NO !!      with    -63.50  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  93
+
+
+**  ~~~~~~~~  digits-base10-shuf:4
+\_  aliases:  ds:4
+\_  labels:   digits-base10-shuf digits-base10 shuffle encoding digits password pronounceable memorable
+\_  bits:     12.2992
+\_  length:   4  (with spaces)
+\_  length:   4  (without spaces)
+\_  characters:
+    \_  letters:  0
+    \_  l. upper: 0
+    \_  l. lower: 0
+    \_  digits:   4
+    \_  symbols:  0
+    \_  no space: 4
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -115.70  bits of margin
+    \_  authentication       !! NO !!      with    -19.70  bits of margin
+    \_  archival storage     !! NO !!      with    -88.00  bits of margin
+    \_  long term storage    !! NO !!      with    -64.54  bits of margin
+    \_  short term storage   !! NO !!      with    -57.70  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  9364
+
+
+**  ~~~~~~~~  digits-base10-shuf:6
+\_  aliases:  ds:6
+\_  labels:   digits-base10-shuf digits-base10 shuffle encoding digits password pronounceable memorable
+\_  bits:     17.2060
+\_  length:   7  (with spaces)
+\_  length:   6  (without spaces)
+\_  characters:
+    \_  letters:  0
+    \_  l. upper: 0
+    \_  l. lower: 0
+    \_  digits:   6
+    \_  symbols:  0
+    \_  no space: 6
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -110.79  bits of margin
+    \_  authentication       !! NO !!      with    -14.79  bits of margin
+    \_  archival storage     !! NO !!      with    -83.09  bits of margin
+    \_  long term storage    !! NO !!      with    -59.63  bits of margin
+    \_  short term storage   !! NO !!      with    -52.79  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  9364 81
+
+
+**  ~~~~~~~~  digits-base10-shuf:8
+\_  aliases:  ds:8
+\_  labels:   digits-base10-shuf digits-base10 shuffle encoding digits password pronounceable memorable
+\_  bits:     20.7910
+\_  length:   9  (with spaces)
+\_  length:   8  (without spaces)
+\_  characters:
+    \_  letters:  0
+    \_  l. upper: 0
+    \_  l. lower: 0
+    \_  digits:   8
+    \_  symbols:  0
+    \_  no space: 8
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -107.21  bits of margin
+    \_  authentication       !! NO !!      with    -11.21  bits of margin
+    \_  archival storage     !! NO !!      with    -79.50  bits of margin
+    \_  long term storage    !! NO !!      with    -56.05  bits of margin
+    \_  short term storage   !! NO !!      with    -49.20  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  9364 8152
+
+
 **  ~~~~~~~~  ascii-lower:2
 \_  labels:   ascii-lower letters password
 \_  bits:     9.4008
@@ -8717,6 +8892,924 @@
     \_  GPG                     --         (more than trillions of years)
     \_  AES-128                 --         (more than trillions of years)
 \_  example:  ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
+
+
+**  ~~~~~~~~  ascii-lower-perm
+\_  labels:   ascii-lower-perm ascii-lower permutation letters password
+\_  bits:     88.3819
+\_  length:   32  (with spaces)
+\_  length:   26  (without spaces)
+\_  characters:
+    \_  letters:  26
+    \_  l. upper: 0
+    \_  l. lower: 26
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 26
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -39.62  bits of margin
+    \_  authentication          OK         with    +56.38  bits of margin
+    \_  archival storage     !! NO !!      with    -11.91  bits of margin
+    \_  long term storage       OK         with    +11.54  bits of margin
+    \_  short term storage      OK         with    +18.39  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --    4.4  centuries
+    \_  MD5                     --    7.7  centuries
+    \_  SHA1                    --    2.5  millennia
+    \_  SHA2-256                --    5.8  millennia
+    \_  SHA3-256                --   25.3  millennia
+    \_  PBKDF2-HMAC-MD5         --    2.8  millions of years
+    \_  PBKDF2-HMAC-SHA1        --    6.7  millions of years
+    \_  PBKDF2-HMAC-SHA256      --   14.4  millions of years
+    \_  PBKDF2-HMAC-SHA512      --   40.9  millions of years
+    \_  scrypt                  --   17.9  billions of years
+    \_  GPG                     --    4.8  millions of years
+    \_  AES-128                 --    5.8  millennia
+\_  example:  lbeq doxk vwfh gpmy jisc urna zt
+
+
+**  ~~~~~~~~  ascii-upper-perm
+\_  labels:   ascii-upper-perm ascii-upper permutation letters
+\_  bits:     88.3819
+\_  length:   32  (with spaces)
+\_  length:   26  (without spaces)
+\_  characters:
+    \_  letters:  26
+    \_  l. upper: 26
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 26
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -39.62  bits of margin
+    \_  authentication          OK         with    +56.38  bits of margin
+    \_  archival storage     !! NO !!      with    -11.91  bits of margin
+    \_  long term storage       OK         with    +11.54  bits of margin
+    \_  short term storage      OK         with    +18.39  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --    4.4  centuries
+    \_  MD5                     --    7.7  centuries
+    \_  SHA1                    --    2.5  millennia
+    \_  SHA2-256                --    5.8  millennia
+    \_  SHA3-256                --   25.3  millennia
+    \_  PBKDF2-HMAC-MD5         --    2.8  millions of years
+    \_  PBKDF2-HMAC-SHA1        --    6.7  millions of years
+    \_  PBKDF2-HMAC-SHA256      --   14.4  millions of years
+    \_  PBKDF2-HMAC-SHA512      --   40.9  millions of years
+    \_  scrypt                  --   17.9  billions of years
+    \_  GPG                     --    4.8  millions of years
+    \_  AES-128                 --    5.8  millennia
+\_  example:  LBEQ DOXK VWFH GPMY JISC URNA ZT
+
+
+**  ~~~~~~~~  ascii-mixed-perm
+\_  labels:   ascii-mixed-perm ascii-mixed permutation letters password
+\_  bits:     225.5810
+\_  length:   64  (with spaces)
+\_  length:   52  (without spaces)
+\_  characters:
+    \_  letters:  52
+    \_  l. upper: 26
+    \_  l. lower: 26
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 52
+\_  usable for:
+    \_  cryptography            OK         with    +97.58  bits of margin
+    \_  authentication          OK         with   +193.58  bits of margin
+    \_  archival storage        OK         with   +125.29  bits of margin
+    \_  long term storage       OK         with   +148.74  bits of margin
+    \_  short term storage      OK         with   +155.59  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM
+
+
+**  ~~~~~~~~  ascii-lower-shuf:4
+\_  labels:   ascii-lower-shuf ascii-lower shuffle letters password
+\_  bits:     18.4528
+\_  length:   4  (with spaces)
+\_  length:   4  (without spaces)
+\_  characters:
+    \_  letters:  4
+    \_  l. upper: 0
+    \_  l. lower: 4
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 4
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -109.55  bits of margin
+    \_  authentication       !! NO !!      with    -13.55  bits of margin
+    \_  archival storage     !! NO !!      with    -81.84  bits of margin
+    \_  long term storage    !! NO !!      with    -58.39  bits of margin
+    \_  short term storage   !! NO !!      with    -51.54  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  lbeq
+
+
+**  ~~~~~~~~  ascii-lower-shuf:8
+\_  labels:   ascii-lower-shuf ascii-lower shuffle letters password
+\_  bits:     35.8744
+\_  length:   9  (with spaces)
+\_  length:   8  (without spaces)
+\_  characters:
+    \_  letters:  8
+    \_  l. upper: 0
+    \_  l. lower: 8
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 8
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -92.13  bits of margin
+    \_  authentication          OK         with     +3.87  bits of margin
+    \_  archival storage     !! NO !!      with    -64.42  bits of margin
+    \_  long term storage    !! NO !!      with    -40.96  bits of margin
+    \_  short term storage   !! NO !!      with    -34.12  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --    0.2  seconds
+    \_  scrypt                  --    1.5  minutes
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  lbeq doxk
+
+
+**  ~~~~~~~~  ascii-lower-shuf:12
+\_  labels:   ascii-lower-shuf ascii-lower shuffle letters password
+\_  bits:     52.0387
+\_  length:   14  (with spaces)
+\_  length:   12  (without spaces)
+\_  characters:
+    \_  letters:  12
+    \_  l. upper: 0
+    \_  l. lower: 12
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 12
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -75.96  bits of margin
+    \_  authentication          OK         with    +20.04  bits of margin
+    \_  archival storage     !! NO !!      with    -48.26  bits of margin
+    \_  long term storage    !! NO !!      with    -24.80  bits of margin
+    \_  short term storage   !! NO !!      with    -17.96  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --    0.2  seconds
+    \_  MD5                     --    0.3  seconds
+    \_  SHA1                    --    0.9  seconds
+    \_  SHA2-256                --    2.1  seconds
+    \_  SHA3-256                --    9.1  seconds
+    \_  PBKDF2-HMAC-MD5         --   16.7  minutes
+    \_  PBKDF2-HMAC-SHA1        --   40.3  minutes
+    \_  PBKDF2-HMAC-SHA256      --    1.4  hours
+    \_  PBKDF2-HMAC-SHA512      --    4.1  hours
+    \_  scrypt                  --    2.5  months
+    \_  GPG                     --   28.7  minutes
+    \_  AES-128                 --    2.1  seconds
+\_  example:  lbeq doxk vwfh
+
+
+**  ~~~~~~~~  ascii-lower-shuf:16
+\_  labels:   ascii-lower-shuf ascii-lower shuffle letters password
+\_  bits:     66.5908
+\_  length:   19  (with spaces)
+\_  length:   16  (without spaces)
+\_  characters:
+    \_  letters:  16
+    \_  l. upper: 0
+    \_  l. lower: 16
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 16
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -61.41  bits of margin
+    \_  authentication          OK         with    +34.59  bits of margin
+    \_  archival storage     !! NO !!      with    -33.70  bits of margin
+    \_  long term storage    !! NO !!      with    -10.25  bits of margin
+    \_  short term storage   !! NO !!      with     -3.41  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --    1.1  hours
+    \_  MD5                     --    1.9  hours
+    \_  SHA1                    --    6.1  hours
+    \_  SHA2-256                --   14.0  hours
+    \_  SHA3-256                --    2.5  days
+    \_  PBKDF2-HMAC-MD5         --    9.1  months
+    \_  PBKDF2-HMAC-SHA1        --    1.8  years
+    \_  PBKDF2-HMAC-SHA256      --    4.0  years
+    \_  PBKDF2-HMAC-SHA512      --    1.1  decades
+    \_  scrypt                  --    4.9  millennia
+    \_  GPG                     --    1.3  years
+    \_  AES-128                 --   14.1  hours
+\_  example:  lbeq doxk vwfh gpmy
+
+
+**  ~~~~~~~~  ascii-lower-shuf:20
+\_  labels:   ascii-lower-shuf ascii-lower shuffle letters password
+\_  bits:     78.8901
+\_  length:   24  (with spaces)
+\_  length:   20  (without spaces)
+\_  characters:
+    \_  letters:  20
+    \_  l. upper: 0
+    \_  l. lower: 20
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 20
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -49.11  bits of margin
+    \_  authentication          OK         with    +46.89  bits of margin
+    \_  archival storage     !! NO !!      with    -21.40  bits of margin
+    \_  long term storage       OK         with     +2.05  bits of margin
+    \_  short term storage      OK         with     +8.89  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --    7.3  months
+    \_  MD5                     --    1.1  years
+    \_  SHA1                    --    3.5  years
+    \_  SHA2-256                --    8.1  years
+    \_  SHA3-256                --    3.5  decades
+    \_  PBKDF2-HMAC-MD5         --    3.8  millennia
+    \_  PBKDF2-HMAC-SHA1        --    9.3  millennia
+    \_  PBKDF2-HMAC-SHA256      --   20.0  millennia
+    \_  PBKDF2-HMAC-SHA512      --   56.9  millennia
+    \_  scrypt                  --   24.9  millions of years
+    \_  GPG                     --    6.6  millennia
+    \_  AES-128                 --    8.1  years
+\_  example:  lbeq doxk vwfh gpmy jisc
+
+
+**  ~~~~~~~~  ascii-lower-shuf:24
+\_  labels:   ascii-lower-shuf ascii-lower shuffle letters password
+\_  bits:     87.3819
+\_  length:   29  (with spaces)
+\_  length:   24  (without spaces)
+\_  characters:
+    \_  letters:  24
+    \_  l. upper: 0
+    \_  l. lower: 24
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 24
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -40.62  bits of margin
+    \_  authentication          OK         with    +55.38  bits of margin
+    \_  archival storage     !! NO !!      with    -12.91  bits of margin
+    \_  long term storage       OK         with    +10.54  bits of margin
+    \_  short term storage      OK         with    +17.39  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --    2.2  centuries
+    \_  MD5                     --    3.9  centuries
+    \_  SHA1                    --    1.3  millennia
+    \_  SHA2-256                --    2.9  millennia
+    \_  SHA3-256                --   12.6  millennia
+    \_  PBKDF2-HMAC-MD5         --    1.4  millions of years
+    \_  PBKDF2-HMAC-SHA1        --    3.3  millions of years
+    \_  PBKDF2-HMAC-SHA256      --    7.2  millions of years
+    \_  PBKDF2-HMAC-SHA512      --   20.5  millions of years
+    \_  scrypt                  --    9.0  billions of years
+    \_  GPG                     --    2.4  millions of years
+    \_  AES-128                 --    2.9  millennia
+\_  example:  lbeq doxk vwfh gpmy jisc urna
+
+
+**  ~~~~~~~~  ascii-upper-shuf:4
+\_  labels:   ascii-upper-shuf ascii-upper shuffle letters
+\_  bits:     18.4528
+\_  length:   4  (with spaces)
+\_  length:   4  (without spaces)
+\_  characters:
+    \_  letters:  4
+    \_  l. upper: 4
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 4
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -109.55  bits of margin
+    \_  authentication       !! NO !!      with    -13.55  bits of margin
+    \_  archival storage     !! NO !!      with    -81.84  bits of margin
+    \_  long term storage    !! NO !!      with    -58.39  bits of margin
+    \_  short term storage   !! NO !!      with    -51.54  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  LBEQ
+
+
+**  ~~~~~~~~  ascii-upper-shuf:8
+\_  labels:   ascii-upper-shuf ascii-upper shuffle letters
+\_  bits:     35.8744
+\_  length:   9  (with spaces)
+\_  length:   8  (without spaces)
+\_  characters:
+    \_  letters:  8
+    \_  l. upper: 8
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 8
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -92.13  bits of margin
+    \_  authentication          OK         with     +3.87  bits of margin
+    \_  archival storage     !! NO !!      with    -64.42  bits of margin
+    \_  long term storage    !! NO !!      with    -40.96  bits of margin
+    \_  short term storage   !! NO !!      with    -34.12  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --    0.2  seconds
+    \_  scrypt                  --    1.5  minutes
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  LBEQ DOXK
+
+
+**  ~~~~~~~~  ascii-upper-shuf:12
+\_  labels:   ascii-upper-shuf ascii-upper shuffle letters
+\_  bits:     52.0387
+\_  length:   14  (with spaces)
+\_  length:   12  (without spaces)
+\_  characters:
+    \_  letters:  12
+    \_  l. upper: 12
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 12
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -75.96  bits of margin
+    \_  authentication          OK         with    +20.04  bits of margin
+    \_  archival storage     !! NO !!      with    -48.26  bits of margin
+    \_  long term storage    !! NO !!      with    -24.80  bits of margin
+    \_  short term storage   !! NO !!      with    -17.96  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --    0.2  seconds
+    \_  MD5                     --    0.3  seconds
+    \_  SHA1                    --    0.9  seconds
+    \_  SHA2-256                --    2.1  seconds
+    \_  SHA3-256                --    9.1  seconds
+    \_  PBKDF2-HMAC-MD5         --   16.7  minutes
+    \_  PBKDF2-HMAC-SHA1        --   40.3  minutes
+    \_  PBKDF2-HMAC-SHA256      --    1.4  hours
+    \_  PBKDF2-HMAC-SHA512      --    4.1  hours
+    \_  scrypt                  --    2.5  months
+    \_  GPG                     --   28.7  minutes
+    \_  AES-128                 --    2.1  seconds
+\_  example:  LBEQ DOXK VWFH
+
+
+**  ~~~~~~~~  ascii-upper-shuf:16
+\_  labels:   ascii-upper-shuf ascii-upper shuffle letters
+\_  bits:     66.5908
+\_  length:   19  (with spaces)
+\_  length:   16  (without spaces)
+\_  characters:
+    \_  letters:  16
+    \_  l. upper: 16
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 16
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -61.41  bits of margin
+    \_  authentication          OK         with    +34.59  bits of margin
+    \_  archival storage     !! NO !!      with    -33.70  bits of margin
+    \_  long term storage    !! NO !!      with    -10.25  bits of margin
+    \_  short term storage   !! NO !!      with     -3.41  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --    1.1  hours
+    \_  MD5                     --    1.9  hours
+    \_  SHA1                    --    6.1  hours
+    \_  SHA2-256                --   14.0  hours
+    \_  SHA3-256                --    2.5  days
+    \_  PBKDF2-HMAC-MD5         --    9.1  months
+    \_  PBKDF2-HMAC-SHA1        --    1.8  years
+    \_  PBKDF2-HMAC-SHA256      --    4.0  years
+    \_  PBKDF2-HMAC-SHA512      --    1.1  decades
+    \_  scrypt                  --    4.9  millennia
+    \_  GPG                     --    1.3  years
+    \_  AES-128                 --   14.1  hours
+\_  example:  LBEQ DOXK VWFH GPMY
+
+
+**  ~~~~~~~~  ascii-upper-shuf:20
+\_  labels:   ascii-upper-shuf ascii-upper shuffle letters
+\_  bits:     78.8901
+\_  length:   24  (with spaces)
+\_  length:   20  (without spaces)
+\_  characters:
+    \_  letters:  20
+    \_  l. upper: 20
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 20
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -49.11  bits of margin
+    \_  authentication          OK         with    +46.89  bits of margin
+    \_  archival storage     !! NO !!      with    -21.40  bits of margin
+    \_  long term storage       OK         with     +2.05  bits of margin
+    \_  short term storage      OK         with     +8.89  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --    7.3  months
+    \_  MD5                     --    1.1  years
+    \_  SHA1                    --    3.5  years
+    \_  SHA2-256                --    8.1  years
+    \_  SHA3-256                --    3.5  decades
+    \_  PBKDF2-HMAC-MD5         --    3.8  millennia
+    \_  PBKDF2-HMAC-SHA1        --    9.3  millennia
+    \_  PBKDF2-HMAC-SHA256      --   20.0  millennia
+    \_  PBKDF2-HMAC-SHA512      --   56.9  millennia
+    \_  scrypt                  --   24.9  millions of years
+    \_  GPG                     --    6.6  millennia
+    \_  AES-128                 --    8.1  years
+\_  example:  LBEQ DOXK VWFH GPMY JISC
+
+
+**  ~~~~~~~~  ascii-upper-shuf:24
+\_  labels:   ascii-upper-shuf ascii-upper shuffle letters
+\_  bits:     87.3819
+\_  length:   29  (with spaces)
+\_  length:   24  (without spaces)
+\_  characters:
+    \_  letters:  24
+    \_  l. upper: 24
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 24
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -40.62  bits of margin
+    \_  authentication          OK         with    +55.38  bits of margin
+    \_  archival storage     !! NO !!      with    -12.91  bits of margin
+    \_  long term storage       OK         with    +10.54  bits of margin
+    \_  short term storage      OK         with    +17.39  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --    2.2  centuries
+    \_  MD5                     --    3.9  centuries
+    \_  SHA1                    --    1.3  millennia
+    \_  SHA2-256                --    2.9  millennia
+    \_  SHA3-256                --   12.6  millennia
+    \_  PBKDF2-HMAC-MD5         --    1.4  millions of years
+    \_  PBKDF2-HMAC-SHA1        --    3.3  millions of years
+    \_  PBKDF2-HMAC-SHA256      --    7.2  millions of years
+    \_  PBKDF2-HMAC-SHA512      --   20.5  millions of years
+    \_  scrypt                  --    9.0  billions of years
+    \_  GPG                     --    2.4  millions of years
+    \_  AES-128                 --    2.9  millennia
+\_  example:  LBEQ DOXK VWFH GPMY JISC URNA
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:4
+\_  labels:   ascii-mixed-shuf ascii-mixed shuffle letters password
+\_  bits:     22.6314
+\_  length:   4  (with spaces)
+\_  length:   4  (without spaces)
+\_  characters:
+    \_  letters:  4
+    \_  l. upper: 1
+    \_  l. lower: 3
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 4
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -105.37  bits of margin
+    \_  authentication       !! NO !!      with     -9.37  bits of margin
+    \_  archival storage     !! NO !!      with    -77.66  bits of margin
+    \_  long term storage    !! NO !!      with    -54.21  bits of margin
+    \_  short term storage   !! NO !!      with    -47.36  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --         now
+    \_  PBKDF2-HMAC-SHA1        --         now
+    \_  PBKDF2-HMAC-SHA256      --         now
+    \_  PBKDF2-HMAC-SHA512      --         now
+    \_  scrypt                  --         now
+    \_  GPG                     --         now
+    \_  AES-128                 --         now
+\_  example:  ipSn
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:8
+\_  labels:   ascii-mixed-shuf ascii-mixed shuffle letters password
+\_  bits:     44.7863
+\_  length:   9  (with spaces)
+\_  length:   8  (without spaces)
+\_  characters:
+    \_  letters:  8
+    \_  l. upper: 2
+    \_  l. lower: 6
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 8
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -83.21  bits of margin
+    \_  authentication          OK         with    +12.79  bits of margin
+    \_  archival storage     !! NO !!      with    -55.51  bits of margin
+    \_  long term storage    !! NO !!      with    -32.05  bits of margin
+    \_  short term storage   !! NO !!      with    -25.21  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         now
+    \_  MD5                     --         now
+    \_  SHA1                    --         now
+    \_  SHA2-256                --         now
+    \_  SHA3-256                --         now
+    \_  PBKDF2-HMAC-MD5         --    6.6  seconds
+    \_  PBKDF2-HMAC-SHA1        --   15.9  seconds
+    \_  PBKDF2-HMAC-SHA256      --   34.2  seconds
+    \_  PBKDF2-HMAC-SHA512      --    1.6  minutes
+    \_  scrypt                  --   11.8  hours
+    \_  GPG                     --   11.3  seconds
+    \_  AES-128                 --         now
+\_  example:  ipSn fozI
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:12
+\_  labels:   ascii-mixed-shuf ascii-mixed shuffle letters password
+\_  bits:     66.4219
+\_  length:   14  (with spaces)
+\_  length:   12  (without spaces)
+\_  characters:
+    \_  letters:  12
+    \_  l. upper: 3
+    \_  l. lower: 9
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 12
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -61.58  bits of margin
+    \_  authentication          OK         with    +34.42  bits of margin
+    \_  archival storage     !! NO !!      with    -33.87  bits of margin
+    \_  long term storage    !! NO !!      with    -10.42  bits of margin
+    \_  short term storage   !! NO !!      with     -3.57  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --   56.6  minutes
+    \_  MD5                     --    1.7  hours
+    \_  SHA1                    --    5.4  hours
+    \_  SHA2-256                --   12.5  hours
+    \_  SHA3-256                --    2.3  days
+    \_  PBKDF2-HMAC-MD5         --    8.1  months
+    \_  PBKDF2-HMAC-SHA1        --    1.6  years
+    \_  PBKDF2-HMAC-SHA256      --    3.5  years
+    \_  PBKDF2-HMAC-SHA512      --    1.0  decades
+    \_  scrypt                  --    4.4  millennia
+    \_  GPG                     --    1.2  years
+    \_  AES-128                 --   12.5  hours
+\_  example:  ipSn fozI jdyV
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:16
+\_  labels:   ascii-mixed-shuf ascii-mixed shuffle letters password
+\_  bits:     87.4866
+\_  length:   19  (with spaces)
+\_  length:   16  (without spaces)
+\_  characters:
+    \_  letters:  16
+    \_  l. upper: 6
+    \_  l. lower: 10
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 16
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -40.51  bits of margin
+    \_  authentication          OK         with    +55.49  bits of margin
+    \_  archival storage     !! NO !!      with    -12.81  bits of margin
+    \_  long term storage       OK         with    +10.65  bits of margin
+    \_  short term storage      OK         with    +17.49  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --    2.4  centuries
+    \_  MD5                     --    4.2  centuries
+    \_  SHA1                    --    1.3  millennia
+    \_  SHA2-256                --    3.1  millennia
+    \_  SHA3-256                --   13.6  millennia
+    \_  PBKDF2-HMAC-MD5         --    1.5  millions of years
+    \_  PBKDF2-HMAC-SHA1        --    3.6  millions of years
+    \_  PBKDF2-HMAC-SHA256      --    7.7  millions of years
+    \_  PBKDF2-HMAC-SHA512      --   22.0  millions of years
+    \_  scrypt                  --    9.6  billions of years
+    \_  GPG                     --    2.6  millions of years
+    \_  AES-128                 --    3.1  millennia
+\_  example:  ipSn fozI jdyV xXEL
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:20
+\_  labels:   ascii-mixed-shuf ascii-mixed shuffle letters password
+\_  bits:     107.9177
+\_  length:   24  (with spaces)
+\_  length:   20  (without spaces)
+\_  characters:
+    \_  letters:  20
+    \_  l. upper: 8
+    \_  l. lower: 12
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 20
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -20.08  bits of margin
+    \_  authentication          OK         with    +75.92  bits of margin
+    \_  archival storage        OK         with     +7.62  bits of margin
+    \_  long term storage       OK         with    +31.08  bits of margin
+    \_  short term storage      OK         with    +37.92  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --  333.8  millions of years
+    \_  MD5                     --  588.7  millions of years
+    \_  SHA1                    --    1.9  billions of years
+    \_  SHA2-256                --    4.4  billions of years
+    \_  SHA3-256                --   19.2  billions of years
+    \_  PBKDF2-HMAC-MD5         --    2.1  trillions of years
+    \_  PBKDF2-HMAC-SHA1        --    5.1  trillions of years
+    \_  PBKDF2-HMAC-SHA256      --   11.0  trillions of years
+    \_  PBKDF2-HMAC-SHA512      --   31.1  trillions of years
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --    3.6  trillions of years
+    \_  AES-128                 --    4.4  billions of years
+\_  example:  ipSn fozI jdyV xXEL leJT
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:24
+\_  labels:   ascii-mixed-shuf ascii-mixed shuffle letters password
+\_  bits:     127.6368
+\_  length:   29  (with spaces)
+\_  length:   24  (without spaces)
+\_  characters:
+    \_  letters:  24
+    \_  l. upper: 11
+    \_  l. lower: 13
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 24
+\_  usable for:
+    \_  cryptography         !! NO !!      with     -0.36  bits of margin
+    \_  authentication          OK         with    +95.64  bits of margin
+    \_  archival storage        OK         with    +27.34  bits of margin
+    \_  long term storage       OK         with    +50.80  bits of margin
+    \_  short term storage      OK         with    +57.64  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --  288.1  trillions of years
+    \_  MD5                     --  508.1  trillions of years
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:28
+\_  labels:   ascii-mixed-shuf ascii-mixed shuffle letters password
+\_  bits:     146.5433
+\_  length:   34  (with spaces)
+\_  length:   28  (without spaces)
+\_  characters:
+    \_  letters:  28
+    \_  l. upper: 15
+    \_  l. lower: 13
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 28
+\_  usable for:
+    \_  cryptography            OK         with    +18.54  bits of margin
+    \_  authentication          OK         with   +114.54  bits of margin
+    \_  archival storage        OK         with    +46.25  bits of margin
+    \_  long term storage       OK         with    +69.70  bits of margin
+    \_  short term storage      OK         with    +76.55  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:32
+\_  labels:   ascii-mixed-shuf ascii-mixed shuffle letters password
+\_  bits:     164.5036
+\_  length:   39  (with spaces)
+\_  length:   32  (without spaces)
+\_  characters:
+    \_  letters:  32
+    \_  l. upper: 17
+    \_  l. lower: 15
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 32
+\_  usable for:
+    \_  cryptography            OK         with    +36.50  bits of margin
+    \_  authentication          OK         with   +132.50  bits of margin
+    \_  archival storage        OK         with    +64.21  bits of margin
+    \_  long term storage       OK         with    +87.66  bits of margin
+    \_  short term storage      OK         with    +94.51  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:36
+\_  labels:   ascii-mixed-shuf ascii-mixed shuffle letters password
+\_  bits:     181.3308
+\_  length:   44  (with spaces)
+\_  length:   36  (without spaces)
+\_  characters:
+    \_  letters:  36
+    \_  l. upper: 19
+    \_  l. lower: 17
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 36
+\_  usable for:
+    \_  cryptography            OK         with    +53.33  bits of margin
+    \_  authentication          OK         with   +149.33  bits of margin
+    \_  archival storage        OK         with    +81.04  bits of margin
+    \_  long term storage       OK         with   +104.49  bits of margin
+    \_  short term storage      OK         with   +111.33  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:40
+\_  labels:   ascii-mixed-shuf ascii-mixed shuffle letters password
+\_  bits:     196.7455
+\_  length:   49  (with spaces)
+\_  length:   40  (without spaces)
+\_  characters:
+    \_  letters:  40
+    \_  l. upper: 20
+    \_  l. lower: 20
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 40
+\_  usable for:
+    \_  cryptography            OK         with    +68.75  bits of margin
+    \_  authentication          OK         with   +164.75  bits of margin
+    \_  archival storage        OK         with    +96.45  bits of margin
+    \_  long term storage       OK         with   +119.91  bits of margin
+    \_  short term storage      OK         with   +126.75  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:44
+\_  labels:   ascii-mixed-shuf ascii-mixed shuffle letters password
+\_  bits:     210.2817
+\_  length:   54  (with spaces)
+\_  length:   44  (without spaces)
+\_  characters:
+    \_  letters:  44
+    \_  l. upper: 21
+    \_  l. lower: 23
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 44
+\_  usable for:
+    \_  cryptography            OK         with    +82.28  bits of margin
+    \_  authentication          OK         with   +178.28  bits of margin
+    \_  archival storage        OK         with   +109.99  bits of margin
+    \_  long term storage       OK         with   +133.44  bits of margin
+    \_  short term storage      OK         with   +140.29  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:48
+\_  labels:   ascii-mixed-shuf ascii-mixed shuffle letters password
+\_  bits:     220.9960
+\_  length:   59  (with spaces)
+\_  length:   48  (without spaces)
+\_  characters:
+    \_  letters:  48
+    \_  l. upper: 23
+    \_  l. lower: 25
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 48
+\_  usable for:
+    \_  cryptography            OK         with    +93.00  bits of margin
+    \_  authentication          OK         with   +189.00  bits of margin
+    \_  archival storage        OK         with   +120.70  bits of margin
+    \_  long term storage       OK         with   +144.16  bits of margin
+    \_  short term storage      OK         with   +151.00  bits of margin
+\_  bruteforce time:
+    \_  MD4                     --         (more than trillions of years)
+    \_  MD5                     --         (more than trillions of years)
+    \_  SHA1                    --         (more than trillions of years)
+    \_  SHA2-256                --         (more than trillions of years)
+    \_  SHA3-256                --         (more than trillions of years)
+    \_  PBKDF2-HMAC-MD5         --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA1        --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA256      --         (more than trillions of years)
+    \_  PBKDF2-HMAC-SHA512      --         (more than trillions of years)
+    \_  scrypt                  --         (more than trillions of years)
+    \_  GPG                     --         (more than trillions of years)
+    \_  AES-128                 --         (more than trillions of years)
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm
 
 
 **  ~~~~~~~~  cva-lower:1
@@ -15197,7 +16290,7 @@
     \_  scrypt                  --  438.8  millennia
     \_  GPG                     --    1.2  centuries
     \_  AES-128                 --    1.7  months
-\_  example:  qegvu1-dymxen-wagZyb
+\_  example:  gutzAz-mlxgen-2zybco
 
 
 **  ~~~~~~~~  apple-lower

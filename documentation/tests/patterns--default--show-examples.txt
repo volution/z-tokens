@@ -2801,6 +2801,86 @@
     \_        (-0dK 9+CAK G$8<I oWi!- J5==s K-aoX tiB5]
 
 
+**  ~~~~~~~~  digits-base10-perm
+\_  bits:     21.7910
+\_  length:   11  (with spaces)
+\_  examples:
+    \_        93648 15207
+    \_        28306 97415
+    \_        17328 94650
+    \_        57901 64823
+    \_        98403 27156
+    \_        71234 65980
+    \_        85402 97631
+    \_        34098 27165
+    \_        93048 65271
+    \_        34795 60218
+
+
+**  ~~~~~~~~  digits-base10-shuf:2
+\_  bits:     6.4918
+\_  length:   2  (with spaces)
+\_  examples:
+    \_        93
+    \_        28
+    \_        17
+    \_        57
+    \_        98
+    \_        71
+    \_        85
+    \_        34
+    \_        93
+    \_        34
+
+
+**  ~~~~~~~~  digits-base10-shuf:4
+\_  bits:     12.2992
+\_  length:   4  (with spaces)
+\_  examples:
+    \_        9364
+    \_        2830
+    \_        1732
+    \_        5790
+    \_        9840
+    \_        7123
+    \_        8540
+    \_        3409
+    \_        9304
+    \_        3479
+
+
+**  ~~~~~~~~  digits-base10-shuf:6
+\_  bits:     17.2060
+\_  length:   7  (with spaces)
+\_  examples:
+    \_        9364 81
+    \_        2830 69
+    \_        1732 89
+    \_        5790 16
+    \_        9840 32
+    \_        7123 46
+    \_        8540 29
+    \_        3409 82
+    \_        9304 86
+    \_        3479 56
+
+
+**  ~~~~~~~~  digits-base10-shuf:8
+\_  bits:     20.7910
+\_  length:   9  (with spaces)
+\_  examples:
+    \_        9364 8152
+    \_        2830 6974
+    \_        1732 8946
+    \_        5790 1648
+    \_        9840 3271
+    \_        7123 4659
+    \_        8540 2976
+    \_        3409 8271
+    \_        9304 8652
+    \_        3479 5602
+
+
 **  ~~~~~~~~  ascii-lower:2
 \_  bits:     9.4008
 \_  length:   2  (with spaces)
@@ -4079,6 +4159,438 @@
     \_        vd9i W|"g D%00 ef[Z )k6+ i9qF $lcQ ^h-D
     \_        GO%- f7!4 Ukkv SyIT 5>M0 U]{6 (&V1 :Bf8
     \_        f*'< o38/ {gw9 \'cJ }`@" })x> T]0O /E/|
+
+
+**  ~~~~~~~~  ascii-lower-perm
+\_  bits:     88.3819
+\_  length:   32  (with spaces)
+\_  examples:
+    \_        lbeq doxk vwfh gpmy jisc urna zt
+    \_        ipgn fouw jdqx ybav lesk htrm zc
+    \_        kfea hjti ydwn ucqm pgzs vrbo lx
+    \_        lodj bhqa upwv rinz fckx mtge ys
+    \_        hets cgdq vmzx bpoj lwar nyui fk
+    \_        mjur egyz ishw kfqv xanl topc bd
+    \_        ybrt upnd xzfq mjwi easg klco hv
+    \_        dlwx sejt cpyu nhvm azbq igok rf
+    \_        oued xmbg thin pyla qkrv szcj wf
+    \_        ymbn kgue ropf xwlc thav jidz qs
+
+
+**  ~~~~~~~~  ascii-upper-perm
+\_  bits:     88.3819
+\_  length:   32  (with spaces)
+\_  examples:
+    \_        LBEQ DOXK VWFH GPMY JISC URNA ZT
+    \_        IPGN FOUW JDQX YBAV LESK HTRM ZC
+    \_        KFEA HJTI YDWN UCQM PGZS VRBO LX
+    \_        LODJ BHQA UPWV RINZ FCKX MTGE YS
+    \_        HETS CGDQ VMZX BPOJ LWAR NYUI FK
+    \_        MJUR EGYZ ISHW KFQV XANL TOPC BD
+    \_        YBRT UPND XZFQ MJWI EASG KLCO HV
+    \_        DLWX SEJT CPYU NHVM AZBQ IGOK RF
+    \_        OUED XMBG THIN PYLA QKRV SZCJ WF
+    \_        YMBN KGUE ROPF XWLC THAV JIDZ QS
+
+
+**  ~~~~~~~~  ascii-mixed-perm
+\_  bits:     225.5810
+\_  length:   64  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM
+    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB uKxF rATs gDle YLpH PUZM cEwV
+    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj SWZI MbvN sqdu wQAE PGeF UpHc
+    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc GZWu QhOg moLA VYxS swqU jzkl
+    \_        WOKX tmre JfCS YvgP soEG pNja RHlk Mwuq xLbi DVdy zQFh cITB AZUn
+    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA OCEz aJIl qZBi cTGQ gMnd KmLs
+    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx HzNF Qpse aBDO dioP Gvfh tTIV
+    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy GoMa nYqC ljRS irQU DJwW LAHu
+    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS XTju UEcd MLxi wPht IsqY Ckge
+    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo jsBp MnTJ XyrZ KSkE YIdA bqia
+
+
+**  ~~~~~~~~  ascii-lower-shuf:4
+\_  bits:     18.4528
+\_  length:   4  (with spaces)
+\_  examples:
+    \_        lbeq
+    \_        ipgn
+    \_        kfea
+    \_        lodj
+    \_        hets
+    \_        mjur
+    \_        ybrt
+    \_        dlwx
+    \_        oued
+    \_        ymbn
+
+
+**  ~~~~~~~~  ascii-lower-shuf:8
+\_  bits:     35.8744
+\_  length:   9  (with spaces)
+\_  examples:
+    \_        lbeq doxk
+    \_        ipgn fouw
+    \_        kfea hjti
+    \_        lodj bhqa
+    \_        hets cgdq
+    \_        mjur egyz
+    \_        ybrt upnd
+    \_        dlwx sejt
+    \_        oued xmbg
+    \_        ymbn kgue
+
+
+**  ~~~~~~~~  ascii-lower-shuf:12
+\_  bits:     52.0387
+\_  length:   14  (with spaces)
+\_  examples:
+    \_        lbeq doxk vwfh
+    \_        ipgn fouw jdqx
+    \_        kfea hjti ydwn
+    \_        lodj bhqa upwv
+    \_        hets cgdq vmzx
+    \_        mjur egyz ishw
+    \_        ybrt upnd xzfq
+    \_        dlwx sejt cpyu
+    \_        oued xmbg thin
+    \_        ymbn kgue ropf
+
+
+**  ~~~~~~~~  ascii-lower-shuf:16
+\_  bits:     66.5908
+\_  length:   19  (with spaces)
+\_  examples:
+    \_        lbeq doxk vwfh gpmy
+    \_        ipgn fouw jdqx ybav
+    \_        kfea hjti ydwn ucqm
+    \_        lodj bhqa upwv rinz
+    \_        hets cgdq vmzx bpoj
+    \_        mjur egyz ishw kfqv
+    \_        ybrt upnd xzfq mjwi
+    \_        dlwx sejt cpyu nhvm
+    \_        oued xmbg thin pyla
+    \_        ymbn kgue ropf xwlc
+
+
+**  ~~~~~~~~  ascii-lower-shuf:20
+\_  bits:     78.8901
+\_  length:   24  (with spaces)
+\_  examples:
+    \_        lbeq doxk vwfh gpmy jisc
+    \_        ipgn fouw jdqx ybav lesk
+    \_        kfea hjti ydwn ucqm pgzs
+    \_        lodj bhqa upwv rinz fckx
+    \_        hets cgdq vmzx bpoj lwar
+    \_        mjur egyz ishw kfqv xanl
+    \_        ybrt upnd xzfq mjwi easg
+    \_        dlwx sejt cpyu nhvm azbq
+    \_        oued xmbg thin pyla qkrv
+    \_        ymbn kgue ropf xwlc thav
+
+
+**  ~~~~~~~~  ascii-lower-shuf:24
+\_  bits:     87.3819
+\_  length:   29  (with spaces)
+\_  examples:
+    \_        lbeq doxk vwfh gpmy jisc urna
+    \_        ipgn fouw jdqx ybav lesk htrm
+    \_        kfea hjti ydwn ucqm pgzs vrbo
+    \_        lodj bhqa upwv rinz fckx mtge
+    \_        hets cgdq vmzx bpoj lwar nyui
+    \_        mjur egyz ishw kfqv xanl topc
+    \_        ybrt upnd xzfq mjwi easg klco
+    \_        dlwx sejt cpyu nhvm azbq igok
+    \_        oued xmbg thin pyla qkrv szcj
+    \_        ymbn kgue ropf xwlc thav jidz
+
+
+**  ~~~~~~~~  ascii-upper-shuf:4
+\_  bits:     18.4528
+\_  length:   4  (with spaces)
+\_  examples:
+    \_        LBEQ
+    \_        IPGN
+    \_        KFEA
+    \_        LODJ
+    \_        HETS
+    \_        MJUR
+    \_        YBRT
+    \_        DLWX
+    \_        OUED
+    \_        YMBN
+
+
+**  ~~~~~~~~  ascii-upper-shuf:8
+\_  bits:     35.8744
+\_  length:   9  (with spaces)
+\_  examples:
+    \_        LBEQ DOXK
+    \_        IPGN FOUW
+    \_        KFEA HJTI
+    \_        LODJ BHQA
+    \_        HETS CGDQ
+    \_        MJUR EGYZ
+    \_        YBRT UPND
+    \_        DLWX SEJT
+    \_        OUED XMBG
+    \_        YMBN KGUE
+
+
+**  ~~~~~~~~  ascii-upper-shuf:12
+\_  bits:     52.0387
+\_  length:   14  (with spaces)
+\_  examples:
+    \_        LBEQ DOXK VWFH
+    \_        IPGN FOUW JDQX
+    \_        KFEA HJTI YDWN
+    \_        LODJ BHQA UPWV
+    \_        HETS CGDQ VMZX
+    \_        MJUR EGYZ ISHW
+    \_        YBRT UPND XZFQ
+    \_        DLWX SEJT CPYU
+    \_        OUED XMBG THIN
+    \_        YMBN KGUE ROPF
+
+
+**  ~~~~~~~~  ascii-upper-shuf:16
+\_  bits:     66.5908
+\_  length:   19  (with spaces)
+\_  examples:
+    \_        LBEQ DOXK VWFH GPMY
+    \_        IPGN FOUW JDQX YBAV
+    \_        KFEA HJTI YDWN UCQM
+    \_        LODJ BHQA UPWV RINZ
+    \_        HETS CGDQ VMZX BPOJ
+    \_        MJUR EGYZ ISHW KFQV
+    \_        YBRT UPND XZFQ MJWI
+    \_        DLWX SEJT CPYU NHVM
+    \_        OUED XMBG THIN PYLA
+    \_        YMBN KGUE ROPF XWLC
+
+
+**  ~~~~~~~~  ascii-upper-shuf:20
+\_  bits:     78.8901
+\_  length:   24  (with spaces)
+\_  examples:
+    \_        LBEQ DOXK VWFH GPMY JISC
+    \_        IPGN FOUW JDQX YBAV LESK
+    \_        KFEA HJTI YDWN UCQM PGZS
+    \_        LODJ BHQA UPWV RINZ FCKX
+    \_        HETS CGDQ VMZX BPOJ LWAR
+    \_        MJUR EGYZ ISHW KFQV XANL
+    \_        YBRT UPND XZFQ MJWI EASG
+    \_        DLWX SEJT CPYU NHVM AZBQ
+    \_        OUED XMBG THIN PYLA QKRV
+    \_        YMBN KGUE ROPF XWLC THAV
+
+
+**  ~~~~~~~~  ascii-upper-shuf:24
+\_  bits:     87.3819
+\_  length:   29  (with spaces)
+\_  examples:
+    \_        LBEQ DOXK VWFH GPMY JISC URNA
+    \_        IPGN FOUW JDQX YBAV LESK HTRM
+    \_        KFEA HJTI YDWN UCQM PGZS VRBO
+    \_        LODJ BHQA UPWV RINZ FCKX MTGE
+    \_        HETS CGDQ VMZX BPOJ LWAR NYUI
+    \_        MJUR EGYZ ISHW KFQV XANL TOPC
+    \_        YBRT UPND XZFQ MJWI EASG KLCO
+    \_        DLWX SEJT CPYU NHVM AZBQ IGOK
+    \_        OUED XMBG THIN PYLA QKRV SZCJ
+    \_        YMBN KGUE ROPF XWLC THAV JIDZ
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:4
+\_  bits:     22.6314
+\_  length:   4  (with spaces)
+\_  examples:
+    \_        ipSn
+    \_        jfhX
+    \_        JkBx
+    \_        NKep
+    \_        WOKX
+    \_        FfXx
+    \_        SXEj
+    \_        KbFh
+    \_        arvD
+    \_        LePg
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:8
+\_  bits:     44.7863
+\_  length:   9  (with spaces)
+\_  examples:
+    \_        ipSn fozI
+    \_        jfhX QmWG
+    \_        JkBx lOtD
+    \_        NKep bfRF
+    \_        WOKX tmre
+    \_        FfXx bjyS
+    \_        SXEj mJyw
+    \_        KbFh BOfg
+    \_        arvD QnWz
+    \_        LePg NFGx
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:12
+\_  bits:     66.4219
+\_  length:   14  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV
+    \_        jfhX QmWG kqtd
+    \_        JkBx lOtD fiym
+    \_        NKep bfRF JBMT
+    \_        WOKX tmre JfCS
+    \_        FfXx bjyS DRtW
+    \_        SXEj mJyw RLkZ
+    \_        KbFh BOfg XIvc
+    \_        arvD QnWz ZmVH
+    \_        LePg NFGx HvmW
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:16
+\_  bits:     87.4866
+\_  length:   19  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL
+    \_        jfhX QmWG kqtd baoO
+    \_        JkBx lOtD fiym VgnL
+    \_        NKep bfRF JBMT dyDt
+    \_        WOKX tmre JfCS YvgP
+    \_        FfXx bjyS DRtW hUkv
+    \_        SXEj mJyw RLkZ MAWl
+    \_        KbFh BOfg XIvc tdmP
+    \_        arvD QnWz ZmVH NBol
+    \_        LePg NFGx HvmW cQlV
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:20
+\_  bits:     107.9177
+\_  length:   24  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL leJT
+    \_        jfhX QmWG kqtd baoO CyIn
+    \_        JkBx lOtD fiym VgnL ohTK
+    \_        NKep bfRF JBMT dyDt rvnC
+    \_        WOKX tmre JfCS YvgP soEG
+    \_        FfXx bjyS DRtW hUkv pwYr
+    \_        SXEj mJyw RLkZ MAWl cngC
+    \_        KbFh BOfg XIvc tdmP ZVEs
+    \_        arvD QnWz ZmVH NBol AbyG
+    \_        LePg NFGx HvmW cQlV RUhC
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:24
+\_  bits:     127.6368
+\_  length:   29  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL leJT ZtBG
+    \_        jfhX QmWG kqtd baoO CyIn zJRv
+    \_        JkBx lOtD fiym VgnL ohTK CRaz
+    \_        NKep bfRF JBMT dyDt rvnC IEai
+    \_        WOKX tmre JfCS YvgP soEG pNja
+    \_        FfXx bjyS DRtW hUkv pwYr PVHu
+    \_        SXEj mJyw RLkZ MAWl cngC qbrK
+    \_        KbFh BOfg XIvc tdmP ZVEs epzk
+    \_        arvD QnWz ZmVH NBol AbyG RpfO
+    \_        LePg NFGx HvmW cQlV RUhC Dfwu
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:28
+\_  bits:     146.5433
+\_  length:   34  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO
+    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB
+    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj
+    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc
+    \_        WOKX tmre JfCS YvgP soEG pNja RHlk
+    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA
+    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx
+    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy
+    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS
+    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:32
+\_  bits:     164.5036
+\_  length:   39  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF
+    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB uKxF
+    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj SWZI
+    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc GZWu
+    \_        WOKX tmre JfCS YvgP soEG pNja RHlk Mwuq
+    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA OCEz
+    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx HzNF
+    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy GoMa
+    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS XTju
+    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo jsBp
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:36
+\_  bits:     181.3308
+\_  length:   44  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY
+    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB uKxF rATs
+    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj SWZI MbvN
+    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc GZWu QhOg
+    \_        WOKX tmre JfCS YvgP soEG pNja RHlk Mwuq xLbi
+    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA OCEz aJIl
+    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx HzNF Qpse
+    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy GoMa nYqC
+    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS XTju UEcd
+    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo jsBp MnTJ
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:40
+\_  bits:     196.7455
+\_  length:   49  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs
+    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB uKxF rATs gDle
+    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj SWZI MbvN sqdu
+    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc GZWu QhOg moLA
+    \_        WOKX tmre JfCS YvgP soEG pNja RHlk Mwuq xLbi DVdy
+    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA OCEz aJIl qZBi
+    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx HzNF Qpse aBDO
+    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy GoMa nYqC ljRS
+    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS XTju UEcd MLxi
+    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo jsBp MnTJ XyrZ
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:44
+\_  bits:     210.2817
+\_  length:   54  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg
+    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB uKxF rATs gDle YLpH
+    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj SWZI MbvN sqdu wQAE
+    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc GZWu QhOg moLA VYxS
+    \_        WOKX tmre JfCS YvgP soEG pNja RHlk Mwuq xLbi DVdy zQFh
+    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA OCEz aJIl qZBi cTGQ
+    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx HzNF Qpse aBDO dioP
+    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy GoMa nYqC ljRS irQU
+    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS XTju UEcd MLxi wPht
+    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo jsBp MnTJ XyrZ KSkE
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:48
+\_  bits:     220.9960
+\_  length:   59  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm
+    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB uKxF rATs gDle YLpH PUZM
+    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj SWZI MbvN sqdu wQAE PGeF
+    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc GZWu QhOg moLA VYxS swqU
+    \_        WOKX tmre JfCS YvgP soEG pNja RHlk Mwuq xLbi DVdy zQFh cITB
+    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA OCEz aJIl qZBi cTGQ gMnd
+    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx HzNF Qpse aBDO dioP Gvfh
+    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy GoMa nYqC ljRS irQU DJwW
+    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS XTju UEcd MLxi wPht IsqY
+    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo jsBp MnTJ XyrZ KSkE YIdA
 
 
 **  ~~~~~~~~  cva-lower:1
@@ -7061,16 +7573,16 @@
 \_  bits:     73.0631
 \_  length:   20  (with spaces)
 \_  examples:
-    \_        qegvu1-dymxen-wagZyb
+    \_        gutzAz-mlxgen-2zybco
     \_        tyfzev-Cerqeg-6bajxl
-    \_        Vuxtyp-hiwfl1-hihwyn
-    \_        cyTguf-2pldry-qlgkoc
-    \_        darbak-jysroW-tarpy6
-    \_        syswon-namnOm-dojqo0
-    \_        batxy1-fupzym-xavsuH
-    \_        Niznem-gegzi4-peqryk
-    \_        pogsoH-kuchij-mospu5
-    \_        0zehny-jegkam-wexpoZ
+    \_        hiwfl1-jiwwlP-cytguf
+    \_        pldryq-koccu1-bobbiG
+    \_        1rowbi-tarpyr-Syswon
+    \_        mlmdoj-0sabte-fufPyx
+    \_        xavsuH-qanzan-magge5
+    \_        2qozke-fLpreg-sohkuc
+    \_        4slpnu-tezgoh-Nyjgyk
+    \_        xupZat-kaffu7-qavgat
 
 
 **  ~~~~~~~~  apple-lower

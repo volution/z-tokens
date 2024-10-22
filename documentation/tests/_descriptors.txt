@@ -64,6 +64,8 @@ patterns / filter / label / dictionary :: patterns --all --label dictionary --ra
 patterns / filter / label / encoding :: patterns --all --label encoding --random-testing
 patterns / filter / label / networking :: patterns --all --label networking --random-testing
 patterns / filter / label / tokens :: patterns --all --label tokens --random-testing
+patterns / filter / label / permutations :: patterns --all --label permutation --random-testing
+patterns / filter / label / shuffle :: patterns --all --label shuffle --random-testing
 
 patterns / filter / usage / cryptography :: patterns --all --for-cryptography --random-testing
 patterns / filter / usage / cryptography / shortest :: patterns --all --for-cryptography --shortest --random-testing

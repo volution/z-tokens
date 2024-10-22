@@ -134,6 +134,22 @@
 ::  ascii-any:28            :  183.5 b :   34 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
 ::  ascii-any:30            :  196.6 b :   37 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[
 ::  ascii-any:32            :  209.7 b :   39 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
+::  ascii-lower-perm        :   88.3 b :   32 c ::    lbeq doxk vwfh gpmy jisc urna zt
+::  ascii-upper-perm        :   88.3 b :   32 c ::    LBEQ DOXK VWFH GPMY JISC URNA ZT
+::  ascii-mixed-perm        :  225.5 b :   64 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM
+::  ascii-lower-shuf:20     :   78.8 b :   24 c ::    lbeq doxk vwfh gpmy jisc
+::  ascii-lower-shuf:24     :   87.3 b :   29 c ::    lbeq doxk vwfh gpmy jisc urna
+::  ascii-upper-shuf:20     :   78.8 b :   24 c ::    LBEQ DOXK VWFH GPMY JISC
+::  ascii-upper-shuf:24     :   87.3 b :   29 c ::    LBEQ DOXK VWFH GPMY JISC URNA
+::  ascii-mixed-shuf:16     :   87.4 b :   19 c ::    ipSn fozI jdyV xXEL
+::  ascii-mixed-shuf:20     :  107.9 b :   24 c ::    ipSn fozI jdyV xXEL leJT
+::  ascii-mixed-shuf:24     :  127.6 b :   29 c ::    ipSn fozI jdyV xXEL leJT ZtBG
+::  ascii-mixed-shuf:28     :  146.5 b :   34 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO
+::  ascii-mixed-shuf:32     :  164.5 b :   39 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF
+::  ascii-mixed-shuf:36     :  181.3 b :   44 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY
+::  ascii-mixed-shuf:40     :  196.7 b :   49 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs
+::  ascii-mixed-shuf:44     :  210.2 b :   54 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg
+::  ascii-mixed-shuf:48     :  220.9 b :   59 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm
 ::  cva-lower:6             :   80.5 b :   29 c ::    taqe veza zaye fugi rixu cezu
 ::  cva-lower:7             :   93.9 b :   34 c ::    taqe veza zaye fugi rixu cezu saco
 ::  cva-lower:8             :  107.4 b :   39 c ::    taqe veza zaye fugi rixu cezu saco voxa

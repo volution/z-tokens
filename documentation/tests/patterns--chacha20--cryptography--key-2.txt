@@ -14,6 +14,8 @@
 ::  ascii-mixed:24          :  136.8 b :   29 c ::    OSDn CxpC CWuJ VCMl pXMx CRbA
 ::  ascii-symbols:26        :  130  =b :   32 c ::    `=)/ *_}= |<\( <}/< ;{%@ /{;~ `$
 ::  ascii-any:20            :  131.0 b :   24 c ::    Vl8< UTny WFaT 6F=S ygT#
+::  ascii-mixed-perm        :  225.5 b :   64 c ::    aFEg fdbp UuoX Plhk DMjJ cIwA LxVG reWQ sTYt HivB qSZK yznm NCRO
+::  ascii-mixed-shuf:28     :  146.5 b :   34 c ::    aFEg fdbp UuoX Plhk DMjJ cIwA LxVG
 ::  cva-lower:10            :  134.2 b :   49 c ::    vuhi juqo yelu jipu bixo sixi kudu qino howo tohu
 ::  cva-upper:10            :  134.2 b :   49 c ::    VUHI JUQO YELU JIPU BIXO SIXI KUDU QINO HOWO TOHU
 ::  cva-mixed:8             :  139.4 b :   39 c ::    POnA qARU FUmu qAXI SaBe KuVo BoZA SeVA

@@ -2101,6 +2101,66 @@
 \_  example:  .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I
 
 
+**  ~~~~~~~~  digits-base10-perm
+\_  bits:     21.7910
+\_  length:   11  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -106.21  bits of margin
+    \_  authentication       !! NO !!      with    -10.21  bits of margin
+    \_  archival storage     !! NO !!      with    -78.50  bits of margin
+    \_  long term storage    !! NO !!      with    -55.05  bits of margin
+    \_  short term storage   !! NO !!      with    -48.20  bits of margin
+\_  example:  93648 15207
+
+
+**  ~~~~~~~~  digits-base10-shuf:2
+\_  bits:     6.4918
+\_  length:   2  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -121.51  bits of margin
+    \_  authentication       !! NO !!      with    -25.51  bits of margin
+    \_  archival storage     !! NO !!      with    -93.80  bits of margin
+    \_  long term storage    !! NO !!      with    -70.35  bits of margin
+    \_  short term storage   !! NO !!      with    -63.50  bits of margin
+\_  example:  93
+
+
+**  ~~~~~~~~  digits-base10-shuf:4
+\_  bits:     12.2992
+\_  length:   4  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -115.70  bits of margin
+    \_  authentication       !! NO !!      with    -19.70  bits of margin
+    \_  archival storage     !! NO !!      with    -88.00  bits of margin
+    \_  long term storage    !! NO !!      with    -64.54  bits of margin
+    \_  short term storage   !! NO !!      with    -57.70  bits of margin
+\_  example:  9364
+
+
+**  ~~~~~~~~  digits-base10-shuf:6
+\_  bits:     17.2060
+\_  length:   7  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -110.79  bits of margin
+    \_  authentication       !! NO !!      with    -14.79  bits of margin
+    \_  archival storage     !! NO !!      with    -83.09  bits of margin
+    \_  long term storage    !! NO !!      with    -59.63  bits of margin
+    \_  short term storage   !! NO !!      with    -52.79  bits of margin
+\_  example:  9364 81
+
+
+**  ~~~~~~~~  digits-base10-shuf:8
+\_  bits:     20.7910
+\_  length:   9  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -107.21  bits of margin
+    \_  authentication       !! NO !!      with    -11.21  bits of margin
+    \_  archival storage     !! NO !!      with    -79.50  bits of margin
+    \_  long term storage    !! NO !!      with    -56.05  bits of margin
+    \_  short term storage   !! NO !!      with    -49.20  bits of margin
+\_  example:  9364 8152
+
+
 **  ~~~~~~~~  ascii-lower:2
 \_  bits:     9.4008
 \_  length:   2  (with spaces)
@@ -3059,6 +3119,330 @@
     \_  long term storage       OK         with   +132.91  bits of margin
     \_  short term storage      OK         with   +139.75  bits of margin
 \_  example:  ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
+
+
+**  ~~~~~~~~  ascii-lower-perm
+\_  bits:     88.3819
+\_  length:   32  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -39.62  bits of margin
+    \_  authentication          OK         with    +56.38  bits of margin
+    \_  archival storage     !! NO !!      with    -11.91  bits of margin
+    \_  long term storage       OK         with    +11.54  bits of margin
+    \_  short term storage      OK         with    +18.39  bits of margin
+\_  example:  lbeq doxk vwfh gpmy jisc urna zt
+
+
+**  ~~~~~~~~  ascii-upper-perm
+\_  bits:     88.3819
+\_  length:   32  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -39.62  bits of margin
+    \_  authentication          OK         with    +56.38  bits of margin
+    \_  archival storage     !! NO !!      with    -11.91  bits of margin
+    \_  long term storage       OK         with    +11.54  bits of margin
+    \_  short term storage      OK         with    +18.39  bits of margin
+\_  example:  LBEQ DOXK VWFH GPMY JISC URNA ZT
+
+
+**  ~~~~~~~~  ascii-mixed-perm
+\_  bits:     225.5810
+\_  length:   64  (with spaces)
+\_  usable for:
+    \_  cryptography            OK         with    +97.58  bits of margin
+    \_  authentication          OK         with   +193.58  bits of margin
+    \_  archival storage        OK         with   +125.29  bits of margin
+    \_  long term storage       OK         with   +148.74  bits of margin
+    \_  short term storage      OK         with   +155.59  bits of margin
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM
+
+
+**  ~~~~~~~~  ascii-lower-shuf:4
+\_  bits:     18.4528
+\_  length:   4  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -109.55  bits of margin
+    \_  authentication       !! NO !!      with    -13.55  bits of margin
+    \_  archival storage     !! NO !!      with    -81.84  bits of margin
+    \_  long term storage    !! NO !!      with    -58.39  bits of margin
+    \_  short term storage   !! NO !!      with    -51.54  bits of margin
+\_  example:  lbeq
+
+
+**  ~~~~~~~~  ascii-lower-shuf:8
+\_  bits:     35.8744
+\_  length:   9  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -92.13  bits of margin
+    \_  authentication          OK         with     +3.87  bits of margin
+    \_  archival storage     !! NO !!      with    -64.42  bits of margin
+    \_  long term storage    !! NO !!      with    -40.96  bits of margin
+    \_  short term storage   !! NO !!      with    -34.12  bits of margin
+\_  example:  lbeq doxk
+
+
+**  ~~~~~~~~  ascii-lower-shuf:12
+\_  bits:     52.0387
+\_  length:   14  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -75.96  bits of margin
+    \_  authentication          OK         with    +20.04  bits of margin
+    \_  archival storage     !! NO !!      with    -48.26  bits of margin
+    \_  long term storage    !! NO !!      with    -24.80  bits of margin
+    \_  short term storage   !! NO !!      with    -17.96  bits of margin
+\_  example:  lbeq doxk vwfh
+
+
+**  ~~~~~~~~  ascii-lower-shuf:16
+\_  bits:     66.5908
+\_  length:   19  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -61.41  bits of margin
+    \_  authentication          OK         with    +34.59  bits of margin
+    \_  archival storage     !! NO !!      with    -33.70  bits of margin
+    \_  long term storage    !! NO !!      with    -10.25  bits of margin
+    \_  short term storage   !! NO !!      with     -3.41  bits of margin
+\_  example:  lbeq doxk vwfh gpmy
+
+
+**  ~~~~~~~~  ascii-lower-shuf:20
+\_  bits:     78.8901
+\_  length:   24  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -49.11  bits of margin
+    \_  authentication          OK         with    +46.89  bits of margin
+    \_  archival storage     !! NO !!      with    -21.40  bits of margin
+    \_  long term storage       OK         with     +2.05  bits of margin
+    \_  short term storage      OK         with     +8.89  bits of margin
+\_  example:  lbeq doxk vwfh gpmy jisc
+
+
+**  ~~~~~~~~  ascii-lower-shuf:24
+\_  bits:     87.3819
+\_  length:   29  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -40.62  bits of margin
+    \_  authentication          OK         with    +55.38  bits of margin
+    \_  archival storage     !! NO !!      with    -12.91  bits of margin
+    \_  long term storage       OK         with    +10.54  bits of margin
+    \_  short term storage      OK         with    +17.39  bits of margin
+\_  example:  lbeq doxk vwfh gpmy jisc urna
+
+
+**  ~~~~~~~~  ascii-upper-shuf:4
+\_  bits:     18.4528
+\_  length:   4  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -109.55  bits of margin
+    \_  authentication       !! NO !!      with    -13.55  bits of margin
+    \_  archival storage     !! NO !!      with    -81.84  bits of margin
+    \_  long term storage    !! NO !!      with    -58.39  bits of margin
+    \_  short term storage   !! NO !!      with    -51.54  bits of margin
+\_  example:  LBEQ
+
+
+**  ~~~~~~~~  ascii-upper-shuf:8
+\_  bits:     35.8744
+\_  length:   9  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -92.13  bits of margin
+    \_  authentication          OK         with     +3.87  bits of margin
+    \_  archival storage     !! NO !!      with    -64.42  bits of margin
+    \_  long term storage    !! NO !!      with    -40.96  bits of margin
+    \_  short term storage   !! NO !!      with    -34.12  bits of margin
+\_  example:  LBEQ DOXK
+
+
+**  ~~~~~~~~  ascii-upper-shuf:12
+\_  bits:     52.0387
+\_  length:   14  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -75.96  bits of margin
+    \_  authentication          OK         with    +20.04  bits of margin
+    \_  archival storage     !! NO !!      with    -48.26  bits of margin
+    \_  long term storage    !! NO !!      with    -24.80  bits of margin
+    \_  short term storage   !! NO !!      with    -17.96  bits of margin
+\_  example:  LBEQ DOXK VWFH
+
+
+**  ~~~~~~~~  ascii-upper-shuf:16
+\_  bits:     66.5908
+\_  length:   19  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -61.41  bits of margin
+    \_  authentication          OK         with    +34.59  bits of margin
+    \_  archival storage     !! NO !!      with    -33.70  bits of margin
+    \_  long term storage    !! NO !!      with    -10.25  bits of margin
+    \_  short term storage   !! NO !!      with     -3.41  bits of margin
+\_  example:  LBEQ DOXK VWFH GPMY
+
+
+**  ~~~~~~~~  ascii-upper-shuf:20
+\_  bits:     78.8901
+\_  length:   24  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -49.11  bits of margin
+    \_  authentication          OK         with    +46.89  bits of margin
+    \_  archival storage     !! NO !!      with    -21.40  bits of margin
+    \_  long term storage       OK         with     +2.05  bits of margin
+    \_  short term storage      OK         with     +8.89  bits of margin
+\_  example:  LBEQ DOXK VWFH GPMY JISC
+
+
+**  ~~~~~~~~  ascii-upper-shuf:24
+\_  bits:     87.3819
+\_  length:   29  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -40.62  bits of margin
+    \_  authentication          OK         with    +55.38  bits of margin
+    \_  archival storage     !! NO !!      with    -12.91  bits of margin
+    \_  long term storage       OK         with    +10.54  bits of margin
+    \_  short term storage      OK         with    +17.39  bits of margin
+\_  example:  LBEQ DOXK VWFH GPMY JISC URNA
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:4
+\_  bits:     22.6314
+\_  length:   4  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with   -105.37  bits of margin
+    \_  authentication       !! NO !!      with     -9.37  bits of margin
+    \_  archival storage     !! NO !!      with    -77.66  bits of margin
+    \_  long term storage    !! NO !!      with    -54.21  bits of margin
+    \_  short term storage   !! NO !!      with    -47.36  bits of margin
+\_  example:  ipSn
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:8
+\_  bits:     44.7863
+\_  length:   9  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -83.21  bits of margin
+    \_  authentication          OK         with    +12.79  bits of margin
+    \_  archival storage     !! NO !!      with    -55.51  bits of margin
+    \_  long term storage    !! NO !!      with    -32.05  bits of margin
+    \_  short term storage   !! NO !!      with    -25.21  bits of margin
+\_  example:  ipSn fozI
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:12
+\_  bits:     66.4219
+\_  length:   14  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -61.58  bits of margin
+    \_  authentication          OK         with    +34.42  bits of margin
+    \_  archival storage     !! NO !!      with    -33.87  bits of margin
+    \_  long term storage    !! NO !!      with    -10.42  bits of margin
+    \_  short term storage   !! NO !!      with     -3.57  bits of margin
+\_  example:  ipSn fozI jdyV
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:16
+\_  bits:     87.4866
+\_  length:   19  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -40.51  bits of margin
+    \_  authentication          OK         with    +55.49  bits of margin
+    \_  archival storage     !! NO !!      with    -12.81  bits of margin
+    \_  long term storage       OK         with    +10.65  bits of margin
+    \_  short term storage      OK         with    +17.49  bits of margin
+\_  example:  ipSn fozI jdyV xXEL
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:20
+\_  bits:     107.9177
+\_  length:   24  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with    -20.08  bits of margin
+    \_  authentication          OK         with    +75.92  bits of margin
+    \_  archival storage        OK         with     +7.62  bits of margin
+    \_  long term storage       OK         with    +31.08  bits of margin
+    \_  short term storage      OK         with    +37.92  bits of margin
+\_  example:  ipSn fozI jdyV xXEL leJT
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:24
+\_  bits:     127.6368
+\_  length:   29  (with spaces)
+\_  usable for:
+    \_  cryptography         !! NO !!      with     -0.36  bits of margin
+    \_  authentication          OK         with    +95.64  bits of margin
+    \_  archival storage        OK         with    +27.34  bits of margin
+    \_  long term storage       OK         with    +50.80  bits of margin
+    \_  short term storage      OK         with    +57.64  bits of margin
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:28
+\_  bits:     146.5433
+\_  length:   34  (with spaces)
+\_  usable for:
+    \_  cryptography            OK         with    +18.54  bits of margin
+    \_  authentication          OK         with   +114.54  bits of margin
+    \_  archival storage        OK         with    +46.25  bits of margin
+    \_  long term storage       OK         with    +69.70  bits of margin
+    \_  short term storage      OK         with    +76.55  bits of margin
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:32
+\_  bits:     164.5036
+\_  length:   39  (with spaces)
+\_  usable for:
+    \_  cryptography            OK         with    +36.50  bits of margin
+    \_  authentication          OK         with   +132.50  bits of margin
+    \_  archival storage        OK         with    +64.21  bits of margin
+    \_  long term storage       OK         with    +87.66  bits of margin
+    \_  short term storage      OK         with    +94.51  bits of margin
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:36
+\_  bits:     181.3308
+\_  length:   44  (with spaces)
+\_  usable for:
+    \_  cryptography            OK         with    +53.33  bits of margin
+    \_  authentication          OK         with   +149.33  bits of margin
+    \_  archival storage        OK         with    +81.04  bits of margin
+    \_  long term storage       OK         with   +104.49  bits of margin
+    \_  short term storage      OK         with   +111.33  bits of margin
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:40
+\_  bits:     196.7455
+\_  length:   49  (with spaces)
+\_  usable for:
+    \_  cryptography            OK         with    +68.75  bits of margin
+    \_  authentication          OK         with   +164.75  bits of margin
+    \_  archival storage        OK         with    +96.45  bits of margin
+    \_  long term storage       OK         with   +119.91  bits of margin
+    \_  short term storage      OK         with   +126.75  bits of margin
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:44
+\_  bits:     210.2817
+\_  length:   54  (with spaces)
+\_  usable for:
+    \_  cryptography            OK         with    +82.28  bits of margin
+    \_  authentication          OK         with   +178.28  bits of margin
+    \_  archival storage        OK         with   +109.99  bits of margin
+    \_  long term storage       OK         with   +133.44  bits of margin
+    \_  short term storage      OK         with   +140.29  bits of margin
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:48
+\_  bits:     220.9960
+\_  length:   59  (with spaces)
+\_  usable for:
+    \_  cryptography            OK         with    +93.00  bits of margin
+    \_  authentication          OK         with   +189.00  bits of margin
+    \_  archival storage        OK         with   +120.70  bits of margin
+    \_  long term storage       OK         with   +144.16  bits of margin
+    \_  short term storage      OK         with   +151.00  bits of margin
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm
 
 
 **  ~~~~~~~~  cva-lower:1
@@ -5302,7 +5686,7 @@
     \_  archival storage     !! NO !!      with    -27.23  bits of margin
     \_  long term storage    !! NO !!      with     -3.78  bits of margin
     \_  short term storage      OK         with     +3.07  bits of margin
-\_  example:  qegvu1-dymxen-wagZyb
+\_  example:  gutzAz-mlxgen-2zybco
 
 
 **  ~~~~~~~~  apple-lower

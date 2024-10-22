@@ -1,0 +1,6 @@
+>>  z-tokens patterns --all --label permutation --random-testing
+
+::  digits-base10-perm      :   21.7 b :   11 c ::    93648 15207
+::  ascii-lower-perm        :   88.3 b :   32 c ::    lbeq doxk vwfh gpmy jisc urna zt
+::  ascii-upper-perm        :   88.3 b :   32 c ::    LBEQ DOXK VWFH GPMY JISC URNA ZT
+::  ascii-mixed-perm        :  225.5 b :   64 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM

@@ -14,6 +14,8 @@
 ::  ascii-mixed:24          :  136.8 b :   29 c ::    ewXL kXwR Ziwb dzdh oQEc wmDH
 ::  ascii-symbols:26        :  130  =b :   32 c ::    }\'} '&#% _==( \=\" >|`~ .?{' ~(
 ::  ascii-any:20            :  131.0 b :   24 c ::    (Ie3 z^o~ 0IX# g&N' mX%^
+::  ascii-mixed-perm        :  225.5 b :   64 c ::    nOxr bZPB CadX mKlg ywsI uoAz MpHq DGLQ WNTY EkfU cFhR tiSj JVve
+::  ascii-mixed-shuf:28     :  146.5 b :   34 c ::    nOxr bZPB CadX mKlg ywsI uoAz MpHq
 ::  cva-lower:10            :  134.2 b :   49 c ::    cito wiqa cice waqo koto qugo zozi koxi woju jozu
 ::  cva-upper:10            :  134.2 b :   49 c ::    CITO WIQA CICE WAQO KOTO QUGO ZOZI KOXI WOJU JOZU
 ::  cva-mixed:8             :  139.4 b :   39 c ::    fuMU JuSu Naze pOJi FEsU MIFI cEWi HUJO

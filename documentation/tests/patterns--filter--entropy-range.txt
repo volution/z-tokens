@@ -86,6 +86,14 @@
 ::  ascii-any:14            :   91.7 b :   17 c ::    ei#9 i5kg |~.+ {%
 ::  ascii-any:16            :  104.8 b :   19 c ::    ei#9 i5kg |~.+ {%IL
 ::  ascii-any:18            :  117.9 b :   22 c ::    ei#9 i5kg |~.+ {%IL 6U
+::  ascii-lower-perm        :   88.3 b :   32 c ::    lbeq doxk vwfh gpmy jisc urna zt
+::  ascii-lower-shuf:16     :   66.5 b :   19 c ::    lbeq doxk vwfh gpmy
+::  ascii-lower-shuf:20     :   78.8 b :   24 c ::    lbeq doxk vwfh gpmy jisc
+::  ascii-lower-shuf:24     :   87.3 b :   29 c ::    lbeq doxk vwfh gpmy jisc urna
+::  ascii-mixed-shuf:12     :   66.4 b :   14 c ::    ipSn fozI jdyV
+::  ascii-mixed-shuf:16     :   87.4 b :   19 c ::    ipSn fozI jdyV xXEL
+::  ascii-mixed-shuf:20     :  107.9 b :   24 c ::    ipSn fozI jdyV xXEL leJT
+::  ascii-mixed-shuf:24     :  127.6 b :   29 c ::    ipSn fozI jdyV xXEL leJT ZtBG
 ::  cva-lower:5             :   67.1 b :   24 c ::    taqe veza zaye fugi rixu
 ::  cva-lower:6             :   80.5 b :   29 c ::    taqe veza zaye fugi rixu cezu
 ::  cva-lower:7             :   93.9 b :   34 c ::    taqe veza zaye fugi rixu cezu saco
@@ -134,7 +142,7 @@
 ::  cvs-plus-c:7            :   90.5 b :   34 c ::    sane seda zalu dufi pivu ceba CA5]
 ::  cvs-plus-c:8            :  103.1 b :   39 c ::    sane seda zalu dufi pivu ceba camu CI2@
 ::  cvs-plus-c:9            :  115.7 b :   44 c ::    sane seda zalu dufi pivu ceba camu cige PA6+
-::  apple-original          :   73.0 b :   20 c ::    qegvu1-dymxen-wagZyb
+::  apple-original          :   73.0 b :   20 c ::    gutzAz-mlxgen-2zybco
 ::  apple-lower             :   67.8 b :   20 c ::    bogvuz-dymxen-rlwcez
 ::  apple-variant-a         :   66.8 b :   20 c ::    Bogvu1-dymxen-rlwcez
 ::  proquint-lower:4        :   64  =b :   23 c ::    sanis gufaz lofug mudad

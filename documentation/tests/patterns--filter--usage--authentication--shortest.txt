@@ -17,6 +17,12 @@
 ::  ascii-mixed:6           :   34.2 b :    7 c ::    MObE nO
 ::  ascii-symbols:8         :   40  =b :    9 c ::    \)^~ %(;?
 ::  ascii-any:6             :   39.3 b :    7 c ::    ei#9 i5
+::  ascii-lower-perm        :   88.3 b :   32 c ::    lbeq doxk vwfh gpmy jisc urna zt
+::  ascii-upper-perm        :   88.3 b :   32 c ::    LBEQ DOXK VWFH GPMY JISC URNA ZT
+::  ascii-mixed-perm        :  225.5 b :   64 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM
+::  ascii-lower-shuf:8      :   35.8 b :    9 c ::    lbeq doxk
+::  ascii-upper-shuf:8      :   35.8 b :    9 c ::    LBEQ DOXK
+::  ascii-mixed-shuf:8      :   44.7 b :    9 c ::    ipSn fozI
 ::  cva-lower:3             :   40.2 b :   14 c ::    taqe veza zaye
 ::  cva-upper:3             :   40.2 b :   14 c ::    TAQE VEZA ZAYE
 ::  cva-mixed:2             :   34.8 b :    9 c ::    PaFi PiQI
@@ -29,7 +35,7 @@
 ::  cvs-plus-a:3            :   38.5 b :   14 c ::    sane seda 0449
 ::  cvs-plus-b:3            :   38.2 b :   14 c ::    sane seda ZA44
 ::  cvs-plus-c:3            :   39.9 b :   14 c ::    sane seda ZA4(
-::  apple-original          :   73.0 b :   20 c ::    qegvu1-dymxen-wagZyb
+::  apple-original          :   73.0 b :   20 c ::    gutzAz-mlxgen-2zybco
 ::  apple-lower             :   67.8 b :   20 c ::    bogvuz-dymxen-rlwcez
 ::  apple-variant-a         :   66.8 b :   20 c ::    Bogvu1-dymxen-rlwcez
 ::  proquint-lower:2        :   32  =b :   11 c ::    sanis gufaz

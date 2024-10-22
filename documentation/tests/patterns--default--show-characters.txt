@@ -2451,6 +2451,76 @@
 \_  example:  .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I
 
 
+**  ~~~~~~~~  digits-base10-perm
+\_  bits:     21.7910
+\_  length:   11  (with spaces)
+\_  length:   10  (without spaces)
+\_  characters:
+    \_  letters:  0
+    \_  l. upper: 0
+    \_  l. lower: 0
+    \_  digits:   10
+    \_  symbols:  0
+    \_  no space: 10
+\_  example:  93648 15207
+
+
+**  ~~~~~~~~  digits-base10-shuf:2
+\_  bits:     6.4918
+\_  length:   2  (with spaces)
+\_  length:   2  (without spaces)
+\_  characters:
+    \_  letters:  0
+    \_  l. upper: 0
+    \_  l. lower: 0
+    \_  digits:   2
+    \_  symbols:  0
+    \_  no space: 2
+\_  example:  93
+
+
+**  ~~~~~~~~  digits-base10-shuf:4
+\_  bits:     12.2992
+\_  length:   4  (with spaces)
+\_  length:   4  (without spaces)
+\_  characters:
+    \_  letters:  0
+    \_  l. upper: 0
+    \_  l. lower: 0
+    \_  digits:   4
+    \_  symbols:  0
+    \_  no space: 4
+\_  example:  9364
+
+
+**  ~~~~~~~~  digits-base10-shuf:6
+\_  bits:     17.2060
+\_  length:   7  (with spaces)
+\_  length:   6  (without spaces)
+\_  characters:
+    \_  letters:  0
+    \_  l. upper: 0
+    \_  l. lower: 0
+    \_  digits:   6
+    \_  symbols:  0
+    \_  no space: 6
+\_  example:  9364 81
+
+
+**  ~~~~~~~~  digits-base10-shuf:8
+\_  bits:     20.7910
+\_  length:   9  (with spaces)
+\_  length:   8  (without spaces)
+\_  characters:
+    \_  letters:  0
+    \_  l. upper: 0
+    \_  l. lower: 0
+    \_  digits:   8
+    \_  symbols:  0
+    \_  no space: 8
+\_  example:  9364 8152
+
+
 **  ~~~~~~~~  ascii-lower:2
 \_  bits:     9.4008
 \_  length:   2  (with spaces)
@@ -3569,6 +3639,384 @@
     \_  symbols:  13
     \_  no space: 32
 \_  example:  ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
+
+
+**  ~~~~~~~~  ascii-lower-perm
+\_  bits:     88.3819
+\_  length:   32  (with spaces)
+\_  length:   26  (without spaces)
+\_  characters:
+    \_  letters:  26
+    \_  l. upper: 0
+    \_  l. lower: 26
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 26
+\_  example:  lbeq doxk vwfh gpmy jisc urna zt
+
+
+**  ~~~~~~~~  ascii-upper-perm
+\_  bits:     88.3819
+\_  length:   32  (with spaces)
+\_  length:   26  (without spaces)
+\_  characters:
+    \_  letters:  26
+    \_  l. upper: 26
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 26
+\_  example:  LBEQ DOXK VWFH GPMY JISC URNA ZT
+
+
+**  ~~~~~~~~  ascii-mixed-perm
+\_  bits:     225.5810
+\_  length:   64  (with spaces)
+\_  length:   52  (without spaces)
+\_  characters:
+    \_  letters:  52
+    \_  l. upper: 26
+    \_  l. lower: 26
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 52
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM
+
+
+**  ~~~~~~~~  ascii-lower-shuf:4
+\_  bits:     18.4528
+\_  length:   4  (with spaces)
+\_  length:   4  (without spaces)
+\_  characters:
+    \_  letters:  4
+    \_  l. upper: 0
+    \_  l. lower: 4
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 4
+\_  example:  lbeq
+
+
+**  ~~~~~~~~  ascii-lower-shuf:8
+\_  bits:     35.8744
+\_  length:   9  (with spaces)
+\_  length:   8  (without spaces)
+\_  characters:
+    \_  letters:  8
+    \_  l. upper: 0
+    \_  l. lower: 8
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 8
+\_  example:  lbeq doxk
+
+
+**  ~~~~~~~~  ascii-lower-shuf:12
+\_  bits:     52.0387
+\_  length:   14  (with spaces)
+\_  length:   12  (without spaces)
+\_  characters:
+    \_  letters:  12
+    \_  l. upper: 0
+    \_  l. lower: 12
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 12
+\_  example:  lbeq doxk vwfh
+
+
+**  ~~~~~~~~  ascii-lower-shuf:16
+\_  bits:     66.5908
+\_  length:   19  (with spaces)
+\_  length:   16  (without spaces)
+\_  characters:
+    \_  letters:  16
+    \_  l. upper: 0
+    \_  l. lower: 16
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 16
+\_  example:  lbeq doxk vwfh gpmy
+
+
+**  ~~~~~~~~  ascii-lower-shuf:20
+\_  bits:     78.8901
+\_  length:   24  (with spaces)
+\_  length:   20  (without spaces)
+\_  characters:
+    \_  letters:  20
+    \_  l. upper: 0
+    \_  l. lower: 20
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 20
+\_  example:  lbeq doxk vwfh gpmy jisc
+
+
+**  ~~~~~~~~  ascii-lower-shuf:24
+\_  bits:     87.3819
+\_  length:   29  (with spaces)
+\_  length:   24  (without spaces)
+\_  characters:
+    \_  letters:  24
+    \_  l. upper: 0
+    \_  l. lower: 24
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 24
+\_  example:  lbeq doxk vwfh gpmy jisc urna
+
+
+**  ~~~~~~~~  ascii-upper-shuf:4
+\_  bits:     18.4528
+\_  length:   4  (with spaces)
+\_  length:   4  (without spaces)
+\_  characters:
+    \_  letters:  4
+    \_  l. upper: 4
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 4
+\_  example:  LBEQ
+
+
+**  ~~~~~~~~  ascii-upper-shuf:8
+\_  bits:     35.8744
+\_  length:   9  (with spaces)
+\_  length:   8  (without spaces)
+\_  characters:
+    \_  letters:  8
+    \_  l. upper: 8
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 8
+\_  example:  LBEQ DOXK
+
+
+**  ~~~~~~~~  ascii-upper-shuf:12
+\_  bits:     52.0387
+\_  length:   14  (with spaces)
+\_  length:   12  (without spaces)
+\_  characters:
+    \_  letters:  12
+    \_  l. upper: 12
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 12
+\_  example:  LBEQ DOXK VWFH
+
+
+**  ~~~~~~~~  ascii-upper-shuf:16
+\_  bits:     66.5908
+\_  length:   19  (with spaces)
+\_  length:   16  (without spaces)
+\_  characters:
+    \_  letters:  16
+    \_  l. upper: 16
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 16
+\_  example:  LBEQ DOXK VWFH GPMY
+
+
+**  ~~~~~~~~  ascii-upper-shuf:20
+\_  bits:     78.8901
+\_  length:   24  (with spaces)
+\_  length:   20  (without spaces)
+\_  characters:
+    \_  letters:  20
+    \_  l. upper: 20
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 20
+\_  example:  LBEQ DOXK VWFH GPMY JISC
+
+
+**  ~~~~~~~~  ascii-upper-shuf:24
+\_  bits:     87.3819
+\_  length:   29  (with spaces)
+\_  length:   24  (without spaces)
+\_  characters:
+    \_  letters:  24
+    \_  l. upper: 24
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 24
+\_  example:  LBEQ DOXK VWFH GPMY JISC URNA
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:4
+\_  bits:     22.6314
+\_  length:   4  (with spaces)
+\_  length:   4  (without spaces)
+\_  characters:
+    \_  letters:  4
+    \_  l. upper: 1
+    \_  l. lower: 3
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 4
+\_  example:  ipSn
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:8
+\_  bits:     44.7863
+\_  length:   9  (with spaces)
+\_  length:   8  (without spaces)
+\_  characters:
+    \_  letters:  8
+    \_  l. upper: 2
+    \_  l. lower: 6
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 8
+\_  example:  ipSn fozI
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:12
+\_  bits:     66.4219
+\_  length:   14  (with spaces)
+\_  length:   12  (without spaces)
+\_  characters:
+    \_  letters:  12
+    \_  l. upper: 3
+    \_  l. lower: 9
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 12
+\_  example:  ipSn fozI jdyV
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:16
+\_  bits:     87.4866
+\_  length:   19  (with spaces)
+\_  length:   16  (without spaces)
+\_  characters:
+    \_  letters:  16
+    \_  l. upper: 6
+    \_  l. lower: 10
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 16
+\_  example:  ipSn fozI jdyV xXEL
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:20
+\_  bits:     107.9177
+\_  length:   24  (with spaces)
+\_  length:   20  (without spaces)
+\_  characters:
+    \_  letters:  20
+    \_  l. upper: 8
+    \_  l. lower: 12
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 20
+\_  example:  ipSn fozI jdyV xXEL leJT
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:24
+\_  bits:     127.6368
+\_  length:   29  (with spaces)
+\_  length:   24  (without spaces)
+\_  characters:
+    \_  letters:  24
+    \_  l. upper: 11
+    \_  l. lower: 13
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 24
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:28
+\_  bits:     146.5433
+\_  length:   34  (with spaces)
+\_  length:   28  (without spaces)
+\_  characters:
+    \_  letters:  28
+    \_  l. upper: 15
+    \_  l. lower: 13
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 28
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:32
+\_  bits:     164.5036
+\_  length:   39  (with spaces)
+\_  length:   32  (without spaces)
+\_  characters:
+    \_  letters:  32
+    \_  l. upper: 17
+    \_  l. lower: 15
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 32
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:36
+\_  bits:     181.3308
+\_  length:   44  (with spaces)
+\_  length:   36  (without spaces)
+\_  characters:
+    \_  letters:  36
+    \_  l. upper: 19
+    \_  l. lower: 17
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 36
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:40
+\_  bits:     196.7455
+\_  length:   49  (with spaces)
+\_  length:   40  (without spaces)
+\_  characters:
+    \_  letters:  40
+    \_  l. upper: 20
+    \_  l. lower: 20
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 40
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:44
+\_  bits:     210.2817
+\_  length:   54  (with spaces)
+\_  length:   44  (without spaces)
+\_  characters:
+    \_  letters:  44
+    \_  l. upper: 21
+    \_  l. lower: 23
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 44
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:48
+\_  bits:     220.9960
+\_  length:   59  (with spaces)
+\_  length:   48  (without spaces)
+\_  characters:
+    \_  letters:  48
+    \_  l. upper: 23
+    \_  l. lower: 25
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 48
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm
 
 
 **  ~~~~~~~~  cva-lower:1
@@ -6186,7 +6634,7 @@
     \_  digits:   1
     \_  symbols:  2
     \_  no space: 20
-\_  example:  qegvu1-dymxen-wagZyb
+\_  example:  gutzAz-mlxgen-2zybco
 
 
 **  ~~~~~~~~  apple-lower
