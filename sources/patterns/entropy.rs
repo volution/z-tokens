@@ -200,6 +200,18 @@ pub fn entropy_token_push (_pattern : impl AsRef<TokenPattern>, _collector : &mu
 			Ok (())
 		}
 		
+		TokenPattern::Permutation (_patterns, _separator) => {
+			// FIXME:  Verify correctness!
+			for _index in 2 ..= _patterns.len () {
+				let _entropy = Entropy::for_set (_index as u128);
+				_collector.multiply (&_entropy) ?;
+			}
+			for _pattern in _patterns.iter () {
+				entropy_token_push (_pattern, _collector) ?;
+			}
+			Ok (())
+		}
+		
 		TokenPattern::Repeat (_pattern, _separator, _count) => {
 			let _count = *_count;
 			for _index in 0 .. _count {

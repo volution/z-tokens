@@ -19,6 +19,25 @@ macro_rules! define_sequence {
 
 
 
+macro_rules! define_permutation {
+	
+	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, [ $( $_element : expr, )* ], $_separator : expr ) => {
+		paste! {
+			
+			static [< _ $_pattern __PERMUTATION_0 >] : &[Rb<TokenPattern>] = &[ $(
+					Rb::new_static ($_element),
+				)* ];
+			
+			define_named! ($_visibility $_pattern, $_labels, $_identifier,
+					& TokenPattern::Permutation (RbList::from_static ( [< _ $_pattern __PERMUTATION_0 >] ), Rb::new_static ($_separator))
+				);
+		}
+	};
+}
+
+
+
+
 macro_rules! define_choice {
 	
 	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, [ $( $_element : expr, )* ] ) => {
@@ -38,7 +57,7 @@ macro_rules! define_choice {
 
 
 
-macro_rules! define_permutation {
+macro_rules! define_permutation_choice {
 	
 	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, [ $_element_1 : expr,  $_element_2 : expr,  $_element_3 : expr, ], $_separator : expr ) => {
 		paste! {
