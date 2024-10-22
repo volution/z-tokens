@@ -33,6 +33,15 @@ macro_rules! define_permutation {
 				);
 		}
 	};
+	
+	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, $_elements : expr, $_separator : expr ) => {
+		paste! {
+			
+			define_named! ($_visibility $_pattern, $_labels, $_identifier,
+					& TokenPattern::Permutation (RbList::from_static ($_elements), Rb::new_static ($_separator))
+				);
+		}
+	};
 }
 
 

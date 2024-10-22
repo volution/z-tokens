@@ -10,11 +10,20 @@ macro_rules! define_set {
 				static [< _ $_pattern __ $_char __TEXT >] : &Text = & Text::$_variant ($_char);
 				#[ allow (non_upper_case_globals) ]
 				static [< _ $_pattern __ $_char __GLYPH >] : &Glyph = & Glyph::Text (Rb::new_static ( [< _ $_pattern __ $_char __TEXT >] ));
+				#[ allow (non_upper_case_globals) ]
+				static [< _ $_pattern __ $_char __ATOM_PATTERN >] : &AtomPattern = & AtomPattern::Constant (Rb::new_static ( [< _ $_pattern __ $_char __TEXT >] ));
+				#[ allow (non_upper_case_globals) ]
+				static [< _ $_pattern __ $_char __TOKEN_PATTERN >] : &TokenPattern = & TokenPattern::Atom (Rb::new_static ( [< _ $_pattern __ $_char __ATOM_PATTERN >] ));
 			)*
 			
 			#[ doc = concat! ( "Glyph character set for ", $( "`", stringify! ($_char), "` " ),*, "." ) ]
 			$_visibility static [< $_pattern _SET >] : &[Rb<Glyph>] = &[ $(
 					Rb::new_static ( [< _ $_pattern __ $_char __GLYPH >] ),
+				)* ];
+			
+			#[ doc (hidden) ]
+			$_visibility static [< $_pattern _TOKEN_PATTERNS >] : &[Rb<TokenPattern>] = &[ $(
+					Rb::new_static ( [< _ $_pattern __ $_char __TOKEN_PATTERN >] ),
 				)* ];
 			
 			$_visibility static [< $_pattern _GLYPH >] : &GlyphPattern = & GlyphPattern::Set (RbList::from_static ( [< $_pattern _SET >] ));

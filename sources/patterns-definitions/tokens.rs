@@ -1363,6 +1363,60 @@ define_repeat! (
 
 
 
+#[ cfg (feature = "zt-patterns-digits-base10") ]
+define_permutation! (
+		pub DIGITS_BASE10_PERMUTATION,
+		("digits-base10-permutation", "digits-base10", "permutation", "encoding", "digits", "password", "pronounceable", "memorable"),
+		("digits-base10-permutation", "dp"),
+		glyphs::DIGIT_BASE10_TOKEN_PATTERNS,
+		separators::SPACE_OPTIONAL_INFIX_EACH_5_PATTERN);
+
+#[ cfg (feature = "zt-patterns-digits-base10") ]
+define_all! (pub DIGITS_BASE10_PERMUTATION_ALL, [
+		DIGITS_BASE10_PERMUTATION,
+	]);
+
+
+
+
+#[ cfg (feature = "zt-patterns-ascii") ]
+define_permutation! (
+		pub ASCII_LETTER_LOWER_PERMUTATION,
+		("ascii-lower-permutation", "ascii-lower", "permutation", "letters", "password"),
+		("ascii-lower-permutation"),
+		glyphs::ASCII_LETTER_LOWER_TOKEN_PATTERNS,
+		separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN);
+
+#[ cfg (feature = "zt-patterns-ascii") ]
+define_permutation! (
+		pub ASCII_LETTER_UPPER_PERMUTATION,
+		("ascii-upper-permutation", "ascii-upper", "permutation", "letters"),
+		("ascii-upper-permutation"),
+		glyphs::ASCII_LETTER_UPPER_TOKEN_PATTERNS,
+		separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN);
+
+#[ cfg (feature = "zt-patterns-ascii") ]
+define_permutation! (
+		pub ASCII_LETTER_MIXED_PERMUTATION,
+		("ascii-mixed-permutation", "ascii-mixed", "permutation", "letters", "password"),
+		("ascii-mixed-permutation"),
+		glyphs::ASCII_LETTER_MIXED_TOKEN_PATTERNS,
+		separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN);
+
+#[ cfg (feature = "zt-patterns-ascii") ]
+define_all! (pub ASCII_PERMUTATION_ALL, [
+		ASCII_LETTER_LOWER_PERMUTATION,
+		ASCII_LETTER_UPPER_PERMUTATION,
+		ASCII_LETTER_MIXED_PERMUTATION,
+	]);
+
+
+
+
+
+
+
+
 pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		
 		#[ cfg (feature = "zt-patterns-digits-base10") ]
@@ -1390,6 +1444,9 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		#[ cfg (feature = "zt-patterns-digits-z85") ]
 		DIGITS_Z85_ALL,
 		
+		#[ cfg (feature = "zt-patterns-digits-base10") ]
+		DIGITS_BASE10_PERMUTATION_ALL,
+		
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		ASCII_LETTER_LOWER_ALL,
 		#[ cfg (feature = "zt-patterns-ascii") ]
@@ -1401,6 +1458,9 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		ASCII_SYMBOLS_ALL,
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		ASCII_PRINTABLE_ALL,
+		
+		#[ cfg (feature = "zt-patterns-ascii") ]
+		ASCII_PERMUTATION_ALL,
 		
 		#[ cfg (feature = "zt-patterns-consonant-vowel") ]
 		ASCII_CONSONANT_VOWEL_LOWER_ALL,
