@@ -1366,8 +1366,8 @@ define_repeat! (
 #[ cfg (feature = "zt-patterns-digits-base10") ]
 define_permutation! (
 		pub DIGITS_BASE10_PERMUTATION,
-		("digits-base10-permut", "digits-base10", "permutation", "encoding", "digits", "password", "pronounceable", "memorable"),
-		("digits-base10-permut", "dp"),
+		("digits-base10-perm", "digits-base10", "permutation", "encoding", "digits", "password", "pronounceable", "memorable"),
+		("digits-base10-perm", "dp"),
 		glyphs::DIGIT_BASE10_TOKEN_PATTERNS,
 		separators::SPACE_OPTIONAL_INFIX_EACH_5_PATTERN);
 
@@ -1382,24 +1382,24 @@ define_all! (pub DIGITS_BASE10_PERMUTATION_ALL, [
 #[ cfg (feature = "zt-patterns-ascii") ]
 define_permutation! (
 		pub ASCII_LETTER_LOWER_PERMUTATION,
-		("ascii-lower-permut", "ascii-lower", "permutation", "letters", "password"),
-		("ascii-lower-permut"),
+		("ascii-lower-perm", "ascii-lower", "permutation", "letters", "password"),
+		("ascii-lower-perm"),
 		glyphs::ASCII_LETTER_LOWER_TOKEN_PATTERNS,
 		separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN);
 
 #[ cfg (feature = "zt-patterns-ascii") ]
 define_permutation! (
 		pub ASCII_LETTER_UPPER_PERMUTATION,
-		("ascii-upper-permut", "ascii-upper", "permutation", "letters"),
-		("ascii-upper-permut"),
+		("ascii-upper-perm", "ascii-upper", "permutation", "letters"),
+		("ascii-upper-perm"),
 		glyphs::ASCII_LETTER_UPPER_TOKEN_PATTERNS,
 		separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN);
 
 #[ cfg (feature = "zt-patterns-ascii") ]
 define_permutation! (
 		pub ASCII_LETTER_MIXED_PERMUTATION,
-		("ascii-mixed-permut", "ascii-mixed", "permutation", "letters", "password"),
-		("ascii-mixed-permut"),
+		("ascii-mixed-perm", "ascii-mixed", "permutation", "letters", "password"),
+		("ascii-mixed-perm"),
 		glyphs::ASCII_LETTER_MIXED_TOKEN_PATTERNS,
 		separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN);
 
@@ -1413,27 +1413,42 @@ define_all! (pub ASCII_LETTER_PERMUTATION_ALL, [
 
 
 
+
+
+
+
+#[ cfg (feature = "zt-patterns-digits-base10") ]
+define_permutation_partial! (
+		pub DIGITS_BASE10_SHUFFLE,
+		("digits-base10-shuf", "digits-base10", "shuffle", "encoding", "digits", "password", "pronounceable", "memorable"),
+		("digits-base10-shuf", "ds"),
+		{ glyphs::DIGIT_BASE10_TOKEN_PATTERNS => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
+		(8 : 2));
+
+
+
+
 #[ cfg (feature = "zt-patterns-ascii") ]
 define_permutation_partial! (
 		pub ASCII_LETTER_LOWER_SHUFFLE,
-		("ascii-lower-shuffle", "ascii-lower", "shuffle", "letters", "password"),
-		("ascii-lower-shuffle"),
+		("ascii-lower-shuf", "ascii-lower", "shuffle", "letters", "password"),
+		("ascii-lower-shuf"),
 		{ glyphs::ASCII_LETTER_LOWER_TOKEN_PATTERNS => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
 		(24 : 4));
 
 #[ cfg (feature = "zt-patterns-ascii") ]
 define_permutation_partial! (
 		pub ASCII_LETTER_UPPER_SHUFFLE,
-		("ascii-upper-shuffle", "ascii-upper", "shuffle", "letters"),
-		("ascii-upper-shuffle"),
+		("ascii-upper-shuf", "ascii-upper", "shuffle", "letters"),
+		("ascii-upper-shuf"),
 		{ glyphs::ASCII_LETTER_UPPER_TOKEN_PATTERNS => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
 		(24 : 4));
 
 #[ cfg (feature = "zt-patterns-ascii") ]
 define_permutation_partial! (
 		pub ASCII_LETTER_MIXED_SHUFFLE,
-		("ascii-mixed-shuffle", "ascii-mixed", "shuffle", "letters", "password"),
-		("ascii-mixed-shuffle"),
+		("ascii-mixed-shuf", "ascii-mixed", "shuffle", "letters", "password"),
+		("ascii-mixed-shuf"),
 		{ glyphs::ASCII_LETTER_MIXED_TOKEN_PATTERNS => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
 		(48 : 4));
 
@@ -1473,6 +1488,8 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		
 		#[ cfg (feature = "zt-patterns-digits-base10") ]
 		DIGITS_BASE10_PERMUTATION_ALL,
+		#[ cfg (feature = "zt-patterns-digits-base10") ]
+		DIGITS_BASE10_SHUFFLE_ALL,
 		
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		ASCII_LETTER_LOWER_ALL,
