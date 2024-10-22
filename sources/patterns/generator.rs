@@ -68,17 +68,45 @@ pub fn generate_token_push (_pattern : impl AsRef<TokenPattern>, _randomizer : &
 		}
 		
 		TokenPattern::Permutation (_patterns, _separator) => {
-			let _count = _patterns.len ();
 			let _patterns = {
 					// NOTE:  =>  <https://docs.rs/rand/latest/src/rand/seq/mod.rs.html#586>
 					// FIXME:  Verify correctness!
 					let mut _shuffle : Vec<_> = _patterns.iter () .collect ();
-					for _index in (1 .. _count) .rev () {
+					for _index in (1 .. _shuffle.len ()) .rev () {
 						let _other = _randomizer.choose (_index + 1) .else_wrap (0x04e15307) ?;
 						_shuffle.swap (_index, _other);
 					}
 					_shuffle
 				};
+			let _count = _patterns.len ();
+			for (_index, _pattern) in _patterns.into_iter () .enumerate () {
+				let (_before, _after) = generate_separator (_separator, _index, _count) ?;
+				if let Some (_separator) = _before {
+					let _atom = Rb::new (Atom::Separator (_separator));
+					_accumulator.atoms.push (_atom);
+				}
+				generate_token_push (_pattern, _randomizer, _accumulator) ?;
+				if let Some (_separator) = _after {
+					let _atom = Rb::new (Atom::Separator (_separator));
+					_accumulator.atoms.push (_atom);
+				}
+			}
+			Ok (())
+		}
+		
+		TokenPattern::PermutationPartial (_patterns, _separator, _subset) => {
+			let _patterns = {
+					// NOTE:  =>  <https://docs.rs/rand/latest/src/rand/seq/mod.rs.html#586>
+					// FIXME:  Verify correctness!
+					let mut _shuffle : Vec<_> = _patterns.iter () .collect ();
+					for _index in (1 .. _shuffle.len ()) .rev () {
+						let _other = _randomizer.choose (_index + 1) .else_wrap (0x04e15307) ?;
+						_shuffle.swap (_index, _other);
+					}
+					_shuffle.truncate (*_subset);
+					_shuffle
+				};
+			let _count = _patterns.len ();
 			for (_index, _pattern) in _patterns.into_iter () .enumerate () {
 				let (_before, _after) = generate_separator (_separator, _index, _count) ?;
 				if let Some (_separator) = _before {

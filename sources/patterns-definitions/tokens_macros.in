@@ -45,6 +45,30 @@ macro_rules! define_permutation {
 }
 
 
+macro_rules! define_permutation_partial {
+	
+	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, $_elements : tt, ( $_length : tt : $_each : tt ) ) => {
+		macros::__count_call_with! ( [ $_length : $_each ] => define_permutation_partial! ($_visibility $_pattern, $_labels, $_identifier, $_elements, (), ));
+	};
+	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, $_elements : tt, ( $_length : tt : $_each : tt, $_transform : tt ) ) => {
+		macros::__count_call_with! ( [ $_length : $_each ] => define_permutation_partial! ($_visibility $_pattern, $_labels, $_identifier, $_elements, $_transform, ));
+	};
+	
+	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, { $_elements : expr => $_separator : expr }, $_transform : tt, [ $( $_count : literal, )* ] ) => {
+		paste! {
+			
+			$(
+				define_named! ($_visibility [< $_pattern _ $_count >], $_labels, { number_suffixed => $_identifier, $_count, $_transform },
+						& TokenPattern::PermutationPartial (RbList::from_static ($_elements), Rb::new_static ($_separator), $_count)
+					);
+			)*
+			
+			define_all! ($_visibility [< $_pattern _ALL >], [ $( [< $_pattern _ $_count >], )* ]);
+		}
+	};
+}
+
+
 
 
 macro_rules! define_choice {

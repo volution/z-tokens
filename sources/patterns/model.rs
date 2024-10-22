@@ -43,6 +43,7 @@ pub enum TokenPattern {
 	Atom (Rb<AtomPattern>),
 	Sequence (RbList<TokenPattern>, Rb<SeparatorPattern>),
 	Permutation (RbList<TokenPattern>, Rb<SeparatorPattern>),
+	PermutationPartial (RbList<TokenPattern>, Rb<SeparatorPattern>, usize),
 	Repeat (Rb<TokenPattern>, Rb<SeparatorPattern>, usize),
 	Choice (RbList<TokenPattern>),
 	Empty,

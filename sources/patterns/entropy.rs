@@ -202,12 +202,43 @@ pub fn entropy_token_push (_pattern : impl AsRef<TokenPattern>, _collector : &mu
 		
 		TokenPattern::Permutation (_patterns, _separator) => {
 			// FIXME:  Verify correctness!
-			for _index in 2 ..= _patterns.len () {
-				let _entropy = Entropy::for_set (_index as u128);
-				_collector.multiply (&_entropy) ?;
+			let _count = _patterns.len ();
+			if _count > 0 {
+				let _start = 2;
+				for _index in _start ..= _count {
+					let _entropy = Entropy::for_set (_index as u128);
+					_collector.multiply (&_entropy) ?;
+				}
+				for _pattern in _patterns.iter () {
+					entropy_token_push (_pattern, _collector) ?;
+				}
 			}
-			for _pattern in _patterns.iter () {
-				entropy_token_push (_pattern, _collector) ?;
+			Ok (())
+		}
+		
+		TokenPattern::PermutationPartial (_patterns, _separator, _subset) => {
+			// FIXME:  Verify correctness!
+			let _count = _patterns.len ();
+			let _subset = min (*_subset, _count);
+			if (_count > 0) && (_subset > 0) {
+				let _start = max (2, (_count - _subset) + 1);
+				for _index in _start ..= _count {
+					let _entropy = Entropy::for_set (_index as u128);
+					_collector.multiply (&_entropy) ?;
+				}
+				// FIXME:  This is just an estimate!
+				let mut _bits_sum = 0.0;
+				for _pattern in _patterns.iter () {
+					let mut _entropy = Entropy::none ();
+					entropy_token_push (_pattern, &mut _entropy) ?;
+					_bits_sum += _entropy.bits ();
+				}
+				let _bits_avg = _bits_sum / (_count as f64);
+				{
+					let _bits_subset = _bits_avg * (_subset as f64);
+					let _entropy = Entropy::for_bits (_bits_subset as usize);
+					_collector.multiply (&_entropy) ?;
+				}
 			}
 			Ok (())
 		}
