@@ -153,6 +153,7 @@ define_repeat! (
 		(32 : 2));
 
 #[ cfg (feature = "zt-patterns-ascii") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_repeat! (
 		pub ASCII_LETTER_UPPER,
 		("ascii-upper", "letters"),
@@ -161,6 +162,7 @@ define_repeat! (
 		(32 : 2));
 
 #[ cfg (feature = "zt-patterns-ascii") ]
+#[ cfg (feature = "zt-patterns-letters-mixed") ]
 define_repeat! (
 		pub ASCII_LETTER_MIXED,
 		("ascii-mixed", "letters", "password"),
@@ -205,6 +207,7 @@ define_sequence! (
 		], separators::NONE_PATTERN);
 
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_sequence! (
 		pub ASCII_CONSONANT_VOWEL_UPPER_WORD,
 		(),
@@ -217,6 +220,7 @@ define_sequence! (
 		], separators::NONE_PATTERN);
 
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
+#[ cfg (feature = "zt-patterns-letters-mixed") ]
 define_sequence! (
 		pub ASCII_CONSONANT_VOWEL_MIXED_WORD,
 		(),
@@ -237,6 +241,7 @@ define_repeat! (
 		(16 : 1));
 
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_repeat! (
 		pub ASCII_CONSONANT_VOWEL_UPPER,
 		("cva-upper", "cva", "cv", "letters"),
@@ -245,6 +250,7 @@ define_repeat! (
 		(16 : 1));
 
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
+#[ cfg (feature = "zt-patterns-letters-mixed") ]
 define_repeat! (
 		pub ASCII_CONSONANT_VOWEL_MIXED,
 		("cva-mixed", "cva", "cv", "letters", "password"),
@@ -268,6 +274,7 @@ define_sequence! (
 		], separators::NONE_PATTERN);
 
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_sequence! (
 		pub ASCII_CONSONANT_VOWEL_PLUS_B_WORD,
 		(),
@@ -280,6 +287,7 @@ define_sequence! (
 		], separators::NONE_PATTERN);
 
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_sequence! (
 		pub ASCII_CONSONANT_VOWEL_PLUS_C_WORD,
 		(),
@@ -348,6 +356,7 @@ define_sequence! (
 		], separators::NONE_PATTERN);
 
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_sequence! (
 		pub SIMPLE_CONSONANT_VOWEL_UPPER_WORD,
 		(),
@@ -360,6 +369,7 @@ define_sequence! (
 		], separators::NONE_PATTERN);
 
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
+#[ cfg (feature = "zt-patterns-letters-mixed") ]
 define_sequence! (
 		pub SIMPLE_CONSONANT_VOWEL_MIXED_WORD,
 		(),
@@ -380,6 +390,7 @@ define_repeat! (
 		(16 : 1));
 
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_repeat! (
 		pub SIMPLE_CONSONANT_VOWEL_UPPER,
 		("cvs-upper", "cvs", "cv", "letters"),
@@ -388,6 +399,7 @@ define_repeat! (
 		(16 : 1));
 
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
+#[ cfg (feature = "zt-patterns-letters-mixed") ]
 define_repeat! (
 		pub SIMPLE_CONSONANT_VOWEL_MIXED,
 		("cvs-mixed", "cvs", "cv", "letters", "password"),
@@ -411,6 +423,7 @@ define_sequence! (
 		], separators::NONE_PATTERN);
 
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_sequence! (
 		pub SIMPLE_CONSONANT_VOWEL_PLUS_B_WORD,
 		(),
@@ -423,6 +436,7 @@ define_sequence! (
 		], separators::NONE_PATTERN);
 
 #[ cfg (feature = "zt-patterns-consonant-vowel") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_sequence! (
 		pub SIMPLE_CONSONANT_VOWEL_PLUS_C_WORD,
 		(),
@@ -497,6 +511,7 @@ define_sequence! (
 
 
 #[ cfg (feature = "zt-patterns-apple") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_sequence! (
 		pub APPLE_WORD_2A,
 		(),
@@ -511,6 +526,7 @@ define_sequence! (
 		], separators::NONE_PATTERN);
 
 #[ cfg (feature = "zt-patterns-apple") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_sequence! (
 		pub APPLE_WORD_2B,
 		(),
@@ -525,6 +541,7 @@ define_sequence! (
 		], separators::NONE_PATTERN);
 
 #[ cfg (feature = "zt-patterns-apple") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_sequence! (
 		pub APPLE_WORD_2C,
 		(),
@@ -539,6 +556,7 @@ define_sequence! (
 		], separators::NONE_PATTERN);
 
 #[ cfg (feature = "zt-patterns-apple") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_sequence! (
 		pub APPLE_WORD_2D,
 		(),
@@ -553,6 +571,7 @@ define_sequence! (
 		], separators::NONE_PATTERN);
 
 #[ cfg (feature = "zt-patterns-apple") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_sequence! (
 		pub APPLE_WORD_2E,
 		(),
@@ -567,6 +586,7 @@ define_sequence! (
 		], separators::NONE_PATTERN);
 
 #[ cfg (feature = "zt-patterns-apple") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_sequence! (
 		pub APPLE_WORD_2F,
 		(),
@@ -581,6 +601,7 @@ define_sequence! (
 		], separators::NONE_PATTERN);
 
 #[ cfg (feature = "zt-patterns-apple") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_choice! (
 		pub APPLE_WORD_2,
 		(),
@@ -635,6 +656,7 @@ define_choice! (
 
 
 #[ cfg (feature = "zt-patterns-apple") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_sequence! (
 		pub APPLE_WORD_4,
 		(),
@@ -650,6 +672,7 @@ define_sequence! (
 
 
 #[ cfg (feature = "zt-patterns-apple") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_permutation! (
 		pub APPLE_ORIGINAL,
 		("apple-original", "apple", "cva-plus", "cv-plus", "cva", "cv", "password", "pronounceable", "memorable"),
@@ -672,6 +695,7 @@ define_sequence! (
 		], separators::HYPHEN_MANDATORY_INFIX_PATTERN);
 
 #[ cfg (feature = "zt-patterns-apple") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_sequence! (
 		pub APPLE_VARIANT_A,
 		("apple-variant-a", "apple-variant", "apple", "cva-plus", "cv-plus", "cva", "cv", "password", "pronounceable", "memorable"),
@@ -710,6 +734,7 @@ define_sequence! (
 		], separators::NONE_PATTERN);
 
 #[ cfg (feature = "zt-patterns-proquint") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_sequence! (
 		pub PROQUINT_UPPER_WORD,
 		(),
@@ -731,6 +756,7 @@ define_repeat! (
 		(16 : 1));
 
 #[ cfg (feature = "zt-patterns-proquint") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_repeat! (
 		pub PROQUINT_UPPER,
 		("proquint-upper", "proquint", "letters"),
@@ -1381,11 +1407,16 @@ define_permutation! (
 		glyphs::DIGIT_BASE16_TOKEN_PATTERNS,
 		separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN);
 
+
 #[ cfg (feature = "zt-patterns-permutations") ]
-define_all! (pub DIGITS_BASE_PERMUTATION_ALL, [
-		#[ cfg (feature = "zt-patterns-digits-base10") ]
+#[ cfg (feature = "zt-patterns-digits-base10") ]
+define_all! (pub DIGITS_BASE10_PERMUTATION_ALL, [
 		DIGITS_BASE10_PERMUTATION,
-		#[ cfg (feature = "zt-patterns-digits-base16") ]
+	]);
+
+#[ cfg (feature = "zt-patterns-permutations") ]
+#[ cfg (feature = "zt-patterns-digits-base16") ]
+define_all! (pub DIGITS_BASE16_PERMUTATION_ALL, [
 		DIGITS_BASE16_PERMUTATION,
 	]);
 
@@ -1403,6 +1434,7 @@ define_permutation! (
 
 #[ cfg (feature = "zt-patterns-permutations") ]
 #[ cfg (feature = "zt-patterns-ascii") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_permutation! (
 		pub ASCII_LETTER_UPPER_PERMUTATION,
 		("ascii-upper-perm", "ascii-upper", "permutation", "letters"),
@@ -1412,6 +1444,7 @@ define_permutation! (
 
 #[ cfg (feature = "zt-patterns-permutations") ]
 #[ cfg (feature = "zt-patterns-ascii") ]
+#[ cfg (feature = "zt-patterns-letters-mixed") ]
 define_permutation! (
 		pub ASCII_LETTER_MIXED_PERMUTATION,
 		("ascii-mixed-perm", "ascii-mixed", "permutation", "letters", "password"),
@@ -1419,11 +1452,24 @@ define_permutation! (
 		glyphs::ASCII_LETTER_MIXED_TOKEN_PATTERNS,
 		separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN);
 
+
 #[ cfg (feature = "zt-patterns-permutations") ]
 #[ cfg (feature = "zt-patterns-ascii") ]
-define_all! (pub ASCII_LETTER_PERMUTATION_ALL, [
+define_all! (pub ASCII_LETTER_LOWER_PERMUTATION_ALL, [
 		ASCII_LETTER_LOWER_PERMUTATION,
+	]);
+
+#[ cfg (feature = "zt-patterns-permutations") ]
+#[ cfg (feature = "zt-patterns-ascii") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
+define_all! (pub ASCII_LETTER_UPPER_PERMUTATION_ALL, [
 		ASCII_LETTER_UPPER_PERMUTATION,
+	]);
+
+#[ cfg (feature = "zt-patterns-permutations") ]
+#[ cfg (feature = "zt-patterns-ascii") ]
+#[ cfg (feature = "zt-patterns-letters-mixed") ]
+define_all! (pub ASCII_LETTER_MIXED_PERMUTATION_ALL, [
 		ASCII_LETTER_MIXED_PERMUTATION,
 	]);
 
@@ -1466,6 +1512,7 @@ define_permutation_partial! (
 
 #[ cfg (feature = "zt-patterns-permutations") ]
 #[ cfg (feature = "zt-patterns-ascii") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_permutation_partial! (
 		pub ASCII_LETTER_UPPER_SHUFFLE,
 		("ascii-upper-shuf", "ascii-upper", "shuffle", "letters"),
@@ -1475,6 +1522,7 @@ define_permutation_partial! (
 
 #[ cfg (feature = "zt-patterns-permutations") ]
 #[ cfg (feature = "zt-patterns-ascii") ]
+#[ cfg (feature = "zt-patterns-letters-mixed") ]
 define_permutation_partial! (
 		pub ASCII_LETTER_MIXED_SHUFFLE,
 		("ascii-mixed-shuf", "ascii-mixed", "shuffle", "letters", "password"),
@@ -1517,10 +1565,14 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		DIGITS_Z85_ALL,
 		
 		#[ cfg (feature = "zt-patterns-permutations") ]
-		DIGITS_BASE_PERMUTATION_ALL,
+		#[ cfg (feature = "zt-patterns-digits-base10") ]
+		DIGITS_BASE10_PERMUTATION_ALL,
 		#[ cfg (feature = "zt-patterns-permutations") ]
 		#[ cfg (feature = "zt-patterns-digits-base10") ]
 		DIGITS_BASE10_SHUFFLE_ALL,
+		#[ cfg (feature = "zt-patterns-permutations") ]
+		#[ cfg (feature = "zt-patterns-digits-base16") ]
+		DIGITS_BASE16_PERMUTATION_ALL,
 		#[ cfg (feature = "zt-patterns-permutations") ]
 		#[ cfg (feature = "zt-patterns-digits-base16") ]
 		DIGITS_BASE16_SHUFFLE_ALL,
@@ -1528,8 +1580,10 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		ASCII_LETTER_LOWER_ALL,
 		#[ cfg (feature = "zt-patterns-ascii") ]
+		#[ cfg (feature = "zt-patterns-letters-upper") ]
 		ASCII_LETTER_UPPER_ALL,
 		#[ cfg (feature = "zt-patterns-ascii") ]
+		#[ cfg (feature = "zt-patterns-letters-mixed") ]
 		ASCII_LETTER_MIXED_ALL,
 		
 		#[ cfg (feature = "zt-patterns-ascii") ]
@@ -1539,22 +1593,34 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		
 		#[ cfg (feature = "zt-patterns-permutations") ]
 		#[ cfg (feature = "zt-patterns-ascii") ]
-		ASCII_LETTER_PERMUTATION_ALL,
+		ASCII_LETTER_LOWER_PERMUTATION_ALL,
 		#[ cfg (feature = "zt-patterns-permutations") ]
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		ASCII_LETTER_LOWER_SHUFFLE_ALL,
 		#[ cfg (feature = "zt-patterns-permutations") ]
 		#[ cfg (feature = "zt-patterns-ascii") ]
+		#[ cfg (feature = "zt-patterns-letters-upper") ]
+		ASCII_LETTER_UPPER_PERMUTATION_ALL,
+		#[ cfg (feature = "zt-patterns-permutations") ]
+		#[ cfg (feature = "zt-patterns-ascii") ]
+		#[ cfg (feature = "zt-patterns-letters-upper") ]
 		ASCII_LETTER_UPPER_SHUFFLE_ALL,
 		#[ cfg (feature = "zt-patterns-permutations") ]
 		#[ cfg (feature = "zt-patterns-ascii") ]
+		#[ cfg (feature = "zt-patterns-letters-mixed") ]
+		ASCII_LETTER_MIXED_PERMUTATION_ALL,
+		#[ cfg (feature = "zt-patterns-permutations") ]
+		#[ cfg (feature = "zt-patterns-ascii") ]
+		#[ cfg (feature = "zt-patterns-letters-mixed") ]
 		ASCII_LETTER_MIXED_SHUFFLE_ALL,
 		
 		#[ cfg (feature = "zt-patterns-consonant-vowel") ]
 		ASCII_CONSONANT_VOWEL_LOWER_ALL,
 		#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+		#[ cfg (feature = "zt-patterns-letters-upper") ]
 		ASCII_CONSONANT_VOWEL_UPPER_ALL,
 		#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+		#[ cfg (feature = "zt-patterns-letters-mixed") ]
 		ASCII_CONSONANT_VOWEL_MIXED_ALL,
 		
 		#[ cfg (feature = "zt-patterns-consonant-vowel") ]
@@ -1567,8 +1633,10 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		#[ cfg (feature = "zt-patterns-consonant-vowel") ]
 		SIMPLE_CONSONANT_VOWEL_LOWER_ALL,
 		#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+		#[ cfg (feature = "zt-patterns-letters-upper") ]
 		SIMPLE_CONSONANT_VOWEL_UPPER_ALL,
 		#[ cfg (feature = "zt-patterns-consonant-vowel") ]
+		#[ cfg (feature = "zt-patterns-letters-mixed") ]
 		SIMPLE_CONSONANT_VOWEL_MIXED_ALL,
 		
 		#[ cfg (feature = "zt-patterns-consonant-vowel") ]
@@ -1584,6 +1652,7 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		#[ cfg (feature = "zt-patterns-proquint") ]
 		PROQUINT_LOWER_ALL,
 		#[ cfg (feature = "zt-patterns-proquint") ]
+		#[ cfg (feature = "zt-patterns-letters-upper") ]
 		PROQUINT_UPPER_ALL,
 		
 		#[ cfg (feature = "zt-patterns-koremutake") ]

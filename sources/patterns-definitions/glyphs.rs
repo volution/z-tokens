@@ -162,9 +162,11 @@ define_set! (pub DIGIT_Z85, Char, [
 define_set! (pub ASCII_VOWEL_LOWER, Char, [
 		'a', 'e', 'i', 'o', 'u',
 	]);
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_set! (pub ASCII_VOWEL_UPPER, Char, [
 		'A', 'E', 'I', 'O', 'U',
 	]);
+#[ cfg (feature = "zt-patterns-letters-mixed") ]
 define_set! (pub ASCII_VOWEL_MIXED, Char, [
 		'a', 'e', 'i', 'o', 'u',
 		'A', 'E', 'I', 'O', 'U',
@@ -174,9 +176,11 @@ define_set! (pub ASCII_VOWEL_MIXED, Char, [
 define_set! (pub ASCII_CONSONANT_LOWER, Char, [
 		'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z',
 	]);
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_set! (pub ASCII_CONSONANT_UPPER, Char, [
 		'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z',
 	]);
+#[ cfg (feature = "zt-patterns-letters-mixed") ]
 define_set! (pub ASCII_CONSONANT_MIXED, Char, [
 		'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z',
 		'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z',
@@ -186,9 +190,11 @@ define_set! (pub ASCII_CONSONANT_MIXED, Char, [
 define_set! (pub ASCII_LETTER_LOWER, Char, [
 		'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 	]);
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_set! (pub ASCII_LETTER_UPPER, Char, [
 		'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
 	]);
+#[ cfg (feature = "zt-patterns-letters-mixed") ]
 define_set! (pub ASCII_LETTER_MIXED, Char, [
 		'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 		'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
@@ -217,9 +223,11 @@ define_set! (pub ASCII_PRINTABLE, Char, [
 define_set! (pub SIMPLE_VOWEL_LOWER, Char, [
 		'a', 'e', 'i', 'o', 'u',
 	]);
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_set! (pub SIMPLE_VOWEL_UPPER, Char, [
 		'A', 'E', 'I', 'O', 'U',
 	]);
+#[ cfg (feature = "zt-patterns-letters-mixed") ]
 define_set! (pub SIMPLE_VOWEL_MIXED, Char, [
 		'a', 'e', 'i', 'o', 'u',
 		'A', 'E', 'I', 'O', 'U',
@@ -230,10 +238,12 @@ define_set! (pub SIMPLE_CONSONANT_LOWER, Char, [
 	//	'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z',
 		'b', 'c', 'd', 'f', 'g', 'h', 'j',      'l', 'm', 'n', 'p',      'r', 's', 't', 'v',                'z',
 	]);
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_set! (pub SIMPLE_CONSONANT_UPPER, Char, [
 	//	'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z',
 		'B', 'C', 'D', 'F', 'G', 'H', 'J',      'L', 'M', 'N', 'P',      'R', 'S', 'T', 'V',                'Z',
 	]);
+#[ cfg (feature = "zt-patterns-letters-mixed") ]
 define_set! (pub SIMPLE_CONSONANT_MIXED, Char, [
 		'b', 'c', 'd', 'f', 'g', 'h', 'j',      'l', 'm', 'n', 'p',      'r', 's', 't', 'v',                'z',
 		'B', 'C', 'D', 'F', 'G', 'H', 'J',      'L', 'M', 'N', 'P',      'R', 'S', 'T', 'V',                'Z',
@@ -248,6 +258,7 @@ define_set! (pub APPLE_VOWEL_LOWER, Char, [
 		'a', 'e', 'i', 'l', 'o', 'u', 'y',
 	]);
 #[ cfg (feature = "zt-patterns-apple") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_set! (pub APPLE_VOWEL_UPPER, Char, [
 		'A', 'E', 'I', 'L', 'O', 'U', 'Y',
 	]);
@@ -259,6 +270,7 @@ define_set! (pub APPLE_CONSONANT_LOWER, Char, [
 		'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z',
 	]);
 #[ cfg (feature = "zt-patterns-apple") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_set! (pub APPLE_CONSONANT_UPPER, Char, [
 		'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Z',
 	]);
@@ -279,11 +291,13 @@ define_set! (pub PROQUINT_VOWEL_LOWER, Char, [
 	]);
 
 #[ cfg (feature = "zt-patterns-proquint") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_set! (pub PROQUINT_CONSONANT_UPPER, Char, [
 		'B', 'D', 'F', 'G', 'H', 'J', 'K', 'L',
 		'M', 'N', 'P', 'R', 'S', 'T', 'V', 'Z',
 	]);
 #[ cfg (feature = "zt-patterns-proquint") ]
+#[ cfg (feature = "zt-patterns-letters-upper") ]
 define_set! (pub PROQUINT_VOWEL_UPPER, Char, [
 		'A', 'I', 'O', 'U',
 	]);

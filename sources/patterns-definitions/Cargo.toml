@@ -88,6 +88,8 @@ zt-patterns-extra = [
 	"zt-patterns-bytes",
 	"zt-patterns-timestamp",
 	"zt-patterns-flake",
+	"zt-patterns-letters-upper",
+	"zt-patterns-letters-mixed",
 	"zt-patterns-permutations",
 ]
 
@@ -151,6 +153,8 @@ zt-patterns-bytes = []
 zt-patterns-timestamp = []
 zt-patterns-flake = []
 
+zt-patterns-letters-upper = []
+zt-patterns-letters-mixed = []
 zt-patterns-permutations = []
 
 
