@@ -355,11 +355,12 @@ macro_rules! define_named_family {
 
 macro_rules! define_all {
 	
-	( $_visibility : vis $_all : ident, [ $( $_pattern : expr, )* ] ) => {
+	( $_visibility : vis $_all : ident, [ $( $( #[ $_meta : meta ] )* $_pattern : ident, )* ] ) => {
 		paste! {
 			
 			$_visibility static $_all : &[Rb<TokenPattern>] = &[
 					$(
+						$( #[ $_meta ] )*
 						Rb::new_static ($_pattern),
 					)*
 				];

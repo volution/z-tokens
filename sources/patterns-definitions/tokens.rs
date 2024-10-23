@@ -708,8 +708,10 @@ define_sequence! (
 
 #[ cfg (feature = "zt-patterns-apple") ]
 define_all! (pub APPLE_ALL, [
+		#[ cfg (feature = "zt-patterns-letters-upper") ]
 		APPLE_ORIGINAL,
 		APPLE_LOWER,
+		#[ cfg (feature = "zt-patterns-letters-upper") ]
 		APPLE_VARIANT_A,
 	]);
 
