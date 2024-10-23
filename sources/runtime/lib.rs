@@ -39,6 +39,7 @@ pub mod crates {
 	pub use ::memsec;
 	
 	pub use ::num_bigint;
+	pub use ::num_integer;
 	pub use ::num_traits;
 	
 	pub use ::chrono;

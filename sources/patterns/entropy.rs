@@ -7,6 +7,10 @@ use ::z_tokens_runtime::crates::num_bigint::{
 		BigUint,
 	};
 
+use ::z_tokens_runtime::crates::num_integer::{
+		Integer as _,
+	};
+
 use ::z_tokens_runtime::crates::num_traits::{
 		Zero as _,
 		One as _,
@@ -25,6 +29,7 @@ define_error! (pub EntroyError, result : EntropyResult);
 pub struct Entropy {
 	accumulator : BigUint,
 	accumulator_log2 : f64,
+	accurate : bool,
 	timestamp : bool,
 }
 
@@ -35,6 +40,7 @@ impl Entropy {
 		Self {
 				accumulator : BigUint::zero (),
 				accumulator_log2 : 0.0,
+				accurate : true,
 				timestamp : false,
 			}
 	}
@@ -52,6 +58,7 @@ impl Entropy {
 		Self {
 				accumulator : BigUint::one () << _count,
 				accumulator_log2 : _count as f64,
+				accurate : true,
 				timestamp : false,
 			}
 	}
@@ -63,22 +70,57 @@ impl Entropy {
 		Self {
 				accumulator : BigUint::from (_count),
 				accumulator_log2 : (_count as f64) .log2 (),
+				accurate : true,
 				timestamp : false,
 			}
 	}
 	
-	pub fn for_set_repeat (_count : usize, _repeats : usize) -> Self {
+	pub fn for_set_repeat (_count : u128, _repeats : u128) -> Self {
 		if (_count == 0) || (_repeats == 0) {
 			return Self::none ();
 		}
 		if _repeats == 1 {
-			return Self::for_set (_count as u128);
+			return Self::for_set (_count);
 		}
 		Self {
 				accumulator : BigUint::from (_count) .pow (_repeats),
 				accumulator_log2 : ((_count as f64) * (_repeats as f64)) .log2 (),
+				accurate : true,
 				timestamp : false,
 			}
+	}
+	
+	pub fn multiply_by (&mut self, _factor : u128) -> EntropyResult {
+		if _factor == 0 {
+			fail! (0xa0097d3d);
+		}
+		if self.accumulator.is_zero () || (_factor == 1) {
+			return Ok (());
+		}
+		self.accumulator *= _factor;
+		self.accumulator_log2 += (_factor as f64) .log2 ();
+		Ok (())
+	}
+	
+	pub fn divide_by (&mut self, _divisor : u128) -> EntropyResult {
+		if _divisor == 0 {
+			fail! (0x5be4a3df);
+		}
+		if self.accumulator.is_zero () || (_divisor == 1) {
+			return Ok (());
+		}
+		let (_quotient, _reminder) = self.accumulator.div_rem (& BigUint::from (_divisor));
+		if ! _quotient.is_zero () {
+			self.accumulator = _quotient;
+			self.accumulator_log2 -= (_divisor as f64) .log2 ();
+		} else {
+			self.accumulator = BigUint::zero ();
+			self.accumulator_log2 = 0.0;
+		}
+		if ! _reminder.is_zero () {
+			self.accurate = false;
+		}
+		Ok (())
 	}
 	
 	pub fn multiply (&mut self, _other : &Entropy) -> EntropyResult {
@@ -90,6 +132,9 @@ impl Entropy {
 		} else {
 			self.accumulator *= &_other.accumulator;
 			self.accumulator_log2 += _other.accumulator_log2;
+		}
+		if ! _other.accurate {
+			self.accurate = false;
 		}
 		if _other.timestamp {
 			self.timestamp = true;
@@ -113,6 +158,9 @@ impl Entropy {
 			let y = f64::min (self.accumulator_log2, _other.accumulator_log2);
 			let s = x + f64::log2 (1.0 + f64::exp2 (y - x));
 			self.accumulator_log2 = s;
+		}
+		if ! _other.accurate {
+			self.accurate = false;
 		}
 		if _other.timestamp {
 			self.timestamp = true;
@@ -145,6 +193,9 @@ impl Entropy {
 	}
 	
 	pub fn bits_exact (&self) -> (f64, bool) {
+		if ! self.accurate {
+			return (self.bits (), false);
+		}
 		if self.accumulator.is_zero () {
 			return (0.0, true);
 		}
@@ -227,18 +278,16 @@ pub fn entropy_token_push (_pattern : impl AsRef<TokenPattern>, _collector : &mu
 					_collector.multiply (&_entropy) ?;
 				}
 				// FIXME:  This is just an estimate!
-				let mut _bits_sum = 0.0;
+				let mut _entropy_avg = Entropy::none ();
+				_entropy_avg.accurate = false;
 				for _pattern in _patterns.iter () {
 					let mut _entropy = Entropy::none ();
 					entropy_token_push (_pattern, &mut _entropy) ?;
-					_bits_sum += _entropy.bits ();
+					_entropy_avg.addition (&_entropy) ?;
 				}
-				let _bits_avg = _bits_sum / (_count as f64);
-				{
-					let _bits_subset = _bits_avg * (_subset as f64);
-					let _entropy = Entropy::for_bits (_bits_subset as usize);
-					_collector.multiply (&_entropy) ?;
-				}
+				_entropy_avg.divide_by (_count as u128) ?;
+				_entropy_avg.multiply_by (_subset as u128) ?;
+				_collector.multiply (&_entropy_avg) ?;
 			}
 			Ok (())
 		}
@@ -310,7 +359,7 @@ pub fn entropy_glyph (_pattern : impl AsRef<GlyphPattern>) -> EntropyResult<Entr
 		}
 		
 		GlyphPattern::Bytes (_size, _format) =>
-			Ok (Entropy::for_set_repeat (256, *_size)),
+			Ok (Entropy::for_set_repeat (256, *_size as u128)),
 		
 		GlyphPattern::Timestamp (_) =>
 			Ok (Entropy::timestamp ()),

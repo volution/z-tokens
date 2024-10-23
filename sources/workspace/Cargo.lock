@@ -2227,6 +2227,7 @@ dependencies = [
  "constant_time_eq",
  "memsec",
  "num-bigint",
+ "num-integer",
  "num-traits",
  "paste",
  "platform-info",
