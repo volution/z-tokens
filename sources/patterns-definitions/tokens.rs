@@ -1363,6 +1363,7 @@ define_repeat! (
 
 
 
+#[ cfg (feature = "zt-patterns-permutations") ]
 #[ cfg (feature = "zt-patterns-digits-base10") ]
 define_permutation! (
 		pub DIGITS_BASE10_PERMUTATION,
@@ -1371,14 +1372,27 @@ define_permutation! (
 		glyphs::DIGIT_BASE10_TOKEN_PATTERNS,
 		separators::SPACE_OPTIONAL_INFIX_EACH_5_PATTERN);
 
-#[ cfg (feature = "zt-patterns-digits-base10") ]
-define_all! (pub DIGITS_BASE10_PERMUTATION_ALL, [
+#[ cfg (feature = "zt-patterns-permutations") ]
+#[ cfg (feature = "zt-patterns-digits-base16") ]
+define_permutation! (
+		pub DIGITS_BASE16_PERMUTATION,
+		("digits-base16-perm", "digits-base16", "permutation", "encoding", "password"),
+		("digits-base16-perm", "xp"),
+		glyphs::DIGIT_BASE16_TOKEN_PATTERNS,
+		separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN);
+
+#[ cfg (feature = "zt-patterns-permutations") ]
+define_all! (pub DIGITS_BASE_PERMUTATION_ALL, [
+		#[ cfg (feature = "zt-patterns-digits-base10") ]
 		DIGITS_BASE10_PERMUTATION,
+		#[ cfg (feature = "zt-patterns-digits-base16") ]
+		DIGITS_BASE16_PERMUTATION,
 	]);
 
 
 
 
+#[ cfg (feature = "zt-patterns-permutations") ]
 #[ cfg (feature = "zt-patterns-ascii") ]
 define_permutation! (
 		pub ASCII_LETTER_LOWER_PERMUTATION,
@@ -1387,6 +1401,7 @@ define_permutation! (
 		glyphs::ASCII_LETTER_LOWER_TOKEN_PATTERNS,
 		separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN);
 
+#[ cfg (feature = "zt-patterns-permutations") ]
 #[ cfg (feature = "zt-patterns-ascii") ]
 define_permutation! (
 		pub ASCII_LETTER_UPPER_PERMUTATION,
@@ -1395,6 +1410,7 @@ define_permutation! (
 		glyphs::ASCII_LETTER_UPPER_TOKEN_PATTERNS,
 		separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN);
 
+#[ cfg (feature = "zt-patterns-permutations") ]
 #[ cfg (feature = "zt-patterns-ascii") ]
 define_permutation! (
 		pub ASCII_LETTER_MIXED_PERMUTATION,
@@ -1403,6 +1419,7 @@ define_permutation! (
 		glyphs::ASCII_LETTER_MIXED_TOKEN_PATTERNS,
 		separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN);
 
+#[ cfg (feature = "zt-patterns-permutations") ]
 #[ cfg (feature = "zt-patterns-ascii") ]
 define_all! (pub ASCII_LETTER_PERMUTATION_ALL, [
 		ASCII_LETTER_LOWER_PERMUTATION,
@@ -1417,6 +1434,7 @@ define_all! (pub ASCII_LETTER_PERMUTATION_ALL, [
 
 
 
+#[ cfg (feature = "zt-patterns-permutations") ]
 #[ cfg (feature = "zt-patterns-digits-base10") ]
 define_permutation_partial! (
 		pub DIGITS_BASE10_SHUFFLE,
@@ -1425,9 +1443,19 @@ define_permutation_partial! (
 		{ glyphs::DIGIT_BASE10_TOKEN_PATTERNS => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
 		(8 : 2));
 
+#[ cfg (feature = "zt-patterns-permutations") ]
+#[ cfg (feature = "zt-patterns-digits-base16") ]
+define_permutation_partial! (
+		pub DIGITS_BASE16_SHUFFLE,
+		("digits-base16-shuf", "digits-base16", "shuffle", "encoding", "password"),
+		("digits-base16-shuf", "xs"),
+		{ glyphs::DIGIT_BASE16_TOKEN_PATTERNS => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
+		(14 : 2));
 
 
 
+
+#[ cfg (feature = "zt-patterns-permutations") ]
 #[ cfg (feature = "zt-patterns-ascii") ]
 define_permutation_partial! (
 		pub ASCII_LETTER_LOWER_SHUFFLE,
@@ -1436,6 +1464,7 @@ define_permutation_partial! (
 		{ glyphs::ASCII_LETTER_LOWER_TOKEN_PATTERNS => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
 		(24 : 4));
 
+#[ cfg (feature = "zt-patterns-permutations") ]
 #[ cfg (feature = "zt-patterns-ascii") ]
 define_permutation_partial! (
 		pub ASCII_LETTER_UPPER_SHUFFLE,
@@ -1444,6 +1473,7 @@ define_permutation_partial! (
 		{ glyphs::ASCII_LETTER_UPPER_TOKEN_PATTERNS => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
 		(24 : 4));
 
+#[ cfg (feature = "zt-patterns-permutations") ]
 #[ cfg (feature = "zt-patterns-ascii") ]
 define_permutation_partial! (
 		pub ASCII_LETTER_MIXED_SHUFFLE,
@@ -1486,10 +1516,14 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		#[ cfg (feature = "zt-patterns-digits-z85") ]
 		DIGITS_Z85_ALL,
 		
-		#[ cfg (feature = "zt-patterns-digits-base10") ]
-		DIGITS_BASE10_PERMUTATION_ALL,
+		#[ cfg (feature = "zt-patterns-permutations") ]
+		DIGITS_BASE_PERMUTATION_ALL,
+		#[ cfg (feature = "zt-patterns-permutations") ]
 		#[ cfg (feature = "zt-patterns-digits-base10") ]
 		DIGITS_BASE10_SHUFFLE_ALL,
+		#[ cfg (feature = "zt-patterns-permutations") ]
+		#[ cfg (feature = "zt-patterns-digits-base16") ]
+		DIGITS_BASE16_SHUFFLE_ALL,
 		
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		ASCII_LETTER_LOWER_ALL,
@@ -1503,12 +1537,16 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		ASCII_PRINTABLE_ALL,
 		
+		#[ cfg (feature = "zt-patterns-permutations") ]
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		ASCII_LETTER_PERMUTATION_ALL,
+		#[ cfg (feature = "zt-patterns-permutations") ]
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		ASCII_LETTER_LOWER_SHUFFLE_ALL,
+		#[ cfg (feature = "zt-patterns-permutations") ]
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		ASCII_LETTER_UPPER_SHUFFLE_ALL,
+		#[ cfg (feature = "zt-patterns-permutations") ]
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		ASCII_LETTER_MIXED_SHUFFLE_ALL,
 		

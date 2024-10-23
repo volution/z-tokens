@@ -88,6 +88,7 @@ zt-patterns-extra = [
 	"zt-patterns-bytes",
 	"zt-patterns-timestamp",
 	"zt-patterns-flake",
+	"zt-patterns-permutations",
 ]
 
 zt-patterns-digits-all = [
@@ -149,6 +150,8 @@ zt-patterns-ip = []
 zt-patterns-bytes = []
 zt-patterns-timestamp = []
 zt-patterns-flake = []
+
+zt-patterns-permutations = []
 
 
 
