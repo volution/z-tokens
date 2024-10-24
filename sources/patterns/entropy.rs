@@ -90,6 +90,30 @@ impl Entropy {
 			}
 	}
 	
+	pub fn for_permutation (_count : u128, _subset : u128) -> EntropyResult<Self> {
+		// FIXME:  Verify correctness!
+		if _subset > _count {
+			fail! (0x0d457506);
+		}
+		if (_count == 0) || (_subset == 0) {
+			return Ok (Self::none ());
+		}
+		let mut _accumulator = BigUint::one ();
+		let mut _accumulator_log2 = 0.0;
+		let _factor_start = max (2, (_count - _subset) + 1);
+		for _factor in _factor_start ..= _count {
+			_accumulator *= _factor;
+			_accumulator_log2 += (_factor as f64) .log2 ();
+		}
+		let _self = Self {
+				accumulator : _accumulator,
+				accumulator_log2 : _accumulator_log2,
+				accurate : true,
+				timestamp : false,
+			};
+		Ok (_self)
+	}
+	
 	pub fn multiply_by (&mut self, _factor : u128) -> EntropyResult {
 		if _factor == 0 {
 			fail! (0xa0097d3d);
@@ -236,12 +260,14 @@ pub fn entropy_token_push (_pattern : impl AsRef<TokenPattern>, _collector : &mu
 	let _pattern = _pattern.as_ref ();
 	match _pattern {
 		
-		TokenPattern::Tagged (_pattern, _) =>
-			entropy_token_push (_pattern, _collector),
+		TokenPattern::Tagged (_pattern, _) => {
+			entropy_token_push (_pattern, _collector)
+		}
 		
 		TokenPattern::Atom (_pattern) => {
 			let _entropy = entropy_atom (_pattern) ?;
-			_collector.multiply (&_entropy)
+			_collector.multiply (&_entropy) ?;
+			Ok (())
 		}
 		
 		TokenPattern::Sequence (_patterns, _separator) => {
@@ -252,41 +278,40 @@ pub fn entropy_token_push (_pattern : impl AsRef<TokenPattern>, _collector : &mu
 		}
 		
 		TokenPattern::Permutation (_patterns, _separator) => {
-			// FIXME:  Verify correctness!
 			let _count = _patterns.len ();
-			if _count > 0 {
-				let _start = 2;
-				for _index in _start ..= _count {
-					let _entropy = Entropy::for_set (_index as u128);
-					_collector.multiply (&_entropy) ?;
-				}
-				for _pattern in _patterns.iter () {
-					entropy_token_push (_pattern, _collector) ?;
-				}
+			{
+				let _entropy_permutation = Entropy::for_permutation (_count as u128, _count as u128) ?;
+				_collector.multiply (&_entropy_permutation) ?;
+			}
+			for _pattern in _patterns.iter () {
+				entropy_token_push (_pattern, _collector) ?;
 			}
 			Ok (())
 		}
 		
 		TokenPattern::PermutationPartial (_patterns, _separator, _subset) => {
-			// FIXME:  Verify correctness!
 			let _count = _patterns.len ();
-			let _subset = min (*_subset, _count);
-			if (_count > 0) && (_subset > 0) {
-				let _start = max (2, (_count - _subset) + 1);
-				for _index in _start ..= _count {
-					let _entropy = Entropy::for_set (_index as u128);
-					_collector.multiply (&_entropy) ?;
-				}
-				// FIXME:  This is just an estimate!
-				let mut _entropy_avg = Entropy::none ();
-				_entropy_avg.accurate = false;
-				for _pattern in _patterns.iter () {
-					let mut _entropy = Entropy::none ();
-					entropy_token_push (_pattern, &mut _entropy) ?;
-					_entropy_avg.addition (&_entropy) ?;
-				}
-				_entropy_avg.divide_by (_count as u128) ?;
-				_entropy_avg.multiply_by (_subset as u128) ?;
+			let _subset = *_subset;
+			if _subset > _count {
+				fail! (0x0c280a6f);
+			}
+			{
+				let _entropy_permutation = Entropy::for_permutation (_count as u128, _subset as u128) ?;
+				_collector.multiply (&_entropy_permutation) ?;
+			}
+			// FIXME:  This is just an estimate!
+			let _entropy_avg = {
+					let mut _entropy_avg = Entropy::none ();
+					_entropy_avg.accurate = false;
+					for _pattern in _patterns.iter () {
+						let mut _entropy = Entropy::none ();
+						entropy_token_push (_pattern, &mut _entropy) ?;
+						_entropy_avg.addition (&_entropy) ?;
+					}
+					_entropy_avg.divide_by (_count as u128) ?;
+					_entropy_avg
+				};
+			for _ in 0 .. _subset {
 				_collector.multiply (&_entropy_avg) ?;
 			}
 			Ok (())
@@ -311,8 +336,9 @@ pub fn entropy_token_push (_pattern : impl AsRef<TokenPattern>, _collector : &mu
 			Ok (())
 		}
 		
-		TokenPattern::Empty =>
-			Ok (()),
+		TokenPattern::Empty => {
+			Ok (())
+		}
 	}
 }
 
