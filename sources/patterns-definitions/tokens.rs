@@ -1543,35 +1543,15 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		
 		#[ cfg (feature = "zt-patterns-digits-base10") ]
 		DIGITS_BASE10_ALL,
-		#[ cfg (feature = "zt-patterns-digits-base2") ]
-		DIGITS_BASE2_ALL,
-		#[ cfg (feature = "zt-patterns-digits-base8") ]
-		DIGITS_BASE8_ALL,
-		#[ cfg (feature = "zt-patterns-digits-base16") ]
-		DIGITS_BASE16_ALL,
-		#[ cfg (feature = "zt-patterns-digits-base32") ]
-		DIGITS_BASE32_HEX_ALL,
-		#[ cfg (feature = "zt-patterns-digits-base32") ]
-		DIGITS_BASE32_RFC_ALL,
-		#[ cfg (feature = "zt-patterns-digits-base64") ]
-		DIGITS_BASE64_URL_ALL,
-		#[ cfg (feature = "zt-patterns-digits-base64") ]
-		DIGITS_BASE64_RFC_ALL,
-		#[ cfg (feature = "zt-patterns-digits-base58") ]
-		DIGITS_BASE58_ALL,
-		#[ cfg (feature = "zt-patterns-digits-base62") ]
-		DIGITS_BASE62_ALL,
-		#[ cfg (feature = "zt-patterns-digits-bech32") ]
-		DIGITS_BECH32_ALL,
-		#[ cfg (feature = "zt-patterns-digits-z85") ]
-		DIGITS_Z85_ALL,
-		
 		#[ cfg (feature = "zt-patterns-permutations") ]
 		#[ cfg (feature = "zt-patterns-digits-base10") ]
 		DIGITS_BASE10_PERMUTATION_ALL,
 		#[ cfg (feature = "zt-patterns-permutations") ]
 		#[ cfg (feature = "zt-patterns-digits-base10") ]
 		DIGITS_BASE10_SHUFFLE_ALL,
+		
+		#[ cfg (feature = "zt-patterns-digits-base16") ]
+		DIGITS_BASE16_ALL,
 		#[ cfg (feature = "zt-patterns-permutations") ]
 		#[ cfg (feature = "zt-patterns-digits-base16") ]
 		DIGITS_BASE16_PERMUTATION_ALL,
@@ -1579,26 +1559,44 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		#[ cfg (feature = "zt-patterns-digits-base16") ]
 		DIGITS_BASE16_SHUFFLE_ALL,
 		
+		#[ cfg (feature = "zt-patterns-digits-base2") ]
+		DIGITS_BASE2_ALL,
+		#[ cfg (feature = "zt-patterns-digits-base8") ]
+		DIGITS_BASE8_ALL,
+		
+		#[ cfg (feature = "zt-patterns-digits-base32") ]
+		DIGITS_BASE32_HEX_ALL,
+		#[ cfg (feature = "zt-patterns-digits-base32") ]
+		DIGITS_BASE32_RFC_ALL,
+		
+		#[ cfg (feature = "zt-patterns-digits-base64") ]
+		DIGITS_BASE64_URL_ALL,
+		#[ cfg (feature = "zt-patterns-digits-base64") ]
+		DIGITS_BASE64_RFC_ALL,
+		
+		#[ cfg (feature = "zt-patterns-digits-base58") ]
+		DIGITS_BASE58_ALL,
+		#[ cfg (feature = "zt-patterns-digits-base62") ]
+		DIGITS_BASE62_ALL,
+		
+		#[ cfg (feature = "zt-patterns-digits-bech32") ]
+		DIGITS_BECH32_ALL,
+		
+		#[ cfg (feature = "zt-patterns-digits-z85") ]
+		DIGITS_Z85_ALL,
+		
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		ASCII_LETTER_LOWER_ALL,
-		#[ cfg (feature = "zt-patterns-ascii") ]
-		#[ cfg (feature = "zt-patterns-letters-upper") ]
-		ASCII_LETTER_UPPER_ALL,
-		#[ cfg (feature = "zt-patterns-ascii") ]
-		#[ cfg (feature = "zt-patterns-letters-mixed") ]
-		ASCII_LETTER_MIXED_ALL,
-		
-		#[ cfg (feature = "zt-patterns-ascii") ]
-		ASCII_SYMBOLS_ALL,
-		#[ cfg (feature = "zt-patterns-ascii") ]
-		ASCII_PRINTABLE_ALL,
-		
 		#[ cfg (feature = "zt-patterns-permutations") ]
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		ASCII_LETTER_LOWER_PERMUTATION_ALL,
 		#[ cfg (feature = "zt-patterns-permutations") ]
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		ASCII_LETTER_LOWER_SHUFFLE_ALL,
+		
+		#[ cfg (feature = "zt-patterns-ascii") ]
+		#[ cfg (feature = "zt-patterns-letters-upper") ]
+		ASCII_LETTER_UPPER_ALL,
 		#[ cfg (feature = "zt-patterns-permutations") ]
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		#[ cfg (feature = "zt-patterns-letters-upper") ]
@@ -1607,6 +1605,10 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		#[ cfg (feature = "zt-patterns-letters-upper") ]
 		ASCII_LETTER_UPPER_SHUFFLE_ALL,
+		
+		#[ cfg (feature = "zt-patterns-ascii") ]
+		#[ cfg (feature = "zt-patterns-letters-mixed") ]
+		ASCII_LETTER_MIXED_ALL,
 		#[ cfg (feature = "zt-patterns-permutations") ]
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		#[ cfg (feature = "zt-patterns-letters-mixed") ]
@@ -1615,6 +1617,11 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		#[ cfg (feature = "zt-patterns-letters-mixed") ]
 		ASCII_LETTER_MIXED_SHUFFLE_ALL,
+		
+		#[ cfg (feature = "zt-patterns-ascii") ]
+		ASCII_SYMBOLS_ALL,
+		#[ cfg (feature = "zt-patterns-ascii") ]
+		ASCII_PRINTABLE_ALL,
 		
 		#[ cfg (feature = "zt-patterns-consonant-vowel") ]
 		ASCII_CONSONANT_VOWEL_LOWER_ALL,
@@ -1664,12 +1671,16 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		
 		#[ cfg (feature = "zt-patterns-mnemonic") ]
 		MNEMONIC_ALL,
+		
 		#[ cfg (feature = "zt-patterns-bip0039") ]
 		BIP0039_ALL,
+		
 		#[ cfg (feature = "zt-patterns-skey") ]
 		SKEY_ALL,
+		
 		#[ cfg (feature = "zt-patterns-pgp") ]
 		PGP_ALL,
+		
 		#[ cfg (feature = "zt-patterns-eff-large") ]
 		EFF_LARGE_ALL,
 		#[ cfg (feature = "zt-patterns-eff-short") ]
