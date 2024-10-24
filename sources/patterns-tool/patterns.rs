@@ -210,6 +210,8 @@ pub fn main_list <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	let _output_options = _output_flags.build () .else_wrap (0x3c0d75d6) ?;
 	
 	
+	let _stdout = stdout_locked ();
+	let _stdout_is_terminal = io::IsTerminal::is_terminal (&_stdout);
 	
 	
 	let _select_all = _select_all.unwrap_or (false) || _has_identifier.is_some ();
@@ -242,7 +244,7 @@ pub fn main_list <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	let _display_security = _display_security.unwrap_or (false) || _display_all;
 	let _display_bruteforce = _display_bruteforce.unwrap_or (false) || _display_all;
 	let _display_examples = _display_examples.unwrap_or (1);
-	let _display_trim = _display_trim.unwrap_or (if _display_all { 0 } else { DEFAULT_DISPLAY_TRIM });
+	let _display_trim = _display_trim.unwrap_or (if _display_all || !_stdout_is_terminal { 0 } else { DEFAULT_DISPLAY_TRIM });
 	let _display_cards = _display_aliases || _display_labels || _display_characters || _display_security || _display_bruteforce || (_display_examples >= 2);
 	
 	let _classify_chars =
@@ -278,7 +280,7 @@ pub fn main_list <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	let mut _randomizer = _randomizer_flags.build () .else_wrap (0xa43471c4) ?;
 	let _randomizer = _randomizer.deref_mut ();
 	
-	let mut _stream = BufWriter::with_capacity (IO_BUFFER_SIZE, stdout_locked ());
+	let mut _stream = BufWriter::with_capacity (IO_BUFFER_SIZE, _stdout);
 	
 	let mut _selected_count = 0;
 	let mut _selected_last : &[Rb<Text>] = &[];

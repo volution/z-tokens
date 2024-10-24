@@ -113,6 +113,11 @@ pub fn main_generate <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 		}
 	}
 	
+	
+	let _stdout = stdout_locked ();
+	let _stdout_is_terminal = io::IsTerminal::is_terminal (&_stdout);
+	
+	
 	if let Some (_compact) = _output_flags.compact {
 		if _compact {
 			if _group_size.is_none () {
@@ -166,7 +171,7 @@ pub fn main_generate <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
 	let _output_flush = _output_flush.unwrap_or (_hash_filter);
 	
-	let mut _stream = BufWriter::with_capacity (IO_BUFFER_SIZE, stdout_locked ());
+	let mut _stream = BufWriter::with_capacity (IO_BUFFER_SIZE, _stdout);
 	
 	_randomizer.reset () .else_wrap (0x3e9a73ab) ?;
 	
