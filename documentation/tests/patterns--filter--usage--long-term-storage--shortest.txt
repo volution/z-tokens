@@ -1,8 +1,8 @@
 >>  z-tokens patterns --all --for-long-term-storage --shortest --random-testing
 
 ::  digits-base10:24        :   79.7 b :   29 c ::    7022 7110 4492 5182 5629 0665
-::  digits-base8:26         :   78  =b :   32 c ::    6026 6103 7414 5775 0654 6142 25
 ::  digits-base16:20        :   80  =b :   24 c ::    c094 c32f 72d3 8ae1 3011
+::  digits-base8:26         :   78  =b :   32 c ::    6026 6103 7414 5775 0654 6142 25
 ::  digits-base32-hex:16    :   80  =b :   19 c ::    n8pv 47gk fs2v t02p
 ::  digits-base32-rfc:16    :   80  =b :   19 c ::    xiz7 ehqu p4c7 5acz
 ::  digits-base64-url:14    :   84  =b :   17 c ::    lx-H Dbd7 1Ng4 E_
@@ -12,16 +12,17 @@
 ::  digits-bech32:16        :   80  =b :   19 c ::    hgel y8s5 0uzl aqze
 ::  digits-z85:15           :   96.1 b :   17 c ::    .2Nm+ i^%9% 4AD]j
 ::  ascii-lower:18          :   84.6 b :   22 c ::    tuap ufut zdzb lyoe vf
+::  ascii-lower-perm        :   88.3 b :   32 c ::    lbeq doxk vwfh gpmy jisc urna zt
+::  ascii-lower-shuf:20     :   78.8 b :   24 c ::    lbeq doxk vwfh gpmy jisc
 ::  ascii-upper:18          :   84.6 b :   22 c ::    TUAP UFUT ZDZB LYOE VF
+::  ascii-upper-perm        :   88.3 b :   32 c ::    LBEQ DOXK VWFH GPMY JISC URNA ZT
+::  ascii-upper-shuf:20     :   78.8 b :   24 c ::    LBEQ DOXK VWFH GPMY JISC
 ::  ascii-mixed:14          :   79.8 b :   17 c ::    MObE nOlP YZhY cw
+::  ascii-mixed-perm        :  225.5 b :   64 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM
+::  ascii-mixed-shuf:16     :   87.4 b :   19 c ::    ipSn fozI jdyV xXEL
 ::  ascii-symbols:16        :   80  =b :   19 c ::    \)^~ %(;? :{#~ |!#^
 ::  ascii-any:12            :   78.6 b :   14 c ::    ei#9 i5kg |~.+
-::  ascii-lower-perm        :   88.3 b :   32 c ::    lbeq doxk vwfh gpmy jisc urna zt
-::  ascii-upper-perm        :   88.3 b :   32 c ::    LBEQ DOXK VWFH GPMY JISC URNA ZT
-::  ascii-mixed-perm        :  225.5 b :   64 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM
-::  ascii-lower-shuf:20     :   78.8 b :   24 c ::    lbeq doxk vwfh gpmy jisc
-::  ascii-upper-shuf:20     :   78.8 b :   24 c ::    LBEQ DOXK VWFH GPMY JISC
-::  ascii-mixed-shuf:16     :   87.4 b :   19 c ::    ipSn fozI jdyV xXEL
+::  ascii-any-shuf:12       :   77.5 b :   14 c ::    8(L> !;`s &'M6
 ::  cva-lower:6             :   80.5 b :   29 c ::    taqe veza zaye fugi rixu cezu
 ::  cva-upper:6             :   80.5 b :   29 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU
 ::  cva-mixed:5             :   87.1 b :   24 c ::    PaFi PiQI YayU mAjO lAzi
@@ -41,14 +42,16 @@
 ::  mnemonic:8              :   85.3 b :   54 c ::    arrow arizona mango archer jacket bundle telecom torso
 ::  bip0039:7               :   77  =b :   41 c ::    robot ship night shield way yellow casual
 ::  skey:7                  :   77  =b :   33 c ::    mile noun hear norm wast yarn led
-::  pgp:5                   :   80  =b :   85 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
+::  pgp:5                   :   80  =b :   85 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pandemic
 ::  eff-large:6             :   77.5 b :   42 c ::    scope slacks patronize dumpling deny spill
 ::  eff-short:8             :   82.7 b :   42 c ::    shaft sleep ankle path sled deaf shun zero
 ::  eff-unique:8            :   82.7 b :   62 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium
-::  nato:15                 :   77.5 b :   86 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:15                 :   77.5 b :   86 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo six six
+::  nato-perm               :  138.0 b :  212 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree fower xray zulu hotel zero too wun
+::  nato-shuf:16            :   77.0 b :  104 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar
 ::  bytes-hex:10            :   80  =b :   20 c ::    7f6f2ccdb23f2abb7b69
 ::  token-hex-96            :   96  =b :   24 c ::    8e27697bbb2a3fb2cd2c6f7f
 ::  token-hex-128           :  128  =b :   32 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f
 ::  token-hex-256           :  256  =b :   65 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f-958b761dabe5f6d0069dc102cf310a16
-::  token-hex-512           :  512  =b :  131 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f-958b761dabe5f6d0069dc102cf310a16-c5a0ef111f71c4 [...]
+::  token-hex-512           :  512  =b :  131 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f-958b761dabe5f6d0069dc102cf310a16-c5a0ef111f71c422431d9d54dee17b11-cb30ce1ac9ff61c737fc854f12037913
 ::  uuid-v4                 :  122  =b :   36 c ::    c5a0ef11-f80c-41ce-8329-75e88c63a6e1

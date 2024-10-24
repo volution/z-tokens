@@ -225,6 +225,412 @@
 \_  example:  7022 7110 4492 5182 5629 0665 7352 6062
 
 
+**  ~~~~~~~~  digits-base10-perm
+\_  bits:     21.7910
+\_  length:   11  (with spaces)
+\_  length:   10  (without spaces)
+\_  characters:
+    \_  letters:  0
+    \_  l. upper: 0
+    \_  l. lower: 0
+    \_  digits:   10
+    \_  symbols:  0
+    \_  no space: 10
+\_  example:  93648 15207
+
+
+**  ~~~~~~~~  digits-base10-shuf:2
+\_  bits:     6.4918
+\_  length:   2  (with spaces)
+\_  length:   2  (without spaces)
+\_  characters:
+    \_  letters:  0
+    \_  l. upper: 0
+    \_  l. lower: 0
+    \_  digits:   2
+    \_  symbols:  0
+    \_  no space: 2
+\_  example:  93
+
+
+**  ~~~~~~~~  digits-base10-shuf:4
+\_  bits:     12.2992
+\_  length:   4  (with spaces)
+\_  length:   4  (without spaces)
+\_  characters:
+    \_  letters:  0
+    \_  l. upper: 0
+    \_  l. lower: 0
+    \_  digits:   4
+    \_  symbols:  0
+    \_  no space: 4
+\_  example:  9364
+
+
+**  ~~~~~~~~  digits-base10-shuf:6
+\_  bits:     17.2060
+\_  length:   7  (with spaces)
+\_  length:   6  (without spaces)
+\_  characters:
+    \_  letters:  0
+    \_  l. upper: 0
+    \_  l. lower: 0
+    \_  digits:   6
+    \_  symbols:  0
+    \_  no space: 6
+\_  example:  9364 81
+
+
+**  ~~~~~~~~  digits-base10-shuf:8
+\_  bits:     20.7910
+\_  length:   9  (with spaces)
+\_  length:   8  (without spaces)
+\_  characters:
+    \_  letters:  0
+    \_  l. upper: 0
+    \_  l. lower: 0
+    \_  digits:   8
+    \_  symbols:  0
+    \_  no space: 8
+\_  example:  9364 8152
+
+
+**  ~~~~~~~~  digits-base16:2
+\_  bits:     8  (exact)
+\_  length:   2  (with spaces)
+\_  length:   2  (without spaces)
+\_  characters:
+    \_  letters:  1
+    \_  l. upper: 0
+    \_  l. lower: 1
+    \_  digits:   1
+    \_  symbols:  0
+    \_  no space: 2
+\_  example:  c0
+
+
+**  ~~~~~~~~  digits-base16:4
+\_  bits:     16  (exact)
+\_  length:   4  (with spaces)
+\_  length:   4  (without spaces)
+\_  characters:
+    \_  letters:  1
+    \_  l. upper: 0
+    \_  l. lower: 1
+    \_  digits:   3
+    \_  symbols:  0
+    \_  no space: 4
+\_  example:  c094
+
+
+**  ~~~~~~~~  digits-base16:6
+\_  bits:     24  (exact)
+\_  length:   7  (with spaces)
+\_  length:   6  (without spaces)
+\_  characters:
+    \_  letters:  2
+    \_  l. upper: 0
+    \_  l. lower: 2
+    \_  digits:   4
+    \_  symbols:  0
+    \_  no space: 6
+\_  example:  c094 c3
+
+
+**  ~~~~~~~~  digits-base16:8
+\_  bits:     32  (exact)
+\_  length:   9  (with spaces)
+\_  length:   8  (without spaces)
+\_  characters:
+    \_  letters:  3
+    \_  l. upper: 0
+    \_  l. lower: 3
+    \_  digits:   5
+    \_  symbols:  0
+    \_  no space: 8
+\_  example:  c094 c32f
+
+
+**  ~~~~~~~~  digits-base16:10
+\_  bits:     40  (exact)
+\_  length:   12  (with spaces)
+\_  length:   10  (without spaces)
+\_  characters:
+    \_  letters:  3
+    \_  l. upper: 0
+    \_  l. lower: 3
+    \_  digits:   7
+    \_  symbols:  0
+    \_  no space: 10
+\_  example:  c094 c32f 72
+
+
+**  ~~~~~~~~  digits-base16:12
+\_  bits:     48  (exact)
+\_  length:   14  (with spaces)
+\_  length:   12  (without spaces)
+\_  characters:
+    \_  letters:  4
+    \_  l. upper: 0
+    \_  l. lower: 4
+    \_  digits:   8
+    \_  symbols:  0
+    \_  no space: 12
+\_  example:  c094 c32f 72d3
+
+
+**  ~~~~~~~~  digits-base16:14
+\_  bits:     56  (exact)
+\_  length:   17  (with spaces)
+\_  length:   14  (without spaces)
+\_  characters:
+    \_  letters:  5
+    \_  l. upper: 0
+    \_  l. lower: 5
+    \_  digits:   9
+    \_  symbols:  0
+    \_  no space: 14
+\_  example:  c094 c32f 72d3 8a
+
+
+**  ~~~~~~~~  digits-base16:16
+\_  bits:     64  (exact)
+\_  length:   19  (with spaces)
+\_  length:   16  (without spaces)
+\_  characters:
+    \_  letters:  6
+    \_  l. upper: 0
+    \_  l. lower: 6
+    \_  digits:   10
+    \_  symbols:  0
+    \_  no space: 16
+\_  example:  c094 c32f 72d3 8ae1
+
+
+**  ~~~~~~~~  digits-base16:18
+\_  bits:     72  (exact)
+\_  length:   22  (with spaces)
+\_  length:   18  (without spaces)
+\_  characters:
+    \_  letters:  6
+    \_  l. upper: 0
+    \_  l. lower: 6
+    \_  digits:   12
+    \_  symbols:  0
+    \_  no space: 18
+\_  example:  c094 c32f 72d3 8ae1 30
+
+
+**  ~~~~~~~~  digits-base16:20
+\_  bits:     80  (exact)
+\_  length:   24  (with spaces)
+\_  length:   20  (without spaces)
+\_  characters:
+    \_  letters:  6
+    \_  l. upper: 0
+    \_  l. lower: 6
+    \_  digits:   14
+    \_  symbols:  0
+    \_  no space: 20
+\_  example:  c094 c32f 72d3 8ae1 3011
+
+
+**  ~~~~~~~~  digits-base16:22
+\_  bits:     88  (exact)
+\_  length:   27  (with spaces)
+\_  length:   22  (without spaces)
+\_  characters:
+    \_  letters:  6
+    \_  l. upper: 0
+    \_  l. lower: 6
+    \_  digits:   16
+    \_  symbols:  0
+    \_  no space: 22
+\_  example:  c094 c32f 72d3 8ae1 3011 18
+
+
+**  ~~~~~~~~  digits-base16:24
+\_  bits:     96  (exact)
+\_  length:   29  (with spaces)
+\_  length:   24  (without spaces)
+\_  characters:
+    \_  letters:  7
+    \_  l. upper: 0
+    \_  l. lower: 7
+    \_  digits:   17
+    \_  symbols:  0
+    \_  no space: 24
+\_  example:  c094 c32f 72d3 8ae1 3011 18c1
+
+
+**  ~~~~~~~~  digits-base16:26
+\_  bits:     104  (exact)
+\_  length:   32  (with spaces)
+\_  length:   26  (without spaces)
+\_  characters:
+    \_  letters:  7
+    \_  l. upper: 0
+    \_  l. lower: 7
+    \_  digits:   19
+    \_  symbols:  0
+    \_  no space: 26
+\_  example:  c094 c32f 72d3 8ae1 3011 18c1 84
+
+
+**  ~~~~~~~~  digits-base16:28
+\_  bits:     112  (exact)
+\_  length:   34  (with spaces)
+\_  length:   28  (without spaces)
+\_  characters:
+    \_  letters:  8
+    \_  l. upper: 0
+    \_  l. lower: 8
+    \_  digits:   20
+    \_  symbols:  0
+    \_  no space: 28
+\_  example:  c094 c32f 72d3 8ae1 3011 18c1 844a
+
+
+**  ~~~~~~~~  digits-base16:30
+\_  bits:     120  (exact)
+\_  length:   37  (with spaces)
+\_  length:   30  (without spaces)
+\_  characters:
+    \_  letters:  8
+    \_  l. upper: 0
+    \_  l. lower: 8
+    \_  digits:   22
+    \_  symbols:  0
+    \_  no space: 30
+\_  example:  c094 c32f 72d3 8ae1 3011 18c1 844a 13
+
+
+**  ~~~~~~~~  digits-base16:32
+\_  bits:     128  (exact)
+\_  length:   39  (with spaces)
+\_  length:   32  (without spaces)
+\_  characters:
+    \_  letters:  9
+    \_  l. upper: 0
+    \_  l. lower: 9
+    \_  digits:   23
+    \_  symbols:  0
+    \_  no space: 32
+\_  example:  c094 c32f 72d3 8ae1 3011 18c1 844a 13a9
+
+
+**  ~~~~~~~~  digits-base16-perm
+\_  bits:     44.2501
+\_  length:   19  (with spaces)
+\_  length:   16  (without spaces)
+\_  characters:
+    \_  letters:  6
+    \_  l. upper: 0
+    \_  l. lower: 6
+    \_  digits:   10
+    \_  symbols:  0
+    \_  no space: 16
+\_  example:  46ba d5fe 1729 380c
+
+
+**  ~~~~~~~~  digits-base16-shuf:2
+\_  bits:     7.9068
+\_  length:   2  (with spaces)
+\_  length:   2  (without spaces)
+\_  characters:
+    \_  letters:  0
+    \_  l. upper: 0
+    \_  l. lower: 0
+    \_  digits:   2
+    \_  symbols:  0
+    \_  no space: 2
+\_  example:  46
+
+
+**  ~~~~~~~~  digits-base16-shuf:4
+\_  bits:     15.4146
+\_  length:   4  (with spaces)
+\_  length:   4  (without spaces)
+\_  characters:
+    \_  letters:  2
+    \_  l. upper: 0
+    \_  l. lower: 2
+    \_  digits:   2
+    \_  symbols:  0
+    \_  no space: 4
+\_  example:  46ba
+
+
+**  ~~~~~~~~  digits-base16-shuf:6
+\_  bits:     22.4590
+\_  length:   7  (with spaces)
+\_  length:   6  (without spaces)
+\_  characters:
+    \_  letters:  3
+    \_  l. upper: 0
+    \_  l. lower: 3
+    \_  digits:   3
+    \_  symbols:  0
+    \_  no space: 6
+\_  example:  46ba d5
+
+
+**  ~~~~~~~~  digits-base16-shuf:8
+\_  bits:     28.9509
+\_  length:   9  (with spaces)
+\_  length:   8  (without spaces)
+\_  characters:
+    \_  letters:  5
+    \_  l. upper: 0
+    \_  l. lower: 5
+    \_  digits:   3
+    \_  symbols:  0
+    \_  no space: 8
+\_  example:  46ba d5fe
+
+
+**  ~~~~~~~~  digits-base16-shuf:10
+\_  bits:     34.7582
+\_  length:   12  (with spaces)
+\_  length:   10  (without spaces)
+\_  characters:
+    \_  letters:  5
+    \_  l. upper: 0
+    \_  l. lower: 5
+    \_  digits:   5
+    \_  symbols:  0
+    \_  no space: 10
+\_  example:  46ba d5fe 17
+
+
+**  ~~~~~~~~  digits-base16-shuf:12
+\_  bits:     39.6651
+\_  length:   14  (with spaces)
+\_  length:   12  (without spaces)
+\_  characters:
+    \_  letters:  5
+    \_  l. upper: 0
+    \_  l. lower: 5
+    \_  digits:   7
+    \_  symbols:  0
+    \_  no space: 12
+\_  example:  46ba d5fe 1729
+
+
+**  ~~~~~~~~  digits-base16-shuf:14
+\_  bits:     43.2501
+\_  length:   17  (with spaces)
+\_  length:   14  (without spaces)
+\_  characters:
+    \_  letters:  5
+    \_  l. upper: 0
+    \_  l. lower: 5
+    \_  digits:   9
+    \_  symbols:  0
+    \_  no space: 14
+\_  example:  46ba d5fe 1729 38
+
+
 **  ~~~~~~~~  digits-base2:4
 \_  bits:     4  (exact)
 \_  length:   4  (with spaces)
@@ -559,230 +965,6 @@
     \_  symbols:  0
     \_  no space: 32
 \_  example:  6026 6103 7414 5775 0654 6142 2556 2505
-
-
-**  ~~~~~~~~  digits-base16:2
-\_  bits:     8  (exact)
-\_  length:   2  (with spaces)
-\_  length:   2  (without spaces)
-\_  characters:
-    \_  letters:  1
-    \_  l. upper: 0
-    \_  l. lower: 1
-    \_  digits:   1
-    \_  symbols:  0
-    \_  no space: 2
-\_  example:  c0
-
-
-**  ~~~~~~~~  digits-base16:4
-\_  bits:     16  (exact)
-\_  length:   4  (with spaces)
-\_  length:   4  (without spaces)
-\_  characters:
-    \_  letters:  1
-    \_  l. upper: 0
-    \_  l. lower: 1
-    \_  digits:   3
-    \_  symbols:  0
-    \_  no space: 4
-\_  example:  c094
-
-
-**  ~~~~~~~~  digits-base16:6
-\_  bits:     24  (exact)
-\_  length:   7  (with spaces)
-\_  length:   6  (without spaces)
-\_  characters:
-    \_  letters:  2
-    \_  l. upper: 0
-    \_  l. lower: 2
-    \_  digits:   4
-    \_  symbols:  0
-    \_  no space: 6
-\_  example:  c094 c3
-
-
-**  ~~~~~~~~  digits-base16:8
-\_  bits:     32  (exact)
-\_  length:   9  (with spaces)
-\_  length:   8  (without spaces)
-\_  characters:
-    \_  letters:  3
-    \_  l. upper: 0
-    \_  l. lower: 3
-    \_  digits:   5
-    \_  symbols:  0
-    \_  no space: 8
-\_  example:  c094 c32f
-
-
-**  ~~~~~~~~  digits-base16:10
-\_  bits:     40  (exact)
-\_  length:   12  (with spaces)
-\_  length:   10  (without spaces)
-\_  characters:
-    \_  letters:  3
-    \_  l. upper: 0
-    \_  l. lower: 3
-    \_  digits:   7
-    \_  symbols:  0
-    \_  no space: 10
-\_  example:  c094 c32f 72
-
-
-**  ~~~~~~~~  digits-base16:12
-\_  bits:     48  (exact)
-\_  length:   14  (with spaces)
-\_  length:   12  (without spaces)
-\_  characters:
-    \_  letters:  4
-    \_  l. upper: 0
-    \_  l. lower: 4
-    \_  digits:   8
-    \_  symbols:  0
-    \_  no space: 12
-\_  example:  c094 c32f 72d3
-
-
-**  ~~~~~~~~  digits-base16:14
-\_  bits:     56  (exact)
-\_  length:   17  (with spaces)
-\_  length:   14  (without spaces)
-\_  characters:
-    \_  letters:  5
-    \_  l. upper: 0
-    \_  l. lower: 5
-    \_  digits:   9
-    \_  symbols:  0
-    \_  no space: 14
-\_  example:  c094 c32f 72d3 8a
-
-
-**  ~~~~~~~~  digits-base16:16
-\_  bits:     64  (exact)
-\_  length:   19  (with spaces)
-\_  length:   16  (without spaces)
-\_  characters:
-    \_  letters:  6
-    \_  l. upper: 0
-    \_  l. lower: 6
-    \_  digits:   10
-    \_  symbols:  0
-    \_  no space: 16
-\_  example:  c094 c32f 72d3 8ae1
-
-
-**  ~~~~~~~~  digits-base16:18
-\_  bits:     72  (exact)
-\_  length:   22  (with spaces)
-\_  length:   18  (without spaces)
-\_  characters:
-    \_  letters:  6
-    \_  l. upper: 0
-    \_  l. lower: 6
-    \_  digits:   12
-    \_  symbols:  0
-    \_  no space: 18
-\_  example:  c094 c32f 72d3 8ae1 30
-
-
-**  ~~~~~~~~  digits-base16:20
-\_  bits:     80  (exact)
-\_  length:   24  (with spaces)
-\_  length:   20  (without spaces)
-\_  characters:
-    \_  letters:  6
-    \_  l. upper: 0
-    \_  l. lower: 6
-    \_  digits:   14
-    \_  symbols:  0
-    \_  no space: 20
-\_  example:  c094 c32f 72d3 8ae1 3011
-
-
-**  ~~~~~~~~  digits-base16:22
-\_  bits:     88  (exact)
-\_  length:   27  (with spaces)
-\_  length:   22  (without spaces)
-\_  characters:
-    \_  letters:  6
-    \_  l. upper: 0
-    \_  l. lower: 6
-    \_  digits:   16
-    \_  symbols:  0
-    \_  no space: 22
-\_  example:  c094 c32f 72d3 8ae1 3011 18
-
-
-**  ~~~~~~~~  digits-base16:24
-\_  bits:     96  (exact)
-\_  length:   29  (with spaces)
-\_  length:   24  (without spaces)
-\_  characters:
-    \_  letters:  7
-    \_  l. upper: 0
-    \_  l. lower: 7
-    \_  digits:   17
-    \_  symbols:  0
-    \_  no space: 24
-\_  example:  c094 c32f 72d3 8ae1 3011 18c1
-
-
-**  ~~~~~~~~  digits-base16:26
-\_  bits:     104  (exact)
-\_  length:   32  (with spaces)
-\_  length:   26  (without spaces)
-\_  characters:
-    \_  letters:  7
-    \_  l. upper: 0
-    \_  l. lower: 7
-    \_  digits:   19
-    \_  symbols:  0
-    \_  no space: 26
-\_  example:  c094 c32f 72d3 8ae1 3011 18c1 84
-
-
-**  ~~~~~~~~  digits-base16:28
-\_  bits:     112  (exact)
-\_  length:   34  (with spaces)
-\_  length:   28  (without spaces)
-\_  characters:
-    \_  letters:  8
-    \_  l. upper: 0
-    \_  l. lower: 8
-    \_  digits:   20
-    \_  symbols:  0
-    \_  no space: 28
-\_  example:  c094 c32f 72d3 8ae1 3011 18c1 844a
-
-
-**  ~~~~~~~~  digits-base16:30
-\_  bits:     120  (exact)
-\_  length:   37  (with spaces)
-\_  length:   30  (without spaces)
-\_  characters:
-    \_  letters:  8
-    \_  l. upper: 0
-    \_  l. lower: 8
-    \_  digits:   22
-    \_  symbols:  0
-    \_  no space: 30
-\_  example:  c094 c32f 72d3 8ae1 3011 18c1 844a 13
-
-
-**  ~~~~~~~~  digits-base16:32
-\_  bits:     128  (exact)
-\_  length:   39  (with spaces)
-\_  length:   32  (without spaces)
-\_  characters:
-    \_  letters:  9
-    \_  l. upper: 0
-    \_  l. lower: 9
-    \_  digits:   23
-    \_  symbols:  0
-    \_  no space: 32
-\_  example:  c094 c32f 72d3 8ae1 3011 18c1 844a 13a9
 
 
 **  ~~~~~~~~  digits-base32-hex:2
@@ -2451,76 +2633,6 @@
 \_  example:  .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU 77I7I
 
 
-**  ~~~~~~~~  digits-base10-perm
-\_  bits:     21.7910
-\_  length:   11  (with spaces)
-\_  length:   10  (without spaces)
-\_  characters:
-    \_  letters:  0
-    \_  l. upper: 0
-    \_  l. lower: 0
-    \_  digits:   10
-    \_  symbols:  0
-    \_  no space: 10
-\_  example:  93648 15207
-
-
-**  ~~~~~~~~  digits-base10-shuf:2
-\_  bits:     6.4918
-\_  length:   2  (with spaces)
-\_  length:   2  (without spaces)
-\_  characters:
-    \_  letters:  0
-    \_  l. upper: 0
-    \_  l. lower: 0
-    \_  digits:   2
-    \_  symbols:  0
-    \_  no space: 2
-\_  example:  93
-
-
-**  ~~~~~~~~  digits-base10-shuf:4
-\_  bits:     12.2992
-\_  length:   4  (with spaces)
-\_  length:   4  (without spaces)
-\_  characters:
-    \_  letters:  0
-    \_  l. upper: 0
-    \_  l. lower: 0
-    \_  digits:   4
-    \_  symbols:  0
-    \_  no space: 4
-\_  example:  9364
-
-
-**  ~~~~~~~~  digits-base10-shuf:6
-\_  bits:     17.2060
-\_  length:   7  (with spaces)
-\_  length:   6  (without spaces)
-\_  characters:
-    \_  letters:  0
-    \_  l. upper: 0
-    \_  l. lower: 0
-    \_  digits:   6
-    \_  symbols:  0
-    \_  no space: 6
-\_  example:  9364 81
-
-
-**  ~~~~~~~~  digits-base10-shuf:8
-\_  bits:     20.7910
-\_  length:   9  (with spaces)
-\_  length:   8  (without spaces)
-\_  characters:
-    \_  letters:  0
-    \_  l. upper: 0
-    \_  l. lower: 0
-    \_  digits:   8
-    \_  symbols:  0
-    \_  no space: 8
-\_  example:  9364 8152
-
-
 **  ~~~~~~~~  ascii-lower:2
 \_  bits:     9.4008
 \_  length:   2  (with spaces)
@@ -2743,6 +2855,104 @@
     \_  symbols:  0
     \_  no space: 32
 \_  example:  tuap ufut zdzb lyoe vfnq mwwb zfzr abqu
+
+
+**  ~~~~~~~~  ascii-lower-perm
+\_  bits:     88.3819
+\_  length:   32  (with spaces)
+\_  length:   26  (without spaces)
+\_  characters:
+    \_  letters:  26
+    \_  l. upper: 0
+    \_  l. lower: 26
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 26
+\_  example:  lbeq doxk vwfh gpmy jisc urna zt
+
+
+**  ~~~~~~~~  ascii-lower-shuf:4
+\_  bits:     18.4528
+\_  length:   4  (with spaces)
+\_  length:   4  (without spaces)
+\_  characters:
+    \_  letters:  4
+    \_  l. upper: 0
+    \_  l. lower: 4
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 4
+\_  example:  lbeq
+
+
+**  ~~~~~~~~  ascii-lower-shuf:8
+\_  bits:     35.8744
+\_  length:   9  (with spaces)
+\_  length:   8  (without spaces)
+\_  characters:
+    \_  letters:  8
+    \_  l. upper: 0
+    \_  l. lower: 8
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 8
+\_  example:  lbeq doxk
+
+
+**  ~~~~~~~~  ascii-lower-shuf:12
+\_  bits:     52.0387
+\_  length:   14  (with spaces)
+\_  length:   12  (without spaces)
+\_  characters:
+    \_  letters:  12
+    \_  l. upper: 0
+    \_  l. lower: 12
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 12
+\_  example:  lbeq doxk vwfh
+
+
+**  ~~~~~~~~  ascii-lower-shuf:16
+\_  bits:     66.5908
+\_  length:   19  (with spaces)
+\_  length:   16  (without spaces)
+\_  characters:
+    \_  letters:  16
+    \_  l. upper: 0
+    \_  l. lower: 16
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 16
+\_  example:  lbeq doxk vwfh gpmy
+
+
+**  ~~~~~~~~  ascii-lower-shuf:20
+\_  bits:     78.8901
+\_  length:   24  (with spaces)
+\_  length:   20  (without spaces)
+\_  characters:
+    \_  letters:  20
+    \_  l. upper: 0
+    \_  l. lower: 20
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 20
+\_  example:  lbeq doxk vwfh gpmy jisc
+
+
+**  ~~~~~~~~  ascii-lower-shuf:24
+\_  bits:     87.3819
+\_  length:   29  (with spaces)
+\_  length:   24  (without spaces)
+\_  characters:
+    \_  letters:  24
+    \_  l. upper: 0
+    \_  l. lower: 24
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 24
+\_  example:  lbeq doxk vwfh gpmy jisc urna
 
 
 **  ~~~~~~~~  ascii-upper:2
@@ -2969,6 +3179,104 @@
 \_  example:  TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU
 
 
+**  ~~~~~~~~  ascii-upper-perm
+\_  bits:     88.3819
+\_  length:   32  (with spaces)
+\_  length:   26  (without spaces)
+\_  characters:
+    \_  letters:  26
+    \_  l. upper: 26
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 26
+\_  example:  LBEQ DOXK VWFH GPMY JISC URNA ZT
+
+
+**  ~~~~~~~~  ascii-upper-shuf:4
+\_  bits:     18.4528
+\_  length:   4  (with spaces)
+\_  length:   4  (without spaces)
+\_  characters:
+    \_  letters:  4
+    \_  l. upper: 4
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 4
+\_  example:  LBEQ
+
+
+**  ~~~~~~~~  ascii-upper-shuf:8
+\_  bits:     35.8744
+\_  length:   9  (with spaces)
+\_  length:   8  (without spaces)
+\_  characters:
+    \_  letters:  8
+    \_  l. upper: 8
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 8
+\_  example:  LBEQ DOXK
+
+
+**  ~~~~~~~~  ascii-upper-shuf:12
+\_  bits:     52.0387
+\_  length:   14  (with spaces)
+\_  length:   12  (without spaces)
+\_  characters:
+    \_  letters:  12
+    \_  l. upper: 12
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 12
+\_  example:  LBEQ DOXK VWFH
+
+
+**  ~~~~~~~~  ascii-upper-shuf:16
+\_  bits:     66.5908
+\_  length:   19  (with spaces)
+\_  length:   16  (without spaces)
+\_  characters:
+    \_  letters:  16
+    \_  l. upper: 16
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 16
+\_  example:  LBEQ DOXK VWFH GPMY
+
+
+**  ~~~~~~~~  ascii-upper-shuf:20
+\_  bits:     78.8901
+\_  length:   24  (with spaces)
+\_  length:   20  (without spaces)
+\_  characters:
+    \_  letters:  20
+    \_  l. upper: 20
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 20
+\_  example:  LBEQ DOXK VWFH GPMY JISC
+
+
+**  ~~~~~~~~  ascii-upper-shuf:24
+\_  bits:     87.3819
+\_  length:   29  (with spaces)
+\_  length:   24  (without spaces)
+\_  characters:
+    \_  letters:  24
+    \_  l. upper: 24
+    \_  l. lower: 0
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 24
+\_  example:  LBEQ DOXK VWFH GPMY JISC URNA
+
+
 **  ~~~~~~~~  ascii-mixed:2
 \_  bits:     11.4008
 \_  length:   2  (with spaces)
@@ -3191,6 +3499,188 @@
     \_  symbols:  0
     \_  no space: 32
 \_  example:  MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad
+
+
+**  ~~~~~~~~  ascii-mixed-perm
+\_  bits:     225.5810
+\_  length:   64  (with spaces)
+\_  length:   52  (without spaces)
+\_  characters:
+    \_  letters:  52
+    \_  l. upper: 26
+    \_  l. lower: 26
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 52
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:4
+\_  bits:     22.6314
+\_  length:   4  (with spaces)
+\_  length:   4  (without spaces)
+\_  characters:
+    \_  letters:  4
+    \_  l. upper: 1
+    \_  l. lower: 3
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 4
+\_  example:  ipSn
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:8
+\_  bits:     44.7863
+\_  length:   9  (with spaces)
+\_  length:   8  (without spaces)
+\_  characters:
+    \_  letters:  8
+    \_  l. upper: 2
+    \_  l. lower: 6
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 8
+\_  example:  ipSn fozI
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:12
+\_  bits:     66.4219
+\_  length:   14  (with spaces)
+\_  length:   12  (without spaces)
+\_  characters:
+    \_  letters:  12
+    \_  l. upper: 3
+    \_  l. lower: 9
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 12
+\_  example:  ipSn fozI jdyV
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:16
+\_  bits:     87.4866
+\_  length:   19  (with spaces)
+\_  length:   16  (without spaces)
+\_  characters:
+    \_  letters:  16
+    \_  l. upper: 6
+    \_  l. lower: 10
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 16
+\_  example:  ipSn fozI jdyV xXEL
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:20
+\_  bits:     107.9177
+\_  length:   24  (with spaces)
+\_  length:   20  (without spaces)
+\_  characters:
+    \_  letters:  20
+    \_  l. upper: 8
+    \_  l. lower: 12
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 20
+\_  example:  ipSn fozI jdyV xXEL leJT
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:24
+\_  bits:     127.6368
+\_  length:   29  (with spaces)
+\_  length:   24  (without spaces)
+\_  characters:
+    \_  letters:  24
+    \_  l. upper: 11
+    \_  l. lower: 13
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 24
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:28
+\_  bits:     146.5433
+\_  length:   34  (with spaces)
+\_  length:   28  (without spaces)
+\_  characters:
+    \_  letters:  28
+    \_  l. upper: 15
+    \_  l. lower: 13
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 28
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:32
+\_  bits:     164.5036
+\_  length:   39  (with spaces)
+\_  length:   32  (without spaces)
+\_  characters:
+    \_  letters:  32
+    \_  l. upper: 17
+    \_  l. lower: 15
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 32
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:36
+\_  bits:     181.3308
+\_  length:   44  (with spaces)
+\_  length:   36  (without spaces)
+\_  characters:
+    \_  letters:  36
+    \_  l. upper: 19
+    \_  l. lower: 17
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 36
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:40
+\_  bits:     196.7455
+\_  length:   49  (with spaces)
+\_  length:   40  (without spaces)
+\_  characters:
+    \_  letters:  40
+    \_  l. upper: 20
+    \_  l. lower: 20
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 40
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:44
+\_  bits:     210.2817
+\_  length:   54  (with spaces)
+\_  length:   44  (without spaces)
+\_  characters:
+    \_  letters:  44
+    \_  l. upper: 21
+    \_  l. lower: 23
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 44
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:48
+\_  bits:     220.9960
+\_  length:   59  (with spaces)
+\_  length:   48  (without spaces)
+\_  characters:
+    \_  letters:  48
+    \_  l. upper: 23
+    \_  l. lower: 25
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 48
+\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm
 
 
 **  ~~~~~~~~  ascii-symbols:2
@@ -3641,382 +4131,116 @@
 \_  example:  ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
 
 
-**  ~~~~~~~~  ascii-lower-perm
-\_  bits:     88.3819
-\_  length:   32  (with spaces)
-\_  length:   26  (without spaces)
-\_  characters:
-    \_  letters:  26
-    \_  l. upper: 0
-    \_  l. lower: 26
-    \_  digits:   0
-    \_  symbols:  0
-    \_  no space: 26
-\_  example:  lbeq doxk vwfh gpmy jisc urna zt
-
-
-**  ~~~~~~~~  ascii-upper-perm
-\_  bits:     88.3819
-\_  length:   32  (with spaces)
-\_  length:   26  (without spaces)
-\_  characters:
-    \_  letters:  26
-    \_  l. upper: 26
-    \_  l. lower: 0
-    \_  digits:   0
-    \_  symbols:  0
-    \_  no space: 26
-\_  example:  LBEQ DOXK VWFH GPMY JISC URNA ZT
-
-
-**  ~~~~~~~~  ascii-mixed-perm
-\_  bits:     225.5810
-\_  length:   64  (with spaces)
-\_  length:   52  (without spaces)
-\_  characters:
-    \_  letters:  52
-    \_  l. upper: 26
-    \_  l. lower: 26
-    \_  digits:   0
-    \_  symbols:  0
-    \_  no space: 52
-\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM
-
-
-**  ~~~~~~~~  ascii-lower-shuf:4
-\_  bits:     18.4528
+**  ~~~~~~~~  ascii-any-shuf:4
+\_  bits:     26.1251
 \_  length:   4  (with spaces)
 \_  length:   4  (without spaces)
 \_  characters:
-    \_  letters:  4
-    \_  l. upper: 0
-    \_  l. lower: 4
-    \_  digits:   0
-    \_  symbols:  0
-    \_  no space: 4
-\_  example:  lbeq
-
-
-**  ~~~~~~~~  ascii-lower-shuf:8
-\_  bits:     35.8744
-\_  length:   9  (with spaces)
-\_  length:   8  (without spaces)
-\_  characters:
-    \_  letters:  8
-    \_  l. upper: 0
-    \_  l. lower: 8
-    \_  digits:   0
-    \_  symbols:  0
-    \_  no space: 8
-\_  example:  lbeq doxk
-
-
-**  ~~~~~~~~  ascii-lower-shuf:12
-\_  bits:     52.0387
-\_  length:   14  (with spaces)
-\_  length:   12  (without spaces)
-\_  characters:
-    \_  letters:  12
-    \_  l. upper: 0
-    \_  l. lower: 12
-    \_  digits:   0
-    \_  symbols:  0
-    \_  no space: 12
-\_  example:  lbeq doxk vwfh
-
-
-**  ~~~~~~~~  ascii-lower-shuf:16
-\_  bits:     66.5908
-\_  length:   19  (with spaces)
-\_  length:   16  (without spaces)
-\_  characters:
-    \_  letters:  16
-    \_  l. upper: 0
-    \_  l. lower: 16
-    \_  digits:   0
-    \_  symbols:  0
-    \_  no space: 16
-\_  example:  lbeq doxk vwfh gpmy
-
-
-**  ~~~~~~~~  ascii-lower-shuf:20
-\_  bits:     78.8901
-\_  length:   24  (with spaces)
-\_  length:   20  (without spaces)
-\_  characters:
-    \_  letters:  20
-    \_  l. upper: 0
-    \_  l. lower: 20
-    \_  digits:   0
-    \_  symbols:  0
-    \_  no space: 20
-\_  example:  lbeq doxk vwfh gpmy jisc
-
-
-**  ~~~~~~~~  ascii-lower-shuf:24
-\_  bits:     87.3819
-\_  length:   29  (with spaces)
-\_  length:   24  (without spaces)
-\_  characters:
-    \_  letters:  24
-    \_  l. upper: 0
-    \_  l. lower: 24
-    \_  digits:   0
-    \_  symbols:  0
-    \_  no space: 24
-\_  example:  lbeq doxk vwfh gpmy jisc urna
-
-
-**  ~~~~~~~~  ascii-upper-shuf:4
-\_  bits:     18.4528
-\_  length:   4  (with spaces)
-\_  length:   4  (without spaces)
-\_  characters:
-    \_  letters:  4
-    \_  l. upper: 4
-    \_  l. lower: 0
-    \_  digits:   0
-    \_  symbols:  0
-    \_  no space: 4
-\_  example:  LBEQ
-
-
-**  ~~~~~~~~  ascii-upper-shuf:8
-\_  bits:     35.8744
-\_  length:   9  (with spaces)
-\_  length:   8  (without spaces)
-\_  characters:
-    \_  letters:  8
-    \_  l. upper: 8
-    \_  l. lower: 0
-    \_  digits:   0
-    \_  symbols:  0
-    \_  no space: 8
-\_  example:  LBEQ DOXK
-
-
-**  ~~~~~~~~  ascii-upper-shuf:12
-\_  bits:     52.0387
-\_  length:   14  (with spaces)
-\_  length:   12  (without spaces)
-\_  characters:
-    \_  letters:  12
-    \_  l. upper: 12
-    \_  l. lower: 0
-    \_  digits:   0
-    \_  symbols:  0
-    \_  no space: 12
-\_  example:  LBEQ DOXK VWFH
-
-
-**  ~~~~~~~~  ascii-upper-shuf:16
-\_  bits:     66.5908
-\_  length:   19  (with spaces)
-\_  length:   16  (without spaces)
-\_  characters:
-    \_  letters:  16
-    \_  l. upper: 16
-    \_  l. lower: 0
-    \_  digits:   0
-    \_  symbols:  0
-    \_  no space: 16
-\_  example:  LBEQ DOXK VWFH GPMY
-
-
-**  ~~~~~~~~  ascii-upper-shuf:20
-\_  bits:     78.8901
-\_  length:   24  (with spaces)
-\_  length:   20  (without spaces)
-\_  characters:
-    \_  letters:  20
-    \_  l. upper: 20
-    \_  l. lower: 0
-    \_  digits:   0
-    \_  symbols:  0
-    \_  no space: 20
-\_  example:  LBEQ DOXK VWFH GPMY JISC
-
-
-**  ~~~~~~~~  ascii-upper-shuf:24
-\_  bits:     87.3819
-\_  length:   29  (with spaces)
-\_  length:   24  (without spaces)
-\_  characters:
-    \_  letters:  24
-    \_  l. upper: 24
-    \_  l. lower: 0
-    \_  digits:   0
-    \_  symbols:  0
-    \_  no space: 24
-\_  example:  LBEQ DOXK VWFH GPMY JISC URNA
-
-
-**  ~~~~~~~~  ascii-mixed-shuf:4
-\_  bits:     22.6314
-\_  length:   4  (with spaces)
-\_  length:   4  (without spaces)
-\_  characters:
-    \_  letters:  4
+    \_  letters:  1
     \_  l. upper: 1
-    \_  l. lower: 3
-    \_  digits:   0
-    \_  symbols:  0
+    \_  l. lower: 0
+    \_  digits:   1
+    \_  symbols:  2
     \_  no space: 4
-\_  example:  ipSn
+\_  example:  8(L>
 
 
-**  ~~~~~~~~  ascii-mixed-shuf:8
-\_  bits:     44.7863
+**  ~~~~~~~~  ascii-any-shuf:8
+\_  bits:     51.9950
 \_  length:   9  (with spaces)
 \_  length:   8  (without spaces)
 \_  characters:
-    \_  letters:  8
-    \_  l. upper: 2
-    \_  l. lower: 6
-    \_  digits:   0
-    \_  symbols:  0
+    \_  letters:  2
+    \_  l. upper: 1
+    \_  l. lower: 1
+    \_  digits:   1
+    \_  symbols:  5
     \_  no space: 8
-\_  example:  ipSn fozI
+\_  example:  8(L> !;`s
 
 
-**  ~~~~~~~~  ascii-mixed-shuf:12
-\_  bits:     66.4219
+**  ~~~~~~~~  ascii-any-shuf:12
+\_  bits:     77.5980
 \_  length:   14  (with spaces)
 \_  length:   12  (without spaces)
 \_  characters:
-    \_  letters:  12
-    \_  l. upper: 3
-    \_  l. lower: 9
-    \_  digits:   0
-    \_  symbols:  0
+    \_  letters:  3
+    \_  l. upper: 2
+    \_  l. lower: 1
+    \_  digits:   2
+    \_  symbols:  7
     \_  no space: 12
-\_  example:  ipSn fozI jdyV
+\_  example:  8(L> !;`s &'M6
 
 
-**  ~~~~~~~~  ascii-mixed-shuf:16
-\_  bits:     87.4866
+**  ~~~~~~~~  ascii-any-shuf:16
+\_  bits:     102.9211
 \_  length:   19  (with spaces)
 \_  length:   16  (without spaces)
 \_  characters:
-    \_  letters:  16
-    \_  l. upper: 6
-    \_  l. lower: 10
-    \_  digits:   0
-    \_  symbols:  0
+    \_  letters:  7
+    \_  l. upper: 4
+    \_  l. lower: 3
+    \_  digits:   2
+    \_  symbols:  7
     \_  no space: 16
-\_  example:  ipSn fozI jdyV xXEL
+\_  example:  8(L> !;`s &'M6 RfGi
 
 
-**  ~~~~~~~~  ascii-mixed-shuf:20
-\_  bits:     107.9177
+**  ~~~~~~~~  ascii-any-shuf:20
+\_  bits:     127.9501
 \_  length:   24  (with spaces)
 \_  length:   20  (without spaces)
 \_  characters:
-    \_  letters:  20
-    \_  l. upper: 8
-    \_  l. lower: 12
-    \_  digits:   0
-    \_  symbols:  0
+    \_  letters:  9
+    \_  l. upper: 6
+    \_  l. lower: 3
+    \_  digits:   2
+    \_  symbols:  9
     \_  no space: 20
-\_  example:  ipSn fozI jdyV xXEL leJT
+\_  example:  8(L> !;`s &'M6 RfGi PW$:
 
 
-**  ~~~~~~~~  ascii-mixed-shuf:24
-\_  bits:     127.6368
+**  ~~~~~~~~  ascii-any-shuf:24
+\_  bits:     152.6690
 \_  length:   29  (with spaces)
 \_  length:   24  (without spaces)
 \_  characters:
-    \_  letters:  24
-    \_  l. upper: 11
-    \_  l. lower: 13
-    \_  digits:   0
-    \_  symbols:  0
+    \_  letters:  12
+    \_  l. upper: 7
+    \_  l. lower: 5
+    \_  digits:   3
+    \_  symbols:  9
     \_  no space: 24
-\_  example:  ipSn fozI jdyV xXEL leJT ZtBG
+\_  example:  8(L> !;`s &'M6 RfGi PW$: yT7a
 
 
-**  ~~~~~~~~  ascii-mixed-shuf:28
-\_  bits:     146.5433
+**  ~~~~~~~~  ascii-any-shuf:28
+\_  bits:     177.0604
 \_  length:   34  (with spaces)
 \_  length:   28  (without spaces)
 \_  characters:
-    \_  letters:  28
-    \_  l. upper: 15
-    \_  l. lower: 13
-    \_  digits:   0
-    \_  symbols:  0
+    \_  letters:  14
+    \_  l. upper: 7
+    \_  l. lower: 7
+    \_  digits:   3
+    \_  symbols:  11
     \_  no space: 28
-\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO
+\_  example:  8(L> !;`s &'M6 RfGi PW$: yT7a z/t=
 
 
-**  ~~~~~~~~  ascii-mixed-shuf:32
-\_  bits:     164.5036
+**  ~~~~~~~~  ascii-any-shuf:32
+\_  bits:     201.1044
 \_  length:   39  (with spaces)
 \_  length:   32  (without spaces)
 \_  characters:
-    \_  letters:  32
-    \_  l. upper: 17
-    \_  l. lower: 15
-    \_  digits:   0
-    \_  symbols:  0
+    \_  letters:  16
+    \_  l. upper: 9
+    \_  l. lower: 7
+    \_  digits:   3
+    \_  symbols:  13
     \_  no space: 32
-\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF
-
-
-**  ~~~~~~~~  ascii-mixed-shuf:36
-\_  bits:     181.3308
-\_  length:   44  (with spaces)
-\_  length:   36  (without spaces)
-\_  characters:
-    \_  letters:  36
-    \_  l. upper: 19
-    \_  l. lower: 17
-    \_  digits:   0
-    \_  symbols:  0
-    \_  no space: 36
-\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY
-
-
-**  ~~~~~~~~  ascii-mixed-shuf:40
-\_  bits:     196.7455
-\_  length:   49  (with spaces)
-\_  length:   40  (without spaces)
-\_  characters:
-    \_  letters:  40
-    \_  l. upper: 20
-    \_  l. lower: 20
-    \_  digits:   0
-    \_  symbols:  0
-    \_  no space: 40
-\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs
-
-
-**  ~~~~~~~~  ascii-mixed-shuf:44
-\_  bits:     210.2817
-\_  length:   54  (with spaces)
-\_  length:   44  (without spaces)
-\_  characters:
-    \_  letters:  44
-    \_  l. upper: 21
-    \_  l. lower: 23
-    \_  digits:   0
-    \_  symbols:  0
-    \_  no space: 44
-\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg
-
-
-**  ~~~~~~~~  ascii-mixed-shuf:48
-\_  bits:     220.9960
-\_  length:   59  (with spaces)
-\_  length:   48  (without spaces)
-\_  characters:
-    \_  letters:  48
-    \_  l. upper: 23
-    \_  l. lower: 25
-    \_  digits:   0
-    \_  symbols:  0
-    \_  no space: 48
-\_  example:  ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm
+\_  example:  8(L> !;`s &'M6 RfGi PW$: yT7a z/t= |A)D
 
 
 **  ~~~~~~~~  cva-lower:1
@@ -11339,6 +11563,496 @@
     \_  symbols:  0
     \_  no space: 319
 \_  example:  wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo six six charlie zero zero ait yankee alfa charlie whiskey whiskey tree delta delta too six delta zero juliett juliett zero yankee tree kilo bravo delta lima uniform bravo fower fife too seven tango kilo november golf sierra hotel kilo kilo lima fife six uniform zero too zero golf juliett mike kilo victor
+
+
+**  ~~~~~~~~  nato-perm
+\_  bits:     138.0943
+\_  length:   212  (with spaces)
+\_  length:   177  (without spaces)
+\_  characters:
+    \_  letters:  177
+    \_  l. upper: 0
+    \_  l. lower: 177
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 177
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree fower xray zulu hotel zero too wun
+
+
+**  ~~~~~~~~  nato-shuf:2
+\_  bits:     10.2992
+\_  length:   10  (with spaces)
+\_  length:   9  (without spaces)
+\_  characters:
+    \_  letters:  9
+    \_  l. upper: 0
+    \_  l. lower: 9
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 9
+\_  example:  six yankee
+
+
+**  ~~~~~~~~  nato-shuf:3
+\_  bits:     15.3866
+\_  length:   18  (with spaces)
+\_  length:   16  (without spaces)
+\_  characters:
+    \_  letters:  16
+    \_  l. upper: 0
+    \_  l. lower: 16
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 16
+\_  example:  six yankee uniform
+
+
+**  ~~~~~~~~  nato-shuf:4
+\_  bits:     20.4310
+\_  length:   26  (with spaces)
+\_  length:   23  (without spaces)
+\_  characters:
+    \_  letters:  23
+    \_  l. upper: 0
+    \_  l. lower: 23
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 23
+\_  example:  six yankee uniform charlie
+
+
+**  ~~~~~~~~  nato-shuf:5
+\_  bits:     25.4310
+\_  length:   33  (with spaces)
+\_  length:   29  (without spaces)
+\_  characters:
+    \_  letters:  29
+    \_  l. upper: 0
+    \_  l. lower: 29
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 29
+\_  example:  six yankee uniform charlie quebec
+
+
+**  ~~~~~~~~  nato-shuf:6
+\_  bits:     30.3852
+\_  length:   40  (with spaces)
+\_  length:   35  (without spaces)
+\_  characters:
+    \_  letters:  35
+    \_  l. upper: 0
+    \_  l. lower: 35
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 35
+\_  example:  six yankee uniform charlie quebec sierra
+
+
+**  ~~~~~~~~  nato-shuf:7
+\_  bits:     35.2921
+\_  length:   46  (with spaces)
+\_  length:   40  (without spaces)
+\_  characters:
+    \_  letters:  40
+    \_  l. upper: 0
+    \_  l. lower: 40
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 40
+\_  example:  six yankee uniform charlie quebec sierra tango
+
+
+**  ~~~~~~~~  nato-shuf:8
+\_  bits:     40.1501
+\_  length:   51  (with spaces)
+\_  length:   44  (without spaces)
+\_  characters:
+    \_  letters:  44
+    \_  l. upper: 0
+    \_  l. lower: 44
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 44
+\_  example:  six yankee uniform charlie quebec sierra tango golf
+
+
+**  ~~~~~~~~  nato-shuf:9
+\_  bits:     44.9574
+\_  length:   59  (with spaces)
+\_  length:   51  (without spaces)
+\_  characters:
+    \_  letters:  51
+    \_  l. upper: 0
+    \_  l. lower: 51
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 51
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot
+
+
+**  ~~~~~~~~  nato-shuf:10
+\_  bits:     49.7123
+\_  length:   64  (with spaces)
+\_  length:   55  (without spaces)
+\_  characters:
+    \_  letters:  55
+    \_  l. upper: 0
+    \_  l. lower: 55
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 55
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa
+
+
+**  ~~~~~~~~  nato-shuf:11
+\_  bits:     54.4128
+\_  length:   70  (with spaces)
+\_  length:   60  (without spaces)
+\_  characters:
+    \_  letters:  60
+    \_  l. upper: 0
+    \_  l. lower: 60
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 60
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven
+
+
+**  ~~~~~~~~  nato-shuf:12
+\_  bits:     59.0566
+\_  length:   76  (with spaces)
+\_  length:   65  (without spaces)
+\_  characters:
+    \_  letters:  65
+    \_  l. upper: 0
+    \_  l. lower: 65
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 65
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo
+
+
+**  ~~~~~~~~  nato-shuf:13
+\_  bits:     63.6416
+\_  length:   84  (with spaces)
+\_  length:   72  (without spaces)
+\_  characters:
+    \_  letters:  72
+    \_  l. upper: 0
+    \_  l. lower: 72
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 72
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey
+
+
+**  ~~~~~~~~  nato-shuf:14
+\_  bits:     68.1651
+\_  length:   89  (with spaces)
+\_  length:   76  (without spaces)
+\_  characters:
+    \_  letters:  76
+    \_  l. upper: 0
+    \_  l. lower: 76
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 76
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa
+
+
+**  ~~~~~~~~  nato-shuf:15
+\_  bits:     72.6246
+\_  length:   98  (with spaces)
+\_  length:   84  (without spaces)
+\_  characters:
+    \_  letters:  84
+    \_  l. upper: 0
+    \_  l. lower: 84
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 84
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november
+
+
+**  ~~~~~~~~  nato-shuf:16
+\_  bits:     77.0169
+\_  length:   104  (with spaces)
+\_  length:   89  (without spaces)
+\_  characters:
+    \_  letters:  89
+    \_  l. upper: 0
+    \_  l. lower: 89
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 89
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar
+
+
+**  ~~~~~~~~  nato-shuf:17
+\_  bits:     81.3388
+\_  length:   110  (with spaces)
+\_  length:   94  (without spaces)
+\_  characters:
+    \_  letters:  94
+    \_  l. upper: 0
+    \_  l. lower: 94
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 94
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india
+
+
+**  ~~~~~~~~  nato-shuf:18
+\_  bits:     85.5868
+\_  length:   115  (with spaces)
+\_  length:   98  (without spaces)
+\_  characters:
+    \_  letters:  98
+    \_  l. upper: 0
+    \_  l. lower: 98
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 98
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife
+
+
+**  ~~~~~~~~  nato-shuf:19
+\_  bits:     89.7567
+\_  length:   123  (with spaces)
+\_  length:   105  (without spaces)
+\_  characters:
+    \_  letters:  105
+    \_  l. upper: 0
+    \_  l. lower: 105
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 105
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett
+
+
+**  ~~~~~~~~  nato-shuf:20
+\_  bits:     93.8441
+\_  length:   128  (with spaces)
+\_  length:   109  (without spaces)
+\_  characters:
+    \_  letters:  109
+    \_  l. upper: 0
+    \_  l. lower: 109
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 109
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo
+
+
+**  ~~~~~~~~  nato-shuf:21
+\_  bits:     97.8441
+\_  length:   134  (with spaces)
+\_  length:   114  (without spaces)
+\_  characters:
+    \_  letters:  114
+    \_  l. upper: 0
+    \_  l. lower: 114
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 114
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner
+
+
+**  ~~~~~~~~  nato-shuf:22
+\_  bits:     101.7510
+\_  length:   139  (with spaces)
+\_  length:   118  (without spaces)
+\_  characters:
+    \_  letters:  118
+    \_  l. upper: 0
+    \_  l. lower: 118
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 118
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike
+
+
+**  ~~~~~~~~  nato-shuf:23
+\_  bits:     105.5584
+\_  length:   146  (with spaces)
+\_  length:   124  (without spaces)
+\_  characters:
+    \_  letters:  124
+    \_  l. upper: 0
+    \_  l. lower: 124
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 124
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor
+
+
+**  ~~~~~~~~  nato-shuf:24
+\_  bits:     109.2588
+\_  length:   151  (with spaces)
+\_  length:   128  (without spaces)
+\_  characters:
+    \_  letters:  128
+    \_  l. upper: 0
+    \_  l. lower: 128
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 128
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima
+
+
+**  ~~~~~~~~  nato-shuf:25
+\_  bits:     112.8438
+\_  length:   156  (with spaces)
+\_  length:   132  (without spaces)
+\_  characters:
+    \_  letters:  132
+    \_  l. upper: 0
+    \_  l. lower: 132
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 132
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo
+
+
+**  ~~~~~~~~  nato-shuf:26
+\_  bits:     116.3032
+\_  length:   162  (with spaces)
+\_  length:   137  (without spaces)
+\_  characters:
+    \_  letters:  137
+    \_  l. upper: 0
+    \_  l. lower: 137
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 137
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo
+
+
+**  ~~~~~~~~  nato-shuf:27
+\_  bits:     119.6251
+\_  length:   166  (with spaces)
+\_  length:   140  (without spaces)
+\_  characters:
+    \_  letters:  140
+    \_  l. upper: 0
+    \_  l. lower: 140
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 140
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait
+
+
+**  ~~~~~~~~  nato-shuf:28
+\_  bits:     122.7951
+\_  length:   172  (with spaces)
+\_  length:   145  (without spaces)
+\_  characters:
+    \_  letters:  145
+    \_  l. upper: 0
+    \_  l. lower: 145
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 145
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta
+
+
+**  ~~~~~~~~  nato-shuf:29
+\_  bits:     125.7951
+\_  length:   177  (with spaces)
+\_  length:   149  (without spaces)
+\_  characters:
+    \_  letters:  149
+    \_  l. upper: 0
+    \_  l. lower: 149
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 149
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree
+
+
+**  ~~~~~~~~  nato-shuf:30
+\_  bits:     128.6024
+\_  length:   183  (with spaces)
+\_  length:   154  (without spaces)
+\_  characters:
+    \_  letters:  154
+    \_  l. upper: 0
+    \_  l. lower: 154
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 154
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree fower
+
+
+**  ~~~~~~~~  nato-shuf:31
+\_  bits:     131.1874
+\_  length:   188  (with spaces)
+\_  length:   158  (without spaces)
+\_  characters:
+    \_  letters:  158
+    \_  l. upper: 0
+    \_  l. lower: 158
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 158
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree fower xray
+
+
+**  ~~~~~~~~  nato-shuf:32
+\_  bits:     133.5093
+\_  length:   193  (with spaces)
+\_  length:   162  (without spaces)
+\_  characters:
+    \_  letters:  162
+    \_  l. upper: 0
+    \_  l. lower: 162
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 162
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree fower xray zulu
+
+
+**  ~~~~~~~~  nato-shuf:33
+\_  bits:     135.5093
+\_  length:   199  (with spaces)
+\_  length:   167  (without spaces)
+\_  characters:
+    \_  letters:  167
+    \_  l. upper: 0
+    \_  l. lower: 167
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 167
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree fower xray zulu hotel
+
+
+**  ~~~~~~~~  nato-shuf:34
+\_  bits:     137.0943
+\_  length:   204  (with spaces)
+\_  length:   171  (without spaces)
+\_  characters:
+    \_  letters:  171
+    \_  l. upper: 0
+    \_  l. lower: 171
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 171
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree fower xray zulu hotel zero
+
+
+**  ~~~~~~~~  nato-shuf:35
+\_  bits:     138.0943
+\_  length:   208  (with spaces)
+\_  length:   174  (without spaces)
+\_  characters:
+    \_  letters:  174
+    \_  l. upper: 0
+    \_  l. lower: 174
+    \_  digits:   0
+    \_  symbols:  0
+    \_  no space: 174
+\_  example:  six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree fower xray zulu hotel zero too
 
 
 **  ~~~~~~~~  bytes-hex:1

@@ -1,9 +1,13 @@
 >>  z-tokens patterns --entropy-max 64 --shortest --random-testing
 
 ::  digits-base10:2         :    6.6 b :    2 c ::    70
+::  digits-base10-perm      :   21.7 b :   11 c ::    93648 15207
+::  digits-base10-shuf:2    :    6.4 b :    2 c ::    93
+::  digits-base16:2         :    8  =b :    2 c ::    c0
+::  digits-base16-perm      :   44.2 b :   19 c ::    46ba d5fe 1729 380c
+::  digits-base16-shuf:2    :    7.9 b :    2 c ::    46
 ::  digits-base2:4          :    4  =b :    4 c ::    1010
 ::  digits-base8:2          :    6  =b :    2 c ::    60
-::  digits-base16:2         :    8  =b :    2 c ::    c0
 ::  digits-base32-hex:2     :   10  =b :    2 c ::    n8
 ::  digits-base32-rfc:2     :   10  =b :    2 c ::    xi
 ::  digits-base64-url:2     :   12  =b :    2 c ::    lx
@@ -12,14 +16,13 @@
 ::  digits-base62:2         :   11.9 b :    2 c ::    jl
 ::  digits-bech32:2         :   10  =b :    2 c ::    hg
 ::  digits-z85:5            :   32.0 b :    5 c ::    .2Nm+
-::  digits-base10-perm      :   21.7 b :   11 c ::    93648 15207
-::  digits-base10-shuf:2    :    6.4 b :    2 c ::    93
 ::  ascii-lower:2           :    9.4 b :    2 c ::    tu
+::  ascii-lower-shuf:4      :   18.4 b :    4 c ::    lbeq
 ::  ascii-mixed:2           :   11.4 b :    2 c ::    MO
+::  ascii-mixed-shuf:4      :   22.6 b :    4 c ::    ipSn
 ::  ascii-symbols:2         :   10  =b :    2 c ::    \)
 ::  ascii-any:2             :   13.1 b :    2 c ::    ei
-::  ascii-lower-shuf:4      :   18.4 b :    4 c ::    lbeq
-::  ascii-mixed-shuf:4      :   22.6 b :    4 c ::    ipSn
+::  ascii-any-shuf:4        :   26.1 b :    4 c ::    8(L>
 ::  cva-lower:1             :   13.4 b :    4 c ::    taqe
 ::  cva-mixed:1             :   17.4 b :    4 c ::    PaFi
 ::  cva-plus-a:2            :   26.7 b :    9 c ::    taqe 2711
@@ -49,6 +52,7 @@
 ::  pets-small-3            :   25.6 b :   20 c ::    openly-endless-robin
 ::  pets-small-4            :   31.6 b :   28 c ::    openly-endless-sienna-donkey
 ::  nato:1                  :    5.1 b :    3 c ::    wun
+::  nato-shuf:2             :   10.2 b :   10 c ::    six yankee
 ::  bytes-hex:1             :    8  =b :    2 c ::    7f
 ::  token-hex-16            :   16  =b :    4 c ::    bb2a
 ::  token-hex-24            :   24  =b :    6 c ::    069dc1

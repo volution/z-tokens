@@ -13,10 +13,11 @@
 ::  ascii-lower:22          :  103.4 b :   27 c ::    uwgo lhoo vykr xotk xhyt lo
 ::  ascii-upper:22          :  103.4 b :   27 c ::    UWGO LHOO VYKR XOTK XHYT LO
 ::  ascii-mixed:18          :  102.6 b :   22 c ::    OSDn CxpC CWuJ VCMl pX
-::  ascii-symbols:22        :  110  =b :   27 c ::    `=)/ *_}= |<\( <}/< ;{%@ /{
-::  ascii-any:16            :  104.8 b :   19 c ::    Vl8< UTny WFaT 6F=S
 ::  ascii-mixed-perm        :  225.5 b :   64 c ::    aFEg fdbp UuoX Plhk DMjJ cIwA LxVG reWQ sTYt HivB qSZK yznm NCRO
 ::  ascii-mixed-shuf:20     :  107.9 b :   24 c ::    aFEg fdbp UuoX Plhk DMjJ
+::  ascii-symbols:22        :  110  =b :   27 c ::    `=)/ *_}= |<\( <}/< ;{%@ /{
+::  ascii-any:16            :  104.8 b :   19 c ::    Vl8< UTny WFaT 6F=S
+::  ascii-any-shuf:16       :  102.9 b :   19 c ::    GqA6 x[7' <@ef !a"K
 ::  cva-lower:8             :  107.4 b :   39 c ::    vuhi juqo yelu jipu bixo sixi kudu qino
 ::  cva-upper:8             :  107.4 b :   39 c ::    VUHI JUQO YELU JIPU BIXO SIXI KUDU QINO
 ::  cva-mixed:6             :  104.5 b :   29 c ::    POnA qARU FUmu qAXI SaBe KuVo
@@ -36,13 +37,15 @@
 ::  mnemonic:10             :  106.7 b :   65 c ::    austin halt mailbox clever logo genesis tourist modular gold fast
 ::  bip0039:10              :  110  =b :   70 c ::    shock mirror improve energy misery useless pyramid menu define grocery
 ::  skey:10                 :  110  =b :   48 c ::    nude goad defy aids goal trot lila gift run cite
-::  pgp:7                   :  112  =b :  124 c ::    southward supportive physique dakota highchair direction offload sociable uneart [...]
+::  pgp:7                   :  112  =b :  124 c ::    southward supportive physique dakota highchair direction offload sociable unearth glossary rocker undaunted obtuse publisher
 ::  eff-large:8             :  103.3 b :   63 c ::    slashing swiftly pagan squealing dotted outlet jaybird energize
 ::  eff-short:10            :  103.3 b :   52 c ::    outer dose net ivory next nap stash vest rogue nacho
-::  eff-unique:10           :  103.3 b :   86 c ::    mobilize dwindling lunchbox ignition luridness lubricant sponge vertebrae plank  [...]
-::  nato:20                 :  103.3 b :  124 c ::    uniform juliett quebec kilo oscar wun india oscar seven tango fife sierra whiske [...]
+::  eff-unique:10           :  103.3 b :   86 c ::    mobilize dwindling lunchbox ignition luridness lubricant sponge vertebrae plank litter
+::  nato:20                 :  103.3 b :  124 c ::    uniform juliett quebec kilo oscar wun india oscar seven tango fife sierra whiskey yankee quebec sierra mike zero fife victor
+::  nato-perm               :  138.0 b :  212 c ::    tango juliett seven wun bravo niner delta fower whiskey fife mike six victor echo too hotel yankee zero charlie alfa lima golf foxtrot november romeo kilo zulu xray papa quebec ait oscar sierra india tree uniform
+::  nato-shuf:22            :  101.7 b :  126 c ::    tango juliett seven wun bravo niner delta fower whiskey fife mike six victor echo too hotel yankee zero charlie alfa lima golf
 ::  bytes-hex:13            :  104  =b :   26 c ::    a1440448905944c60607fa9254
 ::  token-hex-128           :  128  =b :   32 c ::    d976545492fa0706c6445990480444a1
 ::  token-hex-256           :  256  =b :   65 c ::    d976545492fa0706c6445990480444a1-cdf4aaf8cdddc3fc9211998495ad29c7
-::  token-hex-512           :  512  =b :  131 c ::    d976545492fa0706c6445990480444a1-cdf4aaf8cdddc3fc9211998495ad29c7-8d84f98d9ac8c4 [...]
+::  token-hex-512           :  512  =b :  131 c ::    d976545492fa0706c6445990480444a1-cdf4aaf8cdddc3fc9211998495ad29c7-8d84f98d9ac8c4004034cc7d390a47ff-4a088d607a33181b720efcb9c910144b
 ::  uuid-v4                 :  122  =b :   36 c ::    c6445990-d976-4921-b37d-4034cc7d390a

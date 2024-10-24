@@ -12,10 +12,11 @@
 ::  ascii-lower:28          :  131.6 b :   34 c ::    uwgo lhoo vykr xotk xhyt lova nxdr
 ::  ascii-upper:28          :  131.6 b :   34 c ::    UWGO LHOO VYKR XOTK XHYT LOVA NXDR
 ::  ascii-mixed:24          :  136.8 b :   29 c ::    OSDn CxpC CWuJ VCMl pXMx CRbA
-::  ascii-symbols:26        :  130  =b :   32 c ::    `=)/ *_}= |<\( <}/< ;{%@ /{;~ `$
-::  ascii-any:20            :  131.0 b :   24 c ::    Vl8< UTny WFaT 6F=S ygT#
 ::  ascii-mixed-perm        :  225.5 b :   64 c ::    aFEg fdbp UuoX Plhk DMjJ cIwA LxVG reWQ sTYt HivB qSZK yznm NCRO
 ::  ascii-mixed-shuf:28     :  146.5 b :   34 c ::    aFEg fdbp UuoX Plhk DMjJ cIwA LxVG
+::  ascii-symbols:26        :  130  =b :   32 c ::    `=)/ *_}= |<\( <}/< ;{%@ /{;~ `$
+::  ascii-any:20            :  131.0 b :   24 c ::    Vl8< UTny WFaT 6F=S ygT#
+::  ascii-any-shuf:24       :  152.6 b :   29 c ::    GqA6 x[7' <@ef !a"K rQ~$ 30pt
 ::  cva-lower:10            :  134.2 b :   49 c ::    vuhi juqo yelu jipu bixo sixi kudu qino howo tohu
 ::  cva-upper:10            :  134.2 b :   49 c ::    VUHI JUQO YELU JIPU BIXO SIXI KUDU QINO HOWO TOHU
 ::  cva-mixed:8             :  139.4 b :   39 c ::    POnA qARU FUmu qAXI SaBe KuVo BoZA SeVA
@@ -33,14 +34,16 @@
 ::  koremutake-a:10         :  140  =b :   56 c ::    drose jino keru stapro moki bryfry bogry fyta grysu pogi
 ::  koremutake-b:7          :  147  =b :   55 c ::    droseji nokeru stapromo kibryfry bogryfy tagrysu pogipa
 ::  mnemonic:12             :  128.0 b :   78 c ::    austin halt mailbox clever logo genesis tourist modular gold fast scale mother
-::  bip0039:12              :  132  =b :   83 c ::    shock mirror improve energy misery useless pyramid menu define grocery matter va [...]
+::  bip0039:12              :  132  =b :   83 c ::    shock mirror improve energy misery useless pyramid menu define grocery matter vapor
 ::  skey:12                 :  132  =b :   58 c ::    nude goad defy aids goal trot lila gift run cite garb turn
-::  pgp:8                   :  128  =b :  143 c ::    southward supportive physique dakota highchair direction offload sociable uneart [...]
+::  pgp:8                   :  128  =b :  143 c ::    southward supportive physique dakota highchair direction offload sociable unearth glossary rocker undaunted obtuse publisher transit matchmaker
 ::  eff-large:10            :  129.2 b :   79 c ::    slashing swiftly pagan squealing dotted outlet jaybird energize outmost operate
 ::  eff-short:13            :  134.4 b :   70 c ::    outer dose net ivory next nap stash vest rogue nacho shaky decay growl
-::  eff-unique:13           :  134.4 b :  110 c ::    mobilize dwindling lunchbox ignition luridness lubricant sponge vertebrae plank  [...]
-::  nato:25                 :  129.2 b :  159 c ::    uniform juliett quebec kilo oscar wun india oscar seven tango fife sierra whiske [...]
+::  eff-unique:13           :  134.4 b :  110 c ::    mobilize dwindling lunchbox ignition luridness lubricant sponge vertebrae plank litter relic diploma grumbling
+::  nato:25                 :  129.2 b :  159 c ::    uniform juliett quebec kilo oscar wun india oscar seven tango fife sierra whiskey yankee quebec sierra mike zero fife victor sierra yankee juliett fower yankee
+::  nato-perm               :  138.0 b :  212 c ::    tango juliett seven wun bravo niner delta fower whiskey fife mike six victor echo too hotel yankee zero charlie alfa lima golf foxtrot november romeo kilo zulu xray papa quebec ait oscar sierra india tree uniform
+::  nato-shuf:30            :  128.6 b :  176 c ::    tango juliett seven wun bravo niner delta fower whiskey fife mike six victor echo too hotel yankee zero charlie alfa lima golf foxtrot november romeo kilo zulu xray papa quebec
 ::  bytes-hex:16            :  128  =b :   32 c ::    a1440448905944c60607fa92545476d9
 ::  token-hex-128           :  128  =b :   32 c ::    d976545492fa0706c6445990480444a1
 ::  token-hex-256           :  256  =b :   65 c ::    d976545492fa0706c6445990480444a1-cdf4aaf8cdddc3fc9211998495ad29c7
-::  token-hex-512           :  512  =b :  131 c ::    d976545492fa0706c6445990480444a1-cdf4aaf8cdddc3fc9211998495ad29c7-8d84f98d9ac8c4 [...]
+::  token-hex-512           :  512  =b :  131 c ::    d976545492fa0706c6445990480444a1-cdf4aaf8cdddc3fc9211998495ad29c7-8d84f98d9ac8c4004034cc7d390a47ff-4a088d607a33181b720efcb9c910144b

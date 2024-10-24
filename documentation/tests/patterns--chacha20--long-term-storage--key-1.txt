@@ -1,8 +1,8 @@
 >>  z-tokens patterns --all --for-long-term-storage --shortest --random-chacha20 key-1
 
 ::  digits-base10:24        :   79.7 b :   29 c ::    4979 6484 0701 8046 2623 9777
-::  digits-base8:26         :   78  =b :   32 c ::    3531 3001 2035 5707 5535 7752 22
 ::  digits-base16:20        :   80  =b :   24 c ::    1f3f a3d9 0124 d9a9 9a5b
+::  digits-base8:26         :   78  =b :   32 c ::    3531 3001 2035 5707 5535 7752 22
 ::  digits-base32-hex:16    :   80  =b :   19 c ::    un6u 6524 qii7 nin1
 ::  digits-base32-rfc:16    :   80  =b :   19 c ::    6xg6 gfce 2ssh xsxb
 ::  digits-base64-url:14    :   84  =b :   17 c ::    Fb8M Mb_b BfE0 Db
@@ -12,16 +12,17 @@
 ::  digits-bech32:16        :   80  =b :   19 c ::    7hx7 x9zy 6jj8 hjhp
 ::  digits-z85:15           :   96.1 b :   17 c ::    A}gTg ?#eAO -5Fn/
 ::  ascii-lower:18          :   84.6 b :   22 c ::    clyf ylvz elpa tbmb dh
+::  ascii-lower-perm        :   88.3 b :   32 c ::    gmjl nspf ovuh ytzx baid reqw kc
+::  ascii-lower-shuf:20     :   78.8 b :   24 c ::    gmjl nspf ovuh ytzx baid
 ::  ascii-upper:18          :   84.6 b :   22 c ::    CLYF YLVZ ELPA TBMB DH
+::  ascii-upper-perm        :   88.3 b :   32 c ::    GMJL NSPF OVUH YTZX BAID REQW KC
+::  ascii-upper-shuf:20     :   78.8 b :   24 c ::    GMJL NSPF OVUH YTZX BAID
 ::  ascii-mixed:14          :   79.8 b :   17 c ::    ewXL kXwR Ziwb dz
+::  ascii-mixed-perm        :  225.5 b :   64 c ::    nOxr bZPB CadX mKlg ywsI uoAz MpHq DGLQ WNTY EkfU cFhR tiSj JVve
+::  ascii-mixed-shuf:16     :   87.4 b :   19 c ::    nOxr bZPB CadX mKlg
 ::  ascii-symbols:16        :   80  =b :   19 c ::    }\'} '&#% _==( \=\"
 ::  ascii-any:12            :   78.6 b :   14 c ::    (Ie3 z^o~ 0IX#
-::  ascii-lower-perm        :   88.3 b :   32 c ::    gmjl nspf ovuh ytzx baid reqw kc
-::  ascii-upper-perm        :   88.3 b :   32 c ::    GMJL NSPF OVUH YTZX BAID REQW KC
-::  ascii-mixed-perm        :  225.5 b :   64 c ::    nOxr bZPB CadX mKlg ywsI uoAz MpHq DGLQ WNTY EkfU cFhR tiSj JVve
-::  ascii-lower-shuf:20     :   78.8 b :   24 c ::    gmjl nspf ovuh ytzx baid
-::  ascii-upper-shuf:20     :   78.8 b :   24 c ::    GMJL NSPF OVUH YTZX BAID
-::  ascii-mixed-shuf:16     :   87.4 b :   19 c ::    nOxr bZPB CadX mKlg
+::  ascii-any-shuf:12       :   77.5 b :   14 c ::    K]gp Y"<R j8~t
 ::  cva-lower:6             :   80.5 b :   29 c ::    cito wiqa cice waqo koto qugo
 ::  cva-upper:6             :   80.5 b :   29 c ::    CITO WIQA CICE WAQO KOTO QUGO
 ::  cva-mixed:5             :   87.1 b :   24 c ::    fuMU JuSu Naze pOJi FEsU
@@ -41,14 +42,16 @@
 ::  mnemonic:8              :   85.3 b :   49 c ::    chaos subject side sofia begin genius game quebec
 ::  bip0039:7               :   77  =b :   47 c ::    before vehicle veteran plunge stool worry honey
 ::  skey:7                  :   77  =b :   33 c ::    fit twit vale kirk sand work cuff
-::  pgp:5                   :   80  =b :   89 c ::    baboon puberty chatter vertigo chairlift handiwork stockman chambermaid goggles  [...]
+::  pgp:5                   :   80  =b :   89 c ::    baboon puberty chatter vertigo chairlift handiwork stockman chambermaid goggles rebellion
 ::  eff-large:6             :   77.5 b :   49 c ::    bonelike hybrid unvarying scalping curve upheaval
 ::  eff-short:8             :   82.7 b :   42 c ::    bonus hers set wad creme hefty stoop coast
 ::  eff-unique:8            :   82.7 b :   74 c ::    asymmetric henceforth refinery vixen cybernetic heinously sugar coexistent
-::  nato:15                 :   77.5 b :   87 c ::    papa niner wun niner xray papa fife papa victor charlie romeo charlie fower vict [...]
+::  nato:15                 :   77.5 b :   87 c ::    papa niner wun niner xray papa fife papa victor charlie romeo charlie fower victor papa
+::  nato-perm               :  138.0 b :  212 c ::    fife niner sierra juliett delta charlie uniform fower quebec six yankee tango hotel oscar kilo foxtrot whiskey too mike india romeo xray wun bravo alfa zero lima echo tree zulu november golf victor seven ait papa
+::  nato-shuf:16            :   77.0 b :  102 c ::    fife niner sierra juliett delta charlie uniform fower quebec six yankee tango hotel oscar kilo foxtrot
 ::  bytes-hex:10            :   80  =b :   20 c ::    0c0ba314dd3f2714887d
 ::  token-hex-96            :   96  =b :   24 c ::    be347d8814273fdd14a30b0c
 ::  token-hex-128           :  128  =b :   32 c ::    6cf6b427be347d8814273fdd14a30b0c
 ::  token-hex-256           :  256  =b :   65 c ::    6cf6b427be347d8814273fdd14a30b0c-ba13acb1dab8e215f1ea015b72f9f69d
-::  token-hex-512           :  512  =b :  131 c ::    6cf6b427be347d8814273fdd14a30b0c-ba13acb1dab8e215f1ea015b72f9f69d-f32c33de69df64 [...]
+::  token-hex-512           :  512  =b :  131 c ::    6cf6b427be347d8814273fdd14a30b0c-ba13acb1dab8e215f1ea015b72f9f69d-f32c33de69df6414315a4eca3dd18fb7-3050d7311837ff91a6e2547835387203
 ::  uuid-v4                 :  122  =b :   36 c ::    14273fdd-f1ea-4ba1-bccb-a6e254783538

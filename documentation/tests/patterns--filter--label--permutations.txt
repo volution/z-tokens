@@ -1,6 +1,8 @@
 >>  z-tokens patterns --all --label permutation --random-testing
 
 ::  digits-base10-perm      :   21.7 b :   11 c ::    93648 15207
+::  digits-base16-perm      :   44.2 b :   19 c ::    46ba d5fe 1729 380c
 ::  ascii-lower-perm        :   88.3 b :   32 c ::    lbeq doxk vwfh gpmy jisc urna zt
 ::  ascii-upper-perm        :   88.3 b :   32 c ::    LBEQ DOXK VWFH GPMY JISC URNA ZT
 ::  ascii-mixed-perm        :  225.5 b :   64 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM
+::  nato-perm               :  138.0 b :  212 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree fower xray zulu hotel zero too wun

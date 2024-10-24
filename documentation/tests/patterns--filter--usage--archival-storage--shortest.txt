@@ -13,10 +13,11 @@
 ::  ascii-lower:22          :  103.4 b :   27 c ::    tuap ufut zdzb lyoe vfnq mw
 ::  ascii-upper:22          :  103.4 b :   27 c ::    TUAP UFUT ZDZB LYOE VFNQ MW
 ::  ascii-mixed:18          :  102.6 b :   22 c ::    MObE nOlP YZhY cwWl Di
-::  ascii-symbols:22        :  110  =b :   27 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))
-::  ascii-any:16            :  104.8 b :   19 c ::    ei#9 i5kg |~.+ {%IL
 ::  ascii-mixed-perm        :  225.5 b :   64 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM
 ::  ascii-mixed-shuf:20     :  107.9 b :   24 c ::    ipSn fozI jdyV xXEL leJT
+::  ascii-symbols:22        :  110  =b :   27 c ::    \)^~ %(;? :{#~ |!#^ @],~ ))
+::  ascii-any:16            :  104.8 b :   19 c ::    ei#9 i5kg |~.+ {%IL
+::  ascii-any-shuf:16       :  102.9 b :   19 c ::    8(L> !;`s &'M6 RfGi
 ::  cva-lower:8             :  107.4 b :   39 c ::    taqe veza zaye fugi rixu cezu saco voxa
 ::  cva-upper:8             :  107.4 b :   39 c ::    TAQE VEZA ZAYE FUGI RIXU CEZU SACO VOXA
 ::  cva-mixed:6             :  104.5 b :   29 c ::    PaFi PiQI YayU mAjO lAzi ZUKa
@@ -36,13 +37,15 @@
 ::  mnemonic:10             :  106.7 b :   68 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy
 ::  bip0039:10              :  110  =b :   62 c ::    robot ship night shield way yellow casual brother arrow invest
 ::  skey:10                 :  110  =b :   44 c ::    mile noun hear norm wast yarn led i cur doug
-::  pgp:7                   :  112  =b :  120 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
+::  pgp:7                   :  112  =b :  120 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pandemic tapeworm autopsy wallet perceptive
 ::  eff-large:8             :  103.3 b :   57 c ::    scope slacks patronize dumpling deny spill sharpener visa
 ::  eff-short:10            :  103.3 b :   54 c ::    shaft sleep ankle path sled deaf shun zero chunk candy
 ::  eff-unique:10           :  103.3 b :   79 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness
-::  nato:20                 :  103.3 b :  115 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:20                 :  103.3 b :  115 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo six six charlie zero zero ait yankee
+::  nato-perm               :  138.0 b :  212 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree fower xray zulu hotel zero too wun
+::  nato-shuf:22            :  101.7 b :  139 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike
 ::  bytes-hex:13            :  104  =b :   26 c ::    7f6f2ccdb23f2abb7b69278e94
 ::  token-hex-128           :  128  =b :   32 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f
 ::  token-hex-256           :  256  =b :   65 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f-958b761dabe5f6d0069dc102cf310a16
-::  token-hex-512           :  512  =b :  131 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f-958b761dabe5f6d0069dc102cf310a16-c5a0ef111f71c4 [...]
+::  token-hex-512           :  512  =b :  131 c ::    c6017c948e27697bbb2a3fb2cd2c6f7f-958b761dabe5f6d0069dc102cf310a16-c5a0ef111f71c422431d9d54dee17b11-cb30ce1ac9ff61c737fc854f12037913
 ::  uuid-v4                 :  122  =b :   36 c ::    c5a0ef11-f80c-41ce-8329-75e88c63a6e1

@@ -16,6 +16,35 @@
 ::  digits-base10:28        :   93.0 b :   34 c ::    7022 7110 4492 5182 5629 0665 7352
 ::  digits-base10:30        :   99.6 b :   37 c ::    7022 7110 4492 5182 5629 0665 7352 60
 ::  digits-base10:32        :  106.3 b :   39 c ::    7022 7110 4492 5182 5629 0665 7352 6062
+::  digits-base10-perm      :   21.7 b :   11 c ::    93648 15207
+::  digits-base10-shuf:2    :    6.4 b :    2 c ::    93
+::  digits-base10-shuf:4    :   12.2 b :    4 c ::    9364
+::  digits-base10-shuf:6    :   17.2 b :    7 c ::    9364 81
+::  digits-base10-shuf:8    :   20.7 b :    9 c ::    9364 8152
+::  digits-base16:2         :    8  =b :    2 c ::    c0
+::  digits-base16:4         :   16  =b :    4 c ::    c094
+::  digits-base16:6         :   24  =b :    7 c ::    c094 c3
+::  digits-base16:8         :   32  =b :    9 c ::    c094 c32f
+::  digits-base16:10        :   40  =b :   12 c ::    c094 c32f 72
+::  digits-base16:12        :   48  =b :   14 c ::    c094 c32f 72d3
+::  digits-base16:14        :   56  =b :   17 c ::    c094 c32f 72d3 8a
+::  digits-base16:16        :   64  =b :   19 c ::    c094 c32f 72d3 8ae1
+::  digits-base16:18        :   72  =b :   22 c ::    c094 c32f 72d3 8ae1 30
+::  digits-base16:20        :   80  =b :   24 c ::    c094 c32f 72d3 8ae1 3011
+::  digits-base16:22        :   88  =b :   27 c ::    c094 c32f 72d3 8ae1 3011 18
+::  digits-base16:24        :   96  =b :   29 c ::    c094 c32f 72d3 8ae1 3011 18c1
+::  digits-base16:26        :  104  =b :   32 c ::    c094 c32f 72d3 8ae1 3011 18c1 84
+::  digits-base16:28        :  112  =b :   34 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a
+::  digits-base16:30        :  120  =b :   37 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13
+::  digits-base16:32        :  128  =b :   39 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9
+::  digits-base16-perm      :   44.2 b :   19 c ::    46ba d5fe 1729 380c
+::  digits-base16-shuf:2    :    7.9 b :    2 c ::    46
+::  digits-base16-shuf:4    :   15.4 b :    4 c ::    46ba
+::  digits-base16-shuf:6    :   22.4 b :    7 c ::    46ba d5
+::  digits-base16-shuf:8    :   28.9 b :    9 c ::    46ba d5fe
+::  digits-base16-shuf:10   :   34.7 b :   12 c ::    46ba d5fe 17
+::  digits-base16-shuf:12   :   39.6 b :   14 c ::    46ba d5fe 1729
+::  digits-base16-shuf:14   :   43.2 b :   17 c ::    46ba d5fe 1729 38
 ::  digits-base2:4          :    4  =b :    4 c ::    1010
 ::  digits-base2:8          :    8  =b :    8 c ::    10101000
 ::  digits-base2:12         :   12  =b :   13 c ::    10101000 0100
@@ -40,22 +69,6 @@
 ::  digits-base8:28         :   84  =b :   34 c ::    6026 6103 7414 5775 0654 6142 2556
 ::  digits-base8:30         :   90  =b :   37 c ::    6026 6103 7414 5775 0654 6142 2556 25
 ::  digits-base8:32         :   96  =b :   39 c ::    6026 6103 7414 5775 0654 6142 2556 2505
-::  digits-base16:2         :    8  =b :    2 c ::    c0
-::  digits-base16:4         :   16  =b :    4 c ::    c094
-::  digits-base16:6         :   24  =b :    7 c ::    c094 c3
-::  digits-base16:8         :   32  =b :    9 c ::    c094 c32f
-::  digits-base16:10        :   40  =b :   12 c ::    c094 c32f 72
-::  digits-base16:12        :   48  =b :   14 c ::    c094 c32f 72d3
-::  digits-base16:14        :   56  =b :   17 c ::    c094 c32f 72d3 8a
-::  digits-base16:16        :   64  =b :   19 c ::    c094 c32f 72d3 8ae1
-::  digits-base16:18        :   72  =b :   22 c ::    c094 c32f 72d3 8ae1 30
-::  digits-base16:20        :   80  =b :   24 c ::    c094 c32f 72d3 8ae1 3011
-::  digits-base16:22        :   88  =b :   27 c ::    c094 c32f 72d3 8ae1 3011 18
-::  digits-base16:24        :   96  =b :   29 c ::    c094 c32f 72d3 8ae1 3011 18c1
-::  digits-base16:26        :  104  =b :   32 c ::    c094 c32f 72d3 8ae1 3011 18c1 84
-::  digits-base16:28        :  112  =b :   34 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a
-::  digits-base16:30        :  120  =b :   37 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13
-::  digits-base16:32        :  128  =b :   39 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9
 ::  digits-base32-hex:2     :   10  =b :    2 c ::    n8
 ::  digits-base32-hex:4     :   20  =b :    4 c ::    n8pv
 ::  digits-base32-hex:6     :   30  =b :    7 c ::    n8pv 47
@@ -174,11 +187,6 @@
 ::  digits-z85:20           :  128.1 b :   23 c ::    .2Nm+ i^%9% 4AD]j Ld?hS
 ::  digits-z85:25           :  160.2 b :   29 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$
 ::  digits-z85:30           :  192.2 b :   35 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU
-::  digits-base10-perm      :   21.7 b :   11 c ::    93648 15207
-::  digits-base10-shuf:2    :    6.4 b :    2 c ::    93
-::  digits-base10-shuf:4    :   12.2 b :    4 c ::    9364
-::  digits-base10-shuf:6    :   17.2 b :    7 c ::    9364 81
-::  digits-base10-shuf:8    :   20.7 b :    9 c ::    9364 8152
 ::  ascii-lower:2           :    9.4 b :    2 c ::    tu
 ::  ascii-lower:4           :   18.8 b :    4 c ::    tuap
 ::  ascii-lower:6           :   28.2 b :    7 c ::    tuap uf
@@ -195,6 +203,13 @@
 ::  ascii-lower:28          :  131.6 b :   34 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr
 ::  ascii-lower:30          :  141.0 b :   37 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr ab
 ::  ascii-lower:32          :  150.4 b :   39 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu
+::  ascii-lower-perm        :   88.3 b :   32 c ::    lbeq doxk vwfh gpmy jisc urna zt
+::  ascii-lower-shuf:4      :   18.4 b :    4 c ::    lbeq
+::  ascii-lower-shuf:8      :   35.8 b :    9 c ::    lbeq doxk
+::  ascii-lower-shuf:12     :   52.0 b :   14 c ::    lbeq doxk vwfh
+::  ascii-lower-shuf:16     :   66.5 b :   19 c ::    lbeq doxk vwfh gpmy
+::  ascii-lower-shuf:20     :   78.8 b :   24 c ::    lbeq doxk vwfh gpmy jisc
+::  ascii-lower-shuf:24     :   87.3 b :   29 c ::    lbeq doxk vwfh gpmy jisc urna
 ::  ascii-mixed:2           :   11.4 b :    2 c ::    MO
 ::  ascii-mixed:4           :   22.8 b :    4 c ::    MObE
 ::  ascii-mixed:6           :   34.2 b :    7 c ::    MObE nO
@@ -211,6 +226,14 @@
 ::  ascii-mixed:28          :  159.6 b :   34 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY
 ::  ascii-mixed:30          :  171.0 b :   37 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJ
 ::  ascii-mixed:32          :  182.4 b :   39 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad
+::  ascii-mixed-shuf:4      :   22.6 b :    4 c ::    ipSn
+::  ascii-mixed-shuf:8      :   44.7 b :    9 c ::    ipSn fozI
+::  ascii-mixed-shuf:12     :   66.4 b :   14 c ::    ipSn fozI jdyV
+::  ascii-mixed-shuf:16     :   87.4 b :   19 c ::    ipSn fozI jdyV xXEL
+::  ascii-mixed-shuf:20     :  107.9 b :   24 c ::    ipSn fozI jdyV xXEL leJT
+::  ascii-mixed-shuf:24     :  127.6 b :   29 c ::    ipSn fozI jdyV xXEL leJT ZtBG
+::  ascii-mixed-shuf:28     :  146.5 b :   34 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO
+::  ascii-mixed-shuf:32     :  164.5 b :   39 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF
 ::  ascii-symbols:2         :   10  =b :    2 c ::    \)
 ::  ascii-symbols:4         :   20  =b :    4 c ::    \)^~
 ::  ascii-symbols:6         :   30  =b :    7 c ::    \)^~ %(
@@ -243,21 +266,14 @@
 ::  ascii-any:28            :  183.5 b :   34 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
 ::  ascii-any:30            :  196.6 b :   37 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[
 ::  ascii-any:32            :  209.7 b :   39 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
-::  ascii-lower-perm        :   88.3 b :   32 c ::    lbeq doxk vwfh gpmy jisc urna zt
-::  ascii-lower-shuf:4      :   18.4 b :    4 c ::    lbeq
-::  ascii-lower-shuf:8      :   35.8 b :    9 c ::    lbeq doxk
-::  ascii-lower-shuf:12     :   52.0 b :   14 c ::    lbeq doxk vwfh
-::  ascii-lower-shuf:16     :   66.5 b :   19 c ::    lbeq doxk vwfh gpmy
-::  ascii-lower-shuf:20     :   78.8 b :   24 c ::    lbeq doxk vwfh gpmy jisc
-::  ascii-lower-shuf:24     :   87.3 b :   29 c ::    lbeq doxk vwfh gpmy jisc urna
-::  ascii-mixed-shuf:4      :   22.6 b :    4 c ::    ipSn
-::  ascii-mixed-shuf:8      :   44.7 b :    9 c ::    ipSn fozI
-::  ascii-mixed-shuf:12     :   66.4 b :   14 c ::    ipSn fozI jdyV
-::  ascii-mixed-shuf:16     :   87.4 b :   19 c ::    ipSn fozI jdyV xXEL
-::  ascii-mixed-shuf:20     :  107.9 b :   24 c ::    ipSn fozI jdyV xXEL leJT
-::  ascii-mixed-shuf:24     :  127.6 b :   29 c ::    ipSn fozI jdyV xXEL leJT ZtBG
-::  ascii-mixed-shuf:28     :  146.5 b :   34 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO
-::  ascii-mixed-shuf:32     :  164.5 b :   39 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF
+::  ascii-any-shuf:4        :   26.1 b :    4 c ::    8(L>
+::  ascii-any-shuf:8        :   51.9 b :    9 c ::    8(L> !;`s
+::  ascii-any-shuf:12       :   77.5 b :   14 c ::    8(L> !;`s &'M6
+::  ascii-any-shuf:16       :  102.9 b :   19 c ::    8(L> !;`s &'M6 RfGi
+::  ascii-any-shuf:20       :  127.9 b :   24 c ::    8(L> !;`s &'M6 RfGi PW$:
+::  ascii-any-shuf:24       :  152.6 b :   29 c ::    8(L> !;`s &'M6 RfGi PW$: yT7a
+::  ascii-any-shuf:28       :  177.0 b :   34 c ::    8(L> !;`s &'M6 RfGi PW$: yT7a z/t=
+::  ascii-any-shuf:32       :  201.1 b :   39 c ::    8(L> !;`s &'M6 RfGi PW$: yT7a z/t= |A)D
 ::  cva-lower:1             :   13.4 b :    4 c ::    taqe
 ::  cva-lower:2             :   26.8 b :    9 c ::    taqe veza
 ::  cva-lower:3             :   40.2 b :   14 c ::    taqe veza zaye
@@ -408,6 +424,11 @@
 ::  nato:5                  :   25.8 b :   31 c ::    wun victor juliett foxtrot echo
 ::  nato:6                  :   31.0 b :   36 c ::    wun victor juliett foxtrot echo papa
 ::  nato:7                  :   36.1 b :   40 c ::    wun victor juliett foxtrot echo papa ait
+::  nato-shuf:2             :   10.2 b :   10 c ::    six yankee
+::  nato-shuf:3             :   15.3 b :   18 c ::    six yankee uniform
+::  nato-shuf:4             :   20.4 b :   26 c ::    six yankee uniform charlie
+::  nato-shuf:5             :   25.4 b :   33 c ::    six yankee uniform charlie quebec
+::  nato-shuf:6             :   30.3 b :   40 c ::    six yankee uniform charlie quebec sierra
 ::  bytes-hex:1             :    8  =b :    2 c ::    7f
 ::  bytes-hex:2             :   16  =b :    4 c ::    7f6f
 ::  bytes-hex:3             :   24  =b :    6 c ::    7f6f2c

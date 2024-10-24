@@ -257,6 +257,470 @@
     \_        4786 7701 1351 5474 5785 1828 0750 3571
 
 
+**  ~~~~~~~~  digits-base10-perm
+\_  bits:     21.7910
+\_  length:   11  (with spaces)
+\_  examples:
+    \_        93648 15207
+    \_        28306 97415
+    \_        17328 94650
+    \_        57901 64823
+    \_        98403 27156
+    \_        71234 65980
+    \_        85402 97631
+    \_        34098 27165
+    \_        93048 65271
+    \_        34795 60218
+
+
+**  ~~~~~~~~  digits-base10-shuf:2
+\_  bits:     6.4918
+\_  length:   2  (with spaces)
+\_  examples:
+    \_        93
+    \_        28
+    \_        17
+    \_        57
+    \_        98
+    \_        71
+    \_        85
+    \_        34
+    \_        93
+    \_        34
+
+
+**  ~~~~~~~~  digits-base10-shuf:4
+\_  bits:     12.2992
+\_  length:   4  (with spaces)
+\_  examples:
+    \_        9364
+    \_        2830
+    \_        1732
+    \_        5790
+    \_        9840
+    \_        7123
+    \_        8540
+    \_        3409
+    \_        9304
+    \_        3479
+
+
+**  ~~~~~~~~  digits-base10-shuf:6
+\_  bits:     17.2060
+\_  length:   7  (with spaces)
+\_  examples:
+    \_        9364 81
+    \_        2830 69
+    \_        1732 89
+    \_        5790 16
+    \_        9840 32
+    \_        7123 46
+    \_        8540 29
+    \_        3409 82
+    \_        9304 86
+    \_        3479 56
+
+
+**  ~~~~~~~~  digits-base10-shuf:8
+\_  bits:     20.7910
+\_  length:   9  (with spaces)
+\_  examples:
+    \_        9364 8152
+    \_        2830 6974
+    \_        1732 8946
+    \_        5790 1648
+    \_        9840 3271
+    \_        7123 4659
+    \_        8540 2976
+    \_        3409 8271
+    \_        9304 8652
+    \_        3479 5602
+
+
+**  ~~~~~~~~  digits-base16:2
+\_  bits:     8  (exact)
+\_  length:   2  (with spaces)
+\_  examples:
+    \_        c0
+    \_        94
+    \_        c3
+    \_        2f
+    \_        72
+    \_        d3
+    \_        8a
+    \_        e1
+    \_        30
+    \_        11
+
+
+**  ~~~~~~~~  digits-base16:4
+\_  bits:     16  (exact)
+\_  length:   4  (with spaces)
+\_  examples:
+    \_        c094
+    \_        c32f
+    \_        72d3
+    \_        8ae1
+    \_        3011
+    \_        18c1
+    \_        844a
+    \_        13a9
+    \_        35a0
+    \_        157d
+
+
+**  ~~~~~~~~  digits-base16:6
+\_  bits:     24  (exact)
+\_  length:   7  (with spaces)
+\_  examples:
+    \_        c094 c3
+    \_        2f72 d3
+    \_        8ae1 30
+    \_        1118 c1
+    \_        844a 13
+    \_        a935 a0
+    \_        157d dc
+    \_        eec8 35
+    \_        dc81 c3
+    \_        4e32 da
+
+
+**  ~~~~~~~~  digits-base16:8
+\_  bits:     32  (exact)
+\_  length:   9  (with spaces)
+\_  examples:
+    \_        c094 c32f
+    \_        72d3 8ae1
+    \_        3011 18c1
+    \_        844a 13a9
+    \_        35a0 157d
+    \_        dcee c835
+    \_        dc81 c34e
+    \_        32da e973
+    \_        641d 40a0
+    \_        065e b2a0
+
+
+**  ~~~~~~~~  digits-base16:10
+\_  bits:     40  (exact)
+\_  length:   12  (with spaces)
+\_  examples:
+    \_        c094 c32f 72
+    \_        d38a e130 11
+    \_        18c1 844a 13
+    \_        a935 a015 7d
+    \_        dcee c835 dc
+    \_        81c3 4e32 da
+    \_        e973 641d 40
+    \_        a006 5eb2 a0
+    \_        98fa 1b2a 81
+    \_        9271 2a59 9b
+
+
+**  ~~~~~~~~  digits-base16:12
+\_  bits:     48  (exact)
+\_  length:   14  (with spaces)
+\_  examples:
+    \_        c094 c32f 72d3
+    \_        8ae1 3011 18c1
+    \_        844a 13a9 35a0
+    \_        157d dcee c835
+    \_        dc81 c34e 32da
+    \_        e973 641d 40a0
+    \_        065e b2a0 98fa
+    \_        1b2a 8192 712a
+    \_        599b 02ed e3e1
+    \_        bd98 4303 83f5
+
+
+**  ~~~~~~~~  digits-base16:14
+\_  bits:     56  (exact)
+\_  length:   17  (with spaces)
+\_  examples:
+    \_        c094 c32f 72d3 8a
+    \_        e130 1118 c184 4a
+    \_        13a9 35a0 157d dc
+    \_        eec8 35dc 81c3 4e
+    \_        32da e973 641d 40
+    \_        a006 5eb2 a098 fa
+    \_        1b2a 8192 712a 59
+    \_        9b02 ede3 e1bd 98
+    \_        4303 83f5 46f2 5a
+    \_        373b a6d1 6650 cb
+
+
+**  ~~~~~~~~  digits-base16:16
+\_  bits:     64  (exact)
+\_  length:   19  (with spaces)
+\_  examples:
+    \_        c094 c32f 72d3 8ae1
+    \_        3011 18c1 844a 13a9
+    \_        35a0 157d dcee c835
+    \_        dc81 c34e 32da e973
+    \_        641d 40a0 065e b2a0
+    \_        98fa 1b2a 8192 712a
+    \_        599b 02ed e3e1 bd98
+    \_        4303 83f5 46f2 5a37
+    \_        3ba6 d166 50cb 8844
+    \_        f543 3e67 4b4c 90c3
+
+
+**  ~~~~~~~~  digits-base16:18
+\_  bits:     72  (exact)
+\_  length:   22  (with spaces)
+\_  examples:
+    \_        c094 c32f 72d3 8ae1 30
+    \_        1118 c184 4a13 a935 a0
+    \_        157d dcee c835 dc81 c3
+    \_        4e32 dae9 7364 1d40 a0
+    \_        065e b2a0 98fa 1b2a 81
+    \_        9271 2a59 9b02 ede3 e1
+    \_        bd98 4303 83f5 46f2 5a
+    \_        373b a6d1 6650 cb88 44
+    \_        f543 3e67 4b4c 90c3 41
+    \_        c46b 8ac2 6062 0738 ef
+
+
+**  ~~~~~~~~  digits-base16:20
+\_  bits:     80  (exact)
+\_  length:   24  (with spaces)
+\_  examples:
+    \_        c094 c32f 72d3 8ae1 3011
+    \_        18c1 844a 13a9 35a0 157d
+    \_        dcee c835 dc81 c34e 32da
+    \_        e973 641d 40a0 065e b2a0
+    \_        98fa 1b2a 8192 712a 599b
+    \_        02ed e3e1 bd98 4303 83f5
+    \_        46f2 5a37 3ba6 d166 50cb
+    \_        8844 f543 3e67 4b4c 90c3
+    \_        41c4 6b8a c260 6207 38ef
+    \_        13af 1945 1d23 2fc4 a13b
+
+
+**  ~~~~~~~~  digits-base16:22
+\_  bits:     88  (exact)
+\_  length:   27  (with spaces)
+\_  examples:
+    \_        c094 c32f 72d3 8ae1 3011 18
+    \_        c184 4a13 a935 a015 7ddc ee
+    \_        c835 dc81 c34e 32da e973 64
+    \_        1d40 a006 5eb2 a098 fa1b 2a
+    \_        8192 712a 599b 02ed e3e1 bd
+    \_        9843 0383 f546 f25a 373b a6
+    \_        d166 50cb 8844 f543 3e67 4b
+    \_        4c90 c341 c46b 8ac2 6062 07
+    \_        38ef 13af 1945 1d23 2fc4 a1
+    \_        3b75 50f1 5ad2 626e 3b4c b1
+
+
+**  ~~~~~~~~  digits-base16:24
+\_  bits:     96  (exact)
+\_  length:   29  (with spaces)
+\_  examples:
+    \_        c094 c32f 72d3 8ae1 3011 18c1
+    \_        844a 13a9 35a0 157d dcee c835
+    \_        dc81 c34e 32da e973 641d 40a0
+    \_        065e b2a0 98fa 1b2a 8192 712a
+    \_        599b 02ed e3e1 bd98 4303 83f5
+    \_        46f2 5a37 3ba6 d166 50cb 8844
+    \_        f543 3e67 4b4c 90c3 41c4 6b8a
+    \_        c260 6207 38ef 13af 1945 1d23
+    \_        2fc4 a13b 7550 f15a d262 6e3b
+    \_        4cb1 9de6 27e9 f563 a11e b0c8
+
+
+**  ~~~~~~~~  digits-base16:26
+\_  bits:     104  (exact)
+\_  length:   32  (with spaces)
+\_  examples:
+    \_        c094 c32f 72d3 8ae1 3011 18c1 84
+    \_        4a13 a935 a015 7ddc eec8 35dc 81
+    \_        c34e 32da e973 641d 40a0 065e b2
+    \_        a098 fa1b 2a81 9271 2a59 9b02 ed
+    \_        e3e1 bd98 4303 83f5 46f2 5a37 3b
+    \_        a6d1 6650 cb88 44f5 433e 674b 4c
+    \_        90c3 41c4 6b8a c260 6207 38ef 13
+    \_        af19 451d 232f c4a1 3b75 50f1 5a
+    \_        d262 6e3b 4cb1 9de6 27e9 f563 a1
+    \_        1eb0 c87c 80cc 5b37 7fcf ea6a 8c
+
+
+**  ~~~~~~~~  digits-base16:28
+\_  bits:     112  (exact)
+\_  length:   34  (with spaces)
+\_  examples:
+    \_        c094 c32f 72d3 8ae1 3011 18c1 844a
+    \_        13a9 35a0 157d dcee c835 dc81 c34e
+    \_        32da e973 641d 40a0 065e b2a0 98fa
+    \_        1b2a 8192 712a 599b 02ed e3e1 bd98
+    \_        4303 83f5 46f2 5a37 3ba6 d166 50cb
+    \_        8844 f543 3e67 4b4c 90c3 41c4 6b8a
+    \_        c260 6207 38ef 13af 1945 1d23 2fc4
+    \_        a13b 7550 f15a d262 6e3b 4cb1 9de6
+    \_        27e9 f563 a11e b0c8 7c80 cc5b 377f
+    \_        cfea 6a8c cca8 4639 2746 a0b7 e8e9
+
+
+**  ~~~~~~~~  digits-base16:30
+\_  bits:     120  (exact)
+\_  length:   37  (with spaces)
+\_  examples:
+    \_        c094 c32f 72d3 8ae1 3011 18c1 844a 13
+    \_        a935 a015 7ddc eec8 35dc 81c3 4e32 da
+    \_        e973 641d 40a0 065e b2a0 98fa 1b2a 81
+    \_        9271 2a59 9b02 ede3 e1bd 9843 0383 f5
+    \_        46f2 5a37 3ba6 d166 50cb 8844 f543 3e
+    \_        674b 4c90 c341 c46b 8ac2 6062 0738 ef
+    \_        13af 1945 1d23 2fc4 a13b 7550 f15a d2
+    \_        626e 3b4c b19d e627 e9f5 63a1 1eb0 c8
+    \_        7c80 cc5b 377f cfea 6a8c cca8 4639 27
+    \_        46a0 b7e8 e97b ec89 d368 51c2 7712 39
+
+
+**  ~~~~~~~~  digits-base16:32
+\_  bits:     128  (exact)
+\_  length:   39  (with spaces)
+\_  examples:
+    \_        c094 c32f 72d3 8ae1 3011 18c1 844a 13a9
+    \_        35a0 157d dcee c835 dc81 c34e 32da e973
+    \_        641d 40a0 065e b2a0 98fa 1b2a 8192 712a
+    \_        599b 02ed e3e1 bd98 4303 83f5 46f2 5a37
+    \_        3ba6 d166 50cb 8844 f543 3e67 4b4c 90c3
+    \_        41c4 6b8a c260 6207 38ef 13af 1945 1d23
+    \_        2fc4 a13b 7550 f15a d262 6e3b 4cb1 9de6
+    \_        27e9 f563 a11e b0c8 7c80 cc5b 377f cfea
+    \_        6a8c cca8 4639 2746 a0b7 e8e9 7bec 89d3
+    \_        6851 c277 1239 276c 399a 101e 0a56 ec62
+
+
+**  ~~~~~~~~  digits-base16-perm
+\_  bits:     44.2501
+\_  length:   19  (with spaces)
+\_  examples:
+    \_        46ba d5fe 1729 380c
+    \_        1cf4 5370 de2a b698
+    \_        9730 d6ef a524 1cb8
+    \_        b157 3c9e 0f64 d28a
+    \_        a540 79e8 b31d 62fc
+    \_        930f 86ab d1e2 7c54
+    \_        96a5 84e7 f2bc 031d
+    \_        74d0 263b 5ca8 1fe9
+    \_        fa43 597e 8dbc 1602
+    \_        fa91 b034 587c 26de
+
+
+**  ~~~~~~~~  digits-base16-shuf:2
+\_  bits:     7.9068
+\_  length:   2  (with spaces)
+\_  examples:
+    \_        46
+    \_        1c
+    \_        97
+    \_        b1
+    \_        a5
+    \_        93
+    \_        96
+    \_        74
+    \_        fa
+    \_        fa
+
+
+**  ~~~~~~~~  digits-base16-shuf:4
+\_  bits:     15.4146
+\_  length:   4  (with spaces)
+\_  examples:
+    \_        46ba
+    \_        1cf4
+    \_        9730
+    \_        b157
+    \_        a540
+    \_        930f
+    \_        96a5
+    \_        74d0
+    \_        fa43
+    \_        fa91
+
+
+**  ~~~~~~~~  digits-base16-shuf:6
+\_  bits:     22.4590
+\_  length:   7  (with spaces)
+\_  examples:
+    \_        46ba d5
+    \_        1cf4 53
+    \_        9730 d6
+    \_        b157 3c
+    \_        a540 79
+    \_        930f 86
+    \_        96a5 84
+    \_        74d0 26
+    \_        fa43 59
+    \_        fa91 b0
+
+
+**  ~~~~~~~~  digits-base16-shuf:8
+\_  bits:     28.9509
+\_  length:   9  (with spaces)
+\_  examples:
+    \_        46ba d5fe
+    \_        1cf4 5370
+    \_        9730 d6ef
+    \_        b157 3c9e
+    \_        a540 79e8
+    \_        930f 86ab
+    \_        96a5 84e7
+    \_        74d0 263b
+    \_        fa43 597e
+    \_        fa91 b034
+
+
+**  ~~~~~~~~  digits-base16-shuf:10
+\_  bits:     34.7582
+\_  length:   12  (with spaces)
+\_  examples:
+    \_        46ba d5fe 17
+    \_        1cf4 5370 de
+    \_        9730 d6ef a5
+    \_        b157 3c9e 0f
+    \_        a540 79e8 b3
+    \_        930f 86ab d1
+    \_        96a5 84e7 f2
+    \_        74d0 263b 5c
+    \_        fa43 597e 8d
+    \_        fa91 b034 58
+
+
+**  ~~~~~~~~  digits-base16-shuf:12
+\_  bits:     39.6651
+\_  length:   14  (with spaces)
+\_  examples:
+    \_        46ba d5fe 1729
+    \_        1cf4 5370 de2a
+    \_        9730 d6ef a524
+    \_        b157 3c9e 0f64
+    \_        a540 79e8 b31d
+    \_        930f 86ab d1e2
+    \_        96a5 84e7 f2bc
+    \_        74d0 263b 5ca8
+    \_        fa43 597e 8dbc
+    \_        fa91 b034 587c
+
+
+**  ~~~~~~~~  digits-base16-shuf:14
+\_  bits:     43.2501
+\_  length:   17  (with spaces)
+\_  examples:
+    \_        46ba d5fe 1729 38
+    \_        1cf4 5370 de2a b6
+    \_        9730 d6ef a524 1c
+    \_        b157 3c9e 0f64 d2
+    \_        a540 79e8 b31d 62
+    \_        930f 86ab d1e2 7c
+    \_        96a5 84e7 f2bc 03
+    \_        74d0 263b 5ca8 1f
+    \_        fa43 597e 8dbc 16
+    \_        fa91 b034 587c 26
+
+
 **  ~~~~~~~~  digits-base2:4
 \_  bits:     4  (exact)
 \_  length:   4  (with spaces)
@@ -639,262 +1103,6 @@
     \_        1377 2206 2707 5731 7035 7011 2464 6344
     \_        2560 4066 4207 6260 4753 5466 6547 2326
     \_        1235 0174 7375 4641 3466 4761 1136 3145
-
-
-**  ~~~~~~~~  digits-base16:2
-\_  bits:     8  (exact)
-\_  length:   2  (with spaces)
-\_  examples:
-    \_        c0
-    \_        94
-    \_        c3
-    \_        2f
-    \_        72
-    \_        d3
-    \_        8a
-    \_        e1
-    \_        30
-    \_        11
-
-
-**  ~~~~~~~~  digits-base16:4
-\_  bits:     16  (exact)
-\_  length:   4  (with spaces)
-\_  examples:
-    \_        c094
-    \_        c32f
-    \_        72d3
-    \_        8ae1
-    \_        3011
-    \_        18c1
-    \_        844a
-    \_        13a9
-    \_        35a0
-    \_        157d
-
-
-**  ~~~~~~~~  digits-base16:6
-\_  bits:     24  (exact)
-\_  length:   7  (with spaces)
-\_  examples:
-    \_        c094 c3
-    \_        2f72 d3
-    \_        8ae1 30
-    \_        1118 c1
-    \_        844a 13
-    \_        a935 a0
-    \_        157d dc
-    \_        eec8 35
-    \_        dc81 c3
-    \_        4e32 da
-
-
-**  ~~~~~~~~  digits-base16:8
-\_  bits:     32  (exact)
-\_  length:   9  (with spaces)
-\_  examples:
-    \_        c094 c32f
-    \_        72d3 8ae1
-    \_        3011 18c1
-    \_        844a 13a9
-    \_        35a0 157d
-    \_        dcee c835
-    \_        dc81 c34e
-    \_        32da e973
-    \_        641d 40a0
-    \_        065e b2a0
-
-
-**  ~~~~~~~~  digits-base16:10
-\_  bits:     40  (exact)
-\_  length:   12  (with spaces)
-\_  examples:
-    \_        c094 c32f 72
-    \_        d38a e130 11
-    \_        18c1 844a 13
-    \_        a935 a015 7d
-    \_        dcee c835 dc
-    \_        81c3 4e32 da
-    \_        e973 641d 40
-    \_        a006 5eb2 a0
-    \_        98fa 1b2a 81
-    \_        9271 2a59 9b
-
-
-**  ~~~~~~~~  digits-base16:12
-\_  bits:     48  (exact)
-\_  length:   14  (with spaces)
-\_  examples:
-    \_        c094 c32f 72d3
-    \_        8ae1 3011 18c1
-    \_        844a 13a9 35a0
-    \_        157d dcee c835
-    \_        dc81 c34e 32da
-    \_        e973 641d 40a0
-    \_        065e b2a0 98fa
-    \_        1b2a 8192 712a
-    \_        599b 02ed e3e1
-    \_        bd98 4303 83f5
-
-
-**  ~~~~~~~~  digits-base16:14
-\_  bits:     56  (exact)
-\_  length:   17  (with spaces)
-\_  examples:
-    \_        c094 c32f 72d3 8a
-    \_        e130 1118 c184 4a
-    \_        13a9 35a0 157d dc
-    \_        eec8 35dc 81c3 4e
-    \_        32da e973 641d 40
-    \_        a006 5eb2 a098 fa
-    \_        1b2a 8192 712a 59
-    \_        9b02 ede3 e1bd 98
-    \_        4303 83f5 46f2 5a
-    \_        373b a6d1 6650 cb
-
-
-**  ~~~~~~~~  digits-base16:16
-\_  bits:     64  (exact)
-\_  length:   19  (with spaces)
-\_  examples:
-    \_        c094 c32f 72d3 8ae1
-    \_        3011 18c1 844a 13a9
-    \_        35a0 157d dcee c835
-    \_        dc81 c34e 32da e973
-    \_        641d 40a0 065e b2a0
-    \_        98fa 1b2a 8192 712a
-    \_        599b 02ed e3e1 bd98
-    \_        4303 83f5 46f2 5a37
-    \_        3ba6 d166 50cb 8844
-    \_        f543 3e67 4b4c 90c3
-
-
-**  ~~~~~~~~  digits-base16:18
-\_  bits:     72  (exact)
-\_  length:   22  (with spaces)
-\_  examples:
-    \_        c094 c32f 72d3 8ae1 30
-    \_        1118 c184 4a13 a935 a0
-    \_        157d dcee c835 dc81 c3
-    \_        4e32 dae9 7364 1d40 a0
-    \_        065e b2a0 98fa 1b2a 81
-    \_        9271 2a59 9b02 ede3 e1
-    \_        bd98 4303 83f5 46f2 5a
-    \_        373b a6d1 6650 cb88 44
-    \_        f543 3e67 4b4c 90c3 41
-    \_        c46b 8ac2 6062 0738 ef
-
-
-**  ~~~~~~~~  digits-base16:20
-\_  bits:     80  (exact)
-\_  length:   24  (with spaces)
-\_  examples:
-    \_        c094 c32f 72d3 8ae1 3011
-    \_        18c1 844a 13a9 35a0 157d
-    \_        dcee c835 dc81 c34e 32da
-    \_        e973 641d 40a0 065e b2a0
-    \_        98fa 1b2a 8192 712a 599b
-    \_        02ed e3e1 bd98 4303 83f5
-    \_        46f2 5a37 3ba6 d166 50cb
-    \_        8844 f543 3e67 4b4c 90c3
-    \_        41c4 6b8a c260 6207 38ef
-    \_        13af 1945 1d23 2fc4 a13b
-
-
-**  ~~~~~~~~  digits-base16:22
-\_  bits:     88  (exact)
-\_  length:   27  (with spaces)
-\_  examples:
-    \_        c094 c32f 72d3 8ae1 3011 18
-    \_        c184 4a13 a935 a015 7ddc ee
-    \_        c835 dc81 c34e 32da e973 64
-    \_        1d40 a006 5eb2 a098 fa1b 2a
-    \_        8192 712a 599b 02ed e3e1 bd
-    \_        9843 0383 f546 f25a 373b a6
-    \_        d166 50cb 8844 f543 3e67 4b
-    \_        4c90 c341 c46b 8ac2 6062 07
-    \_        38ef 13af 1945 1d23 2fc4 a1
-    \_        3b75 50f1 5ad2 626e 3b4c b1
-
-
-**  ~~~~~~~~  digits-base16:24
-\_  bits:     96  (exact)
-\_  length:   29  (with spaces)
-\_  examples:
-    \_        c094 c32f 72d3 8ae1 3011 18c1
-    \_        844a 13a9 35a0 157d dcee c835
-    \_        dc81 c34e 32da e973 641d 40a0
-    \_        065e b2a0 98fa 1b2a 8192 712a
-    \_        599b 02ed e3e1 bd98 4303 83f5
-    \_        46f2 5a37 3ba6 d166 50cb 8844
-    \_        f543 3e67 4b4c 90c3 41c4 6b8a
-    \_        c260 6207 38ef 13af 1945 1d23
-    \_        2fc4 a13b 7550 f15a d262 6e3b
-    \_        4cb1 9de6 27e9 f563 a11e b0c8
-
-
-**  ~~~~~~~~  digits-base16:26
-\_  bits:     104  (exact)
-\_  length:   32  (with spaces)
-\_  examples:
-    \_        c094 c32f 72d3 8ae1 3011 18c1 84
-    \_        4a13 a935 a015 7ddc eec8 35dc 81
-    \_        c34e 32da e973 641d 40a0 065e b2
-    \_        a098 fa1b 2a81 9271 2a59 9b02 ed
-    \_        e3e1 bd98 4303 83f5 46f2 5a37 3b
-    \_        a6d1 6650 cb88 44f5 433e 674b 4c
-    \_        90c3 41c4 6b8a c260 6207 38ef 13
-    \_        af19 451d 232f c4a1 3b75 50f1 5a
-    \_        d262 6e3b 4cb1 9de6 27e9 f563 a1
-    \_        1eb0 c87c 80cc 5b37 7fcf ea6a 8c
-
-
-**  ~~~~~~~~  digits-base16:28
-\_  bits:     112  (exact)
-\_  length:   34  (with spaces)
-\_  examples:
-    \_        c094 c32f 72d3 8ae1 3011 18c1 844a
-    \_        13a9 35a0 157d dcee c835 dc81 c34e
-    \_        32da e973 641d 40a0 065e b2a0 98fa
-    \_        1b2a 8192 712a 599b 02ed e3e1 bd98
-    \_        4303 83f5 46f2 5a37 3ba6 d166 50cb
-    \_        8844 f543 3e67 4b4c 90c3 41c4 6b8a
-    \_        c260 6207 38ef 13af 1945 1d23 2fc4
-    \_        a13b 7550 f15a d262 6e3b 4cb1 9de6
-    \_        27e9 f563 a11e b0c8 7c80 cc5b 377f
-    \_        cfea 6a8c cca8 4639 2746 a0b7 e8e9
-
-
-**  ~~~~~~~~  digits-base16:30
-\_  bits:     120  (exact)
-\_  length:   37  (with spaces)
-\_  examples:
-    \_        c094 c32f 72d3 8ae1 3011 18c1 844a 13
-    \_        a935 a015 7ddc eec8 35dc 81c3 4e32 da
-    \_        e973 641d 40a0 065e b2a0 98fa 1b2a 81
-    \_        9271 2a59 9b02 ede3 e1bd 9843 0383 f5
-    \_        46f2 5a37 3ba6 d166 50cb 8844 f543 3e
-    \_        674b 4c90 c341 c46b 8ac2 6062 0738 ef
-    \_        13af 1945 1d23 2fc4 a13b 7550 f15a d2
-    \_        626e 3b4c b19d e627 e9f5 63a1 1eb0 c8
-    \_        7c80 cc5b 377f cfea 6a8c cca8 4639 27
-    \_        46a0 b7e8 e97b ec89 d368 51c2 7712 39
-
-
-**  ~~~~~~~~  digits-base16:32
-\_  bits:     128  (exact)
-\_  length:   39  (with spaces)
-\_  examples:
-    \_        c094 c32f 72d3 8ae1 3011 18c1 844a 13a9
-    \_        35a0 157d dcee c835 dc81 c34e 32da e973
-    \_        641d 40a0 065e b2a0 98fa 1b2a 8192 712a
-    \_        599b 02ed e3e1 bd98 4303 83f5 46f2 5a37
-    \_        3ba6 d166 50cb 8844 f543 3e67 4b4c 90c3
-    \_        41c4 6b8a c260 6207 38ef 13af 1945 1d23
-    \_        2fc4 a13b 7550 f15a d262 6e3b 4cb1 9de6
-    \_        27e9 f563 a11e b0c8 7c80 cc5b 377f cfea
-    \_        6a8c cca8 4639 2746 a0b7 e8e9 7bec 89d3
-    \_        6851 c277 1239 276c 399a 101e 0a56 ec62
 
 
 **  ~~~~~~~~  digits-base32-hex:2
@@ -2801,86 +3009,6 @@
     \_        (-0dK 9+CAK G$8<I oWi!- J5==s K-aoX tiB5]
 
 
-**  ~~~~~~~~  digits-base10-perm
-\_  bits:     21.7910
-\_  length:   11  (with spaces)
-\_  examples:
-    \_        93648 15207
-    \_        28306 97415
-    \_        17328 94650
-    \_        57901 64823
-    \_        98403 27156
-    \_        71234 65980
-    \_        85402 97631
-    \_        34098 27165
-    \_        93048 65271
-    \_        34795 60218
-
-
-**  ~~~~~~~~  digits-base10-shuf:2
-\_  bits:     6.4918
-\_  length:   2  (with spaces)
-\_  examples:
-    \_        93
-    \_        28
-    \_        17
-    \_        57
-    \_        98
-    \_        71
-    \_        85
-    \_        34
-    \_        93
-    \_        34
-
-
-**  ~~~~~~~~  digits-base10-shuf:4
-\_  bits:     12.2992
-\_  length:   4  (with spaces)
-\_  examples:
-    \_        9364
-    \_        2830
-    \_        1732
-    \_        5790
-    \_        9840
-    \_        7123
-    \_        8540
-    \_        3409
-    \_        9304
-    \_        3479
-
-
-**  ~~~~~~~~  digits-base10-shuf:6
-\_  bits:     17.2060
-\_  length:   7  (with spaces)
-\_  examples:
-    \_        9364 81
-    \_        2830 69
-    \_        1732 89
-    \_        5790 16
-    \_        9840 32
-    \_        7123 46
-    \_        8540 29
-    \_        3409 82
-    \_        9304 86
-    \_        3479 56
-
-
-**  ~~~~~~~~  digits-base10-shuf:8
-\_  bits:     20.7910
-\_  length:   9  (with spaces)
-\_  examples:
-    \_        9364 8152
-    \_        2830 6974
-    \_        1732 8946
-    \_        5790 1648
-    \_        9840 3271
-    \_        7123 4659
-    \_        8540 2976
-    \_        3409 8271
-    \_        9304 8652
-    \_        3479 5602
-
-
 **  ~~~~~~~~  ascii-lower:2
 \_  bits:     9.4008
 \_  length:   2  (with spaces)
@@ -3135,6 +3263,118 @@
     \_        chkk ialr uksn ontt buzf rhcm gffx lgwg
     \_        xsgu zatf jbeg etqp csug wkbs ntdl kakm
     \_        jbbd tgaf nuou uxyl wocf imeo qyoc boej
+
+
+**  ~~~~~~~~  ascii-lower-perm
+\_  bits:     88.3819
+\_  length:   32  (with spaces)
+\_  examples:
+    \_        lbeq doxk vwfh gpmy jisc urna zt
+    \_        ipgn fouw jdqx ybav lesk htrm zc
+    \_        kfea hjti ydwn ucqm pgzs vrbo lx
+    \_        lodj bhqa upwv rinz fckx mtge ys
+    \_        hets cgdq vmzx bpoj lwar nyui fk
+    \_        mjur egyz ishw kfqv xanl topc bd
+    \_        ybrt upnd xzfq mjwi easg klco hv
+    \_        dlwx sejt cpyu nhvm azbq igok rf
+    \_        oued xmbg thin pyla qkrv szcj wf
+    \_        ymbn kgue ropf xwlc thav jidz qs
+
+
+**  ~~~~~~~~  ascii-lower-shuf:4
+\_  bits:     18.4528
+\_  length:   4  (with spaces)
+\_  examples:
+    \_        lbeq
+    \_        ipgn
+    \_        kfea
+    \_        lodj
+    \_        hets
+    \_        mjur
+    \_        ybrt
+    \_        dlwx
+    \_        oued
+    \_        ymbn
+
+
+**  ~~~~~~~~  ascii-lower-shuf:8
+\_  bits:     35.8744
+\_  length:   9  (with spaces)
+\_  examples:
+    \_        lbeq doxk
+    \_        ipgn fouw
+    \_        kfea hjti
+    \_        lodj bhqa
+    \_        hets cgdq
+    \_        mjur egyz
+    \_        ybrt upnd
+    \_        dlwx sejt
+    \_        oued xmbg
+    \_        ymbn kgue
+
+
+**  ~~~~~~~~  ascii-lower-shuf:12
+\_  bits:     52.0387
+\_  length:   14  (with spaces)
+\_  examples:
+    \_        lbeq doxk vwfh
+    \_        ipgn fouw jdqx
+    \_        kfea hjti ydwn
+    \_        lodj bhqa upwv
+    \_        hets cgdq vmzx
+    \_        mjur egyz ishw
+    \_        ybrt upnd xzfq
+    \_        dlwx sejt cpyu
+    \_        oued xmbg thin
+    \_        ymbn kgue ropf
+
+
+**  ~~~~~~~~  ascii-lower-shuf:16
+\_  bits:     66.5908
+\_  length:   19  (with spaces)
+\_  examples:
+    \_        lbeq doxk vwfh gpmy
+    \_        ipgn fouw jdqx ybav
+    \_        kfea hjti ydwn ucqm
+    \_        lodj bhqa upwv rinz
+    \_        hets cgdq vmzx bpoj
+    \_        mjur egyz ishw kfqv
+    \_        ybrt upnd xzfq mjwi
+    \_        dlwx sejt cpyu nhvm
+    \_        oued xmbg thin pyla
+    \_        ymbn kgue ropf xwlc
+
+
+**  ~~~~~~~~  ascii-lower-shuf:20
+\_  bits:     78.8901
+\_  length:   24  (with spaces)
+\_  examples:
+    \_        lbeq doxk vwfh gpmy jisc
+    \_        ipgn fouw jdqx ybav lesk
+    \_        kfea hjti ydwn ucqm pgzs
+    \_        lodj bhqa upwv rinz fckx
+    \_        hets cgdq vmzx bpoj lwar
+    \_        mjur egyz ishw kfqv xanl
+    \_        ybrt upnd xzfq mjwi easg
+    \_        dlwx sejt cpyu nhvm azbq
+    \_        oued xmbg thin pyla qkrv
+    \_        ymbn kgue ropf xwlc thav
+
+
+**  ~~~~~~~~  ascii-lower-shuf:24
+\_  bits:     87.3819
+\_  length:   29  (with spaces)
+\_  examples:
+    \_        lbeq doxk vwfh gpmy jisc urna
+    \_        ipgn fouw jdqx ybav lesk htrm
+    \_        kfea hjti ydwn ucqm pgzs vrbo
+    \_        lodj bhqa upwv rinz fckx mtge
+    \_        hets cgdq vmzx bpoj lwar nyui
+    \_        mjur egyz ishw kfqv xanl topc
+    \_        ybrt upnd xzfq mjwi easg klco
+    \_        dlwx sejt cpyu nhvm azbq igok
+    \_        oued xmbg thin pyla qkrv szcj
+    \_        ymbn kgue ropf xwlc thav jidz
 
 
 **  ~~~~~~~~  ascii-upper:2
@@ -3393,6 +3633,118 @@
     \_        JBBD TGAF NUOU UXYL WOCF IMEO QYOC BOEJ
 
 
+**  ~~~~~~~~  ascii-upper-perm
+\_  bits:     88.3819
+\_  length:   32  (with spaces)
+\_  examples:
+    \_        LBEQ DOXK VWFH GPMY JISC URNA ZT
+    \_        IPGN FOUW JDQX YBAV LESK HTRM ZC
+    \_        KFEA HJTI YDWN UCQM PGZS VRBO LX
+    \_        LODJ BHQA UPWV RINZ FCKX MTGE YS
+    \_        HETS CGDQ VMZX BPOJ LWAR NYUI FK
+    \_        MJUR EGYZ ISHW KFQV XANL TOPC BD
+    \_        YBRT UPND XZFQ MJWI EASG KLCO HV
+    \_        DLWX SEJT CPYU NHVM AZBQ IGOK RF
+    \_        OUED XMBG THIN PYLA QKRV SZCJ WF
+    \_        YMBN KGUE ROPF XWLC THAV JIDZ QS
+
+
+**  ~~~~~~~~  ascii-upper-shuf:4
+\_  bits:     18.4528
+\_  length:   4  (with spaces)
+\_  examples:
+    \_        LBEQ
+    \_        IPGN
+    \_        KFEA
+    \_        LODJ
+    \_        HETS
+    \_        MJUR
+    \_        YBRT
+    \_        DLWX
+    \_        OUED
+    \_        YMBN
+
+
+**  ~~~~~~~~  ascii-upper-shuf:8
+\_  bits:     35.8744
+\_  length:   9  (with spaces)
+\_  examples:
+    \_        LBEQ DOXK
+    \_        IPGN FOUW
+    \_        KFEA HJTI
+    \_        LODJ BHQA
+    \_        HETS CGDQ
+    \_        MJUR EGYZ
+    \_        YBRT UPND
+    \_        DLWX SEJT
+    \_        OUED XMBG
+    \_        YMBN KGUE
+
+
+**  ~~~~~~~~  ascii-upper-shuf:12
+\_  bits:     52.0387
+\_  length:   14  (with spaces)
+\_  examples:
+    \_        LBEQ DOXK VWFH
+    \_        IPGN FOUW JDQX
+    \_        KFEA HJTI YDWN
+    \_        LODJ BHQA UPWV
+    \_        HETS CGDQ VMZX
+    \_        MJUR EGYZ ISHW
+    \_        YBRT UPND XZFQ
+    \_        DLWX SEJT CPYU
+    \_        OUED XMBG THIN
+    \_        YMBN KGUE ROPF
+
+
+**  ~~~~~~~~  ascii-upper-shuf:16
+\_  bits:     66.5908
+\_  length:   19  (with spaces)
+\_  examples:
+    \_        LBEQ DOXK VWFH GPMY
+    \_        IPGN FOUW JDQX YBAV
+    \_        KFEA HJTI YDWN UCQM
+    \_        LODJ BHQA UPWV RINZ
+    \_        HETS CGDQ VMZX BPOJ
+    \_        MJUR EGYZ ISHW KFQV
+    \_        YBRT UPND XZFQ MJWI
+    \_        DLWX SEJT CPYU NHVM
+    \_        OUED XMBG THIN PYLA
+    \_        YMBN KGUE ROPF XWLC
+
+
+**  ~~~~~~~~  ascii-upper-shuf:20
+\_  bits:     78.8901
+\_  length:   24  (with spaces)
+\_  examples:
+    \_        LBEQ DOXK VWFH GPMY JISC
+    \_        IPGN FOUW JDQX YBAV LESK
+    \_        KFEA HJTI YDWN UCQM PGZS
+    \_        LODJ BHQA UPWV RINZ FCKX
+    \_        HETS CGDQ VMZX BPOJ LWAR
+    \_        MJUR EGYZ ISHW KFQV XANL
+    \_        YBRT UPND XZFQ MJWI EASG
+    \_        DLWX SEJT CPYU NHVM AZBQ
+    \_        OUED XMBG THIN PYLA QKRV
+    \_        YMBN KGUE ROPF XWLC THAV
+
+
+**  ~~~~~~~~  ascii-upper-shuf:24
+\_  bits:     87.3819
+\_  length:   29  (with spaces)
+\_  examples:
+    \_        LBEQ DOXK VWFH GPMY JISC URNA
+    \_        IPGN FOUW JDQX YBAV LESK HTRM
+    \_        KFEA HJTI YDWN UCQM PGZS VRBO
+    \_        LODJ BHQA UPWV RINZ FCKX MTGE
+    \_        HETS CGDQ VMZX BPOJ LWAR NYUI
+    \_        MJUR EGYZ ISHW KFQV XANL TOPC
+    \_        YBRT UPND XZFQ MJWI EASG KLCO
+    \_        DLWX SEJT CPYU NHVM AZBQ IGOK
+    \_        OUED XMBG THIN PYLA QKRV SZCJ
+    \_        YMBN KGUE ROPF XWLC THAV JIDZ
+
+
 **  ~~~~~~~~  ascii-mixed:2
 \_  bits:     11.4008
 \_  length:   2  (with spaces)
@@ -3647,6 +3999,214 @@
     \_        ncbO lJof zXnk lUtx mnVL nOBY Nktc iniM
     \_        GFeL Plfn SucK AHNt wvav zscc Mmax kADP
     \_        PVXw SCel qyiD HWCl eDsM Mfrd fzpR hkiY
+
+
+**  ~~~~~~~~  ascii-mixed-perm
+\_  bits:     225.5810
+\_  length:   64  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM
+    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB uKxF rATs gDle YLpH PUZM cEwV
+    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj SWZI MbvN sqdu wQAE PGeF UpHc
+    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc GZWu QhOg moLA VYxS swqU jzkl
+    \_        WOKX tmre JfCS YvgP soEG pNja RHlk Mwuq xLbi DVdy zQFh cITB AZUn
+    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA OCEz aJIl qZBi cTGQ gMnd KmLs
+    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx HzNF Qpse aBDO dioP Gvfh tTIV
+    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy GoMa nYqC ljRS irQU DJwW LAHu
+    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS XTju UEcd MLxi wPht IsqY Ckge
+    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo jsBp MnTJ XyrZ KSkE YIdA bqia
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:4
+\_  bits:     22.6314
+\_  length:   4  (with spaces)
+\_  examples:
+    \_        ipSn
+    \_        jfhX
+    \_        JkBx
+    \_        NKep
+    \_        WOKX
+    \_        FfXx
+    \_        SXEj
+    \_        KbFh
+    \_        arvD
+    \_        LePg
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:8
+\_  bits:     44.7863
+\_  length:   9  (with spaces)
+\_  examples:
+    \_        ipSn fozI
+    \_        jfhX QmWG
+    \_        JkBx lOtD
+    \_        NKep bfRF
+    \_        WOKX tmre
+    \_        FfXx bjyS
+    \_        SXEj mJyw
+    \_        KbFh BOfg
+    \_        arvD QnWz
+    \_        LePg NFGx
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:12
+\_  bits:     66.4219
+\_  length:   14  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV
+    \_        jfhX QmWG kqtd
+    \_        JkBx lOtD fiym
+    \_        NKep bfRF JBMT
+    \_        WOKX tmre JfCS
+    \_        FfXx bjyS DRtW
+    \_        SXEj mJyw RLkZ
+    \_        KbFh BOfg XIvc
+    \_        arvD QnWz ZmVH
+    \_        LePg NFGx HvmW
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:16
+\_  bits:     87.4866
+\_  length:   19  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL
+    \_        jfhX QmWG kqtd baoO
+    \_        JkBx lOtD fiym VgnL
+    \_        NKep bfRF JBMT dyDt
+    \_        WOKX tmre JfCS YvgP
+    \_        FfXx bjyS DRtW hUkv
+    \_        SXEj mJyw RLkZ MAWl
+    \_        KbFh BOfg XIvc tdmP
+    \_        arvD QnWz ZmVH NBol
+    \_        LePg NFGx HvmW cQlV
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:20
+\_  bits:     107.9177
+\_  length:   24  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL leJT
+    \_        jfhX QmWG kqtd baoO CyIn
+    \_        JkBx lOtD fiym VgnL ohTK
+    \_        NKep bfRF JBMT dyDt rvnC
+    \_        WOKX tmre JfCS YvgP soEG
+    \_        FfXx bjyS DRtW hUkv pwYr
+    \_        SXEj mJyw RLkZ MAWl cngC
+    \_        KbFh BOfg XIvc tdmP ZVEs
+    \_        arvD QnWz ZmVH NBol AbyG
+    \_        LePg NFGx HvmW cQlV RUhC
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:24
+\_  bits:     127.6368
+\_  length:   29  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL leJT ZtBG
+    \_        jfhX QmWG kqtd baoO CyIn zJRv
+    \_        JkBx lOtD fiym VgnL ohTK CRaz
+    \_        NKep bfRF JBMT dyDt rvnC IEai
+    \_        WOKX tmre JfCS YvgP soEG pNja
+    \_        FfXx bjyS DRtW hUkv pwYr PVHu
+    \_        SXEj mJyw RLkZ MAWl cngC qbrK
+    \_        KbFh BOfg XIvc tdmP ZVEs epzk
+    \_        arvD QnWz ZmVH NBol AbyG RpfO
+    \_        LePg NFGx HvmW cQlV RUhC Dfwu
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:28
+\_  bits:     146.5433
+\_  length:   34  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO
+    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB
+    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj
+    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc
+    \_        WOKX tmre JfCS YvgP soEG pNja RHlk
+    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA
+    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx
+    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy
+    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS
+    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:32
+\_  bits:     164.5036
+\_  length:   39  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF
+    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB uKxF
+    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj SWZI
+    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc GZWu
+    \_        WOKX tmre JfCS YvgP soEG pNja RHlk Mwuq
+    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA OCEz
+    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx HzNF
+    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy GoMa
+    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS XTju
+    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo jsBp
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:36
+\_  bits:     181.3308
+\_  length:   44  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY
+    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB uKxF rATs
+    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj SWZI MbvN
+    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc GZWu QhOg
+    \_        WOKX tmre JfCS YvgP soEG pNja RHlk Mwuq xLbi
+    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA OCEz aJIl
+    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx HzNF Qpse
+    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy GoMa nYqC
+    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS XTju UEcd
+    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo jsBp MnTJ
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:40
+\_  bits:     196.7455
+\_  length:   49  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs
+    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB uKxF rATs gDle
+    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj SWZI MbvN sqdu
+    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc GZWu QhOg moLA
+    \_        WOKX tmre JfCS YvgP soEG pNja RHlk Mwuq xLbi DVdy
+    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA OCEz aJIl qZBi
+    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx HzNF Qpse aBDO
+    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy GoMa nYqC ljRS
+    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS XTju UEcd MLxi
+    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo jsBp MnTJ XyrZ
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:44
+\_  bits:     210.2817
+\_  length:   54  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg
+    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB uKxF rATs gDle YLpH
+    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj SWZI MbvN sqdu wQAE
+    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc GZWu QhOg moLA VYxS
+    \_        WOKX tmre JfCS YvgP soEG pNja RHlk Mwuq xLbi DVdy zQFh
+    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA OCEz aJIl qZBi cTGQ
+    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx HzNF Qpse aBDO dioP
+    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy GoMa nYqC ljRS irQU
+    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS XTju UEcd MLxi wPht
+    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo jsBp MnTJ XyrZ KSkE
+
+
+**  ~~~~~~~~  ascii-mixed-shuf:48
+\_  bits:     220.9960
+\_  length:   59  (with spaces)
+\_  examples:
+    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm
+    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB uKxF rATs gDle YLpH PUZM
+    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj SWZI MbvN sqdu wQAE PGeF
+    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc GZWu QhOg moLA VYxS swqU
+    \_        WOKX tmre JfCS YvgP soEG pNja RHlk Mwuq xLbi DVdy zQFh cITB
+    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA OCEz aJIl qZBi cTGQ gMnd
+    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx HzNF Qpse aBDO dioP Gvfh
+    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy GoMa nYqC ljRS irQU DJwW
+    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS XTju UEcd MLxi wPht IsqY
+    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo jsBp MnTJ XyrZ KSkE YIdA
 
 
 **  ~~~~~~~~  ascii-symbols:2
@@ -4161,436 +4721,132 @@
     \_        f*'< o38/ {gw9 \'cJ }`@" })x> T]0O /E/|
 
 
-**  ~~~~~~~~  ascii-lower-perm
-\_  bits:     88.3819
-\_  length:   32  (with spaces)
-\_  examples:
-    \_        lbeq doxk vwfh gpmy jisc urna zt
-    \_        ipgn fouw jdqx ybav lesk htrm zc
-    \_        kfea hjti ydwn ucqm pgzs vrbo lx
-    \_        lodj bhqa upwv rinz fckx mtge ys
-    \_        hets cgdq vmzx bpoj lwar nyui fk
-    \_        mjur egyz ishw kfqv xanl topc bd
-    \_        ybrt upnd xzfq mjwi easg klco hv
-    \_        dlwx sejt cpyu nhvm azbq igok rf
-    \_        oued xmbg thin pyla qkrv szcj wf
-    \_        ymbn kgue ropf xwlc thav jidz qs
-
-
-**  ~~~~~~~~  ascii-upper-perm
-\_  bits:     88.3819
-\_  length:   32  (with spaces)
-\_  examples:
-    \_        LBEQ DOXK VWFH GPMY JISC URNA ZT
-    \_        IPGN FOUW JDQX YBAV LESK HTRM ZC
-    \_        KFEA HJTI YDWN UCQM PGZS VRBO LX
-    \_        LODJ BHQA UPWV RINZ FCKX MTGE YS
-    \_        HETS CGDQ VMZX BPOJ LWAR NYUI FK
-    \_        MJUR EGYZ ISHW KFQV XANL TOPC BD
-    \_        YBRT UPND XZFQ MJWI EASG KLCO HV
-    \_        DLWX SEJT CPYU NHVM AZBQ IGOK RF
-    \_        OUED XMBG THIN PYLA QKRV SZCJ WF
-    \_        YMBN KGUE ROPF XWLC THAV JIDZ QS
-
-
-**  ~~~~~~~~  ascii-mixed-perm
-\_  bits:     225.5810
-\_  length:   64  (with spaces)
-\_  examples:
-    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM
-    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB uKxF rATs gDle YLpH PUZM cEwV
-    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj SWZI MbvN sqdu wQAE PGeF UpHc
-    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc GZWu QhOg moLA VYxS swqU jzkl
-    \_        WOKX tmre JfCS YvgP soEG pNja RHlk Mwuq xLbi DVdy zQFh cITB AZUn
-    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA OCEz aJIl qZBi cTGQ gMnd KmLs
-    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx HzNF Qpse aBDO dioP Gvfh tTIV
-    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy GoMa nYqC ljRS irQU DJwW LAHu
-    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS XTju UEcd MLxi wPht IsqY Ckge
-    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo jsBp MnTJ XyrZ KSkE YIdA bqia
-
-
-**  ~~~~~~~~  ascii-lower-shuf:4
-\_  bits:     18.4528
+**  ~~~~~~~~  ascii-any-shuf:4
+\_  bits:     26.1251
 \_  length:   4  (with spaces)
 \_  examples:
-    \_        lbeq
-    \_        ipgn
-    \_        kfea
-    \_        lodj
-    \_        hets
-    \_        mjur
-    \_        ybrt
-    \_        dlwx
-    \_        oued
-    \_        ymbn
+    \_        8(L>
+    \_        kdo@
+    \_        cW<8
+    \_        SK.H
+    \_        F\3%
+    \_        8|lI
+    \_        :Q#C
+    \_        lwAF
+    \_        n`Fs
+    \_        [YQ-
 
 
-**  ~~~~~~~~  ascii-lower-shuf:8
-\_  bits:     35.8744
+**  ~~~~~~~~  ascii-any-shuf:8
+\_  bits:     51.9950
 \_  length:   9  (with spaces)
 \_  examples:
-    \_        lbeq doxk
-    \_        ipgn fouw
-    \_        kfea hjti
-    \_        lodj bhqa
-    \_        hets cgdq
-    \_        mjur egyz
-    \_        ybrt upnd
-    \_        dlwx sejt
-    \_        oued xmbg
-    \_        ymbn kgue
+    \_        8(L> !;`s
+    \_        kdo@ zt/q
+    \_        cW<8 >HCu
+    \_        SK.H qbIR
+    \_        F\3% yTgd
+    \_        8|lI w;<d
+    \_        :Q#C i4'@
+    \_        lwAF m~P,
+    \_        n`Fs !:9|
+    \_        [YQ- iJ_o
 
 
-**  ~~~~~~~~  ascii-lower-shuf:12
-\_  bits:     52.0387
+**  ~~~~~~~~  ascii-any-shuf:12
+\_  bits:     77.5980
 \_  length:   14  (with spaces)
 \_  examples:
-    \_        lbeq doxk vwfh
-    \_        ipgn fouw jdqx
-    \_        kfea hjti ydwn
-    \_        lodj bhqa upwv
-    \_        hets cgdq vmzx
-    \_        mjur egyz ishw
-    \_        ybrt upnd xzfq
-    \_        dlwx sejt cpyu
-    \_        oued xmbg thin
-    \_        ymbn kgue ropf
+    \_        8(L> !;`s &'M6
+    \_        kdo@ zt/q 0~`[
+    \_        cW<8 >HCu Nt/s
+    \_        SK.H qbIR f5X\
+    \_        F\3% yTgd =0r_
+    \_        8|lI w;<d YAbn
+    \_        :Q#C i4'@ 83s~
+    \_        lwAF m~P, LY*v
+    \_        n`Fs !:9| $U;}
+    \_        [YQ- iJ_o PAfz
 
 
-**  ~~~~~~~~  ascii-lower-shuf:16
-\_  bits:     66.5908
+**  ~~~~~~~~  ascii-any-shuf:16
+\_  bits:     102.9211
 \_  length:   19  (with spaces)
 \_  examples:
-    \_        lbeq doxk vwfh gpmy
-    \_        ipgn fouw jdqx ybav
-    \_        kfea hjti ydwn ucqm
-    \_        lodj bhqa upwv rinz
-    \_        hets cgdq vmzx bpoj
-    \_        mjur egyz ishw kfqv
-    \_        ybrt upnd xzfq mjwi
-    \_        dlwx sejt cpyu nhvm
-    \_        oued xmbg thin pyla
-    \_        ymbn kgue ropf xwlc
+    \_        8(L> !;`s &'M6 RfGi
+    \_        kdo@ zt/q 0~`[ CF?c
+    \_        cW<8 >HCu Nt/s T]Sl
+    \_        SK.H qbIR f5X\ s]|6
+    \_        F\3% yTgd =0r_ CZP5
+    \_        8|lI w;<d YAbn C(SQ
+    \_        :Q#C i4'@ 83s~ u7Z9
+    \_        lwAF m~P, LY*v ga=9
+    \_        n`Fs !:9| $U;} 6'c2
+    \_        [YQ- iJ_o PAfz k(>0
 
 
-**  ~~~~~~~~  ascii-lower-shuf:20
-\_  bits:     78.8901
+**  ~~~~~~~~  ascii-any-shuf:20
+\_  bits:     127.9501
 \_  length:   24  (with spaces)
 \_  examples:
-    \_        lbeq doxk vwfh gpmy jisc
-    \_        ipgn fouw jdqx ybav lesk
-    \_        kfea hjti ydwn ucqm pgzs
-    \_        lodj bhqa upwv rinz fckx
-    \_        hets cgdq vmzx bpoj lwar
-    \_        mjur egyz ishw kfqv xanl
-    \_        ybrt upnd xzfq mjwi easg
-    \_        dlwx sejt cpyu nhvm azbq
-    \_        oued xmbg thin pyla qkrv
-    \_        ymbn kgue ropf xwlc thav
+    \_        8(L> !;`s &'M6 RfGi PW$:
+    \_        kdo@ zt/q 0~`[ CF?c &JRW
+    \_        cW<8 >HCu Nt/s T]Sl %.@F
+    \_        SK.H qbIR f5X\ s]|6 m3Z_
+    \_        F\3% yTgd =0r_ CZP5 $com
+    \_        8|lI w;<d YAbn C(SQ E,hZ
+    \_        :Q#C i4'@ 83s~ u7Z9 <,0W
+    \_        lwAF m~P, LY*v ga=9 RcqC
+    \_        n`Fs !:9| $U;} 6'c2 ^NW-
+    \_        [YQ- iJ_o PAfz k(>0 ~arl
 
 
-**  ~~~~~~~~  ascii-lower-shuf:24
-\_  bits:     87.3819
+**  ~~~~~~~~  ascii-any-shuf:24
+\_  bits:     152.6690
 \_  length:   29  (with spaces)
 \_  examples:
-    \_        lbeq doxk vwfh gpmy jisc urna
-    \_        ipgn fouw jdqx ybav lesk htrm
-    \_        kfea hjti ydwn ucqm pgzs vrbo
-    \_        lodj bhqa upwv rinz fckx mtge
-    \_        hets cgdq vmzx bpoj lwar nyui
-    \_        mjur egyz ishw kfqv xanl topc
-    \_        ybrt upnd xzfq mjwi easg klco
-    \_        dlwx sejt cpyu nhvm azbq igok
-    \_        oued xmbg thin pyla qkrv szcj
-    \_        ymbn kgue ropf xwlc thav jidz
+    \_        8(L> !;`s &'M6 RfGi PW$: yT7a
+    \_        kdo@ zt/q 0~`[ CF?c &JRW <mTa
+    \_        cW<8 >HCu Nt/s T]Sl %.@F ^;fo
+    \_        SK.H qbIR f5X\ s]|6 m3Z_ 7G-c
+    \_        F\3% yTgd =0r_ CZP5 $com ,8N!
+    \_        8|lI w;<d YAbn C(SQ E,hZ iM'r
+    \_        :Q#C i4'@ 83s~ u7Z9 <,0W L[Y)
+    \_        lwAF m~P, LY*v ga=9 RcqC drS'
+    \_        n`Fs !:9| $U;} 6'c2 ^NW- rfYH
+    \_        [YQ- iJ_o PAfz k(>0 ~arl Hj4!
 
 
-**  ~~~~~~~~  ascii-upper-shuf:4
-\_  bits:     18.4528
-\_  length:   4  (with spaces)
-\_  examples:
-    \_        LBEQ
-    \_        IPGN
-    \_        KFEA
-    \_        LODJ
-    \_        HETS
-    \_        MJUR
-    \_        YBRT
-    \_        DLWX
-    \_        OUED
-    \_        YMBN
-
-
-**  ~~~~~~~~  ascii-upper-shuf:8
-\_  bits:     35.8744
-\_  length:   9  (with spaces)
-\_  examples:
-    \_        LBEQ DOXK
-    \_        IPGN FOUW
-    \_        KFEA HJTI
-    \_        LODJ BHQA
-    \_        HETS CGDQ
-    \_        MJUR EGYZ
-    \_        YBRT UPND
-    \_        DLWX SEJT
-    \_        OUED XMBG
-    \_        YMBN KGUE
-
-
-**  ~~~~~~~~  ascii-upper-shuf:12
-\_  bits:     52.0387
-\_  length:   14  (with spaces)
-\_  examples:
-    \_        LBEQ DOXK VWFH
-    \_        IPGN FOUW JDQX
-    \_        KFEA HJTI YDWN
-    \_        LODJ BHQA UPWV
-    \_        HETS CGDQ VMZX
-    \_        MJUR EGYZ ISHW
-    \_        YBRT UPND XZFQ
-    \_        DLWX SEJT CPYU
-    \_        OUED XMBG THIN
-    \_        YMBN KGUE ROPF
-
-
-**  ~~~~~~~~  ascii-upper-shuf:16
-\_  bits:     66.5908
-\_  length:   19  (with spaces)
-\_  examples:
-    \_        LBEQ DOXK VWFH GPMY
-    \_        IPGN FOUW JDQX YBAV
-    \_        KFEA HJTI YDWN UCQM
-    \_        LODJ BHQA UPWV RINZ
-    \_        HETS CGDQ VMZX BPOJ
-    \_        MJUR EGYZ ISHW KFQV
-    \_        YBRT UPND XZFQ MJWI
-    \_        DLWX SEJT CPYU NHVM
-    \_        OUED XMBG THIN PYLA
-    \_        YMBN KGUE ROPF XWLC
-
-
-**  ~~~~~~~~  ascii-upper-shuf:20
-\_  bits:     78.8901
-\_  length:   24  (with spaces)
-\_  examples:
-    \_        LBEQ DOXK VWFH GPMY JISC
-    \_        IPGN FOUW JDQX YBAV LESK
-    \_        KFEA HJTI YDWN UCQM PGZS
-    \_        LODJ BHQA UPWV RINZ FCKX
-    \_        HETS CGDQ VMZX BPOJ LWAR
-    \_        MJUR EGYZ ISHW KFQV XANL
-    \_        YBRT UPND XZFQ MJWI EASG
-    \_        DLWX SEJT CPYU NHVM AZBQ
-    \_        OUED XMBG THIN PYLA QKRV
-    \_        YMBN KGUE ROPF XWLC THAV
-
-
-**  ~~~~~~~~  ascii-upper-shuf:24
-\_  bits:     87.3819
-\_  length:   29  (with spaces)
-\_  examples:
-    \_        LBEQ DOXK VWFH GPMY JISC URNA
-    \_        IPGN FOUW JDQX YBAV LESK HTRM
-    \_        KFEA HJTI YDWN UCQM PGZS VRBO
-    \_        LODJ BHQA UPWV RINZ FCKX MTGE
-    \_        HETS CGDQ VMZX BPOJ LWAR NYUI
-    \_        MJUR EGYZ ISHW KFQV XANL TOPC
-    \_        YBRT UPND XZFQ MJWI EASG KLCO
-    \_        DLWX SEJT CPYU NHVM AZBQ IGOK
-    \_        OUED XMBG THIN PYLA QKRV SZCJ
-    \_        YMBN KGUE ROPF XWLC THAV JIDZ
-
-
-**  ~~~~~~~~  ascii-mixed-shuf:4
-\_  bits:     22.6314
-\_  length:   4  (with spaces)
-\_  examples:
-    \_        ipSn
-    \_        jfhX
-    \_        JkBx
-    \_        NKep
-    \_        WOKX
-    \_        FfXx
-    \_        SXEj
-    \_        KbFh
-    \_        arvD
-    \_        LePg
-
-
-**  ~~~~~~~~  ascii-mixed-shuf:8
-\_  bits:     44.7863
-\_  length:   9  (with spaces)
-\_  examples:
-    \_        ipSn fozI
-    \_        jfhX QmWG
-    \_        JkBx lOtD
-    \_        NKep bfRF
-    \_        WOKX tmre
-    \_        FfXx bjyS
-    \_        SXEj mJyw
-    \_        KbFh BOfg
-    \_        arvD QnWz
-    \_        LePg NFGx
-
-
-**  ~~~~~~~~  ascii-mixed-shuf:12
-\_  bits:     66.4219
-\_  length:   14  (with spaces)
-\_  examples:
-    \_        ipSn fozI jdyV
-    \_        jfhX QmWG kqtd
-    \_        JkBx lOtD fiym
-    \_        NKep bfRF JBMT
-    \_        WOKX tmre JfCS
-    \_        FfXx bjyS DRtW
-    \_        SXEj mJyw RLkZ
-    \_        KbFh BOfg XIvc
-    \_        arvD QnWz ZmVH
-    \_        LePg NFGx HvmW
-
-
-**  ~~~~~~~~  ascii-mixed-shuf:16
-\_  bits:     87.4866
-\_  length:   19  (with spaces)
-\_  examples:
-    \_        ipSn fozI jdyV xXEL
-    \_        jfhX QmWG kqtd baoO
-    \_        JkBx lOtD fiym VgnL
-    \_        NKep bfRF JBMT dyDt
-    \_        WOKX tmre JfCS YvgP
-    \_        FfXx bjyS DRtW hUkv
-    \_        SXEj mJyw RLkZ MAWl
-    \_        KbFh BOfg XIvc tdmP
-    \_        arvD QnWz ZmVH NBol
-    \_        LePg NFGx HvmW cQlV
-
-
-**  ~~~~~~~~  ascii-mixed-shuf:20
-\_  bits:     107.9177
-\_  length:   24  (with spaces)
-\_  examples:
-    \_        ipSn fozI jdyV xXEL leJT
-    \_        jfhX QmWG kqtd baoO CyIn
-    \_        JkBx lOtD fiym VgnL ohTK
-    \_        NKep bfRF JBMT dyDt rvnC
-    \_        WOKX tmre JfCS YvgP soEG
-    \_        FfXx bjyS DRtW hUkv pwYr
-    \_        SXEj mJyw RLkZ MAWl cngC
-    \_        KbFh BOfg XIvc tdmP ZVEs
-    \_        arvD QnWz ZmVH NBol AbyG
-    \_        LePg NFGx HvmW cQlV RUhC
-
-
-**  ~~~~~~~~  ascii-mixed-shuf:24
-\_  bits:     127.6368
-\_  length:   29  (with spaces)
-\_  examples:
-    \_        ipSn fozI jdyV xXEL leJT ZtBG
-    \_        jfhX QmWG kqtd baoO CyIn zJRv
-    \_        JkBx lOtD fiym VgnL ohTK CRaz
-    \_        NKep bfRF JBMT dyDt rvnC IEai
-    \_        WOKX tmre JfCS YvgP soEG pNja
-    \_        FfXx bjyS DRtW hUkv pwYr PVHu
-    \_        SXEj mJyw RLkZ MAWl cngC qbrK
-    \_        KbFh BOfg XIvc tdmP ZVEs epzk
-    \_        arvD QnWz ZmVH NBol AbyG RpfO
-    \_        LePg NFGx HvmW cQlV RUhC Dfwu
-
-
-**  ~~~~~~~~  ascii-mixed-shuf:28
-\_  bits:     146.5433
+**  ~~~~~~~~  ascii-any-shuf:28
+\_  bits:     177.0604
 \_  length:   34  (with spaces)
 \_  examples:
-    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO
-    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB
-    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj
-    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc
-    \_        WOKX tmre JfCS YvgP soEG pNja RHlk
-    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA
-    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx
-    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy
-    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS
-    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo
+    \_        8(L> !;`s &'M6 RfGi PW$: yT7a z/t=
+    \_        kdo@ zt/q 0~`[ CF?c &JRW <mTa p2w,
+    \_        cW<8 >HCu Nt/s T]Sl %.@F ^;fo P4pD
+    \_        SK.H qbIR f5X\ s]|6 m3Z_ 7G-c *1M~
+    \_        F\3% yTgd =0r_ CZP5 $com ,8N! A*:]
+    \_        8|lI w;<d YAbn C(SQ E,hZ iM'r >@W+
+    \_        :Q#C i4'@ 83s~ u7Z9 <,0W L[Y) hEjS
+    \_        lwAF m~P, LY*v ga=9 RcqC drS' No`7
+    \_        n`Fs !:9| $U;} 6'c2 ^NW- rfYH XD{>
+    \_        [YQ- iJ_o PAfz k(>0 ~arl Hj4! G&$3
 
 
-**  ~~~~~~~~  ascii-mixed-shuf:32
-\_  bits:     164.5036
+**  ~~~~~~~~  ascii-any-shuf:32
+\_  bits:     201.1044
 \_  length:   39  (with spaces)
 \_  examples:
-    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF
-    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB uKxF
-    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj SWZI
-    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc GZWu
-    \_        WOKX tmre JfCS YvgP soEG pNja RHlk Mwuq
-    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA OCEz
-    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx HzNF
-    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy GoMa
-    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS XTju
-    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo jsBp
-
-
-**  ~~~~~~~~  ascii-mixed-shuf:36
-\_  bits:     181.3308
-\_  length:   44  (with spaces)
-\_  examples:
-    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY
-    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB uKxF rATs
-    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj SWZI MbvN
-    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc GZWu QhOg
-    \_        WOKX tmre JfCS YvgP soEG pNja RHlk Mwuq xLbi
-    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA OCEz aJIl
-    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx HzNF Qpse
-    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy GoMa nYqC
-    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS XTju UEcd
-    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo jsBp MnTJ
-
-
-**  ~~~~~~~~  ascii-mixed-shuf:40
-\_  bits:     196.7455
-\_  length:   49  (with spaces)
-\_  examples:
-    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs
-    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB uKxF rATs gDle
-    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj SWZI MbvN sqdu
-    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc GZWu QhOg moLA
-    \_        WOKX tmre JfCS YvgP soEG pNja RHlk Mwuq xLbi DVdy
-    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA OCEz aJIl qZBi
-    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx HzNF Qpse aBDO
-    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy GoMa nYqC ljRS
-    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS XTju UEcd MLxi
-    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo jsBp MnTJ XyrZ
-
-
-**  ~~~~~~~~  ascii-mixed-shuf:44
-\_  bits:     210.2817
-\_  length:   54  (with spaces)
-\_  examples:
-    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg
-    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB uKxF rATs gDle YLpH
-    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj SWZI MbvN sqdu wQAE
-    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc GZWu QhOg moLA VYxS
-    \_        WOKX tmre JfCS YvgP soEG pNja RHlk Mwuq xLbi DVdy zQFh
-    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA OCEz aJIl qZBi cTGQ
-    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx HzNF Qpse aBDO dioP
-    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy GoMa nYqC ljRS irQU
-    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS XTju UEcd MLxi wPht
-    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo jsBp MnTJ XyrZ KSkE
-
-
-**  ~~~~~~~~  ascii-mixed-shuf:48
-\_  bits:     220.9960
-\_  length:   59  (with spaces)
-\_  examples:
-    \_        ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm
-    \_        jfhX QmWG kqtd baoO CyIn zJRv iSNB uKxF rATs gDle YLpH PUZM
-    \_        JkBx lOtD fiym VgnL ohTK CRaz rYXj SWZI MbvN sqdu wQAE PGeF
-    \_        NKep bfRF JBMT dyDt rvnC IEai XPHc GZWu QhOg moLA VYxS swqU
-    \_        WOKX tmre JfCS YvgP soEG pNja RHlk Mwuq xLbi DVdy zQFh cITB
-    \_        FfXx bjyS DRtW hUkv pwYr PVHu eoNA OCEz aJIl qZBi cTGQ gMnd
-    \_        SXEj mJyw RLkZ MAWl cngC qbrK uUYx HzNF Qpse aBDO dioP Gvfh
-    \_        KbFh BOfg XIvc tdmP ZVEs epzk NxTy GoMa nYqC ljRS irQU DJwW
-    \_        arvD QnWz ZmVH NBol AbyG RpfO JFKS XTju UEcd MLxi wPht IsqY
-    \_        LePg NFGx HvmW cQlV RUhC Dfwu Otzo jsBp MnTJ XyrZ KSkE YIdA
+    \_        8(L> !;`s &'M6 RfGi PW$: yT7a z/t= |A)D
+    \_        kdo@ zt/q 0~`[ CF?c &JRW <mTa p2w, (Bg.
+    \_        cW<8 >HCu Nt/s T]Sl %.@F ^;fo P4pD +)&w
+    \_        SK.H qbIR f5X\ s]|6 m3Z_ 7G-c *1M~ E"kv
+    \_        F\3% yTgd =0r_ CZP5 $com ,8N! A*:] xnq6
+    \_        8|lI w;<d YAbn C(SQ E,hZ iM'r >@W+ voN}
+    \_        :Q#C i4'@ 83s~ u7Z9 <,0W L[Y) hEjS BX!G
+    \_        lwAF m~P, LY*v ga=9 RcqC drS' No`7 &Z4<
+    \_        n`Fs !:9| $U;} 6'c2 ^NW- rfYH XD{> v#Zw
+    \_        [YQ- iJ_o PAfz k(>0 ~arl Hj4! G&$3 ,{:m
 
 
 **  ~~~~~~~~  cva-lower:1
@@ -12959,6 +13215,566 @@
     \_        hotel fife wun uniform bravo juliett ait zulu xray foxtrot romeo echo romeo xray foxtrot fife zero india tango quebec too romeo wun mike seven india papa victor xray seven six hotel tango fower foxtrot foxtrot xray papa kilo mike seven fife sierra delta wun whiskey kilo delta india whiskey uniform tree seven mike bravo golf mike wun lima yankee too november mike juliett uniform oscar
     \_        too whiskey november wun whiskey bravo niner quebec wun sierra november whiskey hotel bravo fife bravo tree romeo bravo whiskey victor tree fife zero victor juliett yankee oscar zero echo hotel yankee delta quebec ait zulu whiskey hotel foxtrot quebec zulu niner whiskey xray lima hotel wun quebec victor tree sierra niner hotel hotel romeo alfa uniform six zulu romeo juliett uniform mike india mike xray
     \_        xray fife foxtrot fower juliett mike lima yankee november victor bravo yankee uniform ait zulu tree charlie delta quebec delta golf seven romeo zulu niner whiskey hotel lima papa bravo november victor fife hotel lima whiskey kilo lima seven juliett fower oscar seven wun lima niner hotel tango delta uniform seven zero victor zero fife tree delta uniform foxtrot ait ait victor foxtrot delta too november
+
+
+**  ~~~~~~~~  nato-perm
+\_  bits:     138.0943
+\_  length:   212  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree fower xray zulu hotel zero too wun
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey fower bravo alfa november mike hotel echo quebec foxtrot charlie romeo ait xray uniform victor seven india juliett zero
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree kilo fife six whiskey fower sierra ait uniform delta oscar foxtrot romeo niner seven lima india hotel wun zero
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven tango india victor lima ait oscar tree papa delta sierra zulu six charlie uniform fife romeo kilo xray bravo
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo alfa india fife kilo victor lima mike charlie papa hotel xray uniform zero six foxtrot oscar ait tango yankee
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo november oscar ait papa fower wun zero tango romeo lima alfa six fife mike juliett too kilo whiskey zulu
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait hotel fife seven niner papa sierra juliett fower tree uniform delta golf victor charlie tango yankee foxtrot november too
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar whiskey too yankee tree niner foxtrot india fife echo papa bravo charlie golf fower romeo victor tango quebec delta
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree too november papa bravo whiskey golf oscar victor yankee sierra seven zulu lima tango six ait foxtrot fower xray
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero tree six romeo niner quebec mike sierra lima november uniform delta papa juliett echo foxtrot alfa yankee wun seven
+
+
+**  ~~~~~~~~  nato-shuf:2
+\_  bits:     10.2992
+\_  length:   10  (with spaces)
+\_  examples:
+    \_        six yankee
+    \_        tango kilo
+    \_        juliett too
+    \_        yankee quebec
+    \_        wun bravo
+    \_        seven hotel
+    \_        romeo mike
+    \_        november hotel
+    \_        juliett charlie
+    \_        xray fower
+
+
+**  ~~~~~~~~  nato-shuf:3
+\_  bits:     15.3866
+\_  length:   18  (with spaces)
+\_  examples:
+    \_        six yankee uniform
+    \_        tango kilo niner
+    \_        juliett too xray
+    \_        yankee quebec echo
+    \_        wun bravo romeo
+    \_        seven hotel foxtrot
+    \_        romeo mike quebec
+    \_        november hotel six
+    \_        juliett charlie quebec
+    \_        xray fower charlie
+
+
+**  ~~~~~~~~  nato-shuf:4
+\_  bits:     20.4310
+\_  length:   26  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie
+    \_        tango kilo niner golf
+    \_        juliett too xray tango
+    \_        yankee quebec echo too
+    \_        wun bravo romeo golf
+    \_        seven hotel foxtrot india
+    \_        romeo mike quebec wun
+    \_        november hotel six xray
+    \_        juliett charlie quebec delta
+    \_        xray fower charlie india
+
+
+**  ~~~~~~~~  nato-shuf:5
+\_  bits:     25.4310
+\_  length:   33  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec
+    \_        tango kilo niner golf papa
+    \_        juliett too xray tango papa
+    \_        yankee quebec echo too foxtrot
+    \_        wun bravo romeo golf tree
+    \_        seven hotel foxtrot india sierra
+    \_        romeo mike quebec wun india
+    \_        november hotel six xray alfa
+    \_        juliett charlie quebec delta zero
+    \_        xray fower charlie india oscar
+
+
+**  ~~~~~~~~  nato-shuf:6
+\_  bits:     30.3852
+\_  length:   40  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra
+    \_        tango kilo niner golf papa zulu
+    \_        juliett too xray tango papa mike
+    \_        yankee quebec echo too foxtrot juliett
+    \_        wun bravo romeo golf tree zulu
+    \_        seven hotel foxtrot india sierra victor
+    \_        romeo mike quebec wun india xray
+    \_        november hotel six xray alfa zulu
+    \_        juliett charlie quebec delta zero romeo
+    \_        xray fower charlie india oscar zulu
+
+
+**  ~~~~~~~~  nato-shuf:7
+\_  bits:     35.2921
+\_  length:   46  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango
+    \_        tango kilo niner golf papa zulu yankee
+    \_        juliett too xray tango papa mike charlie
+    \_        yankee quebec echo too foxtrot juliett hotel
+    \_        wun bravo romeo golf tree zulu november
+    \_        seven hotel foxtrot india sierra victor golf
+    \_        romeo mike quebec wun india xray zero
+    \_        november hotel six xray alfa zulu seven
+    \_        juliett charlie quebec delta zero romeo fife
+    \_        xray fower charlie india oscar zulu golf
+
+
+**  ~~~~~~~~  nato-shuf:8
+\_  bits:     40.1501
+\_  length:   51  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf
+    \_        tango kilo niner golf papa zulu yankee tree
+    \_        juliett too xray tango papa mike charlie yankee
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey
+    \_        wun bravo romeo golf tree zulu november delta
+    \_        seven hotel foxtrot india sierra victor golf tree
+    \_        romeo mike quebec wun india xray zero kilo
+    \_        november hotel six xray alfa zulu seven sierra
+    \_        juliett charlie quebec delta zero romeo fife hotel
+    \_        xray fower charlie india oscar zulu golf victor
+
+
+**  ~~~~~~~~  nato-shuf:9
+\_  bits:     44.9574
+\_  length:   59  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot
+    \_        tango kilo niner golf papa zulu yankee tree wun
+    \_        juliett too xray tango papa mike charlie yankee quebec
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun
+    \_        wun bravo romeo golf tree zulu november delta seven
+    \_        seven hotel foxtrot india sierra victor golf tree niner
+    \_        romeo mike quebec wun india xray zero kilo whiskey
+    \_        november hotel six xray alfa zulu seven sierra lima
+    \_        juliett charlie quebec delta zero romeo fife hotel niner
+    \_        xray fower charlie india oscar zulu golf victor kilo
+
+
+**  ~~~~~~~~  nato-shuf:10
+\_  bits:     49.7123
+\_  length:   64  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa
+    \_        tango kilo niner golf papa zulu yankee tree wun delta
+    \_        juliett too xray tango papa mike charlie yankee quebec golf
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo
+    \_        november hotel six xray alfa zulu seven sierra lima ait
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo
+    \_        xray fower charlie india oscar zulu golf victor kilo tango
+
+
+**  ~~~~~~~~  nato-shuf:11
+\_  bits:     54.4128
+\_  length:   70  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too
+
+
+**  ~~~~~~~~  nato-shuf:12
+\_  bits:     59.0566
+\_  length:   76  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo
+
+
+**  ~~~~~~~~  nato-shuf:13
+\_  bits:     63.6416
+\_  length:   84  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel
+
+
+**  ~~~~~~~~  nato-shuf:14
+\_  bits:     68.1651
+\_  length:   89  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife
+
+
+**  ~~~~~~~~  nato-shuf:15
+\_  bits:     72.6246
+\_  length:   98  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait
+
+
+**  ~~~~~~~~  nato-shuf:16
+\_  bits:     77.0169
+\_  length:   104  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey
+
+
+**  ~~~~~~~~  nato-shuf:17
+\_  bits:     81.3388
+\_  length:   110  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero
+
+
+**  ~~~~~~~~  nato-shuf:18
+\_  bits:     85.5868
+\_  length:   115  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey fower
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree kilo
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven tango
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo alfa
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo november
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait hotel
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar whiskey
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree too
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero tree
+
+
+**  ~~~~~~~~  nato-shuf:19
+\_  bits:     89.7567
+\_  length:   123  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey fower bravo
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree kilo fife
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven tango india
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo alfa india
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo november oscar
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait hotel fife
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar whiskey too
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree too november
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero tree six
+
+
+**  ~~~~~~~~  nato-shuf:20
+\_  bits:     93.8441
+\_  length:   128  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey fower bravo alfa
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree kilo fife six
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven tango india victor
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo alfa india fife
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo november oscar ait
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait hotel fife seven
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar whiskey too yankee
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree too november papa
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero tree six romeo
+
+
+**  ~~~~~~~~  nato-shuf:21
+\_  bits:     97.8441
+\_  length:   134  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey fower bravo alfa november
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree kilo fife six whiskey
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven tango india victor lima
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo alfa india fife kilo
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo november oscar ait papa
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait hotel fife seven niner
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar whiskey too yankee tree
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree too november papa bravo
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero tree six romeo niner
+
+
+**  ~~~~~~~~  nato-shuf:22
+\_  bits:     101.7510
+\_  length:   139  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey fower bravo alfa november mike
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree kilo fife six whiskey fower
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven tango india victor lima ait
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo alfa india fife kilo victor
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo november oscar ait papa fower
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait hotel fife seven niner papa
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar whiskey too yankee tree niner
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree too november papa bravo whiskey
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero tree six romeo niner quebec
+
+
+**  ~~~~~~~~  nato-shuf:23
+\_  bits:     105.5584
+\_  length:   146  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey fower bravo alfa november mike hotel
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree kilo fife six whiskey fower sierra
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven tango india victor lima ait oscar
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo alfa india fife kilo victor lima
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo november oscar ait papa fower wun
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait hotel fife seven niner papa sierra
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar whiskey too yankee tree niner foxtrot
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree too november papa bravo whiskey golf
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero tree six romeo niner quebec mike
+
+
+**  ~~~~~~~~  nato-shuf:24
+\_  bits:     109.2588
+\_  length:   151  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey fower bravo alfa november mike hotel echo
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree kilo fife six whiskey fower sierra ait
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven tango india victor lima ait oscar tree
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo alfa india fife kilo victor lima mike
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo november oscar ait papa fower wun zero
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait hotel fife seven niner papa sierra juliett
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar whiskey too yankee tree niner foxtrot india
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree too november papa bravo whiskey golf oscar
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero tree six romeo niner quebec mike sierra
+
+
+**  ~~~~~~~~  nato-shuf:25
+\_  bits:     112.8438
+\_  length:   156  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey fower bravo alfa november mike hotel echo quebec
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree kilo fife six whiskey fower sierra ait uniform
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven tango india victor lima ait oscar tree papa
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo alfa india fife kilo victor lima mike charlie
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo november oscar ait papa fower wun zero tango
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait hotel fife seven niner papa sierra juliett fower
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar whiskey too yankee tree niner foxtrot india fife
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree too november papa bravo whiskey golf oscar victor
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero tree six romeo niner quebec mike sierra lima
+
+
+**  ~~~~~~~~  nato-shuf:26
+\_  bits:     116.3032
+\_  length:   162  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey fower bravo alfa november mike hotel echo quebec foxtrot
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree kilo fife six whiskey fower sierra ait uniform delta
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven tango india victor lima ait oscar tree papa delta
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo alfa india fife kilo victor lima mike charlie papa
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo november oscar ait papa fower wun zero tango romeo
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait hotel fife seven niner papa sierra juliett fower tree
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar whiskey too yankee tree niner foxtrot india fife echo
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree too november papa bravo whiskey golf oscar victor yankee
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero tree six romeo niner quebec mike sierra lima november
+
+
+**  ~~~~~~~~  nato-shuf:27
+\_  bits:     119.6251
+\_  length:   166  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey fower bravo alfa november mike hotel echo quebec foxtrot charlie
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree kilo fife six whiskey fower sierra ait uniform delta oscar
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven tango india victor lima ait oscar tree papa delta sierra
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo alfa india fife kilo victor lima mike charlie papa hotel
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo november oscar ait papa fower wun zero tango romeo lima
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait hotel fife seven niner papa sierra juliett fower tree uniform
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar whiskey too yankee tree niner foxtrot india fife echo papa
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree too november papa bravo whiskey golf oscar victor yankee sierra
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero tree six romeo niner quebec mike sierra lima november uniform
+
+
+**  ~~~~~~~~  nato-shuf:28
+\_  bits:     122.7951
+\_  length:   172  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey fower bravo alfa november mike hotel echo quebec foxtrot charlie romeo
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree kilo fife six whiskey fower sierra ait uniform delta oscar foxtrot
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven tango india victor lima ait oscar tree papa delta sierra zulu
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo alfa india fife kilo victor lima mike charlie papa hotel xray
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo november oscar ait papa fower wun zero tango romeo lima alfa
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait hotel fife seven niner papa sierra juliett fower tree uniform delta
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar whiskey too yankee tree niner foxtrot india fife echo papa bravo
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree too november papa bravo whiskey golf oscar victor yankee sierra seven
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero tree six romeo niner quebec mike sierra lima november uniform delta
+
+
+**  ~~~~~~~~  nato-shuf:29
+\_  bits:     125.7951
+\_  length:   177  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey fower bravo alfa november mike hotel echo quebec foxtrot charlie romeo ait
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree kilo fife six whiskey fower sierra ait uniform delta oscar foxtrot romeo
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven tango india victor lima ait oscar tree papa delta sierra zulu six
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo alfa india fife kilo victor lima mike charlie papa hotel xray uniform
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo november oscar ait papa fower wun zero tango romeo lima alfa six
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait hotel fife seven niner papa sierra juliett fower tree uniform delta golf
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar whiskey too yankee tree niner foxtrot india fife echo papa bravo charlie
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree too november papa bravo whiskey golf oscar victor yankee sierra seven zulu
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero tree six romeo niner quebec mike sierra lima november uniform delta papa
+
+
+**  ~~~~~~~~  nato-shuf:30
+\_  bits:     128.6024
+\_  length:   183  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree fower
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey fower bravo alfa november mike hotel echo quebec foxtrot charlie romeo ait xray
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree kilo fife six whiskey fower sierra ait uniform delta oscar foxtrot romeo niner
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven tango india victor lima ait oscar tree papa delta sierra zulu six charlie
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo alfa india fife kilo victor lima mike charlie papa hotel xray uniform zero
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo november oscar ait papa fower wun zero tango romeo lima alfa six fife
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait hotel fife seven niner papa sierra juliett fower tree uniform delta golf victor
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar whiskey too yankee tree niner foxtrot india fife echo papa bravo charlie golf
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree too november papa bravo whiskey golf oscar victor yankee sierra seven zulu lima
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero tree six romeo niner quebec mike sierra lima november uniform delta papa juliett
+
+
+**  ~~~~~~~~  nato-shuf:31
+\_  bits:     131.1874
+\_  length:   188  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree fower xray
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey fower bravo alfa november mike hotel echo quebec foxtrot charlie romeo ait xray uniform
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree kilo fife six whiskey fower sierra ait uniform delta oscar foxtrot romeo niner seven
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven tango india victor lima ait oscar tree papa delta sierra zulu six charlie uniform
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo alfa india fife kilo victor lima mike charlie papa hotel xray uniform zero six
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo november oscar ait papa fower wun zero tango romeo lima alfa six fife mike
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait hotel fife seven niner papa sierra juliett fower tree uniform delta golf victor charlie
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar whiskey too yankee tree niner foxtrot india fife echo papa bravo charlie golf fower
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree too november papa bravo whiskey golf oscar victor yankee sierra seven zulu lima tango
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero tree six romeo niner quebec mike sierra lima november uniform delta papa juliett echo
+
+
+**  ~~~~~~~~  nato-shuf:32
+\_  bits:     133.5093
+\_  length:   193  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree fower xray zulu
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey fower bravo alfa november mike hotel echo quebec foxtrot charlie romeo ait xray uniform victor
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree kilo fife six whiskey fower sierra ait uniform delta oscar foxtrot romeo niner seven lima
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven tango india victor lima ait oscar tree papa delta sierra zulu six charlie uniform fife
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo alfa india fife kilo victor lima mike charlie papa hotel xray uniform zero six foxtrot
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo november oscar ait papa fower wun zero tango romeo lima alfa six fife mike juliett
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait hotel fife seven niner papa sierra juliett fower tree uniform delta golf victor charlie tango
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar whiskey too yankee tree niner foxtrot india fife echo papa bravo charlie golf fower romeo
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree too november papa bravo whiskey golf oscar victor yankee sierra seven zulu lima tango six
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero tree six romeo niner quebec mike sierra lima november uniform delta papa juliett echo foxtrot
+
+
+**  ~~~~~~~~  nato-shuf:33
+\_  bits:     135.5093
+\_  length:   199  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree fower xray zulu hotel
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey fower bravo alfa november mike hotel echo quebec foxtrot charlie romeo ait xray uniform victor seven
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree kilo fife six whiskey fower sierra ait uniform delta oscar foxtrot romeo niner seven lima india
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven tango india victor lima ait oscar tree papa delta sierra zulu six charlie uniform fife romeo
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo alfa india fife kilo victor lima mike charlie papa hotel xray uniform zero six foxtrot oscar
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo november oscar ait papa fower wun zero tango romeo lima alfa six fife mike juliett too
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait hotel fife seven niner papa sierra juliett fower tree uniform delta golf victor charlie tango yankee
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar whiskey too yankee tree niner foxtrot india fife echo papa bravo charlie golf fower romeo victor
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree too november papa bravo whiskey golf oscar victor yankee sierra seven zulu lima tango six ait
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero tree six romeo niner quebec mike sierra lima november uniform delta papa juliett echo foxtrot alfa
+
+
+**  ~~~~~~~~  nato-shuf:34
+\_  bits:     137.0943
+\_  length:   204  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree fower xray zulu hotel zero
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey fower bravo alfa november mike hotel echo quebec foxtrot charlie romeo ait xray uniform victor seven india
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree kilo fife six whiskey fower sierra ait uniform delta oscar foxtrot romeo niner seven lima india hotel
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven tango india victor lima ait oscar tree papa delta sierra zulu six charlie uniform fife romeo kilo
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo alfa india fife kilo victor lima mike charlie papa hotel xray uniform zero six foxtrot oscar ait
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo november oscar ait papa fower wun zero tango romeo lima alfa six fife mike juliett too kilo
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait hotel fife seven niner papa sierra juliett fower tree uniform delta golf victor charlie tango yankee foxtrot
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar whiskey too yankee tree niner foxtrot india fife echo papa bravo charlie golf fower romeo victor tango
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree too november papa bravo whiskey golf oscar victor yankee sierra seven zulu lima tango six ait foxtrot
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero tree six romeo niner quebec mike sierra lima november uniform delta papa juliett echo foxtrot alfa yankee
+
+
+**  ~~~~~~~~  nato-shuf:35
+\_  bits:     138.0943
+\_  length:   208  (with spaces)
+\_  examples:
+    \_        six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree fower xray zulu hotel zero too
+    \_        tango kilo niner golf papa zulu yankee tree wun delta sierra too lima oscar six fife whiskey fower bravo alfa november mike hotel echo quebec foxtrot charlie romeo ait xray uniform victor seven india juliett
+    \_        juliett too xray tango papa mike charlie yankee quebec golf november zulu bravo alfa victor echo tree kilo fife six whiskey fower sierra ait uniform delta oscar foxtrot romeo niner seven lima india hotel wun
+    \_        yankee quebec echo too foxtrot juliett hotel whiskey wun november niner mike zero golf alfa fower seven tango india victor lima ait oscar tree papa delta sierra zulu six charlie uniform fife romeo kilo xray
+    \_        wun bravo romeo golf tree zulu november delta seven whiskey niner quebec too juliett fower sierra echo alfa india fife kilo victor lima mike charlie papa hotel xray uniform zero six foxtrot oscar ait tango
+    \_        seven hotel foxtrot india sierra victor golf tree niner yankee charlie delta uniform xray bravo quebec echo november oscar ait papa fower wun zero tango romeo lima alfa six fife mike juliett too kilo whiskey
+    \_        romeo mike quebec wun india xray zero kilo whiskey bravo lima six echo oscar zulu alfa ait hotel fife seven niner papa sierra juliett fower tree uniform delta golf victor charlie tango yankee foxtrot november
+    \_        november hotel six xray alfa zulu seven sierra lima ait kilo juliett mike wun zero uniform oscar whiskey too yankee tree niner foxtrot india fife echo papa bravo charlie golf fower romeo victor tango quebec
+    \_        juliett charlie quebec delta zero romeo fife hotel niner kilo uniform echo india mike alfa wun tree too november papa bravo whiskey golf oscar victor yankee sierra seven zulu lima tango six ait foxtrot fower
+    \_        xray fower charlie india oscar zulu golf victor kilo tango too bravo hotel fife ait whiskey zero tree six romeo niner quebec mike sierra lima november uniform delta papa juliett echo foxtrot alfa yankee wun
 
 
 **  ~~~~~~~~  bytes-hex:1

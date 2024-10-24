@@ -1,9 +1,11 @@
 >>  z-tokens patterns --all --for-authentication --shortest --random-chacha20 key-2
 
 ::  digits-base10:10        :   33.2 b :   12 c ::    8825 4558 99
+::  digits-base16:8         :   32  =b :    9 c ::    c947 df96
+::  digits-base16-perm      :   44.2 b :   19 c ::    028d 194a 75e6 3bfc
+::  digits-base16-shuf:10   :   34.7 b :   12 c ::    028d 194a 75
 ::  digits-base2:32         :   32  =b :   35 c ::    11111111 01110101 11101110 11110001
 ::  digits-base8:12         :   36  =b :   14 c ::    6624 2443 5743
-::  digits-base16:8         :   32  =b :    9 c ::    c947 df96
 ::  digits-base32-hex:8     :   40  =b :    9 c ::    ri8e 9qui
 ::  digits-base32-rfc:8     :   40  =b :    9 c ::    3sio j26s
 ::  digits-base64-url:6     :   36  =b :    7 c ::    2zQj jj
@@ -13,16 +15,17 @@
 ::  digits-bech32:8         :   40  =b :    9 c ::    mjgw f67j
 ::  digits-z85:5            :   32.0 b :    5 c ::    &M!lo
 ::  ascii-lower:8           :   37.6 b :    9 c ::    uwgo lhoo
+::  ascii-lower-perm        :   88.3 b :   32 c ::    qchb tdro aipy mexg jwkz lfsn vu
+::  ascii-lower-shuf:8      :   35.8 b :    9 c ::    qchb tdro
 ::  ascii-upper:8           :   37.6 b :    9 c ::    UWGO LHOO
+::  ascii-upper-perm        :   88.3 b :   32 c ::    QCHB TDRO AIPY MEXG JWKZ LFSN VU
+::  ascii-upper-shuf:8      :   35.8 b :    9 c ::    QCHB TDRO
 ::  ascii-mixed:6           :   34.2 b :    7 c ::    OSDn Cx
+::  ascii-mixed-perm        :  225.5 b :   64 c ::    aFEg fdbp UuoX Plhk DMjJ cIwA LxVG reWQ sTYt HivB qSZK yznm NCRO
+::  ascii-mixed-shuf:8      :   44.7 b :    9 c ::    aFEg fdbp
 ::  ascii-symbols:8         :   40  =b :    9 c ::    `=)/ *_}=
 ::  ascii-any:6             :   39.3 b :    7 c ::    Vl8< UT
-::  ascii-lower-perm        :   88.3 b :   32 c ::    qchb tdro aipy mexg jwkz lfsn vu
-::  ascii-upper-perm        :   88.3 b :   32 c ::    QCHB TDRO AIPY MEXG JWKZ LFSN VU
-::  ascii-mixed-perm        :  225.5 b :   64 c ::    aFEg fdbp UuoX Plhk DMjJ cIwA LxVG reWQ sTYt HivB qSZK yznm NCRO
-::  ascii-lower-shuf:8      :   35.8 b :    9 c ::    qchb tdro
-::  ascii-upper-shuf:8      :   35.8 b :    9 c ::    QCHB TDRO
-::  ascii-mixed-shuf:8      :   44.7 b :    9 c ::    aFEg fdbp
+::  ascii-any-shuf:8        :   51.9 b :    9 c ::    GqA6 x[7'
 ::  cva-lower:3             :   40.2 b :   14 c ::    vuhi juqo yelu
 ::  cva-upper:3             :   40.2 b :   14 c ::    VUHI JUQO YELU
 ::  cva-mixed:2             :   34.8 b :    9 c ::    POnA qARU
@@ -51,6 +54,8 @@
 ::  eff-unique:4            :   41.3 b :   36 c ::    mobilize dwindling lunchbox ignition
 ::  pets-medium-4           :   36.9 b :   31 c ::    sheepishly-mighty-snow-kingbird
 ::  nato:7                  :   36.1 b :   43 c ::    uniform juliett quebec kilo oscar wun india
+::  nato-perm               :  138.0 b :  212 c ::    tango juliett seven wun bravo niner delta fower whiskey fife mike six victor echo too hotel yankee zero charlie alfa lima golf foxtrot november romeo kilo zulu xray papa quebec ait oscar sierra india tree uniform
+::  nato-shuf:7             :   35.2 b :   41 c ::    tango juliett seven wun bravo niner delta
 ::  bytes-hex:4             :   32  =b :    8 c ::    a1440448
 ::  token-hex-32            :   32  =b :    8 c ::    c6445990
 ::  token-hex-48            :   48  =b :   12 c ::    c64459904804
@@ -58,7 +63,7 @@
 ::  token-hex-96            :   96  =b :   24 c ::    92fa0706c6445990480444a1
 ::  token-hex-128           :  128  =b :   32 c ::    d976545492fa0706c6445990480444a1
 ::  token-hex-256           :  256  =b :   65 c ::    d976545492fa0706c6445990480444a1-cdf4aaf8cdddc3fc9211998495ad29c7
-::  token-hex-512           :  512  =b :  131 c ::    d976545492fa0706c6445990480444a1-cdf4aaf8cdddc3fc9211998495ad29c7-8d84f98d9ac8c4 [...]
+::  token-hex-512           :  512  =b :  131 c ::    d976545492fa0706c6445990480444a1-cdf4aaf8cdddc3fc9211998495ad29c7-8d84f98d9ac8c4004034cc7d390a47ff-4a088d607a33181b720efcb9c910144b
 ::  uuid-v4                 :  122  =b :   36 c ::    c6445990-d976-4921-b37d-4034cc7d390a
 ::  ip-mac-02               :   40  =b :   17 c ::    02:c6:d9:92:40:72
 ::  ip-mac-04               :   40  =b :   17 c ::    04:c6:d9:92:40:72

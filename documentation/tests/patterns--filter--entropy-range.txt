@@ -7,12 +7,6 @@
 ::  digits-base10:28        :   93.0 b :   34 c ::    7022 7110 4492 5182 5629 0665 7352
 ::  digits-base10:30        :   99.6 b :   37 c ::    7022 7110 4492 5182 5629 0665 7352 60
 ::  digits-base10:32        :  106.3 b :   39 c ::    7022 7110 4492 5182 5629 0665 7352 6062
-::  digits-base8:22         :   66  =b :   27 c ::    6026 6103 7414 5775 0654 61
-::  digits-base8:24         :   72  =b :   29 c ::    6026 6103 7414 5775 0654 6142
-::  digits-base8:26         :   78  =b :   32 c ::    6026 6103 7414 5775 0654 6142 25
-::  digits-base8:28         :   84  =b :   34 c ::    6026 6103 7414 5775 0654 6142 2556
-::  digits-base8:30         :   90  =b :   37 c ::    6026 6103 7414 5775 0654 6142 2556 25
-::  digits-base8:32         :   96  =b :   39 c ::    6026 6103 7414 5775 0654 6142 2556 2505
 ::  digits-base16:16        :   64  =b :   19 c ::    c094 c32f 72d3 8ae1
 ::  digits-base16:18        :   72  =b :   22 c ::    c094 c32f 72d3 8ae1 30
 ::  digits-base16:20        :   80  =b :   24 c ::    c094 c32f 72d3 8ae1 3011
@@ -22,6 +16,12 @@
 ::  digits-base16:28        :  112  =b :   34 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a
 ::  digits-base16:30        :  120  =b :   37 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13
 ::  digits-base16:32        :  128  =b :   39 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9
+::  digits-base8:22         :   66  =b :   27 c ::    6026 6103 7414 5775 0654 61
+::  digits-base8:24         :   72  =b :   29 c ::    6026 6103 7414 5775 0654 6142
+::  digits-base8:26         :   78  =b :   32 c ::    6026 6103 7414 5775 0654 6142 25
+::  digits-base8:28         :   84  =b :   34 c ::    6026 6103 7414 5775 0654 6142 2556
+::  digits-base8:30         :   90  =b :   37 c ::    6026 6103 7414 5775 0654 6142 2556 25
+::  digits-base8:32         :   96  =b :   39 c ::    6026 6103 7414 5775 0654 6142 2556 2505
 ::  digits-base32-hex:14    :   70  =b :   17 c ::    n8pv 47gk fs2v t0
 ::  digits-base32-hex:16    :   80  =b :   19 c ::    n8pv 47gk fs2v t02p
 ::  digits-base32-hex:18    :   90  =b :   22 c ::    n8pv 47gk fs2v t02p lo
@@ -69,12 +69,20 @@
 ::  ascii-lower:22          :  103.4 b :   27 c ::    tuap ufut zdzb lyoe vfnq mw
 ::  ascii-lower:24          :  112.8 b :   29 c ::    tuap ufut zdzb lyoe vfnq mwwb
 ::  ascii-lower:26          :  122.2 b :   32 c ::    tuap ufut zdzb lyoe vfnq mwwb zf
+::  ascii-lower-perm        :   88.3 b :   32 c ::    lbeq doxk vwfh gpmy jisc urna zt
+::  ascii-lower-shuf:16     :   66.5 b :   19 c ::    lbeq doxk vwfh gpmy
+::  ascii-lower-shuf:20     :   78.8 b :   24 c ::    lbeq doxk vwfh gpmy jisc
+::  ascii-lower-shuf:24     :   87.3 b :   29 c ::    lbeq doxk vwfh gpmy jisc urna
 ::  ascii-mixed:12          :   68.4 b :   14 c ::    MObE nOlP YZhY
 ::  ascii-mixed:14          :   79.8 b :   17 c ::    MObE nOlP YZhY cw
 ::  ascii-mixed:16          :   91.2 b :   19 c ::    MObE nOlP YZhY cwWl
 ::  ascii-mixed:18          :  102.6 b :   22 c ::    MObE nOlP YZhY cwWl Di
 ::  ascii-mixed:20          :  114.0 b :   24 c ::    MObE nOlP YZhY cwWl DiRk
 ::  ascii-mixed:22          :  125.4 b :   27 c ::    MObE nOlP YZhY cwWl DiRk AH
+::  ascii-mixed-shuf:12     :   66.4 b :   14 c ::    ipSn fozI jdyV
+::  ascii-mixed-shuf:16     :   87.4 b :   19 c ::    ipSn fozI jdyV xXEL
+::  ascii-mixed-shuf:20     :  107.9 b :   24 c ::    ipSn fozI jdyV xXEL leJT
+::  ascii-mixed-shuf:24     :  127.6 b :   29 c ::    ipSn fozI jdyV xXEL leJT ZtBG
 ::  ascii-symbols:14        :   70  =b :   17 c ::    \)^~ %(;? :{#~ |!
 ::  ascii-symbols:16        :   80  =b :   19 c ::    \)^~ %(;? :{#~ |!#^
 ::  ascii-symbols:18        :   90  =b :   22 c ::    \)^~ %(;? :{#~ |!#^ @]
@@ -86,14 +94,9 @@
 ::  ascii-any:14            :   91.7 b :   17 c ::    ei#9 i5kg |~.+ {%
 ::  ascii-any:16            :  104.8 b :   19 c ::    ei#9 i5kg |~.+ {%IL
 ::  ascii-any:18            :  117.9 b :   22 c ::    ei#9 i5kg |~.+ {%IL 6U
-::  ascii-lower-perm        :   88.3 b :   32 c ::    lbeq doxk vwfh gpmy jisc urna zt
-::  ascii-lower-shuf:16     :   66.5 b :   19 c ::    lbeq doxk vwfh gpmy
-::  ascii-lower-shuf:20     :   78.8 b :   24 c ::    lbeq doxk vwfh gpmy jisc
-::  ascii-lower-shuf:24     :   87.3 b :   29 c ::    lbeq doxk vwfh gpmy jisc urna
-::  ascii-mixed-shuf:12     :   66.4 b :   14 c ::    ipSn fozI jdyV
-::  ascii-mixed-shuf:16     :   87.4 b :   19 c ::    ipSn fozI jdyV xXEL
-::  ascii-mixed-shuf:20     :  107.9 b :   24 c ::    ipSn fozI jdyV xXEL leJT
-::  ascii-mixed-shuf:24     :  127.6 b :   29 c ::    ipSn fozI jdyV xXEL leJT ZtBG
+::  ascii-any-shuf:12       :   77.5 b :   14 c ::    8(L> !;`s &'M6
+::  ascii-any-shuf:16       :  102.9 b :   19 c ::    8(L> !;`s &'M6 RfGi
+::  ascii-any-shuf:20       :  127.9 b :   24 c ::    8(L> !;`s &'M6 RfGi PW$:
 ::  cva-lower:5             :   67.1 b :   24 c ::    taqe veza zaye fugi rixu
 ::  cva-lower:6             :   80.5 b :   29 c ::    taqe veza zaye fugi rixu cezu
 ::  cva-lower:7             :   93.9 b :   34 c ::    taqe veza zaye fugi rixu cezu saco
@@ -177,10 +180,10 @@
 ::  skey:10                 :  110  =b :   44 c ::    mile noun hear norm wast yarn led i cur doug
 ::  skey:11                 :  121  =b :   47 c ::    mile noun hear norm wast yarn led i cur doug me
 ::  pgp:4                   :   64  =b :   68 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer
-::  pgp:5                   :   80  =b :   85 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
-::  pgp:6                   :   96  =b :  102 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
-::  pgp:7                   :  112  =b :  120 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
-::  pgp:8                   :  128  =b :  132 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pan [...]
+::  pgp:5                   :   80  =b :   85 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pandemic
+::  pgp:6                   :   96  =b :  102 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pandemic tapeworm autopsy
+::  pgp:7                   :  112  =b :  120 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pandemic tapeworm autopsy wallet perceptive
+::  pgp:8                   :  128  =b :  132 c ::    shamrock responsive crucial revival vulcan yucatan cleanup midsummer choking pandemic tapeworm autopsy wallet perceptive quiver ohio
 ::  eff-large:5             :   64.6 b :   36 c ::    scope slacks patronize dumpling deny
 ::  eff-large:6             :   77.5 b :   42 c ::    scope slacks patronize dumpling deny spill
 ::  eff-large:7             :   90.4 b :   52 c ::    scope slacks patronize dumpling deny spill sharpener
@@ -196,20 +199,36 @@
 ::  eff-unique:8            :   82.7 b :   62 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium
 ::  eff-unique:9            :   93.0 b :   69 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot
 ::  eff-unique:10           :  103.3 b :   79 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness
-::  eff-unique:11           :  113.7 b :   84 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:12           :  124.0 b :   92 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
+::  eff-unique:11           :  113.7 b :   84 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick
+::  eff-unique:12           :  124.0 b :   92 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android
 ::  nato:13                 :   67.2 b :   78 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo
-::  nato:14                 :   72.3 b :   82 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-::  nato:15                 :   77.5 b :   86 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-::  nato:16                 :   82.7 b :   94 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-::  nato:17                 :   87.8 b :   99 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-::  nato:18                 :   93.0 b :  104 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-::  nato:19                 :   98.2 b :  108 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-::  nato:20                 :  103.3 b :  115 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-::  nato:21                 :  108.5 b :  120 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-::  nato:22                 :  113.7 b :  128 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-::  nato:23                 :  118.9 b :  136 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
-::  nato:24                 :  124.0 b :  144 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo s [...]
+::  nato:14                 :   72.3 b :   82 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo six
+::  nato:15                 :   77.5 b :   86 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo six six
+::  nato:16                 :   82.7 b :   94 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo six six charlie
+::  nato:17                 :   87.8 b :   99 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo six six charlie zero
+::  nato:18                 :   93.0 b :  104 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo six six charlie zero zero
+::  nato:19                 :   98.2 b :  108 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo six six charlie zero zero ait
+::  nato:20                 :  103.3 b :  115 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo six six charlie zero zero ait yankee
+::  nato:21                 :  108.5 b :  120 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo six six charlie zero zero ait yankee alfa
+::  nato:22                 :  113.7 b :  128 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo six six charlie zero zero ait yankee alfa charlie
+::  nato:23                 :  118.9 b :  136 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo six six charlie zero zero ait yankee alfa charlie whiskey
+::  nato:24                 :  124.0 b :  144 c ::    wun victor juliett foxtrot echo papa ait india uniform fife hotel sierra romeo six six charlie zero zero ait yankee alfa charlie whiskey whiskey
+::  nato-shuf:14            :   68.1 b :   89 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa
+::  nato-shuf:15            :   72.6 b :   98 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november
+::  nato-shuf:16            :   77.0 b :  104 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar
+::  nato-shuf:17            :   81.3 b :  110 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india
+::  nato-shuf:18            :   85.5 b :  115 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife
+::  nato-shuf:19            :   89.7 b :  123 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett
+::  nato-shuf:20            :   93.8 b :  128 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo
+::  nato-shuf:21            :   97.8 b :  134 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner
+::  nato-shuf:22            :  101.7 b :  139 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike
+::  nato-shuf:23            :  105.5 b :  146 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor
+::  nato-shuf:24            :  109.2 b :  151 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima
+::  nato-shuf:25            :  112.8 b :  156 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo
+::  nato-shuf:26            :  116.3 b :  162 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo
+::  nato-shuf:27            :  119.6 b :  166 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait
+::  nato-shuf:28            :  122.7 b :  172 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta
+::  nato-shuf:29            :  125.7 b :  177 c ::    six yankee uniform charlie quebec sierra tango golf foxtrot alfa seven romeo whiskey papa november oscar india fife juliett echo niner mike victor lima kilo bravo ait delta tree
 ::  bytes-hex:8             :   64  =b :   16 c ::    7f6f2ccdb23f2abb
 ::  bytes-hex:9             :   72  =b :   18 c ::    7f6f2ccdb23f2abb7b
 ::  bytes-hex:10            :   80  =b :   20 c ::    7f6f2ccdb23f2abb7b69

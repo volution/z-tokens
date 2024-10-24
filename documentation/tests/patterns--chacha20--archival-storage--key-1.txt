@@ -13,10 +13,11 @@
 ::  ascii-lower:22          :  103.4 b :   27 c ::    clyf ylvz elpa tbmb dhvp bl
 ::  ascii-upper:22          :  103.4 b :   27 c ::    CLYF YLVZ ELPA TBMB DHVP BL
 ::  ascii-mixed:18          :  102.6 b :   22 c ::    ewXL kXwR Ziwb dzdh oQ
-::  ascii-symbols:22        :  110  =b :   27 c ::    }\'} '&#% _==( \=\" >|`~ .?
-::  ascii-any:16            :  104.8 b :   19 c ::    (Ie3 z^o~ 0IX# g&N'
 ::  ascii-mixed-perm        :  225.5 b :   64 c ::    nOxr bZPB CadX mKlg ywsI uoAz MpHq DGLQ WNTY EkfU cFhR tiSj JVve
 ::  ascii-mixed-shuf:20     :  107.9 b :   24 c ::    nOxr bZPB CadX mKlg ywsI
+::  ascii-symbols:22        :  110  =b :   27 c ::    }\'} '&#% _==( \=\" >|`~ .?
+::  ascii-any:16            :  104.8 b :   19 c ::    (Ie3 z^o~ 0IX# g&N'
+::  ascii-any-shuf:16       :  102.9 b :   19 c ::    K]gp Y"<R j8~t AI=e
 ::  cva-lower:8             :  107.4 b :   39 c ::    cito wiqa cice waqo koto qugo zozi koxi
 ::  cva-upper:8             :  107.4 b :   39 c ::    CITO WIQA CICE WAQO KOTO QUGO ZOZI KOXI
 ::  cva-mixed:6             :  104.5 b :   29 c ::    fuMU JuSu Naze pOJi FEsU MIFI
@@ -36,13 +37,15 @@
 ::  mnemonic:10             :  106.7 b :   64 c ::    chaos subject side sofia begin genius game quebec fiction sultan
 ::  bip0039:10              :  110  =b :   62 c ::    before vehicle veteran plunge stool worry honey oak alarm lady
 ::  skey:10                 :  110  =b :   47 c ::    fit twit vale kirk sand work cuff hide bam eyed
-::  pgp:7                   :  112  =b :  124 c ::    baboon puberty chatter vertigo chairlift handiwork stockman chambermaid goggles  [...]
+::  pgp:7                   :  112  =b :  124 c ::    baboon puberty chatter vertigo chairlift handiwork stockman chambermaid goggles rebellion artist babylon blowtorch detergent
 ::  eff-large:8             :  103.3 b :   65 c ::    bonelike hybrid unvarying scalping curve upheaval ramble cufflink
 ::  eff-short:10            :  103.3 b :   52 c ::    bonus hers set wad creme hefty stoop coast hub petri
-::  eff-unique:10           :  103.3 b :   89 c ::    asymmetric henceforth refinery vixen cybernetic heinously sugar coexistent herbs [...]
-::  nato:20                 :  103.3 b :  114 c ::    papa niner wun niner xray papa fife papa victor charlie romeo charlie fower vict [...]
+::  eff-unique:10           :  103.3 b :   89 c ::    asymmetric henceforth refinery vixen cybernetic heinously sugar coexistent herbs namesake
+::  nato:20                 :  103.3 b :  114 c ::    papa niner wun niner xray papa fife papa victor charlie romeo charlie fower victor papa xray india xray india mike
+::  nato-perm               :  138.0 b :  212 c ::    fife niner sierra juliett delta charlie uniform fower quebec six yankee tango hotel oscar kilo foxtrot whiskey too mike india romeo xray wun bravo alfa zero lima echo tree zulu november golf victor seven ait papa
+::  nato-shuf:22            :  101.7 b :  136 c ::    fife niner sierra juliett delta charlie uniform fower quebec six yankee tango hotel oscar kilo foxtrot whiskey too mike india romeo xray
 ::  bytes-hex:13            :  104  =b :   26 c ::    0c0ba314dd3f2714887d34be27
 ::  token-hex-128           :  128  =b :   32 c ::    6cf6b427be347d8814273fdd14a30b0c
 ::  token-hex-256           :  256  =b :   65 c ::    6cf6b427be347d8814273fdd14a30b0c-ba13acb1dab8e215f1ea015b72f9f69d
-::  token-hex-512           :  512  =b :  131 c ::    6cf6b427be347d8814273fdd14a30b0c-ba13acb1dab8e215f1ea015b72f9f69d-f32c33de69df64 [...]
+::  token-hex-512           :  512  =b :  131 c ::    6cf6b427be347d8814273fdd14a30b0c-ba13acb1dab8e215f1ea015b72f9f69d-f32c33de69df6414315a4eca3dd18fb7-3050d7311837ff91a6e2547835387203
 ::  uuid-v4                 :  122  =b :   36 c ::    14273fdd-f1ea-4ba1-bccb-a6e254783538

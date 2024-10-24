@@ -70,6 +70,14 @@
 ::  ascii-any:28            :  183.5 b :   28 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
 ::  ascii-any:30            :  196.6 b :   30 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[
 ::  ascii-any:32            :  209.7 b :   32 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
+::  ascii-any-shuf:4        :   26.1 b :    4 c ::    8(L>
+::  ascii-any-shuf:8        :   51.9 b :    8 c ::    8(L> !;`s
+::  ascii-any-shuf:12       :   77.5 b :   12 c ::    8(L> !;`s &'M6
+::  ascii-any-shuf:16       :  102.9 b :   16 c ::    8(L> !;`s &'M6 RfGi
+::  ascii-any-shuf:20       :  127.9 b :   20 c ::    8(L> !;`s &'M6 RfGi PW$:
+::  ascii-any-shuf:24       :  152.6 b :   24 c ::    8(L> !;`s &'M6 RfGi PW$: yT7a
+::  ascii-any-shuf:28       :  177.0 b :   28 c ::    8(L> !;`s &'M6 RfGi PW$: yT7a z/t=
+::  ascii-any-shuf:32       :  201.1 b :   32 c ::    8(L> !;`s &'M6 RfGi PW$: yT7a z/t= |A)D
 ::  cva-plus-c:2            :   28.4 b :    8 c ::    taqe VE7~
 ::  cva-plus-c:3            :   41.8 b :   12 c ::    taqe veza ZA4(
 ::  cva-plus-c:4            :   55.3 b :   16 c ::    taqe veza zaye FU2;

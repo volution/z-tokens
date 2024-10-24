@@ -16,6 +16,13 @@
 ::  ascii-lower:28          :  131.6 b :   34 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr
 ::  ascii-lower:30          :  141.0 b :   37 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr ab
 ::  ascii-lower:32          :  150.4 b :   39 c ::    tuap ufut zdzb lyoe vfnq mwwb zfzr abqu
+::  ascii-lower-perm        :   88.3 b :   32 c ::    lbeq doxk vwfh gpmy jisc urna zt
+::  ascii-lower-shuf:4      :   18.4 b :    4 c ::    lbeq
+::  ascii-lower-shuf:8      :   35.8 b :    9 c ::    lbeq doxk
+::  ascii-lower-shuf:12     :   52.0 b :   14 c ::    lbeq doxk vwfh
+::  ascii-lower-shuf:16     :   66.5 b :   19 c ::    lbeq doxk vwfh gpmy
+::  ascii-lower-shuf:20     :   78.8 b :   24 c ::    lbeq doxk vwfh gpmy jisc
+::  ascii-lower-shuf:24     :   87.3 b :   29 c ::    lbeq doxk vwfh gpmy jisc urna
 ::  ascii-upper:2           :    9.4 b :    2 c ::    TU
 ::  ascii-upper:4           :   18.8 b :    4 c ::    TUAP
 ::  ascii-upper:6           :   28.2 b :    7 c ::    TUAP UF
@@ -32,6 +39,13 @@
 ::  ascii-upper:28          :  131.6 b :   34 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR
 ::  ascii-upper:30          :  141.0 b :   37 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR AB
 ::  ascii-upper:32          :  150.4 b :   39 c ::    TUAP UFUT ZDZB LYOE VFNQ MWWB ZFZR ABQU
+::  ascii-upper-perm        :   88.3 b :   32 c ::    LBEQ DOXK VWFH GPMY JISC URNA ZT
+::  ascii-upper-shuf:4      :   18.4 b :    4 c ::    LBEQ
+::  ascii-upper-shuf:8      :   35.8 b :    9 c ::    LBEQ DOXK
+::  ascii-upper-shuf:12     :   52.0 b :   14 c ::    LBEQ DOXK VWFH
+::  ascii-upper-shuf:16     :   66.5 b :   19 c ::    LBEQ DOXK VWFH GPMY
+::  ascii-upper-shuf:20     :   78.8 b :   24 c ::    LBEQ DOXK VWFH GPMY JISC
+::  ascii-upper-shuf:24     :   87.3 b :   29 c ::    LBEQ DOXK VWFH GPMY JISC URNA
 ::  ascii-mixed:2           :   11.4 b :    2 c ::    MO
 ::  ascii-mixed:4           :   22.8 b :    4 c ::    MObE
 ::  ascii-mixed:6           :   34.2 b :    7 c ::    MObE nO
@@ -48,21 +62,7 @@
 ::  ascii-mixed:28          :  159.6 b :   34 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY
 ::  ascii-mixed:30          :  171.0 b :   37 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJ
 ::  ascii-mixed:32          :  182.4 b :   39 c ::    MObE nOlP YZhY cwWl DiRk AHTT dZlY VJad
-::  ascii-lower-perm        :   88.3 b :   32 c ::    lbeq doxk vwfh gpmy jisc urna zt
-::  ascii-upper-perm        :   88.3 b :   32 c ::    LBEQ DOXK VWFH GPMY JISC URNA ZT
 ::  ascii-mixed-perm        :  225.5 b :   64 c ::    ipSn fozI jdyV xXEL leJT ZtBG ADHO auWF QqwY hvUs rcPg RkKm CbNM
-::  ascii-lower-shuf:4      :   18.4 b :    4 c ::    lbeq
-::  ascii-lower-shuf:8      :   35.8 b :    9 c ::    lbeq doxk
-::  ascii-lower-shuf:12     :   52.0 b :   14 c ::    lbeq doxk vwfh
-::  ascii-lower-shuf:16     :   66.5 b :   19 c ::    lbeq doxk vwfh gpmy
-::  ascii-lower-shuf:20     :   78.8 b :   24 c ::    lbeq doxk vwfh gpmy jisc
-::  ascii-lower-shuf:24     :   87.3 b :   29 c ::    lbeq doxk vwfh gpmy jisc urna
-::  ascii-upper-shuf:4      :   18.4 b :    4 c ::    LBEQ
-::  ascii-upper-shuf:8      :   35.8 b :    9 c ::    LBEQ DOXK
-::  ascii-upper-shuf:12     :   52.0 b :   14 c ::    LBEQ DOXK VWFH
-::  ascii-upper-shuf:16     :   66.5 b :   19 c ::    LBEQ DOXK VWFH GPMY
-::  ascii-upper-shuf:20     :   78.8 b :   24 c ::    LBEQ DOXK VWFH GPMY JISC
-::  ascii-upper-shuf:24     :   87.3 b :   29 c ::    LBEQ DOXK VWFH GPMY JISC URNA
 ::  ascii-mixed-shuf:4      :   22.6 b :    4 c ::    ipSn
 ::  ascii-mixed-shuf:8      :   44.7 b :    9 c ::    ipSn fozI
 ::  ascii-mixed-shuf:12     :   66.4 b :   14 c ::    ipSn fozI jdyV
@@ -184,9 +184,9 @@
 ::  proquint-lower:11       :  176  =b :   65 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod
 ::  proquint-lower:12       :  192  =b :   71 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog
 ::  proquint-lower:13       :  208  =b :   77 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol
-::  proquint-lower:14       :  224  =b :   83 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
-::  proquint-lower:15       :  240  =b :   89 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
-::  proquint-lower:16       :  256  =b :   95 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:14       :  224  =b :   83 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol gohat
+::  proquint-lower:15       :  240  =b :   89 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol gohat hapab
+::  proquint-lower:16       :  256  =b :   95 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol gohat hapab kivub
 ::  proquint-upper:1        :   16  =b :    5 c ::    SANIS
 ::  proquint-upper:2        :   32  =b :   11 c ::    SANIS GUFAZ
 ::  proquint-upper:3        :   48  =b :   17 c ::    SANIS GUFAZ LOFUG
@@ -200,9 +200,9 @@
 ::  proquint-upper:11       :  176  =b :   65 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD
 ::  proquint-upper:12       :  192  =b :   71 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG
 ::  proquint-upper:13       :  208  =b :   77 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL
-::  proquint-upper:14       :  224  =b :   83 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
-::  proquint-upper:15       :  240  =b :   89 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
-::  proquint-upper:16       :  256  =b :   95 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GO [...]
+::  proquint-upper:14       :  224  =b :   83 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GOHAT
+::  proquint-upper:15       :  240  =b :   89 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GOHAT HAPAB
+::  proquint-upper:16       :  256  =b :   95 c ::    SANIS GUFAZ LOFUG MUDAD DAMUD MIHUP DOGIP BAJAL TUSIV SUMAJ TUSOD SIVOG FUPOL GOHAT HAPAB KIVUB
 ::  koremutake-a:1          :   14  =b :    5 c ::    drobo
 ::  koremutake-a:2          :   28  =b :   11 c ::    drobo stufi
 ::  koremutake-a:3          :   42  =b :   17 c ::    drobo stufi stoda
@@ -216,9 +216,9 @@
 ::  koremutake-a:11         :  154  =b :   64 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra
 ::  koremutake-a:12         :  168  =b :   70 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody
 ::  koremutake-a:13         :  182  =b :   76 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji
-::  koremutake-a:14         :  196  =b :   82 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
-::  koremutake-a:15         :  210  =b :   88 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
-::  koremutake-a:16         :  224  =b :   93 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:14         :  196  =b :   82 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji trave
+::  koremutake-a:15         :  210  =b :   88 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji trave vidry
+::  koremutake-a:16         :  224  =b :   93 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji trave vidry keto
 ::  koremutake-b:1          :   21  =b :    8 c ::    drobostu
 ::  koremutake-b:2          :   42  =b :   16 c ::    drobostu fistoda
 ::  koremutake-b:3          :   63  =b :   24 c ::    drobostu fistoda napruhy
@@ -228,10 +228,10 @@
 ::  koremutake-b:7          :  147  =b :   57 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera
 ::  koremutake-b:8          :  168  =b :   66 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody
 ::  koremutake-b:9          :  189  =b :   75 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra
-::  koremutake-b:10         :  210  =b :   83 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
-::  koremutake-b:11         :  231  =b :   90 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
-::  koremutake-b:12         :  252  =b :   97 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
-::  koremutake-b:13         :  273  =b :  104 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
-::  koremutake-b:14         :  294  =b :  112 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
-::  koremutake-b:15         :  315  =b :  121 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
-::  koremutake-b:16         :  336  =b :  129 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:10         :  210  =b :   83 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevidry
+::  koremutake-b:11         :  231  =b :   90 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevidry ketobu
+::  koremutake-b:12         :  252  =b :   97 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevidry ketobu silory
+::  koremutake-b:13         :  273  =b :  104 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevidry ketobu silory tobiky
+::  koremutake-b:14         :  294  =b :  112 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevidry ketobu silory tobiky jeprota
+::  koremutake-b:15         :  315  =b :  121 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevidry ketobu silory tobiky jeprota dafripro
+::  koremutake-b:16         :  336  =b :  129 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevidry ketobu silory tobiky jeprota dafripro lopraro

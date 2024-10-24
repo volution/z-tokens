@@ -159,9 +159,9 @@
 ::  proquint-lower:11       :  176  =b :   65 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod
 ::  proquint-lower:12       :  192  =b :   71 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog
 ::  proquint-lower:13       :  208  =b :   77 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol
-::  proquint-lower:14       :  224  =b :   83 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
-::  proquint-lower:15       :  240  =b :   89 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
-::  proquint-lower:16       :  256  =b :   95 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol go [...]
+::  proquint-lower:14       :  224  =b :   83 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol gohat
+::  proquint-lower:15       :  240  =b :   89 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol gohat hapab
+::  proquint-lower:16       :  256  =b :   95 c ::    sanis gufaz lofug mudad damud mihup dogip bajal tusiv sumaj tusod sivog fupol gohat hapab kivub
 ::  koremutake-a:1          :   14  =b :    5 c ::    drobo
 ::  koremutake-a:2          :   28  =b :   11 c ::    drobo stufi
 ::  koremutake-a:3          :   42  =b :   17 c ::    drobo stufi stoda
@@ -175,9 +175,9 @@
 ::  koremutake-a:11         :  154  =b :   64 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra
 ::  koremutake-a:12         :  168  =b :   70 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody
 ::  koremutake-a:13         :  182  =b :   76 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji
-::  koremutake-a:14         :  196  =b :   82 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
-::  koremutake-a:15         :  210  =b :   88 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
-::  koremutake-a:16         :  224  =b :   93 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji tra [...]
+::  koremutake-a:14         :  196  =b :   82 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji trave
+::  koremutake-a:15         :  210  =b :   88 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji trave vidry
+::  koremutake-a:16         :  224  =b :   93 c ::    drobo stufi stoda napru hyhi pupe grugro ditra stypro teve radra grody styji trave vidry keto
 ::  koremutake-b:1          :   21  =b :    8 c ::    drobostu
 ::  koremutake-b:2          :   42  =b :   16 c ::    drobostu fistoda
 ::  koremutake-b:3          :   63  =b :   24 c ::    drobostu fistoda napruhy
@@ -187,13 +187,13 @@
 ::  koremutake-b:7          :  147  =b :   57 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera
 ::  koremutake-b:8          :  168  =b :   66 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody
 ::  koremutake-b:9          :  189  =b :   75 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra
-::  koremutake-b:10         :  210  =b :   83 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
-::  koremutake-b:11         :  231  =b :   90 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
-::  koremutake-b:12         :  252  =b :   97 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
-::  koremutake-b:13         :  273  =b :  104 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
-::  koremutake-b:14         :  294  =b :  112 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
-::  koremutake-b:15         :  315  =b :  121 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
-::  koremutake-b:16         :  336  =b :  129 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevi [...]
+::  koremutake-b:10         :  210  =b :   83 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevidry
+::  koremutake-b:11         :  231  =b :   90 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevidry ketobu
+::  koremutake-b:12         :  252  =b :   97 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevidry ketobu silory
+::  koremutake-b:13         :  273  =b :  104 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevidry ketobu silory tobiky
+::  koremutake-b:14         :  294  =b :  112 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevidry ketobu silory tobiky jeprota
+::  koremutake-b:15         :  315  =b :  121 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevidry ketobu silory tobiky jeprota dafripro
+::  koremutake-b:16         :  336  =b :  129 c ::    drobostu fistoda napruhy hipupe grugrodi trastypro tevera dragrody styjitra vevidry ketobu silory tobiky jeprota dafripro lopraro
 ::  mnemonic:1              :   10.6 b :    5 c ::    arrow
 ::  mnemonic:2              :   21.3 b :   13 c ::    arrow arizona
 ::  mnemonic:3              :   32.0 b :   19 c ::    arrow arizona mango
@@ -205,25 +205,25 @@
 ::  mnemonic:9              :   96.0 b :   61 c ::    arrow arizona mango archer jacket bundle telecom torso domino
 ::  mnemonic:10             :  106.7 b :   68 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy
 ::  mnemonic:11             :  117.4 b :   75 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas
-::  mnemonic:12             :  128.0 b :   81 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:13             :  138.7 b :   89 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:14             :  149.4 b :   97 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:15             :  160.0 b :  104 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:16             :  170.7 b :  111 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:17             :  181.4 b :  119 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:18             :  192.1 b :  127 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:19             :  202.7 b :  133 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:20             :  213.4 b :  139 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:21             :  224.1 b :  147 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:22             :  234.8 b :  154 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:23             :  245.4 b :  159 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:24             :  256.1 b :  166 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:25             :  266.8 b :  174 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:26             :  277.5 b :  182 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:27             :  288.1 b :  190 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:28             :  298.8 b :  197 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:29             :  309.5 b :  203 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
-::  mnemonic:30             :  320.1 b :  209 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxe [...]
+::  mnemonic:12             :  128.0 b :   81 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxer
+::  mnemonic:13             :  138.7 b :   89 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxer subject
+::  mnemonic:14             :  149.4 b :   97 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxer subject vatican
+::  mnemonic:15             :  160.0 b :  104 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxer subject vatican rachel
+::  mnemonic:16             :  170.7 b :  111 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxer subject vatican rachel jungle
+::  mnemonic:17             :  181.4 b :  119 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxer subject vatican rachel jungle iceberg
+::  mnemonic:18             :  192.1 b :  127 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxer subject vatican rachel jungle iceberg everest
+::  mnemonic:19             :  202.7 b :  133 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxer subject vatican rachel jungle iceberg everest front
+::  mnemonic:20             :  213.4 b :  139 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxer subject vatican rachel jungle iceberg everest front hello
+::  mnemonic:21             :  224.1 b :  147 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxer subject vatican rachel jungle iceberg everest front hello bambino
+::  mnemonic:22             :  234.8 b :  154 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxer subject vatican rachel jungle iceberg everest front hello bambino source
+::  mnemonic:23             :  245.4 b :  159 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxer subject vatican rachel jungle iceberg everest front hello bambino source list
+::  mnemonic:24             :  256.1 b :  166 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxer subject vatican rachel jungle iceberg everest front hello bambino source list ladder
+::  mnemonic:25             :  266.8 b :  174 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxer subject vatican rachel jungle iceberg everest front hello bambino source list ladder cantina
+::  mnemonic:26             :  277.5 b :  182 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxer subject vatican rachel jungle iceberg everest front hello bambino source list ladder cantina weather
+::  mnemonic:27             :  288.1 b :  190 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxer subject vatican rachel jungle iceberg everest front hello bambino source list ladder cantina weather instant
+::  mnemonic:28             :  298.8 b :  197 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxer subject vatican rachel jungle iceberg everest front hello bambino source list ladder cantina weather instant urgent
+::  mnemonic:29             :  309.5 b :  203 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxer subject vatican rachel jungle iceberg everest front hello bambino source list ladder cantina weather instant urgent press
+::  mnemonic:30             :  320.1 b :  209 c ::    arrow arizona mango archer jacket bundle telecom torso domino cowboy thomas boxer subject vatican rachel jungle iceberg everest front hello bambino source list ladder cantina weather instant urgent press alpha
 ::  bip0039:1               :   11  =b :    5 c ::    robot
 ::  bip0039:2               :   22  =b :   10 c ::    robot ship
 ::  bip0039:3               :   33  =b :   16 c ::    robot ship night
@@ -237,23 +237,23 @@
 ::  bip0039:11              :  121  =b :   68 c ::    robot ship night shield way yellow casual brother arrow invest chief
 ::  bip0039:12              :  132  =b :   74 c ::    robot ship night shield way yellow casual brother arrow invest chief sting
 ::  bip0039:13              :  143  =b :   79 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar
-::  bip0039:14              :  154  =b :   86 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
-::  bip0039:15              :  165  =b :   93 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
-::  bip0039:16              :  176  =b :   97 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
-::  bip0039:17              :  187  =b :  103 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
-::  bip0039:18              :  198  =b :  111 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
-::  bip0039:19              :  209  =b :  118 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
-::  bip0039:20              :  220  =b :  123 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
-::  bip0039:21              :  231  =b :  130 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
-::  bip0039:22              :  242  =b :  138 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
-::  bip0039:23              :  253  =b :  145 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
-::  bip0039:24              :  264  =b :  151 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
-::  bip0039:25              :  275  =b :  159 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
-::  bip0039:26              :  286  =b :  163 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
-::  bip0039:27              :  297  =b :  169 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
-::  bip0039:28              :  308  =b :  174 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
-::  bip0039:29              :  319  =b :  182 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
-::  bip0039:30              :  330  =b :  187 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar  [...]
+::  bip0039:14              :  154  =b :   86 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar person
+::  bip0039:15              :  165  =b :   93 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar person theory
+::  bip0039:16              :  176  =b :   97 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar person theory ten
+::  bip0039:17              :  187  =b :  103 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar person theory ten awake
+::  bip0039:18              :  198  =b :  111 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar person theory ten awake witness
+::  bip0039:19              :  209  =b :  118 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar person theory ten awake witness daring
+::  bip0039:20              :  220  =b :  123 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar person theory ten awake witness daring when
+::  bip0039:21              :  231  =b :  130 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar person theory ten awake witness daring when simple
+::  bip0039:22              :  242  =b :  138 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar person theory ten awake witness daring when simple luggage
+::  bip0039:23              :  253  =b :  145 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar person theory ten awake witness daring when simple luggage school
+::  bip0039:24              :  264  =b :  151 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar person theory ten awake witness daring when simple luggage school taste
+::  bip0039:25              :  275  =b :  159 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar person theory ten awake witness daring when simple luggage school taste biology
+::  bip0039:26              :  286  =b :  163 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar person theory ten awake witness daring when simple luggage school taste biology fly
+::  bip0039:27              :  297  =b :  169 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar person theory ten awake witness daring when simple luggage school taste biology fly wheel
+::  bip0039:28              :  308  =b :  174 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar person theory ten awake witness daring when simple luggage school taste biology fly wheel drum
+::  bip0039:29              :  319  =b :  182 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar person theory ten awake witness daring when simple luggage school taste biology fly wheel drum divorce
+::  bip0039:30              :  330  =b :  187 c ::    robot ship night shield way yellow casual brother arrow invest chief sting liar person theory ten awake witness daring when simple luggage school taste biology fly wheel drum divorce wire
 ::  skey:1                  :   11  =b :    4 c ::    mile
 ::  skey:2                  :   22  =b :    9 c ::    mile noun
 ::  skey:3                  :   33  =b :   14 c ::    mile noun hear
@@ -271,19 +271,19 @@
 ::  skey:15                 :  165  =b :   67 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug
 ::  skey:16                 :  176  =b :   72 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid
 ::  skey:17                 :  187  =b :   76 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug
-::  skey:18                 :  198  =b :   81 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
-::  skey:19                 :  209  =b :   85 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
-::  skey:20                 :  220  =b :   90 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
-::  skey:21                 :  231  =b :   95 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
-::  skey:22                 :  242  =b :  100 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
-::  skey:23                 :  253  =b :  105 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
-::  skey:24                 :  264  =b :  110 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
-::  skey:25                 :  275  =b :  114 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
-::  skey:26                 :  286  =b :  119 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
-::  skey:27                 :  297  =b :  124 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
-::  skey:28                 :  308  =b :  128 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
-::  skey:29                 :  319  =b :  132 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
-::  skey:30                 :  330  =b :  137 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wis [...]
+::  skey:18                 :  198  =b :   81 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wise
+::  skey:19                 :  209  =b :   85 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wise rid
+::  skey:20                 :  220  =b :   90 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wise rid were
+::  skey:21                 :  231  =b :   95 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wise rid were onus
+::  skey:22                 :  242  =b :  100 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wise rid were onus ford
+::  skey:23                 :  253  =b :  105 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wise rid were onus ford must
+::  skey:24                 :  264  =b :  110 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wise rid were onus ford must slab
+::  skey:25                 :  275  =b :  114 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wise rid were onus ford must slab gee
+::  skey:26                 :  286  =b :  119 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wise rid were onus ford must slab gee blum
+::  skey:27                 :  297  =b :  124 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wise rid were onus ford must slab gee blum went
+::  skey:28                 :  308  =b :  128 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wise rid were onus ford must slab gee blum went vat
+::  skey:29                 :  319  =b :  132 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wise rid were onus ford must slab gee blum went vat ten
+::  skey:30                 :  330  =b :  137 c ::    mile noun hear norm wast yarn led i cur doug me sale fire jude smug slid dug wise rid were onus ford must slab gee blum went vat ten wing
 ::  eff-large:1             :   12.9 b :    5 c ::    scope
 ::  eff-large:2             :   25.8 b :   12 c ::    scope slacks
 ::  eff-large:3             :   38.7 b :   22 c ::    scope slacks patronize
@@ -295,25 +295,25 @@
 ::  eff-large:9             :  116.3 b :   63 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo
 ::  eff-large:10            :  129.2 b :   69 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class
 ::  eff-large:11            :  142.1 b :   78 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload
-::  eff-large:12            :  155.0 b :   83 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-large:13            :  168.0 b :   93 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-large:14            :  180.9 b :  101 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-large:15            :  193.8 b :  110 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-large:16            :  206.7 b :  119 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-large:17            :  219.7 b :  128 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-large:18            :  232.6 b :  136 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-large:19            :  245.5 b :  146 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-large:20            :  258.4 b :  155 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-large:21            :  271.4 b :  165 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-large:22            :  284.3 b :  173 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-large:23            :  297.2 b :  182 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-large:24            :  310.1 b :  187 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-large:25            :  323.1 b :  195 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-large:26            :  336.0 b :  203 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-large:27            :  348.9 b :  210 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-large:28            :  361.8 b :  216 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-large:29            :  374.8 b :  226 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
-::  eff-large:30            :  387.7 b :  233 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload v [...]
+::  eff-large:12            :  155.0 b :   83 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload vest
+::  eff-large:13            :  168.0 b :   93 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload vest available
+::  eff-large:14            :  180.9 b :  101 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload vest available hydrant
+::  eff-large:15            :  193.8 b :  110 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload vest available hydrant knapsack
+::  eff-large:16            :  206.7 b :  119 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload vest available hydrant knapsack unlocked
+::  eff-large:17            :  219.7 b :  128 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload vest available hydrant knapsack unlocked devourer
+::  eff-large:18            :  232.6 b :  136 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload vest available hydrant knapsack unlocked devourer overdue
+::  eff-large:19            :  245.5 b :  146 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload vest available hydrant knapsack unlocked devourer overdue composure
+::  eff-large:20            :  258.4 b :  155 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload vest available hydrant knapsack unlocked devourer overdue composure subprime
+::  eff-large:21            :  271.4 b :  165 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload vest available hydrant knapsack unlocked devourer overdue composure subprime decathlon
+::  eff-large:22            :  284.3 b :  173 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload vest available hydrant knapsack unlocked devourer overdue composure subprime decathlon maximum
+::  eff-large:23            :  297.2 b :  182 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload vest available hydrant knapsack unlocked devourer overdue composure subprime decathlon maximum punisher
+::  eff-large:24            :  310.1 b :  187 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload vest available hydrant knapsack unlocked devourer overdue composure subprime decathlon maximum punisher lion
+::  eff-large:25            :  323.1 b :  195 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload vest available hydrant knapsack unlocked devourer overdue composure subprime decathlon maximum punisher lion trading
+::  eff-large:26            :  336.0 b :  203 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload vest available hydrant knapsack unlocked devourer overdue composure subprime decathlon maximum punisher lion trading tidings
+::  eff-large:27            :  348.9 b :  210 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload vest available hydrant knapsack unlocked devourer overdue composure subprime decathlon maximum punisher lion trading tidings barbed
+::  eff-large:28            :  361.8 b :  216 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload vest available hydrant knapsack unlocked devourer overdue composure subprime decathlon maximum punisher lion trading tidings barbed wispy
+::  eff-large:29            :  374.8 b :  226 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload vest available hydrant knapsack unlocked devourer overdue composure subprime decathlon maximum punisher lion trading tidings barbed wispy democracy
+::  eff-large:30            :  387.7 b :  233 c ::    scope slacks patronize dumpling deny spill sharpener visa yo-yo class cartload vest available hydrant knapsack unlocked devourer overdue composure subprime decathlon maximum punisher lion trading tidings barbed wispy democracy washed
 ::  eff-short:1             :   10.3 b :    5 c ::    shaft
 ::  eff-short:2             :   20.6 b :   11 c ::    shaft sleep
 ::  eff-short:3             :   31.0 b :   17 c ::    shaft sleep ankle
@@ -328,22 +328,22 @@
 ::  eff-short:12            :  124.0 b :   66 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy
 ::  eff-short:13            :  134.4 b :   72 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy
 ::  eff-short:14            :  144.7 b :   78 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk
-::  eff-short:15            :  155.0 b :   84 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
-::  eff-short:16            :  165.4 b :   90 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
-::  eff-short:17            :  175.7 b :   95 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
-::  eff-short:18            :  186.1 b :  100 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
-::  eff-short:19            :  196.4 b :  106 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
-::  eff-short:20            :  206.7 b :  112 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
-::  eff-short:21            :  217.1 b :  116 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
-::  eff-short:22            :  227.4 b :  121 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
-::  eff-short:23            :  237.8 b :  127 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
-::  eff-short:24            :  248.1 b :  133 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
-::  eff-short:25            :  258.4 b :  139 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
-::  eff-short:26            :  268.8 b :  144 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
-::  eff-short:27            :  279.1 b :  149 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
-::  eff-short:28            :  289.5 b :  154 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
-::  eff-short:29            :  299.8 b :  160 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
-::  eff-short:30            :  310.1 b :  165 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk c [...]
+::  eff-short:15            :  155.0 b :   84 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk curve
+::  eff-short:16            :  165.4 b :   90 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk curve lunch
+::  eff-short:17            :  175.7 b :   95 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk curve lunch putt
+::  eff-short:18            :  186.1 b :  100 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk curve lunch putt land
+::  eff-short:19            :  196.4 b :  106 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk curve lunch putt land taunt
+::  eff-short:20            :  206.7 b :  112 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk curve lunch putt land taunt taper
+::  eff-short:21            :  217.1 b :  116 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk curve lunch putt land taunt taper yam
+::  eff-short:22            :  227.4 b :  121 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk curve lunch putt land taunt taper yam womb
+::  eff-short:23            :  237.8 b :  127 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk curve lunch putt land taunt taper yam womb tweak
+::  eff-short:24            :  248.1 b :  133 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk curve lunch putt land taunt taper yam womb tweak alien
+::  eff-short:25            :  258.4 b :  139 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk curve lunch putt land taunt taper yam womb tweak alien prank
+::  eff-short:26            :  268.8 b :  144 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk curve lunch putt land taunt taper yam womb tweak alien prank pork
+::  eff-short:27            :  279.1 b :  149 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk curve lunch putt land taunt taper yam womb tweak alien prank pork both
+::  eff-short:28            :  289.5 b :  154 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk curve lunch putt land taunt taper yam womb tweak alien prank pork both mate
+::  eff-short:29            :  299.8 b :  160 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk curve lunch putt land taunt taper yam womb tweak alien prank pork both mate brick
+::  eff-short:30            :  310.1 b :  165 c ::    shaft sleep ankle path sled deaf shun zero chunk candy width baggy decoy clerk curve lunch putt land taunt taper yam womb tweak alien prank pork both mate brick fray
 ::  eff-unique:1            :   10.3 b :    8 c ::    rekindle
 ::  eff-unique:2            :   20.6 b :   16 c ::    rekindle satchel
 ::  eff-unique:3            :   31.0 b :   26 c ::    rekindle satchel agonizing
@@ -354,26 +354,26 @@
 ::  eff-unique:8            :   82.7 b :   62 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium
 ::  eff-unique:9            :   93.0 b :   69 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot
 ::  eff-unique:10           :  103.3 b :   79 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness
-::  eff-unique:11           :  113.7 b :   84 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:12           :  124.0 b :   92 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:13           :  134.4 b :   98 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:14           :  144.7 b :  105 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:15           :  155.0 b :  112 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:16           :  165.4 b :  120 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:17           :  175.7 b :  131 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:18           :  186.1 b :  139 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:19           :  196.4 b :  146 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:20           :  206.7 b :  156 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:21           :  217.1 b :  162 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:22           :  227.4 b :  168 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:23           :  237.8 b :  175 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:24           :  248.1 b :  183 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:25           :  258.4 b :  192 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:26           :  268.8 b :  200 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:27           :  279.1 b :  211 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:28           :  289.5 b :  222 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:29           :  299.8 b :  233 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
-::  eff-unique:30           :  310.1 b :  242 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness  [...]
+::  eff-unique:11           :  113.7 b :   84 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick
+::  eff-unique:12           :  124.0 b :   92 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android
+::  eff-unique:13           :  134.4 b :   98 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto
+::  eff-unique:14           :  144.7 b :  105 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto circle
+::  eff-unique:15           :  155.0 b :  112 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto circle debris
+::  eff-unique:16           :  165.4 b :  120 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto circle debris ketchup
+::  eff-unique:17           :  175.7 b :  131 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto circle debris ketchup omnivorous
+::  eff-unique:18           :  186.1 b :  139 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto circle debris ketchup omnivorous jezebel
+::  eff-unique:19           :  196.4 b :  146 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto circle debris ketchup omnivorous jezebel trucks
+::  eff-unique:20           :  206.7 b :  156 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto circle debris ketchup omnivorous jezebel trucks tiptoeing
+::  eff-unique:21           :  217.1 b :  162 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto circle debris ketchup omnivorous jezebel trucks tiptoeing yield
+::  eff-unique:22           :  227.4 b :  168 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto circle debris ketchup omnivorous jezebel trucks tiptoeing yield wound
+::  eff-unique:23           :  237.8 b :  175 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto circle debris ketchup omnivorous jezebel trucks tiptoeing yield wound uptown
+::  eff-unique:24           :  248.1 b :  183 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto circle debris ketchup omnivorous jezebel trucks tiptoeing yield wound uptown actress
+::  eff-unique:25           :  258.4 b :  192 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto circle debris ketchup omnivorous jezebel trucks tiptoeing yield wound uptown actress nuptials
+::  eff-unique:26           :  268.8 b :  200 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto circle debris ketchup omnivorous jezebel trucks tiptoeing yield wound uptown actress nuptials nirvana
+::  eff-unique:27           :  279.1 b :  211 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto circle debris ketchup omnivorous jezebel trucks tiptoeing yield wound uptown actress nuptials nirvana auctioneer
+::  eff-unique:28           :  289.5 b :  222 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto circle debris ketchup omnivorous jezebel trucks tiptoeing yield wound uptown actress nuptials nirvana auctioneer laryngitis
+::  eff-unique:29           :  299.8 b :  233 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto circle debris ketchup omnivorous jezebel trucks tiptoeing yield wound uptown actress nuptials nirvana auctioneer laryngitis automobile
+::  eff-unique:30           :  310.1 b :  242 c ::    rekindle satchel agonizing mule sardine dibs riskily zirconium carrot bogusness wick android ditto circle debris ketchup omnivorous jezebel trucks tiptoeing yield wound uptown actress nuptials nirvana auctioneer laryngitis automobile flypaper
 ::  pets-medium-1           :   10.0 b :    4 c ::    anoa
 ::  pets-medium-2           :   20.2 b :   13 c ::    dynamic-shark
 ::  pets-medium-3           :   30.9 b :   25 c ::    righteously-dynamic-shark

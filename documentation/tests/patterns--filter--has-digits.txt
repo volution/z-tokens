@@ -16,6 +16,35 @@
 ::  digits-base10:28        :   93.0 b :   28 c ::    7022 7110 4492 5182 5629 0665 7352
 ::  digits-base10:30        :   99.6 b :   30 c ::    7022 7110 4492 5182 5629 0665 7352 60
 ::  digits-base10:32        :  106.3 b :   32 c ::    7022 7110 4492 5182 5629 0665 7352 6062
+::  digits-base10-perm      :   21.7 b :   10 c ::    93648 15207
+::  digits-base10-shuf:2    :    6.4 b :    2 c ::    93
+::  digits-base10-shuf:4    :   12.2 b :    4 c ::    9364
+::  digits-base10-shuf:6    :   17.2 b :    6 c ::    9364 81
+::  digits-base10-shuf:8    :   20.7 b :    8 c ::    9364 8152
+::  digits-base16:2         :    8  =b :    2 c ::    c0
+::  digits-base16:4         :   16  =b :    4 c ::    c094
+::  digits-base16:6         :   24  =b :    6 c ::    c094 c3
+::  digits-base16:8         :   32  =b :    8 c ::    c094 c32f
+::  digits-base16:10        :   40  =b :   10 c ::    c094 c32f 72
+::  digits-base16:12        :   48  =b :   12 c ::    c094 c32f 72d3
+::  digits-base16:14        :   56  =b :   14 c ::    c094 c32f 72d3 8a
+::  digits-base16:16        :   64  =b :   16 c ::    c094 c32f 72d3 8ae1
+::  digits-base16:18        :   72  =b :   18 c ::    c094 c32f 72d3 8ae1 30
+::  digits-base16:20        :   80  =b :   20 c ::    c094 c32f 72d3 8ae1 3011
+::  digits-base16:22        :   88  =b :   22 c ::    c094 c32f 72d3 8ae1 3011 18
+::  digits-base16:24        :   96  =b :   24 c ::    c094 c32f 72d3 8ae1 3011 18c1
+::  digits-base16:26        :  104  =b :   26 c ::    c094 c32f 72d3 8ae1 3011 18c1 84
+::  digits-base16:28        :  112  =b :   28 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a
+::  digits-base16:30        :  120  =b :   30 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13
+::  digits-base16:32        :  128  =b :   32 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9
+::  digits-base16-perm      :   44.2 b :   16 c ::    46ba d5fe 1729 380c
+::  digits-base16-shuf:2    :    7.9 b :    2 c ::    46
+::  digits-base16-shuf:4    :   15.4 b :    4 c ::    46ba
+::  digits-base16-shuf:6    :   22.4 b :    6 c ::    46ba d5
+::  digits-base16-shuf:8    :   28.9 b :    8 c ::    46ba d5fe
+::  digits-base16-shuf:10   :   34.7 b :   10 c ::    46ba d5fe 17
+::  digits-base16-shuf:12   :   39.6 b :   12 c ::    46ba d5fe 1729
+::  digits-base16-shuf:14   :   43.2 b :   14 c ::    46ba d5fe 1729 38
 ::  digits-base2:4          :    4  =b :    4 c ::    1010
 ::  digits-base2:8          :    8  =b :    8 c ::    10101000
 ::  digits-base2:12         :   12  =b :   12 c ::    10101000 0100
@@ -40,22 +69,6 @@
 ::  digits-base8:28         :   84  =b :   28 c ::    6026 6103 7414 5775 0654 6142 2556
 ::  digits-base8:30         :   90  =b :   30 c ::    6026 6103 7414 5775 0654 6142 2556 25
 ::  digits-base8:32         :   96  =b :   32 c ::    6026 6103 7414 5775 0654 6142 2556 2505
-::  digits-base16:2         :    8  =b :    2 c ::    c0
-::  digits-base16:4         :   16  =b :    4 c ::    c094
-::  digits-base16:6         :   24  =b :    6 c ::    c094 c3
-::  digits-base16:8         :   32  =b :    8 c ::    c094 c32f
-::  digits-base16:10        :   40  =b :   10 c ::    c094 c32f 72
-::  digits-base16:12        :   48  =b :   12 c ::    c094 c32f 72d3
-::  digits-base16:14        :   56  =b :   14 c ::    c094 c32f 72d3 8a
-::  digits-base16:16        :   64  =b :   16 c ::    c094 c32f 72d3 8ae1
-::  digits-base16:18        :   72  =b :   18 c ::    c094 c32f 72d3 8ae1 30
-::  digits-base16:20        :   80  =b :   20 c ::    c094 c32f 72d3 8ae1 3011
-::  digits-base16:22        :   88  =b :   22 c ::    c094 c32f 72d3 8ae1 3011 18
-::  digits-base16:24        :   96  =b :   24 c ::    c094 c32f 72d3 8ae1 3011 18c1
-::  digits-base16:26        :  104  =b :   26 c ::    c094 c32f 72d3 8ae1 3011 18c1 84
-::  digits-base16:28        :  112  =b :   28 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a
-::  digits-base16:30        :  120  =b :   30 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13
-::  digits-base16:32        :  128  =b :   32 c ::    c094 c32f 72d3 8ae1 3011 18c1 844a 13a9
 ::  digits-base32-hex:2     :   10  =b :    2 c ::    n8
 ::  digits-base32-hex:4     :   20  =b :    4 c ::    n8pv
 ::  digits-base32-hex:6     :   30  =b :    6 c ::    n8pv 47
@@ -174,11 +187,6 @@
 ::  digits-z85:20           :  128.1 b :   20 c ::    .2Nm+ i^%9% 4AD]j Ld?hS
 ::  digits-z85:25           :  160.2 b :   25 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$
 ::  digits-z85:30           :  192.2 b :   30 c ::    .2Nm+ i^%9% 4AD]j Ld?hS >>5i$ V1QQU
-::  digits-base10-perm      :   21.7 b :   10 c ::    93648 15207
-::  digits-base10-shuf:2    :    6.4 b :    2 c ::    93
-::  digits-base10-shuf:4    :   12.2 b :    4 c ::    9364
-::  digits-base10-shuf:6    :   17.2 b :    6 c ::    9364 81
-::  digits-base10-shuf:8    :   20.7 b :    8 c ::    9364 8152
 ::  ascii-any:2             :   13.1 b :    2 c ::    ei
 ::  ascii-any:4             :   26.2 b :    4 c ::    ei#9
 ::  ascii-any:6             :   39.3 b :    6 c ::    ei#9 i5
@@ -195,6 +203,14 @@
 ::  ascii-any:28            :  183.5 b :   28 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`"
 ::  ascii-any:30            :  196.6 b :   30 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[
 ::  ascii-any:32            :  209.7 b :   32 c ::    ei#9 i5kg |~.+ {%IL 6U/o 4PNs 5w`" '[Z_
+::  ascii-any-shuf:4        :   26.1 b :    4 c ::    8(L>
+::  ascii-any-shuf:8        :   51.9 b :    8 c ::    8(L> !;`s
+::  ascii-any-shuf:12       :   77.5 b :   12 c ::    8(L> !;`s &'M6
+::  ascii-any-shuf:16       :  102.9 b :   16 c ::    8(L> !;`s &'M6 RfGi
+::  ascii-any-shuf:20       :  127.9 b :   20 c ::    8(L> !;`s &'M6 RfGi PW$:
+::  ascii-any-shuf:24       :  152.6 b :   24 c ::    8(L> !;`s &'M6 RfGi PW$: yT7a
+::  ascii-any-shuf:28       :  177.0 b :   28 c ::    8(L> !;`s &'M6 RfGi PW$: yT7a z/t=
+::  ascii-any-shuf:32       :  201.1 b :   32 c ::    8(L> !;`s &'M6 RfGi PW$: yT7a z/t= |A)D
 ::  cva-plus-a:2            :   26.7 b :    8 c ::    taqe 2711
 ::  cva-plus-a:3            :   40.1 b :   12 c ::    taqe veza 0449
 ::  cva-plus-a:4            :   53.5 b :   16 c ::    taqe veza zaye 5182
