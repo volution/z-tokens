@@ -1532,6 +1532,15 @@ define_permutation_partial! (
 		{ glyphs::ASCII_LETTER_MIXED_TOKEN_PATTERNS => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
 		(48 : 4));
 
+#[ cfg (feature = "zt-patterns-permutations") ]
+#[ cfg (feature = "zt-patterns-ascii") ]
+define_permutation_partial! (
+		pub ASCII_PRINTABLE_SHUFFLE,
+		("ascii-any-shuf", "ascii-any", "shuffle", "password"),
+		("ascii-any-shuf", "rs"),
+		{ glyphs::ASCII_PRINTABLE_TOKEN_PATTERNS => separators::SPACE_OPTIONAL_INFIX_EACH_4_PATTERN },
+		(32 : 4));
+
 
 
 
@@ -1620,8 +1629,12 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		ASCII_SYMBOLS_ALL,
+		
 		#[ cfg (feature = "zt-patterns-ascii") ]
 		ASCII_PRINTABLE_ALL,
+		#[ cfg (feature = "zt-patterns-permutations") ]
+		#[ cfg (feature = "zt-patterns-ascii") ]
+		ASCII_PRINTABLE_SHUFFLE_ALL,
 		
 		#[ cfg (feature = "zt-patterns-consonant-vowel") ]
 		ASCII_CONSONANT_VOWEL_LOWER_ALL,
