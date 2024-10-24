@@ -1018,6 +1018,28 @@ define_repeat! (
 		{ glyphs::NATO_WORD_TOKEN => separators::SPACE_MANDATORY_INFIX_PATTERN },
 		(66 : 1));
 
+#[ cfg (feature = "zt-patterns-permutations") ]
+#[ cfg (feature = "zt-patterns-nato") ]
+define_permutation! (
+		pub NATO_PERMUTATION,
+		("nato-perm", "nato", "permutation", "dictionary", "pronounceable"),
+		("nato-perm"),
+		glyphs::NATO_WORD_TOKEN_PATTERNS,
+		separators::SPACE_MANDATORY_INFIX_PATTERN);
+
+#[ cfg (feature = "zt-patterns-permutations") ]
+#[ cfg (feature = "zt-patterns-nato") ]
+define_all! (pub NATO_PERMUTATION_ALL, NATO_PERMUTATION);
+
+#[ cfg (feature = "zt-patterns-permutations") ]
+#[ cfg (feature = "zt-patterns-nato") ]
+define_permutation_partial! (
+		pub NATO_SHUFFLE,
+		("nato-shuf", "nato", "shuffle", "dictionary", "pronounceable"),
+		("nato-shuf"),
+		{ glyphs::NATO_WORD_TOKEN_PATTERNS => separators::SPACE_MANDATORY_INFIX_PATTERN },
+		(2 : 35 : 1));
+
 
 
 
@@ -1412,15 +1434,11 @@ define_permutation! (
 
 #[ cfg (feature = "zt-patterns-permutations") ]
 #[ cfg (feature = "zt-patterns-digits-base10") ]
-define_all! (pub DIGITS_BASE10_PERMUTATION_ALL, [
-		DIGITS_BASE10_PERMUTATION,
-	]);
+define_all! (pub DIGITS_BASE10_PERMUTATION_ALL, DIGITS_BASE10_PERMUTATION);
 
 #[ cfg (feature = "zt-patterns-permutations") ]
 #[ cfg (feature = "zt-patterns-digits-base16") ]
-define_all! (pub DIGITS_BASE16_PERMUTATION_ALL, [
-		DIGITS_BASE16_PERMUTATION,
-	]);
+define_all! (pub DIGITS_BASE16_PERMUTATION_ALL, DIGITS_BASE16_PERMUTATION);
 
 
 
@@ -1457,23 +1475,17 @@ define_permutation! (
 
 #[ cfg (feature = "zt-patterns-permutations") ]
 #[ cfg (feature = "zt-patterns-ascii") ]
-define_all! (pub ASCII_LETTER_LOWER_PERMUTATION_ALL, [
-		ASCII_LETTER_LOWER_PERMUTATION,
-	]);
+define_all! (pub ASCII_LETTER_LOWER_PERMUTATION_ALL, ASCII_LETTER_LOWER_PERMUTATION);
 
 #[ cfg (feature = "zt-patterns-permutations") ]
 #[ cfg (feature = "zt-patterns-ascii") ]
 #[ cfg (feature = "zt-patterns-letters-upper") ]
-define_all! (pub ASCII_LETTER_UPPER_PERMUTATION_ALL, [
-		ASCII_LETTER_UPPER_PERMUTATION,
-	]);
+define_all! (pub ASCII_LETTER_UPPER_PERMUTATION_ALL, ASCII_LETTER_UPPER_PERMUTATION);
 
 #[ cfg (feature = "zt-patterns-permutations") ]
 #[ cfg (feature = "zt-patterns-ascii") ]
 #[ cfg (feature = "zt-patterns-letters-mixed") ]
-define_all! (pub ASCII_LETTER_MIXED_PERMUTATION_ALL, [
-		ASCII_LETTER_MIXED_PERMUTATION,
-	]);
+define_all! (pub ASCII_LETTER_MIXED_PERMUTATION_ALL, ASCII_LETTER_MIXED_PERMUTATION);
 
 
 
@@ -1708,6 +1720,12 @@ pub static ALL : &[&[Rb<TokenPattern>]] = &[
 		
 		#[ cfg (feature = "zt-patterns-nato") ]
 		NATO_ALL,
+		#[ cfg (feature = "zt-patterns-permutations") ]
+		#[ cfg (feature = "zt-patterns-nato") ]
+		NATO_PERMUTATION_ALL,
+		#[ cfg (feature = "zt-patterns-permutations") ]
+		#[ cfg (feature = "zt-patterns-nato") ]
+		NATO_SHUFFLE_ALL,
 		
 		#[ cfg (feature = "zt-patterns-bytes") ]
 		BYTES_HEX_ALL,

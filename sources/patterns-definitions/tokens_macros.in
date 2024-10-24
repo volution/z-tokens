@@ -54,6 +54,10 @@ macro_rules! define_permutation_partial {
 		macros::__count_call_with! ( [ $_length : $_each ] => define_permutation_partial! ($_visibility $_pattern, $_labels, $_identifier, $_elements, $_transform, ));
 	};
 	
+	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, $_elements : tt, ( $_start : tt : $_length : tt : $_each : tt ) ) => {
+		macros::__count_call_with! ( [ $_start : $_length : $_each ] => define_permutation_partial! ($_visibility $_pattern, $_labels, $_identifier, $_elements, (), ));
+	};
+	
 	( $_visibility : vis $_pattern : ident, $_labels : tt, $_identifier : tt, { $_elements : expr => $_separator : expr }, $_transform : tt, [ $( $_count : literal, )* ] ) => {
 		paste! {
 			
@@ -354,6 +358,15 @@ macro_rules! define_named_family {
 
 
 macro_rules! define_all {
+	
+	( $_visibility : vis $_all : ident, $_pattern : ident ) => {
+		paste! {
+			
+			$_visibility static $_all : &[Rb<TokenPattern>] = &[
+					Rb::new_static ($_pattern),
+				];
+		}
+	};
 	
 	( $_visibility : vis $_all : ident, [ $( $( #[ $_meta : meta ] )* $_pattern : ident, )* ] ) => {
 		paste! {
