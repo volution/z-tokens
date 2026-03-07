@@ -15,6 +15,7 @@ pub mod randomizer;
 pub mod entropy;
 pub mod entropy_estimates;
 pub mod output;
+pub mod shortcuts;
 
 
 pub(crate) mod prelude;
