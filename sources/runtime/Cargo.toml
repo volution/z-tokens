@@ -69,10 +69,10 @@ platform-info = { version = "^2.0", optional = false, default-features = false, 
 paste = { version = "^1.0", optional = false, default-features = false, features = [] }
 const_format = { version = "^0.2", optional = false, default-features = false, features = [] }
 
-[target.'cfg( not( target_os = "wasi" ) )'.dependencies]
+[target.'cfg( not( target_family = "wasm" ) )'.dependencies]
 memsec = { version = "^0.7", optional = false, default-features = false, features = ["default"] }
 
-[target.'cfg( target_os = "wasi" )'.dependencies]
+[target.'cfg( target_family = "wasm" )'.dependencies]
 memsec = { version = "^0.7", optional = true, default-features = false, features = ["default"] }
 
 
