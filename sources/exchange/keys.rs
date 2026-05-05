@@ -754,7 +754,7 @@ pub fn create_shared_pin () -> KeyCreateResult<Rb<String>> {
 	let mut _bytes = [0u8; 8];
 	OsRng.fill_bytes (&mut _bytes);
 	
-	let _pin : u64 = unsafe { mem::transmute (_bytes) };
+	let _pin = u64::from_be_bytes (_bytes);
 	let _pin = _pin % 10_000_000_000;
 	
 	let _pin = format! ("{:010}", _pin);
