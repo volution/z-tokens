@@ -2,6 +2,7 @@
 
 use ::z_tokens_runtime::preludes::std_plus_extras::*;
 use ::z_tokens_runtime::preludes::errors::*;
+use ::z_tokens_runtime::preludes::errors::panic;
 
 
 use ::z_tokens_runtime::{
