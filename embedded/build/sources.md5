@@ -36,15 +36,15 @@ ae0f62c07aba757f5323ce554ff4dace *exchange-tool/flags.rs
 e2f358a008e289d59cf5aeeea7295a63 *exchange-tool/prelude.rs
 0ca37b5ad99f6f477d10bf181a316565 *exchange-tool/tool.rs
 42c1e0199e7cea6ee83d557a40e60fe4 *exchange/Cargo.toml
-a8ed26890de33b44070e3fb6e24e4a5e *exchange/armor.rs
+b1e02d77cfcdd16b0b09746518141a12 *exchange/armor.rs
 abdb56388ea3bf8a6f4683fc3b65217f *exchange/coding.rs
 4420c17a72f7216fa91ebd29c92a03bd *exchange/crypto.rs
-458674be26776b3e99f4aa18b89a69da *exchange/crypto_backend.rs
+b1b696abbad96104430244226da91d71 *exchange/crypto_backend.rs
 2530cef149b23c3fce5aa296b73bdd50 *exchange/crypto_definitions.rs
 cf7ba7168d5bbec5e18c1e413ecb04e4 *exchange/crypto_frontend.rs
 44bee6f15e616e26a1cc239ee35cb7ed *exchange/crypto_keys.rs
 ef0ab3f4e4051af4259d9a1d9aa5a872 *exchange/crypto_utilities.rs
-7705a55454c297a2d633b1eb584d6a4c *exchange/keys.rs
+71cfef328bed6e320a2b4203f82d70ed *exchange/keys.rs
 f97f46e272959042f85f44d406ced8ed *exchange/lib.rs
 748e1e9c07a38149ea39624eb33768f9 *exchange/oracles.rs
 2f37df8d247cd26d07e415ae54c75147 *exchange/ssh_common.rs
@@ -66,7 +66,7 @@ e77fcce528ca1b16637548e9b4a9564e *oracles-tool/lib.rs
 561faaa23d0f48d2d4f6c8c2e936b064 *oracles/lib.rs
 9e3146cae757a9fadbe8f984e9d438e5 *oracles/pkcs11.rs
 b26fec35077758e5f2d219c2c46b0059 *patterns-definitions/Cargo.toml
-d490b47a7b9596ae1096d19df13c601e *patterns-definitions/all.rs
+64458dc7d77d8c3df3332c8dbc682556 *patterns-definitions/all.rs
 ec9f0b7b26aa7c22af81712b6e75e460 *patterns-definitions/consts.rs
 bbf673b019cdc955d29131f988fb91f9 *patterns-definitions/consts_ascii.in
 e82d994a47b0015b782a41023ed10a8f *patterns-definitions/consts_bip0039.in
@@ -87,7 +87,7 @@ a9556ac76a7686ff8d8d574f053a8443 *patterns-definitions/macros.rs
 2f75811b48742bc83550c6c158ab9d91 *patterns-definitions/macros_count_call_each.in
 006c396df8859a5c925a069b3bffb7ad *patterns-definitions/macros_count_call_with.in
 ad856a45c3faaac25d8eaa35984faa61 *patterns-definitions/macros_count_list.in
-76a5996e3ef3fa71ad94a174ce17085e *patterns-definitions/prelude.rs
+9135852f86ddb850e254626c837c3ebc *patterns-definitions/prelude.rs
 f6eb98b3b6af8fefebf9d7efe7279330 *patterns-definitions/separators.rs
 4ae9b6206479acdaa0eebaae481cdb2d *patterns-definitions/separators_macros.in
 0673f6646b53638c86d6608eedffb1dd *patterns-definitions/tokens.rs
@@ -96,8 +96,8 @@ c269395e56a16d66ea9904bdbd3a81a0 *patterns-definitions/tokens_macros.in
 912f7d9cc09230da67e36f04b47791ab *patterns-tool/flags.rs
 59b8850b9d8450dd924512b0d6cfe98f *patterns-tool/generate.rs
 7f5289601c56d38aedfb8fd10878a1a3 *patterns-tool/lib.rs
-dff561774a4664aea53612d6d8ff9415 *patterns-tool/patterns.rs
-efc7ae5cadba2b2caced591a9a86c5e1 *patterns-tool/prelude.rs
+26d61b7c6866e5ad7f5e5a600165a119 *patterns-tool/patterns.rs
+a5baf6988009c1d535c1f8aa3a8fe8dd *patterns-tool/prelude.rs
 e0821bbc95eae9449f18637fdb3bfa99 *patterns/Cargo.toml
 c60951a01ffd201e330debe1113f230a *patterns/entropy.rs
 e6d93accdf2c2f0a19889b8fc8f7e150 *patterns/entropy_estimates.rs
@@ -105,8 +105,8 @@ a356bade784c7973f34b1b18cdd11204 *patterns/generator.rs
 5ff7e36dfae7febd4baa6eb8121f921b *patterns/lib.rs
 e37b77f806d8ad6749d550e24a9bd62d *patterns/memory.rs
 8449460028c64b91a32f9f9a0d957387 *patterns/model.rs
-31357611053411eeaa8c352466406c5e *patterns/output.rs
-25e087f37fdad142e3b4c9b3f08fa123 *patterns/prelude.rs
+d4e09493bbe4570776d14e4c08ae9e6e *patterns/output.rs
+a6c7699d3b579dde9f00ced7bb92cf6e *patterns/prelude.rs
 d0836abd5feef17d6d68d67be48c3a60 *patterns/randomizer.rs
 33c26b094e93640b940968cb1ccbcb91 *patterns/sensitive.rs
 56ca28692be98ee1b6180472e0d9cc2a *patterns/sensitive_macros.in
@@ -135,7 +135,7 @@ cb54125d980ca338f1f898af70e9ad4d *runtime/allocator.rs
 a35a45f7c11eb02a4bb4f06f2c80b3cb *runtime/errors.rs
 5370468e29139e032d9c35505b73fd39 *runtime/lib.rs
 58d0fb060632e02e44caa82a20157c54 *runtime/memory.rs
-b77fa716486e75e660fc8f4466aca424 *runtime/preludes.rs
+ac98f9e6aff7fc90431cc6b2b0d0c0ab *runtime/preludes.rs
 6419a84a028c2aa350b533bf1d33031b *runtime/sensitive.rs
 56ca28692be98ee1b6180472e0d9cc2a *runtime/sensitive_macros.in
 6d4ed6d632b9dcd58db10686cc903766 *runtime/sensitive_memory.rs

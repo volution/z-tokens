@@ -2,12 +2,12 @@
 
 * tool          : z-tokens
 * version       : 0.4.0
-* executable    : /mnt/poconigu/ciprian/volatile/rust--scratch/gipadada--3a10a70055e15c740f7e52d4872728a7--27979ce5dd001f4128a537bf4e2e61d8d1c985d0e116ae9945a07e19f8c5b4fb--local/outputs/binaries/z-tokens--release--linux--native
-* executable-0  : /home/ciprian/.../workbench/miscellaneous/z-tokens/.outputs/gipadada/binaries/z-tokens--release--linux--native
+* executable    : /mnt/poconigu/ciprian/volatile/rust--scratch/xiyipoke--8b615ee14d4896fcb9d1dcf0b0d409eb--30d970e8e51a1e64e5ce7b05af8f33c77c26771fd4769931c64d9a33328dea21--local/outputs/binaries/z-tokens--release--linux--native
+* executable-0  : /mnt/fuvitono/ciprian/workbench/miscellaneous/z-tokens/.outputs/xiyipoke/binaries/z-tokens--release--linux--native
 * build target  : release
-* build number  : 16694, 2024-10-12-17-37-12
+* build number  : 16874, 2026-08-07-11-40-09
 * code & issues : https://github.com/volution/z-tokens
-* sources git   : 1cd3408b0024b479064577b32fb8d74bd5169f9d-uncommitted
-* sources hash  : d54a5a6d3fd73bca9668dc811117f63b
-* uname node    : gipadada
-* uname system  : Linux, 6.9.8-lp155.3.g03a8fa8-default, x86_64
+* sources git   : eb20fe7f26f55a9a093d6b9af7bfafb8cb7e6077-uncommitted
+* sources hash  : a76ec9953311fa8e14c94b0181926e74
+* uname node    : xiyipoke
+* uname system  : Linux, 6.17.7-lp156.4.gc376041-default, x86_64
