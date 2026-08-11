@@ -65,9 +65,9 @@ pub(crate) fn password_backend (
 	// --------------------------------------------------------------------------------
 	// --------------------------------------------------------------------------------
 	
-	// NOTE:  deriving keys...
+	// NOTE:  deriving keys (phase 1)...
 	
-	let (_partial_key, _aont_key, _secret_data, _pin_data, _seed_data, _ballast_data, _oracle_merge, _oracle_sorter, _derivation_loops)
+	let (_packet_key_seed, _packet_salt_seed, _aont_key, _secret_data, _pin_data, _seed_data, _ballast_data, _oracle_merge, _oracle_sorter, _derivation_loops)
 			= derive_keys_phase_1 (CRYPTO_PASSWORD_SCHEMA_V1, _private_keys, _public_keys, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, _derivation_loops, _namespace, _send) ?;
 	
 	let _oracles = wrap_oracles_phase_2 (_oracles, _oracle_sorter) ?;
@@ -76,14 +76,15 @@ pub(crate) fn password_backend (
 	
 	// NOTE:  salting...
 	
-	let _packet_salt = derive_packet_salt (CRYPTO_PASSWORD_SALT_PURPOSE, &_partial_key, _password_data.access (), true) ?;
+	let _packet_salt = derive_packet_salt (&_packet_salt_seed, _password_data.access (), true) ?;
 	
 	drop! (_password_data);
 	
-	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (CRYPTO_PASSWORD_SCHEMA_V1, _partial_key, &_packet_salt, _secret_data, _pin_data, _seed_data, _ballast_data, (_oracle_merge, _oracles), _derivation_loops) ?;
+	// NOTE:  deriving keys (phase 2)...
 	
-	drop! (_encryption_key, _authentication_key);
+	let _packet_key = derive_keys_phase_2 (_packet_key_seed, &_packet_salt, _secret_data, _pin_data, _seed_data, _ballast_data, (_oracle_merge, _oracles), _derivation_loops) ?;
+	
+	// NOTE:  derive output...
 	
 	let _password_output_0 = blake3_hash (
 			InternalPasswordOutput::wrap,
@@ -165,27 +166,31 @@ pub fn encrypt_with_raw (
 	// --------------------------------------------------------------------------------
 	// --------------------------------------------------------------------------------
 	
-	drop! (_decrypted);
-	
 	// NOTE:  padding...
 	
 	padding_push (CRYPTO_ENCRYPTED_HEADER_SIZE, CRYPTO_ENCRYPTED_PADDING_SIZE, &mut _intermediate_buffer);
 	
-	// NOTE:  deriving keys...
+	// NOTE:  deriving keys (phase 1)...
 	
-	let (_partial_key, _aont_key, _secret_data, _pin_data, _seed_data, _ballast_data, _oracle_merge, _oracle_sorter, _derivation_loops)
+	let (_packet_key_seed, _packet_salt_seed, _aont_key, _secret_data, _pin_data, _seed_data, _ballast_data, _oracle_merge, _oracle_sorter, _derivation_loops)
 			= derive_keys_phase_1 (CRYPTO_ENCRYPTION_SCHEMA_V1, _senders, _recipients, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, _derivation_loops, _namespace, true) ?;
 	
 	let _oracles = wrap_oracles_phase_2 (_oracles, _oracle_sorter) ?;
 	
 	// NOTE:  salting...
 	
-	let _packet_salt = derive_packet_salt (CRYPTO_PACKET_SALT_PURPOSE, &_partial_key, &_intermediate_buffer, _packet_salt_deterministic) ?;
+	let _packet_salt = derive_packet_salt (&_packet_salt_seed, &_intermediate_buffer, _packet_salt_deterministic) ?;
 	
-	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (CRYPTO_ENCRYPTION_SCHEMA_V1, _partial_key, &_packet_salt, _secret_data, _pin_data, _seed_data, _ballast_data, (_oracle_merge, _oracles), _derivation_loops) ?;
+	// NOTE:  deriving keys (phase 2)...
 	
-	drop! (_packet_key);
+	let _packet_key = derive_keys_phase_2 (_packet_key_seed, &_packet_salt, _secret_data, _pin_data, _seed_data, _ballast_data, (_oracle_merge, _oracles), _derivation_loops) ?;
+	
+	drop! (_decrypted);
+	
+	// NOTE:  deriving keys (phase 3)...
+	
+	let (_encryption_key, _authentication_key)
+			= derive_keys_phase_3 (&_packet_key) ?;
 	
 	// NOTE:  encrypting...
 	
@@ -288,9 +293,9 @@ pub fn decrypt_with_raw (
 	
 	drop! (_encrypted);
 	
-	// NOTE:  deriving keys...
+	// NOTE:  deriving keys (phase 1)...
 	
-	let (_partial_key, _aont_key, _secret_data, _pin_data, _seed_data, _ballast_data, _oracle_merge, _oracle_sorter, _derivation_loops)
+	let (_packet_key_seed, _packet_salt_seed, _aont_key, _secret_data, _pin_data, _seed_data, _ballast_data, _oracle_merge, _oracle_sorter, _derivation_loops)
 			= derive_keys_phase_1 (CRYPTO_ENCRYPTION_SCHEMA_V1, _recipients, _senders, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, _derivation_loops, _namespace, false) ?;
 	
 	let _oracles = wrap_oracles_phase_2 (_oracles, _oracle_sorter) ?;
@@ -302,13 +307,16 @@ pub fn decrypt_with_raw (
 	
 	apply_all_or_nothing_mangling (_aont_key, &mut _packet_salt, &_intermediate_buffer) ?;
 	
-	// NOTE:  deriving keys...
+	// NOTE:  deriving keys (phase 2)...
 	
-	let (_packet_key, _encryption_key, _authentication_key)
-			= derive_keys_phase_2 (CRYPTO_ENCRYPTION_SCHEMA_V1, _partial_key, &_packet_salt, _secret_data, _pin_data, _seed_data, _ballast_data, (_oracle_merge, _oracles), _derivation_loops) ?;
+	let _packet_key = derive_keys_phase_2 (_packet_key_seed, &_packet_salt, _secret_data, _pin_data, _seed_data, _ballast_data, (_oracle_merge, _oracles), _derivation_loops) ?;
 	
-	drop! (_packet_key);
 	drop! (_packet_salt);
+	
+	// NOTE:  deriving keys (phase 3)...
+	
+	let (_encryption_key, _authentication_key)
+			= derive_keys_phase_3 (&_packet_key) ?;
 	
 	// NOTE:  authenticating...
 	

@@ -87,14 +87,18 @@ pub(crate) const CRYPTO_BALLAST_ARGON_P_COST : u32 = 1;
 
 
 
-define_cryptographic_material! (pub(crate) InternalDheKey, 32);
-define_cryptographic_material! (pub(crate) InternalPqKey, 32);
-define_cryptographic_material! (pub(crate) InternalPartialKey, 32);
-define_cryptographic_material! (pub(crate) InternalAontKey, 32);
 define_cryptographic_material! (pub(crate) InternalParametersHash, 32);
 
-define_cryptographic_material! (pub(crate) InternalPacketSalt, 32);
+define_cryptographic_material! (pub(crate) InternalDheKey, 32);
+
+define_cryptographic_material! (pub(crate) InternalPartialKey, 32);
+define_cryptographic_material! (pub(crate) InternalAontKey, 32);
+
+define_cryptographic_material! (pub(crate) InternalPacketKeySeed, 32);
 define_cryptographic_material! (pub(crate) InternalPacketKey, 32);
+
+define_cryptographic_material! (pub(crate) InternalPacketSaltSeed, 32);
+define_cryptographic_material! (pub(crate) InternalPacketSalt, 32);
 
 define_cryptographic_material! (pub(crate) InternalEncryptionKey, 32);
 
@@ -160,8 +164,11 @@ define_cryptographic_purpose! (pub(crate) CRYPTO_DHE_KEY_PURPOSE, encryption, dh
 define_cryptographic_purpose! (pub(crate) CRYPTO_PARTIAL_KEY_PURPOSE, encryption, partial_key);
 define_cryptographic_purpose! (pub(crate) CRYPTO_AONT_KEY_PURPOSE, encryption, aont_key);
 
-define_cryptographic_purpose! (pub(crate) CRYPTO_PACKET_SALT_PURPOSE, encryption, packet_salt);
+define_cryptographic_purpose! (pub(crate) CRYPTO_PACKET_KEY_SEED_PURPOSE, encryption, packet_key_seed);
 define_cryptographic_purpose! (pub(crate) CRYPTO_PACKET_KEY_PURPOSE, encryption, packet_key);
+
+define_cryptographic_purpose! (pub(crate) CRYPTO_PACKET_SALT_SEED_PURPOSE, encryption, packet_salt_seed);
+
 define_cryptographic_purpose! (pub(crate) CRYPTO_ENCRYPTION_KEY_PURPOSE, encryption, encryption_key);
 define_cryptographic_purpose! (pub(crate) CRYPTO_AUTHENTICATION_KEY_PURPOSE, encryption, authentication_key);
 
@@ -193,7 +200,6 @@ define_cryptographic_purpose! (pub(crate) CRYPTO_ORACLE_SORTER_PURPOSE, encrypti
 define_cryptographic_purpose! (pub(crate) CRYPTO_ORACLE_INPUT_PURPOSE, encryption, oracle_input);
 define_cryptographic_purpose! (pub(crate) CRYPTO_ORACLE_KEY_PURPOSE, encryption, oracle_key);
 
-define_cryptographic_purpose! (pub(crate) CRYPTO_PASSWORD_SALT_PURPOSE, password, salt);
 define_cryptographic_purpose! (pub(crate) CRYPTO_PASSWORD_OUTPUT_PURPOSE, password, output);
 
 

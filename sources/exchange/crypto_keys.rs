@@ -56,7 +56,8 @@ pub(crate) fn derive_keys_phase_1 <'a> (
 			_namespace : Option<&str>,
 			_encryption : bool,
 		) -> CryptoResult<(
-			InternalPartialKey,
+			InternalPacketKeySeed,
+			InternalPacketSaltSeed,
 			InternalAontKey,
 			(InternalSecretMerge, Vec<InternalSecretInput<'a>>),
 			(InternalPinMerge, Vec<InternalPinInput<'a>>),
@@ -346,6 +347,30 @@ pub(crate) fn derive_keys_phase_1 <'a> (
 	drop! (_associated_merge);
 	
 	// --------------------------------------------------------------------------------
+	// NOTE:  derive packet key seed...
+	
+	let _packet_key_seed = blake3_hash (
+			InternalPacketKeySeed::wrap,
+			CRYPTO_PACKET_KEY_SEED_PURPOSE,
+			&[
+				_partial_key.access (),
+			],
+			&[],
+		);
+	
+	// --------------------------------------------------------------------------------
+	// NOTE:  derive packet salt seed...
+	
+	let _packet_salt_seed = blake3_hash (
+			InternalPacketSaltSeed::wrap,
+			CRYPTO_PACKET_SALT_SEED_PURPOSE,
+			&[
+				_partial_key.access (),
+			],
+			&[],
+		);
+	
+	// --------------------------------------------------------------------------------
 	// NOTE:  derive AONT key...
 	
 	let _aont_key = blake3_hash (
@@ -372,7 +397,8 @@ pub(crate) fn derive_keys_phase_1 <'a> (
 	// --------------------------------------------------------------------------------
 	
 	Ok ((
-			_partial_key,
+			_packet_key_seed,
+			_packet_salt_seed,
 			_aont_key,
 			(_secret_merge, _secret_inputs),
 			(_pin_merge, _pin_inputs),
@@ -391,8 +417,7 @@ pub(crate) fn derive_keys_phase_1 <'a> (
 
 
 pub(crate) fn derive_keys_phase_2 (
-			_schema : &'static str,
-			_partial_key : InternalPartialKey,
+			_packet_key_seed : InternalPacketKeySeed,
 			_packet_salt : &InternalPacketSalt,
 			_secret_pairs : (InternalSecretMerge, Vec<InternalSecretInput>),
 			_pin_pairs : (InternalPinMerge, Vec<InternalPinInput>),
@@ -400,11 +425,9 @@ pub(crate) fn derive_keys_phase_2 (
 			_ballast_pairs : (InternalBallastMerge, Vec<InternalBallastInput>),
 			_oracles : (InternalOracleMerge, Vec<(&mut dyn Oracle, InternalOracleHandle)>),
 			_derivation_loops : NonZeroU64,
-		) -> CryptoResult<(
-			InternalPacketKey,
-			InternalEncryptionKey,
-			InternalAuthenticationKey,
-		)>
+		) -> CryptoResult<
+			InternalPacketKey
+		>
 {
 	let (_secret_merge, _secret_inputs) = _secret_pairs;
 	let (_pin_merge, _pin_inputs) = _pin_pairs;
@@ -415,7 +438,7 @@ pub(crate) fn derive_keys_phase_2 (
 	// --------------------------------------------------------------------------------
 	// NOTE:  initialize keys...
 	
-	let mut _packet_key = InternalPacketKey::wrap (_partial_key.unwrap ());
+	let mut _packet_key = InternalPacketKey::wrap (_packet_key_seed.unwrap ());
 	let mut _oracle_key = InternalOracleOutput::wrap (_oracle_merge.unwrap ());
 	let mut _ballast_key = InternalBallastKey::wrap (_ballast_merge.unwrap ());
 	let mut _seed_key = InternalSeedKey::wrap (_seed_merge.unwrap ());
@@ -468,7 +491,7 @@ pub(crate) fn derive_keys_phase_2 (
 				);
 			
 			let mut _oracle_output = InternalOracleOutput::zero ();
-			_oracle_wrapper.derive (Some (_schema), _oracle_input.access (), _oracle_output.access_mut ()) .else_wrap (0xcc07e95e) ?;
+			_oracle_wrapper.derive (None, _oracle_input.access (), _oracle_output.access_mut ()) .else_wrap (0xcc07e95e) ?;
 			
 			_oracle_key = blake3_hash (
 					InternalOracleOutput::wrap,
@@ -643,8 +666,24 @@ pub(crate) fn derive_keys_phase_2 (
 	}
 	
 	// --------------------------------------------------------------------------------
-	// NOTE:  derive encryption key...
 	
+	Ok (_packet_key)
+}
+
+
+
+
+
+
+
+
+pub(crate) fn derive_keys_phase_3 (
+			_packet_key : &InternalPacketKey,
+		) -> CryptoResult<(
+			InternalEncryptionKey,
+			InternalAuthenticationKey,
+		)>
+{
 	let _encryption_key = blake3_hash (
 			InternalEncryptionKey::wrap,
 			CRYPTO_ENCRYPTION_KEY_PURPOSE,
@@ -653,9 +692,6 @@ pub(crate) fn derive_keys_phase_2 (
 			],
 			&[],
 		);
-	
-	// --------------------------------------------------------------------------------
-	// NOTE:  derive authentication key...
 	
 	let _authentication_key = blake3_hash (
 			InternalAuthenticationKey::wrap,
@@ -666,9 +702,7 @@ pub(crate) fn derive_keys_phase_2 (
 			&[],
 		);
 	
-	// --------------------------------------------------------------------------------
-	
-	Ok ((_packet_key, _encryption_key, _authentication_key))
+	Ok ((_encryption_key, _authentication_key))
 }
 
 
@@ -679,8 +713,7 @@ pub(crate) fn derive_keys_phase_2 (
 
 
 pub(crate) fn derive_packet_salt (
-			_purpose : &'static str,
-			_partial_key : &InternalPartialKey,
+			_packet_salt_seed : &InternalPacketSaltSeed,
 			_data : &[u8],
 			_deterministic : bool,
 		) -> CryptoResult<
@@ -693,12 +726,11 @@ pub(crate) fn derive_packet_salt (
 			generate_random (InternalPacketSalt::wrap)
 		};
 	
-	let _packet_salt = blake3_hash (
+	let _packet_salt = blake3_keyed_hash (
 			InternalPacketSalt::wrap,
-			_purpose,
+			_packet_salt_seed.access (),
 			&[
 				_random_salt.access (),
-				_partial_key.access (),
 			],
 			&[
 				_data,
