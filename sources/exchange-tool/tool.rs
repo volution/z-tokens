@@ -360,6 +360,15 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 	
 	let _password_input = _arguments.inputs.data () .else_wrap (0x5d90db8d) ?;
 	
+	let (_fingerprint_input, mut _fingerprint_output) = match &_arguments.fingerprint {
+			Some (Some (_fingerprint)) =>
+				(Some (_fingerprint), None),
+			Some (None) =>
+				(None, Some (Fingerprint::zero ())),
+			None =>
+				(None, None),
+		};
+	
 	let mut _password_output = [0; 32];
 	
 	if _senders.is_empty () && _recipients.is_empty () {
@@ -374,6 +383,8 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 				_namespace,
 				&_password_input,
 				&mut _password_output,
+				_fingerprint_input,
+				_fingerprint_output.as_mut (),
 				_oracles,
 			) .else_wrap (0xbfae6a34) ?;
 		
@@ -402,6 +413,8 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 					_namespace,
 					&_password_input,
 					&mut _password_output,
+					_fingerprint_input,
+					_fingerprint_output.as_mut (),
 					_oracles,
 				) .else_wrap (0x1c177f6e) ?;
 			
@@ -422,6 +435,8 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 					_namespace,
 					&_password_input,
 					&mut _password_output,
+					_fingerprint_input,
+					_fingerprint_output.as_mut (),
 					_oracles,
 				) .else_wrap (0x08f6442c) ?;
 			
@@ -440,6 +455,16 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 	_password_encoded.push ('\n');
 	
 	write_output (_output, _password_encoded.into_bytes ()) .else_wrap (0x74075ccd) ?;
+	
+	if let Some (_fingerprint) = _fingerprint_output {
+		let _fingerprint = _fingerprint.encode () .else_wrap (0xc42a2ae7) ?;
+		let mut _report = String::new ();
+		writeln! (_report) .else_wrap (0xcaecf897) ?;
+		writeln! (_report, "## fingerprint") .else_wrap (0x82cb7c5a) ?;
+		writeln! (_report, "{}", _fingerprint.deref ()) .else_wrap (0x282fb7ac) ?;
+		writeln! (_report) .else_wrap (0xb9e641d9) ?;
+		write! (stderr_locked (), "{}", _report) .else_wrap (0x69adaeea) ?;
+	}
 	
 	Ok (ExitCode::SUCCESS)
 }

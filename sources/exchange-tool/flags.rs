@@ -64,6 +64,7 @@ pub(crate) struct PasswordArguments {
 	pub shared : SharedKeysArguments,
 	pub ssh_wrappers : SshWrappersArguments,
 	pub common : CommonArguments,
+	pub fingerprint : Option<Option<Fingerprint>>,
 }
 
 
@@ -74,6 +75,16 @@ pub(crate) struct PasswordFlags {
 	pub shared : SharedKeysFlags,
 	pub ssh_wrappers : SshWrappersFlags,
 	pub common : CommonFlags,
+	// TODO!
+	pub fingerprint : PasswordFingerprintFlag,
+}
+
+
+#[ derive (Clone) ]
+pub(crate) enum PasswordFingerprintFlag {
+	None,
+	Generate,
+	Explicit (String),
 }
 
 
@@ -1174,6 +1185,7 @@ impl PasswordFlags {
 				shared : SharedKeysFlags::new (),
 				ssh_wrappers : SshWrappersFlags::new (),
 				common : CommonFlags::new (),
+				fingerprint : PasswordFingerprintFlag::None,
 			}
 	}
 	
@@ -1184,6 +1196,21 @@ impl PasswordFlags {
 		self.recipients.flags (_flags) ?;
 		self.shared.flags (_flags) ?;
 		self.ssh_wrappers.flags (_flags) ?;
+		
+		{
+			let _flag = _flags.define_complex (&mut self.fingerprint);
+			_flag.define_switch_0 (PasswordFingerprintFlag::Generate)
+					.with_flag ((), "with-fingerprint")
+					.with_description ("fingerprint input")
+					.with_warning ("CAUTION");
+			_flag.define_switch_0 (PasswordFingerprintFlag::None)
+					.with_flag ((), "without-fingerprint");
+			_flag.define_flag_with_wrapper_0 (|_fingerprint| PasswordFingerprintFlag::Explicit (_fingerprint))
+					.with_flag ((), "fingerprint")
+					.with_placeholder ("string")
+					.with_description ("fingerprint generated previously");
+		}
+		
 		self.common.flags (_flags) ?;
 		
 		Ok (())
@@ -1198,6 +1225,15 @@ impl PasswordFlags {
 		let _shared = self.shared.arguments (_common.empty_is_missing) ?;
 		let _ssh_wrappers = self.ssh_wrappers.arguments (_common.empty_is_missing) ?;
 		
+		let _fingerprint = match self.fingerprint {
+				PasswordFingerprintFlag::None =>
+					None,
+				PasswordFingerprintFlag::Generate =>
+					Some (None),
+				PasswordFingerprintFlag::Explicit (_fingerprint) =>
+					Some (Some (decode_fingerprint (&_fingerprint) .else_wrap (0xec2c13df) ?)),
+			};
+		
 		Ok (PasswordArguments {
 				inputs : _inputs,
 				senders : _senders,
@@ -1205,7 +1241,26 @@ impl PasswordFlags {
 				shared : _shared,
 				ssh_wrappers : _ssh_wrappers,
 				common : _common,
+				fingerprint : _fingerprint,
 			})
+	}
+}
+
+
+impl FlagValue for PasswordFingerprintFlag {}
+
+
+impl FlagValueDisplay for PasswordFingerprintFlag {
+	
+	fn display_value (&self, _formatter : &mut Formatter) -> FlagValueDisplayResult {
+		match self {
+			PasswordFingerprintFlag::None =>
+				write! (_formatter, "false") .else_wrap (0x6782be04),
+			PasswordFingerprintFlag::Generate =>
+				write! (_formatter, "true") .else_wrap (0x3e2ea5ef),
+			PasswordFingerprintFlag::Explicit (_fingerprint) =>
+				write! (_formatter, "{}", _fingerprint) .else_wrap (0xf51df6e1),
+		}
 	}
 }
 

@@ -44,6 +44,8 @@ pub(crate) fn password_backend (
 			_symmetric : &SymmetricParametersRawRefs,
 			_password_data : &[u8],
 			_password_output : &mut [u8; 32],
+			_fingerprint_input : Option<&Fingerprint>,
+			_fingerprint_output : Option<&mut Fingerprint>,
 			_oracles : Vec<&mut dyn Oracle>,
 			_send : bool,
 		) -> CryptoResult
@@ -68,7 +70,7 @@ pub(crate) fn password_backend (
 	// NOTE:  deriving keys (phase 1)...
 	
 	let (_packet_key_seed, _packet_salt_seed, _aont_key, _secret_data, _pin_data, _seed_data, _ballast_data, _oracle_merge, _oracle_sorter, _derivation_loops)
-			= derive_keys_phase_1 (CRYPTO_PASSWORD_SCHEMA_V1, _private_keys, _public_keys, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, false, _derivation_loops, _namespace, _send) ?;
+			= derive_keys_phase_1 (CRYPTO_PASSWORD_SCHEMA_V1, _private_keys, _public_keys, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, _fingerprint_input.is_some () || _fingerprint_output.is_some (), _derivation_loops, _namespace, _send) ?;
 	
 	let _oracles = wrap_oracles_phase_2 (_oracles, _oracle_sorter) ?;
 	
@@ -78,16 +80,40 @@ pub(crate) fn password_backend (
 	
 	let _packet_salt = derive_packet_salt (&_packet_salt_seed, _password_data.access (), true) ?;
 	
-	drop! (_password_data);
-	
 	// NOTE:  deriving keys (phase 2)...
 	
 	let _packet_key = derive_keys_phase_2 (_packet_key_seed, &_packet_salt, _secret_data, _pin_data, _seed_data, _ballast_data, (_oracle_merge, _oracles), _derivation_loops) ?;
 	
+	// NOTE:  fingerprinting...
+	
+	let _fingerprint_actual = match (_fingerprint_input, _fingerprint_output.is_some ()) {
+			
+			(Some (_fingerprint_expected), false) => {
+				let _fingerprint_actual = derive_fingerprint (&_packet_key, _password_data.access ()) ?;
+				let _fingerprint_expected = InternalFingerprint::wrap (_fingerprint_expected.access_bytes () .clone ());
+				if ! InternalFingerprint::compare_access (&_fingerprint_actual, &_fingerprint_expected) {
+					fail! (0x8881654b);
+				}
+				Some (_fingerprint_actual)
+			}
+			
+			(None, true) => {
+				let _fingerprint_actual = derive_fingerprint (&_packet_key, _password_data.access ()) ?;
+				Some (_fingerprint_actual)
+			}
+			
+			(None, false) =>
+				None,
+			
+			(Some (_), true) =>
+				fail! (0xeb3c26e4),
+		};
+	
+	drop! (_password_data);
+	
 	// NOTE:  derive output...
 	
-	// TODO:  add support for fingerprint!
-	
+	// FIXME!
 	let _password_output_0 = blake3_hash (
 			InternalPasswordOutput::wrap,
 			CRYPTO_PASSWORD_OUTPUT_PURPOSE,
@@ -102,7 +128,15 @@ pub(crate) fn password_backend (
 	// --------------------------------------------------------------------------------
 	// --------------------------------------------------------------------------------
 	
-	// NOTE:  This last step is an overhead, but it ensures an all-or-nothing processing!
+	match (_fingerprint_output, _fingerprint_actual) {
+		(Some (_fingerprint_output), Some (_fingerprint_actual)) =>
+			*_fingerprint_output = Fingerprint::new (_fingerprint_actual.unwrap ()),
+		(Some (_), None) =>
+			panic! (unreachable, 0x348913c0),
+		(None, _) =>
+			(),
+	}
+	
 	_password_output.copy_from_slice (_password_output_0.access ());
 	
 	Ok (())
@@ -190,9 +224,9 @@ pub fn encrypt_with_raw (
 	
 	// NOTE:  fingerprinting...
 	
-	let _fingerprint = if _fingerprint_output.is_some () {
-			let _fingerprint = derive_fingerprint (&_packet_key, _decrypted.access ()) ?;
-			Some (_fingerprint)
+	let _fingerprint_actual = if _fingerprint_output.is_some () {
+			let _fingerprint_actual = derive_fingerprint (&_packet_key, _decrypted.access ()) ?;
+			Some (_fingerprint_actual)
 		} else {
 			None
 		};
@@ -202,7 +236,7 @@ pub fn encrypt_with_raw (
 	// NOTE:  deriving keys (phase 3)...
 	
 	let (_encryption_key, _authentication_key)
-			= derive_keys_phase_3 (&_packet_key, _fingerprint.as_ref ()) ?;
+			= derive_keys_phase_3 (&_packet_key, _fingerprint_actual.as_ref ()) ?;
 	
 	// NOTE:  encrypting...
 	
@@ -242,9 +276,9 @@ pub fn encrypt_with_raw (
 	// --------------------------------------------------------------------------------
 	// --------------------------------------------------------------------------------
 	
-	match (_fingerprint_output, _fingerprint) {
-		(Some (_fingerprint_output), Some (_fingerprint)) =>
-			*_fingerprint_output = Fingerprint::new (_fingerprint.access () .clone ()),
+	match (_fingerprint_output, _fingerprint_actual) {
+		(Some (_fingerprint_output), Some (_fingerprint_actual)) =>
+			*_fingerprint_output = Fingerprint::new (_fingerprint_actual.unwrap ()),
 		(None, None) =>
 			(),
 		_ =>
@@ -268,7 +302,7 @@ pub fn decrypt_with_raw (
 			_recipients : &[&RecipientPrivateKey],
 			_senders : &[&SenderPublicKey],
 			_symmetric : &SymmetricParametersRawRefs,
-			_fingerprint : Option<&Fingerprint>,
+			_fingerprint_input : Option<&Fingerprint>,
 			_encrypted : &[u8],
 			_decrypted : &mut Vec<u8>,
 			_oracles : Vec<&mut dyn Oracle>,
@@ -279,8 +313,8 @@ pub fn decrypt_with_raw (
 	let (_oracles, _oracle_handles) = wrap_oracles_phase_1 (_oracles) ?;
 	let (_derivation_loops, _namespace) = (_symmetric.derivation_loops, _symmetric.namespace);
 	
-	let _fingerprint = if let Some (_fingerprint) = _fingerprint {
-			Some (InternalFingerprint::wrap (_fingerprint.access_bytes () .clone ()))
+	let _fingerprint_input = if let Some (_fingerprint_input) = _fingerprint_input {
+			Some (InternalFingerprint::wrap (_fingerprint_input.access_bytes () .clone ()))
 		} else {
 			None
 		};
@@ -324,7 +358,7 @@ pub fn decrypt_with_raw (
 	// NOTE:  deriving keys (phase 1)...
 	
 	let (_packet_key_seed, _packet_salt_seed, _aont_key, _secret_data, _pin_data, _seed_data, _ballast_data, _oracle_merge, _oracle_sorter, _derivation_loops)
-			= derive_keys_phase_1 (CRYPTO_ENCRYPTION_SCHEMA_V1, _recipients, _senders, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, _fingerprint.is_some (), _derivation_loops, _namespace, false) ?;
+			= derive_keys_phase_1 (CRYPTO_ENCRYPTION_SCHEMA_V1, _recipients, _senders, _associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs, _oracle_handles, _fingerprint_input.is_some (), _derivation_loops, _namespace, false) ?;
 	
 	let _oracles = wrap_oracles_phase_2 (_oracles, _oracle_sorter) ?;
 	
@@ -344,7 +378,7 @@ pub fn decrypt_with_raw (
 	// NOTE:  deriving keys (phase 3)...
 	
 	let (_encryption_key, _authentication_key)
-			= derive_keys_phase_3 (&_packet_key, _fingerprint.as_ref ()) ?;
+			= derive_keys_phase_3 (&_packet_key, _fingerprint_input.as_ref ()) ?;
 	
 	// NOTE:  authenticating...
 	
@@ -420,10 +454,8 @@ pub fn decrypt_with_raw (
 	
 	// NOTE:  fingerprinting & checking...
 	
-	if let Some (_fingerprint_expected) = _fingerprint {
-		
+	if let Some (_fingerprint_expected) = _fingerprint_input {
 		let _fingerprint_actual = derive_fingerprint (&_packet_key, &_decompress_buffer) ?;
-		
 		if ! InternalFingerprint::compare_consume (_fingerprint_actual, _fingerprint_expected) {
 			fail! (0x651c13e2);
 		}

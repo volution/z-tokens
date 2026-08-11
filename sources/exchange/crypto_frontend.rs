@@ -91,6 +91,8 @@ pub fn password_symmetric <'a> (
 			_namespace : Option<&'a str>,
 			_password_data : &[u8],
 			_password_output : &mut [u8; 32],
+			_fingerprint_input : Option<&'a Fingerprint>,
+			_fingerprint_output : Option<&'a mut Fingerprint>,
 			_oracles : impl Iterator<Item = &'a mut dyn Oracle>,
 		) -> CryptoResult
 {
@@ -99,6 +101,8 @@ pub fn password_symmetric <'a> (
 			& _symmetric.refs (),
 			_password_data,
 			_password_output,
+			_fingerprint_input,
+			_fingerprint_output,
 			_oracles.collect (),
 		)
 }
@@ -108,10 +112,12 @@ pub fn password_symmetric_with_raw (
 			_symmetric : &SymmetricParametersRawRefs,
 			_password_data : &[u8],
 			_password_output : &mut [u8; 32],
+			_fingerprint_input : Option<&Fingerprint>,
+			_fingerprint_output : Option<&mut Fingerprint>,
 			_oracles : Vec<&mut dyn Oracle>,
 		) -> CryptoResult
 {
-	password_backend (&[], &[], _symmetric, _password_data, _password_output, _oracles, true)
+	password_backend (&[], &[], _symmetric, _password_data, _password_output, _fingerprint_input, _fingerprint_output, _oracles, true)
 }
 
 
@@ -129,6 +135,8 @@ pub fn password_send <'a> (
 			_namespace : Option<&'a str>,
 			_password_data : &[u8],
 			_password_output : &mut [u8; 32],
+			_fingerprint_input : Option<&'a Fingerprint>,
+			_fingerprint_output : Option<&'a mut Fingerprint>,
 			_oracles : impl Iterator<Item = &'a mut dyn Oracle>,
 		) -> CryptoResult
 {
@@ -139,6 +147,8 @@ pub fn password_send <'a> (
 			& _symmetric.refs (),
 			_password_data,
 			_password_output,
+			_fingerprint_input,
+			_fingerprint_output,
 			_oracles.collect (),
 		)
 }
@@ -150,11 +160,13 @@ pub fn password_send_with_raw (
 			_symmetric : &SymmetricParametersRawRefs,
 			_password_data : &[u8],
 			_password_output : &mut [u8; 32],
+			_fingerprint_input : Option<&Fingerprint>,
+			_fingerprint_output : Option<&mut Fingerprint>,
 			_oracles : Vec<&mut dyn Oracle>,
 		) -> CryptoResult
 {
 	let (_senders, _recipients) = wrap_senders_and_recipients_inputs (_senders, _recipients) ?;
-	password_backend (&_senders, &_recipients, _symmetric, _password_data, _password_output, _oracles, true)
+	password_backend (&_senders, &_recipients, _symmetric, _password_data, _password_output, _fingerprint_input, _fingerprint_output, _oracles, true)
 }
 
 
@@ -172,6 +184,8 @@ pub fn password_receive <'a> (
 			_namespace : Option<&'a str>,
 			_password_data : &[u8],
 			_password_output : &mut [u8; 32],
+			_fingerprint_input : Option<&'a Fingerprint>,
+			_fingerprint_output : Option<&'a mut Fingerprint>,
 			_oracles : impl Iterator<Item = &'a mut dyn Oracle>,
 		) -> CryptoResult
 {
@@ -182,6 +196,8 @@ pub fn password_receive <'a> (
 			& _symmetric.refs (),
 			_password_data,
 			_password_output,
+			_fingerprint_input,
+			_fingerprint_output,
 			_oracles.collect (),
 		)
 }
@@ -193,11 +209,13 @@ pub fn password_receive_with_raw (
 			_symmetric : &SymmetricParametersRawRefs,
 			_password_data : &[u8],
 			_password_output : &mut [u8; 32],
+			_fingerprint_input : Option<&Fingerprint>,
+			_fingerprint_output : Option<&mut Fingerprint>,
 			_oracles : Vec<&mut dyn Oracle>,
 		) -> CryptoResult
 {
 	let (_recipients, _senders) = wrap_recipients_and_senders_inputs (_recipients, _senders) ?;
-	password_backend (&_recipients, &_senders, _symmetric, _password_data, _password_output, _oracles, false)
+	password_backend (&_recipients, &_senders, _symmetric, _password_data, _password_output, _fingerprint_input, _fingerprint_output, _oracles, false)
 }
 
 
@@ -252,7 +270,7 @@ pub fn decrypt <'a> (
 			_pins : impl Iterator<Item = &'a SharedPin>,
 			_seeds : impl Iterator<Item = &'a dyn SharedSeedTrait>,
 			_ballasts : impl Iterator<Item = &'a dyn SharedBallastTrait>,
-			_fingerprint : Option<&'a Fingerprint>,
+			_fingerprint_input : Option<&'a Fingerprint>,
 			_derivation_loops : Option<NonZeroU64>,
 			_namespace : Option<&'a str>,
 			_encrypted : &[u8],
@@ -265,7 +283,7 @@ pub fn decrypt <'a> (
 			& _recipients.collect::<Vec<_>> (),
 			& _senders.collect::<Vec<_>> (),
 			& _symmetric.refs (),
-			_fingerprint,
+			_fingerprint_input,
 			_encrypted,
 			_decrypted,
 			_oracles.collect (),
