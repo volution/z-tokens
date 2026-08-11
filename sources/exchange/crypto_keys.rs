@@ -249,7 +249,7 @@ pub(crate) fn derive_keys_phase_1 <'a> (
 	let _dhe_key = match (_private_keys.len (), _public_keys.len ()) {
 		
 		(0, 0) =>
-			if _associated_hashes.is_empty () && _secret_inputs.is_empty () && _pin_inputs.is_empty () && _seed_inputs.is_empty () && _ballast_inputs.is_empty () && _oracle_handles.is_empty () && !_fingerprint {
+			if _secret_inputs.is_empty () && _pin_inputs.is_empty () && _seed_inputs.is_empty () && _ballast_inputs.is_empty () && _oracle_handles.is_empty () && !_fingerprint {
 				fail! (0xa1de0167);
 			} else {
 				InternalDheKey::zero ()
