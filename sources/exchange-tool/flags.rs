@@ -50,8 +50,14 @@ pub(crate) struct DecryptFlags {
 	pub shared : SharedKeysFlags,
 	pub ssh_wrappers : SshWrappersFlags,
 	pub common : CommonFlags,
-	// TODO!
-	pub fingerprint : Option<String>,
+	pub fingerprint : DecryptFingerprintFlag,
+}
+
+
+#[ derive (Clone) ]
+pub(crate) enum DecryptFingerprintFlag {
+	Without,
+	Expected (String),
 }
 
 
@@ -75,16 +81,15 @@ pub(crate) struct PasswordFlags {
 	pub shared : SharedKeysFlags,
 	pub ssh_wrappers : SshWrappersFlags,
 	pub common : CommonFlags,
-	// TODO!
 	pub fingerprint : PasswordFingerprintFlag,
 }
 
 
 #[ derive (Clone) ]
 pub(crate) enum PasswordFingerprintFlag {
-	None,
+	Without,
 	Generate,
-	Explicit (String),
+	Expected (String),
 }
 
 
@@ -990,8 +995,12 @@ impl InputsArguments {
 	pub fn data (self) -> FlagsResult<Vec<u8>> {
 		
 		let _inputs = self.inputs.decode () ?;
-		
 		let _inputs_count = _inputs.len ();
+		
+		if _inputs.is_empty () {
+			fail! (0x603638f7);
+		}
+		
 		let _canonicalize = self.canonicalize.unwrap_or (_inputs_count > 1);
 		
 		let _data_size = _inputs.iter () .map (Vec::len) .sum::<usize> ();
@@ -1011,6 +1020,11 @@ impl InputsArguments {
 				_data.write_u64::<BigEndian> (_input.len () .try_into () .infallible (0xf2a4f6a1)) .infallible (0x309615c5);
 			}
 			_data.append (&mut _input);
+		}
+		
+		//  TODO!
+		if false && _data.is_empty () {
+			fail! (0x46811183);
 		}
 		
 		Ok (_data)
@@ -1126,7 +1140,7 @@ impl DecryptFlags {
 				shared : SharedKeysFlags::new (),
 				ssh_wrappers : SshWrappersFlags::new (),
 				common : CommonFlags::new (),
-				fingerprint : None,
+				fingerprint : DecryptFingerprintFlag::Without,
 			}
 	}
 	
@@ -1137,10 +1151,15 @@ impl DecryptFlags {
 		self.shared.flags (_flags) ?;
 		self.ssh_wrappers.flags (_flags) ?;
 		
-		_flags.define_single_flag_0 (&mut self.fingerprint)
-				.with_flag ((), "fingerprint")
-				.with_placeholder ("string")
-				.with_description ("fingerprint generated during encryption");
+		{
+			let _flag = _flags.define_complex (&mut self.fingerprint);
+			_flag.define_switch_0 (DecryptFingerprintFlag::Without)
+					.with_flag ((), "without-fingerprint");
+			_flag.define_flag_with_wrapper_0 (|_fingerprint| DecryptFingerprintFlag::Expected (_fingerprint))
+					.with_flag ((), "fingerprint")
+					.with_placeholder ("string")
+					.with_description ("fingerprint generated during encryption");
+		}
 		
 		self.common.flags (_flags) ?;
 		
@@ -1155,10 +1174,11 @@ impl DecryptFlags {
 		let _shared = self.shared.arguments (_common.empty_is_missing) ?;
 		let _ssh_wrappers = self.ssh_wrappers.arguments (_common.empty_is_missing) ?;
 		
-		let _fingerprint = if let Some (_fingerprint) = self.fingerprint {
-				Some (decode_fingerprint (&_fingerprint) .else_wrap (0xd593d621) ?)
-			} else {
-				None
+		let _fingerprint = match self.fingerprint {
+				DecryptFingerprintFlag::Without =>
+					None,
+				DecryptFingerprintFlag::Expected (_fingerprint) =>
+					Some (decode_fingerprint (&_fingerprint) .else_wrap (0xd593d621) ?),
 			};
 		
 		Ok (DecryptArguments {
@@ -1169,6 +1189,22 @@ impl DecryptFlags {
 				common : _common,
 				fingerprint : _fingerprint,
 			})
+	}
+}
+
+
+impl FlagValue for DecryptFingerprintFlag {}
+
+
+impl FlagValueDisplay for DecryptFingerprintFlag {
+	
+	fn display_value (&self, _formatter : &mut Formatter) -> FlagValueDisplayResult {
+		match self {
+			DecryptFingerprintFlag::Without =>
+				write! (_formatter, "without") .else_wrap (0x60b29fac),
+			DecryptFingerprintFlag::Expected (_fingerprint) =>
+				write! (_formatter, "{}", _fingerprint) .else_wrap (0xe9117385),
+		}
 	}
 }
 
@@ -1185,7 +1221,7 @@ impl PasswordFlags {
 				shared : SharedKeysFlags::new (),
 				ssh_wrappers : SshWrappersFlags::new (),
 				common : CommonFlags::new (),
-				fingerprint : PasswordFingerprintFlag::None,
+				fingerprint : PasswordFingerprintFlag::Without,
 			}
 	}
 	
@@ -1203,9 +1239,9 @@ impl PasswordFlags {
 					.with_flag ((), "with-fingerprint")
 					.with_description ("fingerprint input")
 					.with_warning ("CAUTION");
-			_flag.define_switch_0 (PasswordFingerprintFlag::None)
+			_flag.define_switch_0 (PasswordFingerprintFlag::Without)
 					.with_flag ((), "without-fingerprint");
-			_flag.define_flag_with_wrapper_0 (|_fingerprint| PasswordFingerprintFlag::Explicit (_fingerprint))
+			_flag.define_flag_with_wrapper_0 (|_fingerprint| PasswordFingerprintFlag::Expected (_fingerprint))
 					.with_flag ((), "fingerprint")
 					.with_placeholder ("string")
 					.with_description ("fingerprint generated previously");
@@ -1226,11 +1262,11 @@ impl PasswordFlags {
 		let _ssh_wrappers = self.ssh_wrappers.arguments (_common.empty_is_missing) ?;
 		
 		let _fingerprint = match self.fingerprint {
-				PasswordFingerprintFlag::None =>
+				PasswordFingerprintFlag::Without =>
 					None,
 				PasswordFingerprintFlag::Generate =>
 					Some (None),
-				PasswordFingerprintFlag::Explicit (_fingerprint) =>
+				PasswordFingerprintFlag::Expected (_fingerprint) =>
 					Some (Some (decode_fingerprint (&_fingerprint) .else_wrap (0xec2c13df) ?)),
 			};
 		
@@ -1254,11 +1290,11 @@ impl FlagValueDisplay for PasswordFingerprintFlag {
 	
 	fn display_value (&self, _formatter : &mut Formatter) -> FlagValueDisplayResult {
 		match self {
-			PasswordFingerprintFlag::None =>
-				write! (_formatter, "false") .else_wrap (0x6782be04),
+			PasswordFingerprintFlag::Without =>
+				write! (_formatter, "without") .else_wrap (0x6782be04),
 			PasswordFingerprintFlag::Generate =>
-				write! (_formatter, "true") .else_wrap (0x3e2ea5ef),
-			PasswordFingerprintFlag::Explicit (_fingerprint) =>
+				write! (_formatter, "generate") .else_wrap (0x3e2ea5ef),
+			PasswordFingerprintFlag::Expected (_fingerprint) =>
 				write! (_formatter, "{}", _fingerprint) .else_wrap (0xf51df6e1),
 		}
 	}

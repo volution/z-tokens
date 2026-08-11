@@ -73,7 +73,7 @@ pub fn generate_token_push (_pattern : impl AsRef<TokenPattern>, _randomizer : &
 					// FIXME:  Verify correctness!
 					let mut _shuffle : Vec<_> = _patterns.iter () .collect ();
 					for _index in (1 .. _shuffle.len ()) .rev () {
-						let _other = _randomizer.choose (_index + 1) .else_wrap (0x04e15307) ?;
+						let _other = _randomizer.choose (_index + 1) .else_wrap (0xd2b85c20) ?;
 						_shuffle.swap (_index, _other);
 					}
 					_shuffle
