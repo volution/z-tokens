@@ -1,13 +1,13 @@
 >>  z-tokens exchange encrypt --siv --pin 1234 --associated testing
 
 
-#1,  3Lms6mNUezDvG M6Uk2fyruM7K  34KsqkLBkXwrv 2gHZyxnYQGuEL 38bjJHn99buqq
-#2,  2VcnnG54HsJHg YXxTptDjHgUN  37qNwRe6j3aEd rS7NwK6M928w  2WMRpTF7XB9jW
-#3,  33ZQ2XEZyHQnC 25w6ympAsKKhv 2CvMrqhDXRQXa 2rAExAhKcQdeJ TJT71mQN7kne
-#4,  cQnUeU3kumRa  HCfsFxFDgqC5  JG7VCzQMT1c7  3dLTBqwroGQgH 395yetkYse8jV
-#5,  2KjGEgymfFA2B 2hdS9f4kx6Dr5 4FhF1BRkBSe1A onqViJRazzVX  4BSeWRHBwuY6u
-#6,  3ZuSSQqoGw1yz 2DWXnUabEEVeR s8ebw5hAkrv1  3NvtW36SkULs2 2ZbUBjPH4KCVE
-#7,  7PrBZS4gRUpz  2Zvy4zrvPtZm5 2Yx7FzEzpRdHS 3YT1FNFsZxmPe 3dt1nrW4VefP8
-#8,  2ZhgguFMjkAQT ae72eWUEdCsi  2LY8ow3ttuuEv oriVWSW7WZHg  3NukjWqQW4j74
-#9.  rCxPaASCpRKv
+#1,  3Lms6mC4oKL5u AHDpUSzcqrju  2tbGLUFy918Fd rUCUUGZL8Qh9  8wgqGpkuntdS
+#2,  Pas6HCp64emm  2LPmZtW7woJc5 F37ygZ2gBLrx  29dt9BXhPdUC3 266i2wi4YXbMD
+#3,  aGT2owZFcwNT  3EzACki3rxivV mNUQp3LW2ct9  3VWq176Nv1Ttb 3ahfVEHoHQawd
+#4,  32VGHfXc4YKMS obZXfiP9hmA3  45EyUeUEV241j 41MBG8JNppZwZ 2QiJQvMMYHudf
+#5,  2ZzdZ5U5Q5dD1 EjMBsDHF9k7e  3waJ1We5G2rAn RyLWEgkPV4vM  qk14Lyx8SHH4
+#6,  RZYbTx37CHgf  4AAH8ySmmKqp3 hx1eeCjJvVHh  3KMWDfrBcPk3e 3toPEiWR7qjvL
+#7,  26KgNayn8QHeV 3DFA4dTRRjiAg nhX6D12Jae7f  2CS1XZoHussHR 3gXoCJp7wt61g
+#8,  4B1Bt96rB9E6C 4AatMnrwFhrxw 3c1ZSaezHJFgG BpC5zPLaPGP5  43jThs3wPiyiV
+#9.  7jWKDeo7GtkE
 

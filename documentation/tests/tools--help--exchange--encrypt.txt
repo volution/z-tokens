@@ -242,6 +242,10 @@
     **  treat empty arguments as unspecified
     !!  CAUTION
 
+  --fingerprint
+    **  fingerprint input
+    !!  CAUTION
+
   --siv
     **  deterministic output, based on SIV
     !!  CAUTION

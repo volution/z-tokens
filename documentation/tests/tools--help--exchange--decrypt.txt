@@ -242,6 +242,9 @@
     **  treat empty arguments as unspecified
     !!  CAUTION
 
+  --fingerprint  {string}
+    **  fingerprint generated during encryption
+
   -v --version
 
   -h --help

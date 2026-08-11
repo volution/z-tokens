@@ -5,9 +5,9 @@
 * executable    : /mnt/poconigu/ciprian/volatile/rust--scratch/xiyipoke--8b615ee14d4896fcb9d1dcf0b0d409eb--30d970e8e51a1e64e5ce7b05af8f33c77c26771fd4769931c64d9a33328dea21--local/outputs/binaries/z-tokens--release--linux--native
 * executable-0  : /mnt/fuvitono/ciprian/workbench/miscellaneous/z-tokens/.outputs/xiyipoke/binaries/z-tokens--release--linux--native
 * build target  : release
-* build number  : 16874, 2026-08-07-11-40-09
+* build number  : 16887, 2026-08-11-14-37-30
 * code & issues : https://github.com/volution/z-tokens
-* sources git   : eb20fe7f26f55a9a093d6b9af7bfafb8cb7e6077-uncommitted
-* sources hash  : a76ec9953311fa8e14c94b0181926e74
+* sources git   : 8988b68bfb64b4118d7d2e094dde3ce79722fe34-uncommitted
+* sources hash  : 5830c8b404287a3f3ea8e671c586469f
 * uname node    : xiyipoke
 * uname system  : Linux, 6.17.7-lp156.4.gc376041-default, x86_64
