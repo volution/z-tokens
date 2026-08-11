@@ -1,0 +1,17 @@
+>>  z-tokens exchange encrypt --siv --sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m --fingerprint
+
+
+#1,  3Lms6m72kYJWY GM2w7YxRzZ2V  32XGtMMg8EyDr 3Q9sDEfah4TR6 259gPfeZhBZr8
+#2,  4CXMwhCSMKmDE 4AwPAX58AzYWv 2gGrPRNFmryrd ULruS8cFSzDv  cXiZND5owfkV
+#3,  3MjXXXt27B3Np DfVLAFUmsTtk  3SKN5dBMXP8dW icuzkwjnTohH  22Ufm364AfNLH
+#4,  23eAAsG6eubY7 WdFoY19MD7zW  3JTVd9hurAMfk 2z1DMn8hmJ2AA 2cDWKsudBujFZ
+#5,  2MzdSN1Z6SdtZ RGh91whHSwyP  viHwRuMatQ8L  4HuaYxmRUKmg  22xnmgE6pJg5b
+#6,  cEekFGV5iYg3  2T6PnmnRh94Yu CEzACTNdv1tZ  8Q5PJiHgc6UY  2nVW3QdVhWRBJ
+#7,  2Qc6pc62bVT9i 24bTuJnz6fTk6 35BCzzqBZJHtd 2rVKJ4HsbEwYC 3eEWCVPVrJZnj
+#8,  QjqwpcNQuJCm  3zt1MWXXAUqpB 1cDSsJ5ABHTC  tJEjRmzCpMGX  3kLbK42AS73n4
+#9.  3aEEwZ8YwJAmS
+
+
+## fingerprint
+ztxfp1mkl79a2zyhq9pwyj2gfa60d2ur84r9uzwq368q94ls78pvl7ywvsjjgkm3
+

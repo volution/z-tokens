@@ -1,0 +1,17 @@
+>>  z-tokens exchange encrypt --siv --ballast ztxbl1ah428t6ux086pfdgv5d5z8fle06rll5azaglg8gcnvd65mup65qqckq348 --fingerprint
+
+
+#1,  3Lms6m95w6Chi 47eabkBpXq2za 3QKK8regPCucU qZhKBb6jbNwd  49Zht6WjoZLKS
+#2,  2MVnwGVRhkG16 2g8ZfTFqjPdMp 492QQg5EdG1Z7 2ppchnCwukvNk 3QiW2z28zMRLP
+#3,  2Ud64FHT2wdmK 2aQFLwdTLeA2Y 2LJi1X7EZGXvm yFwjsCet4WUg  2nziHabJ8FCRj
+#4,  6oFEY7ezJsWA  32dJr59JqHtEH 22HQpGKBSLGAb 3DyASMcvYtocP 4Am8ihg5Y9tES
+#5,  2gScivYoeSfdp wrGKv3ns6tar  2E94heMC2vprt 4BwF4txFENNBm 3vTGsgocdPfoX
+#6,  2QBVjNp7SXE9R KpntPsfDtYRH  tpqzDRVJGLCR  2VWd8Z9gLnhmH umgmm3DLQaMi
+#7,  39n3LqEFCfgQn 27V8KjgXTFYRB 3hWCR7oSG3kbp 26P99MMSWgcpF 35oL1KHKewgwc
+#8,  3WWU1NA7fiPvw 2p12SSFuux8Pk 21TE1vGhXZxic 3hXHL4bq6QM3a di3KNoavu3PB
+#9.  95HKgGKnhNLv
+
+
+## fingerprint
+ztxfp1tetqtljwyw7l83v43fwwd4nx5vlx05emu04ae3u3fr923gwp38qshml959
+

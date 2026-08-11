@@ -1,0 +1,17 @@
+>>  z-tokens exchange encrypt --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx --fingerprint
+
+
+#1,  3Lms6mDdM8fvW u19QsqhHeJ34  3dTE4diwjYCjP 2HMRQxeT41Ezc 3Y4mb3Noi71iN
+#2,  2eWN9T5EZ9zbS tsw5baULcmtB  2RpQDNzVU2ZAE 2UPuKGvLk23Br 3AsRbKbVkamV8
+#3,  28bBA866eRXPS J87zC2QGNkTx  2EZxtMNpPhzBj 2cHWsqCSKgDPt 28YKYFxhEviTN
+#4,  2eumU7EQ2FogD 2JzDWjuqyje3j 2LLMtBSjhrvfA 2G63qmF8kBFPY 2EGhDX9BtfidA
+#5,  2owrqKqZ1KvM6 3zgC4nLsb3PcV R6dYh7jUcMkN  pZRnwoVMMMNt  3Pn5vYivL9CTm
+#6,  VLgvY8bY81DG  b5E2SSTFej6b  2vCKt6wipGgvj qGubRW6RXi24  2nWYRVCW9LUXT
+#7,  2TbDnSQyZqibh Snt6jRFQTAiN  4CxmWpr4d31B3 2M7pAWeZgsHrS crmg4cbRZGEV
+#8,  31CzjvcPgvCgX z8PXMpe3rv8V  H3Z35a4pM7if  3vMR23Qwywxs6 pAccJzdYAxqr
+#9.  36GuufEFjEwtv
+
+
+## fingerprint
+ztxfp1237knn3z6zhknqjzv4azs5dz9vryujydva2rl9wnyjw3kccsqgyquagyq2
+

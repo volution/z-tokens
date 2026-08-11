@@ -1,0 +1,17 @@
+>>  z-tokens exchange encrypt --siv --pin 1234 --fingerprint
+
+
+#1,  3Lms6m9FHqQo1 3HYgd8LaNJTZr 4BCCSp13HVZRx 2fLAZwxCa2Dez 3XE1eGLwVLqDX
+#2,  2qnUravFoie3q sTGjXABFfUBa  2XepuEeW56yB6 3ChU4Ndtn4geF 2uBJAHFngGU2R
+#3,  47So3YAx48X2J 38fCYtLgaMgpG 3brS1JFaSV7da PWW3mUY3iVgi  w1oucvQwtKAr
+#4,  etYkccUvhCRR  27MEWCZQB36i2 3YmW5E9RpaR2p T6dJ7s9CHYgd  XtNinTB6Ayfm
+#5,  3ZTpS7CjatY2g 14C4KJQgqnFb  2iWoKT2BannrH 3msr1yy54qPXZ 33DycfUTi8uHa
+#6,  nbXXUNc3YssH  3Jkdrsj9huVCH 3wGyWJGioPAqN 2o6UeTqXGHB2q 3YMRaHgvsBjdV
+#7,  c9io8baiqrLt  3Whs6Q8RisFAo 3jhjaWSmftpRh 2f2GbfrhrinZu 25uqLqJ3YiDrY
+#8,  2Jirwoh6aC6d7 2z1pqRSpiGBi1 3j7JKWcr9pcuQ 3R8GqBHMor8tf 7ME5HnaxRRsi
+#9.  3wSeAsi6j3z6t
+
+
+## fingerprint
+ztxfp12pq3wwt06qsue29h4s7wfmx2sc53h7aqujdp6edyvf56zt0gflwssqtu6s
+

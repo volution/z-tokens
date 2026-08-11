@@ -1,0 +1,17 @@
+>>  z-tokens exchange encrypt --siv --sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 --recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah --fingerprint
+
+
+#1,  3Lms6mNAuActV uKWqA4L4reAQ  1RRMMUexZ4wW  3DjMGtV3P8cTU 2VjQKqfPPr1BS
+#2,  3u8NqXK8NSZxi 3jTriPiXGwjSi 3uKeC7pikoLoe 2VFigb15YHEs5 2H91yjTczhUUq
+#3,  4oe2ywxEsur7  2YPEHpGfVztP8 2UzSHWLmsu7FG 2xVuJZTYiGXcz 2FdnDYn2uk4vi
+#4,  2k78nwzy6gkyN 28G8TqETcRcz7 2B2SsSCKtVrCq 2mBFxa18WCCYf 2htGnC6tzeLkd
+#5,  2mamLMio1Z6ho SnxUsgPV3rMr  3tR33D3vAsr9d 3BEvyYYWQp8HZ 2AeSUUEwuV5pK
+#6,  2ffB7yiE1vUHG 3te3JXtY5GcEX 2GaqcrZyHPCcS v6UNapaJUfUe  2BeMz7BKMDcdm
+#7,  37j4YZaKoFNhU 3SpduskkByKUg 3NG2LmdXF8Nvv 3kGEkD9bQMrQ7 351X6fhkcVCcU
+#8,  3SBytwew2MQY3 R2LTsoCKaN9n  2mCkmWEmYAHu9 vZhhxhabqHcU  hcS9RdmzZZzE
+#9.  2pPP13D7L2oTi
+
+
+## fingerprint
+ztxfp1vdulfmjexshh35ka734eaa7pm4jnpft6rvl6dllxrjtk75lfe78qzt3jqg
+

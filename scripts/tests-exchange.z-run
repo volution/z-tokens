@@ -1031,6 +1031,10 @@
 		if test "${_case_tool}" == password -a "${_case_deterministic}" == randomized ; then
 			continue
 		fi
+	for _case_fingerprint in without-fingerprint with-fingerprint ; do
+		if test "${_case_tool}" == password -a "${_case_fingerprint}" == with-fingerprint ; then
+			continue
+		fi
 	for _case_secret in without-secret empty-secret with-secret-1 with-secret-1d with-secret-2 with-secret-2d ; do
 		if test "${SRANDOM}" -ge 2147483648 ; then continue ; fi
 	for _case_ssh_wrap in without-ssh-wrap empty-ssh-wrap with-ssh-wrap-1 with-ssh-wrap-1d with-ssh-wrap-2 with-ssh-wrap-2d ; do
@@ -1049,9 +1053,10 @@
 		if test "${SRANDOM}" -ge 2147483648 ; then continue ; fi
 		
 		printf -- \
-				'%s %s %s %s %s %s %s %s %s %s\n' \
+				'%s %s %s %s %s %s %s %s %s %s %s\n' \
 				"${_case_tool}" \
 				"${_case_deterministic}" \
+				"${_case_fingerprint}" \
 				"${_case_namespace}" \
 				"${_case_secret}" \
 				"${_case_ssh_wrap}" \
@@ -1062,7 +1067,7 @@
 				"${_case_send}" \
 		#
 		
-	done ; done ; done ; done ; done ; done ; done ; done ; done ; done
+	done ; done ; done ; done ; done ; done ; done ; done ; done ; done ; done
 !!
 
 
@@ -1076,7 +1081,7 @@
 	
 	"${ZRUN}" ':: tests / quick / exchange / encrypt & decrypt & password / cases / options' \
 	| sort -R \
-	| while read -r -- _case_tool _case_deterministic _case_namespace _case_secret _case_ssh_wrap _case_pin _case_seed _case_ballast _case_associated _case_send ; do
+	| while read -r -- _case_tool _case_deterministic _case_fingerprint _case_namespace _case_secret _case_ssh_wrap _case_pin _case_seed _case_ballast _case_associated _case_send ; do
 		
 		_namespace_1='namespace'
 		
@@ -1573,9 +1578,6 @@
 				fi
 			;;
 			( randomized )
-				if test "${_case_tool}" == password ; then
-					continue
-				fi
 			;;
 			( __* )
 				continue
@@ -1585,7 +1587,23 @@
 			;;
 		esac
 		
-		_identifier="${_case_tool}--${_case_send}--${_case_pin}--${_case_secret}--${_case_seed}--${_case_ballast}--${_case_ssh_wrap}--${_case_associated}--${_case_deterministic}"
+		case "${_case_fingerprint}" in
+			( with-fingerprint )
+				_encrypt_arguments+=(
+						--fingerprint
+					)
+			;;
+			( without-fingerprint )
+			;;
+			( __* )
+				continue
+			;;
+			( * )
+				false -- '[fc26fb63]' "${_case_fingerprint}"
+			;;
+		esac
+		
+		_identifier="${_case_tool}--${_case_send}--${_case_pin}--${_case_secret}--${_case_seed}--${_case_ballast}--${_case_ssh_wrap}--${_case_associated}--${_case_deterministic}--${_case_fingerprint}"
 		_report="${_reports}/${_identifier}.txt"
 		_output="${_outputs}/tests/${_identifier}.${$}.tmp"
 		
@@ -1594,7 +1612,7 @@
 		fi
 		
 		printf -- '\n' >&2
-		printf -- '[ii]  running iteration `%s %s %s %s %s %s %s %s %s`...\n' "${_case_tool}" "${_case_send}" "${_case_pin}" "${_case_secret}" "${_case_seed}" "${_case_ballast}" "${_case_ssh_wrap}" "${_case_associated}" "${_case_deterministic}" >&2
+		printf -- '[ii]  running iteration `%s %s %s %s %s %s %s %s %s %s`...\n' "${_case_tool}" "${_case_send}" "${_case_pin}" "${_case_secret}" "${_case_seed}" "${_case_ballast}" "${_case_ssh_wrap}" "${_case_associated}" "${_case_deterministic}" "${_case_fingerprint}" >&2
 		
 		if test "${#_encrypt_arguments[@]}" -eq 0 ; then
 			printf -- '[ii]    -> empty arguments;  skipping!\n' >&2
@@ -1613,6 +1631,22 @@
 		
 		export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 		
+		printf -- \
+				'>>  [test]  %s %s %s %s %s %s %s %s %s %s %s\n' \
+				"${_case_tool}" \
+				"${_case_deterministic}" \
+				"${_case_fingerprint}" \
+				"${_case_namespace}" \
+				"${_case_secret}" \
+				"${_case_ssh_wrap}" \
+				"${_case_pin}" \
+				"${_case_seed}" \
+				"${_case_ballast}" \
+				"${_case_associated}" \
+				"${_case_send}" \
+			> "${_output}" \
+		#
+		
 		case "${_case_tool}" in
 			
 			( password )
@@ -1625,7 +1659,7 @@
 				
 				printf -- '[xx]    >> %s\n' "${_password_command[*]@Q}" >&2
 				
-				printf -- '>>  %q' z-tokens > "${_output}"
+				printf -- '>>  %q' z-tokens >> "${_output}"
 				printf -- ' %q' "${_password_command[@]}" >> "${_output}"
 				printf -- '\n\n' >> "${_output}"
 				
@@ -1633,6 +1667,7 @@
 				"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" "${_password_command[@]}" \
 					< "${_file}" \
 					>> "${_output}" \
+					2>&1 \
 				#
 			;;
 			
@@ -1652,7 +1687,7 @@
 				printf -- '[xx]    >> %s\n' "${_encrypt_command[*]@Q}" >&2
 				printf -- '[xx]    >> %s\n' "${_decrypt_command[*]@Q}" >&2
 				
-				printf -- '>>  %q' z-tokens > "${_output}"
+				printf -- '>>  %q' z-tokens >> "${_output}"
 				printf -- ' %q' "${_encrypt_command[@]}" >> "${_output}"
 				printf -- '\n' >> "${_output}"
 				
@@ -1663,11 +1698,21 @@
 				printf -- '\n' >> "${_output}"
 				
 				time \
-				cat \
+				"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" "${_encrypt_command[@]}" \
 					< "${_file}" \
-				| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" "${_encrypt_command[@]}" \
-				| tee -a -- /dev/stderr 2>> "${_output}" \
-				| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" "${_decrypt_command[@]}" \
+					>> "${_output}" \
+					2>&1 \
+				#
+				
+				if test "${_case_fingerprint}" == with-fingerprint ; then
+					_decrypt_fingerprint="$( exec -- grep -E -e '^ztxfp1[a-z0-9A-Z]+$' < "${_output}" )"
+					_decrypt_command+=(
+							--fingerprint "${_decrypt_fingerprint}"
+						)
+				fi
+				
+				"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" "${_decrypt_command[@]}" \
+					< <( exec -- grep -v -E -e '^>>  ' -e '^## fingerprint$' -e '^ztxfp1[a-z0-9A-Z]+$' < "${_output}" ) \
 				| md5sum -b -- /dev/fd/5 5<&0 \
 				| md5sum -c --quiet 5< "${_file}" \
 				#
