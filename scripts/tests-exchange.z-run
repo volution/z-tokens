@@ -1032,9 +1032,6 @@
 			continue
 		fi
 	for _case_fingerprint in without-fingerprint with-fingerprint ; do
-		if test "${_case_tool}" == password -a "${_case_fingerprint}" == with-fingerprint ; then
-			continue
-		fi
 	for _case_secret in without-secret empty-secret with-secret-1 with-secret-1d with-secret-2 with-secret-2d ; do
 		if test "${SRANDOM}" -ge 2147483648 ; then continue ; fi
 	for _case_ssh_wrap in without-ssh-wrap empty-ssh-wrap with-ssh-wrap-1 with-ssh-wrap-1d with-ssh-wrap-2 with-ssh-wrap-2d ; do
@@ -1083,6 +1080,17 @@
 	| sort -R \
 	| while read -r -- _case_tool _case_deterministic _case_fingerprint _case_namespace _case_secret _case_ssh_wrap _case_pin _case_seed _case_ballast _case_associated _case_send ; do
 		
+		case "${_case_tool}" in
+			( password | encrypt )
+			;;
+			( __* )
+				continue
+			;;
+			( * )
+				false -- '[fff581ac]' "${_case_namespace}"
+			;;
+		esac
+		
 		_namespace_1='namespace'
 		
 		_pin_1=1234
@@ -1125,6 +1133,7 @@
 		_common_arguments=()
 		
 		_empty_is_missing=false
+		_contributing=false
 		
 		case "${_case_namespace}" in
 			( without-namespace )
@@ -1163,6 +1172,7 @@
 						--recipient "${_x25519_1_recipient_private}"
 						--sender "${_x25519_1_sender_public}"
 					)
+				_contributing=true
 			;;
 			( send-x25519-12 )
 				_encrypt_arguments+=(
@@ -1175,6 +1185,7 @@
 						--recipient "${_x25519_1_recipient_private}"
 						--sender "${_x25519_1_sender_public}"
 					)
+				_contributing=true
 			;;
 			( send-x25519-12d )
 				_encrypt_arguments+=(
@@ -1189,6 +1200,7 @@
 						--recipient "${_x25519_1_recipient_private}"
 						--sender "${_x25519_1_sender_public}"
 					)
+				_contributing=true
 			;;
 			( send-x25519-21 )
 				_encrypt_arguments+=(
@@ -1201,6 +1213,7 @@
 						--sender "${_x25519_2_sender_public}"
 						--sender "${_x25519_1_sender_public}"
 					)
+				_contributing=true
 			;;
 			( send-x25519-21d )
 				_encrypt_arguments+=(
@@ -1215,6 +1228,7 @@
 						--sender "${_x25519_2_sender_public}"
 						--sender "${_x25519_1_sender_public}"
 					)
+				_contributing=true
 			;;
 			( self-x25519-1 )
 				_encrypt_arguments+=(
@@ -1223,6 +1237,7 @@
 				_decrypt_arguments+=(
 						--recipient "${_x25519_3_recipient_private}"
 					)
+				_contributing=true
 			;;
 			( self-x25519-2 )
 				_encrypt_arguments+=(
@@ -1233,6 +1248,7 @@
 						--recipient "${_x25519_4_recipient_private}"
 						--recipient "${_x25519_3_recipient_private}"
 					)
+				_contributing=true
 			;;
 			( self-x25519-2d )
 				_encrypt_arguments+=(
@@ -1245,6 +1261,7 @@
 						--recipient "${_x25519_3_recipient_private}"
 						--recipient "${_x25519_3_recipient_private}"
 					)
+				_contributing=true
 			;;
 			( without-x25519 )
 			;;
@@ -1299,6 +1316,7 @@
 				_common_arguments+=(
 						--pin "${_pin_1}"
 					)
+				_contributing=true
 			;;
 			( with-pin-1d )
 				_encrypt_arguments+=(
@@ -1308,6 +1326,7 @@
 						--pin "${_pin_1}"
 						--pin "${_pin_1}"
 					)
+				_contributing=true
 			;;
 			( with-pin-2 )
 				_encrypt_arguments+=(
@@ -1318,6 +1337,7 @@
 						--pin "${_pin_2}"
 						--pin "${_pin_1}"
 					)
+				_contributing=true
 			;;
 			( with-pin-2d )
 				_encrypt_arguments+=(
@@ -1330,6 +1350,7 @@
 						--pin "${_pin_1}"
 						--pin "${_pin_1}"
 					)
+				_contributing=true
 			;;
 			( without-pin )
 			;;
@@ -1354,6 +1375,7 @@
 				_common_arguments+=(
 						--secret "${_secret_1}"
 					)
+				_contributing=true
 			;;
 			( with-secret-1d )
 				_encrypt_arguments+=(
@@ -1363,6 +1385,7 @@
 						--secret "${_secret_1}"
 						--secret "${_secret_1}"
 					)
+				_contributing=true
 			;;
 			( with-secret-2 )
 				_encrypt_arguments+=(
@@ -1373,6 +1396,7 @@
 						--secret "${_secret_2}"
 						--secret "${_secret_1}"
 					)
+				_contributing=true
 			;;
 			( with-secret-2d )
 				_encrypt_arguments+=(
@@ -1385,6 +1409,7 @@
 						--secret "${_secret_1}"
 						--secret "${_secret_1}"
 					)
+				_contributing=true
 			;;
 			( without-secret )
 			;;
@@ -1409,6 +1434,7 @@
 				_common_arguments+=(
 						--seed "${_seed_1}"
 					)
+				_contributing=true
 			;;
 			( with-seed-1d )
 				_encrypt_arguments+=(
@@ -1418,6 +1444,7 @@
 						--seed "${_seed_1}"
 						--seed "${_seed_1}"
 					)
+				_contributing=true
 			;;
 			( with-seed-2 )
 				_encrypt_arguments+=(
@@ -1428,6 +1455,7 @@
 						--seed "${_seed_2}"
 						--seed "${_seed_1}"
 					)
+				_contributing=true
 			;;
 			( with-seed-2d )
 				_encrypt_arguments+=(
@@ -1440,6 +1468,7 @@
 						--seed "${_seed_1}"
 						--seed "${_seed_1}"
 					)
+				_contributing=true
 			;;
 			( without-seed )
 			;;
@@ -1464,6 +1493,7 @@
 				_common_arguments+=(
 						--ballast "${_ballast_1}"
 					)
+				_contributing=true
 			;;
 			( with-ballast-1d )
 				_encrypt_arguments+=(
@@ -1473,6 +1503,7 @@
 						--ballast "${_ballast_1}"
 						--ballast "${_ballast_1}"
 					)
+				_contributing=true
 			;;
 			( with-ballast-2 )
 				_encrypt_arguments+=(
@@ -1483,6 +1514,7 @@
 						--ballast "${_ballast_2}"
 						--ballast "${_ballast_1}"
 					)
+				_contributing=true
 			;;
 			( with-ballast-2d )
 				_encrypt_arguments+=(
@@ -1495,6 +1527,7 @@
 						--ballast "${_ballast_1}"
 						--ballast "${_ballast_1}"
 					)
+				_contributing=true
 			;;
 			( without-ballast )
 			;;
@@ -1519,6 +1552,7 @@
 				_common_arguments+=(
 						--ssh-wrap "${_ssh_wrap_1}"
 					)
+				_contributing=true
 			;;
 			( with-ssh-wrap-1d )
 				_encrypt_arguments+=(
@@ -1528,6 +1562,7 @@
 						--ssh-wrap "${_ssh_wrap_1}"
 						--ssh-wrap "${_ssh_wrap_1}"
 					)
+				_contributing=true
 			;;
 			( with-ssh-wrap-2 )
 				_encrypt_arguments+=(
@@ -1538,6 +1573,7 @@
 						--ssh-wrap "${_ssh_wrap_2}"
 						--ssh-wrap "${_ssh_wrap_1}"
 					)
+				_contributing=true
 			;;
 			( with-ssh-wrap-2d )
 				_encrypt_arguments+=(
@@ -1550,6 +1586,7 @@
 						--ssh-wrap "${_ssh_wrap_1}"
 						--ssh-wrap "${_ssh_wrap_1}"
 					)
+				_contributing=true
 			;;
 			( without-ssh-wrap )
 			;;
@@ -1598,12 +1635,27 @@
 					_encrypt_arguments+=(
 							--fingerprint true
 						)
+				else
+					_encrypt_arguments+=(
+							--with-fingerprint
+						)
 				fi
+				_contributing=true
 			;;
 			( without-fingerprint )
 				if test "${_case_tool}" != password ; then
 					_encrypt_arguments+=(
 							--fingerprint false
+						)
+					_decrypt_arguments+=(
+							--without-fingerprint
+						)
+				else
+					_encrypt_arguments+=(
+							--without-fingerprint
+						)
+					_decrypt_arguments+=(
+							--without-fingerprint
 						)
 				fi
 			;;
@@ -1626,12 +1678,17 @@
 		printf -- '\n' >&2
 		printf -- '[ii]  running iteration `%s %s %s %s %s %s %s %s %s %s`...\n' "${_case_tool}" "${_case_send}" "${_case_pin}" "${_case_secret}" "${_case_seed}" "${_case_ballast}" "${_case_ssh_wrap}" "${_case_associated}" "${_case_deterministic}" "${_case_fingerprint}" >&2
 		
+		if test "${_contributing}" == false ; then
+			printf -- '[ii]    ->  non-contributing inputs;  skipping!\n' >&2
+			continue
+		fi
+		
 		if test "${#_encrypt_arguments[@]}" -eq 0 ; then
-			printf -- '[ii]    -> empty arguments;  skipping!\n' >&2
+			printf -- '[ii]    ->  empty arguments;  skipping!\n' >&2
 			continue
 		fi
 		if test "${#_decrypt_arguments[@]}" -eq 0 ; then
-			printf -- '[ii]    -> empty arguments;  skipping!\n' >&2
+			printf -- '[ii]    ->  empty arguments;  skipping!\n' >&2
 			continue
 		fi
 		
@@ -1658,28 +1715,59 @@
 				"${_case_send}" \
 			> "${_output}" \
 		#
+		printf -- '\n\n\n\n' >> "${_output}"
 		
 		case "${_case_tool}" in
 			
 			( password )
 				
-				_password_command=(
+				_encrypt_command=(
 						password
 							"${_encrypt_arguments[@]}"
 							"${_common_arguments[@]}"
+							--input-stdin
+					)
+				_decrypt_command=(
+						password
+							"${_decrypt_arguments[@]}"
+							"${_common_arguments[@]}"
+							--input-stdin
 					)
 				
-				printf -- '[xx]    >> %s\n' "${_password_command[*]@Q}" >&2
-				
 				printf -- '>>  %q' z-tokens >> "${_output}"
-				printf -- ' %q' "${_password_command[@]}" >> "${_output}"
+				printf -- ' %q' "${_encrypt_command[@]}" >> "${_output}"
 				printf -- '\n\n' >> "${_output}"
 				
+				printf -- '[xx]    >> %s\n' "${_encrypt_command[*]@Q}" >&2
+				
 				time \
-				"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" "${_password_command[@]}" \
+				"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" "${_encrypt_command[@]}" \
 					< "${_file}" \
 					>> "${_output}" \
 					2>&1 \
+				#
+				
+				printf -- '\n\n' >> "${_output}"
+				
+				if test "${_case_fingerprint}" == with-fingerprint ; then
+					_output_fingerprint="$( exec -- grep -E -e '^ztxfp1[a-z0-9A-Z]+$' < "${_output}" )"
+					_decrypt_command+=(
+							--fingerprint "${_output_fingerprint}"
+						)
+				fi
+				
+				printf -- '>>  %q' z-tokens >> "${_output}"
+				printf -- ' %q' "${_decrypt_command[@]}" >> "${_output}"
+				printf -- '\n\n\n\n' >> "${_output}"
+				
+				printf -- '[xx]    >> %s\n' "${_decrypt_command[*]@Q}" >&2
+				
+				"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" "${_decrypt_command[@]}" \
+					< "${_file}" \
+				| md5sum -b -- /dev/fd/5 \
+					5<&0 \
+				| md5sum -c --quiet \
+					5< <( exec -- grep -v -E -e '^>>  ' -e '^## fingerprint$' -e '^ztxfp1[a-z0-9A-Z]+$' -e '^$' < "${_output}" ) \
 				#
 			;;
 			
@@ -1696,18 +1784,11 @@
 							"${_common_arguments[@]}"
 					)
 				
-				printf -- '[xx]    >> %s\n' "${_encrypt_command[*]@Q}" >&2
-				printf -- '[xx]    >> %s\n' "${_decrypt_command[*]@Q}" >&2
-				
 				printf -- '>>  %q' z-tokens >> "${_output}"
 				printf -- ' %q' "${_encrypt_command[@]}" >> "${_output}"
-				printf -- '\n' >> "${_output}"
+				printf -- '\n\n' >> "${_output}"
 				
-				printf -- '>>  %q' z-tokens >> "${_output}"
-				printf -- ' %q' "${_decrypt_command[@]}" >> "${_output}"
-				printf -- '\n' >> "${_output}"
-				
-				printf -- '\n' >> "${_output}"
+				printf -- '[xx]    >> %s\n' "${_encrypt_command[*]@Q}" >&2
 				
 				time \
 				"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" "${_encrypt_command[@]}" \
@@ -1716,17 +1797,27 @@
 					2>&1 \
 				#
 				
+				printf -- '\n\n\n\n' >> "${_output}"
+				
 				if test "${_case_fingerprint}" == with-fingerprint ; then
-					_decrypt_fingerprint="$( exec -- grep -E -e '^ztxfp1[a-z0-9A-Z]+$' < "${_output}" )"
+					_output_fingerprint="$( exec -- grep -E -e '^ztxfp1[a-z0-9A-Z]+$' < "${_output}" )"
 					_decrypt_command+=(
-							--fingerprint "${_decrypt_fingerprint}"
+							--fingerprint "${_output_fingerprint}"
 						)
 				fi
 				
+				printf -- '>>  %q' z-tokens >> "${_output}"
+				printf -- ' %q' "${_decrypt_command[@]}" >> "${_output}"
+				printf -- '\n\n' >> "${_output}"
+				
+				printf -- '[xx]    >> %s\n' "${_decrypt_command[*]@Q}" >&2
+				
 				"${__OUTPUTS}/binaries/zt-exchange--release--linux--native" "${_decrypt_command[@]}" \
 					< <( exec -- grep -v -E -e '^>>  ' -e '^## fingerprint$' -e '^ztxfp1[a-z0-9A-Z]+$' < "${_output}" ) \
-				| md5sum -b -- /dev/fd/5 5<&0 \
-				| md5sum -c --quiet 5< "${_file}" \
+				| md5sum -b -- /dev/fd/5 \
+					5<&0 \
+				| md5sum -c --quiet \
+					5< "${_file}" \
 				#
 			;;
 			
