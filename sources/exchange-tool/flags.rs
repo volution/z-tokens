@@ -171,6 +171,7 @@ pub(crate) struct MaterialFlags {
 	pub from_pinentry : Vec<String>,
 	#[ cfg (all (target_os = "linux", target_env = "gnu")) ]
 	pub from_lkkrs : Vec<String>,
+	pub without : Option<bool>,
 }
 
 
@@ -179,6 +180,7 @@ pub(crate) struct MaterialSources<Material>
 		Material : MaterialValue,
 {
 	pub sources : Vec<MaterialSource<Material>>,
+	pub without : bool,
 }
 
 
@@ -334,6 +336,7 @@ impl MaterialFlags {
 				from_pinentry : Vec::new (),
 				#[ cfg (all (target_os = "linux", target_env = "gnu")) ]
 				from_lkkrs : Vec::new (),
+				without : None,
 			}
 	}
 	
@@ -348,6 +351,7 @@ impl MaterialFlags {
 				_long_stdin : &'static str,
 				_long_pinentry : &'static str,
 				_long_lkkrs : &'static str,
+				_long_without : Option<&'static str>,
 				_description : &'static str,
 			) -> FlagsResult
 	{
@@ -387,6 +391,11 @@ impl MaterialFlags {
 				.with_placeholder ("selector")
 				.with_description ("from Linux Kernel key-retention-service");
 		
+		if let Some (_long_without) = _long_without {
+			_flags.define_switch_0 (&mut self.without)
+					.with_flag ((), _long_without);
+		}
+		
 		Ok (())
 	}
 }
@@ -408,12 +417,12 @@ impl SendersPrivateFlags {
 		self.materials.flags (
 				_flags,
 				Some ('s'),
-				"sender", "sender-env", "sender-path", "sender-fd", "sender-stdin", "sender-pinentry", "sender-lkkrs",
+				"sender", "sender-env", "sender-path", "sender-fd", "sender-stdin", "sender-pinentry", "sender-lkkrs", Some ("without-sender"),
 				"sender private key (multiple allowed, in any order, deduplicated)",
 			)
 	}
 	
-	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<SenderPrivateKey>> {
+	pub fn collect (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<SenderPrivateKey>> {
 		self.materials.collect (_empty_is_missing)
 	}
 }
@@ -439,12 +448,12 @@ impl SendersPublicFlags {
 		self.materials.flags (
 				_flags,
 				Some ('s'),
-				"sender", "sender-env", "sender-path", "sender-fd", "sender-stdin", "sender-pinentry", "sender-lkkrs",
+				"sender", "sender-env", "sender-path", "sender-fd", "sender-stdin", "sender-pinentry", "sender-lkkrs", Some ("without-sender"),
 				"sender public key (multiple allowed, in any order, deduplicated)",
 			)
 	}
 	
-	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<SenderPublicKey>> {
+	pub fn collect (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<SenderPublicKey>> {
 		self.materials.collect (_empty_is_missing)
 	}
 }
@@ -470,12 +479,12 @@ impl SendersPublicOrPrivateFlags {
 		self.materials.flags (
 				_flags,
 				Some ('s'),
-				"sender", "sender-env", "sender-path", "sender-fd", "sender-stdin", "sender-pinentry", "sender-lkkrs",
+				"sender", "sender-env", "sender-path", "sender-fd", "sender-stdin", "sender-pinentry", "sender-lkkrs", Some ("without-sender"),
 				"sender public or private key (multiple allowed, in any order, deduplicated)",
 			)
 	}
 	
-	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<SenderPublicOrPrivateKey>> {
+	pub fn collect (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<SenderPublicOrPrivateKey>> {
 		self.materials.collect (_empty_is_missing)
 	}
 }
@@ -501,12 +510,12 @@ impl RecipientsPrivateFlags {
 		self.materials.flags (
 				_flags,
 				Some ('r'),
-				"recipient", "recipient-env", "recipient-path", "recipient-fd", "recipient-stdin", "recipient-pinentry", "recipient-lkkrs",
+				"recipient", "recipient-env", "recipient-path", "recipient-fd", "recipient-stdin", "recipient-pinentry", "recipient-lkkrs", Some ("without-recipient"),
 				"recipient private key (multiple allowed, in any order, deduplicated)",
 			)
 	}
 	
-	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<RecipientPrivateKey>> {
+	pub fn collect (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<RecipientPrivateKey>> {
 		self.materials.collect (_empty_is_missing)
 	}
 }
@@ -532,12 +541,12 @@ impl RecipientsPublicFlags {
 		self.materials.flags (
 				_flags,
 				Some ('r'),
-				"recipient", "recipient-env", "recipient-path", "recipient-fd", "recipient-stdin", "recipient-pinentry", "recipient-lkkrs",
+				"recipient", "recipient-env", "recipient-path", "recipient-fd", "recipient-stdin", "recipient-pinentry", "recipient-lkkrs", Some ("without-recipient"),
 				"recipient public key (multiple allowed, in any order, deduplicated)",
 			)
 	}
 	
-	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<RecipientPublicKey>> {
+	pub fn collect (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<RecipientPublicKey>> {
 		self.materials.collect (_empty_is_missing)
 	}
 }
@@ -563,12 +572,12 @@ impl RecipientsPublicOrPrivateFlags {
 		self.materials.flags (
 				_flags,
 				Some ('r'),
-				"recipient", "recipient-env", "recipient-path", "recipient-fd", "recipient-stdin", "recipient-pinentry", "recipient-lkkrs",
+				"recipient", "recipient-env", "recipient-path", "recipient-fd", "recipient-stdin", "recipient-pinentry", "recipient-lkkrs", Some ("without-recipient"),
 				"recipient public or private key (multiple allowed, in any order, deduplicated)",
 			)
 	}
 	
-	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<RecipientPublicOrPrivateKey>> {
+	pub fn collect (self, _empty_is_missing : bool) -> FlagsResult<MaterialSources<RecipientPublicOrPrivateKey>> {
 		self.materials.collect (_empty_is_missing)
 	}
 }
@@ -586,8 +595,9 @@ impl MaterialValue for RecipientPublicOrPrivateKey {
 
 impl AssociatedArguments {
 	
-	pub fn collect (self) -> FlagsResult<Vec<Associated>> {
-		self.tokens.decode ()
+	pub fn load (self) -> FlagsResult<Vec<Associated>> {
+		let _tokens = self.tokens.decode () ?;
+		Ok (_tokens)
 	}
 }
 
@@ -602,12 +612,12 @@ impl AssociatedFlags {
 		self.materials.flags (
 				_flags,
 				Some ('a'),
-				"associated", "associated-env", "associated-path", "associated-fd", "associated-stdin", "associated-pinentry", "associated-lkkrs",
+				"associated", "associated-env", "associated-path", "associated-fd", "associated-stdin", "associated-pinentry", "associated-lkkrs", Some ("without-associated"),
 				"associated data (multiple allowed, **order and duplicates are significant**)",
 			)
 	}
 	
-	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<AssociatedArguments> {
+	pub fn collect (self, _empty_is_missing : bool) -> FlagsResult<AssociatedArguments> {
 		let _tokens = self.materials.collect (_empty_is_missing) ?;
 		Ok (AssociatedArguments {
 				tokens : _tokens,
@@ -632,14 +642,19 @@ impl MaterialValue for Associated {
 
 impl SecretsArguments {
 	
-	pub fn collect (self) -> FlagsResult<Vec<Box<dyn SharedSecretTrait>>> {
+	pub fn load_merge (self) -> FlagsResult<Vec<Box<dyn SharedSecretTrait>>> {
+		let _without = self.encoded.without || self.raw.without;
 		let _encoded = self.encoded.decode () ?;
 		let _raw = self.raw.decode () ?;
 		let _merged = Iterator::chain (
 				_encoded.into_iter () .map (|_value| Box::new (_value) as Box<dyn SharedSecretTrait>),
 				_raw.into_iter () .map (|_value| Box::new (_value) as Box<dyn SharedSecretTrait>),
 			);
-		Ok (_merged.collect ())
+		let _merged = _merged.collect::<Vec<_>> ();
+		if _without && ! _merged.is_empty () {
+			fail! (0x2eb1a6d8);
+		}
+		Ok (_merged)
 	}
 }
 
@@ -658,21 +673,21 @@ impl SecretsFlags {
 		self.materials.flags (
 				_flags,
 				Some ('x'),
-				"secret", "secret-env", "secret-path", "secret-fd", "secret-stdin", "secret-pinentry", "secret-lkkrs",
+				"secret", "secret-env", "secret-path", "secret-fd", "secret-stdin", "secret-pinentry", "secret-lkkrs", Some ("without-secret"),
 				"shared secret, for additional security (multiple allowed, in any order, deduplicated)",
 			) ?;
 		
 		self.materials_raw.flags (
 				_flags,
 				None,
-				"raw-secret", "raw-secret-env", "raw-secret-path", "raw-secret-fd", "raw-secret-stdin", "raw-secret-pinentry", "raw-secret-lkkrs",
+				"raw-secret", "raw-secret-env", "raw-secret-path", "raw-secret-fd", "raw-secret-stdin", "raw-secret-pinentry", "raw-secret-lkkrs", None,
 				"(raw) shared secret, for additional security (multiple allowed, in any order, deduplicated)",
 			) ?;
 		
 		Ok (())
 	}
 	
-	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<SecretsArguments> {
+	pub fn collect (self, _empty_is_missing : bool) -> FlagsResult<SecretsArguments> {
 		let _encoded = self.materials.collect (_empty_is_missing) ?;
 		let _raw = self.materials_raw.collect (_empty_is_missing) ?;
 		Ok (SecretsArguments {
@@ -707,8 +722,9 @@ impl MaterialValue for SharedSecretRaw {
 
 impl PinsArguments {
 	
-	pub fn collect (self) -> FlagsResult<Vec<SharedPin>> {
-		self.tokens.decode ()
+	pub fn load (self) -> FlagsResult<Vec<SharedPin>> {
+		let _tokens = self.tokens.decode () ?;
+		Ok (_tokens)
 	}
 }
 
@@ -723,12 +739,12 @@ impl PinsFlags {
 		self.materials.flags (
 				_flags,
 				Some ('e'),
-				"pin", "pin-env", "pin-path", "pin-fd", "pin-stdin", "pin-pinentry", "pin-lkkrs",
+				"pin", "pin-env", "pin-path", "pin-fd", "pin-stdin", "pin-pinentry", "pin-lkkrs", Some ("without-pin"),
 				"shared PIN, for **WEAK** additional security (multiple allowed, in any order, deduplicated)",
 			)
 	}
 	
-	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<PinsArguments> {
+	pub fn collect (self, _empty_is_missing : bool) -> FlagsResult<PinsArguments> {
 		let _tokens = self.materials.collect (_empty_is_missing) ?;
 		Ok (PinsArguments {
 				tokens : _tokens,
@@ -753,14 +769,19 @@ impl MaterialValue for SharedPin {
 
 impl SeedsArguments {
 	
-	pub fn collect (self) -> FlagsResult<Vec<Box<dyn SharedSeedTrait>>> {
+	pub fn load_merge (self) -> FlagsResult<Vec<Box<dyn SharedSeedTrait>>> {
+		let _without = self.encoded.without || self.raw.without;
 		let _encoded = self.encoded.decode () ?;
 		let _raw = self.raw.decode () ?;
 		let _merged = Iterator::chain (
 				_encoded.into_iter () .map (|_value| Box::new (_value) as Box<dyn SharedSeedTrait>),
 				_raw.into_iter () .map (|_value| Box::new (_value) as Box<dyn SharedSeedTrait>),
 			);
-		Ok (_merged.collect ())
+		let _merged = _merged.collect::<Vec<_>> ();
+		if _without && ! _merged.is_empty () {
+			fail! (0x6c5705ea);
+		}
+		Ok (_merged)
 	}
 }
 
@@ -779,21 +800,21 @@ impl SeedsFlags {
 		self.materials.flags (
 				_flags,
 				Some ('e'),
-				"seed", "seed-env", "seed-path", "seed-fd", "seed-stdin", "seed-pinentry", "seed-lkkrs",
+				"seed", "seed-env", "seed-path", "seed-fd", "seed-stdin", "seed-pinentry", "seed-lkkrs", Some ("without-seed"),
 				"shared seed, for additional security (multiple allowed, in any order, deduplicated)",
 			) ?;
 		
 		self.materials_raw.flags (
 				_flags,
 				None,
-				"raw-seed", "raw-seed-env", "raw-seed-path", "raw-seed-fd", "raw-seed-stdin", "raw-seed-pinentry", "raw-seed-lkkrs",
+				"raw-seed", "raw-seed-env", "raw-seed-path", "raw-seed-fd", "raw-seed-stdin", "raw-seed-pinentry", "raw-seed-lkkrs", None,
 				"(raw) shared seed, for additional security (multiple allowed, in any order, deduplicated)",
 			) ?;
 		
 		Ok (())
 	}
 	
-	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<SeedsArguments> {
+	pub fn collect (self, _empty_is_missing : bool) -> FlagsResult<SeedsArguments> {
 		let _encoded = self.materials.collect (_empty_is_missing) ?;
 		let _raw = self.materials_raw.collect (_empty_is_missing) ?;
 		Ok (SeedsArguments {
@@ -828,14 +849,19 @@ impl MaterialValue for SharedSeedRaw {
 
 impl BallastsArguments {
 	
-	pub fn collect (self) -> FlagsResult<Vec<Box<dyn SharedBallastTrait>>> {
+	pub fn load_merge (self) -> FlagsResult<Vec<Box<dyn SharedBallastTrait>>> {
+		let _without = self.encoded.without || self.raw.without;
 		let _encoded = self.encoded.decode () ?;
 		let _raw = self.raw.decode () ?;
 		let _merged = Iterator::chain (
 				_encoded.into_iter () .map (|_value| Box::new (_value) as Box<dyn SharedBallastTrait>),
 				_raw.into_iter () .map (|_value| Box::new (_value) as Box<dyn SharedBallastTrait>),
 			);
-		Ok (_merged.collect ())
+		let _merged = _merged.collect::<Vec<_>> ();
+		if _without && ! _merged.is_empty () {
+			fail! (0x004eecfb);
+		}
+		Ok (_merged)
 	}
 }
 
@@ -854,21 +880,21 @@ impl BallastsFlags {
 		self.materials.flags (
 				_flags,
 				Some ('b'),
-				"ballast", "ballast-env", "ballast-path", "ballast-fd", "ballast-stdin", "ballast-pinentry", "ballast-lkkrs",
+				"ballast", "ballast-env", "ballast-path", "ballast-fd", "ballast-stdin", "ballast-pinentry", "ballast-lkkrs", Some ("without-ballast"),
 				"shared ballast, for additional security (multiple allowed, in any order, deduplicated)",
 			) ?;
 		
 		self.materials_raw.flags (
 				_flags,
 				None,
-				"raw-ballast", "raw-ballast-env", "raw-ballast-path", "raw-ballast-fd", "raw-ballast-stdin", "raw-ballast-pinentry", "raw-ballast-lkkrs",
+				"raw-ballast", "raw-ballast-env", "raw-ballast-path", "raw-ballast-fd", "raw-ballast-stdin", "raw-ballast-pinentry", "raw-ballast-lkkrs", None,
 				"(raw) shared ballast, for additional security (multiple allowed, in any order, deduplicated)",
 			) ?;
 		
 		Ok (())
 	}
 	
-	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<BallastsArguments> {
+	pub fn collect (self, _empty_is_missing : bool) -> FlagsResult<BallastsArguments> {
 		let _encoded = self.materials.collect (_empty_is_missing) ?;
 		let _raw = self.materials_raw.collect (_empty_is_missing) ?;
 		Ok (BallastsArguments {
@@ -913,12 +939,12 @@ impl SshWrappersFlags {
 		self.keys.flags (
 				_flags,
 				Some ('S'),
-				"ssh-wrap", "ssh-wrap-env", "ssh-wrap-path", "ssh-wrap-fd", "ssh-wrap-stdin", "ssh-wrap-pinentry", "ssh-wrap-lkkrs",
+				"ssh-wrap", "ssh-wrap-env", "ssh-wrap-path", "ssh-wrap-fd", "ssh-wrap-stdin", "ssh-wrap-pinentry", "ssh-wrap-lkkrs", Some ("without-ssh-wrap"),
 				"shared SSH agent key handle (multiple allowed, in any order, deduplicated)",
 			)
 	}
 	
-	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<SshWrappersArguments> {
+	pub fn collect (self, _empty_is_missing : bool) -> FlagsResult<SshWrappersArguments> {
 		Ok (SshWrappersArguments {
 				keys : self.keys.collect (_empty_is_missing) ?,
 			})
@@ -963,7 +989,7 @@ impl InputsFlags {
 		self.inputs.flags (
 				_flags,
 				Some ('i'),
-				"input", "input-env", "input-path", "input-fd", "input-stdin", "input-pinentry", "input-lkkrs",
+				"input", "input-env", "input-path", "input-fd", "input-stdin", "input-pinentry", "input-lkkrs", Some ("without-input"),
 				"inputs used in key derivation (multiple allowed, **order and duplicates are significant**)",
 			) ?;
 		
@@ -981,7 +1007,7 @@ impl InputsFlags {
 		Ok (())
 	}
 	
-	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<InputsArguments> {
+	pub fn collect (self, _empty_is_missing : bool) -> FlagsResult<InputsArguments> {
 		Ok (InputsArguments {
 				inputs : self.inputs.collect (_empty_is_missing) ?,
 				canonicalize : self.canonicalize,
@@ -992,13 +1018,17 @@ impl InputsFlags {
 
 impl InputsArguments {
 	
-	pub fn data (self) -> FlagsResult<Vec<u8>> {
+	pub fn load_data (self) -> FlagsResult<Vec<u8>> {
+		
+		let _without = self.inputs.without;
 		
 		let _inputs = self.inputs.decode () ?;
 		let _inputs_count = _inputs.len ();
 		
 		if _inputs.is_empty () {
-			fail! (0x603638f7);
+			if ! _without {
+				fail! (0x603638f7);
+			}
 		}
 		
 		let _canonicalize = self.canonicalize.unwrap_or (_inputs_count > 1);
@@ -1110,11 +1140,12 @@ impl EncryptFlags {
 	
 	pub fn arguments (self) -> FlagsResult<EncryptArguments> {
 		
-		let _common = self.common.arguments () ?;
-		let _senders = self.senders.arguments (_common.empty_is_missing) ?;
-		let _recipients = self.recipients.arguments (_common.empty_is_missing) ?;
-		let _shared = self.shared.arguments (_common.empty_is_missing) ?;
-		let _ssh_wrappers = self.ssh_wrappers.arguments (_common.empty_is_missing) ?;
+		let _common = self.common.collect () ?;
+		
+		let _senders = self.senders.collect (_common.empty_is_missing) ?;
+		let _recipients = self.recipients.collect (_common.empty_is_missing) ?;
+		let _shared = self.shared.collect (_common.empty_is_missing) ?;
+		let _ssh_wrappers = self.ssh_wrappers.collect (_common.empty_is_missing) ?;
 		
 		Ok (EncryptArguments {
 				senders : _senders,
@@ -1168,11 +1199,12 @@ impl DecryptFlags {
 	
 	pub fn arguments (self) -> FlagsResult<DecryptArguments> {
 		
-		let _common = self.common.arguments () ?;
-		let _recipients = self.recipients.arguments (_common.empty_is_missing) ?;
-		let _senders = self.senders.arguments (_common.empty_is_missing) ?;
-		let _shared = self.shared.arguments (_common.empty_is_missing) ?;
-		let _ssh_wrappers = self.ssh_wrappers.arguments (_common.empty_is_missing) ?;
+		let _common = self.common.collect () ?;
+		
+		let _recipients = self.recipients.collect (_common.empty_is_missing) ?;
+		let _senders = self.senders.collect (_common.empty_is_missing) ?;
+		let _shared = self.shared.collect (_common.empty_is_missing) ?;
+		let _ssh_wrappers = self.ssh_wrappers.collect (_common.empty_is_missing) ?;
 		
 		let _fingerprint = match self.fingerprint {
 				DecryptFingerprintFlag::Without =>
@@ -1254,12 +1286,14 @@ impl PasswordFlags {
 	
 	pub fn arguments (self) -> FlagsResult<PasswordArguments> {
 		
-		let _common = self.common.arguments () ?;
-		let _inputs = self.inputs.arguments (_common.empty_is_missing) ?;
-		let _senders = self.senders.arguments (_common.empty_is_missing) ?;
-		let _recipients = self.recipients.arguments (_common.empty_is_missing) ?;
-		let _shared = self.shared.arguments (_common.empty_is_missing) ?;
-		let _ssh_wrappers = self.ssh_wrappers.arguments (_common.empty_is_missing) ?;
+		let _common = self.common.collect () ?;
+		
+		let _senders = self.senders.collect (_common.empty_is_missing) ?;
+		let _recipients = self.recipients.collect (_common.empty_is_missing) ?;
+		let _shared = self.shared.collect (_common.empty_is_missing) ?;
+		let _ssh_wrappers = self.ssh_wrappers.collect (_common.empty_is_missing) ?;
+		
+		let _inputs = self.inputs.collect (_common.empty_is_missing) ?;
 		
 		let _fingerprint = match self.fingerprint {
 				PasswordFingerprintFlag::Without =>
@@ -1336,16 +1370,19 @@ impl SharedKeysFlags {
 		Ok (())
 	}
 	
-	pub fn arguments (self, _empty_is_missing : bool) -> FlagsResult<SharedKeysArguments> {
-		let _associated = self.associated.arguments (_empty_is_missing) ?;
-		let _secrets = self.secrets.arguments (_empty_is_missing) ?;
-		let _pins = self.pins.arguments (_empty_is_missing) ?;
-		let _seeds = self.seeds.arguments (_empty_is_missing) ?;
-		let _ballasts = self.ballasts.arguments (_empty_is_missing) ?;
+	pub fn collect (self, _empty_is_missing : bool) -> FlagsResult<SharedKeysArguments> {
+		
+		let _associated = self.associated.collect (_empty_is_missing) ?;
+		let _secrets = self.secrets.collect (_empty_is_missing) ?;
+		let _pins = self.pins.collect (_empty_is_missing) ?;
+		let _seeds = self.seeds.collect (_empty_is_missing) ?;
+		let _ballasts = self.ballasts.collect (_empty_is_missing) ?;
+		
 		let _derivation_loops = match self.derivation_loops {
 			Some (_loops) => NonZeroU64::new (_loops),
 			None => None,
 		};
+		
 		Ok (SharedKeysArguments {
 				associated : _associated,
 				secrets : _secrets,
@@ -1392,7 +1429,7 @@ impl CommonFlags {
 		Ok (())
 	}
 	
-	pub fn arguments (&self) -> FlagsResult<CommonArguments> {
+	pub fn collect (&self) -> FlagsResult<CommonArguments> {
 		Ok (CommonArguments {
 				namespace : self.namespace.clone (),
 				empty_is_missing : self.empty_is_missing.unwrap_or (false),
@@ -1413,7 +1450,6 @@ impl MaterialFlags {
 		where
 			Material : MaterialValue,
 	{
-		
 		let mut _sources = Vec::new ();
 		
 		for _value in self.values.iter () {
@@ -1471,6 +1507,7 @@ impl MaterialFlags {
 		
 		Ok (MaterialSources {
 				sources : _sources,
+				without : self.without.unwrap_or (false),
 			})
 	}
 }
@@ -1496,6 +1533,11 @@ impl <Material> MaterialSources<Material>
 				_values.push (_value);
 			}
 		}
+		
+		if self.without && ! _values.is_empty () {
+			fail! (0x4b0f228d);
+		}
+		
 		Ok (_values)
 	}
 }

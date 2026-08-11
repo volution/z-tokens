@@ -347,18 +347,18 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 	
 	let _senders = _arguments.senders.decode () .else_wrap (0xd5bc0620) ?;
 	let _recipients = _arguments.recipients.decode () .else_wrap (0xc20dc7fd) ?;
-	let _associated = _arguments.shared.associated.collect () .else_wrap (0x5b75b627) ?;
-	let _secrets = _arguments.shared.secrets.collect () .else_wrap (0x80159d9a) ?;
-	let _pins = _arguments.shared.pins.collect () .else_wrap (0x12ba09e4) ?;
-	let _seeds = _arguments.shared.seeds.collect () .else_wrap (0x4a0b1e18) ?;
-	let _ballasts = _arguments.shared.ballasts.collect () .else_wrap (0x7ab43c45) ?;
+	let _associated = _arguments.shared.associated.load () .else_wrap (0x5b75b627) ?;
+	let _secrets = _arguments.shared.secrets.load_merge () .else_wrap (0x80159d9a) ?;
+	let _pins = _arguments.shared.pins.load () .else_wrap (0x12ba09e4) ?;
+	let _seeds = _arguments.shared.seeds.load_merge () .else_wrap (0x4a0b1e18) ?;
+	let _ballasts = _arguments.shared.ballasts.load_merge () .else_wrap (0x7ab43c45) ?;
 	let _derivation_loops = _arguments.shared.derivation_loops;
 	let _namespace = _arguments.common.namespace.as_ref () .map (String::as_ref);
 	
 	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x3cae7413) ?;
 	let mut _oracles = _ssh_wrappers.iter_mut () .map (|_ssh_wrapper| _ssh_wrapper as &mut dyn Oracle);
 	
-	let _password_input = _arguments.inputs.data () .else_wrap (0x5d90db8d) ?;
+	let _password_input = _arguments.inputs.load_data () .else_wrap (0x5d90db8d) ?;
 	
 	let (_fingerprint_input, mut _fingerprint_output) = match &_arguments.fingerprint {
 			Some (Some (_fingerprint)) =>
@@ -504,11 +504,11 @@ pub(crate) fn main_encrypt_with_arguments (_arguments : EncryptArguments, _input
 	
 	let _senders = _arguments.senders.decode () .else_wrap (0xd0c0a0b3) ?;
 	let _recipients = _arguments.recipients.decode () .else_wrap (0x7ddeeef6) ?;
-	let _associated = _arguments.shared.associated.collect () .else_wrap (0x44a02372) ?;
-	let _secrets = _arguments.shared.secrets.collect () .else_wrap (0x1df8ef79) ?;
-	let _pins = _arguments.shared.pins.collect () .else_wrap (0xcc5678f0) ?;
-	let _seeds = _arguments.shared.seeds.collect () .else_wrap (0x72e6b8f5) ?;
-	let _ballasts = _arguments.shared.ballasts.collect () .else_wrap (0x92846ef7) ?;
+	let _associated = _arguments.shared.associated.load () .else_wrap (0x44a02372) ?;
+	let _secrets = _arguments.shared.secrets.load_merge () .else_wrap (0x1df8ef79) ?;
+	let _pins = _arguments.shared.pins.load () .else_wrap (0xcc5678f0) ?;
+	let _seeds = _arguments.shared.seeds.load_merge () .else_wrap (0x72e6b8f5) ?;
+	let _ballasts = _arguments.shared.ballasts.load_merge () .else_wrap (0x92846ef7) ?;
 	let _derivation_loops = _arguments.shared.derivation_loops;
 	let _namespace = _arguments.common.namespace.as_ref () .map (String::as_ref);
 	let _deterministic = _arguments.deterministic;
@@ -589,11 +589,11 @@ pub(crate) fn main_decrypt_with_arguments (_arguments : DecryptArguments, _input
 	
 	let _recipients = _arguments.recipients.decode () .else_wrap (0xbcc50e84) ?;
 	let _senders = _arguments.senders.decode () .else_wrap (0x3a858679) ?;
-	let _associated = _arguments.shared.associated.collect () .else_wrap (0xad23f6ba) ?;
-	let _secrets = _arguments.shared.secrets.collect () .else_wrap (0x9f36e262) ?;
-	let _pins = _arguments.shared.pins.collect () .else_wrap (0x6a7572cb) ?;
-	let _seeds = _arguments.shared.seeds.collect () .else_wrap (0x22c67f58) ?;
-	let _ballasts = _arguments.shared.ballasts.collect () .else_wrap (0x11d94d7f) ?;
+	let _associated = _arguments.shared.associated.load () .else_wrap (0xad23f6ba) ?;
+	let _secrets = _arguments.shared.secrets.load_merge () .else_wrap (0x9f36e262) ?;
+	let _pins = _arguments.shared.pins.load () .else_wrap (0x6a7572cb) ?;
+	let _seeds = _arguments.shared.seeds.load_merge () .else_wrap (0x22c67f58) ?;
+	let _ballasts = _arguments.shared.ballasts.load_merge () .else_wrap (0x11d94d7f) ?;
 	let _fingerprint = _arguments.fingerprint;
 	let _derivation_loops = _arguments.shared.derivation_loops;
 	let _namespace = _arguments.common.namespace.as_ref () .map (String::as_ref);
@@ -875,9 +875,9 @@ pub fn main_ssh_wrap <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 			return Ok (ExitCode::SUCCESS);
 		}
 		
-		let _common = _common.arguments () .else_wrap (0xa66f4eb3) ?;
-		let _ssh_wrappers = _ssh_wrappers.arguments (_common.empty_is_missing) .else_wrap (0xc867ac9a) ?;
-		let _inputs = _inputs.arguments (_common.empty_is_missing) .else_wrap (0xc78c58a6) ?;
+		let _common = _common.collect () .else_wrap (0xa66f4eb3) ?;
+		let _ssh_wrappers = _ssh_wrappers.collect (_common.empty_is_missing) .else_wrap (0xc867ac9a) ?;
+		let _inputs = _inputs.collect (_common.empty_is_missing) .else_wrap (0xc78c58a6) ?;
 		let _namespace = _common.namespace;
 		
 		let _ssh_wrappers = _ssh_wrappers.wrappers () .else_wrap (0xc76d8940) ?;
@@ -892,7 +892,7 @@ pub fn main_ssh_wrap <'a> (_arguments : Arguments<'a>) -> MainResult<ExitCode> {
 	
 	let _namespace = _namespace.as_ref () .map (String::as_ref);
 	
-	let _wrap_input = _inputs.data () .else_wrap (0x99ffad05) ?;
+	let _wrap_input = _inputs.load_data () .else_wrap (0x99ffad05) ?;
 	
 	let mut _wrap_output = [0u8; 32];
 	_wrapper.wrap (_namespace, &_wrap_input, &mut _wrap_output) .else_wrap (0xe5926524) ?;
