@@ -52,6 +52,43 @@
 
 
 
+:: cargo / debug / build & collect / z-tokens :: exec -- "${ZRUN}" ':: cargo / debug / build & collect / *' z-tokens "${@}"
+:: cargo / release / build & collect / z-tokens :: exec -- "${ZRUN}" ':: cargo / release / build & collect / *' z-tokens "${@}"
+
+:: cargo / debug / build & collect / zt-patterns :: exec -- "${ZRUN}" ':: cargo / debug / build & collect / *' zt-patterns "${@}"
+:: cargo / release / build & collect / zt-patterns :: exec -- "${ZRUN}" ':: cargo / release / build & collect / *' zt-patterns "${@}"
+
+:: cargo / debug / build & collect / zt-hashes :: exec -- "${ZRUN}" ':: cargo / debug / build & collect / *' zt-hashes "${@}"
+:: cargo / release / build & collect / zt-hashes :: exec -- "${ZRUN}" ':: cargo / release / build & collect / *' zt-hashes "${@}"
+
+:: cargo / debug / build & collect / zt-encodings :: exec -- "${ZRUN}" ':: cargo / debug / build & collect / *' zt-encodings "${@}"
+:: cargo / release / build & collect / zt-encodings :: exec -- "${ZRUN}" ':: cargo / release / build & collect / *' zt-encodings "${@}"
+
+:: cargo / debug / build & collect / zt-exchange :: exec -- "${ZRUN}" ':: cargo / debug / build & collect / *' zt-exchange "${@}"
+:: cargo / release / build & collect / zt-exchange :: exec -- "${ZRUN}" ':: cargo / release / build & collect / *' zt-exchange "${@}"
+
+:: cargo / debug / build & collect / zt-oracles :: exec -- "${ZRUN}" ':: cargo / debug / build & collect / *' zt-oracles "${@}"
+:: cargo / release / build & collect / zt-oracles :: exec -- "${ZRUN}" ':: cargo / release / build & collect / *' zt-oracles "${@}"
+
+:: cargo / debug / build & collect / zt-secrets :: exec -- "${ZRUN}" ':: cargo / debug / build & collect / *' zt-secrets "${@}"
+:: cargo / release / build & collect / zt-secrets :: exec -- "${ZRUN}" ':: cargo / release / build & collect / *' zt-secrets "${@}"
+
+
+--<< cargo / debug / build & collect / *
+	test "${#}" -eq 1 ; _tool="${1}"
+	"${ZRUN}" ':: cargo / debug / build' --bin "${_tool}"
+	"${ZRUN}" ':: cargo / debug / collect' --bin "${_tool}"
+!!
+
+--<< cargo / release / build & collect / *
+	test "${#}" -eq 1 ; _tool="${1}"
+	"${ZRUN}" ':: cargo / release / build' --bin "${_tool}"
+	"${ZRUN}" ':: cargo / release / collect' --bin "${_tool}"
+!!
+
+
+
+
 :: cargo / debug / build & collect & run / z-tokens :: exec -- "${ZRUN}" ':: cargo / debug / build & collect & run / *' z-tokens "${@}"
 :: cargo / release / build & collect & run / z-tokens :: exec -- "${ZRUN}" ':: cargo / release / build & collect & run / *' z-tokens "${@}"
 
@@ -76,15 +113,13 @@
 
 --<< cargo / debug / build & collect & run / *
 	test "${#}" -ge 1 ; _tool="${1}" ; shift -- 1
-	"${ZRUN}" ':: cargo / debug / build' --bin "${_tool}" < /dev/null > /dev/null
-	"${ZRUN}" ':: cargo / debug / collect' --bin "${_tool}" < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / debug / build & collect / *' "${_tool}" < /dev/null > /dev/null
 	exec -- "${__OUTPUTS}/binaries/${_tool}--debug--linux--native" "${@}"
 !!
 
 --<< cargo / release / build & collect & run / *
 	test "${#}" -ge 1 ; _tool="${1}" ; shift -- 1
-	"${ZRUN}" ':: cargo / release / build' --bin "${_tool}" < /dev/null > /dev/null
-	"${ZRUN}" ':: cargo / release / collect' --bin "${_tool}" < /dev/null > /dev/null
+	"${ZRUN}" ':: cargo / release / build & collect / *' "${_tool}" < /dev/null > /dev/null
 	exec -- "${__OUTPUTS}/binaries/${_tool}--release--linux--native" "${@}"
 !!
 
