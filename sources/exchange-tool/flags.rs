@@ -951,14 +951,16 @@ impl InputsFlags {
 				"inputs used in key derivation (multiple allowed, **order and duplicates are significant**)",
 			) ?;
 		
-		let _flag = _flags.define_complex (&mut self.canonicalize);
-		_flag.define_switch_0 (true)
-				.with_flag ((), "inputs-canonicalize")
-				.with_description ("canonicalize inputs");
-		_flag.define_switch_0 (false)
-				.with_flag ((), "inputs-concatenate")
-				.with_description ("concatenate inputs")
-				.with_warning ("CAUTION");
+		{
+			let _flag = _flags.define_complex (&mut self.canonicalize);
+			_flag.define_switch_0 (true)
+					.with_flag ((), "inputs-canonicalize")
+					.with_description ("canonicalize inputs");
+			_flag.define_switch_0 (false)
+					.with_flag ((), "inputs-concatenate")
+					.with_description ("concatenate inputs")
+					.with_warning ("CAUTION");
+		}
 		
 		Ok (())
 	}
@@ -1049,17 +1051,34 @@ impl EncryptFlags {
 		self.recipients.flags (_flags) ?;
 		self.shared.flags (_flags) ?;
 		self.ssh_wrappers.flags (_flags) ?;
+		
+		{
+			let _flag = _flags.define_complex (&mut self.fingerprint);
+			_flag.define_switch_0 (true)
+					.with_flag ((), "with-fingerprint")
+					.with_description ("fingerprint input")
+					.with_warning ("CAUTION");
+			_flag.define_switch_0 (false)
+					.with_flag ((), "without-fingerprint");
+			_flag.define_flag_0 ()
+					.with_flag ((), "fingerprint")
+					.with_placeholder ("bool");
+		}
+		
+		{
+			let _flag = _flags.define_complex (&mut self.deterministic);
+			_flag.define_switch_0 (true)
+					.with_flag ((), "with-siv")
+					.with_description ("deterministic output, based on SIV")
+					.with_warning ("CAUTION");
+			_flag.define_switch_0 (false)
+					.with_flag ((), "without-siv");
+			_flag.define_flag_0 ()
+					.with_flag ((), "siv")
+					.with_placeholder ("bool");
+		}
+		
 		self.common.flags (_flags) ?;
-		
-		_flags.define_switch_0 (&mut self.fingerprint)
-				.with_flag ((), "fingerprint")
-				.with_description ("fingerprint input")
-				.with_warning ("CAUTION");
-		
-		_flags.define_switch_0 (&mut self.deterministic)
-				.with_flag ((), "siv")
-				.with_description ("deterministic output, based on SIV")
-				.with_warning ("CAUTION");
 		
 		Ok (())
 	}
@@ -1106,12 +1125,13 @@ impl DecryptFlags {
 		self.senders.flags (_flags) ?;
 		self.shared.flags (_flags) ?;
 		self.ssh_wrappers.flags (_flags) ?;
-		self.common.flags (_flags) ?;
 		
 		_flags.define_single_flag_0 (&mut self.fingerprint)
 				.with_flag ((), "fingerprint")
 				.with_placeholder ("string")
 				.with_description ("fingerprint generated during encryption");
+		
+		self.common.flags (_flags) ?;
 		
 		Ok (())
 	}
@@ -1265,11 +1285,18 @@ impl CommonFlags {
 				.with_placeholder ("string")
 				.with_description ("token used for cryptography domain separation");
 		
-		_flags.define_single_flag_0 (&mut self.empty_is_missing)
-				.with_flag ((), "empty-is-missing")
-				.with_placeholder ("bool")
-				.with_description ("treat empty arguments as unspecified")
-				.with_warning ("CAUTION");
+		{
+			let _flag = _flags.define_complex (&mut self.empty_is_missing);
+			_flag.define_switch_0 (true)
+					.with_flag ((), "with-empty-is-missing")
+					.with_description ("treat empty arguments as unspecified")
+					.with_warning ("CAUTION");
+			_flag.define_switch_0 (false)
+					.with_flag ((), "without-empty-is-missing");
+			_flag.define_flag_0 ()
+					.with_flag ((), "empty-is-missing")
+					.with_placeholder ("bool");
+		}
 		
 		Ok (())
 	}
