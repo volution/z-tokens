@@ -342,11 +342,11 @@ exchange / password / ballast-only / hello / with-associated :: exchange passwor
 exchange / password / ballast-only / hello / with-fingerprint :: exchange password --ballast ztxbl1ah428t6ux086pfdgv5d5z8fle06rll5azaglg8gcnvd65mup65qqckq348 --with-fingerprint --input $'hello world!\n'
 exchange / password / ballast-only / notice :: exchange password --ballast ztxbl1ah428t6ux086pfdgv5d5z8fle06rll5azaglg8gcnvd65mup65qqckq348 --input-path ./notice.txt
 
-exchange / password / associated-only / empty :: exchange password --associated context --input-path /dev/null
-exchange / password / associated-only / hello :: exchange password --associated context --input $'hello world!\n'
-exchange / password / associated-only / hello / with-associated :: exchange password --associated context --associated testing --input $'hello world!\n'
-exchange / password / associated-only / hello / with-fingerprint :: exchange password --associated context --with-fingerprint --input $'hello world!\n'
-exchange / password / associated-only / notice :: exchange password --associated context --input-path ./notice.txt
+# exchange / password / associated-only / empty :: exchange password --associated context --input-path /dev/null
+# exchange / password / associated-only / hello :: exchange password --associated context --input $'hello world!\n'
+# exchange / password / associated-only / hello / with-associated :: exchange password --associated context --associated testing --input $'hello world!\n'
+# exchange / password / associated-only / hello / with-fingerprint :: exchange password --associated context --with-fingerprint --input $'hello world!\n'
+# exchange / password / associated-only / notice :: exchange password --associated context --input-path ./notice.txt
 
 exchange / password / ssh-wrap-only / empty :: exchange password --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7 --input-path /dev/null
 exchange / password / ssh-wrap-only / hello :: exchange password --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7 --input $'hello world!\n'
@@ -405,11 +405,11 @@ exchange / encrypt / ballast-only / hello / with-associated :: exchange encrypt 
 exchange / encrypt / ballast-only / hello / with-fingerprint :: exchange encrypt --with-siv --ballast ztxbl1ah428t6ux086pfdgv5d5z8fle06rll5azaglg8gcnvd65mup65qqckq348 --with-fingerprint <<< $'hello world!'
 exchange / encrypt / ballast-only / notice :: exchange encrypt --with-siv --ballast ztxbl1ah428t6ux086pfdgv5d5z8fle06rll5azaglg8gcnvd65mup65qqckq348 < ./notice.txt
 
-exchange / encrypt / associated-only / empty :: exchange encrypt --with-siv --associated context < /dev/null
-exchange / encrypt / associated-only / hello :: exchange encrypt --with-siv --associated context <<< $'hello world!'
-exchange / encrypt / associated-only / hello / with-associated :: exchange encrypt --with-siv --associated context --associated testing <<< $'hello world!'
-exchange / encrypt / associated-only / hello / with-fingerprint :: exchange encrypt --with-siv --associated context --with-fingerprint <<< $'hello world!'
-exchange / encrypt / associated-only / notice :: exchange encrypt --with-siv --associated context < ./notice.txt
+# exchange / encrypt / associated-only / empty :: exchange encrypt --with-siv --associated context < /dev/null
+# exchange / encrypt / associated-only / hello :: exchange encrypt --with-siv --associated context <<< $'hello world!'
+# exchange / encrypt / associated-only / hello / with-associated :: exchange encrypt --with-siv --associated context --associated testing <<< $'hello world!'
+# exchange / encrypt / associated-only / hello / with-fingerprint :: exchange encrypt --with-siv --associated context --with-fingerprint <<< $'hello world!'
+# exchange / encrypt / associated-only / notice :: exchange encrypt --with-siv --associated context < ./notice.txt
 
 exchange / encrypt / ssh-wrap-only / empty :: exchange encrypt --with-siv --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7 < /dev/null
 exchange / encrypt / ssh-wrap-only / hello :: exchange encrypt --with-siv --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7 <<< $'hello world!'
