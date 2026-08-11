@@ -1,4 +1,4 @@
->>  z-tokens exchange encrypt --siv --associated context --fingerprint
+>>  z-tokens exchange encrypt --with-siv --associated context --with-fingerprint
 
 
 #1,  3Lms6mSoUx19T 3SgPrydF8j7WN 37dx5PjQrEm6J fm7PDaQVEZDJ  31NxN7D4ExEvi

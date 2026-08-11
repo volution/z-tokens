@@ -1,4 +1,4 @@
->>  z-tokens exchange encrypt --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx --fingerprint
+>>  z-tokens exchange encrypt --with-siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx --with-fingerprint
 
 
 #1,  3Lms6mDdM8fvW u19QsqhHeJ34  3dTE4diwjYCjP 2HMRQxeT41Ezc 3Y4mb3Noi71iN

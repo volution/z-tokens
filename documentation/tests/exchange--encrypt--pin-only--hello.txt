@@ -1,4 +1,4 @@
->>  z-tokens exchange encrypt --siv --pin 1234
+>>  z-tokens exchange encrypt --with-siv --pin 1234
 
 
 #1,  3Lms6mFn4LbsL zdhV3uCxWQrW  z6BSamaNmFkd  3BJH4Jsv7M8sg 3jaYCRKsebPQz

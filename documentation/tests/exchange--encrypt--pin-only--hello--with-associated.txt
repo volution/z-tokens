@@ -1,4 +1,4 @@
->>  z-tokens exchange encrypt --siv --pin 1234 --associated testing
+>>  z-tokens exchange encrypt --with-siv --pin 1234 --associated testing
 
 
 #1,  3Lms6mC4oKL5u AHDpUSzcqrju  2tbGLUFy918Fd rUCUUGZL8Qh9  8wgqGpkuntdS

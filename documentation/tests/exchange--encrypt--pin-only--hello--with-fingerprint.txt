@@ -1,4 +1,4 @@
->>  z-tokens exchange encrypt --siv --pin 1234 --fingerprint
+>>  z-tokens exchange encrypt --with-siv --pin 1234 --with-fingerprint
 
 
 #1,  3Lms6m9FHqQo1 3HYgd8LaNJTZr 4BCCSp13HVZRx 2fLAZwxCa2Dez 3XE1eGLwVLqDX

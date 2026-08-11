@@ -1,4 +1,4 @@
->>  z-tokens exchange encrypt --siv --associated context --associated testing
+>>  z-tokens exchange encrypt --with-siv --associated context --associated testing
 
 
 #1,  3Lms6mCvXktfx 2nTxaa6xpuUJ2 3Jj5bZYG9NSvF 3g4sYPVFM1QDz 2Cwdez8bXtmba

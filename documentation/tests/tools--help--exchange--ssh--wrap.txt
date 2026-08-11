@@ -52,9 +52,11 @@
   --namespace  {string}
     **  token used for cryptography domain separation
 
-  --empty-is-missing  {bool}
+  --with-empty-is-missing
     **  treat empty arguments as unspecified
     !!  CAUTION
+  --without-empty-is-missing
+  --empty-is-missing  {bool}
 
   -v --version
 

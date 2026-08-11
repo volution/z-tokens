@@ -1,4 +1,4 @@
->>  z-tokens exchange encrypt --siv --ballast ztxbl1ah428t6ux086pfdgv5d5z8fle06rll5azaglg8gcnvd65mup65qqckq348
+>>  z-tokens exchange encrypt --with-siv --ballast ztxbl1ah428t6ux086pfdgv5d5z8fle06rll5azaglg8gcnvd65mup65qqckq348
 
 
 #1,  3Lms6m9Z2Ndkf JrGtmGRoMQ3H  3jB1aJRJF8FhF 2C9mAWyw1TNKA 2dQ1wCxAvWRCg

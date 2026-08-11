@@ -1,4 +1,4 @@
->>  z-tokens exchange encrypt --namespace namespace-1 --siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx
+>>  z-tokens exchange encrypt --namespace namespace-1 --with-siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx
 
 
 #1,  3Lms6mKsyxiTJ LtCX8j3BFpP5  sCM2TFzcsx5e  4Epd4hWPWiVhY 3m6ZaCU24exKf

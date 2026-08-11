@@ -1,4 +1,4 @@
->>  z-tokens exchange encrypt --siv --associated context
+>>  z-tokens exchange encrypt --with-siv --associated context
 
 
 #01,  3Lms6mX4NaJiS fkc2U2bwJzy5  3qgtMVDrtqnmz wpGQL8ve5aUP  3UPUS9of2TCzj

@@ -1,4 +1,4 @@
->>  z-tokens exchange encrypt --siv --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7
+>>  z-tokens exchange encrypt --with-siv --ssh-wrap ztxoh199xqjeytqlnqtgpsxe4m78m3tuzn92e9yh4749dnr79xt3ylg3hsa5cpk7
 
 
 #01,  3Lms6mQsUXZL1 3yvFivi99ER6h 33skJfi9gqr6c 2jZjA6CMk6FMS 3c3y7jgGYHMpp

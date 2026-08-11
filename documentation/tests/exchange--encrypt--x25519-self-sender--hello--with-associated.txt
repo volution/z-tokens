@@ -1,4 +1,4 @@
->>  z-tokens exchange encrypt --siv --sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m --associated testing
+>>  z-tokens exchange encrypt --with-siv --sender ztxsk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqg5na4m --associated testing
 
 
 #1,  3Lms6ma6GmfTq 3vmuvpZopicsN 2WfLWNiXahxbT pa8Qu37X5YqR  24sZZZmRg6rJJ

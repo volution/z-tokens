@@ -1,4 +1,4 @@
->>  z-tokens exchange encrypt --siv --sender ztxsk1zwvkh4kkyc2d74s29grdmpaah9en9nggd2rk3cvwz2jy034ep5vsjkhq8d --recipient ztxrp18vheu3x4zevud6ssa00dw78ujwahjv6gqhcgh7rs2zqtdwkwfecshyvcsh
+>>  z-tokens exchange encrypt --with-siv --sender ztxsk1zwvkh4kkyc2d74s29grdmpaah9en9nggd2rk3cvwz2jy034ep5vsjkhq8d --recipient ztxrp18vheu3x4zevud6ssa00dw78ujwahjv6gqhcgh7rs2zqtdwkwfecshyvcsh
 
 
 #1,  3Lms6mQBFSHDs 3VPwqYfRGR8ED 4FecArd19AMnf nSXF6fmzFDtP  Gu3sBrC69itH

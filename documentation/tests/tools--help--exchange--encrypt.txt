@@ -235,20 +235,26 @@
   --ssh-wrap-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
 
+  --with-fingerprint
+    **  fingerprint input
+    !!  CAUTION
+  --without-fingerprint
+  --fingerprint  {bool}
+
+  --with-siv
+    **  deterministic output, based on SIV
+    !!  CAUTION
+  --without-siv
+  --siv  {bool}
+
   --namespace  {string}
     **  token used for cryptography domain separation
 
-  --empty-is-missing  {bool}
+  --with-empty-is-missing
     **  treat empty arguments as unspecified
     !!  CAUTION
-
-  --fingerprint
-    **  fingerprint input
-    !!  CAUTION
-
-  --siv
-    **  deterministic output, based on SIV
-    !!  CAUTION
+  --without-empty-is-missing
+  --empty-is-missing  {bool}
 
   -v --version
 

@@ -235,15 +235,17 @@
   --ssh-wrap-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
 
+  --fingerprint  {string}
+    **  fingerprint generated during encryption
+
   --namespace  {string}
     **  token used for cryptography domain separation
 
-  --empty-is-missing  {bool}
+  --with-empty-is-missing
     **  treat empty arguments as unspecified
     !!  CAUTION
-
-  --fingerprint  {string}
-    **  fingerprint generated during encryption
+  --without-empty-is-missing
+  --empty-is-missing  {bool}
 
   -v --version
 
