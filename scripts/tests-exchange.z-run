@@ -1264,6 +1264,10 @@
 				_contributing=true
 			;;
 			( without-x25519 )
+				_common_arguments+=(
+						--without-sender
+						--without-recipient
+					)
 			;;
 			( empty-x25519 )
 				_encrypt_arguments+=(
@@ -1294,6 +1298,9 @@
 					)
 			;;
 			( without-associated )
+				_common_arguments+=(
+						--without-associated
+					)
 			;;
 			( empty-associated )
 				_encrypt_arguments+=(
@@ -1353,6 +1360,9 @@
 				_contributing=true
 			;;
 			( without-pin )
+				_common_arguments+=(
+						--without-pin
+					)
 			;;
 			( empty-pin )
 				_encrypt_arguments+=(
@@ -1412,6 +1422,9 @@
 				_contributing=true
 			;;
 			( without-secret )
+				_common_arguments+=(
+						--without-secret
+					)
 			;;
 			( empty-secret )
 				_encrypt_arguments+=(
@@ -1471,6 +1484,9 @@
 				_contributing=true
 			;;
 			( without-seed )
+				_common_arguments+=(
+						--without-seed
+					)
 			;;
 			( empty-seed )
 				_encrypt_arguments+=(
@@ -1530,6 +1546,9 @@
 				_contributing=true
 			;;
 			( without-ballast )
+				_common_arguments+=(
+						--without-ballast
+					)
 			;;
 			( empty-ballast )
 				_encrypt_arguments+=(
@@ -1589,6 +1608,9 @@
 				_contributing=true
 			;;
 			( without-ssh-wrap )
+				_common_arguments+=(
+						--without-ssh-wrap
+					)
 			;;
 			( empty-ssh-wrap )
 				_encrypt_arguments+=(
@@ -1643,21 +1665,9 @@
 				_contributing=true
 			;;
 			( without-fingerprint )
-				if test "${_case_tool}" != password ; then
-					_encrypt_arguments+=(
-							--fingerprint false
-						)
-					_decrypt_arguments+=(
-							--without-fingerprint
-						)
-				else
-					_encrypt_arguments+=(
-							--without-fingerprint
-						)
-					_decrypt_arguments+=(
-							--without-fingerprint
-						)
-				fi
+				_common_arguments+=(
+						--without-fingerprint
+					)
 			;;
 			( __* )
 				continue
