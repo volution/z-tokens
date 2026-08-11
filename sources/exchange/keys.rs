@@ -45,6 +45,8 @@ pub struct SenderPublicKey (Rb<x25519::PublicKey>);
 pub struct RecipientPrivateKey (Rb<x25519::StaticSecret>);
 pub struct RecipientPublicKey (Rb<x25519::PublicKey>);
 
+pub struct Fingerprint (Rb<[u8; 32]>);
+
 pub struct SharedSecret (Rb<[u8; 32]>);
 pub struct SharedSeed (Rb<[u8; 32]>);
 pub struct SharedBallast (Rb<[u8; 32]>);
@@ -86,6 +88,8 @@ pub trait SharedBallastTrait {
 
 
 
+
+pub const FINGERPRINT_ENCODED_PREFIX : &str = "ztxfp";
 
 pub const SENDER_PRIVATE_KEY_ENCODED_PREFIX : &str = "ztxsk";
 pub const SENDER_PUBLIC_KEY_ENCODED_PREFIX : &str = "ztxsp";
@@ -328,6 +332,42 @@ impl RecipientPublicOrPrivateKey {
 
 
 
+impl Fingerprint {
+	
+	pub fn zero () -> Self {
+		Self (Rb::new ([0; 32]))
+	}
+	
+	pub fn new (_data : [u8; 32]) -> Self {
+		Self (Rb::new (_data))
+	}
+	
+	pub fn decode_and_zeroize (_string : String) -> KeyEncodingResult<Self> {
+		let _outcome = Self::decode (&_string);
+		zeroize_and_drop (_string);
+		_outcome
+	}
+	
+	pub fn decode (_string : &str) -> KeyEncodingResult<Self> {
+		decode_fingerprint (_string)
+	}
+	
+	pub fn encode (&self) -> KeyEncodingResult<Rb<String>> {
+		encode_fingerprint (self)
+	}
+	
+	pub fn access_bytes (&self) -> &[u8; 32] {
+		&self.0
+	}
+	
+	pub fn access_bytes_slice (&self) -> &[u8] {
+		self.access_bytes () .as_slice ()
+	}
+}
+
+
+
+
 impl SharedSecret {
 	
 	pub fn decode_and_zeroize (_string : String) -> KeyEncodingResult<Self> {
@@ -563,6 +603,13 @@ pub fn decode_recipient_public_key (_string : &str) -> KeyEncodingResult<Recipie
 }
 
 
+pub fn decode_fingerprint (_string : &str) -> KeyEncodingResult<Fingerprint> {
+	let mut _key_data = [0u8; 32];
+	decode_raw (FINGERPRINT_ENCODED_PREFIX, _string, &mut _key_data) ?;
+	Ok (Fingerprint (Rb::new (_key_data)))
+}
+
+
 pub fn decode_shared_secret (_string : &str) -> KeyEncodingResult<SharedSecret> {
 	let mut _key_data = [0u8; 32];
 	decode_raw (SHARED_SECRET_ENCODED_PREFIX, _string, &mut _key_data) ?;
@@ -645,6 +692,12 @@ pub fn encode_recipient_private_key (_key : &RecipientPrivateKey) -> KeyEncoding
 pub fn encode_recipient_public_key (_key : &RecipientPublicKey) -> KeyEncodingResult<Rb<String>> {
 	let _bytes = _key.access_bytes ();
 	encode_raw (RECIPIENT_PUBLIC_KEY_ENCODED_PREFIX, _bytes)
+}
+
+
+pub fn encode_fingerprint (_key : &Fingerprint) -> KeyEncodingResult<Rb<String>> {
+	let _bytes = _key.access_bytes ();
+	encode_raw (FINGERPRINT_ENCODED_PREFIX, _bytes)
 }
 
 

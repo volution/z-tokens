@@ -100,6 +100,8 @@ define_cryptographic_material! (pub(crate) InternalPacketKey, 32);
 define_cryptographic_material! (pub(crate) InternalPacketSaltSeed, 32);
 define_cryptographic_material! (pub(crate) InternalPacketSalt, 32);
 
+define_cryptographic_material! (pub(crate) InternalFingerprint, 32);
+
 define_cryptographic_material! (pub(crate) InternalEncryptionKey, 32);
 
 define_cryptographic_material! (pub(crate) InternalAuthenticationKey, 32);
@@ -168,6 +170,8 @@ define_cryptographic_purpose! (pub(crate) CRYPTO_PACKET_KEY_SEED_PURPOSE, encryp
 define_cryptographic_purpose! (pub(crate) CRYPTO_PACKET_KEY_PURPOSE, encryption, packet_key);
 
 define_cryptographic_purpose! (pub(crate) CRYPTO_PACKET_SALT_SEED_PURPOSE, encryption, packet_salt_seed);
+
+define_cryptographic_purpose! (pub(crate) CRYPTO_FINGERPRINT_PURPOSE, encryption, fingerprint);
 
 define_cryptographic_purpose! (pub(crate) CRYPTO_ENCRYPTION_KEY_PURPOSE, encryption, encryption_key);
 define_cryptographic_purpose! (pub(crate) CRYPTO_AUTHENTICATION_KEY_PURPOSE, encryption, authentication_key);

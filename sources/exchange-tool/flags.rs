@@ -16,6 +16,7 @@ pub(crate) struct EncryptArguments {
 	pub shared : SharedKeysArguments,
 	pub ssh_wrappers : SshWrappersArguments,
 	pub common : CommonArguments,
+	pub fingerprint : bool,
 	pub deterministic : bool,
 }
 
@@ -26,6 +27,7 @@ pub(crate) struct EncryptFlags {
 	pub shared : SharedKeysFlags,
 	pub ssh_wrappers : SshWrappersFlags,
 	pub common : CommonFlags,
+	pub fingerprint : Option<bool>,
 	pub deterministic : Option<bool>,
 }
 
@@ -38,6 +40,7 @@ pub(crate) struct DecryptArguments {
 	pub shared : SharedKeysArguments,
 	pub ssh_wrappers : SshWrappersArguments,
 	pub common : CommonArguments,
+	pub fingerprint : Option<Fingerprint>,
 }
 
 
@@ -47,6 +50,8 @@ pub(crate) struct DecryptFlags {
 	pub shared : SharedKeysFlags,
 	pub ssh_wrappers : SshWrappersFlags,
 	pub common : CommonFlags,
+	// TODO!
+	pub fingerprint : Option<String>,
 }
 
 
@@ -1033,6 +1038,7 @@ impl EncryptFlags {
 				shared : SharedKeysFlags::new (),
 				ssh_wrappers : SshWrappersFlags::new (),
 				common : CommonFlags::new (),
+				fingerprint : None,
 				deterministic : None,
 			}
 	}
@@ -1044,6 +1050,11 @@ impl EncryptFlags {
 		self.shared.flags (_flags) ?;
 		self.ssh_wrappers.flags (_flags) ?;
 		self.common.flags (_flags) ?;
+		
+		_flags.define_switch_0 (&mut self.fingerprint)
+				.with_flag ((), "fingerprint")
+				.with_description ("fingerprint input")
+				.with_warning ("CAUTION");
 		
 		_flags.define_switch_0 (&mut self.deterministic)
 				.with_flag ((), "siv")
@@ -1067,6 +1078,7 @@ impl EncryptFlags {
 				shared : _shared,
 				ssh_wrappers : _ssh_wrappers,
 				common : _common,
+				fingerprint : self.fingerprint.unwrap_or (false),
 				deterministic : self.deterministic.unwrap_or (false),
 			})
 	}
@@ -1084,6 +1096,7 @@ impl DecryptFlags {
 				shared : SharedKeysFlags::new (),
 				ssh_wrappers : SshWrappersFlags::new (),
 				common : CommonFlags::new (),
+				fingerprint : None,
 			}
 	}
 	
@@ -1094,6 +1107,11 @@ impl DecryptFlags {
 		self.shared.flags (_flags) ?;
 		self.ssh_wrappers.flags (_flags) ?;
 		self.common.flags (_flags) ?;
+		
+		_flags.define_single_flag_0 (&mut self.fingerprint)
+				.with_flag ((), "fingerprint")
+				.with_placeholder ("string")
+				.with_description ("fingerprint generated during encryption");
 		
 		Ok (())
 	}
@@ -1106,12 +1124,19 @@ impl DecryptFlags {
 		let _shared = self.shared.arguments (_common.empty_is_missing) ?;
 		let _ssh_wrappers = self.ssh_wrappers.arguments (_common.empty_is_missing) ?;
 		
+		let _fingerprint = if let Some (_fingerprint) = self.fingerprint {
+				Some (decode_fingerprint (&_fingerprint) .else_wrap (0xd593d621) ?)
+			} else {
+				None
+			};
+		
 		Ok (DecryptArguments {
 				recipients : _recipients,
 				senders : _senders,
 				shared : _shared,
 				ssh_wrappers : _ssh_wrappers,
 				common : _common,
+				fingerprint : _fingerprint,
 			})
 	}
 }

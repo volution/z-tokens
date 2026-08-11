@@ -493,6 +493,8 @@ pub(crate) fn main_encrypt_with_arguments (_arguments : EncryptArguments, _input
 	
 	let _decrypted = read_at_most (_input, CRYPTO_DECRYPTED_SIZE_MAX) .else_wrap (0x12c4b741) ?;
 	
+	let mut _fingerprint = if _arguments.fingerprint { Some (Fingerprint::zero ()) } else { None };
+	
 	let mut _encrypted = Vec::with_capacity (STDOUT_BUFFER_SIZE);
 	
 	encrypt (
@@ -503,6 +505,7 @@ pub(crate) fn main_encrypt_with_arguments (_arguments : EncryptArguments, _input
 			_pins.iter (),
 			_seeds.iter () .map (Box::deref),
 			_ballasts.iter () .map (Box::deref),
+			_fingerprint.as_mut (),
 			_derivation_loops,
 			_namespace,
 			&_decrypted,
@@ -512,6 +515,16 @@ pub(crate) fn main_encrypt_with_arguments (_arguments : EncryptArguments, _input
 		) .else_wrap (0xa3032303) ?;
 	
 	write_output (_output, _encrypted) .else_wrap (0x4bee2603) ?;
+	
+	if let Some (_fingerprint) = _fingerprint {
+		let _fingerprint = _fingerprint.encode () .else_wrap (0x1736cf34) ?;
+		let mut _report = String::new ();
+		writeln! (_report) .else_wrap (0x060c2b91) ?;
+		writeln! (_report, "## fingerprint") .else_wrap (0xc35eebf3) ?;
+		writeln! (_report, "{}", _fingerprint.deref ()) .else_wrap (0x6f08f5fb) ?;
+		writeln! (_report) .else_wrap (0xc4cd210d) ?;
+		write! (stderr_locked (), "{}", _report) .else_wrap (0x33796f06) ?;
+	}
 	
 	Ok (ExitCode::SUCCESS)
 }
@@ -556,6 +569,7 @@ pub(crate) fn main_decrypt_with_arguments (_arguments : DecryptArguments, _input
 	let _pins = _arguments.shared.pins.collect () .else_wrap (0x6a7572cb) ?;
 	let _seeds = _arguments.shared.seeds.collect () .else_wrap (0x22c67f58) ?;
 	let _ballasts = _arguments.shared.ballasts.collect () .else_wrap (0x11d94d7f) ?;
+	let _fingerprint = _arguments.fingerprint;
 	let _derivation_loops = _arguments.shared.derivation_loops;
 	let _namespace = _arguments.common.namespace.as_ref () .map (String::as_ref);
 	
@@ -574,6 +588,7 @@ pub(crate) fn main_decrypt_with_arguments (_arguments : DecryptArguments, _input
 			_pins.iter (),
 			_seeds.iter () .map (Box::deref),
 			_ballasts.iter () .map (Box::deref),
+			_fingerprint.as_ref (),
 			_derivation_loops,
 			_namespace,
 			&_encrypted,

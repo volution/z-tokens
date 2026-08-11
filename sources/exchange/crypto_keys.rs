@@ -52,6 +52,7 @@ pub(crate) fn derive_keys_phase_1 <'a> (
 			_seed_inputs : Vec<InternalSeedInput<'a>>,
 			_ballast_inputs : Vec<InternalBallastInput<'a>>,
 			_oracle_handles : Vec<InternalOracleHandle>,
+			_fingerprint : bool,
 			_derivation_loops : Option<NonZeroU64>,
 			_namespace : Option<&str>,
 			_encryption : bool,
@@ -82,6 +83,7 @@ pub(crate) fn derive_keys_phase_1 <'a> (
 			&[],
 			&[
 				_schema.as_bytes (),
+				& [ if _fingerprint { 1 } else { 0 } ],
 				& encode_u64_into (_derivation_loops),
 				_namespace.as_bytes (),
 			],
@@ -247,7 +249,7 @@ pub(crate) fn derive_keys_phase_1 <'a> (
 	let _dhe_key = match (_private_keys.len (), _public_keys.len ()) {
 		
 		(0, 0) =>
-			if _associated_hashes.is_empty () && _secret_inputs.is_empty () && _pin_inputs.is_empty () && _seed_inputs.is_empty () && _ballast_inputs.is_empty () && _oracle_handles.is_empty () {
+			if _associated_hashes.is_empty () && _secret_inputs.is_empty () && _pin_inputs.is_empty () && _seed_inputs.is_empty () && _ballast_inputs.is_empty () && _oracle_handles.is_empty () && !_fingerprint {
 				fail! (0xa1de0167);
 			} else {
 				InternalDheKey::zero ()
@@ -679,16 +681,26 @@ pub(crate) fn derive_keys_phase_2 (
 
 pub(crate) fn derive_keys_phase_3 (
 			_packet_key : &InternalPacketKey,
+			_fingerprint : Option<&InternalFingerprint>,
 		) -> CryptoResult<(
 			InternalEncryptionKey,
 			InternalAuthenticationKey,
 		)>
 {
+	let _fingerprint_zero : InternalFingerprint = InternalFingerprint::zero ();
+	
+	let _fingerprint = if let Some (_fingerprint) = _fingerprint {
+			_fingerprint
+		} else {
+			&_fingerprint_zero
+		};
+	
 	let _encryption_key = blake3_hash (
 			InternalEncryptionKey::wrap,
 			CRYPTO_ENCRYPTION_KEY_PURPOSE,
 			&[
 				_packet_key.access (),
+				_fingerprint.access (),
 			],
 			&[],
 		);
@@ -698,6 +710,7 @@ pub(crate) fn derive_keys_phase_3 (
 			CRYPTO_AUTHENTICATION_KEY_PURPOSE,
 			&[
 				_packet_key.access (),
+				_fingerprint.access (),
 			],
 			&[],
 		);
@@ -738,6 +751,34 @@ pub(crate) fn derive_packet_salt (
 		);
 	
 	Ok (_packet_salt)
+}
+
+
+
+
+
+
+
+
+pub(crate) fn derive_fingerprint (
+			_packet_key : &InternalPacketKey,
+			_data : &[u8],
+		) -> CryptoResult<
+			InternalFingerprint
+		>
+{
+	let _fingerprint = blake3_hash (
+			InternalFingerprint::wrap,
+			CRYPTO_FINGERPRINT_PURPOSE,
+			&[
+				_packet_key.access (),
+			],
+			&[
+				_data,
+			],
+		);
+	
+	Ok (_fingerprint)
 }
 
 
