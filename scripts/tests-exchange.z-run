@@ -675,7 +675,7 @@
 				--ballast "${_ballast}" \
 				--derivation-loops "${_derivation_loops}" \
 				--namespace "${_namespace}" \
-				--siv \
+				--siv true \
 				--empty-is-missing true \
 		<<< $'hello world!\n' \
 	#
@@ -717,7 +717,7 @@
 				--ballast "${_ballast}" \
 				--derivation-loops "${_derivation_loops}" \
 				--namespace "${_namespace}" \
-				--siv \
+				--siv true \
 				--empty-is-missing true \
 		< /dev/null \
 	#
@@ -759,7 +759,7 @@
 				--ballast "${_ballast}" \
 				--derivation-loops "${_derivation_loops}" \
 				--namespace "${_namespace}" \
-				--siv \
+				--siv true \
 				--empty-is-missing true \
 		< ./notice.txt \
 	#
@@ -802,7 +802,7 @@
 				--ballast "${_ballast}" \
 				--derivation-loops "${_derivation_loops}" \
 				--namespace "${_namespace}" \
-				--siv \
+				--siv true \
 				--empty-is-missing true \
 	#
 !!
@@ -1573,11 +1573,16 @@
 			( deterministic )
 				if test "${_case_tool}" != password ; then
 					_encrypt_arguments+=(
-							--siv
+							--siv true
 						)
 				fi
 			;;
 			( randomized )
+				if test "${_case_tool}" != password ; then
+					_encrypt_arguments+=(
+							--siv false
+						)
+				fi
 			;;
 			( __* )
 				continue
@@ -1589,11 +1594,18 @@
 		
 		case "${_case_fingerprint}" in
 			( with-fingerprint )
-				_encrypt_arguments+=(
-						--fingerprint
-					)
+				if test "${_case_tool}" != password ; then
+					_encrypt_arguments+=(
+							--fingerprint true
+						)
+				fi
 			;;
 			( without-fingerprint )
+				if test "${_case_tool}" != password ; then
+					_encrypt_arguments+=(
+							--fingerprint false
+						)
+				fi
 			;;
 			( __* )
 				continue
