@@ -16,9 +16,19 @@
 << documentation / sbom / generate / cyclonedx
 	test "${#}" -eq 0
 	
-	"${ZRUN}" ':: cargo / exec / local' cyclonedx --all --format json
+	"${ZRUN}" ':: cargo / exec / local' cyclonedx --all --format json --override-filename cyclonedx
 	
-	mv -T -- ./sources/bom.json ./documentation/sbom/cyclonedx.json
+	cp -T -- ./sources/cyclonedx.json ./documentation/sbom/cyclonedx.json
+	
+	sed \
+			-i \
+			-r \
+			-e 's#file:///mnt/.*/z-tokens/#file:///.../z-tokens/#g' \
+			-- \
+			./documentation/sbom/cyclonedx.json \
+	#
+	
+	find ./sources/ -type f -name 'cyclonedx.json' -delete
 !!
 
 
@@ -105,7 +115,7 @@
 	w3m \
 			-dump \
 			-T text/html \
-			-cols 160 \
+			-cols 240 \
 			-no-graph \
 			-I utf-8 \
 			-O utf-8 \
