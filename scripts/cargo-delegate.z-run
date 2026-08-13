@@ -11,6 +11,7 @@
 		"${ZRUN}" ':: sources / embedded / prepare'
 	fi
 	
+	export -- __META__BUILD_TIMESTAMP="$( < ./embedded/build/timestamp.txt )"
 	export -- __META__BUILD_SOURCES_HASH="$( < ./embedded/build/sources.hash )"
 	export -- __META__BUILD_GIT_HASH="$( < "${__OUTPUTS}/markers/build-git-hash.txt" )"
 	
@@ -99,6 +100,7 @@
 	
 	test -d "${_scratch}"
 	
+	export -- __META__BUILD_TIMESTAMP="${__META__BUILD_TIMESTAMP:-[unknown-bts]}"
 	export -- __META__BUILD_SOURCES_HASH="${__META__BUILD_SOURCES_HASH:-[unknown-bsh]}"
 	export -- __META__BUILD_GIT_HASH="${__META__BUILD_GIT_HASH:-[unknown-bgh]}"
 	export -- __META__BUILD_TARGET_TYPE="${__META__BUILD_TARGET_TYPE:-[unknown-btt]}"
@@ -340,6 +342,7 @@
 	_environment_1=(
 			__CARGO__TARGET="${__CARGO__TARGET}"
 			__CARGO__RUST_FLAGS="${__CARGO__RUST_FLAGS}"
+			__META__BUILD_TIMESTAMP="${__META__BUILD_TIMESTAMP}"
 			__META__BUILD_SOURCES_HASH="${__META__BUILD_SOURCES_HASH}"
 			__META__BUILD_GIT_HASH="${__META__BUILD_GIT_HASH}"
 			__META__BUILD_TARGET_TYPE="${__META__BUILD_TARGET_TYPE}"
@@ -399,9 +402,11 @@
 			CARGO_HOME="${_cargo_home}"
 			CARGO_TARGET_DIR="${_scratch}/target/${_cargo_target_subdir}/${__CARGO__TARGET}"
 			CARGO_BUILD_RUSTFLAGS="${__CARGO__RUST_FLAGS}"
+			SOURCE_DATE_EPOCH=946684800
 			
 			RUST_BACKTRACE=full
 			
+			__META__BUILD_TIMESTAMP="${__META__BUILD_TIMESTAMP}"
 			__META__BUILD_SOURCES_HASH="${__META__BUILD_SOURCES_HASH}"
 			__META__BUILD_GIT_HASH="${__META__BUILD_GIT_HASH}"
 			__META__BUILD_TARGET_TYPE="${__META__BUILD_TARGET_TYPE}"
@@ -457,9 +462,11 @@
 			CARGO_HOME=/opt/cargo
 			CARGO_TARGET_DIR="/rust/target/${_cargo_target_subdir}/${__CARGO__TARGET}"
 			CARGO_BUILD_RUSTFLAGS="${__CARGO__RUST_FLAGS}"
+			SOURCE_DATE_EPOCH=946684800
 			
 			RUST_BACKTRACE=full
 			
+			__META__BUILD_TIMESTAMP="${__META__BUILD_TIMESTAMP}"
 			__META__BUILD_SOURCES_HASH="${__META__BUILD_SOURCES_HASH}"
 			__META__BUILD_GIT_HASH="${__META__BUILD_GIT_HASH}"
 			__META__BUILD_TARGET_TYPE="${__META__BUILD_TARGET_TYPE}"
