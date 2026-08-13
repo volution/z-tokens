@@ -725,19 +725,33 @@ pub(crate) fn derive_keys_phase_3 (
 
 
 
-pub(crate) fn derive_packet_salt (
+pub(crate) fn derive_packet_salt <'a> (
 			_packet_salt_seed : &InternalPacketSaltSeed,
 			_data : &[u8],
 			_deterministic : bool,
+			mut _randomness : impl Iterator<Item = &'a [u8]>,
 		) -> CryptoResult<
 			InternalPacketSalt
 		>
 {
-	let _random_salt = if _deterministic {
+	let mut _random_salt = if _deterministic {
 			InternalPacketSalt::zero ()
 		} else {
 			generate_random (InternalPacketSalt::wrap)
 		};
+	
+	while let Some (_randomness) = _randomness.next () {
+		if ! _randomness.is_empty () {
+			_random_salt = blake3_keyed_hash (
+					InternalPacketSalt::wrap,
+					_random_salt.access (),
+					&[],
+					&[
+						_randomness,
+					],
+				);
+		}
+	}
 	
 	let _packet_salt = blake3_keyed_hash (
 			InternalPacketSalt::wrap,

@@ -18,6 +18,7 @@ pub(crate) struct EncryptArguments {
 	pub common : CommonArguments,
 	pub fingerprint : bool,
 	pub deterministic : bool,
+	pub randomness : MaterialSources<Randomness>,
 }
 
 
@@ -29,6 +30,7 @@ pub(crate) struct EncryptFlags {
 	pub common : CommonFlags,
 	pub fingerprint : Option<bool>,
 	pub deterministic : Option<bool>,
+	pub randomness : MaterialFlags,
 }
 
 
@@ -975,6 +977,24 @@ impl SshWrappersArguments {
 
 
 
+impl MaterialValue for Randomness {
+	
+	fn decode_string (_string : String) -> FlagsResult<Self> {
+		Self::decode_bytes (_string.into_bytes ())
+	}
+	
+	fn decode_bytes (_bytes : Vec<u8>) -> FlagsResult<Self> {
+		Ok (Self::new (_bytes))
+	}
+}
+
+
+
+
+
+
+
+
 impl InputsFlags {
 	
 	pub fn new () -> Self {
@@ -1097,6 +1117,7 @@ impl EncryptFlags {
 				common : CommonFlags::new (),
 				fingerprint : None,
 				deterministic : None,
+				randomness : MaterialFlags::new (),
 			}
 	}
 	
@@ -1133,6 +1154,13 @@ impl EncryptFlags {
 					.with_placeholder ("bool");
 		}
 		
+		self.randomness.flags (
+				_flags,
+				None,
+				"randomness", "randomness-env", "randomness-path", "randomness-fd", "randomness-stdin", "randomness-pinentry", "randomness-lkkrs", Some ("without-randomness"),
+				"random data used to feed the encryption (multiple allowed, **order and duplicates are significant**)",
+			) ?;
+		
 		self.common.flags (_flags) ?;
 		
 		Ok (())
@@ -1147,6 +1175,8 @@ impl EncryptFlags {
 		let _shared = self.shared.collect (_common.empty_is_missing) ?;
 		let _ssh_wrappers = self.ssh_wrappers.collect (_common.empty_is_missing) ?;
 		
+		let _randomness = self.randomness.collect (_common.empty_is_missing) ?;
+		
 		Ok (EncryptArguments {
 				senders : _senders,
 				recipients : _recipients,
@@ -1155,6 +1185,7 @@ impl EncryptFlags {
 				common : _common,
 				fingerprint : self.fingerprint.unwrap_or (false),
 				deterministic : self.deterministic.unwrap_or (false),
+				randomness : _randomness,
 			})
 	}
 }

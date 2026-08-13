@@ -58,6 +58,8 @@ pub struct SharedBallastRaw (Rb<Vec<u8>>);
 pub struct Associated (Rb<Vec<u8>>);
 pub struct SharedPin (Rb<Vec<u8>>);
 
+pub struct Randomness (Rb<Vec<u8>>);
+
 pub struct PasswordOutput (Rb<[u8; 32]>);
 
 
@@ -532,6 +534,20 @@ impl Associated {
 
 
 impl SharedPin {
+	
+	pub fn new (_data : Vec<u8>) -> Self {
+		Self (Rb::new (_data))
+	}
+	
+	pub fn access_bytes_slice (&self) -> &[u8] {
+		&self.0
+	}
+}
+
+
+
+
+impl Randomness {
 	
 	pub fn new (_data : Vec<u8>) -> Self {
 		Self (Rb::new (_data))

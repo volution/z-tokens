@@ -512,6 +512,7 @@ pub(crate) fn main_encrypt_with_arguments (_arguments : EncryptArguments, _input
 	let _derivation_loops = _arguments.shared.derivation_loops;
 	let _namespace = _arguments.common.namespace.as_ref () .map (String::as_ref);
 	let _deterministic = _arguments.deterministic;
+	let _randomness = _arguments.randomness.decode () .else_wrap (0x83f0acc7) ?;
 	
 	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x6849e6bd) ?;
 	let mut _oracles = _ssh_wrappers.iter_mut () .map (|_ssh_wrapper| _ssh_wrapper as &mut dyn Oracle);
@@ -537,6 +538,7 @@ pub(crate) fn main_encrypt_with_arguments (_arguments : EncryptArguments, _input
 			&mut _encrypted,
 			_oracles,
 			_deterministic,
+			_randomness.iter (),
 		) .else_wrap (0xa3032303) ?;
 	
 	write_output (_output, _encrypted) .else_wrap (0x4bee2603) ?;

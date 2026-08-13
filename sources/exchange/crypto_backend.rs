@@ -78,7 +78,7 @@ pub(crate) fn password_backend (
 	
 	// NOTE:  salting...
 	
-	let _packet_salt = derive_packet_salt (&_packet_salt_seed, _password_data.access (), true) ?;
+	let _packet_salt = derive_packet_salt (&_packet_salt_seed, _password_data.access (), true, [].into_iter ()) ?;
 	
 	// NOTE:  deriving keys (phase 2)...
 	
@@ -158,12 +158,14 @@ pub fn encrypt_with_raw (
 			_encrypted : &mut Vec<u8>,
 			_oracles : Vec<&mut dyn Oracle>,
 			_packet_salt_deterministic : bool,
+			_randomness : &[&Randomness],
 		) -> CryptoResult
 {
 	let (_senders, _recipients) = wrap_senders_and_recipients_inputs (_senders, _recipients) ?;
 	let (_associated_inputs, _secret_inputs, _pin_inputs, _seed_inputs, _ballast_inputs) = wrap_associated_and_secrets_and_pins_inputs (_symmetric.associated, _symmetric.secrets, _symmetric.pins, _symmetric.seeds, _symmetric.ballasts) ?;
 	let (_oracles, _oracle_handles) = wrap_oracles_phase_1 (_oracles) ?;
 	let (_derivation_loops, _namespace) = (_symmetric.derivation_loops, _symmetric.namespace);
+	let _randomness = _randomness.iter () .cloned () .map (Randomness::access_bytes_slice);
 	
 	let _decrypted = InternalDecryptedData::wrap (_decrypted);
 	let _decrypted_len = _decrypted.size ();
@@ -216,7 +218,7 @@ pub fn encrypt_with_raw (
 	
 	// NOTE:  salting...
 	
-	let _packet_salt = derive_packet_salt (&_packet_salt_seed, &_intermediate_buffer, _packet_salt_deterministic) ?;
+	let _packet_salt = derive_packet_salt (&_packet_salt_seed, &_intermediate_buffer, _packet_salt_deterministic, _randomness) ?;
 	
 	// NOTE:  deriving keys (phase 2)...
 	

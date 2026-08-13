@@ -240,6 +240,7 @@ pub fn encrypt <'a> (
 			_encrypted : &mut Vec<u8>,
 			_oracles : impl Iterator<Item = &'a mut dyn Oracle>,
 			_packet_salt_deterministic : bool,
+			_randomness : impl Iterator<Item = &'a Randomness>,
 		) -> CryptoResult
 {
 	let _symmetric = SymmetricParametersRawBoxed::new (_associated, _secrets, _pins, _seeds, _ballasts, _derivation_loops, _namespace);
@@ -252,6 +253,7 @@ pub fn encrypt <'a> (
 			_encrypted,
 			_oracles.collect (),
 			_packet_salt_deterministic,
+			& _randomness.collect::<Vec<_>> (),
 		)
 }
 
