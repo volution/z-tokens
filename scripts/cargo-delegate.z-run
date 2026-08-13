@@ -442,6 +442,8 @@
 	_tool="${3}"
 	shift -- 3
 	
+	_image=e7cd3b06c33117772f1858d67fdef9f32127768d99b9c037670ee84699c0ea59
+	
 	_executable=/opt/cargo/bin/cargo
 	
 	if test "${__META__BUILD_TARGET_TYPE}" != '[unknown-btt]' ; then
@@ -471,6 +473,7 @@
 			__META__BUILD_SOURCES_HASH="${__META__BUILD_SOURCES_HASH}"
 			__META__BUILD_GIT_HASH="${__META__BUILD_GIT_HASH}"
 			__META__BUILD_TARGET_TYPE="${__META__BUILD_TARGET_TYPE}"
+			__META__BUILD_IMAGE="${_image}"
 			
 		)
 	
@@ -652,7 +655,7 @@
 		;;
 	esac
 	
-	_identifier="$( exec -- md5sum -b <<< "${__META__BUILD_TARGET_TYPE} -- ${__CARGO__TARGET} -- ${_scratch}" )"
+	_identifier="$( exec -- md5sum -b <<< "${__META__BUILD_TARGET_TYPE} -- ${_image} -- ${__CARGO__TARGET} -- ${_scratch}" )"
 	_identifier="${_identifier%% *}"
 	
 	test -d "${_scratch}"
@@ -706,7 +709,7 @@
 			--events-backend none \
 			--log-driver none \
 			-- \
-			e7cd3b06c33117772f1858d67fdef9f32127768d99b9c037670ee84699c0ea59 \
+			"${_image}" \
 	\
 		env -i "${_environment[@]}" \
 	"${_executable}" \
