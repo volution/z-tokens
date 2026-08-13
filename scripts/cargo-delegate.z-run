@@ -134,6 +134,13 @@
 	
 	case "${_tool}" in
 		
+		( check | build | run | doc | metadata )
+			_cargo_flags+=(
+					--frozen
+					--offline
+				)
+		;;
+		
 		( check | build | run )
 			
 			if test "${_target}" != native ; then
@@ -153,21 +160,12 @@
 						-C relocation-model=static
 					)
 			fi
-			
 		;;&
 		
 		( check )
-			_cargo_flags+=(
-					--frozen
-					--offline
-				)
 		;;
 		
 		( build | run )
-			_cargo_flags+=(
-					--frozen
-					--offline
-				)
 			
 			if test "${_release}" == true ; then
 				
@@ -181,6 +179,7 @@
 						-C link-dead-code=no
 						-C prefer-dynamic=no
 						-C force-frame-pointers=no
+						-A linker_messages
 					)
 				
 				case "${__CARGO__TARGET:-native}" in
@@ -264,20 +263,12 @@
 		;;
 		
 		( doc )
-			_cargo_flags+=(
-					--frozen
-					--offline
-				)
 			_rust_flags+=(
 					-A warnings
 				)
 		;;
 		
 		( metadata )
-			_cargo_flags+=(
-					--frozen
-					--offline
-				)
 		;;
 		
 		( update | generate-lockfile | upgrade )
@@ -316,7 +307,6 @@
 	esac
 	
 	_rust_flags+=(
-		#!	-C metadata="${__META__BUILD_TARGET_TYPE}--${__META__BUILD_GIT_HASH}"
 			-C metadata="${__META__BUILD_TARGET_TYPE}"
 		)
 	
