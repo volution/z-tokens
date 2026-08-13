@@ -358,9 +358,21 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x3cae7413) ?;
 	let mut _oracles = _ssh_wrappers.iter_mut () .map (|_ssh_wrapper| _ssh_wrapper as &mut dyn Oracle);
 	
+	let _fingerprint = fingerprint_load_merge (_arguments.fingerprint) .else_wrap (0x67dd0931) ?;
+	let _fingerprint = match (_fingerprint, _arguments.fingerprint_with) {
+			(None, None | Some (false)) =>
+				None,
+			(None, Some (true)) =>
+				Some (None),
+			(Some (_fingerprint), None | Some (true)) =>
+				Some (Some (_fingerprint)),
+			(Some (_), Some (false)) =>
+				fail! (0x9f1e8d59),
+		};
+	
 	let _password_input = _arguments.inputs.load_data () .else_wrap (0x5d90db8d) ?;
 	
-	let (_fingerprint_input, mut _fingerprint_output) = match &_arguments.fingerprint {
+	let (_fingerprint_input, mut _fingerprint_output) = match _fingerprint {
 			Some (Some (_fingerprint)) =>
 				(Some (_fingerprint), None),
 			Some (None) =>
@@ -383,7 +395,7 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 				_namespace,
 				&_password_input,
 				&mut _password_output,
-				_fingerprint_input,
+				_fingerprint_input.as_ref (),
 				_fingerprint_output.as_mut (),
 				_oracles,
 			) .else_wrap (0xbfae6a34) ?;
@@ -413,7 +425,7 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 					_namespace,
 					&_password_input,
 					&mut _password_output,
-					_fingerprint_input,
+					_fingerprint_input.as_ref (),
 					_fingerprint_output.as_mut (),
 					_oracles,
 				) .else_wrap (0x1c177f6e) ?;
@@ -435,7 +447,7 @@ pub(crate) fn main_password_with_arguments (_arguments : PasswordArguments, _inp
 					_namespace,
 					&_password_input,
 					&mut _password_output,
-					_fingerprint_input,
+					_fingerprint_input.as_ref (),
 					_fingerprint_output.as_mut (),
 					_oracles,
 				) .else_wrap (0x08f6442c) ?;
@@ -596,12 +608,13 @@ pub(crate) fn main_decrypt_with_arguments (_arguments : DecryptArguments, _input
 	let _pins = _arguments.shared.pins.load () .else_wrap (0x6a7572cb) ?;
 	let _seeds = _arguments.shared.seeds.load_merge () .else_wrap (0x22c67f58) ?;
 	let _ballasts = _arguments.shared.ballasts.load_merge () .else_wrap (0x11d94d7f) ?;
-	let _fingerprint = _arguments.fingerprint;
 	let _derivation_loops = _arguments.shared.derivation_loops;
 	let _namespace = _arguments.common.namespace.as_ref () .map (String::as_ref);
 	
 	let mut _ssh_wrappers = _arguments.ssh_wrappers.wrappers () .else_wrap (0x6a4b6c2d) ?;
 	let mut _oracles = _ssh_wrappers.iter_mut () .map (|_ssh_wrapper| _ssh_wrapper as &mut dyn Oracle);
+	
+	let _fingerprint = fingerprint_load_merge (_arguments.fingerprint) .else_wrap (0xd83cc1ec) ?;
 	
 	let _encrypted = read_at_most (_input, CRYPTO_ENCRYPTED_SIZE_MAX) .else_wrap (0x70fa9ce3) ?;
 	
