@@ -659,6 +659,7 @@
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	_derivation_loops="${__ZTOKENS_EXCHANGE_DERIVATION_LOOPS:-1}"
 	_namespace="${__ZTOKENS_EXCHANGE_NAMESPACE:-}"
+	_randomness="${__ZTOKENS_EXCHANGE_RANDOMNESS:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -676,6 +677,7 @@
 				--derivation-loops "${_derivation_loops}" \
 				--namespace "${_namespace}" \
 				--siv true \
+				--randomness "${_randomness}" \
 				--empty-is-missing true \
 		<<< $'hello world!\n' \
 	#
@@ -701,6 +703,7 @@
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	_derivation_loops="${__ZTOKENS_EXCHANGE_DERIVATION_LOOPS:-1}"
 	_namespace="${__ZTOKENS_EXCHANGE_NAMESPACE:-}"
+	_randomness="${__ZTOKENS_EXCHANGE_RANDOMNESS:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -718,6 +721,7 @@
 				--derivation-loops "${_derivation_loops}" \
 				--namespace "${_namespace}" \
 				--siv true \
+				--randomness "${_randomness}" \
 				--empty-is-missing true \
 		< /dev/null \
 	#
@@ -743,6 +747,7 @@
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	_derivation_loops="${__ZTOKENS_EXCHANGE_DERIVATION_LOOPS:-1}"
 	_namespace="${__ZTOKENS_EXCHANGE_NAMESPACE:-}"
+	_randomness="${__ZTOKENS_EXCHANGE_RANDOMNESS:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -760,6 +765,7 @@
 				--derivation-loops "${_derivation_loops}" \
 				--namespace "${_namespace}" \
 				--siv true \
+				--randomness "${_randomness}" \
 				--empty-is-missing true \
 		< ./notice.txt \
 	#
@@ -785,6 +791,7 @@
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	_derivation_loops="${__ZTOKENS_EXCHANGE_DERIVATION_LOOPS:-1}"
 	_namespace="${__ZTOKENS_EXCHANGE_NAMESPACE:-}"
+	_randomness="${__ZTOKENS_EXCHANGE_RANDOMNESS:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -803,6 +810,7 @@
 				--derivation-loops "${_derivation_loops}" \
 				--namespace "${_namespace}" \
 				--siv true \
+				--randomness "${_randomness}" \
 				--empty-is-missing true \
 	#
 !!
@@ -832,6 +840,7 @@
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	_derivation_loops="${__ZTOKENS_EXCHANGE_DERIVATION_LOOPS:-1}"
 	_namespace="${__ZTOKENS_EXCHANGE_NAMESPACE:-}"
+	_randomness="${__ZTOKENS_EXCHANGE_RANDOMNESS:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -848,6 +857,7 @@
 				--ballast "${_ballast}" \
 				--derivation-loops "${_derivation_loops}" \
 				--namespace "${_namespace}" \
+				--randomness "${_randomness}" \
 				--empty-is-missing true \
 		<<< $'hello world!\n' \
 	| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
@@ -887,6 +897,7 @@
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	_derivation_loops="${__ZTOKENS_EXCHANGE_DERIVATION_LOOPS:-1}"
 	_namespace="${__ZTOKENS_EXCHANGE_NAMESPACE:-}"
+	_randomness="${__ZTOKENS_EXCHANGE_RANDOMNESS:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -919,6 +930,7 @@
 					--ballast "${_ballast}" \
 					--derivation-loops "${_derivation_loops}" \
 					--namespace "${_namespace}" \
+					--randomness "${_randomness}" \
 					--empty-is-missing true \
 			< "${_file}" \
 		| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
@@ -962,6 +974,7 @@
 	_ballast="${__ZTOKENS_EXCHANGE_BALLAST:-}"
 	_derivation_loops="${__ZTOKENS_EXCHANGE_DERIVATION_LOOPS:-1}"
 	_namespace="${__ZTOKENS_EXCHANGE_NAMESPACE:-}"
+	_randomness="${__ZTOKENS_EXCHANGE_RANDOMNESS:-}"
 	
 	_ssh_wrap="${__ZTOKENS_EXCHANGE_SSH_WRAP:-}"
 	
@@ -996,6 +1009,7 @@
 					--ballast "${_ballast}" \
 					--derivation-loops "${_derivation_loops}" \
 					--namespace "${_namespace}" \
+					--randomness "${_randomness}" \
 					--empty-is-missing true \
 		| "${__OUTPUTS}/binaries/zt-exchange--release--linux--native" \
 				decrypt \
@@ -1048,9 +1062,14 @@
 		if test "${SRANDOM}" -ge 2147483648 ; then continue ; fi
 	for _case_namespace in without-namespace empty-namespace with-namespace ; do
 		if test "${SRANDOM}" -ge 2147483648 ; then continue ; fi
+	for _case_randomness in without-randomness empty-randomness with-randomness-1 with-randomness-2 ; do
+		if test "${_case_tool}" == password -a "${_case_randomness}" != without-randomness ; then
+			continue
+		fi
+		if test "${SRANDOM}" -ge 2147483648 ; then continue ; fi
 		
 		printf -- \
-				'%s %s %s %s %s %s %s %s %s %s %s\n' \
+				'%s %s %s %s %s %s %s %s %s %s %s %s\n' \
 				"${_case_tool}" \
 				"${_case_deterministic}" \
 				"${_case_fingerprint}" \
@@ -1062,9 +1081,10 @@
 				"${_case_ballast}" \
 				"${_case_associated}" \
 				"${_case_send}" \
+				"${_case_randomness}" \
 		#
 		
-	done ; done ; done ; done ; done ; done ; done ; done ; done ; done ; done
+	done ; done ; done ; done ; done ; done ; done ; done ; done ; done ; done ; done
 !!
 
 
@@ -1078,7 +1098,7 @@
 	
 	"${ZRUN}" ':: tests / quick / exchange / encrypt & decrypt & password / cases / options' \
 	| sort -R \
-	| while read -r -- _case_tool _case_deterministic _case_fingerprint _case_namespace _case_secret _case_ssh_wrap _case_pin _case_seed _case_ballast _case_associated _case_send ; do
+	| while read -r -- _case_tool _case_deterministic _case_fingerprint _case_namespace _case_secret _case_ssh_wrap _case_pin _case_seed _case_ballast _case_associated _case_send _case_randomness ; do
 		
 		case "${_case_tool}" in
 			( password | encrypt )
@@ -1093,8 +1113,8 @@
 		
 		_namespace_1='namespace'
 		
-		_pin_1=1234
-		_pin_2=5678
+		_pin_1='1234'
+		_pin_2='5678'
 		
 		_associated_1='associated-1'
 		_associated_2='associated-2'
@@ -1125,6 +1145,9 @@
 		_x25519_3_recipient_private='ztxrk17zpadjtunyk3tst6p08e8qk9hpaxvrat595vy3kgtu0t8d8ehazqfgdyps'
 		_x25519_4_sender_private='ztxsk1yp5x8wjj2ed680kcgrd9ufs5ls5lw5ln0qjp70hu3jr9fgesw3kqn85j9x'
 		_x25519_4_recipient_private='ztxrk1yp5x8wjj2ed680kcgrd9ufs5ls5lw5ln0qjp70hu3jr9fgesw3kqjm2t3d'
+		
+		_randomness_1='370747761298813d00664c6e8f4e10ca6101acdd388cae728d70090fc46cb0d1'
+		_randomness_2='61a6943deff86f33264818609a06d8f2f900b19a98870ec0c9db88a4e5fb1508'
 		
 		_file=./notice.txt
 		
@@ -1314,7 +1337,7 @@
 				continue
 			;;
 			( * )
-				false -- '[0x78bbf839]' "${_case_associated}"
+				false -- '[78bbf839]' "${_case_associated}"
 			;;
 		esac
 		
@@ -1438,7 +1461,7 @@
 				continue
 			;;
 			( * )
-				false -- '[0x91e71e27]' "${_case_secret}"
+				false -- '[91e71e27]' "${_case_secret}"
 			;;
 		esac
 		
@@ -1500,7 +1523,7 @@
 				continue
 			;;
 			( * )
-				false -- '[0x7de1942b]' "${_case_seed}"
+				false -- '[7de1942b]' "${_case_seed}"
 			;;
 		esac
 		
@@ -1562,7 +1585,7 @@
 				continue
 			;;
 			( * )
-				false -- '[0x5f499152]' "${_case_ballast}"
+				false -- '[5f499152]' "${_case_ballast}"
 			;;
 		esac
 		
@@ -1677,7 +1700,40 @@
 			;;
 		esac
 		
-		_identifier="${_case_tool}--${_case_send}--${_case_pin}--${_case_secret}--${_case_seed}--${_case_ballast}--${_case_ssh_wrap}--${_case_associated}--${_case_deterministic}--${_case_fingerprint}"
+		case "${_case_randomness}" in
+			( with-randomness-1 )
+				_encrypt_arguments+=(
+						--randomness "${_randomness_1}"
+					)
+			;;
+			( with-randomness-2 )
+				_encrypt_arguments+=(
+						--randomness "${_randomness_1}"
+						--randomness "${_randomness_2}"
+					)
+			;;
+			( without-randomness )
+				if test "${_case_tool}" != password ; then
+					_encrypt_arguments+=(
+							--without-randomness
+						)
+				fi
+			;;
+			( empty-randomness )
+				_encrypt_arguments+=(
+						--randomness ''
+					)
+				_empty_is_missing=true
+			;;
+			( __* )
+				continue
+			;;
+			( * )
+				false -- '[bafa7ad6]' "${_case_randomness}"
+			;;
+		esac
+		
+		_identifier="${_case_tool}--${_case_send}--${_case_pin}--${_case_secret}--${_case_seed}--${_case_ballast}--${_case_ssh_wrap}--${_case_associated}--${_case_deterministic}--${_case_fingerprint}--${_case_randomness}"
 		_report="${_reports}/${_identifier}.txt"
 		_output="${_outputs}/tests/${_identifier}.${$}.tmp"
 		
@@ -1686,7 +1742,7 @@
 		fi
 		
 		printf -- '\n' >&2
-		printf -- '[ii]  running iteration `%s %s %s %s %s %s %s %s %s %s`...\n' "${_case_tool}" "${_case_send}" "${_case_pin}" "${_case_secret}" "${_case_seed}" "${_case_ballast}" "${_case_ssh_wrap}" "${_case_associated}" "${_case_deterministic}" "${_case_fingerprint}" >&2
+		printf -- '[ii]  running iteration `%s %s %s %s %s %s %s %s %s %s %s`...\n' "${_case_tool}" "${_case_send}" "${_case_pin}" "${_case_secret}" "${_case_seed}" "${_case_ballast}" "${_case_ssh_wrap}" "${_case_associated}" "${_case_deterministic}" "${_case_fingerprint}" "${_case_randomness}" >&2
 		
 		if test "${_contributing}" == false ; then
 			printf -- '[ii]    ->  non-contributing inputs;  skipping!\n' >&2
@@ -1711,7 +1767,7 @@
 		export -- SSH_AUTH_SOCK="${__OUTPUTS}/tests/ssh-agent.sock"
 		
 		printf -- \
-				'>>  [test]  %s %s %s %s %s %s %s %s %s %s %s\n' \
+				'>>  [test]  %s %s %s %s %s %s %s %s %s %s %s %s\n' \
 				"${_case_tool}" \
 				"${_case_deterministic}" \
 				"${_case_fingerprint}" \
@@ -1723,6 +1779,7 @@
 				"${_case_ballast}" \
 				"${_case_associated}" \
 				"${_case_send}" \
+				"${_case_randomness}" \
 			> "${_output}" \
 		#
 		printf -- '\n\n\n\n' >> "${_output}"
@@ -2035,4 +2092,8 @@
 :: tests / quick / exchange / set / namespace / empty :: export -- __ZTOKENS_EXCHANGE_NAMESPACE=''
 :: tests / quick / exchange / set / namespace / testing-1 :: export -- __ZTOKENS_EXCHANGE_NAMESPACE='testing-1'
 :: tests / quick / exchange / set / namespace / testing-2 :: export -- __ZTOKENS_EXCHANGE_NAMESPACE='testing-2'
+
+:: tests / quick / exchange / set / randomness / empty :: export -- __ZTOKENS_EXCHANGE_RANDOMNESS=''
+:: tests / quick / exchange / set / randomness / testing-1 :: export -- __ZTOKENS_EXCHANGE_RANDOMNESS='370747761298813d00664c6e8f4e10ca6101acdd388cae728d70090fc46cb0d1'
+:: tests / quick / exchange / set / randomness / testing-2 :: export -- __ZTOKENS_EXCHANGE_RANDOMNESS='61a6943deff86f33264818609a06d8f2f900b19a98870ec0c9db88a4e5fb1508'
 
