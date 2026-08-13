@@ -192,11 +192,13 @@
 					( x86_64-* )
 						_rust_flags+=(
 								-C target-cpu=x86-64-v2
+								-C target-feature=+sse2
 							)
 					;;&
 					( i686-* )
 						_rust_flags+=(
 								-C target-cpu=i586
+								-C target-feature=+sse2
 							)
 					;;&
 					( aarch64-* | armv7-* | arm-* )
