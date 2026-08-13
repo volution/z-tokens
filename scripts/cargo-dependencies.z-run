@@ -32,27 +32,27 @@
 
 
 << cargo / dependencies / update / check
-	exec -- "${ZRUN}" ':: cargo / exec / local' update --locked --verbose "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec / local' update --verbose --locked "${@}"
 !!
 
 
 << cargo / dependencies / update / conservative
-	exec -- "${ZRUN}" ':: cargo / exec / local' update "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec / local' update --verbose "${@}"
 !!
 
 
 << cargo / dependencies / update / aggressive
-	exec -- "${ZRUN}" ':: cargo / exec / local' update --aggressive "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec / local' update --verbose --aggressive "${@}"
 !!
 
 
 << cargo / dependencies / upgrade
-	exec -- "${ZRUN}" ':: cargo / exec / local' upgrade --incompatible allow --recursive true "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec / local' upgrade --verbose --incompatible allow --recursive true "${@}"
 !!
 
 
 << cargo / dependencies / update / lock
-	exec -- "${ZRUN}" ':: cargo / exec / local' update --workspace --package z-tokens "${@}"
+	exec -- "${ZRUN}" ':: cargo / exec / local' update --verbose --workspace --package z-tokens "${@}"
 !!
 
 
