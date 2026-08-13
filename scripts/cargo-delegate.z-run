@@ -139,7 +139,7 @@
 					--frozen
 					--offline
 				)
-		;;
+		;;&
 		
 		( check | build | run )
 			
@@ -185,26 +185,33 @@
 				case "${__CARGO__TARGET:-native}" in
 					( native )
 						_rust_flags+=(
-								-C target-cpu=x86-64-v2
+								-C target-cpu=x86-64-v3
 							)
-					;;&
+					;;
 					( x86_64-* )
 						_rust_flags+=(
 								-C target-cpu=x86-64-v2
-								-C target-feature=+sse2
 							)
-					;;&
+					;;
 					( i686-* )
 						_rust_flags+=(
-								-C target-cpu=i586
+								-C target-cpu=generic
 								-C target-feature=+sse2
 							)
-					;;&
+					;;
 					( aarch64-* | armv7-* | arm-* )
 						_rust_flags+=(
 								-C target-cpu=generic
 							)
-					;;&
+					;;
+					( wasm32-* )
+						_rust_flags+=(
+								-C target-cpu=generic
+							)
+					;;
+					( * )
+						printf -- '[ww]  target flags not set;  ignoring!\n' >&2
+					;;
 				esac
 				
 				case "${__CARGO__TARGET:-native}" in
@@ -213,7 +220,6 @@
 								-C debuginfo=0
 								-C split-debuginfo=off
 								-C strip=symbols
-							##	-C link-arg=-Wl,--compress-debug-sections=zlib
 							)
 					;;
 					( *-apple-* )
@@ -254,6 +260,7 @@
 							)
 					;;
 				esac
+				
 				_rust_flags+=(
 						-C panic=abort
 						-C debug-assertions=no
@@ -306,12 +313,12 @@
 		;;
 	esac
 	
-	_rust_flags+=(
-			-C metadata="${__META__BUILD_TARGET_TYPE}"
-		)
+	if test "${#_rust_flags[@]}" -eq 0 ; then
+		_rust_flags+=' '
+	fi
 	
-	export -- __CARGO__RUST_FLAGS="${_rust_flags[*]}"
 	export -- __CARGO__TARGET="${_target}"
+	export -- __CARGO__RUST_FLAGS="${_rust_flags[*]}"
 	
 	_tool_arguments=(
 			"${_cargo_flags[@]}"
@@ -445,15 +452,8 @@
 	_path='/usr/local/bin:/usr/bin:/bin'
 	_environment=(
 			
-			USER=rust
-			HOME=/rust/home
-			PATH="${_path}"
-			TMPDIR=/tmp
-			TERM="${TERM}"
-			LC_ALL=C.UTF-8
-			LANG=C.UTF-8
-			
 			RUSTUP_HOME=/opt/rustup
+			
 			CARGO_HOME=/opt/cargo
 			CARGO_TARGET_DIR="/rust/target/${_cargo_target_subdir}/${__CARGO__TARGET}"
 			CARGO_BUILD_RUSTFLAGS="${__CARGO__RUST_FLAGS}"
@@ -464,6 +464,15 @@
 			__META__BUILD_GIT_HASH="${__META__BUILD_GIT_HASH}"
 			__META__BUILD_TARGET_TYPE="${__META__BUILD_TARGET_TYPE}"
 			__META__BUILD_IMAGE="${_image}"
+			
+			USER=rust
+			HOME=/rust/home
+			PATH="${_path}"
+			TMPDIR=/tmp
+			TERM="${TERM}"
+			
+			LANG=C.UTF-8
+			LC_ALL=C.UTF-8
 			
 		)
 	

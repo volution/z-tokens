@@ -28,6 +28,7 @@
 				--ssh-workspace=/var/lib/empty \
 				--ssh-export=__CARGO__CROSS \
 				--ssh-export=__CARGO__TARGET \
+				--ssh-export=__CARGO__RUST_FLAGS \
 				--ssh-export=__META__BUILD_SOURCES_HASH \
 				--ssh-export=__META__BUILD_GIT_HASH \
 				--ssh-export=__META__BUILD_TARGET_TYPE \
