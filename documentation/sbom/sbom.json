@@ -1,36 +1,386 @@
 [
   {
-    "name": "android_system_properties",
-    "version": "0.1.5",
-    "purl": "pkg:cargo/android_system_properties@0.1.5",
-    "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/nical/android_system_properties"
+    "name": "vrl-cli-arguments",
+    "version": "0.1.0",
+    "purl": "pkg:cargo/vrl-cli-arguments@0.1.0?vcs_url=git%2Bhttps://github.com/volution/volution-rust-libraries%3Fbranch=development%4060534321202b53f320952361a7987bc16e7c2a39",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/volution-rust-libraries"
   },
   {
-    "name": "argparse",
+    "name": "vrl-errors",
+    "version": "0.1.0",
+    "purl": "pkg:cargo/vrl-errors@0.1.0?vcs_url=git%2Bhttps://github.com/volution/volution-rust-libraries%3Fbranch=development%4060534321202b53f320952361a7987bc16e7c2a39",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/volution-rust-libraries"
+  },
+  {
+    "name": "vrl-preludes",
+    "version": "0.1.0",
+    "purl": "pkg:cargo/vrl-preludes@0.1.0?vcs_url=git%2Bhttps://github.com/volution/volution-rust-libraries%3Fbranch=development%4060534321202b53f320952361a7987bc16e7c2a39",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/volution-rust-libraries"
+  },
+  {
+    "name": "vrl-random",
+    "version": "0.1.0",
+    "purl": "pkg:cargo/vrl-random@0.1.0?vcs_url=git%2Bhttps://github.com/volution/volution-rust-libraries%3Fbranch=development%4060534321202b53f320952361a7987bc16e7c2a39",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/volution-rust-libraries"
+  },
+  {
+    "name": "z-tokens-encodings",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-encodings@0.6.0?download_url=file:///.../z-tokens/sources/encodings",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-encodings-tool",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-encodings-tool@0.6.0?download_url=file:///.../z-tokens/sources/encodings-tool",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-exchange",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-exchange@0.6.0?download_url=file:///.../z-tokens/sources/exchange",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-exchange-tool",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-exchange-tool@0.6.0?download_url=file:///.../z-tokens/sources/exchange-tool",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-hashes",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-hashes@0.6.0?download_url=file:///.../z-tokens/sources/hashes",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-hashes-tool",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-hashes-tool@0.6.0?download_url=file:///.../z-tokens/sources/hashes-tool",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-oracles",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-oracles@0.6.0?download_url=file:///.../z-tokens/sources/oracles",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-oracles-tool",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-oracles-tool@0.6.0?download_url=file:///.../z-tokens/sources/oracles-tool",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-patterns",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-patterns@0.6.0?download_url=file:///.../z-tokens/sources/patterns",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-patterns-definitions",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-patterns-definitions@0.6.0?download_url=file:///.../z-tokens/sources/patterns-definitions",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-patterns-tool",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-patterns-tool@0.6.0?download_url=file:///.../z-tokens/sources/patterns-tool",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-runtime",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-runtime@0.6.0?download_url=file:///.../z-tokens/sources/runtime",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-runtime-codings",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-runtime-codings@0.6.0?download_url=file:///.../z-tokens/sources/runtime-codings",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-runtime-crypto",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-runtime-crypto@0.6.0?download_url=file:///.../z-tokens/sources/runtime-crypto",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-runtime-flags",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-runtime-flags@0.6.0?download_url=file:///.../z-tokens/sources/runtime-flags",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-runtime-hashes",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-runtime-hashes@0.6.0?download_url=file:///.../z-tokens/sources/runtime-hashes",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-runtime-lkkrs",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-runtime-lkkrs@0.6.0?download_url=file:///.../z-tokens/sources/runtime-lkkrs",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-runtime-pinentry",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-runtime-pinentry@0.6.0?download_url=file:///.../z-tokens/sources/runtime-pinentry",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-runtime-random",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-runtime-random@0.6.0?download_url=file:///.../z-tokens/sources/runtime-random",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-secrets",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-secrets@0.6.0?download_url=file:///.../z-tokens/sources/secrets",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-secrets-tool",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-secrets-tool@0.6.0?download_url=file:///.../z-tokens/sources/secrets-tool",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "z-tokens-tools",
+    "version": "0.6.0",
+    "purl": "pkg:cargo/z-tokens-tools@0.6.0?download_url=file:///.../z-tokens/sources/tools",
+    "license": "GPL-3.0-or-later",
+    "vcs": "https://github.com/volution/z-tokens"
+  },
+  {
+    "name": "adler",
+    "version": "1.0.2",
+    "purl": "pkg:cargo/adler@1.0.2",
+    "license": "0BSD OR MIT OR Apache-2.0",
+    "vcs": "https://github.com/jonas-schievink/adler.git"
+  },
+  {
+    "name": "aead",
+    "version": "0.5.2",
+    "purl": "pkg:cargo/aead@0.5.2",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/traits"
+  },
+  {
+    "name": "aes-gcm",
+    "version": "0.10.3",
+    "purl": "pkg:cargo/aes-gcm@0.10.3",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/AEADs"
+  },
+  {
+    "name": "aes",
+    "version": "0.8.4",
+    "purl": "pkg:cargo/aes@0.8.4",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/block-ciphers"
+  },
+  {
+    "name": "alloc-no-stdlib",
+    "version": "2.0.4",
+    "purl": "pkg:cargo/alloc-no-stdlib@2.0.4",
+    "license": "BSD-3-Clause",
+    "vcs": "https://github.com/dropbox/rust-alloc-no-stdlib"
+  },
+  {
+    "name": "alloc-stdlib",
     "version": "0.2.2",
-    "purl": "pkg:cargo/argparse@0.2.2",
-    "license": "MIT",
-    "vcs": null
+    "purl": "pkg:cargo/alloc-stdlib@0.2.2",
+    "license": "BSD-3-Clause",
+    "vcs": "https://github.com/dropbox/rust-alloc-no-stdlib"
+  },
+  {
+    "name": "argon2",
+    "version": "0.5.3",
+    "purl": "pkg:cargo/argon2@0.5.3",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/password-hashes/tree/master/argon2"
+  },
+  {
+    "name": "arrayref",
+    "version": "0.3.9",
+    "purl": "pkg:cargo/arrayref@0.3.9",
+    "license": "BSD-2-Clause",
+    "vcs": "https://github.com/droundy/arrayref"
+  },
+  {
+    "name": "arrayvec",
+    "version": "0.7.6",
+    "purl": "pkg:cargo/arrayvec@0.7.6",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/bluss/arrayvec"
+  },
+  {
+    "name": "async-trait",
+    "version": "0.1.83",
+    "purl": "pkg:cargo/async-trait@0.1.83",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/dtolnay/async-trait"
   },
   {
     "name": "autocfg",
-    "version": "1.1.0",
-    "purl": "pkg:cargo/autocfg@1.1.0",
+    "version": "1.4.0",
+    "purl": "pkg:cargo/autocfg@1.4.0",
     "license": "Apache-2.0 OR MIT",
     "vcs": "https://github.com/cuviper/autocfg"
   },
   {
-    "name": "bumpalo",
-    "version": "3.11.1",
-    "purl": "pkg:cargo/bumpalo@3.11.1",
+    "name": "base16ct",
+    "version": "0.2.0",
+    "purl": "pkg:cargo/base16ct@0.2.0",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/formats/tree/master/base16ct"
+  },
+  {
+    "name": "base64ct",
+    "version": "1.6.0",
+    "purl": "pkg:cargo/base64ct@1.6.0",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/formats/tree/master/base64ct"
+  },
+  {
+    "name": "bcrypt-pbkdf",
+    "version": "0.10.0",
+    "purl": "pkg:cargo/bcrypt-pbkdf@0.10.0",
     "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/fitzgen/bumpalo"
+    "vcs": "https://github.com/RustCrypto/password-hashes/tree/master/bcrypt-pbkdf"
+  },
+  {
+    "name": "bech32",
+    "version": "0.11.0",
+    "purl": "pkg:cargo/bech32@0.11.0",
+    "license": "MIT",
+    "vcs": "https://github.com/rust-bitcoin/rust-bech32"
+  },
+  {
+    "name": "bitflags",
+    "version": "1.3.2",
+    "purl": "pkg:cargo/bitflags@1.3.2",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/bitflags/bitflags"
+  },
+  {
+    "name": "bitflags",
+    "version": "2.6.0",
+    "purl": "pkg:cargo/bitflags@2.6.0",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/bitflags/bitflags"
+  },
+  {
+    "name": "blake2",
+    "version": "0.10.6",
+    "purl": "pkg:cargo/blake2@0.10.6",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/hashes"
+  },
+  {
+    "name": "blake3",
+    "version": "1.5.1",
+    "purl": "pkg:cargo/blake3@1.5.1",
+    "license": "CC0-1.0 OR Apache-2.0",
+    "vcs": "https://github.com/BLAKE3-team/BLAKE3"
+  },
+  {
+    "name": "block-buffer",
+    "version": "0.10.4",
+    "purl": "pkg:cargo/block-buffer@0.10.4",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/utils"
+  },
+  {
+    "name": "block-padding",
+    "version": "0.3.3",
+    "purl": "pkg:cargo/block-padding@0.3.3",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/utils"
+  },
+  {
+    "name": "blowfish",
+    "version": "0.9.1",
+    "purl": "pkg:cargo/blowfish@0.9.1",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/block-ciphers"
+  },
+  {
+    "name": "brotli-decompressor",
+    "version": "4.0.1",
+    "purl": "pkg:cargo/brotli-decompressor@4.0.1",
+    "license": "BSD-3-Clause OR MIT",
+    "vcs": "https://github.com/dropbox/rust-brotli-decompressor"
+  },
+  {
+    "name": "brotli",
+    "version": "7.0.0",
+    "purl": "pkg:cargo/brotli@7.0.0",
+    "license": "BSD-3-Clause AND MIT",
+    "vcs": "https://github.com/dropbox/rust-brotli"
+  },
+  {
+    "name": "bs58",
+    "version": "0.5.1",
+    "purl": "pkg:cargo/bs58@0.5.1",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/Nullus157/bs58-rs"
+  },
+  {
+    "name": "byteorder",
+    "version": "1.5.0",
+    "purl": "pkg:cargo/byteorder@1.5.0",
+    "license": "Unlicense OR MIT",
+    "vcs": "https://github.com/BurntSushi/byteorder"
+  },
+  {
+    "name": "bytes",
+    "version": "1.7.2",
+    "purl": "pkg:cargo/bytes@1.7.2",
+    "license": "MIT",
+    "vcs": "https://github.com/tokio-rs/bytes"
+  },
+  {
+    "name": "cbc",
+    "version": "0.1.2",
+    "purl": "pkg:cargo/cbc@0.1.2",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/block-modes"
   },
   {
     "name": "cc",
-    "version": "1.0.78",
-    "purl": "pkg:cargo/cc@1.0.78",
+    "version": "1.1.29",
+    "purl": "pkg:cargo/cc@1.1.29",
     "license": "MIT OR Apache-2.0",
     "vcs": "https://github.com/rust-lang/cc-rs"
   },
@@ -42,156 +392,639 @@
     "vcs": "https://github.com/alexcrichton/cfg-if"
   },
   {
+    "name": "chacha20",
+    "version": "0.9.1",
+    "purl": "pkg:cargo/chacha20@0.9.1",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/stream-ciphers"
+  },
+  {
     "name": "chrono",
-    "version": "0.4.23",
-    "purl": "pkg:cargo/chrono@0.4.23",
+    "version": "0.4.38",
+    "purl": "pkg:cargo/chrono@0.4.38",
     "license": "MIT OR Apache-2.0",
     "vcs": "https://github.com/chronotope/chrono"
   },
   {
-    "name": "codespan-reporting",
-    "version": "0.11.1",
-    "purl": "pkg:cargo/codespan-reporting@0.11.1",
-    "license": "Apache-2.0",
-    "vcs": "https://github.com/brendanzab/codespan"
-  },
-  {
-    "name": "core-foundation-sys",
-    "version": "0.8.3",
-    "purl": "pkg:cargo/core-foundation-sys@0.8.3",
-    "license": "MIT  OR  Apache-2.0",
-    "vcs": "https://github.com/servo/core-foundation-rs"
-  },
-  {
-    "name": "cxx",
-    "version": "1.0.85",
-    "purl": "pkg:cargo/cxx@1.0.85",
+    "name": "cipher",
+    "version": "0.4.4",
+    "purl": "pkg:cargo/cipher@0.4.4",
     "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/dtolnay/cxx"
+    "vcs": "https://github.com/RustCrypto/traits"
   },
   {
-    "name": "cxx-build",
-    "version": "1.0.85",
-    "purl": "pkg:cargo/cxx-build@1.0.85",
-    "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/dtolnay/cxx"
+    "name": "const-oid",
+    "version": "0.9.6",
+    "purl": "pkg:cargo/const-oid@0.9.6",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/formats/tree/master/const-oid"
   },
   {
-    "name": "cxxbridge-flags",
-    "version": "1.0.85",
-    "purl": "pkg:cargo/cxxbridge-flags@1.0.85",
-    "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/dtolnay/cxx"
+    "name": "const_format",
+    "version": "0.2.33",
+    "purl": "pkg:cargo/const_format@0.2.33",
+    "license": "Zlib",
+    "vcs": "https://github.com/rodrimati1992/const_format_crates/"
   },
   {
-    "name": "cxxbridge-macro",
-    "version": "1.0.85",
-    "purl": "pkg:cargo/cxxbridge-macro@1.0.85",
+    "name": "const_format_proc_macros",
+    "version": "0.2.33",
+    "purl": "pkg:cargo/const_format_proc_macros@0.2.33",
+    "license": "Zlib",
+    "vcs": "https://github.com/rodrimati1992/const_format_crates/"
+  },
+  {
+    "name": "constant_time_eq",
+    "version": "0.3.1",
+    "purl": "pkg:cargo/constant_time_eq@0.3.1",
+    "license": "CC0-1.0 OR MIT-0 OR Apache-2.0",
+    "vcs": "https://github.com/cesarb/constant_time_eq"
+  },
+  {
+    "name": "cpufeatures",
+    "version": "0.2.14",
+    "purl": "pkg:cargo/cpufeatures@0.2.14",
     "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/dtolnay/cxx"
+    "vcs": "https://github.com/RustCrypto/utils"
+  },
+  {
+    "name": "crc-any",
+    "version": "2.5.0",
+    "purl": "pkg:cargo/crc-any@2.5.0",
+    "license": "MIT",
+    "vcs": "https://github.com/magiclen/crc-any"
+  },
+  {
+    "name": "crypto-bigint",
+    "version": "0.5.5",
+    "purl": "pkg:cargo/crypto-bigint@0.5.5",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/crypto-bigint"
+  },
+  {
+    "name": "crypto-common",
+    "version": "0.1.6",
+    "purl": "pkg:cargo/crypto-common@0.1.6",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/traits"
+  },
+  {
+    "name": "ctr",
+    "version": "0.9.2",
+    "purl": "pkg:cargo/ctr@0.9.2",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/block-modes"
+  },
+  {
+    "name": "curve25519-dalek-derive",
+    "version": "0.1.1",
+    "purl": "pkg:cargo/curve25519-dalek-derive@0.1.1",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/dalek-cryptography/curve25519-dalek"
+  },
+  {
+    "name": "curve25519-dalek",
+    "version": "4.1.3",
+    "purl": "pkg:cargo/curve25519-dalek@4.1.3",
+    "license": "BSD-3-Clause",
+    "vcs": "https://github.com/dalek-cryptography/curve25519-dalek/tree/main/curve25519-dalek"
+  },
+  {
+    "name": "data-encoding",
+    "version": "2.6.0",
+    "purl": "pkg:cargo/data-encoding@2.6.0",
+    "license": "MIT",
+    "vcs": "https://github.com/ia0/data-encoding"
+  },
+  {
+    "name": "der",
+    "version": "0.7.9",
+    "purl": "pkg:cargo/der@0.7.9",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/formats/tree/master/der"
+  },
+  {
+    "name": "digest",
+    "version": "0.10.7",
+    "purl": "pkg:cargo/digest@0.10.7",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/traits"
+  },
+  {
+    "name": "ecdsa",
+    "version": "0.16.9",
+    "purl": "pkg:cargo/ecdsa@0.16.9",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/signatures/tree/master/ecdsa"
+  },
+  {
+    "name": "ed25519-dalek",
+    "version": "2.1.1",
+    "purl": "pkg:cargo/ed25519-dalek@2.1.1",
+    "license": "BSD-3-Clause",
+    "vcs": "https://github.com/dalek-cryptography/curve25519-dalek/tree/main/ed25519-dalek"
+  },
+  {
+    "name": "ed25519",
+    "version": "2.2.3",
+    "purl": "pkg:cargo/ed25519@2.2.3",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/signatures/tree/master/ed25519"
+  },
+  {
+    "name": "either",
+    "version": "1.13.0",
+    "purl": "pkg:cargo/either@1.13.0",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/rayon-rs/either"
+  },
+  {
+    "name": "elliptic-curve",
+    "version": "0.13.8",
+    "purl": "pkg:cargo/elliptic-curve@0.13.8",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/traits/tree/master/elliptic-curve"
+  },
+  {
+    "name": "errno",
+    "version": "0.3.9",
+    "purl": "pkg:cargo/errno@0.3.9",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/lambda-fairy/rust-errno"
+  },
+  {
+    "name": "ff",
+    "version": "0.13.0",
+    "purl": "pkg:cargo/ff@0.13.0",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/zkcrypto/ff"
+  },
+  {
+    "name": "futures-channel",
+    "version": "0.3.31",
+    "purl": "pkg:cargo/futures-channel@0.3.31",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/rust-lang/futures-rs"
+  },
+  {
+    "name": "futures-core",
+    "version": "0.3.31",
+    "purl": "pkg:cargo/futures-core@0.3.31",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/rust-lang/futures-rs"
+  },
+  {
+    "name": "futures-executor",
+    "version": "0.3.31",
+    "purl": "pkg:cargo/futures-executor@0.3.31",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/rust-lang/futures-rs"
+  },
+  {
+    "name": "futures-io",
+    "version": "0.3.31",
+    "purl": "pkg:cargo/futures-io@0.3.31",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/rust-lang/futures-rs"
+  },
+  {
+    "name": "futures-macro",
+    "version": "0.3.31",
+    "purl": "pkg:cargo/futures-macro@0.3.31",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/rust-lang/futures-rs"
+  },
+  {
+    "name": "futures-sink",
+    "version": "0.3.31",
+    "purl": "pkg:cargo/futures-sink@0.3.31",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/rust-lang/futures-rs"
+  },
+  {
+    "name": "futures-task",
+    "version": "0.3.31",
+    "purl": "pkg:cargo/futures-task@0.3.31",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/rust-lang/futures-rs"
+  },
+  {
+    "name": "futures-util",
+    "version": "0.3.31",
+    "purl": "pkg:cargo/futures-util@0.3.31",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/rust-lang/futures-rs"
+  },
+  {
+    "name": "futures",
+    "version": "0.3.31",
+    "purl": "pkg:cargo/futures@0.3.31",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/rust-lang/futures-rs"
+  },
+  {
+    "name": "fxhash",
+    "version": "0.2.1",
+    "purl": "pkg:cargo/fxhash@0.2.1",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/cbreeden/fxhash"
+  },
+  {
+    "name": "generic-array",
+    "version": "0.14.7",
+    "purl": "pkg:cargo/generic-array@0.14.7",
+    "license": "MIT",
+    "vcs": "https://github.com/fizyk20/generic-array.git"
   },
   {
     "name": "getrandom",
-    "version": "0.2.8",
-    "purl": "pkg:cargo/getrandom@0.2.8",
+    "version": "0.2.15",
+    "purl": "pkg:cargo/getrandom@0.2.15",
     "license": "MIT OR Apache-2.0",
     "vcs": "https://github.com/rust-random/getrandom"
   },
   {
+    "name": "ghash",
+    "version": "0.5.1",
+    "purl": "pkg:cargo/ghash@0.5.1",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/universal-hashes"
+  },
+  {
+    "name": "group",
+    "version": "0.13.0",
+    "purl": "pkg:cargo/group@0.13.0",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/zkcrypto/group"
+  },
+  {
+    "name": "hashers",
+    "version": "1.0.1",
+    "purl": "pkg:cargo/hashers@1.0.1",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/tmmcguire/hashers"
+  },
+  {
+    "name": "highway",
+    "version": "1.2.0",
+    "purl": "pkg:cargo/highway@1.2.0",
+    "license": "MIT",
+    "vcs": "https://github.com/nickbabcock/highway-rs"
+  },
+  {
+    "name": "hkdf",
+    "version": "0.12.4",
+    "purl": "pkg:cargo/hkdf@0.12.4",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/KDFs/"
+  },
+  {
+    "name": "hmac",
+    "version": "0.12.1",
+    "purl": "pkg:cargo/hmac@0.12.1",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/MACs"
+  },
+  {
+    "name": "home",
+    "version": "0.5.9",
+    "purl": "pkg:cargo/home@0.5.9",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/rust-lang/cargo"
+  },
+  {
     "name": "iana-time-zone",
-    "version": "0.1.53",
-    "purl": "pkg:cargo/iana-time-zone@0.1.53",
+    "version": "0.1.61",
+    "purl": "pkg:cargo/iana-time-zone@0.1.61",
     "license": "MIT OR Apache-2.0",
     "vcs": "https://github.com/strawlab/iana-time-zone"
   },
   {
-    "name": "iana-time-zone-haiku",
-    "version": "0.1.1",
-    "purl": "pkg:cargo/iana-time-zone-haiku@0.1.1",
+    "name": "inout",
+    "version": "0.1.3",
+    "purl": "pkg:cargo/inout@0.1.3",
     "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/strawlab/iana-time-zone"
+    "vcs": "https://github.com/RustCrypto/utils"
   },
   {
-    "name": "js-sys",
-    "version": "0.3.60",
-    "purl": "pkg:cargo/js-sys@0.3.60",
+    "name": "keccak",
+    "version": "0.1.5",
+    "purl": "pkg:cargo/keccak@0.1.5",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/sponges/tree/master/keccak"
+  },
+  {
+    "name": "keyutils-raw",
+    "version": "0.4.0",
+    "purl": "pkg:cargo/keyutils-raw@0.4.0",
+    "license": "BSD-3-Clause",
+    "vcs": "https://github.com/mathstuf/rust-keyutils.git"
+  },
+  {
+    "name": "keyutils",
+    "version": "0.4.0",
+    "purl": "pkg:cargo/keyutils@0.4.0",
+    "license": "BSD-3-Clause",
+    "vcs": "https://github.com/mathstuf/rust-keyutils.git"
+  },
+  {
+    "name": "lazy_static",
+    "version": "1.5.0",
+    "purl": "pkg:cargo/lazy_static@1.5.0",
     "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/rustwasm/wasm-bindgen/tree/master/crates/js-sys"
+    "vcs": "https://github.com/rust-lang-nursery/lazy-static.rs"
   },
   {
     "name": "libc",
-    "version": "0.2.139",
-    "purl": "pkg:cargo/libc@0.2.139",
+    "version": "0.2.159",
+    "purl": "pkg:cargo/libc@0.2.159",
     "license": "MIT OR Apache-2.0",
     "vcs": "https://github.com/rust-lang/libc"
   },
   {
-    "name": "link-cplusplus",
-    "version": "1.0.8",
-    "purl": "pkg:cargo/link-cplusplus@1.0.8",
+    "name": "libm",
+    "version": "0.2.8",
+    "purl": "pkg:cargo/libm@0.2.8",
     "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/dtolnay/link-cplusplus"
+    "vcs": "https://github.com/rust-lang/libm"
+  },
+  {
+    "name": "linux-raw-sys",
+    "version": "0.4.14",
+    "purl": "pkg:cargo/linux-raw-sys@0.4.14",
+    "license": "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT",
+    "vcs": "https://github.com/sunfishcode/linux-raw-sys"
   },
   {
     "name": "log",
-    "version": "0.4.17",
-    "purl": "pkg:cargo/log@0.4.17",
+    "version": "0.4.22",
+    "purl": "pkg:cargo/log@0.4.22",
     "license": "MIT OR Apache-2.0",
     "vcs": "https://github.com/rust-lang/log"
   },
   {
+    "name": "md-5",
+    "version": "0.10.6",
+    "purl": "pkg:cargo/md-5@0.10.6",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/hashes"
+  },
+  {
+    "name": "md5",
+    "version": "0.7.0",
+    "purl": "pkg:cargo/md5@0.7.0",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/stainless-steel/md5"
+  },
+  {
+    "name": "memchr",
+    "version": "2.7.4",
+    "purl": "pkg:cargo/memchr@2.7.4",
+    "license": "Unlicense OR MIT",
+    "vcs": "https://github.com/BurntSushi/memchr"
+  },
+  {
+    "name": "memsec",
+    "version": "0.7.0",
+    "purl": "pkg:cargo/memsec@0.7.0",
+    "license": "MIT",
+    "vcs": "https://github.com/quininer/memsec"
+  },
+  {
+    "name": "minimal-lexical",
+    "version": "0.2.1",
+    "purl": "pkg:cargo/minimal-lexical@0.2.1",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/Alexhuszagh/minimal-lexical"
+  },
+  {
+    "name": "mio",
+    "version": "1.0.2",
+    "purl": "pkg:cargo/mio@1.0.2",
+    "license": "MIT",
+    "vcs": "https://github.com/tokio-rs/mio"
+  },
+  {
+    "name": "mnemonic",
+    "version": "1.1.1",
+    "purl": "pkg:cargo/mnemonic@1.1.1",
+    "license": "MIT",
+    "vcs": "https://github.com/mbrubeck/rust-mnemonic"
+  },
+  {
+    "name": "nom",
+    "version": "7.1.3",
+    "purl": "pkg:cargo/nom@7.1.3",
+    "license": "MIT",
+    "vcs": "https://github.com/Geal/nom"
+  },
+  {
+    "name": "num-bigint-dig",
+    "version": "0.8.4",
+    "purl": "pkg:cargo/num-bigint-dig@0.8.4",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/dignifiedquire/num-bigint"
+  },
+  {
     "name": "num-bigint",
-    "version": "0.4.3",
-    "purl": "pkg:cargo/num-bigint@0.4.3",
+    "version": "0.4.6",
+    "purl": "pkg:cargo/num-bigint@0.4.6",
     "license": "MIT OR Apache-2.0",
     "vcs": "https://github.com/rust-num/num-bigint"
   },
   {
     "name": "num-integer",
-    "version": "0.1.45",
-    "purl": "pkg:cargo/num-integer@0.1.45",
+    "version": "0.1.46",
+    "purl": "pkg:cargo/num-integer@0.1.46",
     "license": "MIT OR Apache-2.0",
     "vcs": "https://github.com/rust-num/num-integer"
   },
   {
+    "name": "num-iter",
+    "version": "0.1.45",
+    "purl": "pkg:cargo/num-iter@0.1.45",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/rust-num/num-iter"
+  },
+  {
     "name": "num-traits",
-    "version": "0.2.15",
-    "purl": "pkg:cargo/num-traits@0.2.15",
+    "version": "0.2.19",
+    "purl": "pkg:cargo/num-traits@0.2.19",
     "license": "MIT OR Apache-2.0",
     "vcs": "https://github.com/rust-num/num-traits"
   },
   {
-    "name": "once_cell",
-    "version": "1.17.0",
-    "purl": "pkg:cargo/once_cell@1.17.0",
+    "name": "opaque-debug",
+    "version": "0.3.1",
+    "purl": "pkg:cargo/opaque-debug@0.3.1",
     "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/matklad/once_cell"
+    "vcs": "https://github.com/RustCrypto/utils"
+  },
+  {
+    "name": "p256",
+    "version": "0.13.2",
+    "purl": "pkg:cargo/p256@0.13.2",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/elliptic-curves/tree/master/p256"
+  },
+  {
+    "name": "p384",
+    "version": "0.13.0",
+    "purl": "pkg:cargo/p384@0.13.0",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/elliptic-curves/tree/master/p384"
+  },
+  {
+    "name": "p521",
+    "version": "0.13.3",
+    "purl": "pkg:cargo/p521@0.13.3",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/elliptic-curves/tree/master/p521"
+  },
+  {
+    "name": "password-hash",
+    "version": "0.4.2",
+    "purl": "pkg:cargo/password-hash@0.4.2",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/traits/tree/master/password-hash"
+  },
+  {
+    "name": "password-hash",
+    "version": "0.5.0",
+    "purl": "pkg:cargo/password-hash@0.5.0",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/traits/tree/master/password-hash"
   },
   {
     "name": "paste",
-    "version": "1.0.11",
-    "purl": "pkg:cargo/paste@1.0.11",
+    "version": "1.0.15",
+    "purl": "pkg:cargo/paste@1.0.15",
     "license": "MIT OR Apache-2.0",
     "vcs": "https://github.com/dtolnay/paste"
   },
   {
+    "name": "pbkdf2",
+    "version": "0.11.0",
+    "purl": "pkg:cargo/pbkdf2@0.11.0",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/password-hashes/tree/master/pbkdf2"
+  },
+  {
+    "name": "pbkdf2",
+    "version": "0.12.2",
+    "purl": "pkg:cargo/pbkdf2@0.12.2",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/password-hashes/tree/master/pbkdf2"
+  },
+  {
+    "name": "pem-rfc7468",
+    "version": "0.7.0",
+    "purl": "pkg:cargo/pem-rfc7468@0.7.0",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/formats/tree/master/pem-rfc7468"
+  },
+  {
+    "name": "percent-encoding",
+    "version": "2.3.1",
+    "purl": "pkg:cargo/percent-encoding@2.3.1",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/servo/rust-url/"
+  },
+  {
+    "name": "pin-project-lite",
+    "version": "0.2.14",
+    "purl": "pkg:cargo/pin-project-lite@0.2.14",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/taiki-e/pin-project-lite"
+  },
+  {
+    "name": "pin-utils",
+    "version": "0.1.0",
+    "purl": "pkg:cargo/pin-utils@0.1.0",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/rust-lang-nursery/pin-utils"
+  },
+  {
+    "name": "pinentry",
+    "version": "0.5.1",
+    "purl": "pkg:cargo/pinentry@0.5.1",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/str4d/pinentry-rs"
+  },
+  {
+    "name": "pkcs1",
+    "version": "0.7.5",
+    "purl": "pkg:cargo/pkcs1@0.7.5",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/formats/tree/master/pkcs1"
+  },
+  {
+    "name": "pkcs5",
+    "version": "0.7.1",
+    "purl": "pkg:cargo/pkcs5@0.7.1",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/formats/tree/master/pkcs5"
+  },
+  {
+    "name": "pkcs8",
+    "version": "0.10.2",
+    "purl": "pkg:cargo/pkcs8@0.10.2",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/formats/tree/master/pkcs8"
+  },
+  {
+    "name": "platform-info",
+    "version": "2.0.4",
+    "purl": "pkg:cargo/platform-info@2.0.4",
+    "license": "MIT",
+    "vcs": "https://github.com/uutils/platform-info"
+  },
+  {
+    "name": "poly1305",
+    "version": "0.8.0",
+    "purl": "pkg:cargo/poly1305@0.8.0",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/universal-hashes"
+  },
+  {
+    "name": "polyval",
+    "version": "0.6.2",
+    "purl": "pkg:cargo/polyval@0.6.2",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/universal-hashes"
+  },
+  {
     "name": "ppv-lite86",
-    "version": "0.2.17",
-    "purl": "pkg:cargo/ppv-lite86@0.2.17",
+    "version": "0.2.20",
+    "purl": "pkg:cargo/ppv-lite86@0.2.20",
     "license": "MIT OR Apache-2.0",
     "vcs": "https://github.com/cryptocorrosion/cryptocorrosion"
   },
   {
+    "name": "primeorder",
+    "version": "0.13.6",
+    "purl": "pkg:cargo/primeorder@0.13.6",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/elliptic-curves/tree/master/primeorder"
+  },
+  {
     "name": "proc-macro2",
-    "version": "1.0.49",
-    "purl": "pkg:cargo/proc-macro2@1.0.49",
+    "version": "1.0.87",
+    "purl": "pkg:cargo/proc-macro2@1.0.87",
     "license": "MIT OR Apache-2.0",
     "vcs": "https://github.com/dtolnay/proc-macro2"
   },
   {
+    "name": "qrcode",
+    "version": "0.14.1",
+    "purl": "pkg:cargo/qrcode@0.14.1",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/kennytm/qrcode-rust"
+  },
+  {
     "name": "quote",
-    "version": "1.0.23",
-    "purl": "pkg:cargo/quote@1.0.23",
+    "version": "1.0.37",
+    "purl": "pkg:cargo/quote@1.0.37",
     "license": "MIT OR Apache-2.0",
     "vcs": "https://github.com/dtolnay/quote"
   },
@@ -217,129 +1050,360 @@
     "vcs": "https://github.com/rust-random/rand"
   },
   {
-    "name": "scratch",
-    "version": "1.0.3",
-    "purl": "pkg:cargo/scratch@1.0.3",
+    "name": "rfc6979",
+    "version": "0.4.0",
+    "purl": "pkg:cargo/rfc6979@0.4.0",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/signatures/tree/master/rfc6979"
+  },
+  {
+    "name": "rsa",
+    "version": "0.9.6",
+    "purl": "pkg:cargo/rsa@0.9.6",
     "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/dtolnay/scratch"
+    "vcs": "https://github.com/RustCrypto/RSA"
+  },
+  {
+    "name": "russh-cryptovec",
+    "version": "0.7.3",
+    "purl": "pkg:cargo/russh-cryptovec@0.7.3",
+    "license": "Apache-2.0",
+    "vcs": "https://github.com/warp-tech/russh"
+  },
+  {
+    "name": "russh-keys",
+    "version": "0.45.0",
+    "purl": "pkg:cargo/russh-keys@0.45.0",
+    "license": "Apache-2.0",
+    "vcs": "https://github.com/warp-tech/russh"
+  },
+  {
+    "name": "rustc_version",
+    "version": "0.4.1",
+    "purl": "pkg:cargo/rustc_version@0.4.1",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/djc/rustc-version-rs"
+  },
+  {
+    "name": "rustix",
+    "version": "0.38.37",
+    "purl": "pkg:cargo/rustix@0.38.37",
+    "license": "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT",
+    "vcs": "https://github.com/bytecodealliance/rustix"
+  },
+  {
+    "name": "salsa20",
+    "version": "0.10.2",
+    "purl": "pkg:cargo/salsa20@0.10.2",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/stream-ciphers"
+  },
+  {
+    "name": "scrypt",
+    "version": "0.11.0",
+    "purl": "pkg:cargo/scrypt@0.11.0",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/password-hashes/tree/master/scrypt"
+  },
+  {
+    "name": "seahash",
+    "version": "4.1.0",
+    "purl": "pkg:cargo/seahash@4.1.0",
+    "license": "MIT",
+    "vcs": "https://gitlab.redox-os.org/redox-os/seahash"
+  },
+  {
+    "name": "sec1",
+    "version": "0.7.3",
+    "purl": "pkg:cargo/sec1@0.7.3",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/formats/tree/master/sec1"
+  },
+  {
+    "name": "secrecy",
+    "version": "0.8.0",
+    "purl": "pkg:cargo/secrecy@0.8.0",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/iqlusioninc/crates/tree/main/secrecy"
+  },
+  {
+    "name": "semver",
+    "version": "1.0.23",
+    "purl": "pkg:cargo/semver@1.0.23",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/dtolnay/semver"
+  },
+  {
+    "name": "serde",
+    "version": "1.0.210",
+    "purl": "pkg:cargo/serde@1.0.210",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/serde-rs/serde"
+  },
+  {
+    "name": "serde_derive",
+    "version": "1.0.210",
+    "purl": "pkg:cargo/serde_derive@1.0.210",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/serde-rs/serde"
+  },
+  {
+    "name": "sha1",
+    "version": "0.10.6",
+    "purl": "pkg:cargo/sha1@0.10.6",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/hashes"
+  },
+  {
+    "name": "sha2",
+    "version": "0.10.8",
+    "purl": "pkg:cargo/sha2@0.10.8",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/hashes"
+  },
+  {
+    "name": "sha3",
+    "version": "0.10.8",
+    "purl": "pkg:cargo/sha3@0.10.8",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/RustCrypto/hashes"
+  },
+  {
+    "name": "shlex",
+    "version": "1.3.0",
+    "purl": "pkg:cargo/shlex@1.3.0",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/comex/rust-shlex"
+  },
+  {
+    "name": "signature",
+    "version": "2.2.0",
+    "purl": "pkg:cargo/signature@2.2.0",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/traits/tree/master/signature"
+  },
+  {
+    "name": "siphasher",
+    "version": "1.0.1",
+    "purl": "pkg:cargo/siphasher@1.0.1",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/jedisct1/rust-siphash"
+  },
+  {
+    "name": "slab",
+    "version": "0.4.9",
+    "purl": "pkg:cargo/slab@0.4.9",
+    "license": "MIT",
+    "vcs": "https://github.com/tokio-rs/slab"
+  },
+  {
+    "name": "smallvec",
+    "version": "1.13.2",
+    "purl": "pkg:cargo/smallvec@1.13.2",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/servo/rust-smallvec"
+  },
+  {
+    "name": "socket2",
+    "version": "0.5.7",
+    "purl": "pkg:cargo/socket2@0.5.7",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/rust-lang/socket2"
+  },
+  {
+    "name": "spin",
+    "version": "0.9.8",
+    "purl": "pkg:cargo/spin@0.9.8",
+    "license": "MIT",
+    "vcs": "https://github.com/mvdnes/spin-rs.git"
+  },
+  {
+    "name": "spki",
+    "version": "0.7.3",
+    "purl": "pkg:cargo/spki@0.7.3",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/formats/tree/master/spki"
+  },
+  {
+    "name": "ssh-cipher",
+    "version": "0.2.0",
+    "purl": "pkg:cargo/ssh-cipher@0.2.0",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/SSH/tree/master/ssh-cipher"
+  },
+  {
+    "name": "ssh-encoding",
+    "version": "0.2.0",
+    "purl": "pkg:cargo/ssh-encoding@0.2.0",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/SSH/tree/master/ssh-encoding"
+  },
+  {
+    "name": "ssh-key",
+    "version": "0.6.6",
+    "purl": "pkg:cargo/ssh-key@0.6.6",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/SSH/tree/master/ssh-key"
+  },
+  {
+    "name": "static_assertions",
+    "version": "1.1.0",
+    "purl": "pkg:cargo/static_assertions@1.1.0",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/nvzqz/static-assertions-rs"
+  },
+  {
+    "name": "subtle",
+    "version": "2.6.1",
+    "purl": "pkg:cargo/subtle@2.6.1",
+    "license": "BSD-3-Clause",
+    "vcs": "https://github.com/dalek-cryptography/subtle"
   },
   {
     "name": "syn",
-    "version": "1.0.107",
-    "purl": "pkg:cargo/syn@1.0.107",
+    "version": "2.0.79",
+    "purl": "pkg:cargo/syn@2.0.79",
     "license": "MIT OR Apache-2.0",
     "vcs": "https://github.com/dtolnay/syn"
   },
   {
-    "name": "termcolor",
-    "version": "1.1.3",
-    "purl": "pkg:cargo/termcolor@1.1.3",
-    "license": "Unlicense OR MIT",
-    "vcs": "https://github.com/BurntSushi/termcolor"
+    "name": "thiserror-impl",
+    "version": "1.0.64",
+    "purl": "pkg:cargo/thiserror-impl@1.0.64",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/dtolnay/thiserror"
+  },
+  {
+    "name": "thiserror",
+    "version": "1.0.64",
+    "purl": "pkg:cargo/thiserror@1.0.64",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/dtolnay/thiserror"
+  },
+  {
+    "name": "tinyvec",
+    "version": "1.8.0",
+    "purl": "pkg:cargo/tinyvec@1.8.0",
+    "license": "Zlib OR Apache-2.0 OR MIT",
+    "vcs": "https://github.com/Lokathor/tinyvec"
+  },
+  {
+    "name": "tinyvec_macros",
+    "version": "0.1.1",
+    "purl": "pkg:cargo/tinyvec_macros@0.1.1",
+    "license": "MIT OR Apache-2.0 OR Zlib",
+    "vcs": "https://github.com/Soveu/tinyvec_macros"
+  },
+  {
+    "name": "tokio-stream",
+    "version": "0.1.16",
+    "purl": "pkg:cargo/tokio-stream@0.1.16",
+    "license": "MIT",
+    "vcs": "https://github.com/tokio-rs/tokio"
+  },
+  {
+    "name": "tokio",
+    "version": "1.40.0",
+    "purl": "pkg:cargo/tokio@1.40.0",
+    "license": "MIT",
+    "vcs": "https://github.com/tokio-rs/tokio"
+  },
+  {
+    "name": "twox-hash",
+    "version": "1.6.3",
+    "purl": "pkg:cargo/twox-hash@1.6.3",
+    "license": "MIT",
+    "vcs": "https://github.com/shepmaster/twox-hash"
+  },
+  {
+    "name": "typenum",
+    "version": "1.17.0",
+    "purl": "pkg:cargo/typenum@1.17.0",
+    "license": "MIT OR Apache-2.0",
+    "vcs": "https://github.com/paholg/typenum"
   },
   {
     "name": "unicode-ident",
-    "version": "1.0.6",
-    "purl": "pkg:cargo/unicode-ident@1.0.6",
+    "version": "1.0.13",
+    "purl": "pkg:cargo/unicode-ident@1.0.13",
     "license": "(MIT OR Apache-2.0) AND Unicode-DFS-2016",
     "vcs": "https://github.com/dtolnay/unicode-ident"
   },
   {
-    "name": "unicode-width",
-    "version": "0.1.10",
-    "purl": "pkg:cargo/unicode-width@0.1.10",
+    "name": "unicode-xid",
+    "version": "0.2.6",
+    "purl": "pkg:cargo/unicode-xid@0.2.6",
     "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/unicode-rs/unicode-width"
+    "vcs": "https://github.com/unicode-rs/unicode-xid"
   },
   {
-    "name": "vrl-errors",
-    "version": "0.1.0",
-    "purl": "pkg:cargo/vrl-errors@0.1.0",
-    "license": "{unknown}",
-    "vcs": null
+    "name": "uninit",
+    "version": "0.3.0",
+    "purl": "pkg:cargo/uninit@0.3.0",
+    "license": "MIT",
+    "vcs": "https://github.com/danielhenrymantilla/rust-uninit"
   },
   {
-    "name": "vrl-preludes",
-    "version": "0.1.0",
-    "purl": "pkg:cargo/vrl-preludes@0.1.0",
-    "license": "{unknown}",
-    "vcs": null
-  },
-  {
-    "name": "vrl-random",
-    "version": "0.1.0",
-    "purl": "pkg:cargo/vrl-random@0.1.0",
-    "license": "{unknown}",
-    "vcs": null
-  },
-  {
-    "name": "wasi",
-    "version": "0.11.0+wasi-snapshot-preview1",
-    "purl": "pkg:cargo/wasi@0.11.0+wasi-snapshot-preview1",
-    "license": "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT",
-    "vcs": "https://github.com/bytecodealliance/wasi"
-  },
-  {
-    "name": "wasm-bindgen",
-    "version": "0.2.83",
-    "purl": "pkg:cargo/wasm-bindgen@0.2.83",
+    "name": "universal-hash",
+    "version": "0.5.1",
+    "purl": "pkg:cargo/universal-hash@0.5.1",
     "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/rustwasm/wasm-bindgen"
+    "vcs": "https://github.com/RustCrypto/traits"
   },
   {
-    "name": "wasm-bindgen-backend",
-    "version": "0.2.83",
-    "purl": "pkg:cargo/wasm-bindgen-backend@0.2.83",
+    "name": "version_check",
+    "version": "0.9.5",
+    "purl": "pkg:cargo/version_check@0.9.5",
     "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/rustwasm/wasm-bindgen/tree/master/crates/backend"
+    "vcs": "https://github.com/SergioBenitez/version_check"
   },
   {
-    "name": "wasm-bindgen-macro",
-    "version": "0.2.83",
-    "purl": "pkg:cargo/wasm-bindgen-macro@0.2.83",
+    "name": "which",
+    "version": "4.4.2",
+    "purl": "pkg:cargo/which@4.4.2",
+    "license": "MIT",
+    "vcs": "https://github.com/harryfei/which-rs.git"
+  },
+  {
+    "name": "x25519-dalek",
+    "version": "2.0.1",
+    "purl": "pkg:cargo/x25519-dalek@2.0.1",
+    "license": "BSD-3-Clause",
+    "vcs": "https://github.com/dalek-cryptography/curve25519-dalek/tree/main/x25519-dalek"
+  },
+  {
+    "name": "xxhash-rust",
+    "version": "0.8.12",
+    "purl": "pkg:cargo/xxhash-rust@0.8.12",
+    "license": "BSL-1.0",
+    "vcs": "https://github.com/DoumanAsh/xxhash-rust"
+  },
+  {
+    "name": "z85",
+    "version": "3.0.5",
+    "purl": "pkg:cargo/z85@3.0.5",
     "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/rustwasm/wasm-bindgen/tree/master/crates/macro"
+    "vcs": "https://github.com/decafbad/z85"
   },
   {
-    "name": "wasm-bindgen-macro-support",
-    "version": "0.2.83",
-    "purl": "pkg:cargo/wasm-bindgen-macro-support@0.2.83",
-    "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/rustwasm/wasm-bindgen/tree/master/crates/macro-support"
+    "name": "zerocopy-derive",
+    "version": "0.7.35",
+    "purl": "pkg:cargo/zerocopy-derive@0.7.35",
+    "license": "BSD-2-Clause OR Apache-2.0 OR MIT",
+    "vcs": "https://github.com/google/zerocopy"
   },
   {
-    "name": "wasm-bindgen-shared",
-    "version": "0.2.83",
-    "purl": "pkg:cargo/wasm-bindgen-shared@0.2.83",
-    "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/rustwasm/wasm-bindgen/tree/master/crates/shared"
+    "name": "zerocopy",
+    "version": "0.7.35",
+    "purl": "pkg:cargo/zerocopy@0.7.35",
+    "license": "BSD-2-Clause OR Apache-2.0 OR MIT",
+    "vcs": "https://github.com/google/zerocopy"
   },
   {
-    "name": "winapi",
-    "version": "0.3.9",
-    "purl": "pkg:cargo/winapi@0.3.9",
-    "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/retep998/winapi-rs"
-  },
-  {
-    "name": "winapi-i686-pc-windows-gnu",
-    "version": "0.4.0",
-    "purl": "pkg:cargo/winapi-i686-pc-windows-gnu@0.4.0",
-    "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/retep998/winapi-rs"
-  },
-  {
-    "name": "winapi-util",
-    "version": "0.1.5",
-    "purl": "pkg:cargo/winapi-util@0.1.5",
-    "license": "Unlicense OR MIT",
-    "vcs": "https://github.com/BurntSushi/winapi-util"
-  },
-  {
-    "name": "winapi-x86_64-pc-windows-gnu",
-    "version": "0.4.0",
-    "purl": "pkg:cargo/winapi-x86_64-pc-windows-gnu@0.4.0",
-    "license": "MIT OR Apache-2.0",
-    "vcs": "https://github.com/retep998/winapi-rs"
+    "name": "zeroize",
+    "version": "1.8.1",
+    "purl": "pkg:cargo/zeroize@1.8.1",
+    "license": "Apache-2.0 OR MIT",
+    "vcs": "https://github.com/RustCrypto/utils/tree/master/zeroize"
   }
 ]
