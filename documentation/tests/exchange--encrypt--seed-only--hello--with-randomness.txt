@@ -1,0 +1,13 @@
+>>  z-tokens exchange encrypt --with-siv --seed ztxsd1lf6056vl0zl9xk2j5asj7336sskhyqmevsc32t2ct6def5mnwmcqe9kcmx --randomness testing
+
+
+#1,  3Lms6mFa7fYrA Sfu9j6iKoRjn  x87YkwjzfpdE  3Ayggzf1DpzFh 2ahuN1Qq1Kcfa
+#2,  1aqYK4MVVz4r  xSvgzFhWsyRd  z2hJjdrXrYVf  UoNpA9Qynkni  2qMt3VQM971DY
+#3,  3vwQwatD1k8wb 3SHYmrLh9XvDd F4T3aDQAfqD4  29D7hk2ykKbTW 459Y371bozCUk
+#4,  2ucm2qVxz8hxh 32C8YXE4JZY1D Tt1pXNZvxctW  AgFzh3dxDDwK  oPomp5Ua8iHn
+#5,  aF8PdihKBKqQ  3cQ9abUXA9Cs6 nY9nsiBJiFvC  2ah31naKtq1Fe xAvictbQrEW4
+#6,  2Uz7CWGUD6YwQ g6FN9s8Vqri6  2QeaaCcHFhGyy 3UrZDmgaoRERk 3GgYvgh2QfRpW
+#7,  1fC4sx9Ccqwm  uzUgMtAa17FE  3kqaCHGANsW8t 3Fv6FGpreamxF qY3n3n7Wov3X
+#8,  29p9skgsMusah 2tPPrRQDepTiu ToecSg3i1Sqw  37ypPAJCUhhf7 49sursCMroxrP
+#9.  3ChP3g3vWWrLU
+

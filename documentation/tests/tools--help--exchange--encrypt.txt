@@ -22,6 +22,8 @@
   --sender-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
 
+  --without-sender
+
   -r --recipient  {string}
     **  recipient public key (multiple allowed, in any order, deduplicated)
 
@@ -42,6 +44,8 @@
 
   --recipient-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
+
+  --without-recipient
 
   -a --associated  {string}
     **  associated data (multiple allowed, **order and duplicates are significant**)
@@ -64,6 +68,8 @@
   --associated-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
 
+  --without-associated
+
   -x --secret  {string}
     **  shared secret, for additional security (multiple allowed, in any order, deduplicated)
 
@@ -84,6 +90,8 @@
 
   --secret-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
+
+  --without-secret
 
   --raw-secret  {string}
     **  (raw) shared secret, for additional security (multiple allowed, in any order, deduplicated)
@@ -127,6 +135,8 @@
   --pin-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
 
+  --without-pin
+
   -e --seed  {string}
     **  shared seed, for additional security (multiple allowed, in any order, deduplicated)
 
@@ -147,6 +157,8 @@
 
   --seed-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
+
+  --without-seed
 
   --raw-seed  {string}
     **  (raw) shared seed, for additional security (multiple allowed, in any order, deduplicated)
@@ -189,6 +201,8 @@
 
   --ballast-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
+
+  --without-ballast
 
   --raw-ballast  {string}
     **  (raw) shared ballast, for additional security (multiple allowed, in any order, deduplicated)
@@ -235,6 +249,8 @@
   --ssh-wrap-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
 
+  --without-ssh-wrap
+
   --with-fingerprint
     **  fingerprint input
     !!  CAUTION
@@ -246,6 +262,29 @@
     !!  CAUTION
   --without-siv
   --siv  {bool}
+
+  --randomness  {string}
+    **  random data used to feed the encryption (multiple allowed, **order and duplicates are significant**)
+
+  --randomness-env  {variable}
+    **  from environment
+
+  --randomness-path  {path}
+    **  from file
+
+  --randomness-fd  {fd}
+    **  from file-descriptor
+
+  --randomness-stdin
+    **  from stdin
+
+  --randomness-pinentry  {prompt}
+    **  via pinentry
+
+  --randomness-lkkrs  {selector}
+    **  from Linux Kernel key-retention-service
+
+  --without-randomness
 
   --namespace  {string}
     **  token used for cryptography domain separation

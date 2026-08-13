@@ -22,6 +22,8 @@
   --recipient-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
 
+  --without-recipient
+
   -s --sender  {string}
     **  sender public key (multiple allowed, in any order, deduplicated)
 
@@ -42,6 +44,8 @@
 
   --sender-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
+
+  --without-sender
 
   -a --associated  {string}
     **  associated data (multiple allowed, **order and duplicates are significant**)
@@ -64,6 +68,8 @@
   --associated-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
 
+  --without-associated
+
   -x --secret  {string}
     **  shared secret, for additional security (multiple allowed, in any order, deduplicated)
 
@@ -84,6 +90,8 @@
 
   --secret-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
+
+  --without-secret
 
   --raw-secret  {string}
     **  (raw) shared secret, for additional security (multiple allowed, in any order, deduplicated)
@@ -127,6 +135,8 @@
   --pin-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
 
+  --without-pin
+
   -e --seed  {string}
     **  shared seed, for additional security (multiple allowed, in any order, deduplicated)
 
@@ -147,6 +157,8 @@
 
   --seed-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
+
+  --without-seed
 
   --raw-seed  {string}
     **  (raw) shared seed, for additional security (multiple allowed, in any order, deduplicated)
@@ -189,6 +201,8 @@
 
   --ballast-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
+
+  --without-ballast
 
   --raw-ballast  {string}
     **  (raw) shared ballast, for additional security (multiple allowed, in any order, deduplicated)
@@ -235,6 +249,9 @@
   --ssh-wrap-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
 
+  --without-ssh-wrap
+
+  --without-fingerprint
   --fingerprint  {string}
     **  fingerprint generated during encryption
 

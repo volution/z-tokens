@@ -1,0 +1,13 @@
+>>  z-tokens exchange encrypt --with-siv --pin 1234 --randomness testing
+
+
+#1,  3Lms6mZa4ZLor 39P8MtuAjWsRX 3zHCMoMtZ5Ts  mv7ArueFqYd5  45Dv3g6siQnVN
+#2,  3EsVpNnBVixPY dp7R2pZQBfca  3W67vQnZjGbtq 2GiMVpnqTDxzq 39hW5ZkahMDu7
+#3,  413zfXBnxh26V 3GNhnbziL7egW 34v5xZquodXRr tdeSeNEZiXTP  eGWHD91agx9r
+#4,  42CDczjzJC7cQ wHJQqTg9sAyC  2WnRHSY6cqg8P 2tV8Ho6EM9NJm 2x7meTCLffmqM
+#5,  4E2xUYcChHCjj 3toWw2BVREdqF Xc7K9cTRenAS  3E3CDdoeMTVLq 46SuMUYMuqTrW
+#6,  MQMyPMZSobBK  k33jtUMEFAT4  Hu9d5GgED9xv  3njw4JzPE9Ljp ADKKPW4RPknw
+#7,  ArLLJoJVPKoY  24iiTAiiWnN95 4FN3WJJ7mscp6 13kyN24MtwdE  EkSmRdah47S7
+#8,  2vc3cmPETsBup Z5SpxvBJVwmv  2htyp7pQ7XoXh QUUxa9E5fjXG  43WHyHL3SskRN
+#9.  2d28Gp3KFPpDf
+

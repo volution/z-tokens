@@ -22,6 +22,8 @@
   --ssh-wrap-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
 
+  --without-ssh-wrap
+
   -i --input  {string}
     **  inputs used in key derivation (multiple allowed, **order and duplicates are significant**)
 
@@ -42,6 +44,8 @@
 
   --input-lkkrs  {selector}
     **  from Linux Kernel key-retention-service
+
+  --without-input
 
   --inputs-canonicalize
     **  canonicalize inputs

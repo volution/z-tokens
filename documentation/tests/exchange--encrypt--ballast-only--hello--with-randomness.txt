@@ -1,0 +1,13 @@
+>>  z-tokens exchange encrypt --with-siv --ballast ztxbl1ah428t6ux086pfdgv5d5z8fle06rll5azaglg8gcnvd65mup65qqckq348 --randomness testing
+
+
+#1,  3Lms6mDrHiNrU j8TEMvxYWBnK  Q4hPQR3S3mLV  47TPYDhWLGhE5 B5WjJXH7XcSr
+#2,  2EfanTjM3GVd2 6HNWRirPv63t  3Lc3FxN3ktnrp 2VVxgVHp9hawm 3VGCkpG4YhBg
+#3,  75gmMfc6Bsmd  WiEwjm6XN55r  3eay5kFeqpey4 2nkYR68ZvGC47 2Nb7AmHtRwp3G
+#4,  24FAdApthfCLT jemiCrhY2LrP  Zo41KKsZQ68U  2KaXG6YKZKmez 3GChoyCdCoLc6
+#5,  2jw1UgELnjVcL GCVbkZT6pmx7  wy5Q553Gfqip  3XEh1NPGWjmYJ 2jv4gjRkcvZW6
+#6,  3SvB73opHAQpi 3pgWm6NPn4Ws9 3ZbadfcqKboSh 3ow5jW7mFQJAQ 2RmdPZNSqBJJX
+#7,  3HVgbxVPy3Psu UsYzoDGcyAUU  3Hrh6xoCbkiHs 21B1JrEMfYEkQ 3aE3Xc358qMZG
+#8,  2fuLCxCTxGuo6 4226HMHcqfwW5 34Sdro8pPvxdg 22XproaDQ1xgQ 2juvERw5mdu8h
+#9.  2SMbETPrUdbyV
+

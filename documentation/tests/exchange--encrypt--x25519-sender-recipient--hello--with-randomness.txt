@@ -1,0 +1,13 @@
+>>  z-tokens exchange encrypt --with-siv --sender ztxsk1szluhkftlf5zee8wfd6v43el6qa9c7f74sn3xaxjrxzh84q7436qhmh920 --recipient ztxrp17qqdhxkytsfp0ugz0h3zxuy4l2hhszxpaqt9cmqndjg8qllxfamszurtah --randomness testing
+
+
+#1,  3Lms6mHht2PYH 2T2udzY5Jxauu 476bX9z2xZEAx 41H2FFtjd6rk5 VDgsnQNFC8VS
+#2,  3ycZr3g4NfQmg 2kb1Uf9k6ViNo 2AZBzYUv4ZzEx 3BoMFWSZfBG75 2L3E5JsDBm8Kn
+#3,  xQNQRAUsrs8E  4DvE4pZB6PfNr 3CyCeEQqzykAJ RrW6T5CXnS5f  bZeQz886YdKY
+#4,  3M1k3fahnx6xN oWnT9y6cmghf  3yLPe15eifhRU 2kTMmYuSLMAU8 xwZ9znboUr6d
+#5,  Ravces78hTPb  4DJWk8HzTmc87 3xRHZph9GnxxU 21AvX22VQxyJv 21hnSfTiyweBz
+#6,  4B99sLPx5ERQE 3R8pUUpTDs7dA 3qQtWKGRsMiJV Scu45W5kBmbP  3JBmgcfw3cqWP
+#7,  2rGvHW3EAthKx 3VAsxDM3Mr6QW hcYhEer3PUg5  vzLVjLLPSb3Y  2erDG2Yqzv3sQ
+#8,  2eZDVsrT928h4 vKmYJMJ2pksq  dL5DdrzTazU9  3UeS4okCFTf1W 3uFHpCseRCbpi
+#9.  3j3qqNZVJBU3B
+
