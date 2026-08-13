@@ -19,16 +19,6 @@ e77fcce528ca1b16637548e9b4a9564e *encodings-tool/lib.rs
 1be70e72b865cc12a97c798c58a22238 *encodings-tool/tool.rs
 d08f9651e062a4bfe9a4298510d4e954 *encodings/Cargo.toml
 84870363cabc87ca0290713c022e081e *encodings/lib.rs
-a5c11fd657469ad230c520780f9dad8c *exchange-tool-go/cmd/test.go
-060018c992bfcbac37861aea1ca430dc *exchange-tool-go/go.mod
-5354ad7a2d8d571e32ecc43a26981f8c *exchange-tool-go/go.sum
-cb78ace09fb972719f0171951cc05a96 *exchange-tool-go/lib/abort.go
-f6b774b7bf7d678e034736746b4d1eb4 *exchange-tool-go/lib/bech32.go
-96022a56879e7fbcdc8ba40f0d1f4bb6 *exchange-tool-go/lib/consts.go
-ce01336947d3d61474abe7733285c687 *exchange-tool-go/lib/debug.go
-b9ddbf3cee2d643dc27ee6fe1d1c6a23 *exchange-tool-go/lib/decrypt.go
-61a6f2bf10c52b3991c31cd39b2772db *exchange-tool-go/lib/ssh.go
-7b2edd97127dbf16c74965a4ced8cde9 *exchange-tool-go/lib/types.go
 257b8e1257c9b2f4a131937985ff06ea *exchange-tool/Cargo.toml
 58f75d2d8712b56748d3a82acd3a4b07 *exchange-tool/flags.rs
 618f8785716dd71f772e8002bfcb4509 *exchange-tool/io.rs
