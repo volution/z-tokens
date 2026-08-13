@@ -611,12 +611,12 @@ there is even support for WebAssembly WASI):
 ~~~~
 curl -s -L -f -S \
     -o /tmp/z-tokens \
-    https://github.com/volution/z-tokens/releases/download/preview/z-tokens--linux--x86_64--glibc--v0.4.0--preview
+    https://github.com/volution/z-tokens/releases/download/preview/z-tokens--linux--x86_64--glibc--v0.6.0--preview
 ~~~~
 ~~~~
 curl -s -L -f -S \
     -o /tmp/z-tokens.sig \
-    https://github.com/volution/z-tokens/releases/download/preview/z-tokens--linux--x86_64--glibc--v0.4.0--preview.sig
+    https://github.com/volution/z-tokens/releases/download/preview/z-tokens--linux--x86_64--glibc--v0.6.0--preview.sig
 ~~~~
 
 * (optional) verify the executable (the `-P ...` is the public key):
@@ -631,7 +631,7 @@ minisign \
 * **check that the output is`**:
 ~~~~
 Signature and comment signature verified
-Trusted comment: z-tokens--linux--x86_64--glibc--v0.4.0--preview
+Trusted comment: z-tokens--linux--x86_64--glibc--v0.6.0--preview
 ~~~~
 
 * change the executable permissions:
@@ -650,14 +650,14 @@ z-tokens --version
 ~~~~
 ~~~~
 * tool          : z-tokens
-* version       : 0.4.0
+* version       : 0.6.0
 * executable    : /usr/local/bin/z-tokens
 * executable-0  : z-tokens
 * build target  : release
-* build number  : 15721, 2024-01-08-18-09-22
+* build number  : 17151, 2026-08-13-17-32-39
 * code & issues : https://github.com/volution/z-tokens
-* sources git   : 9644b5af5f817a854523e4e837352641e5794c6a
-* sources hash  : a8d6bc01f668ff3b1b7bae6bcbfddf49
+* sources git   : 086401273c0785a962ec903e33a4cd3d0677ae14
+* sources hash  : efd5a0696672c6534c9555a2f6076d52
 * uname node    : my-computer
 * uname system  : Linux, 6.6.6-6-default, x86_64
 ~~~~

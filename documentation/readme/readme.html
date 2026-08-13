@@ -376,29 +376,29 @@ and use <code>x86_64</code> or <code>aarch64</code> matching your processor,
 and in case of Linux replace <code>glibc</code> with <code>musl</code> and possibly <code>glibc--static</code> and <code>musl--static</code>,
 there is even support for WebAssembly WASI):</li></ul><pre><code>curl -s -L -f -S \
     -o /tmp/z-tokens \
-    https://github.com/volution/z-tokens/releases/download/preview/z-tokens--linux--x86_64--glibc--v0.4.0--preview
+    https://github.com/volution/z-tokens/releases/download/preview/z-tokens--linux--x86_64--glibc--v0.6.0--preview
 </code></pre><pre><code>curl -s -L -f -S \
     -o /tmp/z-tokens.sig \
-    https://github.com/volution/z-tokens/releases/download/preview/z-tokens--linux--x86_64--glibc--v0.4.0--preview.sig
+    https://github.com/volution/z-tokens/releases/download/preview/z-tokens--linux--x86_64--glibc--v0.6.0--preview.sig
 </code></pre><ul><li>(optional) verify the executable (the <code>-P ...</code> is the public key):</li></ul><pre><code>minisign \
     -V \
     -P 'RWTNU8euCgU67tydQTW8Obk/C/aOiRComoFnFpiTzPwjDc39BU4R3M4g' \
     -x /tmp/z-tokens.sig \
     -m /tmp/z-tokens
 </code></pre><ul><li><strong>check that the output is`</strong>:</li></ul><pre><code>Signature and comment signature verified
-Trusted comment: z-tokens--linux--x86_64--glibc--v0.4.0--preview
+Trusted comment: z-tokens--linux--x86_64--glibc--v0.6.0--preview
 </code></pre><ul><li>change the executable permissions:</li></ul><pre><code>chmod a=rx /tmp/z-tokens
 </code></pre><ul><li>copy the executable on the <code>$PATH</code>:</li></ul><pre><code>sudo cp /tmp/z-tokens /usr/local/bin/z-tokens
 </code></pre><ul><li>check that it works:</li></ul><pre><code>z-tokens --version
 </code></pre><pre><code>* tool          : z-tokens
-* version       : 0.4.0
+* version       : 0.6.0
 * executable    : /usr/local/bin/z-tokens
 * executable-0  : z-tokens
 * build target  : release
-* build number  : 15721, 2024-01-08-18-09-22
+* build number  : 17151, 2026-08-13-17-32-39
 * code &amp; issues : https://github.com/volution/z-tokens
-* sources git   : 9644b5af5f817a854523e4e837352641e5794c6a
-* sources hash  : a8d6bc01f668ff3b1b7bae6bcbfddf49
+* sources git   : 086401273c0785a962ec903e33a4cd3d0677ae14
+* sources hash  : efd5a0696672c6534c9555a2f6076d52
 * uname node    : my-computer
 * uname system  : Linux, 6.6.6-6-default, x86_64
 </code></pre><hr><h2><span id=license>Notice (copyright and licensing)</span></h2><h3>Notice -- short version</h3><p>The code is licensed under GPL 3 or later.</p><h3>Notice -- long version</h3><p>For details about the copyright and licensing, please consult the <a href=https://github.com/volution/z-tokens/tree/development/documentation/licensing/notice.txt><code>notice.txt</code></a> file in the <a href=https://github.com/volution/z-tokens/tree/development/documentation/licensing><code>documentation/licensing</code></a> folder.</p><p>If someone requires the sources and/or documentation to be released
