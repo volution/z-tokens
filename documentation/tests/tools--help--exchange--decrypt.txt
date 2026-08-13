@@ -251,9 +251,28 @@
 
   --without-ssh-wrap
 
-  --without-fingerprint
   --fingerprint  {string}
-    **  fingerprint generated during encryption
+    **  fingerprint generated during encryption (**multiple allowed if after deduplication only one value remains**)
+
+  --fingerprint-env  {variable}
+    **  from environment
+
+  --fingerprint-path  {path}
+    **  from file
+
+  --fingerprint-fd  {fd}
+    **  from file-descriptor
+
+  --fingerprint-stdin
+    **  from stdin
+
+  --fingerprint-pinentry  {prompt}
+    **  via pinentry
+
+  --fingerprint-lkkrs  {selector}
+    **  from Linux Kernel key-retention-service
+
+  --without-fingerprint
 
   --namespace  {string}
     **  token used for cryptography domain separation
