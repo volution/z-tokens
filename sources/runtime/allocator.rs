@@ -104,12 +104,12 @@ unsafe impl alloc::GlobalAlloc for Allocator {
 				}
 			} else {
 				let _layout = unsafe { alloc::Layout::from_size_align_unchecked (_amount, _align) };
-				alloc::System.alloc (_layout)
+				unsafe { alloc::System.alloc (_layout) }
 			};
 		#[ cfg (not (feature = "memsec")) ]
 		let _pointer = {
 				let _layout = unsafe { alloc::Layout::from_size_align_unchecked (_amount, _align) };
-				alloc::System.alloc (_layout)
+				unsafe { alloc::System.alloc (_layout) }
 			};
 		
 		#[ cfg (feature = "memsec") ]
@@ -160,12 +160,12 @@ unsafe impl alloc::GlobalAlloc for Allocator {
 			memsec::free (_memory)
 		} else {
 			let _layout = unsafe { alloc::Layout::from_size_align_unchecked (_amount, _align) };
-			alloc::System.dealloc (_pointer, _layout)
+			unsafe { alloc::System.dealloc (_pointer, _layout) }
 		}
 		#[ cfg (not (feature = "memsec")) ]
 		{
 			let _layout = unsafe { alloc::Layout::from_size_align_unchecked (_amount, _align) };
-			alloc::System.dealloc (_pointer, _layout)
+			unsafe { alloc::System.dealloc (_pointer, _layout) }
 		}
 	}
 }
