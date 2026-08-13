@@ -1,4 +1,0 @@
-untrusted comment: signature from minisign secret key
-RUTNU8euCgU67kJXeSlOuMtMgntet23K6e89365B5xwQlw7W7SIzb7oj3SR1hDz48hwdOSlGEbrLXlUiAeglCfFCc79Pr7B7Cgk=
-trusted comment: zt-hashes--android--armv7--v0.4.0--preview
-jLkhjNPA9wwLoDsYIvVWBk7qSq/Jj9gIQGUJPsKGU2uEwXzy3uzwmgPHaxIjXjfIaFb6HMdbNEd4EAGWsipeDg==

@@ -1,4 +1,0 @@
-untrusted comment: signature from minisign secret key
-RUTNU8euCgU67jeNJZy4vCk6kaqeWN6ghvNud6KAbSP2axzLCkoDmIxqFyVMcsxmfAUBgvMag5Y5uWBqml1uPcTombq4h931MwU=
-trusted comment: zt-patterns--linux--x86_64--glibc--v0.4.0--preview
-a4v3nJjPg6DXCDvs84MvNIDVYZPHiWh15mSdwAdYo5eSOGxFssV6zU76G2wPeN+tdYx5NChZAOZFh0XGLEFaAQ==

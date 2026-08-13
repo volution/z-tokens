@@ -1,4 +1,0 @@
-untrusted comment: signature from minisign secret key
-RUTNU8euCgU67kp/iNF257BE3vHttoxTnBGr0ar9uP93WdZwTyKZfhc4wbkwJMfgbMW27Qt9ip4xSMfVf+dID2vHY1c8D2hJYws=
-trusted comment: z-tokens--wasi--wasm32--v0.4.0--preview
-5LfNheeZZyLlZqvKJ9CszCqQs4ElPJUE1yXJr49KcqZKfqTdX3E0rbtgjj12yKzx0XAF0axm3auKl9R14IF4CQ==
