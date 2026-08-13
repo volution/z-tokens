@@ -55,24 +55,24 @@ zt-runtime-do-not-enable-this = []
 vrl-errors = { version = "*", optional = false, default-features = false, features = [] }
 vrl-preludes = { version = "*", optional = false, default-features = false, features = [] }
 
-constant_time_eq = { version = "^0.3", optional = false, default-features = false, features = [] }
-byteorder = { version = "^1.5", optional = false, default-features = false, features = [] }
-zeroize = { version = "^1.8", optional = false, default-features = false, features = ["std", "alloc"] }
+constant_time_eq = { version = "*", optional = false, default-features = false, features = [] }
+byteorder = { version = "*", optional = false, default-features = false, features = [] }
+zeroize = { version = "*", optional = false, default-features = false, features = ["std", "alloc"] }
 
-num-bigint = { version = "^0.4", optional = false, default-features = false, features = ["std"] }
-num-integer = { version = "^0.1", optional = false, default-features = false, features = ["std"] }
-num-traits = { version = "^0.2", optional = false, default-features = false, features = ["std"] }
+num-bigint = { version = "*", optional = false, default-features = false, features = ["std"] }
+num-integer = { version = "*", optional = false, default-features = false, features = ["std"] }
+num-traits = { version = "*", optional = false, default-features = false, features = ["std"] }
 
-chrono = { version = "^0.4", optional = false, default-features = false, features = ["alloc", "clock"] }
-platform-info = { version = "^2.0", optional = false, default-features = false, features = [] }
+chrono = { version = "*", optional = false, default-features = false, features = ["alloc", "clock"] }
+platform-info = { version = "*", optional = false, default-features = false, features = [] }
 
-paste = { version = "^1.0", optional = false, default-features = false, features = [] }
-const_format = { version = "^0.2", optional = false, default-features = false, features = [] }
+paste = { version = "*", optional = false, default-features = false, features = [] }
+const_format = { version = "*", optional = false, default-features = false, features = [] }
 
 [target.'cfg( not( target_family = "wasm" ) )'.dependencies]
-memsec = { version = "^0.7", optional = false, default-features = false, features = ["default"] }
+memsec = { version = "*", optional = false, default-features = false, features = ["default"] }
 
 [target.'cfg( target_family = "wasm" )'.dependencies]
-memsec = { version = "^0.7", optional = true, default-features = false, features = ["default"] }
+memsec = { version = "*", optional = true, default-features = false, features = ["default"] }
 
 

@@ -56,6 +56,6 @@ release = [
 
 z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
 
-keyutils = { version = "^0.4", optional = false, default-features = false, features = [] }
+keyutils = { version = "*", optional = false, default-features = false, features = [] }
 
 

@@ -56,28 +56,28 @@ release = [
 
 z-tokens-runtime = { path = "../runtime", optional = false, default-features = false, features = [] }
 
-digest = { version = "^0.10", optional = false, default-features = false, features = ["std", "core-api"] }
+digest = { version = "*", optional = false, default-features = false, features = ["std", "core-api"] }
 
-blake3 = { version = "^1.5", optional = false, default-features = false, features = ["std", "digest", "traits-preview"] }
-blake2 = { version = "^0.10", optional = false, default-features = false, features = ["std"] }
+blake3 = { version = "*", optional = false, default-features = false, features = ["std", "digest", "traits-preview"] }
+blake2 = { version = "*", optional = false, default-features = false, features = ["std"] }
 
-sha3 = { version = "^0.10", optional = false, default-features = false, features = ["std"] }
-sha2 = { version = "^0.10", optional = false, default-features = false, features = ["std"] }
-sha1 = { version = "^0.10", optional = false, default-features = false, features = ["std"] }
+sha3 = { version = "*", optional = false, default-features = false, features = ["std"] }
+sha2 = { version = "*", optional = false, default-features = false, features = ["std"] }
+sha1 = { version = "*", optional = false, default-features = false, features = ["std"] }
 
-md-5 = { version = "^0.10", optional = false, default-features = false, features = ["std"] }
+md-5 = { version = "*", optional = false, default-features = false, features = ["std"] }
 
-xxhash-rust = { version = "^0.8", optional = false, default-features = false, features = ["xxh3"] }
-twox-hash = { version = "^1.6", optional = false, default-features = false, features = [] }
-siphasher = { version = "^1.0", optional = false, default-features = false, features = [] }
-seahash = { version = "^4.1", optional = false, default-features = false, features = [] }
-highway = { version = "^1.2", optional = false, default-features = false, features = ["std"] }
+xxhash-rust = { version = "*", optional = false, default-features = false, features = ["xxh3"] }
+twox-hash = { version = "*", optional = false, default-features = false, features = [] }
+siphasher = { version = "*", optional = false, default-features = false, features = [] }
+seahash = { version = "*", optional = false, default-features = false, features = [] }
+highway = { version = "*", optional = false, default-features = false, features = ["std"] }
 
-crc-any = { version = "^2.5", optional = false, default-features = false, features = [] }
-adler = { version = "^1.0", optional = false, default-features = false, features = [] }
-hashers = { version = "^1.0", optional = false, default-features = false, features = [] }
+crc-any = { version = "*", optional = false, default-features = false, features = [] }
+adler = { version = "*", optional = false, default-features = false, features = [] }
+hashers = { version = "*", optional = false, default-features = false, features = [] }
 
-argon2 = { version = "^0.5", optional = false, default-features = false, features = ["std"] }
-scrypt = { version = "^0.11", optional = false, default-features = false, features = ["std"] }
+argon2 = { version = "*", optional = false, default-features = false, features = ["std"] }
+scrypt = { version = "*", optional = false, default-features = false, features = ["std"] }
 
 
