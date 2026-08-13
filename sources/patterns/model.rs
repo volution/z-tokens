@@ -144,7 +144,7 @@ impl Text {
 			}
 			Text::Str (_self) =>
 				_self == _other,
-			Text::String (ref _self) =>
+			Text::String (_self) =>
 				_self == _other,
 		}
 	}
@@ -155,7 +155,7 @@ impl Text {
 				Cow::Owned (_char.to_string ()),
 			Text::Str (_string) =>
 				Cow::Borrowed (_string),
-			Text::String (ref _string) =>
+			Text::String (_string) =>
 				Cow::Owned (String::clone (_string)),
 		}
 	}
@@ -170,7 +170,7 @@ impl Display for Text {
 				write! (_formatter, "{}", _char),
 			Text::Str (_string) =>
 				write! (_formatter, "{}", _string),
-			Text::String (ref _string) =>
+			Text::String (_string) =>
 				write! (_formatter, "{}", _string),
 		}
 	}

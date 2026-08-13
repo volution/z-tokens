@@ -331,7 +331,7 @@ pub fn input_from_stdio () -> InputResult<impl Input> {
 }
 
 
-pub fn input_from_file (_path : &Path) -> InputResult<impl Input> {
+pub fn input_from_file (_path : &Path) -> InputResult<impl Input + use <>> {
 	
 	let _stream = fs::File::open (_path) .else_wrap (0x425b5064) ?;
 	

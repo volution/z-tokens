@@ -36,7 +36,7 @@ impl <Value : Sized + Sensitive + 'static> Sensitive for RbRef<Value> {
 	
 	fn erase (&mut self) -> () {
 		match self {
-			Self::Static (ref mut _ref) =>
+			Self::Static (_ref) =>
 				<&'static Value as Sensitive>::erase (_ref),
 			Self::Rc (_rc) =>
 				_rc.erase (),
@@ -49,7 +49,7 @@ impl <Value : Sized + Sensitive + 'static> Sensitive for RbListRef<Value> {
 	
 	fn erase (&mut self) -> () {
 		match self {
-			Self::Static (ref mut _ref) =>
+			Self::Static (_ref) =>
 				<&'static [Rb<Value>] as Sensitive>::erase (_ref),
 			Self::Rc (_rc) =>
 				_rc.erase (),
