@@ -9,11 +9,11 @@ ec73a70749d1e881d5ba2ac183c75da7 *bins/secrets.rs
 fd2a6e37b20856e3780e72e9dca4dd78 *embedded/help/_footer.txt
 cafe6ee12097ee6f81f4a315dec68396 *embedded/help/_header.txt
 ed12a94bf37958d6a027ab22bc8c20fe *embedded/help/main.txt
-854df9fd4b767e56aa6df2c360d0207e *embedded/readme/readme.html
-bb156c012a2e1c6fbc7a856d74817832 *embedded/readme/readme.txt
-a4294e529b69e4bed40e7b0380442e14 *embedded/sbom/sbom.html
-7453ad6946bdbbc449298ef3a37483bf *embedded/sbom/sbom.json
-07751d1ba94041f019e34df06b398812 *embedded/sbom/sbom.txt
+22e1d7cb1f4f5f5883f86b37fed2e152 *embedded/readme/readme.html
+a763f4f058dd6f4ab8c8b3b75eedaf11 *embedded/readme/readme.txt
+d686bcf2cc44ba10fb13c7b0eee7700d *embedded/sbom/sbom.html
+3e0c3f124f258755926f073ce5002144 *embedded/sbom/sbom.json
+2ce3852a768dfe97c27479a972e12127 *embedded/sbom/sbom.txt
 556fd53e9a488c86527415056eebff88 *encodings-tool/Cargo.toml
 e77fcce528ca1b16637548e9b4a9564e *encodings-tool/lib.rs
 1be70e72b865cc12a97c798c58a22238 *encodings-tool/tool.rs
@@ -153,6 +153,6 @@ ee52620c1ab4935a070ccb55d7e565da *tools/main_helpers.rs
 82259773b093ce6a74f128f92eabcb70 *tools/mains.rs
 2d5cac9abaefb540d2b4888102ff8558 *tools/premains.rs
 2fe4fe821aefb8813053658b0400656f *tools/runtime.rs
-d0f50843c81145fa62511c006d8ea7df *workspace/Cargo.lock
-82fc9dc981c1abd835c53998fa573f9a *workspace/Cargo.toml
+773d97155fcd89624c2e910e4796292f *workspace/Cargo.lock
+e65ae8810109fd5b320f4884510686ec *workspace/Cargo.toml
 9ffca391e8c23c8dda9e381c13ec9aac *workspace/bin.rs
