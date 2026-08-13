@@ -706,7 +706,7 @@
 			--events-backend none \
 			--log-driver none \
 			-- \
-			localhost/rust-cross:latest \
+			e7cd3b06c33117772f1858d67fdef9f32127768d99b9c037670ee84699c0ea59 \
 	\
 		env -i "${_environment[@]}" \
 	"${_executable}" \
