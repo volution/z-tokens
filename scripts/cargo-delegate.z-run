@@ -442,7 +442,7 @@
 	_tool="${3}"
 	shift -- 3
 	
-	_image=e7cd3b06c33117772f1858d67fdef9f32127768d99b9c037670ee84699c0ea59
+	_image=749a005bdd09b925fefa18b3646fcf26a1ea928f1f54761120e69b5ea1843bf7
 	
 	_executable=/opt/cargo/bin/cargo
 	
@@ -655,7 +655,10 @@
 		;;
 	esac
 	
-	_identifier="$( exec -- md5sum -b <<< "${__META__BUILD_TARGET_TYPE} -- ${_image} -- ${__CARGO__TARGET} -- ${_scratch}" )"
+	_identifier_0="$( exec -- md5sum -b <<< "${__META__BUILD_TARGET_TYPE} -- ${__CARGO__TARGET} -- ${_scratch}" )"
+	_identifier_0="${_identifier_0%% *}"
+	
+	_identifier="$( exec -- md5sum -b <<< "${__META__BUILD_TARGET_TYPE} -- ${__CARGO__TARGET} -- ${_scratch} -- ${_image}" )"
 	_identifier="${_identifier%% *}"
 	
 	test -d "${_scratch}"
@@ -675,6 +678,10 @@
 			test -d "${_cross_folder}"
 		fi
 	done
+	
+	if test ! "${_scratch}/cross/target--${_identifier_0}" -ef "${_scratch}/cross/target--${_identifier}" ; then
+		ln -s -f -T -- "./target--${_identifier}" "${_scratch}/cross/target--${_identifier_0}"
+	fi
 	
 	rsync \
 			--delete \
